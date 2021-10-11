@@ -22,12 +22,12 @@
     },
     {
       "name": "cdktf-cli",
-      "version": "^0.6",
+      "version": "0.6.4-pre.367",
       "type": "build"
     },
     {
       "name": "cdktf",
-      "version": "^0.6",
+      "version": "0.6.4-pre.367",
       "type": "build"
     },
     {
@@ -76,7 +76,7 @@
     },
     {
       "name": "cdktf-cli",
-      "version": "^0.6",
+      "version": "0.6.4-pre.367",
       "type": "bundled"
     },
     {
@@ -101,7 +101,7 @@
     },
     {
       "name": "cdktf",
-      "version": "^0.6",
+      "version": "0.6.4-pre.367",
       "type": "peer"
     },
     {

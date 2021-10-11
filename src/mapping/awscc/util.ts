@@ -1,6 +1,6 @@
 import { toCamelCase } from "codemaker";
 // TODO: expose the name conflict replacement functionality that is used from this in a better way
-import { AttributeModel } from "cdktf-cli/lib/get/generator/models/attribute-model";
+// import { AttributeModel } from "cdktf-cli/lib/get/generator/models/attribute-model";
 
 const propertyNameReplacements = {
   CloudFormation: "Cloudformation",
@@ -17,20 +17,20 @@ export function convertCloudFormationPropertyToCDKTFAttribute(
 
   const cdktfAttribute = toCamelCase(tfAttribute);
 
-  const tmp = new AttributeModel({
-    name: cdktfAttribute,
-    computed: false,
-    optional: false,
-    provider: false,
-    required: false,
-    storageName: "",
-    terraformFullName: "",
-    terraformName: "",
-    type: null as any,
-  });
+  // const tmp = new AttributeModel({
+  //   name: cdktfAttribute,
+  //   computed: false,
+  //   optional: false,
+  //   provider: false,
+  //   required: false,
+  //   storageName: "",
+  //   terraformFullName: "",
+  //   terraformName: "",
+  //   type: null as any,
+  // });
 
   // tmp.name is getter and does more than returning the name we supplied as input
-  const conflictFreeCdktfAttribute = tmp.name;
+  const conflictFreeCdktfAttribute = cdktfAttribute; // tmp.name;
 
   return conflictFreeCdktfAttribute;
 }

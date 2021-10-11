@@ -1,14 +1,15 @@
 import createDebug from "debug";
 import { Mapping, registerMapping } from "../index";
-import * as awscc from "../../../.gen/providers/awscc";
+// import * as awscc from "../../../.gen/providers/awscc";
 import { awsccNameMap } from "../../awscc_schemas/awscc-name-map";
 import { TerraformResource } from "cdktf";
 import { convertCloudFormationPropertyToCDKTFAttribute } from "./util";
-import { Writeable } from "../../type-utils";
 import { objectFromEntries } from "../../es2019";
 
 const debug = createDebug("tf-aws-adapter:awscc:debug");
 const trace = createDebug("tf-aws-adapter:awscc:trace");
+
+const awscc = {};
 
 type Override<T extends TerraformResource> = {
   attributes?: Partial<Mapping<T>["attributes"]>;
@@ -24,7 +25,7 @@ const overrides: {
   // FIXME: add function to register these, and export that function aswell
   "AWS::CloudFront::Distribution": {
     attributes: {
-      Ref: (res: awscc.CloudfrontDistribution) => res.id,
+      Ref: (res: any) => res.id,
       Arn: () => {
         throw new Error("Cloudfront Distributions have no Arn");
       },
@@ -41,7 +42,8 @@ const overrides: {
       //   }
 
       // }
-      afterMapping: (cdktfProps: Writeable<awscc.LambdaFunctionConfig>) => {
+      afterMapping: (cdktfProps: any) => {
+        // Writeable<awscc.LambdaFunctionConfig>) => {
         // these are defaults that are currently not part of the schema and thus needed to be specified manually:
         // https://github.com/hashicorp/terraform-provider-awscc/blob/main/internal/service/cloudformation/schemas/AWS_Lambda_Function.json
         cdktfProps.fileSystemConfigs = cdktfProps.fileSystemConfigs ?? [];

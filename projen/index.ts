@@ -67,6 +67,7 @@ export class CdktfAwsCdkProject extends JsiiProject {
     this.removeTask(TypeScriptProject.DEFAULT_TASK);
     this.addTask(TypeScriptProject.DEFAULT_TASK, { exec: `ts-node --skip-project --compiler-options '{"target":"es6"}' .projenrc.ts` });
 
+    // for local developing (e.g. linking local changes to cdktf)
     this.addGitIgnore('.yalc');
     this.addGitIgnore('yalc.lock');
 
