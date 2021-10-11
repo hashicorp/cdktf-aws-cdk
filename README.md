@@ -1,11 +1,5 @@
-# `@cdktf/aws-cdk`
 
-This repo contains an experimental adapter to use AWS CDK (v2) constructs with the CDK for Terraform
-
-The repo is based on the `@cdktf/provider-aws`.
-
-
-## Terraform CDK aws Provider ~> 3.0
+# Terraform CDK aws Provider ~> 3.0
 
 This repo builds and publishes the Terraform aws Provider bindings for [cdktf](https://cdk.tf).
 

@@ -68,6 +68,7 @@ export class CdktfAwsCdkProject extends JsiiProject {
     this.addTask(TypeScriptProject.DEFAULT_TASK, { exec: `ts-node --skip-project --compiler-options '{"target":"es6"}' .projenrc.ts` });
 
     this.addGitIgnore('.yalc');
+    this.addGitIgnore('yalc.lock');
 
     new CdktfConfig(this, {
       terraformProvider,

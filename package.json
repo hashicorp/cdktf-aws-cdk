@@ -1,22 +1,21 @@
 {
-  "name": "@cdktf/provider-aws",
-  "description": "Prebuilt aws Provider for Terraform CDK (cdktf)",
+  "name": "@cdktf/aws-cdk",
+  "description": "Adapter for using AWS CDK constructs in Terraform CDK (cdktf) projects",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hashicorp/cdktf-provider-aws.git"
+    "url": "https://github.com/hashicorp/cdktf-aws-cdk.git"
   },
   "scripts": {
     "clobber": "npx projen clobber",
     "compile": "jsii --silence-warnings=reserved-word",
     "test:compile": "npx projen test:compile",
-    "test": "jest --passWithNoTests",
+    "test": "jest",
     "build": "npx projen build",
     "bump": "npx projen bump",
     "unbump": "npx projen unbump",
     "publish:github": "npx projen publish:github",
     "upgrade": "npx projen upgrade",
     "upgrade-projen": "npx projen upgrade-projen",
-    "default": "npx projen default",
     "watch": "npx projen watch",
     "package": "npx projen package",
     "compat": "npx projen compat",
@@ -24,9 +23,10 @@
     "publish:pypi": "npx projen publish:pypi",
     "publish:nuget": "npx projen publish:nuget",
     "docgen": "npx projen docgen",
+    "default": "npx projen default",
     "release": "npx projen release",
     "projen": "npx projen",
-    "fetch": "mkdir -p src && rm -rf ./src/* && cdktf get && cp -R .gen/providers/aws/* ./src/",
+    "fetch": "mkdir -p src/aws && rm -rf ./src/aws/* && cdktf get && cp -R .gen/providers/aws/* ./src/aws/",
     "commit": "git add -A && git commit -am \"Update provider\" || echo \"No changes to commit\"",
     "should-release": "! git diff --exit-code v$(cat version.json | jq -r '.version') ./src ./package.json",
     "prebump": "yarn fetch && yarn compile && yarn run commit && yarn run should-release",
@@ -38,12 +38,13 @@
     "organization": true
   },
   "devDependencies": {
-    "@cdktf/provider-project": "^0.2.8",
+    "@types/debug": "^4.1.7",
+    "@types/jest": "^27.0.2",
     "@types/node": "^12.19.0",
+    "aws-cdk-lib": "^2.0.0-rc.17",
     "cdktf": "^0.6",
     "cdktf-cli": "^0.6",
     "constructs": "^10.0.0",
-    "dot-prop": "^5.2.0",
     "jsii": "^1.34.0",
     "jsii-diff": "^1.34.0",
     "jsii-docgen": "^1.8.110",
@@ -51,18 +52,31 @@
     "npm-check-updates": "^11",
     "projen": "^0.28.28",
     "standard-version": "^9",
+    "ts-node": "^9",
     "typescript": "^3.9.10"
   },
   "peerDependencies": {
+    "aws-cdk-lib": "^2.0.0-rc.17",
     "cdktf": "^0.6",
     "constructs": "^10.0.0"
   },
-  "bundledDependencies": [],
+  "dependencies": {
+    "cdktf-cli": "^0.6",
+    "change-case": "^4.1.1",
+    "codemaker": "^1.34.0",
+    "debug": "^4.3.2"
+  },
+  "bundledDependencies": [
+    "cdktf-cli",
+    "change-case",
+    "codemaker",
+    "debug"
+  ],
   "keywords": [
     "aws",
+    "aws-cdk",
     "cdk",
     "cdktf",
-    "provider",
     "terraform"
   ],
   "engines": {
@@ -80,12 +94,12 @@
     "outdir": "dist",
     "targets": {
       "python": {
-        "distName": "cdktf-cdktf-provider-aws",
-        "module": "cdktf_cdktf_provider_aws"
+        "distName": "cdktf-aws-cdk",
+        "module": "cdktf_aws_cdk"
       },
       "dotnet": {
-        "namespace": "HashiCorp.Cdktf.Providers.Aws",
-        "packageId": "HashiCorp.Cdktf.Providers.Aws"
+        "namespace": "HashiCorp.Cdktf.AwsCdk",
+        "packageId": "HashiCorp.Cdktf.AwsCdk"
       }
     },
     "tsc": {

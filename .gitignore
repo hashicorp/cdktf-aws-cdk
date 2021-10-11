@@ -42,11 +42,12 @@ jspm_packages/
 .jsii
 tsconfig.json
 !/API.md
+.yalc
+yalc.lock
 .gen
 .terraform
 package-lock.json
 !/cdktf.json
-!/README.md
 !/.github/workflows/provider-upgrade.yml
 !/.github/workflows/automerge.yml
 !/.github/workflows/release.yml
