@@ -1,0 +1,8 @@
+{
+  "version": "v1",
+  "packages": {
+    "@cdktf/provider-aws": {
+      "signature": "c15ebcae610d02228ff1e0724ddf3b53"
+    }
+  }
+}

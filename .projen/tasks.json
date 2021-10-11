@@ -134,7 +134,7 @@
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @cdktf/provider-project @types/node cdktf-cli cdktf constructs dot-prop jsii jsii-diff jsii-docgen jsii-pacmak npm-check-updates standard-version typescript cdktf constructs"
+          "exec": "yarn upgrade @types/debug @types/jest @types/node aws-cdk-lib cdktf-cli cdktf constructs jsii jsii-diff jsii-docgen jsii-pacmak npm-check-updates standard-version ts-node typescript cdktf-cli change-case codemaker debug aws-cdk-lib cdktf constructs"
         },
         {
           "exec": "npx projen"
@@ -159,14 +159,6 @@
         },
         {
           "exec": "npx projen"
-        }
-      ]
-    },
-    "default": {
-      "name": "default",
-      "steps": [
-        {
-          "exec": "node .projenrc.js"
         }
       ]
     },
@@ -244,6 +236,14 @@
       "steps": [
         {
           "exec": "jsii-docgen"
+        }
+      ]
+    },
+    "default": {
+      "name": "default",
+      "steps": [
+        {
+          "exec": "ts-node --skip-project --compiler-options '{\"target\":\"es6\"}' .projenrc.ts"
         }
       ]
     },
