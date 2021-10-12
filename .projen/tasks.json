@@ -46,14 +46,25 @@
     },
     "test:compile": {
       "name": "test:compile",
-      "description": "compiles the test code"
+      "description": "compiles the test code",
+      "steps": [
+        {
+          "exec": "tsc --noEmit --project tsconfig.jest.json"
+        }
+      ]
     },
     "test": {
       "name": "test",
       "description": "Run tests",
       "steps": [
         {
+          "exec": "rm -fr lib/"
+        },
+        {
           "spawn": "test:compile"
+        },
+        {
+          "exec": "jest --passWithNoTests --all --updateSnapshot"
         }
       ]
     },
@@ -72,6 +83,24 @@
         },
         {
           "spawn": "package"
+        }
+      ]
+    },
+    "test:watch": {
+      "name": "test:watch",
+      "description": "Run jest in watch mode",
+      "steps": [
+        {
+          "exec": "jest --watch"
+        }
+      ]
+    },
+    "test:update": {
+      "name": "test:update",
+      "description": "Update jest snapshots",
+      "steps": [
+        {
+          "exec": "jest --updateSnapshot"
         }
       ]
     },
@@ -134,7 +163,7 @@
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/debug @types/jest @types/node aws-cdk-lib cdktf-cli cdktf constructs jsii jsii-diff jsii-docgen jsii-pacmak npm-check-updates standard-version ts-node typescript cdktf-cli change-case codemaker debug aws-cdk-lib cdktf constructs"
+          "exec": "yarn upgrade @types/debug @types/jest @types/node aws-cdk-lib cdktf-cli cdktf constructs jest jest-junit jsii jsii-diff jsii-docgen jsii-pacmak npm-check-updates standard-version ts-jest ts-node typescript cdktf-cli change-case codemaker debug aws-cdk-lib cdktf constructs"
         },
         {
           "exec": "npx projen"

@@ -20,7 +20,6 @@
   },
   "dependencies": {
     "@cdktf/aws-adapter": "0.0.0",
-    "@cdktf/provider-aws": "^0.0.19",
     "cdktf": "0.0.0",
     "constructs": "^10.0.5"
   }

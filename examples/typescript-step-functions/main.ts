@@ -7,15 +7,12 @@ import {
   aws_stepfunctions_tasks,
 } from "aws-cdk-lib";
 
-import * as awscc from "@cdktf/aws-adapter/.gen/providers/awscc";
-import * as aws from "@cdktf/provider-aws";
 import { AwsTerraformAdapter } from "@cdktf/aws-adapter";
 
 export class StepFunctionsStack extends TerraformStack {
   constructor(scope: Construct, name: string) {
     super(scope, name);
 
-    new awscc.AwsccProvider(this, "awscc", {});
     new aws.AwsProvider(this, "aws", { region: "us-west-2" });
 
     const awsAdapter = new AwsTerraformAdapter(this, "adapter");

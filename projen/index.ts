@@ -42,7 +42,16 @@ export class CdktfAwsCdkProject extends JsiiProject {
       description: `Adapter for using AWS CDK constructs in Terraform CDK (cdktf) projects`,
       keywords: ["cdktf", "terraform", "cdk", "aws-cdk", "aws"],
       sampleCode: false,
-      jest: false,
+      jest: true,
+      jestOptions: {
+        jestConfig: {
+          setupFilesAfterEnv: ["./setupJest.js"],
+          testPathIgnorePatterns: ["/node_modules/", "<rootDir>/examples", ".yalc", ".+\\.d\\.ts"],
+          // transform: {
+          //   "^.+\\.tsx?$": "ts-jest",
+          // },
+        },
+      },
       authorAddress,
       author,
       authorOrganization: true,
@@ -65,11 +74,13 @@ export class CdktfAwsCdkProject extends JsiiProject {
 
     // fix as we use es6 in this class
     this.removeTask(TypeScriptProject.DEFAULT_TASK);
-    this.addTask(TypeScriptProject.DEFAULT_TASK, { exec: `ts-node --skip-project --compiler-options '{"target":"es6"}' .projenrc.ts` });
+    this.addTask(TypeScriptProject.DEFAULT_TASK, {
+      exec: `ts-node --skip-project --compiler-options '{"target":"es6"}' .projenrc.ts`,
+    });
 
     // for local developing (e.g. linking local changes to cdktf)
-    this.addGitIgnore('.yalc');
-    this.addGitIgnore('yalc.lock');
+    this.addGitIgnore(".yalc");
+    this.addGitIgnore("yalc.lock");
 
     new CdktfConfig(this, {
       terraformProvider,
