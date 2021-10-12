@@ -163,7 +163,7 @@
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/debug @types/jest @types/node aws-cdk-lib cdktf-cli cdktf constructs jest jest-junit jsii jsii-diff jsii-docgen jsii-pacmak npm-check-updates standard-version ts-jest ts-node typescript cdktf-cli change-case codemaker debug aws-cdk-lib cdktf constructs"
+          "exec": "yarn upgrade @aws-sdk/client-cloudformation @types/debug @types/jest @types/node aws-cdk-lib cdktf-cli cdktf constructs jest jest-junit jsii jsii-diff jsii-docgen jsii-pacmak npm-check-updates standard-version ts-jest ts-node typescript cdktf-cli change-case codemaker debug aws-cdk-lib cdktf constructs"
         },
         {
           "exec": "npx projen"

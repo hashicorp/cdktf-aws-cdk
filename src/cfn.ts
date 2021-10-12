@@ -6,6 +6,7 @@ export interface CloudFormationResource {
 }
 
 export interface CloudFormationTemplate {
-  Resources: { [id: string]: CloudFormationResource };
+  Resources?: { [id: string]: CloudFormationResource };
   Conditions?: { [id: string]: any };
+  Outputs?: { [id: string]: any };
 }

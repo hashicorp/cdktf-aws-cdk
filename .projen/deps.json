@@ -1,6 +1,11 @@
 {
   "dependencies": [
     {
+      "name": "@aws-sdk/client-cloudformation",
+      "version": "^3.36.0",
+      "type": "build"
+    },
+    {
       "name": "@types/debug",
       "version": "^4.1.7",
       "type": "build"

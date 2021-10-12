@@ -5,8 +5,16 @@ import {
   RouteTable,
   RouteTableAssociation,
   Route,
+  Eip,
+  NatGateway,
+  InternetGateway,
+  Elb,
+  SecurityGroup,
+  SecurityGroupRule,
+  LbTargetGroup,
 } from "../../aws";
 import { createGuessingResourceMapper } from "../helper";
+import { Aspects } from "cdktf";
 
 registerMapping("AWS::EC2::VPC", {
   resource: createGuessingResourceMapper(Vpc),
@@ -50,5 +58,116 @@ registerMapping("AWS::EC2::SubnetRouteTableAssociation", {
       throw new Error("RouteTableAssociation resource does not have an arn");
     },
     Ref: (a: RouteTableAssociation) => a.id,
+  },
+});
+
+registerMapping("AWS::EC2::EIP", {
+  resource: createGuessingResourceMapper(Eip),
+  attributes: {
+    Arn: () => {
+      throw new Error("Eip resource does not have an arn");
+    },
+    Ref: (e: Eip) => e.id,
+    AllocationId: (e: Eip) => e.allocationId,
+  },
+});
+
+registerMapping("AWS::EC2::NatGateway", {
+  resource: createGuessingResourceMapper(NatGateway),
+  attributes: {
+    Arn: () => {
+      throw new Error("NatGateway resource does not have an arn");
+    },
+    Ref: (gateway: NatGateway) => gateway.id,
+  },
+});
+
+registerMapping("AWS::EC2::InternetGateway", {
+  resource: createGuessingResourceMapper(InternetGateway),
+  attributes: {
+    Arn: (gateway: InternetGateway) => gateway.arn,
+    Ref: (gateway: InternetGateway) => gateway.id,
+  },
+});
+
+registerMapping("AWS::EC2::VPCGatewayAttachment", {
+  resource: (scope, _id, props) => {
+    // This has no resource representation in TF, see also: https://github.com/hashicorp/terraform-provider-aws/issues/5465#issuecomment-415575387
+    // so we add an aspect to simulate the behaviour it has
+    const vpcId = props.VpcId;
+    delete props.VpcId;
+    delete props.InternetGatewayId;
+
+    Aspects.of(scope).add({
+      visit: (node) => {
+        // FIXME: move this into some creation function or similar
+        // TODO: this has the shortcoming of changing all internet gateways
+        if (node instanceof InternetGateway) {
+          // TODO: check the node.id and try to resolve that token somehow to find out the targetted internet gateway (note.id will be a Lazy that resolves to some TF resource)
+          node.vpcId = vpcId;
+        }
+      },
+    });
+
+    return null;
+  },
+  attributes: {
+    // FIXME: when is this used? resolve to the related InternetGateway or VpnGateway instead
+    Arn: () => {
+      throw new Error(
+        "AWS::EC2::VPCGatewayAttachment has no represenation in Terraform and therefore cannot be accessed"
+      );
+    },
+    Ref: () => {
+      throw new Error(
+        "AWS::EC2::VPCGatewayAttachment has no represenation in Terraform and therefore cannot be accessed"
+      );
+    },
+  },
+});
+
+registerMapping("AWS::ElasticLoadBalancingV2::LoadBalancer", {
+  resource: createGuessingResourceMapper(Elb),
+  attributes: {
+    Arn: (elb: Elb) => elb.arn,
+    Ref: (elb: Elb) => elb.id,
+    DNSName: (elb: Elb) => elb.dnsName,
+  },
+});
+
+registerMapping("AWS::EC2::SecurityGroup", {
+  resource: createGuessingResourceMapper(SecurityGroup), // FIXME: create rules via SecurityGroupRule resource?
+  attributes: {
+    Arn: (sg: SecurityGroup) => sg.arn,
+    Ref: (sg: SecurityGroup) => sg.id,
+    GroupId: (sg: SecurityGroup) => sg.id,
+  },
+});
+
+registerMapping("AWS::EC2::SecurityGroupEgress", {
+  resource: createGuessingResourceMapper(SecurityGroupRule), // FIXME: create egress rule
+  attributes: {
+    Arn: () => {
+      throw new Error("SecurityGroupRule has no arn");
+    },
+    Ref: (rule: SecurityGroupRule) => rule.id,
+  },
+});
+
+registerMapping("AWS::EC2::SecurityGroupIngress", {
+  resource: createGuessingResourceMapper(SecurityGroupRule), // FIXME: create ingress rule
+  attributes: {
+    Arn: () => {
+      throw new Error("SecurityGroupRule has no arn");
+    },
+    Ref: (rule: SecurityGroupRule) => rule.id,
+  },
+});
+
+registerMapping("AWS::ElasticLoadBalancingV2::TargetGroup", {
+  resource: createGuessingResourceMapper(LbTargetGroup),
+  attributes: {
+    Arn: (rule: LbTargetGroup) => rule.arn,
+    Ref: (rule: LbTargetGroup) => rule.id,
   },
 });

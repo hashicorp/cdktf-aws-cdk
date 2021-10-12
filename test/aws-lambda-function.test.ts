@@ -23,41 +23,30 @@ describe("lambda function", () => {
     });
 
     expect(res).toMatchInlineSnapshot(`
-"{
-  \\"data\\": {
-    \\"aws_partition\\": {
-      \\"adapter_aws-partition_5B16AD9D\\": {}
-    }
-  },
-  \\"resource\\": {
-    \\"aws_iam_role\\": {
-      \\"adapter_lambdaServiceRole494E4CA6_7D4D29EC\\": {
-        \\"assume_role_policy\\": \\"{\\\\\\"Statement\\\\\\":[{\\\\\\"Action\\\\\\":\\\\\\"sts:AssumeRole\\\\\\",\\\\\\"Effect\\\\\\":\\\\\\"Allow\\\\\\",\\\\\\"Principal\\\\\\":{\\\\\\"Service\\\\\\":\\\\\\"lambda.amazonaws.com\\\\\\"}}],\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\"}\\",
-        \\"managed_policy_arns\\": [
-          \\"\${join(\\\\\\"\\\\\\", [\\\\\\"arn:\\\\\\", data.aws_partition.adapter_aws-partition_5B16AD9D.partition, \\\\\\":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole\\\\\\"])}\\"
-        ]
-      }
-    },
-    \\"awscc_lambda_function\\": {
-      \\"adapter_lambda8B5974B5_06304D76\\": {
-        \\"code\\": {
-          \\"zip_file\\": \\"def main(event, context):    \\\\nprint(\\\\\\"I'm running!\\\\\\")\\"
+      "{
+        \\"data\\": {
+          \\"aws_partition\\": {
+            \\"adapter_aws-partition_5B16AD9D\\": {}
+          }
         },
-        \\"file_system_configs\\": [],
-        \\"handler\\": \\"index.main\\",
-        \\"memory_size\\": 128,
-        \\"package_type\\": \\"Zip\\",
-        \\"role\\": \\"\${aws_iam_role.adapter_lambdaServiceRole494E4CA6_7D4D29EC.arn}\\",
-        \\"runtime\\": \\"python3.6\\",
-        \\"timeout\\": 300,
-        \\"tracing_config\\": {
-          \\"mode\\": \\"PassThrough\\"
+        \\"resource\\": {
+          \\"aws_cloudcontrolapi_resource\\": {
+            \\"adapter_lambda8B5974B5_06304D76\\": {
+              \\"desired_state\\": \\"{\\\\\\"Code\\\\\\":{\\\\\\"ZipFile\\\\\\":\\\\\\"def main(event, context):    \\\\\\\\nprint(\\\\\\\\\\\\\\"I'm running!\\\\\\\\\\\\\\")\\\\\\"},\\\\\\"Role\\\\\\":\\\\\\"\${aws_iam_role.adapter_lambdaServiceRole494E4CA6_7D4D29EC.arn}\\\\\\",\\\\\\"Handler\\\\\\":\\\\\\"index.main\\\\\\",\\\\\\"Runtime\\\\\\":\\\\\\"python3.6\\\\\\",\\\\\\"Timeout\\\\\\":300}\\",
+              \\"type_name\\": \\"AWS::Lambda::Function\\"
+            }
+          },
+          \\"aws_iam_role\\": {
+            \\"adapter_lambdaServiceRole494E4CA6_7D4D29EC\\": {
+              \\"assume_role_policy\\": \\"{\\\\\\"Statement\\\\\\":[{\\\\\\"Action\\\\\\":\\\\\\"sts:AssumeRole\\\\\\",\\\\\\"Effect\\\\\\":\\\\\\"Allow\\\\\\",\\\\\\"Principal\\\\\\":{\\\\\\"Service\\\\\\":\\\\\\"lambda.amazonaws.com\\\\\\"}}],\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\"}\\",
+              \\"managed_policy_arns\\": [
+                \\"\${join(\\\\\\"\\\\\\", [\\\\\\"arn:\\\\\\", data.aws_partition.adapter_aws-partition_5B16AD9D.partition, \\\\\\":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole\\\\\\"])}\\"
+              ]
+            }
+          }
         }
-      }
-    }
-  }
-}"
-`);
+      }"
+    `);
     // TODO: assert more targeted here
     // expect(res).toHaveResourceWithProperties(awscc.LambdaFunction, {
     //     code: { zipFile: `def main(event, context):    \nprint("I'm running!")` },

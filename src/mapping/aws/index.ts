@@ -1,82 +1,82 @@
-import { paramCase } from "change-case";
-import * as fs from "fs";
-import path = require("path");
-import { S3Bucket, S3BucketConfig, S3BucketWebsite } from "../../aws";
-import { registerMapping } from "../index";
-import { Writeable } from "../../type-utils";
+import './ec2-vpc';
 
-// load all other files in this directory
-fs.readdirSync(__dirname).forEach((file) => {
-  if (file.endsWith(".js") && file !== "index.js") {
-    require(path.resolve(__dirname, file));
-  }
-});
+import './events-role';
 
-registerMapping("AWS::S3::Bucket", {
-  resource: (scope, id, props) => {
-    const config: Writeable<S3BucketConfig> = {};
+import './iam-policy';
+import './iam-role';
 
-    // versioninng
-    if (props.VersioningConfiguration?.Status === "Enabled") {
-      config.versioning = [{ enabled: true }];
+import './lambda-permission';
 
-      delete props.VersioningConfiguration;
-    }
+// TODO: move to own file
+// import { paramCase } from "change-case";
+// import { S3Bucket, S3BucketConfig, S3BucketWebsite } from "../../aws";
+// import { registerMapping } from "../index";
+// import { Writeable } from "../../type-utils";
+// registerMapping("AWS::S3::Bucket", {
+//   resource: (scope, id, props) => {
+//     const config: Writeable<S3BucketConfig> = {};
 
-    const enc =
-      props.BucketEncryption?.ServerSideEncryptionConfiguration?.[0]
-        ?.ServerSideEncryptionByDefault;
-    if (enc) {
-      config.serverSideEncryptionConfiguration = [
-        {
-          rule: [
-            {
-              applyServerSideEncryptionByDefault: [
-                {
-                  sseAlgorithm: enc.SSEAlgorithm,
-                  kmsMasterKeyId: enc.KMSMasterKeyID,
-                },
-              ],
-            },
-          ],
-        },
-      ];
+//     // versioninng
+//     if (props.VersioningConfiguration?.Status === "Enabled") {
+//       config.versioning = [{ enabled: true }];
 
-      delete props.BucketEncryption;
-    }
+//       delete props.VersioningConfiguration;
+//     }
 
-    const acl = props.AccessControl;
-    delete props.AccessControl;
-    if (acl) {
-      config.acl = paramCase(acl);
-    }
+//     const enc =
+//       props.BucketEncryption?.ServerSideEncryptionConfiguration?.[0]
+//         ?.ServerSideEncryptionByDefault;
+//     if (enc) {
+//       config.serverSideEncryptionConfiguration = [
+//         {
+//           rule: [
+//             {
+//               applyServerSideEncryptionByDefault: [
+//                 {
+//                   sseAlgorithm: enc.SSEAlgorithm,
+//                   kmsMasterKeyId: enc.KMSMasterKeyID,
+//                 },
+//               ],
+//             },
+//           ],
+//         },
+//       ];
 
-    const website = props.WebsiteConfiguration;
+//       delete props.BucketEncryption;
+//     }
 
-    if (website) {
-      const websiteConfig: Writeable<S3BucketWebsite> = {};
-      config.website = [websiteConfig];
+//     const acl = props.AccessControl;
+//     delete props.AccessControl;
+//     if (acl) {
+//       config.acl = paramCase(acl);
+//     }
 
-      config.website = [
-        {
-          indexDocument: website.IndexDocument,
-          errorDocument: website.ErrorDocument,
-          redirectAllRequestsTo: website.RedirectAllRequestsTo
-            ? (website.RedirectAllRequestsTo.Protocol
-                ? website.RedirectAllRequestsTo.Protocol + "://"
-                : "") + website.RedirectAllRequestsTo.HostName
-            : undefined,
-        },
-      ];
-    }
+//     const website = props.WebsiteConfiguration;
 
-    const bucketName = props.BucketName;
-    delete props.BucketName;
-    if (bucketName) {
-      config.bucket = bucketName;
-    }
+//     if (website) {
+//       const websiteConfig: Writeable<S3BucketWebsite> = {};
+//       config.website = [websiteConfig];
 
-    return new S3Bucket(scope, id, config);
-  },
-  attributes: {},
-});
+//       config.website = [
+//         {
+//           indexDocument: website.IndexDocument,
+//           errorDocument: website.ErrorDocument,
+//           redirectAllRequestsTo: website.RedirectAllRequestsTo
+//             ? (website.RedirectAllRequestsTo.Protocol
+//                 ? website.RedirectAllRequestsTo.Protocol + "://"
+//                 : "") + website.RedirectAllRequestsTo.HostName
+//             : undefined,
+//         },
+//       ];
+//     }
+
+//     const bucketName = props.BucketName;
+//     delete props.BucketName;
+//     if (bucketName) {
+//       config.bucket = bucketName;
+//     }
+
+//     return new S3Bucket(scope, id, config);
+//   },
+//   attributes: {},
+// });

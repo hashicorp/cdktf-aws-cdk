@@ -82,6 +82,11 @@ export class CdktfAwsCdkProject extends JsiiProject {
     this.addGitIgnore(".yalc");
     this.addGitIgnore("yalc.lock");
 
+    // for update-supported-types script
+    this.addDevDeps("@aws-sdk/client-cloudformation@^3.36.0")
+    this.setScript('fetch:types', `mkdir -p src/awscc && rm -rf ./src/awscc/* && node ./scripts/update-supported-types.js`);
+    this.addPackageIgnore('scripts');
+
     new CdktfConfig(this, {
       terraformProvider,
       providerName,

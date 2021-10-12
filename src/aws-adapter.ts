@@ -3,7 +3,14 @@
 import { Construct } from "constructs";
 import { toSnakeCase } from "codemaker";
 import { Stack, CfnElement, IResolvable } from "aws-cdk-lib";
-import { TerraformResource, Lazy, Aspects, Fn, TerraformLocal } from "cdktf";
+import {
+  TerraformResource,
+  Lazy,
+  Aspects,
+  Fn,
+  TerraformLocal,
+  TerraformOutput,
+} from "cdktf";
 import {
   conditional,
   propertyAccess,
@@ -79,13 +86,16 @@ class TerraformHost extends Construct {
         const cfn = this.host.resolve(
           (r as any)._toCloudFormation()
         ) as CloudFormationTemplate;
-        for (const [logical, value] of Object.entries(cfn.Resources)) {
+        for (const [logical, value] of Object.entries(cfn.Resources || {})) {
           this.newTerraformResource(this, logical, value);
         }
         for (const [conditionId, condition] of Object.entries(
           cfn.Conditions || {}
         )) {
           this.newTerraformLocalFromCondition(this, conditionId, condition);
+        }
+        for (const [outputId, args] of Object.entries(cfn.Outputs || {})) {
+          this.newTerraformOutput(this, outputId, args);
         }
       }
     }
@@ -130,7 +140,7 @@ class TerraformHost extends Construct {
     scope: Construct,
     logicalId: string,
     resource: CloudFormationResource
-  ): TerraformResource {
+  ): TerraformResource | null {
     // TODO: add debug log console.log(JSON.stringify(resource, null, 2));
     const m = findMapping(resource.Type);
     if (!m) {
@@ -146,7 +156,14 @@ class TerraformHost extends Construct {
     };
 
     const res = m.resource(scope, logicalId, props);
+
     if (conditionId) {
+      if (!res) {
+        throw new Error(
+          `Condition has been found on resource that has no representation in Terraform: ${resource.Type}. Mapper function returned null`
+        );
+      }
+
       res.count = conditional(
         this.getConditionTerraformLocal(conditionId),
         1,
@@ -166,6 +183,13 @@ class TerraformHost extends Construct {
     }
 
     return res;
+  }
+
+  private newTerraformOutput(scope: Construct, outputId: string, args: any) {
+    return new TerraformOutput(scope, outputId, {
+      value: this.processIntrinsics(args.Value),
+      description: args.Description || undefined,
+    });
   }
 
   private newTerraformLocalFromCondition(
@@ -256,14 +280,17 @@ class TerraformHost extends Construct {
     }
 
     const mapping = this.mappingForLogicalId[logicalId];
-    const att = mapping.mapping.attributes[attribute];
+    const att =
+      typeof mapping.mapping.attributes === "function"
+        ? mapping.mapping.attributes.bind(null, attribute)
+        : mapping.mapping.attributes[attribute];
     if (!att) {
       throw new Error(
         `no "${attribute}" attribute mapping for resource of type ${mapping.resourceType}`
       );
     }
 
-    return att(child);
+    return att(child) as string;
   }
 
   private resolvePseudo(ref: string) {
@@ -449,7 +476,6 @@ class TerraformHost extends Construct {
       }
 
       case "Fn::Transform": {
-        // TODO: find out if aws cdk uses some of these – probably yes
         // https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html
         throw new Error(
           "Fn::Transform is not supported – Cfn Template Macros are not supported yet"
@@ -458,6 +484,8 @@ class TerraformHost extends Construct {
 
       case "Fn::ImportValue": {
         // TODO: support cross cfn stack references?
+        // This is related to the Export Name from outputs https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html
+        // We might revisit this once the CDKTF supports cross stack references
         throw new Error(`Fn::ImportValue is not yet supported.`);
       }
 

@@ -28,6 +28,7 @@
     "default": "npx projen default",
     "release": "npx projen release",
     "projen": "npx projen",
+    "fetch:types": "mkdir -p src/awscc && rm -rf ./src/awscc/* && node ./scripts/update-supported-types.js",
     "fetch": "mkdir -p src/aws && rm -rf ./src/aws/* && cdktf get && cp -R .gen/providers/aws/* ./src/aws/",
     "commit": "git add -A && git commit -am \"Update provider\" || echo \"No changes to commit\"",
     "should-release": "! git diff --exit-code v$(cat version.json | jq -r '.version') ./src ./package.json",
@@ -40,6 +41,7 @@
     "organization": true
   },
   "devDependencies": {
+    "@aws-sdk/client-cloudformation": "^3.36.0",
     "@types/debug": "^4.1.7",
     "@types/jest": "^27.0.2",
     "@types/node": "^12.19.0",
