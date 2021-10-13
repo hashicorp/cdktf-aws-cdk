@@ -5,6 +5,7 @@
 
 module.exports = {
   testMatch: ['**/*.test.ts'],
+  modulePathIgnorePatterns: [".yalc"],
   preset: "ts-jest",
   clearMocks: true,
   coverageProvider: "v8",

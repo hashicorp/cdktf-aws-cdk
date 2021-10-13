@@ -7,7 +7,7 @@ import {
   aws_stepfunctions_tasks,
 } from "aws-cdk-lib";
 
-import { AwsTerraformAdapter, AwsProvider } from "../../src";
+import { AwsTerraformAdapter, AwsProvider } from "@cdktf/aws-cdk";
 
 export class StepFunctionsStack extends TerraformStack {
   constructor(scope: Construct, name: string) {

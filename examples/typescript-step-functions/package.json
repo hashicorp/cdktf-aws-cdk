@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "cdktf": "0.6.4-pre.367",
-    "constructs": "^10.0.5"
+    "constructs": "^10.0.5",
+    "@cdktf/aws-cdk": "file:../.."
   }
 }
