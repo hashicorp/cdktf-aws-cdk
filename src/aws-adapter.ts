@@ -43,7 +43,7 @@ export class AwsTerraformAdapter extends Stack {
     super(undefined, id);
 
     const host = new TerraformHost(scope, id, this);
-
+    
     Aspects.of(scope).add({
       visit: (node) => {
         if (node === scope) {
@@ -86,6 +86,7 @@ class TerraformHost extends Construct {
         const cfn = this.host.resolve(
           (r as any)._toCloudFormation()
         ) as CloudFormationTemplate;
+        console.log(cfn);
         for (const [logical, value] of Object.entries(cfn.Resources || {})) {
           this.newTerraformResource(this, logical, value);
         }

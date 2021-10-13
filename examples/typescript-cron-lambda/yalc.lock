@@ -3,6 +3,9 @@
   "packages": {
     "@cdktf/provider-aws": {
       "signature": "c15ebcae610d02228ff1e0724ddf3b53"
+    },
+    "@cdktf/aws-cdk": {
+      "signature": "0da0ee013fa22ec1b94c071cda870b6a"
     }
   }
 }

@@ -46,7 +46,12 @@ export class CdktfAwsCdkProject extends JsiiProject {
       jestOptions: {
         jestConfig: {
           setupFilesAfterEnv: ["./setupJest.js"],
-          testPathIgnorePatterns: ["/node_modules/", "<rootDir>/examples", ".yalc", ".+\\.d\\.ts"],
+          testPathIgnorePatterns: [
+            "/node_modules/",
+            "<rootDir>/examples",
+            ".yalc",
+            ".+\\.d\\.ts",
+          ],
           // transform: {
           //   "^.+\\.tsx?$": "ts-jest",
           // },
@@ -82,10 +87,16 @@ export class CdktfAwsCdkProject extends JsiiProject {
     this.addGitIgnore(".yalc");
     this.addGitIgnore("yalc.lock");
 
+    this.addGitIgnore("src/**/*.js");
+    this.addGitIgnore("src/**/*.d.ts");
+
     // for update-supported-types script
-    this.addDevDeps("@aws-sdk/client-cloudformation@^3.36.0")
-    this.setScript('fetch:types', `mkdir -p src/awscc && rm -rf ./src/awscc/* && node ./scripts/update-supported-types.js`);
-    this.addPackageIgnore('scripts');
+    this.addDevDeps("@aws-sdk/client-cloudformation@^3.36.0");
+    this.setScript(
+      "fetch:types",
+      `mkdir -p src/awscc && rm -rf ./src/awscc/* && node ./scripts/update-supported-types.js`
+    );
+    this.addPackageIgnore("scripts");
 
     new CdktfConfig(this, {
       terraformProvider,

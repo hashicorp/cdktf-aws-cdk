@@ -19,6 +19,7 @@ dist
 tsconfig.tsbuildinfo
 /tsconfig.jest.json
 !.jsii
+scripts
 .gen
 .terraform
 cdktf.json

@@ -48,6 +48,8 @@ tsconfig.json
 !/API.md
 .yalc
 yalc.lock
+src/**/*.js
+src/**/*.d.ts
 .gen
 .terraform
 package-lock.json
