@@ -86,7 +86,6 @@ class TerraformHost extends Construct {
         const cfn = this.host.resolve(
           (r as any)._toCloudFormation()
         ) as CloudFormationTemplate;
-        console.log(cfn);
         for (const [logical, value] of Object.entries(cfn.Resources || {})) {
           this.newTerraformResource(this, logical, value);
         }
