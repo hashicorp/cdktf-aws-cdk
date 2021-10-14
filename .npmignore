@@ -20,6 +20,7 @@ tsconfig.tsbuildinfo
 /tsconfig.jest.json
 !.jsii
 scripts
+examples
 .gen
 .terraform
 cdktf.json

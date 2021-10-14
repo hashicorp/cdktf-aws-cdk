@@ -1,92 +1,79 @@
 import { registerMapping } from "../index";
-import {
-  Vpc,
-  Subnet,
-  RouteTable,
-  RouteTableAssociation,
-  Route,
-  Eip,
-  NatGateway,
-  InternetGateway,
-  Elb,
-  SecurityGroup,
-  SecurityGroupRule,
-  LbTargetGroup,
-} from "../../aws";
+import { VPC, EC2, ELB } from "../../aws";
 import { createGuessingResourceMapper } from "../helper";
 import { Aspects } from "cdktf";
 
 registerMapping("AWS::EC2::VPC", {
-  resource: createGuessingResourceMapper(Vpc),
+  resource: createGuessingResourceMapper(VPC.Vpc),
   attributes: {
     // TODO: make attributes optional!
-    Arn: (vpc: Vpc) => vpc.arn,
-    Ref: (vpc: Vpc) => vpc.id,
+    Arn: (vpc: VPC.Vpc) => vpc.arn,
+    Ref: (vpc: VPC.Vpc) => vpc.id,
   },
 });
 
 registerMapping("AWS::EC2::Subnet", {
-  resource: createGuessingResourceMapper(Subnet),
+  resource: createGuessingResourceMapper(VPC.Subnet),
   attributes: {
-    Arn: (subnet: Subnet) => subnet.arn,
-    Ref: (subnet: Subnet) => subnet.id,
+    Arn: (subnet: VPC.Subnet) => subnet.arn,
+    Ref: (subnet: VPC.Subnet) => subnet.id,
   },
 });
 
 registerMapping("AWS::EC2::Route", {
-  resource: createGuessingResourceMapper(Route),
+  resource: createGuessingResourceMapper(VPC.Route),
   attributes: {
     Arn: () => {
       throw new Error("Route resource does not have an arn");
     },
-    Ref: (route: Route) => route.id,
+    Ref: (route: VPC.Route) => route.id,
   },
 });
 
 registerMapping("AWS::EC2::RouteTable", {
-  resource: createGuessingResourceMapper(RouteTable),
+  resource: createGuessingResourceMapper(VPC.RouteTable),
   attributes: {
-    Arn: (table: RouteTable) => table.arn,
-    Ref: (table: RouteTable) => table.id,
+    Arn: (table: VPC.RouteTable) => table.arn,
+    Ref: (table: VPC.RouteTable) => table.id,
   },
 });
 
 registerMapping("AWS::EC2::SubnetRouteTableAssociation", {
-  resource: createGuessingResourceMapper(RouteTableAssociation),
+  resource: createGuessingResourceMapper(VPC.RouteTableAssociation),
   attributes: {
     Arn: () => {
       throw new Error("RouteTableAssociation resource does not have an arn");
     },
-    Ref: (a: RouteTableAssociation) => a.id,
+    Ref: (a: VPC.RouteTableAssociation) => a.id,
   },
 });
 
 registerMapping("AWS::EC2::EIP", {
-  resource: createGuessingResourceMapper(Eip),
+  resource: createGuessingResourceMapper(EC2.Eip),
   attributes: {
     Arn: () => {
       throw new Error("Eip resource does not have an arn");
     },
-    Ref: (e: Eip) => e.id,
-    AllocationId: (e: Eip) => e.allocationId,
+    Ref: (e: EC2.Eip) => e.id,
+    AllocationId: (e: EC2.Eip) => e.allocationId,
   },
 });
 
 registerMapping("AWS::EC2::NatGateway", {
-  resource: createGuessingResourceMapper(NatGateway),
+  resource: createGuessingResourceMapper(VPC.NatGateway),
   attributes: {
     Arn: () => {
       throw new Error("NatGateway resource does not have an arn");
     },
-    Ref: (gateway: NatGateway) => gateway.id,
+    Ref: (gateway: VPC.NatGateway) => gateway.id,
   },
 });
 
 registerMapping("AWS::EC2::InternetGateway", {
-  resource: createGuessingResourceMapper(InternetGateway),
+  resource: createGuessingResourceMapper(VPC.InternetGateway),
   attributes: {
-    Arn: (gateway: InternetGateway) => gateway.arn,
-    Ref: (gateway: InternetGateway) => gateway.id,
+    Arn: (gateway: VPC.InternetGateway) => gateway.arn,
+    Ref: (gateway: VPC.InternetGateway) => gateway.id,
   },
 });
 
@@ -102,7 +89,7 @@ registerMapping("AWS::EC2::VPCGatewayAttachment", {
       visit: (node) => {
         // FIXME: move this into some creation function or similar
         // TODO: this has the shortcoming of changing all internet gateways
-        if (node instanceof InternetGateway) {
+        if (node instanceof VPC.InternetGateway) {
           // TODO: check the node.id and try to resolve that token somehow to find out the targetted internet gateway (note.id will be a Lazy that resolves to some TF resource)
           node.vpcId = vpcId;
         }
@@ -127,47 +114,47 @@ registerMapping("AWS::EC2::VPCGatewayAttachment", {
 });
 
 registerMapping("AWS::ElasticLoadBalancingV2::LoadBalancer", {
-  resource: createGuessingResourceMapper(Elb),
+  resource: createGuessingResourceMapper(ELB.Lb),
   attributes: {
-    Arn: (elb: Elb) => elb.arn,
-    Ref: (elb: Elb) => elb.id,
-    DNSName: (elb: Elb) => elb.dnsName,
+    Arn: (elb: ELB.Lb) => elb.arn,
+    Ref: (elb: ELB.Lb) => elb.id,
+    DNSName: (elb: ELB.Lb) => elb.dnsName,
   },
 });
 
 registerMapping("AWS::EC2::SecurityGroup", {
-  resource: createGuessingResourceMapper(SecurityGroup), // FIXME: create rules via SecurityGroupRule resource?
+  resource: createGuessingResourceMapper(VPC.SecurityGroup), // FIXME: create rules via SecurityGroupRule resource?
   attributes: {
-    Arn: (sg: SecurityGroup) => sg.arn,
-    Ref: (sg: SecurityGroup) => sg.id,
-    GroupId: (sg: SecurityGroup) => sg.id,
+    Arn: (sg: VPC.SecurityGroup) => sg.arn,
+    Ref: (sg: VPC.SecurityGroup) => sg.id,
+    GroupId: (sg: VPC.SecurityGroup) => sg.id,
   },
 });
 
 registerMapping("AWS::EC2::SecurityGroupEgress", {
-  resource: createGuessingResourceMapper(SecurityGroupRule), // FIXME: create egress rule
+  resource: createGuessingResourceMapper(VPC.SecurityGroupRule), // FIXME: create egress rule
   attributes: {
     Arn: () => {
       throw new Error("SecurityGroupRule has no arn");
     },
-    Ref: (rule: SecurityGroupRule) => rule.id,
+    Ref: (rule: VPC.SecurityGroupRule) => rule.id,
   },
 });
 
 registerMapping("AWS::EC2::SecurityGroupIngress", {
-  resource: createGuessingResourceMapper(SecurityGroupRule), // FIXME: create ingress rule
+  resource: createGuessingResourceMapper(VPC.SecurityGroupRule), // FIXME: create ingress rule
   attributes: {
     Arn: () => {
       throw new Error("SecurityGroupRule has no arn");
     },
-    Ref: (rule: SecurityGroupRule) => rule.id,
+    Ref: (rule: VPC.SecurityGroupRule) => rule.id,
   },
 });
 
 registerMapping("AWS::ElasticLoadBalancingV2::TargetGroup", {
-  resource: createGuessingResourceMapper(LbTargetGroup),
+  resource: createGuessingResourceMapper(ELB.LbTargetGroup),
   attributes: {
-    Arn: (rule: LbTargetGroup) => rule.arn,
-    Ref: (rule: LbTargetGroup) => rule.id,
+    Arn: (rule: ELB.LbTargetGroup) => rule.arn,
+    Ref: (rule: ELB.LbTargetGroup) => rule.id,
   },
 });

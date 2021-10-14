@@ -1,16 +1,13 @@
 import { registerMapping } from "../index";
 import {
-  CloudwatchEventRule,
-  CloudwatchEventRuleConfig,
-  CloudwatchEventTarget,
-  CloudwatchEventTargetConfig,
+  CloudWatchEventBridge,
 } from "../../aws";
 
 // TODO: types for CloudFormation Resources? would be really nice.
 
 registerMapping("AWS::Events::Rule", {
   resource: (scope, id, props) => {
-    const ruleProps: CloudwatchEventRuleConfig = {
+    const ruleProps: CloudWatchEventBridge.CloudwatchEventRuleConfig = {
       name: props.Name,
       isEnabled:
         props.State === "ENABLED"
@@ -32,10 +29,10 @@ registerMapping("AWS::Events::Rule", {
     delete props.RoleArn;
     delete props.ScheduleExpression; // TODO: use some utility for this simple naming mapping (needs to have the mapping in guessing resource mapper made reusable somehow)
 
-    const rule = new CloudwatchEventRule(scope, id, ruleProps);
+    const rule = new CloudWatchEventBridge.CloudwatchEventRule(scope, id, ruleProps);
 
     (props.Targets || []).map((target: any, idx: number) => {
-      const targetProps: CloudwatchEventTargetConfig = {
+      const targetProps: CloudWatchEventBridge.CloudwatchEventTargetConfig = {
         arn: target.Arn,
         rule: rule.id,
         batchTarget: target.BatchParameters
@@ -60,7 +57,7 @@ registerMapping("AWS::Events::Rule", {
       };
       delete props.Targets;
 
-      return new CloudwatchEventTarget(
+      return new CloudWatchEventBridge.CloudwatchEventTarget(
         scope,
         `${id}_target${idx}`,
         targetProps
@@ -70,7 +67,7 @@ registerMapping("AWS::Events::Rule", {
     return rule;
   },
   attributes: {
-    Arn: (rule: CloudwatchEventRule) => rule.arn,
-    Ref: (rule: CloudwatchEventRule) => rule.id,
+    Arn: (rule: CloudWatchEventBridge.CloudwatchEventRule) => rule.arn,
+    Ref: (rule: CloudWatchEventBridge.CloudwatchEventRule) => rule.id,
   },
 });

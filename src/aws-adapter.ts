@@ -22,13 +22,8 @@ import {
 import { CloudFormationResource, CloudFormationTemplate } from "./cfn";
 import { findMapping, Mapping } from "./mapping";
 
-import {
-  DataAwsCallerIdentity,
-  DataAwsRegion,
-  DataAwsPartition,
-  DataAwsAvailabilityZones,
-  AwsProvider,
-} from "./aws";
+import { DataSources } from "./aws/DataSources";
+import { AwsProvider } from "./aws";
 
 function toTerraformIdentifier(identifier: string) {
   return toSnakeCase(identifier).replace(/-/g, "_");
@@ -43,7 +38,7 @@ export class AwsTerraformAdapter extends Stack {
     super(undefined, id);
 
     const host = new TerraformHost(scope, id, this);
-    
+
     Aspects.of(scope).add({
       visit: (node) => {
         if (node === scope) {
@@ -56,11 +51,11 @@ export class AwsTerraformAdapter extends Stack {
 }
 
 class TerraformHost extends Construct {
-  private awsPartition?: DataAwsPartition;
-  private awsRegion?: DataAwsRegion;
-  private awsCallerIdentity?: DataAwsCallerIdentity;
+  private awsPartition?: DataSources.DataAwsPartition;
+  private awsRegion?: DataSources.DataAwsRegion;
+  private awsCallerIdentity?: DataSources.DataAwsCallerIdentity;
   private awsAvailabilityZones: {
-    [region: string]: DataAwsAvailabilityZones;
+    [region: string]: DataSources.DataAwsAvailabilityZones;
   } = {};
   private regionalAwsProviders: { [region: string]: AwsProvider } = {};
 
@@ -115,14 +110,14 @@ class TerraformHost extends Construct {
     return this.regionalAwsProviders[region];
   }
 
-  private getAvailabilityZones(region?: string): DataAwsAvailabilityZones {
+  private getAvailabilityZones(region?: string): DataSources.DataAwsAvailabilityZones {
     const DEFAULT_REGION_KEY = "default_region";
     if (!region) {
       region = DEFAULT_REGION_KEY;
     }
 
     if (!this.awsAvailabilityZones[region]) {
-      this.awsAvailabilityZones[region] = new DataAwsAvailabilityZones(
+      this.awsAvailabilityZones[region] = new DataSources.DataAwsAvailabilityZones(
         this,
         `aws_azs_${toTerraformIdentifier(region)}`,
         {
@@ -297,20 +292,20 @@ class TerraformHost extends Construct {
     switch (ref) {
       case "AWS::Partition": {
         this.awsPartition =
-          this.awsPartition ?? new DataAwsPartition(this, "aws-partition");
+          this.awsPartition ?? new DataSources.DataAwsPartition(this, "aws-partition");
         return this.awsPartition.partition;
       }
 
       case "AWS::Region": {
         this.awsRegion =
-          this.awsRegion ?? new DataAwsRegion(this, "aws-region");
+          this.awsRegion ?? new DataSources.DataAwsRegion(this, "aws-region");
         return this.awsRegion.name;
       }
 
       case "AWS::AccountId": {
         this.awsCallerIdentity =
           this.awsCallerIdentity ??
-          new DataAwsCallerIdentity(this, "aws-caller-identity");
+          new DataSources.DataAwsCallerIdentity(this, "aws-caller-identity");
         return this.awsCallerIdentity.accountId;
       }
 

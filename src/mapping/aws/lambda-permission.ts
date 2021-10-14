@@ -2,13 +2,11 @@
 
 import { createGuessingResourceMapper } from "../helper";
 import { registerMapping } from "../index";
-import { LambdaPermission } from "../../aws";
+import { Lambda } from "../../aws";
 
 registerMapping("AWS::Lambda::Permission", {
-  resource: createGuessingResourceMapper(LambdaPermission),
+  resource: createGuessingResourceMapper(Lambda.LambdaPermission),
   attributes: {
-    Ref: (permission: LambdaPermission) => permission.id,
+    Ref: (permission: Lambda.LambdaPermission) => permission.id,
   },
 });
-
-// FIXME: idea write docs on how to add / register a custom mapping (maybe they need to be written in TypeScript at first)

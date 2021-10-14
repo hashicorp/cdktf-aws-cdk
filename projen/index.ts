@@ -97,6 +97,9 @@ export class CdktfAwsCdkProject extends JsiiProject {
       `mkdir -p src/awscc && rm -rf ./src/awscc/* && node ./scripts/update-supported-types.js`
     );
     this.addPackageIgnore("scripts");
+    
+    this.addPackageIgnore("examples");
+    this.addPackageIgnore("/.projenrc.ts");
 
     new CdktfConfig(this, {
       terraformProvider,
