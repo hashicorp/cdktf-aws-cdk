@@ -3,7 +3,7 @@ import {
   aws_ecs as ecs,
   aws_ecs_patterns as ecs_patterns,
 } from "aws-cdk-lib";
-import { Aspects, Testing } from "cdktf";
+import { Testing } from "cdktf";
 import "cdktf/lib/testing/adapters/jest";
 import { AwsTerraformAdapter } from "../src/aws-adapter";
 
@@ -35,10 +35,6 @@ describe("ecs cluster", () => {
           publicLoadBalancer: true, // Default is false
         }
       );
-
-      // Aspects are currently not invoked via Testing.synth / Testing.synthScope
-      // This makes sure the AWS Adapter converts all constructs to cdktf
-      Aspects.of(scope).all.forEach((aspect) => aspect.visit(scope));
     });
 
     expect(res).toMatchInlineSnapshot(`
@@ -53,11 +49,18 @@ describe("ecs cluster", () => {
         },
         \\"output\\": {
           \\"adapter_MyFargateServiceLoadBalancerDNS704F6391_B8C12FE4\\": {
-            \\"value\\": \\"\${aws_elb.adapter_MyFargateServiceLBDE830E97_C56B08C5.dns_name}\\"
+            \\"value\\": \\"\${aws_lb.adapter_MyFargateServiceLBDE830E97_C56B08C5.dns_name}\\"
           },
           \\"adapter_MyFargateServiceServiceURL4CF8398A_438A34A6\\": {
-            \\"value\\": \\"\${join(\\\\\\"\\\\\\", [\\\\\\"http://\\\\\\", aws_elb.adapter_MyFargateServiceLBDE830E97_C56B08C5.dns_name])}\\"
+            \\"value\\": \\"\${join(\\\\\\"\\\\\\", [\\\\\\"http://\\\\\\", aws_lb.adapter_MyFargateServiceLBDE830E97_C56B08C5.dns_name])}\\"
           }
+        },
+        \\"provider\\": {
+          \\"time\\": [
+            {
+              \\"alias\\": \\"awsadapter_eventual_consistency_workaround_aspect\\"
+            }
+          ]
         },
         \\"resource\\": {
           \\"aws_cloudcontrolapi_resource\\": {
@@ -70,10 +73,14 @@ describe("ecs cluster", () => {
               \\"type_name\\": \\"AWS::ECS::Service\\"
             },
             \\"adapter_MyFargateServiceLBPublicListener61A1042F_9FA42A05\\": {
-              \\"desired_state\\": \\"{\\\\\\"DefaultActions\\\\\\":[{\\\\\\"TargetGroupArn\\\\\\":\\\\\\"\${aws_lb_target_group.adapter_MyFargateServiceLBPublicListenerECSGroup4A3EDF05_C9A3D86E.id}\\\\\\",\\\\\\"Type\\\\\\":\\\\\\"forward\\\\\\"}],\\\\\\"LoadBalancerArn\\\\\\":\\\\\\"\${aws_elb.adapter_MyFargateServiceLBDE830E97_C56B08C5.id}\\\\\\",\\\\\\"Port\\\\\\":80,\\\\\\"Protocol\\\\\\":\\\\\\"HTTP\\\\\\"}\\",
+              \\"desired_state\\": \\"{\\\\\\"DefaultActions\\\\\\":[{\\\\\\"TargetGroupArn\\\\\\":\\\\\\"\${aws_lb_target_group.adapter_MyFargateServiceLBPublicListenerECSGroup4A3EDF05_C9A3D86E.id}\\\\\\",\\\\\\"Type\\\\\\":\\\\\\"forward\\\\\\"}],\\\\\\"LoadBalancerArn\\\\\\":\\\\\\"\${aws_lb.adapter_MyFargateServiceLBDE830E97_C56B08C5.id}\\\\\\",\\\\\\"Port\\\\\\":80,\\\\\\"Protocol\\\\\\":\\\\\\"HTTP\\\\\\"}\\",
               \\"type_name\\": \\"AWS::ElasticLoadBalancingV2::Listener\\"
             },
             \\"adapter_MyFargateServiceTaskDef5DA17B39_A3987D6C\\": {
+              \\"depends_on\\": [
+                \\"time_sleep.adapter_MyFargateServiceTaskDefTaskRole62C7D397_sleep_MyFargateServiceTaskDefTaskRole62C7D397_BC1A03ED\\",
+                \\"time_sleep.adapter_MyFargateServiceTaskDefExecutionRoleD6305504_sleep_MyFargateServiceTaskDefExecutionRoleD6305504_BF1B53FF\\"
+              ],
               \\"desired_state\\": \\"{\\\\\\"ContainerDefinitions\\\\\\":[{\\\\\\"Essential\\\\\\":true,\\\\\\"Image\\\\\\":\\\\\\"amazon/amazon-ecs-sample\\\\\\",\\\\\\"LogConfiguration\\\\\\":{\\\\\\"LogDriver\\\\\\":\\\\\\"awslogs\\\\\\",\\\\\\"Options\\\\\\":{\\\\\\"awslogs-group\\\\\\":\\\\\\"\${jsondecode(aws_cloudcontrolapi_resource.adapter_MyFargateServiceTaskDefwebLogGroup4A6C44E8_B124CB3B.properties)[\\\\\\"Ref\\\\\\"]}\\\\\\",\\\\\\"awslogs-stream-prefix\\\\\\":\\\\\\"MyFargateService\\\\\\",\\\\\\"awslogs-region\\\\\\":\\\\\\"\${data.aws_region.adapter_aws-region_F8878EF0.name}\\\\\\"}},\\\\\\"Name\\\\\\":\\\\\\"web\\\\\\",\\\\\\"PortMappings\\\\\\":[{\\\\\\"ContainerPort\\\\\\":80,\\\\\\"Protocol\\\\\\":\\\\\\"tcp\\\\\\"}]}],\\\\\\"Cpu\\\\\\":\\\\\\"256\\\\\\",\\\\\\"ExecutionRoleArn\\\\\\":\\\\\\"\${aws_iam_role.adapter_MyFargateServiceTaskDefExecutionRoleD6305504_680B3636.arn}\\\\\\",\\\\\\"Family\\\\\\":\\\\\\"adapterMyFargateServiceTaskDef57DAA0C2\\\\\\",\\\\\\"Memory\\\\\\":\\\\\\"512\\\\\\",\\\\\\"NetworkMode\\\\\\":\\\\\\"awsvpc\\\\\\",\\\\\\"RequiresCompatibilities\\\\\\":[\\\\\\"FARGATE\\\\\\"],\\\\\\"TaskRoleArn\\\\\\":\\\\\\"\${aws_iam_role.adapter_MyFargateServiceTaskDefTaskRole62C7D397_C55411E2.arn}\\\\\\"}\\",
               \\"type_name\\": \\"AWS::ECS::TaskDefinition\\"
             },
@@ -85,17 +92,6 @@ describe("ecs cluster", () => {
           \\"aws_eip\\": {
             \\"adapter_MyVpcPublicSubnet1EIP096967CB_53654349\\": {},
             \\"adapter_MyVpcPublicSubnet2EIP8CCBA239_550FAE49\\": {}
-          },
-          \\"aws_elb\\": {
-            \\"adapter_MyFargateServiceLBDE830E97_C56B08C5\\": {
-              \\"security_groups\\": [
-                \\"\${aws_security_group.adapter_MyFargateServiceLBSecurityGroup6FBF16F1_96E1F589.id}\\"
-              ],
-              \\"subnets\\": [
-                \\"\${aws_subnet.adapter_MyVpcPublicSubnet1SubnetF6608456_4A36A735.id}\\",
-                \\"\${aws_subnet.adapter_MyVpcPublicSubnet2Subnet492B6BFB_5AEAF4BB.id}\\"
-              ]
-            }
           },
           \\"aws_iam_policy\\": {
             \\"adapter_MyFargateServiceTaskDefExecutionRoleDefaultPolicyEC22B20F_9EE11DB3\\": {
@@ -111,7 +107,20 @@ describe("ecs cluster", () => {
             }
           },
           \\"aws_internet_gateway\\": {
-            \\"adapter_MyVpcIGW5C4A4F63_CD33D37E\\": {}
+            \\"adapter_MyVpcIGW5C4A4F63_CD33D37E\\": {
+              \\"vpc_id\\": \\"\${aws_vpc.adapter_MyVpcF9F0CA6F_D001559C.id}\\"
+            }
+          },
+          \\"aws_lb\\": {
+            \\"adapter_MyFargateServiceLBDE830E97_C56B08C5\\": {
+              \\"security_groups\\": [
+                \\"\${aws_security_group.adapter_MyFargateServiceLBSecurityGroup6FBF16F1_96E1F589.id}\\"
+              ],
+              \\"subnets\\": [
+                \\"\${aws_subnet.adapter_MyVpcPublicSubnet1SubnetF6608456_4A36A735.id}\\",
+                \\"\${aws_subnet.adapter_MyVpcPublicSubnet2Subnet492B6BFB_5AEAF4BB.id}\\"
+              ]
+            }
           },
           \\"aws_lb_target_group\\": {
             \\"adapter_MyFargateServiceLBPublicListenerECSGroup4A3EDF05_C9A3D86E\\": {
@@ -238,6 +247,32 @@ describe("ecs cluster", () => {
               \\"enable_dns_hostnames\\": true,
               \\"enable_dns_support\\": true,
               \\"instance_tenancy\\": \\"default\\"
+            }
+          },
+          \\"time_sleep\\": {
+            \\"adapter_MyFargateServiceTaskDefExecutionRoleD6305504_sleep_MyFargateServiceTaskDefExecutionRoleD6305504_BF1B53FF\\": {
+              \\"create_duration\\": \\"20s\\",
+              \\"depends_on\\": [
+                \\"aws_iam_role.adapter_MyFargateServiceTaskDefExecutionRoleD6305504_680B3636\\"
+              ],
+              \\"destroy_duration\\": \\"0s\\",
+              \\"provider\\": \\"time.awsadapter_eventual_consistency_workaround_aspect\\"
+            },
+            \\"adapter_MyFargateServiceTaskDefTaskRole62C7D397_sleep_MyFargateServiceTaskDefTaskRole62C7D397_BC1A03ED\\": {
+              \\"create_duration\\": \\"20s\\",
+              \\"depends_on\\": [
+                \\"aws_iam_role.adapter_MyFargateServiceTaskDefTaskRole62C7D397_C55411E2\\"
+              ],
+              \\"destroy_duration\\": \\"0s\\",
+              \\"provider\\": \\"time.awsadapter_eventual_consistency_workaround_aspect\\"
+            }
+          }
+        },
+        \\"terraform\\": {
+          \\"required_providers\\": {
+            \\"time\\": {
+              \\"source\\": \\"time\\",
+              \\"version\\": \\"~> 0.7.2\\"
             }
           }
         }

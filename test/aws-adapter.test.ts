@@ -1,5 +1,5 @@
 import { AwsTerraformAdapter } from "../src/aws-adapter";
-import { Aspects, TerraformResource, TerraformStack, Testing } from "cdktf";
+import { TerraformResource, TerraformStack, Testing } from "cdktf";
 import { CfnElement } from "aws-cdk-lib";
 import { CloudFormationTemplate } from "../src/cfn";
 import { Construct } from "constructs";
@@ -33,7 +33,7 @@ describe("AwsTerraformAdapter", () => {
         },
       });
 
-      expect(synthWithAspects(stack)).toMatchInlineSnapshot(`
+      expect(Testing.synth(stack)).toMatchInlineSnapshot(`
         "{
           \\"resource\\": {
             \\"test\\": {
@@ -68,7 +68,7 @@ describe("AwsTerraformAdapter", () => {
         },
       });
 
-      expect(synthWithAspects(stack)).toMatchInlineSnapshot(`
+      expect(Testing.synth(stack)).toMatchInlineSnapshot(`
 "{
   \\"resource\\": {
     \\"test\\": {
@@ -100,7 +100,7 @@ describe("AwsTerraformAdapter", () => {
         },
       });
 
-      expect(synthWithAspects(stack)).toMatchInlineSnapshot(`
+      expect(Testing.synth(stack)).toMatchInlineSnapshot(`
 "{
   \\"resource\\": {
     \\"test\\": {
@@ -130,7 +130,7 @@ describe("AwsTerraformAdapter", () => {
           },
         },
       });
-      expect(synthWithAspects(stack)).toMatchInlineSnapshot(`
+      expect(Testing.synth(stack)).toMatchInlineSnapshot(`
 "{
   \\"data\\": {
     \\"aws_availability_zones\\": {
@@ -185,7 +185,7 @@ describe("AwsTerraformAdapter", () => {
           },
         },
       });
-      expect(synthWithAspects(stack)).toMatchInlineSnapshot(`
+      expect(Testing.synth(stack)).toMatchInlineSnapshot(`
 "{
   \\"resource\\": {
     \\"test\\": {
@@ -215,7 +215,7 @@ describe("AwsTerraformAdapter", () => {
           },
         },
       });
-      expect(synthWithAspects(stack)).toMatchInlineSnapshot(`
+      expect(Testing.synth(stack)).toMatchInlineSnapshot(`
 "{
   \\"resource\\": {
     \\"test\\": {
@@ -250,7 +250,7 @@ describe("AwsTerraformAdapter", () => {
           },
         },
       });
-      expect(synthWithAspects(stack)).toMatchInlineSnapshot(`
+      expect(Testing.synth(stack)).toMatchInlineSnapshot(`
 "{
   \\"resource\\": {
     \\"test\\": {
@@ -284,7 +284,7 @@ describe("AwsTerraformAdapter", () => {
           },
         },
       });
-      expect(synthWithAspects(stack)).toMatchInlineSnapshot(`
+      expect(Testing.synth(stack)).toMatchInlineSnapshot(`
 "{
   \\"resource\\": {
     \\"test\\": {
@@ -315,7 +315,7 @@ describe("AwsTerraformAdapter", () => {
           },
         },
       });
-      expect(synthWithAspects(stack)).toMatchInlineSnapshot(`
+      expect(Testing.synth(stack)).toMatchInlineSnapshot(`
 "{
   \\"resource\\": {
     \\"test\\": {
@@ -344,7 +344,7 @@ describe("AwsTerraformAdapter", () => {
       });
       // TODO: check how (if at all) literal true and false can be passed
       // TODO: check why "false" ends up as undefined
-      expect(synthWithAspects(stack)).toMatchInlineSnapshot(`
+      expect(Testing.synth(stack)).toMatchInlineSnapshot(`
 "{
   \\"locals\\": {
     \\"adapter_condition_And_696B6B21\\": \\"\${((local.adapter_condition_IsProd_8FB293B1 && true) && true)}\\",
@@ -358,17 +358,6 @@ describe("AwsTerraformAdapter", () => {
     });
   });
 });
-
-/**
- * Currently `Testing.synth` does not invoke Aspects, so we make sure this happens
- * this is not a correct (read complete) invocation of Aspects, but it invokes
- * the convertion of the AwsTerraformAdapter
- */
-function synthWithAspects(stack: TerraformStack) {
-  Aspects.of(stack).all.forEach((aspect) => aspect.visit(stack));
-
-  return Testing.synth(stack);
-}
 
 registerMapping("Test::Resource", {
   resource: (scope, id, props) => {
