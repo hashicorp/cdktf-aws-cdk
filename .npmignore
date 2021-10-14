@@ -21,6 +21,7 @@ tsconfig.tsbuildinfo
 !.jsii
 scripts
 examples
+/.projenrc.ts
 .gen
 .terraform
 cdktf.json

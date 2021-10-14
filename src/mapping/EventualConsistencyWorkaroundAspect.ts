@@ -50,7 +50,8 @@ export class EventualConsistencyWorkaroundAspect implements IAspect {
   }
 
   /**
-   * makes sure we reuse the same sleep resource for the same eventual consitent target (aka for this class)
+   * makes sure we reuse the same sleep resource for the same eventual consistent target
+   * (aka for an instance of this class)
    */
   private getSleepResource(): Sleep {
     if (!this.sleepResource) {
