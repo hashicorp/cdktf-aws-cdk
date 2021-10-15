@@ -8765,6 +8765,10 @@ export namespace EC2 {
     */
     readonly placementGroup?: string;
     /**
+    * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/instance.html#placement_partition_number Instance#placement_partition_number}
+    */
+    readonly placementPartitionNumber?: number;
+    /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/instance.html#private_ip Instance#private_ip}
     */
     readonly privateIp?: string;
@@ -9215,6 +9219,7 @@ export namespace EC2 {
       this._keyName = config.keyName;
       this._monitoring = config.monitoring;
       this._placementGroup = config.placementGroup;
+      this._placementPartitionNumber = config.placementPartitionNumber;
       this._privateIp = config.privateIp;
       this._secondaryPrivateIps = config.secondaryPrivateIps;
       this._securityGroups = config.securityGroups;
@@ -9554,6 +9559,22 @@ export namespace EC2 {
     // Temporarily expose input value. Use with caution.
     public get placementGroupInput() {
       return this._placementGroup
+    }
+
+    // placement_partition_number - computed: true, optional: true, required: false
+    private _placementPartitionNumber?: number;
+    public get placementPartitionNumber() {
+      return this.getNumberAttribute('placement_partition_number');
+    }
+    public set placementPartitionNumber(value: number) {
+      this._placementPartitionNumber = value;
+    }
+    public resetPlacementPartitionNumber() {
+      this._placementPartitionNumber = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get placementPartitionNumberInput() {
+      return this._placementPartitionNumber
     }
 
     // primary_network_interface_id - computed: true, optional: false, required: false
@@ -9952,6 +9973,7 @@ export namespace EC2 {
         key_name: cdktf.stringToTerraform(this._keyName),
         monitoring: cdktf.booleanToTerraform(this._monitoring),
         placement_group: cdktf.stringToTerraform(this._placementGroup),
+        placement_partition_number: cdktf.numberToTerraform(this._placementPartitionNumber),
         private_ip: cdktf.stringToTerraform(this._privateIp),
         secondary_private_ips: cdktf.listMapper(cdktf.stringToTerraform)(this._secondaryPrivateIps),
         security_groups: cdktf.listMapper(cdktf.stringToTerraform)(this._securityGroups),
@@ -11487,6 +11509,10 @@ export namespace EC2 {
     */
     readonly name: string;
     /**
+    * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/placement_group.html#partition_count PlacementGroup#partition_count}
+    */
+    readonly partitionCount?: number;
+    /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/placement_group.html#strategy PlacementGroup#strategy}
     */
     readonly strategy: string;
@@ -11533,6 +11559,7 @@ export namespace EC2 {
         lifecycle: config.lifecycle
       });
       this._name = config.name;
+      this._partitionCount = config.partitionCount;
       this._strategy = config.strategy;
       this._tags = config.tags;
       this._tagsAll = config.tagsAll;
@@ -11563,6 +11590,22 @@ export namespace EC2 {
     // Temporarily expose input value. Use with caution.
     public get nameInput() {
       return this._name
+    }
+
+    // partition_count - computed: false, optional: true, required: false
+    private _partitionCount?: number;
+    public get partitionCount() {
+      return this.getNumberAttribute('partition_count');
+    }
+    public set partitionCount(value: number ) {
+      this._partitionCount = value;
+    }
+    public resetPartitionCount() {
+      this._partitionCount = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get partitionCountInput() {
+      return this._partitionCount
     }
 
     // placement_group_id - computed: true, optional: false, required: false
@@ -11622,6 +11665,7 @@ export namespace EC2 {
     protected synthesizeAttributes(): { [name: string]: any } {
       return {
         name: cdktf.stringToTerraform(this._name),
+        partition_count: cdktf.numberToTerraform(this._partitionCount),
         strategy: cdktf.stringToTerraform(this._strategy),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
@@ -12869,6 +12913,10 @@ export namespace EC2 {
     */
     readonly placementGroup?: string;
     /**
+    * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html#placement_partition_number SpotInstanceRequest#placement_partition_number}
+    */
+    readonly placementPartitionNumber?: number;
+    /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html#private_ip SpotInstanceRequest#private_ip}
     */
     readonly privateIp?: string;
@@ -13338,6 +13386,7 @@ export namespace EC2 {
       this._launchGroup = config.launchGroup;
       this._monitoring = config.monitoring;
       this._placementGroup = config.placementGroup;
+      this._placementPartitionNumber = config.placementPartitionNumber;
       this._privateIp = config.privateIp;
       this._secondaryPrivateIps = config.secondaryPrivateIps;
       this._securityGroups = config.securityGroups;
@@ -13746,6 +13795,22 @@ export namespace EC2 {
     // Temporarily expose input value. Use with caution.
     public get placementGroupInput() {
       return this._placementGroup
+    }
+
+    // placement_partition_number - computed: true, optional: true, required: false
+    private _placementPartitionNumber?: number;
+    public get placementPartitionNumber() {
+      return this.getNumberAttribute('placement_partition_number');
+    }
+    public set placementPartitionNumber(value: number) {
+      this._placementPartitionNumber = value;
+    }
+    public resetPlacementPartitionNumber() {
+      this._placementPartitionNumber = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get placementPartitionNumberInput() {
+      return this._placementPartitionNumber
     }
 
     // primary_network_interface_id - computed: true, optional: false, required: false
@@ -14243,6 +14308,7 @@ export namespace EC2 {
         launch_group: cdktf.stringToTerraform(this._launchGroup),
         monitoring: cdktf.booleanToTerraform(this._monitoring),
         placement_group: cdktf.stringToTerraform(this._placementGroup),
+        placement_partition_number: cdktf.numberToTerraform(this._placementPartitionNumber),
         private_ip: cdktf.stringToTerraform(this._privateIp),
         secondary_private_ips: cdktf.listMapper(cdktf.stringToTerraform)(this._secondaryPrivateIps),
         security_groups: cdktf.listMapper(cdktf.stringToTerraform)(this._securityGroups),
@@ -20237,6 +20303,11 @@ export namespace EC2 {
     // placement_group - computed: true, optional: false, required: false
     public get placementGroup() {
       return this.getStringAttribute('placement_group');
+    }
+
+    // placement_partition_number - computed: true, optional: false, required: false
+    public get placementPartitionNumber() {
+      return this.getNumberAttribute('placement_partition_number');
     }
 
     // private_dns - computed: true, optional: false, required: false

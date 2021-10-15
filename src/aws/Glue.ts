@@ -1176,6 +1176,14 @@ export namespace Glue {
     */
     readonly name: string;
     /**
+    * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_connection.html#tags GlueConnection#tags}
+    */
+    readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+    /**
+    * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_connection.html#tags_all GlueConnection#tags_all}
+    */
+    readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+    /**
     * physical_connection_requirements block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_connection.html#physical_connection_requirements GlueConnection#physical_connection_requirements}
@@ -1245,6 +1253,8 @@ export namespace Glue {
       this._description = config.description;
       this._matchCriteria = config.matchCriteria;
       this._name = config.name;
+      this._tags = config.tags;
+      this._tagsAll = config.tagsAll;
       this._physicalConnectionRequirements = config.physicalConnectionRequirements;
     }
 
@@ -1355,6 +1365,38 @@ export namespace Glue {
       return this._name
     }
 
+    // tags - computed: false, optional: true, required: false
+    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    public get tags() {
+      return this.interpolationForAttribute('tags') as any;
+    }
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+      this._tags = value;
+    }
+    public resetTags() {
+      this._tags = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tagsInput() {
+      return this._tags
+    }
+
+    // tags_all - computed: true, optional: true, required: false
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
+    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
+      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    }
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+      this._tagsAll = value;
+    }
+    public resetTagsAll() {
+      this._tagsAll = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tagsAllInput() {
+      return this._tagsAll
+    }
+
     // physical_connection_requirements - computed: false, optional: true, required: false
     private _physicalConnectionRequirements?: GlueConnectionPhysicalConnectionRequirements[];
     public get physicalConnectionRequirements() {
@@ -1383,6 +1425,8 @@ export namespace Glue {
         description: cdktf.stringToTerraform(this._description),
         match_criteria: cdktf.listMapper(cdktf.stringToTerraform)(this._matchCriteria),
         name: cdktf.stringToTerraform(this._name),
+        tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+        tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         physical_connection_requirements: cdktf.listMapper(glueConnectionPhysicalConnectionRequirementsToTerraform)(this._physicalConnectionRequirements),
       };
     }
@@ -3951,6 +3995,161 @@ export namespace Glue {
       };
     }
   }
+  export interface GluePartitionIndexConfig extends cdktf.TerraformMetaArguments {
+    /**
+    * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_partition_index.html#catalog_id GluePartitionIndex#catalog_id}
+    */
+    readonly catalogId?: string;
+    /**
+    * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_partition_index.html#database_name GluePartitionIndex#database_name}
+    */
+    readonly databaseName: string;
+    /**
+    * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_partition_index.html#table_name GluePartitionIndex#table_name}
+    */
+    readonly tableName: string;
+    /**
+    * partition_index block
+    * 
+    * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_partition_index.html#partition_index GluePartitionIndex#partition_index}
+    */
+    readonly partitionIndex: GluePartitionIndexPartitionIndex[];
+  }
+  export interface GluePartitionIndexPartitionIndex {
+    /**
+    * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_partition_index.html#index_name GluePartitionIndex#index_name}
+    */
+    readonly indexName?: string;
+    /**
+    * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_partition_index.html#keys GluePartitionIndex#keys}
+    */
+    readonly keys?: string[];
+  }
+
+  function gluePartitionIndexPartitionIndexToTerraform(struct?: GluePartitionIndexPartitionIndex): any {
+    if (!cdktf.canInspect(struct)) { return struct; }
+    return {
+      index_name: cdktf.stringToTerraform(struct!.indexName),
+      keys: cdktf.listMapper(cdktf.stringToTerraform)(struct!.keys),
+    }
+  }
+
+
+  /**
+  * Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_partition_index.html aws_glue_partition_index}
+  */
+  export class GluePartitionIndex extends cdktf.TerraformResource {
+
+    // =================
+    // STATIC PROPERTIES
+    // =================
+    public static readonly tfResourceType: string = "aws_glue_partition_index";
+
+    // ===========
+    // INITIALIZER
+    // ===========
+
+    /**
+    * Create a new {@link https://www.terraform.io/docs/providers/aws/r/glue_partition_index.html aws_glue_partition_index} Resource
+    *
+    * @param scope The scope in which to define this construct
+    * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
+    * @param options GluePartitionIndexConfig
+    */
+    public constructor(scope: Construct, id: string, config: GluePartitionIndexConfig) {
+      super(scope, id, {
+        terraformResourceType: 'aws_glue_partition_index',
+        terraformGeneratorMetadata: {
+          providerName: 'aws'
+        },
+        provider: config.provider,
+        dependsOn: config.dependsOn,
+        count: config.count,
+        lifecycle: config.lifecycle
+      });
+      this._catalogId = config.catalogId;
+      this._databaseName = config.databaseName;
+      this._tableName = config.tableName;
+      this._partitionIndex = config.partitionIndex;
+    }
+
+    // ==========
+    // ATTRIBUTES
+    // ==========
+
+    // catalog_id - computed: true, optional: true, required: false
+    private _catalogId?: string;
+    public get catalogId() {
+      return this.getStringAttribute('catalog_id');
+    }
+    public set catalogId(value: string) {
+      this._catalogId = value;
+    }
+    public resetCatalogId() {
+      this._catalogId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get catalogIdInput() {
+      return this._catalogId
+    }
+
+    // database_name - computed: false, optional: false, required: true
+    private _databaseName: string;
+    public get databaseName() {
+      return this.getStringAttribute('database_name');
+    }
+    public set databaseName(value: string) {
+      this._databaseName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get databaseNameInput() {
+      return this._databaseName
+    }
+
+    // id - computed: true, optional: true, required: false
+    public get id() {
+      return this.getStringAttribute('id');
+    }
+
+    // table_name - computed: false, optional: false, required: true
+    private _tableName: string;
+    public get tableName() {
+      return this.getStringAttribute('table_name');
+    }
+    public set tableName(value: string) {
+      this._tableName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tableNameInput() {
+      return this._tableName
+    }
+
+    // partition_index - computed: false, optional: false, required: true
+    private _partitionIndex: GluePartitionIndexPartitionIndex[];
+    public get partitionIndex() {
+      return this.interpolationForAttribute('partition_index') as any;
+    }
+    public set partitionIndex(value: GluePartitionIndexPartitionIndex[]) {
+      this._partitionIndex = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get partitionIndexInput() {
+      return this._partitionIndex
+    }
+
+    // =========
+    // SYNTHESIS
+    // =========
+
+    protected synthesizeAttributes(): { [name: string]: any } {
+      return {
+        catalog_id: cdktf.stringToTerraform(this._catalogId),
+        database_name: cdktf.stringToTerraform(this._databaseName),
+        table_name: cdktf.stringToTerraform(this._tableName),
+        partition_index: cdktf.listMapper(gluePartitionIndexPartitionIndexToTerraform)(this._partitionIndex),
+      };
+    }
+  }
   export interface GlueRegistryConfig extends cdktf.TerraformMetaArguments {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_registry.html#description GlueRegistry#description}
@@ -4098,6 +4297,10 @@ export namespace Glue {
   }
   export interface GlueResourcePolicyConfig extends cdktf.TerraformMetaArguments {
     /**
+    * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_resource_policy.html#enable_hybrid GlueResourcePolicy#enable_hybrid}
+    */
+    readonly enableHybrid?: string;
+    /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_resource_policy.html#policy GlueResourcePolicy#policy}
     */
     readonly policy: string;
@@ -4135,12 +4338,29 @@ export namespace Glue {
         count: config.count,
         lifecycle: config.lifecycle
       });
+      this._enableHybrid = config.enableHybrid;
       this._policy = config.policy;
     }
 
     // ==========
     // ATTRIBUTES
     // ==========
+
+    // enable_hybrid - computed: false, optional: true, required: false
+    private _enableHybrid?: string;
+    public get enableHybrid() {
+      return this.getStringAttribute('enable_hybrid');
+    }
+    public set enableHybrid(value: string ) {
+      this._enableHybrid = value;
+    }
+    public resetEnableHybrid() {
+      this._enableHybrid = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enableHybridInput() {
+      return this._enableHybrid
+    }
 
     // id - computed: true, optional: true, required: false
     public get id() {
@@ -4166,6 +4386,7 @@ export namespace Glue {
 
     protected synthesizeAttributes(): { [name: string]: any } {
       return {
+        enable_hybrid: cdktf.stringToTerraform(this._enableHybrid),
         policy: cdktf.stringToTerraform(this._policy),
       };
     }
@@ -5451,6 +5672,10 @@ export namespace Glue {
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/glue_connection.html#id DataAwsGlueConnection#id}
     */
     readonly id: string;
+    /**
+    * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/glue_connection.html#tags DataAwsGlueConnection#tags}
+    */
+    readonly tags?: { [key: string]: string } | cdktf.IResolvable;
   }
   export class DataAwsGlueConnectionPhysicalConnectionRequirements extends cdktf.ComplexComputedList {
 
@@ -5503,6 +5728,7 @@ export namespace Glue {
         lifecycle: config.lifecycle
       });
       this._id = config.id;
+      this._tags = config.tags;
     }
 
     // ==========
@@ -5562,6 +5788,22 @@ export namespace Glue {
       return new DataAwsGlueConnectionPhysicalConnectionRequirements(this, 'physical_connection_requirements', index);
     }
 
+    // tags - computed: true, optional: true, required: false
+    private _tags?: { [key: string]: string } | cdktf.IResolvable
+    public get tags(): { [key: string]: string } | cdktf.IResolvable {
+      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    }
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+      this._tags = value;
+    }
+    public resetTags() {
+      this._tags = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tagsInput() {
+      return this._tags
+    }
+
     // =========
     // SYNTHESIS
     // =========
@@ -5569,6 +5811,7 @@ export namespace Glue {
     protected synthesizeAttributes(): { [name: string]: any } {
       return {
         id: cdktf.stringToTerraform(this._id),
+        tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       };
     }
   }
