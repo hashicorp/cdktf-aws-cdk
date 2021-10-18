@@ -19,6 +19,7 @@ export class ProviderUpgrade {
       upgrade: {
         env: {
           CI: "true",
+          CHECKPOINT_DISABLE: "1",
         },
         runsOn: "ubuntu-latest",
         steps: [

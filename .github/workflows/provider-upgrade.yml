@@ -15,6 +15,7 @@ jobs:
       statuses: write
     env:
       CI: "true"
+      CHECKPOINT_DISABLE: "1"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
