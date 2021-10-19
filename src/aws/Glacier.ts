@@ -29,7 +29,7 @@ export namespace Glacier {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glacier_vault.html#notification GlacierVault#notification}
     */
-    readonly notification?: GlacierVaultNotification[];
+    readonly notification?: GlacierVaultNotification;
   }
   export interface GlacierVaultNotification {
     /**
@@ -42,14 +42,53 @@ export namespace Glacier {
     readonly snsTopic: string;
   }
 
-  function glacierVaultNotificationToTerraform(struct?: GlacierVaultNotification): any {
+  function glacierVaultNotificationToTerraform(struct?: GlacierVaultNotificationOutputReference | GlacierVaultNotification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       events: cdktf.listMapper(cdktf.stringToTerraform)(struct!.events),
       sns_topic: cdktf.stringToTerraform(struct!.snsTopic),
     }
   }
 
+  export class GlacierVaultNotificationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // events - computed: false, optional: false, required: true
+    private _events?: string[]; 
+    public get events() {
+      return this.getListAttribute('events');
+    }
+    public set events(value: string[]) {
+      this._events = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get eventsInput() {
+      return this._events
+    }
+
+    // sns_topic - computed: false, optional: false, required: true
+    private _snsTopic?: string; 
+    public get snsTopic() {
+      return this.getStringAttribute('sns_topic');
+    }
+    public set snsTopic(value: string) {
+      this._snsTopic = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get snsTopicInput() {
+      return this._snsTopic
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/glacier_vault.html aws_glacier_vault}
@@ -95,11 +134,11 @@ export namespace Glacier {
     // ==========
 
     // access_policy - computed: false, optional: true, required: false
-    private _accessPolicy?: string;
+    private _accessPolicy?: string | undefined; 
     public get accessPolicy() {
       return this.getStringAttribute('access_policy');
     }
-    public set accessPolicy(value: string ) {
+    public set accessPolicy(value: string | undefined) {
       this._accessPolicy = value;
     }
     public resetAccessPolicy() {
@@ -126,7 +165,7 @@ export namespace Glacier {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -139,11 +178,12 @@ export namespace Glacier {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -155,11 +195,12 @@ export namespace Glacier {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -171,11 +212,12 @@ export namespace Glacier {
     }
 
     // notification - computed: false, optional: true, required: false
-    private _notification?: GlacierVaultNotification[];
+    private _notification?: GlacierVaultNotification | undefined; 
+    private __notificationOutput = new GlacierVaultNotificationOutputReference(this as any, "notification", true);
     public get notification() {
-      return this.interpolationForAttribute('notification') as any;
+      return this.__notificationOutput;
     }
-    public set notification(value: GlacierVaultNotification[] ) {
+    public putNotification(value: GlacierVaultNotification | undefined) {
       this._notification = value;
     }
     public resetNotification() {
@@ -196,7 +238,7 @@ export namespace Glacier {
         name: cdktf.stringToTerraform(this._name),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        notification: cdktf.listMapper(glacierVaultNotificationToTerraform)(this._notification),
+        notification: glacierVaultNotificationToTerraform(this._notification),
       };
     }
   }
@@ -262,9 +304,9 @@ export namespace Glacier {
     // ==========
 
     // complete_lock - computed: false, optional: false, required: true
-    private _completeLock: boolean | cdktf.IResolvable;
+    private _completeLock?: boolean | cdktf.IResolvable; 
     public get completeLock() {
-      return this.getBooleanAttribute('complete_lock');
+      return this.getBooleanAttribute('complete_lock') as any;
     }
     public set completeLock(value: boolean | cdktf.IResolvable) {
       this._completeLock = value;
@@ -280,11 +322,11 @@ export namespace Glacier {
     }
 
     // ignore_deletion_error - computed: false, optional: true, required: false
-    private _ignoreDeletionError?: boolean | cdktf.IResolvable;
+    private _ignoreDeletionError?: boolean | cdktf.IResolvable | undefined; 
     public get ignoreDeletionError() {
-      return this.getBooleanAttribute('ignore_deletion_error');
+      return this.getBooleanAttribute('ignore_deletion_error') as any;
     }
-    public set ignoreDeletionError(value: boolean | cdktf.IResolvable ) {
+    public set ignoreDeletionError(value: boolean | cdktf.IResolvable | undefined) {
       this._ignoreDeletionError = value;
     }
     public resetIgnoreDeletionError() {
@@ -296,7 +338,7 @@ export namespace Glacier {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -309,7 +351,7 @@ export namespace Glacier {
     }
 
     // vault_name - computed: false, optional: false, required: true
-    private _vaultName: string;
+    private _vaultName?: string; 
     public get vaultName() {
       return this.getStringAttribute('vault_name');
     }

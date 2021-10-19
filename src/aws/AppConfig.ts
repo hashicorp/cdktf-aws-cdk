@@ -74,11 +74,11 @@ export namespace AppConfig {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -95,7 +95,7 @@ export namespace AppConfig {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -108,11 +108,12 @@ export namespace AppConfig {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -124,11 +125,12 @@ export namespace AppConfig {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -201,6 +203,9 @@ export namespace AppConfig {
 
   function appconfigConfigurationProfileValidatorToTerraform(struct?: AppconfigConfigurationProfileValidator): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       content: cdktf.stringToTerraform(struct!.content),
       type: cdktf.stringToTerraform(struct!.type),
@@ -255,7 +260,7 @@ export namespace AppConfig {
     // ==========
 
     // application_id - computed: false, optional: false, required: true
-    private _applicationId: string;
+    private _applicationId?: string; 
     public get applicationId() {
       return this.getStringAttribute('application_id');
     }
@@ -278,11 +283,11 @@ export namespace AppConfig {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -299,7 +304,7 @@ export namespace AppConfig {
     }
 
     // location_uri - computed: false, optional: false, required: true
-    private _locationUri: string;
+    private _locationUri?: string; 
     public get locationUri() {
       return this.getStringAttribute('location_uri');
     }
@@ -312,7 +317,7 @@ export namespace AppConfig {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -325,11 +330,11 @@ export namespace AppConfig {
     }
 
     // retrieval_role_arn - computed: false, optional: true, required: false
-    private _retrievalRoleArn?: string;
+    private _retrievalRoleArn?: string | undefined; 
     public get retrievalRoleArn() {
       return this.getStringAttribute('retrieval_role_arn');
     }
-    public set retrievalRoleArn(value: string ) {
+    public set retrievalRoleArn(value: string | undefined) {
       this._retrievalRoleArn = value;
     }
     public resetRetrievalRoleArn() {
@@ -341,11 +346,12 @@ export namespace AppConfig {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -357,11 +363,12 @@ export namespace AppConfig {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -373,11 +380,12 @@ export namespace AppConfig {
     }
 
     // validator - computed: false, optional: true, required: false
-    private _validator?: AppconfigConfigurationProfileValidator[];
+    private _validator?: AppconfigConfigurationProfileValidator[] | undefined; 
     public get validator() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('validator') as any;
     }
-    public set validator(value: AppconfigConfigurationProfileValidator[] ) {
+    public set validator(value: AppconfigConfigurationProfileValidator[] | undefined) {
       this._validator = value;
     }
     public resetValidator() {
@@ -487,7 +495,7 @@ export namespace AppConfig {
     // ==========
 
     // application_id - computed: false, optional: false, required: true
-    private _applicationId: string;
+    private _applicationId?: string; 
     public get applicationId() {
       return this.getStringAttribute('application_id');
     }
@@ -505,7 +513,7 @@ export namespace AppConfig {
     }
 
     // configuration_profile_id - computed: false, optional: false, required: true
-    private _configurationProfileId: string;
+    private _configurationProfileId?: string; 
     public get configurationProfileId() {
       return this.getStringAttribute('configuration_profile_id');
     }
@@ -518,7 +526,7 @@ export namespace AppConfig {
     }
 
     // configuration_version - computed: false, optional: false, required: true
-    private _configurationVersion: string;
+    private _configurationVersion?: string; 
     public get configurationVersion() {
       return this.getStringAttribute('configuration_version');
     }
@@ -536,7 +544,7 @@ export namespace AppConfig {
     }
 
     // deployment_strategy_id - computed: false, optional: false, required: true
-    private _deploymentStrategyId: string;
+    private _deploymentStrategyId?: string; 
     public get deploymentStrategyId() {
       return this.getStringAttribute('deployment_strategy_id');
     }
@@ -549,11 +557,11 @@ export namespace AppConfig {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -565,7 +573,7 @@ export namespace AppConfig {
     }
 
     // environment_id - computed: false, optional: false, required: true
-    private _environmentId: string;
+    private _environmentId?: string; 
     public get environmentId() {
       return this.getStringAttribute('environment_id');
     }
@@ -588,11 +596,12 @@ export namespace AppConfig {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -604,11 +613,12 @@ export namespace AppConfig {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -728,7 +738,7 @@ export namespace AppConfig {
     }
 
     // deployment_duration_in_minutes - computed: false, optional: false, required: true
-    private _deploymentDurationInMinutes: number;
+    private _deploymentDurationInMinutes?: number; 
     public get deploymentDurationInMinutes() {
       return this.getNumberAttribute('deployment_duration_in_minutes');
     }
@@ -741,11 +751,11 @@ export namespace AppConfig {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -757,11 +767,11 @@ export namespace AppConfig {
     }
 
     // final_bake_time_in_minutes - computed: false, optional: true, required: false
-    private _finalBakeTimeInMinutes?: number;
+    private _finalBakeTimeInMinutes?: number | undefined; 
     public get finalBakeTimeInMinutes() {
       return this.getNumberAttribute('final_bake_time_in_minutes');
     }
-    public set finalBakeTimeInMinutes(value: number ) {
+    public set finalBakeTimeInMinutes(value: number | undefined) {
       this._finalBakeTimeInMinutes = value;
     }
     public resetFinalBakeTimeInMinutes() {
@@ -773,7 +783,7 @@ export namespace AppConfig {
     }
 
     // growth_factor - computed: false, optional: false, required: true
-    private _growthFactor: number;
+    private _growthFactor?: number; 
     public get growthFactor() {
       return this.getNumberAttribute('growth_factor');
     }
@@ -786,11 +796,11 @@ export namespace AppConfig {
     }
 
     // growth_type - computed: false, optional: true, required: false
-    private _growthType?: string;
+    private _growthType?: string | undefined; 
     public get growthType() {
       return this.getStringAttribute('growth_type');
     }
-    public set growthType(value: string ) {
+    public set growthType(value: string | undefined) {
       this._growthType = value;
     }
     public resetGrowthType() {
@@ -807,7 +817,7 @@ export namespace AppConfig {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -820,7 +830,7 @@ export namespace AppConfig {
     }
 
     // replicate_to - computed: false, optional: false, required: true
-    private _replicateTo: string;
+    private _replicateTo?: string; 
     public get replicateTo() {
       return this.getStringAttribute('replicate_to');
     }
@@ -833,11 +843,12 @@ export namespace AppConfig {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -849,11 +860,12 @@ export namespace AppConfig {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -923,6 +935,9 @@ export namespace AppConfig {
 
   function appconfigEnvironmentMonitorToTerraform(struct?: AppconfigEnvironmentMonitor): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       alarm_arn: cdktf.stringToTerraform(struct!.alarmArn),
       alarm_role_arn: cdktf.stringToTerraform(struct!.alarmRoleArn),
@@ -975,7 +990,7 @@ export namespace AppConfig {
     // ==========
 
     // application_id - computed: false, optional: false, required: true
-    private _applicationId: string;
+    private _applicationId?: string; 
     public get applicationId() {
       return this.getStringAttribute('application_id');
     }
@@ -993,11 +1008,11 @@ export namespace AppConfig {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1019,7 +1034,7 @@ export namespace AppConfig {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1037,11 +1052,12 @@ export namespace AppConfig {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1053,11 +1069,12 @@ export namespace AppConfig {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1069,11 +1086,12 @@ export namespace AppConfig {
     }
 
     // monitor - computed: false, optional: true, required: false
-    private _monitor?: AppconfigEnvironmentMonitor[];
+    private _monitor?: AppconfigEnvironmentMonitor[] | undefined; 
     public get monitor() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('monitor') as any;
     }
-    public set monitor(value: AppconfigEnvironmentMonitor[] ) {
+    public set monitor(value: AppconfigEnvironmentMonitor[] | undefined) {
       this._monitor = value;
     }
     public resetMonitor() {
@@ -1166,7 +1184,7 @@ export namespace AppConfig {
     // ==========
 
     // application_id - computed: false, optional: false, required: true
-    private _applicationId: string;
+    private _applicationId?: string; 
     public get applicationId() {
       return this.getStringAttribute('application_id');
     }
@@ -1184,7 +1202,7 @@ export namespace AppConfig {
     }
 
     // configuration_profile_id - computed: false, optional: false, required: true
-    private _configurationProfileId: string;
+    private _configurationProfileId?: string; 
     public get configurationProfileId() {
       return this.getStringAttribute('configuration_profile_id');
     }
@@ -1197,7 +1215,7 @@ export namespace AppConfig {
     }
 
     // content - computed: false, optional: false, required: true
-    private _content: string;
+    private _content?: string; 
     public get content() {
       return this.getStringAttribute('content');
     }
@@ -1210,7 +1228,7 @@ export namespace AppConfig {
     }
 
     // content_type - computed: false, optional: false, required: true
-    private _contentType: string;
+    private _contentType?: string; 
     public get contentType() {
       return this.getStringAttribute('content_type');
     }
@@ -1223,11 +1241,11 @@ export namespace AppConfig {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {

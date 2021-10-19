@@ -73,7 +73,7 @@ export namespace ELB {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb.html#access_logs Alb#access_logs}
     */
-    readonly accessLogs?: AlbAccessLogs[];
+    readonly accessLogs?: AlbAccessLogs;
     /**
     * subnet_mapping block
     * 
@@ -102,8 +102,11 @@ export namespace ELB {
     readonly prefix?: string;
   }
 
-  function albAccessLogsToTerraform(struct?: AlbAccessLogs): any {
+  function albAccessLogsToTerraform(struct?: AlbAccessLogsOutputReference | AlbAccessLogs): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bucket: cdktf.stringToTerraform(struct!.bucket),
       enabled: cdktf.booleanToTerraform(struct!.enabled),
@@ -111,6 +114,61 @@ export namespace ELB {
     }
   }
 
+  export class AlbAccessLogsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // bucket - computed: false, optional: false, required: true
+    private _bucket?: string; 
+    public get bucket() {
+      return this.getStringAttribute('bucket');
+    }
+    public set bucket(value: string) {
+      this._bucket = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bucketInput() {
+      return this._bucket
+    }
+
+    // enabled - computed: false, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+
+    // prefix - computed: false, optional: true, required: false
+    private _prefix?: string | undefined; 
+    public get prefix() {
+      return this.getStringAttribute('prefix');
+    }
+    public set prefix(value: string | undefined) {
+      this._prefix = value;
+    }
+    public resetPrefix() {
+      this._prefix = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get prefixInput() {
+      return this._prefix
+    }
+  }
   export interface AlbSubnetMapping {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb.html#allocation_id Alb#allocation_id}
@@ -132,6 +190,9 @@ export namespace ELB {
 
   function albSubnetMappingToTerraform(struct?: AlbSubnetMapping): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allocation_id: cdktf.stringToTerraform(struct!.allocationId),
       ipv6_address: cdktf.stringToTerraform(struct!.ipv6Address),
@@ -155,8 +216,11 @@ export namespace ELB {
     readonly update?: string;
   }
 
-  function albTimeoutsToTerraform(struct?: AlbTimeouts): any {
+  function albTimeoutsToTerraform(struct?: AlbTimeoutsOutputReference | AlbTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -164,6 +228,64 @@ export namespace ELB {
     }
   }
 
+  export class AlbTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/alb.html aws_alb}
@@ -232,11 +354,11 @@ export namespace ELB {
     }
 
     // customer_owned_ipv4_pool - computed: false, optional: true, required: false
-    private _customerOwnedIpv4Pool?: string;
+    private _customerOwnedIpv4Pool?: string | undefined; 
     public get customerOwnedIpv4Pool() {
       return this.getStringAttribute('customer_owned_ipv4_pool');
     }
-    public set customerOwnedIpv4Pool(value: string ) {
+    public set customerOwnedIpv4Pool(value: string | undefined) {
       this._customerOwnedIpv4Pool = value;
     }
     public resetCustomerOwnedIpv4Pool() {
@@ -253,11 +375,11 @@ export namespace ELB {
     }
 
     // drop_invalid_header_fields - computed: false, optional: true, required: false
-    private _dropInvalidHeaderFields?: boolean | cdktf.IResolvable;
+    private _dropInvalidHeaderFields?: boolean | cdktf.IResolvable | undefined; 
     public get dropInvalidHeaderFields() {
-      return this.getBooleanAttribute('drop_invalid_header_fields');
+      return this.getBooleanAttribute('drop_invalid_header_fields') as any;
     }
-    public set dropInvalidHeaderFields(value: boolean | cdktf.IResolvable ) {
+    public set dropInvalidHeaderFields(value: boolean | cdktf.IResolvable | undefined) {
       this._dropInvalidHeaderFields = value;
     }
     public resetDropInvalidHeaderFields() {
@@ -269,11 +391,11 @@ export namespace ELB {
     }
 
     // enable_cross_zone_load_balancing - computed: false, optional: true, required: false
-    private _enableCrossZoneLoadBalancing?: boolean | cdktf.IResolvable;
+    private _enableCrossZoneLoadBalancing?: boolean | cdktf.IResolvable | undefined; 
     public get enableCrossZoneLoadBalancing() {
-      return this.getBooleanAttribute('enable_cross_zone_load_balancing');
+      return this.getBooleanAttribute('enable_cross_zone_load_balancing') as any;
     }
-    public set enableCrossZoneLoadBalancing(value: boolean | cdktf.IResolvable ) {
+    public set enableCrossZoneLoadBalancing(value: boolean | cdktf.IResolvable | undefined) {
       this._enableCrossZoneLoadBalancing = value;
     }
     public resetEnableCrossZoneLoadBalancing() {
@@ -285,11 +407,11 @@ export namespace ELB {
     }
 
     // enable_deletion_protection - computed: false, optional: true, required: false
-    private _enableDeletionProtection?: boolean | cdktf.IResolvable;
+    private _enableDeletionProtection?: boolean | cdktf.IResolvable | undefined; 
     public get enableDeletionProtection() {
-      return this.getBooleanAttribute('enable_deletion_protection');
+      return this.getBooleanAttribute('enable_deletion_protection') as any;
     }
-    public set enableDeletionProtection(value: boolean | cdktf.IResolvable ) {
+    public set enableDeletionProtection(value: boolean | cdktf.IResolvable | undefined) {
       this._enableDeletionProtection = value;
     }
     public resetEnableDeletionProtection() {
@@ -301,11 +423,11 @@ export namespace ELB {
     }
 
     // enable_http2 - computed: false, optional: true, required: false
-    private _enableHttp2?: boolean | cdktf.IResolvable;
+    private _enableHttp2?: boolean | cdktf.IResolvable | undefined; 
     public get enableHttp2() {
-      return this.getBooleanAttribute('enable_http2');
+      return this.getBooleanAttribute('enable_http2') as any;
     }
-    public set enableHttp2(value: boolean | cdktf.IResolvable ) {
+    public set enableHttp2(value: boolean | cdktf.IResolvable | undefined) {
       this._enableHttp2 = value;
     }
     public resetEnableHttp2() {
@@ -322,11 +444,11 @@ export namespace ELB {
     }
 
     // idle_timeout - computed: false, optional: true, required: false
-    private _idleTimeout?: number;
+    private _idleTimeout?: number | undefined; 
     public get idleTimeout() {
       return this.getNumberAttribute('idle_timeout');
     }
-    public set idleTimeout(value: number ) {
+    public set idleTimeout(value: number | undefined) {
       this._idleTimeout = value;
     }
     public resetIdleTimeout() {
@@ -338,11 +460,11 @@ export namespace ELB {
     }
 
     // internal - computed: true, optional: true, required: false
-    private _internal?: boolean | cdktf.IResolvable;
+    private _internal?: boolean | cdktf.IResolvable | undefined; 
     public get internal() {
-      return this.getBooleanAttribute('internal');
+      return this.getBooleanAttribute('internal') as any;
     }
-    public set internal(value: boolean | cdktf.IResolvable) {
+    public set internal(value: boolean | cdktf.IResolvable | undefined) {
       this._internal = value;
     }
     public resetInternal() {
@@ -354,11 +476,11 @@ export namespace ELB {
     }
 
     // ip_address_type - computed: true, optional: true, required: false
-    private _ipAddressType?: string;
+    private _ipAddressType?: string | undefined; 
     public get ipAddressType() {
       return this.getStringAttribute('ip_address_type');
     }
-    public set ipAddressType(value: string) {
+    public set ipAddressType(value: string | undefined) {
       this._ipAddressType = value;
     }
     public resetIpAddressType() {
@@ -370,11 +492,11 @@ export namespace ELB {
     }
 
     // load_balancer_type - computed: false, optional: true, required: false
-    private _loadBalancerType?: string;
+    private _loadBalancerType?: string | undefined; 
     public get loadBalancerType() {
       return this.getStringAttribute('load_balancer_type');
     }
-    public set loadBalancerType(value: string ) {
+    public set loadBalancerType(value: string | undefined) {
       this._loadBalancerType = value;
     }
     public resetLoadBalancerType() {
@@ -386,11 +508,11 @@ export namespace ELB {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -402,11 +524,11 @@ export namespace ELB {
     }
 
     // name_prefix - computed: false, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string ) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -418,11 +540,11 @@ export namespace ELB {
     }
 
     // security_groups - computed: true, optional: true, required: false
-    private _securityGroups?: string[];
+    private _securityGroups?: string[] | undefined; 
     public get securityGroups() {
       return this.getListAttribute('security_groups');
     }
-    public set securityGroups(value: string[]) {
+    public set securityGroups(value: string[] | undefined) {
       this._securityGroups = value;
     }
     public resetSecurityGroups() {
@@ -434,11 +556,11 @@ export namespace ELB {
     }
 
     // subnets - computed: true, optional: true, required: false
-    private _subnets?: string[];
+    private _subnets?: string[] | undefined; 
     public get subnets() {
       return this.getListAttribute('subnets');
     }
-    public set subnets(value: string[]) {
+    public set subnets(value: string[] | undefined) {
       this._subnets = value;
     }
     public resetSubnets() {
@@ -450,11 +572,12 @@ export namespace ELB {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -466,11 +589,12 @@ export namespace ELB {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -492,11 +616,12 @@ export namespace ELB {
     }
 
     // access_logs - computed: false, optional: true, required: false
-    private _accessLogs?: AlbAccessLogs[];
+    private _accessLogs?: AlbAccessLogs | undefined; 
+    private __accessLogsOutput = new AlbAccessLogsOutputReference(this as any, "access_logs", true);
     public get accessLogs() {
-      return this.interpolationForAttribute('access_logs') as any;
+      return this.__accessLogsOutput;
     }
-    public set accessLogs(value: AlbAccessLogs[] ) {
+    public putAccessLogs(value: AlbAccessLogs | undefined) {
       this._accessLogs = value;
     }
     public resetAccessLogs() {
@@ -508,11 +633,12 @@ export namespace ELB {
     }
 
     // subnet_mapping - computed: false, optional: true, required: false
-    private _subnetMapping?: AlbSubnetMapping[];
+    private _subnetMapping?: AlbSubnetMapping[] | undefined; 
     public get subnetMapping() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('subnet_mapping') as any;
     }
-    public set subnetMapping(value: AlbSubnetMapping[] ) {
+    public set subnetMapping(value: AlbSubnetMapping[] | undefined) {
       this._subnetMapping = value;
     }
     public resetSubnetMapping() {
@@ -524,11 +650,12 @@ export namespace ELB {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: AlbTimeouts;
+    private _timeouts?: AlbTimeouts | undefined; 
+    private __timeoutsOutput = new AlbTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: AlbTimeouts ) {
+    public putTimeouts(value: AlbTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -560,7 +687,7 @@ export namespace ELB {
         subnets: cdktf.listMapper(cdktf.stringToTerraform)(this._subnets),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        access_logs: cdktf.listMapper(albAccessLogsToTerraform)(this._accessLogs),
+        access_logs: albAccessLogsToTerraform(this._accessLogs),
         subnet_mapping: cdktf.listMapper(albSubnetMappingToTerraform)(this._subnetMapping),
         timeouts: albTimeoutsToTerraform(this._timeouts),
       };
@@ -647,8 +774,11 @@ export namespace ELB {
     readonly userPoolDomain: string;
   }
 
-  function albListenerDefaultActionAuthenticateCognitoToTerraform(struct?: AlbListenerDefaultActionAuthenticateCognito): any {
+  function albListenerDefaultActionAuthenticateCognitoToTerraform(struct?: AlbListenerDefaultActionAuthenticateCognitoOutputReference | AlbListenerDefaultActionAuthenticateCognito): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       authentication_request_extra_params: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.authenticationRequestExtraParams),
       on_unauthenticated_request: cdktf.stringToTerraform(struct!.onUnauthenticatedRequest),
@@ -661,6 +791,136 @@ export namespace ELB {
     }
   }
 
+  export class AlbListenerDefaultActionAuthenticateCognitoOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // authentication_request_extra_params - computed: false, optional: true, required: false
+    private _authenticationRequestExtraParams?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get authenticationRequestExtraParams() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('authentication_request_extra_params') as any;
+    }
+    public set authenticationRequestExtraParams(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._authenticationRequestExtraParams = value;
+    }
+    public resetAuthenticationRequestExtraParams() {
+      this._authenticationRequestExtraParams = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get authenticationRequestExtraParamsInput() {
+      return this._authenticationRequestExtraParams
+    }
+
+    // on_unauthenticated_request - computed: true, optional: true, required: false
+    private _onUnauthenticatedRequest?: string | undefined; 
+    public get onUnauthenticatedRequest() {
+      return this.getStringAttribute('on_unauthenticated_request');
+    }
+    public set onUnauthenticatedRequest(value: string | undefined) {
+      this._onUnauthenticatedRequest = value;
+    }
+    public resetOnUnauthenticatedRequest() {
+      this._onUnauthenticatedRequest = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get onUnauthenticatedRequestInput() {
+      return this._onUnauthenticatedRequest
+    }
+
+    // scope - computed: true, optional: true, required: false
+    private _scope?: string | undefined; 
+    public get scope() {
+      return this.getStringAttribute('scope');
+    }
+    public set scope(value: string | undefined) {
+      this._scope = value;
+    }
+    public resetScope() {
+      this._scope = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get scopeInput() {
+      return this._scope
+    }
+
+    // session_cookie_name - computed: true, optional: true, required: false
+    private _sessionCookieName?: string | undefined; 
+    public get sessionCookieName() {
+      return this.getStringAttribute('session_cookie_name');
+    }
+    public set sessionCookieName(value: string | undefined) {
+      this._sessionCookieName = value;
+    }
+    public resetSessionCookieName() {
+      this._sessionCookieName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sessionCookieNameInput() {
+      return this._sessionCookieName
+    }
+
+    // session_timeout - computed: true, optional: true, required: false
+    private _sessionTimeout?: number | undefined; 
+    public get sessionTimeout() {
+      return this.getNumberAttribute('session_timeout');
+    }
+    public set sessionTimeout(value: number | undefined) {
+      this._sessionTimeout = value;
+    }
+    public resetSessionTimeout() {
+      this._sessionTimeout = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sessionTimeoutInput() {
+      return this._sessionTimeout
+    }
+
+    // user_pool_arn - computed: false, optional: false, required: true
+    private _userPoolArn?: string; 
+    public get userPoolArn() {
+      return this.getStringAttribute('user_pool_arn');
+    }
+    public set userPoolArn(value: string) {
+      this._userPoolArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userPoolArnInput() {
+      return this._userPoolArn
+    }
+
+    // user_pool_client_id - computed: false, optional: false, required: true
+    private _userPoolClientId?: string; 
+    public get userPoolClientId() {
+      return this.getStringAttribute('user_pool_client_id');
+    }
+    public set userPoolClientId(value: string) {
+      this._userPoolClientId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userPoolClientIdInput() {
+      return this._userPoolClientId
+    }
+
+    // user_pool_domain - computed: false, optional: false, required: true
+    private _userPoolDomain?: string; 
+    public get userPoolDomain() {
+      return this.getStringAttribute('user_pool_domain');
+    }
+    public set userPoolDomain(value: string) {
+      this._userPoolDomain = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userPoolDomainInput() {
+      return this._userPoolDomain
+    }
+  }
   export interface AlbListenerDefaultActionAuthenticateOidc {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener.html#authentication_request_extra_params AlbListener#authentication_request_extra_params}
@@ -708,8 +968,11 @@ export namespace ELB {
     readonly userInfoEndpoint: string;
   }
 
-  function albListenerDefaultActionAuthenticateOidcToTerraform(struct?: AlbListenerDefaultActionAuthenticateOidc): any {
+  function albListenerDefaultActionAuthenticateOidcToTerraform(struct?: AlbListenerDefaultActionAuthenticateOidcOutputReference | AlbListenerDefaultActionAuthenticateOidc): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       authentication_request_extra_params: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.authenticationRequestExtraParams),
       authorization_endpoint: cdktf.stringToTerraform(struct!.authorizationEndpoint),
@@ -725,6 +988,175 @@ export namespace ELB {
     }
   }
 
+  export class AlbListenerDefaultActionAuthenticateOidcOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // authentication_request_extra_params - computed: false, optional: true, required: false
+    private _authenticationRequestExtraParams?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get authenticationRequestExtraParams() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('authentication_request_extra_params') as any;
+    }
+    public set authenticationRequestExtraParams(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._authenticationRequestExtraParams = value;
+    }
+    public resetAuthenticationRequestExtraParams() {
+      this._authenticationRequestExtraParams = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get authenticationRequestExtraParamsInput() {
+      return this._authenticationRequestExtraParams
+    }
+
+    // authorization_endpoint - computed: false, optional: false, required: true
+    private _authorizationEndpoint?: string; 
+    public get authorizationEndpoint() {
+      return this.getStringAttribute('authorization_endpoint');
+    }
+    public set authorizationEndpoint(value: string) {
+      this._authorizationEndpoint = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get authorizationEndpointInput() {
+      return this._authorizationEndpoint
+    }
+
+    // client_id - computed: false, optional: false, required: true
+    private _clientId?: string; 
+    public get clientId() {
+      return this.getStringAttribute('client_id');
+    }
+    public set clientId(value: string) {
+      this._clientId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get clientIdInput() {
+      return this._clientId
+    }
+
+    // client_secret - computed: false, optional: false, required: true
+    private _clientSecret?: string; 
+    public get clientSecret() {
+      return this.getStringAttribute('client_secret');
+    }
+    public set clientSecret(value: string) {
+      this._clientSecret = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get clientSecretInput() {
+      return this._clientSecret
+    }
+
+    // issuer - computed: false, optional: false, required: true
+    private _issuer?: string; 
+    public get issuer() {
+      return this.getStringAttribute('issuer');
+    }
+    public set issuer(value: string) {
+      this._issuer = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get issuerInput() {
+      return this._issuer
+    }
+
+    // on_unauthenticated_request - computed: true, optional: true, required: false
+    private _onUnauthenticatedRequest?: string | undefined; 
+    public get onUnauthenticatedRequest() {
+      return this.getStringAttribute('on_unauthenticated_request');
+    }
+    public set onUnauthenticatedRequest(value: string | undefined) {
+      this._onUnauthenticatedRequest = value;
+    }
+    public resetOnUnauthenticatedRequest() {
+      this._onUnauthenticatedRequest = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get onUnauthenticatedRequestInput() {
+      return this._onUnauthenticatedRequest
+    }
+
+    // scope - computed: true, optional: true, required: false
+    private _scope?: string | undefined; 
+    public get scope() {
+      return this.getStringAttribute('scope');
+    }
+    public set scope(value: string | undefined) {
+      this._scope = value;
+    }
+    public resetScope() {
+      this._scope = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get scopeInput() {
+      return this._scope
+    }
+
+    // session_cookie_name - computed: true, optional: true, required: false
+    private _sessionCookieName?: string | undefined; 
+    public get sessionCookieName() {
+      return this.getStringAttribute('session_cookie_name');
+    }
+    public set sessionCookieName(value: string | undefined) {
+      this._sessionCookieName = value;
+    }
+    public resetSessionCookieName() {
+      this._sessionCookieName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sessionCookieNameInput() {
+      return this._sessionCookieName
+    }
+
+    // session_timeout - computed: true, optional: true, required: false
+    private _sessionTimeout?: number | undefined; 
+    public get sessionTimeout() {
+      return this.getNumberAttribute('session_timeout');
+    }
+    public set sessionTimeout(value: number | undefined) {
+      this._sessionTimeout = value;
+    }
+    public resetSessionTimeout() {
+      this._sessionTimeout = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sessionTimeoutInput() {
+      return this._sessionTimeout
+    }
+
+    // token_endpoint - computed: false, optional: false, required: true
+    private _tokenEndpoint?: string; 
+    public get tokenEndpoint() {
+      return this.getStringAttribute('token_endpoint');
+    }
+    public set tokenEndpoint(value: string) {
+      this._tokenEndpoint = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tokenEndpointInput() {
+      return this._tokenEndpoint
+    }
+
+    // user_info_endpoint - computed: false, optional: false, required: true
+    private _userInfoEndpoint?: string; 
+    public get userInfoEndpoint() {
+      return this.getStringAttribute('user_info_endpoint');
+    }
+    public set userInfoEndpoint(value: string) {
+      this._userInfoEndpoint = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userInfoEndpointInput() {
+      return this._userInfoEndpoint
+    }
+  }
   export interface AlbListenerDefaultActionFixedResponse {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener.html#content_type AlbListener#content_type}
@@ -740,8 +1172,11 @@ export namespace ELB {
     readonly statusCode?: string;
   }
 
-  function albListenerDefaultActionFixedResponseToTerraform(struct?: AlbListenerDefaultActionFixedResponse): any {
+  function albListenerDefaultActionFixedResponseToTerraform(struct?: AlbListenerDefaultActionFixedResponseOutputReference | AlbListenerDefaultActionFixedResponse): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       content_type: cdktf.stringToTerraform(struct!.contentType),
       message_body: cdktf.stringToTerraform(struct!.messageBody),
@@ -749,6 +1184,61 @@ export namespace ELB {
     }
   }
 
+  export class AlbListenerDefaultActionFixedResponseOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // content_type - computed: false, optional: false, required: true
+    private _contentType?: string; 
+    public get contentType() {
+      return this.getStringAttribute('content_type');
+    }
+    public set contentType(value: string) {
+      this._contentType = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get contentTypeInput() {
+      return this._contentType
+    }
+
+    // message_body - computed: false, optional: true, required: false
+    private _messageBody?: string | undefined; 
+    public get messageBody() {
+      return this.getStringAttribute('message_body');
+    }
+    public set messageBody(value: string | undefined) {
+      this._messageBody = value;
+    }
+    public resetMessageBody() {
+      this._messageBody = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get messageBodyInput() {
+      return this._messageBody
+    }
+
+    // status_code - computed: true, optional: true, required: false
+    private _statusCode?: string | undefined; 
+    public get statusCode() {
+      return this.getStringAttribute('status_code');
+    }
+    public set statusCode(value: string | undefined) {
+      this._statusCode = value;
+    }
+    public resetStatusCode() {
+      this._statusCode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statusCodeInput() {
+      return this._statusCode
+    }
+  }
   export interface AlbListenerDefaultActionForwardStickiness {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener.html#duration AlbListener#duration}
@@ -760,14 +1250,56 @@ export namespace ELB {
     readonly enabled?: boolean | cdktf.IResolvable;
   }
 
-  function albListenerDefaultActionForwardStickinessToTerraform(struct?: AlbListenerDefaultActionForwardStickiness): any {
+  function albListenerDefaultActionForwardStickinessToTerraform(struct?: AlbListenerDefaultActionForwardStickinessOutputReference | AlbListenerDefaultActionForwardStickiness): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       duration: cdktf.numberToTerraform(struct!.duration),
       enabled: cdktf.booleanToTerraform(struct!.enabled),
     }
   }
 
+  export class AlbListenerDefaultActionForwardStickinessOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // duration - computed: false, optional: false, required: true
+    private _duration?: number; 
+    public get duration() {
+      return this.getNumberAttribute('duration');
+    }
+    public set duration(value: number) {
+      this._duration = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get durationInput() {
+      return this._duration
+    }
+
+    // enabled - computed: false, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+  }
   export interface AlbListenerDefaultActionForwardTargetGroup {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener.html#arn AlbListener#arn}
@@ -781,6 +1313,9 @@ export namespace ELB {
 
   function albListenerDefaultActionForwardTargetGroupToTerraform(struct?: AlbListenerDefaultActionForwardTargetGroup): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       arn: cdktf.stringToTerraform(struct!.arn),
       weight: cdktf.numberToTerraform(struct!.weight),
@@ -793,7 +1328,7 @@ export namespace ELB {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener.html#stickiness AlbListener#stickiness}
     */
-    readonly stickiness?: AlbListenerDefaultActionForwardStickiness[];
+    readonly stickiness?: AlbListenerDefaultActionForwardStickiness;
     /**
     * target_group block
     * 
@@ -802,14 +1337,58 @@ export namespace ELB {
     readonly targetGroup: AlbListenerDefaultActionForwardTargetGroup[];
   }
 
-  function albListenerDefaultActionForwardToTerraform(struct?: AlbListenerDefaultActionForward): any {
+  function albListenerDefaultActionForwardToTerraform(struct?: AlbListenerDefaultActionForwardOutputReference | AlbListenerDefaultActionForward): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      stickiness: cdktf.listMapper(albListenerDefaultActionForwardStickinessToTerraform)(struct!.stickiness),
+      stickiness: albListenerDefaultActionForwardStickinessToTerraform(struct!.stickiness),
       target_group: cdktf.listMapper(albListenerDefaultActionForwardTargetGroupToTerraform)(struct!.targetGroup),
     }
   }
 
+  export class AlbListenerDefaultActionForwardOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // stickiness - computed: false, optional: true, required: false
+    private _stickiness?: AlbListenerDefaultActionForwardStickiness | undefined; 
+    private __stickinessOutput = new AlbListenerDefaultActionForwardStickinessOutputReference(this as any, "stickiness", true);
+    public get stickiness() {
+      return this.__stickinessOutput;
+    }
+    public putStickiness(value: AlbListenerDefaultActionForwardStickiness | undefined) {
+      this._stickiness = value;
+    }
+    public resetStickiness() {
+      this._stickiness = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get stickinessInput() {
+      return this._stickiness
+    }
+
+    // target_group - computed: false, optional: false, required: true
+    private _targetGroup?: AlbListenerDefaultActionForwardTargetGroup[]; 
+    public get targetGroup() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('target_group') as any;
+    }
+    public set targetGroup(value: AlbListenerDefaultActionForwardTargetGroup[]) {
+      this._targetGroup = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get targetGroupInput() {
+      return this._targetGroup
+    }
+  }
   export interface AlbListenerDefaultActionRedirect {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener.html#host AlbListener#host}
@@ -837,8 +1416,11 @@ export namespace ELB {
     readonly statusCode: string;
   }
 
-  function albListenerDefaultActionRedirectToTerraform(struct?: AlbListenerDefaultActionRedirect): any {
+  function albListenerDefaultActionRedirectToTerraform(struct?: AlbListenerDefaultActionRedirectOutputReference | AlbListenerDefaultActionRedirect): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       host: cdktf.stringToTerraform(struct!.host),
       path: cdktf.stringToTerraform(struct!.path),
@@ -849,6 +1431,109 @@ export namespace ELB {
     }
   }
 
+  export class AlbListenerDefaultActionRedirectOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // host - computed: false, optional: true, required: false
+    private _host?: string | undefined; 
+    public get host() {
+      return this.getStringAttribute('host');
+    }
+    public set host(value: string | undefined) {
+      this._host = value;
+    }
+    public resetHost() {
+      this._host = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get hostInput() {
+      return this._host
+    }
+
+    // path - computed: false, optional: true, required: false
+    private _path?: string | undefined; 
+    public get path() {
+      return this.getStringAttribute('path');
+    }
+    public set path(value: string | undefined) {
+      this._path = value;
+    }
+    public resetPath() {
+      this._path = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get pathInput() {
+      return this._path
+    }
+
+    // port - computed: false, optional: true, required: false
+    private _port?: string | undefined; 
+    public get port() {
+      return this.getStringAttribute('port');
+    }
+    public set port(value: string | undefined) {
+      this._port = value;
+    }
+    public resetPort() {
+      this._port = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get portInput() {
+      return this._port
+    }
+
+    // protocol - computed: false, optional: true, required: false
+    private _protocol?: string | undefined; 
+    public get protocol() {
+      return this.getStringAttribute('protocol');
+    }
+    public set protocol(value: string | undefined) {
+      this._protocol = value;
+    }
+    public resetProtocol() {
+      this._protocol = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get protocolInput() {
+      return this._protocol
+    }
+
+    // query - computed: false, optional: true, required: false
+    private _query?: string | undefined; 
+    public get query() {
+      return this.getStringAttribute('query');
+    }
+    public set query(value: string | undefined) {
+      this._query = value;
+    }
+    public resetQuery() {
+      this._query = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get queryInput() {
+      return this._query
+    }
+
+    // status_code - computed: false, optional: false, required: true
+    private _statusCode?: string; 
+    public get statusCode() {
+      return this.getStringAttribute('status_code');
+    }
+    public set statusCode(value: string) {
+      this._statusCode = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statusCodeInput() {
+      return this._statusCode
+    }
+  }
   export interface AlbListenerDefaultAction {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener.html#order AlbListener#order}
@@ -867,44 +1552,47 @@ export namespace ELB {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener.html#authenticate_cognito AlbListener#authenticate_cognito}
     */
-    readonly authenticateCognito?: AlbListenerDefaultActionAuthenticateCognito[];
+    readonly authenticateCognito?: AlbListenerDefaultActionAuthenticateCognito;
     /**
     * authenticate_oidc block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener.html#authenticate_oidc AlbListener#authenticate_oidc}
     */
-    readonly authenticateOidc?: AlbListenerDefaultActionAuthenticateOidc[];
+    readonly authenticateOidc?: AlbListenerDefaultActionAuthenticateOidc;
     /**
     * fixed_response block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener.html#fixed_response AlbListener#fixed_response}
     */
-    readonly fixedResponse?: AlbListenerDefaultActionFixedResponse[];
+    readonly fixedResponse?: AlbListenerDefaultActionFixedResponse;
     /**
     * forward block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener.html#forward AlbListener#forward}
     */
-    readonly forward?: AlbListenerDefaultActionForward[];
+    readonly forward?: AlbListenerDefaultActionForward;
     /**
     * redirect block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener.html#redirect AlbListener#redirect}
     */
-    readonly redirect?: AlbListenerDefaultActionRedirect[];
+    readonly redirect?: AlbListenerDefaultActionRedirect;
   }
 
   function albListenerDefaultActionToTerraform(struct?: AlbListenerDefaultAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       order: cdktf.numberToTerraform(struct!.order),
       target_group_arn: cdktf.stringToTerraform(struct!.targetGroupArn),
       type: cdktf.stringToTerraform(struct!.type),
-      authenticate_cognito: cdktf.listMapper(albListenerDefaultActionAuthenticateCognitoToTerraform)(struct!.authenticateCognito),
-      authenticate_oidc: cdktf.listMapper(albListenerDefaultActionAuthenticateOidcToTerraform)(struct!.authenticateOidc),
-      fixed_response: cdktf.listMapper(albListenerDefaultActionFixedResponseToTerraform)(struct!.fixedResponse),
-      forward: cdktf.listMapper(albListenerDefaultActionForwardToTerraform)(struct!.forward),
-      redirect: cdktf.listMapper(albListenerDefaultActionRedirectToTerraform)(struct!.redirect),
+      authenticate_cognito: albListenerDefaultActionAuthenticateCognitoToTerraform(struct!.authenticateCognito),
+      authenticate_oidc: albListenerDefaultActionAuthenticateOidcToTerraform(struct!.authenticateOidc),
+      fixed_response: albListenerDefaultActionFixedResponseToTerraform(struct!.fixedResponse),
+      forward: albListenerDefaultActionForwardToTerraform(struct!.forward),
+      redirect: albListenerDefaultActionRedirectToTerraform(struct!.redirect),
     }
   }
 
@@ -915,13 +1603,42 @@ export namespace ELB {
     readonly read?: string;
   }
 
-  function albListenerTimeoutsToTerraform(struct?: AlbListenerTimeouts): any {
+  function albListenerTimeoutsToTerraform(struct?: AlbListenerTimeoutsOutputReference | AlbListenerTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       read: cdktf.stringToTerraform(struct!.read),
     }
   }
 
+  export class AlbListenerTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // read - computed: false, optional: true, required: false
+    private _read?: string | undefined; 
+    public get read() {
+      return this.getStringAttribute('read');
+    }
+    public set read(value: string | undefined) {
+      this._read = value;
+    }
+    public resetRead() {
+      this._read = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get readInput() {
+      return this._read
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/alb_listener.html aws_alb_listener}
@@ -972,11 +1689,11 @@ export namespace ELB {
     // ==========
 
     // alpn_policy - computed: false, optional: true, required: false
-    private _alpnPolicy?: string;
+    private _alpnPolicy?: string | undefined; 
     public get alpnPolicy() {
       return this.getStringAttribute('alpn_policy');
     }
-    public set alpnPolicy(value: string ) {
+    public set alpnPolicy(value: string | undefined) {
       this._alpnPolicy = value;
     }
     public resetAlpnPolicy() {
@@ -993,11 +1710,11 @@ export namespace ELB {
     }
 
     // certificate_arn - computed: false, optional: true, required: false
-    private _certificateArn?: string;
+    private _certificateArn?: string | undefined; 
     public get certificateArn() {
       return this.getStringAttribute('certificate_arn');
     }
-    public set certificateArn(value: string ) {
+    public set certificateArn(value: string | undefined) {
       this._certificateArn = value;
     }
     public resetCertificateArn() {
@@ -1014,7 +1731,7 @@ export namespace ELB {
     }
 
     // load_balancer_arn - computed: false, optional: false, required: true
-    private _loadBalancerArn: string;
+    private _loadBalancerArn?: string; 
     public get loadBalancerArn() {
       return this.getStringAttribute('load_balancer_arn');
     }
@@ -1027,11 +1744,11 @@ export namespace ELB {
     }
 
     // port - computed: false, optional: true, required: false
-    private _port?: number;
+    private _port?: number | undefined; 
     public get port() {
       return this.getNumberAttribute('port');
     }
-    public set port(value: number ) {
+    public set port(value: number | undefined) {
       this._port = value;
     }
     public resetPort() {
@@ -1043,11 +1760,11 @@ export namespace ELB {
     }
 
     // protocol - computed: true, optional: true, required: false
-    private _protocol?: string;
+    private _protocol?: string | undefined; 
     public get protocol() {
       return this.getStringAttribute('protocol');
     }
-    public set protocol(value: string) {
+    public set protocol(value: string | undefined) {
       this._protocol = value;
     }
     public resetProtocol() {
@@ -1059,11 +1776,11 @@ export namespace ELB {
     }
 
     // ssl_policy - computed: true, optional: true, required: false
-    private _sslPolicy?: string;
+    private _sslPolicy?: string | undefined; 
     public get sslPolicy() {
       return this.getStringAttribute('ssl_policy');
     }
-    public set sslPolicy(value: string) {
+    public set sslPolicy(value: string | undefined) {
       this._sslPolicy = value;
     }
     public resetSslPolicy() {
@@ -1075,11 +1792,12 @@ export namespace ELB {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1091,11 +1809,12 @@ export namespace ELB {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1107,8 +1826,9 @@ export namespace ELB {
     }
 
     // default_action - computed: false, optional: false, required: true
-    private _defaultAction: AlbListenerDefaultAction[];
+    private _defaultAction?: AlbListenerDefaultAction[]; 
     public get defaultAction() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('default_action') as any;
     }
     public set defaultAction(value: AlbListenerDefaultAction[]) {
@@ -1120,11 +1840,12 @@ export namespace ELB {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: AlbListenerTimeouts;
+    private _timeouts?: AlbListenerTimeouts | undefined; 
+    private __timeoutsOutput = new AlbListenerTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: AlbListenerTimeouts ) {
+    public putTimeouts(value: AlbListenerTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1206,7 +1927,7 @@ export namespace ELB {
     // ==========
 
     // certificate_arn - computed: false, optional: false, required: true
-    private _certificateArn: string;
+    private _certificateArn?: string; 
     public get certificateArn() {
       return this.getStringAttribute('certificate_arn');
     }
@@ -1224,7 +1945,7 @@ export namespace ELB {
     }
 
     // listener_arn - computed: false, optional: false, required: true
-    private _listenerArn: string;
+    private _listenerArn?: string; 
     public get listenerArn() {
       return this.getStringAttribute('listener_arn');
     }
@@ -1312,8 +2033,11 @@ export namespace ELB {
     readonly userPoolDomain: string;
   }
 
-  function albListenerRuleActionAuthenticateCognitoToTerraform(struct?: AlbListenerRuleActionAuthenticateCognito): any {
+  function albListenerRuleActionAuthenticateCognitoToTerraform(struct?: AlbListenerRuleActionAuthenticateCognitoOutputReference | AlbListenerRuleActionAuthenticateCognito): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       authentication_request_extra_params: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.authenticationRequestExtraParams),
       on_unauthenticated_request: cdktf.stringToTerraform(struct!.onUnauthenticatedRequest),
@@ -1326,6 +2050,136 @@ export namespace ELB {
     }
   }
 
+  export class AlbListenerRuleActionAuthenticateCognitoOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // authentication_request_extra_params - computed: false, optional: true, required: false
+    private _authenticationRequestExtraParams?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get authenticationRequestExtraParams() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('authentication_request_extra_params') as any;
+    }
+    public set authenticationRequestExtraParams(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._authenticationRequestExtraParams = value;
+    }
+    public resetAuthenticationRequestExtraParams() {
+      this._authenticationRequestExtraParams = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get authenticationRequestExtraParamsInput() {
+      return this._authenticationRequestExtraParams
+    }
+
+    // on_unauthenticated_request - computed: true, optional: true, required: false
+    private _onUnauthenticatedRequest?: string | undefined; 
+    public get onUnauthenticatedRequest() {
+      return this.getStringAttribute('on_unauthenticated_request');
+    }
+    public set onUnauthenticatedRequest(value: string | undefined) {
+      this._onUnauthenticatedRequest = value;
+    }
+    public resetOnUnauthenticatedRequest() {
+      this._onUnauthenticatedRequest = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get onUnauthenticatedRequestInput() {
+      return this._onUnauthenticatedRequest
+    }
+
+    // scope - computed: false, optional: true, required: false
+    private _scope?: string | undefined; 
+    public get scope() {
+      return this.getStringAttribute('scope');
+    }
+    public set scope(value: string | undefined) {
+      this._scope = value;
+    }
+    public resetScope() {
+      this._scope = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get scopeInput() {
+      return this._scope
+    }
+
+    // session_cookie_name - computed: false, optional: true, required: false
+    private _sessionCookieName?: string | undefined; 
+    public get sessionCookieName() {
+      return this.getStringAttribute('session_cookie_name');
+    }
+    public set sessionCookieName(value: string | undefined) {
+      this._sessionCookieName = value;
+    }
+    public resetSessionCookieName() {
+      this._sessionCookieName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sessionCookieNameInput() {
+      return this._sessionCookieName
+    }
+
+    // session_timeout - computed: false, optional: true, required: false
+    private _sessionTimeout?: number | undefined; 
+    public get sessionTimeout() {
+      return this.getNumberAttribute('session_timeout');
+    }
+    public set sessionTimeout(value: number | undefined) {
+      this._sessionTimeout = value;
+    }
+    public resetSessionTimeout() {
+      this._sessionTimeout = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sessionTimeoutInput() {
+      return this._sessionTimeout
+    }
+
+    // user_pool_arn - computed: false, optional: false, required: true
+    private _userPoolArn?: string; 
+    public get userPoolArn() {
+      return this.getStringAttribute('user_pool_arn');
+    }
+    public set userPoolArn(value: string) {
+      this._userPoolArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userPoolArnInput() {
+      return this._userPoolArn
+    }
+
+    // user_pool_client_id - computed: false, optional: false, required: true
+    private _userPoolClientId?: string; 
+    public get userPoolClientId() {
+      return this.getStringAttribute('user_pool_client_id');
+    }
+    public set userPoolClientId(value: string) {
+      this._userPoolClientId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userPoolClientIdInput() {
+      return this._userPoolClientId
+    }
+
+    // user_pool_domain - computed: false, optional: false, required: true
+    private _userPoolDomain?: string; 
+    public get userPoolDomain() {
+      return this.getStringAttribute('user_pool_domain');
+    }
+    public set userPoolDomain(value: string) {
+      this._userPoolDomain = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userPoolDomainInput() {
+      return this._userPoolDomain
+    }
+  }
   export interface AlbListenerRuleActionAuthenticateOidc {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#authentication_request_extra_params AlbListenerRule#authentication_request_extra_params}
@@ -1373,8 +2227,11 @@ export namespace ELB {
     readonly userInfoEndpoint: string;
   }
 
-  function albListenerRuleActionAuthenticateOidcToTerraform(struct?: AlbListenerRuleActionAuthenticateOidc): any {
+  function albListenerRuleActionAuthenticateOidcToTerraform(struct?: AlbListenerRuleActionAuthenticateOidcOutputReference | AlbListenerRuleActionAuthenticateOidc): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       authentication_request_extra_params: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.authenticationRequestExtraParams),
       authorization_endpoint: cdktf.stringToTerraform(struct!.authorizationEndpoint),
@@ -1390,6 +2247,175 @@ export namespace ELB {
     }
   }
 
+  export class AlbListenerRuleActionAuthenticateOidcOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // authentication_request_extra_params - computed: false, optional: true, required: false
+    private _authenticationRequestExtraParams?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get authenticationRequestExtraParams() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('authentication_request_extra_params') as any;
+    }
+    public set authenticationRequestExtraParams(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._authenticationRequestExtraParams = value;
+    }
+    public resetAuthenticationRequestExtraParams() {
+      this._authenticationRequestExtraParams = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get authenticationRequestExtraParamsInput() {
+      return this._authenticationRequestExtraParams
+    }
+
+    // authorization_endpoint - computed: false, optional: false, required: true
+    private _authorizationEndpoint?: string; 
+    public get authorizationEndpoint() {
+      return this.getStringAttribute('authorization_endpoint');
+    }
+    public set authorizationEndpoint(value: string) {
+      this._authorizationEndpoint = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get authorizationEndpointInput() {
+      return this._authorizationEndpoint
+    }
+
+    // client_id - computed: false, optional: false, required: true
+    private _clientId?: string; 
+    public get clientId() {
+      return this.getStringAttribute('client_id');
+    }
+    public set clientId(value: string) {
+      this._clientId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get clientIdInput() {
+      return this._clientId
+    }
+
+    // client_secret - computed: false, optional: false, required: true
+    private _clientSecret?: string; 
+    public get clientSecret() {
+      return this.getStringAttribute('client_secret');
+    }
+    public set clientSecret(value: string) {
+      this._clientSecret = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get clientSecretInput() {
+      return this._clientSecret
+    }
+
+    // issuer - computed: false, optional: false, required: true
+    private _issuer?: string; 
+    public get issuer() {
+      return this.getStringAttribute('issuer');
+    }
+    public set issuer(value: string) {
+      this._issuer = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get issuerInput() {
+      return this._issuer
+    }
+
+    // on_unauthenticated_request - computed: true, optional: true, required: false
+    private _onUnauthenticatedRequest?: string | undefined; 
+    public get onUnauthenticatedRequest() {
+      return this.getStringAttribute('on_unauthenticated_request');
+    }
+    public set onUnauthenticatedRequest(value: string | undefined) {
+      this._onUnauthenticatedRequest = value;
+    }
+    public resetOnUnauthenticatedRequest() {
+      this._onUnauthenticatedRequest = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get onUnauthenticatedRequestInput() {
+      return this._onUnauthenticatedRequest
+    }
+
+    // scope - computed: false, optional: true, required: false
+    private _scope?: string | undefined; 
+    public get scope() {
+      return this.getStringAttribute('scope');
+    }
+    public set scope(value: string | undefined) {
+      this._scope = value;
+    }
+    public resetScope() {
+      this._scope = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get scopeInput() {
+      return this._scope
+    }
+
+    // session_cookie_name - computed: false, optional: true, required: false
+    private _sessionCookieName?: string | undefined; 
+    public get sessionCookieName() {
+      return this.getStringAttribute('session_cookie_name');
+    }
+    public set sessionCookieName(value: string | undefined) {
+      this._sessionCookieName = value;
+    }
+    public resetSessionCookieName() {
+      this._sessionCookieName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sessionCookieNameInput() {
+      return this._sessionCookieName
+    }
+
+    // session_timeout - computed: false, optional: true, required: false
+    private _sessionTimeout?: number | undefined; 
+    public get sessionTimeout() {
+      return this.getNumberAttribute('session_timeout');
+    }
+    public set sessionTimeout(value: number | undefined) {
+      this._sessionTimeout = value;
+    }
+    public resetSessionTimeout() {
+      this._sessionTimeout = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sessionTimeoutInput() {
+      return this._sessionTimeout
+    }
+
+    // token_endpoint - computed: false, optional: false, required: true
+    private _tokenEndpoint?: string; 
+    public get tokenEndpoint() {
+      return this.getStringAttribute('token_endpoint');
+    }
+    public set tokenEndpoint(value: string) {
+      this._tokenEndpoint = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tokenEndpointInput() {
+      return this._tokenEndpoint
+    }
+
+    // user_info_endpoint - computed: false, optional: false, required: true
+    private _userInfoEndpoint?: string; 
+    public get userInfoEndpoint() {
+      return this.getStringAttribute('user_info_endpoint');
+    }
+    public set userInfoEndpoint(value: string) {
+      this._userInfoEndpoint = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userInfoEndpointInput() {
+      return this._userInfoEndpoint
+    }
+  }
   export interface AlbListenerRuleActionFixedResponse {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#content_type AlbListenerRule#content_type}
@@ -1405,8 +2431,11 @@ export namespace ELB {
     readonly statusCode?: string;
   }
 
-  function albListenerRuleActionFixedResponseToTerraform(struct?: AlbListenerRuleActionFixedResponse): any {
+  function albListenerRuleActionFixedResponseToTerraform(struct?: AlbListenerRuleActionFixedResponseOutputReference | AlbListenerRuleActionFixedResponse): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       content_type: cdktf.stringToTerraform(struct!.contentType),
       message_body: cdktf.stringToTerraform(struct!.messageBody),
@@ -1414,6 +2443,61 @@ export namespace ELB {
     }
   }
 
+  export class AlbListenerRuleActionFixedResponseOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // content_type - computed: false, optional: false, required: true
+    private _contentType?: string; 
+    public get contentType() {
+      return this.getStringAttribute('content_type');
+    }
+    public set contentType(value: string) {
+      this._contentType = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get contentTypeInput() {
+      return this._contentType
+    }
+
+    // message_body - computed: false, optional: true, required: false
+    private _messageBody?: string | undefined; 
+    public get messageBody() {
+      return this.getStringAttribute('message_body');
+    }
+    public set messageBody(value: string | undefined) {
+      this._messageBody = value;
+    }
+    public resetMessageBody() {
+      this._messageBody = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get messageBodyInput() {
+      return this._messageBody
+    }
+
+    // status_code - computed: true, optional: true, required: false
+    private _statusCode?: string | undefined; 
+    public get statusCode() {
+      return this.getStringAttribute('status_code');
+    }
+    public set statusCode(value: string | undefined) {
+      this._statusCode = value;
+    }
+    public resetStatusCode() {
+      this._statusCode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statusCodeInput() {
+      return this._statusCode
+    }
+  }
   export interface AlbListenerRuleActionForwardStickiness {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#duration AlbListenerRule#duration}
@@ -1425,14 +2509,56 @@ export namespace ELB {
     readonly enabled?: boolean | cdktf.IResolvable;
   }
 
-  function albListenerRuleActionForwardStickinessToTerraform(struct?: AlbListenerRuleActionForwardStickiness): any {
+  function albListenerRuleActionForwardStickinessToTerraform(struct?: AlbListenerRuleActionForwardStickinessOutputReference | AlbListenerRuleActionForwardStickiness): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       duration: cdktf.numberToTerraform(struct!.duration),
       enabled: cdktf.booleanToTerraform(struct!.enabled),
     }
   }
 
+  export class AlbListenerRuleActionForwardStickinessOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // duration - computed: false, optional: false, required: true
+    private _duration?: number; 
+    public get duration() {
+      return this.getNumberAttribute('duration');
+    }
+    public set duration(value: number) {
+      this._duration = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get durationInput() {
+      return this._duration
+    }
+
+    // enabled - computed: false, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+  }
   export interface AlbListenerRuleActionForwardTargetGroup {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#arn AlbListenerRule#arn}
@@ -1446,6 +2572,9 @@ export namespace ELB {
 
   function albListenerRuleActionForwardTargetGroupToTerraform(struct?: AlbListenerRuleActionForwardTargetGroup): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       arn: cdktf.stringToTerraform(struct!.arn),
       weight: cdktf.numberToTerraform(struct!.weight),
@@ -1458,7 +2587,7 @@ export namespace ELB {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#stickiness AlbListenerRule#stickiness}
     */
-    readonly stickiness?: AlbListenerRuleActionForwardStickiness[];
+    readonly stickiness?: AlbListenerRuleActionForwardStickiness;
     /**
     * target_group block
     * 
@@ -1467,14 +2596,58 @@ export namespace ELB {
     readonly targetGroup: AlbListenerRuleActionForwardTargetGroup[];
   }
 
-  function albListenerRuleActionForwardToTerraform(struct?: AlbListenerRuleActionForward): any {
+  function albListenerRuleActionForwardToTerraform(struct?: AlbListenerRuleActionForwardOutputReference | AlbListenerRuleActionForward): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      stickiness: cdktf.listMapper(albListenerRuleActionForwardStickinessToTerraform)(struct!.stickiness),
+      stickiness: albListenerRuleActionForwardStickinessToTerraform(struct!.stickiness),
       target_group: cdktf.listMapper(albListenerRuleActionForwardTargetGroupToTerraform)(struct!.targetGroup),
     }
   }
 
+  export class AlbListenerRuleActionForwardOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // stickiness - computed: false, optional: true, required: false
+    private _stickiness?: AlbListenerRuleActionForwardStickiness | undefined; 
+    private __stickinessOutput = new AlbListenerRuleActionForwardStickinessOutputReference(this as any, "stickiness", true);
+    public get stickiness() {
+      return this.__stickinessOutput;
+    }
+    public putStickiness(value: AlbListenerRuleActionForwardStickiness | undefined) {
+      this._stickiness = value;
+    }
+    public resetStickiness() {
+      this._stickiness = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get stickinessInput() {
+      return this._stickiness
+    }
+
+    // target_group - computed: false, optional: false, required: true
+    private _targetGroup?: AlbListenerRuleActionForwardTargetGroup[]; 
+    public get targetGroup() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('target_group') as any;
+    }
+    public set targetGroup(value: AlbListenerRuleActionForwardTargetGroup[]) {
+      this._targetGroup = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get targetGroupInput() {
+      return this._targetGroup
+    }
+  }
   export interface AlbListenerRuleActionRedirect {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#host AlbListenerRule#host}
@@ -1502,8 +2675,11 @@ export namespace ELB {
     readonly statusCode: string;
   }
 
-  function albListenerRuleActionRedirectToTerraform(struct?: AlbListenerRuleActionRedirect): any {
+  function albListenerRuleActionRedirectToTerraform(struct?: AlbListenerRuleActionRedirectOutputReference | AlbListenerRuleActionRedirect): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       host: cdktf.stringToTerraform(struct!.host),
       path: cdktf.stringToTerraform(struct!.path),
@@ -1514,6 +2690,109 @@ export namespace ELB {
     }
   }
 
+  export class AlbListenerRuleActionRedirectOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // host - computed: false, optional: true, required: false
+    private _host?: string | undefined; 
+    public get host() {
+      return this.getStringAttribute('host');
+    }
+    public set host(value: string | undefined) {
+      this._host = value;
+    }
+    public resetHost() {
+      this._host = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get hostInput() {
+      return this._host
+    }
+
+    // path - computed: false, optional: true, required: false
+    private _path?: string | undefined; 
+    public get path() {
+      return this.getStringAttribute('path');
+    }
+    public set path(value: string | undefined) {
+      this._path = value;
+    }
+    public resetPath() {
+      this._path = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get pathInput() {
+      return this._path
+    }
+
+    // port - computed: false, optional: true, required: false
+    private _port?: string | undefined; 
+    public get port() {
+      return this.getStringAttribute('port');
+    }
+    public set port(value: string | undefined) {
+      this._port = value;
+    }
+    public resetPort() {
+      this._port = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get portInput() {
+      return this._port
+    }
+
+    // protocol - computed: false, optional: true, required: false
+    private _protocol?: string | undefined; 
+    public get protocol() {
+      return this.getStringAttribute('protocol');
+    }
+    public set protocol(value: string | undefined) {
+      this._protocol = value;
+    }
+    public resetProtocol() {
+      this._protocol = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get protocolInput() {
+      return this._protocol
+    }
+
+    // query - computed: false, optional: true, required: false
+    private _query?: string | undefined; 
+    public get query() {
+      return this.getStringAttribute('query');
+    }
+    public set query(value: string | undefined) {
+      this._query = value;
+    }
+    public resetQuery() {
+      this._query = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get queryInput() {
+      return this._query
+    }
+
+    // status_code - computed: false, optional: false, required: true
+    private _statusCode?: string; 
+    public get statusCode() {
+      return this.getStringAttribute('status_code');
+    }
+    public set statusCode(value: string) {
+      this._statusCode = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statusCodeInput() {
+      return this._statusCode
+    }
+  }
   export interface AlbListenerRuleAction {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#order AlbListenerRule#order}
@@ -1532,44 +2811,47 @@ export namespace ELB {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#authenticate_cognito AlbListenerRule#authenticate_cognito}
     */
-    readonly authenticateCognito?: AlbListenerRuleActionAuthenticateCognito[];
+    readonly authenticateCognito?: AlbListenerRuleActionAuthenticateCognito;
     /**
     * authenticate_oidc block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#authenticate_oidc AlbListenerRule#authenticate_oidc}
     */
-    readonly authenticateOidc?: AlbListenerRuleActionAuthenticateOidc[];
+    readonly authenticateOidc?: AlbListenerRuleActionAuthenticateOidc;
     /**
     * fixed_response block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#fixed_response AlbListenerRule#fixed_response}
     */
-    readonly fixedResponse?: AlbListenerRuleActionFixedResponse[];
+    readonly fixedResponse?: AlbListenerRuleActionFixedResponse;
     /**
     * forward block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#forward AlbListenerRule#forward}
     */
-    readonly forward?: AlbListenerRuleActionForward[];
+    readonly forward?: AlbListenerRuleActionForward;
     /**
     * redirect block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#redirect AlbListenerRule#redirect}
     */
-    readonly redirect?: AlbListenerRuleActionRedirect[];
+    readonly redirect?: AlbListenerRuleActionRedirect;
   }
 
   function albListenerRuleActionToTerraform(struct?: AlbListenerRuleAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       order: cdktf.numberToTerraform(struct!.order),
       target_group_arn: cdktf.stringToTerraform(struct!.targetGroupArn),
       type: cdktf.stringToTerraform(struct!.type),
-      authenticate_cognito: cdktf.listMapper(albListenerRuleActionAuthenticateCognitoToTerraform)(struct!.authenticateCognito),
-      authenticate_oidc: cdktf.listMapper(albListenerRuleActionAuthenticateOidcToTerraform)(struct!.authenticateOidc),
-      fixed_response: cdktf.listMapper(albListenerRuleActionFixedResponseToTerraform)(struct!.fixedResponse),
-      forward: cdktf.listMapper(albListenerRuleActionForwardToTerraform)(struct!.forward),
-      redirect: cdktf.listMapper(albListenerRuleActionRedirectToTerraform)(struct!.redirect),
+      authenticate_cognito: albListenerRuleActionAuthenticateCognitoToTerraform(struct!.authenticateCognito),
+      authenticate_oidc: albListenerRuleActionAuthenticateOidcToTerraform(struct!.authenticateOidc),
+      fixed_response: albListenerRuleActionFixedResponseToTerraform(struct!.fixedResponse),
+      forward: albListenerRuleActionForwardToTerraform(struct!.forward),
+      redirect: albListenerRuleActionRedirectToTerraform(struct!.redirect),
     }
   }
 
@@ -1580,13 +2862,39 @@ export namespace ELB {
     readonly values: string[];
   }
 
-  function albListenerRuleConditionHostHeaderToTerraform(struct?: AlbListenerRuleConditionHostHeader): any {
+  function albListenerRuleConditionHostHeaderToTerraform(struct?: AlbListenerRuleConditionHostHeaderOutputReference | AlbListenerRuleConditionHostHeader): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
     }
   }
 
+  export class AlbListenerRuleConditionHostHeaderOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // values - computed: false, optional: false, required: true
+    private _values?: string[]; 
+    public get values() {
+      return this.getListAttribute('values');
+    }
+    public set values(value: string[]) {
+      this._values = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valuesInput() {
+      return this._values
+    }
+  }
   export interface AlbListenerRuleConditionHttpHeader {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#http_header_name AlbListenerRule#http_header_name}
@@ -1598,14 +2906,53 @@ export namespace ELB {
     readonly values: string[];
   }
 
-  function albListenerRuleConditionHttpHeaderToTerraform(struct?: AlbListenerRuleConditionHttpHeader): any {
+  function albListenerRuleConditionHttpHeaderToTerraform(struct?: AlbListenerRuleConditionHttpHeaderOutputReference | AlbListenerRuleConditionHttpHeader): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       http_header_name: cdktf.stringToTerraform(struct!.httpHeaderName),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
     }
   }
 
+  export class AlbListenerRuleConditionHttpHeaderOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // http_header_name - computed: false, optional: false, required: true
+    private _httpHeaderName?: string; 
+    public get httpHeaderName() {
+      return this.getStringAttribute('http_header_name');
+    }
+    public set httpHeaderName(value: string) {
+      this._httpHeaderName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get httpHeaderNameInput() {
+      return this._httpHeaderName
+    }
+
+    // values - computed: false, optional: false, required: true
+    private _values?: string[]; 
+    public get values() {
+      return this.getListAttribute('values');
+    }
+    public set values(value: string[]) {
+      this._values = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valuesInput() {
+      return this._values
+    }
+  }
   export interface AlbListenerRuleConditionHttpRequestMethod {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#values AlbListenerRule#values}
@@ -1613,13 +2960,39 @@ export namespace ELB {
     readonly values: string[];
   }
 
-  function albListenerRuleConditionHttpRequestMethodToTerraform(struct?: AlbListenerRuleConditionHttpRequestMethod): any {
+  function albListenerRuleConditionHttpRequestMethodToTerraform(struct?: AlbListenerRuleConditionHttpRequestMethodOutputReference | AlbListenerRuleConditionHttpRequestMethod): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
     }
   }
 
+  export class AlbListenerRuleConditionHttpRequestMethodOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // values - computed: false, optional: false, required: true
+    private _values?: string[]; 
+    public get values() {
+      return this.getListAttribute('values');
+    }
+    public set values(value: string[]) {
+      this._values = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valuesInput() {
+      return this._values
+    }
+  }
   export interface AlbListenerRuleConditionPathPattern {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#values AlbListenerRule#values}
@@ -1627,13 +3000,39 @@ export namespace ELB {
     readonly values: string[];
   }
 
-  function albListenerRuleConditionPathPatternToTerraform(struct?: AlbListenerRuleConditionPathPattern): any {
+  function albListenerRuleConditionPathPatternToTerraform(struct?: AlbListenerRuleConditionPathPatternOutputReference | AlbListenerRuleConditionPathPattern): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
     }
   }
 
+  export class AlbListenerRuleConditionPathPatternOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // values - computed: false, optional: false, required: true
+    private _values?: string[]; 
+    public get values() {
+      return this.getListAttribute('values');
+    }
+    public set values(value: string[]) {
+      this._values = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valuesInput() {
+      return this._values
+    }
+  }
   export interface AlbListenerRuleConditionQueryString {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#key AlbListenerRule#key}
@@ -1647,6 +3046,9 @@ export namespace ELB {
 
   function albListenerRuleConditionQueryStringToTerraform(struct?: AlbListenerRuleConditionQueryString): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1660,38 +3062,64 @@ export namespace ELB {
     readonly values: string[];
   }
 
-  function albListenerRuleConditionSourceIpToTerraform(struct?: AlbListenerRuleConditionSourceIp): any {
+  function albListenerRuleConditionSourceIpToTerraform(struct?: AlbListenerRuleConditionSourceIpOutputReference | AlbListenerRuleConditionSourceIp): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
     }
   }
 
+  export class AlbListenerRuleConditionSourceIpOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // values - computed: false, optional: false, required: true
+    private _values?: string[]; 
+    public get values() {
+      return this.getListAttribute('values');
+    }
+    public set values(value: string[]) {
+      this._values = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valuesInput() {
+      return this._values
+    }
+  }
   export interface AlbListenerRuleCondition {
     /**
     * host_header block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#host_header AlbListenerRule#host_header}
     */
-    readonly hostHeader?: AlbListenerRuleConditionHostHeader[];
+    readonly hostHeader?: AlbListenerRuleConditionHostHeader;
     /**
     * http_header block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#http_header AlbListenerRule#http_header}
     */
-    readonly httpHeader?: AlbListenerRuleConditionHttpHeader[];
+    readonly httpHeader?: AlbListenerRuleConditionHttpHeader;
     /**
     * http_request_method block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#http_request_method AlbListenerRule#http_request_method}
     */
-    readonly httpRequestMethod?: AlbListenerRuleConditionHttpRequestMethod[];
+    readonly httpRequestMethod?: AlbListenerRuleConditionHttpRequestMethod;
     /**
     * path_pattern block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#path_pattern AlbListenerRule#path_pattern}
     */
-    readonly pathPattern?: AlbListenerRuleConditionPathPattern[];
+    readonly pathPattern?: AlbListenerRuleConditionPathPattern;
     /**
     * query_string block
     * 
@@ -1703,18 +3131,21 @@ export namespace ELB {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_listener_rule.html#source_ip AlbListenerRule#source_ip}
     */
-    readonly sourceIp?: AlbListenerRuleConditionSourceIp[];
+    readonly sourceIp?: AlbListenerRuleConditionSourceIp;
   }
 
   function albListenerRuleConditionToTerraform(struct?: AlbListenerRuleCondition): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      host_header: cdktf.listMapper(albListenerRuleConditionHostHeaderToTerraform)(struct!.hostHeader),
-      http_header: cdktf.listMapper(albListenerRuleConditionHttpHeaderToTerraform)(struct!.httpHeader),
-      http_request_method: cdktf.listMapper(albListenerRuleConditionHttpRequestMethodToTerraform)(struct!.httpRequestMethod),
-      path_pattern: cdktf.listMapper(albListenerRuleConditionPathPatternToTerraform)(struct!.pathPattern),
+      host_header: albListenerRuleConditionHostHeaderToTerraform(struct!.hostHeader),
+      http_header: albListenerRuleConditionHttpHeaderToTerraform(struct!.httpHeader),
+      http_request_method: albListenerRuleConditionHttpRequestMethodToTerraform(struct!.httpRequestMethod),
+      path_pattern: albListenerRuleConditionPathPatternToTerraform(struct!.pathPattern),
       query_string: cdktf.listMapper(albListenerRuleConditionQueryStringToTerraform)(struct!.queryString),
-      source_ip: cdktf.listMapper(albListenerRuleConditionSourceIpToTerraform)(struct!.sourceIp),
+      source_ip: albListenerRuleConditionSourceIpToTerraform(struct!.sourceIp),
     }
   }
 
@@ -1774,7 +3205,7 @@ export namespace ELB {
     }
 
     // listener_arn - computed: false, optional: false, required: true
-    private _listenerArn: string;
+    private _listenerArn?: string; 
     public get listenerArn() {
       return this.getStringAttribute('listener_arn');
     }
@@ -1787,11 +3218,11 @@ export namespace ELB {
     }
 
     // priority - computed: true, optional: true, required: false
-    private _priority?: number;
+    private _priority?: number | undefined; 
     public get priority() {
       return this.getNumberAttribute('priority');
     }
-    public set priority(value: number) {
+    public set priority(value: number | undefined) {
       this._priority = value;
     }
     public resetPriority() {
@@ -1803,11 +3234,12 @@ export namespace ELB {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1819,11 +3251,12 @@ export namespace ELB {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1835,8 +3268,9 @@ export namespace ELB {
     }
 
     // action - computed: false, optional: false, required: true
-    private _action: AlbListenerRuleAction[];
+    private _action?: AlbListenerRuleAction[]; 
     public get action() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('action') as any;
     }
     public set action(value: AlbListenerRuleAction[]) {
@@ -1848,8 +3282,9 @@ export namespace ELB {
     }
 
     // condition - computed: false, optional: false, required: true
-    private _condition: AlbListenerRuleCondition[];
+    private _condition?: AlbListenerRuleCondition[]; 
     public get condition() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('condition') as any;
     }
     public set condition(value: AlbListenerRuleCondition[]) {
@@ -1941,13 +3376,13 @@ export namespace ELB {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_target_group.html#health_check AlbTargetGroup#health_check}
     */
-    readonly healthCheck?: AlbTargetGroupHealthCheck[];
+    readonly healthCheck?: AlbTargetGroupHealthCheck;
     /**
     * stickiness block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_target_group.html#stickiness AlbTargetGroup#stickiness}
     */
-    readonly stickiness?: AlbTargetGroupStickiness[];
+    readonly stickiness?: AlbTargetGroupStickiness;
   }
   export interface AlbTargetGroupHealthCheck {
     /**
@@ -1988,8 +3423,11 @@ export namespace ELB {
     readonly unhealthyThreshold?: number;
   }
 
-  function albTargetGroupHealthCheckToTerraform(struct?: AlbTargetGroupHealthCheck): any {
+  function albTargetGroupHealthCheckToTerraform(struct?: AlbTargetGroupHealthCheckOutputReference | AlbTargetGroupHealthCheck): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       enabled: cdktf.booleanToTerraform(struct!.enabled),
       healthy_threshold: cdktf.numberToTerraform(struct!.healthyThreshold),
@@ -2003,6 +3441,160 @@ export namespace ELB {
     }
   }
 
+  export class AlbTargetGroupHealthCheckOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // enabled - computed: false, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+
+    // healthy_threshold - computed: false, optional: true, required: false
+    private _healthyThreshold?: number | undefined; 
+    public get healthyThreshold() {
+      return this.getNumberAttribute('healthy_threshold');
+    }
+    public set healthyThreshold(value: number | undefined) {
+      this._healthyThreshold = value;
+    }
+    public resetHealthyThreshold() {
+      this._healthyThreshold = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get healthyThresholdInput() {
+      return this._healthyThreshold
+    }
+
+    // interval - computed: false, optional: true, required: false
+    private _interval?: number | undefined; 
+    public get interval() {
+      return this.getNumberAttribute('interval');
+    }
+    public set interval(value: number | undefined) {
+      this._interval = value;
+    }
+    public resetInterval() {
+      this._interval = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get intervalInput() {
+      return this._interval
+    }
+
+    // matcher - computed: true, optional: true, required: false
+    private _matcher?: string | undefined; 
+    public get matcher() {
+      return this.getStringAttribute('matcher');
+    }
+    public set matcher(value: string | undefined) {
+      this._matcher = value;
+    }
+    public resetMatcher() {
+      this._matcher = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get matcherInput() {
+      return this._matcher
+    }
+
+    // path - computed: true, optional: true, required: false
+    private _path?: string | undefined; 
+    public get path() {
+      return this.getStringAttribute('path');
+    }
+    public set path(value: string | undefined) {
+      this._path = value;
+    }
+    public resetPath() {
+      this._path = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get pathInput() {
+      return this._path
+    }
+
+    // port - computed: false, optional: true, required: false
+    private _port?: string | undefined; 
+    public get port() {
+      return this.getStringAttribute('port');
+    }
+    public set port(value: string | undefined) {
+      this._port = value;
+    }
+    public resetPort() {
+      this._port = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get portInput() {
+      return this._port
+    }
+
+    // protocol - computed: false, optional: true, required: false
+    private _protocol?: string | undefined; 
+    public get protocol() {
+      return this.getStringAttribute('protocol');
+    }
+    public set protocol(value: string | undefined) {
+      this._protocol = value;
+    }
+    public resetProtocol() {
+      this._protocol = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get protocolInput() {
+      return this._protocol
+    }
+
+    // timeout - computed: true, optional: true, required: false
+    private _timeout?: number | undefined; 
+    public get timeout() {
+      return this.getNumberAttribute('timeout');
+    }
+    public set timeout(value: number | undefined) {
+      this._timeout = value;
+    }
+    public resetTimeout() {
+      this._timeout = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get timeoutInput() {
+      return this._timeout
+    }
+
+    // unhealthy_threshold - computed: false, optional: true, required: false
+    private _unhealthyThreshold?: number | undefined; 
+    public get unhealthyThreshold() {
+      return this.getNumberAttribute('unhealthy_threshold');
+    }
+    public set unhealthyThreshold(value: number | undefined) {
+      this._unhealthyThreshold = value;
+    }
+    public resetUnhealthyThreshold() {
+      this._unhealthyThreshold = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get unhealthyThresholdInput() {
+      return this._unhealthyThreshold
+    }
+  }
   export interface AlbTargetGroupStickiness {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/alb_target_group.html#cookie_duration AlbTargetGroup#cookie_duration}
@@ -2022,8 +3614,11 @@ export namespace ELB {
     readonly type: string;
   }
 
-  function albTargetGroupStickinessToTerraform(struct?: AlbTargetGroupStickiness): any {
+  function albTargetGroupStickinessToTerraform(struct?: AlbTargetGroupStickinessOutputReference | AlbTargetGroupStickiness): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cookie_duration: cdktf.numberToTerraform(struct!.cookieDuration),
       cookie_name: cdktf.stringToTerraform(struct!.cookieName),
@@ -2032,6 +3627,77 @@ export namespace ELB {
     }
   }
 
+  export class AlbTargetGroupStickinessOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // cookie_duration - computed: false, optional: true, required: false
+    private _cookieDuration?: number | undefined; 
+    public get cookieDuration() {
+      return this.getNumberAttribute('cookie_duration');
+    }
+    public set cookieDuration(value: number | undefined) {
+      this._cookieDuration = value;
+    }
+    public resetCookieDuration() {
+      this._cookieDuration = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cookieDurationInput() {
+      return this._cookieDuration
+    }
+
+    // cookie_name - computed: false, optional: true, required: false
+    private _cookieName?: string | undefined; 
+    public get cookieName() {
+      return this.getStringAttribute('cookie_name');
+    }
+    public set cookieName(value: string | undefined) {
+      this._cookieName = value;
+    }
+    public resetCookieName() {
+      this._cookieName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cookieNameInput() {
+      return this._cookieName
+    }
+
+    // enabled - computed: false, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/alb_target_group.html aws_alb_target_group}
@@ -2099,11 +3765,11 @@ export namespace ELB {
     }
 
     // deregistration_delay - computed: false, optional: true, required: false
-    private _deregistrationDelay?: string;
+    private _deregistrationDelay?: string | undefined; 
     public get deregistrationDelay() {
       return this.getStringAttribute('deregistration_delay');
     }
-    public set deregistrationDelay(value: string ) {
+    public set deregistrationDelay(value: string | undefined) {
       this._deregistrationDelay = value;
     }
     public resetDeregistrationDelay() {
@@ -2120,11 +3786,11 @@ export namespace ELB {
     }
 
     // lambda_multi_value_headers_enabled - computed: false, optional: true, required: false
-    private _lambdaMultiValueHeadersEnabled?: boolean | cdktf.IResolvable;
+    private _lambdaMultiValueHeadersEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get lambdaMultiValueHeadersEnabled() {
-      return this.getBooleanAttribute('lambda_multi_value_headers_enabled');
+      return this.getBooleanAttribute('lambda_multi_value_headers_enabled') as any;
     }
-    public set lambdaMultiValueHeadersEnabled(value: boolean | cdktf.IResolvable ) {
+    public set lambdaMultiValueHeadersEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._lambdaMultiValueHeadersEnabled = value;
     }
     public resetLambdaMultiValueHeadersEnabled() {
@@ -2136,11 +3802,11 @@ export namespace ELB {
     }
 
     // load_balancing_algorithm_type - computed: true, optional: true, required: false
-    private _loadBalancingAlgorithmType?: string;
+    private _loadBalancingAlgorithmType?: string | undefined; 
     public get loadBalancingAlgorithmType() {
       return this.getStringAttribute('load_balancing_algorithm_type');
     }
-    public set loadBalancingAlgorithmType(value: string) {
+    public set loadBalancingAlgorithmType(value: string | undefined) {
       this._loadBalancingAlgorithmType = value;
     }
     public resetLoadBalancingAlgorithmType() {
@@ -2152,11 +3818,11 @@ export namespace ELB {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -2168,11 +3834,11 @@ export namespace ELB {
     }
 
     // name_prefix - computed: false, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string ) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -2184,11 +3850,11 @@ export namespace ELB {
     }
 
     // port - computed: false, optional: true, required: false
-    private _port?: number;
+    private _port?: number | undefined; 
     public get port() {
       return this.getNumberAttribute('port');
     }
-    public set port(value: number ) {
+    public set port(value: number | undefined) {
       this._port = value;
     }
     public resetPort() {
@@ -2200,11 +3866,11 @@ export namespace ELB {
     }
 
     // preserve_client_ip - computed: true, optional: true, required: false
-    private _preserveClientIp?: string;
+    private _preserveClientIp?: string | undefined; 
     public get preserveClientIp() {
       return this.getStringAttribute('preserve_client_ip');
     }
-    public set preserveClientIp(value: string) {
+    public set preserveClientIp(value: string | undefined) {
       this._preserveClientIp = value;
     }
     public resetPreserveClientIp() {
@@ -2216,11 +3882,11 @@ export namespace ELB {
     }
 
     // protocol - computed: false, optional: true, required: false
-    private _protocol?: string;
+    private _protocol?: string | undefined; 
     public get protocol() {
       return this.getStringAttribute('protocol');
     }
-    public set protocol(value: string ) {
+    public set protocol(value: string | undefined) {
       this._protocol = value;
     }
     public resetProtocol() {
@@ -2232,11 +3898,11 @@ export namespace ELB {
     }
 
     // protocol_version - computed: true, optional: true, required: false
-    private _protocolVersion?: string;
+    private _protocolVersion?: string | undefined; 
     public get protocolVersion() {
       return this.getStringAttribute('protocol_version');
     }
-    public set protocolVersion(value: string) {
+    public set protocolVersion(value: string | undefined) {
       this._protocolVersion = value;
     }
     public resetProtocolVersion() {
@@ -2248,11 +3914,11 @@ export namespace ELB {
     }
 
     // proxy_protocol_v2 - computed: false, optional: true, required: false
-    private _proxyProtocolV2?: boolean | cdktf.IResolvable;
+    private _proxyProtocolV2?: boolean | cdktf.IResolvable | undefined; 
     public get proxyProtocolV2() {
-      return this.getBooleanAttribute('proxy_protocol_v2');
+      return this.getBooleanAttribute('proxy_protocol_v2') as any;
     }
-    public set proxyProtocolV2(value: boolean | cdktf.IResolvable ) {
+    public set proxyProtocolV2(value: boolean | cdktf.IResolvable | undefined) {
       this._proxyProtocolV2 = value;
     }
     public resetProxyProtocolV2() {
@@ -2264,11 +3930,11 @@ export namespace ELB {
     }
 
     // slow_start - computed: false, optional: true, required: false
-    private _slowStart?: number;
+    private _slowStart?: number | undefined; 
     public get slowStart() {
       return this.getNumberAttribute('slow_start');
     }
-    public set slowStart(value: number ) {
+    public set slowStart(value: number | undefined) {
       this._slowStart = value;
     }
     public resetSlowStart() {
@@ -2280,11 +3946,12 @@ export namespace ELB {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2296,11 +3963,12 @@ export namespace ELB {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2312,11 +3980,11 @@ export namespace ELB {
     }
 
     // target_type - computed: false, optional: true, required: false
-    private _targetType?: string;
+    private _targetType?: string | undefined; 
     public get targetType() {
       return this.getStringAttribute('target_type');
     }
-    public set targetType(value: string ) {
+    public set targetType(value: string | undefined) {
       this._targetType = value;
     }
     public resetTargetType() {
@@ -2328,11 +3996,11 @@ export namespace ELB {
     }
 
     // vpc_id - computed: false, optional: true, required: false
-    private _vpcId?: string;
+    private _vpcId?: string | undefined; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
-    public set vpcId(value: string ) {
+    public set vpcId(value: string | undefined) {
       this._vpcId = value;
     }
     public resetVpcId() {
@@ -2344,11 +4012,12 @@ export namespace ELB {
     }
 
     // health_check - computed: false, optional: true, required: false
-    private _healthCheck?: AlbTargetGroupHealthCheck[];
+    private _healthCheck?: AlbTargetGroupHealthCheck | undefined; 
+    private __healthCheckOutput = new AlbTargetGroupHealthCheckOutputReference(this as any, "health_check", true);
     public get healthCheck() {
-      return this.interpolationForAttribute('health_check') as any;
+      return this.__healthCheckOutput;
     }
-    public set healthCheck(value: AlbTargetGroupHealthCheck[] ) {
+    public putHealthCheck(value: AlbTargetGroupHealthCheck | undefined) {
       this._healthCheck = value;
     }
     public resetHealthCheck() {
@@ -2360,11 +4029,12 @@ export namespace ELB {
     }
 
     // stickiness - computed: false, optional: true, required: false
-    private _stickiness?: AlbTargetGroupStickiness[];
+    private _stickiness?: AlbTargetGroupStickiness | undefined; 
+    private __stickinessOutput = new AlbTargetGroupStickinessOutputReference(this as any, "stickiness", true);
     public get stickiness() {
-      return this.interpolationForAttribute('stickiness') as any;
+      return this.__stickinessOutput;
     }
-    public set stickiness(value: AlbTargetGroupStickiness[] ) {
+    public putStickiness(value: AlbTargetGroupStickiness | undefined) {
       this._stickiness = value;
     }
     public resetStickiness() {
@@ -2396,8 +4066,8 @@ export namespace ELB {
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         target_type: cdktf.stringToTerraform(this._targetType),
         vpc_id: cdktf.stringToTerraform(this._vpcId),
-        health_check: cdktf.listMapper(albTargetGroupHealthCheckToTerraform)(this._healthCheck),
-        stickiness: cdktf.listMapper(albTargetGroupStickinessToTerraform)(this._stickiness),
+        health_check: albTargetGroupHealthCheckToTerraform(this._healthCheck),
+        stickiness: albTargetGroupStickinessToTerraform(this._stickiness),
       };
     }
   }
@@ -2463,11 +4133,11 @@ export namespace ELB {
     // ==========
 
     // availability_zone - computed: false, optional: true, required: false
-    private _availabilityZone?: string;
+    private _availabilityZone?: string | undefined; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
-    public set availabilityZone(value: string ) {
+    public set availabilityZone(value: string | undefined) {
       this._availabilityZone = value;
     }
     public resetAvailabilityZone() {
@@ -2484,11 +4154,11 @@ export namespace ELB {
     }
 
     // port - computed: false, optional: true, required: false
-    private _port?: number;
+    private _port?: number | undefined; 
     public get port() {
       return this.getNumberAttribute('port');
     }
-    public set port(value: number ) {
+    public set port(value: number | undefined) {
       this._port = value;
     }
     public resetPort() {
@@ -2500,7 +4170,7 @@ export namespace ELB {
     }
 
     // target_group_arn - computed: false, optional: false, required: true
-    private _targetGroupArn: string;
+    private _targetGroupArn?: string; 
     public get targetGroupArn() {
       return this.getStringAttribute('target_group_arn');
     }
@@ -2513,7 +4183,7 @@ export namespace ELB {
     }
 
     // target_id - computed: false, optional: false, required: true
-    private _targetId: string;
+    private _targetId?: string; 
     public get targetId() {
       return this.getStringAttribute('target_id');
     }
@@ -2600,7 +4270,7 @@ export namespace ELB {
     // ==========
 
     // cookie_name - computed: false, optional: false, required: true
-    private _cookieName: string;
+    private _cookieName?: string; 
     public get cookieName() {
       return this.getStringAttribute('cookie_name');
     }
@@ -2618,7 +4288,7 @@ export namespace ELB {
     }
 
     // lb_port - computed: false, optional: false, required: true
-    private _lbPort: number;
+    private _lbPort?: number; 
     public get lbPort() {
       return this.getNumberAttribute('lb_port');
     }
@@ -2631,7 +4301,7 @@ export namespace ELB {
     }
 
     // load_balancer - computed: false, optional: false, required: true
-    private _loadBalancer: string;
+    private _loadBalancer?: string; 
     public get loadBalancer() {
       return this.getStringAttribute('load_balancer');
     }
@@ -2644,7 +4314,7 @@ export namespace ELB {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2735,7 +4405,7 @@ export namespace ELB {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb.html#access_logs Lb#access_logs}
     */
-    readonly accessLogs?: LbAccessLogs[];
+    readonly accessLogs?: LbAccessLogs;
     /**
     * subnet_mapping block
     * 
@@ -2764,8 +4434,11 @@ export namespace ELB {
     readonly prefix?: string;
   }
 
-  function lbAccessLogsToTerraform(struct?: LbAccessLogs): any {
+  function lbAccessLogsToTerraform(struct?: LbAccessLogsOutputReference | LbAccessLogs): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bucket: cdktf.stringToTerraform(struct!.bucket),
       enabled: cdktf.booleanToTerraform(struct!.enabled),
@@ -2773,6 +4446,61 @@ export namespace ELB {
     }
   }
 
+  export class LbAccessLogsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // bucket - computed: false, optional: false, required: true
+    private _bucket?: string; 
+    public get bucket() {
+      return this.getStringAttribute('bucket');
+    }
+    public set bucket(value: string) {
+      this._bucket = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bucketInput() {
+      return this._bucket
+    }
+
+    // enabled - computed: false, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+
+    // prefix - computed: false, optional: true, required: false
+    private _prefix?: string | undefined; 
+    public get prefix() {
+      return this.getStringAttribute('prefix');
+    }
+    public set prefix(value: string | undefined) {
+      this._prefix = value;
+    }
+    public resetPrefix() {
+      this._prefix = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get prefixInput() {
+      return this._prefix
+    }
+  }
   export interface LbSubnetMapping {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb.html#allocation_id Lb#allocation_id}
@@ -2794,6 +4522,9 @@ export namespace ELB {
 
   function lbSubnetMappingToTerraform(struct?: LbSubnetMapping): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allocation_id: cdktf.stringToTerraform(struct!.allocationId),
       ipv6_address: cdktf.stringToTerraform(struct!.ipv6Address),
@@ -2817,8 +4548,11 @@ export namespace ELB {
     readonly update?: string;
   }
 
-  function lbTimeoutsToTerraform(struct?: LbTimeouts): any {
+  function lbTimeoutsToTerraform(struct?: LbTimeoutsOutputReference | LbTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -2826,6 +4560,64 @@ export namespace ELB {
     }
   }
 
+  export class LbTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/lb.html aws_lb}
@@ -2894,11 +4686,11 @@ export namespace ELB {
     }
 
     // customer_owned_ipv4_pool - computed: false, optional: true, required: false
-    private _customerOwnedIpv4Pool?: string;
+    private _customerOwnedIpv4Pool?: string | undefined; 
     public get customerOwnedIpv4Pool() {
       return this.getStringAttribute('customer_owned_ipv4_pool');
     }
-    public set customerOwnedIpv4Pool(value: string ) {
+    public set customerOwnedIpv4Pool(value: string | undefined) {
       this._customerOwnedIpv4Pool = value;
     }
     public resetCustomerOwnedIpv4Pool() {
@@ -2915,11 +4707,11 @@ export namespace ELB {
     }
 
     // drop_invalid_header_fields - computed: false, optional: true, required: false
-    private _dropInvalidHeaderFields?: boolean | cdktf.IResolvable;
+    private _dropInvalidHeaderFields?: boolean | cdktf.IResolvable | undefined; 
     public get dropInvalidHeaderFields() {
-      return this.getBooleanAttribute('drop_invalid_header_fields');
+      return this.getBooleanAttribute('drop_invalid_header_fields') as any;
     }
-    public set dropInvalidHeaderFields(value: boolean | cdktf.IResolvable ) {
+    public set dropInvalidHeaderFields(value: boolean | cdktf.IResolvable | undefined) {
       this._dropInvalidHeaderFields = value;
     }
     public resetDropInvalidHeaderFields() {
@@ -2931,11 +4723,11 @@ export namespace ELB {
     }
 
     // enable_cross_zone_load_balancing - computed: false, optional: true, required: false
-    private _enableCrossZoneLoadBalancing?: boolean | cdktf.IResolvable;
+    private _enableCrossZoneLoadBalancing?: boolean | cdktf.IResolvable | undefined; 
     public get enableCrossZoneLoadBalancing() {
-      return this.getBooleanAttribute('enable_cross_zone_load_balancing');
+      return this.getBooleanAttribute('enable_cross_zone_load_balancing') as any;
     }
-    public set enableCrossZoneLoadBalancing(value: boolean | cdktf.IResolvable ) {
+    public set enableCrossZoneLoadBalancing(value: boolean | cdktf.IResolvable | undefined) {
       this._enableCrossZoneLoadBalancing = value;
     }
     public resetEnableCrossZoneLoadBalancing() {
@@ -2947,11 +4739,11 @@ export namespace ELB {
     }
 
     // enable_deletion_protection - computed: false, optional: true, required: false
-    private _enableDeletionProtection?: boolean | cdktf.IResolvable;
+    private _enableDeletionProtection?: boolean | cdktf.IResolvable | undefined; 
     public get enableDeletionProtection() {
-      return this.getBooleanAttribute('enable_deletion_protection');
+      return this.getBooleanAttribute('enable_deletion_protection') as any;
     }
-    public set enableDeletionProtection(value: boolean | cdktf.IResolvable ) {
+    public set enableDeletionProtection(value: boolean | cdktf.IResolvable | undefined) {
       this._enableDeletionProtection = value;
     }
     public resetEnableDeletionProtection() {
@@ -2963,11 +4755,11 @@ export namespace ELB {
     }
 
     // enable_http2 - computed: false, optional: true, required: false
-    private _enableHttp2?: boolean | cdktf.IResolvable;
+    private _enableHttp2?: boolean | cdktf.IResolvable | undefined; 
     public get enableHttp2() {
-      return this.getBooleanAttribute('enable_http2');
+      return this.getBooleanAttribute('enable_http2') as any;
     }
-    public set enableHttp2(value: boolean | cdktf.IResolvable ) {
+    public set enableHttp2(value: boolean | cdktf.IResolvable | undefined) {
       this._enableHttp2 = value;
     }
     public resetEnableHttp2() {
@@ -2984,11 +4776,11 @@ export namespace ELB {
     }
 
     // idle_timeout - computed: false, optional: true, required: false
-    private _idleTimeout?: number;
+    private _idleTimeout?: number | undefined; 
     public get idleTimeout() {
       return this.getNumberAttribute('idle_timeout');
     }
-    public set idleTimeout(value: number ) {
+    public set idleTimeout(value: number | undefined) {
       this._idleTimeout = value;
     }
     public resetIdleTimeout() {
@@ -3000,11 +4792,11 @@ export namespace ELB {
     }
 
     // internal - computed: true, optional: true, required: false
-    private _internal?: boolean | cdktf.IResolvable;
+    private _internal?: boolean | cdktf.IResolvable | undefined; 
     public get internal() {
-      return this.getBooleanAttribute('internal');
+      return this.getBooleanAttribute('internal') as any;
     }
-    public set internal(value: boolean | cdktf.IResolvable) {
+    public set internal(value: boolean | cdktf.IResolvable | undefined) {
       this._internal = value;
     }
     public resetInternal() {
@@ -3016,11 +4808,11 @@ export namespace ELB {
     }
 
     // ip_address_type - computed: true, optional: true, required: false
-    private _ipAddressType?: string;
+    private _ipAddressType?: string | undefined; 
     public get ipAddressType() {
       return this.getStringAttribute('ip_address_type');
     }
-    public set ipAddressType(value: string) {
+    public set ipAddressType(value: string | undefined) {
       this._ipAddressType = value;
     }
     public resetIpAddressType() {
@@ -3032,11 +4824,11 @@ export namespace ELB {
     }
 
     // load_balancer_type - computed: false, optional: true, required: false
-    private _loadBalancerType?: string;
+    private _loadBalancerType?: string | undefined; 
     public get loadBalancerType() {
       return this.getStringAttribute('load_balancer_type');
     }
-    public set loadBalancerType(value: string ) {
+    public set loadBalancerType(value: string | undefined) {
       this._loadBalancerType = value;
     }
     public resetLoadBalancerType() {
@@ -3048,11 +4840,11 @@ export namespace ELB {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -3064,11 +4856,11 @@ export namespace ELB {
     }
 
     // name_prefix - computed: false, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string ) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -3080,11 +4872,11 @@ export namespace ELB {
     }
 
     // security_groups - computed: true, optional: true, required: false
-    private _securityGroups?: string[];
+    private _securityGroups?: string[] | undefined; 
     public get securityGroups() {
       return this.getListAttribute('security_groups');
     }
-    public set securityGroups(value: string[]) {
+    public set securityGroups(value: string[] | undefined) {
       this._securityGroups = value;
     }
     public resetSecurityGroups() {
@@ -3096,11 +4888,11 @@ export namespace ELB {
     }
 
     // subnets - computed: true, optional: true, required: false
-    private _subnets?: string[];
+    private _subnets?: string[] | undefined; 
     public get subnets() {
       return this.getListAttribute('subnets');
     }
-    public set subnets(value: string[]) {
+    public set subnets(value: string[] | undefined) {
       this._subnets = value;
     }
     public resetSubnets() {
@@ -3112,11 +4904,12 @@ export namespace ELB {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3128,11 +4921,12 @@ export namespace ELB {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -3154,11 +4948,12 @@ export namespace ELB {
     }
 
     // access_logs - computed: false, optional: true, required: false
-    private _accessLogs?: LbAccessLogs[];
+    private _accessLogs?: LbAccessLogs | undefined; 
+    private __accessLogsOutput = new LbAccessLogsOutputReference(this as any, "access_logs", true);
     public get accessLogs() {
-      return this.interpolationForAttribute('access_logs') as any;
+      return this.__accessLogsOutput;
     }
-    public set accessLogs(value: LbAccessLogs[] ) {
+    public putAccessLogs(value: LbAccessLogs | undefined) {
       this._accessLogs = value;
     }
     public resetAccessLogs() {
@@ -3170,11 +4965,12 @@ export namespace ELB {
     }
 
     // subnet_mapping - computed: false, optional: true, required: false
-    private _subnetMapping?: LbSubnetMapping[];
+    private _subnetMapping?: LbSubnetMapping[] | undefined; 
     public get subnetMapping() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('subnet_mapping') as any;
     }
-    public set subnetMapping(value: LbSubnetMapping[] ) {
+    public set subnetMapping(value: LbSubnetMapping[] | undefined) {
       this._subnetMapping = value;
     }
     public resetSubnetMapping() {
@@ -3186,11 +4982,12 @@ export namespace ELB {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: LbTimeouts;
+    private _timeouts?: LbTimeouts | undefined; 
+    private __timeoutsOutput = new LbTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: LbTimeouts ) {
+    public putTimeouts(value: LbTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -3222,7 +5019,7 @@ export namespace ELB {
         subnets: cdktf.listMapper(cdktf.stringToTerraform)(this._subnets),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        access_logs: cdktf.listMapper(lbAccessLogsToTerraform)(this._accessLogs),
+        access_logs: lbAccessLogsToTerraform(this._accessLogs),
         subnet_mapping: cdktf.listMapper(lbSubnetMappingToTerraform)(this._subnetMapping),
         timeouts: lbTimeoutsToTerraform(this._timeouts),
       };
@@ -3290,11 +5087,11 @@ export namespace ELB {
     // ==========
 
     // cookie_expiration_period - computed: false, optional: true, required: false
-    private _cookieExpirationPeriod?: number;
+    private _cookieExpirationPeriod?: number | undefined; 
     public get cookieExpirationPeriod() {
       return this.getNumberAttribute('cookie_expiration_period');
     }
-    public set cookieExpirationPeriod(value: number ) {
+    public set cookieExpirationPeriod(value: number | undefined) {
       this._cookieExpirationPeriod = value;
     }
     public resetCookieExpirationPeriod() {
@@ -3311,7 +5108,7 @@ export namespace ELB {
     }
 
     // lb_port - computed: false, optional: false, required: true
-    private _lbPort: number;
+    private _lbPort?: number; 
     public get lbPort() {
       return this.getNumberAttribute('lb_port');
     }
@@ -3324,7 +5121,7 @@ export namespace ELB {
     }
 
     // load_balancer - computed: false, optional: false, required: true
-    private _loadBalancer: string;
+    private _loadBalancer?: string; 
     public get loadBalancer() {
       return this.getStringAttribute('load_balancer');
     }
@@ -3337,7 +5134,7 @@ export namespace ELB {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -3443,8 +5240,11 @@ export namespace ELB {
     readonly userPoolDomain: string;
   }
 
-  function lbListenerDefaultActionAuthenticateCognitoToTerraform(struct?: LbListenerDefaultActionAuthenticateCognito): any {
+  function lbListenerDefaultActionAuthenticateCognitoToTerraform(struct?: LbListenerDefaultActionAuthenticateCognitoOutputReference | LbListenerDefaultActionAuthenticateCognito): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       authentication_request_extra_params: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.authenticationRequestExtraParams),
       on_unauthenticated_request: cdktf.stringToTerraform(struct!.onUnauthenticatedRequest),
@@ -3457,6 +5257,136 @@ export namespace ELB {
     }
   }
 
+  export class LbListenerDefaultActionAuthenticateCognitoOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // authentication_request_extra_params - computed: false, optional: true, required: false
+    private _authenticationRequestExtraParams?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get authenticationRequestExtraParams() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('authentication_request_extra_params') as any;
+    }
+    public set authenticationRequestExtraParams(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._authenticationRequestExtraParams = value;
+    }
+    public resetAuthenticationRequestExtraParams() {
+      this._authenticationRequestExtraParams = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get authenticationRequestExtraParamsInput() {
+      return this._authenticationRequestExtraParams
+    }
+
+    // on_unauthenticated_request - computed: true, optional: true, required: false
+    private _onUnauthenticatedRequest?: string | undefined; 
+    public get onUnauthenticatedRequest() {
+      return this.getStringAttribute('on_unauthenticated_request');
+    }
+    public set onUnauthenticatedRequest(value: string | undefined) {
+      this._onUnauthenticatedRequest = value;
+    }
+    public resetOnUnauthenticatedRequest() {
+      this._onUnauthenticatedRequest = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get onUnauthenticatedRequestInput() {
+      return this._onUnauthenticatedRequest
+    }
+
+    // scope - computed: true, optional: true, required: false
+    private _scope?: string | undefined; 
+    public get scope() {
+      return this.getStringAttribute('scope');
+    }
+    public set scope(value: string | undefined) {
+      this._scope = value;
+    }
+    public resetScope() {
+      this._scope = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get scopeInput() {
+      return this._scope
+    }
+
+    // session_cookie_name - computed: true, optional: true, required: false
+    private _sessionCookieName?: string | undefined; 
+    public get sessionCookieName() {
+      return this.getStringAttribute('session_cookie_name');
+    }
+    public set sessionCookieName(value: string | undefined) {
+      this._sessionCookieName = value;
+    }
+    public resetSessionCookieName() {
+      this._sessionCookieName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sessionCookieNameInput() {
+      return this._sessionCookieName
+    }
+
+    // session_timeout - computed: true, optional: true, required: false
+    private _sessionTimeout?: number | undefined; 
+    public get sessionTimeout() {
+      return this.getNumberAttribute('session_timeout');
+    }
+    public set sessionTimeout(value: number | undefined) {
+      this._sessionTimeout = value;
+    }
+    public resetSessionTimeout() {
+      this._sessionTimeout = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sessionTimeoutInput() {
+      return this._sessionTimeout
+    }
+
+    // user_pool_arn - computed: false, optional: false, required: true
+    private _userPoolArn?: string; 
+    public get userPoolArn() {
+      return this.getStringAttribute('user_pool_arn');
+    }
+    public set userPoolArn(value: string) {
+      this._userPoolArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userPoolArnInput() {
+      return this._userPoolArn
+    }
+
+    // user_pool_client_id - computed: false, optional: false, required: true
+    private _userPoolClientId?: string; 
+    public get userPoolClientId() {
+      return this.getStringAttribute('user_pool_client_id');
+    }
+    public set userPoolClientId(value: string) {
+      this._userPoolClientId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userPoolClientIdInput() {
+      return this._userPoolClientId
+    }
+
+    // user_pool_domain - computed: false, optional: false, required: true
+    private _userPoolDomain?: string; 
+    public get userPoolDomain() {
+      return this.getStringAttribute('user_pool_domain');
+    }
+    public set userPoolDomain(value: string) {
+      this._userPoolDomain = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userPoolDomainInput() {
+      return this._userPoolDomain
+    }
+  }
   export interface LbListenerDefaultActionAuthenticateOidc {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#authentication_request_extra_params LbListener#authentication_request_extra_params}
@@ -3504,8 +5434,11 @@ export namespace ELB {
     readonly userInfoEndpoint: string;
   }
 
-  function lbListenerDefaultActionAuthenticateOidcToTerraform(struct?: LbListenerDefaultActionAuthenticateOidc): any {
+  function lbListenerDefaultActionAuthenticateOidcToTerraform(struct?: LbListenerDefaultActionAuthenticateOidcOutputReference | LbListenerDefaultActionAuthenticateOidc): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       authentication_request_extra_params: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.authenticationRequestExtraParams),
       authorization_endpoint: cdktf.stringToTerraform(struct!.authorizationEndpoint),
@@ -3521,6 +5454,175 @@ export namespace ELB {
     }
   }
 
+  export class LbListenerDefaultActionAuthenticateOidcOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // authentication_request_extra_params - computed: false, optional: true, required: false
+    private _authenticationRequestExtraParams?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get authenticationRequestExtraParams() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('authentication_request_extra_params') as any;
+    }
+    public set authenticationRequestExtraParams(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._authenticationRequestExtraParams = value;
+    }
+    public resetAuthenticationRequestExtraParams() {
+      this._authenticationRequestExtraParams = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get authenticationRequestExtraParamsInput() {
+      return this._authenticationRequestExtraParams
+    }
+
+    // authorization_endpoint - computed: false, optional: false, required: true
+    private _authorizationEndpoint?: string; 
+    public get authorizationEndpoint() {
+      return this.getStringAttribute('authorization_endpoint');
+    }
+    public set authorizationEndpoint(value: string) {
+      this._authorizationEndpoint = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get authorizationEndpointInput() {
+      return this._authorizationEndpoint
+    }
+
+    // client_id - computed: false, optional: false, required: true
+    private _clientId?: string; 
+    public get clientId() {
+      return this.getStringAttribute('client_id');
+    }
+    public set clientId(value: string) {
+      this._clientId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get clientIdInput() {
+      return this._clientId
+    }
+
+    // client_secret - computed: false, optional: false, required: true
+    private _clientSecret?: string; 
+    public get clientSecret() {
+      return this.getStringAttribute('client_secret');
+    }
+    public set clientSecret(value: string) {
+      this._clientSecret = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get clientSecretInput() {
+      return this._clientSecret
+    }
+
+    // issuer - computed: false, optional: false, required: true
+    private _issuer?: string; 
+    public get issuer() {
+      return this.getStringAttribute('issuer');
+    }
+    public set issuer(value: string) {
+      this._issuer = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get issuerInput() {
+      return this._issuer
+    }
+
+    // on_unauthenticated_request - computed: true, optional: true, required: false
+    private _onUnauthenticatedRequest?: string | undefined; 
+    public get onUnauthenticatedRequest() {
+      return this.getStringAttribute('on_unauthenticated_request');
+    }
+    public set onUnauthenticatedRequest(value: string | undefined) {
+      this._onUnauthenticatedRequest = value;
+    }
+    public resetOnUnauthenticatedRequest() {
+      this._onUnauthenticatedRequest = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get onUnauthenticatedRequestInput() {
+      return this._onUnauthenticatedRequest
+    }
+
+    // scope - computed: true, optional: true, required: false
+    private _scope?: string | undefined; 
+    public get scope() {
+      return this.getStringAttribute('scope');
+    }
+    public set scope(value: string | undefined) {
+      this._scope = value;
+    }
+    public resetScope() {
+      this._scope = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get scopeInput() {
+      return this._scope
+    }
+
+    // session_cookie_name - computed: true, optional: true, required: false
+    private _sessionCookieName?: string | undefined; 
+    public get sessionCookieName() {
+      return this.getStringAttribute('session_cookie_name');
+    }
+    public set sessionCookieName(value: string | undefined) {
+      this._sessionCookieName = value;
+    }
+    public resetSessionCookieName() {
+      this._sessionCookieName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sessionCookieNameInput() {
+      return this._sessionCookieName
+    }
+
+    // session_timeout - computed: true, optional: true, required: false
+    private _sessionTimeout?: number | undefined; 
+    public get sessionTimeout() {
+      return this.getNumberAttribute('session_timeout');
+    }
+    public set sessionTimeout(value: number | undefined) {
+      this._sessionTimeout = value;
+    }
+    public resetSessionTimeout() {
+      this._sessionTimeout = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sessionTimeoutInput() {
+      return this._sessionTimeout
+    }
+
+    // token_endpoint - computed: false, optional: false, required: true
+    private _tokenEndpoint?: string; 
+    public get tokenEndpoint() {
+      return this.getStringAttribute('token_endpoint');
+    }
+    public set tokenEndpoint(value: string) {
+      this._tokenEndpoint = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tokenEndpointInput() {
+      return this._tokenEndpoint
+    }
+
+    // user_info_endpoint - computed: false, optional: false, required: true
+    private _userInfoEndpoint?: string; 
+    public get userInfoEndpoint() {
+      return this.getStringAttribute('user_info_endpoint');
+    }
+    public set userInfoEndpoint(value: string) {
+      this._userInfoEndpoint = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userInfoEndpointInput() {
+      return this._userInfoEndpoint
+    }
+  }
   export interface LbListenerDefaultActionFixedResponse {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#content_type LbListener#content_type}
@@ -3536,8 +5638,11 @@ export namespace ELB {
     readonly statusCode?: string;
   }
 
-  function lbListenerDefaultActionFixedResponseToTerraform(struct?: LbListenerDefaultActionFixedResponse): any {
+  function lbListenerDefaultActionFixedResponseToTerraform(struct?: LbListenerDefaultActionFixedResponseOutputReference | LbListenerDefaultActionFixedResponse): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       content_type: cdktf.stringToTerraform(struct!.contentType),
       message_body: cdktf.stringToTerraform(struct!.messageBody),
@@ -3545,6 +5650,61 @@ export namespace ELB {
     }
   }
 
+  export class LbListenerDefaultActionFixedResponseOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // content_type - computed: false, optional: false, required: true
+    private _contentType?: string; 
+    public get contentType() {
+      return this.getStringAttribute('content_type');
+    }
+    public set contentType(value: string) {
+      this._contentType = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get contentTypeInput() {
+      return this._contentType
+    }
+
+    // message_body - computed: false, optional: true, required: false
+    private _messageBody?: string | undefined; 
+    public get messageBody() {
+      return this.getStringAttribute('message_body');
+    }
+    public set messageBody(value: string | undefined) {
+      this._messageBody = value;
+    }
+    public resetMessageBody() {
+      this._messageBody = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get messageBodyInput() {
+      return this._messageBody
+    }
+
+    // status_code - computed: true, optional: true, required: false
+    private _statusCode?: string | undefined; 
+    public get statusCode() {
+      return this.getStringAttribute('status_code');
+    }
+    public set statusCode(value: string | undefined) {
+      this._statusCode = value;
+    }
+    public resetStatusCode() {
+      this._statusCode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statusCodeInput() {
+      return this._statusCode
+    }
+  }
   export interface LbListenerDefaultActionForwardStickiness {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#duration LbListener#duration}
@@ -3556,14 +5716,56 @@ export namespace ELB {
     readonly enabled?: boolean | cdktf.IResolvable;
   }
 
-  function lbListenerDefaultActionForwardStickinessToTerraform(struct?: LbListenerDefaultActionForwardStickiness): any {
+  function lbListenerDefaultActionForwardStickinessToTerraform(struct?: LbListenerDefaultActionForwardStickinessOutputReference | LbListenerDefaultActionForwardStickiness): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       duration: cdktf.numberToTerraform(struct!.duration),
       enabled: cdktf.booleanToTerraform(struct!.enabled),
     }
   }
 
+  export class LbListenerDefaultActionForwardStickinessOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // duration - computed: false, optional: false, required: true
+    private _duration?: number; 
+    public get duration() {
+      return this.getNumberAttribute('duration');
+    }
+    public set duration(value: number) {
+      this._duration = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get durationInput() {
+      return this._duration
+    }
+
+    // enabled - computed: false, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+  }
   export interface LbListenerDefaultActionForwardTargetGroup {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#arn LbListener#arn}
@@ -3577,6 +5779,9 @@ export namespace ELB {
 
   function lbListenerDefaultActionForwardTargetGroupToTerraform(struct?: LbListenerDefaultActionForwardTargetGroup): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       arn: cdktf.stringToTerraform(struct!.arn),
       weight: cdktf.numberToTerraform(struct!.weight),
@@ -3589,7 +5794,7 @@ export namespace ELB {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#stickiness LbListener#stickiness}
     */
-    readonly stickiness?: LbListenerDefaultActionForwardStickiness[];
+    readonly stickiness?: LbListenerDefaultActionForwardStickiness;
     /**
     * target_group block
     * 
@@ -3598,14 +5803,58 @@ export namespace ELB {
     readonly targetGroup: LbListenerDefaultActionForwardTargetGroup[];
   }
 
-  function lbListenerDefaultActionForwardToTerraform(struct?: LbListenerDefaultActionForward): any {
+  function lbListenerDefaultActionForwardToTerraform(struct?: LbListenerDefaultActionForwardOutputReference | LbListenerDefaultActionForward): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      stickiness: cdktf.listMapper(lbListenerDefaultActionForwardStickinessToTerraform)(struct!.stickiness),
+      stickiness: lbListenerDefaultActionForwardStickinessToTerraform(struct!.stickiness),
       target_group: cdktf.listMapper(lbListenerDefaultActionForwardTargetGroupToTerraform)(struct!.targetGroup),
     }
   }
 
+  export class LbListenerDefaultActionForwardOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // stickiness - computed: false, optional: true, required: false
+    private _stickiness?: LbListenerDefaultActionForwardStickiness | undefined; 
+    private __stickinessOutput = new LbListenerDefaultActionForwardStickinessOutputReference(this as any, "stickiness", true);
+    public get stickiness() {
+      return this.__stickinessOutput;
+    }
+    public putStickiness(value: LbListenerDefaultActionForwardStickiness | undefined) {
+      this._stickiness = value;
+    }
+    public resetStickiness() {
+      this._stickiness = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get stickinessInput() {
+      return this._stickiness
+    }
+
+    // target_group - computed: false, optional: false, required: true
+    private _targetGroup?: LbListenerDefaultActionForwardTargetGroup[]; 
+    public get targetGroup() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('target_group') as any;
+    }
+    public set targetGroup(value: LbListenerDefaultActionForwardTargetGroup[]) {
+      this._targetGroup = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get targetGroupInput() {
+      return this._targetGroup
+    }
+  }
   export interface LbListenerDefaultActionRedirect {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#host LbListener#host}
@@ -3633,8 +5882,11 @@ export namespace ELB {
     readonly statusCode: string;
   }
 
-  function lbListenerDefaultActionRedirectToTerraform(struct?: LbListenerDefaultActionRedirect): any {
+  function lbListenerDefaultActionRedirectToTerraform(struct?: LbListenerDefaultActionRedirectOutputReference | LbListenerDefaultActionRedirect): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       host: cdktf.stringToTerraform(struct!.host),
       path: cdktf.stringToTerraform(struct!.path),
@@ -3645,6 +5897,109 @@ export namespace ELB {
     }
   }
 
+  export class LbListenerDefaultActionRedirectOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // host - computed: false, optional: true, required: false
+    private _host?: string | undefined; 
+    public get host() {
+      return this.getStringAttribute('host');
+    }
+    public set host(value: string | undefined) {
+      this._host = value;
+    }
+    public resetHost() {
+      this._host = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get hostInput() {
+      return this._host
+    }
+
+    // path - computed: false, optional: true, required: false
+    private _path?: string | undefined; 
+    public get path() {
+      return this.getStringAttribute('path');
+    }
+    public set path(value: string | undefined) {
+      this._path = value;
+    }
+    public resetPath() {
+      this._path = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get pathInput() {
+      return this._path
+    }
+
+    // port - computed: false, optional: true, required: false
+    private _port?: string | undefined; 
+    public get port() {
+      return this.getStringAttribute('port');
+    }
+    public set port(value: string | undefined) {
+      this._port = value;
+    }
+    public resetPort() {
+      this._port = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get portInput() {
+      return this._port
+    }
+
+    // protocol - computed: false, optional: true, required: false
+    private _protocol?: string | undefined; 
+    public get protocol() {
+      return this.getStringAttribute('protocol');
+    }
+    public set protocol(value: string | undefined) {
+      this._protocol = value;
+    }
+    public resetProtocol() {
+      this._protocol = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get protocolInput() {
+      return this._protocol
+    }
+
+    // query - computed: false, optional: true, required: false
+    private _query?: string | undefined; 
+    public get query() {
+      return this.getStringAttribute('query');
+    }
+    public set query(value: string | undefined) {
+      this._query = value;
+    }
+    public resetQuery() {
+      this._query = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get queryInput() {
+      return this._query
+    }
+
+    // status_code - computed: false, optional: false, required: true
+    private _statusCode?: string; 
+    public get statusCode() {
+      return this.getStringAttribute('status_code');
+    }
+    public set statusCode(value: string) {
+      this._statusCode = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statusCodeInput() {
+      return this._statusCode
+    }
+  }
   export interface LbListenerDefaultAction {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#order LbListener#order}
@@ -3663,44 +6018,47 @@ export namespace ELB {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#authenticate_cognito LbListener#authenticate_cognito}
     */
-    readonly authenticateCognito?: LbListenerDefaultActionAuthenticateCognito[];
+    readonly authenticateCognito?: LbListenerDefaultActionAuthenticateCognito;
     /**
     * authenticate_oidc block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#authenticate_oidc LbListener#authenticate_oidc}
     */
-    readonly authenticateOidc?: LbListenerDefaultActionAuthenticateOidc[];
+    readonly authenticateOidc?: LbListenerDefaultActionAuthenticateOidc;
     /**
     * fixed_response block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#fixed_response LbListener#fixed_response}
     */
-    readonly fixedResponse?: LbListenerDefaultActionFixedResponse[];
+    readonly fixedResponse?: LbListenerDefaultActionFixedResponse;
     /**
     * forward block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#forward LbListener#forward}
     */
-    readonly forward?: LbListenerDefaultActionForward[];
+    readonly forward?: LbListenerDefaultActionForward;
     /**
     * redirect block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html#redirect LbListener#redirect}
     */
-    readonly redirect?: LbListenerDefaultActionRedirect[];
+    readonly redirect?: LbListenerDefaultActionRedirect;
   }
 
   function lbListenerDefaultActionToTerraform(struct?: LbListenerDefaultAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       order: cdktf.numberToTerraform(struct!.order),
       target_group_arn: cdktf.stringToTerraform(struct!.targetGroupArn),
       type: cdktf.stringToTerraform(struct!.type),
-      authenticate_cognito: cdktf.listMapper(lbListenerDefaultActionAuthenticateCognitoToTerraform)(struct!.authenticateCognito),
-      authenticate_oidc: cdktf.listMapper(lbListenerDefaultActionAuthenticateOidcToTerraform)(struct!.authenticateOidc),
-      fixed_response: cdktf.listMapper(lbListenerDefaultActionFixedResponseToTerraform)(struct!.fixedResponse),
-      forward: cdktf.listMapper(lbListenerDefaultActionForwardToTerraform)(struct!.forward),
-      redirect: cdktf.listMapper(lbListenerDefaultActionRedirectToTerraform)(struct!.redirect),
+      authenticate_cognito: lbListenerDefaultActionAuthenticateCognitoToTerraform(struct!.authenticateCognito),
+      authenticate_oidc: lbListenerDefaultActionAuthenticateOidcToTerraform(struct!.authenticateOidc),
+      fixed_response: lbListenerDefaultActionFixedResponseToTerraform(struct!.fixedResponse),
+      forward: lbListenerDefaultActionForwardToTerraform(struct!.forward),
+      redirect: lbListenerDefaultActionRedirectToTerraform(struct!.redirect),
     }
   }
 
@@ -3711,13 +6069,42 @@ export namespace ELB {
     readonly read?: string;
   }
 
-  function lbListenerTimeoutsToTerraform(struct?: LbListenerTimeouts): any {
+  function lbListenerTimeoutsToTerraform(struct?: LbListenerTimeoutsOutputReference | LbListenerTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       read: cdktf.stringToTerraform(struct!.read),
     }
   }
 
+  export class LbListenerTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // read - computed: false, optional: true, required: false
+    private _read?: string | undefined; 
+    public get read() {
+      return this.getStringAttribute('read');
+    }
+    public set read(value: string | undefined) {
+      this._read = value;
+    }
+    public resetRead() {
+      this._read = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get readInput() {
+      return this._read
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/lb_listener.html aws_lb_listener}
@@ -3768,11 +6155,11 @@ export namespace ELB {
     // ==========
 
     // alpn_policy - computed: false, optional: true, required: false
-    private _alpnPolicy?: string;
+    private _alpnPolicy?: string | undefined; 
     public get alpnPolicy() {
       return this.getStringAttribute('alpn_policy');
     }
-    public set alpnPolicy(value: string ) {
+    public set alpnPolicy(value: string | undefined) {
       this._alpnPolicy = value;
     }
     public resetAlpnPolicy() {
@@ -3789,11 +6176,11 @@ export namespace ELB {
     }
 
     // certificate_arn - computed: false, optional: true, required: false
-    private _certificateArn?: string;
+    private _certificateArn?: string | undefined; 
     public get certificateArn() {
       return this.getStringAttribute('certificate_arn');
     }
-    public set certificateArn(value: string ) {
+    public set certificateArn(value: string | undefined) {
       this._certificateArn = value;
     }
     public resetCertificateArn() {
@@ -3810,7 +6197,7 @@ export namespace ELB {
     }
 
     // load_balancer_arn - computed: false, optional: false, required: true
-    private _loadBalancerArn: string;
+    private _loadBalancerArn?: string; 
     public get loadBalancerArn() {
       return this.getStringAttribute('load_balancer_arn');
     }
@@ -3823,11 +6210,11 @@ export namespace ELB {
     }
 
     // port - computed: false, optional: true, required: false
-    private _port?: number;
+    private _port?: number | undefined; 
     public get port() {
       return this.getNumberAttribute('port');
     }
-    public set port(value: number ) {
+    public set port(value: number | undefined) {
       this._port = value;
     }
     public resetPort() {
@@ -3839,11 +6226,11 @@ export namespace ELB {
     }
 
     // protocol - computed: true, optional: true, required: false
-    private _protocol?: string;
+    private _protocol?: string | undefined; 
     public get protocol() {
       return this.getStringAttribute('protocol');
     }
-    public set protocol(value: string) {
+    public set protocol(value: string | undefined) {
       this._protocol = value;
     }
     public resetProtocol() {
@@ -3855,11 +6242,11 @@ export namespace ELB {
     }
 
     // ssl_policy - computed: true, optional: true, required: false
-    private _sslPolicy?: string;
+    private _sslPolicy?: string | undefined; 
     public get sslPolicy() {
       return this.getStringAttribute('ssl_policy');
     }
-    public set sslPolicy(value: string) {
+    public set sslPolicy(value: string | undefined) {
       this._sslPolicy = value;
     }
     public resetSslPolicy() {
@@ -3871,11 +6258,12 @@ export namespace ELB {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3887,11 +6275,12 @@ export namespace ELB {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -3903,8 +6292,9 @@ export namespace ELB {
     }
 
     // default_action - computed: false, optional: false, required: true
-    private _defaultAction: LbListenerDefaultAction[];
+    private _defaultAction?: LbListenerDefaultAction[]; 
     public get defaultAction() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('default_action') as any;
     }
     public set defaultAction(value: LbListenerDefaultAction[]) {
@@ -3916,11 +6306,12 @@ export namespace ELB {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: LbListenerTimeouts;
+    private _timeouts?: LbListenerTimeouts | undefined; 
+    private __timeoutsOutput = new LbListenerTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: LbListenerTimeouts ) {
+    public putTimeouts(value: LbListenerTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -4002,7 +6393,7 @@ export namespace ELB {
     // ==========
 
     // certificate_arn - computed: false, optional: false, required: true
-    private _certificateArn: string;
+    private _certificateArn?: string; 
     public get certificateArn() {
       return this.getStringAttribute('certificate_arn');
     }
@@ -4020,7 +6411,7 @@ export namespace ELB {
     }
 
     // listener_arn - computed: false, optional: false, required: true
-    private _listenerArn: string;
+    private _listenerArn?: string; 
     public get listenerArn() {
       return this.getStringAttribute('listener_arn');
     }
@@ -4108,8 +6499,11 @@ export namespace ELB {
     readonly userPoolDomain: string;
   }
 
-  function lbListenerRuleActionAuthenticateCognitoToTerraform(struct?: LbListenerRuleActionAuthenticateCognito): any {
+  function lbListenerRuleActionAuthenticateCognitoToTerraform(struct?: LbListenerRuleActionAuthenticateCognitoOutputReference | LbListenerRuleActionAuthenticateCognito): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       authentication_request_extra_params: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.authenticationRequestExtraParams),
       on_unauthenticated_request: cdktf.stringToTerraform(struct!.onUnauthenticatedRequest),
@@ -4122,6 +6516,136 @@ export namespace ELB {
     }
   }
 
+  export class LbListenerRuleActionAuthenticateCognitoOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // authentication_request_extra_params - computed: false, optional: true, required: false
+    private _authenticationRequestExtraParams?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get authenticationRequestExtraParams() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('authentication_request_extra_params') as any;
+    }
+    public set authenticationRequestExtraParams(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._authenticationRequestExtraParams = value;
+    }
+    public resetAuthenticationRequestExtraParams() {
+      this._authenticationRequestExtraParams = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get authenticationRequestExtraParamsInput() {
+      return this._authenticationRequestExtraParams
+    }
+
+    // on_unauthenticated_request - computed: true, optional: true, required: false
+    private _onUnauthenticatedRequest?: string | undefined; 
+    public get onUnauthenticatedRequest() {
+      return this.getStringAttribute('on_unauthenticated_request');
+    }
+    public set onUnauthenticatedRequest(value: string | undefined) {
+      this._onUnauthenticatedRequest = value;
+    }
+    public resetOnUnauthenticatedRequest() {
+      this._onUnauthenticatedRequest = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get onUnauthenticatedRequestInput() {
+      return this._onUnauthenticatedRequest
+    }
+
+    // scope - computed: false, optional: true, required: false
+    private _scope?: string | undefined; 
+    public get scope() {
+      return this.getStringAttribute('scope');
+    }
+    public set scope(value: string | undefined) {
+      this._scope = value;
+    }
+    public resetScope() {
+      this._scope = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get scopeInput() {
+      return this._scope
+    }
+
+    // session_cookie_name - computed: false, optional: true, required: false
+    private _sessionCookieName?: string | undefined; 
+    public get sessionCookieName() {
+      return this.getStringAttribute('session_cookie_name');
+    }
+    public set sessionCookieName(value: string | undefined) {
+      this._sessionCookieName = value;
+    }
+    public resetSessionCookieName() {
+      this._sessionCookieName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sessionCookieNameInput() {
+      return this._sessionCookieName
+    }
+
+    // session_timeout - computed: false, optional: true, required: false
+    private _sessionTimeout?: number | undefined; 
+    public get sessionTimeout() {
+      return this.getNumberAttribute('session_timeout');
+    }
+    public set sessionTimeout(value: number | undefined) {
+      this._sessionTimeout = value;
+    }
+    public resetSessionTimeout() {
+      this._sessionTimeout = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sessionTimeoutInput() {
+      return this._sessionTimeout
+    }
+
+    // user_pool_arn - computed: false, optional: false, required: true
+    private _userPoolArn?: string; 
+    public get userPoolArn() {
+      return this.getStringAttribute('user_pool_arn');
+    }
+    public set userPoolArn(value: string) {
+      this._userPoolArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userPoolArnInput() {
+      return this._userPoolArn
+    }
+
+    // user_pool_client_id - computed: false, optional: false, required: true
+    private _userPoolClientId?: string; 
+    public get userPoolClientId() {
+      return this.getStringAttribute('user_pool_client_id');
+    }
+    public set userPoolClientId(value: string) {
+      this._userPoolClientId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userPoolClientIdInput() {
+      return this._userPoolClientId
+    }
+
+    // user_pool_domain - computed: false, optional: false, required: true
+    private _userPoolDomain?: string; 
+    public get userPoolDomain() {
+      return this.getStringAttribute('user_pool_domain');
+    }
+    public set userPoolDomain(value: string) {
+      this._userPoolDomain = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userPoolDomainInput() {
+      return this._userPoolDomain
+    }
+  }
   export interface LbListenerRuleActionAuthenticateOidc {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#authentication_request_extra_params LbListenerRule#authentication_request_extra_params}
@@ -4169,8 +6693,11 @@ export namespace ELB {
     readonly userInfoEndpoint: string;
   }
 
-  function lbListenerRuleActionAuthenticateOidcToTerraform(struct?: LbListenerRuleActionAuthenticateOidc): any {
+  function lbListenerRuleActionAuthenticateOidcToTerraform(struct?: LbListenerRuleActionAuthenticateOidcOutputReference | LbListenerRuleActionAuthenticateOidc): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       authentication_request_extra_params: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.authenticationRequestExtraParams),
       authorization_endpoint: cdktf.stringToTerraform(struct!.authorizationEndpoint),
@@ -4186,6 +6713,175 @@ export namespace ELB {
     }
   }
 
+  export class LbListenerRuleActionAuthenticateOidcOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // authentication_request_extra_params - computed: false, optional: true, required: false
+    private _authenticationRequestExtraParams?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get authenticationRequestExtraParams() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('authentication_request_extra_params') as any;
+    }
+    public set authenticationRequestExtraParams(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._authenticationRequestExtraParams = value;
+    }
+    public resetAuthenticationRequestExtraParams() {
+      this._authenticationRequestExtraParams = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get authenticationRequestExtraParamsInput() {
+      return this._authenticationRequestExtraParams
+    }
+
+    // authorization_endpoint - computed: false, optional: false, required: true
+    private _authorizationEndpoint?: string; 
+    public get authorizationEndpoint() {
+      return this.getStringAttribute('authorization_endpoint');
+    }
+    public set authorizationEndpoint(value: string) {
+      this._authorizationEndpoint = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get authorizationEndpointInput() {
+      return this._authorizationEndpoint
+    }
+
+    // client_id - computed: false, optional: false, required: true
+    private _clientId?: string; 
+    public get clientId() {
+      return this.getStringAttribute('client_id');
+    }
+    public set clientId(value: string) {
+      this._clientId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get clientIdInput() {
+      return this._clientId
+    }
+
+    // client_secret - computed: false, optional: false, required: true
+    private _clientSecret?: string; 
+    public get clientSecret() {
+      return this.getStringAttribute('client_secret');
+    }
+    public set clientSecret(value: string) {
+      this._clientSecret = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get clientSecretInput() {
+      return this._clientSecret
+    }
+
+    // issuer - computed: false, optional: false, required: true
+    private _issuer?: string; 
+    public get issuer() {
+      return this.getStringAttribute('issuer');
+    }
+    public set issuer(value: string) {
+      this._issuer = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get issuerInput() {
+      return this._issuer
+    }
+
+    // on_unauthenticated_request - computed: true, optional: true, required: false
+    private _onUnauthenticatedRequest?: string | undefined; 
+    public get onUnauthenticatedRequest() {
+      return this.getStringAttribute('on_unauthenticated_request');
+    }
+    public set onUnauthenticatedRequest(value: string | undefined) {
+      this._onUnauthenticatedRequest = value;
+    }
+    public resetOnUnauthenticatedRequest() {
+      this._onUnauthenticatedRequest = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get onUnauthenticatedRequestInput() {
+      return this._onUnauthenticatedRequest
+    }
+
+    // scope - computed: false, optional: true, required: false
+    private _scope?: string | undefined; 
+    public get scope() {
+      return this.getStringAttribute('scope');
+    }
+    public set scope(value: string | undefined) {
+      this._scope = value;
+    }
+    public resetScope() {
+      this._scope = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get scopeInput() {
+      return this._scope
+    }
+
+    // session_cookie_name - computed: false, optional: true, required: false
+    private _sessionCookieName?: string | undefined; 
+    public get sessionCookieName() {
+      return this.getStringAttribute('session_cookie_name');
+    }
+    public set sessionCookieName(value: string | undefined) {
+      this._sessionCookieName = value;
+    }
+    public resetSessionCookieName() {
+      this._sessionCookieName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sessionCookieNameInput() {
+      return this._sessionCookieName
+    }
+
+    // session_timeout - computed: false, optional: true, required: false
+    private _sessionTimeout?: number | undefined; 
+    public get sessionTimeout() {
+      return this.getNumberAttribute('session_timeout');
+    }
+    public set sessionTimeout(value: number | undefined) {
+      this._sessionTimeout = value;
+    }
+    public resetSessionTimeout() {
+      this._sessionTimeout = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sessionTimeoutInput() {
+      return this._sessionTimeout
+    }
+
+    // token_endpoint - computed: false, optional: false, required: true
+    private _tokenEndpoint?: string; 
+    public get tokenEndpoint() {
+      return this.getStringAttribute('token_endpoint');
+    }
+    public set tokenEndpoint(value: string) {
+      this._tokenEndpoint = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tokenEndpointInput() {
+      return this._tokenEndpoint
+    }
+
+    // user_info_endpoint - computed: false, optional: false, required: true
+    private _userInfoEndpoint?: string; 
+    public get userInfoEndpoint() {
+      return this.getStringAttribute('user_info_endpoint');
+    }
+    public set userInfoEndpoint(value: string) {
+      this._userInfoEndpoint = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userInfoEndpointInput() {
+      return this._userInfoEndpoint
+    }
+  }
   export interface LbListenerRuleActionFixedResponse {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#content_type LbListenerRule#content_type}
@@ -4201,8 +6897,11 @@ export namespace ELB {
     readonly statusCode?: string;
   }
 
-  function lbListenerRuleActionFixedResponseToTerraform(struct?: LbListenerRuleActionFixedResponse): any {
+  function lbListenerRuleActionFixedResponseToTerraform(struct?: LbListenerRuleActionFixedResponseOutputReference | LbListenerRuleActionFixedResponse): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       content_type: cdktf.stringToTerraform(struct!.contentType),
       message_body: cdktf.stringToTerraform(struct!.messageBody),
@@ -4210,6 +6909,61 @@ export namespace ELB {
     }
   }
 
+  export class LbListenerRuleActionFixedResponseOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // content_type - computed: false, optional: false, required: true
+    private _contentType?: string; 
+    public get contentType() {
+      return this.getStringAttribute('content_type');
+    }
+    public set contentType(value: string) {
+      this._contentType = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get contentTypeInput() {
+      return this._contentType
+    }
+
+    // message_body - computed: false, optional: true, required: false
+    private _messageBody?: string | undefined; 
+    public get messageBody() {
+      return this.getStringAttribute('message_body');
+    }
+    public set messageBody(value: string | undefined) {
+      this._messageBody = value;
+    }
+    public resetMessageBody() {
+      this._messageBody = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get messageBodyInput() {
+      return this._messageBody
+    }
+
+    // status_code - computed: true, optional: true, required: false
+    private _statusCode?: string | undefined; 
+    public get statusCode() {
+      return this.getStringAttribute('status_code');
+    }
+    public set statusCode(value: string | undefined) {
+      this._statusCode = value;
+    }
+    public resetStatusCode() {
+      this._statusCode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statusCodeInput() {
+      return this._statusCode
+    }
+  }
   export interface LbListenerRuleActionForwardStickiness {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#duration LbListenerRule#duration}
@@ -4221,14 +6975,56 @@ export namespace ELB {
     readonly enabled?: boolean | cdktf.IResolvable;
   }
 
-  function lbListenerRuleActionForwardStickinessToTerraform(struct?: LbListenerRuleActionForwardStickiness): any {
+  function lbListenerRuleActionForwardStickinessToTerraform(struct?: LbListenerRuleActionForwardStickinessOutputReference | LbListenerRuleActionForwardStickiness): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       duration: cdktf.numberToTerraform(struct!.duration),
       enabled: cdktf.booleanToTerraform(struct!.enabled),
     }
   }
 
+  export class LbListenerRuleActionForwardStickinessOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // duration - computed: false, optional: false, required: true
+    private _duration?: number; 
+    public get duration() {
+      return this.getNumberAttribute('duration');
+    }
+    public set duration(value: number) {
+      this._duration = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get durationInput() {
+      return this._duration
+    }
+
+    // enabled - computed: false, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+  }
   export interface LbListenerRuleActionForwardTargetGroup {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#arn LbListenerRule#arn}
@@ -4242,6 +7038,9 @@ export namespace ELB {
 
   function lbListenerRuleActionForwardTargetGroupToTerraform(struct?: LbListenerRuleActionForwardTargetGroup): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       arn: cdktf.stringToTerraform(struct!.arn),
       weight: cdktf.numberToTerraform(struct!.weight),
@@ -4254,7 +7053,7 @@ export namespace ELB {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#stickiness LbListenerRule#stickiness}
     */
-    readonly stickiness?: LbListenerRuleActionForwardStickiness[];
+    readonly stickiness?: LbListenerRuleActionForwardStickiness;
     /**
     * target_group block
     * 
@@ -4263,14 +7062,58 @@ export namespace ELB {
     readonly targetGroup: LbListenerRuleActionForwardTargetGroup[];
   }
 
-  function lbListenerRuleActionForwardToTerraform(struct?: LbListenerRuleActionForward): any {
+  function lbListenerRuleActionForwardToTerraform(struct?: LbListenerRuleActionForwardOutputReference | LbListenerRuleActionForward): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      stickiness: cdktf.listMapper(lbListenerRuleActionForwardStickinessToTerraform)(struct!.stickiness),
+      stickiness: lbListenerRuleActionForwardStickinessToTerraform(struct!.stickiness),
       target_group: cdktf.listMapper(lbListenerRuleActionForwardTargetGroupToTerraform)(struct!.targetGroup),
     }
   }
 
+  export class LbListenerRuleActionForwardOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // stickiness - computed: false, optional: true, required: false
+    private _stickiness?: LbListenerRuleActionForwardStickiness | undefined; 
+    private __stickinessOutput = new LbListenerRuleActionForwardStickinessOutputReference(this as any, "stickiness", true);
+    public get stickiness() {
+      return this.__stickinessOutput;
+    }
+    public putStickiness(value: LbListenerRuleActionForwardStickiness | undefined) {
+      this._stickiness = value;
+    }
+    public resetStickiness() {
+      this._stickiness = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get stickinessInput() {
+      return this._stickiness
+    }
+
+    // target_group - computed: false, optional: false, required: true
+    private _targetGroup?: LbListenerRuleActionForwardTargetGroup[]; 
+    public get targetGroup() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('target_group') as any;
+    }
+    public set targetGroup(value: LbListenerRuleActionForwardTargetGroup[]) {
+      this._targetGroup = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get targetGroupInput() {
+      return this._targetGroup
+    }
+  }
   export interface LbListenerRuleActionRedirect {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#host LbListenerRule#host}
@@ -4298,8 +7141,11 @@ export namespace ELB {
     readonly statusCode: string;
   }
 
-  function lbListenerRuleActionRedirectToTerraform(struct?: LbListenerRuleActionRedirect): any {
+  function lbListenerRuleActionRedirectToTerraform(struct?: LbListenerRuleActionRedirectOutputReference | LbListenerRuleActionRedirect): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       host: cdktf.stringToTerraform(struct!.host),
       path: cdktf.stringToTerraform(struct!.path),
@@ -4310,6 +7156,109 @@ export namespace ELB {
     }
   }
 
+  export class LbListenerRuleActionRedirectOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // host - computed: false, optional: true, required: false
+    private _host?: string | undefined; 
+    public get host() {
+      return this.getStringAttribute('host');
+    }
+    public set host(value: string | undefined) {
+      this._host = value;
+    }
+    public resetHost() {
+      this._host = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get hostInput() {
+      return this._host
+    }
+
+    // path - computed: false, optional: true, required: false
+    private _path?: string | undefined; 
+    public get path() {
+      return this.getStringAttribute('path');
+    }
+    public set path(value: string | undefined) {
+      this._path = value;
+    }
+    public resetPath() {
+      this._path = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get pathInput() {
+      return this._path
+    }
+
+    // port - computed: false, optional: true, required: false
+    private _port?: string | undefined; 
+    public get port() {
+      return this.getStringAttribute('port');
+    }
+    public set port(value: string | undefined) {
+      this._port = value;
+    }
+    public resetPort() {
+      this._port = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get portInput() {
+      return this._port
+    }
+
+    // protocol - computed: false, optional: true, required: false
+    private _protocol?: string | undefined; 
+    public get protocol() {
+      return this.getStringAttribute('protocol');
+    }
+    public set protocol(value: string | undefined) {
+      this._protocol = value;
+    }
+    public resetProtocol() {
+      this._protocol = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get protocolInput() {
+      return this._protocol
+    }
+
+    // query - computed: false, optional: true, required: false
+    private _query?: string | undefined; 
+    public get query() {
+      return this.getStringAttribute('query');
+    }
+    public set query(value: string | undefined) {
+      this._query = value;
+    }
+    public resetQuery() {
+      this._query = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get queryInput() {
+      return this._query
+    }
+
+    // status_code - computed: false, optional: false, required: true
+    private _statusCode?: string; 
+    public get statusCode() {
+      return this.getStringAttribute('status_code');
+    }
+    public set statusCode(value: string) {
+      this._statusCode = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statusCodeInput() {
+      return this._statusCode
+    }
+  }
   export interface LbListenerRuleAction {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#order LbListenerRule#order}
@@ -4328,44 +7277,47 @@ export namespace ELB {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#authenticate_cognito LbListenerRule#authenticate_cognito}
     */
-    readonly authenticateCognito?: LbListenerRuleActionAuthenticateCognito[];
+    readonly authenticateCognito?: LbListenerRuleActionAuthenticateCognito;
     /**
     * authenticate_oidc block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#authenticate_oidc LbListenerRule#authenticate_oidc}
     */
-    readonly authenticateOidc?: LbListenerRuleActionAuthenticateOidc[];
+    readonly authenticateOidc?: LbListenerRuleActionAuthenticateOidc;
     /**
     * fixed_response block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#fixed_response LbListenerRule#fixed_response}
     */
-    readonly fixedResponse?: LbListenerRuleActionFixedResponse[];
+    readonly fixedResponse?: LbListenerRuleActionFixedResponse;
     /**
     * forward block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#forward LbListenerRule#forward}
     */
-    readonly forward?: LbListenerRuleActionForward[];
+    readonly forward?: LbListenerRuleActionForward;
     /**
     * redirect block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#redirect LbListenerRule#redirect}
     */
-    readonly redirect?: LbListenerRuleActionRedirect[];
+    readonly redirect?: LbListenerRuleActionRedirect;
   }
 
   function lbListenerRuleActionToTerraform(struct?: LbListenerRuleAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       order: cdktf.numberToTerraform(struct!.order),
       target_group_arn: cdktf.stringToTerraform(struct!.targetGroupArn),
       type: cdktf.stringToTerraform(struct!.type),
-      authenticate_cognito: cdktf.listMapper(lbListenerRuleActionAuthenticateCognitoToTerraform)(struct!.authenticateCognito),
-      authenticate_oidc: cdktf.listMapper(lbListenerRuleActionAuthenticateOidcToTerraform)(struct!.authenticateOidc),
-      fixed_response: cdktf.listMapper(lbListenerRuleActionFixedResponseToTerraform)(struct!.fixedResponse),
-      forward: cdktf.listMapper(lbListenerRuleActionForwardToTerraform)(struct!.forward),
-      redirect: cdktf.listMapper(lbListenerRuleActionRedirectToTerraform)(struct!.redirect),
+      authenticate_cognito: lbListenerRuleActionAuthenticateCognitoToTerraform(struct!.authenticateCognito),
+      authenticate_oidc: lbListenerRuleActionAuthenticateOidcToTerraform(struct!.authenticateOidc),
+      fixed_response: lbListenerRuleActionFixedResponseToTerraform(struct!.fixedResponse),
+      forward: lbListenerRuleActionForwardToTerraform(struct!.forward),
+      redirect: lbListenerRuleActionRedirectToTerraform(struct!.redirect),
     }
   }
 
@@ -4376,13 +7328,39 @@ export namespace ELB {
     readonly values: string[];
   }
 
-  function lbListenerRuleConditionHostHeaderToTerraform(struct?: LbListenerRuleConditionHostHeader): any {
+  function lbListenerRuleConditionHostHeaderToTerraform(struct?: LbListenerRuleConditionHostHeaderOutputReference | LbListenerRuleConditionHostHeader): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
     }
   }
 
+  export class LbListenerRuleConditionHostHeaderOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // values - computed: false, optional: false, required: true
+    private _values?: string[]; 
+    public get values() {
+      return this.getListAttribute('values');
+    }
+    public set values(value: string[]) {
+      this._values = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valuesInput() {
+      return this._values
+    }
+  }
   export interface LbListenerRuleConditionHttpHeader {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#http_header_name LbListenerRule#http_header_name}
@@ -4394,14 +7372,53 @@ export namespace ELB {
     readonly values: string[];
   }
 
-  function lbListenerRuleConditionHttpHeaderToTerraform(struct?: LbListenerRuleConditionHttpHeader): any {
+  function lbListenerRuleConditionHttpHeaderToTerraform(struct?: LbListenerRuleConditionHttpHeaderOutputReference | LbListenerRuleConditionHttpHeader): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       http_header_name: cdktf.stringToTerraform(struct!.httpHeaderName),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
     }
   }
 
+  export class LbListenerRuleConditionHttpHeaderOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // http_header_name - computed: false, optional: false, required: true
+    private _httpHeaderName?: string; 
+    public get httpHeaderName() {
+      return this.getStringAttribute('http_header_name');
+    }
+    public set httpHeaderName(value: string) {
+      this._httpHeaderName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get httpHeaderNameInput() {
+      return this._httpHeaderName
+    }
+
+    // values - computed: false, optional: false, required: true
+    private _values?: string[]; 
+    public get values() {
+      return this.getListAttribute('values');
+    }
+    public set values(value: string[]) {
+      this._values = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valuesInput() {
+      return this._values
+    }
+  }
   export interface LbListenerRuleConditionHttpRequestMethod {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#values LbListenerRule#values}
@@ -4409,13 +7426,39 @@ export namespace ELB {
     readonly values: string[];
   }
 
-  function lbListenerRuleConditionHttpRequestMethodToTerraform(struct?: LbListenerRuleConditionHttpRequestMethod): any {
+  function lbListenerRuleConditionHttpRequestMethodToTerraform(struct?: LbListenerRuleConditionHttpRequestMethodOutputReference | LbListenerRuleConditionHttpRequestMethod): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
     }
   }
 
+  export class LbListenerRuleConditionHttpRequestMethodOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // values - computed: false, optional: false, required: true
+    private _values?: string[]; 
+    public get values() {
+      return this.getListAttribute('values');
+    }
+    public set values(value: string[]) {
+      this._values = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valuesInput() {
+      return this._values
+    }
+  }
   export interface LbListenerRuleConditionPathPattern {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#values LbListenerRule#values}
@@ -4423,13 +7466,39 @@ export namespace ELB {
     readonly values: string[];
   }
 
-  function lbListenerRuleConditionPathPatternToTerraform(struct?: LbListenerRuleConditionPathPattern): any {
+  function lbListenerRuleConditionPathPatternToTerraform(struct?: LbListenerRuleConditionPathPatternOutputReference | LbListenerRuleConditionPathPattern): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
     }
   }
 
+  export class LbListenerRuleConditionPathPatternOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // values - computed: false, optional: false, required: true
+    private _values?: string[]; 
+    public get values() {
+      return this.getListAttribute('values');
+    }
+    public set values(value: string[]) {
+      this._values = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valuesInput() {
+      return this._values
+    }
+  }
   export interface LbListenerRuleConditionQueryString {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#key LbListenerRule#key}
@@ -4443,6 +7512,9 @@ export namespace ELB {
 
   function lbListenerRuleConditionQueryStringToTerraform(struct?: LbListenerRuleConditionQueryString): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
       value: cdktf.stringToTerraform(struct!.value),
@@ -4456,38 +7528,64 @@ export namespace ELB {
     readonly values: string[];
   }
 
-  function lbListenerRuleConditionSourceIpToTerraform(struct?: LbListenerRuleConditionSourceIp): any {
+  function lbListenerRuleConditionSourceIpToTerraform(struct?: LbListenerRuleConditionSourceIpOutputReference | LbListenerRuleConditionSourceIp): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
     }
   }
 
+  export class LbListenerRuleConditionSourceIpOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // values - computed: false, optional: false, required: true
+    private _values?: string[]; 
+    public get values() {
+      return this.getListAttribute('values');
+    }
+    public set values(value: string[]) {
+      this._values = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valuesInput() {
+      return this._values
+    }
+  }
   export interface LbListenerRuleCondition {
     /**
     * host_header block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#host_header LbListenerRule#host_header}
     */
-    readonly hostHeader?: LbListenerRuleConditionHostHeader[];
+    readonly hostHeader?: LbListenerRuleConditionHostHeader;
     /**
     * http_header block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#http_header LbListenerRule#http_header}
     */
-    readonly httpHeader?: LbListenerRuleConditionHttpHeader[];
+    readonly httpHeader?: LbListenerRuleConditionHttpHeader;
     /**
     * http_request_method block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#http_request_method LbListenerRule#http_request_method}
     */
-    readonly httpRequestMethod?: LbListenerRuleConditionHttpRequestMethod[];
+    readonly httpRequestMethod?: LbListenerRuleConditionHttpRequestMethod;
     /**
     * path_pattern block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#path_pattern LbListenerRule#path_pattern}
     */
-    readonly pathPattern?: LbListenerRuleConditionPathPattern[];
+    readonly pathPattern?: LbListenerRuleConditionPathPattern;
     /**
     * query_string block
     * 
@@ -4499,18 +7597,21 @@ export namespace ELB {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_listener_rule.html#source_ip LbListenerRule#source_ip}
     */
-    readonly sourceIp?: LbListenerRuleConditionSourceIp[];
+    readonly sourceIp?: LbListenerRuleConditionSourceIp;
   }
 
   function lbListenerRuleConditionToTerraform(struct?: LbListenerRuleCondition): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      host_header: cdktf.listMapper(lbListenerRuleConditionHostHeaderToTerraform)(struct!.hostHeader),
-      http_header: cdktf.listMapper(lbListenerRuleConditionHttpHeaderToTerraform)(struct!.httpHeader),
-      http_request_method: cdktf.listMapper(lbListenerRuleConditionHttpRequestMethodToTerraform)(struct!.httpRequestMethod),
-      path_pattern: cdktf.listMapper(lbListenerRuleConditionPathPatternToTerraform)(struct!.pathPattern),
+      host_header: lbListenerRuleConditionHostHeaderToTerraform(struct!.hostHeader),
+      http_header: lbListenerRuleConditionHttpHeaderToTerraform(struct!.httpHeader),
+      http_request_method: lbListenerRuleConditionHttpRequestMethodToTerraform(struct!.httpRequestMethod),
+      path_pattern: lbListenerRuleConditionPathPatternToTerraform(struct!.pathPattern),
       query_string: cdktf.listMapper(lbListenerRuleConditionQueryStringToTerraform)(struct!.queryString),
-      source_ip: cdktf.listMapper(lbListenerRuleConditionSourceIpToTerraform)(struct!.sourceIp),
+      source_ip: lbListenerRuleConditionSourceIpToTerraform(struct!.sourceIp),
     }
   }
 
@@ -4570,7 +7671,7 @@ export namespace ELB {
     }
 
     // listener_arn - computed: false, optional: false, required: true
-    private _listenerArn: string;
+    private _listenerArn?: string; 
     public get listenerArn() {
       return this.getStringAttribute('listener_arn');
     }
@@ -4583,11 +7684,11 @@ export namespace ELB {
     }
 
     // priority - computed: true, optional: true, required: false
-    private _priority?: number;
+    private _priority?: number | undefined; 
     public get priority() {
       return this.getNumberAttribute('priority');
     }
-    public set priority(value: number) {
+    public set priority(value: number | undefined) {
       this._priority = value;
     }
     public resetPriority() {
@@ -4599,11 +7700,12 @@ export namespace ELB {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4615,11 +7717,12 @@ export namespace ELB {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -4631,8 +7734,9 @@ export namespace ELB {
     }
 
     // action - computed: false, optional: false, required: true
-    private _action: LbListenerRuleAction[];
+    private _action?: LbListenerRuleAction[]; 
     public get action() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('action') as any;
     }
     public set action(value: LbListenerRuleAction[]) {
@@ -4644,8 +7748,9 @@ export namespace ELB {
     }
 
     // condition - computed: false, optional: false, required: true
-    private _condition: LbListenerRuleCondition[];
+    private _condition?: LbListenerRuleCondition[]; 
     public get condition() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('condition') as any;
     }
     public set condition(value: LbListenerRuleCondition[]) {
@@ -4704,6 +7809,9 @@ export namespace ELB {
 
   function lbSslNegotiationPolicyAttributeToTerraform(struct?: LbSslNegotiationPolicyAttribute): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       value: cdktf.stringToTerraform(struct!.value),
@@ -4759,7 +7867,7 @@ export namespace ELB {
     }
 
     // lb_port - computed: false, optional: false, required: true
-    private _lbPort: number;
+    private _lbPort?: number; 
     public get lbPort() {
       return this.getNumberAttribute('lb_port');
     }
@@ -4772,7 +7880,7 @@ export namespace ELB {
     }
 
     // load_balancer - computed: false, optional: false, required: true
-    private _loadBalancer: string;
+    private _loadBalancer?: string; 
     public get loadBalancer() {
       return this.getStringAttribute('load_balancer');
     }
@@ -4785,7 +7893,7 @@ export namespace ELB {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -4798,11 +7906,12 @@ export namespace ELB {
     }
 
     // attribute - computed: false, optional: true, required: false
-    private _attribute?: LbSslNegotiationPolicyAttribute[];
+    private _attribute?: LbSslNegotiationPolicyAttribute[] | undefined; 
     public get attribute() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('attribute') as any;
     }
-    public set attribute(value: LbSslNegotiationPolicyAttribute[] ) {
+    public set attribute(value: LbSslNegotiationPolicyAttribute[] | undefined) {
       this._attribute = value;
     }
     public resetAttribute() {
@@ -4892,13 +8001,13 @@ export namespace ELB {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_target_group.html#health_check LbTargetGroup#health_check}
     */
-    readonly healthCheck?: LbTargetGroupHealthCheck[];
+    readonly healthCheck?: LbTargetGroupHealthCheck;
     /**
     * stickiness block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_target_group.html#stickiness LbTargetGroup#stickiness}
     */
-    readonly stickiness?: LbTargetGroupStickiness[];
+    readonly stickiness?: LbTargetGroupStickiness;
   }
   export interface LbTargetGroupHealthCheck {
     /**
@@ -4939,8 +8048,11 @@ export namespace ELB {
     readonly unhealthyThreshold?: number;
   }
 
-  function lbTargetGroupHealthCheckToTerraform(struct?: LbTargetGroupHealthCheck): any {
+  function lbTargetGroupHealthCheckToTerraform(struct?: LbTargetGroupHealthCheckOutputReference | LbTargetGroupHealthCheck): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       enabled: cdktf.booleanToTerraform(struct!.enabled),
       healthy_threshold: cdktf.numberToTerraform(struct!.healthyThreshold),
@@ -4954,6 +8066,160 @@ export namespace ELB {
     }
   }
 
+  export class LbTargetGroupHealthCheckOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // enabled - computed: false, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+
+    // healthy_threshold - computed: false, optional: true, required: false
+    private _healthyThreshold?: number | undefined; 
+    public get healthyThreshold() {
+      return this.getNumberAttribute('healthy_threshold');
+    }
+    public set healthyThreshold(value: number | undefined) {
+      this._healthyThreshold = value;
+    }
+    public resetHealthyThreshold() {
+      this._healthyThreshold = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get healthyThresholdInput() {
+      return this._healthyThreshold
+    }
+
+    // interval - computed: false, optional: true, required: false
+    private _interval?: number | undefined; 
+    public get interval() {
+      return this.getNumberAttribute('interval');
+    }
+    public set interval(value: number | undefined) {
+      this._interval = value;
+    }
+    public resetInterval() {
+      this._interval = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get intervalInput() {
+      return this._interval
+    }
+
+    // matcher - computed: true, optional: true, required: false
+    private _matcher?: string | undefined; 
+    public get matcher() {
+      return this.getStringAttribute('matcher');
+    }
+    public set matcher(value: string | undefined) {
+      this._matcher = value;
+    }
+    public resetMatcher() {
+      this._matcher = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get matcherInput() {
+      return this._matcher
+    }
+
+    // path - computed: true, optional: true, required: false
+    private _path?: string | undefined; 
+    public get path() {
+      return this.getStringAttribute('path');
+    }
+    public set path(value: string | undefined) {
+      this._path = value;
+    }
+    public resetPath() {
+      this._path = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get pathInput() {
+      return this._path
+    }
+
+    // port - computed: false, optional: true, required: false
+    private _port?: string | undefined; 
+    public get port() {
+      return this.getStringAttribute('port');
+    }
+    public set port(value: string | undefined) {
+      this._port = value;
+    }
+    public resetPort() {
+      this._port = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get portInput() {
+      return this._port
+    }
+
+    // protocol - computed: false, optional: true, required: false
+    private _protocol?: string | undefined; 
+    public get protocol() {
+      return this.getStringAttribute('protocol');
+    }
+    public set protocol(value: string | undefined) {
+      this._protocol = value;
+    }
+    public resetProtocol() {
+      this._protocol = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get protocolInput() {
+      return this._protocol
+    }
+
+    // timeout - computed: true, optional: true, required: false
+    private _timeout?: number | undefined; 
+    public get timeout() {
+      return this.getNumberAttribute('timeout');
+    }
+    public set timeout(value: number | undefined) {
+      this._timeout = value;
+    }
+    public resetTimeout() {
+      this._timeout = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get timeoutInput() {
+      return this._timeout
+    }
+
+    // unhealthy_threshold - computed: false, optional: true, required: false
+    private _unhealthyThreshold?: number | undefined; 
+    public get unhealthyThreshold() {
+      return this.getNumberAttribute('unhealthy_threshold');
+    }
+    public set unhealthyThreshold(value: number | undefined) {
+      this._unhealthyThreshold = value;
+    }
+    public resetUnhealthyThreshold() {
+      this._unhealthyThreshold = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get unhealthyThresholdInput() {
+      return this._unhealthyThreshold
+    }
+  }
   export interface LbTargetGroupStickiness {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb_target_group.html#cookie_duration LbTargetGroup#cookie_duration}
@@ -4973,8 +8239,11 @@ export namespace ELB {
     readonly type: string;
   }
 
-  function lbTargetGroupStickinessToTerraform(struct?: LbTargetGroupStickiness): any {
+  function lbTargetGroupStickinessToTerraform(struct?: LbTargetGroupStickinessOutputReference | LbTargetGroupStickiness): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cookie_duration: cdktf.numberToTerraform(struct!.cookieDuration),
       cookie_name: cdktf.stringToTerraform(struct!.cookieName),
@@ -4983,6 +8252,77 @@ export namespace ELB {
     }
   }
 
+  export class LbTargetGroupStickinessOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // cookie_duration - computed: false, optional: true, required: false
+    private _cookieDuration?: number | undefined; 
+    public get cookieDuration() {
+      return this.getNumberAttribute('cookie_duration');
+    }
+    public set cookieDuration(value: number | undefined) {
+      this._cookieDuration = value;
+    }
+    public resetCookieDuration() {
+      this._cookieDuration = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cookieDurationInput() {
+      return this._cookieDuration
+    }
+
+    // cookie_name - computed: false, optional: true, required: false
+    private _cookieName?: string | undefined; 
+    public get cookieName() {
+      return this.getStringAttribute('cookie_name');
+    }
+    public set cookieName(value: string | undefined) {
+      this._cookieName = value;
+    }
+    public resetCookieName() {
+      this._cookieName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cookieNameInput() {
+      return this._cookieName
+    }
+
+    // enabled - computed: false, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/lb_target_group.html aws_lb_target_group}
@@ -5050,11 +8390,11 @@ export namespace ELB {
     }
 
     // deregistration_delay - computed: false, optional: true, required: false
-    private _deregistrationDelay?: string;
+    private _deregistrationDelay?: string | undefined; 
     public get deregistrationDelay() {
       return this.getStringAttribute('deregistration_delay');
     }
-    public set deregistrationDelay(value: string ) {
+    public set deregistrationDelay(value: string | undefined) {
       this._deregistrationDelay = value;
     }
     public resetDeregistrationDelay() {
@@ -5071,11 +8411,11 @@ export namespace ELB {
     }
 
     // lambda_multi_value_headers_enabled - computed: false, optional: true, required: false
-    private _lambdaMultiValueHeadersEnabled?: boolean | cdktf.IResolvable;
+    private _lambdaMultiValueHeadersEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get lambdaMultiValueHeadersEnabled() {
-      return this.getBooleanAttribute('lambda_multi_value_headers_enabled');
+      return this.getBooleanAttribute('lambda_multi_value_headers_enabled') as any;
     }
-    public set lambdaMultiValueHeadersEnabled(value: boolean | cdktf.IResolvable ) {
+    public set lambdaMultiValueHeadersEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._lambdaMultiValueHeadersEnabled = value;
     }
     public resetLambdaMultiValueHeadersEnabled() {
@@ -5087,11 +8427,11 @@ export namespace ELB {
     }
 
     // load_balancing_algorithm_type - computed: true, optional: true, required: false
-    private _loadBalancingAlgorithmType?: string;
+    private _loadBalancingAlgorithmType?: string | undefined; 
     public get loadBalancingAlgorithmType() {
       return this.getStringAttribute('load_balancing_algorithm_type');
     }
-    public set loadBalancingAlgorithmType(value: string) {
+    public set loadBalancingAlgorithmType(value: string | undefined) {
       this._loadBalancingAlgorithmType = value;
     }
     public resetLoadBalancingAlgorithmType() {
@@ -5103,11 +8443,11 @@ export namespace ELB {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -5119,11 +8459,11 @@ export namespace ELB {
     }
 
     // name_prefix - computed: false, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string ) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -5135,11 +8475,11 @@ export namespace ELB {
     }
 
     // port - computed: false, optional: true, required: false
-    private _port?: number;
+    private _port?: number | undefined; 
     public get port() {
       return this.getNumberAttribute('port');
     }
-    public set port(value: number ) {
+    public set port(value: number | undefined) {
       this._port = value;
     }
     public resetPort() {
@@ -5151,11 +8491,11 @@ export namespace ELB {
     }
 
     // preserve_client_ip - computed: true, optional: true, required: false
-    private _preserveClientIp?: string;
+    private _preserveClientIp?: string | undefined; 
     public get preserveClientIp() {
       return this.getStringAttribute('preserve_client_ip');
     }
-    public set preserveClientIp(value: string) {
+    public set preserveClientIp(value: string | undefined) {
       this._preserveClientIp = value;
     }
     public resetPreserveClientIp() {
@@ -5167,11 +8507,11 @@ export namespace ELB {
     }
 
     // protocol - computed: false, optional: true, required: false
-    private _protocol?: string;
+    private _protocol?: string | undefined; 
     public get protocol() {
       return this.getStringAttribute('protocol');
     }
-    public set protocol(value: string ) {
+    public set protocol(value: string | undefined) {
       this._protocol = value;
     }
     public resetProtocol() {
@@ -5183,11 +8523,11 @@ export namespace ELB {
     }
 
     // protocol_version - computed: true, optional: true, required: false
-    private _protocolVersion?: string;
+    private _protocolVersion?: string | undefined; 
     public get protocolVersion() {
       return this.getStringAttribute('protocol_version');
     }
-    public set protocolVersion(value: string) {
+    public set protocolVersion(value: string | undefined) {
       this._protocolVersion = value;
     }
     public resetProtocolVersion() {
@@ -5199,11 +8539,11 @@ export namespace ELB {
     }
 
     // proxy_protocol_v2 - computed: false, optional: true, required: false
-    private _proxyProtocolV2?: boolean | cdktf.IResolvable;
+    private _proxyProtocolV2?: boolean | cdktf.IResolvable | undefined; 
     public get proxyProtocolV2() {
-      return this.getBooleanAttribute('proxy_protocol_v2');
+      return this.getBooleanAttribute('proxy_protocol_v2') as any;
     }
-    public set proxyProtocolV2(value: boolean | cdktf.IResolvable ) {
+    public set proxyProtocolV2(value: boolean | cdktf.IResolvable | undefined) {
       this._proxyProtocolV2 = value;
     }
     public resetProxyProtocolV2() {
@@ -5215,11 +8555,11 @@ export namespace ELB {
     }
 
     // slow_start - computed: false, optional: true, required: false
-    private _slowStart?: number;
+    private _slowStart?: number | undefined; 
     public get slowStart() {
       return this.getNumberAttribute('slow_start');
     }
-    public set slowStart(value: number ) {
+    public set slowStart(value: number | undefined) {
       this._slowStart = value;
     }
     public resetSlowStart() {
@@ -5231,11 +8571,12 @@ export namespace ELB {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -5247,11 +8588,12 @@ export namespace ELB {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -5263,11 +8605,11 @@ export namespace ELB {
     }
 
     // target_type - computed: false, optional: true, required: false
-    private _targetType?: string;
+    private _targetType?: string | undefined; 
     public get targetType() {
       return this.getStringAttribute('target_type');
     }
-    public set targetType(value: string ) {
+    public set targetType(value: string | undefined) {
       this._targetType = value;
     }
     public resetTargetType() {
@@ -5279,11 +8621,11 @@ export namespace ELB {
     }
 
     // vpc_id - computed: false, optional: true, required: false
-    private _vpcId?: string;
+    private _vpcId?: string | undefined; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
-    public set vpcId(value: string ) {
+    public set vpcId(value: string | undefined) {
       this._vpcId = value;
     }
     public resetVpcId() {
@@ -5295,11 +8637,12 @@ export namespace ELB {
     }
 
     // health_check - computed: false, optional: true, required: false
-    private _healthCheck?: LbTargetGroupHealthCheck[];
+    private _healthCheck?: LbTargetGroupHealthCheck | undefined; 
+    private __healthCheckOutput = new LbTargetGroupHealthCheckOutputReference(this as any, "health_check", true);
     public get healthCheck() {
-      return this.interpolationForAttribute('health_check') as any;
+      return this.__healthCheckOutput;
     }
-    public set healthCheck(value: LbTargetGroupHealthCheck[] ) {
+    public putHealthCheck(value: LbTargetGroupHealthCheck | undefined) {
       this._healthCheck = value;
     }
     public resetHealthCheck() {
@@ -5311,11 +8654,12 @@ export namespace ELB {
     }
 
     // stickiness - computed: false, optional: true, required: false
-    private _stickiness?: LbTargetGroupStickiness[];
+    private _stickiness?: LbTargetGroupStickiness | undefined; 
+    private __stickinessOutput = new LbTargetGroupStickinessOutputReference(this as any, "stickiness", true);
     public get stickiness() {
-      return this.interpolationForAttribute('stickiness') as any;
+      return this.__stickinessOutput;
     }
-    public set stickiness(value: LbTargetGroupStickiness[] ) {
+    public putStickiness(value: LbTargetGroupStickiness | undefined) {
       this._stickiness = value;
     }
     public resetStickiness() {
@@ -5347,8 +8691,8 @@ export namespace ELB {
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         target_type: cdktf.stringToTerraform(this._targetType),
         vpc_id: cdktf.stringToTerraform(this._vpcId),
-        health_check: cdktf.listMapper(lbTargetGroupHealthCheckToTerraform)(this._healthCheck),
-        stickiness: cdktf.listMapper(lbTargetGroupStickinessToTerraform)(this._stickiness),
+        health_check: lbTargetGroupHealthCheckToTerraform(this._healthCheck),
+        stickiness: lbTargetGroupStickinessToTerraform(this._stickiness),
       };
     }
   }
@@ -5414,11 +8758,11 @@ export namespace ELB {
     // ==========
 
     // availability_zone - computed: false, optional: true, required: false
-    private _availabilityZone?: string;
+    private _availabilityZone?: string | undefined; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
-    public set availabilityZone(value: string ) {
+    public set availabilityZone(value: string | undefined) {
       this._availabilityZone = value;
     }
     public resetAvailabilityZone() {
@@ -5435,11 +8779,11 @@ export namespace ELB {
     }
 
     // port - computed: false, optional: true, required: false
-    private _port?: number;
+    private _port?: number | undefined; 
     public get port() {
       return this.getNumberAttribute('port');
     }
-    public set port(value: number ) {
+    public set port(value: number | undefined) {
       this._port = value;
     }
     public resetPort() {
@@ -5451,7 +8795,7 @@ export namespace ELB {
     }
 
     // target_group_arn - computed: false, optional: false, required: true
-    private _targetGroupArn: string;
+    private _targetGroupArn?: string; 
     public get targetGroupArn() {
       return this.getStringAttribute('target_group_arn');
     }
@@ -5464,7 +8808,7 @@ export namespace ELB {
     }
 
     // target_id - computed: false, optional: false, required: true
-    private _targetId: string;
+    private _targetId?: string; 
     public get targetId() {
       return this.getStringAttribute('target_id');
     }
@@ -5551,7 +8895,7 @@ export namespace ELB {
     }
 
     // instance_port - computed: false, optional: false, required: true
-    private _instancePort: number;
+    private _instancePort?: number; 
     public get instancePort() {
       return this.getNumberAttribute('instance_port');
     }
@@ -5564,7 +8908,7 @@ export namespace ELB {
     }
 
     // load_balancer_name - computed: false, optional: false, required: true
-    private _loadBalancerName: string;
+    private _loadBalancerName?: string; 
     public get loadBalancerName() {
       return this.getStringAttribute('load_balancer_name');
     }
@@ -5577,11 +8921,11 @@ export namespace ELB {
     }
 
     // policy_names - computed: false, optional: true, required: false
-    private _policyNames?: string[];
+    private _policyNames?: string[] | undefined; 
     public get policyNames() {
       return this.getListAttribute('policy_names');
     }
-    public set policyNames(value: string[] ) {
+    public set policyNames(value: string[] | undefined) {
       this._policyNames = value;
     }
     public resetPolicyNames() {
@@ -5666,7 +9010,7 @@ export namespace ELB {
     }
 
     // load_balancer_name - computed: false, optional: false, required: true
-    private _loadBalancerName: string;
+    private _loadBalancerName?: string; 
     public get loadBalancerName() {
       return this.getStringAttribute('load_balancer_name');
     }
@@ -5679,7 +9023,7 @@ export namespace ELB {
     }
 
     // load_balancer_port - computed: false, optional: false, required: true
-    private _loadBalancerPort: number;
+    private _loadBalancerPort?: number; 
     public get loadBalancerPort() {
       return this.getNumberAttribute('load_balancer_port');
     }
@@ -5692,11 +9036,11 @@ export namespace ELB {
     }
 
     // policy_names - computed: false, optional: true, required: false
-    private _policyNames?: string[];
+    private _policyNames?: string[] | undefined; 
     public get policyNames() {
       return this.getListAttribute('policy_names');
     }
-    public set policyNames(value: string[] ) {
+    public set policyNames(value: string[] | undefined) {
       this._policyNames = value;
     }
     public resetPolicyNames() {
@@ -5752,6 +9096,9 @@ export namespace ELB {
 
   function loadBalancerPolicyPolicyAttributeToTerraform(struct?: LoadBalancerPolicyPolicyAttribute): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       value: cdktf.stringToTerraform(struct!.value),
@@ -5807,7 +9154,7 @@ export namespace ELB {
     }
 
     // load_balancer_name - computed: false, optional: false, required: true
-    private _loadBalancerName: string;
+    private _loadBalancerName?: string; 
     public get loadBalancerName() {
       return this.getStringAttribute('load_balancer_name');
     }
@@ -5820,7 +9167,7 @@ export namespace ELB {
     }
 
     // policy_name - computed: false, optional: false, required: true
-    private _policyName: string;
+    private _policyName?: string; 
     public get policyName() {
       return this.getStringAttribute('policy_name');
     }
@@ -5833,7 +9180,7 @@ export namespace ELB {
     }
 
     // policy_type_name - computed: false, optional: false, required: true
-    private _policyTypeName: string;
+    private _policyTypeName?: string; 
     public get policyTypeName() {
       return this.getStringAttribute('policy_type_name');
     }
@@ -5846,11 +9193,12 @@ export namespace ELB {
     }
 
     // policy_attribute - computed: false, optional: true, required: false
-    private _policyAttribute?: LoadBalancerPolicyPolicyAttribute[];
+    private _policyAttribute?: LoadBalancerPolicyPolicyAttribute[] | undefined; 
     public get policyAttribute() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('policy_attribute') as any;
     }
-    public set policyAttribute(value: LoadBalancerPolicyPolicyAttribute[] ) {
+    public set policyAttribute(value: LoadBalancerPolicyPolicyAttribute[] | undefined) {
       this._policyAttribute = value;
     }
     public resetPolicyAttribute() {
@@ -5931,7 +9279,7 @@ export namespace ELB {
     }
 
     // instance_ports - computed: false, optional: false, required: true
-    private _instancePorts: string[];
+    private _instancePorts?: string[]; 
     public get instancePorts() {
       return this.getListAttribute('instance_ports');
     }
@@ -5944,7 +9292,7 @@ export namespace ELB {
     }
 
     // load_balancer - computed: false, optional: false, required: true
-    private _loadBalancer: string;
+    private _loadBalancer?: string; 
     public get loadBalancer() {
       return this.getStringAttribute('load_balancer');
     }
@@ -5986,7 +9334,7 @@ export namespace ELB {
 
     // enabled - computed: true, optional: false, required: false
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
 
     // prefix - computed: true, optional: false, required: false
@@ -6089,17 +9437,17 @@ export namespace ELB {
 
     // drop_invalid_header_fields - computed: true, optional: false, required: false
     public get dropInvalidHeaderFields() {
-      return this.getBooleanAttribute('drop_invalid_header_fields');
+      return this.getBooleanAttribute('drop_invalid_header_fields') as any;
     }
 
     // enable_deletion_protection - computed: true, optional: false, required: false
     public get enableDeletionProtection() {
-      return this.getBooleanAttribute('enable_deletion_protection');
+      return this.getBooleanAttribute('enable_deletion_protection') as any;
     }
 
     // enable_http2 - computed: true, optional: false, required: false
     public get enableHttp2() {
-      return this.getBooleanAttribute('enable_http2');
+      return this.getBooleanAttribute('enable_http2') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -6114,7 +9462,7 @@ export namespace ELB {
 
     // internal - computed: true, optional: false, required: false
     public get internal() {
-      return this.getBooleanAttribute('internal');
+      return this.getBooleanAttribute('internal') as any;
     }
 
     // ip_address_type - computed: true, optional: false, required: false
@@ -6128,11 +9476,11 @@ export namespace ELB {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -6159,11 +9507,12 @@ export namespace ELB {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -6213,6 +9562,7 @@ export namespace ELB {
 
     // authentication_request_extra_params - computed: true, optional: false, required: false
     public get authenticationRequestExtraParams() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('authentication_request_extra_params') as any;
     }
 
@@ -6255,6 +9605,7 @@ export namespace ELB {
 
     // authentication_request_extra_params - computed: true, optional: false, required: false
     public get authenticationRequestExtraParams() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('authentication_request_extra_params') as any;
     }
 
@@ -6334,7 +9685,7 @@ export namespace ELB {
 
     // enabled - computed: true, optional: false, required: false
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
   }
   export class DataAwsAlbListenerDefaultActionForwardTargetGroup extends cdktf.ComplexComputedList {
@@ -6353,11 +9704,13 @@ export namespace ELB {
 
     // stickiness - computed: true, optional: false, required: false
     public get stickiness() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('stickiness') as any;
     }
 
     // target_group - computed: true, optional: false, required: false
     public get targetGroup() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('target_group') as any;
     }
   }
@@ -6397,21 +9750,25 @@ export namespace ELB {
 
     // authenticate_cognito - computed: true, optional: false, required: false
     public get authenticateCognito() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('authenticate_cognito') as any;
     }
 
     // authenticate_oidc - computed: true, optional: false, required: false
     public get authenticateOidc() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('authenticate_oidc') as any;
     }
 
     // fixed_response - computed: true, optional: false, required: false
     public get fixedResponse() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('fixed_response') as any;
     }
 
     // forward - computed: true, optional: false, required: false
     public get forward() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('forward') as any;
     }
 
@@ -6422,6 +9779,7 @@ export namespace ELB {
 
     // redirect - computed: true, optional: false, required: false
     public get redirect() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('redirect') as any;
     }
 
@@ -6503,11 +9861,11 @@ export namespace ELB {
     }
 
     // load_balancer_arn - computed: true, optional: true, required: false
-    private _loadBalancerArn?: string;
+    private _loadBalancerArn?: string | undefined; 
     public get loadBalancerArn() {
       return this.getStringAttribute('load_balancer_arn');
     }
-    public set loadBalancerArn(value: string) {
+    public set loadBalancerArn(value: string | undefined) {
       this._loadBalancerArn = value;
     }
     public resetLoadBalancerArn() {
@@ -6519,11 +9877,11 @@ export namespace ELB {
     }
 
     // port - computed: true, optional: true, required: false
-    private _port?: number;
+    private _port?: number | undefined; 
     public get port() {
       return this.getNumberAttribute('port');
     }
-    public set port(value: number) {
+    public set port(value: number | undefined) {
       this._port = value;
     }
     public resetPort() {
@@ -6545,11 +9903,12 @@ export namespace ELB {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -6586,7 +9945,7 @@ export namespace ELB {
 
     // enabled - computed: true, optional: false, required: false
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
 
     // healthy_threshold - computed: true, optional: false, required: false
@@ -6643,7 +10002,7 @@ export namespace ELB {
 
     // enabled - computed: true, optional: false, required: false
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
 
     // type - computed: true, optional: false, required: false
@@ -6719,7 +10078,7 @@ export namespace ELB {
 
     // lambda_multi_value_headers_enabled - computed: true, optional: false, required: false
     public get lambdaMultiValueHeadersEnabled() {
-      return this.getBooleanAttribute('lambda_multi_value_headers_enabled');
+      return this.getBooleanAttribute('lambda_multi_value_headers_enabled') as any;
     }
 
     // load_balancing_algorithm_type - computed: true, optional: false, required: false
@@ -6728,11 +10087,11 @@ export namespace ELB {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -6765,7 +10124,7 @@ export namespace ELB {
 
     // proxy_protocol_v2 - computed: true, optional: false, required: false
     public get proxyProtocolV2() {
-      return this.getBooleanAttribute('proxy_protocol_v2');
+      return this.getBooleanAttribute('proxy_protocol_v2') as any;
     }
 
     // slow_start - computed: true, optional: false, required: false
@@ -6779,11 +10138,12 @@ export namespace ELB {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -6834,7 +10194,7 @@ export namespace ELB {
 
     // enabled - computed: true, optional: false, required: false
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
 
     // prefix - computed: true, optional: false, required: false
@@ -6937,17 +10297,17 @@ export namespace ELB {
 
     // drop_invalid_header_fields - computed: true, optional: false, required: false
     public get dropInvalidHeaderFields() {
-      return this.getBooleanAttribute('drop_invalid_header_fields');
+      return this.getBooleanAttribute('drop_invalid_header_fields') as any;
     }
 
     // enable_deletion_protection - computed: true, optional: false, required: false
     public get enableDeletionProtection() {
-      return this.getBooleanAttribute('enable_deletion_protection');
+      return this.getBooleanAttribute('enable_deletion_protection') as any;
     }
 
     // enable_http2 - computed: true, optional: false, required: false
     public get enableHttp2() {
-      return this.getBooleanAttribute('enable_http2');
+      return this.getBooleanAttribute('enable_http2') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -6962,7 +10322,7 @@ export namespace ELB {
 
     // internal - computed: true, optional: false, required: false
     public get internal() {
-      return this.getBooleanAttribute('internal');
+      return this.getBooleanAttribute('internal') as any;
     }
 
     // ip_address_type - computed: true, optional: false, required: false
@@ -6976,11 +10336,11 @@ export namespace ELB {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -7007,11 +10367,12 @@ export namespace ELB {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -7061,6 +10422,7 @@ export namespace ELB {
 
     // authentication_request_extra_params - computed: true, optional: false, required: false
     public get authenticationRequestExtraParams() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('authentication_request_extra_params') as any;
     }
 
@@ -7103,6 +10465,7 @@ export namespace ELB {
 
     // authentication_request_extra_params - computed: true, optional: false, required: false
     public get authenticationRequestExtraParams() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('authentication_request_extra_params') as any;
     }
 
@@ -7182,7 +10545,7 @@ export namespace ELB {
 
     // enabled - computed: true, optional: false, required: false
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
   }
   export class DataAwsLbListenerDefaultActionForwardTargetGroup extends cdktf.ComplexComputedList {
@@ -7201,11 +10564,13 @@ export namespace ELB {
 
     // stickiness - computed: true, optional: false, required: false
     public get stickiness() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('stickiness') as any;
     }
 
     // target_group - computed: true, optional: false, required: false
     public get targetGroup() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('target_group') as any;
     }
   }
@@ -7245,21 +10610,25 @@ export namespace ELB {
 
     // authenticate_cognito - computed: true, optional: false, required: false
     public get authenticateCognito() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('authenticate_cognito') as any;
     }
 
     // authenticate_oidc - computed: true, optional: false, required: false
     public get authenticateOidc() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('authenticate_oidc') as any;
     }
 
     // fixed_response - computed: true, optional: false, required: false
     public get fixedResponse() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('fixed_response') as any;
     }
 
     // forward - computed: true, optional: false, required: false
     public get forward() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('forward') as any;
     }
 
@@ -7270,6 +10639,7 @@ export namespace ELB {
 
     // redirect - computed: true, optional: false, required: false
     public get redirect() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('redirect') as any;
     }
 
@@ -7351,11 +10721,11 @@ export namespace ELB {
     }
 
     // load_balancer_arn - computed: true, optional: true, required: false
-    private _loadBalancerArn?: string;
+    private _loadBalancerArn?: string | undefined; 
     public get loadBalancerArn() {
       return this.getStringAttribute('load_balancer_arn');
     }
-    public set loadBalancerArn(value: string) {
+    public set loadBalancerArn(value: string | undefined) {
       this._loadBalancerArn = value;
     }
     public resetLoadBalancerArn() {
@@ -7367,11 +10737,11 @@ export namespace ELB {
     }
 
     // port - computed: true, optional: true, required: false
-    private _port?: number;
+    private _port?: number | undefined; 
     public get port() {
       return this.getNumberAttribute('port');
     }
-    public set port(value: number) {
+    public set port(value: number | undefined) {
       this._port = value;
     }
     public resetPort() {
@@ -7393,11 +10763,12 @@ export namespace ELB {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -7434,7 +10805,7 @@ export namespace ELB {
 
     // enabled - computed: true, optional: false, required: false
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
 
     // healthy_threshold - computed: true, optional: false, required: false
@@ -7491,7 +10862,7 @@ export namespace ELB {
 
     // enabled - computed: true, optional: false, required: false
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
 
     // type - computed: true, optional: false, required: false
@@ -7567,7 +10938,7 @@ export namespace ELB {
 
     // lambda_multi_value_headers_enabled - computed: true, optional: false, required: false
     public get lambdaMultiValueHeadersEnabled() {
-      return this.getBooleanAttribute('lambda_multi_value_headers_enabled');
+      return this.getBooleanAttribute('lambda_multi_value_headers_enabled') as any;
     }
 
     // load_balancing_algorithm_type - computed: true, optional: false, required: false
@@ -7576,11 +10947,11 @@ export namespace ELB {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -7613,7 +10984,7 @@ export namespace ELB {
 
     // proxy_protocol_v2 - computed: true, optional: false, required: false
     public get proxyProtocolV2() {
-      return this.getBooleanAttribute('proxy_protocol_v2');
+      return this.getBooleanAttribute('proxy_protocol_v2') as any;
     }
 
     // slow_start - computed: true, optional: false, required: false
@@ -7627,11 +10998,12 @@ export namespace ELB {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {

@@ -65,7 +65,7 @@ export namespace ServiceQuotas {
 
     // adjustable - computed: true, optional: false, required: false
     public get adjustable() {
-      return this.getBooleanAttribute('adjustable');
+      return this.getBooleanAttribute('adjustable') as any;
     }
 
     // arn - computed: true, optional: false, required: false
@@ -84,7 +84,7 @@ export namespace ServiceQuotas {
     }
 
     // quota_code - computed: false, optional: false, required: true
-    private _quotaCode: string;
+    private _quotaCode?: string; 
     public get quotaCode() {
       return this.getStringAttribute('quota_code');
     }
@@ -112,7 +112,7 @@ export namespace ServiceQuotas {
     }
 
     // service_code - computed: false, optional: false, required: true
-    private _serviceCode: string;
+    private _serviceCode?: string; 
     public get serviceCode() {
       return this.getStringAttribute('service_code');
     }
@@ -130,7 +130,7 @@ export namespace ServiceQuotas {
     }
 
     // value - computed: false, optional: false, required: true
-    private _value: number;
+    private _value?: number; 
     public get value() {
       return this.getNumberAttribute('value');
     }
@@ -211,7 +211,7 @@ export namespace ServiceQuotas {
     }
 
     // service_name - computed: false, optional: false, required: true
-    private _serviceName: string;
+    private _serviceName?: string; 
     public get serviceName() {
       return this.getStringAttribute('service_name');
     }
@@ -291,7 +291,7 @@ export namespace ServiceQuotas {
 
     // adjustable - computed: true, optional: false, required: false
     public get adjustable() {
-      return this.getBooleanAttribute('adjustable');
+      return this.getBooleanAttribute('adjustable') as any;
     }
 
     // arn - computed: true, optional: false, required: false
@@ -306,7 +306,7 @@ export namespace ServiceQuotas {
 
     // global_quota - computed: true, optional: false, required: false
     public get globalQuota() {
-      return this.getBooleanAttribute('global_quota');
+      return this.getBooleanAttribute('global_quota') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -315,11 +315,11 @@ export namespace ServiceQuotas {
     }
 
     // quota_code - computed: true, optional: true, required: false
-    private _quotaCode?: string;
+    private _quotaCode?: string | undefined; 
     public get quotaCode() {
       return this.getStringAttribute('quota_code');
     }
-    public set quotaCode(value: string) {
+    public set quotaCode(value: string | undefined) {
       this._quotaCode = value;
     }
     public resetQuotaCode() {
@@ -331,11 +331,11 @@ export namespace ServiceQuotas {
     }
 
     // quota_name - computed: true, optional: true, required: false
-    private _quotaName?: string;
+    private _quotaName?: string | undefined; 
     public get quotaName() {
       return this.getStringAttribute('quota_name');
     }
-    public set quotaName(value: string) {
+    public set quotaName(value: string | undefined) {
       this._quotaName = value;
     }
     public resetQuotaName() {
@@ -347,7 +347,7 @@ export namespace ServiceQuotas {
     }
 
     // service_code - computed: false, optional: false, required: true
-    private _serviceCode: string;
+    private _serviceCode?: string; 
     public get serviceCode() {
       return this.getStringAttribute('service_code');
     }

@@ -64,7 +64,7 @@ export namespace SES {
     }
 
     // rule_set_name - computed: false, optional: false, required: true
-    private _ruleSetName: string;
+    private _ruleSetName?: string; 
     public get ruleSetName() {
       return this.getStringAttribute('rule_set_name');
     }
@@ -104,7 +104,7 @@ export namespace SES {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ses_configuration_set.html#delivery_options SesConfigurationSet#delivery_options}
     */
-    readonly deliveryOptions?: SesConfigurationSetDeliveryOptions[];
+    readonly deliveryOptions?: SesConfigurationSetDeliveryOptions;
   }
   export interface SesConfigurationSetDeliveryOptions {
     /**
@@ -113,13 +113,42 @@ export namespace SES {
     readonly tlsPolicy?: string;
   }
 
-  function sesConfigurationSetDeliveryOptionsToTerraform(struct?: SesConfigurationSetDeliveryOptions): any {
+  function sesConfigurationSetDeliveryOptionsToTerraform(struct?: SesConfigurationSetDeliveryOptionsOutputReference | SesConfigurationSetDeliveryOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       tls_policy: cdktf.stringToTerraform(struct!.tlsPolicy),
     }
   }
 
+  export class SesConfigurationSetDeliveryOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // tls_policy - computed: false, optional: true, required: false
+    private _tlsPolicy?: string | undefined; 
+    public get tlsPolicy() {
+      return this.getStringAttribute('tls_policy');
+    }
+    public set tlsPolicy(value: string | undefined) {
+      this._tlsPolicy = value;
+    }
+    public resetTlsPolicy() {
+      this._tlsPolicy = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tlsPolicyInput() {
+      return this._tlsPolicy
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/ses_configuration_set.html aws_ses_configuration_set}
@@ -179,7 +208,7 @@ export namespace SES {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -192,11 +221,11 @@ export namespace SES {
     }
 
     // reputation_metrics_enabled - computed: false, optional: true, required: false
-    private _reputationMetricsEnabled?: boolean | cdktf.IResolvable;
+    private _reputationMetricsEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get reputationMetricsEnabled() {
-      return this.getBooleanAttribute('reputation_metrics_enabled');
+      return this.getBooleanAttribute('reputation_metrics_enabled') as any;
     }
-    public set reputationMetricsEnabled(value: boolean | cdktf.IResolvable ) {
+    public set reputationMetricsEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._reputationMetricsEnabled = value;
     }
     public resetReputationMetricsEnabled() {
@@ -208,11 +237,11 @@ export namespace SES {
     }
 
     // sending_enabled - computed: false, optional: true, required: false
-    private _sendingEnabled?: boolean | cdktf.IResolvable;
+    private _sendingEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get sendingEnabled() {
-      return this.getBooleanAttribute('sending_enabled');
+      return this.getBooleanAttribute('sending_enabled') as any;
     }
-    public set sendingEnabled(value: boolean | cdktf.IResolvable ) {
+    public set sendingEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._sendingEnabled = value;
     }
     public resetSendingEnabled() {
@@ -224,11 +253,12 @@ export namespace SES {
     }
 
     // delivery_options - computed: false, optional: true, required: false
-    private _deliveryOptions?: SesConfigurationSetDeliveryOptions[];
+    private _deliveryOptions?: SesConfigurationSetDeliveryOptions | undefined; 
+    private __deliveryOptionsOutput = new SesConfigurationSetDeliveryOptionsOutputReference(this as any, "delivery_options", true);
     public get deliveryOptions() {
-      return this.interpolationForAttribute('delivery_options') as any;
+      return this.__deliveryOptionsOutput;
     }
-    public set deliveryOptions(value: SesConfigurationSetDeliveryOptions[] ) {
+    public putDeliveryOptions(value: SesConfigurationSetDeliveryOptions | undefined) {
       this._deliveryOptions = value;
     }
     public resetDeliveryOptions() {
@@ -248,7 +278,7 @@ export namespace SES {
         name: cdktf.stringToTerraform(this._name),
         reputation_metrics_enabled: cdktf.booleanToTerraform(this._reputationMetricsEnabled),
         sending_enabled: cdktf.booleanToTerraform(this._sendingEnabled),
-        delivery_options: cdktf.listMapper(sesConfigurationSetDeliveryOptionsToTerraform)(this._deliveryOptions),
+        delivery_options: sesConfigurationSetDeliveryOptionsToTerraform(this._deliveryOptions),
       };
     }
   }
@@ -304,7 +334,7 @@ export namespace SES {
     }
 
     // domain - computed: false, optional: false, required: true
-    private _domain: string;
+    private _domain?: string; 
     public get domain() {
       return this.getStringAttribute('domain');
     }
@@ -383,7 +413,7 @@ export namespace SES {
     }
 
     // domain - computed: false, optional: false, required: true
-    private _domain: string;
+    private _domain?: string; 
     public get domain() {
       return this.getStringAttribute('domain');
     }
@@ -434,13 +464,42 @@ export namespace SES {
     readonly create?: string;
   }
 
-  function sesDomainIdentityVerificationTimeoutsToTerraform(struct?: SesDomainIdentityVerificationTimeouts): any {
+  function sesDomainIdentityVerificationTimeoutsToTerraform(struct?: SesDomainIdentityVerificationTimeoutsOutputReference | SesDomainIdentityVerificationTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
     }
   }
 
+  export class SesDomainIdentityVerificationTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/ses_domain_identity_verification.html aws_ses_domain_identity_verification}
@@ -488,7 +547,7 @@ export namespace SES {
     }
 
     // domain - computed: false, optional: false, required: true
-    private _domain: string;
+    private _domain?: string; 
     public get domain() {
       return this.getStringAttribute('domain');
     }
@@ -506,11 +565,12 @@ export namespace SES {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: SesDomainIdentityVerificationTimeouts;
+    private _timeouts?: SesDomainIdentityVerificationTimeouts | undefined; 
+    private __timeoutsOutput = new SesDomainIdentityVerificationTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: SesDomainIdentityVerificationTimeouts ) {
+    public putTimeouts(value: SesDomainIdentityVerificationTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -589,11 +649,11 @@ export namespace SES {
     // ==========
 
     // behavior_on_mx_failure - computed: false, optional: true, required: false
-    private _behaviorOnMxFailure?: string;
+    private _behaviorOnMxFailure?: string | undefined; 
     public get behaviorOnMxFailure() {
       return this.getStringAttribute('behavior_on_mx_failure');
     }
-    public set behaviorOnMxFailure(value: string ) {
+    public set behaviorOnMxFailure(value: string | undefined) {
       this._behaviorOnMxFailure = value;
     }
     public resetBehaviorOnMxFailure() {
@@ -605,7 +665,7 @@ export namespace SES {
     }
 
     // domain - computed: false, optional: false, required: true
-    private _domain: string;
+    private _domain?: string; 
     public get domain() {
       return this.getStringAttribute('domain');
     }
@@ -623,7 +683,7 @@ export namespace SES {
     }
 
     // mail_from_domain - computed: false, optional: false, required: true
-    private _mailFromDomain: string;
+    private _mailFromDomain?: string; 
     public get mailFromDomain() {
       return this.getStringAttribute('mail_from_domain');
     }
@@ -699,7 +759,7 @@ export namespace SES {
     }
 
     // email - computed: false, optional: false, required: true
-    private _email: string;
+    private _email?: string; 
     public get email() {
       return this.getStringAttribute('email');
     }
@@ -754,13 +814,13 @@ export namespace SES {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ses_event_destination.html#kinesis_destination SesEventDestination#kinesis_destination}
     */
-    readonly kinesisDestination?: SesEventDestinationKinesisDestination[];
+    readonly kinesisDestination?: SesEventDestinationKinesisDestination;
     /**
     * sns_destination block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ses_event_destination.html#sns_destination SesEventDestination#sns_destination}
     */
-    readonly snsDestination?: SesEventDestinationSnsDestination[];
+    readonly snsDestination?: SesEventDestinationSnsDestination;
   }
   export interface SesEventDestinationCloudwatchDestination {
     /**
@@ -779,6 +839,9 @@ export namespace SES {
 
   function sesEventDestinationCloudwatchDestinationToTerraform(struct?: SesEventDestinationCloudwatchDestination): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       default_value: cdktf.stringToTerraform(struct!.defaultValue),
       dimension_name: cdktf.stringToTerraform(struct!.dimensionName),
@@ -797,14 +860,53 @@ export namespace SES {
     readonly streamArn: string;
   }
 
-  function sesEventDestinationKinesisDestinationToTerraform(struct?: SesEventDestinationKinesisDestination): any {
+  function sesEventDestinationKinesisDestinationToTerraform(struct?: SesEventDestinationKinesisDestinationOutputReference | SesEventDestinationKinesisDestination): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
       stream_arn: cdktf.stringToTerraform(struct!.streamArn),
     }
   }
 
+  export class SesEventDestinationKinesisDestinationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // role_arn - computed: false, optional: false, required: true
+    private _roleArn?: string; 
+    public get roleArn() {
+      return this.getStringAttribute('role_arn');
+    }
+    public set roleArn(value: string) {
+      this._roleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleArnInput() {
+      return this._roleArn
+    }
+
+    // stream_arn - computed: false, optional: false, required: true
+    private _streamArn?: string; 
+    public get streamArn() {
+      return this.getStringAttribute('stream_arn');
+    }
+    public set streamArn(value: string) {
+      this._streamArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get streamArnInput() {
+      return this._streamArn
+    }
+  }
   export interface SesEventDestinationSnsDestination {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ses_event_destination.html#topic_arn SesEventDestination#topic_arn}
@@ -812,13 +914,39 @@ export namespace SES {
     readonly topicArn: string;
   }
 
-  function sesEventDestinationSnsDestinationToTerraform(struct?: SesEventDestinationSnsDestination): any {
+  function sesEventDestinationSnsDestinationToTerraform(struct?: SesEventDestinationSnsDestinationOutputReference | SesEventDestinationSnsDestination): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       topic_arn: cdktf.stringToTerraform(struct!.topicArn),
     }
   }
 
+  export class SesEventDestinationSnsDestinationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // topic_arn - computed: false, optional: false, required: true
+    private _topicArn?: string; 
+    public get topicArn() {
+      return this.getStringAttribute('topic_arn');
+    }
+    public set topicArn(value: string) {
+      this._topicArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get topicArnInput() {
+      return this._topicArn
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/ses_event_destination.html aws_ses_event_destination}
@@ -871,7 +999,7 @@ export namespace SES {
     }
 
     // configuration_set_name - computed: false, optional: false, required: true
-    private _configurationSetName: string;
+    private _configurationSetName?: string; 
     public get configurationSetName() {
       return this.getStringAttribute('configuration_set_name');
     }
@@ -884,11 +1012,11 @@ export namespace SES {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -905,7 +1033,7 @@ export namespace SES {
     }
 
     // matching_types - computed: false, optional: false, required: true
-    private _matchingTypes: string[];
+    private _matchingTypes?: string[]; 
     public get matchingTypes() {
       return this.getListAttribute('matching_types');
     }
@@ -918,7 +1046,7 @@ export namespace SES {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -931,11 +1059,12 @@ export namespace SES {
     }
 
     // cloudwatch_destination - computed: false, optional: true, required: false
-    private _cloudwatchDestination?: SesEventDestinationCloudwatchDestination[];
+    private _cloudwatchDestination?: SesEventDestinationCloudwatchDestination[] | undefined; 
     public get cloudwatchDestination() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('cloudwatch_destination') as any;
     }
-    public set cloudwatchDestination(value: SesEventDestinationCloudwatchDestination[] ) {
+    public set cloudwatchDestination(value: SesEventDestinationCloudwatchDestination[] | undefined) {
       this._cloudwatchDestination = value;
     }
     public resetCloudwatchDestination() {
@@ -947,11 +1076,12 @@ export namespace SES {
     }
 
     // kinesis_destination - computed: false, optional: true, required: false
-    private _kinesisDestination?: SesEventDestinationKinesisDestination[];
+    private _kinesisDestination?: SesEventDestinationKinesisDestination | undefined; 
+    private __kinesisDestinationOutput = new SesEventDestinationKinesisDestinationOutputReference(this as any, "kinesis_destination", true);
     public get kinesisDestination() {
-      return this.interpolationForAttribute('kinesis_destination') as any;
+      return this.__kinesisDestinationOutput;
     }
-    public set kinesisDestination(value: SesEventDestinationKinesisDestination[] ) {
+    public putKinesisDestination(value: SesEventDestinationKinesisDestination | undefined) {
       this._kinesisDestination = value;
     }
     public resetKinesisDestination() {
@@ -963,11 +1093,12 @@ export namespace SES {
     }
 
     // sns_destination - computed: false, optional: true, required: false
-    private _snsDestination?: SesEventDestinationSnsDestination[];
+    private _snsDestination?: SesEventDestinationSnsDestination | undefined; 
+    private __snsDestinationOutput = new SesEventDestinationSnsDestinationOutputReference(this as any, "sns_destination", true);
     public get snsDestination() {
-      return this.interpolationForAttribute('sns_destination') as any;
+      return this.__snsDestinationOutput;
     }
-    public set snsDestination(value: SesEventDestinationSnsDestination[] ) {
+    public putSnsDestination(value: SesEventDestinationSnsDestination | undefined) {
       this._snsDestination = value;
     }
     public resetSnsDestination() {
@@ -989,8 +1120,8 @@ export namespace SES {
         matching_types: cdktf.listMapper(cdktf.stringToTerraform)(this._matchingTypes),
         name: cdktf.stringToTerraform(this._name),
         cloudwatch_destination: cdktf.listMapper(sesEventDestinationCloudwatchDestinationToTerraform)(this._cloudwatchDestination),
-        kinesis_destination: cdktf.listMapper(sesEventDestinationKinesisDestinationToTerraform)(this._kinesisDestination),
-        sns_destination: cdktf.listMapper(sesEventDestinationSnsDestinationToTerraform)(this._snsDestination),
+        kinesis_destination: sesEventDestinationKinesisDestinationToTerraform(this._kinesisDestination),
+        sns_destination: sesEventDestinationSnsDestinationToTerraform(this._snsDestination),
       };
     }
   }
@@ -1061,7 +1192,7 @@ export namespace SES {
     }
 
     // identity - computed: false, optional: false, required: true
-    private _identity: string;
+    private _identity?: string; 
     public get identity() {
       return this.getStringAttribute('identity');
     }
@@ -1074,11 +1205,11 @@ export namespace SES {
     }
 
     // include_original_headers - computed: false, optional: true, required: false
-    private _includeOriginalHeaders?: boolean | cdktf.IResolvable;
+    private _includeOriginalHeaders?: boolean | cdktf.IResolvable | undefined; 
     public get includeOriginalHeaders() {
-      return this.getBooleanAttribute('include_original_headers');
+      return this.getBooleanAttribute('include_original_headers') as any;
     }
-    public set includeOriginalHeaders(value: boolean | cdktf.IResolvable ) {
+    public set includeOriginalHeaders(value: boolean | cdktf.IResolvable | undefined) {
       this._includeOriginalHeaders = value;
     }
     public resetIncludeOriginalHeaders() {
@@ -1090,7 +1221,7 @@ export namespace SES {
     }
 
     // notification_type - computed: false, optional: false, required: true
-    private _notificationType: string;
+    private _notificationType?: string; 
     public get notificationType() {
       return this.getStringAttribute('notification_type');
     }
@@ -1103,11 +1234,11 @@ export namespace SES {
     }
 
     // topic_arn - computed: false, optional: true, required: false
-    private _topicArn?: string;
+    private _topicArn?: string | undefined; 
     public get topicArn() {
       return this.getStringAttribute('topic_arn');
     }
-    public set topicArn(value: string ) {
+    public set topicArn(value: string | undefined) {
       this._topicArn = value;
     }
     public resetTopicArn() {
@@ -1193,7 +1324,7 @@ export namespace SES {
     }
 
     // identity - computed: false, optional: false, required: true
-    private _identity: string;
+    private _identity?: string; 
     public get identity() {
       return this.getStringAttribute('identity');
     }
@@ -1206,7 +1337,7 @@ export namespace SES {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1219,7 +1350,7 @@ export namespace SES {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -1305,7 +1436,7 @@ export namespace SES {
     }
 
     // cidr - computed: false, optional: false, required: true
-    private _cidr: string;
+    private _cidr?: string; 
     public get cidr() {
       return this.getStringAttribute('cidr');
     }
@@ -1323,7 +1454,7 @@ export namespace SES {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1336,7 +1467,7 @@ export namespace SES {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -1449,6 +1580,9 @@ export namespace SES {
 
   function sesReceiptRuleAddHeaderActionToTerraform(struct?: SesReceiptRuleAddHeaderAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       header_name: cdktf.stringToTerraform(struct!.headerName),
       header_value: cdktf.stringToTerraform(struct!.headerValue),
@@ -1485,6 +1619,9 @@ export namespace SES {
 
   function sesReceiptRuleBounceActionToTerraform(struct?: SesReceiptRuleBounceAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       message: cdktf.stringToTerraform(struct!.message),
       position: cdktf.numberToTerraform(struct!.position),
@@ -1516,6 +1653,9 @@ export namespace SES {
 
   function sesReceiptRuleLambdaActionToTerraform(struct?: SesReceiptRuleLambdaAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       function_arn: cdktf.stringToTerraform(struct!.functionArn),
       invocation_type: cdktf.stringToTerraform(struct!.invocationType),
@@ -1549,6 +1689,9 @@ export namespace SES {
 
   function sesReceiptRuleS3ActionToTerraform(struct?: SesReceiptRuleS3Action): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bucket_name: cdktf.stringToTerraform(struct!.bucketName),
       kms_key_arn: cdktf.stringToTerraform(struct!.kmsKeyArn),
@@ -1575,6 +1718,9 @@ export namespace SES {
 
   function sesReceiptRuleSnsActionToTerraform(struct?: SesReceiptRuleSnsAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       encoding: cdktf.stringToTerraform(struct!.encoding),
       position: cdktf.numberToTerraform(struct!.position),
@@ -1599,6 +1745,9 @@ export namespace SES {
 
   function sesReceiptRuleStopActionToTerraform(struct?: SesReceiptRuleStopAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       position: cdktf.numberToTerraform(struct!.position),
       scope: cdktf.stringToTerraform(struct!.scope),
@@ -1623,6 +1772,9 @@ export namespace SES {
 
   function sesReceiptRuleWorkmailActionToTerraform(struct?: SesReceiptRuleWorkmailAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       organization_arn: cdktf.stringToTerraform(struct!.organizationArn),
       position: cdktf.numberToTerraform(struct!.position),
@@ -1684,11 +1836,11 @@ export namespace SES {
     // ==========
 
     // after - computed: false, optional: true, required: false
-    private _after?: string;
+    private _after?: string | undefined; 
     public get after() {
       return this.getStringAttribute('after');
     }
-    public set after(value: string ) {
+    public set after(value: string | undefined) {
       this._after = value;
     }
     public resetAfter() {
@@ -1705,11 +1857,11 @@ export namespace SES {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -1726,7 +1878,7 @@ export namespace SES {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1739,11 +1891,11 @@ export namespace SES {
     }
 
     // recipients - computed: false, optional: true, required: false
-    private _recipients?: string[];
+    private _recipients?: string[] | undefined; 
     public get recipients() {
       return this.getListAttribute('recipients');
     }
-    public set recipients(value: string[] ) {
+    public set recipients(value: string[] | undefined) {
       this._recipients = value;
     }
     public resetRecipients() {
@@ -1755,7 +1907,7 @@ export namespace SES {
     }
 
     // rule_set_name - computed: false, optional: false, required: true
-    private _ruleSetName: string;
+    private _ruleSetName?: string; 
     public get ruleSetName() {
       return this.getStringAttribute('rule_set_name');
     }
@@ -1768,11 +1920,11 @@ export namespace SES {
     }
 
     // scan_enabled - computed: false, optional: true, required: false
-    private _scanEnabled?: boolean | cdktf.IResolvable;
+    private _scanEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get scanEnabled() {
-      return this.getBooleanAttribute('scan_enabled');
+      return this.getBooleanAttribute('scan_enabled') as any;
     }
-    public set scanEnabled(value: boolean | cdktf.IResolvable ) {
+    public set scanEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._scanEnabled = value;
     }
     public resetScanEnabled() {
@@ -1784,11 +1936,11 @@ export namespace SES {
     }
 
     // tls_policy - computed: true, optional: true, required: false
-    private _tlsPolicy?: string;
+    private _tlsPolicy?: string | undefined; 
     public get tlsPolicy() {
       return this.getStringAttribute('tls_policy');
     }
-    public set tlsPolicy(value: string) {
+    public set tlsPolicy(value: string | undefined) {
       this._tlsPolicy = value;
     }
     public resetTlsPolicy() {
@@ -1800,11 +1952,12 @@ export namespace SES {
     }
 
     // add_header_action - computed: false, optional: true, required: false
-    private _addHeaderAction?: SesReceiptRuleAddHeaderAction[];
+    private _addHeaderAction?: SesReceiptRuleAddHeaderAction[] | undefined; 
     public get addHeaderAction() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('add_header_action') as any;
     }
-    public set addHeaderAction(value: SesReceiptRuleAddHeaderAction[] ) {
+    public set addHeaderAction(value: SesReceiptRuleAddHeaderAction[] | undefined) {
       this._addHeaderAction = value;
     }
     public resetAddHeaderAction() {
@@ -1816,11 +1969,12 @@ export namespace SES {
     }
 
     // bounce_action - computed: false, optional: true, required: false
-    private _bounceAction?: SesReceiptRuleBounceAction[];
+    private _bounceAction?: SesReceiptRuleBounceAction[] | undefined; 
     public get bounceAction() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('bounce_action') as any;
     }
-    public set bounceAction(value: SesReceiptRuleBounceAction[] ) {
+    public set bounceAction(value: SesReceiptRuleBounceAction[] | undefined) {
       this._bounceAction = value;
     }
     public resetBounceAction() {
@@ -1832,11 +1986,12 @@ export namespace SES {
     }
 
     // lambda_action - computed: false, optional: true, required: false
-    private _lambdaAction?: SesReceiptRuleLambdaAction[];
+    private _lambdaAction?: SesReceiptRuleLambdaAction[] | undefined; 
     public get lambdaAction() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('lambda_action') as any;
     }
-    public set lambdaAction(value: SesReceiptRuleLambdaAction[] ) {
+    public set lambdaAction(value: SesReceiptRuleLambdaAction[] | undefined) {
       this._lambdaAction = value;
     }
     public resetLambdaAction() {
@@ -1848,11 +2003,12 @@ export namespace SES {
     }
 
     // s3_action - computed: false, optional: true, required: false
-    private _s3Action?: SesReceiptRuleS3Action[];
+    private _s3Action?: SesReceiptRuleS3Action[] | undefined; 
     public get s3Action() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('s3_action') as any;
     }
-    public set s3Action(value: SesReceiptRuleS3Action[] ) {
+    public set s3Action(value: SesReceiptRuleS3Action[] | undefined) {
       this._s3Action = value;
     }
     public resetS3Action() {
@@ -1864,11 +2020,12 @@ export namespace SES {
     }
 
     // sns_action - computed: false, optional: true, required: false
-    private _snsAction?: SesReceiptRuleSnsAction[];
+    private _snsAction?: SesReceiptRuleSnsAction[] | undefined; 
     public get snsAction() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('sns_action') as any;
     }
-    public set snsAction(value: SesReceiptRuleSnsAction[] ) {
+    public set snsAction(value: SesReceiptRuleSnsAction[] | undefined) {
       this._snsAction = value;
     }
     public resetSnsAction() {
@@ -1880,11 +2037,12 @@ export namespace SES {
     }
 
     // stop_action - computed: false, optional: true, required: false
-    private _stopAction?: SesReceiptRuleStopAction[];
+    private _stopAction?: SesReceiptRuleStopAction[] | undefined; 
     public get stopAction() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('stop_action') as any;
     }
-    public set stopAction(value: SesReceiptRuleStopAction[] ) {
+    public set stopAction(value: SesReceiptRuleStopAction[] | undefined) {
       this._stopAction = value;
     }
     public resetStopAction() {
@@ -1896,11 +2054,12 @@ export namespace SES {
     }
 
     // workmail_action - computed: false, optional: true, required: false
-    private _workmailAction?: SesReceiptRuleWorkmailAction[];
+    private _workmailAction?: SesReceiptRuleWorkmailAction[] | undefined; 
     public get workmailAction() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('workmail_action') as any;
     }
-    public set workmailAction(value: SesReceiptRuleWorkmailAction[] ) {
+    public set workmailAction(value: SesReceiptRuleWorkmailAction[] | undefined) {
       this._workmailAction = value;
     }
     public resetWorkmailAction() {
@@ -1991,7 +2150,7 @@ export namespace SES {
     }
 
     // rule_set_name - computed: false, optional: false, required: true
-    private _ruleSetName: string;
+    private _ruleSetName?: string; 
     public get ruleSetName() {
       return this.getStringAttribute('rule_set_name');
     }
@@ -2080,11 +2239,11 @@ export namespace SES {
     }
 
     // html - computed: false, optional: true, required: false
-    private _html?: string;
+    private _html?: string | undefined; 
     public get html() {
       return this.getStringAttribute('html');
     }
-    public set html(value: string ) {
+    public set html(value: string | undefined) {
       this._html = value;
     }
     public resetHtml() {
@@ -2101,7 +2260,7 @@ export namespace SES {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2114,11 +2273,11 @@ export namespace SES {
     }
 
     // subject - computed: false, optional: true, required: false
-    private _subject?: string;
+    private _subject?: string | undefined; 
     public get subject() {
       return this.getStringAttribute('subject');
     }
-    public set subject(value: string ) {
+    public set subject(value: string | undefined) {
       this._subject = value;
     }
     public resetSubject() {
@@ -2130,11 +2289,11 @@ export namespace SES {
     }
 
     // text - computed: false, optional: true, required: false
-    private _text?: string;
+    private _text?: string | undefined; 
     public get text() {
       return this.getStringAttribute('text');
     }
-    public set text(value: string ) {
+    public set text(value: string | undefined) {
       this._text = value;
     }
     public resetText() {

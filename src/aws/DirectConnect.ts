@@ -50,14 +50,59 @@ export namespace DirectConnect {
     readonly delete?: string;
   }
 
-  function dxBgpPeerTimeoutsToTerraform(struct?: DxBgpPeerTimeouts): any {
+  function dxBgpPeerTimeoutsToTerraform(struct?: DxBgpPeerTimeoutsOutputReference | DxBgpPeerTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class DxBgpPeerTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/dx_bgp_peer.html aws_dx_bgp_peer}
@@ -105,7 +150,7 @@ export namespace DirectConnect {
     // ==========
 
     // address_family - computed: false, optional: false, required: true
-    private _addressFamily: string;
+    private _addressFamily?: string; 
     public get addressFamily() {
       return this.getStringAttribute('address_family');
     }
@@ -118,11 +163,11 @@ export namespace DirectConnect {
     }
 
     // amazon_address - computed: true, optional: true, required: false
-    private _amazonAddress?: string;
+    private _amazonAddress?: string | undefined; 
     public get amazonAddress() {
       return this.getStringAttribute('amazon_address');
     }
-    public set amazonAddress(value: string) {
+    public set amazonAddress(value: string | undefined) {
       this._amazonAddress = value;
     }
     public resetAmazonAddress() {
@@ -139,7 +184,7 @@ export namespace DirectConnect {
     }
 
     // bgp_asn - computed: false, optional: false, required: true
-    private _bgpAsn: number;
+    private _bgpAsn?: number; 
     public get bgpAsn() {
       return this.getNumberAttribute('bgp_asn');
     }
@@ -152,11 +197,11 @@ export namespace DirectConnect {
     }
 
     // bgp_auth_key - computed: true, optional: true, required: false
-    private _bgpAuthKey?: string;
+    private _bgpAuthKey?: string | undefined; 
     public get bgpAuthKey() {
       return this.getStringAttribute('bgp_auth_key');
     }
-    public set bgpAuthKey(value: string) {
+    public set bgpAuthKey(value: string | undefined) {
       this._bgpAuthKey = value;
     }
     public resetBgpAuthKey() {
@@ -178,11 +223,11 @@ export namespace DirectConnect {
     }
 
     // customer_address - computed: true, optional: true, required: false
-    private _customerAddress?: string;
+    private _customerAddress?: string | undefined; 
     public get customerAddress() {
       return this.getStringAttribute('customer_address');
     }
-    public set customerAddress(value: string) {
+    public set customerAddress(value: string | undefined) {
       this._customerAddress = value;
     }
     public resetCustomerAddress() {
@@ -199,7 +244,7 @@ export namespace DirectConnect {
     }
 
     // virtual_interface_id - computed: false, optional: false, required: true
-    private _virtualInterfaceId: string;
+    private _virtualInterfaceId?: string; 
     public get virtualInterfaceId() {
       return this.getStringAttribute('virtual_interface_id');
     }
@@ -212,11 +257,12 @@ export namespace DirectConnect {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DxBgpPeerTimeouts;
+    private _timeouts?: DxBgpPeerTimeouts | undefined; 
+    private __timeoutsOutput = new DxBgpPeerTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DxBgpPeerTimeouts ) {
+    public putTimeouts(value: DxBgpPeerTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -325,7 +371,7 @@ export namespace DirectConnect {
     }
 
     // bandwidth - computed: false, optional: false, required: true
-    private _bandwidth: string;
+    private _bandwidth?: string; 
     public get bandwidth() {
       return this.getStringAttribute('bandwidth');
     }
@@ -349,11 +395,11 @@ export namespace DirectConnect {
 
     // jumbo_frame_capable - computed: true, optional: false, required: false
     public get jumboFrameCapable() {
-      return this.getBooleanAttribute('jumbo_frame_capable');
+      return this.getBooleanAttribute('jumbo_frame_capable') as any;
     }
 
     // location - computed: false, optional: false, required: true
-    private _location: string;
+    private _location?: string; 
     public get location() {
       return this.getStringAttribute('location');
     }
@@ -366,7 +412,7 @@ export namespace DirectConnect {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -384,11 +430,11 @@ export namespace DirectConnect {
     }
 
     // provider_name - computed: true, optional: true, required: false
-    private _providerName?: string;
+    private _providerName?: string | undefined; 
     public get providerName() {
       return this.getStringAttribute('provider_name');
     }
-    public set providerName(value: string) {
+    public set providerName(value: string | undefined) {
       this._providerName = value;
     }
     public resetProviderName() {
@@ -400,11 +446,12 @@ export namespace DirectConnect {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -416,11 +463,12 @@ export namespace DirectConnect {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -498,7 +546,7 @@ export namespace DirectConnect {
     // ==========
 
     // connection_id - computed: false, optional: false, required: true
-    private _connectionId: string;
+    private _connectionId?: string; 
     public get connectionId() {
       return this.getStringAttribute('connection_id');
     }
@@ -516,7 +564,7 @@ export namespace DirectConnect {
     }
 
     // lag_id - computed: false, optional: false, required: true
-    private _lagId: string;
+    private _lagId?: string; 
     public get lagId() {
       return this.getStringAttribute('lag_id');
     }
@@ -586,7 +634,7 @@ export namespace DirectConnect {
     // ==========
 
     // connection_id - computed: false, optional: false, required: true
-    private _connectionId: string;
+    private _connectionId?: string; 
     public get connectionId() {
       return this.getStringAttribute('connection_id');
     }
@@ -640,14 +688,59 @@ export namespace DirectConnect {
     readonly delete?: string;
   }
 
-  function dxGatewayTimeoutsToTerraform(struct?: DxGatewayTimeouts): any {
+  function dxGatewayTimeoutsToTerraform(struct?: DxGatewayTimeoutsOutputReference | DxGatewayTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class DxGatewayTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/dx_gateway.html aws_dx_gateway}
@@ -691,7 +784,7 @@ export namespace DirectConnect {
     // ==========
 
     // amazon_side_asn - computed: false, optional: false, required: true
-    private _amazonSideAsn: string;
+    private _amazonSideAsn?: string; 
     public get amazonSideAsn() {
       return this.getStringAttribute('amazon_side_asn');
     }
@@ -709,7 +802,7 @@ export namespace DirectConnect {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -727,11 +820,12 @@ export namespace DirectConnect {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DxGatewayTimeouts;
+    private _timeouts?: DxGatewayTimeouts | undefined; 
+    private __timeoutsOutput = new DxGatewayTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DxGatewayTimeouts ) {
+    public putTimeouts(value: DxGatewayTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -801,8 +895,11 @@ export namespace DirectConnect {
     readonly update?: string;
   }
 
-  function dxGatewayAssociationTimeoutsToTerraform(struct?: DxGatewayAssociationTimeouts): any {
+  function dxGatewayAssociationTimeoutsToTerraform(struct?: DxGatewayAssociationTimeoutsOutputReference | DxGatewayAssociationTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -810,6 +907,64 @@ export namespace DirectConnect {
     }
   }
 
+  export class DxGatewayAssociationTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/dx_gateway_association.html aws_dx_gateway_association}
@@ -857,11 +1012,11 @@ export namespace DirectConnect {
     // ==========
 
     // allowed_prefixes - computed: true, optional: true, required: false
-    private _allowedPrefixes?: string[];
+    private _allowedPrefixes?: string[] | undefined; 
     public get allowedPrefixes() {
       return this.getListAttribute('allowed_prefixes');
     }
-    public set allowedPrefixes(value: string[]) {
+    public set allowedPrefixes(value: string[] | undefined) {
       this._allowedPrefixes = value;
     }
     public resetAllowedPrefixes() {
@@ -873,11 +1028,11 @@ export namespace DirectConnect {
     }
 
     // associated_gateway_id - computed: true, optional: true, required: false
-    private _associatedGatewayId?: string;
+    private _associatedGatewayId?: string | undefined; 
     public get associatedGatewayId() {
       return this.getStringAttribute('associated_gateway_id');
     }
-    public set associatedGatewayId(value: string) {
+    public set associatedGatewayId(value: string | undefined) {
       this._associatedGatewayId = value;
     }
     public resetAssociatedGatewayId() {
@@ -889,11 +1044,11 @@ export namespace DirectConnect {
     }
 
     // associated_gateway_owner_account_id - computed: true, optional: true, required: false
-    private _associatedGatewayOwnerAccountId?: string;
+    private _associatedGatewayOwnerAccountId?: string | undefined; 
     public get associatedGatewayOwnerAccountId() {
       return this.getStringAttribute('associated_gateway_owner_account_id');
     }
-    public set associatedGatewayOwnerAccountId(value: string) {
+    public set associatedGatewayOwnerAccountId(value: string | undefined) {
       this._associatedGatewayOwnerAccountId = value;
     }
     public resetAssociatedGatewayOwnerAccountId() {
@@ -915,7 +1070,7 @@ export namespace DirectConnect {
     }
 
     // dx_gateway_id - computed: false, optional: false, required: true
-    private _dxGatewayId: string;
+    private _dxGatewayId?: string; 
     public get dxGatewayId() {
       return this.getStringAttribute('dx_gateway_id');
     }
@@ -938,11 +1093,11 @@ export namespace DirectConnect {
     }
 
     // proposal_id - computed: false, optional: true, required: false
-    private _proposalId?: string;
+    private _proposalId?: string | undefined; 
     public get proposalId() {
       return this.getStringAttribute('proposal_id');
     }
-    public set proposalId(value: string ) {
+    public set proposalId(value: string | undefined) {
       this._proposalId = value;
     }
     public resetProposalId() {
@@ -954,11 +1109,11 @@ export namespace DirectConnect {
     }
 
     // vpn_gateway_id - computed: false, optional: true, required: false
-    private _vpnGatewayId?: string;
+    private _vpnGatewayId?: string | undefined; 
     public get vpnGatewayId() {
       return this.getStringAttribute('vpn_gateway_id');
     }
-    public set vpnGatewayId(value: string ) {
+    public set vpnGatewayId(value: string | undefined) {
       this._vpnGatewayId = value;
     }
     public resetVpnGatewayId() {
@@ -970,11 +1125,12 @@ export namespace DirectConnect {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DxGatewayAssociationTimeouts;
+    private _timeouts?: DxGatewayAssociationTimeouts | undefined; 
+    private __timeoutsOutput = new DxGatewayAssociationTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DxGatewayAssociationTimeouts ) {
+    public putTimeouts(value: DxGatewayAssociationTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1063,11 +1219,11 @@ export namespace DirectConnect {
     // ==========
 
     // allowed_prefixes - computed: true, optional: true, required: false
-    private _allowedPrefixes?: string[];
+    private _allowedPrefixes?: string[] | undefined; 
     public get allowedPrefixes() {
       return this.getListAttribute('allowed_prefixes');
     }
-    public set allowedPrefixes(value: string[]) {
+    public set allowedPrefixes(value: string[] | undefined) {
       this._allowedPrefixes = value;
     }
     public resetAllowedPrefixes() {
@@ -1079,7 +1235,7 @@ export namespace DirectConnect {
     }
 
     // associated_gateway_id - computed: false, optional: false, required: true
-    private _associatedGatewayId: string;
+    private _associatedGatewayId?: string; 
     public get associatedGatewayId() {
       return this.getStringAttribute('associated_gateway_id');
     }
@@ -1102,7 +1258,7 @@ export namespace DirectConnect {
     }
 
     // dx_gateway_id - computed: false, optional: false, required: true
-    private _dxGatewayId: string;
+    private _dxGatewayId?: string; 
     public get dxGatewayId() {
       return this.getStringAttribute('dx_gateway_id');
     }
@@ -1115,7 +1271,7 @@ export namespace DirectConnect {
     }
 
     // dx_gateway_owner_account_id - computed: false, optional: false, required: true
-    private _dxGatewayOwnerAccountId: string;
+    private _dxGatewayOwnerAccountId?: string; 
     public get dxGatewayOwnerAccountId() {
       return this.getStringAttribute('dx_gateway_owner_account_id');
     }
@@ -1217,7 +1373,7 @@ export namespace DirectConnect {
     }
 
     // bandwidth - computed: false, optional: false, required: true
-    private _bandwidth: string;
+    private _bandwidth?: string; 
     public get bandwidth() {
       return this.getStringAttribute('bandwidth');
     }
@@ -1230,7 +1386,7 @@ export namespace DirectConnect {
     }
 
     // connection_id - computed: false, optional: false, required: true
-    private _connectionId: string;
+    private _connectionId?: string; 
     public get connectionId() {
       return this.getStringAttribute('connection_id');
     }
@@ -1254,7 +1410,7 @@ export namespace DirectConnect {
 
     // jumbo_frame_capable - computed: true, optional: false, required: false
     public get jumboFrameCapable() {
-      return this.getBooleanAttribute('jumbo_frame_capable');
+      return this.getBooleanAttribute('jumbo_frame_capable') as any;
     }
 
     // lag_id - computed: true, optional: false, required: false
@@ -1273,7 +1429,7 @@ export namespace DirectConnect {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1286,7 +1442,7 @@ export namespace DirectConnect {
     }
 
     // owner_account_id - computed: false, optional: false, required: true
-    private _ownerAccountId: string;
+    private _ownerAccountId?: string; 
     public get ownerAccountId() {
       return this.getStringAttribute('owner_account_id');
     }
@@ -1319,7 +1475,7 @@ export namespace DirectConnect {
     }
 
     // vlan - computed: false, optional: false, required: true
-    private _vlan: number;
+    private _vlan?: number; 
     public get vlan() {
       return this.getNumberAttribute('vlan');
     }
@@ -1404,14 +1560,59 @@ export namespace DirectConnect {
     readonly delete?: string;
   }
 
-  function dxHostedPrivateVirtualInterfaceTimeoutsToTerraform(struct?: DxHostedPrivateVirtualInterfaceTimeouts): any {
+  function dxHostedPrivateVirtualInterfaceTimeoutsToTerraform(struct?: DxHostedPrivateVirtualInterfaceTimeoutsOutputReference | DxHostedPrivateVirtualInterfaceTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class DxHostedPrivateVirtualInterfaceTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/dx_hosted_private_virtual_interface.html aws_dx_hosted_private_virtual_interface}
@@ -1463,7 +1664,7 @@ export namespace DirectConnect {
     // ==========
 
     // address_family - computed: false, optional: false, required: true
-    private _addressFamily: string;
+    private _addressFamily?: string; 
     public get addressFamily() {
       return this.getStringAttribute('address_family');
     }
@@ -1476,11 +1677,11 @@ export namespace DirectConnect {
     }
 
     // amazon_address - computed: true, optional: true, required: false
-    private _amazonAddress?: string;
+    private _amazonAddress?: string | undefined; 
     public get amazonAddress() {
       return this.getStringAttribute('amazon_address');
     }
-    public set amazonAddress(value: string) {
+    public set amazonAddress(value: string | undefined) {
       this._amazonAddress = value;
     }
     public resetAmazonAddress() {
@@ -1507,7 +1708,7 @@ export namespace DirectConnect {
     }
 
     // bgp_asn - computed: false, optional: false, required: true
-    private _bgpAsn: number;
+    private _bgpAsn?: number; 
     public get bgpAsn() {
       return this.getNumberAttribute('bgp_asn');
     }
@@ -1520,11 +1721,11 @@ export namespace DirectConnect {
     }
 
     // bgp_auth_key - computed: true, optional: true, required: false
-    private _bgpAuthKey?: string;
+    private _bgpAuthKey?: string | undefined; 
     public get bgpAuthKey() {
       return this.getStringAttribute('bgp_auth_key');
     }
-    public set bgpAuthKey(value: string) {
+    public set bgpAuthKey(value: string | undefined) {
       this._bgpAuthKey = value;
     }
     public resetBgpAuthKey() {
@@ -1536,7 +1737,7 @@ export namespace DirectConnect {
     }
 
     // connection_id - computed: false, optional: false, required: true
-    private _connectionId: string;
+    private _connectionId?: string; 
     public get connectionId() {
       return this.getStringAttribute('connection_id');
     }
@@ -1549,11 +1750,11 @@ export namespace DirectConnect {
     }
 
     // customer_address - computed: true, optional: true, required: false
-    private _customerAddress?: string;
+    private _customerAddress?: string | undefined; 
     public get customerAddress() {
       return this.getStringAttribute('customer_address');
     }
-    public set customerAddress(value: string) {
+    public set customerAddress(value: string | undefined) {
       this._customerAddress = value;
     }
     public resetCustomerAddress() {
@@ -1571,15 +1772,15 @@ export namespace DirectConnect {
 
     // jumbo_frame_capable - computed: true, optional: false, required: false
     public get jumboFrameCapable() {
-      return this.getBooleanAttribute('jumbo_frame_capable');
+      return this.getBooleanAttribute('jumbo_frame_capable') as any;
     }
 
     // mtu - computed: false, optional: true, required: false
-    private _mtu?: number;
+    private _mtu?: number | undefined; 
     public get mtu() {
       return this.getNumberAttribute('mtu');
     }
-    public set mtu(value: number ) {
+    public set mtu(value: number | undefined) {
       this._mtu = value;
     }
     public resetMtu() {
@@ -1591,7 +1792,7 @@ export namespace DirectConnect {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1604,7 +1805,7 @@ export namespace DirectConnect {
     }
 
     // owner_account_id - computed: false, optional: false, required: true
-    private _ownerAccountId: string;
+    private _ownerAccountId?: string; 
     public get ownerAccountId() {
       return this.getStringAttribute('owner_account_id');
     }
@@ -1617,7 +1818,7 @@ export namespace DirectConnect {
     }
 
     // vlan - computed: false, optional: false, required: true
-    private _vlan: number;
+    private _vlan?: number; 
     public get vlan() {
       return this.getNumberAttribute('vlan');
     }
@@ -1630,11 +1831,12 @@ export namespace DirectConnect {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DxHostedPrivateVirtualInterfaceTimeouts;
+    private _timeouts?: DxHostedPrivateVirtualInterfaceTimeouts | undefined; 
+    private __timeoutsOutput = new DxHostedPrivateVirtualInterfaceTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DxHostedPrivateVirtualInterfaceTimeouts ) {
+    public putTimeouts(value: DxHostedPrivateVirtualInterfaceTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1704,14 +1906,59 @@ export namespace DirectConnect {
     readonly delete?: string;
   }
 
-  function dxHostedPrivateVirtualInterfaceAccepterTimeoutsToTerraform(struct?: DxHostedPrivateVirtualInterfaceAccepterTimeouts): any {
+  function dxHostedPrivateVirtualInterfaceAccepterTimeoutsToTerraform(struct?: DxHostedPrivateVirtualInterfaceAccepterTimeoutsOutputReference | DxHostedPrivateVirtualInterfaceAccepterTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class DxHostedPrivateVirtualInterfaceAccepterTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/dx_hosted_private_virtual_interface_accepter.html aws_dx_hosted_private_virtual_interface_accepter}
@@ -1763,11 +2010,11 @@ export namespace DirectConnect {
     }
 
     // dx_gateway_id - computed: false, optional: true, required: false
-    private _dxGatewayId?: string;
+    private _dxGatewayId?: string | undefined; 
     public get dxGatewayId() {
       return this.getStringAttribute('dx_gateway_id');
     }
-    public set dxGatewayId(value: string ) {
+    public set dxGatewayId(value: string | undefined) {
       this._dxGatewayId = value;
     }
     public resetDxGatewayId() {
@@ -1784,11 +2031,12 @@ export namespace DirectConnect {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1800,11 +2048,12 @@ export namespace DirectConnect {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1816,7 +2065,7 @@ export namespace DirectConnect {
     }
 
     // virtual_interface_id - computed: false, optional: false, required: true
-    private _virtualInterfaceId: string;
+    private _virtualInterfaceId?: string; 
     public get virtualInterfaceId() {
       return this.getStringAttribute('virtual_interface_id');
     }
@@ -1829,11 +2078,11 @@ export namespace DirectConnect {
     }
 
     // vpn_gateway_id - computed: false, optional: true, required: false
-    private _vpnGatewayId?: string;
+    private _vpnGatewayId?: string | undefined; 
     public get vpnGatewayId() {
       return this.getStringAttribute('vpn_gateway_id');
     }
-    public set vpnGatewayId(value: string ) {
+    public set vpnGatewayId(value: string | undefined) {
       this._vpnGatewayId = value;
     }
     public resetVpnGatewayId() {
@@ -1845,11 +2094,12 @@ export namespace DirectConnect {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DxHostedPrivateVirtualInterfaceAccepterTimeouts;
+    private _timeouts?: DxHostedPrivateVirtualInterfaceAccepterTimeouts | undefined; 
+    private __timeoutsOutput = new DxHostedPrivateVirtualInterfaceAccepterTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DxHostedPrivateVirtualInterfaceAccepterTimeouts ) {
+    public putTimeouts(value: DxHostedPrivateVirtualInterfaceAccepterTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1934,14 +2184,59 @@ export namespace DirectConnect {
     readonly delete?: string;
   }
 
-  function dxHostedPublicVirtualInterfaceTimeoutsToTerraform(struct?: DxHostedPublicVirtualInterfaceTimeouts): any {
+  function dxHostedPublicVirtualInterfaceTimeoutsToTerraform(struct?: DxHostedPublicVirtualInterfaceTimeoutsOutputReference | DxHostedPublicVirtualInterfaceTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class DxHostedPublicVirtualInterfaceTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/dx_hosted_public_virtual_interface.html aws_dx_hosted_public_virtual_interface}
@@ -1993,7 +2288,7 @@ export namespace DirectConnect {
     // ==========
 
     // address_family - computed: false, optional: false, required: true
-    private _addressFamily: string;
+    private _addressFamily?: string; 
     public get addressFamily() {
       return this.getStringAttribute('address_family');
     }
@@ -2006,11 +2301,11 @@ export namespace DirectConnect {
     }
 
     // amazon_address - computed: true, optional: true, required: false
-    private _amazonAddress?: string;
+    private _amazonAddress?: string | undefined; 
     public get amazonAddress() {
       return this.getStringAttribute('amazon_address');
     }
-    public set amazonAddress(value: string) {
+    public set amazonAddress(value: string | undefined) {
       this._amazonAddress = value;
     }
     public resetAmazonAddress() {
@@ -2037,7 +2332,7 @@ export namespace DirectConnect {
     }
 
     // bgp_asn - computed: false, optional: false, required: true
-    private _bgpAsn: number;
+    private _bgpAsn?: number; 
     public get bgpAsn() {
       return this.getNumberAttribute('bgp_asn');
     }
@@ -2050,11 +2345,11 @@ export namespace DirectConnect {
     }
 
     // bgp_auth_key - computed: true, optional: true, required: false
-    private _bgpAuthKey?: string;
+    private _bgpAuthKey?: string | undefined; 
     public get bgpAuthKey() {
       return this.getStringAttribute('bgp_auth_key');
     }
-    public set bgpAuthKey(value: string) {
+    public set bgpAuthKey(value: string | undefined) {
       this._bgpAuthKey = value;
     }
     public resetBgpAuthKey() {
@@ -2066,7 +2361,7 @@ export namespace DirectConnect {
     }
 
     // connection_id - computed: false, optional: false, required: true
-    private _connectionId: string;
+    private _connectionId?: string; 
     public get connectionId() {
       return this.getStringAttribute('connection_id');
     }
@@ -2079,11 +2374,11 @@ export namespace DirectConnect {
     }
 
     // customer_address - computed: true, optional: true, required: false
-    private _customerAddress?: string;
+    private _customerAddress?: string | undefined; 
     public get customerAddress() {
       return this.getStringAttribute('customer_address');
     }
-    public set customerAddress(value: string) {
+    public set customerAddress(value: string | undefined) {
       this._customerAddress = value;
     }
     public resetCustomerAddress() {
@@ -2100,7 +2395,7 @@ export namespace DirectConnect {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2113,7 +2408,7 @@ export namespace DirectConnect {
     }
 
     // owner_account_id - computed: false, optional: false, required: true
-    private _ownerAccountId: string;
+    private _ownerAccountId?: string; 
     public get ownerAccountId() {
       return this.getStringAttribute('owner_account_id');
     }
@@ -2126,7 +2421,7 @@ export namespace DirectConnect {
     }
 
     // route_filter_prefixes - computed: false, optional: false, required: true
-    private _routeFilterPrefixes: string[];
+    private _routeFilterPrefixes?: string[]; 
     public get routeFilterPrefixes() {
       return this.getListAttribute('route_filter_prefixes');
     }
@@ -2139,7 +2434,7 @@ export namespace DirectConnect {
     }
 
     // vlan - computed: false, optional: false, required: true
-    private _vlan: number;
+    private _vlan?: number; 
     public get vlan() {
       return this.getNumberAttribute('vlan');
     }
@@ -2152,11 +2447,12 @@ export namespace DirectConnect {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DxHostedPublicVirtualInterfaceTimeouts;
+    private _timeouts?: DxHostedPublicVirtualInterfaceTimeouts | undefined; 
+    private __timeoutsOutput = new DxHostedPublicVirtualInterfaceTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DxHostedPublicVirtualInterfaceTimeouts ) {
+    public putTimeouts(value: DxHostedPublicVirtualInterfaceTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -2218,14 +2514,59 @@ export namespace DirectConnect {
     readonly delete?: string;
   }
 
-  function dxHostedPublicVirtualInterfaceAccepterTimeoutsToTerraform(struct?: DxHostedPublicVirtualInterfaceAccepterTimeouts): any {
+  function dxHostedPublicVirtualInterfaceAccepterTimeoutsToTerraform(struct?: DxHostedPublicVirtualInterfaceAccepterTimeoutsOutputReference | DxHostedPublicVirtualInterfaceAccepterTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class DxHostedPublicVirtualInterfaceAccepterTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/dx_hosted_public_virtual_interface_accepter.html aws_dx_hosted_public_virtual_interface_accepter}
@@ -2280,11 +2621,12 @@ export namespace DirectConnect {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2296,11 +2638,12 @@ export namespace DirectConnect {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2312,7 +2655,7 @@ export namespace DirectConnect {
     }
 
     // virtual_interface_id - computed: false, optional: false, required: true
-    private _virtualInterfaceId: string;
+    private _virtualInterfaceId?: string; 
     public get virtualInterfaceId() {
       return this.getStringAttribute('virtual_interface_id');
     }
@@ -2325,11 +2668,12 @@ export namespace DirectConnect {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DxHostedPublicVirtualInterfaceAccepterTimeouts;
+    private _timeouts?: DxHostedPublicVirtualInterfaceAccepterTimeouts | undefined; 
+    private __timeoutsOutput = new DxHostedPublicVirtualInterfaceAccepterTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DxHostedPublicVirtualInterfaceAccepterTimeouts ) {
+    public putTimeouts(value: DxHostedPublicVirtualInterfaceAccepterTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -2412,14 +2756,59 @@ export namespace DirectConnect {
     readonly delete?: string;
   }
 
-  function dxHostedTransitVirtualInterfaceTimeoutsToTerraform(struct?: DxHostedTransitVirtualInterfaceTimeouts): any {
+  function dxHostedTransitVirtualInterfaceTimeoutsToTerraform(struct?: DxHostedTransitVirtualInterfaceTimeoutsOutputReference | DxHostedTransitVirtualInterfaceTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class DxHostedTransitVirtualInterfaceTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/dx_hosted_transit_virtual_interface.html aws_dx_hosted_transit_virtual_interface}
@@ -2471,7 +2860,7 @@ export namespace DirectConnect {
     // ==========
 
     // address_family - computed: false, optional: false, required: true
-    private _addressFamily: string;
+    private _addressFamily?: string; 
     public get addressFamily() {
       return this.getStringAttribute('address_family');
     }
@@ -2484,11 +2873,11 @@ export namespace DirectConnect {
     }
 
     // amazon_address - computed: true, optional: true, required: false
-    private _amazonAddress?: string;
+    private _amazonAddress?: string | undefined; 
     public get amazonAddress() {
       return this.getStringAttribute('amazon_address');
     }
-    public set amazonAddress(value: string) {
+    public set amazonAddress(value: string | undefined) {
       this._amazonAddress = value;
     }
     public resetAmazonAddress() {
@@ -2515,7 +2904,7 @@ export namespace DirectConnect {
     }
 
     // bgp_asn - computed: false, optional: false, required: true
-    private _bgpAsn: number;
+    private _bgpAsn?: number; 
     public get bgpAsn() {
       return this.getNumberAttribute('bgp_asn');
     }
@@ -2528,11 +2917,11 @@ export namespace DirectConnect {
     }
 
     // bgp_auth_key - computed: true, optional: true, required: false
-    private _bgpAuthKey?: string;
+    private _bgpAuthKey?: string | undefined; 
     public get bgpAuthKey() {
       return this.getStringAttribute('bgp_auth_key');
     }
-    public set bgpAuthKey(value: string) {
+    public set bgpAuthKey(value: string | undefined) {
       this._bgpAuthKey = value;
     }
     public resetBgpAuthKey() {
@@ -2544,7 +2933,7 @@ export namespace DirectConnect {
     }
 
     // connection_id - computed: false, optional: false, required: true
-    private _connectionId: string;
+    private _connectionId?: string; 
     public get connectionId() {
       return this.getStringAttribute('connection_id');
     }
@@ -2557,11 +2946,11 @@ export namespace DirectConnect {
     }
 
     // customer_address - computed: true, optional: true, required: false
-    private _customerAddress?: string;
+    private _customerAddress?: string | undefined; 
     public get customerAddress() {
       return this.getStringAttribute('customer_address');
     }
-    public set customerAddress(value: string) {
+    public set customerAddress(value: string | undefined) {
       this._customerAddress = value;
     }
     public resetCustomerAddress() {
@@ -2579,15 +2968,15 @@ export namespace DirectConnect {
 
     // jumbo_frame_capable - computed: true, optional: false, required: false
     public get jumboFrameCapable() {
-      return this.getBooleanAttribute('jumbo_frame_capable');
+      return this.getBooleanAttribute('jumbo_frame_capable') as any;
     }
 
     // mtu - computed: false, optional: true, required: false
-    private _mtu?: number;
+    private _mtu?: number | undefined; 
     public get mtu() {
       return this.getNumberAttribute('mtu');
     }
-    public set mtu(value: number ) {
+    public set mtu(value: number | undefined) {
       this._mtu = value;
     }
     public resetMtu() {
@@ -2599,7 +2988,7 @@ export namespace DirectConnect {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2612,7 +3001,7 @@ export namespace DirectConnect {
     }
 
     // owner_account_id - computed: false, optional: false, required: true
-    private _ownerAccountId: string;
+    private _ownerAccountId?: string; 
     public get ownerAccountId() {
       return this.getStringAttribute('owner_account_id');
     }
@@ -2625,7 +3014,7 @@ export namespace DirectConnect {
     }
 
     // vlan - computed: false, optional: false, required: true
-    private _vlan: number;
+    private _vlan?: number; 
     public get vlan() {
       return this.getNumberAttribute('vlan');
     }
@@ -2638,11 +3027,12 @@ export namespace DirectConnect {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DxHostedTransitVirtualInterfaceTimeouts;
+    private _timeouts?: DxHostedTransitVirtualInterfaceTimeouts | undefined; 
+    private __timeoutsOutput = new DxHostedTransitVirtualInterfaceTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DxHostedTransitVirtualInterfaceTimeouts ) {
+    public putTimeouts(value: DxHostedTransitVirtualInterfaceTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -2708,14 +3098,59 @@ export namespace DirectConnect {
     readonly delete?: string;
   }
 
-  function dxHostedTransitVirtualInterfaceAccepterTimeoutsToTerraform(struct?: DxHostedTransitVirtualInterfaceAccepterTimeouts): any {
+  function dxHostedTransitVirtualInterfaceAccepterTimeoutsToTerraform(struct?: DxHostedTransitVirtualInterfaceAccepterTimeoutsOutputReference | DxHostedTransitVirtualInterfaceAccepterTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class DxHostedTransitVirtualInterfaceAccepterTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/dx_hosted_transit_virtual_interface_accepter.html aws_dx_hosted_transit_virtual_interface_accepter}
@@ -2766,7 +3201,7 @@ export namespace DirectConnect {
     }
 
     // dx_gateway_id - computed: false, optional: false, required: true
-    private _dxGatewayId: string;
+    private _dxGatewayId?: string; 
     public get dxGatewayId() {
       return this.getStringAttribute('dx_gateway_id');
     }
@@ -2784,11 +3219,12 @@ export namespace DirectConnect {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2800,11 +3236,12 @@ export namespace DirectConnect {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2816,7 +3253,7 @@ export namespace DirectConnect {
     }
 
     // virtual_interface_id - computed: false, optional: false, required: true
-    private _virtualInterfaceId: string;
+    private _virtualInterfaceId?: string; 
     public get virtualInterfaceId() {
       return this.getStringAttribute('virtual_interface_id');
     }
@@ -2829,11 +3266,12 @@ export namespace DirectConnect {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DxHostedTransitVirtualInterfaceAccepterTimeouts;
+    private _timeouts?: DxHostedTransitVirtualInterfaceAccepterTimeouts | undefined; 
+    private __timeoutsOutput = new DxHostedTransitVirtualInterfaceAccepterTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DxHostedTransitVirtualInterfaceAccepterTimeouts ) {
+    public putTimeouts(value: DxHostedTransitVirtualInterfaceAccepterTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -2945,11 +3383,11 @@ export namespace DirectConnect {
     }
 
     // connection_id - computed: false, optional: true, required: false
-    private _connectionId?: string;
+    private _connectionId?: string | undefined; 
     public get connectionId() {
       return this.getStringAttribute('connection_id');
     }
-    public set connectionId(value: string ) {
+    public set connectionId(value: string | undefined) {
       this._connectionId = value;
     }
     public resetConnectionId() {
@@ -2961,7 +3399,7 @@ export namespace DirectConnect {
     }
 
     // connections_bandwidth - computed: false, optional: false, required: true
-    private _connectionsBandwidth: string;
+    private _connectionsBandwidth?: string; 
     public get connectionsBandwidth() {
       return this.getStringAttribute('connections_bandwidth');
     }
@@ -2974,11 +3412,11 @@ export namespace DirectConnect {
     }
 
     // force_destroy - computed: false, optional: true, required: false
-    private _forceDestroy?: boolean | cdktf.IResolvable;
+    private _forceDestroy?: boolean | cdktf.IResolvable | undefined; 
     public get forceDestroy() {
-      return this.getBooleanAttribute('force_destroy');
+      return this.getBooleanAttribute('force_destroy') as any;
     }
-    public set forceDestroy(value: boolean | cdktf.IResolvable ) {
+    public set forceDestroy(value: boolean | cdktf.IResolvable | undefined) {
       this._forceDestroy = value;
     }
     public resetForceDestroy() {
@@ -3001,11 +3439,11 @@ export namespace DirectConnect {
 
     // jumbo_frame_capable - computed: true, optional: false, required: false
     public get jumboFrameCapable() {
-      return this.getBooleanAttribute('jumbo_frame_capable');
+      return this.getBooleanAttribute('jumbo_frame_capable') as any;
     }
 
     // location - computed: false, optional: false, required: true
-    private _location: string;
+    private _location?: string; 
     public get location() {
       return this.getStringAttribute('location');
     }
@@ -3018,7 +3456,7 @@ export namespace DirectConnect {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -3036,11 +3474,11 @@ export namespace DirectConnect {
     }
 
     // provider_name - computed: true, optional: true, required: false
-    private _providerName?: string;
+    private _providerName?: string | undefined; 
     public get providerName() {
       return this.getStringAttribute('provider_name');
     }
-    public set providerName(value: string) {
+    public set providerName(value: string | undefined) {
       this._providerName = value;
     }
     public resetProviderName() {
@@ -3052,11 +3490,12 @@ export namespace DirectConnect {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3068,11 +3507,12 @@ export namespace DirectConnect {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -3175,8 +3615,11 @@ export namespace DirectConnect {
     readonly update?: string;
   }
 
-  function dxPrivateVirtualInterfaceTimeoutsToTerraform(struct?: DxPrivateVirtualInterfaceTimeouts): any {
+  function dxPrivateVirtualInterfaceTimeoutsToTerraform(struct?: DxPrivateVirtualInterfaceTimeoutsOutputReference | DxPrivateVirtualInterfaceTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -3184,6 +3627,64 @@ export namespace DirectConnect {
     }
   }
 
+  export class DxPrivateVirtualInterfaceTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/dx_private_virtual_interface.html aws_dx_private_virtual_interface}
@@ -3238,7 +3739,7 @@ export namespace DirectConnect {
     // ==========
 
     // address_family - computed: false, optional: false, required: true
-    private _addressFamily: string;
+    private _addressFamily?: string; 
     public get addressFamily() {
       return this.getStringAttribute('address_family');
     }
@@ -3251,11 +3752,11 @@ export namespace DirectConnect {
     }
 
     // amazon_address - computed: true, optional: true, required: false
-    private _amazonAddress?: string;
+    private _amazonAddress?: string | undefined; 
     public get amazonAddress() {
       return this.getStringAttribute('amazon_address');
     }
-    public set amazonAddress(value: string) {
+    public set amazonAddress(value: string | undefined) {
       this._amazonAddress = value;
     }
     public resetAmazonAddress() {
@@ -3282,7 +3783,7 @@ export namespace DirectConnect {
     }
 
     // bgp_asn - computed: false, optional: false, required: true
-    private _bgpAsn: number;
+    private _bgpAsn?: number; 
     public get bgpAsn() {
       return this.getNumberAttribute('bgp_asn');
     }
@@ -3295,11 +3796,11 @@ export namespace DirectConnect {
     }
 
     // bgp_auth_key - computed: true, optional: true, required: false
-    private _bgpAuthKey?: string;
+    private _bgpAuthKey?: string | undefined; 
     public get bgpAuthKey() {
       return this.getStringAttribute('bgp_auth_key');
     }
-    public set bgpAuthKey(value: string) {
+    public set bgpAuthKey(value: string | undefined) {
       this._bgpAuthKey = value;
     }
     public resetBgpAuthKey() {
@@ -3311,7 +3812,7 @@ export namespace DirectConnect {
     }
 
     // connection_id - computed: false, optional: false, required: true
-    private _connectionId: string;
+    private _connectionId?: string; 
     public get connectionId() {
       return this.getStringAttribute('connection_id');
     }
@@ -3324,11 +3825,11 @@ export namespace DirectConnect {
     }
 
     // customer_address - computed: true, optional: true, required: false
-    private _customerAddress?: string;
+    private _customerAddress?: string | undefined; 
     public get customerAddress() {
       return this.getStringAttribute('customer_address');
     }
-    public set customerAddress(value: string) {
+    public set customerAddress(value: string | undefined) {
       this._customerAddress = value;
     }
     public resetCustomerAddress() {
@@ -3340,11 +3841,11 @@ export namespace DirectConnect {
     }
 
     // dx_gateway_id - computed: false, optional: true, required: false
-    private _dxGatewayId?: string;
+    private _dxGatewayId?: string | undefined; 
     public get dxGatewayId() {
       return this.getStringAttribute('dx_gateway_id');
     }
-    public set dxGatewayId(value: string ) {
+    public set dxGatewayId(value: string | undefined) {
       this._dxGatewayId = value;
     }
     public resetDxGatewayId() {
@@ -3362,15 +3863,15 @@ export namespace DirectConnect {
 
     // jumbo_frame_capable - computed: true, optional: false, required: false
     public get jumboFrameCapable() {
-      return this.getBooleanAttribute('jumbo_frame_capable');
+      return this.getBooleanAttribute('jumbo_frame_capable') as any;
     }
 
     // mtu - computed: false, optional: true, required: false
-    private _mtu?: number;
+    private _mtu?: number | undefined; 
     public get mtu() {
       return this.getNumberAttribute('mtu');
     }
-    public set mtu(value: number ) {
+    public set mtu(value: number | undefined) {
       this._mtu = value;
     }
     public resetMtu() {
@@ -3382,7 +3883,7 @@ export namespace DirectConnect {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -3395,11 +3896,12 @@ export namespace DirectConnect {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3411,11 +3913,12 @@ export namespace DirectConnect {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -3427,7 +3930,7 @@ export namespace DirectConnect {
     }
 
     // vlan - computed: false, optional: false, required: true
-    private _vlan: number;
+    private _vlan?: number; 
     public get vlan() {
       return this.getNumberAttribute('vlan');
     }
@@ -3440,11 +3943,11 @@ export namespace DirectConnect {
     }
 
     // vpn_gateway_id - computed: false, optional: true, required: false
-    private _vpnGatewayId?: string;
+    private _vpnGatewayId?: string | undefined; 
     public get vpnGatewayId() {
       return this.getStringAttribute('vpn_gateway_id');
     }
-    public set vpnGatewayId(value: string ) {
+    public set vpnGatewayId(value: string | undefined) {
       this._vpnGatewayId = value;
     }
     public resetVpnGatewayId() {
@@ -3456,11 +3959,12 @@ export namespace DirectConnect {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DxPrivateVirtualInterfaceTimeouts;
+    private _timeouts?: DxPrivateVirtualInterfaceTimeouts | undefined; 
+    private __timeoutsOutput = new DxPrivateVirtualInterfaceTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DxPrivateVirtualInterfaceTimeouts ) {
+    public putTimeouts(value: DxPrivateVirtualInterfaceTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -3557,14 +4061,59 @@ export namespace DirectConnect {
     readonly delete?: string;
   }
 
-  function dxPublicVirtualInterfaceTimeoutsToTerraform(struct?: DxPublicVirtualInterfaceTimeouts): any {
+  function dxPublicVirtualInterfaceTimeoutsToTerraform(struct?: DxPublicVirtualInterfaceTimeoutsOutputReference | DxPublicVirtualInterfaceTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class DxPublicVirtualInterfaceTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/dx_public_virtual_interface.html aws_dx_public_virtual_interface}
@@ -3617,7 +4166,7 @@ export namespace DirectConnect {
     // ==========
 
     // address_family - computed: false, optional: false, required: true
-    private _addressFamily: string;
+    private _addressFamily?: string; 
     public get addressFamily() {
       return this.getStringAttribute('address_family');
     }
@@ -3630,11 +4179,11 @@ export namespace DirectConnect {
     }
 
     // amazon_address - computed: true, optional: true, required: false
-    private _amazonAddress?: string;
+    private _amazonAddress?: string | undefined; 
     public get amazonAddress() {
       return this.getStringAttribute('amazon_address');
     }
-    public set amazonAddress(value: string) {
+    public set amazonAddress(value: string | undefined) {
       this._amazonAddress = value;
     }
     public resetAmazonAddress() {
@@ -3661,7 +4210,7 @@ export namespace DirectConnect {
     }
 
     // bgp_asn - computed: false, optional: false, required: true
-    private _bgpAsn: number;
+    private _bgpAsn?: number; 
     public get bgpAsn() {
       return this.getNumberAttribute('bgp_asn');
     }
@@ -3674,11 +4223,11 @@ export namespace DirectConnect {
     }
 
     // bgp_auth_key - computed: true, optional: true, required: false
-    private _bgpAuthKey?: string;
+    private _bgpAuthKey?: string | undefined; 
     public get bgpAuthKey() {
       return this.getStringAttribute('bgp_auth_key');
     }
-    public set bgpAuthKey(value: string) {
+    public set bgpAuthKey(value: string | undefined) {
       this._bgpAuthKey = value;
     }
     public resetBgpAuthKey() {
@@ -3690,7 +4239,7 @@ export namespace DirectConnect {
     }
 
     // connection_id - computed: false, optional: false, required: true
-    private _connectionId: string;
+    private _connectionId?: string; 
     public get connectionId() {
       return this.getStringAttribute('connection_id');
     }
@@ -3703,11 +4252,11 @@ export namespace DirectConnect {
     }
 
     // customer_address - computed: true, optional: true, required: false
-    private _customerAddress?: string;
+    private _customerAddress?: string | undefined; 
     public get customerAddress() {
       return this.getStringAttribute('customer_address');
     }
-    public set customerAddress(value: string) {
+    public set customerAddress(value: string | undefined) {
       this._customerAddress = value;
     }
     public resetCustomerAddress() {
@@ -3724,7 +4273,7 @@ export namespace DirectConnect {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -3737,7 +4286,7 @@ export namespace DirectConnect {
     }
 
     // route_filter_prefixes - computed: false, optional: false, required: true
-    private _routeFilterPrefixes: string[];
+    private _routeFilterPrefixes?: string[]; 
     public get routeFilterPrefixes() {
       return this.getListAttribute('route_filter_prefixes');
     }
@@ -3750,11 +4299,12 @@ export namespace DirectConnect {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3766,11 +4316,12 @@ export namespace DirectConnect {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -3782,7 +4333,7 @@ export namespace DirectConnect {
     }
 
     // vlan - computed: false, optional: false, required: true
-    private _vlan: number;
+    private _vlan?: number; 
     public get vlan() {
       return this.getNumberAttribute('vlan');
     }
@@ -3795,11 +4346,12 @@ export namespace DirectConnect {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DxPublicVirtualInterfaceTimeouts;
+    private _timeouts?: DxPublicVirtualInterfaceTimeouts | undefined; 
+    private __timeoutsOutput = new DxPublicVirtualInterfaceTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DxPublicVirtualInterfaceTimeouts ) {
+    public putTimeouts(value: DxPublicVirtualInterfaceTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -3902,8 +4454,11 @@ export namespace DirectConnect {
     readonly update?: string;
   }
 
-  function dxTransitVirtualInterfaceTimeoutsToTerraform(struct?: DxTransitVirtualInterfaceTimeouts): any {
+  function dxTransitVirtualInterfaceTimeoutsToTerraform(struct?: DxTransitVirtualInterfaceTimeoutsOutputReference | DxTransitVirtualInterfaceTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -3911,6 +4466,64 @@ export namespace DirectConnect {
     }
   }
 
+  export class DxTransitVirtualInterfaceTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/dx_transit_virtual_interface.html aws_dx_transit_virtual_interface}
@@ -3964,7 +4577,7 @@ export namespace DirectConnect {
     // ==========
 
     // address_family - computed: false, optional: false, required: true
-    private _addressFamily: string;
+    private _addressFamily?: string; 
     public get addressFamily() {
       return this.getStringAttribute('address_family');
     }
@@ -3977,11 +4590,11 @@ export namespace DirectConnect {
     }
 
     // amazon_address - computed: true, optional: true, required: false
-    private _amazonAddress?: string;
+    private _amazonAddress?: string | undefined; 
     public get amazonAddress() {
       return this.getStringAttribute('amazon_address');
     }
-    public set amazonAddress(value: string) {
+    public set amazonAddress(value: string | undefined) {
       this._amazonAddress = value;
     }
     public resetAmazonAddress() {
@@ -4008,7 +4621,7 @@ export namespace DirectConnect {
     }
 
     // bgp_asn - computed: false, optional: false, required: true
-    private _bgpAsn: number;
+    private _bgpAsn?: number; 
     public get bgpAsn() {
       return this.getNumberAttribute('bgp_asn');
     }
@@ -4021,11 +4634,11 @@ export namespace DirectConnect {
     }
 
     // bgp_auth_key - computed: true, optional: true, required: false
-    private _bgpAuthKey?: string;
+    private _bgpAuthKey?: string | undefined; 
     public get bgpAuthKey() {
       return this.getStringAttribute('bgp_auth_key');
     }
-    public set bgpAuthKey(value: string) {
+    public set bgpAuthKey(value: string | undefined) {
       this._bgpAuthKey = value;
     }
     public resetBgpAuthKey() {
@@ -4037,7 +4650,7 @@ export namespace DirectConnect {
     }
 
     // connection_id - computed: false, optional: false, required: true
-    private _connectionId: string;
+    private _connectionId?: string; 
     public get connectionId() {
       return this.getStringAttribute('connection_id');
     }
@@ -4050,11 +4663,11 @@ export namespace DirectConnect {
     }
 
     // customer_address - computed: true, optional: true, required: false
-    private _customerAddress?: string;
+    private _customerAddress?: string | undefined; 
     public get customerAddress() {
       return this.getStringAttribute('customer_address');
     }
-    public set customerAddress(value: string) {
+    public set customerAddress(value: string | undefined) {
       this._customerAddress = value;
     }
     public resetCustomerAddress() {
@@ -4066,7 +4679,7 @@ export namespace DirectConnect {
     }
 
     // dx_gateway_id - computed: false, optional: false, required: true
-    private _dxGatewayId: string;
+    private _dxGatewayId?: string; 
     public get dxGatewayId() {
       return this.getStringAttribute('dx_gateway_id');
     }
@@ -4085,15 +4698,15 @@ export namespace DirectConnect {
 
     // jumbo_frame_capable - computed: true, optional: false, required: false
     public get jumboFrameCapable() {
-      return this.getBooleanAttribute('jumbo_frame_capable');
+      return this.getBooleanAttribute('jumbo_frame_capable') as any;
     }
 
     // mtu - computed: false, optional: true, required: false
-    private _mtu?: number;
+    private _mtu?: number | undefined; 
     public get mtu() {
       return this.getNumberAttribute('mtu');
     }
-    public set mtu(value: number ) {
+    public set mtu(value: number | undefined) {
       this._mtu = value;
     }
     public resetMtu() {
@@ -4105,7 +4718,7 @@ export namespace DirectConnect {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -4118,11 +4731,12 @@ export namespace DirectConnect {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4134,11 +4748,12 @@ export namespace DirectConnect {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -4150,7 +4765,7 @@ export namespace DirectConnect {
     }
 
     // vlan - computed: false, optional: false, required: true
-    private _vlan: number;
+    private _vlan?: number; 
     public get vlan() {
       return this.getNumberAttribute('vlan');
     }
@@ -4163,11 +4778,12 @@ export namespace DirectConnect {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DxTransitVirtualInterfaceTimeouts;
+    private _timeouts?: DxTransitVirtualInterfaceTimeouts | undefined; 
+    private __timeoutsOutput = new DxTransitVirtualInterfaceTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DxTransitVirtualInterfaceTimeouts ) {
+    public putTimeouts(value: DxTransitVirtualInterfaceTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -4277,7 +4893,7 @@ export namespace DirectConnect {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -4300,11 +4916,12 @@ export namespace DirectConnect {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4383,7 +5000,7 @@ export namespace DirectConnect {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -4472,7 +5089,7 @@ export namespace DirectConnect {
     }
 
     // location_code - computed: false, optional: false, required: true
-    private _locationCode: string;
+    private _locationCode?: string; 
     public get locationCode() {
       return this.getStringAttribute('location_code');
     }

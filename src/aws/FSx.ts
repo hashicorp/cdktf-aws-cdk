@@ -38,14 +38,59 @@ export namespace FSx {
     readonly delete?: string;
   }
 
-  function fsxBackupTimeoutsToTerraform(struct?: FsxBackupTimeouts): any {
+  function fsxBackupTimeoutsToTerraform(struct?: FsxBackupTimeoutsOutputReference | FsxBackupTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class FsxBackupTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/fsx_backup.html aws_fsx_backup}
@@ -95,7 +140,7 @@ export namespace FSx {
     }
 
     // file_system_id - computed: false, optional: false, required: true
-    private _fileSystemId: string;
+    private _fileSystemId?: string; 
     public get fileSystemId() {
       return this.getStringAttribute('file_system_id');
     }
@@ -123,11 +168,12 @@ export namespace FSx {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -139,11 +185,12 @@ export namespace FSx {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -160,11 +207,12 @@ export namespace FSx {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: FsxBackupTimeouts;
+    private _timeouts?: FsxBackupTimeouts | undefined; 
+    private __timeoutsOutput = new FsxBackupTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: FsxBackupTimeouts ) {
+    public putTimeouts(value: FsxBackupTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -291,8 +339,11 @@ export namespace FSx {
     readonly update?: string;
   }
 
-  function fsxLustreFileSystemTimeoutsToTerraform(struct?: FsxLustreFileSystemTimeouts): any {
+  function fsxLustreFileSystemTimeoutsToTerraform(struct?: FsxLustreFileSystemTimeoutsOutputReference | FsxLustreFileSystemTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -300,6 +351,64 @@ export namespace FSx {
     }
   }
 
+  export class FsxLustreFileSystemTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/fsx_lustre_file_system.html aws_fsx_lustre_file_system}
@@ -366,11 +475,11 @@ export namespace FSx {
     }
 
     // auto_import_policy - computed: true, optional: true, required: false
-    private _autoImportPolicy?: string;
+    private _autoImportPolicy?: string | undefined; 
     public get autoImportPolicy() {
       return this.getStringAttribute('auto_import_policy');
     }
-    public set autoImportPolicy(value: string) {
+    public set autoImportPolicy(value: string | undefined) {
       this._autoImportPolicy = value;
     }
     public resetAutoImportPolicy() {
@@ -382,11 +491,11 @@ export namespace FSx {
     }
 
     // automatic_backup_retention_days - computed: true, optional: true, required: false
-    private _automaticBackupRetentionDays?: number;
+    private _automaticBackupRetentionDays?: number | undefined; 
     public get automaticBackupRetentionDays() {
       return this.getNumberAttribute('automatic_backup_retention_days');
     }
-    public set automaticBackupRetentionDays(value: number) {
+    public set automaticBackupRetentionDays(value: number | undefined) {
       this._automaticBackupRetentionDays = value;
     }
     public resetAutomaticBackupRetentionDays() {
@@ -398,11 +507,11 @@ export namespace FSx {
     }
 
     // backup_id - computed: false, optional: true, required: false
-    private _backupId?: string;
+    private _backupId?: string | undefined; 
     public get backupId() {
       return this.getStringAttribute('backup_id');
     }
-    public set backupId(value: string ) {
+    public set backupId(value: string | undefined) {
       this._backupId = value;
     }
     public resetBackupId() {
@@ -414,11 +523,11 @@ export namespace FSx {
     }
 
     // copy_tags_to_backups - computed: false, optional: true, required: false
-    private _copyTagsToBackups?: boolean | cdktf.IResolvable;
+    private _copyTagsToBackups?: boolean | cdktf.IResolvable | undefined; 
     public get copyTagsToBackups() {
-      return this.getBooleanAttribute('copy_tags_to_backups');
+      return this.getBooleanAttribute('copy_tags_to_backups') as any;
     }
-    public set copyTagsToBackups(value: boolean | cdktf.IResolvable ) {
+    public set copyTagsToBackups(value: boolean | cdktf.IResolvable | undefined) {
       this._copyTagsToBackups = value;
     }
     public resetCopyTagsToBackups() {
@@ -430,11 +539,11 @@ export namespace FSx {
     }
 
     // daily_automatic_backup_start_time - computed: true, optional: true, required: false
-    private _dailyAutomaticBackupStartTime?: string;
+    private _dailyAutomaticBackupStartTime?: string | undefined; 
     public get dailyAutomaticBackupStartTime() {
       return this.getStringAttribute('daily_automatic_backup_start_time');
     }
-    public set dailyAutomaticBackupStartTime(value: string) {
+    public set dailyAutomaticBackupStartTime(value: string | undefined) {
       this._dailyAutomaticBackupStartTime = value;
     }
     public resetDailyAutomaticBackupStartTime() {
@@ -446,11 +555,11 @@ export namespace FSx {
     }
 
     // data_compression_type - computed: false, optional: true, required: false
-    private _dataCompressionType?: string;
+    private _dataCompressionType?: string | undefined; 
     public get dataCompressionType() {
       return this.getStringAttribute('data_compression_type');
     }
-    public set dataCompressionType(value: string ) {
+    public set dataCompressionType(value: string | undefined) {
       this._dataCompressionType = value;
     }
     public resetDataCompressionType() {
@@ -462,11 +571,11 @@ export namespace FSx {
     }
 
     // deployment_type - computed: false, optional: true, required: false
-    private _deploymentType?: string;
+    private _deploymentType?: string | undefined; 
     public get deploymentType() {
       return this.getStringAttribute('deployment_type');
     }
-    public set deploymentType(value: string ) {
+    public set deploymentType(value: string | undefined) {
       this._deploymentType = value;
     }
     public resetDeploymentType() {
@@ -483,11 +592,11 @@ export namespace FSx {
     }
 
     // drive_cache_type - computed: false, optional: true, required: false
-    private _driveCacheType?: string;
+    private _driveCacheType?: string | undefined; 
     public get driveCacheType() {
       return this.getStringAttribute('drive_cache_type');
     }
-    public set driveCacheType(value: string ) {
+    public set driveCacheType(value: string | undefined) {
       this._driveCacheType = value;
     }
     public resetDriveCacheType() {
@@ -499,11 +608,11 @@ export namespace FSx {
     }
 
     // export_path - computed: true, optional: true, required: false
-    private _exportPath?: string;
+    private _exportPath?: string | undefined; 
     public get exportPath() {
       return this.getStringAttribute('export_path');
     }
-    public set exportPath(value: string) {
+    public set exportPath(value: string | undefined) {
       this._exportPath = value;
     }
     public resetExportPath() {
@@ -520,11 +629,11 @@ export namespace FSx {
     }
 
     // import_path - computed: false, optional: true, required: false
-    private _importPath?: string;
+    private _importPath?: string | undefined; 
     public get importPath() {
       return this.getStringAttribute('import_path');
     }
-    public set importPath(value: string ) {
+    public set importPath(value: string | undefined) {
       this._importPath = value;
     }
     public resetImportPath() {
@@ -536,11 +645,11 @@ export namespace FSx {
     }
 
     // imported_file_chunk_size - computed: true, optional: true, required: false
-    private _importedFileChunkSize?: number;
+    private _importedFileChunkSize?: number | undefined; 
     public get importedFileChunkSize() {
       return this.getNumberAttribute('imported_file_chunk_size');
     }
-    public set importedFileChunkSize(value: number) {
+    public set importedFileChunkSize(value: number | undefined) {
       this._importedFileChunkSize = value;
     }
     public resetImportedFileChunkSize() {
@@ -552,11 +661,11 @@ export namespace FSx {
     }
 
     // kms_key_id - computed: true, optional: true, required: false
-    private _kmsKeyId?: string;
+    private _kmsKeyId?: string | undefined; 
     public get kmsKeyId() {
       return this.getStringAttribute('kms_key_id');
     }
-    public set kmsKeyId(value: string) {
+    public set kmsKeyId(value: string | undefined) {
       this._kmsKeyId = value;
     }
     public resetKmsKeyId() {
@@ -583,11 +692,11 @@ export namespace FSx {
     }
 
     // per_unit_storage_throughput - computed: false, optional: true, required: false
-    private _perUnitStorageThroughput?: number;
+    private _perUnitStorageThroughput?: number | undefined; 
     public get perUnitStorageThroughput() {
       return this.getNumberAttribute('per_unit_storage_throughput');
     }
-    public set perUnitStorageThroughput(value: number ) {
+    public set perUnitStorageThroughput(value: number | undefined) {
       this._perUnitStorageThroughput = value;
     }
     public resetPerUnitStorageThroughput() {
@@ -599,11 +708,11 @@ export namespace FSx {
     }
 
     // security_group_ids - computed: false, optional: true, required: false
-    private _securityGroupIds?: string[];
+    private _securityGroupIds?: string[] | undefined; 
     public get securityGroupIds() {
       return this.getListAttribute('security_group_ids');
     }
-    public set securityGroupIds(value: string[] ) {
+    public set securityGroupIds(value: string[] | undefined) {
       this._securityGroupIds = value;
     }
     public resetSecurityGroupIds() {
@@ -615,11 +724,11 @@ export namespace FSx {
     }
 
     // storage_capacity - computed: false, optional: true, required: false
-    private _storageCapacity?: number;
+    private _storageCapacity?: number | undefined; 
     public get storageCapacity() {
       return this.getNumberAttribute('storage_capacity');
     }
-    public set storageCapacity(value: number ) {
+    public set storageCapacity(value: number | undefined) {
       this._storageCapacity = value;
     }
     public resetStorageCapacity() {
@@ -631,11 +740,11 @@ export namespace FSx {
     }
 
     // storage_type - computed: false, optional: true, required: false
-    private _storageType?: string;
+    private _storageType?: string | undefined; 
     public get storageType() {
       return this.getStringAttribute('storage_type');
     }
-    public set storageType(value: string ) {
+    public set storageType(value: string | undefined) {
       this._storageType = value;
     }
     public resetStorageType() {
@@ -647,7 +756,7 @@ export namespace FSx {
     }
 
     // subnet_ids - computed: false, optional: false, required: true
-    private _subnetIds: string[];
+    private _subnetIds?: string[]; 
     public get subnetIds() {
       return this.getListAttribute('subnet_ids');
     }
@@ -660,11 +769,12 @@ export namespace FSx {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -676,11 +786,12 @@ export namespace FSx {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -697,11 +808,11 @@ export namespace FSx {
     }
 
     // weekly_maintenance_start_time - computed: true, optional: true, required: false
-    private _weeklyMaintenanceStartTime?: string;
+    private _weeklyMaintenanceStartTime?: string | undefined; 
     public get weeklyMaintenanceStartTime() {
       return this.getStringAttribute('weekly_maintenance_start_time');
     }
-    public set weeklyMaintenanceStartTime(value: string) {
+    public set weeklyMaintenanceStartTime(value: string | undefined) {
       this._weeklyMaintenanceStartTime = value;
     }
     public resetWeeklyMaintenanceStartTime() {
@@ -713,11 +824,12 @@ export namespace FSx {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: FsxLustreFileSystemTimeouts;
+    private _timeouts?: FsxLustreFileSystemTimeouts | undefined; 
+    private __timeoutsOutput = new FsxLustreFileSystemTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: FsxLustreFileSystemTimeouts ) {
+    public putTimeouts(value: FsxLustreFileSystemTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -828,7 +940,7 @@ export namespace FSx {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_file_system.html#disk_iops_configuration FsxOntapFileSystem#disk_iops_configuration}
     */
-    readonly diskIopsConfiguration?: FsxOntapFileSystemDiskIopsConfiguration[];
+    readonly diskIopsConfiguration?: FsxOntapFileSystemDiskIopsConfiguration;
     /**
     * timeouts block
     * 
@@ -864,11 +976,13 @@ export namespace FSx {
 
     // intercluster - computed: true, optional: false, required: false
     public get intercluster() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('intercluster') as any;
     }
 
     // management - computed: true, optional: false, required: false
     public get management() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('management') as any;
     }
   }
@@ -883,14 +997,59 @@ export namespace FSx {
     readonly mode?: string;
   }
 
-  function fsxOntapFileSystemDiskIopsConfigurationToTerraform(struct?: FsxOntapFileSystemDiskIopsConfiguration): any {
+  function fsxOntapFileSystemDiskIopsConfigurationToTerraform(struct?: FsxOntapFileSystemDiskIopsConfigurationOutputReference | FsxOntapFileSystemDiskIopsConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       iops: cdktf.numberToTerraform(struct!.iops),
       mode: cdktf.stringToTerraform(struct!.mode),
     }
   }
 
+  export class FsxOntapFileSystemDiskIopsConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // iops - computed: true, optional: true, required: false
+    private _iops?: number | undefined; 
+    public get iops() {
+      return this.getNumberAttribute('iops');
+    }
+    public set iops(value: number | undefined) {
+      this._iops = value;
+    }
+    public resetIops() {
+      this._iops = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get iopsInput() {
+      return this._iops
+    }
+
+    // mode - computed: false, optional: true, required: false
+    private _mode?: string | undefined; 
+    public get mode() {
+      return this.getStringAttribute('mode');
+    }
+    public set mode(value: string | undefined) {
+      this._mode = value;
+    }
+    public resetMode() {
+      this._mode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get modeInput() {
+      return this._mode
+    }
+  }
   export interface FsxOntapFileSystemTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_file_system.html#create FsxOntapFileSystem#create}
@@ -906,8 +1065,11 @@ export namespace FSx {
     readonly update?: string;
   }
 
-  function fsxOntapFileSystemTimeoutsToTerraform(struct?: FsxOntapFileSystemTimeouts): any {
+  function fsxOntapFileSystemTimeoutsToTerraform(struct?: FsxOntapFileSystemTimeoutsOutputReference | FsxOntapFileSystemTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -915,6 +1077,64 @@ export namespace FSx {
     }
   }
 
+  export class FsxOntapFileSystemTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/fsx_ontap_file_system.html aws_fsx_ontap_file_system}
@@ -978,11 +1198,11 @@ export namespace FSx {
     }
 
     // automatic_backup_retention_days - computed: false, optional: true, required: false
-    private _automaticBackupRetentionDays?: number;
+    private _automaticBackupRetentionDays?: number | undefined; 
     public get automaticBackupRetentionDays() {
       return this.getNumberAttribute('automatic_backup_retention_days');
     }
-    public set automaticBackupRetentionDays(value: number ) {
+    public set automaticBackupRetentionDays(value: number | undefined) {
       this._automaticBackupRetentionDays = value;
     }
     public resetAutomaticBackupRetentionDays() {
@@ -994,11 +1214,11 @@ export namespace FSx {
     }
 
     // daily_automatic_backup_start_time - computed: true, optional: true, required: false
-    private _dailyAutomaticBackupStartTime?: string;
+    private _dailyAutomaticBackupStartTime?: string | undefined; 
     public get dailyAutomaticBackupStartTime() {
       return this.getStringAttribute('daily_automatic_backup_start_time');
     }
-    public set dailyAutomaticBackupStartTime(value: string) {
+    public set dailyAutomaticBackupStartTime(value: string | undefined) {
       this._dailyAutomaticBackupStartTime = value;
     }
     public resetDailyAutomaticBackupStartTime() {
@@ -1010,7 +1230,7 @@ export namespace FSx {
     }
 
     // deployment_type - computed: false, optional: false, required: true
-    private _deploymentType: string;
+    private _deploymentType?: string; 
     public get deploymentType() {
       return this.getStringAttribute('deployment_type');
     }
@@ -1028,11 +1248,11 @@ export namespace FSx {
     }
 
     // endpoint_ip_address_range - computed: true, optional: true, required: false
-    private _endpointIpAddressRange?: string;
+    private _endpointIpAddressRange?: string | undefined; 
     public get endpointIpAddressRange() {
       return this.getStringAttribute('endpoint_ip_address_range');
     }
-    public set endpointIpAddressRange(value: string) {
+    public set endpointIpAddressRange(value: string | undefined) {
       this._endpointIpAddressRange = value;
     }
     public resetEndpointIpAddressRange() {
@@ -1049,11 +1269,11 @@ export namespace FSx {
     }
 
     // fsx_admin_password - computed: false, optional: true, required: false
-    private _fsxAdminPassword?: string;
+    private _fsxAdminPassword?: string | undefined; 
     public get fsxAdminPassword() {
       return this.getStringAttribute('fsx_admin_password');
     }
-    public set fsxAdminPassword(value: string ) {
+    public set fsxAdminPassword(value: string | undefined) {
       this._fsxAdminPassword = value;
     }
     public resetFsxAdminPassword() {
@@ -1070,11 +1290,11 @@ export namespace FSx {
     }
 
     // kms_key_id - computed: true, optional: true, required: false
-    private _kmsKeyId?: string;
+    private _kmsKeyId?: string | undefined; 
     public get kmsKeyId() {
       return this.getStringAttribute('kms_key_id');
     }
-    public set kmsKeyId(value: string) {
+    public set kmsKeyId(value: string | undefined) {
       this._kmsKeyId = value;
     }
     public resetKmsKeyId() {
@@ -1096,7 +1316,7 @@ export namespace FSx {
     }
 
     // preferred_subnet_id - computed: false, optional: false, required: true
-    private _preferredSubnetId: string;
+    private _preferredSubnetId?: string; 
     public get preferredSubnetId() {
       return this.getStringAttribute('preferred_subnet_id');
     }
@@ -1109,11 +1329,11 @@ export namespace FSx {
     }
 
     // route_table_ids - computed: true, optional: true, required: false
-    private _routeTableIds?: string[];
+    private _routeTableIds?: string[] | undefined; 
     public get routeTableIds() {
       return this.getListAttribute('route_table_ids');
     }
-    public set routeTableIds(value: string[]) {
+    public set routeTableIds(value: string[] | undefined) {
       this._routeTableIds = value;
     }
     public resetRouteTableIds() {
@@ -1125,11 +1345,11 @@ export namespace FSx {
     }
 
     // security_group_ids - computed: false, optional: true, required: false
-    private _securityGroupIds?: string[];
+    private _securityGroupIds?: string[] | undefined; 
     public get securityGroupIds() {
       return this.getListAttribute('security_group_ids');
     }
-    public set securityGroupIds(value: string[] ) {
+    public set securityGroupIds(value: string[] | undefined) {
       this._securityGroupIds = value;
     }
     public resetSecurityGroupIds() {
@@ -1141,11 +1361,11 @@ export namespace FSx {
     }
 
     // storage_capacity - computed: false, optional: true, required: false
-    private _storageCapacity?: number;
+    private _storageCapacity?: number | undefined; 
     public get storageCapacity() {
       return this.getNumberAttribute('storage_capacity');
     }
-    public set storageCapacity(value: number ) {
+    public set storageCapacity(value: number | undefined) {
       this._storageCapacity = value;
     }
     public resetStorageCapacity() {
@@ -1157,11 +1377,11 @@ export namespace FSx {
     }
 
     // storage_type - computed: false, optional: true, required: false
-    private _storageType?: string;
+    private _storageType?: string | undefined; 
     public get storageType() {
       return this.getStringAttribute('storage_type');
     }
-    public set storageType(value: string ) {
+    public set storageType(value: string | undefined) {
       this._storageType = value;
     }
     public resetStorageType() {
@@ -1173,7 +1393,7 @@ export namespace FSx {
     }
 
     // subnet_ids - computed: false, optional: false, required: true
-    private _subnetIds: string[];
+    private _subnetIds?: string[]; 
     public get subnetIds() {
       return this.getListAttribute('subnet_ids');
     }
@@ -1186,11 +1406,12 @@ export namespace FSx {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1202,11 +1423,12 @@ export namespace FSx {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1218,7 +1440,7 @@ export namespace FSx {
     }
 
     // throughput_capacity - computed: false, optional: false, required: true
-    private _throughputCapacity: number;
+    private _throughputCapacity?: number; 
     public get throughputCapacity() {
       return this.getNumberAttribute('throughput_capacity');
     }
@@ -1236,11 +1458,11 @@ export namespace FSx {
     }
 
     // weekly_maintenance_start_time - computed: true, optional: true, required: false
-    private _weeklyMaintenanceStartTime?: string;
+    private _weeklyMaintenanceStartTime?: string | undefined; 
     public get weeklyMaintenanceStartTime() {
       return this.getStringAttribute('weekly_maintenance_start_time');
     }
-    public set weeklyMaintenanceStartTime(value: string) {
+    public set weeklyMaintenanceStartTime(value: string | undefined) {
       this._weeklyMaintenanceStartTime = value;
     }
     public resetWeeklyMaintenanceStartTime() {
@@ -1252,11 +1474,12 @@ export namespace FSx {
     }
 
     // disk_iops_configuration - computed: false, optional: true, required: false
-    private _diskIopsConfiguration?: FsxOntapFileSystemDiskIopsConfiguration[];
+    private _diskIopsConfiguration?: FsxOntapFileSystemDiskIopsConfiguration | undefined; 
+    private __diskIopsConfigurationOutput = new FsxOntapFileSystemDiskIopsConfigurationOutputReference(this as any, "disk_iops_configuration", true);
     public get diskIopsConfiguration() {
-      return this.interpolationForAttribute('disk_iops_configuration') as any;
+      return this.__diskIopsConfigurationOutput;
     }
-    public set diskIopsConfiguration(value: FsxOntapFileSystemDiskIopsConfiguration[] ) {
+    public putDiskIopsConfiguration(value: FsxOntapFileSystemDiskIopsConfiguration | undefined) {
       this._diskIopsConfiguration = value;
     }
     public resetDiskIopsConfiguration() {
@@ -1268,11 +1491,12 @@ export namespace FSx {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: FsxOntapFileSystemTimeouts;
+    private _timeouts?: FsxOntapFileSystemTimeouts | undefined; 
+    private __timeoutsOutput = new FsxOntapFileSystemTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: FsxOntapFileSystemTimeouts ) {
+    public putTimeouts(value: FsxOntapFileSystemTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1305,7 +1529,7 @@ export namespace FSx {
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         throughput_capacity: cdktf.numberToTerraform(this._throughputCapacity),
         weekly_maintenance_start_time: cdktf.stringToTerraform(this._weeklyMaintenanceStartTime),
-        disk_iops_configuration: cdktf.listMapper(fsxOntapFileSystemDiskIopsConfigurationToTerraform)(this._diskIopsConfiguration),
+        disk_iops_configuration: fsxOntapFileSystemDiskIopsConfigurationToTerraform(this._diskIopsConfiguration),
         timeouts: fsxOntapFileSystemTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -1388,13 +1612,13 @@ export namespace FSx {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_windows_file_system.html#audit_log_configuration FsxWindowsFileSystem#audit_log_configuration}
     */
-    readonly auditLogConfiguration?: FsxWindowsFileSystemAuditLogConfiguration[];
+    readonly auditLogConfiguration?: FsxWindowsFileSystemAuditLogConfiguration;
     /**
     * self_managed_active_directory block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_windows_file_system.html#self_managed_active_directory FsxWindowsFileSystem#self_managed_active_directory}
     */
-    readonly selfManagedActiveDirectory?: FsxWindowsFileSystemSelfManagedActiveDirectory[];
+    readonly selfManagedActiveDirectory?: FsxWindowsFileSystemSelfManagedActiveDirectory;
     /**
     * timeouts block
     * 
@@ -1417,8 +1641,11 @@ export namespace FSx {
     readonly fileShareAccessAuditLogLevel?: string;
   }
 
-  function fsxWindowsFileSystemAuditLogConfigurationToTerraform(struct?: FsxWindowsFileSystemAuditLogConfiguration): any {
+  function fsxWindowsFileSystemAuditLogConfigurationToTerraform(struct?: FsxWindowsFileSystemAuditLogConfigurationOutputReference | FsxWindowsFileSystemAuditLogConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       audit_log_destination: cdktf.stringToTerraform(struct!.auditLogDestination),
       file_access_audit_log_level: cdktf.stringToTerraform(struct!.fileAccessAuditLogLevel),
@@ -1426,6 +1653,64 @@ export namespace FSx {
     }
   }
 
+  export class FsxWindowsFileSystemAuditLogConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // audit_log_destination - computed: true, optional: true, required: false
+    private _auditLogDestination?: string | undefined; 
+    public get auditLogDestination() {
+      return this.getStringAttribute('audit_log_destination');
+    }
+    public set auditLogDestination(value: string | undefined) {
+      this._auditLogDestination = value;
+    }
+    public resetAuditLogDestination() {
+      this._auditLogDestination = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get auditLogDestinationInput() {
+      return this._auditLogDestination
+    }
+
+    // file_access_audit_log_level - computed: false, optional: true, required: false
+    private _fileAccessAuditLogLevel?: string | undefined; 
+    public get fileAccessAuditLogLevel() {
+      return this.getStringAttribute('file_access_audit_log_level');
+    }
+    public set fileAccessAuditLogLevel(value: string | undefined) {
+      this._fileAccessAuditLogLevel = value;
+    }
+    public resetFileAccessAuditLogLevel() {
+      this._fileAccessAuditLogLevel = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get fileAccessAuditLogLevelInput() {
+      return this._fileAccessAuditLogLevel
+    }
+
+    // file_share_access_audit_log_level - computed: false, optional: true, required: false
+    private _fileShareAccessAuditLogLevel?: string | undefined; 
+    public get fileShareAccessAuditLogLevel() {
+      return this.getStringAttribute('file_share_access_audit_log_level');
+    }
+    public set fileShareAccessAuditLogLevel(value: string | undefined) {
+      this._fileShareAccessAuditLogLevel = value;
+    }
+    public resetFileShareAccessAuditLogLevel() {
+      this._fileShareAccessAuditLogLevel = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get fileShareAccessAuditLogLevelInput() {
+      return this._fileShareAccessAuditLogLevel
+    }
+  }
   export interface FsxWindowsFileSystemSelfManagedActiveDirectory {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_windows_file_system.html#dns_ips FsxWindowsFileSystem#dns_ips}
@@ -1453,8 +1738,11 @@ export namespace FSx {
     readonly username: string;
   }
 
-  function fsxWindowsFileSystemSelfManagedActiveDirectoryToTerraform(struct?: FsxWindowsFileSystemSelfManagedActiveDirectory): any {
+  function fsxWindowsFileSystemSelfManagedActiveDirectoryToTerraform(struct?: FsxWindowsFileSystemSelfManagedActiveDirectoryOutputReference | FsxWindowsFileSystemSelfManagedActiveDirectory): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       dns_ips: cdktf.listMapper(cdktf.stringToTerraform)(struct!.dnsIps),
       domain_name: cdktf.stringToTerraform(struct!.domainName),
@@ -1465,6 +1753,100 @@ export namespace FSx {
     }
   }
 
+  export class FsxWindowsFileSystemSelfManagedActiveDirectoryOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // dns_ips - computed: false, optional: false, required: true
+    private _dnsIps?: string[]; 
+    public get dnsIps() {
+      return this.getListAttribute('dns_ips');
+    }
+    public set dnsIps(value: string[]) {
+      this._dnsIps = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get dnsIpsInput() {
+      return this._dnsIps
+    }
+
+    // domain_name - computed: false, optional: false, required: true
+    private _domainName?: string; 
+    public get domainName() {
+      return this.getStringAttribute('domain_name');
+    }
+    public set domainName(value: string) {
+      this._domainName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get domainNameInput() {
+      return this._domainName
+    }
+
+    // file_system_administrators_group - computed: false, optional: true, required: false
+    private _fileSystemAdministratorsGroup?: string | undefined; 
+    public get fileSystemAdministratorsGroup() {
+      return this.getStringAttribute('file_system_administrators_group');
+    }
+    public set fileSystemAdministratorsGroup(value: string | undefined) {
+      this._fileSystemAdministratorsGroup = value;
+    }
+    public resetFileSystemAdministratorsGroup() {
+      this._fileSystemAdministratorsGroup = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get fileSystemAdministratorsGroupInput() {
+      return this._fileSystemAdministratorsGroup
+    }
+
+    // organizational_unit_distinguished_name - computed: false, optional: true, required: false
+    private _organizationalUnitDistinguishedName?: string | undefined; 
+    public get organizationalUnitDistinguishedName() {
+      return this.getStringAttribute('organizational_unit_distinguished_name');
+    }
+    public set organizationalUnitDistinguishedName(value: string | undefined) {
+      this._organizationalUnitDistinguishedName = value;
+    }
+    public resetOrganizationalUnitDistinguishedName() {
+      this._organizationalUnitDistinguishedName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get organizationalUnitDistinguishedNameInput() {
+      return this._organizationalUnitDistinguishedName
+    }
+
+    // password - computed: false, optional: false, required: true
+    private _password?: string; 
+    public get password() {
+      return this.getStringAttribute('password');
+    }
+    public set password(value: string) {
+      this._password = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get passwordInput() {
+      return this._password
+    }
+
+    // username - computed: false, optional: false, required: true
+    private _username?: string; 
+    public get username() {
+      return this.getStringAttribute('username');
+    }
+    public set username(value: string) {
+      this._username = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get usernameInput() {
+      return this._username
+    }
+  }
   export interface FsxWindowsFileSystemTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fsx_windows_file_system.html#create FsxWindowsFileSystem#create}
@@ -1480,8 +1862,11 @@ export namespace FSx {
     readonly update?: string;
   }
 
-  function fsxWindowsFileSystemTimeoutsToTerraform(struct?: FsxWindowsFileSystemTimeouts): any {
+  function fsxWindowsFileSystemTimeoutsToTerraform(struct?: FsxWindowsFileSystemTimeoutsOutputReference | FsxWindowsFileSystemTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -1489,6 +1874,64 @@ export namespace FSx {
     }
   }
 
+  export class FsxWindowsFileSystemTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/fsx_windows_file_system.html aws_fsx_windows_file_system}
@@ -1550,11 +1993,11 @@ export namespace FSx {
     // ==========
 
     // active_directory_id - computed: false, optional: true, required: false
-    private _activeDirectoryId?: string;
+    private _activeDirectoryId?: string | undefined; 
     public get activeDirectoryId() {
       return this.getStringAttribute('active_directory_id');
     }
-    public set activeDirectoryId(value: string ) {
+    public set activeDirectoryId(value: string | undefined) {
       this._activeDirectoryId = value;
     }
     public resetActiveDirectoryId() {
@@ -1566,11 +2009,11 @@ export namespace FSx {
     }
 
     // aliases - computed: false, optional: true, required: false
-    private _aliases?: string[];
+    private _aliases?: string[] | undefined; 
     public get aliases() {
       return this.getListAttribute('aliases');
     }
-    public set aliases(value: string[] ) {
+    public set aliases(value: string[] | undefined) {
       this._aliases = value;
     }
     public resetAliases() {
@@ -1587,11 +2030,11 @@ export namespace FSx {
     }
 
     // automatic_backup_retention_days - computed: false, optional: true, required: false
-    private _automaticBackupRetentionDays?: number;
+    private _automaticBackupRetentionDays?: number | undefined; 
     public get automaticBackupRetentionDays() {
       return this.getNumberAttribute('automatic_backup_retention_days');
     }
-    public set automaticBackupRetentionDays(value: number ) {
+    public set automaticBackupRetentionDays(value: number | undefined) {
       this._automaticBackupRetentionDays = value;
     }
     public resetAutomaticBackupRetentionDays() {
@@ -1603,11 +2046,11 @@ export namespace FSx {
     }
 
     // backup_id - computed: false, optional: true, required: false
-    private _backupId?: string;
+    private _backupId?: string | undefined; 
     public get backupId() {
       return this.getStringAttribute('backup_id');
     }
-    public set backupId(value: string ) {
+    public set backupId(value: string | undefined) {
       this._backupId = value;
     }
     public resetBackupId() {
@@ -1619,11 +2062,11 @@ export namespace FSx {
     }
 
     // copy_tags_to_backups - computed: false, optional: true, required: false
-    private _copyTagsToBackups?: boolean | cdktf.IResolvable;
+    private _copyTagsToBackups?: boolean | cdktf.IResolvable | undefined; 
     public get copyTagsToBackups() {
-      return this.getBooleanAttribute('copy_tags_to_backups');
+      return this.getBooleanAttribute('copy_tags_to_backups') as any;
     }
-    public set copyTagsToBackups(value: boolean | cdktf.IResolvable ) {
+    public set copyTagsToBackups(value: boolean | cdktf.IResolvable | undefined) {
       this._copyTagsToBackups = value;
     }
     public resetCopyTagsToBackups() {
@@ -1635,11 +2078,11 @@ export namespace FSx {
     }
 
     // daily_automatic_backup_start_time - computed: true, optional: true, required: false
-    private _dailyAutomaticBackupStartTime?: string;
+    private _dailyAutomaticBackupStartTime?: string | undefined; 
     public get dailyAutomaticBackupStartTime() {
       return this.getStringAttribute('daily_automatic_backup_start_time');
     }
-    public set dailyAutomaticBackupStartTime(value: string) {
+    public set dailyAutomaticBackupStartTime(value: string | undefined) {
       this._dailyAutomaticBackupStartTime = value;
     }
     public resetDailyAutomaticBackupStartTime() {
@@ -1651,11 +2094,11 @@ export namespace FSx {
     }
 
     // deployment_type - computed: false, optional: true, required: false
-    private _deploymentType?: string;
+    private _deploymentType?: string | undefined; 
     public get deploymentType() {
       return this.getStringAttribute('deployment_type');
     }
-    public set deploymentType(value: string ) {
+    public set deploymentType(value: string | undefined) {
       this._deploymentType = value;
     }
     public resetDeploymentType() {
@@ -1677,11 +2120,11 @@ export namespace FSx {
     }
 
     // kms_key_id - computed: true, optional: true, required: false
-    private _kmsKeyId?: string;
+    private _kmsKeyId?: string | undefined; 
     public get kmsKeyId() {
       return this.getStringAttribute('kms_key_id');
     }
-    public set kmsKeyId(value: string) {
+    public set kmsKeyId(value: string | undefined) {
       this._kmsKeyId = value;
     }
     public resetKmsKeyId() {
@@ -1708,11 +2151,11 @@ export namespace FSx {
     }
 
     // preferred_subnet_id - computed: true, optional: true, required: false
-    private _preferredSubnetId?: string;
+    private _preferredSubnetId?: string | undefined; 
     public get preferredSubnetId() {
       return this.getStringAttribute('preferred_subnet_id');
     }
-    public set preferredSubnetId(value: string) {
+    public set preferredSubnetId(value: string | undefined) {
       this._preferredSubnetId = value;
     }
     public resetPreferredSubnetId() {
@@ -1729,11 +2172,11 @@ export namespace FSx {
     }
 
     // security_group_ids - computed: false, optional: true, required: false
-    private _securityGroupIds?: string[];
+    private _securityGroupIds?: string[] | undefined; 
     public get securityGroupIds() {
       return this.getListAttribute('security_group_ids');
     }
-    public set securityGroupIds(value: string[] ) {
+    public set securityGroupIds(value: string[] | undefined) {
       this._securityGroupIds = value;
     }
     public resetSecurityGroupIds() {
@@ -1745,11 +2188,11 @@ export namespace FSx {
     }
 
     // skip_final_backup - computed: false, optional: true, required: false
-    private _skipFinalBackup?: boolean | cdktf.IResolvable;
+    private _skipFinalBackup?: boolean | cdktf.IResolvable | undefined; 
     public get skipFinalBackup() {
-      return this.getBooleanAttribute('skip_final_backup');
+      return this.getBooleanAttribute('skip_final_backup') as any;
     }
-    public set skipFinalBackup(value: boolean | cdktf.IResolvable ) {
+    public set skipFinalBackup(value: boolean | cdktf.IResolvable | undefined) {
       this._skipFinalBackup = value;
     }
     public resetSkipFinalBackup() {
@@ -1761,11 +2204,11 @@ export namespace FSx {
     }
 
     // storage_capacity - computed: true, optional: true, required: false
-    private _storageCapacity?: number;
+    private _storageCapacity?: number | undefined; 
     public get storageCapacity() {
       return this.getNumberAttribute('storage_capacity');
     }
-    public set storageCapacity(value: number) {
+    public set storageCapacity(value: number | undefined) {
       this._storageCapacity = value;
     }
     public resetStorageCapacity() {
@@ -1777,11 +2220,11 @@ export namespace FSx {
     }
 
     // storage_type - computed: false, optional: true, required: false
-    private _storageType?: string;
+    private _storageType?: string | undefined; 
     public get storageType() {
       return this.getStringAttribute('storage_type');
     }
-    public set storageType(value: string ) {
+    public set storageType(value: string | undefined) {
       this._storageType = value;
     }
     public resetStorageType() {
@@ -1793,7 +2236,7 @@ export namespace FSx {
     }
 
     // subnet_ids - computed: false, optional: false, required: true
-    private _subnetIds: string[];
+    private _subnetIds?: string[]; 
     public get subnetIds() {
       return this.getListAttribute('subnet_ids');
     }
@@ -1806,11 +2249,12 @@ export namespace FSx {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1822,11 +2266,12 @@ export namespace FSx {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1838,7 +2283,7 @@ export namespace FSx {
     }
 
     // throughput_capacity - computed: false, optional: false, required: true
-    private _throughputCapacity: number;
+    private _throughputCapacity?: number; 
     public get throughputCapacity() {
       return this.getNumberAttribute('throughput_capacity');
     }
@@ -1856,11 +2301,11 @@ export namespace FSx {
     }
 
     // weekly_maintenance_start_time - computed: true, optional: true, required: false
-    private _weeklyMaintenanceStartTime?: string;
+    private _weeklyMaintenanceStartTime?: string | undefined; 
     public get weeklyMaintenanceStartTime() {
       return this.getStringAttribute('weekly_maintenance_start_time');
     }
-    public set weeklyMaintenanceStartTime(value: string) {
+    public set weeklyMaintenanceStartTime(value: string | undefined) {
       this._weeklyMaintenanceStartTime = value;
     }
     public resetWeeklyMaintenanceStartTime() {
@@ -1872,11 +2317,12 @@ export namespace FSx {
     }
 
     // audit_log_configuration - computed: false, optional: true, required: false
-    private _auditLogConfiguration?: FsxWindowsFileSystemAuditLogConfiguration[];
+    private _auditLogConfiguration?: FsxWindowsFileSystemAuditLogConfiguration | undefined; 
+    private __auditLogConfigurationOutput = new FsxWindowsFileSystemAuditLogConfigurationOutputReference(this as any, "audit_log_configuration", true);
     public get auditLogConfiguration() {
-      return this.interpolationForAttribute('audit_log_configuration') as any;
+      return this.__auditLogConfigurationOutput;
     }
-    public set auditLogConfiguration(value: FsxWindowsFileSystemAuditLogConfiguration[] ) {
+    public putAuditLogConfiguration(value: FsxWindowsFileSystemAuditLogConfiguration | undefined) {
       this._auditLogConfiguration = value;
     }
     public resetAuditLogConfiguration() {
@@ -1888,11 +2334,12 @@ export namespace FSx {
     }
 
     // self_managed_active_directory - computed: false, optional: true, required: false
-    private _selfManagedActiveDirectory?: FsxWindowsFileSystemSelfManagedActiveDirectory[];
+    private _selfManagedActiveDirectory?: FsxWindowsFileSystemSelfManagedActiveDirectory | undefined; 
+    private __selfManagedActiveDirectoryOutput = new FsxWindowsFileSystemSelfManagedActiveDirectoryOutputReference(this as any, "self_managed_active_directory", true);
     public get selfManagedActiveDirectory() {
-      return this.interpolationForAttribute('self_managed_active_directory') as any;
+      return this.__selfManagedActiveDirectoryOutput;
     }
-    public set selfManagedActiveDirectory(value: FsxWindowsFileSystemSelfManagedActiveDirectory[] ) {
+    public putSelfManagedActiveDirectory(value: FsxWindowsFileSystemSelfManagedActiveDirectory | undefined) {
       this._selfManagedActiveDirectory = value;
     }
     public resetSelfManagedActiveDirectory() {
@@ -1904,11 +2351,12 @@ export namespace FSx {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: FsxWindowsFileSystemTimeouts;
+    private _timeouts?: FsxWindowsFileSystemTimeouts | undefined; 
+    private __timeoutsOutput = new FsxWindowsFileSystemTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: FsxWindowsFileSystemTimeouts ) {
+    public putTimeouts(value: FsxWindowsFileSystemTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1943,8 +2391,8 @@ export namespace FSx {
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         throughput_capacity: cdktf.numberToTerraform(this._throughputCapacity),
         weekly_maintenance_start_time: cdktf.stringToTerraform(this._weeklyMaintenanceStartTime),
-        audit_log_configuration: cdktf.listMapper(fsxWindowsFileSystemAuditLogConfigurationToTerraform)(this._auditLogConfiguration),
-        self_managed_active_directory: cdktf.listMapper(fsxWindowsFileSystemSelfManagedActiveDirectoryToTerraform)(this._selfManagedActiveDirectory),
+        audit_log_configuration: fsxWindowsFileSystemAuditLogConfigurationToTerraform(this._auditLogConfiguration),
+        self_managed_active_directory: fsxWindowsFileSystemSelfManagedActiveDirectoryToTerraform(this._selfManagedActiveDirectory),
         timeouts: fsxWindowsFileSystemTimeoutsToTerraform(this._timeouts),
       };
     }

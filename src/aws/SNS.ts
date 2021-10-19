@@ -109,11 +109,11 @@ export namespace SNS {
     }
 
     // event_delivery_failure_topic_arn - computed: false, optional: true, required: false
-    private _eventDeliveryFailureTopicArn?: string;
+    private _eventDeliveryFailureTopicArn?: string | undefined; 
     public get eventDeliveryFailureTopicArn() {
       return this.getStringAttribute('event_delivery_failure_topic_arn');
     }
-    public set eventDeliveryFailureTopicArn(value: string ) {
+    public set eventDeliveryFailureTopicArn(value: string | undefined) {
       this._eventDeliveryFailureTopicArn = value;
     }
     public resetEventDeliveryFailureTopicArn() {
@@ -125,11 +125,11 @@ export namespace SNS {
     }
 
     // event_endpoint_created_topic_arn - computed: false, optional: true, required: false
-    private _eventEndpointCreatedTopicArn?: string;
+    private _eventEndpointCreatedTopicArn?: string | undefined; 
     public get eventEndpointCreatedTopicArn() {
       return this.getStringAttribute('event_endpoint_created_topic_arn');
     }
-    public set eventEndpointCreatedTopicArn(value: string ) {
+    public set eventEndpointCreatedTopicArn(value: string | undefined) {
       this._eventEndpointCreatedTopicArn = value;
     }
     public resetEventEndpointCreatedTopicArn() {
@@ -141,11 +141,11 @@ export namespace SNS {
     }
 
     // event_endpoint_deleted_topic_arn - computed: false, optional: true, required: false
-    private _eventEndpointDeletedTopicArn?: string;
+    private _eventEndpointDeletedTopicArn?: string | undefined; 
     public get eventEndpointDeletedTopicArn() {
       return this.getStringAttribute('event_endpoint_deleted_topic_arn');
     }
-    public set eventEndpointDeletedTopicArn(value: string ) {
+    public set eventEndpointDeletedTopicArn(value: string | undefined) {
       this._eventEndpointDeletedTopicArn = value;
     }
     public resetEventEndpointDeletedTopicArn() {
@@ -157,11 +157,11 @@ export namespace SNS {
     }
 
     // event_endpoint_updated_topic_arn - computed: false, optional: true, required: false
-    private _eventEndpointUpdatedTopicArn?: string;
+    private _eventEndpointUpdatedTopicArn?: string | undefined; 
     public get eventEndpointUpdatedTopicArn() {
       return this.getStringAttribute('event_endpoint_updated_topic_arn');
     }
-    public set eventEndpointUpdatedTopicArn(value: string ) {
+    public set eventEndpointUpdatedTopicArn(value: string | undefined) {
       this._eventEndpointUpdatedTopicArn = value;
     }
     public resetEventEndpointUpdatedTopicArn() {
@@ -173,11 +173,11 @@ export namespace SNS {
     }
 
     // failure_feedback_role_arn - computed: false, optional: true, required: false
-    private _failureFeedbackRoleArn?: string;
+    private _failureFeedbackRoleArn?: string | undefined; 
     public get failureFeedbackRoleArn() {
       return this.getStringAttribute('failure_feedback_role_arn');
     }
-    public set failureFeedbackRoleArn(value: string ) {
+    public set failureFeedbackRoleArn(value: string | undefined) {
       this._failureFeedbackRoleArn = value;
     }
     public resetFailureFeedbackRoleArn() {
@@ -194,7 +194,7 @@ export namespace SNS {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -207,7 +207,7 @@ export namespace SNS {
     }
 
     // platform - computed: false, optional: false, required: true
-    private _platform: string;
+    private _platform?: string; 
     public get platform() {
       return this.getStringAttribute('platform');
     }
@@ -220,7 +220,7 @@ export namespace SNS {
     }
 
     // platform_credential - computed: false, optional: false, required: true
-    private _platformCredential: string;
+    private _platformCredential?: string; 
     public get platformCredential() {
       return this.getStringAttribute('platform_credential');
     }
@@ -233,11 +233,11 @@ export namespace SNS {
     }
 
     // platform_principal - computed: false, optional: true, required: false
-    private _platformPrincipal?: string;
+    private _platformPrincipal?: string | undefined; 
     public get platformPrincipal() {
       return this.getStringAttribute('platform_principal');
     }
-    public set platformPrincipal(value: string ) {
+    public set platformPrincipal(value: string | undefined) {
       this._platformPrincipal = value;
     }
     public resetPlatformPrincipal() {
@@ -249,11 +249,11 @@ export namespace SNS {
     }
 
     // success_feedback_role_arn - computed: false, optional: true, required: false
-    private _successFeedbackRoleArn?: string;
+    private _successFeedbackRoleArn?: string | undefined; 
     public get successFeedbackRoleArn() {
       return this.getStringAttribute('success_feedback_role_arn');
     }
-    public set successFeedbackRoleArn(value: string ) {
+    public set successFeedbackRoleArn(value: string | undefined) {
       this._successFeedbackRoleArn = value;
     }
     public resetSuccessFeedbackRoleArn() {
@@ -265,11 +265,11 @@ export namespace SNS {
     }
 
     // success_feedback_sample_rate - computed: false, optional: true, required: false
-    private _successFeedbackSampleRate?: string;
+    private _successFeedbackSampleRate?: string | undefined; 
     public get successFeedbackSampleRate() {
       return this.getStringAttribute('success_feedback_sample_rate');
     }
-    public set successFeedbackSampleRate(value: string ) {
+    public set successFeedbackSampleRate(value: string | undefined) {
       this._successFeedbackSampleRate = value;
     }
     public resetSuccessFeedbackSampleRate() {
@@ -372,11 +372,11 @@ export namespace SNS {
     // ==========
 
     // default_sender_id - computed: false, optional: true, required: false
-    private _defaultSenderId?: string;
+    private _defaultSenderId?: string | undefined; 
     public get defaultSenderId() {
       return this.getStringAttribute('default_sender_id');
     }
-    public set defaultSenderId(value: string ) {
+    public set defaultSenderId(value: string | undefined) {
       this._defaultSenderId = value;
     }
     public resetDefaultSenderId() {
@@ -388,11 +388,11 @@ export namespace SNS {
     }
 
     // default_sms_type - computed: false, optional: true, required: false
-    private _defaultSmsType?: string;
+    private _defaultSmsType?: string | undefined; 
     public get defaultSmsType() {
       return this.getStringAttribute('default_sms_type');
     }
-    public set defaultSmsType(value: string ) {
+    public set defaultSmsType(value: string | undefined) {
       this._defaultSmsType = value;
     }
     public resetDefaultSmsType() {
@@ -404,11 +404,11 @@ export namespace SNS {
     }
 
     // delivery_status_iam_role_arn - computed: false, optional: true, required: false
-    private _deliveryStatusIamRoleArn?: string;
+    private _deliveryStatusIamRoleArn?: string | undefined; 
     public get deliveryStatusIamRoleArn() {
       return this.getStringAttribute('delivery_status_iam_role_arn');
     }
-    public set deliveryStatusIamRoleArn(value: string ) {
+    public set deliveryStatusIamRoleArn(value: string | undefined) {
       this._deliveryStatusIamRoleArn = value;
     }
     public resetDeliveryStatusIamRoleArn() {
@@ -420,11 +420,11 @@ export namespace SNS {
     }
 
     // delivery_status_success_sampling_rate - computed: false, optional: true, required: false
-    private _deliveryStatusSuccessSamplingRate?: string;
+    private _deliveryStatusSuccessSamplingRate?: string | undefined; 
     public get deliveryStatusSuccessSamplingRate() {
       return this.getStringAttribute('delivery_status_success_sampling_rate');
     }
-    public set deliveryStatusSuccessSamplingRate(value: string ) {
+    public set deliveryStatusSuccessSamplingRate(value: string | undefined) {
       this._deliveryStatusSuccessSamplingRate = value;
     }
     public resetDeliveryStatusSuccessSamplingRate() {
@@ -441,11 +441,11 @@ export namespace SNS {
     }
 
     // monthly_spend_limit - computed: false, optional: true, required: false
-    private _monthlySpendLimit?: string;
+    private _monthlySpendLimit?: string | undefined; 
     public get monthlySpendLimit() {
       return this.getStringAttribute('monthly_spend_limit');
     }
-    public set monthlySpendLimit(value: string ) {
+    public set monthlySpendLimit(value: string | undefined) {
       this._monthlySpendLimit = value;
     }
     public resetMonthlySpendLimit() {
@@ -457,11 +457,11 @@ export namespace SNS {
     }
 
     // usage_report_s3_bucket - computed: false, optional: true, required: false
-    private _usageReportS3Bucket?: string;
+    private _usageReportS3Bucket?: string | undefined; 
     public get usageReportS3Bucket() {
       return this.getStringAttribute('usage_report_s3_bucket');
     }
-    public set usageReportS3Bucket(value: string ) {
+    public set usageReportS3Bucket(value: string | undefined) {
       this._usageReportS3Bucket = value;
     }
     public resetUsageReportS3Bucket() {
@@ -654,11 +654,11 @@ export namespace SNS {
     // ==========
 
     // application_failure_feedback_role_arn - computed: false, optional: true, required: false
-    private _applicationFailureFeedbackRoleArn?: string;
+    private _applicationFailureFeedbackRoleArn?: string | undefined; 
     public get applicationFailureFeedbackRoleArn() {
       return this.getStringAttribute('application_failure_feedback_role_arn');
     }
-    public set applicationFailureFeedbackRoleArn(value: string ) {
+    public set applicationFailureFeedbackRoleArn(value: string | undefined) {
       this._applicationFailureFeedbackRoleArn = value;
     }
     public resetApplicationFailureFeedbackRoleArn() {
@@ -670,11 +670,11 @@ export namespace SNS {
     }
 
     // application_success_feedback_role_arn - computed: false, optional: true, required: false
-    private _applicationSuccessFeedbackRoleArn?: string;
+    private _applicationSuccessFeedbackRoleArn?: string | undefined; 
     public get applicationSuccessFeedbackRoleArn() {
       return this.getStringAttribute('application_success_feedback_role_arn');
     }
-    public set applicationSuccessFeedbackRoleArn(value: string ) {
+    public set applicationSuccessFeedbackRoleArn(value: string | undefined) {
       this._applicationSuccessFeedbackRoleArn = value;
     }
     public resetApplicationSuccessFeedbackRoleArn() {
@@ -686,11 +686,11 @@ export namespace SNS {
     }
 
     // application_success_feedback_sample_rate - computed: false, optional: true, required: false
-    private _applicationSuccessFeedbackSampleRate?: number;
+    private _applicationSuccessFeedbackSampleRate?: number | undefined; 
     public get applicationSuccessFeedbackSampleRate() {
       return this.getNumberAttribute('application_success_feedback_sample_rate');
     }
-    public set applicationSuccessFeedbackSampleRate(value: number ) {
+    public set applicationSuccessFeedbackSampleRate(value: number | undefined) {
       this._applicationSuccessFeedbackSampleRate = value;
     }
     public resetApplicationSuccessFeedbackSampleRate() {
@@ -707,11 +707,11 @@ export namespace SNS {
     }
 
     // content_based_deduplication - computed: false, optional: true, required: false
-    private _contentBasedDeduplication?: boolean | cdktf.IResolvable;
+    private _contentBasedDeduplication?: boolean | cdktf.IResolvable | undefined; 
     public get contentBasedDeduplication() {
-      return this.getBooleanAttribute('content_based_deduplication');
+      return this.getBooleanAttribute('content_based_deduplication') as any;
     }
-    public set contentBasedDeduplication(value: boolean | cdktf.IResolvable ) {
+    public set contentBasedDeduplication(value: boolean | cdktf.IResolvable | undefined) {
       this._contentBasedDeduplication = value;
     }
     public resetContentBasedDeduplication() {
@@ -723,11 +723,11 @@ export namespace SNS {
     }
 
     // delivery_policy - computed: false, optional: true, required: false
-    private _deliveryPolicy?: string;
+    private _deliveryPolicy?: string | undefined; 
     public get deliveryPolicy() {
       return this.getStringAttribute('delivery_policy');
     }
-    public set deliveryPolicy(value: string ) {
+    public set deliveryPolicy(value: string | undefined) {
       this._deliveryPolicy = value;
     }
     public resetDeliveryPolicy() {
@@ -739,11 +739,11 @@ export namespace SNS {
     }
 
     // display_name - computed: false, optional: true, required: false
-    private _displayName?: string;
+    private _displayName?: string | undefined; 
     public get displayName() {
       return this.getStringAttribute('display_name');
     }
-    public set displayName(value: string ) {
+    public set displayName(value: string | undefined) {
       this._displayName = value;
     }
     public resetDisplayName() {
@@ -755,11 +755,11 @@ export namespace SNS {
     }
 
     // fifo_topic - computed: false, optional: true, required: false
-    private _fifoTopic?: boolean | cdktf.IResolvable;
+    private _fifoTopic?: boolean | cdktf.IResolvable | undefined; 
     public get fifoTopic() {
-      return this.getBooleanAttribute('fifo_topic');
+      return this.getBooleanAttribute('fifo_topic') as any;
     }
-    public set fifoTopic(value: boolean | cdktf.IResolvable ) {
+    public set fifoTopic(value: boolean | cdktf.IResolvable | undefined) {
       this._fifoTopic = value;
     }
     public resetFifoTopic() {
@@ -771,11 +771,11 @@ export namespace SNS {
     }
 
     // firehose_failure_feedback_role_arn - computed: false, optional: true, required: false
-    private _firehoseFailureFeedbackRoleArn?: string;
+    private _firehoseFailureFeedbackRoleArn?: string | undefined; 
     public get firehoseFailureFeedbackRoleArn() {
       return this.getStringAttribute('firehose_failure_feedback_role_arn');
     }
-    public set firehoseFailureFeedbackRoleArn(value: string ) {
+    public set firehoseFailureFeedbackRoleArn(value: string | undefined) {
       this._firehoseFailureFeedbackRoleArn = value;
     }
     public resetFirehoseFailureFeedbackRoleArn() {
@@ -787,11 +787,11 @@ export namespace SNS {
     }
 
     // firehose_success_feedback_role_arn - computed: false, optional: true, required: false
-    private _firehoseSuccessFeedbackRoleArn?: string;
+    private _firehoseSuccessFeedbackRoleArn?: string | undefined; 
     public get firehoseSuccessFeedbackRoleArn() {
       return this.getStringAttribute('firehose_success_feedback_role_arn');
     }
-    public set firehoseSuccessFeedbackRoleArn(value: string ) {
+    public set firehoseSuccessFeedbackRoleArn(value: string | undefined) {
       this._firehoseSuccessFeedbackRoleArn = value;
     }
     public resetFirehoseSuccessFeedbackRoleArn() {
@@ -803,11 +803,11 @@ export namespace SNS {
     }
 
     // firehose_success_feedback_sample_rate - computed: false, optional: true, required: false
-    private _firehoseSuccessFeedbackSampleRate?: number;
+    private _firehoseSuccessFeedbackSampleRate?: number | undefined; 
     public get firehoseSuccessFeedbackSampleRate() {
       return this.getNumberAttribute('firehose_success_feedback_sample_rate');
     }
-    public set firehoseSuccessFeedbackSampleRate(value: number ) {
+    public set firehoseSuccessFeedbackSampleRate(value: number | undefined) {
       this._firehoseSuccessFeedbackSampleRate = value;
     }
     public resetFirehoseSuccessFeedbackSampleRate() {
@@ -819,11 +819,11 @@ export namespace SNS {
     }
 
     // http_failure_feedback_role_arn - computed: false, optional: true, required: false
-    private _httpFailureFeedbackRoleArn?: string;
+    private _httpFailureFeedbackRoleArn?: string | undefined; 
     public get httpFailureFeedbackRoleArn() {
       return this.getStringAttribute('http_failure_feedback_role_arn');
     }
-    public set httpFailureFeedbackRoleArn(value: string ) {
+    public set httpFailureFeedbackRoleArn(value: string | undefined) {
       this._httpFailureFeedbackRoleArn = value;
     }
     public resetHttpFailureFeedbackRoleArn() {
@@ -835,11 +835,11 @@ export namespace SNS {
     }
 
     // http_success_feedback_role_arn - computed: false, optional: true, required: false
-    private _httpSuccessFeedbackRoleArn?: string;
+    private _httpSuccessFeedbackRoleArn?: string | undefined; 
     public get httpSuccessFeedbackRoleArn() {
       return this.getStringAttribute('http_success_feedback_role_arn');
     }
-    public set httpSuccessFeedbackRoleArn(value: string ) {
+    public set httpSuccessFeedbackRoleArn(value: string | undefined) {
       this._httpSuccessFeedbackRoleArn = value;
     }
     public resetHttpSuccessFeedbackRoleArn() {
@@ -851,11 +851,11 @@ export namespace SNS {
     }
 
     // http_success_feedback_sample_rate - computed: false, optional: true, required: false
-    private _httpSuccessFeedbackSampleRate?: number;
+    private _httpSuccessFeedbackSampleRate?: number | undefined; 
     public get httpSuccessFeedbackSampleRate() {
       return this.getNumberAttribute('http_success_feedback_sample_rate');
     }
-    public set httpSuccessFeedbackSampleRate(value: number ) {
+    public set httpSuccessFeedbackSampleRate(value: number | undefined) {
       this._httpSuccessFeedbackSampleRate = value;
     }
     public resetHttpSuccessFeedbackSampleRate() {
@@ -872,11 +872,11 @@ export namespace SNS {
     }
 
     // kms_master_key_id - computed: false, optional: true, required: false
-    private _kmsMasterKeyId?: string;
+    private _kmsMasterKeyId?: string | undefined; 
     public get kmsMasterKeyId() {
       return this.getStringAttribute('kms_master_key_id');
     }
-    public set kmsMasterKeyId(value: string ) {
+    public set kmsMasterKeyId(value: string | undefined) {
       this._kmsMasterKeyId = value;
     }
     public resetKmsMasterKeyId() {
@@ -888,11 +888,11 @@ export namespace SNS {
     }
 
     // lambda_failure_feedback_role_arn - computed: false, optional: true, required: false
-    private _lambdaFailureFeedbackRoleArn?: string;
+    private _lambdaFailureFeedbackRoleArn?: string | undefined; 
     public get lambdaFailureFeedbackRoleArn() {
       return this.getStringAttribute('lambda_failure_feedback_role_arn');
     }
-    public set lambdaFailureFeedbackRoleArn(value: string ) {
+    public set lambdaFailureFeedbackRoleArn(value: string | undefined) {
       this._lambdaFailureFeedbackRoleArn = value;
     }
     public resetLambdaFailureFeedbackRoleArn() {
@@ -904,11 +904,11 @@ export namespace SNS {
     }
 
     // lambda_success_feedback_role_arn - computed: false, optional: true, required: false
-    private _lambdaSuccessFeedbackRoleArn?: string;
+    private _lambdaSuccessFeedbackRoleArn?: string | undefined; 
     public get lambdaSuccessFeedbackRoleArn() {
       return this.getStringAttribute('lambda_success_feedback_role_arn');
     }
-    public set lambdaSuccessFeedbackRoleArn(value: string ) {
+    public set lambdaSuccessFeedbackRoleArn(value: string | undefined) {
       this._lambdaSuccessFeedbackRoleArn = value;
     }
     public resetLambdaSuccessFeedbackRoleArn() {
@@ -920,11 +920,11 @@ export namespace SNS {
     }
 
     // lambda_success_feedback_sample_rate - computed: false, optional: true, required: false
-    private _lambdaSuccessFeedbackSampleRate?: number;
+    private _lambdaSuccessFeedbackSampleRate?: number | undefined; 
     public get lambdaSuccessFeedbackSampleRate() {
       return this.getNumberAttribute('lambda_success_feedback_sample_rate');
     }
-    public set lambdaSuccessFeedbackSampleRate(value: number ) {
+    public set lambdaSuccessFeedbackSampleRate(value: number | undefined) {
       this._lambdaSuccessFeedbackSampleRate = value;
     }
     public resetLambdaSuccessFeedbackSampleRate() {
@@ -936,11 +936,11 @@ export namespace SNS {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -952,11 +952,11 @@ export namespace SNS {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -973,11 +973,11 @@ export namespace SNS {
     }
 
     // policy - computed: true, optional: true, required: false
-    private _policy?: string;
+    private _policy?: string | undefined; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
-    public set policy(value: string) {
+    public set policy(value: string | undefined) {
       this._policy = value;
     }
     public resetPolicy() {
@@ -989,11 +989,11 @@ export namespace SNS {
     }
 
     // sqs_failure_feedback_role_arn - computed: false, optional: true, required: false
-    private _sqsFailureFeedbackRoleArn?: string;
+    private _sqsFailureFeedbackRoleArn?: string | undefined; 
     public get sqsFailureFeedbackRoleArn() {
       return this.getStringAttribute('sqs_failure_feedback_role_arn');
     }
-    public set sqsFailureFeedbackRoleArn(value: string ) {
+    public set sqsFailureFeedbackRoleArn(value: string | undefined) {
       this._sqsFailureFeedbackRoleArn = value;
     }
     public resetSqsFailureFeedbackRoleArn() {
@@ -1005,11 +1005,11 @@ export namespace SNS {
     }
 
     // sqs_success_feedback_role_arn - computed: false, optional: true, required: false
-    private _sqsSuccessFeedbackRoleArn?: string;
+    private _sqsSuccessFeedbackRoleArn?: string | undefined; 
     public get sqsSuccessFeedbackRoleArn() {
       return this.getStringAttribute('sqs_success_feedback_role_arn');
     }
-    public set sqsSuccessFeedbackRoleArn(value: string ) {
+    public set sqsSuccessFeedbackRoleArn(value: string | undefined) {
       this._sqsSuccessFeedbackRoleArn = value;
     }
     public resetSqsSuccessFeedbackRoleArn() {
@@ -1021,11 +1021,11 @@ export namespace SNS {
     }
 
     // sqs_success_feedback_sample_rate - computed: false, optional: true, required: false
-    private _sqsSuccessFeedbackSampleRate?: number;
+    private _sqsSuccessFeedbackSampleRate?: number | undefined; 
     public get sqsSuccessFeedbackSampleRate() {
       return this.getNumberAttribute('sqs_success_feedback_sample_rate');
     }
-    public set sqsSuccessFeedbackSampleRate(value: number ) {
+    public set sqsSuccessFeedbackSampleRate(value: number | undefined) {
       this._sqsSuccessFeedbackSampleRate = value;
     }
     public resetSqsSuccessFeedbackSampleRate() {
@@ -1037,11 +1037,12 @@ export namespace SNS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1053,11 +1054,12 @@ export namespace SNS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1154,7 +1156,7 @@ export namespace SNS {
     // ==========
 
     // arn - computed: false, optional: false, required: true
-    private _arn: string;
+    private _arn?: string; 
     public get arn() {
       return this.getStringAttribute('arn');
     }
@@ -1177,7 +1179,7 @@ export namespace SNS {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -1297,11 +1299,11 @@ export namespace SNS {
     }
 
     // confirmation_timeout_in_minutes - computed: false, optional: true, required: false
-    private _confirmationTimeoutInMinutes?: number;
+    private _confirmationTimeoutInMinutes?: number | undefined; 
     public get confirmationTimeoutInMinutes() {
       return this.getNumberAttribute('confirmation_timeout_in_minutes');
     }
-    public set confirmationTimeoutInMinutes(value: number ) {
+    public set confirmationTimeoutInMinutes(value: number | undefined) {
       this._confirmationTimeoutInMinutes = value;
     }
     public resetConfirmationTimeoutInMinutes() {
@@ -1314,15 +1316,15 @@ export namespace SNS {
 
     // confirmation_was_authenticated - computed: true, optional: false, required: false
     public get confirmationWasAuthenticated() {
-      return this.getBooleanAttribute('confirmation_was_authenticated');
+      return this.getBooleanAttribute('confirmation_was_authenticated') as any;
     }
 
     // delivery_policy - computed: false, optional: true, required: false
-    private _deliveryPolicy?: string;
+    private _deliveryPolicy?: string | undefined; 
     public get deliveryPolicy() {
       return this.getStringAttribute('delivery_policy');
     }
-    public set deliveryPolicy(value: string ) {
+    public set deliveryPolicy(value: string | undefined) {
       this._deliveryPolicy = value;
     }
     public resetDeliveryPolicy() {
@@ -1334,7 +1336,7 @@ export namespace SNS {
     }
 
     // endpoint - computed: false, optional: false, required: true
-    private _endpoint: string;
+    private _endpoint?: string; 
     public get endpoint() {
       return this.getStringAttribute('endpoint');
     }
@@ -1347,11 +1349,11 @@ export namespace SNS {
     }
 
     // endpoint_auto_confirms - computed: false, optional: true, required: false
-    private _endpointAutoConfirms?: boolean | cdktf.IResolvable;
+    private _endpointAutoConfirms?: boolean | cdktf.IResolvable | undefined; 
     public get endpointAutoConfirms() {
-      return this.getBooleanAttribute('endpoint_auto_confirms');
+      return this.getBooleanAttribute('endpoint_auto_confirms') as any;
     }
-    public set endpointAutoConfirms(value: boolean | cdktf.IResolvable ) {
+    public set endpointAutoConfirms(value: boolean | cdktf.IResolvable | undefined) {
       this._endpointAutoConfirms = value;
     }
     public resetEndpointAutoConfirms() {
@@ -1363,11 +1365,11 @@ export namespace SNS {
     }
 
     // filter_policy - computed: false, optional: true, required: false
-    private _filterPolicy?: string;
+    private _filterPolicy?: string | undefined; 
     public get filterPolicy() {
       return this.getStringAttribute('filter_policy');
     }
-    public set filterPolicy(value: string ) {
+    public set filterPolicy(value: string | undefined) {
       this._filterPolicy = value;
     }
     public resetFilterPolicy() {
@@ -1390,11 +1392,11 @@ export namespace SNS {
 
     // pending_confirmation - computed: true, optional: false, required: false
     public get pendingConfirmation() {
-      return this.getBooleanAttribute('pending_confirmation');
+      return this.getBooleanAttribute('pending_confirmation') as any;
     }
 
     // protocol - computed: false, optional: false, required: true
-    private _protocol: string;
+    private _protocol?: string; 
     public get protocol() {
       return this.getStringAttribute('protocol');
     }
@@ -1407,11 +1409,11 @@ export namespace SNS {
     }
 
     // raw_message_delivery - computed: false, optional: true, required: false
-    private _rawMessageDelivery?: boolean | cdktf.IResolvable;
+    private _rawMessageDelivery?: boolean | cdktf.IResolvable | undefined; 
     public get rawMessageDelivery() {
-      return this.getBooleanAttribute('raw_message_delivery');
+      return this.getBooleanAttribute('raw_message_delivery') as any;
     }
-    public set rawMessageDelivery(value: boolean | cdktf.IResolvable ) {
+    public set rawMessageDelivery(value: boolean | cdktf.IResolvable | undefined) {
       this._rawMessageDelivery = value;
     }
     public resetRawMessageDelivery() {
@@ -1423,11 +1425,11 @@ export namespace SNS {
     }
 
     // redrive_policy - computed: false, optional: true, required: false
-    private _redrivePolicy?: string;
+    private _redrivePolicy?: string | undefined; 
     public get redrivePolicy() {
       return this.getStringAttribute('redrive_policy');
     }
-    public set redrivePolicy(value: string ) {
+    public set redrivePolicy(value: string | undefined) {
       this._redrivePolicy = value;
     }
     public resetRedrivePolicy() {
@@ -1439,11 +1441,11 @@ export namespace SNS {
     }
 
     // subscription_role_arn - computed: false, optional: true, required: false
-    private _subscriptionRoleArn?: string;
+    private _subscriptionRoleArn?: string | undefined; 
     public get subscriptionRoleArn() {
       return this.getStringAttribute('subscription_role_arn');
     }
-    public set subscriptionRoleArn(value: string ) {
+    public set subscriptionRoleArn(value: string | undefined) {
       this._subscriptionRoleArn = value;
     }
     public resetSubscriptionRoleArn() {
@@ -1455,7 +1457,7 @@ export namespace SNS {
     }
 
     // topic_arn - computed: false, optional: false, required: true
-    private _topicArn: string;
+    private _topicArn?: string; 
     public get topicArn() {
       return this.getStringAttribute('topic_arn');
     }
@@ -1543,7 +1545,7 @@ export namespace SNS {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }

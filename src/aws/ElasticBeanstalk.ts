@@ -29,7 +29,7 @@ export namespace ElasticBeanstalk {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elastic_beanstalk_application.html#appversion_lifecycle ElasticBeanstalkApplication#appversion_lifecycle}
     */
-    readonly appversionLifecycle?: ElasticBeanstalkApplicationAppversionLifecycle[];
+    readonly appversionLifecycle?: ElasticBeanstalkApplicationAppversionLifecycle;
   }
   export interface ElasticBeanstalkApplicationAppversionLifecycle {
     /**
@@ -50,8 +50,11 @@ export namespace ElasticBeanstalk {
     readonly serviceRole: string;
   }
 
-  function elasticBeanstalkApplicationAppversionLifecycleToTerraform(struct?: ElasticBeanstalkApplicationAppversionLifecycle): any {
+  function elasticBeanstalkApplicationAppversionLifecycleToTerraform(struct?: ElasticBeanstalkApplicationAppversionLifecycleOutputReference | ElasticBeanstalkApplicationAppversionLifecycle): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete_source_from_s3: cdktf.booleanToTerraform(struct!.deleteSourceFromS3),
       max_age_in_days: cdktf.numberToTerraform(struct!.maxAgeInDays),
@@ -60,6 +63,77 @@ export namespace ElasticBeanstalk {
     }
   }
 
+  export class ElasticBeanstalkApplicationAppversionLifecycleOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // delete_source_from_s3 - computed: false, optional: true, required: false
+    private _deleteSourceFromS3?: boolean | cdktf.IResolvable | undefined; 
+    public get deleteSourceFromS3() {
+      return this.getBooleanAttribute('delete_source_from_s3') as any;
+    }
+    public set deleteSourceFromS3(value: boolean | cdktf.IResolvable | undefined) {
+      this._deleteSourceFromS3 = value;
+    }
+    public resetDeleteSourceFromS3() {
+      this._deleteSourceFromS3 = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteSourceFromS3Input() {
+      return this._deleteSourceFromS3
+    }
+
+    // max_age_in_days - computed: false, optional: true, required: false
+    private _maxAgeInDays?: number | undefined; 
+    public get maxAgeInDays() {
+      return this.getNumberAttribute('max_age_in_days');
+    }
+    public set maxAgeInDays(value: number | undefined) {
+      this._maxAgeInDays = value;
+    }
+    public resetMaxAgeInDays() {
+      this._maxAgeInDays = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maxAgeInDaysInput() {
+      return this._maxAgeInDays
+    }
+
+    // max_count - computed: false, optional: true, required: false
+    private _maxCount?: number | undefined; 
+    public get maxCount() {
+      return this.getNumberAttribute('max_count');
+    }
+    public set maxCount(value: number | undefined) {
+      this._maxCount = value;
+    }
+    public resetMaxCount() {
+      this._maxCount = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maxCountInput() {
+      return this._maxCount
+    }
+
+    // service_role - computed: false, optional: false, required: true
+    private _serviceRole?: string; 
+    public get serviceRole() {
+      return this.getStringAttribute('service_role');
+    }
+    public set serviceRole(value: string) {
+      this._serviceRole = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get serviceRoleInput() {
+      return this._serviceRole
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/elastic_beanstalk_application.html aws_elastic_beanstalk_application}
@@ -110,11 +184,11 @@ export namespace ElasticBeanstalk {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -131,7 +205,7 @@ export namespace ElasticBeanstalk {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -144,11 +218,12 @@ export namespace ElasticBeanstalk {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -160,11 +235,12 @@ export namespace ElasticBeanstalk {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -176,11 +252,12 @@ export namespace ElasticBeanstalk {
     }
 
     // appversion_lifecycle - computed: false, optional: true, required: false
-    private _appversionLifecycle?: ElasticBeanstalkApplicationAppversionLifecycle[];
+    private _appversionLifecycle?: ElasticBeanstalkApplicationAppversionLifecycle | undefined; 
+    private __appversionLifecycleOutput = new ElasticBeanstalkApplicationAppversionLifecycleOutputReference(this as any, "appversion_lifecycle", true);
     public get appversionLifecycle() {
-      return this.interpolationForAttribute('appversion_lifecycle') as any;
+      return this.__appversionLifecycleOutput;
     }
-    public set appversionLifecycle(value: ElasticBeanstalkApplicationAppversionLifecycle[] ) {
+    public putAppversionLifecycle(value: ElasticBeanstalkApplicationAppversionLifecycle | undefined) {
       this._appversionLifecycle = value;
     }
     public resetAppversionLifecycle() {
@@ -201,7 +278,7 @@ export namespace ElasticBeanstalk {
         name: cdktf.stringToTerraform(this._name),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        appversion_lifecycle: cdktf.listMapper(elasticBeanstalkApplicationAppversionLifecycleToTerraform)(this._appversionLifecycle),
+        appversion_lifecycle: elasticBeanstalkApplicationAppversionLifecycleToTerraform(this._appversionLifecycle),
       };
     }
   }
@@ -287,7 +364,7 @@ export namespace ElasticBeanstalk {
     // ==========
 
     // application - computed: false, optional: false, required: true
-    private _application: string;
+    private _application?: string; 
     public get application() {
       return this.getStringAttribute('application');
     }
@@ -305,7 +382,7 @@ export namespace ElasticBeanstalk {
     }
 
     // bucket - computed: false, optional: false, required: true
-    private _bucket: string;
+    private _bucket?: string; 
     public get bucket() {
       return this.getStringAttribute('bucket');
     }
@@ -318,11 +395,11 @@ export namespace ElasticBeanstalk {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -334,11 +411,11 @@ export namespace ElasticBeanstalk {
     }
 
     // force_delete - computed: false, optional: true, required: false
-    private _forceDelete?: boolean | cdktf.IResolvable;
+    private _forceDelete?: boolean | cdktf.IResolvable | undefined; 
     public get forceDelete() {
-      return this.getBooleanAttribute('force_delete');
+      return this.getBooleanAttribute('force_delete') as any;
     }
-    public set forceDelete(value: boolean | cdktf.IResolvable ) {
+    public set forceDelete(value: boolean | cdktf.IResolvable | undefined) {
       this._forceDelete = value;
     }
     public resetForceDelete() {
@@ -355,7 +432,7 @@ export namespace ElasticBeanstalk {
     }
 
     // key - computed: false, optional: false, required: true
-    private _key: string;
+    private _key?: string; 
     public get key() {
       return this.getStringAttribute('key');
     }
@@ -368,7 +445,7 @@ export namespace ElasticBeanstalk {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -381,11 +458,12 @@ export namespace ElasticBeanstalk {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -397,11 +475,12 @@ export namespace ElasticBeanstalk {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -478,6 +557,9 @@ export namespace ElasticBeanstalk {
 
   function elasticBeanstalkConfigurationTemplateSettingToTerraform(struct?: ElasticBeanstalkConfigurationTemplateSetting): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       namespace: cdktf.stringToTerraform(struct!.namespace),
@@ -532,7 +614,7 @@ export namespace ElasticBeanstalk {
     // ==========
 
     // application - computed: false, optional: false, required: true
-    private _application: string;
+    private _application?: string; 
     public get application() {
       return this.getStringAttribute('application');
     }
@@ -545,11 +627,11 @@ export namespace ElasticBeanstalk {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -561,11 +643,11 @@ export namespace ElasticBeanstalk {
     }
 
     // environment_id - computed: false, optional: true, required: false
-    private _environmentId?: string;
+    private _environmentId?: string | undefined; 
     public get environmentId() {
       return this.getStringAttribute('environment_id');
     }
-    public set environmentId(value: string ) {
+    public set environmentId(value: string | undefined) {
       this._environmentId = value;
     }
     public resetEnvironmentId() {
@@ -582,7 +664,7 @@ export namespace ElasticBeanstalk {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -595,11 +677,11 @@ export namespace ElasticBeanstalk {
     }
 
     // solution_stack_name - computed: false, optional: true, required: false
-    private _solutionStackName?: string;
+    private _solutionStackName?: string | undefined; 
     public get solutionStackName() {
       return this.getStringAttribute('solution_stack_name');
     }
-    public set solutionStackName(value: string ) {
+    public set solutionStackName(value: string | undefined) {
       this._solutionStackName = value;
     }
     public resetSolutionStackName() {
@@ -611,11 +693,12 @@ export namespace ElasticBeanstalk {
     }
 
     // setting - computed: false, optional: true, required: false
-    private _setting?: ElasticBeanstalkConfigurationTemplateSetting[];
+    private _setting?: ElasticBeanstalkConfigurationTemplateSetting[] | undefined; 
     public get setting() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('setting') as any;
     }
-    public set setting(value: ElasticBeanstalkConfigurationTemplateSetting[] ) {
+    public set setting(value: ElasticBeanstalkConfigurationTemplateSetting[] | undefined) {
       this._setting = value;
     }
     public resetSetting() {
@@ -744,6 +827,9 @@ export namespace ElasticBeanstalk {
 
   function elasticBeanstalkEnvironmentSettingToTerraform(struct?: ElasticBeanstalkEnvironmentSetting): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       namespace: cdktf.stringToTerraform(struct!.namespace),
@@ -811,7 +897,7 @@ export namespace ElasticBeanstalk {
     }
 
     // application - computed: false, optional: false, required: true
-    private _application: string;
+    private _application?: string; 
     public get application() {
       return this.getStringAttribute('application');
     }
@@ -839,11 +925,11 @@ export namespace ElasticBeanstalk {
     }
 
     // cname_prefix - computed: true, optional: true, required: false
-    private _cnamePrefix?: string;
+    private _cnamePrefix?: string | undefined; 
     public get cnamePrefix() {
       return this.getStringAttribute('cname_prefix');
     }
-    public set cnamePrefix(value: string) {
+    public set cnamePrefix(value: string | undefined) {
       this._cnamePrefix = value;
     }
     public resetCnamePrefix() {
@@ -855,11 +941,11 @@ export namespace ElasticBeanstalk {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -896,7 +982,7 @@ export namespace ElasticBeanstalk {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -909,11 +995,11 @@ export namespace ElasticBeanstalk {
     }
 
     // platform_arn - computed: true, optional: true, required: false
-    private _platformArn?: string;
+    private _platformArn?: string | undefined; 
     public get platformArn() {
       return this.getStringAttribute('platform_arn');
     }
-    public set platformArn(value: string) {
+    public set platformArn(value: string | undefined) {
       this._platformArn = value;
     }
     public resetPlatformArn() {
@@ -925,11 +1011,11 @@ export namespace ElasticBeanstalk {
     }
 
     // poll_interval - computed: false, optional: true, required: false
-    private _pollInterval?: string;
+    private _pollInterval?: string | undefined; 
     public get pollInterval() {
       return this.getStringAttribute('poll_interval');
     }
-    public set pollInterval(value: string ) {
+    public set pollInterval(value: string | undefined) {
       this._pollInterval = value;
     }
     public resetPollInterval() {
@@ -946,11 +1032,11 @@ export namespace ElasticBeanstalk {
     }
 
     // solution_stack_name - computed: true, optional: true, required: false
-    private _solutionStackName?: string;
+    private _solutionStackName?: string | undefined; 
     public get solutionStackName() {
       return this.getStringAttribute('solution_stack_name');
     }
-    public set solutionStackName(value: string) {
+    public set solutionStackName(value: string | undefined) {
       this._solutionStackName = value;
     }
     public resetSolutionStackName() {
@@ -962,11 +1048,12 @@ export namespace ElasticBeanstalk {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -978,11 +1065,12 @@ export namespace ElasticBeanstalk {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -994,11 +1082,11 @@ export namespace ElasticBeanstalk {
     }
 
     // template_name - computed: false, optional: true, required: false
-    private _templateName?: string;
+    private _templateName?: string | undefined; 
     public get templateName() {
       return this.getStringAttribute('template_name');
     }
-    public set templateName(value: string ) {
+    public set templateName(value: string | undefined) {
       this._templateName = value;
     }
     public resetTemplateName() {
@@ -1010,11 +1098,11 @@ export namespace ElasticBeanstalk {
     }
 
     // tier - computed: false, optional: true, required: false
-    private _tier?: string;
+    private _tier?: string | undefined; 
     public get tier() {
       return this.getStringAttribute('tier');
     }
-    public set tier(value: string ) {
+    public set tier(value: string | undefined) {
       this._tier = value;
     }
     public resetTier() {
@@ -1031,11 +1119,11 @@ export namespace ElasticBeanstalk {
     }
 
     // version_label - computed: true, optional: true, required: false
-    private _versionLabel?: string;
+    private _versionLabel?: string | undefined; 
     public get versionLabel() {
       return this.getStringAttribute('version_label');
     }
-    public set versionLabel(value: string) {
+    public set versionLabel(value: string | undefined) {
       this._versionLabel = value;
     }
     public resetVersionLabel() {
@@ -1047,11 +1135,11 @@ export namespace ElasticBeanstalk {
     }
 
     // wait_for_ready_timeout - computed: false, optional: true, required: false
-    private _waitForReadyTimeout?: string;
+    private _waitForReadyTimeout?: string | undefined; 
     public get waitForReadyTimeout() {
       return this.getStringAttribute('wait_for_ready_timeout');
     }
-    public set waitForReadyTimeout(value: string ) {
+    public set waitForReadyTimeout(value: string | undefined) {
       this._waitForReadyTimeout = value;
     }
     public resetWaitForReadyTimeout() {
@@ -1063,11 +1151,12 @@ export namespace ElasticBeanstalk {
     }
 
     // setting - computed: false, optional: true, required: false
-    private _setting?: ElasticBeanstalkEnvironmentSetting[];
+    private _setting?: ElasticBeanstalkEnvironmentSetting[] | undefined; 
     public get setting() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('setting') as any;
     }
-    public set setting(value: ElasticBeanstalkEnvironmentSetting[] ) {
+    public set setting(value: ElasticBeanstalkEnvironmentSetting[] | undefined) {
       this._setting = value;
     }
     public resetSetting() {
@@ -1111,7 +1200,7 @@ export namespace ElasticBeanstalk {
 
     // delete_source_from_s3 - computed: true, optional: false, required: false
     public get deleteSourceFromS3() {
-      return this.getBooleanAttribute('delete_source_from_s3');
+      return this.getBooleanAttribute('delete_source_from_s3') as any;
     }
 
     // max_age_in_days - computed: true, optional: false, required: false
@@ -1190,7 +1279,7 @@ export namespace ElasticBeanstalk {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1264,11 +1353,11 @@ export namespace ElasticBeanstalk {
     }
 
     // region - computed: false, optional: true, required: false
-    private _region?: string;
+    private _region?: string | undefined; 
     public get region() {
       return this.getStringAttribute('region');
     }
-    public set region(value: string ) {
+    public set region(value: string | undefined) {
       this._region = value;
     }
     public resetRegion() {
@@ -1346,11 +1435,11 @@ export namespace ElasticBeanstalk {
     }
 
     // most_recent - computed: false, optional: true, required: false
-    private _mostRecent?: boolean | cdktf.IResolvable;
+    private _mostRecent?: boolean | cdktf.IResolvable | undefined; 
     public get mostRecent() {
-      return this.getBooleanAttribute('most_recent');
+      return this.getBooleanAttribute('most_recent') as any;
     }
-    public set mostRecent(value: boolean | cdktf.IResolvable ) {
+    public set mostRecent(value: boolean | cdktf.IResolvable | undefined) {
       this._mostRecent = value;
     }
     public resetMostRecent() {
@@ -1367,7 +1456,7 @@ export namespace ElasticBeanstalk {
     }
 
     // name_regex - computed: false, optional: false, required: true
-    private _nameRegex: string;
+    private _nameRegex?: string; 
     public get nameRegex() {
       return this.getStringAttribute('name_regex');
     }

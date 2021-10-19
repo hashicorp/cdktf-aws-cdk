@@ -89,11 +89,11 @@ export namespace SSM {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -105,11 +105,11 @@ export namespace SSM {
     }
 
     // expiration_date - computed: true, optional: true, required: false
-    private _expirationDate?: string;
+    private _expirationDate?: string | undefined; 
     public get expirationDate() {
       return this.getStringAttribute('expiration_date');
     }
-    public set expirationDate(value: string) {
+    public set expirationDate(value: string | undefined) {
       this._expirationDate = value;
     }
     public resetExpirationDate() {
@@ -122,11 +122,11 @@ export namespace SSM {
 
     // expired - computed: true, optional: false, required: false
     public get expired() {
-      return this.getBooleanAttribute('expired');
+      return this.getBooleanAttribute('expired') as any;
     }
 
     // iam_role - computed: false, optional: false, required: true
-    private _iamRole: string;
+    private _iamRole?: string; 
     public get iamRole() {
       return this.getStringAttribute('iam_role');
     }
@@ -144,11 +144,11 @@ export namespace SSM {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -165,11 +165,11 @@ export namespace SSM {
     }
 
     // registration_limit - computed: false, optional: true, required: false
-    private _registrationLimit?: number;
+    private _registrationLimit?: number | undefined; 
     public get registrationLimit() {
       return this.getNumberAttribute('registration_limit');
     }
-    public set registrationLimit(value: number ) {
+    public set registrationLimit(value: number | undefined) {
       this._registrationLimit = value;
     }
     public resetRegistrationLimit() {
@@ -181,11 +181,12 @@ export namespace SSM {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -197,11 +198,12 @@ export namespace SSM {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -278,7 +280,7 @@ export namespace SSM {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_association.html#output_location SsmAssociation#output_location}
     */
-    readonly outputLocation?: SsmAssociationOutputLocation[];
+    readonly outputLocation?: SsmAssociationOutputLocation;
     /**
     * targets block
     * 
@@ -297,14 +299,56 @@ export namespace SSM {
     readonly s3KeyPrefix?: string;
   }
 
-  function ssmAssociationOutputLocationToTerraform(struct?: SsmAssociationOutputLocation): any {
+  function ssmAssociationOutputLocationToTerraform(struct?: SsmAssociationOutputLocationOutputReference | SsmAssociationOutputLocation): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       s3_bucket_name: cdktf.stringToTerraform(struct!.s3BucketName),
       s3_key_prefix: cdktf.stringToTerraform(struct!.s3KeyPrefix),
     }
   }
 
+  export class SsmAssociationOutputLocationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // s3_bucket_name - computed: false, optional: false, required: true
+    private _s3BucketName?: string; 
+    public get s3BucketName() {
+      return this.getStringAttribute('s3_bucket_name');
+    }
+    public set s3BucketName(value: string) {
+      this._s3BucketName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get s3BucketNameInput() {
+      return this._s3BucketName
+    }
+
+    // s3_key_prefix - computed: false, optional: true, required: false
+    private _s3KeyPrefix?: string | undefined; 
+    public get s3KeyPrefix() {
+      return this.getStringAttribute('s3_key_prefix');
+    }
+    public set s3KeyPrefix(value: string | undefined) {
+      this._s3KeyPrefix = value;
+    }
+    public resetS3KeyPrefix() {
+      this._s3KeyPrefix = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get s3KeyPrefixInput() {
+      return this._s3KeyPrefix
+    }
+  }
   export interface SsmAssociationTargets {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_association.html#key SsmAssociation#key}
@@ -318,6 +362,9 @@ export namespace SSM {
 
   function ssmAssociationTargetsToTerraform(struct?: SsmAssociationTargets): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -377,11 +424,11 @@ export namespace SSM {
     // ==========
 
     // apply_only_at_cron_interval - computed: false, optional: true, required: false
-    private _applyOnlyAtCronInterval?: boolean | cdktf.IResolvable;
+    private _applyOnlyAtCronInterval?: boolean | cdktf.IResolvable | undefined; 
     public get applyOnlyAtCronInterval() {
-      return this.getBooleanAttribute('apply_only_at_cron_interval');
+      return this.getBooleanAttribute('apply_only_at_cron_interval') as any;
     }
-    public set applyOnlyAtCronInterval(value: boolean | cdktf.IResolvable ) {
+    public set applyOnlyAtCronInterval(value: boolean | cdktf.IResolvable | undefined) {
       this._applyOnlyAtCronInterval = value;
     }
     public resetApplyOnlyAtCronInterval() {
@@ -398,11 +445,11 @@ export namespace SSM {
     }
 
     // association_name - computed: false, optional: true, required: false
-    private _associationName?: string;
+    private _associationName?: string | undefined; 
     public get associationName() {
       return this.getStringAttribute('association_name');
     }
-    public set associationName(value: string ) {
+    public set associationName(value: string | undefined) {
       this._associationName = value;
     }
     public resetAssociationName() {
@@ -414,11 +461,11 @@ export namespace SSM {
     }
 
     // automation_target_parameter_name - computed: false, optional: true, required: false
-    private _automationTargetParameterName?: string;
+    private _automationTargetParameterName?: string | undefined; 
     public get automationTargetParameterName() {
       return this.getStringAttribute('automation_target_parameter_name');
     }
-    public set automationTargetParameterName(value: string ) {
+    public set automationTargetParameterName(value: string | undefined) {
       this._automationTargetParameterName = value;
     }
     public resetAutomationTargetParameterName() {
@@ -430,11 +477,11 @@ export namespace SSM {
     }
 
     // compliance_severity - computed: false, optional: true, required: false
-    private _complianceSeverity?: string;
+    private _complianceSeverity?: string | undefined; 
     public get complianceSeverity() {
       return this.getStringAttribute('compliance_severity');
     }
-    public set complianceSeverity(value: string ) {
+    public set complianceSeverity(value: string | undefined) {
       this._complianceSeverity = value;
     }
     public resetComplianceSeverity() {
@@ -446,11 +493,11 @@ export namespace SSM {
     }
 
     // document_version - computed: true, optional: true, required: false
-    private _documentVersion?: string;
+    private _documentVersion?: string | undefined; 
     public get documentVersion() {
       return this.getStringAttribute('document_version');
     }
-    public set documentVersion(value: string) {
+    public set documentVersion(value: string | undefined) {
       this._documentVersion = value;
     }
     public resetDocumentVersion() {
@@ -467,11 +514,11 @@ export namespace SSM {
     }
 
     // instance_id - computed: false, optional: true, required: false
-    private _instanceId?: string;
+    private _instanceId?: string | undefined; 
     public get instanceId() {
       return this.getStringAttribute('instance_id');
     }
-    public set instanceId(value: string ) {
+    public set instanceId(value: string | undefined) {
       this._instanceId = value;
     }
     public resetInstanceId() {
@@ -483,11 +530,11 @@ export namespace SSM {
     }
 
     // max_concurrency - computed: false, optional: true, required: false
-    private _maxConcurrency?: string;
+    private _maxConcurrency?: string | undefined; 
     public get maxConcurrency() {
       return this.getStringAttribute('max_concurrency');
     }
-    public set maxConcurrency(value: string ) {
+    public set maxConcurrency(value: string | undefined) {
       this._maxConcurrency = value;
     }
     public resetMaxConcurrency() {
@@ -499,11 +546,11 @@ export namespace SSM {
     }
 
     // max_errors - computed: false, optional: true, required: false
-    private _maxErrors?: string;
+    private _maxErrors?: string | undefined; 
     public get maxErrors() {
       return this.getStringAttribute('max_errors');
     }
-    public set maxErrors(value: string ) {
+    public set maxErrors(value: string | undefined) {
       this._maxErrors = value;
     }
     public resetMaxErrors() {
@@ -515,7 +562,7 @@ export namespace SSM {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -528,11 +575,12 @@ export namespace SSM {
     }
 
     // parameters - computed: true, optional: true, required: false
-    private _parameters?: { [key: string]: string } | cdktf.IResolvable
-    public get parameters(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('parameters') as any; // Getting the computed value is not yet implemented
+    private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get parameters() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('parameters') as any;
     }
-    public set parameters(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._parameters = value;
     }
     public resetParameters() {
@@ -544,11 +592,11 @@ export namespace SSM {
     }
 
     // schedule_expression - computed: false, optional: true, required: false
-    private _scheduleExpression?: string;
+    private _scheduleExpression?: string | undefined; 
     public get scheduleExpression() {
       return this.getStringAttribute('schedule_expression');
     }
-    public set scheduleExpression(value: string ) {
+    public set scheduleExpression(value: string | undefined) {
       this._scheduleExpression = value;
     }
     public resetScheduleExpression() {
@@ -560,11 +608,12 @@ export namespace SSM {
     }
 
     // output_location - computed: false, optional: true, required: false
-    private _outputLocation?: SsmAssociationOutputLocation[];
+    private _outputLocation?: SsmAssociationOutputLocation | undefined; 
+    private __outputLocationOutput = new SsmAssociationOutputLocationOutputReference(this as any, "output_location", true);
     public get outputLocation() {
-      return this.interpolationForAttribute('output_location') as any;
+      return this.__outputLocationOutput;
     }
-    public set outputLocation(value: SsmAssociationOutputLocation[] ) {
+    public putOutputLocation(value: SsmAssociationOutputLocation | undefined) {
       this._outputLocation = value;
     }
     public resetOutputLocation() {
@@ -576,11 +625,12 @@ export namespace SSM {
     }
 
     // targets - computed: false, optional: true, required: false
-    private _targets?: SsmAssociationTargets[];
+    private _targets?: SsmAssociationTargets[] | undefined; 
     public get targets() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('targets') as any;
     }
-    public set targets(value: SsmAssociationTargets[] ) {
+    public set targets(value: SsmAssociationTargets[] | undefined) {
       this._targets = value;
     }
     public resetTargets() {
@@ -608,7 +658,7 @@ export namespace SSM {
         name: cdktf.stringToTerraform(this._name),
         parameters: cdktf.hashMapper(cdktf.anyToTerraform)(this._parameters),
         schedule_expression: cdktf.stringToTerraform(this._scheduleExpression),
-        output_location: cdktf.listMapper(ssmAssociationOutputLocationToTerraform)(this._outputLocation),
+        output_location: ssmAssociationOutputLocationToTerraform(this._outputLocation),
         targets: cdktf.listMapper(ssmAssociationTargetsToTerraform)(this._targets),
       };
     }
@@ -696,6 +746,9 @@ export namespace SSM {
 
   function ssmDocumentAttachmentsSourceToTerraform(struct?: SsmDocumentAttachmentsSource): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
       name: cdktf.stringToTerraform(struct!.name),
@@ -758,7 +811,7 @@ export namespace SSM {
     }
 
     // content - computed: false, optional: false, required: true
-    private _content: string;
+    private _content?: string; 
     public get content() {
       return this.getStringAttribute('content');
     }
@@ -786,11 +839,11 @@ export namespace SSM {
     }
 
     // document_format - computed: false, optional: true, required: false
-    private _documentFormat?: string;
+    private _documentFormat?: string | undefined; 
     public get documentFormat() {
       return this.getStringAttribute('document_format');
     }
-    public set documentFormat(value: string ) {
+    public set documentFormat(value: string | undefined) {
       this._documentFormat = value;
     }
     public resetDocumentFormat() {
@@ -802,7 +855,7 @@ export namespace SSM {
     }
 
     // document_type - computed: false, optional: false, required: true
-    private _documentType: string;
+    private _documentType?: string; 
     public get documentType() {
       return this.getStringAttribute('document_type');
     }
@@ -840,7 +893,7 @@ export namespace SSM {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -863,11 +916,12 @@ export namespace SSM {
     }
 
     // permissions - computed: false, optional: true, required: false
-    private _permissions?: { [key: string]: string } | cdktf.IResolvable;
+    private _permissions?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get permissions() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('permissions') as any;
     }
-    public set permissions(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set permissions(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._permissions = value;
     }
     public resetPermissions() {
@@ -894,11 +948,12 @@ export namespace SSM {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -910,11 +965,12 @@ export namespace SSM {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -926,11 +982,11 @@ export namespace SSM {
     }
 
     // target_type - computed: false, optional: true, required: false
-    private _targetType?: string;
+    private _targetType?: string | undefined; 
     public get targetType() {
       return this.getStringAttribute('target_type');
     }
-    public set targetType(value: string ) {
+    public set targetType(value: string | undefined) {
       this._targetType = value;
     }
     public resetTargetType() {
@@ -942,11 +998,11 @@ export namespace SSM {
     }
 
     // version_name - computed: false, optional: true, required: false
-    private _versionName?: string;
+    private _versionName?: string | undefined; 
     public get versionName() {
       return this.getStringAttribute('version_name');
     }
-    public set versionName(value: string ) {
+    public set versionName(value: string | undefined) {
       this._versionName = value;
     }
     public resetVersionName() {
@@ -958,11 +1014,12 @@ export namespace SSM {
     }
 
     // attachments_source - computed: false, optional: true, required: false
-    private _attachmentsSource?: SsmDocumentAttachmentsSource[];
+    private _attachmentsSource?: SsmDocumentAttachmentsSource[] | undefined; 
     public get attachmentsSource() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('attachments_source') as any;
     }
-    public set attachmentsSource(value: SsmDocumentAttachmentsSource[] ) {
+    public set attachmentsSource(value: SsmDocumentAttachmentsSource[] | undefined) {
       this._attachmentsSource = value;
     }
     public resetAttachmentsSource() {
@@ -1099,11 +1156,11 @@ export namespace SSM {
     // ==========
 
     // allow_unassociated_targets - computed: false, optional: true, required: false
-    private _allowUnassociatedTargets?: boolean | cdktf.IResolvable;
+    private _allowUnassociatedTargets?: boolean | cdktf.IResolvable | undefined; 
     public get allowUnassociatedTargets() {
-      return this.getBooleanAttribute('allow_unassociated_targets');
+      return this.getBooleanAttribute('allow_unassociated_targets') as any;
     }
-    public set allowUnassociatedTargets(value: boolean | cdktf.IResolvable ) {
+    public set allowUnassociatedTargets(value: boolean | cdktf.IResolvable | undefined) {
       this._allowUnassociatedTargets = value;
     }
     public resetAllowUnassociatedTargets() {
@@ -1115,7 +1172,7 @@ export namespace SSM {
     }
 
     // cutoff - computed: false, optional: false, required: true
-    private _cutoff: number;
+    private _cutoff?: number; 
     public get cutoff() {
       return this.getNumberAttribute('cutoff');
     }
@@ -1128,11 +1185,11 @@ export namespace SSM {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1144,7 +1201,7 @@ export namespace SSM {
     }
 
     // duration - computed: false, optional: false, required: true
-    private _duration: number;
+    private _duration?: number; 
     public get duration() {
       return this.getNumberAttribute('duration');
     }
@@ -1157,11 +1214,11 @@ export namespace SSM {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -1173,11 +1230,11 @@ export namespace SSM {
     }
 
     // end_date - computed: false, optional: true, required: false
-    private _endDate?: string;
+    private _endDate?: string | undefined; 
     public get endDate() {
       return this.getStringAttribute('end_date');
     }
-    public set endDate(value: string ) {
+    public set endDate(value: string | undefined) {
       this._endDate = value;
     }
     public resetEndDate() {
@@ -1194,7 +1251,7 @@ export namespace SSM {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1207,7 +1264,7 @@ export namespace SSM {
     }
 
     // schedule - computed: false, optional: false, required: true
-    private _schedule: string;
+    private _schedule?: string; 
     public get schedule() {
       return this.getStringAttribute('schedule');
     }
@@ -1220,11 +1277,11 @@ export namespace SSM {
     }
 
     // schedule_offset - computed: false, optional: true, required: false
-    private _scheduleOffset?: number;
+    private _scheduleOffset?: number | undefined; 
     public get scheduleOffset() {
       return this.getNumberAttribute('schedule_offset');
     }
-    public set scheduleOffset(value: number ) {
+    public set scheduleOffset(value: number | undefined) {
       this._scheduleOffset = value;
     }
     public resetScheduleOffset() {
@@ -1236,11 +1293,11 @@ export namespace SSM {
     }
 
     // schedule_timezone - computed: false, optional: true, required: false
-    private _scheduleTimezone?: string;
+    private _scheduleTimezone?: string | undefined; 
     public get scheduleTimezone() {
       return this.getStringAttribute('schedule_timezone');
     }
-    public set scheduleTimezone(value: string ) {
+    public set scheduleTimezone(value: string | undefined) {
       this._scheduleTimezone = value;
     }
     public resetScheduleTimezone() {
@@ -1252,11 +1309,11 @@ export namespace SSM {
     }
 
     // start_date - computed: false, optional: true, required: false
-    private _startDate?: string;
+    private _startDate?: string | undefined; 
     public get startDate() {
       return this.getStringAttribute('start_date');
     }
-    public set startDate(value: string ) {
+    public set startDate(value: string | undefined) {
       this._startDate = value;
     }
     public resetStartDate() {
@@ -1268,11 +1325,12 @@ export namespace SSM {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1284,11 +1342,12 @@ export namespace SSM {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1362,6 +1421,9 @@ export namespace SSM {
 
   function ssmMaintenanceWindowTargetTargetsToTerraform(struct?: SsmMaintenanceWindowTargetTargets): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -1414,11 +1476,11 @@ export namespace SSM {
     // ==========
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1435,11 +1497,11 @@ export namespace SSM {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1451,11 +1513,11 @@ export namespace SSM {
     }
 
     // owner_information - computed: false, optional: true, required: false
-    private _ownerInformation?: string;
+    private _ownerInformation?: string | undefined; 
     public get ownerInformation() {
       return this.getStringAttribute('owner_information');
     }
-    public set ownerInformation(value: string ) {
+    public set ownerInformation(value: string | undefined) {
       this._ownerInformation = value;
     }
     public resetOwnerInformation() {
@@ -1467,7 +1529,7 @@ export namespace SSM {
     }
 
     // resource_type - computed: false, optional: false, required: true
-    private _resourceType: string;
+    private _resourceType?: string; 
     public get resourceType() {
       return this.getStringAttribute('resource_type');
     }
@@ -1480,7 +1542,7 @@ export namespace SSM {
     }
 
     // window_id - computed: false, optional: false, required: true
-    private _windowId: string;
+    private _windowId?: string; 
     public get windowId() {
       return this.getStringAttribute('window_id');
     }
@@ -1493,8 +1555,9 @@ export namespace SSM {
     }
 
     // targets - computed: false, optional: false, required: true
-    private _targets: SsmMaintenanceWindowTargetTargets[];
+    private _targets?: SsmMaintenanceWindowTargetTargets[]; 
     public get targets() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('targets') as any;
     }
     public set targets(value: SsmMaintenanceWindowTargetTargets[]) {
@@ -1568,7 +1631,7 @@ export namespace SSM {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_maintenance_window_task.html#task_invocation_parameters SsmMaintenanceWindowTask#task_invocation_parameters}
     */
-    readonly taskInvocationParameters?: SsmMaintenanceWindowTaskTaskInvocationParameters[];
+    readonly taskInvocationParameters?: SsmMaintenanceWindowTaskTaskInvocationParameters;
   }
   export interface SsmMaintenanceWindowTaskTargets {
     /**
@@ -1583,6 +1646,9 @@ export namespace SSM {
 
   function ssmMaintenanceWindowTaskTargetsToTerraform(struct?: SsmMaintenanceWindowTaskTargets): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -1602,6 +1668,9 @@ export namespace SSM {
 
   function ssmMaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameterToTerraform(struct?: SsmMaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -1621,14 +1690,60 @@ export namespace SSM {
     readonly parameter?: SsmMaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter[];
   }
 
-  function ssmMaintenanceWindowTaskTaskInvocationParametersAutomationParametersToTerraform(struct?: SsmMaintenanceWindowTaskTaskInvocationParametersAutomationParameters): any {
+  function ssmMaintenanceWindowTaskTaskInvocationParametersAutomationParametersToTerraform(struct?: SsmMaintenanceWindowTaskTaskInvocationParametersAutomationParametersOutputReference | SsmMaintenanceWindowTaskTaskInvocationParametersAutomationParameters): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       document_version: cdktf.stringToTerraform(struct!.documentVersion),
       parameter: cdktf.listMapper(ssmMaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameterToTerraform)(struct!.parameter),
     }
   }
 
+  export class SsmMaintenanceWindowTaskTaskInvocationParametersAutomationParametersOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // document_version - computed: false, optional: true, required: false
+    private _documentVersion?: string | undefined; 
+    public get documentVersion() {
+      return this.getStringAttribute('document_version');
+    }
+    public set documentVersion(value: string | undefined) {
+      this._documentVersion = value;
+    }
+    public resetDocumentVersion() {
+      this._documentVersion = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get documentVersionInput() {
+      return this._documentVersion
+    }
+
+    // parameter - computed: false, optional: true, required: false
+    private _parameter?: SsmMaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter[] | undefined; 
+    public get parameter() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('parameter') as any;
+    }
+    public set parameter(value: SsmMaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter[] | undefined) {
+      this._parameter = value;
+    }
+    public resetParameter() {
+      this._parameter = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get parameterInput() {
+      return this._parameter
+    }
+  }
   export interface SsmMaintenanceWindowTaskTaskInvocationParametersLambdaParameters {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_maintenance_window_task.html#client_context SsmMaintenanceWindowTask#client_context}
@@ -1644,8 +1759,11 @@ export namespace SSM {
     readonly qualifier?: string;
   }
 
-  function ssmMaintenanceWindowTaskTaskInvocationParametersLambdaParametersToTerraform(struct?: SsmMaintenanceWindowTaskTaskInvocationParametersLambdaParameters): any {
+  function ssmMaintenanceWindowTaskTaskInvocationParametersLambdaParametersToTerraform(struct?: SsmMaintenanceWindowTaskTaskInvocationParametersLambdaParametersOutputReference | SsmMaintenanceWindowTaskTaskInvocationParametersLambdaParameters): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       client_context: cdktf.stringToTerraform(struct!.clientContext),
       payload: cdktf.stringToTerraform(struct!.payload),
@@ -1653,6 +1771,64 @@ export namespace SSM {
     }
   }
 
+  export class SsmMaintenanceWindowTaskTaskInvocationParametersLambdaParametersOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // client_context - computed: false, optional: true, required: false
+    private _clientContext?: string | undefined; 
+    public get clientContext() {
+      return this.getStringAttribute('client_context');
+    }
+    public set clientContext(value: string | undefined) {
+      this._clientContext = value;
+    }
+    public resetClientContext() {
+      this._clientContext = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get clientContextInput() {
+      return this._clientContext
+    }
+
+    // payload - computed: false, optional: true, required: false
+    private _payload?: string | undefined; 
+    public get payload() {
+      return this.getStringAttribute('payload');
+    }
+    public set payload(value: string | undefined) {
+      this._payload = value;
+    }
+    public resetPayload() {
+      this._payload = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get payloadInput() {
+      return this._payload
+    }
+
+    // qualifier - computed: false, optional: true, required: false
+    private _qualifier?: string | undefined; 
+    public get qualifier() {
+      return this.getStringAttribute('qualifier');
+    }
+    public set qualifier(value: string | undefined) {
+      this._qualifier = value;
+    }
+    public resetQualifier() {
+      this._qualifier = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get qualifierInput() {
+      return this._qualifier
+    }
+  }
   export interface SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_maintenance_window_task.html#cloudwatch_log_group_name SsmMaintenanceWindowTask#cloudwatch_log_group_name}
@@ -1664,14 +1840,59 @@ export namespace SSM {
     readonly cloudwatchOutputEnabled?: boolean | cdktf.IResolvable;
   }
 
-  function ssmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfigToTerraform(struct?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfig): any {
+  function ssmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfigToTerraform(struct?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfigOutputReference | SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cloudwatch_log_group_name: cdktf.stringToTerraform(struct!.cloudwatchLogGroupName),
       cloudwatch_output_enabled: cdktf.booleanToTerraform(struct!.cloudwatchOutputEnabled),
     }
   }
 
+  export class SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // cloudwatch_log_group_name - computed: true, optional: true, required: false
+    private _cloudwatchLogGroupName?: string | undefined; 
+    public get cloudwatchLogGroupName() {
+      return this.getStringAttribute('cloudwatch_log_group_name');
+    }
+    public set cloudwatchLogGroupName(value: string | undefined) {
+      this._cloudwatchLogGroupName = value;
+    }
+    public resetCloudwatchLogGroupName() {
+      this._cloudwatchLogGroupName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cloudwatchLogGroupNameInput() {
+      return this._cloudwatchLogGroupName
+    }
+
+    // cloudwatch_output_enabled - computed: false, optional: true, required: false
+    private _cloudwatchOutputEnabled?: boolean | cdktf.IResolvable | undefined; 
+    public get cloudwatchOutputEnabled() {
+      return this.getBooleanAttribute('cloudwatch_output_enabled') as any;
+    }
+    public set cloudwatchOutputEnabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._cloudwatchOutputEnabled = value;
+    }
+    public resetCloudwatchOutputEnabled() {
+      this._cloudwatchOutputEnabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cloudwatchOutputEnabledInput() {
+      return this._cloudwatchOutputEnabled
+    }
+  }
   export interface SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_maintenance_window_task.html#notification_arn SsmMaintenanceWindowTask#notification_arn}
@@ -1687,8 +1908,11 @@ export namespace SSM {
     readonly notificationType?: string;
   }
 
-  function ssmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfigToTerraform(struct?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfig): any {
+  function ssmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfigToTerraform(struct?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfigOutputReference | SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       notification_arn: cdktf.stringToTerraform(struct!.notificationArn),
       notification_events: cdktf.listMapper(cdktf.stringToTerraform)(struct!.notificationEvents),
@@ -1696,6 +1920,64 @@ export namespace SSM {
     }
   }
 
+  export class SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // notification_arn - computed: false, optional: true, required: false
+    private _notificationArn?: string | undefined; 
+    public get notificationArn() {
+      return this.getStringAttribute('notification_arn');
+    }
+    public set notificationArn(value: string | undefined) {
+      this._notificationArn = value;
+    }
+    public resetNotificationArn() {
+      this._notificationArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get notificationArnInput() {
+      return this._notificationArn
+    }
+
+    // notification_events - computed: false, optional: true, required: false
+    private _notificationEvents?: string[] | undefined; 
+    public get notificationEvents() {
+      return this.getListAttribute('notification_events');
+    }
+    public set notificationEvents(value: string[] | undefined) {
+      this._notificationEvents = value;
+    }
+    public resetNotificationEvents() {
+      this._notificationEvents = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get notificationEventsInput() {
+      return this._notificationEvents
+    }
+
+    // notification_type - computed: false, optional: true, required: false
+    private _notificationType?: string | undefined; 
+    public get notificationType() {
+      return this.getStringAttribute('notification_type');
+    }
+    public set notificationType(value: string | undefined) {
+      this._notificationType = value;
+    }
+    public resetNotificationType() {
+      this._notificationType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get notificationTypeInput() {
+      return this._notificationType
+    }
+  }
   export interface SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_maintenance_window_task.html#name SsmMaintenanceWindowTask#name}
@@ -1709,6 +1991,9 @@ export namespace SSM {
 
   function ssmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameterToTerraform(struct?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -1753,13 +2038,13 @@ export namespace SSM {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_maintenance_window_task.html#cloudwatch_config SsmMaintenanceWindowTask#cloudwatch_config}
     */
-    readonly cloudwatchConfig?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfig[];
+    readonly cloudwatchConfig?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfig;
     /**
     * notification_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_maintenance_window_task.html#notification_config SsmMaintenanceWindowTask#notification_config}
     */
-    readonly notificationConfig?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfig[];
+    readonly notificationConfig?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfig;
     /**
     * parameter block
     * 
@@ -1768,8 +2053,11 @@ export namespace SSM {
     readonly parameter?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter[];
   }
 
-  function ssmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersToTerraform(struct?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParameters): any {
+  function ssmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersToTerraform(struct?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersOutputReference | SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParameters): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comment: cdktf.stringToTerraform(struct!.comment),
       document_hash: cdktf.stringToTerraform(struct!.documentHash),
@@ -1779,12 +2067,201 @@ export namespace SSM {
       output_s3_key_prefix: cdktf.stringToTerraform(struct!.outputS3KeyPrefix),
       service_role_arn: cdktf.stringToTerraform(struct!.serviceRoleArn),
       timeout_seconds: cdktf.numberToTerraform(struct!.timeoutSeconds),
-      cloudwatch_config: cdktf.listMapper(ssmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfigToTerraform)(struct!.cloudwatchConfig),
-      notification_config: cdktf.listMapper(ssmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfigToTerraform)(struct!.notificationConfig),
+      cloudwatch_config: ssmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfigToTerraform(struct!.cloudwatchConfig),
+      notification_config: ssmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfigToTerraform(struct!.notificationConfig),
       parameter: cdktf.listMapper(ssmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameterToTerraform)(struct!.parameter),
     }
   }
 
+  export class SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // comment - computed: false, optional: true, required: false
+    private _comment?: string | undefined; 
+    public get comment() {
+      return this.getStringAttribute('comment');
+    }
+    public set comment(value: string | undefined) {
+      this._comment = value;
+    }
+    public resetComment() {
+      this._comment = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get commentInput() {
+      return this._comment
+    }
+
+    // document_hash - computed: false, optional: true, required: false
+    private _documentHash?: string | undefined; 
+    public get documentHash() {
+      return this.getStringAttribute('document_hash');
+    }
+    public set documentHash(value: string | undefined) {
+      this._documentHash = value;
+    }
+    public resetDocumentHash() {
+      this._documentHash = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get documentHashInput() {
+      return this._documentHash
+    }
+
+    // document_hash_type - computed: false, optional: true, required: false
+    private _documentHashType?: string | undefined; 
+    public get documentHashType() {
+      return this.getStringAttribute('document_hash_type');
+    }
+    public set documentHashType(value: string | undefined) {
+      this._documentHashType = value;
+    }
+    public resetDocumentHashType() {
+      this._documentHashType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get documentHashTypeInput() {
+      return this._documentHashType
+    }
+
+    // document_version - computed: false, optional: true, required: false
+    private _documentVersion?: string | undefined; 
+    public get documentVersion() {
+      return this.getStringAttribute('document_version');
+    }
+    public set documentVersion(value: string | undefined) {
+      this._documentVersion = value;
+    }
+    public resetDocumentVersion() {
+      this._documentVersion = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get documentVersionInput() {
+      return this._documentVersion
+    }
+
+    // output_s3_bucket - computed: false, optional: true, required: false
+    private _outputS3Bucket?: string | undefined; 
+    public get outputS3Bucket() {
+      return this.getStringAttribute('output_s3_bucket');
+    }
+    public set outputS3Bucket(value: string | undefined) {
+      this._outputS3Bucket = value;
+    }
+    public resetOutputS3Bucket() {
+      this._outputS3Bucket = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get outputS3BucketInput() {
+      return this._outputS3Bucket
+    }
+
+    // output_s3_key_prefix - computed: false, optional: true, required: false
+    private _outputS3KeyPrefix?: string | undefined; 
+    public get outputS3KeyPrefix() {
+      return this.getStringAttribute('output_s3_key_prefix');
+    }
+    public set outputS3KeyPrefix(value: string | undefined) {
+      this._outputS3KeyPrefix = value;
+    }
+    public resetOutputS3KeyPrefix() {
+      this._outputS3KeyPrefix = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get outputS3KeyPrefixInput() {
+      return this._outputS3KeyPrefix
+    }
+
+    // service_role_arn - computed: false, optional: true, required: false
+    private _serviceRoleArn?: string | undefined; 
+    public get serviceRoleArn() {
+      return this.getStringAttribute('service_role_arn');
+    }
+    public set serviceRoleArn(value: string | undefined) {
+      this._serviceRoleArn = value;
+    }
+    public resetServiceRoleArn() {
+      this._serviceRoleArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get serviceRoleArnInput() {
+      return this._serviceRoleArn
+    }
+
+    // timeout_seconds - computed: false, optional: true, required: false
+    private _timeoutSeconds?: number | undefined; 
+    public get timeoutSeconds() {
+      return this.getNumberAttribute('timeout_seconds');
+    }
+    public set timeoutSeconds(value: number | undefined) {
+      this._timeoutSeconds = value;
+    }
+    public resetTimeoutSeconds() {
+      this._timeoutSeconds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get timeoutSecondsInput() {
+      return this._timeoutSeconds
+    }
+
+    // cloudwatch_config - computed: false, optional: true, required: false
+    private _cloudwatchConfig?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfig | undefined; 
+    private __cloudwatchConfigOutput = new SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfigOutputReference(this as any, "cloudwatch_config", true);
+    public get cloudwatchConfig() {
+      return this.__cloudwatchConfigOutput;
+    }
+    public putCloudwatchConfig(value: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfig | undefined) {
+      this._cloudwatchConfig = value;
+    }
+    public resetCloudwatchConfig() {
+      this._cloudwatchConfig = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cloudwatchConfigInput() {
+      return this._cloudwatchConfig
+    }
+
+    // notification_config - computed: false, optional: true, required: false
+    private _notificationConfig?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfig | undefined; 
+    private __notificationConfigOutput = new SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfigOutputReference(this as any, "notification_config", true);
+    public get notificationConfig() {
+      return this.__notificationConfigOutput;
+    }
+    public putNotificationConfig(value: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersNotificationConfig | undefined) {
+      this._notificationConfig = value;
+    }
+    public resetNotificationConfig() {
+      this._notificationConfig = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get notificationConfigInput() {
+      return this._notificationConfig
+    }
+
+    // parameter - computed: false, optional: true, required: false
+    private _parameter?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter[] | undefined; 
+    public get parameter() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('parameter') as any;
+    }
+    public set parameter(value: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter[] | undefined) {
+      this._parameter = value;
+    }
+    public resetParameter() {
+      this._parameter = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get parameterInput() {
+      return this._parameter
+    }
+  }
   export interface SsmMaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_maintenance_window_task.html#input SsmMaintenanceWindowTask#input}
@@ -1796,51 +2273,177 @@ export namespace SSM {
     readonly name?: string;
   }
 
-  function ssmMaintenanceWindowTaskTaskInvocationParametersStepFunctionsParametersToTerraform(struct?: SsmMaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters): any {
+  function ssmMaintenanceWindowTaskTaskInvocationParametersStepFunctionsParametersToTerraform(struct?: SsmMaintenanceWindowTaskTaskInvocationParametersStepFunctionsParametersOutputReference | SsmMaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       input: cdktf.stringToTerraform(struct!.input),
       name: cdktf.stringToTerraform(struct!.name),
     }
   }
 
+  export class SsmMaintenanceWindowTaskTaskInvocationParametersStepFunctionsParametersOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // input - computed: false, optional: true, required: false
+    private _input?: string | undefined; 
+    public get input() {
+      return this.getStringAttribute('input');
+    }
+    public set input(value: string | undefined) {
+      this._input = value;
+    }
+    public resetInput() {
+      this._input = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get inputInput() {
+      return this._input
+    }
+
+    // name - computed: false, optional: true, required: false
+    private _name?: string | undefined; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string | undefined) {
+      this._name = value;
+    }
+    public resetName() {
+      this._name = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+  }
   export interface SsmMaintenanceWindowTaskTaskInvocationParameters {
     /**
     * automation_parameters block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_maintenance_window_task.html#automation_parameters SsmMaintenanceWindowTask#automation_parameters}
     */
-    readonly automationParameters?: SsmMaintenanceWindowTaskTaskInvocationParametersAutomationParameters[];
+    readonly automationParameters?: SsmMaintenanceWindowTaskTaskInvocationParametersAutomationParameters;
     /**
     * lambda_parameters block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_maintenance_window_task.html#lambda_parameters SsmMaintenanceWindowTask#lambda_parameters}
     */
-    readonly lambdaParameters?: SsmMaintenanceWindowTaskTaskInvocationParametersLambdaParameters[];
+    readonly lambdaParameters?: SsmMaintenanceWindowTaskTaskInvocationParametersLambdaParameters;
     /**
     * run_command_parameters block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_maintenance_window_task.html#run_command_parameters SsmMaintenanceWindowTask#run_command_parameters}
     */
-    readonly runCommandParameters?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParameters[];
+    readonly runCommandParameters?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParameters;
     /**
     * step_functions_parameters block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_maintenance_window_task.html#step_functions_parameters SsmMaintenanceWindowTask#step_functions_parameters}
     */
-    readonly stepFunctionsParameters?: SsmMaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters[];
+    readonly stepFunctionsParameters?: SsmMaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters;
   }
 
-  function ssmMaintenanceWindowTaskTaskInvocationParametersToTerraform(struct?: SsmMaintenanceWindowTaskTaskInvocationParameters): any {
+  function ssmMaintenanceWindowTaskTaskInvocationParametersToTerraform(struct?: SsmMaintenanceWindowTaskTaskInvocationParametersOutputReference | SsmMaintenanceWindowTaskTaskInvocationParameters): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      automation_parameters: cdktf.listMapper(ssmMaintenanceWindowTaskTaskInvocationParametersAutomationParametersToTerraform)(struct!.automationParameters),
-      lambda_parameters: cdktf.listMapper(ssmMaintenanceWindowTaskTaskInvocationParametersLambdaParametersToTerraform)(struct!.lambdaParameters),
-      run_command_parameters: cdktf.listMapper(ssmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersToTerraform)(struct!.runCommandParameters),
-      step_functions_parameters: cdktf.listMapper(ssmMaintenanceWindowTaskTaskInvocationParametersStepFunctionsParametersToTerraform)(struct!.stepFunctionsParameters),
+      automation_parameters: ssmMaintenanceWindowTaskTaskInvocationParametersAutomationParametersToTerraform(struct!.automationParameters),
+      lambda_parameters: ssmMaintenanceWindowTaskTaskInvocationParametersLambdaParametersToTerraform(struct!.lambdaParameters),
+      run_command_parameters: ssmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersToTerraform(struct!.runCommandParameters),
+      step_functions_parameters: ssmMaintenanceWindowTaskTaskInvocationParametersStepFunctionsParametersToTerraform(struct!.stepFunctionsParameters),
     }
   }
 
+  export class SsmMaintenanceWindowTaskTaskInvocationParametersOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // automation_parameters - computed: false, optional: true, required: false
+    private _automationParameters?: SsmMaintenanceWindowTaskTaskInvocationParametersAutomationParameters | undefined; 
+    private __automationParametersOutput = new SsmMaintenanceWindowTaskTaskInvocationParametersAutomationParametersOutputReference(this as any, "automation_parameters", true);
+    public get automationParameters() {
+      return this.__automationParametersOutput;
+    }
+    public putAutomationParameters(value: SsmMaintenanceWindowTaskTaskInvocationParametersAutomationParameters | undefined) {
+      this._automationParameters = value;
+    }
+    public resetAutomationParameters() {
+      this._automationParameters = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get automationParametersInput() {
+      return this._automationParameters
+    }
+
+    // lambda_parameters - computed: false, optional: true, required: false
+    private _lambdaParameters?: SsmMaintenanceWindowTaskTaskInvocationParametersLambdaParameters | undefined; 
+    private __lambdaParametersOutput = new SsmMaintenanceWindowTaskTaskInvocationParametersLambdaParametersOutputReference(this as any, "lambda_parameters", true);
+    public get lambdaParameters() {
+      return this.__lambdaParametersOutput;
+    }
+    public putLambdaParameters(value: SsmMaintenanceWindowTaskTaskInvocationParametersLambdaParameters | undefined) {
+      this._lambdaParameters = value;
+    }
+    public resetLambdaParameters() {
+      this._lambdaParameters = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get lambdaParametersInput() {
+      return this._lambdaParameters
+    }
+
+    // run_command_parameters - computed: false, optional: true, required: false
+    private _runCommandParameters?: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParameters | undefined; 
+    private __runCommandParametersOutput = new SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParametersOutputReference(this as any, "run_command_parameters", true);
+    public get runCommandParameters() {
+      return this.__runCommandParametersOutput;
+    }
+    public putRunCommandParameters(value: SsmMaintenanceWindowTaskTaskInvocationParametersRunCommandParameters | undefined) {
+      this._runCommandParameters = value;
+    }
+    public resetRunCommandParameters() {
+      this._runCommandParameters = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get runCommandParametersInput() {
+      return this._runCommandParameters
+    }
+
+    // step_functions_parameters - computed: false, optional: true, required: false
+    private _stepFunctionsParameters?: SsmMaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters | undefined; 
+    private __stepFunctionsParametersOutput = new SsmMaintenanceWindowTaskTaskInvocationParametersStepFunctionsParametersOutputReference(this as any, "step_functions_parameters", true);
+    public get stepFunctionsParameters() {
+      return this.__stepFunctionsParametersOutput;
+    }
+    public putStepFunctionsParameters(value: SsmMaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters | undefined) {
+      this._stepFunctionsParameters = value;
+    }
+    public resetStepFunctionsParameters() {
+      this._stepFunctionsParameters = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get stepFunctionsParametersInput() {
+      return this._stepFunctionsParameters
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/ssm_maintenance_window_task.html aws_ssm_maintenance_window_task}
@@ -1892,11 +2495,11 @@ export namespace SSM {
     // ==========
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1913,7 +2516,7 @@ export namespace SSM {
     }
 
     // max_concurrency - computed: false, optional: false, required: true
-    private _maxConcurrency: string;
+    private _maxConcurrency?: string; 
     public get maxConcurrency() {
       return this.getStringAttribute('max_concurrency');
     }
@@ -1926,7 +2529,7 @@ export namespace SSM {
     }
 
     // max_errors - computed: false, optional: false, required: true
-    private _maxErrors: string;
+    private _maxErrors?: string; 
     public get maxErrors() {
       return this.getStringAttribute('max_errors');
     }
@@ -1939,11 +2542,11 @@ export namespace SSM {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1955,11 +2558,11 @@ export namespace SSM {
     }
 
     // priority - computed: false, optional: true, required: false
-    private _priority?: number;
+    private _priority?: number | undefined; 
     public get priority() {
       return this.getNumberAttribute('priority');
     }
-    public set priority(value: number ) {
+    public set priority(value: number | undefined) {
       this._priority = value;
     }
     public resetPriority() {
@@ -1971,11 +2574,11 @@ export namespace SSM {
     }
 
     // service_role_arn - computed: true, optional: true, required: false
-    private _serviceRoleArn?: string;
+    private _serviceRoleArn?: string | undefined; 
     public get serviceRoleArn() {
       return this.getStringAttribute('service_role_arn');
     }
-    public set serviceRoleArn(value: string) {
+    public set serviceRoleArn(value: string | undefined) {
       this._serviceRoleArn = value;
     }
     public resetServiceRoleArn() {
@@ -1987,7 +2590,7 @@ export namespace SSM {
     }
 
     // task_arn - computed: false, optional: false, required: true
-    private _taskArn: string;
+    private _taskArn?: string; 
     public get taskArn() {
       return this.getStringAttribute('task_arn');
     }
@@ -2000,7 +2603,7 @@ export namespace SSM {
     }
 
     // task_type - computed: false, optional: false, required: true
-    private _taskType: string;
+    private _taskType?: string; 
     public get taskType() {
       return this.getStringAttribute('task_type');
     }
@@ -2013,7 +2616,7 @@ export namespace SSM {
     }
 
     // window_id - computed: false, optional: false, required: true
-    private _windowId: string;
+    private _windowId?: string; 
     public get windowId() {
       return this.getStringAttribute('window_id');
     }
@@ -2026,11 +2629,12 @@ export namespace SSM {
     }
 
     // targets - computed: false, optional: true, required: false
-    private _targets?: SsmMaintenanceWindowTaskTargets[];
+    private _targets?: SsmMaintenanceWindowTaskTargets[] | undefined; 
     public get targets() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('targets') as any;
     }
-    public set targets(value: SsmMaintenanceWindowTaskTargets[] ) {
+    public set targets(value: SsmMaintenanceWindowTaskTargets[] | undefined) {
       this._targets = value;
     }
     public resetTargets() {
@@ -2042,11 +2646,12 @@ export namespace SSM {
     }
 
     // task_invocation_parameters - computed: false, optional: true, required: false
-    private _taskInvocationParameters?: SsmMaintenanceWindowTaskTaskInvocationParameters[];
+    private _taskInvocationParameters?: SsmMaintenanceWindowTaskTaskInvocationParameters | undefined; 
+    private __taskInvocationParametersOutput = new SsmMaintenanceWindowTaskTaskInvocationParametersOutputReference(this as any, "task_invocation_parameters", true);
     public get taskInvocationParameters() {
-      return this.interpolationForAttribute('task_invocation_parameters') as any;
+      return this.__taskInvocationParametersOutput;
     }
-    public set taskInvocationParameters(value: SsmMaintenanceWindowTaskTaskInvocationParameters[] ) {
+    public putTaskInvocationParameters(value: SsmMaintenanceWindowTaskTaskInvocationParameters | undefined) {
       this._taskInvocationParameters = value;
     }
     public resetTaskInvocationParameters() {
@@ -2073,7 +2678,7 @@ export namespace SSM {
         task_type: cdktf.stringToTerraform(this._taskType),
         window_id: cdktf.stringToTerraform(this._windowId),
         targets: cdktf.listMapper(ssmMaintenanceWindowTaskTargetsToTerraform)(this._targets),
-        task_invocation_parameters: cdktf.listMapper(ssmMaintenanceWindowTaskTaskInvocationParametersToTerraform)(this._taskInvocationParameters),
+        task_invocation_parameters: ssmMaintenanceWindowTaskTaskInvocationParametersToTerraform(this._taskInvocationParameters),
       };
     }
   }
@@ -2174,11 +2779,11 @@ export namespace SSM {
     // ==========
 
     // allowed_pattern - computed: false, optional: true, required: false
-    private _allowedPattern?: string;
+    private _allowedPattern?: string | undefined; 
     public get allowedPattern() {
       return this.getStringAttribute('allowed_pattern');
     }
-    public set allowedPattern(value: string ) {
+    public set allowedPattern(value: string | undefined) {
       this._allowedPattern = value;
     }
     public resetAllowedPattern() {
@@ -2195,11 +2800,11 @@ export namespace SSM {
     }
 
     // data_type - computed: true, optional: true, required: false
-    private _dataType?: string;
+    private _dataType?: string | undefined; 
     public get dataType() {
       return this.getStringAttribute('data_type');
     }
-    public set dataType(value: string) {
+    public set dataType(value: string | undefined) {
       this._dataType = value;
     }
     public resetDataType() {
@@ -2211,11 +2816,11 @@ export namespace SSM {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -2232,11 +2837,11 @@ export namespace SSM {
     }
 
     // key_id - computed: true, optional: true, required: false
-    private _keyId?: string;
+    private _keyId?: string | undefined; 
     public get keyId() {
       return this.getStringAttribute('key_id');
     }
-    public set keyId(value: string) {
+    public set keyId(value: string | undefined) {
       this._keyId = value;
     }
     public resetKeyId() {
@@ -2248,7 +2853,7 @@ export namespace SSM {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2261,11 +2866,11 @@ export namespace SSM {
     }
 
     // overwrite - computed: false, optional: true, required: false
-    private _overwrite?: boolean | cdktf.IResolvable;
+    private _overwrite?: boolean | cdktf.IResolvable | undefined; 
     public get overwrite() {
-      return this.getBooleanAttribute('overwrite');
+      return this.getBooleanAttribute('overwrite') as any;
     }
-    public set overwrite(value: boolean | cdktf.IResolvable ) {
+    public set overwrite(value: boolean | cdktf.IResolvable | undefined) {
       this._overwrite = value;
     }
     public resetOverwrite() {
@@ -2277,11 +2882,12 @@ export namespace SSM {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2293,11 +2899,12 @@ export namespace SSM {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2309,11 +2916,11 @@ export namespace SSM {
     }
 
     // tier - computed: false, optional: true, required: false
-    private _tier?: string;
+    private _tier?: string | undefined; 
     public get tier() {
       return this.getStringAttribute('tier');
     }
-    public set tier(value: string ) {
+    public set tier(value: string | undefined) {
       this._tier = value;
     }
     public resetTier() {
@@ -2325,7 +2932,7 @@ export namespace SSM {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }
@@ -2338,7 +2945,7 @@ export namespace SSM {
     }
 
     // value - computed: false, optional: false, required: true
-    private _value: string;
+    private _value?: string; 
     public get value() {
       return this.getStringAttribute('value');
     }
@@ -2448,6 +3055,9 @@ export namespace SSM {
 
   function ssmPatchBaselineApprovalRulePatchFilterToTerraform(struct?: SsmPatchBaselineApprovalRulePatchFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -2481,6 +3091,9 @@ export namespace SSM {
 
   function ssmPatchBaselineApprovalRuleToTerraform(struct?: SsmPatchBaselineApprovalRule): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       approve_after_days: cdktf.numberToTerraform(struct!.approveAfterDays),
       approve_until_date: cdktf.stringToTerraform(struct!.approveUntilDate),
@@ -2503,6 +3116,9 @@ export namespace SSM {
 
   function ssmPatchBaselineGlobalFilterToTerraform(struct?: SsmPatchBaselineGlobalFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -2526,6 +3142,9 @@ export namespace SSM {
 
   function ssmPatchBaselineSourceToTerraform(struct?: SsmPatchBaselineSource): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       configuration: cdktf.stringToTerraform(struct!.configuration),
       name: cdktf.stringToTerraform(struct!.name),
@@ -2586,11 +3205,11 @@ export namespace SSM {
     // ==========
 
     // approved_patches - computed: false, optional: true, required: false
-    private _approvedPatches?: string[];
+    private _approvedPatches?: string[] | undefined; 
     public get approvedPatches() {
       return this.getListAttribute('approved_patches');
     }
-    public set approvedPatches(value: string[] ) {
+    public set approvedPatches(value: string[] | undefined) {
       this._approvedPatches = value;
     }
     public resetApprovedPatches() {
@@ -2602,11 +3221,11 @@ export namespace SSM {
     }
 
     // approved_patches_compliance_level - computed: false, optional: true, required: false
-    private _approvedPatchesComplianceLevel?: string;
+    private _approvedPatchesComplianceLevel?: string | undefined; 
     public get approvedPatchesComplianceLevel() {
       return this.getStringAttribute('approved_patches_compliance_level');
     }
-    public set approvedPatchesComplianceLevel(value: string ) {
+    public set approvedPatchesComplianceLevel(value: string | undefined) {
       this._approvedPatchesComplianceLevel = value;
     }
     public resetApprovedPatchesComplianceLevel() {
@@ -2618,11 +3237,11 @@ export namespace SSM {
     }
 
     // approved_patches_enable_non_security - computed: false, optional: true, required: false
-    private _approvedPatchesEnableNonSecurity?: boolean | cdktf.IResolvable;
+    private _approvedPatchesEnableNonSecurity?: boolean | cdktf.IResolvable | undefined; 
     public get approvedPatchesEnableNonSecurity() {
-      return this.getBooleanAttribute('approved_patches_enable_non_security');
+      return this.getBooleanAttribute('approved_patches_enable_non_security') as any;
     }
-    public set approvedPatchesEnableNonSecurity(value: boolean | cdktf.IResolvable ) {
+    public set approvedPatchesEnableNonSecurity(value: boolean | cdktf.IResolvable | undefined) {
       this._approvedPatchesEnableNonSecurity = value;
     }
     public resetApprovedPatchesEnableNonSecurity() {
@@ -2639,11 +3258,11 @@ export namespace SSM {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -2660,7 +3279,7 @@ export namespace SSM {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2673,11 +3292,11 @@ export namespace SSM {
     }
 
     // operating_system - computed: false, optional: true, required: false
-    private _operatingSystem?: string;
+    private _operatingSystem?: string | undefined; 
     public get operatingSystem() {
       return this.getStringAttribute('operating_system');
     }
-    public set operatingSystem(value: string ) {
+    public set operatingSystem(value: string | undefined) {
       this._operatingSystem = value;
     }
     public resetOperatingSystem() {
@@ -2689,11 +3308,11 @@ export namespace SSM {
     }
 
     // rejected_patches - computed: false, optional: true, required: false
-    private _rejectedPatches?: string[];
+    private _rejectedPatches?: string[] | undefined; 
     public get rejectedPatches() {
       return this.getListAttribute('rejected_patches');
     }
-    public set rejectedPatches(value: string[] ) {
+    public set rejectedPatches(value: string[] | undefined) {
       this._rejectedPatches = value;
     }
     public resetRejectedPatches() {
@@ -2705,11 +3324,11 @@ export namespace SSM {
     }
 
     // rejected_patches_action - computed: true, optional: true, required: false
-    private _rejectedPatchesAction?: string;
+    private _rejectedPatchesAction?: string | undefined; 
     public get rejectedPatchesAction() {
       return this.getStringAttribute('rejected_patches_action');
     }
-    public set rejectedPatchesAction(value: string) {
+    public set rejectedPatchesAction(value: string | undefined) {
       this._rejectedPatchesAction = value;
     }
     public resetRejectedPatchesAction() {
@@ -2721,11 +3340,12 @@ export namespace SSM {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2737,11 +3357,12 @@ export namespace SSM {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2753,11 +3374,12 @@ export namespace SSM {
     }
 
     // approval_rule - computed: false, optional: true, required: false
-    private _approvalRule?: SsmPatchBaselineApprovalRule[];
+    private _approvalRule?: SsmPatchBaselineApprovalRule[] | undefined; 
     public get approvalRule() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('approval_rule') as any;
     }
-    public set approvalRule(value: SsmPatchBaselineApprovalRule[] ) {
+    public set approvalRule(value: SsmPatchBaselineApprovalRule[] | undefined) {
       this._approvalRule = value;
     }
     public resetApprovalRule() {
@@ -2769,11 +3391,12 @@ export namespace SSM {
     }
 
     // global_filter - computed: false, optional: true, required: false
-    private _globalFilter?: SsmPatchBaselineGlobalFilter[];
+    private _globalFilter?: SsmPatchBaselineGlobalFilter[] | undefined; 
     public get globalFilter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('global_filter') as any;
     }
-    public set globalFilter(value: SsmPatchBaselineGlobalFilter[] ) {
+    public set globalFilter(value: SsmPatchBaselineGlobalFilter[] | undefined) {
       this._globalFilter = value;
     }
     public resetGlobalFilter() {
@@ -2785,11 +3408,12 @@ export namespace SSM {
     }
 
     // source - computed: false, optional: true, required: false
-    private _source?: SsmPatchBaselineSource[];
+    private _source?: SsmPatchBaselineSource[] | undefined; 
     public get source() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('source') as any;
     }
-    public set source(value: SsmPatchBaselineSource[] ) {
+    public set source(value: SsmPatchBaselineSource[] | undefined) {
       this._source = value;
     }
     public resetSource() {
@@ -2874,7 +3498,7 @@ export namespace SSM {
     // ==========
 
     // baseline_id - computed: false, optional: false, required: true
-    private _baselineId: string;
+    private _baselineId?: string; 
     public get baselineId() {
       return this.getStringAttribute('baseline_id');
     }
@@ -2892,7 +3516,7 @@ export namespace SSM {
     }
 
     // patch_group - computed: false, optional: false, required: true
-    private _patchGroup: string;
+    private _patchGroup?: string; 
     public get patchGroup() {
       return this.getStringAttribute('patch_group');
     }
@@ -2925,7 +3549,7 @@ export namespace SSM {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ssm_resource_data_sync.html#s3_destination SsmResourceDataSync#s3_destination}
     */
-    readonly s3Destination: SsmResourceDataSyncS3Destination[];
+    readonly s3Destination: SsmResourceDataSyncS3Destination;
   }
   export interface SsmResourceDataSyncS3Destination {
     /**
@@ -2950,8 +3574,11 @@ export namespace SSM {
     readonly syncFormat?: string;
   }
 
-  function ssmResourceDataSyncS3DestinationToTerraform(struct?: SsmResourceDataSyncS3Destination): any {
+  function ssmResourceDataSyncS3DestinationToTerraform(struct?: SsmResourceDataSyncS3DestinationOutputReference | SsmResourceDataSyncS3Destination): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bucket_name: cdktf.stringToTerraform(struct!.bucketName),
       kms_key_arn: cdktf.stringToTerraform(struct!.kmsKeyArn),
@@ -2961,6 +3588,90 @@ export namespace SSM {
     }
   }
 
+  export class SsmResourceDataSyncS3DestinationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // bucket_name - computed: false, optional: false, required: true
+    private _bucketName?: string; 
+    public get bucketName() {
+      return this.getStringAttribute('bucket_name');
+    }
+    public set bucketName(value: string) {
+      this._bucketName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bucketNameInput() {
+      return this._bucketName
+    }
+
+    // kms_key_arn - computed: false, optional: true, required: false
+    private _kmsKeyArn?: string | undefined; 
+    public get kmsKeyArn() {
+      return this.getStringAttribute('kms_key_arn');
+    }
+    public set kmsKeyArn(value: string | undefined) {
+      this._kmsKeyArn = value;
+    }
+    public resetKmsKeyArn() {
+      this._kmsKeyArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get kmsKeyArnInput() {
+      return this._kmsKeyArn
+    }
+
+    // prefix - computed: false, optional: true, required: false
+    private _prefix?: string | undefined; 
+    public get prefix() {
+      return this.getStringAttribute('prefix');
+    }
+    public set prefix(value: string | undefined) {
+      this._prefix = value;
+    }
+    public resetPrefix() {
+      this._prefix = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get prefixInput() {
+      return this._prefix
+    }
+
+    // region - computed: false, optional: false, required: true
+    private _region?: string; 
+    public get region() {
+      return this.getStringAttribute('region');
+    }
+    public set region(value: string) {
+      this._region = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get regionInput() {
+      return this._region
+    }
+
+    // sync_format - computed: false, optional: true, required: false
+    private _syncFormat?: string | undefined; 
+    public get syncFormat() {
+      return this.getStringAttribute('sync_format');
+    }
+    public set syncFormat(value: string | undefined) {
+      this._syncFormat = value;
+    }
+    public resetSyncFormat() {
+      this._syncFormat = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get syncFormatInput() {
+      return this._syncFormat
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/ssm_resource_data_sync.html aws_ssm_resource_data_sync}
@@ -3008,7 +3719,7 @@ export namespace SSM {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -3021,11 +3732,12 @@ export namespace SSM {
     }
 
     // s3_destination - computed: false, optional: false, required: true
-    private _s3Destination: SsmResourceDataSyncS3Destination[];
+    private _s3Destination?: SsmResourceDataSyncS3Destination; 
+    private __s3DestinationOutput = new SsmResourceDataSyncS3DestinationOutputReference(this as any, "s3_destination", true);
     public get s3Destination() {
-      return this.interpolationForAttribute('s3_destination') as any;
+      return this.__s3DestinationOutput;
     }
-    public set s3Destination(value: SsmResourceDataSyncS3Destination[]) {
+    public putS3Destination(value: SsmResourceDataSyncS3Destination) {
       this._s3Destination = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -3040,7 +3752,7 @@ export namespace SSM {
     protected synthesizeAttributes(): { [name: string]: any } {
       return {
         name: cdktf.stringToTerraform(this._name),
-        s3_destination: cdktf.listMapper(ssmResourceDataSyncS3DestinationToTerraform)(this._s3Destination),
+        s3_destination: ssmResourceDataSyncS3DestinationToTerraform(this._s3Destination),
       };
     }
   }
@@ -3111,11 +3823,11 @@ export namespace SSM {
     }
 
     // document_format - computed: false, optional: true, required: false
-    private _documentFormat?: string;
+    private _documentFormat?: string | undefined; 
     public get documentFormat() {
       return this.getStringAttribute('document_format');
     }
-    public set documentFormat(value: string ) {
+    public set documentFormat(value: string | undefined) {
       this._documentFormat = value;
     }
     public resetDocumentFormat() {
@@ -3132,11 +3844,11 @@ export namespace SSM {
     }
 
     // document_version - computed: false, optional: true, required: false
-    private _documentVersion?: string;
+    private _documentVersion?: string | undefined; 
     public get documentVersion() {
       return this.getStringAttribute('document_version');
     }
-    public set documentVersion(value: string ) {
+    public set documentVersion(value: string | undefined) {
       this._documentVersion = value;
     }
     public resetDocumentVersion() {
@@ -3153,7 +3865,7 @@ export namespace SSM {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -3239,7 +3951,7 @@ export namespace SSM {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -3267,11 +3979,11 @@ export namespace SSM {
     }
 
     // with_decryption - computed: false, optional: true, required: false
-    private _withDecryption?: boolean | cdktf.IResolvable;
+    private _withDecryption?: boolean | cdktf.IResolvable | undefined; 
     public get withDecryption() {
-      return this.getBooleanAttribute('with_decryption');
+      return this.getBooleanAttribute('with_decryption') as any;
     }
-    public set withDecryption(value: boolean | cdktf.IResolvable ) {
+    public set withDecryption(value: boolean | cdktf.IResolvable | undefined) {
       this._withDecryption = value;
     }
     public resetWithDecryption() {
@@ -3360,7 +4072,7 @@ export namespace SSM {
     }
 
     // path - computed: false, optional: false, required: true
-    private _path: string;
+    private _path?: string; 
     public get path() {
       return this.getStringAttribute('path');
     }
@@ -3383,11 +4095,11 @@ export namespace SSM {
     }
 
     // with_decryption - computed: false, optional: true, required: false
-    private _withDecryption?: boolean | cdktf.IResolvable;
+    private _withDecryption?: boolean | cdktf.IResolvable | undefined; 
     public get withDecryption() {
-      return this.getBooleanAttribute('with_decryption');
+      return this.getBooleanAttribute('with_decryption') as any;
     }
-    public set withDecryption(value: boolean | cdktf.IResolvable ) {
+    public set withDecryption(value: boolean | cdktf.IResolvable | undefined) {
       this._withDecryption = value;
     }
     public resetWithDecryption() {
@@ -3471,11 +4183,11 @@ export namespace SSM {
     // ==========
 
     // default_baseline - computed: false, optional: true, required: false
-    private _defaultBaseline?: boolean | cdktf.IResolvable;
+    private _defaultBaseline?: boolean | cdktf.IResolvable | undefined; 
     public get defaultBaseline() {
-      return this.getBooleanAttribute('default_baseline');
+      return this.getBooleanAttribute('default_baseline') as any;
     }
-    public set defaultBaseline(value: boolean | cdktf.IResolvable ) {
+    public set defaultBaseline(value: boolean | cdktf.IResolvable | undefined) {
       this._defaultBaseline = value;
     }
     public resetDefaultBaseline() {
@@ -3502,11 +4214,11 @@ export namespace SSM {
     }
 
     // name_prefix - computed: false, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string ) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -3518,11 +4230,11 @@ export namespace SSM {
     }
 
     // operating_system - computed: false, optional: true, required: false
-    private _operatingSystem?: string;
+    private _operatingSystem?: string | undefined; 
     public get operatingSystem() {
       return this.getStringAttribute('operating_system');
     }
-    public set operatingSystem(value: string ) {
+    public set operatingSystem(value: string | undefined) {
       this._operatingSystem = value;
     }
     public resetOperatingSystem() {
@@ -3534,7 +4246,7 @@ export namespace SSM {
     }
 
     // owner - computed: false, optional: false, required: true
-    private _owner: string;
+    private _owner?: string; 
     public get owner() {
       return this.getStringAttribute('owner');
     }

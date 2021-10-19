@@ -69,7 +69,7 @@ export namespace Pinpoint {
     // ==========
 
     // application_id - computed: false, optional: false, required: true
-    private _applicationId: string;
+    private _applicationId?: string; 
     public get applicationId() {
       return this.getStringAttribute('application_id');
     }
@@ -82,7 +82,7 @@ export namespace Pinpoint {
     }
 
     // client_id - computed: false, optional: false, required: true
-    private _clientId: string;
+    private _clientId?: string; 
     public get clientId() {
       return this.getStringAttribute('client_id');
     }
@@ -95,7 +95,7 @@ export namespace Pinpoint {
     }
 
     // client_secret - computed: false, optional: false, required: true
-    private _clientSecret: string;
+    private _clientSecret?: string; 
     public get clientSecret() {
       return this.getStringAttribute('client_secret');
     }
@@ -108,11 +108,11 @@ export namespace Pinpoint {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -228,7 +228,7 @@ export namespace Pinpoint {
     // ==========
 
     // application_id - computed: false, optional: false, required: true
-    private _applicationId: string;
+    private _applicationId?: string; 
     public get applicationId() {
       return this.getStringAttribute('application_id');
     }
@@ -241,11 +241,11 @@ export namespace Pinpoint {
     }
 
     // bundle_id - computed: false, optional: true, required: false
-    private _bundleId?: string;
+    private _bundleId?: string | undefined; 
     public get bundleId() {
       return this.getStringAttribute('bundle_id');
     }
-    public set bundleId(value: string ) {
+    public set bundleId(value: string | undefined) {
       this._bundleId = value;
     }
     public resetBundleId() {
@@ -257,11 +257,11 @@ export namespace Pinpoint {
     }
 
     // certificate - computed: false, optional: true, required: false
-    private _certificate?: string;
+    private _certificate?: string | undefined; 
     public get certificate() {
       return this.getStringAttribute('certificate');
     }
-    public set certificate(value: string ) {
+    public set certificate(value: string | undefined) {
       this._certificate = value;
     }
     public resetCertificate() {
@@ -273,11 +273,11 @@ export namespace Pinpoint {
     }
 
     // default_authentication_method - computed: false, optional: true, required: false
-    private _defaultAuthenticationMethod?: string;
+    private _defaultAuthenticationMethod?: string | undefined; 
     public get defaultAuthenticationMethod() {
       return this.getStringAttribute('default_authentication_method');
     }
-    public set defaultAuthenticationMethod(value: string ) {
+    public set defaultAuthenticationMethod(value: string | undefined) {
       this._defaultAuthenticationMethod = value;
     }
     public resetDefaultAuthenticationMethod() {
@@ -289,11 +289,11 @@ export namespace Pinpoint {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -310,11 +310,11 @@ export namespace Pinpoint {
     }
 
     // private_key - computed: false, optional: true, required: false
-    private _privateKey?: string;
+    private _privateKey?: string | undefined; 
     public get privateKey() {
       return this.getStringAttribute('private_key');
     }
-    public set privateKey(value: string ) {
+    public set privateKey(value: string | undefined) {
       this._privateKey = value;
     }
     public resetPrivateKey() {
@@ -326,11 +326,11 @@ export namespace Pinpoint {
     }
 
     // team_id - computed: false, optional: true, required: false
-    private _teamId?: string;
+    private _teamId?: string | undefined; 
     public get teamId() {
       return this.getStringAttribute('team_id');
     }
-    public set teamId(value: string ) {
+    public set teamId(value: string | undefined) {
       this._teamId = value;
     }
     public resetTeamId() {
@@ -342,11 +342,11 @@ export namespace Pinpoint {
     }
 
     // token_key - computed: false, optional: true, required: false
-    private _tokenKey?: string;
+    private _tokenKey?: string | undefined; 
     public get tokenKey() {
       return this.getStringAttribute('token_key');
     }
-    public set tokenKey(value: string ) {
+    public set tokenKey(value: string | undefined) {
       this._tokenKey = value;
     }
     public resetTokenKey() {
@@ -358,11 +358,11 @@ export namespace Pinpoint {
     }
 
     // token_key_id - computed: false, optional: true, required: false
-    private _tokenKeyId?: string;
+    private _tokenKeyId?: string | undefined; 
     public get tokenKeyId() {
       return this.getStringAttribute('token_key_id');
     }
-    public set tokenKeyId(value: string ) {
+    public set tokenKeyId(value: string | undefined) {
       this._tokenKeyId = value;
     }
     public resetTokenKeyId() {
@@ -478,7 +478,7 @@ export namespace Pinpoint {
     // ==========
 
     // application_id - computed: false, optional: false, required: true
-    private _applicationId: string;
+    private _applicationId?: string; 
     public get applicationId() {
       return this.getStringAttribute('application_id');
     }
@@ -491,11 +491,11 @@ export namespace Pinpoint {
     }
 
     // bundle_id - computed: false, optional: true, required: false
-    private _bundleId?: string;
+    private _bundleId?: string | undefined; 
     public get bundleId() {
       return this.getStringAttribute('bundle_id');
     }
-    public set bundleId(value: string ) {
+    public set bundleId(value: string | undefined) {
       this._bundleId = value;
     }
     public resetBundleId() {
@@ -507,11 +507,11 @@ export namespace Pinpoint {
     }
 
     // certificate - computed: false, optional: true, required: false
-    private _certificate?: string;
+    private _certificate?: string | undefined; 
     public get certificate() {
       return this.getStringAttribute('certificate');
     }
-    public set certificate(value: string ) {
+    public set certificate(value: string | undefined) {
       this._certificate = value;
     }
     public resetCertificate() {
@@ -523,11 +523,11 @@ export namespace Pinpoint {
     }
 
     // default_authentication_method - computed: false, optional: true, required: false
-    private _defaultAuthenticationMethod?: string;
+    private _defaultAuthenticationMethod?: string | undefined; 
     public get defaultAuthenticationMethod() {
       return this.getStringAttribute('default_authentication_method');
     }
-    public set defaultAuthenticationMethod(value: string ) {
+    public set defaultAuthenticationMethod(value: string | undefined) {
       this._defaultAuthenticationMethod = value;
     }
     public resetDefaultAuthenticationMethod() {
@@ -539,11 +539,11 @@ export namespace Pinpoint {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -560,11 +560,11 @@ export namespace Pinpoint {
     }
 
     // private_key - computed: false, optional: true, required: false
-    private _privateKey?: string;
+    private _privateKey?: string | undefined; 
     public get privateKey() {
       return this.getStringAttribute('private_key');
     }
-    public set privateKey(value: string ) {
+    public set privateKey(value: string | undefined) {
       this._privateKey = value;
     }
     public resetPrivateKey() {
@@ -576,11 +576,11 @@ export namespace Pinpoint {
     }
 
     // team_id - computed: false, optional: true, required: false
-    private _teamId?: string;
+    private _teamId?: string | undefined; 
     public get teamId() {
       return this.getStringAttribute('team_id');
     }
-    public set teamId(value: string ) {
+    public set teamId(value: string | undefined) {
       this._teamId = value;
     }
     public resetTeamId() {
@@ -592,11 +592,11 @@ export namespace Pinpoint {
     }
 
     // token_key - computed: false, optional: true, required: false
-    private _tokenKey?: string;
+    private _tokenKey?: string | undefined; 
     public get tokenKey() {
       return this.getStringAttribute('token_key');
     }
-    public set tokenKey(value: string ) {
+    public set tokenKey(value: string | undefined) {
       this._tokenKey = value;
     }
     public resetTokenKey() {
@@ -608,11 +608,11 @@ export namespace Pinpoint {
     }
 
     // token_key_id - computed: false, optional: true, required: false
-    private _tokenKeyId?: string;
+    private _tokenKeyId?: string | undefined; 
     public get tokenKeyId() {
       return this.getStringAttribute('token_key_id');
     }
-    public set tokenKeyId(value: string ) {
+    public set tokenKeyId(value: string | undefined) {
       this._tokenKeyId = value;
     }
     public resetTokenKeyId() {
@@ -728,7 +728,7 @@ export namespace Pinpoint {
     // ==========
 
     // application_id - computed: false, optional: false, required: true
-    private _applicationId: string;
+    private _applicationId?: string; 
     public get applicationId() {
       return this.getStringAttribute('application_id');
     }
@@ -741,11 +741,11 @@ export namespace Pinpoint {
     }
 
     // bundle_id - computed: false, optional: true, required: false
-    private _bundleId?: string;
+    private _bundleId?: string | undefined; 
     public get bundleId() {
       return this.getStringAttribute('bundle_id');
     }
-    public set bundleId(value: string ) {
+    public set bundleId(value: string | undefined) {
       this._bundleId = value;
     }
     public resetBundleId() {
@@ -757,11 +757,11 @@ export namespace Pinpoint {
     }
 
     // certificate - computed: false, optional: true, required: false
-    private _certificate?: string;
+    private _certificate?: string | undefined; 
     public get certificate() {
       return this.getStringAttribute('certificate');
     }
-    public set certificate(value: string ) {
+    public set certificate(value: string | undefined) {
       this._certificate = value;
     }
     public resetCertificate() {
@@ -773,11 +773,11 @@ export namespace Pinpoint {
     }
 
     // default_authentication_method - computed: false, optional: true, required: false
-    private _defaultAuthenticationMethod?: string;
+    private _defaultAuthenticationMethod?: string | undefined; 
     public get defaultAuthenticationMethod() {
       return this.getStringAttribute('default_authentication_method');
     }
-    public set defaultAuthenticationMethod(value: string ) {
+    public set defaultAuthenticationMethod(value: string | undefined) {
       this._defaultAuthenticationMethod = value;
     }
     public resetDefaultAuthenticationMethod() {
@@ -789,11 +789,11 @@ export namespace Pinpoint {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -810,11 +810,11 @@ export namespace Pinpoint {
     }
 
     // private_key - computed: false, optional: true, required: false
-    private _privateKey?: string;
+    private _privateKey?: string | undefined; 
     public get privateKey() {
       return this.getStringAttribute('private_key');
     }
-    public set privateKey(value: string ) {
+    public set privateKey(value: string | undefined) {
       this._privateKey = value;
     }
     public resetPrivateKey() {
@@ -826,11 +826,11 @@ export namespace Pinpoint {
     }
 
     // team_id - computed: false, optional: true, required: false
-    private _teamId?: string;
+    private _teamId?: string | undefined; 
     public get teamId() {
       return this.getStringAttribute('team_id');
     }
-    public set teamId(value: string ) {
+    public set teamId(value: string | undefined) {
       this._teamId = value;
     }
     public resetTeamId() {
@@ -842,11 +842,11 @@ export namespace Pinpoint {
     }
 
     // token_key - computed: false, optional: true, required: false
-    private _tokenKey?: string;
+    private _tokenKey?: string | undefined; 
     public get tokenKey() {
       return this.getStringAttribute('token_key');
     }
-    public set tokenKey(value: string ) {
+    public set tokenKey(value: string | undefined) {
       this._tokenKey = value;
     }
     public resetTokenKey() {
@@ -858,11 +858,11 @@ export namespace Pinpoint {
     }
 
     // token_key_id - computed: false, optional: true, required: false
-    private _tokenKeyId?: string;
+    private _tokenKeyId?: string | undefined; 
     public get tokenKeyId() {
       return this.getStringAttribute('token_key_id');
     }
-    public set tokenKeyId(value: string ) {
+    public set tokenKeyId(value: string | undefined) {
       this._tokenKeyId = value;
     }
     public resetTokenKeyId() {
@@ -978,7 +978,7 @@ export namespace Pinpoint {
     // ==========
 
     // application_id - computed: false, optional: false, required: true
-    private _applicationId: string;
+    private _applicationId?: string; 
     public get applicationId() {
       return this.getStringAttribute('application_id');
     }
@@ -991,11 +991,11 @@ export namespace Pinpoint {
     }
 
     // bundle_id - computed: false, optional: true, required: false
-    private _bundleId?: string;
+    private _bundleId?: string | undefined; 
     public get bundleId() {
       return this.getStringAttribute('bundle_id');
     }
-    public set bundleId(value: string ) {
+    public set bundleId(value: string | undefined) {
       this._bundleId = value;
     }
     public resetBundleId() {
@@ -1007,11 +1007,11 @@ export namespace Pinpoint {
     }
 
     // certificate - computed: false, optional: true, required: false
-    private _certificate?: string;
+    private _certificate?: string | undefined; 
     public get certificate() {
       return this.getStringAttribute('certificate');
     }
-    public set certificate(value: string ) {
+    public set certificate(value: string | undefined) {
       this._certificate = value;
     }
     public resetCertificate() {
@@ -1023,11 +1023,11 @@ export namespace Pinpoint {
     }
 
     // default_authentication_method - computed: false, optional: true, required: false
-    private _defaultAuthenticationMethod?: string;
+    private _defaultAuthenticationMethod?: string | undefined; 
     public get defaultAuthenticationMethod() {
       return this.getStringAttribute('default_authentication_method');
     }
-    public set defaultAuthenticationMethod(value: string ) {
+    public set defaultAuthenticationMethod(value: string | undefined) {
       this._defaultAuthenticationMethod = value;
     }
     public resetDefaultAuthenticationMethod() {
@@ -1039,11 +1039,11 @@ export namespace Pinpoint {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -1060,11 +1060,11 @@ export namespace Pinpoint {
     }
 
     // private_key - computed: false, optional: true, required: false
-    private _privateKey?: string;
+    private _privateKey?: string | undefined; 
     public get privateKey() {
       return this.getStringAttribute('private_key');
     }
-    public set privateKey(value: string ) {
+    public set privateKey(value: string | undefined) {
       this._privateKey = value;
     }
     public resetPrivateKey() {
@@ -1076,11 +1076,11 @@ export namespace Pinpoint {
     }
 
     // team_id - computed: false, optional: true, required: false
-    private _teamId?: string;
+    private _teamId?: string | undefined; 
     public get teamId() {
       return this.getStringAttribute('team_id');
     }
-    public set teamId(value: string ) {
+    public set teamId(value: string | undefined) {
       this._teamId = value;
     }
     public resetTeamId() {
@@ -1092,11 +1092,11 @@ export namespace Pinpoint {
     }
 
     // token_key - computed: false, optional: true, required: false
-    private _tokenKey?: string;
+    private _tokenKey?: string | undefined; 
     public get tokenKey() {
       return this.getStringAttribute('token_key');
     }
-    public set tokenKey(value: string ) {
+    public set tokenKey(value: string | undefined) {
       this._tokenKey = value;
     }
     public resetTokenKey() {
@@ -1108,11 +1108,11 @@ export namespace Pinpoint {
     }
 
     // token_key_id - computed: false, optional: true, required: false
-    private _tokenKeyId?: string;
+    private _tokenKeyId?: string | undefined; 
     public get tokenKeyId() {
       return this.getStringAttribute('token_key_id');
     }
-    public set tokenKeyId(value: string ) {
+    public set tokenKeyId(value: string | undefined) {
       this._tokenKeyId = value;
     }
     public resetTokenKeyId() {
@@ -1163,19 +1163,19 @@ export namespace Pinpoint {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#campaign_hook PinpointApp#campaign_hook}
     */
-    readonly campaignHook?: PinpointAppCampaignHook[];
+    readonly campaignHook?: PinpointAppCampaignHook;
     /**
     * limits block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#limits PinpointApp#limits}
     */
-    readonly limits?: PinpointAppLimits[];
+    readonly limits?: PinpointAppLimits;
     /**
     * quiet_time block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#quiet_time PinpointApp#quiet_time}
     */
-    readonly quietTime?: PinpointAppQuietTime[];
+    readonly quietTime?: PinpointAppQuietTime;
   }
   export interface PinpointAppCampaignHook {
     /**
@@ -1192,8 +1192,11 @@ export namespace Pinpoint {
     readonly webUrl?: string;
   }
 
-  function pinpointAppCampaignHookToTerraform(struct?: PinpointAppCampaignHook): any {
+  function pinpointAppCampaignHookToTerraform(struct?: PinpointAppCampaignHookOutputReference | PinpointAppCampaignHook): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       lambda_function_name: cdktf.stringToTerraform(struct!.lambdaFunctionName),
       mode: cdktf.stringToTerraform(struct!.mode),
@@ -1201,6 +1204,64 @@ export namespace Pinpoint {
     }
   }
 
+  export class PinpointAppCampaignHookOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // lambda_function_name - computed: false, optional: true, required: false
+    private _lambdaFunctionName?: string | undefined; 
+    public get lambdaFunctionName() {
+      return this.getStringAttribute('lambda_function_name');
+    }
+    public set lambdaFunctionName(value: string | undefined) {
+      this._lambdaFunctionName = value;
+    }
+    public resetLambdaFunctionName() {
+      this._lambdaFunctionName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get lambdaFunctionNameInput() {
+      return this._lambdaFunctionName
+    }
+
+    // mode - computed: false, optional: true, required: false
+    private _mode?: string | undefined; 
+    public get mode() {
+      return this.getStringAttribute('mode');
+    }
+    public set mode(value: string | undefined) {
+      this._mode = value;
+    }
+    public resetMode() {
+      this._mode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get modeInput() {
+      return this._mode
+    }
+
+    // web_url - computed: false, optional: true, required: false
+    private _webUrl?: string | undefined; 
+    public get webUrl() {
+      return this.getStringAttribute('web_url');
+    }
+    public set webUrl(value: string | undefined) {
+      this._webUrl = value;
+    }
+    public resetWebUrl() {
+      this._webUrl = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get webUrlInput() {
+      return this._webUrl
+    }
+  }
   export interface PinpointAppLimits {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#daily PinpointApp#daily}
@@ -1220,8 +1281,11 @@ export namespace Pinpoint {
     readonly total?: number;
   }
 
-  function pinpointAppLimitsToTerraform(struct?: PinpointAppLimits): any {
+  function pinpointAppLimitsToTerraform(struct?: PinpointAppLimitsOutputReference | PinpointAppLimits): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       daily: cdktf.numberToTerraform(struct!.daily),
       maximum_duration: cdktf.numberToTerraform(struct!.maximumDuration),
@@ -1230,6 +1294,80 @@ export namespace Pinpoint {
     }
   }
 
+  export class PinpointAppLimitsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // daily - computed: false, optional: true, required: false
+    private _daily?: number | undefined; 
+    public get daily() {
+      return this.getNumberAttribute('daily');
+    }
+    public set daily(value: number | undefined) {
+      this._daily = value;
+    }
+    public resetDaily() {
+      this._daily = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get dailyInput() {
+      return this._daily
+    }
+
+    // maximum_duration - computed: false, optional: true, required: false
+    private _maximumDuration?: number | undefined; 
+    public get maximumDuration() {
+      return this.getNumberAttribute('maximum_duration');
+    }
+    public set maximumDuration(value: number | undefined) {
+      this._maximumDuration = value;
+    }
+    public resetMaximumDuration() {
+      this._maximumDuration = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maximumDurationInput() {
+      return this._maximumDuration
+    }
+
+    // messages_per_second - computed: false, optional: true, required: false
+    private _messagesPerSecond?: number | undefined; 
+    public get messagesPerSecond() {
+      return this.getNumberAttribute('messages_per_second');
+    }
+    public set messagesPerSecond(value: number | undefined) {
+      this._messagesPerSecond = value;
+    }
+    public resetMessagesPerSecond() {
+      this._messagesPerSecond = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get messagesPerSecondInput() {
+      return this._messagesPerSecond
+    }
+
+    // total - computed: false, optional: true, required: false
+    private _total?: number | undefined; 
+    public get total() {
+      return this.getNumberAttribute('total');
+    }
+    public set total(value: number | undefined) {
+      this._total = value;
+    }
+    public resetTotal() {
+      this._total = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get totalInput() {
+      return this._total
+    }
+  }
   export interface PinpointAppQuietTime {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html#end PinpointApp#end}
@@ -1241,14 +1379,59 @@ export namespace Pinpoint {
     readonly start?: string;
   }
 
-  function pinpointAppQuietTimeToTerraform(struct?: PinpointAppQuietTime): any {
+  function pinpointAppQuietTimeToTerraform(struct?: PinpointAppQuietTimeOutputReference | PinpointAppQuietTime): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       end: cdktf.stringToTerraform(struct!.end),
       start: cdktf.stringToTerraform(struct!.start),
     }
   }
 
+  export class PinpointAppQuietTimeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // end - computed: false, optional: true, required: false
+    private _end?: string | undefined; 
+    public get end() {
+      return this.getStringAttribute('end');
+    }
+    public set end(value: string | undefined) {
+      this._end = value;
+    }
+    public resetEnd() {
+      this._end = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get endInput() {
+      return this._end
+    }
+
+    // start - computed: false, optional: true, required: false
+    private _start?: string | undefined; 
+    public get start() {
+      return this.getStringAttribute('start');
+    }
+    public set start(value: string | undefined) {
+      this._start = value;
+    }
+    public resetStart() {
+      this._start = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get startInput() {
+      return this._start
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html aws_pinpoint_app}
@@ -1311,11 +1494,11 @@ export namespace Pinpoint {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1327,11 +1510,11 @@ export namespace Pinpoint {
     }
 
     // name_prefix - computed: false, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string ) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -1343,11 +1526,12 @@ export namespace Pinpoint {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1359,11 +1543,12 @@ export namespace Pinpoint {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1375,11 +1560,12 @@ export namespace Pinpoint {
     }
 
     // campaign_hook - computed: false, optional: true, required: false
-    private _campaignHook?: PinpointAppCampaignHook[];
+    private _campaignHook?: PinpointAppCampaignHook | undefined; 
+    private __campaignHookOutput = new PinpointAppCampaignHookOutputReference(this as any, "campaign_hook", true);
     public get campaignHook() {
-      return this.interpolationForAttribute('campaign_hook') as any;
+      return this.__campaignHookOutput;
     }
-    public set campaignHook(value: PinpointAppCampaignHook[] ) {
+    public putCampaignHook(value: PinpointAppCampaignHook | undefined) {
       this._campaignHook = value;
     }
     public resetCampaignHook() {
@@ -1391,11 +1577,12 @@ export namespace Pinpoint {
     }
 
     // limits - computed: false, optional: true, required: false
-    private _limits?: PinpointAppLimits[];
+    private _limits?: PinpointAppLimits | undefined; 
+    private __limitsOutput = new PinpointAppLimitsOutputReference(this as any, "limits", true);
     public get limits() {
-      return this.interpolationForAttribute('limits') as any;
+      return this.__limitsOutput;
     }
-    public set limits(value: PinpointAppLimits[] ) {
+    public putLimits(value: PinpointAppLimits | undefined) {
       this._limits = value;
     }
     public resetLimits() {
@@ -1407,11 +1594,12 @@ export namespace Pinpoint {
     }
 
     // quiet_time - computed: false, optional: true, required: false
-    private _quietTime?: PinpointAppQuietTime[];
+    private _quietTime?: PinpointAppQuietTime | undefined; 
+    private __quietTimeOutput = new PinpointAppQuietTimeOutputReference(this as any, "quiet_time", true);
     public get quietTime() {
-      return this.interpolationForAttribute('quiet_time') as any;
+      return this.__quietTimeOutput;
     }
-    public set quietTime(value: PinpointAppQuietTime[] ) {
+    public putQuietTime(value: PinpointAppQuietTime | undefined) {
       this._quietTime = value;
     }
     public resetQuietTime() {
@@ -1432,9 +1620,9 @@ export namespace Pinpoint {
         name_prefix: cdktf.stringToTerraform(this._namePrefix),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        campaign_hook: cdktf.listMapper(pinpointAppCampaignHookToTerraform)(this._campaignHook),
-        limits: cdktf.listMapper(pinpointAppLimitsToTerraform)(this._limits),
-        quiet_time: cdktf.listMapper(pinpointAppQuietTimeToTerraform)(this._quietTime),
+        campaign_hook: pinpointAppCampaignHookToTerraform(this._campaignHook),
+        limits: pinpointAppLimitsToTerraform(this._limits),
+        quiet_time: pinpointAppQuietTimeToTerraform(this._quietTime),
       };
     }
   }
@@ -1500,7 +1688,7 @@ export namespace Pinpoint {
     // ==========
 
     // api_key - computed: false, optional: false, required: true
-    private _apiKey: string;
+    private _apiKey?: string; 
     public get apiKey() {
       return this.getStringAttribute('api_key');
     }
@@ -1513,7 +1701,7 @@ export namespace Pinpoint {
     }
 
     // application_id - computed: false, optional: false, required: true
-    private _applicationId: string;
+    private _applicationId?: string; 
     public get applicationId() {
       return this.getStringAttribute('application_id');
     }
@@ -1526,11 +1714,11 @@ export namespace Pinpoint {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -1547,7 +1735,7 @@ export namespace Pinpoint {
     }
 
     // secret_key - computed: false, optional: false, required: true
-    private _secretKey: string;
+    private _secretKey?: string; 
     public get secretKey() {
       return this.getStringAttribute('secret_key');
     }
@@ -1644,7 +1832,7 @@ export namespace Pinpoint {
     // ==========
 
     // application_id - computed: false, optional: false, required: true
-    private _applicationId: string;
+    private _applicationId?: string; 
     public get applicationId() {
       return this.getStringAttribute('application_id');
     }
@@ -1657,11 +1845,11 @@ export namespace Pinpoint {
     }
 
     // configuration_set - computed: false, optional: true, required: false
-    private _configurationSet?: string;
+    private _configurationSet?: string | undefined; 
     public get configurationSet() {
       return this.getStringAttribute('configuration_set');
     }
-    public set configurationSet(value: string ) {
+    public set configurationSet(value: string | undefined) {
       this._configurationSet = value;
     }
     public resetConfigurationSet() {
@@ -1673,11 +1861,11 @@ export namespace Pinpoint {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -1689,7 +1877,7 @@ export namespace Pinpoint {
     }
 
     // from_address - computed: false, optional: false, required: true
-    private _fromAddress: string;
+    private _fromAddress?: string; 
     public get fromAddress() {
       return this.getStringAttribute('from_address');
     }
@@ -1707,7 +1895,7 @@ export namespace Pinpoint {
     }
 
     // identity - computed: false, optional: false, required: true
-    private _identity: string;
+    private _identity?: string; 
     public get identity() {
       return this.getStringAttribute('identity');
     }
@@ -1725,11 +1913,11 @@ export namespace Pinpoint {
     }
 
     // role_arn - computed: false, optional: true, required: false
-    private _roleArn?: string;
+    private _roleArn?: string | undefined; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
-    public set roleArn(value: string ) {
+    public set roleArn(value: string | undefined) {
       this._roleArn = value;
     }
     public resetRoleArn() {
@@ -1812,7 +2000,7 @@ export namespace Pinpoint {
     // ==========
 
     // application_id - computed: false, optional: false, required: true
-    private _applicationId: string;
+    private _applicationId?: string; 
     public get applicationId() {
       return this.getStringAttribute('application_id');
     }
@@ -1825,7 +2013,7 @@ export namespace Pinpoint {
     }
 
     // destination_stream_arn - computed: false, optional: false, required: true
-    private _destinationStreamArn: string;
+    private _destinationStreamArn?: string; 
     public get destinationStreamArn() {
       return this.getStringAttribute('destination_stream_arn');
     }
@@ -1843,7 +2031,7 @@ export namespace Pinpoint {
     }
 
     // role_arn - computed: false, optional: false, required: true
-    private _roleArn: string;
+    private _roleArn?: string; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
@@ -1924,7 +2112,7 @@ export namespace Pinpoint {
     // ==========
 
     // api_key - computed: false, optional: false, required: true
-    private _apiKey: string;
+    private _apiKey?: string; 
     public get apiKey() {
       return this.getStringAttribute('api_key');
     }
@@ -1937,7 +2125,7 @@ export namespace Pinpoint {
     }
 
     // application_id - computed: false, optional: false, required: true
-    private _applicationId: string;
+    private _applicationId?: string; 
     public get applicationId() {
       return this.getStringAttribute('application_id');
     }
@@ -1950,11 +2138,11 @@ export namespace Pinpoint {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -2044,7 +2232,7 @@ export namespace Pinpoint {
     // ==========
 
     // application_id - computed: false, optional: false, required: true
-    private _applicationId: string;
+    private _applicationId?: string; 
     public get applicationId() {
       return this.getStringAttribute('application_id');
     }
@@ -2057,11 +2245,11 @@ export namespace Pinpoint {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -2083,11 +2271,11 @@ export namespace Pinpoint {
     }
 
     // sender_id - computed: false, optional: true, required: false
-    private _senderId?: string;
+    private _senderId?: string | undefined; 
     public get senderId() {
       return this.getStringAttribute('sender_id');
     }
-    public set senderId(value: string ) {
+    public set senderId(value: string | undefined) {
       this._senderId = value;
     }
     public resetSenderId() {
@@ -2099,11 +2287,11 @@ export namespace Pinpoint {
     }
 
     // short_code - computed: false, optional: true, required: false
-    private _shortCode?: string;
+    private _shortCode?: string | undefined; 
     public get shortCode() {
       return this.getStringAttribute('short_code');
     }
-    public set shortCode(value: string ) {
+    public set shortCode(value: string | undefined) {
       this._shortCode = value;
     }
     public resetShortCode() {

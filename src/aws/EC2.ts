@@ -112,6 +112,9 @@ export namespace EC2 {
 
   function amiEbsBlockDeviceToTerraform(struct?: AmiEbsBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete_on_termination: cdktf.booleanToTerraform(struct!.deleteOnTermination),
       device_name: cdktf.stringToTerraform(struct!.deviceName),
@@ -137,6 +140,9 @@ export namespace EC2 {
 
   function amiEphemeralBlockDeviceToTerraform(struct?: AmiEphemeralBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       device_name: cdktf.stringToTerraform(struct!.deviceName),
       virtual_name: cdktf.stringToTerraform(struct!.virtualName),
@@ -158,8 +164,11 @@ export namespace EC2 {
     readonly update?: string;
   }
 
-  function amiTimeoutsToTerraform(struct?: AmiTimeouts): any {
+  function amiTimeoutsToTerraform(struct?: AmiTimeoutsOutputReference | AmiTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -167,6 +176,64 @@ export namespace EC2 {
     }
   }
 
+  export class AmiTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/ami.html aws_ami}
@@ -222,11 +289,11 @@ export namespace EC2 {
     // ==========
 
     // architecture - computed: false, optional: true, required: false
-    private _architecture?: string;
+    private _architecture?: string | undefined; 
     public get architecture() {
       return this.getStringAttribute('architecture');
     }
-    public set architecture(value: string ) {
+    public set architecture(value: string | undefined) {
       this._architecture = value;
     }
     public resetArchitecture() {
@@ -243,11 +310,11 @@ export namespace EC2 {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -259,11 +326,11 @@ export namespace EC2 {
     }
 
     // ena_support - computed: false, optional: true, required: false
-    private _enaSupport?: boolean | cdktf.IResolvable;
+    private _enaSupport?: boolean | cdktf.IResolvable | undefined; 
     public get enaSupport() {
-      return this.getBooleanAttribute('ena_support');
+      return this.getBooleanAttribute('ena_support') as any;
     }
-    public set enaSupport(value: boolean | cdktf.IResolvable ) {
+    public set enaSupport(value: boolean | cdktf.IResolvable | undefined) {
       this._enaSupport = value;
     }
     public resetEnaSupport() {
@@ -285,11 +352,11 @@ export namespace EC2 {
     }
 
     // image_location - computed: true, optional: true, required: false
-    private _imageLocation?: string;
+    private _imageLocation?: string | undefined; 
     public get imageLocation() {
       return this.getStringAttribute('image_location');
     }
-    public set imageLocation(value: string) {
+    public set imageLocation(value: string | undefined) {
       this._imageLocation = value;
     }
     public resetImageLocation() {
@@ -311,11 +378,11 @@ export namespace EC2 {
     }
 
     // kernel_id - computed: false, optional: true, required: false
-    private _kernelId?: string;
+    private _kernelId?: string | undefined; 
     public get kernelId() {
       return this.getStringAttribute('kernel_id');
     }
-    public set kernelId(value: string ) {
+    public set kernelId(value: string | undefined) {
       this._kernelId = value;
     }
     public resetKernelId() {
@@ -328,11 +395,11 @@ export namespace EC2 {
 
     // manage_ebs_snapshots - computed: true, optional: false, required: false
     public get manageEbsSnapshots() {
-      return this.getBooleanAttribute('manage_ebs_snapshots');
+      return this.getBooleanAttribute('manage_ebs_snapshots') as any;
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -361,15 +428,15 @@ export namespace EC2 {
 
     // public - computed: true, optional: false, required: false
     public get public() {
-      return this.getBooleanAttribute('public');
+      return this.getBooleanAttribute('public') as any;
     }
 
     // ramdisk_id - computed: false, optional: true, required: false
-    private _ramdiskId?: string;
+    private _ramdiskId?: string | undefined; 
     public get ramdiskId() {
       return this.getStringAttribute('ramdisk_id');
     }
-    public set ramdiskId(value: string ) {
+    public set ramdiskId(value: string | undefined) {
       this._ramdiskId = value;
     }
     public resetRamdiskId() {
@@ -381,11 +448,11 @@ export namespace EC2 {
     }
 
     // root_device_name - computed: false, optional: true, required: false
-    private _rootDeviceName?: string;
+    private _rootDeviceName?: string | undefined; 
     public get rootDeviceName() {
       return this.getStringAttribute('root_device_name');
     }
-    public set rootDeviceName(value: string ) {
+    public set rootDeviceName(value: string | undefined) {
       this._rootDeviceName = value;
     }
     public resetRootDeviceName() {
@@ -402,11 +469,11 @@ export namespace EC2 {
     }
 
     // sriov_net_support - computed: false, optional: true, required: false
-    private _sriovNetSupport?: string;
+    private _sriovNetSupport?: string | undefined; 
     public get sriovNetSupport() {
       return this.getStringAttribute('sriov_net_support');
     }
-    public set sriovNetSupport(value: string ) {
+    public set sriovNetSupport(value: string | undefined) {
       this._sriovNetSupport = value;
     }
     public resetSriovNetSupport() {
@@ -418,11 +485,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -434,11 +502,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -455,11 +524,11 @@ export namespace EC2 {
     }
 
     // virtualization_type - computed: false, optional: true, required: false
-    private _virtualizationType?: string;
+    private _virtualizationType?: string | undefined; 
     public get virtualizationType() {
       return this.getStringAttribute('virtualization_type');
     }
-    public set virtualizationType(value: string ) {
+    public set virtualizationType(value: string | undefined) {
       this._virtualizationType = value;
     }
     public resetVirtualizationType() {
@@ -471,11 +540,12 @@ export namespace EC2 {
     }
 
     // ebs_block_device - computed: false, optional: true, required: false
-    private _ebsBlockDevice?: AmiEbsBlockDevice[];
+    private _ebsBlockDevice?: AmiEbsBlockDevice[] | undefined; 
     public get ebsBlockDevice() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs_block_device') as any;
     }
-    public set ebsBlockDevice(value: AmiEbsBlockDevice[] ) {
+    public set ebsBlockDevice(value: AmiEbsBlockDevice[] | undefined) {
       this._ebsBlockDevice = value;
     }
     public resetEbsBlockDevice() {
@@ -487,11 +557,12 @@ export namespace EC2 {
     }
 
     // ephemeral_block_device - computed: false, optional: true, required: false
-    private _ephemeralBlockDevice?: AmiEphemeralBlockDevice[];
+    private _ephemeralBlockDevice?: AmiEphemeralBlockDevice[] | undefined; 
     public get ephemeralBlockDevice() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ephemeral_block_device') as any;
     }
-    public set ephemeralBlockDevice(value: AmiEphemeralBlockDevice[] ) {
+    public set ephemeralBlockDevice(value: AmiEphemeralBlockDevice[] | undefined) {
       this._ephemeralBlockDevice = value;
     }
     public resetEphemeralBlockDevice() {
@@ -503,11 +574,12 @@ export namespace EC2 {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: AmiTimeouts;
+    private _timeouts?: AmiTimeouts | undefined; 
+    private __timeoutsOutput = new AmiTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: AmiTimeouts ) {
+    public putTimeouts(value: AmiTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -603,6 +675,9 @@ export namespace EC2 {
 
   function amiCopyEbsBlockDeviceToTerraform(struct?: AmiCopyEbsBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
     }
   }
@@ -612,6 +687,9 @@ export namespace EC2 {
 
   function amiCopyEphemeralBlockDeviceToTerraform(struct?: AmiCopyEphemeralBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
     }
   }
@@ -631,8 +709,11 @@ export namespace EC2 {
     readonly update?: string;
   }
 
-  function amiCopyTimeoutsToTerraform(struct?: AmiCopyTimeouts): any {
+  function amiCopyTimeoutsToTerraform(struct?: AmiCopyTimeoutsOutputReference | AmiCopyTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -640,6 +721,64 @@ export namespace EC2 {
     }
   }
 
+  export class AmiCopyTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/ami_copy.html aws_ami_copy}
@@ -702,11 +841,11 @@ export namespace EC2 {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -718,11 +857,11 @@ export namespace EC2 {
     }
 
     // destination_outpost_arn - computed: false, optional: true, required: false
-    private _destinationOutpostArn?: string;
+    private _destinationOutpostArn?: string | undefined; 
     public get destinationOutpostArn() {
       return this.getStringAttribute('destination_outpost_arn');
     }
-    public set destinationOutpostArn(value: string ) {
+    public set destinationOutpostArn(value: string | undefined) {
       this._destinationOutpostArn = value;
     }
     public resetDestinationOutpostArn() {
@@ -735,15 +874,15 @@ export namespace EC2 {
 
     // ena_support - computed: true, optional: false, required: false
     public get enaSupport() {
-      return this.getBooleanAttribute('ena_support');
+      return this.getBooleanAttribute('ena_support') as any;
     }
 
     // encrypted - computed: false, optional: true, required: false
-    private _encrypted?: boolean | cdktf.IResolvable;
+    private _encrypted?: boolean | cdktf.IResolvable | undefined; 
     public get encrypted() {
-      return this.getBooleanAttribute('encrypted');
+      return this.getBooleanAttribute('encrypted') as any;
     }
-    public set encrypted(value: boolean | cdktf.IResolvable ) {
+    public set encrypted(value: boolean | cdktf.IResolvable | undefined) {
       this._encrypted = value;
     }
     public resetEncrypted() {
@@ -785,11 +924,11 @@ export namespace EC2 {
     }
 
     // kms_key_id - computed: true, optional: true, required: false
-    private _kmsKeyId?: string;
+    private _kmsKeyId?: string | undefined; 
     public get kmsKeyId() {
       return this.getStringAttribute('kms_key_id');
     }
-    public set kmsKeyId(value: string) {
+    public set kmsKeyId(value: string | undefined) {
       this._kmsKeyId = value;
     }
     public resetKmsKeyId() {
@@ -802,11 +941,11 @@ export namespace EC2 {
 
     // manage_ebs_snapshots - computed: true, optional: false, required: false
     public get manageEbsSnapshots() {
-      return this.getBooleanAttribute('manage_ebs_snapshots');
+      return this.getBooleanAttribute('manage_ebs_snapshots') as any;
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -835,7 +974,7 @@ export namespace EC2 {
 
     // public - computed: true, optional: false, required: false
     public get public() {
-      return this.getBooleanAttribute('public');
+      return this.getBooleanAttribute('public') as any;
     }
 
     // ramdisk_id - computed: true, optional: false, required: false
@@ -854,7 +993,7 @@ export namespace EC2 {
     }
 
     // source_ami_id - computed: false, optional: false, required: true
-    private _sourceAmiId: string;
+    private _sourceAmiId?: string; 
     public get sourceAmiId() {
       return this.getStringAttribute('source_ami_id');
     }
@@ -867,7 +1006,7 @@ export namespace EC2 {
     }
 
     // source_ami_region - computed: false, optional: false, required: true
-    private _sourceAmiRegion: string;
+    private _sourceAmiRegion?: string; 
     public get sourceAmiRegion() {
       return this.getStringAttribute('source_ami_region');
     }
@@ -885,11 +1024,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -901,11 +1041,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -927,11 +1068,12 @@ export namespace EC2 {
     }
 
     // ebs_block_device - computed: false, optional: true, required: false
-    private _ebsBlockDevice?: AmiCopyEbsBlockDevice[];
+    private _ebsBlockDevice?: AmiCopyEbsBlockDevice[] | undefined; 
     public get ebsBlockDevice() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs_block_device') as any;
     }
-    public set ebsBlockDevice(value: AmiCopyEbsBlockDevice[] ) {
+    public set ebsBlockDevice(value: AmiCopyEbsBlockDevice[] | undefined) {
       this._ebsBlockDevice = value;
     }
     public resetEbsBlockDevice() {
@@ -943,11 +1085,12 @@ export namespace EC2 {
     }
 
     // ephemeral_block_device - computed: false, optional: true, required: false
-    private _ephemeralBlockDevice?: AmiCopyEphemeralBlockDevice[];
+    private _ephemeralBlockDevice?: AmiCopyEphemeralBlockDevice[] | undefined; 
     public get ephemeralBlockDevice() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ephemeral_block_device') as any;
     }
-    public set ephemeralBlockDevice(value: AmiCopyEphemeralBlockDevice[] ) {
+    public set ephemeralBlockDevice(value: AmiCopyEphemeralBlockDevice[] | undefined) {
       this._ephemeralBlockDevice = value;
     }
     public resetEphemeralBlockDevice() {
@@ -959,11 +1102,12 @@ export namespace EC2 {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: AmiCopyTimeouts;
+    private _timeouts?: AmiCopyTimeouts | undefined; 
+    private __timeoutsOutput = new AmiCopyTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: AmiCopyTimeouts ) {
+    public putTimeouts(value: AmiCopyTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1044,6 +1188,9 @@ export namespace EC2 {
 
   function amiFromInstanceEbsBlockDeviceToTerraform(struct?: AmiFromInstanceEbsBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
     }
   }
@@ -1053,6 +1200,9 @@ export namespace EC2 {
 
   function amiFromInstanceEphemeralBlockDeviceToTerraform(struct?: AmiFromInstanceEphemeralBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
     }
   }
@@ -1072,8 +1222,11 @@ export namespace EC2 {
     readonly update?: string;
   }
 
-  function amiFromInstanceTimeoutsToTerraform(struct?: AmiFromInstanceTimeouts): any {
+  function amiFromInstanceTimeoutsToTerraform(struct?: AmiFromInstanceTimeoutsOutputReference | AmiFromInstanceTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -1081,6 +1234,64 @@ export namespace EC2 {
     }
   }
 
+  export class AmiFromInstanceTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/ami_from_instance.html aws_ami_from_instance}
@@ -1140,11 +1351,11 @@ export namespace EC2 {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1157,7 +1368,7 @@ export namespace EC2 {
 
     // ena_support - computed: true, optional: false, required: false
     public get enaSupport() {
-      return this.getBooleanAttribute('ena_support');
+      return this.getBooleanAttribute('ena_support') as any;
     }
 
     // hypervisor - computed: true, optional: false, required: false
@@ -1192,11 +1403,11 @@ export namespace EC2 {
 
     // manage_ebs_snapshots - computed: true, optional: false, required: false
     public get manageEbsSnapshots() {
-      return this.getBooleanAttribute('manage_ebs_snapshots');
+      return this.getBooleanAttribute('manage_ebs_snapshots') as any;
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1225,7 +1436,7 @@ export namespace EC2 {
 
     // public - computed: true, optional: false, required: false
     public get public() {
-      return this.getBooleanAttribute('public');
+      return this.getBooleanAttribute('public') as any;
     }
 
     // ramdisk_id - computed: true, optional: false, required: false
@@ -1244,11 +1455,11 @@ export namespace EC2 {
     }
 
     // snapshot_without_reboot - computed: false, optional: true, required: false
-    private _snapshotWithoutReboot?: boolean | cdktf.IResolvable;
+    private _snapshotWithoutReboot?: boolean | cdktf.IResolvable | undefined; 
     public get snapshotWithoutReboot() {
-      return this.getBooleanAttribute('snapshot_without_reboot');
+      return this.getBooleanAttribute('snapshot_without_reboot') as any;
     }
-    public set snapshotWithoutReboot(value: boolean | cdktf.IResolvable ) {
+    public set snapshotWithoutReboot(value: boolean | cdktf.IResolvable | undefined) {
       this._snapshotWithoutReboot = value;
     }
     public resetSnapshotWithoutReboot() {
@@ -1260,7 +1471,7 @@ export namespace EC2 {
     }
 
     // source_instance_id - computed: false, optional: false, required: true
-    private _sourceInstanceId: string;
+    private _sourceInstanceId?: string; 
     public get sourceInstanceId() {
       return this.getStringAttribute('source_instance_id');
     }
@@ -1278,11 +1489,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1294,11 +1506,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1320,11 +1533,12 @@ export namespace EC2 {
     }
 
     // ebs_block_device - computed: false, optional: true, required: false
-    private _ebsBlockDevice?: AmiFromInstanceEbsBlockDevice[];
+    private _ebsBlockDevice?: AmiFromInstanceEbsBlockDevice[] | undefined; 
     public get ebsBlockDevice() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs_block_device') as any;
     }
-    public set ebsBlockDevice(value: AmiFromInstanceEbsBlockDevice[] ) {
+    public set ebsBlockDevice(value: AmiFromInstanceEbsBlockDevice[] | undefined) {
       this._ebsBlockDevice = value;
     }
     public resetEbsBlockDevice() {
@@ -1336,11 +1550,12 @@ export namespace EC2 {
     }
 
     // ephemeral_block_device - computed: false, optional: true, required: false
-    private _ephemeralBlockDevice?: AmiFromInstanceEphemeralBlockDevice[];
+    private _ephemeralBlockDevice?: AmiFromInstanceEphemeralBlockDevice[] | undefined; 
     public get ephemeralBlockDevice() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ephemeral_block_device') as any;
     }
-    public set ephemeralBlockDevice(value: AmiFromInstanceEphemeralBlockDevice[] ) {
+    public set ephemeralBlockDevice(value: AmiFromInstanceEphemeralBlockDevice[] | undefined) {
       this._ephemeralBlockDevice = value;
     }
     public resetEphemeralBlockDevice() {
@@ -1352,11 +1567,12 @@ export namespace EC2 {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: AmiFromInstanceTimeouts;
+    private _timeouts?: AmiFromInstanceTimeouts | undefined; 
+    private __timeoutsOutput = new AmiFromInstanceTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: AmiFromInstanceTimeouts ) {
+    public putTimeouts(value: AmiFromInstanceTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1437,7 +1653,7 @@ export namespace EC2 {
     // ==========
 
     // account_id - computed: false, optional: false, required: true
-    private _accountId: string;
+    private _accountId?: string; 
     public get accountId() {
       return this.getStringAttribute('account_id');
     }
@@ -1455,7 +1671,7 @@ export namespace EC2 {
     }
 
     // image_id - computed: false, optional: false, required: true
-    private _imageId: string;
+    private _imageId?: string; 
     public get imageId() {
       return this.getStringAttribute('image_id');
     }
@@ -1530,7 +1746,7 @@ export namespace EC2 {
     }
 
     // key_arn - computed: false, optional: false, required: true
-    private _keyArn: string;
+    private _keyArn?: string; 
     public get keyArn() {
       return this.getStringAttribute('key_arn');
     }
@@ -1599,11 +1815,11 @@ export namespace EC2 {
     // ==========
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -1664,14 +1880,59 @@ export namespace EC2 {
     readonly delete?: string;
   }
 
-  function ebsSnapshotTimeoutsToTerraform(struct?: EbsSnapshotTimeouts): any {
+  function ebsSnapshotTimeoutsToTerraform(struct?: EbsSnapshotTimeoutsOutputReference | EbsSnapshotTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class EbsSnapshotTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/ebs_snapshot.html aws_ebs_snapshot}
@@ -1727,11 +1988,11 @@ export namespace EC2 {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1744,7 +2005,7 @@ export namespace EC2 {
 
     // encrypted - computed: true, optional: false, required: false
     public get encrypted() {
-      return this.getBooleanAttribute('encrypted');
+      return this.getBooleanAttribute('encrypted') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -1768,11 +2029,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1784,11 +2046,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1800,7 +2063,7 @@ export namespace EC2 {
     }
 
     // volume_id - computed: false, optional: false, required: true
-    private _volumeId: string;
+    private _volumeId?: string; 
     public get volumeId() {
       return this.getStringAttribute('volume_id');
     }
@@ -1818,11 +2081,12 @@ export namespace EC2 {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: EbsSnapshotTimeouts;
+    private _timeouts?: EbsSnapshotTimeouts | undefined; 
+    private __timeoutsOutput = new EbsSnapshotTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: EbsSnapshotTimeouts ) {
+    public putTimeouts(value: EbsSnapshotTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1934,11 +2198,11 @@ export namespace EC2 {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1950,11 +2214,11 @@ export namespace EC2 {
     }
 
     // encrypted - computed: false, optional: true, required: false
-    private _encrypted?: boolean | cdktf.IResolvable;
+    private _encrypted?: boolean | cdktf.IResolvable | undefined; 
     public get encrypted() {
-      return this.getBooleanAttribute('encrypted');
+      return this.getBooleanAttribute('encrypted') as any;
     }
-    public set encrypted(value: boolean | cdktf.IResolvable ) {
+    public set encrypted(value: boolean | cdktf.IResolvable | undefined) {
       this._encrypted = value;
     }
     public resetEncrypted() {
@@ -1971,11 +2235,11 @@ export namespace EC2 {
     }
 
     // kms_key_id - computed: false, optional: true, required: false
-    private _kmsKeyId?: string;
+    private _kmsKeyId?: string | undefined; 
     public get kmsKeyId() {
       return this.getStringAttribute('kms_key_id');
     }
-    public set kmsKeyId(value: string ) {
+    public set kmsKeyId(value: string | undefined) {
       this._kmsKeyId = value;
     }
     public resetKmsKeyId() {
@@ -1997,7 +2261,7 @@ export namespace EC2 {
     }
 
     // source_region - computed: false, optional: false, required: true
-    private _sourceRegion: string;
+    private _sourceRegion?: string; 
     public get sourceRegion() {
       return this.getStringAttribute('source_region');
     }
@@ -2010,7 +2274,7 @@ export namespace EC2 {
     }
 
     // source_snapshot_id - computed: false, optional: false, required: true
-    private _sourceSnapshotId: string;
+    private _sourceSnapshotId?: string; 
     public get sourceSnapshotId() {
       return this.getStringAttribute('source_snapshot_id');
     }
@@ -2023,11 +2287,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2039,11 +2304,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2110,13 +2376,13 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ebs_snapshot_import.html#client_data EbsSnapshotImport#client_data}
     */
-    readonly clientData?: EbsSnapshotImportClientData[];
+    readonly clientData?: EbsSnapshotImportClientData;
     /**
     * disk_container block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ebs_snapshot_import.html#disk_container EbsSnapshotImport#disk_container}
     */
-    readonly diskContainer: EbsSnapshotImportDiskContainer[];
+    readonly diskContainer: EbsSnapshotImportDiskContainer;
     /**
     * timeouts block
     * 
@@ -2143,8 +2409,11 @@ export namespace EC2 {
     readonly uploadStart?: string;
   }
 
-  function ebsSnapshotImportClientDataToTerraform(struct?: EbsSnapshotImportClientData): any {
+  function ebsSnapshotImportClientDataToTerraform(struct?: EbsSnapshotImportClientDataOutputReference | EbsSnapshotImportClientData): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comment: cdktf.stringToTerraform(struct!.comment),
       upload_end: cdktf.stringToTerraform(struct!.uploadEnd),
@@ -2153,6 +2422,80 @@ export namespace EC2 {
     }
   }
 
+  export class EbsSnapshotImportClientDataOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // comment - computed: false, optional: true, required: false
+    private _comment?: string | undefined; 
+    public get comment() {
+      return this.getStringAttribute('comment');
+    }
+    public set comment(value: string | undefined) {
+      this._comment = value;
+    }
+    public resetComment() {
+      this._comment = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get commentInput() {
+      return this._comment
+    }
+
+    // upload_end - computed: true, optional: true, required: false
+    private _uploadEnd?: string | undefined; 
+    public get uploadEnd() {
+      return this.getStringAttribute('upload_end');
+    }
+    public set uploadEnd(value: string | undefined) {
+      this._uploadEnd = value;
+    }
+    public resetUploadEnd() {
+      this._uploadEnd = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get uploadEndInput() {
+      return this._uploadEnd
+    }
+
+    // upload_size - computed: true, optional: true, required: false
+    private _uploadSize?: number | undefined; 
+    public get uploadSize() {
+      return this.getNumberAttribute('upload_size');
+    }
+    public set uploadSize(value: number | undefined) {
+      this._uploadSize = value;
+    }
+    public resetUploadSize() {
+      this._uploadSize = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get uploadSizeInput() {
+      return this._uploadSize
+    }
+
+    // upload_start - computed: true, optional: true, required: false
+    private _uploadStart?: string | undefined; 
+    public get uploadStart() {
+      return this.getStringAttribute('upload_start');
+    }
+    public set uploadStart(value: string | undefined) {
+      this._uploadStart = value;
+    }
+    public resetUploadStart() {
+      this._uploadStart = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get uploadStartInput() {
+      return this._uploadStart
+    }
+  }
   export interface EbsSnapshotImportDiskContainerUserBucket {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ebs_snapshot_import.html#s3_bucket EbsSnapshotImport#s3_bucket}
@@ -2164,14 +2507,53 @@ export namespace EC2 {
     readonly s3Key: string;
   }
 
-  function ebsSnapshotImportDiskContainerUserBucketToTerraform(struct?: EbsSnapshotImportDiskContainerUserBucket): any {
+  function ebsSnapshotImportDiskContainerUserBucketToTerraform(struct?: EbsSnapshotImportDiskContainerUserBucketOutputReference | EbsSnapshotImportDiskContainerUserBucket): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       s3_bucket: cdktf.stringToTerraform(struct!.s3Bucket),
       s3_key: cdktf.stringToTerraform(struct!.s3Key),
     }
   }
 
+  export class EbsSnapshotImportDiskContainerUserBucketOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // s3_bucket - computed: false, optional: false, required: true
+    private _s3Bucket?: string; 
+    public get s3Bucket() {
+      return this.getStringAttribute('s3_bucket');
+    }
+    public set s3Bucket(value: string) {
+      this._s3Bucket = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get s3BucketInput() {
+      return this._s3Bucket
+    }
+
+    // s3_key - computed: false, optional: false, required: true
+    private _s3Key?: string; 
+    public get s3Key() {
+      return this.getStringAttribute('s3_key');
+    }
+    public set s3Key(value: string) {
+      this._s3Key = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get s3KeyInput() {
+      return this._s3Key
+    }
+  }
   export interface EbsSnapshotImportDiskContainer {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ebs_snapshot_import.html#description EbsSnapshotImport#description}
@@ -2190,19 +2572,94 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ebs_snapshot_import.html#user_bucket EbsSnapshotImport#user_bucket}
     */
-    readonly userBucket?: EbsSnapshotImportDiskContainerUserBucket[];
+    readonly userBucket?: EbsSnapshotImportDiskContainerUserBucket;
   }
 
-  function ebsSnapshotImportDiskContainerToTerraform(struct?: EbsSnapshotImportDiskContainer): any {
+  function ebsSnapshotImportDiskContainerToTerraform(struct?: EbsSnapshotImportDiskContainerOutputReference | EbsSnapshotImportDiskContainer): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       description: cdktf.stringToTerraform(struct!.description),
       format: cdktf.stringToTerraform(struct!.format),
       url: cdktf.stringToTerraform(struct!.url),
-      user_bucket: cdktf.listMapper(ebsSnapshotImportDiskContainerUserBucketToTerraform)(struct!.userBucket),
+      user_bucket: ebsSnapshotImportDiskContainerUserBucketToTerraform(struct!.userBucket),
     }
   }
 
+  export class EbsSnapshotImportDiskContainerOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // description - computed: false, optional: true, required: false
+    private _description?: string | undefined; 
+    public get description() {
+      return this.getStringAttribute('description');
+    }
+    public set description(value: string | undefined) {
+      this._description = value;
+    }
+    public resetDescription() {
+      this._description = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get descriptionInput() {
+      return this._description
+    }
+
+    // format - computed: false, optional: false, required: true
+    private _format?: string; 
+    public get format() {
+      return this.getStringAttribute('format');
+    }
+    public set format(value: string) {
+      this._format = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get formatInput() {
+      return this._format
+    }
+
+    // url - computed: false, optional: true, required: false
+    private _url?: string | undefined; 
+    public get url() {
+      return this.getStringAttribute('url');
+    }
+    public set url(value: string | undefined) {
+      this._url = value;
+    }
+    public resetUrl() {
+      this._url = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get urlInput() {
+      return this._url
+    }
+
+    // user_bucket - computed: false, optional: true, required: false
+    private _userBucket?: EbsSnapshotImportDiskContainerUserBucket | undefined; 
+    private __userBucketOutput = new EbsSnapshotImportDiskContainerUserBucketOutputReference(this as any, "user_bucket", true);
+    public get userBucket() {
+      return this.__userBucketOutput;
+    }
+    public putUserBucket(value: EbsSnapshotImportDiskContainerUserBucket | undefined) {
+      this._userBucket = value;
+    }
+    public resetUserBucket() {
+      this._userBucket = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userBucketInput() {
+      return this._userBucket
+    }
+  }
   export interface EbsSnapshotImportTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ebs_snapshot_import.html#create EbsSnapshotImport#create}
@@ -2214,14 +2671,59 @@ export namespace EC2 {
     readonly delete?: string;
   }
 
-  function ebsSnapshotImportTimeoutsToTerraform(struct?: EbsSnapshotImportTimeouts): any {
+  function ebsSnapshotImportTimeoutsToTerraform(struct?: EbsSnapshotImportTimeoutsOutputReference | EbsSnapshotImportTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class EbsSnapshotImportTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/ebs_snapshot_import.html aws_ebs_snapshot_import}
@@ -2281,11 +2783,11 @@ export namespace EC2 {
     }
 
     // description - computed: true, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -2297,11 +2799,11 @@ export namespace EC2 {
     }
 
     // encrypted - computed: false, optional: true, required: false
-    private _encrypted?: boolean | cdktf.IResolvable;
+    private _encrypted?: boolean | cdktf.IResolvable | undefined; 
     public get encrypted() {
-      return this.getBooleanAttribute('encrypted');
+      return this.getBooleanAttribute('encrypted') as any;
     }
-    public set encrypted(value: boolean | cdktf.IResolvable ) {
+    public set encrypted(value: boolean | cdktf.IResolvable | undefined) {
       this._encrypted = value;
     }
     public resetEncrypted() {
@@ -2318,11 +2820,11 @@ export namespace EC2 {
     }
 
     // kms_key_id - computed: false, optional: true, required: false
-    private _kmsKeyId?: string;
+    private _kmsKeyId?: string | undefined; 
     public get kmsKeyId() {
       return this.getStringAttribute('kms_key_id');
     }
-    public set kmsKeyId(value: string ) {
+    public set kmsKeyId(value: string | undefined) {
       this._kmsKeyId = value;
     }
     public resetKmsKeyId() {
@@ -2344,11 +2846,11 @@ export namespace EC2 {
     }
 
     // role_name - computed: false, optional: true, required: false
-    private _roleName?: string;
+    private _roleName?: string | undefined; 
     public get roleName() {
       return this.getStringAttribute('role_name');
     }
-    public set roleName(value: string ) {
+    public set roleName(value: string | undefined) {
       this._roleName = value;
     }
     public resetRoleName() {
@@ -2360,11 +2862,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2376,11 +2879,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2397,11 +2901,12 @@ export namespace EC2 {
     }
 
     // client_data - computed: false, optional: true, required: false
-    private _clientData?: EbsSnapshotImportClientData[];
+    private _clientData?: EbsSnapshotImportClientData | undefined; 
+    private __clientDataOutput = new EbsSnapshotImportClientDataOutputReference(this as any, "client_data", true);
     public get clientData() {
-      return this.interpolationForAttribute('client_data') as any;
+      return this.__clientDataOutput;
     }
-    public set clientData(value: EbsSnapshotImportClientData[] ) {
+    public putClientData(value: EbsSnapshotImportClientData | undefined) {
       this._clientData = value;
     }
     public resetClientData() {
@@ -2413,11 +2918,12 @@ export namespace EC2 {
     }
 
     // disk_container - computed: false, optional: false, required: true
-    private _diskContainer: EbsSnapshotImportDiskContainer[];
+    private _diskContainer?: EbsSnapshotImportDiskContainer; 
+    private __diskContainerOutput = new EbsSnapshotImportDiskContainerOutputReference(this as any, "disk_container", true);
     public get diskContainer() {
-      return this.interpolationForAttribute('disk_container') as any;
+      return this.__diskContainerOutput;
     }
-    public set diskContainer(value: EbsSnapshotImportDiskContainer[]) {
+    public putDiskContainer(value: EbsSnapshotImportDiskContainer) {
       this._diskContainer = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -2426,11 +2932,12 @@ export namespace EC2 {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: EbsSnapshotImportTimeouts;
+    private _timeouts?: EbsSnapshotImportTimeouts | undefined; 
+    private __timeoutsOutput = new EbsSnapshotImportTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: EbsSnapshotImportTimeouts ) {
+    public putTimeouts(value: EbsSnapshotImportTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -2453,8 +2960,8 @@ export namespace EC2 {
         role_name: cdktf.stringToTerraform(this._roleName),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        client_data: cdktf.listMapper(ebsSnapshotImportClientDataToTerraform)(this._clientData),
-        disk_container: cdktf.listMapper(ebsSnapshotImportDiskContainerToTerraform)(this._diskContainer),
+        client_data: ebsSnapshotImportClientDataToTerraform(this._clientData),
+        disk_container: ebsSnapshotImportDiskContainerToTerraform(this._diskContainer),
         timeouts: ebsSnapshotImportTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -2566,7 +3073,7 @@ export namespace EC2 {
     }
 
     // availability_zone - computed: false, optional: false, required: true
-    private _availabilityZone: string;
+    private _availabilityZone?: string; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
@@ -2579,11 +3086,11 @@ export namespace EC2 {
     }
 
     // encrypted - computed: true, optional: true, required: false
-    private _encrypted?: boolean | cdktf.IResolvable;
+    private _encrypted?: boolean | cdktf.IResolvable | undefined; 
     public get encrypted() {
-      return this.getBooleanAttribute('encrypted');
+      return this.getBooleanAttribute('encrypted') as any;
     }
-    public set encrypted(value: boolean | cdktf.IResolvable) {
+    public set encrypted(value: boolean | cdktf.IResolvable | undefined) {
       this._encrypted = value;
     }
     public resetEncrypted() {
@@ -2600,11 +3107,11 @@ export namespace EC2 {
     }
 
     // iops - computed: true, optional: true, required: false
-    private _iops?: number;
+    private _iops?: number | undefined; 
     public get iops() {
       return this.getNumberAttribute('iops');
     }
-    public set iops(value: number) {
+    public set iops(value: number | undefined) {
       this._iops = value;
     }
     public resetIops() {
@@ -2616,11 +3123,11 @@ export namespace EC2 {
     }
 
     // kms_key_id - computed: true, optional: true, required: false
-    private _kmsKeyId?: string;
+    private _kmsKeyId?: string | undefined; 
     public get kmsKeyId() {
       return this.getStringAttribute('kms_key_id');
     }
-    public set kmsKeyId(value: string) {
+    public set kmsKeyId(value: string | undefined) {
       this._kmsKeyId = value;
     }
     public resetKmsKeyId() {
@@ -2632,11 +3139,11 @@ export namespace EC2 {
     }
 
     // multi_attach_enabled - computed: false, optional: true, required: false
-    private _multiAttachEnabled?: boolean | cdktf.IResolvable;
+    private _multiAttachEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get multiAttachEnabled() {
-      return this.getBooleanAttribute('multi_attach_enabled');
+      return this.getBooleanAttribute('multi_attach_enabled') as any;
     }
-    public set multiAttachEnabled(value: boolean | cdktf.IResolvable ) {
+    public set multiAttachEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._multiAttachEnabled = value;
     }
     public resetMultiAttachEnabled() {
@@ -2648,11 +3155,11 @@ export namespace EC2 {
     }
 
     // outpost_arn - computed: false, optional: true, required: false
-    private _outpostArn?: string;
+    private _outpostArn?: string | undefined; 
     public get outpostArn() {
       return this.getStringAttribute('outpost_arn');
     }
-    public set outpostArn(value: string ) {
+    public set outpostArn(value: string | undefined) {
       this._outpostArn = value;
     }
     public resetOutpostArn() {
@@ -2664,11 +3171,11 @@ export namespace EC2 {
     }
 
     // size - computed: true, optional: true, required: false
-    private _size?: number;
+    private _size?: number | undefined; 
     public get size() {
       return this.getNumberAttribute('size');
     }
-    public set size(value: number) {
+    public set size(value: number | undefined) {
       this._size = value;
     }
     public resetSize() {
@@ -2680,11 +3187,11 @@ export namespace EC2 {
     }
 
     // snapshot_id - computed: true, optional: true, required: false
-    private _snapshotId?: string;
+    private _snapshotId?: string | undefined; 
     public get snapshotId() {
       return this.getStringAttribute('snapshot_id');
     }
-    public set snapshotId(value: string) {
+    public set snapshotId(value: string | undefined) {
       this._snapshotId = value;
     }
     public resetSnapshotId() {
@@ -2696,11 +3203,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2712,11 +3220,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2728,11 +3237,11 @@ export namespace EC2 {
     }
 
     // throughput - computed: true, optional: true, required: false
-    private _throughput?: number;
+    private _throughput?: number | undefined; 
     public get throughput() {
       return this.getNumberAttribute('throughput');
     }
-    public set throughput(value: number) {
+    public set throughput(value: number | undefined) {
       this._throughput = value;
     }
     public resetThroughput() {
@@ -2744,11 +3253,11 @@ export namespace EC2 {
     }
 
     // type - computed: true, optional: true, required: false
-    private _type?: string;
+    private _type?: string | undefined; 
     public get type() {
       return this.getStringAttribute('type');
     }
-    public set type(value: string) {
+    public set type(value: string | undefined) {
       this._type = value;
     }
     public resetType() {
@@ -2832,7 +3341,7 @@ export namespace EC2 {
     // ==========
 
     // group_name - computed: false, optional: false, required: true
-    private _groupName: string;
+    private _groupName?: string; 
     public get groupName() {
       return this.getStringAttribute('group_name');
     }
@@ -2850,7 +3359,7 @@ export namespace EC2 {
     }
 
     // opt_in_status - computed: false, optional: false, required: true
-    private _optInStatus: string;
+    private _optInStatus?: string; 
     public get optInStatus() {
       return this.getStringAttribute('opt_in_status');
     }
@@ -2985,7 +3494,7 @@ export namespace EC2 {
     }
 
     // availability_zone - computed: false, optional: false, required: true
-    private _availabilityZone: string;
+    private _availabilityZone?: string; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
@@ -2998,11 +3507,11 @@ export namespace EC2 {
     }
 
     // ebs_optimized - computed: false, optional: true, required: false
-    private _ebsOptimized?: boolean | cdktf.IResolvable;
+    private _ebsOptimized?: boolean | cdktf.IResolvable | undefined; 
     public get ebsOptimized() {
-      return this.getBooleanAttribute('ebs_optimized');
+      return this.getBooleanAttribute('ebs_optimized') as any;
     }
-    public set ebsOptimized(value: boolean | cdktf.IResolvable ) {
+    public set ebsOptimized(value: boolean | cdktf.IResolvable | undefined) {
       this._ebsOptimized = value;
     }
     public resetEbsOptimized() {
@@ -3014,11 +3523,11 @@ export namespace EC2 {
     }
 
     // end_date - computed: false, optional: true, required: false
-    private _endDate?: string;
+    private _endDate?: string | undefined; 
     public get endDate() {
       return this.getStringAttribute('end_date');
     }
-    public set endDate(value: string ) {
+    public set endDate(value: string | undefined) {
       this._endDate = value;
     }
     public resetEndDate() {
@@ -3030,11 +3539,11 @@ export namespace EC2 {
     }
 
     // end_date_type - computed: false, optional: true, required: false
-    private _endDateType?: string;
+    private _endDateType?: string | undefined; 
     public get endDateType() {
       return this.getStringAttribute('end_date_type');
     }
-    public set endDateType(value: string ) {
+    public set endDateType(value: string | undefined) {
       this._endDateType = value;
     }
     public resetEndDateType() {
@@ -3046,11 +3555,11 @@ export namespace EC2 {
     }
 
     // ephemeral_storage - computed: false, optional: true, required: false
-    private _ephemeralStorage?: boolean | cdktf.IResolvable;
+    private _ephemeralStorage?: boolean | cdktf.IResolvable | undefined; 
     public get ephemeralStorage() {
-      return this.getBooleanAttribute('ephemeral_storage');
+      return this.getBooleanAttribute('ephemeral_storage') as any;
     }
-    public set ephemeralStorage(value: boolean | cdktf.IResolvable ) {
+    public set ephemeralStorage(value: boolean | cdktf.IResolvable | undefined) {
       this._ephemeralStorage = value;
     }
     public resetEphemeralStorage() {
@@ -3067,7 +3576,7 @@ export namespace EC2 {
     }
 
     // instance_count - computed: false, optional: false, required: true
-    private _instanceCount: number;
+    private _instanceCount?: number; 
     public get instanceCount() {
       return this.getNumberAttribute('instance_count');
     }
@@ -3080,11 +3589,11 @@ export namespace EC2 {
     }
 
     // instance_match_criteria - computed: false, optional: true, required: false
-    private _instanceMatchCriteria?: string;
+    private _instanceMatchCriteria?: string | undefined; 
     public get instanceMatchCriteria() {
       return this.getStringAttribute('instance_match_criteria');
     }
-    public set instanceMatchCriteria(value: string ) {
+    public set instanceMatchCriteria(value: string | undefined) {
       this._instanceMatchCriteria = value;
     }
     public resetInstanceMatchCriteria() {
@@ -3096,7 +3605,7 @@ export namespace EC2 {
     }
 
     // instance_platform - computed: false, optional: false, required: true
-    private _instancePlatform: string;
+    private _instancePlatform?: string; 
     public get instancePlatform() {
       return this.getStringAttribute('instance_platform');
     }
@@ -3109,7 +3618,7 @@ export namespace EC2 {
     }
 
     // instance_type - computed: false, optional: false, required: true
-    private _instanceType: string;
+    private _instanceType?: string; 
     public get instanceType() {
       return this.getStringAttribute('instance_type');
     }
@@ -3122,11 +3631,11 @@ export namespace EC2 {
     }
 
     // outpost_arn - computed: false, optional: true, required: false
-    private _outpostArn?: string;
+    private _outpostArn?: string | undefined; 
     public get outpostArn() {
       return this.getStringAttribute('outpost_arn');
     }
-    public set outpostArn(value: string ) {
+    public set outpostArn(value: string | undefined) {
       this._outpostArn = value;
     }
     public resetOutpostArn() {
@@ -3143,11 +3652,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3159,11 +3669,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -3175,11 +3686,11 @@ export namespace EC2 {
     }
 
     // tenancy - computed: false, optional: true, required: false
-    private _tenancy?: string;
+    private _tenancy?: string | undefined; 
     public get tenancy() {
       return this.getStringAttribute('tenancy');
     }
-    public set tenancy(value: string ) {
+    public set tenancy(value: string | undefined) {
       this._tenancy = value;
     }
     public resetTenancy() {
@@ -3284,11 +3795,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3300,11 +3812,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -3316,7 +3829,7 @@ export namespace EC2 {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -3407,11 +3920,11 @@ export namespace EC2 {
     // ==========
 
     // access_group_id - computed: false, optional: true, required: false
-    private _accessGroupId?: string;
+    private _accessGroupId?: string | undefined; 
     public get accessGroupId() {
       return this.getStringAttribute('access_group_id');
     }
-    public set accessGroupId(value: string ) {
+    public set accessGroupId(value: string | undefined) {
       this._accessGroupId = value;
     }
     public resetAccessGroupId() {
@@ -3423,11 +3936,11 @@ export namespace EC2 {
     }
 
     // authorize_all_groups - computed: false, optional: true, required: false
-    private _authorizeAllGroups?: boolean | cdktf.IResolvable;
+    private _authorizeAllGroups?: boolean | cdktf.IResolvable | undefined; 
     public get authorizeAllGroups() {
-      return this.getBooleanAttribute('authorize_all_groups');
+      return this.getBooleanAttribute('authorize_all_groups') as any;
     }
-    public set authorizeAllGroups(value: boolean | cdktf.IResolvable ) {
+    public set authorizeAllGroups(value: boolean | cdktf.IResolvable | undefined) {
       this._authorizeAllGroups = value;
     }
     public resetAuthorizeAllGroups() {
@@ -3439,7 +3952,7 @@ export namespace EC2 {
     }
 
     // client_vpn_endpoint_id - computed: false, optional: false, required: true
-    private _clientVpnEndpointId: string;
+    private _clientVpnEndpointId?: string; 
     public get clientVpnEndpointId() {
       return this.getStringAttribute('client_vpn_endpoint_id');
     }
@@ -3452,11 +3965,11 @@ export namespace EC2 {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -3473,7 +3986,7 @@ export namespace EC2 {
     }
 
     // target_network_cidr - computed: false, optional: false, required: true
-    private _targetNetworkCidr: string;
+    private _targetNetworkCidr?: string; 
     public get targetNetworkCidr() {
       return this.getStringAttribute('target_network_cidr');
     }
@@ -3547,7 +4060,7 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_client_vpn_endpoint.html#connection_log_options Ec2ClientVpnEndpoint#connection_log_options}
     */
-    readonly connectionLogOptions: Ec2ClientVpnEndpointConnectionLogOptions[];
+    readonly connectionLogOptions: Ec2ClientVpnEndpointConnectionLogOptions;
   }
   export interface Ec2ClientVpnEndpointAuthenticationOptions {
     /**
@@ -3574,6 +4087,9 @@ export namespace EC2 {
 
   function ec2ClientVpnEndpointAuthenticationOptionsToTerraform(struct?: Ec2ClientVpnEndpointAuthenticationOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       active_directory_id: cdktf.stringToTerraform(struct!.activeDirectoryId),
       root_certificate_chain_arn: cdktf.stringToTerraform(struct!.rootCertificateChainArn),
@@ -3598,8 +4114,11 @@ export namespace EC2 {
     readonly enabled: boolean | cdktf.IResolvable;
   }
 
-  function ec2ClientVpnEndpointConnectionLogOptionsToTerraform(struct?: Ec2ClientVpnEndpointConnectionLogOptions): any {
+  function ec2ClientVpnEndpointConnectionLogOptionsToTerraform(struct?: Ec2ClientVpnEndpointConnectionLogOptionsOutputReference | Ec2ClientVpnEndpointConnectionLogOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cloudwatch_log_group: cdktf.stringToTerraform(struct!.cloudwatchLogGroup),
       cloudwatch_log_stream: cdktf.stringToTerraform(struct!.cloudwatchLogStream),
@@ -3607,6 +4126,61 @@ export namespace EC2 {
     }
   }
 
+  export class Ec2ClientVpnEndpointConnectionLogOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // cloudwatch_log_group - computed: false, optional: true, required: false
+    private _cloudwatchLogGroup?: string | undefined; 
+    public get cloudwatchLogGroup() {
+      return this.getStringAttribute('cloudwatch_log_group');
+    }
+    public set cloudwatchLogGroup(value: string | undefined) {
+      this._cloudwatchLogGroup = value;
+    }
+    public resetCloudwatchLogGroup() {
+      this._cloudwatchLogGroup = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cloudwatchLogGroupInput() {
+      return this._cloudwatchLogGroup
+    }
+
+    // cloudwatch_log_stream - computed: false, optional: true, required: false
+    private _cloudwatchLogStream?: string | undefined; 
+    public get cloudwatchLogStream() {
+      return this.getStringAttribute('cloudwatch_log_stream');
+    }
+    public set cloudwatchLogStream(value: string | undefined) {
+      this._cloudwatchLogStream = value;
+    }
+    public resetCloudwatchLogStream() {
+      this._cloudwatchLogStream = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cloudwatchLogStreamInput() {
+      return this._cloudwatchLogStream
+    }
+
+    // enabled - computed: false, optional: false, required: true
+    private _enabled?: boolean | cdktf.IResolvable; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable) {
+      this._enabled = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/ec2_client_vpn_endpoint.html aws_ec2_client_vpn_endpoint}
@@ -3663,7 +4237,7 @@ export namespace EC2 {
     }
 
     // client_cidr_block - computed: false, optional: false, required: true
-    private _clientCidrBlock: string;
+    private _clientCidrBlock?: string; 
     public get clientCidrBlock() {
       return this.getStringAttribute('client_cidr_block');
     }
@@ -3676,11 +4250,11 @@ export namespace EC2 {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -3697,11 +4271,11 @@ export namespace EC2 {
     }
 
     // dns_servers - computed: false, optional: true, required: false
-    private _dnsServers?: string[];
+    private _dnsServers?: string[] | undefined; 
     public get dnsServers() {
       return this.getListAttribute('dns_servers');
     }
-    public set dnsServers(value: string[] ) {
+    public set dnsServers(value: string[] | undefined) {
       this._dnsServers = value;
     }
     public resetDnsServers() {
@@ -3718,11 +4292,11 @@ export namespace EC2 {
     }
 
     // self_service_portal - computed: false, optional: true, required: false
-    private _selfServicePortal?: string;
+    private _selfServicePortal?: string | undefined; 
     public get selfServicePortal() {
       return this.getStringAttribute('self_service_portal');
     }
-    public set selfServicePortal(value: string ) {
+    public set selfServicePortal(value: string | undefined) {
       this._selfServicePortal = value;
     }
     public resetSelfServicePortal() {
@@ -3734,7 +4308,7 @@ export namespace EC2 {
     }
 
     // server_certificate_arn - computed: false, optional: false, required: true
-    private _serverCertificateArn: string;
+    private _serverCertificateArn?: string; 
     public get serverCertificateArn() {
       return this.getStringAttribute('server_certificate_arn');
     }
@@ -3747,11 +4321,11 @@ export namespace EC2 {
     }
 
     // split_tunnel - computed: false, optional: true, required: false
-    private _splitTunnel?: boolean | cdktf.IResolvable;
+    private _splitTunnel?: boolean | cdktf.IResolvable | undefined; 
     public get splitTunnel() {
-      return this.getBooleanAttribute('split_tunnel');
+      return this.getBooleanAttribute('split_tunnel') as any;
     }
-    public set splitTunnel(value: boolean | cdktf.IResolvable ) {
+    public set splitTunnel(value: boolean | cdktf.IResolvable | undefined) {
       this._splitTunnel = value;
     }
     public resetSplitTunnel() {
@@ -3768,11 +4342,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3784,11 +4359,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -3800,11 +4376,11 @@ export namespace EC2 {
     }
 
     // transport_protocol - computed: false, optional: true, required: false
-    private _transportProtocol?: string;
+    private _transportProtocol?: string | undefined; 
     public get transportProtocol() {
       return this.getStringAttribute('transport_protocol');
     }
-    public set transportProtocol(value: string ) {
+    public set transportProtocol(value: string | undefined) {
       this._transportProtocol = value;
     }
     public resetTransportProtocol() {
@@ -3816,8 +4392,9 @@ export namespace EC2 {
     }
 
     // authentication_options - computed: false, optional: false, required: true
-    private _authenticationOptions: Ec2ClientVpnEndpointAuthenticationOptions[];
+    private _authenticationOptions?: Ec2ClientVpnEndpointAuthenticationOptions[]; 
     public get authenticationOptions() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('authentication_options') as any;
     }
     public set authenticationOptions(value: Ec2ClientVpnEndpointAuthenticationOptions[]) {
@@ -3829,11 +4406,12 @@ export namespace EC2 {
     }
 
     // connection_log_options - computed: false, optional: false, required: true
-    private _connectionLogOptions: Ec2ClientVpnEndpointConnectionLogOptions[];
+    private _connectionLogOptions?: Ec2ClientVpnEndpointConnectionLogOptions; 
+    private __connectionLogOptionsOutput = new Ec2ClientVpnEndpointConnectionLogOptionsOutputReference(this as any, "connection_log_options", true);
     public get connectionLogOptions() {
-      return this.interpolationForAttribute('connection_log_options') as any;
+      return this.__connectionLogOptionsOutput;
     }
-    public set connectionLogOptions(value: Ec2ClientVpnEndpointConnectionLogOptions[]) {
+    public putConnectionLogOptions(value: Ec2ClientVpnEndpointConnectionLogOptions) {
       this._connectionLogOptions = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -3857,7 +4435,7 @@ export namespace EC2 {
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         transport_protocol: cdktf.stringToTerraform(this._transportProtocol),
         authentication_options: cdktf.listMapper(ec2ClientVpnEndpointAuthenticationOptionsToTerraform)(this._authenticationOptions),
-        connection_log_options: cdktf.listMapper(ec2ClientVpnEndpointConnectionLogOptionsToTerraform)(this._connectionLogOptions),
+        connection_log_options: ec2ClientVpnEndpointConnectionLogOptionsToTerraform(this._connectionLogOptions),
       };
     }
   }
@@ -3923,7 +4501,7 @@ export namespace EC2 {
     }
 
     // client_vpn_endpoint_id - computed: false, optional: false, required: true
-    private _clientVpnEndpointId: string;
+    private _clientVpnEndpointId?: string; 
     public get clientVpnEndpointId() {
       return this.getStringAttribute('client_vpn_endpoint_id');
     }
@@ -3941,11 +4519,11 @@ export namespace EC2 {
     }
 
     // security_groups - computed: true, optional: true, required: false
-    private _securityGroups?: string[];
+    private _securityGroups?: string[] | undefined; 
     public get securityGroups() {
       return this.getListAttribute('security_groups');
     }
-    public set securityGroups(value: string[]) {
+    public set securityGroups(value: string[] | undefined) {
       this._securityGroups = value;
     }
     public resetSecurityGroups() {
@@ -3962,7 +4540,7 @@ export namespace EC2 {
     }
 
     // subnet_id - computed: false, optional: false, required: true
-    private _subnetId: string;
+    private _subnetId?: string; 
     public get subnetId() {
       return this.getStringAttribute('subnet_id');
     }
@@ -4053,7 +4631,7 @@ export namespace EC2 {
     // ==========
 
     // client_vpn_endpoint_id - computed: false, optional: false, required: true
-    private _clientVpnEndpointId: string;
+    private _clientVpnEndpointId?: string; 
     public get clientVpnEndpointId() {
       return this.getStringAttribute('client_vpn_endpoint_id');
     }
@@ -4066,11 +4644,11 @@ export namespace EC2 {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -4082,7 +4660,7 @@ export namespace EC2 {
     }
 
     // destination_cidr_block - computed: false, optional: false, required: true
-    private _destinationCidrBlock: string;
+    private _destinationCidrBlock?: string; 
     public get destinationCidrBlock() {
       return this.getStringAttribute('destination_cidr_block');
     }
@@ -4105,7 +4683,7 @@ export namespace EC2 {
     }
 
     // target_vpc_subnet_id - computed: false, optional: false, required: true
-    private _targetVpcSubnetId: string;
+    private _targetVpcSubnetId?: string; 
     public get targetVpcSubnetId() {
       return this.getStringAttribute('target_vpc_subnet_id');
     }
@@ -4169,25 +4747,25 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_fleet.html#launch_template_config Ec2Fleet#launch_template_config}
     */
-    readonly launchTemplateConfig: Ec2FleetLaunchTemplateConfig[];
+    readonly launchTemplateConfig: Ec2FleetLaunchTemplateConfig;
     /**
     * on_demand_options block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_fleet.html#on_demand_options Ec2Fleet#on_demand_options}
     */
-    readonly onDemandOptions?: Ec2FleetOnDemandOptions[];
+    readonly onDemandOptions?: Ec2FleetOnDemandOptions;
     /**
     * spot_options block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_fleet.html#spot_options Ec2Fleet#spot_options}
     */
-    readonly spotOptions?: Ec2FleetSpotOptions[];
+    readonly spotOptions?: Ec2FleetSpotOptions;
     /**
     * target_capacity_specification block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_fleet.html#target_capacity_specification Ec2Fleet#target_capacity_specification}
     */
-    readonly targetCapacitySpecification: Ec2FleetTargetCapacitySpecification[];
+    readonly targetCapacitySpecification: Ec2FleetTargetCapacitySpecification;
     /**
     * timeouts block
     * 
@@ -4210,8 +4788,11 @@ export namespace EC2 {
     readonly version: string;
   }
 
-  function ec2FleetLaunchTemplateConfigLaunchTemplateSpecificationToTerraform(struct?: Ec2FleetLaunchTemplateConfigLaunchTemplateSpecification): any {
+  function ec2FleetLaunchTemplateConfigLaunchTemplateSpecificationToTerraform(struct?: Ec2FleetLaunchTemplateConfigLaunchTemplateSpecificationOutputReference | Ec2FleetLaunchTemplateConfigLaunchTemplateSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       launch_template_id: cdktf.stringToTerraform(struct!.launchTemplateId),
       launch_template_name: cdktf.stringToTerraform(struct!.launchTemplateName),
@@ -4219,6 +4800,61 @@ export namespace EC2 {
     }
   }
 
+  export class Ec2FleetLaunchTemplateConfigLaunchTemplateSpecificationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // launch_template_id - computed: false, optional: true, required: false
+    private _launchTemplateId?: string | undefined; 
+    public get launchTemplateId() {
+      return this.getStringAttribute('launch_template_id');
+    }
+    public set launchTemplateId(value: string | undefined) {
+      this._launchTemplateId = value;
+    }
+    public resetLaunchTemplateId() {
+      this._launchTemplateId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get launchTemplateIdInput() {
+      return this._launchTemplateId
+    }
+
+    // launch_template_name - computed: false, optional: true, required: false
+    private _launchTemplateName?: string | undefined; 
+    public get launchTemplateName() {
+      return this.getStringAttribute('launch_template_name');
+    }
+    public set launchTemplateName(value: string | undefined) {
+      this._launchTemplateName = value;
+    }
+    public resetLaunchTemplateName() {
+      this._launchTemplateName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get launchTemplateNameInput() {
+      return this._launchTemplateName
+    }
+
+    // version - computed: false, optional: false, required: true
+    private _version?: string; 
+    public get version() {
+      return this.getStringAttribute('version');
+    }
+    public set version(value: string) {
+      this._version = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get versionInput() {
+      return this._version
+    }
+  }
   export interface Ec2FleetLaunchTemplateConfigOverride {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_fleet.html#availability_zone Ec2Fleet#availability_zone}
@@ -4248,6 +4884,9 @@ export namespace EC2 {
 
   function ec2FleetLaunchTemplateConfigOverrideToTerraform(struct?: Ec2FleetLaunchTemplateConfigOverride): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       availability_zone: cdktf.stringToTerraform(struct!.availabilityZone),
       instance_type: cdktf.stringToTerraform(struct!.instanceType),
@@ -4264,7 +4903,7 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_fleet.html#launch_template_specification Ec2Fleet#launch_template_specification}
     */
-    readonly launchTemplateSpecification: Ec2FleetLaunchTemplateConfigLaunchTemplateSpecification[];
+    readonly launchTemplateSpecification: Ec2FleetLaunchTemplateConfigLaunchTemplateSpecification;
     /**
     * override block
     * 
@@ -4273,14 +4912,58 @@ export namespace EC2 {
     readonly override?: Ec2FleetLaunchTemplateConfigOverride[];
   }
 
-  function ec2FleetLaunchTemplateConfigToTerraform(struct?: Ec2FleetLaunchTemplateConfig): any {
+  function ec2FleetLaunchTemplateConfigToTerraform(struct?: Ec2FleetLaunchTemplateConfigOutputReference | Ec2FleetLaunchTemplateConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      launch_template_specification: cdktf.listMapper(ec2FleetLaunchTemplateConfigLaunchTemplateSpecificationToTerraform)(struct!.launchTemplateSpecification),
+      launch_template_specification: ec2FleetLaunchTemplateConfigLaunchTemplateSpecificationToTerraform(struct!.launchTemplateSpecification),
       override: cdktf.listMapper(ec2FleetLaunchTemplateConfigOverrideToTerraform)(struct!.override),
     }
   }
 
+  export class Ec2FleetLaunchTemplateConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // launch_template_specification - computed: false, optional: false, required: true
+    private _launchTemplateSpecification?: Ec2FleetLaunchTemplateConfigLaunchTemplateSpecification; 
+    private __launchTemplateSpecificationOutput = new Ec2FleetLaunchTemplateConfigLaunchTemplateSpecificationOutputReference(this as any, "launch_template_specification", true);
+    public get launchTemplateSpecification() {
+      return this.__launchTemplateSpecificationOutput;
+    }
+    public putLaunchTemplateSpecification(value: Ec2FleetLaunchTemplateConfigLaunchTemplateSpecification) {
+      this._launchTemplateSpecification = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get launchTemplateSpecificationInput() {
+      return this._launchTemplateSpecification
+    }
+
+    // override - computed: false, optional: true, required: false
+    private _override?: Ec2FleetLaunchTemplateConfigOverride[] | undefined; 
+    public get override() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('override') as any;
+    }
+    public set override(value: Ec2FleetLaunchTemplateConfigOverride[] | undefined) {
+      this._override = value;
+    }
+    public resetOverride() {
+      this._override = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get overrideInput() {
+      return this._override
+    }
+  }
   export interface Ec2FleetOnDemandOptions {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_fleet.html#allocation_strategy Ec2Fleet#allocation_strategy}
@@ -4288,13 +4971,42 @@ export namespace EC2 {
     readonly allocationStrategy?: string;
   }
 
-  function ec2FleetOnDemandOptionsToTerraform(struct?: Ec2FleetOnDemandOptions): any {
+  function ec2FleetOnDemandOptionsToTerraform(struct?: Ec2FleetOnDemandOptionsOutputReference | Ec2FleetOnDemandOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allocation_strategy: cdktf.stringToTerraform(struct!.allocationStrategy),
     }
   }
 
+  export class Ec2FleetOnDemandOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // allocation_strategy - computed: false, optional: true, required: false
+    private _allocationStrategy?: string | undefined; 
+    public get allocationStrategy() {
+      return this.getStringAttribute('allocation_strategy');
+    }
+    public set allocationStrategy(value: string | undefined) {
+      this._allocationStrategy = value;
+    }
+    public resetAllocationStrategy() {
+      this._allocationStrategy = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allocationStrategyInput() {
+      return this._allocationStrategy
+    }
+  }
   export interface Ec2FleetSpotOptionsMaintenanceStrategiesCapacityRebalance {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_fleet.html#replacement_strategy Ec2Fleet#replacement_strategy}
@@ -4302,29 +5014,88 @@ export namespace EC2 {
     readonly replacementStrategy?: string;
   }
 
-  function ec2FleetSpotOptionsMaintenanceStrategiesCapacityRebalanceToTerraform(struct?: Ec2FleetSpotOptionsMaintenanceStrategiesCapacityRebalance): any {
+  function ec2FleetSpotOptionsMaintenanceStrategiesCapacityRebalanceToTerraform(struct?: Ec2FleetSpotOptionsMaintenanceStrategiesCapacityRebalanceOutputReference | Ec2FleetSpotOptionsMaintenanceStrategiesCapacityRebalance): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       replacement_strategy: cdktf.stringToTerraform(struct!.replacementStrategy),
     }
   }
 
+  export class Ec2FleetSpotOptionsMaintenanceStrategiesCapacityRebalanceOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // replacement_strategy - computed: false, optional: true, required: false
+    private _replacementStrategy?: string | undefined; 
+    public get replacementStrategy() {
+      return this.getStringAttribute('replacement_strategy');
+    }
+    public set replacementStrategy(value: string | undefined) {
+      this._replacementStrategy = value;
+    }
+    public resetReplacementStrategy() {
+      this._replacementStrategy = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get replacementStrategyInput() {
+      return this._replacementStrategy
+    }
+  }
   export interface Ec2FleetSpotOptionsMaintenanceStrategies {
     /**
     * capacity_rebalance block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_fleet.html#capacity_rebalance Ec2Fleet#capacity_rebalance}
     */
-    readonly capacityRebalance?: Ec2FleetSpotOptionsMaintenanceStrategiesCapacityRebalance[];
+    readonly capacityRebalance?: Ec2FleetSpotOptionsMaintenanceStrategiesCapacityRebalance;
   }
 
-  function ec2FleetSpotOptionsMaintenanceStrategiesToTerraform(struct?: Ec2FleetSpotOptionsMaintenanceStrategies): any {
+  function ec2FleetSpotOptionsMaintenanceStrategiesToTerraform(struct?: Ec2FleetSpotOptionsMaintenanceStrategiesOutputReference | Ec2FleetSpotOptionsMaintenanceStrategies): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      capacity_rebalance: cdktf.listMapper(ec2FleetSpotOptionsMaintenanceStrategiesCapacityRebalanceToTerraform)(struct!.capacityRebalance),
+      capacity_rebalance: ec2FleetSpotOptionsMaintenanceStrategiesCapacityRebalanceToTerraform(struct!.capacityRebalance),
     }
   }
 
+  export class Ec2FleetSpotOptionsMaintenanceStrategiesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // capacity_rebalance - computed: false, optional: true, required: false
+    private _capacityRebalance?: Ec2FleetSpotOptionsMaintenanceStrategiesCapacityRebalance | undefined; 
+    private __capacityRebalanceOutput = new Ec2FleetSpotOptionsMaintenanceStrategiesCapacityRebalanceOutputReference(this as any, "capacity_rebalance", true);
+    public get capacityRebalance() {
+      return this.__capacityRebalanceOutput;
+    }
+    public putCapacityRebalance(value: Ec2FleetSpotOptionsMaintenanceStrategiesCapacityRebalance | undefined) {
+      this._capacityRebalance = value;
+    }
+    public resetCapacityRebalance() {
+      this._capacityRebalance = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get capacityRebalanceInput() {
+      return this._capacityRebalance
+    }
+  }
   export interface Ec2FleetSpotOptions {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_fleet.html#allocation_strategy Ec2Fleet#allocation_strategy}
@@ -4343,19 +5114,97 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_fleet.html#maintenance_strategies Ec2Fleet#maintenance_strategies}
     */
-    readonly maintenanceStrategies?: Ec2FleetSpotOptionsMaintenanceStrategies[];
+    readonly maintenanceStrategies?: Ec2FleetSpotOptionsMaintenanceStrategies;
   }
 
-  function ec2FleetSpotOptionsToTerraform(struct?: Ec2FleetSpotOptions): any {
+  function ec2FleetSpotOptionsToTerraform(struct?: Ec2FleetSpotOptionsOutputReference | Ec2FleetSpotOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allocation_strategy: cdktf.stringToTerraform(struct!.allocationStrategy),
       instance_interruption_behavior: cdktf.stringToTerraform(struct!.instanceInterruptionBehavior),
       instance_pools_to_use_count: cdktf.numberToTerraform(struct!.instancePoolsToUseCount),
-      maintenance_strategies: cdktf.listMapper(ec2FleetSpotOptionsMaintenanceStrategiesToTerraform)(struct!.maintenanceStrategies),
+      maintenance_strategies: ec2FleetSpotOptionsMaintenanceStrategiesToTerraform(struct!.maintenanceStrategies),
     }
   }
 
+  export class Ec2FleetSpotOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // allocation_strategy - computed: false, optional: true, required: false
+    private _allocationStrategy?: string | undefined; 
+    public get allocationStrategy() {
+      return this.getStringAttribute('allocation_strategy');
+    }
+    public set allocationStrategy(value: string | undefined) {
+      this._allocationStrategy = value;
+    }
+    public resetAllocationStrategy() {
+      this._allocationStrategy = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allocationStrategyInput() {
+      return this._allocationStrategy
+    }
+
+    // instance_interruption_behavior - computed: false, optional: true, required: false
+    private _instanceInterruptionBehavior?: string | undefined; 
+    public get instanceInterruptionBehavior() {
+      return this.getStringAttribute('instance_interruption_behavior');
+    }
+    public set instanceInterruptionBehavior(value: string | undefined) {
+      this._instanceInterruptionBehavior = value;
+    }
+    public resetInstanceInterruptionBehavior() {
+      this._instanceInterruptionBehavior = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get instanceInterruptionBehaviorInput() {
+      return this._instanceInterruptionBehavior
+    }
+
+    // instance_pools_to_use_count - computed: false, optional: true, required: false
+    private _instancePoolsToUseCount?: number | undefined; 
+    public get instancePoolsToUseCount() {
+      return this.getNumberAttribute('instance_pools_to_use_count');
+    }
+    public set instancePoolsToUseCount(value: number | undefined) {
+      this._instancePoolsToUseCount = value;
+    }
+    public resetInstancePoolsToUseCount() {
+      this._instancePoolsToUseCount = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get instancePoolsToUseCountInput() {
+      return this._instancePoolsToUseCount
+    }
+
+    // maintenance_strategies - computed: false, optional: true, required: false
+    private _maintenanceStrategies?: Ec2FleetSpotOptionsMaintenanceStrategies | undefined; 
+    private __maintenanceStrategiesOutput = new Ec2FleetSpotOptionsMaintenanceStrategiesOutputReference(this as any, "maintenance_strategies", true);
+    public get maintenanceStrategies() {
+      return this.__maintenanceStrategiesOutput;
+    }
+    public putMaintenanceStrategies(value: Ec2FleetSpotOptionsMaintenanceStrategies | undefined) {
+      this._maintenanceStrategies = value;
+    }
+    public resetMaintenanceStrategies() {
+      this._maintenanceStrategies = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maintenanceStrategiesInput() {
+      return this._maintenanceStrategies
+    }
+  }
   export interface Ec2FleetTargetCapacitySpecification {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_fleet.html#default_target_capacity_type Ec2Fleet#default_target_capacity_type}
@@ -4375,8 +5224,11 @@ export namespace EC2 {
     readonly totalTargetCapacity: number;
   }
 
-  function ec2FleetTargetCapacitySpecificationToTerraform(struct?: Ec2FleetTargetCapacitySpecification): any {
+  function ec2FleetTargetCapacitySpecificationToTerraform(struct?: Ec2FleetTargetCapacitySpecificationOutputReference | Ec2FleetTargetCapacitySpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       default_target_capacity_type: cdktf.stringToTerraform(struct!.defaultTargetCapacityType),
       on_demand_target_capacity: cdktf.numberToTerraform(struct!.onDemandTargetCapacity),
@@ -4385,6 +5237,74 @@ export namespace EC2 {
     }
   }
 
+  export class Ec2FleetTargetCapacitySpecificationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // default_target_capacity_type - computed: false, optional: false, required: true
+    private _defaultTargetCapacityType?: string; 
+    public get defaultTargetCapacityType() {
+      return this.getStringAttribute('default_target_capacity_type');
+    }
+    public set defaultTargetCapacityType(value: string) {
+      this._defaultTargetCapacityType = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get defaultTargetCapacityTypeInput() {
+      return this._defaultTargetCapacityType
+    }
+
+    // on_demand_target_capacity - computed: false, optional: true, required: false
+    private _onDemandTargetCapacity?: number | undefined; 
+    public get onDemandTargetCapacity() {
+      return this.getNumberAttribute('on_demand_target_capacity');
+    }
+    public set onDemandTargetCapacity(value: number | undefined) {
+      this._onDemandTargetCapacity = value;
+    }
+    public resetOnDemandTargetCapacity() {
+      this._onDemandTargetCapacity = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get onDemandTargetCapacityInput() {
+      return this._onDemandTargetCapacity
+    }
+
+    // spot_target_capacity - computed: false, optional: true, required: false
+    private _spotTargetCapacity?: number | undefined; 
+    public get spotTargetCapacity() {
+      return this.getNumberAttribute('spot_target_capacity');
+    }
+    public set spotTargetCapacity(value: number | undefined) {
+      this._spotTargetCapacity = value;
+    }
+    public resetSpotTargetCapacity() {
+      this._spotTargetCapacity = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get spotTargetCapacityInput() {
+      return this._spotTargetCapacity
+    }
+
+    // total_target_capacity - computed: false, optional: false, required: true
+    private _totalTargetCapacity?: number; 
+    public get totalTargetCapacity() {
+      return this.getNumberAttribute('total_target_capacity');
+    }
+    public set totalTargetCapacity(value: number) {
+      this._totalTargetCapacity = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get totalTargetCapacityInput() {
+      return this._totalTargetCapacity
+    }
+  }
   export interface Ec2FleetTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_fleet.html#create Ec2Fleet#create}
@@ -4400,8 +5320,11 @@ export namespace EC2 {
     readonly update?: string;
   }
 
-  function ec2FleetTimeoutsToTerraform(struct?: Ec2FleetTimeouts): any {
+  function ec2FleetTimeoutsToTerraform(struct?: Ec2FleetTimeoutsOutputReference | Ec2FleetTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -4409,6 +5332,64 @@ export namespace EC2 {
     }
   }
 
+  export class Ec2FleetTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/ec2_fleet.html aws_ec2_fleet}
@@ -4461,11 +5442,11 @@ export namespace EC2 {
     // ==========
 
     // excess_capacity_termination_policy - computed: false, optional: true, required: false
-    private _excessCapacityTerminationPolicy?: string;
+    private _excessCapacityTerminationPolicy?: string | undefined; 
     public get excessCapacityTerminationPolicy() {
       return this.getStringAttribute('excess_capacity_termination_policy');
     }
-    public set excessCapacityTerminationPolicy(value: string ) {
+    public set excessCapacityTerminationPolicy(value: string | undefined) {
       this._excessCapacityTerminationPolicy = value;
     }
     public resetExcessCapacityTerminationPolicy() {
@@ -4482,11 +5463,11 @@ export namespace EC2 {
     }
 
     // replace_unhealthy_instances - computed: false, optional: true, required: false
-    private _replaceUnhealthyInstances?: boolean | cdktf.IResolvable;
+    private _replaceUnhealthyInstances?: boolean | cdktf.IResolvable | undefined; 
     public get replaceUnhealthyInstances() {
-      return this.getBooleanAttribute('replace_unhealthy_instances');
+      return this.getBooleanAttribute('replace_unhealthy_instances') as any;
     }
-    public set replaceUnhealthyInstances(value: boolean | cdktf.IResolvable ) {
+    public set replaceUnhealthyInstances(value: boolean | cdktf.IResolvable | undefined) {
       this._replaceUnhealthyInstances = value;
     }
     public resetReplaceUnhealthyInstances() {
@@ -4498,11 +5479,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4514,11 +5496,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -4530,11 +5513,11 @@ export namespace EC2 {
     }
 
     // terminate_instances - computed: false, optional: true, required: false
-    private _terminateInstances?: boolean | cdktf.IResolvable;
+    private _terminateInstances?: boolean | cdktf.IResolvable | undefined; 
     public get terminateInstances() {
-      return this.getBooleanAttribute('terminate_instances');
+      return this.getBooleanAttribute('terminate_instances') as any;
     }
-    public set terminateInstances(value: boolean | cdktf.IResolvable ) {
+    public set terminateInstances(value: boolean | cdktf.IResolvable | undefined) {
       this._terminateInstances = value;
     }
     public resetTerminateInstances() {
@@ -4546,11 +5529,11 @@ export namespace EC2 {
     }
 
     // terminate_instances_with_expiration - computed: false, optional: true, required: false
-    private _terminateInstancesWithExpiration?: boolean | cdktf.IResolvable;
+    private _terminateInstancesWithExpiration?: boolean | cdktf.IResolvable | undefined; 
     public get terminateInstancesWithExpiration() {
-      return this.getBooleanAttribute('terminate_instances_with_expiration');
+      return this.getBooleanAttribute('terminate_instances_with_expiration') as any;
     }
-    public set terminateInstancesWithExpiration(value: boolean | cdktf.IResolvable ) {
+    public set terminateInstancesWithExpiration(value: boolean | cdktf.IResolvable | undefined) {
       this._terminateInstancesWithExpiration = value;
     }
     public resetTerminateInstancesWithExpiration() {
@@ -4562,11 +5545,11 @@ export namespace EC2 {
     }
 
     // type - computed: false, optional: true, required: false
-    private _type?: string;
+    private _type?: string | undefined; 
     public get type() {
       return this.getStringAttribute('type');
     }
-    public set type(value: string ) {
+    public set type(value: string | undefined) {
       this._type = value;
     }
     public resetType() {
@@ -4578,11 +5561,12 @@ export namespace EC2 {
     }
 
     // launch_template_config - computed: false, optional: false, required: true
-    private _launchTemplateConfig: Ec2FleetLaunchTemplateConfig[];
+    private _launchTemplateConfig?: Ec2FleetLaunchTemplateConfig; 
+    private __launchTemplateConfigOutput = new Ec2FleetLaunchTemplateConfigOutputReference(this as any, "launch_template_config", true);
     public get launchTemplateConfig() {
-      return this.interpolationForAttribute('launch_template_config') as any;
+      return this.__launchTemplateConfigOutput;
     }
-    public set launchTemplateConfig(value: Ec2FleetLaunchTemplateConfig[]) {
+    public putLaunchTemplateConfig(value: Ec2FleetLaunchTemplateConfig) {
       this._launchTemplateConfig = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -4591,11 +5575,12 @@ export namespace EC2 {
     }
 
     // on_demand_options - computed: false, optional: true, required: false
-    private _onDemandOptions?: Ec2FleetOnDemandOptions[];
+    private _onDemandOptions?: Ec2FleetOnDemandOptions | undefined; 
+    private __onDemandOptionsOutput = new Ec2FleetOnDemandOptionsOutputReference(this as any, "on_demand_options", true);
     public get onDemandOptions() {
-      return this.interpolationForAttribute('on_demand_options') as any;
+      return this.__onDemandOptionsOutput;
     }
-    public set onDemandOptions(value: Ec2FleetOnDemandOptions[] ) {
+    public putOnDemandOptions(value: Ec2FleetOnDemandOptions | undefined) {
       this._onDemandOptions = value;
     }
     public resetOnDemandOptions() {
@@ -4607,11 +5592,12 @@ export namespace EC2 {
     }
 
     // spot_options - computed: false, optional: true, required: false
-    private _spotOptions?: Ec2FleetSpotOptions[];
+    private _spotOptions?: Ec2FleetSpotOptions | undefined; 
+    private __spotOptionsOutput = new Ec2FleetSpotOptionsOutputReference(this as any, "spot_options", true);
     public get spotOptions() {
-      return this.interpolationForAttribute('spot_options') as any;
+      return this.__spotOptionsOutput;
     }
-    public set spotOptions(value: Ec2FleetSpotOptions[] ) {
+    public putSpotOptions(value: Ec2FleetSpotOptions | undefined) {
       this._spotOptions = value;
     }
     public resetSpotOptions() {
@@ -4623,11 +5609,12 @@ export namespace EC2 {
     }
 
     // target_capacity_specification - computed: false, optional: false, required: true
-    private _targetCapacitySpecification: Ec2FleetTargetCapacitySpecification[];
+    private _targetCapacitySpecification?: Ec2FleetTargetCapacitySpecification; 
+    private __targetCapacitySpecificationOutput = new Ec2FleetTargetCapacitySpecificationOutputReference(this as any, "target_capacity_specification", true);
     public get targetCapacitySpecification() {
-      return this.interpolationForAttribute('target_capacity_specification') as any;
+      return this.__targetCapacitySpecificationOutput;
     }
-    public set targetCapacitySpecification(value: Ec2FleetTargetCapacitySpecification[]) {
+    public putTargetCapacitySpecification(value: Ec2FleetTargetCapacitySpecification) {
       this._targetCapacitySpecification = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -4636,11 +5623,12 @@ export namespace EC2 {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: Ec2FleetTimeouts;
+    private _timeouts?: Ec2FleetTimeouts | undefined; 
+    private __timeoutsOutput = new Ec2FleetTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: Ec2FleetTimeouts ) {
+    public putTimeouts(value: Ec2FleetTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -4664,10 +5652,10 @@ export namespace EC2 {
         terminate_instances: cdktf.booleanToTerraform(this._terminateInstances),
         terminate_instances_with_expiration: cdktf.booleanToTerraform(this._terminateInstancesWithExpiration),
         type: cdktf.stringToTerraform(this._type),
-        launch_template_config: cdktf.listMapper(ec2FleetLaunchTemplateConfigToTerraform)(this._launchTemplateConfig),
-        on_demand_options: cdktf.listMapper(ec2FleetOnDemandOptionsToTerraform)(this._onDemandOptions),
-        spot_options: cdktf.listMapper(ec2FleetSpotOptionsToTerraform)(this._spotOptions),
-        target_capacity_specification: cdktf.listMapper(ec2FleetTargetCapacitySpecificationToTerraform)(this._targetCapacitySpecification),
+        launch_template_config: ec2FleetLaunchTemplateConfigToTerraform(this._launchTemplateConfig),
+        on_demand_options: ec2FleetOnDemandOptionsToTerraform(this._onDemandOptions),
+        spot_options: ec2FleetSpotOptionsToTerraform(this._spotOptions),
+        target_capacity_specification: ec2FleetTargetCapacitySpecificationToTerraform(this._targetCapacitySpecification),
         timeouts: ec2FleetTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -4754,11 +5742,11 @@ export namespace EC2 {
     }
 
     // auto_placement - computed: false, optional: true, required: false
-    private _autoPlacement?: string;
+    private _autoPlacement?: string | undefined; 
     public get autoPlacement() {
       return this.getStringAttribute('auto_placement');
     }
-    public set autoPlacement(value: string ) {
+    public set autoPlacement(value: string | undefined) {
       this._autoPlacement = value;
     }
     public resetAutoPlacement() {
@@ -4770,7 +5758,7 @@ export namespace EC2 {
     }
 
     // availability_zone - computed: false, optional: false, required: true
-    private _availabilityZone: string;
+    private _availabilityZone?: string; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
@@ -4783,11 +5771,11 @@ export namespace EC2 {
     }
 
     // host_recovery - computed: false, optional: true, required: false
-    private _hostRecovery?: string;
+    private _hostRecovery?: string | undefined; 
     public get hostRecovery() {
       return this.getStringAttribute('host_recovery');
     }
-    public set hostRecovery(value: string ) {
+    public set hostRecovery(value: string | undefined) {
       this._hostRecovery = value;
     }
     public resetHostRecovery() {
@@ -4804,11 +5792,11 @@ export namespace EC2 {
     }
 
     // instance_family - computed: false, optional: true, required: false
-    private _instanceFamily?: string;
+    private _instanceFamily?: string | undefined; 
     public get instanceFamily() {
       return this.getStringAttribute('instance_family');
     }
-    public set instanceFamily(value: string ) {
+    public set instanceFamily(value: string | undefined) {
       this._instanceFamily = value;
     }
     public resetInstanceFamily() {
@@ -4820,11 +5808,11 @@ export namespace EC2 {
     }
 
     // instance_type - computed: false, optional: true, required: false
-    private _instanceType?: string;
+    private _instanceType?: string | undefined; 
     public get instanceType() {
       return this.getStringAttribute('instance_type');
     }
-    public set instanceType(value: string ) {
+    public set instanceType(value: string | undefined) {
       this._instanceType = value;
     }
     public resetInstanceType() {
@@ -4841,11 +5829,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4857,11 +5846,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -4945,7 +5935,7 @@ export namespace EC2 {
     // ==========
 
     // destination_cidr_block - computed: false, optional: false, required: true
-    private _destinationCidrBlock: string;
+    private _destinationCidrBlock?: string; 
     public get destinationCidrBlock() {
       return this.getStringAttribute('destination_cidr_block');
     }
@@ -4963,7 +5953,7 @@ export namespace EC2 {
     }
 
     // local_gateway_route_table_id - computed: false, optional: false, required: true
-    private _localGatewayRouteTableId: string;
+    private _localGatewayRouteTableId?: string; 
     public get localGatewayRouteTableId() {
       return this.getStringAttribute('local_gateway_route_table_id');
     }
@@ -4976,7 +5966,7 @@ export namespace EC2 {
     }
 
     // local_gateway_virtual_interface_group_id - computed: false, optional: false, required: true
-    private _localGatewayVirtualInterfaceGroupId: string;
+    private _localGatewayVirtualInterfaceGroupId?: string; 
     public get localGatewayVirtualInterfaceGroupId() {
       return this.getStringAttribute('local_gateway_virtual_interface_group_id');
     }
@@ -5072,7 +6062,7 @@ export namespace EC2 {
     }
 
     // local_gateway_route_table_id - computed: false, optional: false, required: true
-    private _localGatewayRouteTableId: string;
+    private _localGatewayRouteTableId?: string; 
     public get localGatewayRouteTableId() {
       return this.getStringAttribute('local_gateway_route_table_id');
     }
@@ -5085,11 +6075,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -5101,11 +6092,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -5117,7 +6109,7 @@ export namespace EC2 {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -5183,6 +6175,9 @@ export namespace EC2 {
 
   function ec2ManagedPrefixListEntryToTerraform(struct?: Ec2ManagedPrefixListEntry): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cidr: cdktf.stringToTerraform(struct!.cidr),
       description: cdktf.stringToTerraform(struct!.description),
@@ -5235,7 +6230,7 @@ export namespace EC2 {
     // ==========
 
     // address_family - computed: false, optional: false, required: true
-    private _addressFamily: string;
+    private _addressFamily?: string; 
     public get addressFamily() {
       return this.getStringAttribute('address_family');
     }
@@ -5258,7 +6253,7 @@ export namespace EC2 {
     }
 
     // max_entries - computed: false, optional: false, required: true
-    private _maxEntries: number;
+    private _maxEntries?: number; 
     public get maxEntries() {
       return this.getNumberAttribute('max_entries');
     }
@@ -5271,7 +6266,7 @@ export namespace EC2 {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -5289,11 +6284,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -5305,11 +6301,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -5326,11 +6323,12 @@ export namespace EC2 {
     }
 
     // entry - computed: false, optional: true, required: false
-    private _entry?: Ec2ManagedPrefixListEntry[];
+    private _entry?: Ec2ManagedPrefixListEntry[] | undefined; 
     public get entry() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('entry') as any;
     }
-    public set entry(value: Ec2ManagedPrefixListEntry[] ) {
+    public set entry(value: Ec2ManagedPrefixListEntry[] | undefined) {
       this._entry = value;
     }
     public resetEntry() {
@@ -5413,7 +6411,7 @@ export namespace EC2 {
     // ==========
 
     // cidr - computed: false, optional: false, required: true
-    private _cidr: string;
+    private _cidr?: string; 
     public get cidr() {
       return this.getStringAttribute('cidr');
     }
@@ -5426,11 +6424,11 @@ export namespace EC2 {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -5447,7 +6445,7 @@ export namespace EC2 {
     }
 
     // prefix_list_id - computed: false, optional: false, required: true
-    private _prefixListId: string;
+    private _prefixListId?: string; 
     public get prefixListId() {
       return this.getStringAttribute('prefix_list_id');
     }
@@ -5533,7 +6531,7 @@ export namespace EC2 {
     }
 
     // key - computed: false, optional: false, required: true
-    private _key: string;
+    private _key?: string; 
     public get key() {
       return this.getStringAttribute('key');
     }
@@ -5546,7 +6544,7 @@ export namespace EC2 {
     }
 
     // resource_id - computed: false, optional: false, required: true
-    private _resourceId: string;
+    private _resourceId?: string; 
     public get resourceId() {
       return this.getStringAttribute('resource_id');
     }
@@ -5559,7 +6557,7 @@ export namespace EC2 {
     }
 
     // value - computed: false, optional: false, required: true
-    private _value: string;
+    private _value?: string; 
     public get value() {
       return this.getStringAttribute('value');
     }
@@ -5650,11 +6648,11 @@ export namespace EC2 {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -5671,11 +6669,11 @@ export namespace EC2 {
     }
 
     // network_services - computed: false, optional: true, required: false
-    private _networkServices?: string[];
+    private _networkServices?: string[] | undefined; 
     public get networkServices() {
       return this.getListAttribute('network_services');
     }
-    public set networkServices(value: string[] ) {
+    public set networkServices(value: string[] | undefined) {
       this._networkServices = value;
     }
     public resetNetworkServices() {
@@ -5687,11 +6685,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -5703,11 +6702,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -5769,13 +6769,13 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_traffic_mirror_filter_rule.html#destination_port_range Ec2TrafficMirrorFilterRule#destination_port_range}
     */
-    readonly destinationPortRange?: Ec2TrafficMirrorFilterRuleDestinationPortRange[];
+    readonly destinationPortRange?: Ec2TrafficMirrorFilterRuleDestinationPortRange;
     /**
     * source_port_range block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_traffic_mirror_filter_rule.html#source_port_range Ec2TrafficMirrorFilterRule#source_port_range}
     */
-    readonly sourcePortRange?: Ec2TrafficMirrorFilterRuleSourcePortRange[];
+    readonly sourcePortRange?: Ec2TrafficMirrorFilterRuleSourcePortRange;
   }
   export interface Ec2TrafficMirrorFilterRuleDestinationPortRange {
     /**
@@ -5788,14 +6788,59 @@ export namespace EC2 {
     readonly toPort?: number;
   }
 
-  function ec2TrafficMirrorFilterRuleDestinationPortRangeToTerraform(struct?: Ec2TrafficMirrorFilterRuleDestinationPortRange): any {
+  function ec2TrafficMirrorFilterRuleDestinationPortRangeToTerraform(struct?: Ec2TrafficMirrorFilterRuleDestinationPortRangeOutputReference | Ec2TrafficMirrorFilterRuleDestinationPortRange): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       from_port: cdktf.numberToTerraform(struct!.fromPort),
       to_port: cdktf.numberToTerraform(struct!.toPort),
     }
   }
 
+  export class Ec2TrafficMirrorFilterRuleDestinationPortRangeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // from_port - computed: false, optional: true, required: false
+    private _fromPort?: number | undefined; 
+    public get fromPort() {
+      return this.getNumberAttribute('from_port');
+    }
+    public set fromPort(value: number | undefined) {
+      this._fromPort = value;
+    }
+    public resetFromPort() {
+      this._fromPort = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get fromPortInput() {
+      return this._fromPort
+    }
+
+    // to_port - computed: false, optional: true, required: false
+    private _toPort?: number | undefined; 
+    public get toPort() {
+      return this.getNumberAttribute('to_port');
+    }
+    public set toPort(value: number | undefined) {
+      this._toPort = value;
+    }
+    public resetToPort() {
+      this._toPort = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get toPortInput() {
+      return this._toPort
+    }
+  }
   export interface Ec2TrafficMirrorFilterRuleSourcePortRange {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ec2_traffic_mirror_filter_rule.html#from_port Ec2TrafficMirrorFilterRule#from_port}
@@ -5807,14 +6852,59 @@ export namespace EC2 {
     readonly toPort?: number;
   }
 
-  function ec2TrafficMirrorFilterRuleSourcePortRangeToTerraform(struct?: Ec2TrafficMirrorFilterRuleSourcePortRange): any {
+  function ec2TrafficMirrorFilterRuleSourcePortRangeToTerraform(struct?: Ec2TrafficMirrorFilterRuleSourcePortRangeOutputReference | Ec2TrafficMirrorFilterRuleSourcePortRange): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       from_port: cdktf.numberToTerraform(struct!.fromPort),
       to_port: cdktf.numberToTerraform(struct!.toPort),
     }
   }
 
+  export class Ec2TrafficMirrorFilterRuleSourcePortRangeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // from_port - computed: false, optional: true, required: false
+    private _fromPort?: number | undefined; 
+    public get fromPort() {
+      return this.getNumberAttribute('from_port');
+    }
+    public set fromPort(value: number | undefined) {
+      this._fromPort = value;
+    }
+    public resetFromPort() {
+      this._fromPort = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get fromPortInput() {
+      return this._fromPort
+    }
+
+    // to_port - computed: false, optional: true, required: false
+    private _toPort?: number | undefined; 
+    public get toPort() {
+      return this.getNumberAttribute('to_port');
+    }
+    public set toPort(value: number | undefined) {
+      this._toPort = value;
+    }
+    public resetToPort() {
+      this._toPort = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get toPortInput() {
+      return this._toPort
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/ec2_traffic_mirror_filter_rule.html aws_ec2_traffic_mirror_filter_rule}
@@ -5870,11 +6960,11 @@ export namespace EC2 {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -5886,7 +6976,7 @@ export namespace EC2 {
     }
 
     // destination_cidr_block - computed: false, optional: false, required: true
-    private _destinationCidrBlock: string;
+    private _destinationCidrBlock?: string; 
     public get destinationCidrBlock() {
       return this.getStringAttribute('destination_cidr_block');
     }
@@ -5904,11 +6994,11 @@ export namespace EC2 {
     }
 
     // protocol - computed: false, optional: true, required: false
-    private _protocol?: number;
+    private _protocol?: number | undefined; 
     public get protocol() {
       return this.getNumberAttribute('protocol');
     }
-    public set protocol(value: number ) {
+    public set protocol(value: number | undefined) {
       this._protocol = value;
     }
     public resetProtocol() {
@@ -5920,7 +7010,7 @@ export namespace EC2 {
     }
 
     // rule_action - computed: false, optional: false, required: true
-    private _ruleAction: string;
+    private _ruleAction?: string; 
     public get ruleAction() {
       return this.getStringAttribute('rule_action');
     }
@@ -5933,7 +7023,7 @@ export namespace EC2 {
     }
 
     // rule_number - computed: false, optional: false, required: true
-    private _ruleNumber: number;
+    private _ruleNumber?: number; 
     public get ruleNumber() {
       return this.getNumberAttribute('rule_number');
     }
@@ -5946,7 +7036,7 @@ export namespace EC2 {
     }
 
     // source_cidr_block - computed: false, optional: false, required: true
-    private _sourceCidrBlock: string;
+    private _sourceCidrBlock?: string; 
     public get sourceCidrBlock() {
       return this.getStringAttribute('source_cidr_block');
     }
@@ -5959,7 +7049,7 @@ export namespace EC2 {
     }
 
     // traffic_direction - computed: false, optional: false, required: true
-    private _trafficDirection: string;
+    private _trafficDirection?: string; 
     public get trafficDirection() {
       return this.getStringAttribute('traffic_direction');
     }
@@ -5972,7 +7062,7 @@ export namespace EC2 {
     }
 
     // traffic_mirror_filter_id - computed: false, optional: false, required: true
-    private _trafficMirrorFilterId: string;
+    private _trafficMirrorFilterId?: string; 
     public get trafficMirrorFilterId() {
       return this.getStringAttribute('traffic_mirror_filter_id');
     }
@@ -5985,11 +7075,12 @@ export namespace EC2 {
     }
 
     // destination_port_range - computed: false, optional: true, required: false
-    private _destinationPortRange?: Ec2TrafficMirrorFilterRuleDestinationPortRange[];
+    private _destinationPortRange?: Ec2TrafficMirrorFilterRuleDestinationPortRange | undefined; 
+    private __destinationPortRangeOutput = new Ec2TrafficMirrorFilterRuleDestinationPortRangeOutputReference(this as any, "destination_port_range", true);
     public get destinationPortRange() {
-      return this.interpolationForAttribute('destination_port_range') as any;
+      return this.__destinationPortRangeOutput;
     }
-    public set destinationPortRange(value: Ec2TrafficMirrorFilterRuleDestinationPortRange[] ) {
+    public putDestinationPortRange(value: Ec2TrafficMirrorFilterRuleDestinationPortRange | undefined) {
       this._destinationPortRange = value;
     }
     public resetDestinationPortRange() {
@@ -6001,11 +7092,12 @@ export namespace EC2 {
     }
 
     // source_port_range - computed: false, optional: true, required: false
-    private _sourcePortRange?: Ec2TrafficMirrorFilterRuleSourcePortRange[];
+    private _sourcePortRange?: Ec2TrafficMirrorFilterRuleSourcePortRange | undefined; 
+    private __sourcePortRangeOutput = new Ec2TrafficMirrorFilterRuleSourcePortRangeOutputReference(this as any, "source_port_range", true);
     public get sourcePortRange() {
-      return this.interpolationForAttribute('source_port_range') as any;
+      return this.__sourcePortRangeOutput;
     }
-    public set sourcePortRange(value: Ec2TrafficMirrorFilterRuleSourcePortRange[] ) {
+    public putSourcePortRange(value: Ec2TrafficMirrorFilterRuleSourcePortRange | undefined) {
       this._sourcePortRange = value;
     }
     public resetSourcePortRange() {
@@ -6030,8 +7122,8 @@ export namespace EC2 {
         source_cidr_block: cdktf.stringToTerraform(this._sourceCidrBlock),
         traffic_direction: cdktf.stringToTerraform(this._trafficDirection),
         traffic_mirror_filter_id: cdktf.stringToTerraform(this._trafficMirrorFilterId),
-        destination_port_range: cdktf.listMapper(ec2TrafficMirrorFilterRuleDestinationPortRangeToTerraform)(this._destinationPortRange),
-        source_port_range: cdktf.listMapper(ec2TrafficMirrorFilterRuleSourcePortRangeToTerraform)(this._sourcePortRange),
+        destination_port_range: ec2TrafficMirrorFilterRuleDestinationPortRangeToTerraform(this._destinationPortRange),
+        source_port_range: ec2TrafficMirrorFilterRuleSourcePortRangeToTerraform(this._sourcePortRange),
       };
     }
   }
@@ -6127,11 +7219,11 @@ export namespace EC2 {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -6148,7 +7240,7 @@ export namespace EC2 {
     }
 
     // network_interface_id - computed: false, optional: false, required: true
-    private _networkInterfaceId: string;
+    private _networkInterfaceId?: string; 
     public get networkInterfaceId() {
       return this.getStringAttribute('network_interface_id');
     }
@@ -6166,11 +7258,11 @@ export namespace EC2 {
     }
 
     // packet_length - computed: false, optional: true, required: false
-    private _packetLength?: number;
+    private _packetLength?: number | undefined; 
     public get packetLength() {
       return this.getNumberAttribute('packet_length');
     }
-    public set packetLength(value: number ) {
+    public set packetLength(value: number | undefined) {
       this._packetLength = value;
     }
     public resetPacketLength() {
@@ -6182,7 +7274,7 @@ export namespace EC2 {
     }
 
     // session_number - computed: false, optional: false, required: true
-    private _sessionNumber: number;
+    private _sessionNumber?: number; 
     public get sessionNumber() {
       return this.getNumberAttribute('session_number');
     }
@@ -6195,11 +7287,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -6211,11 +7304,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -6227,7 +7321,7 @@ export namespace EC2 {
     }
 
     // traffic_mirror_filter_id - computed: false, optional: false, required: true
-    private _trafficMirrorFilterId: string;
+    private _trafficMirrorFilterId?: string; 
     public get trafficMirrorFilterId() {
       return this.getStringAttribute('traffic_mirror_filter_id');
     }
@@ -6240,7 +7334,7 @@ export namespace EC2 {
     }
 
     // traffic_mirror_target_id - computed: false, optional: false, required: true
-    private _trafficMirrorTargetId: string;
+    private _trafficMirrorTargetId?: string; 
     public get trafficMirrorTargetId() {
       return this.getStringAttribute('traffic_mirror_target_id');
     }
@@ -6253,11 +7347,11 @@ export namespace EC2 {
     }
 
     // virtual_network_id - computed: true, optional: true, required: false
-    private _virtualNetworkId?: number;
+    private _virtualNetworkId?: number | undefined; 
     public get virtualNetworkId() {
       return this.getNumberAttribute('virtual_network_id');
     }
-    public set virtualNetworkId(value: number) {
+    public set virtualNetworkId(value: number | undefined) {
       this._virtualNetworkId = value;
     }
     public resetVirtualNetworkId() {
@@ -6358,11 +7452,11 @@ export namespace EC2 {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -6379,11 +7473,11 @@ export namespace EC2 {
     }
 
     // network_interface_id - computed: false, optional: true, required: false
-    private _networkInterfaceId?: string;
+    private _networkInterfaceId?: string | undefined; 
     public get networkInterfaceId() {
       return this.getStringAttribute('network_interface_id');
     }
-    public set networkInterfaceId(value: string ) {
+    public set networkInterfaceId(value: string | undefined) {
       this._networkInterfaceId = value;
     }
     public resetNetworkInterfaceId() {
@@ -6395,11 +7489,11 @@ export namespace EC2 {
     }
 
     // network_load_balancer_arn - computed: false, optional: true, required: false
-    private _networkLoadBalancerArn?: string;
+    private _networkLoadBalancerArn?: string | undefined; 
     public get networkLoadBalancerArn() {
       return this.getStringAttribute('network_load_balancer_arn');
     }
-    public set networkLoadBalancerArn(value: string ) {
+    public set networkLoadBalancerArn(value: string | undefined) {
       this._networkLoadBalancerArn = value;
     }
     public resetNetworkLoadBalancerArn() {
@@ -6416,11 +7510,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -6432,11 +7527,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -6548,11 +7644,11 @@ export namespace EC2 {
     // ==========
 
     // amazon_side_asn - computed: false, optional: true, required: false
-    private _amazonSideAsn?: number;
+    private _amazonSideAsn?: number | undefined; 
     public get amazonSideAsn() {
       return this.getNumberAttribute('amazon_side_asn');
     }
-    public set amazonSideAsn(value: number ) {
+    public set amazonSideAsn(value: number | undefined) {
       this._amazonSideAsn = value;
     }
     public resetAmazonSideAsn() {
@@ -6574,11 +7670,11 @@ export namespace EC2 {
     }
 
     // auto_accept_shared_attachments - computed: false, optional: true, required: false
-    private _autoAcceptSharedAttachments?: string;
+    private _autoAcceptSharedAttachments?: string | undefined; 
     public get autoAcceptSharedAttachments() {
       return this.getStringAttribute('auto_accept_shared_attachments');
     }
-    public set autoAcceptSharedAttachments(value: string ) {
+    public set autoAcceptSharedAttachments(value: string | undefined) {
       this._autoAcceptSharedAttachments = value;
     }
     public resetAutoAcceptSharedAttachments() {
@@ -6590,11 +7686,11 @@ export namespace EC2 {
     }
 
     // default_route_table_association - computed: false, optional: true, required: false
-    private _defaultRouteTableAssociation?: string;
+    private _defaultRouteTableAssociation?: string | undefined; 
     public get defaultRouteTableAssociation() {
       return this.getStringAttribute('default_route_table_association');
     }
-    public set defaultRouteTableAssociation(value: string ) {
+    public set defaultRouteTableAssociation(value: string | undefined) {
       this._defaultRouteTableAssociation = value;
     }
     public resetDefaultRouteTableAssociation() {
@@ -6606,11 +7702,11 @@ export namespace EC2 {
     }
 
     // default_route_table_propagation - computed: false, optional: true, required: false
-    private _defaultRouteTablePropagation?: string;
+    private _defaultRouteTablePropagation?: string | undefined; 
     public get defaultRouteTablePropagation() {
       return this.getStringAttribute('default_route_table_propagation');
     }
-    public set defaultRouteTablePropagation(value: string ) {
+    public set defaultRouteTablePropagation(value: string | undefined) {
       this._defaultRouteTablePropagation = value;
     }
     public resetDefaultRouteTablePropagation() {
@@ -6622,11 +7718,11 @@ export namespace EC2 {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -6638,11 +7734,11 @@ export namespace EC2 {
     }
 
     // dns_support - computed: false, optional: true, required: false
-    private _dnsSupport?: string;
+    private _dnsSupport?: string | undefined; 
     public get dnsSupport() {
       return this.getStringAttribute('dns_support');
     }
-    public set dnsSupport(value: string ) {
+    public set dnsSupport(value: string | undefined) {
       this._dnsSupport = value;
     }
     public resetDnsSupport() {
@@ -6669,11 +7765,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -6685,11 +7782,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -6701,11 +7799,11 @@ export namespace EC2 {
     }
 
     // vpn_ecmp_support - computed: false, optional: true, required: false
-    private _vpnEcmpSupport?: string;
+    private _vpnEcmpSupport?: string | undefined; 
     public get vpnEcmpSupport() {
       return this.getStringAttribute('vpn_ecmp_support');
     }
-    public set vpnEcmpSupport(value: string ) {
+    public set vpnEcmpSupport(value: string | undefined) {
       this._vpnEcmpSupport = value;
     }
     public resetVpnEcmpSupport() {
@@ -6811,11 +7909,11 @@ export namespace EC2 {
     }
 
     // peer_account_id - computed: true, optional: true, required: false
-    private _peerAccountId?: string;
+    private _peerAccountId?: string | undefined; 
     public get peerAccountId() {
       return this.getStringAttribute('peer_account_id');
     }
-    public set peerAccountId(value: string) {
+    public set peerAccountId(value: string | undefined) {
       this._peerAccountId = value;
     }
     public resetPeerAccountId() {
@@ -6827,7 +7925,7 @@ export namespace EC2 {
     }
 
     // peer_region - computed: false, optional: false, required: true
-    private _peerRegion: string;
+    private _peerRegion?: string; 
     public get peerRegion() {
       return this.getStringAttribute('peer_region');
     }
@@ -6840,7 +7938,7 @@ export namespace EC2 {
     }
 
     // peer_transit_gateway_id - computed: false, optional: false, required: true
-    private _peerTransitGatewayId: string;
+    private _peerTransitGatewayId?: string; 
     public get peerTransitGatewayId() {
       return this.getStringAttribute('peer_transit_gateway_id');
     }
@@ -6853,11 +7951,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -6869,11 +7968,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -6885,7 +7985,7 @@ export namespace EC2 {
     }
 
     // transit_gateway_id - computed: false, optional: false, required: true
-    private _transitGatewayId: string;
+    private _transitGatewayId?: string; 
     public get transitGatewayId() {
       return this.getStringAttribute('transit_gateway_id');
     }
@@ -6989,11 +8089,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -7005,11 +8106,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -7021,7 +8123,7 @@ export namespace EC2 {
     }
 
     // transit_gateway_attachment_id - computed: false, optional: false, required: true
-    private _transitGatewayAttachmentId: string;
+    private _transitGatewayAttachmentId?: string; 
     public get transitGatewayAttachmentId() {
       return this.getStringAttribute('transit_gateway_attachment_id');
     }
@@ -7112,11 +8214,11 @@ export namespace EC2 {
     // ==========
 
     // blackhole - computed: false, optional: true, required: false
-    private _blackhole?: boolean | cdktf.IResolvable;
+    private _blackhole?: boolean | cdktf.IResolvable | undefined; 
     public get blackhole() {
-      return this.getBooleanAttribute('blackhole');
+      return this.getBooleanAttribute('blackhole') as any;
     }
-    public set blackhole(value: boolean | cdktf.IResolvable ) {
+    public set blackhole(value: boolean | cdktf.IResolvable | undefined) {
       this._blackhole = value;
     }
     public resetBlackhole() {
@@ -7133,7 +8235,7 @@ export namespace EC2 {
     }
 
     // prefix_list_id - computed: false, optional: false, required: true
-    private _prefixListId: string;
+    private _prefixListId?: string; 
     public get prefixListId() {
       return this.getStringAttribute('prefix_list_id');
     }
@@ -7151,11 +8253,11 @@ export namespace EC2 {
     }
 
     // transit_gateway_attachment_id - computed: false, optional: true, required: false
-    private _transitGatewayAttachmentId?: string;
+    private _transitGatewayAttachmentId?: string | undefined; 
     public get transitGatewayAttachmentId() {
       return this.getStringAttribute('transit_gateway_attachment_id');
     }
-    public set transitGatewayAttachmentId(value: string ) {
+    public set transitGatewayAttachmentId(value: string | undefined) {
       this._transitGatewayAttachmentId = value;
     }
     public resetTransitGatewayAttachmentId() {
@@ -7167,7 +8269,7 @@ export namespace EC2 {
     }
 
     // transit_gateway_route_table_id - computed: false, optional: false, required: true
-    private _transitGatewayRouteTableId: string;
+    private _transitGatewayRouteTableId?: string; 
     public get transitGatewayRouteTableId() {
       return this.getStringAttribute('transit_gateway_route_table_id');
     }
@@ -7254,11 +8356,11 @@ export namespace EC2 {
     // ==========
 
     // blackhole - computed: false, optional: true, required: false
-    private _blackhole?: boolean | cdktf.IResolvable;
+    private _blackhole?: boolean | cdktf.IResolvable | undefined; 
     public get blackhole() {
-      return this.getBooleanAttribute('blackhole');
+      return this.getBooleanAttribute('blackhole') as any;
     }
-    public set blackhole(value: boolean | cdktf.IResolvable ) {
+    public set blackhole(value: boolean | cdktf.IResolvable | undefined) {
       this._blackhole = value;
     }
     public resetBlackhole() {
@@ -7270,7 +8372,7 @@ export namespace EC2 {
     }
 
     // destination_cidr_block - computed: false, optional: false, required: true
-    private _destinationCidrBlock: string;
+    private _destinationCidrBlock?: string; 
     public get destinationCidrBlock() {
       return this.getStringAttribute('destination_cidr_block');
     }
@@ -7288,11 +8390,11 @@ export namespace EC2 {
     }
 
     // transit_gateway_attachment_id - computed: false, optional: true, required: false
-    private _transitGatewayAttachmentId?: string;
+    private _transitGatewayAttachmentId?: string | undefined; 
     public get transitGatewayAttachmentId() {
       return this.getStringAttribute('transit_gateway_attachment_id');
     }
-    public set transitGatewayAttachmentId(value: string ) {
+    public set transitGatewayAttachmentId(value: string | undefined) {
       this._transitGatewayAttachmentId = value;
     }
     public resetTransitGatewayAttachmentId() {
@@ -7304,7 +8406,7 @@ export namespace EC2 {
     }
 
     // transit_gateway_route_table_id - computed: false, optional: false, required: true
-    private _transitGatewayRouteTableId: string;
+    private _transitGatewayRouteTableId?: string; 
     public get transitGatewayRouteTableId() {
       return this.getStringAttribute('transit_gateway_route_table_id');
     }
@@ -7392,12 +8494,12 @@ export namespace EC2 {
 
     // default_association_route_table - computed: true, optional: false, required: false
     public get defaultAssociationRouteTable() {
-      return this.getBooleanAttribute('default_association_route_table');
+      return this.getBooleanAttribute('default_association_route_table') as any;
     }
 
     // default_propagation_route_table - computed: true, optional: false, required: false
     public get defaultPropagationRouteTable() {
-      return this.getBooleanAttribute('default_propagation_route_table');
+      return this.getBooleanAttribute('default_propagation_route_table') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -7406,11 +8508,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -7422,11 +8525,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -7438,7 +8542,7 @@ export namespace EC2 {
     }
 
     // transit_gateway_id - computed: false, optional: false, required: true
-    private _transitGatewayId: string;
+    private _transitGatewayId?: string; 
     public get transitGatewayId() {
       return this.getStringAttribute('transit_gateway_id');
     }
@@ -7529,7 +8633,7 @@ export namespace EC2 {
     }
 
     // transit_gateway_attachment_id - computed: false, optional: false, required: true
-    private _transitGatewayAttachmentId: string;
+    private _transitGatewayAttachmentId?: string; 
     public get transitGatewayAttachmentId() {
       return this.getStringAttribute('transit_gateway_attachment_id');
     }
@@ -7542,7 +8646,7 @@ export namespace EC2 {
     }
 
     // transit_gateway_route_table_id - computed: false, optional: false, required: true
-    private _transitGatewayRouteTableId: string;
+    private _transitGatewayRouteTableId?: string; 
     public get transitGatewayRouteTableId() {
       return this.getStringAttribute('transit_gateway_route_table_id');
     }
@@ -7632,7 +8736,7 @@ export namespace EC2 {
     }
 
     // transit_gateway_attachment_id - computed: false, optional: false, required: true
-    private _transitGatewayAttachmentId: string;
+    private _transitGatewayAttachmentId?: string; 
     public get transitGatewayAttachmentId() {
       return this.getStringAttribute('transit_gateway_attachment_id');
     }
@@ -7645,7 +8749,7 @@ export namespace EC2 {
     }
 
     // transit_gateway_route_table_id - computed: false, optional: false, required: true
-    private _transitGatewayRouteTableId: string;
+    private _transitGatewayRouteTableId?: string; 
     public get transitGatewayRouteTableId() {
       return this.getStringAttribute('transit_gateway_route_table_id');
     }
@@ -7760,11 +8864,11 @@ export namespace EC2 {
     // ==========
 
     // appliance_mode_support - computed: false, optional: true, required: false
-    private _applianceModeSupport?: string;
+    private _applianceModeSupport?: string | undefined; 
     public get applianceModeSupport() {
       return this.getStringAttribute('appliance_mode_support');
     }
-    public set applianceModeSupport(value: string ) {
+    public set applianceModeSupport(value: string | undefined) {
       this._applianceModeSupport = value;
     }
     public resetApplianceModeSupport() {
@@ -7776,11 +8880,11 @@ export namespace EC2 {
     }
 
     // dns_support - computed: false, optional: true, required: false
-    private _dnsSupport?: string;
+    private _dnsSupport?: string | undefined; 
     public get dnsSupport() {
       return this.getStringAttribute('dns_support');
     }
-    public set dnsSupport(value: string ) {
+    public set dnsSupport(value: string | undefined) {
       this._dnsSupport = value;
     }
     public resetDnsSupport() {
@@ -7797,11 +8901,11 @@ export namespace EC2 {
     }
 
     // ipv6_support - computed: false, optional: true, required: false
-    private _ipv6Support?: string;
+    private _ipv6Support?: string | undefined; 
     public get ipv6Support() {
       return this.getStringAttribute('ipv6_support');
     }
-    public set ipv6Support(value: string ) {
+    public set ipv6Support(value: string | undefined) {
       this._ipv6Support = value;
     }
     public resetIpv6Support() {
@@ -7813,7 +8917,7 @@ export namespace EC2 {
     }
 
     // subnet_ids - computed: false, optional: false, required: true
-    private _subnetIds: string[];
+    private _subnetIds?: string[]; 
     public get subnetIds() {
       return this.getListAttribute('subnet_ids');
     }
@@ -7826,11 +8930,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -7842,11 +8947,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -7858,11 +8964,11 @@ export namespace EC2 {
     }
 
     // transit_gateway_default_route_table_association - computed: false, optional: true, required: false
-    private _transitGatewayDefaultRouteTableAssociation?: boolean | cdktf.IResolvable;
+    private _transitGatewayDefaultRouteTableAssociation?: boolean | cdktf.IResolvable | undefined; 
     public get transitGatewayDefaultRouteTableAssociation() {
-      return this.getBooleanAttribute('transit_gateway_default_route_table_association');
+      return this.getBooleanAttribute('transit_gateway_default_route_table_association') as any;
     }
-    public set transitGatewayDefaultRouteTableAssociation(value: boolean | cdktf.IResolvable ) {
+    public set transitGatewayDefaultRouteTableAssociation(value: boolean | cdktf.IResolvable | undefined) {
       this._transitGatewayDefaultRouteTableAssociation = value;
     }
     public resetTransitGatewayDefaultRouteTableAssociation() {
@@ -7874,11 +8980,11 @@ export namespace EC2 {
     }
 
     // transit_gateway_default_route_table_propagation - computed: false, optional: true, required: false
-    private _transitGatewayDefaultRouteTablePropagation?: boolean | cdktf.IResolvable;
+    private _transitGatewayDefaultRouteTablePropagation?: boolean | cdktf.IResolvable | undefined; 
     public get transitGatewayDefaultRouteTablePropagation() {
-      return this.getBooleanAttribute('transit_gateway_default_route_table_propagation');
+      return this.getBooleanAttribute('transit_gateway_default_route_table_propagation') as any;
     }
-    public set transitGatewayDefaultRouteTablePropagation(value: boolean | cdktf.IResolvable ) {
+    public set transitGatewayDefaultRouteTablePropagation(value: boolean | cdktf.IResolvable | undefined) {
       this._transitGatewayDefaultRouteTablePropagation = value;
     }
     public resetTransitGatewayDefaultRouteTablePropagation() {
@@ -7890,7 +8996,7 @@ export namespace EC2 {
     }
 
     // transit_gateway_id - computed: false, optional: false, required: true
-    private _transitGatewayId: string;
+    private _transitGatewayId?: string; 
     public get transitGatewayId() {
       return this.getStringAttribute('transit_gateway_id');
     }
@@ -7903,7 +9009,7 @@ export namespace EC2 {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -8031,11 +9137,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -8047,11 +9154,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -8063,7 +9171,7 @@ export namespace EC2 {
     }
 
     // transit_gateway_attachment_id - computed: false, optional: false, required: true
-    private _transitGatewayAttachmentId: string;
+    private _transitGatewayAttachmentId?: string; 
     public get transitGatewayAttachmentId() {
       return this.getStringAttribute('transit_gateway_attachment_id');
     }
@@ -8076,11 +9184,11 @@ export namespace EC2 {
     }
 
     // transit_gateway_default_route_table_association - computed: false, optional: true, required: false
-    private _transitGatewayDefaultRouteTableAssociation?: boolean | cdktf.IResolvable;
+    private _transitGatewayDefaultRouteTableAssociation?: boolean | cdktf.IResolvable | undefined; 
     public get transitGatewayDefaultRouteTableAssociation() {
-      return this.getBooleanAttribute('transit_gateway_default_route_table_association');
+      return this.getBooleanAttribute('transit_gateway_default_route_table_association') as any;
     }
-    public set transitGatewayDefaultRouteTableAssociation(value: boolean | cdktf.IResolvable ) {
+    public set transitGatewayDefaultRouteTableAssociation(value: boolean | cdktf.IResolvable | undefined) {
       this._transitGatewayDefaultRouteTableAssociation = value;
     }
     public resetTransitGatewayDefaultRouteTableAssociation() {
@@ -8092,11 +9200,11 @@ export namespace EC2 {
     }
 
     // transit_gateway_default_route_table_propagation - computed: false, optional: true, required: false
-    private _transitGatewayDefaultRouteTablePropagation?: boolean | cdktf.IResolvable;
+    private _transitGatewayDefaultRouteTablePropagation?: boolean | cdktf.IResolvable | undefined; 
     public get transitGatewayDefaultRouteTablePropagation() {
-      return this.getBooleanAttribute('transit_gateway_default_route_table_propagation');
+      return this.getBooleanAttribute('transit_gateway_default_route_table_propagation') as any;
     }
-    public set transitGatewayDefaultRouteTablePropagation(value: boolean | cdktf.IResolvable ) {
+    public set transitGatewayDefaultRouteTablePropagation(value: boolean | cdktf.IResolvable | undefined) {
       this._transitGatewayDefaultRouteTablePropagation = value;
     }
     public resetTransitGatewayDefaultRouteTablePropagation() {
@@ -8199,8 +9307,11 @@ export namespace EC2 {
     readonly update?: string;
   }
 
-  function eipTimeoutsToTerraform(struct?: EipTimeouts): any {
+  function eipTimeoutsToTerraform(struct?: EipTimeoutsOutputReference | EipTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete: cdktf.stringToTerraform(struct!.delete),
       read: cdktf.stringToTerraform(struct!.read),
@@ -8208,6 +9319,64 @@ export namespace EC2 {
     }
   }
 
+  export class EipTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // read - computed: false, optional: true, required: false
+    private _read?: string | undefined; 
+    public get read() {
+      return this.getStringAttribute('read');
+    }
+    public set read(value: string | undefined) {
+      this._read = value;
+    }
+    public resetRead() {
+      this._read = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get readInput() {
+      return this._read
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/eip.html aws_eip}
@@ -8259,11 +9428,11 @@ export namespace EC2 {
     // ==========
 
     // address - computed: false, optional: true, required: false
-    private _address?: string;
+    private _address?: string | undefined; 
     public get address() {
       return this.getStringAttribute('address');
     }
-    public set address(value: string ) {
+    public set address(value: string | undefined) {
       this._address = value;
     }
     public resetAddress() {
@@ -8280,11 +9449,11 @@ export namespace EC2 {
     }
 
     // associate_with_private_ip - computed: false, optional: true, required: false
-    private _associateWithPrivateIp?: string;
+    private _associateWithPrivateIp?: string | undefined; 
     public get associateWithPrivateIp() {
       return this.getStringAttribute('associate_with_private_ip');
     }
-    public set associateWithPrivateIp(value: string ) {
+    public set associateWithPrivateIp(value: string | undefined) {
       this._associateWithPrivateIp = value;
     }
     public resetAssociateWithPrivateIp() {
@@ -8311,11 +9480,11 @@ export namespace EC2 {
     }
 
     // customer_owned_ipv4_pool - computed: false, optional: true, required: false
-    private _customerOwnedIpv4Pool?: string;
+    private _customerOwnedIpv4Pool?: string | undefined; 
     public get customerOwnedIpv4Pool() {
       return this.getStringAttribute('customer_owned_ipv4_pool');
     }
-    public set customerOwnedIpv4Pool(value: string ) {
+    public set customerOwnedIpv4Pool(value: string | undefined) {
       this._customerOwnedIpv4Pool = value;
     }
     public resetCustomerOwnedIpv4Pool() {
@@ -8337,11 +9506,11 @@ export namespace EC2 {
     }
 
     // instance - computed: true, optional: true, required: false
-    private _instance?: string;
+    private _instance?: string | undefined; 
     public get instance() {
       return this.getStringAttribute('instance');
     }
-    public set instance(value: string) {
+    public set instance(value: string | undefined) {
       this._instance = value;
     }
     public resetInstance() {
@@ -8353,11 +9522,11 @@ export namespace EC2 {
     }
 
     // network_border_group - computed: true, optional: true, required: false
-    private _networkBorderGroup?: string;
+    private _networkBorderGroup?: string | undefined; 
     public get networkBorderGroup() {
       return this.getStringAttribute('network_border_group');
     }
-    public set networkBorderGroup(value: string) {
+    public set networkBorderGroup(value: string | undefined) {
       this._networkBorderGroup = value;
     }
     public resetNetworkBorderGroup() {
@@ -8369,11 +9538,11 @@ export namespace EC2 {
     }
 
     // network_interface - computed: true, optional: true, required: false
-    private _networkInterface?: string;
+    private _networkInterface?: string | undefined; 
     public get networkInterface() {
       return this.getStringAttribute('network_interface');
     }
-    public set networkInterface(value: string) {
+    public set networkInterface(value: string | undefined) {
       this._networkInterface = value;
     }
     public resetNetworkInterface() {
@@ -8405,11 +9574,11 @@ export namespace EC2 {
     }
 
     // public_ipv4_pool - computed: true, optional: true, required: false
-    private _publicIpv4Pool?: string;
+    private _publicIpv4Pool?: string | undefined; 
     public get publicIpv4Pool() {
       return this.getStringAttribute('public_ipv4_pool');
     }
-    public set publicIpv4Pool(value: string) {
+    public set publicIpv4Pool(value: string | undefined) {
       this._publicIpv4Pool = value;
     }
     public resetPublicIpv4Pool() {
@@ -8421,11 +9590,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -8437,11 +9607,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -8453,11 +9624,11 @@ export namespace EC2 {
     }
 
     // vpc - computed: true, optional: true, required: false
-    private _vpc?: boolean | cdktf.IResolvable;
+    private _vpc?: boolean | cdktf.IResolvable | undefined; 
     public get vpc() {
-      return this.getBooleanAttribute('vpc');
+      return this.getBooleanAttribute('vpc') as any;
     }
-    public set vpc(value: boolean | cdktf.IResolvable) {
+    public set vpc(value: boolean | cdktf.IResolvable | undefined) {
       this._vpc = value;
     }
     public resetVpc() {
@@ -8469,11 +9640,12 @@ export namespace EC2 {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: EipTimeouts;
+    private _timeouts?: EipTimeouts | undefined; 
+    private __timeoutsOutput = new EipTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: EipTimeouts ) {
+    public putTimeouts(value: EipTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -8576,11 +9748,11 @@ export namespace EC2 {
     // ==========
 
     // allocation_id - computed: true, optional: true, required: false
-    private _allocationId?: string;
+    private _allocationId?: string | undefined; 
     public get allocationId() {
       return this.getStringAttribute('allocation_id');
     }
-    public set allocationId(value: string) {
+    public set allocationId(value: string | undefined) {
       this._allocationId = value;
     }
     public resetAllocationId() {
@@ -8592,11 +9764,11 @@ export namespace EC2 {
     }
 
     // allow_reassociation - computed: false, optional: true, required: false
-    private _allowReassociation?: boolean | cdktf.IResolvable;
+    private _allowReassociation?: boolean | cdktf.IResolvable | undefined; 
     public get allowReassociation() {
-      return this.getBooleanAttribute('allow_reassociation');
+      return this.getBooleanAttribute('allow_reassociation') as any;
     }
-    public set allowReassociation(value: boolean | cdktf.IResolvable ) {
+    public set allowReassociation(value: boolean | cdktf.IResolvable | undefined) {
       this._allowReassociation = value;
     }
     public resetAllowReassociation() {
@@ -8613,11 +9785,11 @@ export namespace EC2 {
     }
 
     // instance_id - computed: true, optional: true, required: false
-    private _instanceId?: string;
+    private _instanceId?: string | undefined; 
     public get instanceId() {
       return this.getStringAttribute('instance_id');
     }
-    public set instanceId(value: string) {
+    public set instanceId(value: string | undefined) {
       this._instanceId = value;
     }
     public resetInstanceId() {
@@ -8629,11 +9801,11 @@ export namespace EC2 {
     }
 
     // network_interface_id - computed: true, optional: true, required: false
-    private _networkInterfaceId?: string;
+    private _networkInterfaceId?: string | undefined; 
     public get networkInterfaceId() {
       return this.getStringAttribute('network_interface_id');
     }
-    public set networkInterfaceId(value: string) {
+    public set networkInterfaceId(value: string | undefined) {
       this._networkInterfaceId = value;
     }
     public resetNetworkInterfaceId() {
@@ -8645,11 +9817,11 @@ export namespace EC2 {
     }
 
     // private_ip_address - computed: true, optional: true, required: false
-    private _privateIpAddress?: string;
+    private _privateIpAddress?: string | undefined; 
     public get privateIpAddress() {
       return this.getStringAttribute('private_ip_address');
     }
-    public set privateIpAddress(value: string) {
+    public set privateIpAddress(value: string | undefined) {
       this._privateIpAddress = value;
     }
     public resetPrivateIpAddress() {
@@ -8661,11 +9833,11 @@ export namespace EC2 {
     }
 
     // public_ip - computed: true, optional: true, required: false
-    private _publicIp?: string;
+    private _publicIp?: string | undefined; 
     public get publicIp() {
       return this.getStringAttribute('public_ip');
     }
-    public set publicIp(value: string) {
+    public set publicIp(value: string | undefined) {
       this._publicIp = value;
     }
     public resetPublicIp() {
@@ -8821,13 +9993,13 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/instance.html#capacity_reservation_specification Instance#capacity_reservation_specification}
     */
-    readonly capacityReservationSpecification?: InstanceCapacityReservationSpecification[];
+    readonly capacityReservationSpecification?: InstanceCapacityReservationSpecification;
     /**
     * credit_specification block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/instance.html#credit_specification Instance#credit_specification}
     */
-    readonly creditSpecification?: InstanceCreditSpecification[];
+    readonly creditSpecification?: InstanceCreditSpecification;
     /**
     * ebs_block_device block
     * 
@@ -8839,7 +10011,7 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/instance.html#enclave_options Instance#enclave_options}
     */
-    readonly enclaveOptions?: InstanceEnclaveOptions[];
+    readonly enclaveOptions?: InstanceEnclaveOptions;
     /**
     * ephemeral_block_device block
     * 
@@ -8851,13 +10023,13 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/instance.html#launch_template Instance#launch_template}
     */
-    readonly launchTemplate?: InstanceLaunchTemplate[];
+    readonly launchTemplate?: InstanceLaunchTemplate;
     /**
     * metadata_options block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/instance.html#metadata_options Instance#metadata_options}
     */
-    readonly metadataOptions?: InstanceMetadataOptions[];
+    readonly metadataOptions?: InstanceMetadataOptions;
     /**
     * network_interface block
     * 
@@ -8869,7 +10041,7 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/instance.html#root_block_device Instance#root_block_device}
     */
-    readonly rootBlockDevice?: InstanceRootBlockDevice[];
+    readonly rootBlockDevice?: InstanceRootBlockDevice;
     /**
     * timeouts block
     * 
@@ -8884,13 +10056,42 @@ export namespace EC2 {
     readonly capacityReservationId?: string;
   }
 
-  function instanceCapacityReservationSpecificationCapacityReservationTargetToTerraform(struct?: InstanceCapacityReservationSpecificationCapacityReservationTarget): any {
+  function instanceCapacityReservationSpecificationCapacityReservationTargetToTerraform(struct?: InstanceCapacityReservationSpecificationCapacityReservationTargetOutputReference | InstanceCapacityReservationSpecificationCapacityReservationTarget): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       capacity_reservation_id: cdktf.stringToTerraform(struct!.capacityReservationId),
     }
   }
 
+  export class InstanceCapacityReservationSpecificationCapacityReservationTargetOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // capacity_reservation_id - computed: false, optional: true, required: false
+    private _capacityReservationId?: string | undefined; 
+    public get capacityReservationId() {
+      return this.getStringAttribute('capacity_reservation_id');
+    }
+    public set capacityReservationId(value: string | undefined) {
+      this._capacityReservationId = value;
+    }
+    public resetCapacityReservationId() {
+      this._capacityReservationId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get capacityReservationIdInput() {
+      return this._capacityReservationId
+    }
+  }
   export interface InstanceCapacityReservationSpecification {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/instance.html#capacity_reservation_preference Instance#capacity_reservation_preference}
@@ -8901,17 +10102,63 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/instance.html#capacity_reservation_target Instance#capacity_reservation_target}
     */
-    readonly capacityReservationTarget?: InstanceCapacityReservationSpecificationCapacityReservationTarget[];
+    readonly capacityReservationTarget?: InstanceCapacityReservationSpecificationCapacityReservationTarget;
   }
 
-  function instanceCapacityReservationSpecificationToTerraform(struct?: InstanceCapacityReservationSpecification): any {
+  function instanceCapacityReservationSpecificationToTerraform(struct?: InstanceCapacityReservationSpecificationOutputReference | InstanceCapacityReservationSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       capacity_reservation_preference: cdktf.stringToTerraform(struct!.capacityReservationPreference),
-      capacity_reservation_target: cdktf.listMapper(instanceCapacityReservationSpecificationCapacityReservationTargetToTerraform)(struct!.capacityReservationTarget),
+      capacity_reservation_target: instanceCapacityReservationSpecificationCapacityReservationTargetToTerraform(struct!.capacityReservationTarget),
     }
   }
 
+  export class InstanceCapacityReservationSpecificationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // capacity_reservation_preference - computed: false, optional: true, required: false
+    private _capacityReservationPreference?: string | undefined; 
+    public get capacityReservationPreference() {
+      return this.getStringAttribute('capacity_reservation_preference');
+    }
+    public set capacityReservationPreference(value: string | undefined) {
+      this._capacityReservationPreference = value;
+    }
+    public resetCapacityReservationPreference() {
+      this._capacityReservationPreference = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get capacityReservationPreferenceInput() {
+      return this._capacityReservationPreference
+    }
+
+    // capacity_reservation_target - computed: false, optional: true, required: false
+    private _capacityReservationTarget?: InstanceCapacityReservationSpecificationCapacityReservationTarget | undefined; 
+    private __capacityReservationTargetOutput = new InstanceCapacityReservationSpecificationCapacityReservationTargetOutputReference(this as any, "capacity_reservation_target", true);
+    public get capacityReservationTarget() {
+      return this.__capacityReservationTargetOutput;
+    }
+    public putCapacityReservationTarget(value: InstanceCapacityReservationSpecificationCapacityReservationTarget | undefined) {
+      this._capacityReservationTarget = value;
+    }
+    public resetCapacityReservationTarget() {
+      this._capacityReservationTarget = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get capacityReservationTargetInput() {
+      return this._capacityReservationTarget
+    }
+  }
   export interface InstanceCreditSpecification {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/instance.html#cpu_credits Instance#cpu_credits}
@@ -8919,13 +10166,42 @@ export namespace EC2 {
     readonly cpuCredits?: string;
   }
 
-  function instanceCreditSpecificationToTerraform(struct?: InstanceCreditSpecification): any {
+  function instanceCreditSpecificationToTerraform(struct?: InstanceCreditSpecificationOutputReference | InstanceCreditSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cpu_credits: cdktf.stringToTerraform(struct!.cpuCredits),
     }
   }
 
+  export class InstanceCreditSpecificationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // cpu_credits - computed: false, optional: true, required: false
+    private _cpuCredits?: string | undefined; 
+    public get cpuCredits() {
+      return this.getStringAttribute('cpu_credits');
+    }
+    public set cpuCredits(value: string | undefined) {
+      this._cpuCredits = value;
+    }
+    public resetCpuCredits() {
+      this._cpuCredits = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cpuCreditsInput() {
+      return this._cpuCredits
+    }
+  }
   export interface InstanceEbsBlockDevice {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/instance.html#delete_on_termination Instance#delete_on_termination}
@@ -8971,6 +10247,9 @@ export namespace EC2 {
 
   function instanceEbsBlockDeviceToTerraform(struct?: InstanceEbsBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete_on_termination: cdktf.booleanToTerraform(struct!.deleteOnTermination),
       device_name: cdktf.stringToTerraform(struct!.deviceName),
@@ -8992,13 +10271,42 @@ export namespace EC2 {
     readonly enabled?: boolean | cdktf.IResolvable;
   }
 
-  function instanceEnclaveOptionsToTerraform(struct?: InstanceEnclaveOptions): any {
+  function instanceEnclaveOptionsToTerraform(struct?: InstanceEnclaveOptionsOutputReference | InstanceEnclaveOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       enabled: cdktf.booleanToTerraform(struct!.enabled),
     }
   }
 
+  export class InstanceEnclaveOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // enabled - computed: true, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+  }
   export interface InstanceEphemeralBlockDevice {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/instance.html#device_name Instance#device_name}
@@ -9016,6 +10324,9 @@ export namespace EC2 {
 
   function instanceEphemeralBlockDeviceToTerraform(struct?: InstanceEphemeralBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       device_name: cdktf.stringToTerraform(struct!.deviceName),
       no_device: cdktf.booleanToTerraform(struct!.noDevice),
@@ -9038,15 +10349,64 @@ export namespace EC2 {
     readonly version?: string;
   }
 
-  function instanceLaunchTemplateToTerraform(struct?: InstanceLaunchTemplate): any {
+  function instanceLaunchTemplateToTerraform(struct?: InstanceLaunchTemplateOutputReference | InstanceLaunchTemplate): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      id: cdktf.stringToTerraform(struct!.id),
       name: cdktf.stringToTerraform(struct!.name),
       version: cdktf.stringToTerraform(struct!.version),
     }
   }
 
+  export class InstanceLaunchTemplateOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // id - computed: true, optional: true, required: false
+    public get id() {
+      return this.getStringAttribute('id');
+    }
+
+    // name - computed: true, optional: true, required: false
+    private _name?: string | undefined; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string | undefined) {
+      this._name = value;
+    }
+    public resetName() {
+      this._name = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+
+    // version - computed: false, optional: true, required: false
+    private _version?: string | undefined; 
+    public get version() {
+      return this.getStringAttribute('version');
+    }
+    public set version(value: string | undefined) {
+      this._version = value;
+    }
+    public resetVersion() {
+      this._version = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get versionInput() {
+      return this._version
+    }
+  }
   export interface InstanceMetadataOptions {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/instance.html#http_endpoint Instance#http_endpoint}
@@ -9062,8 +10422,11 @@ export namespace EC2 {
     readonly httpTokens?: string;
   }
 
-  function instanceMetadataOptionsToTerraform(struct?: InstanceMetadataOptions): any {
+  function instanceMetadataOptionsToTerraform(struct?: InstanceMetadataOptionsOutputReference | InstanceMetadataOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       http_endpoint: cdktf.stringToTerraform(struct!.httpEndpoint),
       http_put_response_hop_limit: cdktf.numberToTerraform(struct!.httpPutResponseHopLimit),
@@ -9071,6 +10434,64 @@ export namespace EC2 {
     }
   }
 
+  export class InstanceMetadataOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // http_endpoint - computed: true, optional: true, required: false
+    private _httpEndpoint?: string | undefined; 
+    public get httpEndpoint() {
+      return this.getStringAttribute('http_endpoint');
+    }
+    public set httpEndpoint(value: string | undefined) {
+      this._httpEndpoint = value;
+    }
+    public resetHttpEndpoint() {
+      this._httpEndpoint = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get httpEndpointInput() {
+      return this._httpEndpoint
+    }
+
+    // http_put_response_hop_limit - computed: true, optional: true, required: false
+    private _httpPutResponseHopLimit?: number | undefined; 
+    public get httpPutResponseHopLimit() {
+      return this.getNumberAttribute('http_put_response_hop_limit');
+    }
+    public set httpPutResponseHopLimit(value: number | undefined) {
+      this._httpPutResponseHopLimit = value;
+    }
+    public resetHttpPutResponseHopLimit() {
+      this._httpPutResponseHopLimit = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get httpPutResponseHopLimitInput() {
+      return this._httpPutResponseHopLimit
+    }
+
+    // http_tokens - computed: true, optional: true, required: false
+    private _httpTokens?: string | undefined; 
+    public get httpTokens() {
+      return this.getStringAttribute('http_tokens');
+    }
+    public set httpTokens(value: string | undefined) {
+      this._httpTokens = value;
+    }
+    public resetHttpTokens() {
+      this._httpTokens = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get httpTokensInput() {
+      return this._httpTokens
+    }
+  }
   export interface InstanceNetworkInterface {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/instance.html#delete_on_termination Instance#delete_on_termination}
@@ -9088,6 +10509,9 @@ export namespace EC2 {
 
   function instanceNetworkInterfaceToTerraform(struct?: InstanceNetworkInterface): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete_on_termination: cdktf.booleanToTerraform(struct!.deleteOnTermination),
       device_index: cdktf.numberToTerraform(struct!.deviceIndex),
@@ -9130,8 +10554,11 @@ export namespace EC2 {
     readonly volumeType?: string;
   }
 
-  function instanceRootBlockDeviceToTerraform(struct?: InstanceRootBlockDevice): any {
+  function instanceRootBlockDeviceToTerraform(struct?: InstanceRootBlockDeviceOutputReference | InstanceRootBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete_on_termination: cdktf.booleanToTerraform(struct!.deleteOnTermination),
       encrypted: cdktf.booleanToTerraform(struct!.encrypted),
@@ -9144,6 +10571,145 @@ export namespace EC2 {
     }
   }
 
+  export class InstanceRootBlockDeviceOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // delete_on_termination - computed: false, optional: true, required: false
+    private _deleteOnTermination?: boolean | cdktf.IResolvable | undefined; 
+    public get deleteOnTermination() {
+      return this.getBooleanAttribute('delete_on_termination') as any;
+    }
+    public set deleteOnTermination(value: boolean | cdktf.IResolvable | undefined) {
+      this._deleteOnTermination = value;
+    }
+    public resetDeleteOnTermination() {
+      this._deleteOnTermination = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteOnTerminationInput() {
+      return this._deleteOnTermination
+    }
+
+    // encrypted - computed: true, optional: true, required: false
+    private _encrypted?: boolean | cdktf.IResolvable | undefined; 
+    public get encrypted() {
+      return this.getBooleanAttribute('encrypted') as any;
+    }
+    public set encrypted(value: boolean | cdktf.IResolvable | undefined) {
+      this._encrypted = value;
+    }
+    public resetEncrypted() {
+      this._encrypted = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get encryptedInput() {
+      return this._encrypted
+    }
+
+    // iops - computed: true, optional: true, required: false
+    private _iops?: number | undefined; 
+    public get iops() {
+      return this.getNumberAttribute('iops');
+    }
+    public set iops(value: number | undefined) {
+      this._iops = value;
+    }
+    public resetIops() {
+      this._iops = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get iopsInput() {
+      return this._iops
+    }
+
+    // kms_key_id - computed: true, optional: true, required: false
+    private _kmsKeyId?: string | undefined; 
+    public get kmsKeyId() {
+      return this.getStringAttribute('kms_key_id');
+    }
+    public set kmsKeyId(value: string | undefined) {
+      this._kmsKeyId = value;
+    }
+    public resetKmsKeyId() {
+      this._kmsKeyId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get kmsKeyIdInput() {
+      return this._kmsKeyId
+    }
+
+    // tags - computed: false, optional: true, required: false
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
+    }
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._tags = value;
+    }
+    public resetTags() {
+      this._tags = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tagsInput() {
+      return this._tags
+    }
+
+    // throughput - computed: true, optional: true, required: false
+    private _throughput?: number | undefined; 
+    public get throughput() {
+      return this.getNumberAttribute('throughput');
+    }
+    public set throughput(value: number | undefined) {
+      this._throughput = value;
+    }
+    public resetThroughput() {
+      this._throughput = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get throughputInput() {
+      return this._throughput
+    }
+
+    // volume_size - computed: true, optional: true, required: false
+    private _volumeSize?: number | undefined; 
+    public get volumeSize() {
+      return this.getNumberAttribute('volume_size');
+    }
+    public set volumeSize(value: number | undefined) {
+      this._volumeSize = value;
+    }
+    public resetVolumeSize() {
+      this._volumeSize = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get volumeSizeInput() {
+      return this._volumeSize
+    }
+
+    // volume_type - computed: true, optional: true, required: false
+    private _volumeType?: string | undefined; 
+    public get volumeType() {
+      return this.getStringAttribute('volume_type');
+    }
+    public set volumeType(value: string | undefined) {
+      this._volumeType = value;
+    }
+    public resetVolumeType() {
+      this._volumeType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get volumeTypeInput() {
+      return this._volumeType
+    }
+  }
   export interface InstanceTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/instance.html#create Instance#create}
@@ -9159,8 +10725,11 @@ export namespace EC2 {
     readonly update?: string;
   }
 
-  function instanceTimeoutsToTerraform(struct?: InstanceTimeouts): any {
+  function instanceTimeoutsToTerraform(struct?: InstanceTimeoutsOutputReference | InstanceTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -9168,6 +10737,64 @@ export namespace EC2 {
     }
   }
 
+  export class InstanceTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/instance.html aws_instance}
@@ -9249,11 +10876,11 @@ export namespace EC2 {
     // ==========
 
     // ami - computed: true, optional: true, required: false
-    private _ami?: string;
+    private _ami?: string | undefined; 
     public get ami() {
       return this.getStringAttribute('ami');
     }
-    public set ami(value: string) {
+    public set ami(value: string | undefined) {
       this._ami = value;
     }
     public resetAmi() {
@@ -9270,11 +10897,11 @@ export namespace EC2 {
     }
 
     // associate_public_ip_address - computed: true, optional: true, required: false
-    private _associatePublicIpAddress?: boolean | cdktf.IResolvable;
+    private _associatePublicIpAddress?: boolean | cdktf.IResolvable | undefined; 
     public get associatePublicIpAddress() {
-      return this.getBooleanAttribute('associate_public_ip_address');
+      return this.getBooleanAttribute('associate_public_ip_address') as any;
     }
-    public set associatePublicIpAddress(value: boolean | cdktf.IResolvable) {
+    public set associatePublicIpAddress(value: boolean | cdktf.IResolvable | undefined) {
       this._associatePublicIpAddress = value;
     }
     public resetAssociatePublicIpAddress() {
@@ -9286,11 +10913,11 @@ export namespace EC2 {
     }
 
     // availability_zone - computed: true, optional: true, required: false
-    private _availabilityZone?: string;
+    private _availabilityZone?: string | undefined; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
-    public set availabilityZone(value: string) {
+    public set availabilityZone(value: string | undefined) {
       this._availabilityZone = value;
     }
     public resetAvailabilityZone() {
@@ -9302,11 +10929,11 @@ export namespace EC2 {
     }
 
     // cpu_core_count - computed: true, optional: true, required: false
-    private _cpuCoreCount?: number;
+    private _cpuCoreCount?: number | undefined; 
     public get cpuCoreCount() {
       return this.getNumberAttribute('cpu_core_count');
     }
-    public set cpuCoreCount(value: number) {
+    public set cpuCoreCount(value: number | undefined) {
       this._cpuCoreCount = value;
     }
     public resetCpuCoreCount() {
@@ -9318,11 +10945,11 @@ export namespace EC2 {
     }
 
     // cpu_threads_per_core - computed: true, optional: true, required: false
-    private _cpuThreadsPerCore?: number;
+    private _cpuThreadsPerCore?: number | undefined; 
     public get cpuThreadsPerCore() {
       return this.getNumberAttribute('cpu_threads_per_core');
     }
-    public set cpuThreadsPerCore(value: number) {
+    public set cpuThreadsPerCore(value: number | undefined) {
       this._cpuThreadsPerCore = value;
     }
     public resetCpuThreadsPerCore() {
@@ -9334,11 +10961,11 @@ export namespace EC2 {
     }
 
     // disable_api_termination - computed: true, optional: true, required: false
-    private _disableApiTermination?: boolean | cdktf.IResolvable;
+    private _disableApiTermination?: boolean | cdktf.IResolvable | undefined; 
     public get disableApiTermination() {
-      return this.getBooleanAttribute('disable_api_termination');
+      return this.getBooleanAttribute('disable_api_termination') as any;
     }
-    public set disableApiTermination(value: boolean | cdktf.IResolvable) {
+    public set disableApiTermination(value: boolean | cdktf.IResolvable | undefined) {
       this._disableApiTermination = value;
     }
     public resetDisableApiTermination() {
@@ -9350,11 +10977,11 @@ export namespace EC2 {
     }
 
     // ebs_optimized - computed: true, optional: true, required: false
-    private _ebsOptimized?: boolean | cdktf.IResolvable;
+    private _ebsOptimized?: boolean | cdktf.IResolvable | undefined; 
     public get ebsOptimized() {
-      return this.getBooleanAttribute('ebs_optimized');
+      return this.getBooleanAttribute('ebs_optimized') as any;
     }
-    public set ebsOptimized(value: boolean | cdktf.IResolvable) {
+    public set ebsOptimized(value: boolean | cdktf.IResolvable | undefined) {
       this._ebsOptimized = value;
     }
     public resetEbsOptimized() {
@@ -9366,11 +10993,11 @@ export namespace EC2 {
     }
 
     // get_password_data - computed: false, optional: true, required: false
-    private _getPasswordData?: boolean | cdktf.IResolvable;
+    private _getPasswordData?: boolean | cdktf.IResolvable | undefined; 
     public get fetchPasswordData() {
-      return this.getBooleanAttribute('get_password_data');
+      return this.getBooleanAttribute('get_password_data') as any;
     }
-    public set fetchPasswordData(value: boolean | cdktf.IResolvable ) {
+    public set fetchPasswordData(value: boolean | cdktf.IResolvable | undefined) {
       this._getPasswordData = value;
     }
     public resetFetchPasswordData() {
@@ -9382,11 +11009,11 @@ export namespace EC2 {
     }
 
     // hibernation - computed: false, optional: true, required: false
-    private _hibernation?: boolean | cdktf.IResolvable;
+    private _hibernation?: boolean | cdktf.IResolvable | undefined; 
     public get hibernation() {
-      return this.getBooleanAttribute('hibernation');
+      return this.getBooleanAttribute('hibernation') as any;
     }
-    public set hibernation(value: boolean | cdktf.IResolvable ) {
+    public set hibernation(value: boolean | cdktf.IResolvable | undefined) {
       this._hibernation = value;
     }
     public resetHibernation() {
@@ -9398,11 +11025,11 @@ export namespace EC2 {
     }
 
     // host_id - computed: true, optional: true, required: false
-    private _hostId?: string;
+    private _hostId?: string | undefined; 
     public get hostId() {
       return this.getStringAttribute('host_id');
     }
-    public set hostId(value: string) {
+    public set hostId(value: string | undefined) {
       this._hostId = value;
     }
     public resetHostId() {
@@ -9414,11 +11041,11 @@ export namespace EC2 {
     }
 
     // iam_instance_profile - computed: false, optional: true, required: false
-    private _iamInstanceProfile?: string;
+    private _iamInstanceProfile?: string | undefined; 
     public get iamInstanceProfile() {
       return this.getStringAttribute('iam_instance_profile');
     }
-    public set iamInstanceProfile(value: string ) {
+    public set iamInstanceProfile(value: string | undefined) {
       this._iamInstanceProfile = value;
     }
     public resetIamInstanceProfile() {
@@ -9435,11 +11062,11 @@ export namespace EC2 {
     }
 
     // instance_initiated_shutdown_behavior - computed: true, optional: true, required: false
-    private _instanceInitiatedShutdownBehavior?: string;
+    private _instanceInitiatedShutdownBehavior?: string | undefined; 
     public get instanceInitiatedShutdownBehavior() {
       return this.getStringAttribute('instance_initiated_shutdown_behavior');
     }
-    public set instanceInitiatedShutdownBehavior(value: string) {
+    public set instanceInitiatedShutdownBehavior(value: string | undefined) {
       this._instanceInitiatedShutdownBehavior = value;
     }
     public resetInstanceInitiatedShutdownBehavior() {
@@ -9456,11 +11083,11 @@ export namespace EC2 {
     }
 
     // instance_type - computed: true, optional: true, required: false
-    private _instanceType?: string;
+    private _instanceType?: string | undefined; 
     public get instanceType() {
       return this.getStringAttribute('instance_type');
     }
-    public set instanceType(value: string) {
+    public set instanceType(value: string | undefined) {
       this._instanceType = value;
     }
     public resetInstanceType() {
@@ -9472,11 +11099,11 @@ export namespace EC2 {
     }
 
     // ipv6_address_count - computed: true, optional: true, required: false
-    private _ipv6AddressCount?: number;
+    private _ipv6AddressCount?: number | undefined; 
     public get ipv6AddressCount() {
       return this.getNumberAttribute('ipv6_address_count');
     }
-    public set ipv6AddressCount(value: number) {
+    public set ipv6AddressCount(value: number | undefined) {
       this._ipv6AddressCount = value;
     }
     public resetIpv6AddressCount() {
@@ -9488,11 +11115,11 @@ export namespace EC2 {
     }
 
     // ipv6_addresses - computed: true, optional: true, required: false
-    private _ipv6Addresses?: string[];
+    private _ipv6Addresses?: string[] | undefined; 
     public get ipv6Addresses() {
       return this.getListAttribute('ipv6_addresses');
     }
-    public set ipv6Addresses(value: string[]) {
+    public set ipv6Addresses(value: string[] | undefined) {
       this._ipv6Addresses = value;
     }
     public resetIpv6Addresses() {
@@ -9504,11 +11131,11 @@ export namespace EC2 {
     }
 
     // key_name - computed: true, optional: true, required: false
-    private _keyName?: string;
+    private _keyName?: string | undefined; 
     public get keyName() {
       return this.getStringAttribute('key_name');
     }
-    public set keyName(value: string) {
+    public set keyName(value: string | undefined) {
       this._keyName = value;
     }
     public resetKeyName() {
@@ -9520,11 +11147,11 @@ export namespace EC2 {
     }
 
     // monitoring - computed: true, optional: true, required: false
-    private _monitoring?: boolean | cdktf.IResolvable;
+    private _monitoring?: boolean | cdktf.IResolvable | undefined; 
     public get monitoring() {
-      return this.getBooleanAttribute('monitoring');
+      return this.getBooleanAttribute('monitoring') as any;
     }
-    public set monitoring(value: boolean | cdktf.IResolvable) {
+    public set monitoring(value: boolean | cdktf.IResolvable | undefined) {
       this._monitoring = value;
     }
     public resetMonitoring() {
@@ -9546,11 +11173,11 @@ export namespace EC2 {
     }
 
     // placement_group - computed: true, optional: true, required: false
-    private _placementGroup?: string;
+    private _placementGroup?: string | undefined; 
     public get placementGroup() {
       return this.getStringAttribute('placement_group');
     }
-    public set placementGroup(value: string) {
+    public set placementGroup(value: string | undefined) {
       this._placementGroup = value;
     }
     public resetPlacementGroup() {
@@ -9562,11 +11189,11 @@ export namespace EC2 {
     }
 
     // placement_partition_number - computed: true, optional: true, required: false
-    private _placementPartitionNumber?: number;
+    private _placementPartitionNumber?: number | undefined; 
     public get placementPartitionNumber() {
       return this.getNumberAttribute('placement_partition_number');
     }
-    public set placementPartitionNumber(value: number) {
+    public set placementPartitionNumber(value: number | undefined) {
       this._placementPartitionNumber = value;
     }
     public resetPlacementPartitionNumber() {
@@ -9588,11 +11215,11 @@ export namespace EC2 {
     }
 
     // private_ip - computed: true, optional: true, required: false
-    private _privateIp?: string;
+    private _privateIp?: string | undefined; 
     public get privateIp() {
       return this.getStringAttribute('private_ip');
     }
-    public set privateIp(value: string) {
+    public set privateIp(value: string | undefined) {
       this._privateIp = value;
     }
     public resetPrivateIp() {
@@ -9614,11 +11241,11 @@ export namespace EC2 {
     }
 
     // secondary_private_ips - computed: true, optional: true, required: false
-    private _secondaryPrivateIps?: string[];
+    private _secondaryPrivateIps?: string[] | undefined; 
     public get secondaryPrivateIps() {
       return this.getListAttribute('secondary_private_ips');
     }
-    public set secondaryPrivateIps(value: string[]) {
+    public set secondaryPrivateIps(value: string[] | undefined) {
       this._secondaryPrivateIps = value;
     }
     public resetSecondaryPrivateIps() {
@@ -9630,11 +11257,11 @@ export namespace EC2 {
     }
 
     // security_groups - computed: true, optional: true, required: false
-    private _securityGroups?: string[];
+    private _securityGroups?: string[] | undefined; 
     public get securityGroups() {
       return this.getListAttribute('security_groups');
     }
-    public set securityGroups(value: string[]) {
+    public set securityGroups(value: string[] | undefined) {
       this._securityGroups = value;
     }
     public resetSecurityGroups() {
@@ -9646,11 +11273,11 @@ export namespace EC2 {
     }
 
     // source_dest_check - computed: false, optional: true, required: false
-    private _sourceDestCheck?: boolean | cdktf.IResolvable;
+    private _sourceDestCheck?: boolean | cdktf.IResolvable | undefined; 
     public get sourceDestCheck() {
-      return this.getBooleanAttribute('source_dest_check');
+      return this.getBooleanAttribute('source_dest_check') as any;
     }
-    public set sourceDestCheck(value: boolean | cdktf.IResolvable ) {
+    public set sourceDestCheck(value: boolean | cdktf.IResolvable | undefined) {
       this._sourceDestCheck = value;
     }
     public resetSourceDestCheck() {
@@ -9662,11 +11289,11 @@ export namespace EC2 {
     }
 
     // subnet_id - computed: true, optional: true, required: false
-    private _subnetId?: string;
+    private _subnetId?: string | undefined; 
     public get subnetId() {
       return this.getStringAttribute('subnet_id');
     }
-    public set subnetId(value: string) {
+    public set subnetId(value: string | undefined) {
       this._subnetId = value;
     }
     public resetSubnetId() {
@@ -9678,11 +11305,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -9694,11 +11322,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -9710,11 +11339,11 @@ export namespace EC2 {
     }
 
     // tenancy - computed: true, optional: true, required: false
-    private _tenancy?: string;
+    private _tenancy?: string | undefined; 
     public get tenancy() {
       return this.getStringAttribute('tenancy');
     }
-    public set tenancy(value: string) {
+    public set tenancy(value: string | undefined) {
       this._tenancy = value;
     }
     public resetTenancy() {
@@ -9726,11 +11355,11 @@ export namespace EC2 {
     }
 
     // user_data - computed: true, optional: true, required: false
-    private _userData?: string;
+    private _userData?: string | undefined; 
     public get userData() {
       return this.getStringAttribute('user_data');
     }
-    public set userData(value: string) {
+    public set userData(value: string | undefined) {
       this._userData = value;
     }
     public resetUserData() {
@@ -9742,11 +11371,11 @@ export namespace EC2 {
     }
 
     // user_data_base64 - computed: true, optional: true, required: false
-    private _userDataBase64?: string;
+    private _userDataBase64?: string | undefined; 
     public get userDataBase64() {
       return this.getStringAttribute('user_data_base64');
     }
-    public set userDataBase64(value: string) {
+    public set userDataBase64(value: string | undefined) {
       this._userDataBase64 = value;
     }
     public resetUserDataBase64() {
@@ -9758,11 +11387,12 @@ export namespace EC2 {
     }
 
     // volume_tags - computed: false, optional: true, required: false
-    private _volumeTags?: { [key: string]: string } | cdktf.IResolvable;
+    private _volumeTags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get volumeTags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('volume_tags') as any;
     }
-    public set volumeTags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set volumeTags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._volumeTags = value;
     }
     public resetVolumeTags() {
@@ -9774,11 +11404,11 @@ export namespace EC2 {
     }
 
     // vpc_security_group_ids - computed: true, optional: true, required: false
-    private _vpcSecurityGroupIds?: string[];
+    private _vpcSecurityGroupIds?: string[] | undefined; 
     public get vpcSecurityGroupIds() {
       return this.getListAttribute('vpc_security_group_ids');
     }
-    public set vpcSecurityGroupIds(value: string[]) {
+    public set vpcSecurityGroupIds(value: string[] | undefined) {
       this._vpcSecurityGroupIds = value;
     }
     public resetVpcSecurityGroupIds() {
@@ -9790,11 +11420,12 @@ export namespace EC2 {
     }
 
     // capacity_reservation_specification - computed: false, optional: true, required: false
-    private _capacityReservationSpecification?: InstanceCapacityReservationSpecification[];
+    private _capacityReservationSpecification?: InstanceCapacityReservationSpecification | undefined; 
+    private __capacityReservationSpecificationOutput = new InstanceCapacityReservationSpecificationOutputReference(this as any, "capacity_reservation_specification", true);
     public get capacityReservationSpecification() {
-      return this.interpolationForAttribute('capacity_reservation_specification') as any;
+      return this.__capacityReservationSpecificationOutput;
     }
-    public set capacityReservationSpecification(value: InstanceCapacityReservationSpecification[] ) {
+    public putCapacityReservationSpecification(value: InstanceCapacityReservationSpecification | undefined) {
       this._capacityReservationSpecification = value;
     }
     public resetCapacityReservationSpecification() {
@@ -9806,11 +11437,12 @@ export namespace EC2 {
     }
 
     // credit_specification - computed: false, optional: true, required: false
-    private _creditSpecification?: InstanceCreditSpecification[];
+    private _creditSpecification?: InstanceCreditSpecification | undefined; 
+    private __creditSpecificationOutput = new InstanceCreditSpecificationOutputReference(this as any, "credit_specification", true);
     public get creditSpecification() {
-      return this.interpolationForAttribute('credit_specification') as any;
+      return this.__creditSpecificationOutput;
     }
-    public set creditSpecification(value: InstanceCreditSpecification[] ) {
+    public putCreditSpecification(value: InstanceCreditSpecification | undefined) {
       this._creditSpecification = value;
     }
     public resetCreditSpecification() {
@@ -9822,11 +11454,12 @@ export namespace EC2 {
     }
 
     // ebs_block_device - computed: false, optional: true, required: false
-    private _ebsBlockDevice?: InstanceEbsBlockDevice[];
+    private _ebsBlockDevice?: InstanceEbsBlockDevice[] | undefined; 
     public get ebsBlockDevice() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs_block_device') as any;
     }
-    public set ebsBlockDevice(value: InstanceEbsBlockDevice[] ) {
+    public set ebsBlockDevice(value: InstanceEbsBlockDevice[] | undefined) {
       this._ebsBlockDevice = value;
     }
     public resetEbsBlockDevice() {
@@ -9838,11 +11471,12 @@ export namespace EC2 {
     }
 
     // enclave_options - computed: false, optional: true, required: false
-    private _enclaveOptions?: InstanceEnclaveOptions[];
+    private _enclaveOptions?: InstanceEnclaveOptions | undefined; 
+    private __enclaveOptionsOutput = new InstanceEnclaveOptionsOutputReference(this as any, "enclave_options", true);
     public get enclaveOptions() {
-      return this.interpolationForAttribute('enclave_options') as any;
+      return this.__enclaveOptionsOutput;
     }
-    public set enclaveOptions(value: InstanceEnclaveOptions[] ) {
+    public putEnclaveOptions(value: InstanceEnclaveOptions | undefined) {
       this._enclaveOptions = value;
     }
     public resetEnclaveOptions() {
@@ -9854,11 +11488,12 @@ export namespace EC2 {
     }
 
     // ephemeral_block_device - computed: false, optional: true, required: false
-    private _ephemeralBlockDevice?: InstanceEphemeralBlockDevice[];
+    private _ephemeralBlockDevice?: InstanceEphemeralBlockDevice[] | undefined; 
     public get ephemeralBlockDevice() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ephemeral_block_device') as any;
     }
-    public set ephemeralBlockDevice(value: InstanceEphemeralBlockDevice[] ) {
+    public set ephemeralBlockDevice(value: InstanceEphemeralBlockDevice[] | undefined) {
       this._ephemeralBlockDevice = value;
     }
     public resetEphemeralBlockDevice() {
@@ -9870,11 +11505,12 @@ export namespace EC2 {
     }
 
     // launch_template - computed: false, optional: true, required: false
-    private _launchTemplate?: InstanceLaunchTemplate[];
+    private _launchTemplate?: InstanceLaunchTemplate | undefined; 
+    private __launchTemplateOutput = new InstanceLaunchTemplateOutputReference(this as any, "launch_template", true);
     public get launchTemplate() {
-      return this.interpolationForAttribute('launch_template') as any;
+      return this.__launchTemplateOutput;
     }
-    public set launchTemplate(value: InstanceLaunchTemplate[] ) {
+    public putLaunchTemplate(value: InstanceLaunchTemplate | undefined) {
       this._launchTemplate = value;
     }
     public resetLaunchTemplate() {
@@ -9886,11 +11522,12 @@ export namespace EC2 {
     }
 
     // metadata_options - computed: false, optional: true, required: false
-    private _metadataOptions?: InstanceMetadataOptions[];
+    private _metadataOptions?: InstanceMetadataOptions | undefined; 
+    private __metadataOptionsOutput = new InstanceMetadataOptionsOutputReference(this as any, "metadata_options", true);
     public get metadataOptions() {
-      return this.interpolationForAttribute('metadata_options') as any;
+      return this.__metadataOptionsOutput;
     }
-    public set metadataOptions(value: InstanceMetadataOptions[] ) {
+    public putMetadataOptions(value: InstanceMetadataOptions | undefined) {
       this._metadataOptions = value;
     }
     public resetMetadataOptions() {
@@ -9902,11 +11539,12 @@ export namespace EC2 {
     }
 
     // network_interface - computed: false, optional: true, required: false
-    private _networkInterface?: InstanceNetworkInterface[];
+    private _networkInterface?: InstanceNetworkInterface[] | undefined; 
     public get networkInterface() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('network_interface') as any;
     }
-    public set networkInterface(value: InstanceNetworkInterface[] ) {
+    public set networkInterface(value: InstanceNetworkInterface[] | undefined) {
       this._networkInterface = value;
     }
     public resetNetworkInterface() {
@@ -9918,11 +11556,12 @@ export namespace EC2 {
     }
 
     // root_block_device - computed: false, optional: true, required: false
-    private _rootBlockDevice?: InstanceRootBlockDevice[];
+    private _rootBlockDevice?: InstanceRootBlockDevice | undefined; 
+    private __rootBlockDeviceOutput = new InstanceRootBlockDeviceOutputReference(this as any, "root_block_device", true);
     public get rootBlockDevice() {
-      return this.interpolationForAttribute('root_block_device') as any;
+      return this.__rootBlockDeviceOutput;
     }
-    public set rootBlockDevice(value: InstanceRootBlockDevice[] ) {
+    public putRootBlockDevice(value: InstanceRootBlockDevice | undefined) {
       this._rootBlockDevice = value;
     }
     public resetRootBlockDevice() {
@@ -9934,11 +11573,12 @@ export namespace EC2 {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: InstanceTimeouts;
+    private _timeouts?: InstanceTimeouts | undefined; 
+    private __timeoutsOutput = new InstanceTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: InstanceTimeouts ) {
+    public putTimeouts(value: InstanceTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -9986,15 +11626,15 @@ export namespace EC2 {
         user_data_base64: cdktf.stringToTerraform(this._userDataBase64),
         volume_tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._volumeTags),
         vpc_security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._vpcSecurityGroupIds),
-        capacity_reservation_specification: cdktf.listMapper(instanceCapacityReservationSpecificationToTerraform)(this._capacityReservationSpecification),
-        credit_specification: cdktf.listMapper(instanceCreditSpecificationToTerraform)(this._creditSpecification),
+        capacity_reservation_specification: instanceCapacityReservationSpecificationToTerraform(this._capacityReservationSpecification),
+        credit_specification: instanceCreditSpecificationToTerraform(this._creditSpecification),
         ebs_block_device: cdktf.listMapper(instanceEbsBlockDeviceToTerraform)(this._ebsBlockDevice),
-        enclave_options: cdktf.listMapper(instanceEnclaveOptionsToTerraform)(this._enclaveOptions),
+        enclave_options: instanceEnclaveOptionsToTerraform(this._enclaveOptions),
         ephemeral_block_device: cdktf.listMapper(instanceEphemeralBlockDeviceToTerraform)(this._ephemeralBlockDevice),
-        launch_template: cdktf.listMapper(instanceLaunchTemplateToTerraform)(this._launchTemplate),
-        metadata_options: cdktf.listMapper(instanceMetadataOptionsToTerraform)(this._metadataOptions),
+        launch_template: instanceLaunchTemplateToTerraform(this._launchTemplate),
+        metadata_options: instanceMetadataOptionsToTerraform(this._metadataOptions),
         network_interface: cdktf.listMapper(instanceNetworkInterfaceToTerraform)(this._networkInterface),
-        root_block_device: cdktf.listMapper(instanceRootBlockDeviceToTerraform)(this._rootBlockDevice),
+        root_block_device: instanceRootBlockDeviceToTerraform(this._rootBlockDevice),
         timeouts: instanceTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -10081,11 +11721,11 @@ export namespace EC2 {
     }
 
     // key_name - computed: true, optional: true, required: false
-    private _keyName?: string;
+    private _keyName?: string | undefined; 
     public get keyName() {
       return this.getStringAttribute('key_name');
     }
-    public set keyName(value: string) {
+    public set keyName(value: string | undefined) {
       this._keyName = value;
     }
     public resetKeyName() {
@@ -10097,11 +11737,11 @@ export namespace EC2 {
     }
 
     // key_name_prefix - computed: false, optional: true, required: false
-    private _keyNamePrefix?: string;
+    private _keyNamePrefix?: string | undefined; 
     public get keyNamePrefix() {
       return this.getStringAttribute('key_name_prefix');
     }
-    public set keyNamePrefix(value: string ) {
+    public set keyNamePrefix(value: string | undefined) {
       this._keyNamePrefix = value;
     }
     public resetKeyNamePrefix() {
@@ -10118,7 +11758,7 @@ export namespace EC2 {
     }
 
     // public_key - computed: false, optional: false, required: true
-    private _publicKey: string;
+    private _publicKey?: string; 
     public get publicKey() {
       return this.getStringAttribute('public_key');
     }
@@ -10131,11 +11771,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -10147,11 +11788,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -10260,19 +11902,19 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#capacity_reservation_specification LaunchTemplate#capacity_reservation_specification}
     */
-    readonly capacityReservationSpecification?: LaunchTemplateCapacityReservationSpecification[];
+    readonly capacityReservationSpecification?: LaunchTemplateCapacityReservationSpecification;
     /**
     * cpu_options block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#cpu_options LaunchTemplate#cpu_options}
     */
-    readonly cpuOptions?: LaunchTemplateCpuOptions[];
+    readonly cpuOptions?: LaunchTemplateCpuOptions;
     /**
     * credit_specification block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#credit_specification LaunchTemplate#credit_specification}
     */
-    readonly creditSpecification?: LaunchTemplateCreditSpecification[];
+    readonly creditSpecification?: LaunchTemplateCreditSpecification;
     /**
     * elastic_gpu_specifications block
     * 
@@ -10284,31 +11926,31 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#elastic_inference_accelerator LaunchTemplate#elastic_inference_accelerator}
     */
-    readonly elasticInferenceAccelerator?: LaunchTemplateElasticInferenceAccelerator[];
+    readonly elasticInferenceAccelerator?: LaunchTemplateElasticInferenceAccelerator;
     /**
     * enclave_options block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#enclave_options LaunchTemplate#enclave_options}
     */
-    readonly enclaveOptions?: LaunchTemplateEnclaveOptions[];
+    readonly enclaveOptions?: LaunchTemplateEnclaveOptions;
     /**
     * hibernation_options block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#hibernation_options LaunchTemplate#hibernation_options}
     */
-    readonly hibernationOptions?: LaunchTemplateHibernationOptions[];
+    readonly hibernationOptions?: LaunchTemplateHibernationOptions;
     /**
     * iam_instance_profile block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#iam_instance_profile LaunchTemplate#iam_instance_profile}
     */
-    readonly iamInstanceProfile?: LaunchTemplateIamInstanceProfile[];
+    readonly iamInstanceProfile?: LaunchTemplateIamInstanceProfile;
     /**
     * instance_market_options block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#instance_market_options LaunchTemplate#instance_market_options}
     */
-    readonly instanceMarketOptions?: LaunchTemplateInstanceMarketOptions[];
+    readonly instanceMarketOptions?: LaunchTemplateInstanceMarketOptions;
     /**
     * license_specification block
     * 
@@ -10320,13 +11962,13 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#metadata_options LaunchTemplate#metadata_options}
     */
-    readonly metadataOptions?: LaunchTemplateMetadataOptions[];
+    readonly metadataOptions?: LaunchTemplateMetadataOptions;
     /**
     * monitoring block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#monitoring LaunchTemplate#monitoring}
     */
-    readonly monitoring?: LaunchTemplateMonitoring[];
+    readonly monitoring?: LaunchTemplateMonitoring;
     /**
     * network_interfaces block
     * 
@@ -10338,7 +11980,7 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#placement LaunchTemplate#placement}
     */
-    readonly placement?: LaunchTemplatePlacement[];
+    readonly placement?: LaunchTemplatePlacement;
     /**
     * tag_specifications block
     * 
@@ -10381,8 +12023,11 @@ export namespace EC2 {
     readonly volumeType?: string;
   }
 
-  function launchTemplateBlockDeviceMappingsEbsToTerraform(struct?: LaunchTemplateBlockDeviceMappingsEbs): any {
+  function launchTemplateBlockDeviceMappingsEbsToTerraform(struct?: LaunchTemplateBlockDeviceMappingsEbsOutputReference | LaunchTemplateBlockDeviceMappingsEbs): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete_on_termination: cdktf.stringToTerraform(struct!.deleteOnTermination),
       encrypted: cdktf.stringToTerraform(struct!.encrypted),
@@ -10395,6 +12040,144 @@ export namespace EC2 {
     }
   }
 
+  export class LaunchTemplateBlockDeviceMappingsEbsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // delete_on_termination - computed: false, optional: true, required: false
+    private _deleteOnTermination?: string | undefined; 
+    public get deleteOnTermination() {
+      return this.getStringAttribute('delete_on_termination');
+    }
+    public set deleteOnTermination(value: string | undefined) {
+      this._deleteOnTermination = value;
+    }
+    public resetDeleteOnTermination() {
+      this._deleteOnTermination = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteOnTerminationInput() {
+      return this._deleteOnTermination
+    }
+
+    // encrypted - computed: false, optional: true, required: false
+    private _encrypted?: string | undefined; 
+    public get encrypted() {
+      return this.getStringAttribute('encrypted');
+    }
+    public set encrypted(value: string | undefined) {
+      this._encrypted = value;
+    }
+    public resetEncrypted() {
+      this._encrypted = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get encryptedInput() {
+      return this._encrypted
+    }
+
+    // iops - computed: true, optional: true, required: false
+    private _iops?: number | undefined; 
+    public get iops() {
+      return this.getNumberAttribute('iops');
+    }
+    public set iops(value: number | undefined) {
+      this._iops = value;
+    }
+    public resetIops() {
+      this._iops = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get iopsInput() {
+      return this._iops
+    }
+
+    // kms_key_id - computed: false, optional: true, required: false
+    private _kmsKeyId?: string | undefined; 
+    public get kmsKeyId() {
+      return this.getStringAttribute('kms_key_id');
+    }
+    public set kmsKeyId(value: string | undefined) {
+      this._kmsKeyId = value;
+    }
+    public resetKmsKeyId() {
+      this._kmsKeyId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get kmsKeyIdInput() {
+      return this._kmsKeyId
+    }
+
+    // snapshot_id - computed: false, optional: true, required: false
+    private _snapshotId?: string | undefined; 
+    public get snapshotId() {
+      return this.getStringAttribute('snapshot_id');
+    }
+    public set snapshotId(value: string | undefined) {
+      this._snapshotId = value;
+    }
+    public resetSnapshotId() {
+      this._snapshotId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get snapshotIdInput() {
+      return this._snapshotId
+    }
+
+    // throughput - computed: true, optional: true, required: false
+    private _throughput?: number | undefined; 
+    public get throughput() {
+      return this.getNumberAttribute('throughput');
+    }
+    public set throughput(value: number | undefined) {
+      this._throughput = value;
+    }
+    public resetThroughput() {
+      this._throughput = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get throughputInput() {
+      return this._throughput
+    }
+
+    // volume_size - computed: true, optional: true, required: false
+    private _volumeSize?: number | undefined; 
+    public get volumeSize() {
+      return this.getNumberAttribute('volume_size');
+    }
+    public set volumeSize(value: number | undefined) {
+      this._volumeSize = value;
+    }
+    public resetVolumeSize() {
+      this._volumeSize = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get volumeSizeInput() {
+      return this._volumeSize
+    }
+
+    // volume_type - computed: true, optional: true, required: false
+    private _volumeType?: string | undefined; 
+    public get volumeType() {
+      return this.getStringAttribute('volume_type');
+    }
+    public set volumeType(value: string | undefined) {
+      this._volumeType = value;
+    }
+    public resetVolumeType() {
+      this._volumeType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get volumeTypeInput() {
+      return this._volumeType
+    }
+  }
   export interface LaunchTemplateBlockDeviceMappings {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#device_name LaunchTemplate#device_name}
@@ -10413,16 +12196,19 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#ebs LaunchTemplate#ebs}
     */
-    readonly ebs?: LaunchTemplateBlockDeviceMappingsEbs[];
+    readonly ebs?: LaunchTemplateBlockDeviceMappingsEbs;
   }
 
   function launchTemplateBlockDeviceMappingsToTerraform(struct?: LaunchTemplateBlockDeviceMappings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       device_name: cdktf.stringToTerraform(struct!.deviceName),
       no_device: cdktf.stringToTerraform(struct!.noDevice),
       virtual_name: cdktf.stringToTerraform(struct!.virtualName),
-      ebs: cdktf.listMapper(launchTemplateBlockDeviceMappingsEbsToTerraform)(struct!.ebs),
+      ebs: launchTemplateBlockDeviceMappingsEbsToTerraform(struct!.ebs),
     }
   }
 
@@ -10433,13 +12219,42 @@ export namespace EC2 {
     readonly capacityReservationId?: string;
   }
 
-  function launchTemplateCapacityReservationSpecificationCapacityReservationTargetToTerraform(struct?: LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget): any {
+  function launchTemplateCapacityReservationSpecificationCapacityReservationTargetToTerraform(struct?: LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetOutputReference | LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       capacity_reservation_id: cdktf.stringToTerraform(struct!.capacityReservationId),
     }
   }
 
+  export class LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // capacity_reservation_id - computed: false, optional: true, required: false
+    private _capacityReservationId?: string | undefined; 
+    public get capacityReservationId() {
+      return this.getStringAttribute('capacity_reservation_id');
+    }
+    public set capacityReservationId(value: string | undefined) {
+      this._capacityReservationId = value;
+    }
+    public resetCapacityReservationId() {
+      this._capacityReservationId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get capacityReservationIdInput() {
+      return this._capacityReservationId
+    }
+  }
   export interface LaunchTemplateCapacityReservationSpecification {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#capacity_reservation_preference LaunchTemplate#capacity_reservation_preference}
@@ -10450,17 +12265,63 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#capacity_reservation_target LaunchTemplate#capacity_reservation_target}
     */
-    readonly capacityReservationTarget?: LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget[];
+    readonly capacityReservationTarget?: LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget;
   }
 
-  function launchTemplateCapacityReservationSpecificationToTerraform(struct?: LaunchTemplateCapacityReservationSpecification): any {
+  function launchTemplateCapacityReservationSpecificationToTerraform(struct?: LaunchTemplateCapacityReservationSpecificationOutputReference | LaunchTemplateCapacityReservationSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       capacity_reservation_preference: cdktf.stringToTerraform(struct!.capacityReservationPreference),
-      capacity_reservation_target: cdktf.listMapper(launchTemplateCapacityReservationSpecificationCapacityReservationTargetToTerraform)(struct!.capacityReservationTarget),
+      capacity_reservation_target: launchTemplateCapacityReservationSpecificationCapacityReservationTargetToTerraform(struct!.capacityReservationTarget),
     }
   }
 
+  export class LaunchTemplateCapacityReservationSpecificationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // capacity_reservation_preference - computed: false, optional: true, required: false
+    private _capacityReservationPreference?: string | undefined; 
+    public get capacityReservationPreference() {
+      return this.getStringAttribute('capacity_reservation_preference');
+    }
+    public set capacityReservationPreference(value: string | undefined) {
+      this._capacityReservationPreference = value;
+    }
+    public resetCapacityReservationPreference() {
+      this._capacityReservationPreference = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get capacityReservationPreferenceInput() {
+      return this._capacityReservationPreference
+    }
+
+    // capacity_reservation_target - computed: false, optional: true, required: false
+    private _capacityReservationTarget?: LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget | undefined; 
+    private __capacityReservationTargetOutput = new LaunchTemplateCapacityReservationSpecificationCapacityReservationTargetOutputReference(this as any, "capacity_reservation_target", true);
+    public get capacityReservationTarget() {
+      return this.__capacityReservationTargetOutput;
+    }
+    public putCapacityReservationTarget(value: LaunchTemplateCapacityReservationSpecificationCapacityReservationTarget | undefined) {
+      this._capacityReservationTarget = value;
+    }
+    public resetCapacityReservationTarget() {
+      this._capacityReservationTarget = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get capacityReservationTargetInput() {
+      return this._capacityReservationTarget
+    }
+  }
   export interface LaunchTemplateCpuOptions {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#core_count LaunchTemplate#core_count}
@@ -10472,14 +12333,59 @@ export namespace EC2 {
     readonly threadsPerCore?: number;
   }
 
-  function launchTemplateCpuOptionsToTerraform(struct?: LaunchTemplateCpuOptions): any {
+  function launchTemplateCpuOptionsToTerraform(struct?: LaunchTemplateCpuOptionsOutputReference | LaunchTemplateCpuOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       core_count: cdktf.numberToTerraform(struct!.coreCount),
       threads_per_core: cdktf.numberToTerraform(struct!.threadsPerCore),
     }
   }
 
+  export class LaunchTemplateCpuOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // core_count - computed: false, optional: true, required: false
+    private _coreCount?: number | undefined; 
+    public get coreCount() {
+      return this.getNumberAttribute('core_count');
+    }
+    public set coreCount(value: number | undefined) {
+      this._coreCount = value;
+    }
+    public resetCoreCount() {
+      this._coreCount = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get coreCountInput() {
+      return this._coreCount
+    }
+
+    // threads_per_core - computed: false, optional: true, required: false
+    private _threadsPerCore?: number | undefined; 
+    public get threadsPerCore() {
+      return this.getNumberAttribute('threads_per_core');
+    }
+    public set threadsPerCore(value: number | undefined) {
+      this._threadsPerCore = value;
+    }
+    public resetThreadsPerCore() {
+      this._threadsPerCore = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get threadsPerCoreInput() {
+      return this._threadsPerCore
+    }
+  }
   export interface LaunchTemplateCreditSpecification {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#cpu_credits LaunchTemplate#cpu_credits}
@@ -10487,13 +12393,42 @@ export namespace EC2 {
     readonly cpuCredits?: string;
   }
 
-  function launchTemplateCreditSpecificationToTerraform(struct?: LaunchTemplateCreditSpecification): any {
+  function launchTemplateCreditSpecificationToTerraform(struct?: LaunchTemplateCreditSpecificationOutputReference | LaunchTemplateCreditSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cpu_credits: cdktf.stringToTerraform(struct!.cpuCredits),
     }
   }
 
+  export class LaunchTemplateCreditSpecificationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // cpu_credits - computed: false, optional: true, required: false
+    private _cpuCredits?: string | undefined; 
+    public get cpuCredits() {
+      return this.getStringAttribute('cpu_credits');
+    }
+    public set cpuCredits(value: string | undefined) {
+      this._cpuCredits = value;
+    }
+    public resetCpuCredits() {
+      this._cpuCredits = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cpuCreditsInput() {
+      return this._cpuCredits
+    }
+  }
   export interface LaunchTemplateElasticGpuSpecifications {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#type LaunchTemplate#type}
@@ -10503,6 +12438,9 @@ export namespace EC2 {
 
   function launchTemplateElasticGpuSpecificationsToTerraform(struct?: LaunchTemplateElasticGpuSpecifications): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       type: cdktf.stringToTerraform(struct!.type),
     }
@@ -10515,13 +12453,39 @@ export namespace EC2 {
     readonly type: string;
   }
 
-  function launchTemplateElasticInferenceAcceleratorToTerraform(struct?: LaunchTemplateElasticInferenceAccelerator): any {
+  function launchTemplateElasticInferenceAcceleratorToTerraform(struct?: LaunchTemplateElasticInferenceAcceleratorOutputReference | LaunchTemplateElasticInferenceAccelerator): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       type: cdktf.stringToTerraform(struct!.type),
     }
   }
 
+  export class LaunchTemplateElasticInferenceAcceleratorOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
   export interface LaunchTemplateEnclaveOptions {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#enabled LaunchTemplate#enabled}
@@ -10529,13 +12493,42 @@ export namespace EC2 {
     readonly enabled?: boolean | cdktf.IResolvable;
   }
 
-  function launchTemplateEnclaveOptionsToTerraform(struct?: LaunchTemplateEnclaveOptions): any {
+  function launchTemplateEnclaveOptionsToTerraform(struct?: LaunchTemplateEnclaveOptionsOutputReference | LaunchTemplateEnclaveOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       enabled: cdktf.booleanToTerraform(struct!.enabled),
     }
   }
 
+  export class LaunchTemplateEnclaveOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // enabled - computed: false, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+  }
   export interface LaunchTemplateHibernationOptions {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#configured LaunchTemplate#configured}
@@ -10543,13 +12536,39 @@ export namespace EC2 {
     readonly configured: boolean | cdktf.IResolvable;
   }
 
-  function launchTemplateHibernationOptionsToTerraform(struct?: LaunchTemplateHibernationOptions): any {
+  function launchTemplateHibernationOptionsToTerraform(struct?: LaunchTemplateHibernationOptionsOutputReference | LaunchTemplateHibernationOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       configured: cdktf.booleanToTerraform(struct!.configured),
     }
   }
 
+  export class LaunchTemplateHibernationOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // configured - computed: false, optional: false, required: true
+    private _configured?: boolean | cdktf.IResolvable; 
+    public get configured() {
+      return this.getBooleanAttribute('configured') as any;
+    }
+    public set configured(value: boolean | cdktf.IResolvable) {
+      this._configured = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get configuredInput() {
+      return this._configured
+    }
+  }
   export interface LaunchTemplateIamInstanceProfile {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#arn LaunchTemplate#arn}
@@ -10561,14 +12580,59 @@ export namespace EC2 {
     readonly name?: string;
   }
 
-  function launchTemplateIamInstanceProfileToTerraform(struct?: LaunchTemplateIamInstanceProfile): any {
+  function launchTemplateIamInstanceProfileToTerraform(struct?: LaunchTemplateIamInstanceProfileOutputReference | LaunchTemplateIamInstanceProfile): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       arn: cdktf.stringToTerraform(struct!.arn),
       name: cdktf.stringToTerraform(struct!.name),
     }
   }
 
+  export class LaunchTemplateIamInstanceProfileOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // arn - computed: false, optional: true, required: false
+    private _arn?: string | undefined; 
+    public get arn() {
+      return this.getStringAttribute('arn');
+    }
+    public set arn(value: string | undefined) {
+      this._arn = value;
+    }
+    public resetArn() {
+      this._arn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get arnInput() {
+      return this._arn
+    }
+
+    // name - computed: false, optional: true, required: false
+    private _name?: string | undefined; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string | undefined) {
+      this._name = value;
+    }
+    public resetName() {
+      this._name = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+  }
   export interface LaunchTemplateInstanceMarketOptionsSpotOptions {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#block_duration_minutes LaunchTemplate#block_duration_minutes}
@@ -10592,8 +12656,11 @@ export namespace EC2 {
     readonly validUntil?: string;
   }
 
-  function launchTemplateInstanceMarketOptionsSpotOptionsToTerraform(struct?: LaunchTemplateInstanceMarketOptionsSpotOptions): any {
+  function launchTemplateInstanceMarketOptionsSpotOptionsToTerraform(struct?: LaunchTemplateInstanceMarketOptionsSpotOptionsOutputReference | LaunchTemplateInstanceMarketOptionsSpotOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       block_duration_minutes: cdktf.numberToTerraform(struct!.blockDurationMinutes),
       instance_interruption_behavior: cdktf.stringToTerraform(struct!.instanceInterruptionBehavior),
@@ -10603,6 +12670,96 @@ export namespace EC2 {
     }
   }
 
+  export class LaunchTemplateInstanceMarketOptionsSpotOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // block_duration_minutes - computed: false, optional: true, required: false
+    private _blockDurationMinutes?: number | undefined; 
+    public get blockDurationMinutes() {
+      return this.getNumberAttribute('block_duration_minutes');
+    }
+    public set blockDurationMinutes(value: number | undefined) {
+      this._blockDurationMinutes = value;
+    }
+    public resetBlockDurationMinutes() {
+      this._blockDurationMinutes = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get blockDurationMinutesInput() {
+      return this._blockDurationMinutes
+    }
+
+    // instance_interruption_behavior - computed: false, optional: true, required: false
+    private _instanceInterruptionBehavior?: string | undefined; 
+    public get instanceInterruptionBehavior() {
+      return this.getStringAttribute('instance_interruption_behavior');
+    }
+    public set instanceInterruptionBehavior(value: string | undefined) {
+      this._instanceInterruptionBehavior = value;
+    }
+    public resetInstanceInterruptionBehavior() {
+      this._instanceInterruptionBehavior = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get instanceInterruptionBehaviorInput() {
+      return this._instanceInterruptionBehavior
+    }
+
+    // max_price - computed: false, optional: true, required: false
+    private _maxPrice?: string | undefined; 
+    public get maxPrice() {
+      return this.getStringAttribute('max_price');
+    }
+    public set maxPrice(value: string | undefined) {
+      this._maxPrice = value;
+    }
+    public resetMaxPrice() {
+      this._maxPrice = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maxPriceInput() {
+      return this._maxPrice
+    }
+
+    // spot_instance_type - computed: false, optional: true, required: false
+    private _spotInstanceType?: string | undefined; 
+    public get spotInstanceType() {
+      return this.getStringAttribute('spot_instance_type');
+    }
+    public set spotInstanceType(value: string | undefined) {
+      this._spotInstanceType = value;
+    }
+    public resetSpotInstanceType() {
+      this._spotInstanceType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get spotInstanceTypeInput() {
+      return this._spotInstanceType
+    }
+
+    // valid_until - computed: true, optional: true, required: false
+    private _validUntil?: string | undefined; 
+    public get validUntil() {
+      return this.getStringAttribute('valid_until');
+    }
+    public set validUntil(value: string | undefined) {
+      this._validUntil = value;
+    }
+    public resetValidUntil() {
+      this._validUntil = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get validUntilInput() {
+      return this._validUntil
+    }
+  }
   export interface LaunchTemplateInstanceMarketOptions {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#market_type LaunchTemplate#market_type}
@@ -10613,17 +12770,63 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#spot_options LaunchTemplate#spot_options}
     */
-    readonly spotOptions?: LaunchTemplateInstanceMarketOptionsSpotOptions[];
+    readonly spotOptions?: LaunchTemplateInstanceMarketOptionsSpotOptions;
   }
 
-  function launchTemplateInstanceMarketOptionsToTerraform(struct?: LaunchTemplateInstanceMarketOptions): any {
+  function launchTemplateInstanceMarketOptionsToTerraform(struct?: LaunchTemplateInstanceMarketOptionsOutputReference | LaunchTemplateInstanceMarketOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       market_type: cdktf.stringToTerraform(struct!.marketType),
-      spot_options: cdktf.listMapper(launchTemplateInstanceMarketOptionsSpotOptionsToTerraform)(struct!.spotOptions),
+      spot_options: launchTemplateInstanceMarketOptionsSpotOptionsToTerraform(struct!.spotOptions),
     }
   }
 
+  export class LaunchTemplateInstanceMarketOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // market_type - computed: false, optional: true, required: false
+    private _marketType?: string | undefined; 
+    public get marketType() {
+      return this.getStringAttribute('market_type');
+    }
+    public set marketType(value: string | undefined) {
+      this._marketType = value;
+    }
+    public resetMarketType() {
+      this._marketType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get marketTypeInput() {
+      return this._marketType
+    }
+
+    // spot_options - computed: false, optional: true, required: false
+    private _spotOptions?: LaunchTemplateInstanceMarketOptionsSpotOptions | undefined; 
+    private __spotOptionsOutput = new LaunchTemplateInstanceMarketOptionsSpotOptionsOutputReference(this as any, "spot_options", true);
+    public get spotOptions() {
+      return this.__spotOptionsOutput;
+    }
+    public putSpotOptions(value: LaunchTemplateInstanceMarketOptionsSpotOptions | undefined) {
+      this._spotOptions = value;
+    }
+    public resetSpotOptions() {
+      this._spotOptions = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get spotOptionsInput() {
+      return this._spotOptions
+    }
+  }
   export interface LaunchTemplateLicenseSpecification {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#license_configuration_arn LaunchTemplate#license_configuration_arn}
@@ -10633,6 +12836,9 @@ export namespace EC2 {
 
   function launchTemplateLicenseSpecificationToTerraform(struct?: LaunchTemplateLicenseSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       license_configuration_arn: cdktf.stringToTerraform(struct!.licenseConfigurationArn),
     }
@@ -10657,8 +12863,11 @@ export namespace EC2 {
     readonly httpTokens?: string;
   }
 
-  function launchTemplateMetadataOptionsToTerraform(struct?: LaunchTemplateMetadataOptions): any {
+  function launchTemplateMetadataOptionsToTerraform(struct?: LaunchTemplateMetadataOptionsOutputReference | LaunchTemplateMetadataOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       http_endpoint: cdktf.stringToTerraform(struct!.httpEndpoint),
       http_protocol_ipv6: cdktf.stringToTerraform(struct!.httpProtocolIpv6),
@@ -10667,6 +12876,80 @@ export namespace EC2 {
     }
   }
 
+  export class LaunchTemplateMetadataOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // http_endpoint - computed: true, optional: true, required: false
+    private _httpEndpoint?: string | undefined; 
+    public get httpEndpoint() {
+      return this.getStringAttribute('http_endpoint');
+    }
+    public set httpEndpoint(value: string | undefined) {
+      this._httpEndpoint = value;
+    }
+    public resetHttpEndpoint() {
+      this._httpEndpoint = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get httpEndpointInput() {
+      return this._httpEndpoint
+    }
+
+    // http_protocol_ipv6 - computed: false, optional: true, required: false
+    private _httpProtocolIpv6?: string | undefined; 
+    public get httpProtocolIpv6() {
+      return this.getStringAttribute('http_protocol_ipv6');
+    }
+    public set httpProtocolIpv6(value: string | undefined) {
+      this._httpProtocolIpv6 = value;
+    }
+    public resetHttpProtocolIpv6() {
+      this._httpProtocolIpv6 = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get httpProtocolIpv6Input() {
+      return this._httpProtocolIpv6
+    }
+
+    // http_put_response_hop_limit - computed: true, optional: true, required: false
+    private _httpPutResponseHopLimit?: number | undefined; 
+    public get httpPutResponseHopLimit() {
+      return this.getNumberAttribute('http_put_response_hop_limit');
+    }
+    public set httpPutResponseHopLimit(value: number | undefined) {
+      this._httpPutResponseHopLimit = value;
+    }
+    public resetHttpPutResponseHopLimit() {
+      this._httpPutResponseHopLimit = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get httpPutResponseHopLimitInput() {
+      return this._httpPutResponseHopLimit
+    }
+
+    // http_tokens - computed: true, optional: true, required: false
+    private _httpTokens?: string | undefined; 
+    public get httpTokens() {
+      return this.getStringAttribute('http_tokens');
+    }
+    public set httpTokens(value: string | undefined) {
+      this._httpTokens = value;
+    }
+    public resetHttpTokens() {
+      this._httpTokens = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get httpTokensInput() {
+      return this._httpTokens
+    }
+  }
   export interface LaunchTemplateMonitoring {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#enabled LaunchTemplate#enabled}
@@ -10674,13 +12957,42 @@ export namespace EC2 {
     readonly enabled?: boolean | cdktf.IResolvable;
   }
 
-  function launchTemplateMonitoringToTerraform(struct?: LaunchTemplateMonitoring): any {
+  function launchTemplateMonitoringToTerraform(struct?: LaunchTemplateMonitoringOutputReference | LaunchTemplateMonitoring): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       enabled: cdktf.booleanToTerraform(struct!.enabled),
     }
   }
 
+  export class LaunchTemplateMonitoringOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // enabled - computed: false, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+  }
   export interface LaunchTemplateNetworkInterfaces {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#associate_carrier_ip_address LaunchTemplate#associate_carrier_ip_address}
@@ -10742,6 +13054,9 @@ export namespace EC2 {
 
   function launchTemplateNetworkInterfacesToTerraform(struct?: LaunchTemplateNetworkInterfaces): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       associate_carrier_ip_address: cdktf.stringToTerraform(struct!.associateCarrierIpAddress),
       associate_public_ip_address: cdktf.stringToTerraform(struct!.associatePublicIpAddress),
@@ -10795,8 +13110,11 @@ export namespace EC2 {
     readonly tenancy?: string;
   }
 
-  function launchTemplatePlacementToTerraform(struct?: LaunchTemplatePlacement): any {
+  function launchTemplatePlacementToTerraform(struct?: LaunchTemplatePlacementOutputReference | LaunchTemplatePlacement): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       affinity: cdktf.stringToTerraform(struct!.affinity),
       availability_zone: cdktf.stringToTerraform(struct!.availabilityZone),
@@ -10809,6 +13127,144 @@ export namespace EC2 {
     }
   }
 
+  export class LaunchTemplatePlacementOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // affinity - computed: false, optional: true, required: false
+    private _affinity?: string | undefined; 
+    public get affinity() {
+      return this.getStringAttribute('affinity');
+    }
+    public set affinity(value: string | undefined) {
+      this._affinity = value;
+    }
+    public resetAffinity() {
+      this._affinity = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get affinityInput() {
+      return this._affinity
+    }
+
+    // availability_zone - computed: false, optional: true, required: false
+    private _availabilityZone?: string | undefined; 
+    public get availabilityZone() {
+      return this.getStringAttribute('availability_zone');
+    }
+    public set availabilityZone(value: string | undefined) {
+      this._availabilityZone = value;
+    }
+    public resetAvailabilityZone() {
+      this._availabilityZone = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get availabilityZoneInput() {
+      return this._availabilityZone
+    }
+
+    // group_name - computed: false, optional: true, required: false
+    private _groupName?: string | undefined; 
+    public get groupName() {
+      return this.getStringAttribute('group_name');
+    }
+    public set groupName(value: string | undefined) {
+      this._groupName = value;
+    }
+    public resetGroupName() {
+      this._groupName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get groupNameInput() {
+      return this._groupName
+    }
+
+    // host_id - computed: false, optional: true, required: false
+    private _hostId?: string | undefined; 
+    public get hostId() {
+      return this.getStringAttribute('host_id');
+    }
+    public set hostId(value: string | undefined) {
+      this._hostId = value;
+    }
+    public resetHostId() {
+      this._hostId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get hostIdInput() {
+      return this._hostId
+    }
+
+    // host_resource_group_arn - computed: false, optional: true, required: false
+    private _hostResourceGroupArn?: string | undefined; 
+    public get hostResourceGroupArn() {
+      return this.getStringAttribute('host_resource_group_arn');
+    }
+    public set hostResourceGroupArn(value: string | undefined) {
+      this._hostResourceGroupArn = value;
+    }
+    public resetHostResourceGroupArn() {
+      this._hostResourceGroupArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get hostResourceGroupArnInput() {
+      return this._hostResourceGroupArn
+    }
+
+    // partition_number - computed: false, optional: true, required: false
+    private _partitionNumber?: number | undefined; 
+    public get partitionNumber() {
+      return this.getNumberAttribute('partition_number');
+    }
+    public set partitionNumber(value: number | undefined) {
+      this._partitionNumber = value;
+    }
+    public resetPartitionNumber() {
+      this._partitionNumber = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get partitionNumberInput() {
+      return this._partitionNumber
+    }
+
+    // spread_domain - computed: false, optional: true, required: false
+    private _spreadDomain?: string | undefined; 
+    public get spreadDomain() {
+      return this.getStringAttribute('spread_domain');
+    }
+    public set spreadDomain(value: string | undefined) {
+      this._spreadDomain = value;
+    }
+    public resetSpreadDomain() {
+      this._spreadDomain = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get spreadDomainInput() {
+      return this._spreadDomain
+    }
+
+    // tenancy - computed: false, optional: true, required: false
+    private _tenancy?: string | undefined; 
+    public get tenancy() {
+      return this.getStringAttribute('tenancy');
+    }
+    public set tenancy(value: string | undefined) {
+      this._tenancy = value;
+    }
+    public resetTenancy() {
+      this._tenancy = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tenancyInput() {
+      return this._tenancy
+    }
+  }
   export interface LaunchTemplateTagSpecifications {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#resource_type LaunchTemplate#resource_type}
@@ -10822,6 +13278,9 @@ export namespace EC2 {
 
   function launchTemplateTagSpecificationsToTerraform(struct?: LaunchTemplateTagSpecifications): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       resource_type: cdktf.stringToTerraform(struct!.resourceType),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.tags),
@@ -10907,11 +13366,11 @@ export namespace EC2 {
     }
 
     // default_version - computed: true, optional: true, required: false
-    private _defaultVersion?: number;
+    private _defaultVersion?: number | undefined; 
     public get defaultVersion() {
       return this.getNumberAttribute('default_version');
     }
-    public set defaultVersion(value: number) {
+    public set defaultVersion(value: number | undefined) {
       this._defaultVersion = value;
     }
     public resetDefaultVersion() {
@@ -10923,11 +13382,11 @@ export namespace EC2 {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -10939,11 +13398,11 @@ export namespace EC2 {
     }
 
     // disable_api_termination - computed: false, optional: true, required: false
-    private _disableApiTermination?: boolean | cdktf.IResolvable;
+    private _disableApiTermination?: boolean | cdktf.IResolvable | undefined; 
     public get disableApiTermination() {
-      return this.getBooleanAttribute('disable_api_termination');
+      return this.getBooleanAttribute('disable_api_termination') as any;
     }
-    public set disableApiTermination(value: boolean | cdktf.IResolvable ) {
+    public set disableApiTermination(value: boolean | cdktf.IResolvable | undefined) {
       this._disableApiTermination = value;
     }
     public resetDisableApiTermination() {
@@ -10955,11 +13414,11 @@ export namespace EC2 {
     }
 
     // ebs_optimized - computed: false, optional: true, required: false
-    private _ebsOptimized?: string;
+    private _ebsOptimized?: string | undefined; 
     public get ebsOptimized() {
       return this.getStringAttribute('ebs_optimized');
     }
-    public set ebsOptimized(value: string ) {
+    public set ebsOptimized(value: string | undefined) {
       this._ebsOptimized = value;
     }
     public resetEbsOptimized() {
@@ -10976,11 +13435,11 @@ export namespace EC2 {
     }
 
     // image_id - computed: false, optional: true, required: false
-    private _imageId?: string;
+    private _imageId?: string | undefined; 
     public get imageId() {
       return this.getStringAttribute('image_id');
     }
-    public set imageId(value: string ) {
+    public set imageId(value: string | undefined) {
       this._imageId = value;
     }
     public resetImageId() {
@@ -10992,11 +13451,11 @@ export namespace EC2 {
     }
 
     // instance_initiated_shutdown_behavior - computed: false, optional: true, required: false
-    private _instanceInitiatedShutdownBehavior?: string;
+    private _instanceInitiatedShutdownBehavior?: string | undefined; 
     public get instanceInitiatedShutdownBehavior() {
       return this.getStringAttribute('instance_initiated_shutdown_behavior');
     }
-    public set instanceInitiatedShutdownBehavior(value: string ) {
+    public set instanceInitiatedShutdownBehavior(value: string | undefined) {
       this._instanceInitiatedShutdownBehavior = value;
     }
     public resetInstanceInitiatedShutdownBehavior() {
@@ -11008,11 +13467,11 @@ export namespace EC2 {
     }
 
     // instance_type - computed: false, optional: true, required: false
-    private _instanceType?: string;
+    private _instanceType?: string | undefined; 
     public get instanceType() {
       return this.getStringAttribute('instance_type');
     }
-    public set instanceType(value: string ) {
+    public set instanceType(value: string | undefined) {
       this._instanceType = value;
     }
     public resetInstanceType() {
@@ -11024,11 +13483,11 @@ export namespace EC2 {
     }
 
     // kernel_id - computed: false, optional: true, required: false
-    private _kernelId?: string;
+    private _kernelId?: string | undefined; 
     public get kernelId() {
       return this.getStringAttribute('kernel_id');
     }
-    public set kernelId(value: string ) {
+    public set kernelId(value: string | undefined) {
       this._kernelId = value;
     }
     public resetKernelId() {
@@ -11040,11 +13499,11 @@ export namespace EC2 {
     }
 
     // key_name - computed: false, optional: true, required: false
-    private _keyName?: string;
+    private _keyName?: string | undefined; 
     public get keyName() {
       return this.getStringAttribute('key_name');
     }
-    public set keyName(value: string ) {
+    public set keyName(value: string | undefined) {
       this._keyName = value;
     }
     public resetKeyName() {
@@ -11061,11 +13520,11 @@ export namespace EC2 {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -11077,11 +13536,11 @@ export namespace EC2 {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -11093,11 +13552,11 @@ export namespace EC2 {
     }
 
     // ram_disk_id - computed: false, optional: true, required: false
-    private _ramDiskId?: string;
+    private _ramDiskId?: string | undefined; 
     public get ramDiskId() {
       return this.getStringAttribute('ram_disk_id');
     }
-    public set ramDiskId(value: string ) {
+    public set ramDiskId(value: string | undefined) {
       this._ramDiskId = value;
     }
     public resetRamDiskId() {
@@ -11109,11 +13568,11 @@ export namespace EC2 {
     }
 
     // security_group_names - computed: false, optional: true, required: false
-    private _securityGroupNames?: string[];
+    private _securityGroupNames?: string[] | undefined; 
     public get securityGroupNames() {
       return this.getListAttribute('security_group_names');
     }
-    public set securityGroupNames(value: string[] ) {
+    public set securityGroupNames(value: string[] | undefined) {
       this._securityGroupNames = value;
     }
     public resetSecurityGroupNames() {
@@ -11125,11 +13584,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -11141,11 +13601,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -11157,11 +13618,11 @@ export namespace EC2 {
     }
 
     // update_default_version - computed: false, optional: true, required: false
-    private _updateDefaultVersion?: boolean | cdktf.IResolvable;
+    private _updateDefaultVersion?: boolean | cdktf.IResolvable | undefined; 
     public get updateDefaultVersion() {
-      return this.getBooleanAttribute('update_default_version');
+      return this.getBooleanAttribute('update_default_version') as any;
     }
-    public set updateDefaultVersion(value: boolean | cdktf.IResolvable ) {
+    public set updateDefaultVersion(value: boolean | cdktf.IResolvable | undefined) {
       this._updateDefaultVersion = value;
     }
     public resetUpdateDefaultVersion() {
@@ -11173,11 +13634,11 @@ export namespace EC2 {
     }
 
     // user_data - computed: false, optional: true, required: false
-    private _userData?: string;
+    private _userData?: string | undefined; 
     public get userData() {
       return this.getStringAttribute('user_data');
     }
-    public set userData(value: string ) {
+    public set userData(value: string | undefined) {
       this._userData = value;
     }
     public resetUserData() {
@@ -11189,11 +13650,11 @@ export namespace EC2 {
     }
 
     // vpc_security_group_ids - computed: false, optional: true, required: false
-    private _vpcSecurityGroupIds?: string[];
+    private _vpcSecurityGroupIds?: string[] | undefined; 
     public get vpcSecurityGroupIds() {
       return this.getListAttribute('vpc_security_group_ids');
     }
-    public set vpcSecurityGroupIds(value: string[] ) {
+    public set vpcSecurityGroupIds(value: string[] | undefined) {
       this._vpcSecurityGroupIds = value;
     }
     public resetVpcSecurityGroupIds() {
@@ -11205,11 +13666,12 @@ export namespace EC2 {
     }
 
     // block_device_mappings - computed: false, optional: true, required: false
-    private _blockDeviceMappings?: LaunchTemplateBlockDeviceMappings[];
+    private _blockDeviceMappings?: LaunchTemplateBlockDeviceMappings[] | undefined; 
     public get blockDeviceMappings() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('block_device_mappings') as any;
     }
-    public set blockDeviceMappings(value: LaunchTemplateBlockDeviceMappings[] ) {
+    public set blockDeviceMappings(value: LaunchTemplateBlockDeviceMappings[] | undefined) {
       this._blockDeviceMappings = value;
     }
     public resetBlockDeviceMappings() {
@@ -11221,11 +13683,12 @@ export namespace EC2 {
     }
 
     // capacity_reservation_specification - computed: false, optional: true, required: false
-    private _capacityReservationSpecification?: LaunchTemplateCapacityReservationSpecification[];
+    private _capacityReservationSpecification?: LaunchTemplateCapacityReservationSpecification | undefined; 
+    private __capacityReservationSpecificationOutput = new LaunchTemplateCapacityReservationSpecificationOutputReference(this as any, "capacity_reservation_specification", true);
     public get capacityReservationSpecification() {
-      return this.interpolationForAttribute('capacity_reservation_specification') as any;
+      return this.__capacityReservationSpecificationOutput;
     }
-    public set capacityReservationSpecification(value: LaunchTemplateCapacityReservationSpecification[] ) {
+    public putCapacityReservationSpecification(value: LaunchTemplateCapacityReservationSpecification | undefined) {
       this._capacityReservationSpecification = value;
     }
     public resetCapacityReservationSpecification() {
@@ -11237,11 +13700,12 @@ export namespace EC2 {
     }
 
     // cpu_options - computed: false, optional: true, required: false
-    private _cpuOptions?: LaunchTemplateCpuOptions[];
+    private _cpuOptions?: LaunchTemplateCpuOptions | undefined; 
+    private __cpuOptionsOutput = new LaunchTemplateCpuOptionsOutputReference(this as any, "cpu_options", true);
     public get cpuOptions() {
-      return this.interpolationForAttribute('cpu_options') as any;
+      return this.__cpuOptionsOutput;
     }
-    public set cpuOptions(value: LaunchTemplateCpuOptions[] ) {
+    public putCpuOptions(value: LaunchTemplateCpuOptions | undefined) {
       this._cpuOptions = value;
     }
     public resetCpuOptions() {
@@ -11253,11 +13717,12 @@ export namespace EC2 {
     }
 
     // credit_specification - computed: false, optional: true, required: false
-    private _creditSpecification?: LaunchTemplateCreditSpecification[];
+    private _creditSpecification?: LaunchTemplateCreditSpecification | undefined; 
+    private __creditSpecificationOutput = new LaunchTemplateCreditSpecificationOutputReference(this as any, "credit_specification", true);
     public get creditSpecification() {
-      return this.interpolationForAttribute('credit_specification') as any;
+      return this.__creditSpecificationOutput;
     }
-    public set creditSpecification(value: LaunchTemplateCreditSpecification[] ) {
+    public putCreditSpecification(value: LaunchTemplateCreditSpecification | undefined) {
       this._creditSpecification = value;
     }
     public resetCreditSpecification() {
@@ -11269,11 +13734,12 @@ export namespace EC2 {
     }
 
     // elastic_gpu_specifications - computed: false, optional: true, required: false
-    private _elasticGpuSpecifications?: LaunchTemplateElasticGpuSpecifications[];
+    private _elasticGpuSpecifications?: LaunchTemplateElasticGpuSpecifications[] | undefined; 
     public get elasticGpuSpecifications() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('elastic_gpu_specifications') as any;
     }
-    public set elasticGpuSpecifications(value: LaunchTemplateElasticGpuSpecifications[] ) {
+    public set elasticGpuSpecifications(value: LaunchTemplateElasticGpuSpecifications[] | undefined) {
       this._elasticGpuSpecifications = value;
     }
     public resetElasticGpuSpecifications() {
@@ -11285,11 +13751,12 @@ export namespace EC2 {
     }
 
     // elastic_inference_accelerator - computed: false, optional: true, required: false
-    private _elasticInferenceAccelerator?: LaunchTemplateElasticInferenceAccelerator[];
+    private _elasticInferenceAccelerator?: LaunchTemplateElasticInferenceAccelerator | undefined; 
+    private __elasticInferenceAcceleratorOutput = new LaunchTemplateElasticInferenceAcceleratorOutputReference(this as any, "elastic_inference_accelerator", true);
     public get elasticInferenceAccelerator() {
-      return this.interpolationForAttribute('elastic_inference_accelerator') as any;
+      return this.__elasticInferenceAcceleratorOutput;
     }
-    public set elasticInferenceAccelerator(value: LaunchTemplateElasticInferenceAccelerator[] ) {
+    public putElasticInferenceAccelerator(value: LaunchTemplateElasticInferenceAccelerator | undefined) {
       this._elasticInferenceAccelerator = value;
     }
     public resetElasticInferenceAccelerator() {
@@ -11301,11 +13768,12 @@ export namespace EC2 {
     }
 
     // enclave_options - computed: false, optional: true, required: false
-    private _enclaveOptions?: LaunchTemplateEnclaveOptions[];
+    private _enclaveOptions?: LaunchTemplateEnclaveOptions | undefined; 
+    private __enclaveOptionsOutput = new LaunchTemplateEnclaveOptionsOutputReference(this as any, "enclave_options", true);
     public get enclaveOptions() {
-      return this.interpolationForAttribute('enclave_options') as any;
+      return this.__enclaveOptionsOutput;
     }
-    public set enclaveOptions(value: LaunchTemplateEnclaveOptions[] ) {
+    public putEnclaveOptions(value: LaunchTemplateEnclaveOptions | undefined) {
       this._enclaveOptions = value;
     }
     public resetEnclaveOptions() {
@@ -11317,11 +13785,12 @@ export namespace EC2 {
     }
 
     // hibernation_options - computed: false, optional: true, required: false
-    private _hibernationOptions?: LaunchTemplateHibernationOptions[];
+    private _hibernationOptions?: LaunchTemplateHibernationOptions | undefined; 
+    private __hibernationOptionsOutput = new LaunchTemplateHibernationOptionsOutputReference(this as any, "hibernation_options", true);
     public get hibernationOptions() {
-      return this.interpolationForAttribute('hibernation_options') as any;
+      return this.__hibernationOptionsOutput;
     }
-    public set hibernationOptions(value: LaunchTemplateHibernationOptions[] ) {
+    public putHibernationOptions(value: LaunchTemplateHibernationOptions | undefined) {
       this._hibernationOptions = value;
     }
     public resetHibernationOptions() {
@@ -11333,11 +13802,12 @@ export namespace EC2 {
     }
 
     // iam_instance_profile - computed: false, optional: true, required: false
-    private _iamInstanceProfile?: LaunchTemplateIamInstanceProfile[];
+    private _iamInstanceProfile?: LaunchTemplateIamInstanceProfile | undefined; 
+    private __iamInstanceProfileOutput = new LaunchTemplateIamInstanceProfileOutputReference(this as any, "iam_instance_profile", true);
     public get iamInstanceProfile() {
-      return this.interpolationForAttribute('iam_instance_profile') as any;
+      return this.__iamInstanceProfileOutput;
     }
-    public set iamInstanceProfile(value: LaunchTemplateIamInstanceProfile[] ) {
+    public putIamInstanceProfile(value: LaunchTemplateIamInstanceProfile | undefined) {
       this._iamInstanceProfile = value;
     }
     public resetIamInstanceProfile() {
@@ -11349,11 +13819,12 @@ export namespace EC2 {
     }
 
     // instance_market_options - computed: false, optional: true, required: false
-    private _instanceMarketOptions?: LaunchTemplateInstanceMarketOptions[];
+    private _instanceMarketOptions?: LaunchTemplateInstanceMarketOptions | undefined; 
+    private __instanceMarketOptionsOutput = new LaunchTemplateInstanceMarketOptionsOutputReference(this as any, "instance_market_options", true);
     public get instanceMarketOptions() {
-      return this.interpolationForAttribute('instance_market_options') as any;
+      return this.__instanceMarketOptionsOutput;
     }
-    public set instanceMarketOptions(value: LaunchTemplateInstanceMarketOptions[] ) {
+    public putInstanceMarketOptions(value: LaunchTemplateInstanceMarketOptions | undefined) {
       this._instanceMarketOptions = value;
     }
     public resetInstanceMarketOptions() {
@@ -11365,11 +13836,12 @@ export namespace EC2 {
     }
 
     // license_specification - computed: false, optional: true, required: false
-    private _licenseSpecification?: LaunchTemplateLicenseSpecification[];
+    private _licenseSpecification?: LaunchTemplateLicenseSpecification[] | undefined; 
     public get licenseSpecification() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('license_specification') as any;
     }
-    public set licenseSpecification(value: LaunchTemplateLicenseSpecification[] ) {
+    public set licenseSpecification(value: LaunchTemplateLicenseSpecification[] | undefined) {
       this._licenseSpecification = value;
     }
     public resetLicenseSpecification() {
@@ -11381,11 +13853,12 @@ export namespace EC2 {
     }
 
     // metadata_options - computed: false, optional: true, required: false
-    private _metadataOptions?: LaunchTemplateMetadataOptions[];
+    private _metadataOptions?: LaunchTemplateMetadataOptions | undefined; 
+    private __metadataOptionsOutput = new LaunchTemplateMetadataOptionsOutputReference(this as any, "metadata_options", true);
     public get metadataOptions() {
-      return this.interpolationForAttribute('metadata_options') as any;
+      return this.__metadataOptionsOutput;
     }
-    public set metadataOptions(value: LaunchTemplateMetadataOptions[] ) {
+    public putMetadataOptions(value: LaunchTemplateMetadataOptions | undefined) {
       this._metadataOptions = value;
     }
     public resetMetadataOptions() {
@@ -11397,11 +13870,12 @@ export namespace EC2 {
     }
 
     // monitoring - computed: false, optional: true, required: false
-    private _monitoring?: LaunchTemplateMonitoring[];
+    private _monitoring?: LaunchTemplateMonitoring | undefined; 
+    private __monitoringOutput = new LaunchTemplateMonitoringOutputReference(this as any, "monitoring", true);
     public get monitoring() {
-      return this.interpolationForAttribute('monitoring') as any;
+      return this.__monitoringOutput;
     }
-    public set monitoring(value: LaunchTemplateMonitoring[] ) {
+    public putMonitoring(value: LaunchTemplateMonitoring | undefined) {
       this._monitoring = value;
     }
     public resetMonitoring() {
@@ -11413,11 +13887,12 @@ export namespace EC2 {
     }
 
     // network_interfaces - computed: false, optional: true, required: false
-    private _networkInterfaces?: LaunchTemplateNetworkInterfaces[];
+    private _networkInterfaces?: LaunchTemplateNetworkInterfaces[] | undefined; 
     public get networkInterfaces() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('network_interfaces') as any;
     }
-    public set networkInterfaces(value: LaunchTemplateNetworkInterfaces[] ) {
+    public set networkInterfaces(value: LaunchTemplateNetworkInterfaces[] | undefined) {
       this._networkInterfaces = value;
     }
     public resetNetworkInterfaces() {
@@ -11429,11 +13904,12 @@ export namespace EC2 {
     }
 
     // placement - computed: false, optional: true, required: false
-    private _placement?: LaunchTemplatePlacement[];
+    private _placement?: LaunchTemplatePlacement | undefined; 
+    private __placementOutput = new LaunchTemplatePlacementOutputReference(this as any, "placement", true);
     public get placement() {
-      return this.interpolationForAttribute('placement') as any;
+      return this.__placementOutput;
     }
-    public set placement(value: LaunchTemplatePlacement[] ) {
+    public putPlacement(value: LaunchTemplatePlacement | undefined) {
       this._placement = value;
     }
     public resetPlacement() {
@@ -11445,11 +13921,12 @@ export namespace EC2 {
     }
 
     // tag_specifications - computed: false, optional: true, required: false
-    private _tagSpecifications?: LaunchTemplateTagSpecifications[];
+    private _tagSpecifications?: LaunchTemplateTagSpecifications[] | undefined; 
     public get tagSpecifications() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tag_specifications') as any;
     }
-    public set tagSpecifications(value: LaunchTemplateTagSpecifications[] ) {
+    public set tagSpecifications(value: LaunchTemplateTagSpecifications[] | undefined) {
       this._tagSpecifications = value;
     }
     public resetTagSpecifications() {
@@ -11485,20 +13962,20 @@ export namespace EC2 {
         user_data: cdktf.stringToTerraform(this._userData),
         vpc_security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._vpcSecurityGroupIds),
         block_device_mappings: cdktf.listMapper(launchTemplateBlockDeviceMappingsToTerraform)(this._blockDeviceMappings),
-        capacity_reservation_specification: cdktf.listMapper(launchTemplateCapacityReservationSpecificationToTerraform)(this._capacityReservationSpecification),
-        cpu_options: cdktf.listMapper(launchTemplateCpuOptionsToTerraform)(this._cpuOptions),
-        credit_specification: cdktf.listMapper(launchTemplateCreditSpecificationToTerraform)(this._creditSpecification),
+        capacity_reservation_specification: launchTemplateCapacityReservationSpecificationToTerraform(this._capacityReservationSpecification),
+        cpu_options: launchTemplateCpuOptionsToTerraform(this._cpuOptions),
+        credit_specification: launchTemplateCreditSpecificationToTerraform(this._creditSpecification),
         elastic_gpu_specifications: cdktf.listMapper(launchTemplateElasticGpuSpecificationsToTerraform)(this._elasticGpuSpecifications),
-        elastic_inference_accelerator: cdktf.listMapper(launchTemplateElasticInferenceAcceleratorToTerraform)(this._elasticInferenceAccelerator),
-        enclave_options: cdktf.listMapper(launchTemplateEnclaveOptionsToTerraform)(this._enclaveOptions),
-        hibernation_options: cdktf.listMapper(launchTemplateHibernationOptionsToTerraform)(this._hibernationOptions),
-        iam_instance_profile: cdktf.listMapper(launchTemplateIamInstanceProfileToTerraform)(this._iamInstanceProfile),
-        instance_market_options: cdktf.listMapper(launchTemplateInstanceMarketOptionsToTerraform)(this._instanceMarketOptions),
+        elastic_inference_accelerator: launchTemplateElasticInferenceAcceleratorToTerraform(this._elasticInferenceAccelerator),
+        enclave_options: launchTemplateEnclaveOptionsToTerraform(this._enclaveOptions),
+        hibernation_options: launchTemplateHibernationOptionsToTerraform(this._hibernationOptions),
+        iam_instance_profile: launchTemplateIamInstanceProfileToTerraform(this._iamInstanceProfile),
+        instance_market_options: launchTemplateInstanceMarketOptionsToTerraform(this._instanceMarketOptions),
         license_specification: cdktf.listMapper(launchTemplateLicenseSpecificationToTerraform)(this._licenseSpecification),
-        metadata_options: cdktf.listMapper(launchTemplateMetadataOptionsToTerraform)(this._metadataOptions),
-        monitoring: cdktf.listMapper(launchTemplateMonitoringToTerraform)(this._monitoring),
+        metadata_options: launchTemplateMetadataOptionsToTerraform(this._metadataOptions),
+        monitoring: launchTemplateMonitoringToTerraform(this._monitoring),
         network_interfaces: cdktf.listMapper(launchTemplateNetworkInterfacesToTerraform)(this._networkInterfaces),
-        placement: cdktf.listMapper(launchTemplatePlacementToTerraform)(this._placement),
+        placement: launchTemplatePlacementToTerraform(this._placement),
         tag_specifications: cdktf.listMapper(launchTemplateTagSpecificationsToTerraform)(this._tagSpecifications),
       };
     }
@@ -11580,7 +14057,7 @@ export namespace EC2 {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -11593,11 +14070,11 @@ export namespace EC2 {
     }
 
     // partition_count - computed: false, optional: true, required: false
-    private _partitionCount?: number;
+    private _partitionCount?: number | undefined; 
     public get partitionCount() {
       return this.getNumberAttribute('partition_count');
     }
-    public set partitionCount(value: number ) {
+    public set partitionCount(value: number | undefined) {
       this._partitionCount = value;
     }
     public resetPartitionCount() {
@@ -11614,7 +14091,7 @@ export namespace EC2 {
     }
 
     // strategy - computed: false, optional: false, required: true
-    private _strategy: string;
+    private _strategy?: string; 
     public get strategy() {
       return this.getStringAttribute('strategy');
     }
@@ -11627,11 +14104,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -11643,11 +14121,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -11724,7 +14203,7 @@ export namespace EC2 {
     // ==========
 
     // account_id - computed: false, optional: false, required: true
-    private _accountId: string;
+    private _accountId?: string; 
     public get accountId() {
       return this.getStringAttribute('account_id');
     }
@@ -11742,7 +14221,7 @@ export namespace EC2 {
     }
 
     // snapshot_id - computed: false, optional: false, required: true
-    private _snapshotId: string;
+    private _snapshotId?: string; 
     public get snapshotId() {
       return this.getStringAttribute('snapshot_id');
     }
@@ -11817,7 +14296,7 @@ export namespace EC2 {
     // ==========
 
     // bucket - computed: false, optional: false, required: true
-    private _bucket: string;
+    private _bucket?: string; 
     public get bucket() {
       return this.getStringAttribute('bucket');
     }
@@ -11835,11 +14314,11 @@ export namespace EC2 {
     }
 
     // prefix - computed: false, optional: true, required: false
-    private _prefix?: string;
+    private _prefix?: string | undefined; 
     public get prefix() {
       return this.getStringAttribute('prefix');
     }
-    public set prefix(value: string ) {
+    public set prefix(value: string | undefined) {
       this._prefix = value;
     }
     public resetPrefix() {
@@ -11959,7 +14438,7 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_fleet_request.html#spot_maintenance_strategies SpotFleetRequest#spot_maintenance_strategies}
     */
-    readonly spotMaintenanceStrategies?: SpotFleetRequestSpotMaintenanceStrategies[];
+    readonly spotMaintenanceStrategies?: SpotFleetRequestSpotMaintenanceStrategies;
     /**
     * timeouts block
     * 
@@ -12008,6 +14487,9 @@ export namespace EC2 {
 
   function spotFleetRequestLaunchSpecificationEbsBlockDeviceToTerraform(struct?: SpotFleetRequestLaunchSpecificationEbsBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete_on_termination: cdktf.booleanToTerraform(struct!.deleteOnTermination),
       device_name: cdktf.stringToTerraform(struct!.deviceName),
@@ -12034,6 +14516,9 @@ export namespace EC2 {
 
   function spotFleetRequestLaunchSpecificationEphemeralBlockDeviceToTerraform(struct?: SpotFleetRequestLaunchSpecificationEphemeralBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       device_name: cdktf.stringToTerraform(struct!.deviceName),
       virtual_name: cdktf.stringToTerraform(struct!.virtualName),
@@ -12073,6 +14558,9 @@ export namespace EC2 {
 
   function spotFleetRequestLaunchSpecificationRootBlockDeviceToTerraform(struct?: SpotFleetRequestLaunchSpecificationRootBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete_on_termination: cdktf.booleanToTerraform(struct!.deleteOnTermination),
       encrypted: cdktf.booleanToTerraform(struct!.encrypted),
@@ -12175,6 +14663,9 @@ export namespace EC2 {
 
   function spotFleetRequestLaunchSpecificationToTerraform(struct?: SpotFleetRequestLaunchSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       ami: cdktf.stringToTerraform(struct!.ami),
       associate_public_ip_address: cdktf.booleanToTerraform(struct!.associatePublicIpAddress),
@@ -12214,8 +14705,11 @@ export namespace EC2 {
     readonly version?: string;
   }
 
-  function spotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationToTerraform(struct?: SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification): any {
+  function spotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationToTerraform(struct?: SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationOutputReference | SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       id: cdktf.stringToTerraform(struct!.id),
       name: cdktf.stringToTerraform(struct!.name),
@@ -12223,6 +14717,64 @@ export namespace EC2 {
     }
   }
 
+  export class SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // id - computed: false, optional: true, required: false
+    private _id?: string | undefined; 
+    public get id() {
+      return this.getStringAttribute('id');
+    }
+    public set id(value: string | undefined) {
+      this._id = value;
+    }
+    public resetId() {
+      this._id = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get idInput() {
+      return this._id
+    }
+
+    // name - computed: false, optional: true, required: false
+    private _name?: string | undefined; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string | undefined) {
+      this._name = value;
+    }
+    public resetName() {
+      this._name = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+
+    // version - computed: false, optional: true, required: false
+    private _version?: string | undefined; 
+    public get version() {
+      return this.getStringAttribute('version');
+    }
+    public set version(value: string | undefined) {
+      this._version = value;
+    }
+    public resetVersion() {
+      this._version = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get versionInput() {
+      return this._version
+    }
+  }
   export interface SpotFleetRequestLaunchTemplateConfigOverrides {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_fleet_request.html#availability_zone SpotFleetRequest#availability_zone}
@@ -12252,6 +14804,9 @@ export namespace EC2 {
 
   function spotFleetRequestLaunchTemplateConfigOverridesToTerraform(struct?: SpotFleetRequestLaunchTemplateConfigOverrides): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       availability_zone: cdktf.stringToTerraform(struct!.availabilityZone),
       instance_type: cdktf.stringToTerraform(struct!.instanceType),
@@ -12268,7 +14823,7 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_fleet_request.html#launch_template_specification SpotFleetRequest#launch_template_specification}
     */
-    readonly launchTemplateSpecification: SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification[];
+    readonly launchTemplateSpecification: SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification;
     /**
     * overrides block
     * 
@@ -12279,8 +14834,11 @@ export namespace EC2 {
 
   function spotFleetRequestLaunchTemplateConfigToTerraform(struct?: SpotFleetRequestLaunchTemplateConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      launch_template_specification: cdktf.listMapper(spotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationToTerraform)(struct!.launchTemplateSpecification),
+      launch_template_specification: spotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationToTerraform(struct!.launchTemplateSpecification),
       overrides: cdktf.listMapper(spotFleetRequestLaunchTemplateConfigOverridesToTerraform)(struct!.overrides),
     }
   }
@@ -12292,29 +14850,88 @@ export namespace EC2 {
     readonly replacementStrategy?: string;
   }
 
-  function spotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceToTerraform(struct?: SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance): any {
+  function spotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceToTerraform(struct?: SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceOutputReference | SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       replacement_strategy: cdktf.stringToTerraform(struct!.replacementStrategy),
     }
   }
 
+  export class SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // replacement_strategy - computed: false, optional: true, required: false
+    private _replacementStrategy?: string | undefined; 
+    public get replacementStrategy() {
+      return this.getStringAttribute('replacement_strategy');
+    }
+    public set replacementStrategy(value: string | undefined) {
+      this._replacementStrategy = value;
+    }
+    public resetReplacementStrategy() {
+      this._replacementStrategy = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get replacementStrategyInput() {
+      return this._replacementStrategy
+    }
+  }
   export interface SpotFleetRequestSpotMaintenanceStrategies {
     /**
     * capacity_rebalance block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_fleet_request.html#capacity_rebalance SpotFleetRequest#capacity_rebalance}
     */
-    readonly capacityRebalance?: SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance[];
+    readonly capacityRebalance?: SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance;
   }
 
-  function spotFleetRequestSpotMaintenanceStrategiesToTerraform(struct?: SpotFleetRequestSpotMaintenanceStrategies): any {
+  function spotFleetRequestSpotMaintenanceStrategiesToTerraform(struct?: SpotFleetRequestSpotMaintenanceStrategiesOutputReference | SpotFleetRequestSpotMaintenanceStrategies): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      capacity_rebalance: cdktf.listMapper(spotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceToTerraform)(struct!.capacityRebalance),
+      capacity_rebalance: spotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceToTerraform(struct!.capacityRebalance),
     }
   }
 
+  export class SpotFleetRequestSpotMaintenanceStrategiesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // capacity_rebalance - computed: false, optional: true, required: false
+    private _capacityRebalance?: SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance | undefined; 
+    private __capacityRebalanceOutput = new SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalanceOutputReference(this as any, "capacity_rebalance", true);
+    public get capacityRebalance() {
+      return this.__capacityRebalanceOutput;
+    }
+    public putCapacityRebalance(value: SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance | undefined) {
+      this._capacityRebalance = value;
+    }
+    public resetCapacityRebalance() {
+      this._capacityRebalance = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get capacityRebalanceInput() {
+      return this._capacityRebalance
+    }
+  }
   export interface SpotFleetRequestTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_fleet_request.html#create SpotFleetRequest#create}
@@ -12326,14 +14943,59 @@ export namespace EC2 {
     readonly delete?: string;
   }
 
-  function spotFleetRequestTimeoutsToTerraform(struct?: SpotFleetRequestTimeouts): any {
+  function spotFleetRequestTimeoutsToTerraform(struct?: SpotFleetRequestTimeoutsOutputReference | SpotFleetRequestTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class SpotFleetRequestTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/spot_fleet_request.html aws_spot_fleet_request}
@@ -12398,11 +15060,11 @@ export namespace EC2 {
     // ==========
 
     // allocation_strategy - computed: false, optional: true, required: false
-    private _allocationStrategy?: string;
+    private _allocationStrategy?: string | undefined; 
     public get allocationStrategy() {
       return this.getStringAttribute('allocation_strategy');
     }
-    public set allocationStrategy(value: string ) {
+    public set allocationStrategy(value: string | undefined) {
       this._allocationStrategy = value;
     }
     public resetAllocationStrategy() {
@@ -12419,11 +15081,11 @@ export namespace EC2 {
     }
 
     // excess_capacity_termination_policy - computed: false, optional: true, required: false
-    private _excessCapacityTerminationPolicy?: string;
+    private _excessCapacityTerminationPolicy?: string | undefined; 
     public get excessCapacityTerminationPolicy() {
       return this.getStringAttribute('excess_capacity_termination_policy');
     }
-    public set excessCapacityTerminationPolicy(value: string ) {
+    public set excessCapacityTerminationPolicy(value: string | undefined) {
       this._excessCapacityTerminationPolicy = value;
     }
     public resetExcessCapacityTerminationPolicy() {
@@ -12435,11 +15097,11 @@ export namespace EC2 {
     }
 
     // fleet_type - computed: false, optional: true, required: false
-    private _fleetType?: string;
+    private _fleetType?: string | undefined; 
     public get fleetType() {
       return this.getStringAttribute('fleet_type');
     }
-    public set fleetType(value: string ) {
+    public set fleetType(value: string | undefined) {
       this._fleetType = value;
     }
     public resetFleetType() {
@@ -12451,7 +15113,7 @@ export namespace EC2 {
     }
 
     // iam_fleet_role - computed: false, optional: false, required: true
-    private _iamFleetRole: string;
+    private _iamFleetRole?: string; 
     public get iamFleetRole() {
       return this.getStringAttribute('iam_fleet_role');
     }
@@ -12469,11 +15131,11 @@ export namespace EC2 {
     }
 
     // instance_interruption_behaviour - computed: false, optional: true, required: false
-    private _instanceInterruptionBehaviour?: string;
+    private _instanceInterruptionBehaviour?: string | undefined; 
     public get instanceInterruptionBehaviour() {
       return this.getStringAttribute('instance_interruption_behaviour');
     }
-    public set instanceInterruptionBehaviour(value: string ) {
+    public set instanceInterruptionBehaviour(value: string | undefined) {
       this._instanceInterruptionBehaviour = value;
     }
     public resetInstanceInterruptionBehaviour() {
@@ -12485,11 +15147,11 @@ export namespace EC2 {
     }
 
     // instance_pools_to_use_count - computed: false, optional: true, required: false
-    private _instancePoolsToUseCount?: number;
+    private _instancePoolsToUseCount?: number | undefined; 
     public get instancePoolsToUseCount() {
       return this.getNumberAttribute('instance_pools_to_use_count');
     }
-    public set instancePoolsToUseCount(value: number ) {
+    public set instancePoolsToUseCount(value: number | undefined) {
       this._instancePoolsToUseCount = value;
     }
     public resetInstancePoolsToUseCount() {
@@ -12501,11 +15163,11 @@ export namespace EC2 {
     }
 
     // load_balancers - computed: true, optional: true, required: false
-    private _loadBalancers?: string[];
+    private _loadBalancers?: string[] | undefined; 
     public get loadBalancers() {
       return this.getListAttribute('load_balancers');
     }
-    public set loadBalancers(value: string[]) {
+    public set loadBalancers(value: string[] | undefined) {
       this._loadBalancers = value;
     }
     public resetLoadBalancers() {
@@ -12517,11 +15179,11 @@ export namespace EC2 {
     }
 
     // on_demand_allocation_strategy - computed: false, optional: true, required: false
-    private _onDemandAllocationStrategy?: string;
+    private _onDemandAllocationStrategy?: string | undefined; 
     public get onDemandAllocationStrategy() {
       return this.getStringAttribute('on_demand_allocation_strategy');
     }
-    public set onDemandAllocationStrategy(value: string ) {
+    public set onDemandAllocationStrategy(value: string | undefined) {
       this._onDemandAllocationStrategy = value;
     }
     public resetOnDemandAllocationStrategy() {
@@ -12533,11 +15195,11 @@ export namespace EC2 {
     }
 
     // on_demand_max_total_price - computed: false, optional: true, required: false
-    private _onDemandMaxTotalPrice?: string;
+    private _onDemandMaxTotalPrice?: string | undefined; 
     public get onDemandMaxTotalPrice() {
       return this.getStringAttribute('on_demand_max_total_price');
     }
-    public set onDemandMaxTotalPrice(value: string ) {
+    public set onDemandMaxTotalPrice(value: string | undefined) {
       this._onDemandMaxTotalPrice = value;
     }
     public resetOnDemandMaxTotalPrice() {
@@ -12549,11 +15211,11 @@ export namespace EC2 {
     }
 
     // on_demand_target_capacity - computed: false, optional: true, required: false
-    private _onDemandTargetCapacity?: number;
+    private _onDemandTargetCapacity?: number | undefined; 
     public get onDemandTargetCapacity() {
       return this.getNumberAttribute('on_demand_target_capacity');
     }
-    public set onDemandTargetCapacity(value: number ) {
+    public set onDemandTargetCapacity(value: number | undefined) {
       this._onDemandTargetCapacity = value;
     }
     public resetOnDemandTargetCapacity() {
@@ -12565,11 +15227,11 @@ export namespace EC2 {
     }
 
     // replace_unhealthy_instances - computed: false, optional: true, required: false
-    private _replaceUnhealthyInstances?: boolean | cdktf.IResolvable;
+    private _replaceUnhealthyInstances?: boolean | cdktf.IResolvable | undefined; 
     public get replaceUnhealthyInstances() {
-      return this.getBooleanAttribute('replace_unhealthy_instances');
+      return this.getBooleanAttribute('replace_unhealthy_instances') as any;
     }
-    public set replaceUnhealthyInstances(value: boolean | cdktf.IResolvable ) {
+    public set replaceUnhealthyInstances(value: boolean | cdktf.IResolvable | undefined) {
       this._replaceUnhealthyInstances = value;
     }
     public resetReplaceUnhealthyInstances() {
@@ -12581,11 +15243,11 @@ export namespace EC2 {
     }
 
     // spot_price - computed: false, optional: true, required: false
-    private _spotPrice?: string;
+    private _spotPrice?: string | undefined; 
     public get spotPrice() {
       return this.getStringAttribute('spot_price');
     }
-    public set spotPrice(value: string ) {
+    public set spotPrice(value: string | undefined) {
       this._spotPrice = value;
     }
     public resetSpotPrice() {
@@ -12602,11 +15264,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -12618,11 +15281,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -12634,7 +15298,7 @@ export namespace EC2 {
     }
 
     // target_capacity - computed: false, optional: false, required: true
-    private _targetCapacity: number;
+    private _targetCapacity?: number; 
     public get targetCapacity() {
       return this.getNumberAttribute('target_capacity');
     }
@@ -12647,11 +15311,11 @@ export namespace EC2 {
     }
 
     // target_group_arns - computed: true, optional: true, required: false
-    private _targetGroupArns?: string[];
+    private _targetGroupArns?: string[] | undefined; 
     public get targetGroupArns() {
       return this.getListAttribute('target_group_arns');
     }
-    public set targetGroupArns(value: string[]) {
+    public set targetGroupArns(value: string[] | undefined) {
       this._targetGroupArns = value;
     }
     public resetTargetGroupArns() {
@@ -12663,11 +15327,11 @@ export namespace EC2 {
     }
 
     // terminate_instances_with_expiration - computed: false, optional: true, required: false
-    private _terminateInstancesWithExpiration?: boolean | cdktf.IResolvable;
+    private _terminateInstancesWithExpiration?: boolean | cdktf.IResolvable | undefined; 
     public get terminateInstancesWithExpiration() {
-      return this.getBooleanAttribute('terminate_instances_with_expiration');
+      return this.getBooleanAttribute('terminate_instances_with_expiration') as any;
     }
-    public set terminateInstancesWithExpiration(value: boolean | cdktf.IResolvable ) {
+    public set terminateInstancesWithExpiration(value: boolean | cdktf.IResolvable | undefined) {
       this._terminateInstancesWithExpiration = value;
     }
     public resetTerminateInstancesWithExpiration() {
@@ -12679,11 +15343,11 @@ export namespace EC2 {
     }
 
     // valid_from - computed: false, optional: true, required: false
-    private _validFrom?: string;
+    private _validFrom?: string | undefined; 
     public get validFrom() {
       return this.getStringAttribute('valid_from');
     }
-    public set validFrom(value: string ) {
+    public set validFrom(value: string | undefined) {
       this._validFrom = value;
     }
     public resetValidFrom() {
@@ -12695,11 +15359,11 @@ export namespace EC2 {
     }
 
     // valid_until - computed: false, optional: true, required: false
-    private _validUntil?: string;
+    private _validUntil?: string | undefined; 
     public get validUntil() {
       return this.getStringAttribute('valid_until');
     }
-    public set validUntil(value: string ) {
+    public set validUntil(value: string | undefined) {
       this._validUntil = value;
     }
     public resetValidUntil() {
@@ -12711,11 +15375,11 @@ export namespace EC2 {
     }
 
     // wait_for_fulfillment - computed: false, optional: true, required: false
-    private _waitForFulfillment?: boolean | cdktf.IResolvable;
+    private _waitForFulfillment?: boolean | cdktf.IResolvable | undefined; 
     public get waitForFulfillment() {
-      return this.getBooleanAttribute('wait_for_fulfillment');
+      return this.getBooleanAttribute('wait_for_fulfillment') as any;
     }
-    public set waitForFulfillment(value: boolean | cdktf.IResolvable ) {
+    public set waitForFulfillment(value: boolean | cdktf.IResolvable | undefined) {
       this._waitForFulfillment = value;
     }
     public resetWaitForFulfillment() {
@@ -12727,11 +15391,12 @@ export namespace EC2 {
     }
 
     // launch_specification - computed: false, optional: true, required: false
-    private _launchSpecification?: SpotFleetRequestLaunchSpecification[];
+    private _launchSpecification?: SpotFleetRequestLaunchSpecification[] | undefined; 
     public get launchSpecification() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('launch_specification') as any;
     }
-    public set launchSpecification(value: SpotFleetRequestLaunchSpecification[] ) {
+    public set launchSpecification(value: SpotFleetRequestLaunchSpecification[] | undefined) {
       this._launchSpecification = value;
     }
     public resetLaunchSpecification() {
@@ -12743,11 +15408,12 @@ export namespace EC2 {
     }
 
     // launch_template_config - computed: false, optional: true, required: false
-    private _launchTemplateConfig?: SpotFleetRequestLaunchTemplateConfig[];
+    private _launchTemplateConfig?: SpotFleetRequestLaunchTemplateConfig[] | undefined; 
     public get launchTemplateConfig() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('launch_template_config') as any;
     }
-    public set launchTemplateConfig(value: SpotFleetRequestLaunchTemplateConfig[] ) {
+    public set launchTemplateConfig(value: SpotFleetRequestLaunchTemplateConfig[] | undefined) {
       this._launchTemplateConfig = value;
     }
     public resetLaunchTemplateConfig() {
@@ -12759,11 +15425,12 @@ export namespace EC2 {
     }
 
     // spot_maintenance_strategies - computed: false, optional: true, required: false
-    private _spotMaintenanceStrategies?: SpotFleetRequestSpotMaintenanceStrategies[];
+    private _spotMaintenanceStrategies?: SpotFleetRequestSpotMaintenanceStrategies | undefined; 
+    private __spotMaintenanceStrategiesOutput = new SpotFleetRequestSpotMaintenanceStrategiesOutputReference(this as any, "spot_maintenance_strategies", true);
     public get spotMaintenanceStrategies() {
-      return this.interpolationForAttribute('spot_maintenance_strategies') as any;
+      return this.__spotMaintenanceStrategiesOutput;
     }
-    public set spotMaintenanceStrategies(value: SpotFleetRequestSpotMaintenanceStrategies[] ) {
+    public putSpotMaintenanceStrategies(value: SpotFleetRequestSpotMaintenanceStrategies | undefined) {
       this._spotMaintenanceStrategies = value;
     }
     public resetSpotMaintenanceStrategies() {
@@ -12775,11 +15442,12 @@ export namespace EC2 {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: SpotFleetRequestTimeouts;
+    private _timeouts?: SpotFleetRequestTimeouts | undefined; 
+    private __timeoutsOutput = new SpotFleetRequestTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: SpotFleetRequestTimeouts ) {
+    public putTimeouts(value: SpotFleetRequestTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -12818,7 +15486,7 @@ export namespace EC2 {
         wait_for_fulfillment: cdktf.booleanToTerraform(this._waitForFulfillment),
         launch_specification: cdktf.listMapper(spotFleetRequestLaunchSpecificationToTerraform)(this._launchSpecification),
         launch_template_config: cdktf.listMapper(spotFleetRequestLaunchTemplateConfigToTerraform)(this._launchTemplateConfig),
-        spot_maintenance_strategies: cdktf.listMapper(spotFleetRequestSpotMaintenanceStrategiesToTerraform)(this._spotMaintenanceStrategies),
+        spot_maintenance_strategies: spotFleetRequestSpotMaintenanceStrategiesToTerraform(this._spotMaintenanceStrategies),
         timeouts: spotFleetRequestTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -12989,13 +15657,13 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html#capacity_reservation_specification SpotInstanceRequest#capacity_reservation_specification}
     */
-    readonly capacityReservationSpecification?: SpotInstanceRequestCapacityReservationSpecification[];
+    readonly capacityReservationSpecification?: SpotInstanceRequestCapacityReservationSpecification;
     /**
     * credit_specification block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html#credit_specification SpotInstanceRequest#credit_specification}
     */
-    readonly creditSpecification?: SpotInstanceRequestCreditSpecification[];
+    readonly creditSpecification?: SpotInstanceRequestCreditSpecification;
     /**
     * ebs_block_device block
     * 
@@ -13007,7 +15675,7 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html#enclave_options SpotInstanceRequest#enclave_options}
     */
-    readonly enclaveOptions?: SpotInstanceRequestEnclaveOptions[];
+    readonly enclaveOptions?: SpotInstanceRequestEnclaveOptions;
     /**
     * ephemeral_block_device block
     * 
@@ -13019,13 +15687,13 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html#launch_template SpotInstanceRequest#launch_template}
     */
-    readonly launchTemplate?: SpotInstanceRequestLaunchTemplate[];
+    readonly launchTemplate?: SpotInstanceRequestLaunchTemplate;
     /**
     * metadata_options block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html#metadata_options SpotInstanceRequest#metadata_options}
     */
-    readonly metadataOptions?: SpotInstanceRequestMetadataOptions[];
+    readonly metadataOptions?: SpotInstanceRequestMetadataOptions;
     /**
     * network_interface block
     * 
@@ -13037,7 +15705,7 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html#root_block_device SpotInstanceRequest#root_block_device}
     */
-    readonly rootBlockDevice?: SpotInstanceRequestRootBlockDevice[];
+    readonly rootBlockDevice?: SpotInstanceRequestRootBlockDevice;
     /**
     * timeouts block
     * 
@@ -13052,13 +15720,42 @@ export namespace EC2 {
     readonly capacityReservationId?: string;
   }
 
-  function spotInstanceRequestCapacityReservationSpecificationCapacityReservationTargetToTerraform(struct?: SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget): any {
+  function spotInstanceRequestCapacityReservationSpecificationCapacityReservationTargetToTerraform(struct?: SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTargetOutputReference | SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       capacity_reservation_id: cdktf.stringToTerraform(struct!.capacityReservationId),
     }
   }
 
+  export class SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTargetOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // capacity_reservation_id - computed: false, optional: true, required: false
+    private _capacityReservationId?: string | undefined; 
+    public get capacityReservationId() {
+      return this.getStringAttribute('capacity_reservation_id');
+    }
+    public set capacityReservationId(value: string | undefined) {
+      this._capacityReservationId = value;
+    }
+    public resetCapacityReservationId() {
+      this._capacityReservationId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get capacityReservationIdInput() {
+      return this._capacityReservationId
+    }
+  }
   export interface SpotInstanceRequestCapacityReservationSpecification {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html#capacity_reservation_preference SpotInstanceRequest#capacity_reservation_preference}
@@ -13069,17 +15766,63 @@ export namespace EC2 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html#capacity_reservation_target SpotInstanceRequest#capacity_reservation_target}
     */
-    readonly capacityReservationTarget?: SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget[];
+    readonly capacityReservationTarget?: SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget;
   }
 
-  function spotInstanceRequestCapacityReservationSpecificationToTerraform(struct?: SpotInstanceRequestCapacityReservationSpecification): any {
+  function spotInstanceRequestCapacityReservationSpecificationToTerraform(struct?: SpotInstanceRequestCapacityReservationSpecificationOutputReference | SpotInstanceRequestCapacityReservationSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       capacity_reservation_preference: cdktf.stringToTerraform(struct!.capacityReservationPreference),
-      capacity_reservation_target: cdktf.listMapper(spotInstanceRequestCapacityReservationSpecificationCapacityReservationTargetToTerraform)(struct!.capacityReservationTarget),
+      capacity_reservation_target: spotInstanceRequestCapacityReservationSpecificationCapacityReservationTargetToTerraform(struct!.capacityReservationTarget),
     }
   }
 
+  export class SpotInstanceRequestCapacityReservationSpecificationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // capacity_reservation_preference - computed: false, optional: true, required: false
+    private _capacityReservationPreference?: string | undefined; 
+    public get capacityReservationPreference() {
+      return this.getStringAttribute('capacity_reservation_preference');
+    }
+    public set capacityReservationPreference(value: string | undefined) {
+      this._capacityReservationPreference = value;
+    }
+    public resetCapacityReservationPreference() {
+      this._capacityReservationPreference = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get capacityReservationPreferenceInput() {
+      return this._capacityReservationPreference
+    }
+
+    // capacity_reservation_target - computed: false, optional: true, required: false
+    private _capacityReservationTarget?: SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget | undefined; 
+    private __capacityReservationTargetOutput = new SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTargetOutputReference(this as any, "capacity_reservation_target", true);
+    public get capacityReservationTarget() {
+      return this.__capacityReservationTargetOutput;
+    }
+    public putCapacityReservationTarget(value: SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget | undefined) {
+      this._capacityReservationTarget = value;
+    }
+    public resetCapacityReservationTarget() {
+      this._capacityReservationTarget = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get capacityReservationTargetInput() {
+      return this._capacityReservationTarget
+    }
+  }
   export interface SpotInstanceRequestCreditSpecification {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html#cpu_credits SpotInstanceRequest#cpu_credits}
@@ -13087,13 +15830,42 @@ export namespace EC2 {
     readonly cpuCredits?: string;
   }
 
-  function spotInstanceRequestCreditSpecificationToTerraform(struct?: SpotInstanceRequestCreditSpecification): any {
+  function spotInstanceRequestCreditSpecificationToTerraform(struct?: SpotInstanceRequestCreditSpecificationOutputReference | SpotInstanceRequestCreditSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cpu_credits: cdktf.stringToTerraform(struct!.cpuCredits),
     }
   }
 
+  export class SpotInstanceRequestCreditSpecificationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // cpu_credits - computed: false, optional: true, required: false
+    private _cpuCredits?: string | undefined; 
+    public get cpuCredits() {
+      return this.getStringAttribute('cpu_credits');
+    }
+    public set cpuCredits(value: string | undefined) {
+      this._cpuCredits = value;
+    }
+    public resetCpuCredits() {
+      this._cpuCredits = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cpuCreditsInput() {
+      return this._cpuCredits
+    }
+  }
   export interface SpotInstanceRequestEbsBlockDevice {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html#delete_on_termination SpotInstanceRequest#delete_on_termination}
@@ -13139,6 +15911,9 @@ export namespace EC2 {
 
   function spotInstanceRequestEbsBlockDeviceToTerraform(struct?: SpotInstanceRequestEbsBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete_on_termination: cdktf.booleanToTerraform(struct!.deleteOnTermination),
       device_name: cdktf.stringToTerraform(struct!.deviceName),
@@ -13160,13 +15935,42 @@ export namespace EC2 {
     readonly enabled?: boolean | cdktf.IResolvable;
   }
 
-  function spotInstanceRequestEnclaveOptionsToTerraform(struct?: SpotInstanceRequestEnclaveOptions): any {
+  function spotInstanceRequestEnclaveOptionsToTerraform(struct?: SpotInstanceRequestEnclaveOptionsOutputReference | SpotInstanceRequestEnclaveOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       enabled: cdktf.booleanToTerraform(struct!.enabled),
     }
   }
 
+  export class SpotInstanceRequestEnclaveOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // enabled - computed: true, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+  }
   export interface SpotInstanceRequestEphemeralBlockDevice {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html#device_name SpotInstanceRequest#device_name}
@@ -13184,6 +15988,9 @@ export namespace EC2 {
 
   function spotInstanceRequestEphemeralBlockDeviceToTerraform(struct?: SpotInstanceRequestEphemeralBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       device_name: cdktf.stringToTerraform(struct!.deviceName),
       no_device: cdktf.booleanToTerraform(struct!.noDevice),
@@ -13206,15 +16013,64 @@ export namespace EC2 {
     readonly version?: string;
   }
 
-  function spotInstanceRequestLaunchTemplateToTerraform(struct?: SpotInstanceRequestLaunchTemplate): any {
+  function spotInstanceRequestLaunchTemplateToTerraform(struct?: SpotInstanceRequestLaunchTemplateOutputReference | SpotInstanceRequestLaunchTemplate): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      id: cdktf.stringToTerraform(struct!.id),
       name: cdktf.stringToTerraform(struct!.name),
       version: cdktf.stringToTerraform(struct!.version),
     }
   }
 
+  export class SpotInstanceRequestLaunchTemplateOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // id - computed: true, optional: true, required: false
+    public get id() {
+      return this.getStringAttribute('id');
+    }
+
+    // name - computed: true, optional: true, required: false
+    private _name?: string | undefined; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string | undefined) {
+      this._name = value;
+    }
+    public resetName() {
+      this._name = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+
+    // version - computed: false, optional: true, required: false
+    private _version?: string | undefined; 
+    public get version() {
+      return this.getStringAttribute('version');
+    }
+    public set version(value: string | undefined) {
+      this._version = value;
+    }
+    public resetVersion() {
+      this._version = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get versionInput() {
+      return this._version
+    }
+  }
   export interface SpotInstanceRequestMetadataOptions {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html#http_endpoint SpotInstanceRequest#http_endpoint}
@@ -13230,8 +16086,11 @@ export namespace EC2 {
     readonly httpTokens?: string;
   }
 
-  function spotInstanceRequestMetadataOptionsToTerraform(struct?: SpotInstanceRequestMetadataOptions): any {
+  function spotInstanceRequestMetadataOptionsToTerraform(struct?: SpotInstanceRequestMetadataOptionsOutputReference | SpotInstanceRequestMetadataOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       http_endpoint: cdktf.stringToTerraform(struct!.httpEndpoint),
       http_put_response_hop_limit: cdktf.numberToTerraform(struct!.httpPutResponseHopLimit),
@@ -13239,6 +16098,64 @@ export namespace EC2 {
     }
   }
 
+  export class SpotInstanceRequestMetadataOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // http_endpoint - computed: true, optional: true, required: false
+    private _httpEndpoint?: string | undefined; 
+    public get httpEndpoint() {
+      return this.getStringAttribute('http_endpoint');
+    }
+    public set httpEndpoint(value: string | undefined) {
+      this._httpEndpoint = value;
+    }
+    public resetHttpEndpoint() {
+      this._httpEndpoint = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get httpEndpointInput() {
+      return this._httpEndpoint
+    }
+
+    // http_put_response_hop_limit - computed: true, optional: true, required: false
+    private _httpPutResponseHopLimit?: number | undefined; 
+    public get httpPutResponseHopLimit() {
+      return this.getNumberAttribute('http_put_response_hop_limit');
+    }
+    public set httpPutResponseHopLimit(value: number | undefined) {
+      this._httpPutResponseHopLimit = value;
+    }
+    public resetHttpPutResponseHopLimit() {
+      this._httpPutResponseHopLimit = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get httpPutResponseHopLimitInput() {
+      return this._httpPutResponseHopLimit
+    }
+
+    // http_tokens - computed: true, optional: true, required: false
+    private _httpTokens?: string | undefined; 
+    public get httpTokens() {
+      return this.getStringAttribute('http_tokens');
+    }
+    public set httpTokens(value: string | undefined) {
+      this._httpTokens = value;
+    }
+    public resetHttpTokens() {
+      this._httpTokens = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get httpTokensInput() {
+      return this._httpTokens
+    }
+  }
   export interface SpotInstanceRequestNetworkInterface {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html#delete_on_termination SpotInstanceRequest#delete_on_termination}
@@ -13256,6 +16173,9 @@ export namespace EC2 {
 
   function spotInstanceRequestNetworkInterfaceToTerraform(struct?: SpotInstanceRequestNetworkInterface): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete_on_termination: cdktf.booleanToTerraform(struct!.deleteOnTermination),
       device_index: cdktf.numberToTerraform(struct!.deviceIndex),
@@ -13298,8 +16218,11 @@ export namespace EC2 {
     readonly volumeType?: string;
   }
 
-  function spotInstanceRequestRootBlockDeviceToTerraform(struct?: SpotInstanceRequestRootBlockDevice): any {
+  function spotInstanceRequestRootBlockDeviceToTerraform(struct?: SpotInstanceRequestRootBlockDeviceOutputReference | SpotInstanceRequestRootBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete_on_termination: cdktf.booleanToTerraform(struct!.deleteOnTermination),
       encrypted: cdktf.booleanToTerraform(struct!.encrypted),
@@ -13312,6 +16235,145 @@ export namespace EC2 {
     }
   }
 
+  export class SpotInstanceRequestRootBlockDeviceOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // delete_on_termination - computed: false, optional: true, required: false
+    private _deleteOnTermination?: boolean | cdktf.IResolvable | undefined; 
+    public get deleteOnTermination() {
+      return this.getBooleanAttribute('delete_on_termination') as any;
+    }
+    public set deleteOnTermination(value: boolean | cdktf.IResolvable | undefined) {
+      this._deleteOnTermination = value;
+    }
+    public resetDeleteOnTermination() {
+      this._deleteOnTermination = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteOnTerminationInput() {
+      return this._deleteOnTermination
+    }
+
+    // encrypted - computed: true, optional: true, required: false
+    private _encrypted?: boolean | cdktf.IResolvable | undefined; 
+    public get encrypted() {
+      return this.getBooleanAttribute('encrypted') as any;
+    }
+    public set encrypted(value: boolean | cdktf.IResolvable | undefined) {
+      this._encrypted = value;
+    }
+    public resetEncrypted() {
+      this._encrypted = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get encryptedInput() {
+      return this._encrypted
+    }
+
+    // iops - computed: true, optional: true, required: false
+    private _iops?: number | undefined; 
+    public get iops() {
+      return this.getNumberAttribute('iops');
+    }
+    public set iops(value: number | undefined) {
+      this._iops = value;
+    }
+    public resetIops() {
+      this._iops = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get iopsInput() {
+      return this._iops
+    }
+
+    // kms_key_id - computed: true, optional: true, required: false
+    private _kmsKeyId?: string | undefined; 
+    public get kmsKeyId() {
+      return this.getStringAttribute('kms_key_id');
+    }
+    public set kmsKeyId(value: string | undefined) {
+      this._kmsKeyId = value;
+    }
+    public resetKmsKeyId() {
+      this._kmsKeyId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get kmsKeyIdInput() {
+      return this._kmsKeyId
+    }
+
+    // tags - computed: false, optional: true, required: false
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
+    }
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._tags = value;
+    }
+    public resetTags() {
+      this._tags = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tagsInput() {
+      return this._tags
+    }
+
+    // throughput - computed: true, optional: true, required: false
+    private _throughput?: number | undefined; 
+    public get throughput() {
+      return this.getNumberAttribute('throughput');
+    }
+    public set throughput(value: number | undefined) {
+      this._throughput = value;
+    }
+    public resetThroughput() {
+      this._throughput = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get throughputInput() {
+      return this._throughput
+    }
+
+    // volume_size - computed: true, optional: true, required: false
+    private _volumeSize?: number | undefined; 
+    public get volumeSize() {
+      return this.getNumberAttribute('volume_size');
+    }
+    public set volumeSize(value: number | undefined) {
+      this._volumeSize = value;
+    }
+    public resetVolumeSize() {
+      this._volumeSize = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get volumeSizeInput() {
+      return this._volumeSize
+    }
+
+    // volume_type - computed: true, optional: true, required: false
+    private _volumeType?: string | undefined; 
+    public get volumeType() {
+      return this.getStringAttribute('volume_type');
+    }
+    public set volumeType(value: string | undefined) {
+      this._volumeType = value;
+    }
+    public resetVolumeType() {
+      this._volumeType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get volumeTypeInput() {
+      return this._volumeType
+    }
+  }
   export interface SpotInstanceRequestTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html#create SpotInstanceRequest#create}
@@ -13323,14 +16385,59 @@ export namespace EC2 {
     readonly delete?: string;
   }
 
-  function spotInstanceRequestTimeoutsToTerraform(struct?: SpotInstanceRequestTimeouts): any {
+  function spotInstanceRequestTimeoutsToTerraform(struct?: SpotInstanceRequestTimeoutsOutputReference | SpotInstanceRequestTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class SpotInstanceRequestTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/spot_instance_request.html aws_spot_instance_request}
@@ -13421,11 +16528,11 @@ export namespace EC2 {
     // ==========
 
     // ami - computed: true, optional: true, required: false
-    private _ami?: string;
+    private _ami?: string | undefined; 
     public get ami() {
       return this.getStringAttribute('ami');
     }
-    public set ami(value: string) {
+    public set ami(value: string | undefined) {
       this._ami = value;
     }
     public resetAmi() {
@@ -13442,11 +16549,11 @@ export namespace EC2 {
     }
 
     // associate_public_ip_address - computed: true, optional: true, required: false
-    private _associatePublicIpAddress?: boolean | cdktf.IResolvable;
+    private _associatePublicIpAddress?: boolean | cdktf.IResolvable | undefined; 
     public get associatePublicIpAddress() {
-      return this.getBooleanAttribute('associate_public_ip_address');
+      return this.getBooleanAttribute('associate_public_ip_address') as any;
     }
-    public set associatePublicIpAddress(value: boolean | cdktf.IResolvable) {
+    public set associatePublicIpAddress(value: boolean | cdktf.IResolvable | undefined) {
       this._associatePublicIpAddress = value;
     }
     public resetAssociatePublicIpAddress() {
@@ -13458,11 +16565,11 @@ export namespace EC2 {
     }
 
     // availability_zone - computed: true, optional: true, required: false
-    private _availabilityZone?: string;
+    private _availabilityZone?: string | undefined; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
-    public set availabilityZone(value: string) {
+    public set availabilityZone(value: string | undefined) {
       this._availabilityZone = value;
     }
     public resetAvailabilityZone() {
@@ -13474,11 +16581,11 @@ export namespace EC2 {
     }
 
     // block_duration_minutes - computed: false, optional: true, required: false
-    private _blockDurationMinutes?: number;
+    private _blockDurationMinutes?: number | undefined; 
     public get blockDurationMinutes() {
       return this.getNumberAttribute('block_duration_minutes');
     }
-    public set blockDurationMinutes(value: number ) {
+    public set blockDurationMinutes(value: number | undefined) {
       this._blockDurationMinutes = value;
     }
     public resetBlockDurationMinutes() {
@@ -13490,11 +16597,11 @@ export namespace EC2 {
     }
 
     // cpu_core_count - computed: true, optional: true, required: false
-    private _cpuCoreCount?: number;
+    private _cpuCoreCount?: number | undefined; 
     public get cpuCoreCount() {
       return this.getNumberAttribute('cpu_core_count');
     }
-    public set cpuCoreCount(value: number) {
+    public set cpuCoreCount(value: number | undefined) {
       this._cpuCoreCount = value;
     }
     public resetCpuCoreCount() {
@@ -13506,11 +16613,11 @@ export namespace EC2 {
     }
 
     // cpu_threads_per_core - computed: true, optional: true, required: false
-    private _cpuThreadsPerCore?: number;
+    private _cpuThreadsPerCore?: number | undefined; 
     public get cpuThreadsPerCore() {
       return this.getNumberAttribute('cpu_threads_per_core');
     }
-    public set cpuThreadsPerCore(value: number) {
+    public set cpuThreadsPerCore(value: number | undefined) {
       this._cpuThreadsPerCore = value;
     }
     public resetCpuThreadsPerCore() {
@@ -13522,11 +16629,11 @@ export namespace EC2 {
     }
 
     // disable_api_termination - computed: true, optional: true, required: false
-    private _disableApiTermination?: boolean | cdktf.IResolvable;
+    private _disableApiTermination?: boolean | cdktf.IResolvable | undefined; 
     public get disableApiTermination() {
-      return this.getBooleanAttribute('disable_api_termination');
+      return this.getBooleanAttribute('disable_api_termination') as any;
     }
-    public set disableApiTermination(value: boolean | cdktf.IResolvable) {
+    public set disableApiTermination(value: boolean | cdktf.IResolvable | undefined) {
       this._disableApiTermination = value;
     }
     public resetDisableApiTermination() {
@@ -13538,11 +16645,11 @@ export namespace EC2 {
     }
 
     // ebs_optimized - computed: true, optional: true, required: false
-    private _ebsOptimized?: boolean | cdktf.IResolvable;
+    private _ebsOptimized?: boolean | cdktf.IResolvable | undefined; 
     public get ebsOptimized() {
-      return this.getBooleanAttribute('ebs_optimized');
+      return this.getBooleanAttribute('ebs_optimized') as any;
     }
-    public set ebsOptimized(value: boolean | cdktf.IResolvable) {
+    public set ebsOptimized(value: boolean | cdktf.IResolvable | undefined) {
       this._ebsOptimized = value;
     }
     public resetEbsOptimized() {
@@ -13554,11 +16661,11 @@ export namespace EC2 {
     }
 
     // get_password_data - computed: false, optional: true, required: false
-    private _getPasswordData?: boolean | cdktf.IResolvable;
+    private _getPasswordData?: boolean | cdktf.IResolvable | undefined; 
     public get fetchPasswordData() {
-      return this.getBooleanAttribute('get_password_data');
+      return this.getBooleanAttribute('get_password_data') as any;
     }
-    public set fetchPasswordData(value: boolean | cdktf.IResolvable ) {
+    public set fetchPasswordData(value: boolean | cdktf.IResolvable | undefined) {
       this._getPasswordData = value;
     }
     public resetFetchPasswordData() {
@@ -13570,11 +16677,11 @@ export namespace EC2 {
     }
 
     // hibernation - computed: false, optional: true, required: false
-    private _hibernation?: boolean | cdktf.IResolvable;
+    private _hibernation?: boolean | cdktf.IResolvable | undefined; 
     public get hibernation() {
-      return this.getBooleanAttribute('hibernation');
+      return this.getBooleanAttribute('hibernation') as any;
     }
-    public set hibernation(value: boolean | cdktf.IResolvable ) {
+    public set hibernation(value: boolean | cdktf.IResolvable | undefined) {
       this._hibernation = value;
     }
     public resetHibernation() {
@@ -13586,11 +16693,11 @@ export namespace EC2 {
     }
 
     // host_id - computed: true, optional: true, required: false
-    private _hostId?: string;
+    private _hostId?: string | undefined; 
     public get hostId() {
       return this.getStringAttribute('host_id');
     }
-    public set hostId(value: string) {
+    public set hostId(value: string | undefined) {
       this._hostId = value;
     }
     public resetHostId() {
@@ -13602,11 +16709,11 @@ export namespace EC2 {
     }
 
     // iam_instance_profile - computed: false, optional: true, required: false
-    private _iamInstanceProfile?: string;
+    private _iamInstanceProfile?: string | undefined; 
     public get iamInstanceProfile() {
       return this.getStringAttribute('iam_instance_profile');
     }
-    public set iamInstanceProfile(value: string ) {
+    public set iamInstanceProfile(value: string | undefined) {
       this._iamInstanceProfile = value;
     }
     public resetIamInstanceProfile() {
@@ -13623,11 +16730,11 @@ export namespace EC2 {
     }
 
     // instance_initiated_shutdown_behavior - computed: true, optional: true, required: false
-    private _instanceInitiatedShutdownBehavior?: string;
+    private _instanceInitiatedShutdownBehavior?: string | undefined; 
     public get instanceInitiatedShutdownBehavior() {
       return this.getStringAttribute('instance_initiated_shutdown_behavior');
     }
-    public set instanceInitiatedShutdownBehavior(value: string) {
+    public set instanceInitiatedShutdownBehavior(value: string | undefined) {
       this._instanceInitiatedShutdownBehavior = value;
     }
     public resetInstanceInitiatedShutdownBehavior() {
@@ -13639,11 +16746,11 @@ export namespace EC2 {
     }
 
     // instance_interruption_behavior - computed: true, optional: true, required: false
-    private _instanceInterruptionBehavior?: string;
+    private _instanceInterruptionBehavior?: string | undefined; 
     public get instanceInterruptionBehavior() {
       return this.getStringAttribute('instance_interruption_behavior');
     }
-    public set instanceInterruptionBehavior(value: string) {
+    public set instanceInterruptionBehavior(value: string | undefined) {
       this._instanceInterruptionBehavior = value;
     }
     public resetInstanceInterruptionBehavior() {
@@ -13655,11 +16762,11 @@ export namespace EC2 {
     }
 
     // instance_interruption_behaviour - computed: true, optional: true, required: false
-    private _instanceInterruptionBehaviour?: string;
+    private _instanceInterruptionBehaviour?: string | undefined; 
     public get instanceInterruptionBehaviour() {
       return this.getStringAttribute('instance_interruption_behaviour');
     }
-    public set instanceInterruptionBehaviour(value: string) {
+    public set instanceInterruptionBehaviour(value: string | undefined) {
       this._instanceInterruptionBehaviour = value;
     }
     public resetInstanceInterruptionBehaviour() {
@@ -13676,11 +16783,11 @@ export namespace EC2 {
     }
 
     // instance_type - computed: true, optional: true, required: false
-    private _instanceType?: string;
+    private _instanceType?: string | undefined; 
     public get instanceType() {
       return this.getStringAttribute('instance_type');
     }
-    public set instanceType(value: string) {
+    public set instanceType(value: string | undefined) {
       this._instanceType = value;
     }
     public resetInstanceType() {
@@ -13692,11 +16799,11 @@ export namespace EC2 {
     }
 
     // ipv6_address_count - computed: true, optional: true, required: false
-    private _ipv6AddressCount?: number;
+    private _ipv6AddressCount?: number | undefined; 
     public get ipv6AddressCount() {
       return this.getNumberAttribute('ipv6_address_count');
     }
-    public set ipv6AddressCount(value: number) {
+    public set ipv6AddressCount(value: number | undefined) {
       this._ipv6AddressCount = value;
     }
     public resetIpv6AddressCount() {
@@ -13708,11 +16815,11 @@ export namespace EC2 {
     }
 
     // ipv6_addresses - computed: true, optional: true, required: false
-    private _ipv6Addresses?: string[];
+    private _ipv6Addresses?: string[] | undefined; 
     public get ipv6Addresses() {
       return this.getListAttribute('ipv6_addresses');
     }
-    public set ipv6Addresses(value: string[]) {
+    public set ipv6Addresses(value: string[] | undefined) {
       this._ipv6Addresses = value;
     }
     public resetIpv6Addresses() {
@@ -13724,11 +16831,11 @@ export namespace EC2 {
     }
 
     // key_name - computed: true, optional: true, required: false
-    private _keyName?: string;
+    private _keyName?: string | undefined; 
     public get keyName() {
       return this.getStringAttribute('key_name');
     }
-    public set keyName(value: string) {
+    public set keyName(value: string | undefined) {
       this._keyName = value;
     }
     public resetKeyName() {
@@ -13740,11 +16847,11 @@ export namespace EC2 {
     }
 
     // launch_group - computed: false, optional: true, required: false
-    private _launchGroup?: string;
+    private _launchGroup?: string | undefined; 
     public get launchGroup() {
       return this.getStringAttribute('launch_group');
     }
-    public set launchGroup(value: string ) {
+    public set launchGroup(value: string | undefined) {
       this._launchGroup = value;
     }
     public resetLaunchGroup() {
@@ -13756,11 +16863,11 @@ export namespace EC2 {
     }
 
     // monitoring - computed: true, optional: true, required: false
-    private _monitoring?: boolean | cdktf.IResolvable;
+    private _monitoring?: boolean | cdktf.IResolvable | undefined; 
     public get monitoring() {
-      return this.getBooleanAttribute('monitoring');
+      return this.getBooleanAttribute('monitoring') as any;
     }
-    public set monitoring(value: boolean | cdktf.IResolvable) {
+    public set monitoring(value: boolean | cdktf.IResolvable | undefined) {
       this._monitoring = value;
     }
     public resetMonitoring() {
@@ -13782,11 +16889,11 @@ export namespace EC2 {
     }
 
     // placement_group - computed: true, optional: true, required: false
-    private _placementGroup?: string;
+    private _placementGroup?: string | undefined; 
     public get placementGroup() {
       return this.getStringAttribute('placement_group');
     }
-    public set placementGroup(value: string) {
+    public set placementGroup(value: string | undefined) {
       this._placementGroup = value;
     }
     public resetPlacementGroup() {
@@ -13798,11 +16905,11 @@ export namespace EC2 {
     }
 
     // placement_partition_number - computed: true, optional: true, required: false
-    private _placementPartitionNumber?: number;
+    private _placementPartitionNumber?: number | undefined; 
     public get placementPartitionNumber() {
       return this.getNumberAttribute('placement_partition_number');
     }
-    public set placementPartitionNumber(value: number) {
+    public set placementPartitionNumber(value: number | undefined) {
       this._placementPartitionNumber = value;
     }
     public resetPlacementPartitionNumber() {
@@ -13824,11 +16931,11 @@ export namespace EC2 {
     }
 
     // private_ip - computed: true, optional: true, required: false
-    private _privateIp?: string;
+    private _privateIp?: string | undefined; 
     public get privateIp() {
       return this.getStringAttribute('private_ip');
     }
-    public set privateIp(value: string) {
+    public set privateIp(value: string | undefined) {
       this._privateIp = value;
     }
     public resetPrivateIp() {
@@ -13850,11 +16957,11 @@ export namespace EC2 {
     }
 
     // secondary_private_ips - computed: true, optional: true, required: false
-    private _secondaryPrivateIps?: string[];
+    private _secondaryPrivateIps?: string[] | undefined; 
     public get secondaryPrivateIps() {
       return this.getListAttribute('secondary_private_ips');
     }
-    public set secondaryPrivateIps(value: string[]) {
+    public set secondaryPrivateIps(value: string[] | undefined) {
       this._secondaryPrivateIps = value;
     }
     public resetSecondaryPrivateIps() {
@@ -13866,11 +16973,11 @@ export namespace EC2 {
     }
 
     // security_groups - computed: true, optional: true, required: false
-    private _securityGroups?: string[];
+    private _securityGroups?: string[] | undefined; 
     public get securityGroups() {
       return this.getListAttribute('security_groups');
     }
-    public set securityGroups(value: string[]) {
+    public set securityGroups(value: string[] | undefined) {
       this._securityGroups = value;
     }
     public resetSecurityGroups() {
@@ -13882,11 +16989,11 @@ export namespace EC2 {
     }
 
     // source_dest_check - computed: false, optional: true, required: false
-    private _sourceDestCheck?: boolean | cdktf.IResolvable;
+    private _sourceDestCheck?: boolean | cdktf.IResolvable | undefined; 
     public get sourceDestCheck() {
-      return this.getBooleanAttribute('source_dest_check');
+      return this.getBooleanAttribute('source_dest_check') as any;
     }
-    public set sourceDestCheck(value: boolean | cdktf.IResolvable ) {
+    public set sourceDestCheck(value: boolean | cdktf.IResolvable | undefined) {
       this._sourceDestCheck = value;
     }
     public resetSourceDestCheck() {
@@ -13908,11 +17015,11 @@ export namespace EC2 {
     }
 
     // spot_price - computed: true, optional: true, required: false
-    private _spotPrice?: string;
+    private _spotPrice?: string | undefined; 
     public get spotPrice() {
       return this.getStringAttribute('spot_price');
     }
-    public set spotPrice(value: string) {
+    public set spotPrice(value: string | undefined) {
       this._spotPrice = value;
     }
     public resetSpotPrice() {
@@ -13929,11 +17036,11 @@ export namespace EC2 {
     }
 
     // spot_type - computed: false, optional: true, required: false
-    private _spotType?: string;
+    private _spotType?: string | undefined; 
     public get spotType() {
       return this.getStringAttribute('spot_type');
     }
-    public set spotType(value: string ) {
+    public set spotType(value: string | undefined) {
       this._spotType = value;
     }
     public resetSpotType() {
@@ -13945,11 +17052,11 @@ export namespace EC2 {
     }
 
     // subnet_id - computed: true, optional: true, required: false
-    private _subnetId?: string;
+    private _subnetId?: string | undefined; 
     public get subnetId() {
       return this.getStringAttribute('subnet_id');
     }
-    public set subnetId(value: string) {
+    public set subnetId(value: string | undefined) {
       this._subnetId = value;
     }
     public resetSubnetId() {
@@ -13961,11 +17068,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -13977,11 +17085,12 @@ export namespace EC2 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -13993,11 +17102,11 @@ export namespace EC2 {
     }
 
     // tenancy - computed: true, optional: true, required: false
-    private _tenancy?: string;
+    private _tenancy?: string | undefined; 
     public get tenancy() {
       return this.getStringAttribute('tenancy');
     }
-    public set tenancy(value: string) {
+    public set tenancy(value: string | undefined) {
       this._tenancy = value;
     }
     public resetTenancy() {
@@ -14009,11 +17118,11 @@ export namespace EC2 {
     }
 
     // user_data - computed: true, optional: true, required: false
-    private _userData?: string;
+    private _userData?: string | undefined; 
     public get userData() {
       return this.getStringAttribute('user_data');
     }
-    public set userData(value: string) {
+    public set userData(value: string | undefined) {
       this._userData = value;
     }
     public resetUserData() {
@@ -14025,11 +17134,11 @@ export namespace EC2 {
     }
 
     // user_data_base64 - computed: true, optional: true, required: false
-    private _userDataBase64?: string;
+    private _userDataBase64?: string | undefined; 
     public get userDataBase64() {
       return this.getStringAttribute('user_data_base64');
     }
-    public set userDataBase64(value: string) {
+    public set userDataBase64(value: string | undefined) {
       this._userDataBase64 = value;
     }
     public resetUserDataBase64() {
@@ -14041,11 +17150,11 @@ export namespace EC2 {
     }
 
     // valid_from - computed: true, optional: true, required: false
-    private _validFrom?: string;
+    private _validFrom?: string | undefined; 
     public get validFrom() {
       return this.getStringAttribute('valid_from');
     }
-    public set validFrom(value: string) {
+    public set validFrom(value: string | undefined) {
       this._validFrom = value;
     }
     public resetValidFrom() {
@@ -14057,11 +17166,11 @@ export namespace EC2 {
     }
 
     // valid_until - computed: true, optional: true, required: false
-    private _validUntil?: string;
+    private _validUntil?: string | undefined; 
     public get validUntil() {
       return this.getStringAttribute('valid_until');
     }
-    public set validUntil(value: string) {
+    public set validUntil(value: string | undefined) {
       this._validUntil = value;
     }
     public resetValidUntil() {
@@ -14073,11 +17182,12 @@ export namespace EC2 {
     }
 
     // volume_tags - computed: false, optional: true, required: false
-    private _volumeTags?: { [key: string]: string } | cdktf.IResolvable;
+    private _volumeTags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get volumeTags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('volume_tags') as any;
     }
-    public set volumeTags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set volumeTags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._volumeTags = value;
     }
     public resetVolumeTags() {
@@ -14089,11 +17199,11 @@ export namespace EC2 {
     }
 
     // vpc_security_group_ids - computed: true, optional: true, required: false
-    private _vpcSecurityGroupIds?: string[];
+    private _vpcSecurityGroupIds?: string[] | undefined; 
     public get vpcSecurityGroupIds() {
       return this.getListAttribute('vpc_security_group_ids');
     }
-    public set vpcSecurityGroupIds(value: string[]) {
+    public set vpcSecurityGroupIds(value: string[] | undefined) {
       this._vpcSecurityGroupIds = value;
     }
     public resetVpcSecurityGroupIds() {
@@ -14105,11 +17215,11 @@ export namespace EC2 {
     }
 
     // wait_for_fulfillment - computed: false, optional: true, required: false
-    private _waitForFulfillment?: boolean | cdktf.IResolvable;
+    private _waitForFulfillment?: boolean | cdktf.IResolvable | undefined; 
     public get waitForFulfillment() {
-      return this.getBooleanAttribute('wait_for_fulfillment');
+      return this.getBooleanAttribute('wait_for_fulfillment') as any;
     }
-    public set waitForFulfillment(value: boolean | cdktf.IResolvable ) {
+    public set waitForFulfillment(value: boolean | cdktf.IResolvable | undefined) {
       this._waitForFulfillment = value;
     }
     public resetWaitForFulfillment() {
@@ -14121,11 +17231,12 @@ export namespace EC2 {
     }
 
     // capacity_reservation_specification - computed: false, optional: true, required: false
-    private _capacityReservationSpecification?: SpotInstanceRequestCapacityReservationSpecification[];
+    private _capacityReservationSpecification?: SpotInstanceRequestCapacityReservationSpecification | undefined; 
+    private __capacityReservationSpecificationOutput = new SpotInstanceRequestCapacityReservationSpecificationOutputReference(this as any, "capacity_reservation_specification", true);
     public get capacityReservationSpecification() {
-      return this.interpolationForAttribute('capacity_reservation_specification') as any;
+      return this.__capacityReservationSpecificationOutput;
     }
-    public set capacityReservationSpecification(value: SpotInstanceRequestCapacityReservationSpecification[] ) {
+    public putCapacityReservationSpecification(value: SpotInstanceRequestCapacityReservationSpecification | undefined) {
       this._capacityReservationSpecification = value;
     }
     public resetCapacityReservationSpecification() {
@@ -14137,11 +17248,12 @@ export namespace EC2 {
     }
 
     // credit_specification - computed: false, optional: true, required: false
-    private _creditSpecification?: SpotInstanceRequestCreditSpecification[];
+    private _creditSpecification?: SpotInstanceRequestCreditSpecification | undefined; 
+    private __creditSpecificationOutput = new SpotInstanceRequestCreditSpecificationOutputReference(this as any, "credit_specification", true);
     public get creditSpecification() {
-      return this.interpolationForAttribute('credit_specification') as any;
+      return this.__creditSpecificationOutput;
     }
-    public set creditSpecification(value: SpotInstanceRequestCreditSpecification[] ) {
+    public putCreditSpecification(value: SpotInstanceRequestCreditSpecification | undefined) {
       this._creditSpecification = value;
     }
     public resetCreditSpecification() {
@@ -14153,11 +17265,12 @@ export namespace EC2 {
     }
 
     // ebs_block_device - computed: false, optional: true, required: false
-    private _ebsBlockDevice?: SpotInstanceRequestEbsBlockDevice[];
+    private _ebsBlockDevice?: SpotInstanceRequestEbsBlockDevice[] | undefined; 
     public get ebsBlockDevice() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs_block_device') as any;
     }
-    public set ebsBlockDevice(value: SpotInstanceRequestEbsBlockDevice[] ) {
+    public set ebsBlockDevice(value: SpotInstanceRequestEbsBlockDevice[] | undefined) {
       this._ebsBlockDevice = value;
     }
     public resetEbsBlockDevice() {
@@ -14169,11 +17282,12 @@ export namespace EC2 {
     }
 
     // enclave_options - computed: false, optional: true, required: false
-    private _enclaveOptions?: SpotInstanceRequestEnclaveOptions[];
+    private _enclaveOptions?: SpotInstanceRequestEnclaveOptions | undefined; 
+    private __enclaveOptionsOutput = new SpotInstanceRequestEnclaveOptionsOutputReference(this as any, "enclave_options", true);
     public get enclaveOptions() {
-      return this.interpolationForAttribute('enclave_options') as any;
+      return this.__enclaveOptionsOutput;
     }
-    public set enclaveOptions(value: SpotInstanceRequestEnclaveOptions[] ) {
+    public putEnclaveOptions(value: SpotInstanceRequestEnclaveOptions | undefined) {
       this._enclaveOptions = value;
     }
     public resetEnclaveOptions() {
@@ -14185,11 +17299,12 @@ export namespace EC2 {
     }
 
     // ephemeral_block_device - computed: false, optional: true, required: false
-    private _ephemeralBlockDevice?: SpotInstanceRequestEphemeralBlockDevice[];
+    private _ephemeralBlockDevice?: SpotInstanceRequestEphemeralBlockDevice[] | undefined; 
     public get ephemeralBlockDevice() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ephemeral_block_device') as any;
     }
-    public set ephemeralBlockDevice(value: SpotInstanceRequestEphemeralBlockDevice[] ) {
+    public set ephemeralBlockDevice(value: SpotInstanceRequestEphemeralBlockDevice[] | undefined) {
       this._ephemeralBlockDevice = value;
     }
     public resetEphemeralBlockDevice() {
@@ -14201,11 +17316,12 @@ export namespace EC2 {
     }
 
     // launch_template - computed: false, optional: true, required: false
-    private _launchTemplate?: SpotInstanceRequestLaunchTemplate[];
+    private _launchTemplate?: SpotInstanceRequestLaunchTemplate | undefined; 
+    private __launchTemplateOutput = new SpotInstanceRequestLaunchTemplateOutputReference(this as any, "launch_template", true);
     public get launchTemplate() {
-      return this.interpolationForAttribute('launch_template') as any;
+      return this.__launchTemplateOutput;
     }
-    public set launchTemplate(value: SpotInstanceRequestLaunchTemplate[] ) {
+    public putLaunchTemplate(value: SpotInstanceRequestLaunchTemplate | undefined) {
       this._launchTemplate = value;
     }
     public resetLaunchTemplate() {
@@ -14217,11 +17333,12 @@ export namespace EC2 {
     }
 
     // metadata_options - computed: false, optional: true, required: false
-    private _metadataOptions?: SpotInstanceRequestMetadataOptions[];
+    private _metadataOptions?: SpotInstanceRequestMetadataOptions | undefined; 
+    private __metadataOptionsOutput = new SpotInstanceRequestMetadataOptionsOutputReference(this as any, "metadata_options", true);
     public get metadataOptions() {
-      return this.interpolationForAttribute('metadata_options') as any;
+      return this.__metadataOptionsOutput;
     }
-    public set metadataOptions(value: SpotInstanceRequestMetadataOptions[] ) {
+    public putMetadataOptions(value: SpotInstanceRequestMetadataOptions | undefined) {
       this._metadataOptions = value;
     }
     public resetMetadataOptions() {
@@ -14233,11 +17350,12 @@ export namespace EC2 {
     }
 
     // network_interface - computed: false, optional: true, required: false
-    private _networkInterface?: SpotInstanceRequestNetworkInterface[];
+    private _networkInterface?: SpotInstanceRequestNetworkInterface[] | undefined; 
     public get networkInterface() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('network_interface') as any;
     }
-    public set networkInterface(value: SpotInstanceRequestNetworkInterface[] ) {
+    public set networkInterface(value: SpotInstanceRequestNetworkInterface[] | undefined) {
       this._networkInterface = value;
     }
     public resetNetworkInterface() {
@@ -14249,11 +17367,12 @@ export namespace EC2 {
     }
 
     // root_block_device - computed: false, optional: true, required: false
-    private _rootBlockDevice?: SpotInstanceRequestRootBlockDevice[];
+    private _rootBlockDevice?: SpotInstanceRequestRootBlockDevice | undefined; 
+    private __rootBlockDeviceOutput = new SpotInstanceRequestRootBlockDeviceOutputReference(this as any, "root_block_device", true);
     public get rootBlockDevice() {
-      return this.interpolationForAttribute('root_block_device') as any;
+      return this.__rootBlockDeviceOutput;
     }
-    public set rootBlockDevice(value: SpotInstanceRequestRootBlockDevice[] ) {
+    public putRootBlockDevice(value: SpotInstanceRequestRootBlockDevice | undefined) {
       this._rootBlockDevice = value;
     }
     public resetRootBlockDevice() {
@@ -14265,11 +17384,12 @@ export namespace EC2 {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: SpotInstanceRequestTimeouts;
+    private _timeouts?: SpotInstanceRequestTimeouts | undefined; 
+    private __timeoutsOutput = new SpotInstanceRequestTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: SpotInstanceRequestTimeouts ) {
+    public putTimeouts(value: SpotInstanceRequestTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -14326,15 +17446,15 @@ export namespace EC2 {
         volume_tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._volumeTags),
         vpc_security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._vpcSecurityGroupIds),
         wait_for_fulfillment: cdktf.booleanToTerraform(this._waitForFulfillment),
-        capacity_reservation_specification: cdktf.listMapper(spotInstanceRequestCapacityReservationSpecificationToTerraform)(this._capacityReservationSpecification),
-        credit_specification: cdktf.listMapper(spotInstanceRequestCreditSpecificationToTerraform)(this._creditSpecification),
+        capacity_reservation_specification: spotInstanceRequestCapacityReservationSpecificationToTerraform(this._capacityReservationSpecification),
+        credit_specification: spotInstanceRequestCreditSpecificationToTerraform(this._creditSpecification),
         ebs_block_device: cdktf.listMapper(spotInstanceRequestEbsBlockDeviceToTerraform)(this._ebsBlockDevice),
-        enclave_options: cdktf.listMapper(spotInstanceRequestEnclaveOptionsToTerraform)(this._enclaveOptions),
+        enclave_options: spotInstanceRequestEnclaveOptionsToTerraform(this._enclaveOptions),
         ephemeral_block_device: cdktf.listMapper(spotInstanceRequestEphemeralBlockDeviceToTerraform)(this._ephemeralBlockDevice),
-        launch_template: cdktf.listMapper(spotInstanceRequestLaunchTemplateToTerraform)(this._launchTemplate),
-        metadata_options: cdktf.listMapper(spotInstanceRequestMetadataOptionsToTerraform)(this._metadataOptions),
+        launch_template: spotInstanceRequestLaunchTemplateToTerraform(this._launchTemplate),
+        metadata_options: spotInstanceRequestMetadataOptionsToTerraform(this._metadataOptions),
         network_interface: cdktf.listMapper(spotInstanceRequestNetworkInterfaceToTerraform)(this._networkInterface),
-        root_block_device: cdktf.listMapper(spotInstanceRequestRootBlockDeviceToTerraform)(this._rootBlockDevice),
+        root_block_device: spotInstanceRequestRootBlockDeviceToTerraform(this._rootBlockDevice),
         timeouts: spotInstanceRequestTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -14411,7 +17531,7 @@ export namespace EC2 {
     // ==========
 
     // device_name - computed: false, optional: false, required: true
-    private _deviceName: string;
+    private _deviceName?: string; 
     public get deviceName() {
       return this.getStringAttribute('device_name');
     }
@@ -14424,11 +17544,11 @@ export namespace EC2 {
     }
 
     // force_detach - computed: false, optional: true, required: false
-    private _forceDetach?: boolean | cdktf.IResolvable;
+    private _forceDetach?: boolean | cdktf.IResolvable | undefined; 
     public get forceDetach() {
-      return this.getBooleanAttribute('force_detach');
+      return this.getBooleanAttribute('force_detach') as any;
     }
-    public set forceDetach(value: boolean | cdktf.IResolvable ) {
+    public set forceDetach(value: boolean | cdktf.IResolvable | undefined) {
       this._forceDetach = value;
     }
     public resetForceDetach() {
@@ -14445,7 +17565,7 @@ export namespace EC2 {
     }
 
     // instance_id - computed: false, optional: false, required: true
-    private _instanceId: string;
+    private _instanceId?: string; 
     public get instanceId() {
       return this.getStringAttribute('instance_id');
     }
@@ -14458,11 +17578,11 @@ export namespace EC2 {
     }
 
     // skip_destroy - computed: false, optional: true, required: false
-    private _skipDestroy?: boolean | cdktf.IResolvable;
+    private _skipDestroy?: boolean | cdktf.IResolvable | undefined; 
     public get skipDestroy() {
-      return this.getBooleanAttribute('skip_destroy');
+      return this.getBooleanAttribute('skip_destroy') as any;
     }
-    public set skipDestroy(value: boolean | cdktf.IResolvable ) {
+    public set skipDestroy(value: boolean | cdktf.IResolvable | undefined) {
       this._skipDestroy = value;
     }
     public resetSkipDestroy() {
@@ -14474,11 +17594,11 @@ export namespace EC2 {
     }
 
     // stop_instance_before_detaching - computed: false, optional: true, required: false
-    private _stopInstanceBeforeDetaching?: boolean | cdktf.IResolvable;
+    private _stopInstanceBeforeDetaching?: boolean | cdktf.IResolvable | undefined; 
     public get stopInstanceBeforeDetaching() {
-      return this.getBooleanAttribute('stop_instance_before_detaching');
+      return this.getBooleanAttribute('stop_instance_before_detaching') as any;
     }
-    public set stopInstanceBeforeDetaching(value: boolean | cdktf.IResolvable ) {
+    public set stopInstanceBeforeDetaching(value: boolean | cdktf.IResolvable | undefined) {
       this._stopInstanceBeforeDetaching = value;
     }
     public resetStopInstanceBeforeDetaching() {
@@ -14490,7 +17610,7 @@ export namespace EC2 {
     }
 
     // volume_id - computed: false, optional: false, required: true
-    private _volumeId: string;
+    private _volumeId?: string; 
     public get volumeId() {
       return this.getStringAttribute('volume_id');
     }
@@ -14554,6 +17674,7 @@ export namespace EC2 {
 
     // ebs - computed: true, optional: false, required: false
     public get ebs() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs') as any;
     }
 
@@ -14592,6 +17713,9 @@ export namespace EC2 {
 
   function dataAwsAmiFilterToTerraform(struct?: DataAwsAmiFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -14670,15 +17794,15 @@ export namespace EC2 {
 
     // ena_support - computed: true, optional: false, required: false
     public get enaSupport() {
-      return this.getBooleanAttribute('ena_support');
+      return this.getBooleanAttribute('ena_support') as any;
     }
 
     // executable_users - computed: false, optional: true, required: false
-    private _executableUsers?: string[];
+    private _executableUsers?: string[] | undefined; 
     public get executableUsers() {
       return this.getListAttribute('executable_users');
     }
-    public set executableUsers(value: string[] ) {
+    public set executableUsers(value: string[] | undefined) {
       this._executableUsers = value;
     }
     public resetExecutableUsers() {
@@ -14725,11 +17849,11 @@ export namespace EC2 {
     }
 
     // most_recent - computed: false, optional: true, required: false
-    private _mostRecent?: boolean | cdktf.IResolvable;
+    private _mostRecent?: boolean | cdktf.IResolvable | undefined; 
     public get mostRecent() {
-      return this.getBooleanAttribute('most_recent');
+      return this.getBooleanAttribute('most_recent') as any;
     }
-    public set mostRecent(value: boolean | cdktf.IResolvable ) {
+    public set mostRecent(value: boolean | cdktf.IResolvable | undefined) {
       this._mostRecent = value;
     }
     public resetMostRecent() {
@@ -14746,11 +17870,11 @@ export namespace EC2 {
     }
 
     // name_regex - computed: false, optional: true, required: false
-    private _nameRegex?: string;
+    private _nameRegex?: string | undefined; 
     public get nameRegex() {
       return this.getStringAttribute('name_regex');
     }
-    public set nameRegex(value: string ) {
+    public set nameRegex(value: string | undefined) {
       this._nameRegex = value;
     }
     public resetNameRegex() {
@@ -14767,7 +17891,7 @@ export namespace EC2 {
     }
 
     // owners - computed: false, optional: false, required: true
-    private _owners: string[];
+    private _owners?: string[]; 
     public get owners() {
       return this.getListAttribute('owners');
     }
@@ -14796,7 +17920,7 @@ export namespace EC2 {
 
     // public - computed: true, optional: false, required: false
     public get public() {
-      return this.getBooleanAttribute('public');
+      return this.getBooleanAttribute('public') as any;
     }
 
     // ramdisk_id - computed: true, optional: false, required: false
@@ -14835,11 +17959,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -14861,11 +17986,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsAmiFilter[];
+    private _filter?: DataAwsAmiFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsAmiFilter[] ) {
+    public set filter(value: DataAwsAmiFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -14928,6 +18054,9 @@ export namespace EC2 {
 
   function dataAwsAmiIdsFilterToTerraform(struct?: DataAwsAmiIdsFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -14979,11 +18108,11 @@ export namespace EC2 {
     // ==========
 
     // executable_users - computed: false, optional: true, required: false
-    private _executableUsers?: string[];
+    private _executableUsers?: string[] | undefined; 
     public get executableUsers() {
       return this.getListAttribute('executable_users');
     }
-    public set executableUsers(value: string[] ) {
+    public set executableUsers(value: string[] | undefined) {
       this._executableUsers = value;
     }
     public resetExecutableUsers() {
@@ -15005,11 +18134,11 @@ export namespace EC2 {
     }
 
     // name_regex - computed: false, optional: true, required: false
-    private _nameRegex?: string;
+    private _nameRegex?: string | undefined; 
     public get nameRegex() {
       return this.getStringAttribute('name_regex');
     }
-    public set nameRegex(value: string ) {
+    public set nameRegex(value: string | undefined) {
       this._nameRegex = value;
     }
     public resetNameRegex() {
@@ -15021,7 +18150,7 @@ export namespace EC2 {
     }
 
     // owners - computed: false, optional: false, required: true
-    private _owners: string[];
+    private _owners?: string[]; 
     public get owners() {
       return this.getListAttribute('owners');
     }
@@ -15034,11 +18163,11 @@ export namespace EC2 {
     }
 
     // sort_ascending - computed: false, optional: true, required: false
-    private _sortAscending?: boolean | cdktf.IResolvable;
+    private _sortAscending?: boolean | cdktf.IResolvable | undefined; 
     public get sortAscending() {
-      return this.getBooleanAttribute('sort_ascending');
+      return this.getBooleanAttribute('sort_ascending') as any;
     }
-    public set sortAscending(value: boolean | cdktf.IResolvable ) {
+    public set sortAscending(value: boolean | cdktf.IResolvable | undefined) {
       this._sortAscending = value;
     }
     public resetSortAscending() {
@@ -15050,11 +18179,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsAmiIdsFilter[];
+    private _filter?: DataAwsAmiIdsFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsAmiIdsFilter[] ) {
+    public set filter(value: DataAwsAmiIdsFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -15182,7 +18312,7 @@ export namespace EC2 {
 
     // enabled - computed: true, optional: false, required: false
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -15240,6 +18370,9 @@ export namespace EC2 {
 
   function dataAwsEbsSnapshotFilterToTerraform(struct?: DataAwsEbsSnapshotFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -15308,7 +18441,7 @@ export namespace EC2 {
 
     // encrypted - computed: true, optional: false, required: false
     public get encrypted() {
-      return this.getBooleanAttribute('encrypted');
+      return this.getBooleanAttribute('encrypted') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -15322,11 +18455,11 @@ export namespace EC2 {
     }
 
     // most_recent - computed: false, optional: true, required: false
-    private _mostRecent?: boolean | cdktf.IResolvable;
+    private _mostRecent?: boolean | cdktf.IResolvable | undefined; 
     public get mostRecent() {
-      return this.getBooleanAttribute('most_recent');
+      return this.getBooleanAttribute('most_recent') as any;
     }
-    public set mostRecent(value: boolean | cdktf.IResolvable ) {
+    public set mostRecent(value: boolean | cdktf.IResolvable | undefined) {
       this._mostRecent = value;
     }
     public resetMostRecent() {
@@ -15348,11 +18481,11 @@ export namespace EC2 {
     }
 
     // owners - computed: false, optional: true, required: false
-    private _owners?: string[];
+    private _owners?: string[] | undefined; 
     public get owners() {
       return this.getListAttribute('owners');
     }
-    public set owners(value: string[] ) {
+    public set owners(value: string[] | undefined) {
       this._owners = value;
     }
     public resetOwners() {
@@ -15364,11 +18497,11 @@ export namespace EC2 {
     }
 
     // restorable_by_user_ids - computed: false, optional: true, required: false
-    private _restorableByUserIds?: string[];
+    private _restorableByUserIds?: string[] | undefined; 
     public get restorableByUserIds() {
       return this.getListAttribute('restorable_by_user_ids');
     }
-    public set restorableByUserIds(value: string[] ) {
+    public set restorableByUserIds(value: string[] | undefined) {
       this._restorableByUserIds = value;
     }
     public resetRestorableByUserIds() {
@@ -15385,11 +18518,11 @@ export namespace EC2 {
     }
 
     // snapshot_ids - computed: false, optional: true, required: false
-    private _snapshotIds?: string[];
+    private _snapshotIds?: string[] | undefined; 
     public get snapshotIds() {
       return this.getListAttribute('snapshot_ids');
     }
-    public set snapshotIds(value: string[] ) {
+    public set snapshotIds(value: string[] | undefined) {
       this._snapshotIds = value;
     }
     public resetSnapshotIds() {
@@ -15406,11 +18539,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -15432,11 +18566,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEbsSnapshotFilter[];
+    private _filter?: DataAwsEbsSnapshotFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEbsSnapshotFilter[] ) {
+    public set filter(value: DataAwsEbsSnapshotFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -15491,6 +18626,9 @@ export namespace EC2 {
 
   function dataAwsEbsSnapshotIdsFilterToTerraform(struct?: DataAwsEbsSnapshotIdsFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -15550,11 +18688,11 @@ export namespace EC2 {
     }
 
     // owners - computed: false, optional: true, required: false
-    private _owners?: string[];
+    private _owners?: string[] | undefined; 
     public get owners() {
       return this.getListAttribute('owners');
     }
-    public set owners(value: string[] ) {
+    public set owners(value: string[] | undefined) {
       this._owners = value;
     }
     public resetOwners() {
@@ -15566,11 +18704,11 @@ export namespace EC2 {
     }
 
     // restorable_by_user_ids - computed: false, optional: true, required: false
-    private _restorableByUserIds?: string[];
+    private _restorableByUserIds?: string[] | undefined; 
     public get restorableByUserIds() {
       return this.getListAttribute('restorable_by_user_ids');
     }
-    public set restorableByUserIds(value: string[] ) {
+    public set restorableByUserIds(value: string[] | undefined) {
       this._restorableByUserIds = value;
     }
     public resetRestorableByUserIds() {
@@ -15582,11 +18720,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEbsSnapshotIdsFilter[];
+    private _filter?: DataAwsEbsSnapshotIdsFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEbsSnapshotIdsFilter[] ) {
+    public set filter(value: DataAwsEbsSnapshotIdsFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -15638,6 +18777,9 @@ export namespace EC2 {
 
   function dataAwsEbsVolumeFilterToTerraform(struct?: DataAwsEbsVolumeFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -15698,7 +18840,7 @@ export namespace EC2 {
 
     // encrypted - computed: true, optional: false, required: false
     public get encrypted() {
-      return this.getBooleanAttribute('encrypted');
+      return this.getBooleanAttribute('encrypted') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -15717,11 +18859,11 @@ export namespace EC2 {
     }
 
     // most_recent - computed: false, optional: true, required: false
-    private _mostRecent?: boolean | cdktf.IResolvable;
+    private _mostRecent?: boolean | cdktf.IResolvable | undefined; 
     public get mostRecent() {
-      return this.getBooleanAttribute('most_recent');
+      return this.getBooleanAttribute('most_recent') as any;
     }
-    public set mostRecent(value: boolean | cdktf.IResolvable ) {
+    public set mostRecent(value: boolean | cdktf.IResolvable | undefined) {
       this._mostRecent = value;
     }
     public resetMostRecent() {
@@ -15734,7 +18876,7 @@ export namespace EC2 {
 
     // multi_attach_enabled - computed: true, optional: false, required: false
     public get multiAttachEnabled() {
-      return this.getBooleanAttribute('multi_attach_enabled');
+      return this.getBooleanAttribute('multi_attach_enabled') as any;
     }
 
     // outpost_arn - computed: true, optional: false, required: false
@@ -15753,11 +18895,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -15784,11 +18927,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEbsVolumeFilter[];
+    private _filter?: DataAwsEbsVolumeFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEbsVolumeFilter[] ) {
+    public set filter(value: DataAwsEbsVolumeFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -15836,6 +18980,9 @@ export namespace EC2 {
 
   function dataAwsEbsVolumesFilterToTerraform(struct?: DataAwsEbsVolumesFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -15894,11 +19041,12 @@ export namespace EC2 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -15910,11 +19058,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEbsVolumesFilter[];
+    private _filter?: DataAwsEbsVolumesFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEbsVolumesFilter[] ) {
+    public set filter(value: DataAwsEbsVolumesFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -15969,6 +19118,9 @@ export namespace EC2 {
 
   function dataAwsEc2CoipPoolFilterToTerraform(struct?: DataAwsEc2CoipPoolFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -16029,11 +19181,11 @@ export namespace EC2 {
     }
 
     // local_gateway_route_table_id - computed: true, optional: true, required: false
-    private _localGatewayRouteTableId?: string;
+    private _localGatewayRouteTableId?: string | undefined; 
     public get localGatewayRouteTableId() {
       return this.getStringAttribute('local_gateway_route_table_id');
     }
-    public set localGatewayRouteTableId(value: string) {
+    public set localGatewayRouteTableId(value: string | undefined) {
       this._localGatewayRouteTableId = value;
     }
     public resetLocalGatewayRouteTableId() {
@@ -16050,11 +19202,11 @@ export namespace EC2 {
     }
 
     // pool_id - computed: true, optional: true, required: false
-    private _poolId?: string;
+    private _poolId?: string | undefined; 
     public get poolId() {
       return this.getStringAttribute('pool_id');
     }
-    public set poolId(value: string) {
+    public set poolId(value: string | undefined) {
       this._poolId = value;
     }
     public resetPoolId() {
@@ -16066,11 +19218,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -16082,11 +19235,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2CoipPoolFilter[];
+    private _filter?: DataAwsEc2CoipPoolFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2CoipPoolFilter[] ) {
+    public set filter(value: DataAwsEc2CoipPoolFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -16135,6 +19289,9 @@ export namespace EC2 {
 
   function dataAwsEc2CoipPoolsFilterToTerraform(struct?: DataAwsEc2CoipPoolsFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -16193,11 +19350,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -16209,11 +19367,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2CoipPoolsFilter[];
+    private _filter?: DataAwsEc2CoipPoolsFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2CoipPoolsFilter[] ) {
+    public set filter(value: DataAwsEc2CoipPoolsFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -16264,6 +19423,9 @@ export namespace EC2 {
 
   function dataAwsEc2HostFilterToTerraform(struct?: DataAwsEc2HostFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -16333,11 +19495,11 @@ export namespace EC2 {
     }
 
     // host_id - computed: true, optional: true, required: false
-    private _hostId?: string;
+    private _hostId?: string | undefined; 
     public get hostId() {
       return this.getStringAttribute('host_id');
     }
-    public set hostId(value: string) {
+    public set hostId(value: string | undefined) {
       this._hostId = value;
     }
     public resetHostId() {
@@ -16379,11 +19541,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -16400,11 +19563,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2HostFilter[];
+    private _filter?: DataAwsEc2HostFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2HostFilter[] ) {
+    public set filter(value: DataAwsEc2HostFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -16490,6 +19654,9 @@ export namespace EC2 {
 
   function dataAwsEc2InstanceTypeFpgasToTerraform(struct?: DataAwsEc2InstanceTypeFpgas): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
     }
   }
@@ -16499,6 +19666,9 @@ export namespace EC2 {
 
   function dataAwsEc2InstanceTypeGpusToTerraform(struct?: DataAwsEc2InstanceTypeGpus): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
     }
   }
@@ -16508,6 +19678,9 @@ export namespace EC2 {
 
   function dataAwsEc2InstanceTypeInferenceAcceleratorsToTerraform(struct?: DataAwsEc2InstanceTypeInferenceAccelerators): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
     }
   }
@@ -16517,6 +19690,9 @@ export namespace EC2 {
 
   function dataAwsEc2InstanceTypeInstanceDisksToTerraform(struct?: DataAwsEc2InstanceTypeInstanceDisks): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
     }
   }
@@ -16574,35 +19750,35 @@ export namespace EC2 {
 
     // auto_recovery_supported - computed: true, optional: false, required: false
     public get autoRecoverySupported() {
-      return this.getBooleanAttribute('auto_recovery_supported');
+      return this.getBooleanAttribute('auto_recovery_supported') as any;
     }
 
     // bare_metal - computed: true, optional: false, required: false
     public get bareMetal() {
-      return this.getBooleanAttribute('bare_metal');
+      return this.getBooleanAttribute('bare_metal') as any;
     }
 
     // burstable_performance_supported - computed: true, optional: false, required: false
     public get burstablePerformanceSupported() {
-      return this.getBooleanAttribute('burstable_performance_supported');
+      return this.getBooleanAttribute('burstable_performance_supported') as any;
     }
 
     // current_generation - computed: true, optional: false, required: false
     public get currentGeneration() {
-      return this.getBooleanAttribute('current_generation');
+      return this.getBooleanAttribute('current_generation') as any;
     }
 
     // dedicated_hosts_supported - computed: true, optional: false, required: false
     public get dedicatedHostsSupported() {
-      return this.getBooleanAttribute('dedicated_hosts_supported');
+      return this.getBooleanAttribute('dedicated_hosts_supported') as any;
     }
 
     // default_cores - computed: true, optional: true, required: false
-    private _defaultCores?: number;
+    private _defaultCores?: number | undefined; 
     public get defaultCores() {
       return this.getNumberAttribute('default_cores');
     }
-    public set defaultCores(value: number) {
+    public set defaultCores(value: number | undefined) {
       this._defaultCores = value;
     }
     public resetDefaultCores() {
@@ -16614,11 +19790,11 @@ export namespace EC2 {
     }
 
     // default_threads_per_core - computed: true, optional: true, required: false
-    private _defaultThreadsPerCore?: number;
+    private _defaultThreadsPerCore?: number | undefined; 
     public get defaultThreadsPerCore() {
       return this.getNumberAttribute('default_threads_per_core');
     }
-    public set defaultThreadsPerCore(value: number) {
+    public set defaultThreadsPerCore(value: number | undefined) {
       this._defaultThreadsPerCore = value;
     }
     public resetDefaultThreadsPerCore() {
@@ -16681,7 +19857,7 @@ export namespace EC2 {
 
     // efa_supported - computed: true, optional: false, required: false
     public get efaSupported() {
-      return this.getBooleanAttribute('efa_supported');
+      return this.getBooleanAttribute('efa_supported') as any;
     }
 
     // ena_support - computed: true, optional: false, required: false
@@ -16691,20 +19867,20 @@ export namespace EC2 {
 
     // free_tier_eligible - computed: true, optional: false, required: false
     public get freeTierEligible() {
-      return this.getBooleanAttribute('free_tier_eligible');
+      return this.getBooleanAttribute('free_tier_eligible') as any;
     }
 
     // hibernation_supported - computed: true, optional: false, required: false
     public get hibernationSupported() {
-      return this.getBooleanAttribute('hibernation_supported');
+      return this.getBooleanAttribute('hibernation_supported') as any;
     }
 
     // hypervisor - computed: true, optional: true, required: false
-    private _hypervisor?: string;
+    private _hypervisor?: string | undefined; 
     public get hypervisor() {
       return this.getStringAttribute('hypervisor');
     }
-    public set hypervisor(value: string) {
+    public set hypervisor(value: string | undefined) {
       this._hypervisor = value;
     }
     public resetHypervisor() {
@@ -16722,11 +19898,11 @@ export namespace EC2 {
 
     // instance_storage_supported - computed: true, optional: false, required: false
     public get instanceStorageSupported() {
-      return this.getBooleanAttribute('instance_storage_supported');
+      return this.getBooleanAttribute('instance_storage_supported') as any;
     }
 
     // instance_type - computed: false, optional: false, required: true
-    private _instanceType: string;
+    private _instanceType?: string; 
     public get instanceType() {
       return this.getStringAttribute('instance_type');
     }
@@ -16740,7 +19916,7 @@ export namespace EC2 {
 
     // ipv6_supported - computed: true, optional: false, required: false
     public get ipv6Supported() {
-      return this.getBooleanAttribute('ipv6_supported');
+      return this.getBooleanAttribute('ipv6_supported') as any;
     }
 
     // maximum_ipv4_addresses_per_interface - computed: true, optional: false, required: false
@@ -16749,11 +19925,11 @@ export namespace EC2 {
     }
 
     // maximum_ipv6_addresses_per_interface - computed: true, optional: true, required: false
-    private _maximumIpv6AddressesPerInterface?: number;
+    private _maximumIpv6AddressesPerInterface?: number | undefined; 
     public get maximumIpv6AddressesPerInterface() {
       return this.getNumberAttribute('maximum_ipv6_addresses_per_interface');
     }
-    public set maximumIpv6AddressesPerInterface(value: number) {
+    public set maximumIpv6AddressesPerInterface(value: number | undefined) {
       this._maximumIpv6AddressesPerInterface = value;
     }
     public resetMaximumIpv6AddressesPerInterface() {
@@ -16810,11 +19986,11 @@ export namespace EC2 {
     }
 
     // total_fpga_memory - computed: true, optional: true, required: false
-    private _totalFpgaMemory?: number;
+    private _totalFpgaMemory?: number | undefined; 
     public get totalFpgaMemory() {
       return this.getNumberAttribute('total_fpga_memory');
     }
-    public set totalFpgaMemory(value: number) {
+    public set totalFpgaMemory(value: number | undefined) {
       this._totalFpgaMemory = value;
     }
     public resetTotalFpgaMemory() {
@@ -16826,11 +20002,11 @@ export namespace EC2 {
     }
 
     // total_gpu_memory - computed: true, optional: true, required: false
-    private _totalGpuMemory?: number;
+    private _totalGpuMemory?: number | undefined; 
     public get totalGpuMemory() {
       return this.getNumberAttribute('total_gpu_memory');
     }
-    public set totalGpuMemory(value: number) {
+    public set totalGpuMemory(value: number | undefined) {
       this._totalGpuMemory = value;
     }
     public resetTotalGpuMemory() {
@@ -16842,11 +20018,11 @@ export namespace EC2 {
     }
 
     // total_instance_storage - computed: true, optional: true, required: false
-    private _totalInstanceStorage?: number;
+    private _totalInstanceStorage?: number | undefined; 
     public get totalInstanceStorage() {
       return this.getNumberAttribute('total_instance_storage');
     }
-    public set totalInstanceStorage(value: number) {
+    public set totalInstanceStorage(value: number | undefined) {
       this._totalInstanceStorage = value;
     }
     public resetTotalInstanceStorage() {
@@ -16859,20 +20035,23 @@ export namespace EC2 {
 
     // valid_cores - computed: true, optional: false, required: false
     public get validCores() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('valid_cores') as any;
     }
 
     // valid_threads_per_core - computed: true, optional: false, required: false
     public get validThreadsPerCore() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('valid_threads_per_core') as any;
     }
 
     // fpgas - computed: false, optional: true, required: false
-    private _fpgas?: DataAwsEc2InstanceTypeFpgas[];
+    private _fpgas?: DataAwsEc2InstanceTypeFpgas[] | undefined; 
     public get fpgas() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('fpgas') as any;
     }
-    public set fpgas(value: DataAwsEc2InstanceTypeFpgas[] ) {
+    public set fpgas(value: DataAwsEc2InstanceTypeFpgas[] | undefined) {
       this._fpgas = value;
     }
     public resetFpgas() {
@@ -16884,11 +20063,12 @@ export namespace EC2 {
     }
 
     // gpus - computed: false, optional: true, required: false
-    private _gpus?: DataAwsEc2InstanceTypeGpus[];
+    private _gpus?: DataAwsEc2InstanceTypeGpus[] | undefined; 
     public get gpus() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('gpus') as any;
     }
-    public set gpus(value: DataAwsEc2InstanceTypeGpus[] ) {
+    public set gpus(value: DataAwsEc2InstanceTypeGpus[] | undefined) {
       this._gpus = value;
     }
     public resetGpus() {
@@ -16900,11 +20080,12 @@ export namespace EC2 {
     }
 
     // inference_accelerators - computed: false, optional: true, required: false
-    private _inferenceAccelerators?: DataAwsEc2InstanceTypeInferenceAccelerators[];
+    private _inferenceAccelerators?: DataAwsEc2InstanceTypeInferenceAccelerators[] | undefined; 
     public get inferenceAccelerators() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('inference_accelerators') as any;
     }
-    public set inferenceAccelerators(value: DataAwsEc2InstanceTypeInferenceAccelerators[] ) {
+    public set inferenceAccelerators(value: DataAwsEc2InstanceTypeInferenceAccelerators[] | undefined) {
       this._inferenceAccelerators = value;
     }
     public resetInferenceAccelerators() {
@@ -16916,11 +20097,12 @@ export namespace EC2 {
     }
 
     // instance_disks - computed: false, optional: true, required: false
-    private _instanceDisks?: DataAwsEc2InstanceTypeInstanceDisks[];
+    private _instanceDisks?: DataAwsEc2InstanceTypeInstanceDisks[] | undefined; 
     public get instanceDisks() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('instance_disks') as any;
     }
-    public set instanceDisks(value: DataAwsEc2InstanceTypeInstanceDisks[] ) {
+    public set instanceDisks(value: DataAwsEc2InstanceTypeInstanceDisks[] | undefined) {
       this._instanceDisks = value;
     }
     public resetInstanceDisks() {
@@ -16981,6 +20163,9 @@ export namespace EC2 {
 
   function dataAwsEc2InstanceTypeOfferingFilterToTerraform(struct?: DataAwsEc2InstanceTypeOfferingFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -17040,11 +20225,11 @@ export namespace EC2 {
     }
 
     // location_type - computed: false, optional: true, required: false
-    private _locationType?: string;
+    private _locationType?: string | undefined; 
     public get locationType() {
       return this.getStringAttribute('location_type');
     }
-    public set locationType(value: string ) {
+    public set locationType(value: string | undefined) {
       this._locationType = value;
     }
     public resetLocationType() {
@@ -17056,11 +20241,11 @@ export namespace EC2 {
     }
 
     // preferred_instance_types - computed: false, optional: true, required: false
-    private _preferredInstanceTypes?: string[];
+    private _preferredInstanceTypes?: string[] | undefined; 
     public get preferredInstanceTypes() {
       return this.getListAttribute('preferred_instance_types');
     }
-    public set preferredInstanceTypes(value: string[] ) {
+    public set preferredInstanceTypes(value: string[] | undefined) {
       this._preferredInstanceTypes = value;
     }
     public resetPreferredInstanceTypes() {
@@ -17072,11 +20257,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2InstanceTypeOfferingFilter[];
+    private _filter?: DataAwsEc2InstanceTypeOfferingFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2InstanceTypeOfferingFilter[] ) {
+    public set filter(value: DataAwsEc2InstanceTypeOfferingFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -17124,6 +20310,9 @@ export namespace EC2 {
 
   function dataAwsEc2InstanceTypeOfferingsFilterToTerraform(struct?: DataAwsEc2InstanceTypeOfferingsFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -17182,11 +20371,11 @@ export namespace EC2 {
     }
 
     // location_type - computed: false, optional: true, required: false
-    private _locationType?: string;
+    private _locationType?: string | undefined; 
     public get locationType() {
       return this.getStringAttribute('location_type');
     }
-    public set locationType(value: string ) {
+    public set locationType(value: string | undefined) {
       this._locationType = value;
     }
     public resetLocationType() {
@@ -17208,11 +20397,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2InstanceTypeOfferingsFilter[];
+    private _filter?: DataAwsEc2InstanceTypeOfferingsFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2InstanceTypeOfferingsFilter[] ) {
+    public set filter(value: DataAwsEc2InstanceTypeOfferingsFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -17263,6 +20453,9 @@ export namespace EC2 {
 
   function dataAwsEc2LocalGatewayFilterToTerraform(struct?: DataAwsEc2LocalGatewayFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -17327,11 +20520,11 @@ export namespace EC2 {
     }
 
     // state - computed: true, optional: true, required: false
-    private _state?: string;
+    private _state?: string | undefined; 
     public get state() {
       return this.getStringAttribute('state');
     }
-    public set state(value: string) {
+    public set state(value: string | undefined) {
       this._state = value;
     }
     public resetState() {
@@ -17343,11 +20536,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -17359,11 +20553,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2LocalGatewayFilter[];
+    private _filter?: DataAwsEc2LocalGatewayFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2LocalGatewayFilter[] ) {
+    public set filter(value: DataAwsEc2LocalGatewayFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -17427,6 +20622,9 @@ export namespace EC2 {
 
   function dataAwsEc2LocalGatewayRouteTableFilterToTerraform(struct?: DataAwsEc2LocalGatewayRouteTableFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -17484,11 +20682,11 @@ export namespace EC2 {
     }
 
     // local_gateway_id - computed: true, optional: true, required: false
-    private _localGatewayId?: string;
+    private _localGatewayId?: string | undefined; 
     public get localGatewayId() {
       return this.getStringAttribute('local_gateway_id');
     }
-    public set localGatewayId(value: string) {
+    public set localGatewayId(value: string | undefined) {
       this._localGatewayId = value;
     }
     public resetLocalGatewayId() {
@@ -17500,11 +20698,11 @@ export namespace EC2 {
     }
 
     // local_gateway_route_table_id - computed: true, optional: true, required: false
-    private _localGatewayRouteTableId?: string;
+    private _localGatewayRouteTableId?: string | undefined; 
     public get localGatewayRouteTableId() {
       return this.getStringAttribute('local_gateway_route_table_id');
     }
-    public set localGatewayRouteTableId(value: string) {
+    public set localGatewayRouteTableId(value: string | undefined) {
       this._localGatewayRouteTableId = value;
     }
     public resetLocalGatewayRouteTableId() {
@@ -17516,11 +20714,11 @@ export namespace EC2 {
     }
 
     // outpost_arn - computed: true, optional: true, required: false
-    private _outpostArn?: string;
+    private _outpostArn?: string | undefined; 
     public get outpostArn() {
       return this.getStringAttribute('outpost_arn');
     }
-    public set outpostArn(value: string) {
+    public set outpostArn(value: string | undefined) {
       this._outpostArn = value;
     }
     public resetOutpostArn() {
@@ -17532,11 +20730,11 @@ export namespace EC2 {
     }
 
     // state - computed: true, optional: true, required: false
-    private _state?: string;
+    private _state?: string | undefined; 
     public get state() {
       return this.getStringAttribute('state');
     }
-    public set state(value: string) {
+    public set state(value: string | undefined) {
       this._state = value;
     }
     public resetState() {
@@ -17548,11 +20746,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -17564,11 +20763,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2LocalGatewayRouteTableFilter[];
+    private _filter?: DataAwsEc2LocalGatewayRouteTableFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2LocalGatewayRouteTableFilter[] ) {
+    public set filter(value: DataAwsEc2LocalGatewayRouteTableFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -17619,6 +20819,9 @@ export namespace EC2 {
 
   function dataAwsEc2LocalGatewayRouteTablesFilterToTerraform(struct?: DataAwsEc2LocalGatewayRouteTablesFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -17677,11 +20880,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -17693,11 +20897,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2LocalGatewayRouteTablesFilter[];
+    private _filter?: DataAwsEc2LocalGatewayRouteTablesFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2LocalGatewayRouteTablesFilter[] ) {
+    public set filter(value: DataAwsEc2LocalGatewayRouteTablesFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -17744,6 +20949,9 @@ export namespace EC2 {
 
   function dataAwsEc2LocalGatewayVirtualInterfaceFilterToTerraform(struct?: DataAwsEc2LocalGatewayVirtualInterfaceFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -17827,11 +21035,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -17848,11 +21057,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2LocalGatewayVirtualInterfaceFilter[];
+    private _filter?: DataAwsEc2LocalGatewayVirtualInterfaceFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2LocalGatewayVirtualInterfaceFilter[] ) {
+    public set filter(value: DataAwsEc2LocalGatewayVirtualInterfaceFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -17903,6 +21113,9 @@ export namespace EC2 {
 
   function dataAwsEc2LocalGatewayVirtualInterfaceGroupFilterToTerraform(struct?: DataAwsEc2LocalGatewayVirtualInterfaceGroupFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -17957,11 +21170,11 @@ export namespace EC2 {
     }
 
     // local_gateway_id - computed: true, optional: true, required: false
-    private _localGatewayId?: string;
+    private _localGatewayId?: string | undefined; 
     public get localGatewayId() {
       return this.getStringAttribute('local_gateway_id');
     }
-    public set localGatewayId(value: string) {
+    public set localGatewayId(value: string | undefined) {
       this._localGatewayId = value;
     }
     public resetLocalGatewayId() {
@@ -17978,11 +21191,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -17994,11 +21208,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2LocalGatewayVirtualInterfaceGroupFilter[];
+    private _filter?: DataAwsEc2LocalGatewayVirtualInterfaceGroupFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2LocalGatewayVirtualInterfaceGroupFilter[] ) {
+    public set filter(value: DataAwsEc2LocalGatewayVirtualInterfaceGroupFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -18046,6 +21261,9 @@ export namespace EC2 {
 
   function dataAwsEc2LocalGatewayVirtualInterfaceGroupsFilterToTerraform(struct?: DataAwsEc2LocalGatewayVirtualInterfaceGroupsFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -18109,11 +21327,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -18125,11 +21344,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2LocalGatewayVirtualInterfaceGroupsFilter[];
+    private _filter?: DataAwsEc2LocalGatewayVirtualInterfaceGroupsFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2LocalGatewayVirtualInterfaceGroupsFilter[] ) {
+    public set filter(value: DataAwsEc2LocalGatewayVirtualInterfaceGroupsFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -18176,6 +21396,9 @@ export namespace EC2 {
 
   function dataAwsEc2LocalGatewaysFilterToTerraform(struct?: DataAwsEc2LocalGatewaysFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -18234,11 +21457,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -18250,11 +21474,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2LocalGatewaysFilter[];
+    private _filter?: DataAwsEc2LocalGatewaysFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2LocalGatewaysFilter[] ) {
+    public set filter(value: DataAwsEc2LocalGatewaysFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -18317,6 +21542,9 @@ export namespace EC2 {
 
   function dataAwsEc2ManagedPrefixListFilterToTerraform(struct?: DataAwsEc2ManagedPrefixListFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -18391,11 +21619,11 @@ export namespace EC2 {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -18412,11 +21640,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -18433,11 +21662,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2ManagedPrefixListFilter[];
+    private _filter?: DataAwsEc2ManagedPrefixListFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2ManagedPrefixListFilter[] ) {
+    public set filter(value: DataAwsEc2ManagedPrefixListFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -18489,6 +21719,9 @@ export namespace EC2 {
 
   function dataAwsEc2SpotPriceFilterToTerraform(struct?: DataAwsEc2SpotPriceFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -18538,11 +21771,11 @@ export namespace EC2 {
     // ==========
 
     // availability_zone - computed: false, optional: true, required: false
-    private _availabilityZone?: string;
+    private _availabilityZone?: string | undefined; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
-    public set availabilityZone(value: string ) {
+    public set availabilityZone(value: string | undefined) {
       this._availabilityZone = value;
     }
     public resetAvailabilityZone() {
@@ -18559,11 +21792,11 @@ export namespace EC2 {
     }
 
     // instance_type - computed: false, optional: true, required: false
-    private _instanceType?: string;
+    private _instanceType?: string | undefined; 
     public get instanceType() {
       return this.getStringAttribute('instance_type');
     }
-    public set instanceType(value: string ) {
+    public set instanceType(value: string | undefined) {
       this._instanceType = value;
     }
     public resetInstanceType() {
@@ -18585,11 +21818,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2SpotPriceFilter[];
+    private _filter?: DataAwsEc2SpotPriceFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2SpotPriceFilter[] ) {
+    public set filter(value: DataAwsEc2SpotPriceFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -18637,6 +21871,9 @@ export namespace EC2 {
 
   function dataAwsEc2TransitGatewayFilterToTerraform(struct?: DataAwsEc2TransitGatewayFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -18740,11 +21977,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -18761,11 +21999,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2TransitGatewayFilter[];
+    private _filter?: DataAwsEc2TransitGatewayFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2TransitGatewayFilter[] ) {
+    public set filter(value: DataAwsEc2TransitGatewayFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -18820,6 +22059,9 @@ export namespace EC2 {
 
   function dataAwsEc2TransitGatewayDxGatewayAttachmentFilterToTerraform(struct?: DataAwsEc2TransitGatewayDxGatewayAttachmentFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -18870,11 +22112,11 @@ export namespace EC2 {
     // ==========
 
     // dx_gateway_id - computed: false, optional: true, required: false
-    private _dxGatewayId?: string;
+    private _dxGatewayId?: string | undefined; 
     public get dxGatewayId() {
       return this.getStringAttribute('dx_gateway_id');
     }
-    public set dxGatewayId(value: string ) {
+    public set dxGatewayId(value: string | undefined) {
       this._dxGatewayId = value;
     }
     public resetDxGatewayId() {
@@ -18891,11 +22133,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -18907,11 +22150,11 @@ export namespace EC2 {
     }
 
     // transit_gateway_id - computed: false, optional: true, required: false
-    private _transitGatewayId?: string;
+    private _transitGatewayId?: string | undefined; 
     public get transitGatewayId() {
       return this.getStringAttribute('transit_gateway_id');
     }
-    public set transitGatewayId(value: string ) {
+    public set transitGatewayId(value: string | undefined) {
       this._transitGatewayId = value;
     }
     public resetTransitGatewayId() {
@@ -18923,11 +22166,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2TransitGatewayDxGatewayAttachmentFilter[];
+    private _filter?: DataAwsEc2TransitGatewayDxGatewayAttachmentFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2TransitGatewayDxGatewayAttachmentFilter[] ) {
+    public set filter(value: DataAwsEc2TransitGatewayDxGatewayAttachmentFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -18976,6 +22220,9 @@ export namespace EC2 {
 
   function dataAwsEc2TransitGatewayPeeringAttachmentFilterToTerraform(struct?: DataAwsEc2TransitGatewayPeeringAttachmentFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -19044,11 +22291,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -19065,11 +22313,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2TransitGatewayPeeringAttachmentFilter[];
+    private _filter?: DataAwsEc2TransitGatewayPeeringAttachmentFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2TransitGatewayPeeringAttachmentFilter[] ) {
+    public set filter(value: DataAwsEc2TransitGatewayPeeringAttachmentFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -19116,6 +22365,9 @@ export namespace EC2 {
 
   function dataAwsEc2TransitGatewayRouteTableFilterToTerraform(struct?: DataAwsEc2TransitGatewayRouteTableFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -19170,12 +22422,12 @@ export namespace EC2 {
 
     // default_association_route_table - computed: true, optional: false, required: false
     public get defaultAssociationRouteTable() {
-      return this.getBooleanAttribute('default_association_route_table');
+      return this.getBooleanAttribute('default_association_route_table') as any;
     }
 
     // default_propagation_route_table - computed: true, optional: false, required: false
     public get defaultPropagationRouteTable() {
-      return this.getBooleanAttribute('default_propagation_route_table');
+      return this.getBooleanAttribute('default_propagation_route_table') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -19184,11 +22436,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -19205,11 +22458,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2TransitGatewayRouteTableFilter[];
+    private _filter?: DataAwsEc2TransitGatewayRouteTableFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2TransitGatewayRouteTableFilter[] ) {
+    public set filter(value: DataAwsEc2TransitGatewayRouteTableFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -19256,6 +22510,9 @@ export namespace EC2 {
 
   function dataAwsEc2TransitGatewayRouteTablesFilterToTerraform(struct?: DataAwsEc2TransitGatewayRouteTablesFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -19314,11 +22571,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -19330,11 +22588,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2TransitGatewayRouteTablesFilter[];
+    private _filter?: DataAwsEc2TransitGatewayRouteTablesFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2TransitGatewayRouteTablesFilter[] ) {
+    public set filter(value: DataAwsEc2TransitGatewayRouteTablesFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -19381,6 +22640,9 @@ export namespace EC2 {
 
   function dataAwsEc2TransitGatewayVpcAttachmentFilterToTerraform(struct?: DataAwsEc2TransitGatewayVpcAttachmentFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -19454,11 +22716,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -19485,11 +22748,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2TransitGatewayVpcAttachmentFilter[];
+    private _filter?: DataAwsEc2TransitGatewayVpcAttachmentFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2TransitGatewayVpcAttachmentFilter[] ) {
+    public set filter(value: DataAwsEc2TransitGatewayVpcAttachmentFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -19544,6 +22808,9 @@ export namespace EC2 {
 
   function dataAwsEc2TransitGatewayVpnAttachmentFilterToTerraform(struct?: DataAwsEc2TransitGatewayVpnAttachmentFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -19599,11 +22866,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -19615,11 +22883,11 @@ export namespace EC2 {
     }
 
     // transit_gateway_id - computed: false, optional: true, required: false
-    private _transitGatewayId?: string;
+    private _transitGatewayId?: string | undefined; 
     public get transitGatewayId() {
       return this.getStringAttribute('transit_gateway_id');
     }
-    public set transitGatewayId(value: string ) {
+    public set transitGatewayId(value: string | undefined) {
       this._transitGatewayId = value;
     }
     public resetTransitGatewayId() {
@@ -19631,11 +22899,11 @@ export namespace EC2 {
     }
 
     // vpn_connection_id - computed: false, optional: true, required: false
-    private _vpnConnectionId?: string;
+    private _vpnConnectionId?: string | undefined; 
     public get vpnConnectionId() {
       return this.getStringAttribute('vpn_connection_id');
     }
-    public set vpnConnectionId(value: string ) {
+    public set vpnConnectionId(value: string | undefined) {
       this._vpnConnectionId = value;
     }
     public resetVpnConnectionId() {
@@ -19647,11 +22915,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEc2TransitGatewayVpnAttachmentFilter[];
+    private _filter?: DataAwsEc2TransitGatewayVpnAttachmentFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEc2TransitGatewayVpnAttachmentFilter[] ) {
+    public set filter(value: DataAwsEc2TransitGatewayVpnAttachmentFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -19704,6 +22973,9 @@ export namespace EC2 {
 
   function dataAwsEipFilterToTerraform(struct?: DataAwsEipFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -19813,11 +23085,11 @@ export namespace EC2 {
     }
 
     // public_ip - computed: true, optional: true, required: false
-    private _publicIp?: string;
+    private _publicIp?: string | undefined; 
     public get publicIp() {
       return this.getStringAttribute('public_ip');
     }
-    public set publicIp(value: string) {
+    public set publicIp(value: string | undefined) {
       this._publicIp = value;
     }
     public resetPublicIp() {
@@ -19834,11 +23106,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -19850,11 +23123,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsEipFilter[];
+    private _filter?: DataAwsEipFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsEipFilter[] ) {
+    public set filter(value: DataAwsEipFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -19916,7 +23190,7 @@ export namespace EC2 {
 
     // delete_on_termination - computed: true, optional: false, required: false
     public get deleteOnTermination() {
-      return this.getBooleanAttribute('delete_on_termination');
+      return this.getBooleanAttribute('delete_on_termination') as any;
     }
 
     // device_name - computed: true, optional: false, required: false
@@ -19926,7 +23200,7 @@ export namespace EC2 {
 
     // encrypted - computed: true, optional: false, required: false
     public get encrypted() {
-      return this.getBooleanAttribute('encrypted');
+      return this.getBooleanAttribute('encrypted') as any;
     }
 
     // iops - computed: true, optional: false, required: false
@@ -19946,6 +23220,7 @@ export namespace EC2 {
 
     // tags - computed: true, optional: false, required: false
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
 
@@ -19973,7 +23248,7 @@ export namespace EC2 {
 
     // enabled - computed: true, optional: false, required: false
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
   }
   export class DataAwsInstanceEphemeralBlockDevice extends cdktf.ComplexComputedList {
@@ -19985,7 +23260,7 @@ export namespace EC2 {
 
     // no_device - computed: true, optional: false, required: false
     public get noDevice() {
-      return this.getBooleanAttribute('no_device');
+      return this.getBooleanAttribute('no_device') as any;
     }
 
     // virtual_name - computed: true, optional: false, required: false
@@ -20014,7 +23289,7 @@ export namespace EC2 {
 
     // delete_on_termination - computed: true, optional: false, required: false
     public get deleteOnTermination() {
-      return this.getBooleanAttribute('delete_on_termination');
+      return this.getBooleanAttribute('delete_on_termination') as any;
     }
 
     // device_name - computed: true, optional: false, required: false
@@ -20024,7 +23299,7 @@ export namespace EC2 {
 
     // encrypted - computed: true, optional: false, required: false
     public get encrypted() {
-      return this.getBooleanAttribute('encrypted');
+      return this.getBooleanAttribute('encrypted') as any;
     }
 
     // iops - computed: true, optional: false, required: false
@@ -20039,6 +23314,7 @@ export namespace EC2 {
 
     // tags - computed: true, optional: false, required: false
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
 
@@ -20075,6 +23351,9 @@ export namespace EC2 {
 
   function dataAwsInstanceFilterToTerraform(struct?: DataAwsInstanceFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -20138,7 +23417,7 @@ export namespace EC2 {
 
     // associate_public_ip_address - computed: true, optional: false, required: false
     public get associatePublicIpAddress() {
-      return this.getBooleanAttribute('associate_public_ip_address');
+      return this.getBooleanAttribute('associate_public_ip_address') as any;
     }
 
     // availability_zone - computed: true, optional: false, required: false
@@ -20153,7 +23432,7 @@ export namespace EC2 {
 
     // disable_api_termination - computed: true, optional: false, required: false
     public get disableApiTermination() {
-      return this.getBooleanAttribute('disable_api_termination');
+      return this.getBooleanAttribute('disable_api_termination') as any;
     }
 
     // ebs_block_device - computed: true, optional: false, required: false
@@ -20163,7 +23442,7 @@ export namespace EC2 {
 
     // ebs_optimized - computed: true, optional: false, required: false
     public get ebsOptimized() {
-      return this.getBooleanAttribute('ebs_optimized');
+      return this.getBooleanAttribute('ebs_optimized') as any;
     }
 
     // enclave_options - computed: true, optional: false, required: false
@@ -20177,11 +23456,11 @@ export namespace EC2 {
     }
 
     // get_password_data - computed: false, optional: true, required: false
-    private _getPasswordData?: boolean | cdktf.IResolvable;
+    private _getPasswordData?: boolean | cdktf.IResolvable | undefined; 
     public get fetchPasswordData() {
-      return this.getBooleanAttribute('get_password_data');
+      return this.getBooleanAttribute('get_password_data') as any;
     }
-    public set fetchPasswordData(value: boolean | cdktf.IResolvable ) {
+    public set fetchPasswordData(value: boolean | cdktf.IResolvable | undefined) {
       this._getPasswordData = value;
     }
     public resetFetchPasswordData() {
@@ -20193,11 +23472,11 @@ export namespace EC2 {
     }
 
     // get_user_data - computed: false, optional: true, required: false
-    private _getUserData?: boolean | cdktf.IResolvable;
+    private _getUserData?: boolean | cdktf.IResolvable | undefined; 
     public get fetchUserData() {
-      return this.getBooleanAttribute('get_user_data');
+      return this.getBooleanAttribute('get_user_data') as any;
     }
-    public set fetchUserData(value: boolean | cdktf.IResolvable ) {
+    public set fetchUserData(value: boolean | cdktf.IResolvable | undefined) {
       this._getUserData = value;
     }
     public resetFetchUserData() {
@@ -20224,11 +23503,11 @@ export namespace EC2 {
     }
 
     // instance_id - computed: false, optional: true, required: false
-    private _instanceId?: string;
+    private _instanceId?: string | undefined; 
     public get instanceId() {
       return this.getStringAttribute('instance_id');
     }
-    public set instanceId(value: string ) {
+    public set instanceId(value: string | undefined) {
       this._instanceId = value;
     }
     public resetInstanceId() {
@@ -20245,11 +23524,12 @@ export namespace EC2 {
     }
 
     // instance_tags - computed: true, optional: true, required: false
-    private _instanceTags?: { [key: string]: string } | cdktf.IResolvable
-    public get instanceTags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('instance_tags') as any; // Getting the computed value is not yet implemented
+    private _instanceTags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get instanceTags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('instance_tags') as any;
     }
-    public set instanceTags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set instanceTags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._instanceTags = value;
     }
     public resetInstanceTags() {
@@ -20282,7 +23562,7 @@ export namespace EC2 {
 
     // monitoring - computed: true, optional: false, required: false
     public get monitoring() {
-      return this.getBooleanAttribute('monitoring');
+      return this.getBooleanAttribute('monitoring') as any;
     }
 
     // network_interface_id - computed: true, optional: false, required: false
@@ -20347,7 +23627,7 @@ export namespace EC2 {
 
     // source_dest_check - computed: true, optional: false, required: false
     public get sourceDestCheck() {
-      return this.getBooleanAttribute('source_dest_check');
+      return this.getBooleanAttribute('source_dest_check') as any;
     }
 
     // subnet_id - computed: true, optional: false, required: false
@@ -20356,11 +23636,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -20392,11 +23673,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsInstanceFilter[];
+    private _filter?: DataAwsInstanceFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsInstanceFilter[] ) {
+    public set filter(value: DataAwsInstanceFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -20451,6 +23733,9 @@ export namespace EC2 {
 
   function dataAwsInstancesFilterToTerraform(struct?: DataAwsInstancesFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -20510,11 +23795,11 @@ export namespace EC2 {
     }
 
     // instance_state_names - computed: false, optional: true, required: false
-    private _instanceStateNames?: string[];
+    private _instanceStateNames?: string[] | undefined; 
     public get instanceStateNames() {
       return this.getListAttribute('instance_state_names');
     }
-    public set instanceStateNames(value: string[] ) {
+    public set instanceStateNames(value: string[] | undefined) {
       this._instanceStateNames = value;
     }
     public resetInstanceStateNames() {
@@ -20526,11 +23811,12 @@ export namespace EC2 {
     }
 
     // instance_tags - computed: true, optional: true, required: false
-    private _instanceTags?: { [key: string]: string } | cdktf.IResolvable
-    public get instanceTags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('instance_tags') as any; // Getting the computed value is not yet implemented
+    private _instanceTags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get instanceTags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('instance_tags') as any;
     }
-    public set instanceTags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set instanceTags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._instanceTags = value;
     }
     public resetInstanceTags() {
@@ -20552,11 +23838,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsInstancesFilter[];
+    private _filter?: DataAwsInstancesFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsInstancesFilter[] ) {
+    public set filter(value: DataAwsInstancesFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -20646,6 +23933,7 @@ export namespace EC2 {
 
     // ebs - computed: true, optional: false, required: false
     public get ebs() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs') as any;
     }
 
@@ -20677,14 +23965,14 @@ export namespace EC2 {
 
     // enabled - computed: true, optional: false, required: false
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
   }
   export class DataAwsLaunchTemplateHibernationOptions extends cdktf.ComplexComputedList {
 
     // configured - computed: true, optional: false, required: false
     public get configured() {
-      return this.getBooleanAttribute('configured');
+      return this.getBooleanAttribute('configured') as any;
     }
   }
   export class DataAwsLaunchTemplateIamInstanceProfile extends cdktf.ComplexComputedList {
@@ -20735,6 +24023,7 @@ export namespace EC2 {
 
     // spot_options - computed: true, optional: false, required: false
     public get spotOptions() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('spot_options') as any;
     }
   }
@@ -20764,7 +24053,7 @@ export namespace EC2 {
 
     // enabled - computed: true, optional: false, required: false
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
   }
   export class DataAwsLaunchTemplateNetworkInterfaces extends cdktf.ComplexComputedList {
@@ -20890,6 +24179,7 @@ export namespace EC2 {
 
     // tags - computed: true, optional: false, required: false
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
   }
@@ -20906,6 +24196,9 @@ export namespace EC2 {
 
   function dataAwsLaunchTemplateFilterToTerraform(struct?: DataAwsLaunchTemplateFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -20981,7 +24274,7 @@ export namespace EC2 {
 
     // disable_api_termination - computed: true, optional: false, required: false
     public get disableApiTermination() {
-      return this.getBooleanAttribute('disable_api_termination');
+      return this.getBooleanAttribute('disable_api_termination') as any;
     }
 
     // ebs_optimized - computed: true, optional: false, required: false
@@ -21060,11 +24353,11 @@ export namespace EC2 {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -21101,11 +24394,12 @@ export namespace EC2 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -21127,11 +24421,12 @@ export namespace EC2 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsLaunchTemplateFilter[];
+    private _filter?: DataAwsLaunchTemplateFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsLaunchTemplateFilter[] ) {
+    public set filter(value: DataAwsLaunchTemplateFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {

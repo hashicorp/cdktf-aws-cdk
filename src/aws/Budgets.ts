@@ -59,7 +59,7 @@ export namespace Budgets {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget.html#cost_types BudgetsBudget#cost_types}
     */
-    readonly costTypes?: BudgetsBudgetCostTypes[];
+    readonly costTypes?: BudgetsBudgetCostTypes;
     /**
     * notification block
     * 
@@ -80,6 +80,9 @@ export namespace Budgets {
 
   function budgetsBudgetCostFilterToTerraform(struct?: BudgetsBudgetCostFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -133,8 +136,11 @@ export namespace Budgets {
     readonly useBlended?: boolean | cdktf.IResolvable;
   }
 
-  function budgetsBudgetCostTypesToTerraform(struct?: BudgetsBudgetCostTypes): any {
+  function budgetsBudgetCostTypesToTerraform(struct?: BudgetsBudgetCostTypesOutputReference | BudgetsBudgetCostTypes): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       include_credit: cdktf.booleanToTerraform(struct!.includeCredit),
       include_discount: cdktf.booleanToTerraform(struct!.includeDiscount),
@@ -150,6 +156,192 @@ export namespace Budgets {
     }
   }
 
+  export class BudgetsBudgetCostTypesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // include_credit - computed: false, optional: true, required: false
+    private _includeCredit?: boolean | cdktf.IResolvable | undefined; 
+    public get includeCredit() {
+      return this.getBooleanAttribute('include_credit') as any;
+    }
+    public set includeCredit(value: boolean | cdktf.IResolvable | undefined) {
+      this._includeCredit = value;
+    }
+    public resetIncludeCredit() {
+      this._includeCredit = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get includeCreditInput() {
+      return this._includeCredit
+    }
+
+    // include_discount - computed: false, optional: true, required: false
+    private _includeDiscount?: boolean | cdktf.IResolvable | undefined; 
+    public get includeDiscount() {
+      return this.getBooleanAttribute('include_discount') as any;
+    }
+    public set includeDiscount(value: boolean | cdktf.IResolvable | undefined) {
+      this._includeDiscount = value;
+    }
+    public resetIncludeDiscount() {
+      this._includeDiscount = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get includeDiscountInput() {
+      return this._includeDiscount
+    }
+
+    // include_other_subscription - computed: false, optional: true, required: false
+    private _includeOtherSubscription?: boolean | cdktf.IResolvable | undefined; 
+    public get includeOtherSubscription() {
+      return this.getBooleanAttribute('include_other_subscription') as any;
+    }
+    public set includeOtherSubscription(value: boolean | cdktf.IResolvable | undefined) {
+      this._includeOtherSubscription = value;
+    }
+    public resetIncludeOtherSubscription() {
+      this._includeOtherSubscription = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get includeOtherSubscriptionInput() {
+      return this._includeOtherSubscription
+    }
+
+    // include_recurring - computed: false, optional: true, required: false
+    private _includeRecurring?: boolean | cdktf.IResolvable | undefined; 
+    public get includeRecurring() {
+      return this.getBooleanAttribute('include_recurring') as any;
+    }
+    public set includeRecurring(value: boolean | cdktf.IResolvable | undefined) {
+      this._includeRecurring = value;
+    }
+    public resetIncludeRecurring() {
+      this._includeRecurring = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get includeRecurringInput() {
+      return this._includeRecurring
+    }
+
+    // include_refund - computed: false, optional: true, required: false
+    private _includeRefund?: boolean | cdktf.IResolvable | undefined; 
+    public get includeRefund() {
+      return this.getBooleanAttribute('include_refund') as any;
+    }
+    public set includeRefund(value: boolean | cdktf.IResolvable | undefined) {
+      this._includeRefund = value;
+    }
+    public resetIncludeRefund() {
+      this._includeRefund = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get includeRefundInput() {
+      return this._includeRefund
+    }
+
+    // include_subscription - computed: false, optional: true, required: false
+    private _includeSubscription?: boolean | cdktf.IResolvable | undefined; 
+    public get includeSubscription() {
+      return this.getBooleanAttribute('include_subscription') as any;
+    }
+    public set includeSubscription(value: boolean | cdktf.IResolvable | undefined) {
+      this._includeSubscription = value;
+    }
+    public resetIncludeSubscription() {
+      this._includeSubscription = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get includeSubscriptionInput() {
+      return this._includeSubscription
+    }
+
+    // include_support - computed: false, optional: true, required: false
+    private _includeSupport?: boolean | cdktf.IResolvable | undefined; 
+    public get includeSupport() {
+      return this.getBooleanAttribute('include_support') as any;
+    }
+    public set includeSupport(value: boolean | cdktf.IResolvable | undefined) {
+      this._includeSupport = value;
+    }
+    public resetIncludeSupport() {
+      this._includeSupport = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get includeSupportInput() {
+      return this._includeSupport
+    }
+
+    // include_tax - computed: false, optional: true, required: false
+    private _includeTax?: boolean | cdktf.IResolvable | undefined; 
+    public get includeTax() {
+      return this.getBooleanAttribute('include_tax') as any;
+    }
+    public set includeTax(value: boolean | cdktf.IResolvable | undefined) {
+      this._includeTax = value;
+    }
+    public resetIncludeTax() {
+      this._includeTax = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get includeTaxInput() {
+      return this._includeTax
+    }
+
+    // include_upfront - computed: false, optional: true, required: false
+    private _includeUpfront?: boolean | cdktf.IResolvable | undefined; 
+    public get includeUpfront() {
+      return this.getBooleanAttribute('include_upfront') as any;
+    }
+    public set includeUpfront(value: boolean | cdktf.IResolvable | undefined) {
+      this._includeUpfront = value;
+    }
+    public resetIncludeUpfront() {
+      this._includeUpfront = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get includeUpfrontInput() {
+      return this._includeUpfront
+    }
+
+    // use_amortized - computed: false, optional: true, required: false
+    private _useAmortized?: boolean | cdktf.IResolvable | undefined; 
+    public get useAmortized() {
+      return this.getBooleanAttribute('use_amortized') as any;
+    }
+    public set useAmortized(value: boolean | cdktf.IResolvable | undefined) {
+      this._useAmortized = value;
+    }
+    public resetUseAmortized() {
+      this._useAmortized = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get useAmortizedInput() {
+      return this._useAmortized
+    }
+
+    // use_blended - computed: false, optional: true, required: false
+    private _useBlended?: boolean | cdktf.IResolvable | undefined; 
+    public get useBlended() {
+      return this.getBooleanAttribute('use_blended') as any;
+    }
+    public set useBlended(value: boolean | cdktf.IResolvable | undefined) {
+      this._useBlended = value;
+    }
+    public resetUseBlended() {
+      this._useBlended = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get useBlendedInput() {
+      return this._useBlended
+    }
+  }
   export interface BudgetsBudgetNotification {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget.html#comparison_operator BudgetsBudget#comparison_operator}
@@ -179,6 +371,9 @@ export namespace Budgets {
 
   function budgetsBudgetNotificationToTerraform(struct?: BudgetsBudgetNotification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison_operator: cdktf.stringToTerraform(struct!.comparisonOperator),
       notification_type: cdktf.stringToTerraform(struct!.notificationType),
@@ -242,11 +437,11 @@ export namespace Budgets {
     // ==========
 
     // account_id - computed: true, optional: true, required: false
-    private _accountId?: string;
+    private _accountId?: string | undefined; 
     public get accountId() {
       return this.getStringAttribute('account_id');
     }
-    public set accountId(value: string) {
+    public set accountId(value: string | undefined) {
       this._accountId = value;
     }
     public resetAccountId() {
@@ -263,7 +458,7 @@ export namespace Budgets {
     }
 
     // budget_type - computed: false, optional: false, required: true
-    private _budgetType: string;
+    private _budgetType?: string; 
     public get budgetType() {
       return this.getStringAttribute('budget_type');
     }
@@ -276,11 +471,12 @@ export namespace Budgets {
     }
 
     // cost_filters - computed: true, optional: true, required: false
-    private _costFilters?: { [key: string]: string } | cdktf.IResolvable
-    public get costFilters(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('cost_filters') as any; // Getting the computed value is not yet implemented
+    private _costFilters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get costFilters() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('cost_filters') as any;
     }
-    public set costFilters(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set costFilters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._costFilters = value;
     }
     public resetCostFilters() {
@@ -297,7 +493,7 @@ export namespace Budgets {
     }
 
     // limit_amount - computed: false, optional: false, required: true
-    private _limitAmount: string;
+    private _limitAmount?: string; 
     public get limitAmount() {
       return this.getStringAttribute('limit_amount');
     }
@@ -310,7 +506,7 @@ export namespace Budgets {
     }
 
     // limit_unit - computed: false, optional: false, required: true
-    private _limitUnit: string;
+    private _limitUnit?: string; 
     public get limitUnit() {
       return this.getStringAttribute('limit_unit');
     }
@@ -323,11 +519,11 @@ export namespace Budgets {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -339,11 +535,11 @@ export namespace Budgets {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -355,11 +551,11 @@ export namespace Budgets {
     }
 
     // time_period_end - computed: false, optional: true, required: false
-    private _timePeriodEnd?: string;
+    private _timePeriodEnd?: string | undefined; 
     public get timePeriodEnd() {
       return this.getStringAttribute('time_period_end');
     }
-    public set timePeriodEnd(value: string ) {
+    public set timePeriodEnd(value: string | undefined) {
       this._timePeriodEnd = value;
     }
     public resetTimePeriodEnd() {
@@ -371,11 +567,11 @@ export namespace Budgets {
     }
 
     // time_period_start - computed: true, optional: true, required: false
-    private _timePeriodStart?: string;
+    private _timePeriodStart?: string | undefined; 
     public get timePeriodStart() {
       return this.getStringAttribute('time_period_start');
     }
-    public set timePeriodStart(value: string) {
+    public set timePeriodStart(value: string | undefined) {
       this._timePeriodStart = value;
     }
     public resetTimePeriodStart() {
@@ -387,7 +583,7 @@ export namespace Budgets {
     }
 
     // time_unit - computed: false, optional: false, required: true
-    private _timeUnit: string;
+    private _timeUnit?: string; 
     public get timeUnit() {
       return this.getStringAttribute('time_unit');
     }
@@ -400,11 +596,12 @@ export namespace Budgets {
     }
 
     // cost_filter - computed: false, optional: true, required: false
-    private _costFilter?: BudgetsBudgetCostFilter[];
+    private _costFilter?: BudgetsBudgetCostFilter[] | undefined; 
     public get costFilter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('cost_filter') as any;
     }
-    public set costFilter(value: BudgetsBudgetCostFilter[] ) {
+    public set costFilter(value: BudgetsBudgetCostFilter[] | undefined) {
       this._costFilter = value;
     }
     public resetCostFilter() {
@@ -416,11 +613,12 @@ export namespace Budgets {
     }
 
     // cost_types - computed: false, optional: true, required: false
-    private _costTypes?: BudgetsBudgetCostTypes[];
+    private _costTypes?: BudgetsBudgetCostTypes | undefined; 
+    private __costTypesOutput = new BudgetsBudgetCostTypesOutputReference(this as any, "cost_types", true);
     public get costTypes() {
-      return this.interpolationForAttribute('cost_types') as any;
+      return this.__costTypesOutput;
     }
-    public set costTypes(value: BudgetsBudgetCostTypes[] ) {
+    public putCostTypes(value: BudgetsBudgetCostTypes | undefined) {
       this._costTypes = value;
     }
     public resetCostTypes() {
@@ -432,11 +630,12 @@ export namespace Budgets {
     }
 
     // notification - computed: false, optional: true, required: false
-    private _notification?: BudgetsBudgetNotification[];
+    private _notification?: BudgetsBudgetNotification[] | undefined; 
     public get notification() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('notification') as any;
     }
-    public set notification(value: BudgetsBudgetNotification[] ) {
+    public set notification(value: BudgetsBudgetNotification[] | undefined) {
       this._notification = value;
     }
     public resetNotification() {
@@ -464,7 +663,7 @@ export namespace Budgets {
         time_period_start: cdktf.stringToTerraform(this._timePeriodStart),
         time_unit: cdktf.stringToTerraform(this._timeUnit),
         cost_filter: cdktf.listMapper(budgetsBudgetCostFilterToTerraform)(this._costFilter),
-        cost_types: cdktf.listMapper(budgetsBudgetCostTypesToTerraform)(this._costTypes),
+        cost_types: budgetsBudgetCostTypesToTerraform(this._costTypes),
         notification: cdktf.listMapper(budgetsBudgetNotificationToTerraform)(this._notification),
       };
     }
@@ -499,13 +698,13 @@ export namespace Budgets {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#action_threshold BudgetsBudgetAction#action_threshold}
     */
-    readonly actionThreshold: BudgetsBudgetActionActionThreshold[];
+    readonly actionThreshold: BudgetsBudgetActionActionThreshold;
     /**
     * definition block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#definition BudgetsBudgetAction#definition}
     */
-    readonly definition: BudgetsBudgetActionDefinition[];
+    readonly definition: BudgetsBudgetActionDefinition;
     /**
     * subscriber block
     * 
@@ -524,14 +723,53 @@ export namespace Budgets {
     readonly actionThresholdValue: number;
   }
 
-  function budgetsBudgetActionActionThresholdToTerraform(struct?: BudgetsBudgetActionActionThreshold): any {
+  function budgetsBudgetActionActionThresholdToTerraform(struct?: BudgetsBudgetActionActionThresholdOutputReference | BudgetsBudgetActionActionThreshold): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       action_threshold_type: cdktf.stringToTerraform(struct!.actionThresholdType),
       action_threshold_value: cdktf.numberToTerraform(struct!.actionThresholdValue),
     }
   }
 
+  export class BudgetsBudgetActionActionThresholdOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // action_threshold_type - computed: false, optional: false, required: true
+    private _actionThresholdType?: string; 
+    public get actionThresholdType() {
+      return this.getStringAttribute('action_threshold_type');
+    }
+    public set actionThresholdType(value: string) {
+      this._actionThresholdType = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get actionThresholdTypeInput() {
+      return this._actionThresholdType
+    }
+
+    // action_threshold_value - computed: false, optional: false, required: true
+    private _actionThresholdValue?: number; 
+    public get actionThresholdValue() {
+      return this.getNumberAttribute('action_threshold_value');
+    }
+    public set actionThresholdValue(value: number) {
+      this._actionThresholdValue = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get actionThresholdValueInput() {
+      return this._actionThresholdValue
+    }
+  }
   export interface BudgetsBudgetActionDefinitionIamActionDefinition {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#groups BudgetsBudgetAction#groups}
@@ -551,8 +789,11 @@ export namespace Budgets {
     readonly users?: string[];
   }
 
-  function budgetsBudgetActionDefinitionIamActionDefinitionToTerraform(struct?: BudgetsBudgetActionDefinitionIamActionDefinition): any {
+  function budgetsBudgetActionDefinitionIamActionDefinitionToTerraform(struct?: BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference | BudgetsBudgetActionDefinitionIamActionDefinition): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       groups: cdktf.listMapper(cdktf.stringToTerraform)(struct!.groups),
       policy_arn: cdktf.stringToTerraform(struct!.policyArn),
@@ -561,6 +802,77 @@ export namespace Budgets {
     }
   }
 
+  export class BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // groups - computed: false, optional: true, required: false
+    private _groups?: string[] | undefined; 
+    public get groups() {
+      return this.getListAttribute('groups');
+    }
+    public set groups(value: string[] | undefined) {
+      this._groups = value;
+    }
+    public resetGroups() {
+      this._groups = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get groupsInput() {
+      return this._groups
+    }
+
+    // policy_arn - computed: false, optional: false, required: true
+    private _policyArn?: string; 
+    public get policyArn() {
+      return this.getStringAttribute('policy_arn');
+    }
+    public set policyArn(value: string) {
+      this._policyArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get policyArnInput() {
+      return this._policyArn
+    }
+
+    // roles - computed: false, optional: true, required: false
+    private _roles?: string[] | undefined; 
+    public get roles() {
+      return this.getListAttribute('roles');
+    }
+    public set roles(value: string[] | undefined) {
+      this._roles = value;
+    }
+    public resetRoles() {
+      this._roles = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get rolesInput() {
+      return this._roles
+    }
+
+    // users - computed: false, optional: true, required: false
+    private _users?: string[] | undefined; 
+    public get users() {
+      return this.getListAttribute('users');
+    }
+    public set users(value: string[] | undefined) {
+      this._users = value;
+    }
+    public resetUsers() {
+      this._users = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get usersInput() {
+      return this._users
+    }
+  }
   export interface BudgetsBudgetActionDefinitionScpActionDefinition {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#policy_id BudgetsBudgetAction#policy_id}
@@ -572,14 +884,53 @@ export namespace Budgets {
     readonly targetIds: string[];
   }
 
-  function budgetsBudgetActionDefinitionScpActionDefinitionToTerraform(struct?: BudgetsBudgetActionDefinitionScpActionDefinition): any {
+  function budgetsBudgetActionDefinitionScpActionDefinitionToTerraform(struct?: BudgetsBudgetActionDefinitionScpActionDefinitionOutputReference | BudgetsBudgetActionDefinitionScpActionDefinition): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       policy_id: cdktf.stringToTerraform(struct!.policyId),
       target_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.targetIds),
     }
   }
 
+  export class BudgetsBudgetActionDefinitionScpActionDefinitionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // policy_id - computed: false, optional: false, required: true
+    private _policyId?: string; 
+    public get policyId() {
+      return this.getStringAttribute('policy_id');
+    }
+    public set policyId(value: string) {
+      this._policyId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get policyIdInput() {
+      return this._policyId
+    }
+
+    // target_ids - computed: false, optional: false, required: true
+    private _targetIds?: string[]; 
+    public get targetIds() {
+      return this.getListAttribute('target_ids');
+    }
+    public set targetIds(value: string[]) {
+      this._targetIds = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get targetIdsInput() {
+      return this._targetIds
+    }
+  }
   export interface BudgetsBudgetActionDefinitionSsmActionDefinition {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#action_sub_type BudgetsBudgetAction#action_sub_type}
@@ -595,8 +946,11 @@ export namespace Budgets {
     readonly region: string;
   }
 
-  function budgetsBudgetActionDefinitionSsmActionDefinitionToTerraform(struct?: BudgetsBudgetActionDefinitionSsmActionDefinition): any {
+  function budgetsBudgetActionDefinitionSsmActionDefinitionToTerraform(struct?: BudgetsBudgetActionDefinitionSsmActionDefinitionOutputReference | BudgetsBudgetActionDefinitionSsmActionDefinition): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       action_sub_type: cdktf.stringToTerraform(struct!.actionSubType),
       instance_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.instanceIds),
@@ -604,36 +958,149 @@ export namespace Budgets {
     }
   }
 
+  export class BudgetsBudgetActionDefinitionSsmActionDefinitionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // action_sub_type - computed: false, optional: false, required: true
+    private _actionSubType?: string; 
+    public get actionSubType() {
+      return this.getStringAttribute('action_sub_type');
+    }
+    public set actionSubType(value: string) {
+      this._actionSubType = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get actionSubTypeInput() {
+      return this._actionSubType
+    }
+
+    // instance_ids - computed: false, optional: false, required: true
+    private _instanceIds?: string[]; 
+    public get instanceIds() {
+      return this.getListAttribute('instance_ids');
+    }
+    public set instanceIds(value: string[]) {
+      this._instanceIds = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get instanceIdsInput() {
+      return this._instanceIds
+    }
+
+    // region - computed: false, optional: false, required: true
+    private _region?: string; 
+    public get region() {
+      return this.getStringAttribute('region');
+    }
+    public set region(value: string) {
+      this._region = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get regionInput() {
+      return this._region
+    }
+  }
   export interface BudgetsBudgetActionDefinition {
     /**
     * iam_action_definition block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#iam_action_definition BudgetsBudgetAction#iam_action_definition}
     */
-    readonly iamActionDefinition?: BudgetsBudgetActionDefinitionIamActionDefinition[];
+    readonly iamActionDefinition?: BudgetsBudgetActionDefinitionIamActionDefinition;
     /**
     * scp_action_definition block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#scp_action_definition BudgetsBudgetAction#scp_action_definition}
     */
-    readonly scpActionDefinition?: BudgetsBudgetActionDefinitionScpActionDefinition[];
+    readonly scpActionDefinition?: BudgetsBudgetActionDefinitionScpActionDefinition;
     /**
     * ssm_action_definition block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#ssm_action_definition BudgetsBudgetAction#ssm_action_definition}
     */
-    readonly ssmActionDefinition?: BudgetsBudgetActionDefinitionSsmActionDefinition[];
+    readonly ssmActionDefinition?: BudgetsBudgetActionDefinitionSsmActionDefinition;
   }
 
-  function budgetsBudgetActionDefinitionToTerraform(struct?: BudgetsBudgetActionDefinition): any {
+  function budgetsBudgetActionDefinitionToTerraform(struct?: BudgetsBudgetActionDefinitionOutputReference | BudgetsBudgetActionDefinition): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      iam_action_definition: cdktf.listMapper(budgetsBudgetActionDefinitionIamActionDefinitionToTerraform)(struct!.iamActionDefinition),
-      scp_action_definition: cdktf.listMapper(budgetsBudgetActionDefinitionScpActionDefinitionToTerraform)(struct!.scpActionDefinition),
-      ssm_action_definition: cdktf.listMapper(budgetsBudgetActionDefinitionSsmActionDefinitionToTerraform)(struct!.ssmActionDefinition),
+      iam_action_definition: budgetsBudgetActionDefinitionIamActionDefinitionToTerraform(struct!.iamActionDefinition),
+      scp_action_definition: budgetsBudgetActionDefinitionScpActionDefinitionToTerraform(struct!.scpActionDefinition),
+      ssm_action_definition: budgetsBudgetActionDefinitionSsmActionDefinitionToTerraform(struct!.ssmActionDefinition),
     }
   }
 
+  export class BudgetsBudgetActionDefinitionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // iam_action_definition - computed: false, optional: true, required: false
+    private _iamActionDefinition?: BudgetsBudgetActionDefinitionIamActionDefinition | undefined; 
+    private __iamActionDefinitionOutput = new BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference(this as any, "iam_action_definition", true);
+    public get iamActionDefinition() {
+      return this.__iamActionDefinitionOutput;
+    }
+    public putIamActionDefinition(value: BudgetsBudgetActionDefinitionIamActionDefinition | undefined) {
+      this._iamActionDefinition = value;
+    }
+    public resetIamActionDefinition() {
+      this._iamActionDefinition = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get iamActionDefinitionInput() {
+      return this._iamActionDefinition
+    }
+
+    // scp_action_definition - computed: false, optional: true, required: false
+    private _scpActionDefinition?: BudgetsBudgetActionDefinitionScpActionDefinition | undefined; 
+    private __scpActionDefinitionOutput = new BudgetsBudgetActionDefinitionScpActionDefinitionOutputReference(this as any, "scp_action_definition", true);
+    public get scpActionDefinition() {
+      return this.__scpActionDefinitionOutput;
+    }
+    public putScpActionDefinition(value: BudgetsBudgetActionDefinitionScpActionDefinition | undefined) {
+      this._scpActionDefinition = value;
+    }
+    public resetScpActionDefinition() {
+      this._scpActionDefinition = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get scpActionDefinitionInput() {
+      return this._scpActionDefinition
+    }
+
+    // ssm_action_definition - computed: false, optional: true, required: false
+    private _ssmActionDefinition?: BudgetsBudgetActionDefinitionSsmActionDefinition | undefined; 
+    private __ssmActionDefinitionOutput = new BudgetsBudgetActionDefinitionSsmActionDefinitionOutputReference(this as any, "ssm_action_definition", true);
+    public get ssmActionDefinition() {
+      return this.__ssmActionDefinitionOutput;
+    }
+    public putSsmActionDefinition(value: BudgetsBudgetActionDefinitionSsmActionDefinition | undefined) {
+      this._ssmActionDefinition = value;
+    }
+    public resetSsmActionDefinition() {
+      this._ssmActionDefinition = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get ssmActionDefinitionInput() {
+      return this._ssmActionDefinition
+    }
+  }
   export interface BudgetsBudgetActionSubscriber {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/budgets_budget_action.html#address BudgetsBudgetAction#address}
@@ -647,6 +1114,9 @@ export namespace Budgets {
 
   function budgetsBudgetActionSubscriberToTerraform(struct?: BudgetsBudgetActionSubscriber): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       address: cdktf.stringToTerraform(struct!.address),
       subscription_type: cdktf.stringToTerraform(struct!.subscriptionType),
@@ -702,11 +1172,11 @@ export namespace Budgets {
     // ==========
 
     // account_id - computed: true, optional: true, required: false
-    private _accountId?: string;
+    private _accountId?: string | undefined; 
     public get accountId() {
       return this.getStringAttribute('account_id');
     }
-    public set accountId(value: string) {
+    public set accountId(value: string | undefined) {
       this._accountId = value;
     }
     public resetAccountId() {
@@ -723,7 +1193,7 @@ export namespace Budgets {
     }
 
     // action_type - computed: false, optional: false, required: true
-    private _actionType: string;
+    private _actionType?: string; 
     public get actionType() {
       return this.getStringAttribute('action_type');
     }
@@ -736,7 +1206,7 @@ export namespace Budgets {
     }
 
     // approval_model - computed: false, optional: false, required: true
-    private _approvalModel: string;
+    private _approvalModel?: string; 
     public get approvalModel() {
       return this.getStringAttribute('approval_model');
     }
@@ -754,7 +1224,7 @@ export namespace Budgets {
     }
 
     // budget_name - computed: false, optional: false, required: true
-    private _budgetName: string;
+    private _budgetName?: string; 
     public get budgetName() {
       return this.getStringAttribute('budget_name');
     }
@@ -767,7 +1237,7 @@ export namespace Budgets {
     }
 
     // execution_role_arn - computed: false, optional: false, required: true
-    private _executionRoleArn: string;
+    private _executionRoleArn?: string; 
     public get executionRoleArn() {
       return this.getStringAttribute('execution_role_arn');
     }
@@ -785,7 +1255,7 @@ export namespace Budgets {
     }
 
     // notification_type - computed: false, optional: false, required: true
-    private _notificationType: string;
+    private _notificationType?: string; 
     public get notificationType() {
       return this.getStringAttribute('notification_type');
     }
@@ -803,11 +1273,12 @@ export namespace Budgets {
     }
 
     // action_threshold - computed: false, optional: false, required: true
-    private _actionThreshold: BudgetsBudgetActionActionThreshold[];
+    private _actionThreshold?: BudgetsBudgetActionActionThreshold; 
+    private __actionThresholdOutput = new BudgetsBudgetActionActionThresholdOutputReference(this as any, "action_threshold", true);
     public get actionThreshold() {
-      return this.interpolationForAttribute('action_threshold') as any;
+      return this.__actionThresholdOutput;
     }
-    public set actionThreshold(value: BudgetsBudgetActionActionThreshold[]) {
+    public putActionThreshold(value: BudgetsBudgetActionActionThreshold) {
       this._actionThreshold = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -816,11 +1287,12 @@ export namespace Budgets {
     }
 
     // definition - computed: false, optional: false, required: true
-    private _definition: BudgetsBudgetActionDefinition[];
+    private _definition?: BudgetsBudgetActionDefinition; 
+    private __definitionOutput = new BudgetsBudgetActionDefinitionOutputReference(this as any, "definition", true);
     public get definition() {
-      return this.interpolationForAttribute('definition') as any;
+      return this.__definitionOutput;
     }
-    public set definition(value: BudgetsBudgetActionDefinition[]) {
+    public putDefinition(value: BudgetsBudgetActionDefinition) {
       this._definition = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -829,8 +1301,9 @@ export namespace Budgets {
     }
 
     // subscriber - computed: false, optional: false, required: true
-    private _subscriber: BudgetsBudgetActionSubscriber[];
+    private _subscriber?: BudgetsBudgetActionSubscriber[]; 
     public get subscriber() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('subscriber') as any;
     }
     public set subscriber(value: BudgetsBudgetActionSubscriber[]) {
@@ -853,8 +1326,8 @@ export namespace Budgets {
         budget_name: cdktf.stringToTerraform(this._budgetName),
         execution_role_arn: cdktf.stringToTerraform(this._executionRoleArn),
         notification_type: cdktf.stringToTerraform(this._notificationType),
-        action_threshold: cdktf.listMapper(budgetsBudgetActionActionThresholdToTerraform)(this._actionThreshold),
-        definition: cdktf.listMapper(budgetsBudgetActionDefinitionToTerraform)(this._definition),
+        action_threshold: budgetsBudgetActionActionThresholdToTerraform(this._actionThreshold),
+        definition: budgetsBudgetActionDefinitionToTerraform(this._definition),
         subscriber: cdktf.listMapper(budgetsBudgetActionSubscriberToTerraform)(this._subscriber),
       };
     }

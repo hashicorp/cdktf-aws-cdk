@@ -67,6 +67,7 @@ export namespace NetworkFirewall {
 
     // attachment - computed: true, optional: false, required: false
     public get attachment() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('attachment') as any;
     }
 
@@ -79,6 +80,7 @@ export namespace NetworkFirewall {
 
     // sync_states - computed: true, optional: false, required: false
     public get syncStates() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('sync_states') as any;
     }
   }
@@ -91,6 +93,9 @@ export namespace NetworkFirewall {
 
   function networkfirewallFirewallSubnetMappingToTerraform(struct?: NetworkfirewallFirewallSubnetMapping): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       subnet_id: cdktf.stringToTerraform(struct!.subnetId),
     }
@@ -151,11 +156,11 @@ export namespace NetworkFirewall {
     }
 
     // delete_protection - computed: false, optional: true, required: false
-    private _deleteProtection?: boolean | cdktf.IResolvable;
+    private _deleteProtection?: boolean | cdktf.IResolvable | undefined; 
     public get deleteProtection() {
-      return this.getBooleanAttribute('delete_protection');
+      return this.getBooleanAttribute('delete_protection') as any;
     }
-    public set deleteProtection(value: boolean | cdktf.IResolvable ) {
+    public set deleteProtection(value: boolean | cdktf.IResolvable | undefined) {
       this._deleteProtection = value;
     }
     public resetDeleteProtection() {
@@ -167,11 +172,11 @@ export namespace NetworkFirewall {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -183,7 +188,7 @@ export namespace NetworkFirewall {
     }
 
     // firewall_policy_arn - computed: false, optional: false, required: true
-    private _firewallPolicyArn: string;
+    private _firewallPolicyArn?: string; 
     public get firewallPolicyArn() {
       return this.getStringAttribute('firewall_policy_arn');
     }
@@ -196,11 +201,11 @@ export namespace NetworkFirewall {
     }
 
     // firewall_policy_change_protection - computed: false, optional: true, required: false
-    private _firewallPolicyChangeProtection?: boolean | cdktf.IResolvable;
+    private _firewallPolicyChangeProtection?: boolean | cdktf.IResolvable | undefined; 
     public get firewallPolicyChangeProtection() {
-      return this.getBooleanAttribute('firewall_policy_change_protection');
+      return this.getBooleanAttribute('firewall_policy_change_protection') as any;
     }
-    public set firewallPolicyChangeProtection(value: boolean | cdktf.IResolvable ) {
+    public set firewallPolicyChangeProtection(value: boolean | cdktf.IResolvable | undefined) {
       this._firewallPolicyChangeProtection = value;
     }
     public resetFirewallPolicyChangeProtection() {
@@ -222,7 +227,7 @@ export namespace NetworkFirewall {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -235,11 +240,11 @@ export namespace NetworkFirewall {
     }
 
     // subnet_change_protection - computed: false, optional: true, required: false
-    private _subnetChangeProtection?: boolean | cdktf.IResolvable;
+    private _subnetChangeProtection?: boolean | cdktf.IResolvable | undefined; 
     public get subnetChangeProtection() {
-      return this.getBooleanAttribute('subnet_change_protection');
+      return this.getBooleanAttribute('subnet_change_protection') as any;
     }
-    public set subnetChangeProtection(value: boolean | cdktf.IResolvable ) {
+    public set subnetChangeProtection(value: boolean | cdktf.IResolvable | undefined) {
       this._subnetChangeProtection = value;
     }
     public resetSubnetChangeProtection() {
@@ -251,11 +256,12 @@ export namespace NetworkFirewall {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -267,11 +273,12 @@ export namespace NetworkFirewall {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -288,7 +295,7 @@ export namespace NetworkFirewall {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -301,8 +308,9 @@ export namespace NetworkFirewall {
     }
 
     // subnet_mapping - computed: false, optional: false, required: true
-    private _subnetMapping: NetworkfirewallFirewallSubnetMapping[];
+    private _subnetMapping?: NetworkfirewallFirewallSubnetMapping[]; 
     public get subnetMapping() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('subnet_mapping') as any;
     }
     public set subnetMapping(value: NetworkfirewallFirewallSubnetMapping[]) {
@@ -354,7 +362,7 @@ export namespace NetworkFirewall {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_firewall_policy.html#firewall_policy NetworkfirewallFirewallPolicy#firewall_policy}
     */
-    readonly firewallPolicy: NetworkfirewallFirewallPolicyFirewallPolicy[];
+    readonly firewallPolicy: NetworkfirewallFirewallPolicyFirewallPolicy;
   }
   export interface NetworkfirewallFirewallPolicyFirewallPolicyStatefulRuleGroupReference {
     /**
@@ -365,6 +373,9 @@ export namespace NetworkFirewall {
 
   function networkfirewallFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceToTerraform(struct?: NetworkfirewallFirewallPolicyFirewallPolicyStatefulRuleGroupReference): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       resource_arn: cdktf.stringToTerraform(struct!.resourceArn),
     }
@@ -379,6 +390,9 @@ export namespace NetworkFirewall {
 
   function networkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimensionToTerraform(struct?: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       value: cdktf.stringToTerraform(struct!.value),
     }
@@ -393,29 +407,83 @@ export namespace NetworkFirewall {
     readonly dimension: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension[];
   }
 
-  function networkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionToTerraform(struct?: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction): any {
+  function networkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionToTerraform(struct?: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionOutputReference | NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       dimension: cdktf.listMapper(networkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimensionToTerraform)(struct!.dimension),
     }
   }
 
+  export class NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // dimension - computed: false, optional: false, required: true
+    private _dimension?: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension[]; 
+    public get dimension() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('dimension') as any;
+    }
+    public set dimension(value: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension[]) {
+      this._dimension = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get dimensionInput() {
+      return this._dimension
+    }
+  }
   export interface NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition {
     /**
     * publish_metric_action block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_firewall_policy.html#publish_metric_action NetworkfirewallFirewallPolicy#publish_metric_action}
     */
-    readonly publishMetricAction: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction[];
+    readonly publishMetricAction: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction;
   }
 
-  function networkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionToTerraform(struct?: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition): any {
+  function networkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionToTerraform(struct?: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionOutputReference | NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      publish_metric_action: cdktf.listMapper(networkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionToTerraform)(struct!.publishMetricAction),
+      publish_metric_action: networkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionToTerraform(struct!.publishMetricAction),
     }
   }
 
+  export class NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // publish_metric_action - computed: false, optional: false, required: true
+    private _publishMetricAction?: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction; 
+    private __publishMetricActionOutput = new NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionOutputReference(this as any, "publish_metric_action", true);
+    public get publishMetricAction() {
+      return this.__publishMetricActionOutput;
+    }
+    public putPublishMetricAction(value: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction) {
+      this._publishMetricAction = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get publishMetricActionInput() {
+      return this._publishMetricAction
+    }
+  }
   export interface NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomAction {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_firewall_policy.html#action_name NetworkfirewallFirewallPolicy#action_name}
@@ -426,14 +494,17 @@ export namespace NetworkFirewall {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_firewall_policy.html#action_definition NetworkfirewallFirewallPolicy#action_definition}
     */
-    readonly actionDefinition: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition[];
+    readonly actionDefinition: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition;
   }
 
   function networkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionToTerraform(struct?: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       action_name: cdktf.stringToTerraform(struct!.actionName),
-      action_definition: cdktf.listMapper(networkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionToTerraform)(struct!.actionDefinition),
+      action_definition: networkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionToTerraform(struct!.actionDefinition),
     }
   }
 
@@ -450,6 +521,9 @@ export namespace NetworkFirewall {
 
   function networkfirewallFirewallPolicyFirewallPolicyStatelessRuleGroupReferenceToTerraform(struct?: NetworkfirewallFirewallPolicyFirewallPolicyStatelessRuleGroupReference): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       priority: cdktf.numberToTerraform(struct!.priority),
       resource_arn: cdktf.stringToTerraform(struct!.resourceArn),
@@ -485,8 +559,11 @@ export namespace NetworkFirewall {
     readonly statelessRuleGroupReference?: NetworkfirewallFirewallPolicyFirewallPolicyStatelessRuleGroupReference[];
   }
 
-  function networkfirewallFirewallPolicyFirewallPolicyToTerraform(struct?: NetworkfirewallFirewallPolicyFirewallPolicy): any {
+  function networkfirewallFirewallPolicyFirewallPolicyToTerraform(struct?: NetworkfirewallFirewallPolicyFirewallPolicyOutputReference | NetworkfirewallFirewallPolicyFirewallPolicy): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       stateless_default_actions: cdktf.listMapper(cdktf.stringToTerraform)(struct!.statelessDefaultActions),
       stateless_fragment_default_actions: cdktf.listMapper(cdktf.stringToTerraform)(struct!.statelessFragmentDefaultActions),
@@ -496,6 +573,93 @@ export namespace NetworkFirewall {
     }
   }
 
+  export class NetworkfirewallFirewallPolicyFirewallPolicyOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // stateless_default_actions - computed: false, optional: false, required: true
+    private _statelessDefaultActions?: string[]; 
+    public get statelessDefaultActions() {
+      return this.getListAttribute('stateless_default_actions');
+    }
+    public set statelessDefaultActions(value: string[]) {
+      this._statelessDefaultActions = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statelessDefaultActionsInput() {
+      return this._statelessDefaultActions
+    }
+
+    // stateless_fragment_default_actions - computed: false, optional: false, required: true
+    private _statelessFragmentDefaultActions?: string[]; 
+    public get statelessFragmentDefaultActions() {
+      return this.getListAttribute('stateless_fragment_default_actions');
+    }
+    public set statelessFragmentDefaultActions(value: string[]) {
+      this._statelessFragmentDefaultActions = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statelessFragmentDefaultActionsInput() {
+      return this._statelessFragmentDefaultActions
+    }
+
+    // stateful_rule_group_reference - computed: false, optional: true, required: false
+    private _statefulRuleGroupReference?: NetworkfirewallFirewallPolicyFirewallPolicyStatefulRuleGroupReference[] | undefined; 
+    public get statefulRuleGroupReference() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('stateful_rule_group_reference') as any;
+    }
+    public set statefulRuleGroupReference(value: NetworkfirewallFirewallPolicyFirewallPolicyStatefulRuleGroupReference[] | undefined) {
+      this._statefulRuleGroupReference = value;
+    }
+    public resetStatefulRuleGroupReference() {
+      this._statefulRuleGroupReference = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statefulRuleGroupReferenceInput() {
+      return this._statefulRuleGroupReference
+    }
+
+    // stateless_custom_action - computed: false, optional: true, required: false
+    private _statelessCustomAction?: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomAction[] | undefined; 
+    public get statelessCustomAction() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('stateless_custom_action') as any;
+    }
+    public set statelessCustomAction(value: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomAction[] | undefined) {
+      this._statelessCustomAction = value;
+    }
+    public resetStatelessCustomAction() {
+      this._statelessCustomAction = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statelessCustomActionInput() {
+      return this._statelessCustomAction
+    }
+
+    // stateless_rule_group_reference - computed: false, optional: true, required: false
+    private _statelessRuleGroupReference?: NetworkfirewallFirewallPolicyFirewallPolicyStatelessRuleGroupReference[] | undefined; 
+    public get statelessRuleGroupReference() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('stateless_rule_group_reference') as any;
+    }
+    public set statelessRuleGroupReference(value: NetworkfirewallFirewallPolicyFirewallPolicyStatelessRuleGroupReference[] | undefined) {
+      this._statelessRuleGroupReference = value;
+    }
+    public resetStatelessRuleGroupReference() {
+      this._statelessRuleGroupReference = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statelessRuleGroupReferenceInput() {
+      return this._statelessRuleGroupReference
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_firewall_policy.html aws_networkfirewall_firewall_policy}
@@ -546,11 +710,11 @@ export namespace NetworkFirewall {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -567,7 +731,7 @@ export namespace NetworkFirewall {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -580,11 +744,12 @@ export namespace NetworkFirewall {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -596,11 +761,12 @@ export namespace NetworkFirewall {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -617,11 +783,12 @@ export namespace NetworkFirewall {
     }
 
     // firewall_policy - computed: false, optional: false, required: true
-    private _firewallPolicy: NetworkfirewallFirewallPolicyFirewallPolicy[];
+    private _firewallPolicy?: NetworkfirewallFirewallPolicyFirewallPolicy; 
+    private __firewallPolicyOutput = new NetworkfirewallFirewallPolicyFirewallPolicyOutputReference(this as any, "firewall_policy", true);
     public get firewallPolicy() {
-      return this.interpolationForAttribute('firewall_policy') as any;
+      return this.__firewallPolicyOutput;
     }
-    public set firewallPolicy(value: NetworkfirewallFirewallPolicyFirewallPolicy[]) {
+    public putFirewallPolicy(value: NetworkfirewallFirewallPolicyFirewallPolicy) {
       this._firewallPolicy = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -639,7 +806,7 @@ export namespace NetworkFirewall {
         name: cdktf.stringToTerraform(this._name),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        firewall_policy: cdktf.listMapper(networkfirewallFirewallPolicyFirewallPolicyToTerraform)(this._firewallPolicy),
+        firewall_policy: networkfirewallFirewallPolicyFirewallPolicyToTerraform(this._firewallPolicy),
       };
     }
   }
@@ -653,7 +820,7 @@ export namespace NetworkFirewall {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_logging_configuration.html#logging_configuration NetworkfirewallLoggingConfiguration#logging_configuration}
     */
-    readonly loggingConfiguration: NetworkfirewallLoggingConfigurationLoggingConfiguration[];
+    readonly loggingConfiguration: NetworkfirewallLoggingConfigurationLoggingConfiguration;
   }
   export interface NetworkfirewallLoggingConfigurationLoggingConfigurationLogDestinationConfig {
     /**
@@ -672,6 +839,9 @@ export namespace NetworkFirewall {
 
   function networkfirewallLoggingConfigurationLoggingConfigurationLogDestinationConfigToTerraform(struct?: NetworkfirewallLoggingConfigurationLoggingConfigurationLogDestinationConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       log_destination: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.logDestination),
       log_destination_type: cdktf.stringToTerraform(struct!.logDestinationType),
@@ -688,13 +858,40 @@ export namespace NetworkFirewall {
     readonly logDestinationConfig: NetworkfirewallLoggingConfigurationLoggingConfigurationLogDestinationConfig[];
   }
 
-  function networkfirewallLoggingConfigurationLoggingConfigurationToTerraform(struct?: NetworkfirewallLoggingConfigurationLoggingConfiguration): any {
+  function networkfirewallLoggingConfigurationLoggingConfigurationToTerraform(struct?: NetworkfirewallLoggingConfigurationLoggingConfigurationOutputReference | NetworkfirewallLoggingConfigurationLoggingConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       log_destination_config: cdktf.listMapper(networkfirewallLoggingConfigurationLoggingConfigurationLogDestinationConfigToTerraform)(struct!.logDestinationConfig),
     }
   }
 
+  export class NetworkfirewallLoggingConfigurationLoggingConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // log_destination_config - computed: false, optional: false, required: true
+    private _logDestinationConfig?: NetworkfirewallLoggingConfigurationLoggingConfigurationLogDestinationConfig[]; 
+    public get logDestinationConfig() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('log_destination_config') as any;
+    }
+    public set logDestinationConfig(value: NetworkfirewallLoggingConfigurationLoggingConfigurationLogDestinationConfig[]) {
+      this._logDestinationConfig = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get logDestinationConfigInput() {
+      return this._logDestinationConfig
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_logging_configuration.html aws_networkfirewall_logging_configuration}
@@ -737,7 +934,7 @@ export namespace NetworkFirewall {
     // ==========
 
     // firewall_arn - computed: false, optional: false, required: true
-    private _firewallArn: string;
+    private _firewallArn?: string; 
     public get firewallArn() {
       return this.getStringAttribute('firewall_arn');
     }
@@ -755,11 +952,12 @@ export namespace NetworkFirewall {
     }
 
     // logging_configuration - computed: false, optional: false, required: true
-    private _loggingConfiguration: NetworkfirewallLoggingConfigurationLoggingConfiguration[];
+    private _loggingConfiguration?: NetworkfirewallLoggingConfigurationLoggingConfiguration; 
+    private __loggingConfigurationOutput = new NetworkfirewallLoggingConfigurationLoggingConfigurationOutputReference(this as any, "logging_configuration", true);
     public get loggingConfiguration() {
-      return this.interpolationForAttribute('logging_configuration') as any;
+      return this.__loggingConfigurationOutput;
     }
-    public set loggingConfiguration(value: NetworkfirewallLoggingConfigurationLoggingConfiguration[]) {
+    public putLoggingConfiguration(value: NetworkfirewallLoggingConfigurationLoggingConfiguration) {
       this._loggingConfiguration = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -774,7 +972,7 @@ export namespace NetworkFirewall {
     protected synthesizeAttributes(): { [name: string]: any } {
       return {
         firewall_arn: cdktf.stringToTerraform(this._firewallArn),
-        logging_configuration: cdktf.listMapper(networkfirewallLoggingConfigurationLoggingConfigurationToTerraform)(this._loggingConfiguration),
+        logging_configuration: networkfirewallLoggingConfigurationLoggingConfigurationToTerraform(this._loggingConfiguration),
       };
     }
   }
@@ -835,7 +1033,7 @@ export namespace NetworkFirewall {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -848,7 +1046,7 @@ export namespace NetworkFirewall {
     }
 
     // resource_arn - computed: false, optional: false, required: true
-    private _resourceArn: string;
+    private _resourceArn?: string; 
     public get resourceArn() {
       return this.getStringAttribute('resource_arn');
     }
@@ -905,7 +1103,7 @@ export namespace NetworkFirewall {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#rule_group NetworkfirewallRuleGroup#rule_group}
     */
-    readonly ruleGroup?: NetworkfirewallRuleGroupRuleGroup[];
+    readonly ruleGroup?: NetworkfirewallRuleGroupRuleGroup;
   }
   export interface NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSetsIpSet {
     /**
@@ -914,13 +1112,39 @@ export namespace NetworkFirewall {
     readonly definition: string[];
   }
 
-  function networkfirewallRuleGroupRuleGroupRuleVariablesIpSetsIpSetToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSetsIpSet): any {
+  function networkfirewallRuleGroupRuleGroupRuleVariablesIpSetsIpSetToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSetsIpSetOutputReference | NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSetsIpSet): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       definition: cdktf.listMapper(cdktf.stringToTerraform)(struct!.definition),
     }
   }
 
+  export class NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSetsIpSetOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // definition - computed: false, optional: false, required: true
+    private _definition?: string[]; 
+    public get definition() {
+      return this.getListAttribute('definition');
+    }
+    public set definition(value: string[]) {
+      this._definition = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get definitionInput() {
+      return this._definition
+    }
+  }
   export interface NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSets {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#key NetworkfirewallRuleGroup#key}
@@ -931,14 +1155,17 @@ export namespace NetworkFirewall {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#ip_set NetworkfirewallRuleGroup#ip_set}
     */
-    readonly ipSet: NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSetsIpSet[];
+    readonly ipSet: NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSetsIpSet;
   }
 
   function networkfirewallRuleGroupRuleGroupRuleVariablesIpSetsToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSets): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
-      ip_set: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRuleVariablesIpSetsIpSetToTerraform)(struct!.ipSet),
+      ip_set: networkfirewallRuleGroupRuleGroupRuleVariablesIpSetsIpSetToTerraform(struct!.ipSet),
     }
   }
 
@@ -949,13 +1176,39 @@ export namespace NetworkFirewall {
     readonly definition: string[];
   }
 
-  function networkfirewallRuleGroupRuleGroupRuleVariablesPortSetsPortSetToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSetsPortSet): any {
+  function networkfirewallRuleGroupRuleGroupRuleVariablesPortSetsPortSetToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSetsPortSetOutputReference | NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSetsPortSet): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       definition: cdktf.listMapper(cdktf.stringToTerraform)(struct!.definition),
     }
   }
 
+  export class NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSetsPortSetOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // definition - computed: false, optional: false, required: true
+    private _definition?: string[]; 
+    public get definition() {
+      return this.getListAttribute('definition');
+    }
+    public set definition(value: string[]) {
+      this._definition = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get definitionInput() {
+      return this._definition
+    }
+  }
   export interface NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSets {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#key NetworkfirewallRuleGroup#key}
@@ -966,14 +1219,17 @@ export namespace NetworkFirewall {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#port_set NetworkfirewallRuleGroup#port_set}
     */
-    readonly portSet: NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSetsPortSet[];
+    readonly portSet: NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSetsPortSet;
   }
 
   function networkfirewallRuleGroupRuleGroupRuleVariablesPortSetsToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSets): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
-      port_set: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRuleVariablesPortSetsPortSetToTerraform)(struct!.portSet),
+      port_set: networkfirewallRuleGroupRuleGroupRuleVariablesPortSetsPortSetToTerraform(struct!.portSet),
     }
   }
 
@@ -992,14 +1248,61 @@ export namespace NetworkFirewall {
     readonly portSets?: NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSets[];
   }
 
-  function networkfirewallRuleGroupRuleGroupRuleVariablesToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRuleVariables): any {
+  function networkfirewallRuleGroupRuleGroupRuleVariablesToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRuleVariablesOutputReference | NetworkfirewallRuleGroupRuleGroupRuleVariables): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       ip_sets: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRuleVariablesIpSetsToTerraform)(struct!.ipSets),
       port_sets: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRuleVariablesPortSetsToTerraform)(struct!.portSets),
     }
   }
 
+  export class NetworkfirewallRuleGroupRuleGroupRuleVariablesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // ip_sets - computed: false, optional: true, required: false
+    private _ipSets?: NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSets[] | undefined; 
+    public get ipSets() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('ip_sets') as any;
+    }
+    public set ipSets(value: NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSets[] | undefined) {
+      this._ipSets = value;
+    }
+    public resetIpSets() {
+      this._ipSets = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get ipSetsInput() {
+      return this._ipSets
+    }
+
+    // port_sets - computed: false, optional: true, required: false
+    private _portSets?: NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSets[] | undefined; 
+    public get portSets() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('port_sets') as any;
+    }
+    public set portSets(value: NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSets[] | undefined) {
+      this._portSets = value;
+    }
+    public resetPortSets() {
+      this._portSets = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get portSetsInput() {
+      return this._portSets
+    }
+  }
   export interface NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceList {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#generated_rules_type NetworkfirewallRuleGroup#generated_rules_type}
@@ -1015,8 +1318,11 @@ export namespace NetworkFirewall {
     readonly targets: string[];
   }
 
-  function networkfirewallRuleGroupRuleGroupRulesSourceRulesSourceListToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceList): any {
+  function networkfirewallRuleGroupRuleGroupRulesSourceRulesSourceListToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceListOutputReference | NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceList): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       generated_rules_type: cdktf.stringToTerraform(struct!.generatedRulesType),
       target_types: cdktf.listMapper(cdktf.stringToTerraform)(struct!.targetTypes),
@@ -1024,6 +1330,55 @@ export namespace NetworkFirewall {
     }
   }
 
+  export class NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceListOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // generated_rules_type - computed: false, optional: false, required: true
+    private _generatedRulesType?: string; 
+    public get generatedRulesType() {
+      return this.getStringAttribute('generated_rules_type');
+    }
+    public set generatedRulesType(value: string) {
+      this._generatedRulesType = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get generatedRulesTypeInput() {
+      return this._generatedRulesType
+    }
+
+    // target_types - computed: false, optional: false, required: true
+    private _targetTypes?: string[]; 
+    public get targetTypes() {
+      return this.getListAttribute('target_types');
+    }
+    public set targetTypes(value: string[]) {
+      this._targetTypes = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get targetTypesInput() {
+      return this._targetTypes
+    }
+
+    // targets - computed: false, optional: false, required: true
+    private _targets?: string[]; 
+    public get targets() {
+      return this.getListAttribute('targets');
+    }
+    public set targets(value: string[]) {
+      this._targets = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get targetsInput() {
+      return this._targets
+    }
+  }
   export interface NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeader {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#destination NetworkfirewallRuleGroup#destination}
@@ -1051,8 +1406,11 @@ export namespace NetworkFirewall {
     readonly sourcePort: string;
   }
 
-  function networkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeaderToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeader): any {
+  function networkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeaderToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeaderOutputReference | NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeader): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       destination: cdktf.stringToTerraform(struct!.destination),
       destination_port: cdktf.stringToTerraform(struct!.destinationPort),
@@ -1063,6 +1421,94 @@ export namespace NetworkFirewall {
     }
   }
 
+  export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeaderOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // destination - computed: false, optional: false, required: true
+    private _destination?: string; 
+    public get destination() {
+      return this.getStringAttribute('destination');
+    }
+    public set destination(value: string) {
+      this._destination = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get destinationInput() {
+      return this._destination
+    }
+
+    // destination_port - computed: false, optional: false, required: true
+    private _destinationPort?: string; 
+    public get destinationPort() {
+      return this.getStringAttribute('destination_port');
+    }
+    public set destinationPort(value: string) {
+      this._destinationPort = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get destinationPortInput() {
+      return this._destinationPort
+    }
+
+    // direction - computed: false, optional: false, required: true
+    private _direction?: string; 
+    public get direction() {
+      return this.getStringAttribute('direction');
+    }
+    public set direction(value: string) {
+      this._direction = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get directionInput() {
+      return this._direction
+    }
+
+    // protocol - computed: false, optional: false, required: true
+    private _protocol?: string; 
+    public get protocol() {
+      return this.getStringAttribute('protocol');
+    }
+    public set protocol(value: string) {
+      this._protocol = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get protocolInput() {
+      return this._protocol
+    }
+
+    // source - computed: false, optional: false, required: true
+    private _source?: string; 
+    public get source() {
+      return this.getStringAttribute('source');
+    }
+    public set source(value: string) {
+      this._source = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sourceInput() {
+      return this._source
+    }
+
+    // source_port - computed: false, optional: false, required: true
+    private _sourcePort?: string; 
+    public get sourcePort() {
+      return this.getStringAttribute('source_port');
+    }
+    public set sourcePort(value: string) {
+      this._sourcePort = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sourcePortInput() {
+      return this._sourcePort
+    }
+  }
   export interface NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleRuleOption {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#keyword NetworkfirewallRuleGroup#keyword}
@@ -1076,6 +1522,9 @@ export namespace NetworkFirewall {
 
   function networkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleRuleOptionToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleRuleOption): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       keyword: cdktf.stringToTerraform(struct!.keyword),
       settings: cdktf.listMapper(cdktf.stringToTerraform)(struct!.settings),
@@ -1092,7 +1541,7 @@ export namespace NetworkFirewall {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#header NetworkfirewallRuleGroup#header}
     */
-    readonly header: NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeader[];
+    readonly header: NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeader;
     /**
     * rule_option block
     * 
@@ -1103,9 +1552,12 @@ export namespace NetworkFirewall {
 
   function networkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRule): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       action: cdktf.stringToTerraform(struct!.action),
-      header: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeaderToTerraform)(struct!.header),
+      header: networkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeaderToTerraform(struct!.header),
       rule_option: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleRuleOptionToTerraform)(struct!.ruleOption),
     }
   }
@@ -1119,6 +1571,9 @@ export namespace NetworkFirewall {
 
   function networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionDimensionToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionDimension): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       value: cdktf.stringToTerraform(struct!.value),
     }
@@ -1133,29 +1588,83 @@ export namespace NetworkFirewall {
     readonly dimension: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionDimension[];
   }
 
-  function networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricAction): any {
+  function networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionOutputReference | NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       dimension: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionDimensionToTerraform)(struct!.dimension),
     }
   }
 
+  export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // dimension - computed: false, optional: false, required: true
+    private _dimension?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionDimension[]; 
+    public get dimension() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('dimension') as any;
+    }
+    public set dimension(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionDimension[]) {
+      this._dimension = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get dimensionInput() {
+      return this._dimension
+    }
+  }
   export interface NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition {
     /**
     * publish_metric_action block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#publish_metric_action NetworkfirewallRuleGroup#publish_metric_action}
     */
-    readonly publishMetricAction: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricAction[];
+    readonly publishMetricAction: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricAction;
   }
 
-  function networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition): any {
+  function networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionOutputReference | NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      publish_metric_action: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionToTerraform)(struct!.publishMetricAction),
+      publish_metric_action: networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionToTerraform(struct!.publishMetricAction),
     }
   }
 
+  export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // publish_metric_action - computed: false, optional: false, required: true
+    private _publishMetricAction?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricAction; 
+    private __publishMetricActionOutput = new NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionOutputReference(this as any, "publish_metric_action", true);
+    public get publishMetricAction() {
+      return this.__publishMetricActionOutput;
+    }
+    public putPublishMetricAction(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricAction) {
+      this._publishMetricAction = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get publishMetricActionInput() {
+      return this._publishMetricAction
+    }
+  }
   export interface NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#action_name NetworkfirewallRuleGroup#action_name}
@@ -1166,14 +1675,17 @@ export namespace NetworkFirewall {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#action_definition NetworkfirewallRuleGroup#action_definition}
     */
-    readonly actionDefinition: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition[];
+    readonly actionDefinition: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition;
   }
 
   function networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       action_name: cdktf.stringToTerraform(struct!.actionName),
-      action_definition: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionToTerraform)(struct!.actionDefinition),
+      action_definition: networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionToTerraform(struct!.actionDefinition),
     }
   }
 
@@ -1186,6 +1698,9 @@ export namespace NetworkFirewall {
 
   function networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestination): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       address_definition: cdktf.stringToTerraform(struct!.addressDefinition),
     }
@@ -1204,6 +1719,9 @@ export namespace NetworkFirewall {
 
   function networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPortToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       from_port: cdktf.numberToTerraform(struct!.fromPort),
       to_port: cdktf.numberToTerraform(struct!.toPort),
@@ -1219,6 +1737,9 @@ export namespace NetworkFirewall {
 
   function networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourceToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       address_definition: cdktf.stringToTerraform(struct!.addressDefinition),
     }
@@ -1237,6 +1758,9 @@ export namespace NetworkFirewall {
 
   function networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePortToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       from_port: cdktf.numberToTerraform(struct!.fromPort),
       to_port: cdktf.numberToTerraform(struct!.toPort),
@@ -1256,6 +1780,9 @@ export namespace NetworkFirewall {
 
   function networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlagToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       flags: cdktf.listMapper(cdktf.stringToTerraform)(struct!.flags),
       masks: cdktf.listMapper(cdktf.stringToTerraform)(struct!.masks),
@@ -1299,8 +1826,11 @@ export namespace NetworkFirewall {
     readonly tcpFlag?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag[];
   }
 
-  function networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes): any {
+  function networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesOutputReference | NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       protocols: cdktf.listMapper(cdktf.numberToTerraform)(struct!.protocols),
       destination: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationToTerraform)(struct!.destination),
@@ -1311,6 +1841,118 @@ export namespace NetworkFirewall {
     }
   }
 
+  export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // protocols - computed: false, optional: true, required: false
+    private _protocols?: number[] | undefined; 
+    public get protocols() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('protocols') as any;
+    }
+    public set protocols(value: number[] | undefined) {
+      this._protocols = value;
+    }
+    public resetProtocols() {
+      this._protocols = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get protocolsInput() {
+      return this._protocols
+    }
+
+    // destination - computed: false, optional: true, required: false
+    private _destination?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestination[] | undefined; 
+    public get destination() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('destination') as any;
+    }
+    public set destination(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestination[] | undefined) {
+      this._destination = value;
+    }
+    public resetDestination() {
+      this._destination = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get destinationInput() {
+      return this._destination
+    }
+
+    // destination_port - computed: false, optional: true, required: false
+    private _destinationPort?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort[] | undefined; 
+    public get destinationPort() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('destination_port') as any;
+    }
+    public set destinationPort(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort[] | undefined) {
+      this._destinationPort = value;
+    }
+    public resetDestinationPort() {
+      this._destinationPort = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get destinationPortInput() {
+      return this._destinationPort
+    }
+
+    // source - computed: false, optional: true, required: false
+    private _source?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource[] | undefined; 
+    public get source() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('source') as any;
+    }
+    public set source(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource[] | undefined) {
+      this._source = value;
+    }
+    public resetSource() {
+      this._source = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sourceInput() {
+      return this._source
+    }
+
+    // source_port - computed: false, optional: true, required: false
+    private _sourcePort?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort[] | undefined; 
+    public get sourcePort() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('source_port') as any;
+    }
+    public set sourcePort(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort[] | undefined) {
+      this._sourcePort = value;
+    }
+    public resetSourcePort() {
+      this._sourcePort = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sourcePortInput() {
+      return this._sourcePort
+    }
+
+    // tcp_flag - computed: false, optional: true, required: false
+    private _tcpFlag?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag[] | undefined; 
+    public get tcpFlag() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tcp_flag') as any;
+    }
+    public set tcpFlag(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag[] | undefined) {
+      this._tcpFlag = value;
+    }
+    public resetTcpFlag() {
+      this._tcpFlag = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tcpFlagInput() {
+      return this._tcpFlag
+    }
+  }
   export interface NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinition {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#actions NetworkfirewallRuleGroup#actions}
@@ -1321,17 +1963,57 @@ export namespace NetworkFirewall {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#match_attributes NetworkfirewallRuleGroup#match_attributes}
     */
-    readonly matchAttributes: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes[];
+    readonly matchAttributes: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes;
   }
 
-  function networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinition): any {
+  function networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionOutputReference | NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinition): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       actions: cdktf.listMapper(cdktf.stringToTerraform)(struct!.actions),
-      match_attributes: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesToTerraform)(struct!.matchAttributes),
+      match_attributes: networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesToTerraform(struct!.matchAttributes),
     }
   }
 
+  export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // actions - computed: false, optional: false, required: true
+    private _actions?: string[]; 
+    public get actions() {
+      return this.getListAttribute('actions');
+    }
+    public set actions(value: string[]) {
+      this._actions = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get actionsInput() {
+      return this._actions
+    }
+
+    // match_attributes - computed: false, optional: false, required: true
+    private _matchAttributes?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes; 
+    private __matchAttributesOutput = new NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesOutputReference(this as any, "match_attributes", true);
+    public get matchAttributes() {
+      return this.__matchAttributesOutput;
+    }
+    public putMatchAttributes(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes) {
+      this._matchAttributes = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get matchAttributesInput() {
+      return this._matchAttributes
+    }
+  }
   export interface NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#priority NetworkfirewallRuleGroup#priority}
@@ -1342,14 +2024,17 @@ export namespace NetworkFirewall {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#rule_definition NetworkfirewallRuleGroup#rule_definition}
     */
-    readonly ruleDefinition: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinition[];
+    readonly ruleDefinition: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinition;
   }
 
   function networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       priority: cdktf.numberToTerraform(struct!.priority),
-      rule_definition: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionToTerraform)(struct!.ruleDefinition),
+      rule_definition: networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionToTerraform(struct!.ruleDefinition),
     }
   }
 
@@ -1368,14 +2053,58 @@ export namespace NetworkFirewall {
     readonly statelessRule: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule[];
   }
 
-  function networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions): any {
+  function networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsOutputReference | NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       custom_action: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionToTerraform)(struct!.customAction),
       stateless_rule: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleToTerraform)(struct!.statelessRule),
     }
   }
 
+  export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // custom_action - computed: false, optional: true, required: false
+    private _customAction?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction[] | undefined; 
+    public get customAction() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('custom_action') as any;
+    }
+    public set customAction(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction[] | undefined) {
+      this._customAction = value;
+    }
+    public resetCustomAction() {
+      this._customAction = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get customActionInput() {
+      return this._customAction
+    }
+
+    // stateless_rule - computed: false, optional: false, required: true
+    private _statelessRule?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule[]; 
+    public get statelessRule() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('stateless_rule') as any;
+    }
+    public set statelessRule(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule[]) {
+      this._statelessRule = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statelessRuleInput() {
+      return this._statelessRule
+    }
+  }
   export interface NetworkfirewallRuleGroupRuleGroupRulesSource {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#rules_string NetworkfirewallRuleGroup#rules_string}
@@ -1386,7 +2115,7 @@ export namespace NetworkFirewall {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#rules_source_list NetworkfirewallRuleGroup#rules_source_list}
     */
-    readonly rulesSourceList?: NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceList[];
+    readonly rulesSourceList?: NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceList;
     /**
     * stateful_rule block
     * 
@@ -1398,42 +2127,166 @@ export namespace NetworkFirewall {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#stateless_rules_and_custom_actions NetworkfirewallRuleGroup#stateless_rules_and_custom_actions}
     */
-    readonly statelessRulesAndCustomActions?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions[];
+    readonly statelessRulesAndCustomActions?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions;
   }
 
-  function networkfirewallRuleGroupRuleGroupRulesSourceToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSource): any {
+  function networkfirewallRuleGroupRuleGroupRulesSourceToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupRulesSourceOutputReference | NetworkfirewallRuleGroupRuleGroupRulesSource): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       rules_string: cdktf.stringToTerraform(struct!.rulesString),
-      rules_source_list: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRulesSourceRulesSourceListToTerraform)(struct!.rulesSourceList),
+      rules_source_list: networkfirewallRuleGroupRuleGroupRulesSourceRulesSourceListToTerraform(struct!.rulesSourceList),
       stateful_rule: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleToTerraform)(struct!.statefulRule),
-      stateless_rules_and_custom_actions: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsToTerraform)(struct!.statelessRulesAndCustomActions),
+      stateless_rules_and_custom_actions: networkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsToTerraform(struct!.statelessRulesAndCustomActions),
     }
   }
 
+  export class NetworkfirewallRuleGroupRuleGroupRulesSourceOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // rules_string - computed: false, optional: true, required: false
+    private _rulesString?: string | undefined; 
+    public get rulesString() {
+      return this.getStringAttribute('rules_string');
+    }
+    public set rulesString(value: string | undefined) {
+      this._rulesString = value;
+    }
+    public resetRulesString() {
+      this._rulesString = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get rulesStringInput() {
+      return this._rulesString
+    }
+
+    // rules_source_list - computed: false, optional: true, required: false
+    private _rulesSourceList?: NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceList | undefined; 
+    private __rulesSourceListOutput = new NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceListOutputReference(this as any, "rules_source_list", true);
+    public get rulesSourceList() {
+      return this.__rulesSourceListOutput;
+    }
+    public putRulesSourceList(value: NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceList | undefined) {
+      this._rulesSourceList = value;
+    }
+    public resetRulesSourceList() {
+      this._rulesSourceList = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get rulesSourceListInput() {
+      return this._rulesSourceList
+    }
+
+    // stateful_rule - computed: false, optional: true, required: false
+    private _statefulRule?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRule[] | undefined; 
+    public get statefulRule() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('stateful_rule') as any;
+    }
+    public set statefulRule(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRule[] | undefined) {
+      this._statefulRule = value;
+    }
+    public resetStatefulRule() {
+      this._statefulRule = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statefulRuleInput() {
+      return this._statefulRule
+    }
+
+    // stateless_rules_and_custom_actions - computed: false, optional: true, required: false
+    private _statelessRulesAndCustomActions?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions | undefined; 
+    private __statelessRulesAndCustomActionsOutput = new NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsOutputReference(this as any, "stateless_rules_and_custom_actions", true);
+    public get statelessRulesAndCustomActions() {
+      return this.__statelessRulesAndCustomActionsOutput;
+    }
+    public putStatelessRulesAndCustomActions(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions | undefined) {
+      this._statelessRulesAndCustomActions = value;
+    }
+    public resetStatelessRulesAndCustomActions() {
+      this._statelessRulesAndCustomActions = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statelessRulesAndCustomActionsInput() {
+      return this._statelessRulesAndCustomActions
+    }
+  }
   export interface NetworkfirewallRuleGroupRuleGroup {
     /**
     * rule_variables block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#rule_variables NetworkfirewallRuleGroup#rule_variables}
     */
-    readonly ruleVariables?: NetworkfirewallRuleGroupRuleGroupRuleVariables[];
+    readonly ruleVariables?: NetworkfirewallRuleGroupRuleGroupRuleVariables;
     /**
     * rules_source block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html#rules_source NetworkfirewallRuleGroup#rules_source}
     */
-    readonly rulesSource: NetworkfirewallRuleGroupRuleGroupRulesSource[];
+    readonly rulesSource: NetworkfirewallRuleGroupRuleGroupRulesSource;
   }
 
-  function networkfirewallRuleGroupRuleGroupToTerraform(struct?: NetworkfirewallRuleGroupRuleGroup): any {
+  function networkfirewallRuleGroupRuleGroupToTerraform(struct?: NetworkfirewallRuleGroupRuleGroupOutputReference | NetworkfirewallRuleGroupRuleGroup): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      rule_variables: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRuleVariablesToTerraform)(struct!.ruleVariables),
-      rules_source: cdktf.listMapper(networkfirewallRuleGroupRuleGroupRulesSourceToTerraform)(struct!.rulesSource),
+      rule_variables: networkfirewallRuleGroupRuleGroupRuleVariablesToTerraform(struct!.ruleVariables),
+      rules_source: networkfirewallRuleGroupRuleGroupRulesSourceToTerraform(struct!.rulesSource),
     }
   }
 
+  export class NetworkfirewallRuleGroupRuleGroupOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // rule_variables - computed: false, optional: true, required: false
+    private _ruleVariables?: NetworkfirewallRuleGroupRuleGroupRuleVariables | undefined; 
+    private __ruleVariablesOutput = new NetworkfirewallRuleGroupRuleGroupRuleVariablesOutputReference(this as any, "rule_variables", true);
+    public get ruleVariables() {
+      return this.__ruleVariablesOutput;
+    }
+    public putRuleVariables(value: NetworkfirewallRuleGroupRuleGroupRuleVariables | undefined) {
+      this._ruleVariables = value;
+    }
+    public resetRuleVariables() {
+      this._ruleVariables = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get ruleVariablesInput() {
+      return this._ruleVariables
+    }
+
+    // rules_source - computed: false, optional: false, required: true
+    private _rulesSource?: NetworkfirewallRuleGroupRuleGroupRulesSource; 
+    private __rulesSourceOutput = new NetworkfirewallRuleGroupRuleGroupRulesSourceOutputReference(this as any, "rules_source", true);
+    public get rulesSource() {
+      return this.__rulesSourceOutput;
+    }
+    public putRulesSource(value: NetworkfirewallRuleGroupRuleGroupRulesSource) {
+      this._rulesSource = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get rulesSourceInput() {
+      return this._rulesSource
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/networkfirewall_rule_group.html aws_networkfirewall_rule_group}
@@ -1487,7 +2340,7 @@ export namespace NetworkFirewall {
     }
 
     // capacity - computed: false, optional: false, required: true
-    private _capacity: number;
+    private _capacity?: number; 
     public get capacity() {
       return this.getNumberAttribute('capacity');
     }
@@ -1500,11 +2353,11 @@ export namespace NetworkFirewall {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1521,7 +2374,7 @@ export namespace NetworkFirewall {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1534,11 +2387,11 @@ export namespace NetworkFirewall {
     }
 
     // rules - computed: false, optional: true, required: false
-    private _rules?: string;
+    private _rules?: string | undefined; 
     public get rules() {
       return this.getStringAttribute('rules');
     }
-    public set rules(value: string ) {
+    public set rules(value: string | undefined) {
       this._rules = value;
     }
     public resetRules() {
@@ -1550,11 +2403,12 @@ export namespace NetworkFirewall {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1566,11 +2420,12 @@ export namespace NetworkFirewall {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1582,7 +2437,7 @@ export namespace NetworkFirewall {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }
@@ -1600,11 +2455,12 @@ export namespace NetworkFirewall {
     }
 
     // rule_group - computed: false, optional: true, required: false
-    private _ruleGroup?: NetworkfirewallRuleGroupRuleGroup[];
+    private _ruleGroup?: NetworkfirewallRuleGroupRuleGroup | undefined; 
+    private __ruleGroupOutput = new NetworkfirewallRuleGroupRuleGroupOutputReference(this as any, "rule_group", true);
     public get ruleGroup() {
-      return this.interpolationForAttribute('rule_group') as any;
+      return this.__ruleGroupOutput;
     }
-    public set ruleGroup(value: NetworkfirewallRuleGroupRuleGroup[] ) {
+    public putRuleGroup(value: NetworkfirewallRuleGroupRuleGroup | undefined) {
       this._ruleGroup = value;
     }
     public resetRuleGroup() {
@@ -1628,7 +2484,7 @@ export namespace NetworkFirewall {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         type: cdktf.stringToTerraform(this._type),
-        rule_group: cdktf.listMapper(networkfirewallRuleGroupRuleGroupToTerraform)(this._ruleGroup),
+        rule_group: networkfirewallRuleGroupRuleGroupToTerraform(this._ruleGroup),
       };
     }
   }

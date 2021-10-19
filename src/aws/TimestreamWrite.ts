@@ -74,7 +74,7 @@ export namespace TimestreamWrite {
     }
 
     // database_name - computed: false, optional: false, required: true
-    private _databaseName: string;
+    private _databaseName?: string; 
     public get databaseName() {
       return this.getStringAttribute('database_name');
     }
@@ -92,11 +92,11 @@ export namespace TimestreamWrite {
     }
 
     // kms_key_id - computed: true, optional: true, required: false
-    private _kmsKeyId?: string;
+    private _kmsKeyId?: string | undefined; 
     public get kmsKeyId() {
       return this.getStringAttribute('kms_key_id');
     }
-    public set kmsKeyId(value: string) {
+    public set kmsKeyId(value: string | undefined) {
       this._kmsKeyId = value;
     }
     public resetKmsKeyId() {
@@ -113,11 +113,12 @@ export namespace TimestreamWrite {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -129,11 +130,12 @@ export namespace TimestreamWrite {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -179,7 +181,7 @@ export namespace TimestreamWrite {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/timestreamwrite_table.html#retention_properties TimestreamwriteTable#retention_properties}
     */
-    readonly retentionProperties?: TimestreamwriteTableRetentionProperties[];
+    readonly retentionProperties?: TimestreamwriteTableRetentionProperties;
   }
   export interface TimestreamwriteTableRetentionProperties {
     /**
@@ -192,14 +194,53 @@ export namespace TimestreamWrite {
     readonly memoryStoreRetentionPeriodInHours: number;
   }
 
-  function timestreamwriteTableRetentionPropertiesToTerraform(struct?: TimestreamwriteTableRetentionProperties): any {
+  function timestreamwriteTableRetentionPropertiesToTerraform(struct?: TimestreamwriteTableRetentionPropertiesOutputReference | TimestreamwriteTableRetentionProperties): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       magnetic_store_retention_period_in_days: cdktf.numberToTerraform(struct!.magneticStoreRetentionPeriodInDays),
       memory_store_retention_period_in_hours: cdktf.numberToTerraform(struct!.memoryStoreRetentionPeriodInHours),
     }
   }
 
+  export class TimestreamwriteTableRetentionPropertiesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // magnetic_store_retention_period_in_days - computed: false, optional: false, required: true
+    private _magneticStoreRetentionPeriodInDays?: number; 
+    public get magneticStoreRetentionPeriodInDays() {
+      return this.getNumberAttribute('magnetic_store_retention_period_in_days');
+    }
+    public set magneticStoreRetentionPeriodInDays(value: number) {
+      this._magneticStoreRetentionPeriodInDays = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get magneticStoreRetentionPeriodInDaysInput() {
+      return this._magneticStoreRetentionPeriodInDays
+    }
+
+    // memory_store_retention_period_in_hours - computed: false, optional: false, required: true
+    private _memoryStoreRetentionPeriodInHours?: number; 
+    public get memoryStoreRetentionPeriodInHours() {
+      return this.getNumberAttribute('memory_store_retention_period_in_hours');
+    }
+    public set memoryStoreRetentionPeriodInHours(value: number) {
+      this._memoryStoreRetentionPeriodInHours = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get memoryStoreRetentionPeriodInHoursInput() {
+      return this._memoryStoreRetentionPeriodInHours
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/timestreamwrite_table.html aws_timestreamwrite_table}
@@ -250,7 +291,7 @@ export namespace TimestreamWrite {
     }
 
     // database_name - computed: false, optional: false, required: true
-    private _databaseName: string;
+    private _databaseName?: string; 
     public get databaseName() {
       return this.getStringAttribute('database_name');
     }
@@ -268,7 +309,7 @@ export namespace TimestreamWrite {
     }
 
     // table_name - computed: false, optional: false, required: true
-    private _tableName: string;
+    private _tableName?: string; 
     public get tableName() {
       return this.getStringAttribute('table_name');
     }
@@ -281,11 +322,12 @@ export namespace TimestreamWrite {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -297,11 +339,12 @@ export namespace TimestreamWrite {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -313,11 +356,12 @@ export namespace TimestreamWrite {
     }
 
     // retention_properties - computed: false, optional: true, required: false
-    private _retentionProperties?: TimestreamwriteTableRetentionProperties[];
+    private _retentionProperties?: TimestreamwriteTableRetentionProperties | undefined; 
+    private __retentionPropertiesOutput = new TimestreamwriteTableRetentionPropertiesOutputReference(this as any, "retention_properties", true);
     public get retentionProperties() {
-      return this.interpolationForAttribute('retention_properties') as any;
+      return this.__retentionPropertiesOutput;
     }
-    public set retentionProperties(value: TimestreamwriteTableRetentionProperties[] ) {
+    public putRetentionProperties(value: TimestreamwriteTableRetentionProperties | undefined) {
       this._retentionProperties = value;
     }
     public resetRetentionProperties() {
@@ -338,7 +382,7 @@ export namespace TimestreamWrite {
         table_name: cdktf.stringToTerraform(this._tableName),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        retention_properties: cdktf.listMapper(timestreamwriteTableRetentionPropertiesToTerraform)(this._retentionProperties),
+        retention_properties: timestreamwriteTableRetentionPropertiesToTerraform(this._retentionProperties),
       };
     }
   }

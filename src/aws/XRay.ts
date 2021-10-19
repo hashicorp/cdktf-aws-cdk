@@ -64,11 +64,11 @@ export namespace XRay {
     }
 
     // key_id - computed: false, optional: true, required: false
-    private _keyId?: string;
+    private _keyId?: string | undefined; 
     public get keyId() {
       return this.getStringAttribute('key_id');
     }
-    public set keyId(value: string ) {
+    public set keyId(value: string | undefined) {
       this._keyId = value;
     }
     public resetKeyId() {
@@ -80,7 +80,7 @@ export namespace XRay {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }
@@ -170,7 +170,7 @@ export namespace XRay {
     }
 
     // filter_expression - computed: false, optional: false, required: true
-    private _filterExpression: string;
+    private _filterExpression?: string; 
     public get filterExpression() {
       return this.getStringAttribute('filter_expression');
     }
@@ -183,7 +183,7 @@ export namespace XRay {
     }
 
     // group_name - computed: false, optional: false, required: true
-    private _groupName: string;
+    private _groupName?: string; 
     public get groupName() {
       return this.getStringAttribute('group_name');
     }
@@ -201,11 +201,12 @@ export namespace XRay {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -217,11 +218,12 @@ export namespace XRay {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -362,11 +364,12 @@ export namespace XRay {
     }
 
     // attributes - computed: false, optional: true, required: false
-    private _attributes?: { [key: string]: string } | cdktf.IResolvable;
+    private _attributes?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get attributes() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('attributes') as any;
     }
-    public set attributes(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set attributes(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._attributes = value;
     }
     public resetAttributes() {
@@ -378,7 +381,7 @@ export namespace XRay {
     }
 
     // fixed_rate - computed: false, optional: false, required: true
-    private _fixedRate: number;
+    private _fixedRate?: number; 
     public get fixedRate() {
       return this.getNumberAttribute('fixed_rate');
     }
@@ -391,7 +394,7 @@ export namespace XRay {
     }
 
     // host - computed: false, optional: false, required: true
-    private _host: string;
+    private _host?: string; 
     public get host() {
       return this.getStringAttribute('host');
     }
@@ -404,7 +407,7 @@ export namespace XRay {
     }
 
     // http_method - computed: false, optional: false, required: true
-    private _httpMethod: string;
+    private _httpMethod?: string; 
     public get httpMethod() {
       return this.getStringAttribute('http_method');
     }
@@ -422,7 +425,7 @@ export namespace XRay {
     }
 
     // priority - computed: false, optional: false, required: true
-    private _priority: number;
+    private _priority?: number; 
     public get priority() {
       return this.getNumberAttribute('priority');
     }
@@ -435,7 +438,7 @@ export namespace XRay {
     }
 
     // reservoir_size - computed: false, optional: false, required: true
-    private _reservoirSize: number;
+    private _reservoirSize?: number; 
     public get reservoirSize() {
       return this.getNumberAttribute('reservoir_size');
     }
@@ -448,7 +451,7 @@ export namespace XRay {
     }
 
     // resource_arn - computed: false, optional: false, required: true
-    private _resourceArn: string;
+    private _resourceArn?: string; 
     public get resourceArn() {
       return this.getStringAttribute('resource_arn');
     }
@@ -461,11 +464,11 @@ export namespace XRay {
     }
 
     // rule_name - computed: false, optional: true, required: false
-    private _ruleName?: string;
+    private _ruleName?: string | undefined; 
     public get ruleName() {
       return this.getStringAttribute('rule_name');
     }
-    public set ruleName(value: string ) {
+    public set ruleName(value: string | undefined) {
       this._ruleName = value;
     }
     public resetRuleName() {
@@ -477,7 +480,7 @@ export namespace XRay {
     }
 
     // service_name - computed: false, optional: false, required: true
-    private _serviceName: string;
+    private _serviceName?: string; 
     public get serviceName() {
       return this.getStringAttribute('service_name');
     }
@@ -490,7 +493,7 @@ export namespace XRay {
     }
 
     // service_type - computed: false, optional: false, required: true
-    private _serviceType: string;
+    private _serviceType?: string; 
     public get serviceType() {
       return this.getStringAttribute('service_type');
     }
@@ -503,11 +506,12 @@ export namespace XRay {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -519,11 +523,12 @@ export namespace XRay {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -535,7 +540,7 @@ export namespace XRay {
     }
 
     // url_path - computed: false, optional: false, required: true
-    private _urlPath: string;
+    private _urlPath?: string; 
     public get urlPath() {
       return this.getStringAttribute('url_path');
     }
@@ -548,7 +553,7 @@ export namespace XRay {
     }
 
     // version - computed: false, optional: false, required: true
-    private _version: number;
+    private _version?: number; 
     public get version() {
       return this.getNumberAttribute('version');
     }

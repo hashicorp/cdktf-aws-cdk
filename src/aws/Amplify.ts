@@ -81,7 +81,7 @@ export namespace Amplify {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/amplify_app.html#auto_branch_creation_config AmplifyApp#auto_branch_creation_config}
     */
-    readonly autoBranchCreationConfig?: AmplifyAppAutoBranchCreationConfig[];
+    readonly autoBranchCreationConfig?: AmplifyAppAutoBranchCreationConfig;
     /**
     * custom_rule block
     * 
@@ -154,8 +154,11 @@ export namespace Amplify {
     readonly stage?: string;
   }
 
-  function amplifyAppAutoBranchCreationConfigToTerraform(struct?: AmplifyAppAutoBranchCreationConfig): any {
+  function amplifyAppAutoBranchCreationConfigToTerraform(struct?: AmplifyAppAutoBranchCreationConfigOutputReference | AmplifyAppAutoBranchCreationConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       basic_auth_credentials: cdktf.stringToTerraform(struct!.basicAuthCredentials),
       build_spec: cdktf.stringToTerraform(struct!.buildSpec),
@@ -170,6 +173,177 @@ export namespace Amplify {
     }
   }
 
+  export class AmplifyAppAutoBranchCreationConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // basic_auth_credentials - computed: false, optional: true, required: false
+    private _basicAuthCredentials?: string | undefined; 
+    public get basicAuthCredentials() {
+      return this.getStringAttribute('basic_auth_credentials');
+    }
+    public set basicAuthCredentials(value: string | undefined) {
+      this._basicAuthCredentials = value;
+    }
+    public resetBasicAuthCredentials() {
+      this._basicAuthCredentials = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get basicAuthCredentialsInput() {
+      return this._basicAuthCredentials
+    }
+
+    // build_spec - computed: false, optional: true, required: false
+    private _buildSpec?: string | undefined; 
+    public get buildSpec() {
+      return this.getStringAttribute('build_spec');
+    }
+    public set buildSpec(value: string | undefined) {
+      this._buildSpec = value;
+    }
+    public resetBuildSpec() {
+      this._buildSpec = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get buildSpecInput() {
+      return this._buildSpec
+    }
+
+    // enable_auto_build - computed: false, optional: true, required: false
+    private _enableAutoBuild?: boolean | cdktf.IResolvable | undefined; 
+    public get enableAutoBuild() {
+      return this.getBooleanAttribute('enable_auto_build') as any;
+    }
+    public set enableAutoBuild(value: boolean | cdktf.IResolvable | undefined) {
+      this._enableAutoBuild = value;
+    }
+    public resetEnableAutoBuild() {
+      this._enableAutoBuild = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enableAutoBuildInput() {
+      return this._enableAutoBuild
+    }
+
+    // enable_basic_auth - computed: false, optional: true, required: false
+    private _enableBasicAuth?: boolean | cdktf.IResolvable | undefined; 
+    public get enableBasicAuth() {
+      return this.getBooleanAttribute('enable_basic_auth') as any;
+    }
+    public set enableBasicAuth(value: boolean | cdktf.IResolvable | undefined) {
+      this._enableBasicAuth = value;
+    }
+    public resetEnableBasicAuth() {
+      this._enableBasicAuth = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enableBasicAuthInput() {
+      return this._enableBasicAuth
+    }
+
+    // enable_performance_mode - computed: false, optional: true, required: false
+    private _enablePerformanceMode?: boolean | cdktf.IResolvable | undefined; 
+    public get enablePerformanceMode() {
+      return this.getBooleanAttribute('enable_performance_mode') as any;
+    }
+    public set enablePerformanceMode(value: boolean | cdktf.IResolvable | undefined) {
+      this._enablePerformanceMode = value;
+    }
+    public resetEnablePerformanceMode() {
+      this._enablePerformanceMode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enablePerformanceModeInput() {
+      return this._enablePerformanceMode
+    }
+
+    // enable_pull_request_preview - computed: false, optional: true, required: false
+    private _enablePullRequestPreview?: boolean | cdktf.IResolvable | undefined; 
+    public get enablePullRequestPreview() {
+      return this.getBooleanAttribute('enable_pull_request_preview') as any;
+    }
+    public set enablePullRequestPreview(value: boolean | cdktf.IResolvable | undefined) {
+      this._enablePullRequestPreview = value;
+    }
+    public resetEnablePullRequestPreview() {
+      this._enablePullRequestPreview = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enablePullRequestPreviewInput() {
+      return this._enablePullRequestPreview
+    }
+
+    // environment_variables - computed: false, optional: true, required: false
+    private _environmentVariables?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get environmentVariables() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('environment_variables') as any;
+    }
+    public set environmentVariables(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._environmentVariables = value;
+    }
+    public resetEnvironmentVariables() {
+      this._environmentVariables = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get environmentVariablesInput() {
+      return this._environmentVariables
+    }
+
+    // framework - computed: false, optional: true, required: false
+    private _framework?: string | undefined; 
+    public get framework() {
+      return this.getStringAttribute('framework');
+    }
+    public set framework(value: string | undefined) {
+      this._framework = value;
+    }
+    public resetFramework() {
+      this._framework = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get frameworkInput() {
+      return this._framework
+    }
+
+    // pull_request_environment_name - computed: false, optional: true, required: false
+    private _pullRequestEnvironmentName?: string | undefined; 
+    public get pullRequestEnvironmentName() {
+      return this.getStringAttribute('pull_request_environment_name');
+    }
+    public set pullRequestEnvironmentName(value: string | undefined) {
+      this._pullRequestEnvironmentName = value;
+    }
+    public resetPullRequestEnvironmentName() {
+      this._pullRequestEnvironmentName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get pullRequestEnvironmentNameInput() {
+      return this._pullRequestEnvironmentName
+    }
+
+    // stage - computed: false, optional: true, required: false
+    private _stage?: string | undefined; 
+    public get stage() {
+      return this.getStringAttribute('stage');
+    }
+    public set stage(value: string | undefined) {
+      this._stage = value;
+    }
+    public resetStage() {
+      this._stage = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get stageInput() {
+      return this._stage
+    }
+  }
   export interface AmplifyAppCustomRule {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/amplify_app.html#condition AmplifyApp#condition}
@@ -191,6 +365,9 @@ export namespace Amplify {
 
   function amplifyAppCustomRuleToTerraform(struct?: AmplifyAppCustomRule): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       condition: cdktf.stringToTerraform(struct!.condition),
       source: cdktf.stringToTerraform(struct!.source),
@@ -258,11 +435,11 @@ export namespace Amplify {
     // ==========
 
     // access_token - computed: false, optional: true, required: false
-    private _accessToken?: string;
+    private _accessToken?: string | undefined; 
     public get accessToken() {
       return this.getStringAttribute('access_token');
     }
-    public set accessToken(value: string ) {
+    public set accessToken(value: string | undefined) {
       this._accessToken = value;
     }
     public resetAccessToken() {
@@ -279,11 +456,11 @@ export namespace Amplify {
     }
 
     // auto_branch_creation_patterns - computed: false, optional: true, required: false
-    private _autoBranchCreationPatterns?: string[];
+    private _autoBranchCreationPatterns?: string[] | undefined; 
     public get autoBranchCreationPatterns() {
       return this.getListAttribute('auto_branch_creation_patterns');
     }
-    public set autoBranchCreationPatterns(value: string[] ) {
+    public set autoBranchCreationPatterns(value: string[] | undefined) {
       this._autoBranchCreationPatterns = value;
     }
     public resetAutoBranchCreationPatterns() {
@@ -295,11 +472,11 @@ export namespace Amplify {
     }
 
     // basic_auth_credentials - computed: false, optional: true, required: false
-    private _basicAuthCredentials?: string;
+    private _basicAuthCredentials?: string | undefined; 
     public get basicAuthCredentials() {
       return this.getStringAttribute('basic_auth_credentials');
     }
-    public set basicAuthCredentials(value: string ) {
+    public set basicAuthCredentials(value: string | undefined) {
       this._basicAuthCredentials = value;
     }
     public resetBasicAuthCredentials() {
@@ -311,11 +488,11 @@ export namespace Amplify {
     }
 
     // build_spec - computed: true, optional: true, required: false
-    private _buildSpec?: string;
+    private _buildSpec?: string | undefined; 
     public get buildSpec() {
       return this.getStringAttribute('build_spec');
     }
-    public set buildSpec(value: string) {
+    public set buildSpec(value: string | undefined) {
       this._buildSpec = value;
     }
     public resetBuildSpec() {
@@ -332,11 +509,11 @@ export namespace Amplify {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -348,11 +525,11 @@ export namespace Amplify {
     }
 
     // enable_auto_branch_creation - computed: false, optional: true, required: false
-    private _enableAutoBranchCreation?: boolean | cdktf.IResolvable;
+    private _enableAutoBranchCreation?: boolean | cdktf.IResolvable | undefined; 
     public get enableAutoBranchCreation() {
-      return this.getBooleanAttribute('enable_auto_branch_creation');
+      return this.getBooleanAttribute('enable_auto_branch_creation') as any;
     }
-    public set enableAutoBranchCreation(value: boolean | cdktf.IResolvable ) {
+    public set enableAutoBranchCreation(value: boolean | cdktf.IResolvable | undefined) {
       this._enableAutoBranchCreation = value;
     }
     public resetEnableAutoBranchCreation() {
@@ -364,11 +541,11 @@ export namespace Amplify {
     }
 
     // enable_basic_auth - computed: false, optional: true, required: false
-    private _enableBasicAuth?: boolean | cdktf.IResolvable;
+    private _enableBasicAuth?: boolean | cdktf.IResolvable | undefined; 
     public get enableBasicAuth() {
-      return this.getBooleanAttribute('enable_basic_auth');
+      return this.getBooleanAttribute('enable_basic_auth') as any;
     }
-    public set enableBasicAuth(value: boolean | cdktf.IResolvable ) {
+    public set enableBasicAuth(value: boolean | cdktf.IResolvable | undefined) {
       this._enableBasicAuth = value;
     }
     public resetEnableBasicAuth() {
@@ -380,11 +557,11 @@ export namespace Amplify {
     }
 
     // enable_branch_auto_build - computed: false, optional: true, required: false
-    private _enableBranchAutoBuild?: boolean | cdktf.IResolvable;
+    private _enableBranchAutoBuild?: boolean | cdktf.IResolvable | undefined; 
     public get enableBranchAutoBuild() {
-      return this.getBooleanAttribute('enable_branch_auto_build');
+      return this.getBooleanAttribute('enable_branch_auto_build') as any;
     }
-    public set enableBranchAutoBuild(value: boolean | cdktf.IResolvable ) {
+    public set enableBranchAutoBuild(value: boolean | cdktf.IResolvable | undefined) {
       this._enableBranchAutoBuild = value;
     }
     public resetEnableBranchAutoBuild() {
@@ -396,11 +573,11 @@ export namespace Amplify {
     }
 
     // enable_branch_auto_deletion - computed: false, optional: true, required: false
-    private _enableBranchAutoDeletion?: boolean | cdktf.IResolvable;
+    private _enableBranchAutoDeletion?: boolean | cdktf.IResolvable | undefined; 
     public get enableBranchAutoDeletion() {
-      return this.getBooleanAttribute('enable_branch_auto_deletion');
+      return this.getBooleanAttribute('enable_branch_auto_deletion') as any;
     }
-    public set enableBranchAutoDeletion(value: boolean | cdktf.IResolvable ) {
+    public set enableBranchAutoDeletion(value: boolean | cdktf.IResolvable | undefined) {
       this._enableBranchAutoDeletion = value;
     }
     public resetEnableBranchAutoDeletion() {
@@ -412,11 +589,12 @@ export namespace Amplify {
     }
 
     // environment_variables - computed: false, optional: true, required: false
-    private _environmentVariables?: { [key: string]: string } | cdktf.IResolvable;
+    private _environmentVariables?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get environmentVariables() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('environment_variables') as any;
     }
-    public set environmentVariables(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set environmentVariables(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._environmentVariables = value;
     }
     public resetEnvironmentVariables() {
@@ -428,11 +606,11 @@ export namespace Amplify {
     }
 
     // iam_service_role_arn - computed: false, optional: true, required: false
-    private _iamServiceRoleArn?: string;
+    private _iamServiceRoleArn?: string | undefined; 
     public get iamServiceRoleArn() {
       return this.getStringAttribute('iam_service_role_arn');
     }
-    public set iamServiceRoleArn(value: string ) {
+    public set iamServiceRoleArn(value: string | undefined) {
       this._iamServiceRoleArn = value;
     }
     public resetIamServiceRoleArn() {
@@ -449,7 +627,7 @@ export namespace Amplify {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -462,11 +640,11 @@ export namespace Amplify {
     }
 
     // oauth_token - computed: false, optional: true, required: false
-    private _oauthToken?: string;
+    private _oauthToken?: string | undefined; 
     public get oauthToken() {
       return this.getStringAttribute('oauth_token');
     }
-    public set oauthToken(value: string ) {
+    public set oauthToken(value: string | undefined) {
       this._oauthToken = value;
     }
     public resetOauthToken() {
@@ -478,11 +656,11 @@ export namespace Amplify {
     }
 
     // platform - computed: false, optional: true, required: false
-    private _platform?: string;
+    private _platform?: string | undefined; 
     public get platform() {
       return this.getStringAttribute('platform');
     }
-    public set platform(value: string ) {
+    public set platform(value: string | undefined) {
       this._platform = value;
     }
     public resetPlatform() {
@@ -499,11 +677,11 @@ export namespace Amplify {
     }
 
     // repository - computed: false, optional: true, required: false
-    private _repository?: string;
+    private _repository?: string | undefined; 
     public get repository() {
       return this.getStringAttribute('repository');
     }
-    public set repository(value: string ) {
+    public set repository(value: string | undefined) {
       this._repository = value;
     }
     public resetRepository() {
@@ -515,11 +693,12 @@ export namespace Amplify {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -531,11 +710,12 @@ export namespace Amplify {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -547,11 +727,12 @@ export namespace Amplify {
     }
 
     // auto_branch_creation_config - computed: false, optional: true, required: false
-    private _autoBranchCreationConfig?: AmplifyAppAutoBranchCreationConfig[];
+    private _autoBranchCreationConfig?: AmplifyAppAutoBranchCreationConfig | undefined; 
+    private __autoBranchCreationConfigOutput = new AmplifyAppAutoBranchCreationConfigOutputReference(this as any, "auto_branch_creation_config", true);
     public get autoBranchCreationConfig() {
-      return this.interpolationForAttribute('auto_branch_creation_config') as any;
+      return this.__autoBranchCreationConfigOutput;
     }
-    public set autoBranchCreationConfig(value: AmplifyAppAutoBranchCreationConfig[] ) {
+    public putAutoBranchCreationConfig(value: AmplifyAppAutoBranchCreationConfig | undefined) {
       this._autoBranchCreationConfig = value;
     }
     public resetAutoBranchCreationConfig() {
@@ -563,11 +744,12 @@ export namespace Amplify {
     }
 
     // custom_rule - computed: false, optional: true, required: false
-    private _customRule?: AmplifyAppCustomRule[];
+    private _customRule?: AmplifyAppCustomRule[] | undefined; 
     public get customRule() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('custom_rule') as any;
     }
-    public set customRule(value: AmplifyAppCustomRule[] ) {
+    public set customRule(value: AmplifyAppCustomRule[] | undefined) {
       this._customRule = value;
     }
     public resetCustomRule() {
@@ -601,7 +783,7 @@ export namespace Amplify {
         repository: cdktf.stringToTerraform(this._repository),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        auto_branch_creation_config: cdktf.listMapper(amplifyAppAutoBranchCreationConfigToTerraform)(this._autoBranchCreationConfig),
+        auto_branch_creation_config: amplifyAppAutoBranchCreationConfigToTerraform(this._autoBranchCreationConfig),
         custom_rule: cdktf.listMapper(amplifyAppCustomRuleToTerraform)(this._customRule),
       };
     }
@@ -668,7 +850,7 @@ export namespace Amplify {
     // ==========
 
     // app_id - computed: false, optional: false, required: true
-    private _appId: string;
+    private _appId?: string; 
     public get appId() {
       return this.getStringAttribute('app_id');
     }
@@ -686,11 +868,11 @@ export namespace Amplify {
     }
 
     // deployment_artifacts - computed: true, optional: true, required: false
-    private _deploymentArtifacts?: string;
+    private _deploymentArtifacts?: string | undefined; 
     public get deploymentArtifacts() {
       return this.getStringAttribute('deployment_artifacts');
     }
-    public set deploymentArtifacts(value: string) {
+    public set deploymentArtifacts(value: string | undefined) {
       this._deploymentArtifacts = value;
     }
     public resetDeploymentArtifacts() {
@@ -702,7 +884,7 @@ export namespace Amplify {
     }
 
     // environment_name - computed: false, optional: false, required: true
-    private _environmentName: string;
+    private _environmentName?: string; 
     public get environmentName() {
       return this.getStringAttribute('environment_name');
     }
@@ -720,11 +902,11 @@ export namespace Amplify {
     }
 
     // stack_name - computed: true, optional: true, required: false
-    private _stackName?: string;
+    private _stackName?: string | undefined; 
     public get stackName() {
       return this.getStringAttribute('stack_name');
     }
-    public set stackName(value: string) {
+    public set stackName(value: string | undefined) {
       this._stackName = value;
     }
     public resetStackName() {
@@ -880,7 +1062,7 @@ export namespace Amplify {
     // ==========
 
     // app_id - computed: false, optional: false, required: true
-    private _appId: string;
+    private _appId?: string; 
     public get appId() {
       return this.getStringAttribute('app_id');
     }
@@ -903,11 +1085,11 @@ export namespace Amplify {
     }
 
     // backend_environment_arn - computed: false, optional: true, required: false
-    private _backendEnvironmentArn?: string;
+    private _backendEnvironmentArn?: string | undefined; 
     public get backendEnvironmentArn() {
       return this.getStringAttribute('backend_environment_arn');
     }
-    public set backendEnvironmentArn(value: string ) {
+    public set backendEnvironmentArn(value: string | undefined) {
       this._backendEnvironmentArn = value;
     }
     public resetBackendEnvironmentArn() {
@@ -919,11 +1101,11 @@ export namespace Amplify {
     }
 
     // basic_auth_credentials - computed: false, optional: true, required: false
-    private _basicAuthCredentials?: string;
+    private _basicAuthCredentials?: string | undefined; 
     public get basicAuthCredentials() {
       return this.getStringAttribute('basic_auth_credentials');
     }
-    public set basicAuthCredentials(value: string ) {
+    public set basicAuthCredentials(value: string | undefined) {
       this._basicAuthCredentials = value;
     }
     public resetBasicAuthCredentials() {
@@ -935,7 +1117,7 @@ export namespace Amplify {
     }
 
     // branch_name - computed: false, optional: false, required: true
-    private _branchName: string;
+    private _branchName?: string; 
     public get branchName() {
       return this.getStringAttribute('branch_name');
     }
@@ -953,11 +1135,11 @@ export namespace Amplify {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -974,11 +1156,11 @@ export namespace Amplify {
     }
 
     // display_name - computed: true, optional: true, required: false
-    private _displayName?: string;
+    private _displayName?: string | undefined; 
     public get displayName() {
       return this.getStringAttribute('display_name');
     }
-    public set displayName(value: string) {
+    public set displayName(value: string | undefined) {
       this._displayName = value;
     }
     public resetDisplayName() {
@@ -990,11 +1172,11 @@ export namespace Amplify {
     }
 
     // enable_auto_build - computed: false, optional: true, required: false
-    private _enableAutoBuild?: boolean | cdktf.IResolvable;
+    private _enableAutoBuild?: boolean | cdktf.IResolvable | undefined; 
     public get enableAutoBuild() {
-      return this.getBooleanAttribute('enable_auto_build');
+      return this.getBooleanAttribute('enable_auto_build') as any;
     }
-    public set enableAutoBuild(value: boolean | cdktf.IResolvable ) {
+    public set enableAutoBuild(value: boolean | cdktf.IResolvable | undefined) {
       this._enableAutoBuild = value;
     }
     public resetEnableAutoBuild() {
@@ -1006,11 +1188,11 @@ export namespace Amplify {
     }
 
     // enable_basic_auth - computed: false, optional: true, required: false
-    private _enableBasicAuth?: boolean | cdktf.IResolvable;
+    private _enableBasicAuth?: boolean | cdktf.IResolvable | undefined; 
     public get enableBasicAuth() {
-      return this.getBooleanAttribute('enable_basic_auth');
+      return this.getBooleanAttribute('enable_basic_auth') as any;
     }
-    public set enableBasicAuth(value: boolean | cdktf.IResolvable ) {
+    public set enableBasicAuth(value: boolean | cdktf.IResolvable | undefined) {
       this._enableBasicAuth = value;
     }
     public resetEnableBasicAuth() {
@@ -1022,11 +1204,11 @@ export namespace Amplify {
     }
 
     // enable_notification - computed: false, optional: true, required: false
-    private _enableNotification?: boolean | cdktf.IResolvable;
+    private _enableNotification?: boolean | cdktf.IResolvable | undefined; 
     public get enableNotification() {
-      return this.getBooleanAttribute('enable_notification');
+      return this.getBooleanAttribute('enable_notification') as any;
     }
-    public set enableNotification(value: boolean | cdktf.IResolvable ) {
+    public set enableNotification(value: boolean | cdktf.IResolvable | undefined) {
       this._enableNotification = value;
     }
     public resetEnableNotification() {
@@ -1038,11 +1220,11 @@ export namespace Amplify {
     }
 
     // enable_performance_mode - computed: false, optional: true, required: false
-    private _enablePerformanceMode?: boolean | cdktf.IResolvable;
+    private _enablePerformanceMode?: boolean | cdktf.IResolvable | undefined; 
     public get enablePerformanceMode() {
-      return this.getBooleanAttribute('enable_performance_mode');
+      return this.getBooleanAttribute('enable_performance_mode') as any;
     }
-    public set enablePerformanceMode(value: boolean | cdktf.IResolvable ) {
+    public set enablePerformanceMode(value: boolean | cdktf.IResolvable | undefined) {
       this._enablePerformanceMode = value;
     }
     public resetEnablePerformanceMode() {
@@ -1054,11 +1236,11 @@ export namespace Amplify {
     }
 
     // enable_pull_request_preview - computed: false, optional: true, required: false
-    private _enablePullRequestPreview?: boolean | cdktf.IResolvable;
+    private _enablePullRequestPreview?: boolean | cdktf.IResolvable | undefined; 
     public get enablePullRequestPreview() {
-      return this.getBooleanAttribute('enable_pull_request_preview');
+      return this.getBooleanAttribute('enable_pull_request_preview') as any;
     }
-    public set enablePullRequestPreview(value: boolean | cdktf.IResolvable ) {
+    public set enablePullRequestPreview(value: boolean | cdktf.IResolvable | undefined) {
       this._enablePullRequestPreview = value;
     }
     public resetEnablePullRequestPreview() {
@@ -1070,11 +1252,12 @@ export namespace Amplify {
     }
 
     // environment_variables - computed: false, optional: true, required: false
-    private _environmentVariables?: { [key: string]: string } | cdktf.IResolvable;
+    private _environmentVariables?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get environmentVariables() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('environment_variables') as any;
     }
-    public set environmentVariables(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set environmentVariables(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._environmentVariables = value;
     }
     public resetEnvironmentVariables() {
@@ -1086,11 +1269,11 @@ export namespace Amplify {
     }
 
     // framework - computed: false, optional: true, required: false
-    private _framework?: string;
+    private _framework?: string | undefined; 
     public get framework() {
       return this.getStringAttribute('framework');
     }
-    public set framework(value: string ) {
+    public set framework(value: string | undefined) {
       this._framework = value;
     }
     public resetFramework() {
@@ -1107,11 +1290,11 @@ export namespace Amplify {
     }
 
     // pull_request_environment_name - computed: false, optional: true, required: false
-    private _pullRequestEnvironmentName?: string;
+    private _pullRequestEnvironmentName?: string | undefined; 
     public get pullRequestEnvironmentName() {
       return this.getStringAttribute('pull_request_environment_name');
     }
-    public set pullRequestEnvironmentName(value: string ) {
+    public set pullRequestEnvironmentName(value: string | undefined) {
       this._pullRequestEnvironmentName = value;
     }
     public resetPullRequestEnvironmentName() {
@@ -1128,11 +1311,11 @@ export namespace Amplify {
     }
 
     // stage - computed: false, optional: true, required: false
-    private _stage?: string;
+    private _stage?: string | undefined; 
     public get stage() {
       return this.getStringAttribute('stage');
     }
-    public set stage(value: string ) {
+    public set stage(value: string | undefined) {
       this._stage = value;
     }
     public resetStage() {
@@ -1144,11 +1327,12 @@ export namespace Amplify {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1160,11 +1344,12 @@ export namespace Amplify {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1176,11 +1361,11 @@ export namespace Amplify {
     }
 
     // ttl - computed: false, optional: true, required: false
-    private _ttl?: string;
+    private _ttl?: string | undefined; 
     public get ttl() {
       return this.getStringAttribute('ttl');
     }
-    public set ttl(value: string ) {
+    public set ttl(value: string | undefined) {
       this._ttl = value;
     }
     public resetTtl() {
@@ -1251,6 +1436,9 @@ export namespace Amplify {
 
   function amplifyDomainAssociationSubDomainToTerraform(struct?: AmplifyDomainAssociationSubDomain): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       branch_name: cdktf.stringToTerraform(struct!.branchName),
       prefix: cdktf.stringToTerraform(struct!.prefix),
@@ -1301,7 +1489,7 @@ export namespace Amplify {
     // ==========
 
     // app_id - computed: false, optional: false, required: true
-    private _appId: string;
+    private _appId?: string; 
     public get appId() {
       return this.getStringAttribute('app_id');
     }
@@ -1324,7 +1512,7 @@ export namespace Amplify {
     }
 
     // domain_name - computed: false, optional: false, required: true
-    private _domainName: string;
+    private _domainName?: string; 
     public get domainName() {
       return this.getStringAttribute('domain_name');
     }
@@ -1342,11 +1530,11 @@ export namespace Amplify {
     }
 
     // wait_for_verification - computed: false, optional: true, required: false
-    private _waitForVerification?: boolean | cdktf.IResolvable;
+    private _waitForVerification?: boolean | cdktf.IResolvable | undefined; 
     public get waitForVerification() {
-      return this.getBooleanAttribute('wait_for_verification');
+      return this.getBooleanAttribute('wait_for_verification') as any;
     }
-    public set waitForVerification(value: boolean | cdktf.IResolvable ) {
+    public set waitForVerification(value: boolean | cdktf.IResolvable | undefined) {
       this._waitForVerification = value;
     }
     public resetWaitForVerification() {
@@ -1358,8 +1546,9 @@ export namespace Amplify {
     }
 
     // sub_domain - computed: false, optional: false, required: true
-    private _subDomain: AmplifyDomainAssociationSubDomain[];
+    private _subDomain?: AmplifyDomainAssociationSubDomain[]; 
     public get subDomain() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('sub_domain') as any;
     }
     public set subDomain(value: AmplifyDomainAssociationSubDomain[]) {
@@ -1440,7 +1629,7 @@ export namespace Amplify {
     // ==========
 
     // app_id - computed: false, optional: false, required: true
-    private _appId: string;
+    private _appId?: string; 
     public get appId() {
       return this.getStringAttribute('app_id');
     }
@@ -1458,7 +1647,7 @@ export namespace Amplify {
     }
 
     // branch_name - computed: false, optional: false, required: true
-    private _branchName: string;
+    private _branchName?: string; 
     public get branchName() {
       return this.getStringAttribute('branch_name');
     }
@@ -1471,11 +1660,11 @@ export namespace Amplify {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {

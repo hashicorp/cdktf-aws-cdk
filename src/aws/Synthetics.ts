@@ -69,19 +69,19 @@ export namespace Synthetics {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#run_config SyntheticsCanary#run_config}
     */
-    readonly runConfig?: SyntheticsCanaryRunConfig[];
+    readonly runConfig?: SyntheticsCanaryRunConfig;
     /**
     * schedule block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#schedule SyntheticsCanary#schedule}
     */
-    readonly schedule: SyntheticsCanarySchedule[];
+    readonly schedule: SyntheticsCanarySchedule;
     /**
     * vpc_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#vpc_config SyntheticsCanary#vpc_config}
     */
-    readonly vpcConfig?: SyntheticsCanaryVpcConfig[];
+    readonly vpcConfig?: SyntheticsCanaryVpcConfig;
   }
   export class SyntheticsCanaryTimeline extends cdktf.ComplexComputedList {
 
@@ -120,8 +120,11 @@ export namespace Synthetics {
     readonly timeoutInSeconds?: number;
   }
 
-  function syntheticsCanaryRunConfigToTerraform(struct?: SyntheticsCanaryRunConfig): any {
+  function syntheticsCanaryRunConfigToTerraform(struct?: SyntheticsCanaryRunConfigOutputReference | SyntheticsCanaryRunConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       active_tracing: cdktf.booleanToTerraform(struct!.activeTracing),
       memory_in_mb: cdktf.numberToTerraform(struct!.memoryInMb),
@@ -129,6 +132,64 @@ export namespace Synthetics {
     }
   }
 
+  export class SyntheticsCanaryRunConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // active_tracing - computed: false, optional: true, required: false
+    private _activeTracing?: boolean | cdktf.IResolvable | undefined; 
+    public get activeTracing() {
+      return this.getBooleanAttribute('active_tracing') as any;
+    }
+    public set activeTracing(value: boolean | cdktf.IResolvable | undefined) {
+      this._activeTracing = value;
+    }
+    public resetActiveTracing() {
+      this._activeTracing = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get activeTracingInput() {
+      return this._activeTracing
+    }
+
+    // memory_in_mb - computed: true, optional: true, required: false
+    private _memoryInMb?: number | undefined; 
+    public get memoryInMb() {
+      return this.getNumberAttribute('memory_in_mb');
+    }
+    public set memoryInMb(value: number | undefined) {
+      this._memoryInMb = value;
+    }
+    public resetMemoryInMb() {
+      this._memoryInMb = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get memoryInMbInput() {
+      return this._memoryInMb
+    }
+
+    // timeout_in_seconds - computed: false, optional: true, required: false
+    private _timeoutInSeconds?: number | undefined; 
+    public get timeoutInSeconds() {
+      return this.getNumberAttribute('timeout_in_seconds');
+    }
+    public set timeoutInSeconds(value: number | undefined) {
+      this._timeoutInSeconds = value;
+    }
+    public resetTimeoutInSeconds() {
+      this._timeoutInSeconds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get timeoutInSecondsInput() {
+      return this._timeoutInSeconds
+    }
+  }
   export interface SyntheticsCanarySchedule {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#duration_in_seconds SyntheticsCanary#duration_in_seconds}
@@ -140,14 +201,56 @@ export namespace Synthetics {
     readonly expression: string;
   }
 
-  function syntheticsCanaryScheduleToTerraform(struct?: SyntheticsCanarySchedule): any {
+  function syntheticsCanaryScheduleToTerraform(struct?: SyntheticsCanaryScheduleOutputReference | SyntheticsCanarySchedule): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       duration_in_seconds: cdktf.numberToTerraform(struct!.durationInSeconds),
       expression: cdktf.stringToTerraform(struct!.expression),
     }
   }
 
+  export class SyntheticsCanaryScheduleOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // duration_in_seconds - computed: false, optional: true, required: false
+    private _durationInSeconds?: number | undefined; 
+    public get durationInSeconds() {
+      return this.getNumberAttribute('duration_in_seconds');
+    }
+    public set durationInSeconds(value: number | undefined) {
+      this._durationInSeconds = value;
+    }
+    public resetDurationInSeconds() {
+      this._durationInSeconds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get durationInSecondsInput() {
+      return this._durationInSeconds
+    }
+
+    // expression - computed: false, optional: false, required: true
+    private _expression?: string; 
+    public get expression() {
+      return this.getStringAttribute('expression');
+    }
+    public set expression(value: string) {
+      this._expression = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get expressionInput() {
+      return this._expression
+    }
+  }
   export interface SyntheticsCanaryVpcConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html#security_group_ids SyntheticsCanary#security_group_ids}
@@ -159,14 +262,59 @@ export namespace Synthetics {
     readonly subnetIds?: string[];
   }
 
-  function syntheticsCanaryVpcConfigToTerraform(struct?: SyntheticsCanaryVpcConfig): any {
+  function syntheticsCanaryVpcConfigToTerraform(struct?: SyntheticsCanaryVpcConfigOutputReference | SyntheticsCanaryVpcConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.securityGroupIds),
       subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.subnetIds),
     }
   }
 
+  export class SyntheticsCanaryVpcConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // security_group_ids - computed: false, optional: true, required: false
+    private _securityGroupIds?: string[] | undefined; 
+    public get securityGroupIds() {
+      return this.getListAttribute('security_group_ids');
+    }
+    public set securityGroupIds(value: string[] | undefined) {
+      this._securityGroupIds = value;
+    }
+    public resetSecurityGroupIds() {
+      this._securityGroupIds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get securityGroupIdsInput() {
+      return this._securityGroupIds
+    }
+
+    // subnet_ids - computed: false, optional: true, required: false
+    private _subnetIds?: string[] | undefined; 
+    public get subnetIds() {
+      return this.getListAttribute('subnet_ids');
+    }
+    public set subnetIds(value: string[] | undefined) {
+      this._subnetIds = value;
+    }
+    public resetSubnetIds() {
+      this._subnetIds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get subnetIdsInput() {
+      return this._subnetIds
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/synthetics_canary.html aws_synthetics_canary}
@@ -229,7 +377,7 @@ export namespace Synthetics {
     }
 
     // artifact_s3_location - computed: false, optional: false, required: true
-    private _artifactS3Location: string;
+    private _artifactS3Location?: string; 
     public get artifactS3Location() {
       return this.getStringAttribute('artifact_s3_location');
     }
@@ -247,7 +395,7 @@ export namespace Synthetics {
     }
 
     // execution_role_arn - computed: false, optional: false, required: true
-    private _executionRoleArn: string;
+    private _executionRoleArn?: string; 
     public get executionRoleArn() {
       return this.getStringAttribute('execution_role_arn');
     }
@@ -260,11 +408,11 @@ export namespace Synthetics {
     }
 
     // failure_retention_period - computed: false, optional: true, required: false
-    private _failureRetentionPeriod?: number;
+    private _failureRetentionPeriod?: number | undefined; 
     public get failureRetentionPeriod() {
       return this.getNumberAttribute('failure_retention_period');
     }
-    public set failureRetentionPeriod(value: number ) {
+    public set failureRetentionPeriod(value: number | undefined) {
       this._failureRetentionPeriod = value;
     }
     public resetFailureRetentionPeriod() {
@@ -276,7 +424,7 @@ export namespace Synthetics {
     }
 
     // handler - computed: false, optional: false, required: true
-    private _handler: string;
+    private _handler?: string; 
     public get handler() {
       return this.getStringAttribute('handler');
     }
@@ -294,7 +442,7 @@ export namespace Synthetics {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -307,7 +455,7 @@ export namespace Synthetics {
     }
 
     // runtime_version - computed: false, optional: false, required: true
-    private _runtimeVersion: string;
+    private _runtimeVersion?: string; 
     public get runtimeVersion() {
       return this.getStringAttribute('runtime_version');
     }
@@ -320,11 +468,11 @@ export namespace Synthetics {
     }
 
     // s3_bucket - computed: false, optional: true, required: false
-    private _s3Bucket?: string;
+    private _s3Bucket?: string | undefined; 
     public get s3Bucket() {
       return this.getStringAttribute('s3_bucket');
     }
-    public set s3Bucket(value: string ) {
+    public set s3Bucket(value: string | undefined) {
       this._s3Bucket = value;
     }
     public resetS3Bucket() {
@@ -336,11 +484,11 @@ export namespace Synthetics {
     }
 
     // s3_key - computed: false, optional: true, required: false
-    private _s3Key?: string;
+    private _s3Key?: string | undefined; 
     public get s3Key() {
       return this.getStringAttribute('s3_key');
     }
-    public set s3Key(value: string ) {
+    public set s3Key(value: string | undefined) {
       this._s3Key = value;
     }
     public resetS3Key() {
@@ -352,11 +500,11 @@ export namespace Synthetics {
     }
 
     // s3_version - computed: false, optional: true, required: false
-    private _s3Version?: string;
+    private _s3Version?: string | undefined; 
     public get s3Version() {
       return this.getStringAttribute('s3_version');
     }
-    public set s3Version(value: string ) {
+    public set s3Version(value: string | undefined) {
       this._s3Version = value;
     }
     public resetS3Version() {
@@ -373,11 +521,11 @@ export namespace Synthetics {
     }
 
     // start_canary - computed: false, optional: true, required: false
-    private _startCanary?: boolean | cdktf.IResolvable;
+    private _startCanary?: boolean | cdktf.IResolvable | undefined; 
     public get startCanary() {
-      return this.getBooleanAttribute('start_canary');
+      return this.getBooleanAttribute('start_canary') as any;
     }
-    public set startCanary(value: boolean | cdktf.IResolvable ) {
+    public set startCanary(value: boolean | cdktf.IResolvable | undefined) {
       this._startCanary = value;
     }
     public resetStartCanary() {
@@ -394,11 +542,11 @@ export namespace Synthetics {
     }
 
     // success_retention_period - computed: false, optional: true, required: false
-    private _successRetentionPeriod?: number;
+    private _successRetentionPeriod?: number | undefined; 
     public get successRetentionPeriod() {
       return this.getNumberAttribute('success_retention_period');
     }
-    public set successRetentionPeriod(value: number ) {
+    public set successRetentionPeriod(value: number | undefined) {
       this._successRetentionPeriod = value;
     }
     public resetSuccessRetentionPeriod() {
@@ -410,11 +558,12 @@ export namespace Synthetics {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -426,11 +575,12 @@ export namespace Synthetics {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -447,11 +597,11 @@ export namespace Synthetics {
     }
 
     // zip_file - computed: false, optional: true, required: false
-    private _zipFile?: string;
+    private _zipFile?: string | undefined; 
     public get zipFile() {
       return this.getStringAttribute('zip_file');
     }
-    public set zipFile(value: string ) {
+    public set zipFile(value: string | undefined) {
       this._zipFile = value;
     }
     public resetZipFile() {
@@ -463,11 +613,12 @@ export namespace Synthetics {
     }
 
     // run_config - computed: false, optional: true, required: false
-    private _runConfig?: SyntheticsCanaryRunConfig[];
+    private _runConfig?: SyntheticsCanaryRunConfig | undefined; 
+    private __runConfigOutput = new SyntheticsCanaryRunConfigOutputReference(this as any, "run_config", true);
     public get runConfig() {
-      return this.interpolationForAttribute('run_config') as any;
+      return this.__runConfigOutput;
     }
-    public set runConfig(value: SyntheticsCanaryRunConfig[] ) {
+    public putRunConfig(value: SyntheticsCanaryRunConfig | undefined) {
       this._runConfig = value;
     }
     public resetRunConfig() {
@@ -479,11 +630,12 @@ export namespace Synthetics {
     }
 
     // schedule - computed: false, optional: false, required: true
-    private _schedule: SyntheticsCanarySchedule[];
+    private _schedule?: SyntheticsCanarySchedule; 
+    private __scheduleOutput = new SyntheticsCanaryScheduleOutputReference(this as any, "schedule", true);
     public get schedule() {
-      return this.interpolationForAttribute('schedule') as any;
+      return this.__scheduleOutput;
     }
-    public set schedule(value: SyntheticsCanarySchedule[]) {
+    public putSchedule(value: SyntheticsCanarySchedule) {
       this._schedule = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -492,11 +644,12 @@ export namespace Synthetics {
     }
 
     // vpc_config - computed: false, optional: true, required: false
-    private _vpcConfig?: SyntheticsCanaryVpcConfig[];
+    private _vpcConfig?: SyntheticsCanaryVpcConfig | undefined; 
+    private __vpcConfigOutput = new SyntheticsCanaryVpcConfigOutputReference(this as any, "vpc_config", true);
     public get vpcConfig() {
-      return this.interpolationForAttribute('vpc_config') as any;
+      return this.__vpcConfigOutput;
     }
-    public set vpcConfig(value: SyntheticsCanaryVpcConfig[] ) {
+    public putVpcConfig(value: SyntheticsCanaryVpcConfig | undefined) {
       this._vpcConfig = value;
     }
     public resetVpcConfig() {
@@ -527,9 +680,9 @@ export namespace Synthetics {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         zip_file: cdktf.stringToTerraform(this._zipFile),
-        run_config: cdktf.listMapper(syntheticsCanaryRunConfigToTerraform)(this._runConfig),
-        schedule: cdktf.listMapper(syntheticsCanaryScheduleToTerraform)(this._schedule),
-        vpc_config: cdktf.listMapper(syntheticsCanaryVpcConfigToTerraform)(this._vpcConfig),
+        run_config: syntheticsCanaryRunConfigToTerraform(this._runConfig),
+        schedule: syntheticsCanaryScheduleToTerraform(this._schedule),
+        vpc_config: syntheticsCanaryVpcConfigToTerraform(this._vpcConfig),
       };
     }
   }

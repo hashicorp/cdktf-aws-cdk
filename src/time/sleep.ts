@@ -63,11 +63,11 @@ export class Sleep extends cdktf.TerraformResource {
   // ==========
 
   // create_duration - computed: false, optional: true, required: false
-  private _createDuration?: string;
+  private _createDuration?: string | undefined; 
   public get createDuration() {
     return this.getStringAttribute('create_duration');
   }
-  public set createDuration(value: string ) {
+  public set createDuration(value: string | undefined) {
     this._createDuration = value;
   }
   public resetCreateDuration() {
@@ -79,11 +79,11 @@ export class Sleep extends cdktf.TerraformResource {
   }
 
   // destroy_duration - computed: false, optional: true, required: false
-  private _destroyDuration?: string;
+  private _destroyDuration?: string | undefined; 
   public get destroyDuration() {
     return this.getStringAttribute('destroy_duration');
   }
-  public set destroyDuration(value: string ) {
+  public set destroyDuration(value: string | undefined) {
     this._destroyDuration = value;
   }
   public resetDestroyDuration() {
@@ -100,11 +100,12 @@ export class Sleep extends cdktf.TerraformResource {
   }
 
   // triggers - computed: false, optional: true, required: false
-  private _triggers?: { [key: string]: string } | cdktf.IResolvable;
+  private _triggers?: { [key: string]: string } | cdktf.IResolvable | undefined; 
   public get triggers() {
+    // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('triggers') as any;
   }
-  public set triggers(value: { [key: string]: string } | cdktf.IResolvable ) {
+  public set triggers(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
     this._triggers = value;
   }
   public resetTriggers() {

@@ -84,7 +84,7 @@ export namespace CodeArtifact {
     }
 
     // domain - computed: false, optional: false, required: true
-    private _domain: string;
+    private _domain?: string; 
     public get domain() {
       return this.getStringAttribute('domain');
     }
@@ -97,11 +97,11 @@ export namespace CodeArtifact {
     }
 
     // encryption_key - computed: true, optional: true, required: false
-    private _encryptionKey?: string;
+    private _encryptionKey?: string | undefined; 
     public get encryptionKey() {
       return this.getStringAttribute('encryption_key');
     }
-    public set encryptionKey(value: string) {
+    public set encryptionKey(value: string | undefined) {
       this._encryptionKey = value;
     }
     public resetEncryptionKey() {
@@ -128,11 +128,12 @@ export namespace CodeArtifact {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -144,11 +145,12 @@ export namespace CodeArtifact {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -234,7 +236,7 @@ export namespace CodeArtifact {
     // ==========
 
     // domain - computed: false, optional: false, required: true
-    private _domain: string;
+    private _domain?: string; 
     public get domain() {
       return this.getStringAttribute('domain');
     }
@@ -247,11 +249,11 @@ export namespace CodeArtifact {
     }
 
     // domain_owner - computed: true, optional: true, required: false
-    private _domainOwner?: string;
+    private _domainOwner?: string | undefined; 
     public get domainOwner() {
       return this.getStringAttribute('domain_owner');
     }
-    public set domainOwner(value: string) {
+    public set domainOwner(value: string | undefined) {
       this._domainOwner = value;
     }
     public resetDomainOwner() {
@@ -268,7 +270,7 @@ export namespace CodeArtifact {
     }
 
     // policy_document - computed: false, optional: false, required: true
-    private _policyDocument: string;
+    private _policyDocument?: string; 
     public get policyDocument() {
       return this.getStringAttribute('policy_document');
     }
@@ -281,11 +283,11 @@ export namespace CodeArtifact {
     }
 
     // policy_revision - computed: true, optional: true, required: false
-    private _policyRevision?: string;
+    private _policyRevision?: string | undefined; 
     public get policyRevision() {
       return this.getStringAttribute('policy_revision');
     }
-    public set policyRevision(value: string) {
+    public set policyRevision(value: string | undefined) {
       this._policyRevision = value;
     }
     public resetPolicyRevision() {
@@ -344,7 +346,7 @@ export namespace CodeArtifact {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository.html#external_connections CodeartifactRepository#external_connections}
     */
-    readonly externalConnections?: CodeartifactRepositoryExternalConnections[];
+    readonly externalConnections?: CodeartifactRepositoryExternalConnections;
     /**
     * upstream block
     * 
@@ -359,13 +361,39 @@ export namespace CodeArtifact {
     readonly externalConnectionName: string;
   }
 
-  function codeartifactRepositoryExternalConnectionsToTerraform(struct?: CodeartifactRepositoryExternalConnections): any {
+  function codeartifactRepositoryExternalConnectionsToTerraform(struct?: CodeartifactRepositoryExternalConnectionsOutputReference | CodeartifactRepositoryExternalConnections): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       external_connection_name: cdktf.stringToTerraform(struct!.externalConnectionName),
     }
   }
 
+  export class CodeartifactRepositoryExternalConnectionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // external_connection_name - computed: false, optional: false, required: true
+    private _externalConnectionName?: string; 
+    public get externalConnectionName() {
+      return this.getStringAttribute('external_connection_name');
+    }
+    public set externalConnectionName(value: string) {
+      this._externalConnectionName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get externalConnectionNameInput() {
+      return this._externalConnectionName
+    }
+  }
   export interface CodeartifactRepositoryUpstream {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codeartifact_repository.html#repository_name CodeartifactRepository#repository_name}
@@ -375,6 +403,9 @@ export namespace CodeArtifact {
 
   function codeartifactRepositoryUpstreamToTerraform(struct?: CodeartifactRepositoryUpstream): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       repository_name: cdktf.stringToTerraform(struct!.repositoryName),
     }
@@ -438,11 +469,11 @@ export namespace CodeArtifact {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -454,7 +485,7 @@ export namespace CodeArtifact {
     }
 
     // domain - computed: false, optional: false, required: true
-    private _domain: string;
+    private _domain?: string; 
     public get domain() {
       return this.getStringAttribute('domain');
     }
@@ -467,11 +498,11 @@ export namespace CodeArtifact {
     }
 
     // domain_owner - computed: true, optional: true, required: false
-    private _domainOwner?: string;
+    private _domainOwner?: string | undefined; 
     public get domainOwner() {
       return this.getStringAttribute('domain_owner');
     }
-    public set domainOwner(value: string) {
+    public set domainOwner(value: string | undefined) {
       this._domainOwner = value;
     }
     public resetDomainOwner() {
@@ -488,7 +519,7 @@ export namespace CodeArtifact {
     }
 
     // repository - computed: false, optional: false, required: true
-    private _repository: string;
+    private _repository?: string; 
     public get repository() {
       return this.getStringAttribute('repository');
     }
@@ -501,11 +532,12 @@ export namespace CodeArtifact {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -517,11 +549,12 @@ export namespace CodeArtifact {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -533,11 +566,12 @@ export namespace CodeArtifact {
     }
 
     // external_connections - computed: false, optional: true, required: false
-    private _externalConnections?: CodeartifactRepositoryExternalConnections[];
+    private _externalConnections?: CodeartifactRepositoryExternalConnections | undefined; 
+    private __externalConnectionsOutput = new CodeartifactRepositoryExternalConnectionsOutputReference(this as any, "external_connections", true);
     public get externalConnections() {
-      return this.interpolationForAttribute('external_connections') as any;
+      return this.__externalConnectionsOutput;
     }
-    public set externalConnections(value: CodeartifactRepositoryExternalConnections[] ) {
+    public putExternalConnections(value: CodeartifactRepositoryExternalConnections | undefined) {
       this._externalConnections = value;
     }
     public resetExternalConnections() {
@@ -549,11 +583,12 @@ export namespace CodeArtifact {
     }
 
     // upstream - computed: false, optional: true, required: false
-    private _upstream?: CodeartifactRepositoryUpstream[];
+    private _upstream?: CodeartifactRepositoryUpstream[] | undefined; 
     public get upstream() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('upstream') as any;
     }
-    public set upstream(value: CodeartifactRepositoryUpstream[] ) {
+    public set upstream(value: CodeartifactRepositoryUpstream[] | undefined) {
       this._upstream = value;
     }
     public resetUpstream() {
@@ -576,7 +611,7 @@ export namespace CodeArtifact {
         repository: cdktf.stringToTerraform(this._repository),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        external_connections: cdktf.listMapper(codeartifactRepositoryExternalConnectionsToTerraform)(this._externalConnections),
+        external_connections: codeartifactRepositoryExternalConnectionsToTerraform(this._externalConnections),
         upstream: cdktf.listMapper(codeartifactRepositoryUpstreamToTerraform)(this._upstream),
       };
     }
@@ -648,7 +683,7 @@ export namespace CodeArtifact {
     // ==========
 
     // domain - computed: false, optional: false, required: true
-    private _domain: string;
+    private _domain?: string; 
     public get domain() {
       return this.getStringAttribute('domain');
     }
@@ -661,11 +696,11 @@ export namespace CodeArtifact {
     }
 
     // domain_owner - computed: true, optional: true, required: false
-    private _domainOwner?: string;
+    private _domainOwner?: string | undefined; 
     public get domainOwner() {
       return this.getStringAttribute('domain_owner');
     }
-    public set domainOwner(value: string) {
+    public set domainOwner(value: string | undefined) {
       this._domainOwner = value;
     }
     public resetDomainOwner() {
@@ -682,7 +717,7 @@ export namespace CodeArtifact {
     }
 
     // policy_document - computed: false, optional: false, required: true
-    private _policyDocument: string;
+    private _policyDocument?: string; 
     public get policyDocument() {
       return this.getStringAttribute('policy_document');
     }
@@ -695,11 +730,11 @@ export namespace CodeArtifact {
     }
 
     // policy_revision - computed: true, optional: true, required: false
-    private _policyRevision?: string;
+    private _policyRevision?: string | undefined; 
     public get policyRevision() {
       return this.getStringAttribute('policy_revision');
     }
-    public set policyRevision(value: string) {
+    public set policyRevision(value: string | undefined) {
       this._policyRevision = value;
     }
     public resetPolicyRevision() {
@@ -711,7 +746,7 @@ export namespace CodeArtifact {
     }
 
     // repository - computed: false, optional: false, required: true
-    private _repository: string;
+    private _repository?: string; 
     public get repository() {
       return this.getStringAttribute('repository');
     }
@@ -804,7 +839,7 @@ export namespace CodeArtifact {
     }
 
     // domain - computed: false, optional: false, required: true
-    private _domain: string;
+    private _domain?: string; 
     public get domain() {
       return this.getStringAttribute('domain');
     }
@@ -817,11 +852,11 @@ export namespace CodeArtifact {
     }
 
     // domain_owner - computed: true, optional: true, required: false
-    private _domainOwner?: string;
+    private _domainOwner?: string | undefined; 
     public get domainOwner() {
       return this.getStringAttribute('domain_owner');
     }
-    public set domainOwner(value: string) {
+    public set domainOwner(value: string | undefined) {
       this._domainOwner = value;
     }
     public resetDomainOwner() {
@@ -833,11 +868,11 @@ export namespace CodeArtifact {
     }
 
     // duration_seconds - computed: false, optional: true, required: false
-    private _durationSeconds?: number;
+    private _durationSeconds?: number | undefined; 
     public get durationSeconds() {
       return this.getNumberAttribute('duration_seconds');
     }
-    public set durationSeconds(value: number ) {
+    public set durationSeconds(value: number | undefined) {
       this._durationSeconds = value;
     }
     public resetDurationSeconds() {
@@ -932,7 +967,7 @@ export namespace CodeArtifact {
     // ==========
 
     // domain - computed: false, optional: false, required: true
-    private _domain: string;
+    private _domain?: string; 
     public get domain() {
       return this.getStringAttribute('domain');
     }
@@ -945,11 +980,11 @@ export namespace CodeArtifact {
     }
 
     // domain_owner - computed: true, optional: true, required: false
-    private _domainOwner?: string;
+    private _domainOwner?: string | undefined; 
     public get domainOwner() {
       return this.getStringAttribute('domain_owner');
     }
-    public set domainOwner(value: string) {
+    public set domainOwner(value: string | undefined) {
       this._domainOwner = value;
     }
     public resetDomainOwner() {
@@ -961,7 +996,7 @@ export namespace CodeArtifact {
     }
 
     // format - computed: false, optional: false, required: true
-    private _format: string;
+    private _format?: string; 
     public get format() {
       return this.getStringAttribute('format');
     }
@@ -979,7 +1014,7 @@ export namespace CodeArtifact {
     }
 
     // repository - computed: false, optional: false, required: true
-    private _repository: string;
+    private _repository?: string; 
     public get repository() {
       return this.getStringAttribute('repository');
     }

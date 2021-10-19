@@ -77,7 +77,7 @@ export * from './IoT';
 export * from './Kinesis';
 export * from './KMS';
 export * from './LakeFormation';
-export * from './Lambda';
+export * from './LambdaFunction';
 export * from './Lex';
 export * from './LicenseManager';
 export * from './Lightsail';

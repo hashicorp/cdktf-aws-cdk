@@ -33,19 +33,19 @@ export namespace Workspaces {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/workspaces_directory.html#self_service_permissions WorkspacesDirectory#self_service_permissions}
     */
-    readonly selfServicePermissions?: WorkspacesDirectorySelfServicePermissions[];
+    readonly selfServicePermissions?: WorkspacesDirectorySelfServicePermissions;
     /**
     * workspace_access_properties block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/workspaces_directory.html#workspace_access_properties WorkspacesDirectory#workspace_access_properties}
     */
-    readonly workspaceAccessProperties?: WorkspacesDirectoryWorkspaceAccessProperties[];
+    readonly workspaceAccessProperties?: WorkspacesDirectoryWorkspaceAccessProperties;
     /**
     * workspace_creation_properties block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/workspaces_directory.html#workspace_creation_properties WorkspacesDirectory#workspace_creation_properties}
     */
-    readonly workspaceCreationProperties?: WorkspacesDirectoryWorkspaceCreationProperties[];
+    readonly workspaceCreationProperties?: WorkspacesDirectoryWorkspaceCreationProperties;
   }
   export interface WorkspacesDirectorySelfServicePermissions {
     /**
@@ -70,8 +70,11 @@ export namespace Workspaces {
     readonly switchRunningMode?: boolean | cdktf.IResolvable;
   }
 
-  function workspacesDirectorySelfServicePermissionsToTerraform(struct?: WorkspacesDirectorySelfServicePermissions): any {
+  function workspacesDirectorySelfServicePermissionsToTerraform(struct?: WorkspacesDirectorySelfServicePermissionsOutputReference | WorkspacesDirectorySelfServicePermissions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       change_compute_type: cdktf.booleanToTerraform(struct!.changeComputeType),
       increase_volume_size: cdktf.booleanToTerraform(struct!.increaseVolumeSize),
@@ -81,6 +84,96 @@ export namespace Workspaces {
     }
   }
 
+  export class WorkspacesDirectorySelfServicePermissionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // change_compute_type - computed: false, optional: true, required: false
+    private _changeComputeType?: boolean | cdktf.IResolvable | undefined; 
+    public get changeComputeType() {
+      return this.getBooleanAttribute('change_compute_type') as any;
+    }
+    public set changeComputeType(value: boolean | cdktf.IResolvable | undefined) {
+      this._changeComputeType = value;
+    }
+    public resetChangeComputeType() {
+      this._changeComputeType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get changeComputeTypeInput() {
+      return this._changeComputeType
+    }
+
+    // increase_volume_size - computed: false, optional: true, required: false
+    private _increaseVolumeSize?: boolean | cdktf.IResolvable | undefined; 
+    public get increaseVolumeSize() {
+      return this.getBooleanAttribute('increase_volume_size') as any;
+    }
+    public set increaseVolumeSize(value: boolean | cdktf.IResolvable | undefined) {
+      this._increaseVolumeSize = value;
+    }
+    public resetIncreaseVolumeSize() {
+      this._increaseVolumeSize = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get increaseVolumeSizeInput() {
+      return this._increaseVolumeSize
+    }
+
+    // rebuild_workspace - computed: false, optional: true, required: false
+    private _rebuildWorkspace?: boolean | cdktf.IResolvable | undefined; 
+    public get rebuildWorkspace() {
+      return this.getBooleanAttribute('rebuild_workspace') as any;
+    }
+    public set rebuildWorkspace(value: boolean | cdktf.IResolvable | undefined) {
+      this._rebuildWorkspace = value;
+    }
+    public resetRebuildWorkspace() {
+      this._rebuildWorkspace = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get rebuildWorkspaceInput() {
+      return this._rebuildWorkspace
+    }
+
+    // restart_workspace - computed: false, optional: true, required: false
+    private _restartWorkspace?: boolean | cdktf.IResolvable | undefined; 
+    public get restartWorkspace() {
+      return this.getBooleanAttribute('restart_workspace') as any;
+    }
+    public set restartWorkspace(value: boolean | cdktf.IResolvable | undefined) {
+      this._restartWorkspace = value;
+    }
+    public resetRestartWorkspace() {
+      this._restartWorkspace = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get restartWorkspaceInput() {
+      return this._restartWorkspace
+    }
+
+    // switch_running_mode - computed: false, optional: true, required: false
+    private _switchRunningMode?: boolean | cdktf.IResolvable | undefined; 
+    public get switchRunningMode() {
+      return this.getBooleanAttribute('switch_running_mode') as any;
+    }
+    public set switchRunningMode(value: boolean | cdktf.IResolvable | undefined) {
+      this._switchRunningMode = value;
+    }
+    public resetSwitchRunningMode() {
+      this._switchRunningMode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get switchRunningModeInput() {
+      return this._switchRunningMode
+    }
+  }
   export interface WorkspacesDirectoryWorkspaceAccessProperties {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/workspaces_directory.html#device_type_android WorkspacesDirectory#device_type_android}
@@ -116,8 +209,11 @@ export namespace Workspaces {
     readonly deviceTypeZeroclient?: string;
   }
 
-  function workspacesDirectoryWorkspaceAccessPropertiesToTerraform(struct?: WorkspacesDirectoryWorkspaceAccessProperties): any {
+  function workspacesDirectoryWorkspaceAccessPropertiesToTerraform(struct?: WorkspacesDirectoryWorkspaceAccessPropertiesOutputReference | WorkspacesDirectoryWorkspaceAccessProperties): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       device_type_android: cdktf.stringToTerraform(struct!.deviceTypeAndroid),
       device_type_chromeos: cdktf.stringToTerraform(struct!.deviceTypeChromeos),
@@ -130,6 +226,144 @@ export namespace Workspaces {
     }
   }
 
+  export class WorkspacesDirectoryWorkspaceAccessPropertiesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // device_type_android - computed: false, optional: true, required: false
+    private _deviceTypeAndroid?: string | undefined; 
+    public get deviceTypeAndroid() {
+      return this.getStringAttribute('device_type_android');
+    }
+    public set deviceTypeAndroid(value: string | undefined) {
+      this._deviceTypeAndroid = value;
+    }
+    public resetDeviceTypeAndroid() {
+      this._deviceTypeAndroid = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deviceTypeAndroidInput() {
+      return this._deviceTypeAndroid
+    }
+
+    // device_type_chromeos - computed: false, optional: true, required: false
+    private _deviceTypeChromeos?: string | undefined; 
+    public get deviceTypeChromeos() {
+      return this.getStringAttribute('device_type_chromeos');
+    }
+    public set deviceTypeChromeos(value: string | undefined) {
+      this._deviceTypeChromeos = value;
+    }
+    public resetDeviceTypeChromeos() {
+      this._deviceTypeChromeos = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deviceTypeChromeosInput() {
+      return this._deviceTypeChromeos
+    }
+
+    // device_type_ios - computed: false, optional: true, required: false
+    private _deviceTypeIos?: string | undefined; 
+    public get deviceTypeIos() {
+      return this.getStringAttribute('device_type_ios');
+    }
+    public set deviceTypeIos(value: string | undefined) {
+      this._deviceTypeIos = value;
+    }
+    public resetDeviceTypeIos() {
+      this._deviceTypeIos = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deviceTypeIosInput() {
+      return this._deviceTypeIos
+    }
+
+    // device_type_linux - computed: false, optional: true, required: false
+    private _deviceTypeLinux?: string | undefined; 
+    public get deviceTypeLinux() {
+      return this.getStringAttribute('device_type_linux');
+    }
+    public set deviceTypeLinux(value: string | undefined) {
+      this._deviceTypeLinux = value;
+    }
+    public resetDeviceTypeLinux() {
+      this._deviceTypeLinux = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deviceTypeLinuxInput() {
+      return this._deviceTypeLinux
+    }
+
+    // device_type_osx - computed: false, optional: true, required: false
+    private _deviceTypeOsx?: string | undefined; 
+    public get deviceTypeOsx() {
+      return this.getStringAttribute('device_type_osx');
+    }
+    public set deviceTypeOsx(value: string | undefined) {
+      this._deviceTypeOsx = value;
+    }
+    public resetDeviceTypeOsx() {
+      this._deviceTypeOsx = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deviceTypeOsxInput() {
+      return this._deviceTypeOsx
+    }
+
+    // device_type_web - computed: false, optional: true, required: false
+    private _deviceTypeWeb?: string | undefined; 
+    public get deviceTypeWeb() {
+      return this.getStringAttribute('device_type_web');
+    }
+    public set deviceTypeWeb(value: string | undefined) {
+      this._deviceTypeWeb = value;
+    }
+    public resetDeviceTypeWeb() {
+      this._deviceTypeWeb = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deviceTypeWebInput() {
+      return this._deviceTypeWeb
+    }
+
+    // device_type_windows - computed: false, optional: true, required: false
+    private _deviceTypeWindows?: string | undefined; 
+    public get deviceTypeWindows() {
+      return this.getStringAttribute('device_type_windows');
+    }
+    public set deviceTypeWindows(value: string | undefined) {
+      this._deviceTypeWindows = value;
+    }
+    public resetDeviceTypeWindows() {
+      this._deviceTypeWindows = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deviceTypeWindowsInput() {
+      return this._deviceTypeWindows
+    }
+
+    // device_type_zeroclient - computed: false, optional: true, required: false
+    private _deviceTypeZeroclient?: string | undefined; 
+    public get deviceTypeZeroclient() {
+      return this.getStringAttribute('device_type_zeroclient');
+    }
+    public set deviceTypeZeroclient(value: string | undefined) {
+      this._deviceTypeZeroclient = value;
+    }
+    public resetDeviceTypeZeroclient() {
+      this._deviceTypeZeroclient = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deviceTypeZeroclientInput() {
+      return this._deviceTypeZeroclient
+    }
+  }
   export interface WorkspacesDirectoryWorkspaceCreationProperties {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/workspaces_directory.html#custom_security_group_id WorkspacesDirectory#custom_security_group_id}
@@ -153,8 +387,11 @@ export namespace Workspaces {
     readonly userEnabledAsLocalAdministrator?: boolean | cdktf.IResolvable;
   }
 
-  function workspacesDirectoryWorkspaceCreationPropertiesToTerraform(struct?: WorkspacesDirectoryWorkspaceCreationProperties): any {
+  function workspacesDirectoryWorkspaceCreationPropertiesToTerraform(struct?: WorkspacesDirectoryWorkspaceCreationPropertiesOutputReference | WorkspacesDirectoryWorkspaceCreationProperties): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       custom_security_group_id: cdktf.stringToTerraform(struct!.customSecurityGroupId),
       default_ou: cdktf.stringToTerraform(struct!.defaultOu),
@@ -164,6 +401,96 @@ export namespace Workspaces {
     }
   }
 
+  export class WorkspacesDirectoryWorkspaceCreationPropertiesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // custom_security_group_id - computed: false, optional: true, required: false
+    private _customSecurityGroupId?: string | undefined; 
+    public get customSecurityGroupId() {
+      return this.getStringAttribute('custom_security_group_id');
+    }
+    public set customSecurityGroupId(value: string | undefined) {
+      this._customSecurityGroupId = value;
+    }
+    public resetCustomSecurityGroupId() {
+      this._customSecurityGroupId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get customSecurityGroupIdInput() {
+      return this._customSecurityGroupId
+    }
+
+    // default_ou - computed: false, optional: true, required: false
+    private _defaultOu?: string | undefined; 
+    public get defaultOu() {
+      return this.getStringAttribute('default_ou');
+    }
+    public set defaultOu(value: string | undefined) {
+      this._defaultOu = value;
+    }
+    public resetDefaultOu() {
+      this._defaultOu = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get defaultOuInput() {
+      return this._defaultOu
+    }
+
+    // enable_internet_access - computed: false, optional: true, required: false
+    private _enableInternetAccess?: boolean | cdktf.IResolvable | undefined; 
+    public get enableInternetAccess() {
+      return this.getBooleanAttribute('enable_internet_access') as any;
+    }
+    public set enableInternetAccess(value: boolean | cdktf.IResolvable | undefined) {
+      this._enableInternetAccess = value;
+    }
+    public resetEnableInternetAccess() {
+      this._enableInternetAccess = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enableInternetAccessInput() {
+      return this._enableInternetAccess
+    }
+
+    // enable_maintenance_mode - computed: false, optional: true, required: false
+    private _enableMaintenanceMode?: boolean | cdktf.IResolvable | undefined; 
+    public get enableMaintenanceMode() {
+      return this.getBooleanAttribute('enable_maintenance_mode') as any;
+    }
+    public set enableMaintenanceMode(value: boolean | cdktf.IResolvable | undefined) {
+      this._enableMaintenanceMode = value;
+    }
+    public resetEnableMaintenanceMode() {
+      this._enableMaintenanceMode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enableMaintenanceModeInput() {
+      return this._enableMaintenanceMode
+    }
+
+    // user_enabled_as_local_administrator - computed: false, optional: true, required: false
+    private _userEnabledAsLocalAdministrator?: boolean | cdktf.IResolvable | undefined; 
+    public get userEnabledAsLocalAdministrator() {
+      return this.getBooleanAttribute('user_enabled_as_local_administrator') as any;
+    }
+    public set userEnabledAsLocalAdministrator(value: boolean | cdktf.IResolvable | undefined) {
+      this._userEnabledAsLocalAdministrator = value;
+    }
+    public resetUserEnabledAsLocalAdministrator() {
+      this._userEnabledAsLocalAdministrator = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userEnabledAsLocalAdministratorInput() {
+      return this._userEnabledAsLocalAdministrator
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/workspaces_directory.html aws_workspaces_directory}
@@ -222,7 +549,7 @@ export namespace Workspaces {
     }
 
     // directory_id - computed: false, optional: false, required: true
-    private _directoryId: string;
+    private _directoryId?: string; 
     public get directoryId() {
       return this.getStringAttribute('directory_id');
     }
@@ -260,11 +587,11 @@ export namespace Workspaces {
     }
 
     // ip_group_ids - computed: true, optional: true, required: false
-    private _ipGroupIds?: string[];
+    private _ipGroupIds?: string[] | undefined; 
     public get ipGroupIds() {
       return this.getListAttribute('ip_group_ids');
     }
-    public set ipGroupIds(value: string[]) {
+    public set ipGroupIds(value: string[] | undefined) {
       this._ipGroupIds = value;
     }
     public resetIpGroupIds() {
@@ -281,11 +608,11 @@ export namespace Workspaces {
     }
 
     // subnet_ids - computed: true, optional: true, required: false
-    private _subnetIds?: string[];
+    private _subnetIds?: string[] | undefined; 
     public get subnetIds() {
       return this.getListAttribute('subnet_ids');
     }
-    public set subnetIds(value: string[]) {
+    public set subnetIds(value: string[] | undefined) {
       this._subnetIds = value;
     }
     public resetSubnetIds() {
@@ -297,11 +624,12 @@ export namespace Workspaces {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -313,11 +641,12 @@ export namespace Workspaces {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -334,11 +663,12 @@ export namespace Workspaces {
     }
 
     // self_service_permissions - computed: false, optional: true, required: false
-    private _selfServicePermissions?: WorkspacesDirectorySelfServicePermissions[];
+    private _selfServicePermissions?: WorkspacesDirectorySelfServicePermissions | undefined; 
+    private __selfServicePermissionsOutput = new WorkspacesDirectorySelfServicePermissionsOutputReference(this as any, "self_service_permissions", true);
     public get selfServicePermissions() {
-      return this.interpolationForAttribute('self_service_permissions') as any;
+      return this.__selfServicePermissionsOutput;
     }
-    public set selfServicePermissions(value: WorkspacesDirectorySelfServicePermissions[] ) {
+    public putSelfServicePermissions(value: WorkspacesDirectorySelfServicePermissions | undefined) {
       this._selfServicePermissions = value;
     }
     public resetSelfServicePermissions() {
@@ -350,11 +680,12 @@ export namespace Workspaces {
     }
 
     // workspace_access_properties - computed: false, optional: true, required: false
-    private _workspaceAccessProperties?: WorkspacesDirectoryWorkspaceAccessProperties[];
+    private _workspaceAccessProperties?: WorkspacesDirectoryWorkspaceAccessProperties | undefined; 
+    private __workspaceAccessPropertiesOutput = new WorkspacesDirectoryWorkspaceAccessPropertiesOutputReference(this as any, "workspace_access_properties", true);
     public get workspaceAccessProperties() {
-      return this.interpolationForAttribute('workspace_access_properties') as any;
+      return this.__workspaceAccessPropertiesOutput;
     }
-    public set workspaceAccessProperties(value: WorkspacesDirectoryWorkspaceAccessProperties[] ) {
+    public putWorkspaceAccessProperties(value: WorkspacesDirectoryWorkspaceAccessProperties | undefined) {
       this._workspaceAccessProperties = value;
     }
     public resetWorkspaceAccessProperties() {
@@ -366,11 +697,12 @@ export namespace Workspaces {
     }
 
     // workspace_creation_properties - computed: false, optional: true, required: false
-    private _workspaceCreationProperties?: WorkspacesDirectoryWorkspaceCreationProperties[];
+    private _workspaceCreationProperties?: WorkspacesDirectoryWorkspaceCreationProperties | undefined; 
+    private __workspaceCreationPropertiesOutput = new WorkspacesDirectoryWorkspaceCreationPropertiesOutputReference(this as any, "workspace_creation_properties", true);
     public get workspaceCreationProperties() {
-      return this.interpolationForAttribute('workspace_creation_properties') as any;
+      return this.__workspaceCreationPropertiesOutput;
     }
-    public set workspaceCreationProperties(value: WorkspacesDirectoryWorkspaceCreationProperties[] ) {
+    public putWorkspaceCreationProperties(value: WorkspacesDirectoryWorkspaceCreationProperties | undefined) {
       this._workspaceCreationProperties = value;
     }
     public resetWorkspaceCreationProperties() {
@@ -392,9 +724,9 @@ export namespace Workspaces {
         subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._subnetIds),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        self_service_permissions: cdktf.listMapper(workspacesDirectorySelfServicePermissionsToTerraform)(this._selfServicePermissions),
-        workspace_access_properties: cdktf.listMapper(workspacesDirectoryWorkspaceAccessPropertiesToTerraform)(this._workspaceAccessProperties),
-        workspace_creation_properties: cdktf.listMapper(workspacesDirectoryWorkspaceCreationPropertiesToTerraform)(this._workspaceCreationProperties),
+        self_service_permissions: workspacesDirectorySelfServicePermissionsToTerraform(this._selfServicePermissions),
+        workspace_access_properties: workspacesDirectoryWorkspaceAccessPropertiesToTerraform(this._workspaceAccessProperties),
+        workspace_creation_properties: workspacesDirectoryWorkspaceCreationPropertiesToTerraform(this._workspaceCreationProperties),
       };
     }
   }
@@ -435,6 +767,9 @@ export namespace Workspaces {
 
   function workspacesIpGroupRulesToTerraform(struct?: WorkspacesIpGroupRules): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       description: cdktf.stringToTerraform(struct!.description),
       source: cdktf.stringToTerraform(struct!.source),
@@ -486,11 +821,11 @@ export namespace Workspaces {
     // ==========
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -507,7 +842,7 @@ export namespace Workspaces {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -520,11 +855,12 @@ export namespace Workspaces {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -536,11 +872,12 @@ export namespace Workspaces {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -552,11 +889,12 @@ export namespace Workspaces {
     }
 
     // rules - computed: false, optional: true, required: false
-    private _rules?: WorkspacesIpGroupRules[];
+    private _rules?: WorkspacesIpGroupRules[] | undefined; 
     public get rules() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('rules') as any;
     }
-    public set rules(value: WorkspacesIpGroupRules[] ) {
+    public set rules(value: WorkspacesIpGroupRules[] | undefined) {
       this._rules = value;
     }
     public resetRules() {
@@ -625,7 +963,7 @@ export namespace Workspaces {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/workspaces_workspace.html#workspace_properties WorkspacesWorkspace#workspace_properties}
     */
-    readonly workspaceProperties?: WorkspacesWorkspaceWorkspaceProperties[];
+    readonly workspaceProperties?: WorkspacesWorkspaceWorkspaceProperties;
   }
   export interface WorkspacesWorkspaceTimeouts {
     /**
@@ -642,8 +980,11 @@ export namespace Workspaces {
     readonly update?: string;
   }
 
-  function workspacesWorkspaceTimeoutsToTerraform(struct?: WorkspacesWorkspaceTimeouts): any {
+  function workspacesWorkspaceTimeoutsToTerraform(struct?: WorkspacesWorkspaceTimeoutsOutputReference | WorkspacesWorkspaceTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -651,6 +992,64 @@ export namespace Workspaces {
     }
   }
 
+  export class WorkspacesWorkspaceTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
   export interface WorkspacesWorkspaceWorkspaceProperties {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/workspaces_workspace.html#compute_type_name WorkspacesWorkspace#compute_type_name}
@@ -674,8 +1073,11 @@ export namespace Workspaces {
     readonly userVolumeSizeGib?: number;
   }
 
-  function workspacesWorkspaceWorkspacePropertiesToTerraform(struct?: WorkspacesWorkspaceWorkspaceProperties): any {
+  function workspacesWorkspaceWorkspacePropertiesToTerraform(struct?: WorkspacesWorkspaceWorkspacePropertiesOutputReference | WorkspacesWorkspaceWorkspaceProperties): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       compute_type_name: cdktf.stringToTerraform(struct!.computeTypeName),
       root_volume_size_gib: cdktf.numberToTerraform(struct!.rootVolumeSizeGib),
@@ -685,6 +1087,96 @@ export namespace Workspaces {
     }
   }
 
+  export class WorkspacesWorkspaceWorkspacePropertiesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // compute_type_name - computed: false, optional: true, required: false
+    private _computeTypeName?: string | undefined; 
+    public get computeTypeName() {
+      return this.getStringAttribute('compute_type_name');
+    }
+    public set computeTypeName(value: string | undefined) {
+      this._computeTypeName = value;
+    }
+    public resetComputeTypeName() {
+      this._computeTypeName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get computeTypeNameInput() {
+      return this._computeTypeName
+    }
+
+    // root_volume_size_gib - computed: false, optional: true, required: false
+    private _rootVolumeSizeGib?: number | undefined; 
+    public get rootVolumeSizeGib() {
+      return this.getNumberAttribute('root_volume_size_gib');
+    }
+    public set rootVolumeSizeGib(value: number | undefined) {
+      this._rootVolumeSizeGib = value;
+    }
+    public resetRootVolumeSizeGib() {
+      this._rootVolumeSizeGib = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get rootVolumeSizeGibInput() {
+      return this._rootVolumeSizeGib
+    }
+
+    // running_mode - computed: false, optional: true, required: false
+    private _runningMode?: string | undefined; 
+    public get runningMode() {
+      return this.getStringAttribute('running_mode');
+    }
+    public set runningMode(value: string | undefined) {
+      this._runningMode = value;
+    }
+    public resetRunningMode() {
+      this._runningMode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get runningModeInput() {
+      return this._runningMode
+    }
+
+    // running_mode_auto_stop_timeout_in_minutes - computed: true, optional: true, required: false
+    private _runningModeAutoStopTimeoutInMinutes?: number | undefined; 
+    public get runningModeAutoStopTimeoutInMinutes() {
+      return this.getNumberAttribute('running_mode_auto_stop_timeout_in_minutes');
+    }
+    public set runningModeAutoStopTimeoutInMinutes(value: number | undefined) {
+      this._runningModeAutoStopTimeoutInMinutes = value;
+    }
+    public resetRunningModeAutoStopTimeoutInMinutes() {
+      this._runningModeAutoStopTimeoutInMinutes = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get runningModeAutoStopTimeoutInMinutesInput() {
+      return this._runningModeAutoStopTimeoutInMinutes
+    }
+
+    // user_volume_size_gib - computed: false, optional: true, required: false
+    private _userVolumeSizeGib?: number | undefined; 
+    public get userVolumeSizeGib() {
+      return this.getNumberAttribute('user_volume_size_gib');
+    }
+    public set userVolumeSizeGib(value: number | undefined) {
+      this._userVolumeSizeGib = value;
+    }
+    public resetUserVolumeSizeGib() {
+      this._userVolumeSizeGib = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userVolumeSizeGibInput() {
+      return this._userVolumeSizeGib
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/workspaces_workspace.html aws_workspaces_workspace}
@@ -735,7 +1227,7 @@ export namespace Workspaces {
     // ==========
 
     // bundle_id - computed: false, optional: false, required: true
-    private _bundleId: string;
+    private _bundleId?: string; 
     public get bundleId() {
       return this.getStringAttribute('bundle_id');
     }
@@ -753,7 +1245,7 @@ export namespace Workspaces {
     }
 
     // directory_id - computed: false, optional: false, required: true
-    private _directoryId: string;
+    private _directoryId?: string; 
     public get directoryId() {
       return this.getStringAttribute('directory_id');
     }
@@ -776,11 +1268,11 @@ export namespace Workspaces {
     }
 
     // root_volume_encryption_enabled - computed: false, optional: true, required: false
-    private _rootVolumeEncryptionEnabled?: boolean | cdktf.IResolvable;
+    private _rootVolumeEncryptionEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get rootVolumeEncryptionEnabled() {
-      return this.getBooleanAttribute('root_volume_encryption_enabled');
+      return this.getBooleanAttribute('root_volume_encryption_enabled') as any;
     }
-    public set rootVolumeEncryptionEnabled(value: boolean | cdktf.IResolvable ) {
+    public set rootVolumeEncryptionEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._rootVolumeEncryptionEnabled = value;
     }
     public resetRootVolumeEncryptionEnabled() {
@@ -797,11 +1289,12 @@ export namespace Workspaces {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -813,11 +1306,12 @@ export namespace Workspaces {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -829,7 +1323,7 @@ export namespace Workspaces {
     }
 
     // user_name - computed: false, optional: false, required: true
-    private _userName: string;
+    private _userName?: string; 
     public get userName() {
       return this.getStringAttribute('user_name');
     }
@@ -842,11 +1336,11 @@ export namespace Workspaces {
     }
 
     // user_volume_encryption_enabled - computed: false, optional: true, required: false
-    private _userVolumeEncryptionEnabled?: boolean | cdktf.IResolvable;
+    private _userVolumeEncryptionEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get userVolumeEncryptionEnabled() {
-      return this.getBooleanAttribute('user_volume_encryption_enabled');
+      return this.getBooleanAttribute('user_volume_encryption_enabled') as any;
     }
-    public set userVolumeEncryptionEnabled(value: boolean | cdktf.IResolvable ) {
+    public set userVolumeEncryptionEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._userVolumeEncryptionEnabled = value;
     }
     public resetUserVolumeEncryptionEnabled() {
@@ -858,11 +1352,11 @@ export namespace Workspaces {
     }
 
     // volume_encryption_key - computed: false, optional: true, required: false
-    private _volumeEncryptionKey?: string;
+    private _volumeEncryptionKey?: string | undefined; 
     public get volumeEncryptionKey() {
       return this.getStringAttribute('volume_encryption_key');
     }
-    public set volumeEncryptionKey(value: string ) {
+    public set volumeEncryptionKey(value: string | undefined) {
       this._volumeEncryptionKey = value;
     }
     public resetVolumeEncryptionKey() {
@@ -874,11 +1368,12 @@ export namespace Workspaces {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: WorkspacesWorkspaceTimeouts;
+    private _timeouts?: WorkspacesWorkspaceTimeouts | undefined; 
+    private __timeoutsOutput = new WorkspacesWorkspaceTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: WorkspacesWorkspaceTimeouts ) {
+    public putTimeouts(value: WorkspacesWorkspaceTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -890,11 +1385,12 @@ export namespace Workspaces {
     }
 
     // workspace_properties - computed: false, optional: true, required: false
-    private _workspaceProperties?: WorkspacesWorkspaceWorkspaceProperties[];
+    private _workspaceProperties?: WorkspacesWorkspaceWorkspaceProperties | undefined; 
+    private __workspacePropertiesOutput = new WorkspacesWorkspaceWorkspacePropertiesOutputReference(this as any, "workspace_properties", true);
     public get workspaceProperties() {
-      return this.interpolationForAttribute('workspace_properties') as any;
+      return this.__workspacePropertiesOutput;
     }
-    public set workspaceProperties(value: WorkspacesWorkspaceWorkspaceProperties[] ) {
+    public putWorkspaceProperties(value: WorkspacesWorkspaceWorkspaceProperties | undefined) {
       this._workspaceProperties = value;
     }
     public resetWorkspaceProperties() {
@@ -920,7 +1416,7 @@ export namespace Workspaces {
         user_volume_encryption_enabled: cdktf.booleanToTerraform(this._userVolumeEncryptionEnabled),
         volume_encryption_key: cdktf.stringToTerraform(this._volumeEncryptionKey),
         timeouts: workspacesWorkspaceTimeoutsToTerraform(this._timeouts),
-        workspace_properties: cdktf.listMapper(workspacesWorkspaceWorkspacePropertiesToTerraform)(this._workspaceProperties),
+        workspace_properties: workspacesWorkspaceWorkspacePropertiesToTerraform(this._workspaceProperties),
       };
     }
   }
@@ -1002,11 +1498,11 @@ export namespace Workspaces {
     // ==========
 
     // bundle_id - computed: false, optional: true, required: false
-    private _bundleId?: string;
+    private _bundleId?: string | undefined; 
     public get bundleId() {
       return this.getStringAttribute('bundle_id');
     }
-    public set bundleId(value: string ) {
+    public set bundleId(value: string | undefined) {
       this._bundleId = value;
     }
     public resetBundleId() {
@@ -1033,11 +1529,11 @@ export namespace Workspaces {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1049,11 +1545,11 @@ export namespace Workspaces {
     }
 
     // owner - computed: false, optional: true, required: false
-    private _owner?: string;
+    private _owner?: string | undefined; 
     public get owner() {
       return this.getStringAttribute('owner');
     }
-    public set owner(value: string ) {
+    public set owner(value: string | undefined) {
       this._owner = value;
     }
     public resetOwner() {
@@ -1100,27 +1596,27 @@ export namespace Workspaces {
 
     // change_compute_type - computed: true, optional: false, required: false
     public get changeComputeType() {
-      return this.getBooleanAttribute('change_compute_type');
+      return this.getBooleanAttribute('change_compute_type') as any;
     }
 
     // increase_volume_size - computed: true, optional: false, required: false
     public get increaseVolumeSize() {
-      return this.getBooleanAttribute('increase_volume_size');
+      return this.getBooleanAttribute('increase_volume_size') as any;
     }
 
     // rebuild_workspace - computed: true, optional: false, required: false
     public get rebuildWorkspace() {
-      return this.getBooleanAttribute('rebuild_workspace');
+      return this.getBooleanAttribute('rebuild_workspace') as any;
     }
 
     // restart_workspace - computed: true, optional: false, required: false
     public get restartWorkspace() {
-      return this.getBooleanAttribute('restart_workspace');
+      return this.getBooleanAttribute('restart_workspace') as any;
     }
 
     // switch_running_mode - computed: true, optional: false, required: false
     public get switchRunningMode() {
-      return this.getBooleanAttribute('switch_running_mode');
+      return this.getBooleanAttribute('switch_running_mode') as any;
     }
   }
   export class DataAwsWorkspacesDirectoryWorkspaceAccessProperties extends cdktf.ComplexComputedList {
@@ -1179,17 +1675,17 @@ export namespace Workspaces {
 
     // enable_internet_access - computed: true, optional: false, required: false
     public get enableInternetAccess() {
-      return this.getBooleanAttribute('enable_internet_access');
+      return this.getBooleanAttribute('enable_internet_access') as any;
     }
 
     // enable_maintenance_mode - computed: true, optional: false, required: false
     public get enableMaintenanceMode() {
-      return this.getBooleanAttribute('enable_maintenance_mode');
+      return this.getBooleanAttribute('enable_maintenance_mode') as any;
     }
 
     // user_enabled_as_local_administrator - computed: true, optional: false, required: false
     public get userEnabledAsLocalAdministrator() {
-      return this.getBooleanAttribute('user_enabled_as_local_administrator');
+      return this.getBooleanAttribute('user_enabled_as_local_administrator') as any;
     }
   }
 
@@ -1244,7 +1740,7 @@ export namespace Workspaces {
     }
 
     // directory_id - computed: false, optional: false, required: true
-    private _directoryId: string;
+    private _directoryId?: string; 
     public get directoryId() {
       return this.getStringAttribute('directory_id');
     }
@@ -1302,11 +1798,12 @@ export namespace Workspaces {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1400,7 +1897,7 @@ export namespace Workspaces {
     }
 
     // image_id - computed: false, optional: false, required: true
-    private _imageId: string;
+    private _imageId?: string; 
     public get imageId() {
       return this.getStringAttribute('image_id');
     }
@@ -1541,11 +2038,11 @@ export namespace Workspaces {
     }
 
     // directory_id - computed: true, optional: true, required: false
-    private _directoryId?: string;
+    private _directoryId?: string | undefined; 
     public get directoryId() {
       return this.getStringAttribute('directory_id');
     }
-    public set directoryId(value: string) {
+    public set directoryId(value: string | undefined) {
       this._directoryId = value;
     }
     public resetDirectoryId() {
@@ -1568,7 +2065,7 @@ export namespace Workspaces {
 
     // root_volume_encryption_enabled - computed: true, optional: false, required: false
     public get rootVolumeEncryptionEnabled() {
-      return this.getBooleanAttribute('root_volume_encryption_enabled');
+      return this.getBooleanAttribute('root_volume_encryption_enabled') as any;
     }
 
     // state - computed: true, optional: false, required: false
@@ -1577,11 +2074,12 @@ export namespace Workspaces {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1593,11 +2091,11 @@ export namespace Workspaces {
     }
 
     // user_name - computed: true, optional: true, required: false
-    private _userName?: string;
+    private _userName?: string | undefined; 
     public get userName() {
       return this.getStringAttribute('user_name');
     }
-    public set userName(value: string) {
+    public set userName(value: string | undefined) {
       this._userName = value;
     }
     public resetUserName() {
@@ -1610,7 +2108,7 @@ export namespace Workspaces {
 
     // user_volume_encryption_enabled - computed: true, optional: false, required: false
     public get userVolumeEncryptionEnabled() {
-      return this.getBooleanAttribute('user_volume_encryption_enabled');
+      return this.getBooleanAttribute('user_volume_encryption_enabled') as any;
     }
 
     // volume_encryption_key - computed: true, optional: false, required: false
@@ -1619,11 +2117,11 @@ export namespace Workspaces {
     }
 
     // workspace_id - computed: true, optional: true, required: false
-    private _workspaceId?: string;
+    private _workspaceId?: string | undefined; 
     public get workspaceId() {
       return this.getStringAttribute('workspace_id');
     }
-    public set workspaceId(value: string) {
+    public set workspaceId(value: string | undefined) {
       this._workspaceId = value;
     }
     public resetWorkspaceId() {

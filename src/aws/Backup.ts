@@ -54,8 +54,9 @@ export namespace Backup {
     // ==========
 
     // global_settings - computed: false, optional: false, required: true
-    private _globalSettings: { [key: string]: string } | cdktf.IResolvable;
+    private _globalSettings?: { [key: string]: string } | cdktf.IResolvable; 
     public get globalSettings() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('global_settings') as any;
     }
     public set globalSettings(value: { [key: string]: string } | cdktf.IResolvable) {
@@ -120,6 +121,9 @@ export namespace Backup {
 
   function backupPlanAdvancedBackupSettingToTerraform(struct?: BackupPlanAdvancedBackupSetting): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       backup_options: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.backupOptions),
       resource_type: cdktf.stringToTerraform(struct!.resourceType),
@@ -137,14 +141,59 @@ export namespace Backup {
     readonly deleteAfter?: number;
   }
 
-  function backupPlanRuleCopyActionLifecycleToTerraform(struct?: BackupPlanRuleCopyActionLifecycle): any {
+  function backupPlanRuleCopyActionLifecycleToTerraform(struct?: BackupPlanRuleCopyActionLifecycleOutputReference | BackupPlanRuleCopyActionLifecycle): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cold_storage_after: cdktf.numberToTerraform(struct!.coldStorageAfter),
       delete_after: cdktf.numberToTerraform(struct!.deleteAfter),
     }
   }
 
+  export class BackupPlanRuleCopyActionLifecycleOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // cold_storage_after - computed: false, optional: true, required: false
+    private _coldStorageAfter?: number | undefined; 
+    public get coldStorageAfter() {
+      return this.getNumberAttribute('cold_storage_after');
+    }
+    public set coldStorageAfter(value: number | undefined) {
+      this._coldStorageAfter = value;
+    }
+    public resetColdStorageAfter() {
+      this._coldStorageAfter = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get coldStorageAfterInput() {
+      return this._coldStorageAfter
+    }
+
+    // delete_after - computed: false, optional: true, required: false
+    private _deleteAfter?: number | undefined; 
+    public get deleteAfter() {
+      return this.getNumberAttribute('delete_after');
+    }
+    public set deleteAfter(value: number | undefined) {
+      this._deleteAfter = value;
+    }
+    public resetDeleteAfter() {
+      this._deleteAfter = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteAfterInput() {
+      return this._deleteAfter
+    }
+  }
   export interface BackupPlanRuleCopyAction {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_plan.html#destination_vault_arn BackupPlan#destination_vault_arn}
@@ -155,14 +204,17 @@ export namespace Backup {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_plan.html#lifecycle BackupPlan#lifecycle}
     */
-    readonly lifecycle?: BackupPlanRuleCopyActionLifecycle[];
+    readonly lifecycle?: BackupPlanRuleCopyActionLifecycle;
   }
 
   function backupPlanRuleCopyActionToTerraform(struct?: BackupPlanRuleCopyAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       destination_vault_arn: cdktf.stringToTerraform(struct!.destinationVaultArn),
-      lifecycle: cdktf.listMapper(backupPlanRuleCopyActionLifecycleToTerraform)(struct!.lifecycle),
+      lifecycle: backupPlanRuleCopyActionLifecycleToTerraform(struct!.lifecycle),
     }
   }
 
@@ -177,14 +229,59 @@ export namespace Backup {
     readonly deleteAfter?: number;
   }
 
-  function backupPlanRuleLifecycleToTerraform(struct?: BackupPlanRuleLifecycle): any {
+  function backupPlanRuleLifecycleToTerraform(struct?: BackupPlanRuleLifecycleOutputReference | BackupPlanRuleLifecycle): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cold_storage_after: cdktf.numberToTerraform(struct!.coldStorageAfter),
       delete_after: cdktf.numberToTerraform(struct!.deleteAfter),
     }
   }
 
+  export class BackupPlanRuleLifecycleOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // cold_storage_after - computed: false, optional: true, required: false
+    private _coldStorageAfter?: number | undefined; 
+    public get coldStorageAfter() {
+      return this.getNumberAttribute('cold_storage_after');
+    }
+    public set coldStorageAfter(value: number | undefined) {
+      this._coldStorageAfter = value;
+    }
+    public resetColdStorageAfter() {
+      this._coldStorageAfter = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get coldStorageAfterInput() {
+      return this._coldStorageAfter
+    }
+
+    // delete_after - computed: false, optional: true, required: false
+    private _deleteAfter?: number | undefined; 
+    public get deleteAfter() {
+      return this.getNumberAttribute('delete_after');
+    }
+    public set deleteAfter(value: number | undefined) {
+      this._deleteAfter = value;
+    }
+    public resetDeleteAfter() {
+      this._deleteAfter = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteAfterInput() {
+      return this._deleteAfter
+    }
+  }
   export interface BackupPlanRule {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_plan.html#completion_window BackupPlan#completion_window}
@@ -225,11 +322,14 @@ export namespace Backup {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/backup_plan.html#lifecycle BackupPlan#lifecycle}
     */
-    readonly lifecycle?: BackupPlanRuleLifecycle[];
+    readonly lifecycle?: BackupPlanRuleLifecycle;
   }
 
   function backupPlanRuleToTerraform(struct?: BackupPlanRule): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       completion_window: cdktf.numberToTerraform(struct!.completionWindow),
       enable_continuous_backup: cdktf.booleanToTerraform(struct!.enableContinuousBackup),
@@ -239,7 +339,7 @@ export namespace Backup {
       start_window: cdktf.numberToTerraform(struct!.startWindow),
       target_vault_name: cdktf.stringToTerraform(struct!.targetVaultName),
       copy_action: cdktf.listMapper(backupPlanRuleCopyActionToTerraform)(struct!.copyAction),
-      lifecycle: cdktf.listMapper(backupPlanRuleLifecycleToTerraform)(struct!.lifecycle),
+      lifecycle: backupPlanRuleLifecycleToTerraform(struct!.lifecycle),
     }
   }
 
@@ -298,7 +398,7 @@ export namespace Backup {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -311,11 +411,12 @@ export namespace Backup {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -327,11 +428,12 @@ export namespace Backup {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -348,11 +450,12 @@ export namespace Backup {
     }
 
     // advanced_backup_setting - computed: false, optional: true, required: false
-    private _advancedBackupSetting?: BackupPlanAdvancedBackupSetting[];
+    private _advancedBackupSetting?: BackupPlanAdvancedBackupSetting[] | undefined; 
     public get advancedBackupSetting() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('advanced_backup_setting') as any;
     }
-    public set advancedBackupSetting(value: BackupPlanAdvancedBackupSetting[] ) {
+    public set advancedBackupSetting(value: BackupPlanAdvancedBackupSetting[] | undefined) {
       this._advancedBackupSetting = value;
     }
     public resetAdvancedBackupSetting() {
@@ -364,8 +467,9 @@ export namespace Backup {
     }
 
     // rule - computed: false, optional: false, required: true
-    private _rule: BackupPlanRule[];
+    private _rule?: BackupPlanRule[]; 
     public get rule() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('rule') as any;
     }
     public set rule(value: BackupPlanRule[]) {
@@ -442,9 +546,9 @@ export namespace Backup {
     }
 
     // resource_type_opt_in_preference - computed: false, optional: false, required: true
-    private _resourceTypeOptInPreference: { [key: string]: boolean } | cdktf.IResolvable;
+    private _resourceTypeOptInPreference?: { [key: string]: boolean } | cdktf.IResolvable; 
     public get resourceTypeOptInPreference() {
-      return this.getBooleanAttribute('resource_type_opt_in_preference');
+      return this.getBooleanAttribute('resource_type_opt_in_preference') as any;
     }
     public set resourceTypeOptInPreference(value: { [key: string]: boolean } | cdktf.IResolvable) {
       this._resourceTypeOptInPreference = value;
@@ -505,6 +609,9 @@ export namespace Backup {
 
   function backupSelectionSelectionTagToTerraform(struct?: BackupSelectionSelectionTag): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
       type: cdktf.stringToTerraform(struct!.type),
@@ -557,7 +664,7 @@ export namespace Backup {
     // ==========
 
     // iam_role_arn - computed: false, optional: false, required: true
-    private _iamRoleArn: string;
+    private _iamRoleArn?: string; 
     public get iamRoleArn() {
       return this.getStringAttribute('iam_role_arn');
     }
@@ -575,7 +682,7 @@ export namespace Backup {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -588,7 +695,7 @@ export namespace Backup {
     }
 
     // plan_id - computed: false, optional: false, required: true
-    private _planId: string;
+    private _planId?: string; 
     public get planId() {
       return this.getStringAttribute('plan_id');
     }
@@ -601,11 +708,11 @@ export namespace Backup {
     }
 
     // resources - computed: false, optional: true, required: false
-    private _resources?: string[];
+    private _resources?: string[] | undefined; 
     public get resources() {
       return this.getListAttribute('resources');
     }
-    public set resources(value: string[] ) {
+    public set resources(value: string[] | undefined) {
       this._resources = value;
     }
     public resetResources() {
@@ -617,11 +724,12 @@ export namespace Backup {
     }
 
     // selection_tag - computed: false, optional: true, required: false
-    private _selectionTag?: BackupSelectionSelectionTag[];
+    private _selectionTag?: BackupSelectionSelectionTag[] | undefined; 
     public get selectionTag() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('selection_tag') as any;
     }
-    public set selectionTag(value: BackupSelectionSelectionTag[] ) {
+    public set selectionTag(value: BackupSelectionSelectionTag[] | undefined) {
       this._selectionTag = value;
     }
     public resetSelectionTag() {
@@ -718,11 +826,11 @@ export namespace Backup {
     }
 
     // kms_key_arn - computed: true, optional: true, required: false
-    private _kmsKeyArn?: string;
+    private _kmsKeyArn?: string | undefined; 
     public get kmsKeyArn() {
       return this.getStringAttribute('kms_key_arn');
     }
-    public set kmsKeyArn(value: string) {
+    public set kmsKeyArn(value: string | undefined) {
       this._kmsKeyArn = value;
     }
     public resetKmsKeyArn() {
@@ -734,7 +842,7 @@ export namespace Backup {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -752,11 +860,12 @@ export namespace Backup {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -768,11 +877,12 @@ export namespace Backup {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -858,7 +968,7 @@ export namespace Backup {
     }
 
     // backup_vault_events - computed: false, optional: false, required: true
-    private _backupVaultEvents: string[];
+    private _backupVaultEvents?: string[]; 
     public get backupVaultEvents() {
       return this.getListAttribute('backup_vault_events');
     }
@@ -871,7 +981,7 @@ export namespace Backup {
     }
 
     // backup_vault_name - computed: false, optional: false, required: true
-    private _backupVaultName: string;
+    private _backupVaultName?: string; 
     public get backupVaultName() {
       return this.getStringAttribute('backup_vault_name');
     }
@@ -889,7 +999,7 @@ export namespace Backup {
     }
 
     // sns_topic_arn - computed: false, optional: false, required: true
-    private _snsTopicArn: string;
+    private _snsTopicArn?: string; 
     public get snsTopicArn() {
       return this.getStringAttribute('sns_topic_arn');
     }
@@ -970,7 +1080,7 @@ export namespace Backup {
     }
 
     // backup_vault_name - computed: false, optional: false, required: true
-    private _backupVaultName: string;
+    private _backupVaultName?: string; 
     public get backupVaultName() {
       return this.getStringAttribute('backup_vault_name');
     }
@@ -988,7 +1098,7 @@ export namespace Backup {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -1078,7 +1188,7 @@ export namespace Backup {
     }
 
     // plan_id - computed: false, optional: false, required: true
-    private _planId: string;
+    private _planId?: string; 
     public get planId() {
       return this.getStringAttribute('plan_id');
     }
@@ -1091,11 +1201,12 @@ export namespace Backup {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1189,7 +1300,7 @@ export namespace Backup {
     }
 
     // plan_id - computed: false, optional: false, required: true
-    private _planId: string;
+    private _planId?: string; 
     public get planId() {
       return this.getStringAttribute('plan_id');
     }
@@ -1207,7 +1318,7 @@ export namespace Backup {
     }
 
     // selection_id - computed: false, optional: false, required: true
-    private _selectionId: string;
+    private _selectionId?: string; 
     public get selectionId() {
       return this.getStringAttribute('selection_id');
     }
@@ -1297,7 +1408,7 @@ export namespace Backup {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1315,11 +1426,12 @@ export namespace Backup {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {

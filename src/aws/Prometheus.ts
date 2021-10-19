@@ -54,11 +54,11 @@ export namespace Prometheus {
     // ==========
 
     // alias - computed: false, optional: true, required: false
-    private _alias?: string;
+    private _alias?: string | undefined; 
     public get alias() {
       return this.getStringAttribute('alias');
     }
-    public set alias(value: string ) {
+    public set alias(value: string | undefined) {
       this._alias = value;
     }
     public resetAlias() {

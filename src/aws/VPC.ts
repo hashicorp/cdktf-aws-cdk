@@ -84,7 +84,7 @@ export namespace VPC {
     }
 
     // bgp_asn - computed: false, optional: false, required: true
-    private _bgpAsn: string;
+    private _bgpAsn?: string; 
     public get bgpAsn() {
       return this.getStringAttribute('bgp_asn');
     }
@@ -97,11 +97,11 @@ export namespace VPC {
     }
 
     // device_name - computed: false, optional: true, required: false
-    private _deviceName?: string;
+    private _deviceName?: string | undefined; 
     public get deviceName() {
       return this.getStringAttribute('device_name');
     }
-    public set deviceName(value: string ) {
+    public set deviceName(value: string | undefined) {
       this._deviceName = value;
     }
     public resetDeviceName() {
@@ -118,7 +118,7 @@ export namespace VPC {
     }
 
     // ip_address - computed: false, optional: false, required: true
-    private _ipAddress: string;
+    private _ipAddress?: string; 
     public get ipAddress() {
       return this.getStringAttribute('ip_address');
     }
@@ -131,11 +131,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -147,11 +148,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -163,7 +165,7 @@ export namespace VPC {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }
@@ -261,6 +263,9 @@ export namespace VPC {
 
   function defaultNetworkAclEgressToTerraform(struct?: DefaultNetworkAclEgress): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       action: cdktf.stringToTerraform(struct!.action),
       cidr_block: cdktf.stringToTerraform(struct!.cidrBlock),
@@ -315,6 +320,9 @@ export namespace VPC {
 
   function defaultNetworkAclIngressToTerraform(struct?: DefaultNetworkAclIngress): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       action: cdktf.stringToTerraform(struct!.action),
       cidr_block: cdktf.stringToTerraform(struct!.cidrBlock),
@@ -379,7 +387,7 @@ export namespace VPC {
     }
 
     // default_network_acl_id - computed: false, optional: false, required: true
-    private _defaultNetworkAclId: string;
+    private _defaultNetworkAclId?: string; 
     public get defaultNetworkAclId() {
       return this.getStringAttribute('default_network_acl_id');
     }
@@ -402,11 +410,11 @@ export namespace VPC {
     }
 
     // subnet_ids - computed: false, optional: true, required: false
-    private _subnetIds?: string[];
+    private _subnetIds?: string[] | undefined; 
     public get subnetIds() {
       return this.getListAttribute('subnet_ids');
     }
-    public set subnetIds(value: string[] ) {
+    public set subnetIds(value: string[] | undefined) {
       this._subnetIds = value;
     }
     public resetSubnetIds() {
@@ -418,11 +426,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -434,11 +443,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -455,11 +465,12 @@ export namespace VPC {
     }
 
     // egress - computed: false, optional: true, required: false
-    private _egress?: DefaultNetworkAclEgress[];
+    private _egress?: DefaultNetworkAclEgress[] | undefined; 
     public get egress() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('egress') as any;
     }
-    public set egress(value: DefaultNetworkAclEgress[] ) {
+    public set egress(value: DefaultNetworkAclEgress[] | undefined) {
       this._egress = value;
     }
     public resetEgress() {
@@ -471,11 +482,12 @@ export namespace VPC {
     }
 
     // ingress - computed: false, optional: true, required: false
-    private _ingress?: DefaultNetworkAclIngress[];
+    private _ingress?: DefaultNetworkAclIngress[] | undefined; 
     public get ingress() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ingress') as any;
     }
-    public set ingress(value: DefaultNetworkAclIngress[] ) {
+    public set ingress(value: DefaultNetworkAclIngress[] | undefined) {
       this._ingress = value;
     }
     public resetIngress() {
@@ -578,6 +590,9 @@ export namespace VPC {
 
   function defaultRouteTableRouteToTerraform(struct?: DefaultRouteTableRoute): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cidr_block: struct!.cidrBlock === undefined ? null : cdktf.stringToTerraform(struct!.cidrBlock),
       destination_prefix_list_id: struct!.destinationPrefixListId === undefined ? null : cdktf.stringToTerraform(struct!.destinationPrefixListId),
@@ -604,14 +619,59 @@ export namespace VPC {
     readonly update?: string;
   }
 
-  function defaultRouteTableTimeoutsToTerraform(struct?: DefaultRouteTableTimeouts): any {
+  function defaultRouteTableTimeoutsToTerraform(struct?: DefaultRouteTableTimeoutsOutputReference | DefaultRouteTableTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       update: cdktf.stringToTerraform(struct!.update),
     }
   }
 
+  export class DefaultRouteTableTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/default_route_table.html aws_default_route_table}
@@ -663,7 +723,7 @@ export namespace VPC {
     }
 
     // default_route_table_id - computed: false, optional: false, required: true
-    private _defaultRouteTableId: string;
+    private _defaultRouteTableId?: string; 
     public get defaultRouteTableId() {
       return this.getStringAttribute('default_route_table_id');
     }
@@ -686,11 +746,11 @@ export namespace VPC {
     }
 
     // propagating_vgws - computed: false, optional: true, required: false
-    private _propagatingVgws?: string[];
+    private _propagatingVgws?: string[] | undefined; 
     public get propagatingVgws() {
       return this.getListAttribute('propagating_vgws');
     }
-    public set propagatingVgws(value: string[] ) {
+    public set propagatingVgws(value: string[] | undefined) {
       this._propagatingVgws = value;
     }
     public resetPropagatingVgws() {
@@ -702,11 +762,12 @@ export namespace VPC {
     }
 
     // route - computed: true, optional: true, required: false
-    private _route?: DefaultRouteTableRoute[]
-    public get route(): DefaultRouteTableRoute[] {
-      return this.interpolationForAttribute('route') as any; // Getting the computed value is not yet implemented
+    private _route?: DefaultRouteTableRoute[] | undefined; 
+    public get route() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('route') as any;
     }
-    public set route(value: DefaultRouteTableRoute[]) {
+    public set route(value: DefaultRouteTableRoute[] | undefined) {
       this._route = value;
     }
     public resetRoute() {
@@ -718,11 +779,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -734,11 +796,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -755,11 +818,12 @@ export namespace VPC {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DefaultRouteTableTimeouts;
+    private _timeouts?: DefaultRouteTableTimeouts | undefined; 
+    private __timeoutsOutput = new DefaultRouteTableTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DefaultRouteTableTimeouts ) {
+    public putTimeouts(value: DefaultRouteTableTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -852,6 +916,9 @@ export namespace VPC {
 
   function defaultSecurityGroupEgressToTerraform(struct?: DefaultSecurityGroupEgress): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cidr_blocks: struct!.cidrBlocks === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform)(struct!.cidrBlocks),
       description: struct!.description === undefined ? null : cdktf.stringToTerraform(struct!.description),
@@ -906,6 +973,9 @@ export namespace VPC {
 
   function defaultSecurityGroupIngressToTerraform(struct?: DefaultSecurityGroupIngress): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cidr_blocks: struct!.cidrBlocks === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform)(struct!.cidrBlocks),
       description: struct!.description === undefined ? null : cdktf.stringToTerraform(struct!.description),
@@ -975,11 +1045,12 @@ export namespace VPC {
     }
 
     // egress - computed: true, optional: true, required: false
-    private _egress?: DefaultSecurityGroupEgress[]
-    public get egress(): DefaultSecurityGroupEgress[] {
-      return this.interpolationForAttribute('egress') as any; // Getting the computed value is not yet implemented
+    private _egress?: DefaultSecurityGroupEgress[] | undefined; 
+    public get egress() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('egress') as any;
     }
-    public set egress(value: DefaultSecurityGroupEgress[]) {
+    public set egress(value: DefaultSecurityGroupEgress[] | undefined) {
       this._egress = value;
     }
     public resetEgress() {
@@ -996,11 +1067,12 @@ export namespace VPC {
     }
 
     // ingress - computed: true, optional: true, required: false
-    private _ingress?: DefaultSecurityGroupIngress[]
-    public get ingress(): DefaultSecurityGroupIngress[] {
-      return this.interpolationForAttribute('ingress') as any; // Getting the computed value is not yet implemented
+    private _ingress?: DefaultSecurityGroupIngress[] | undefined; 
+    public get ingress() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('ingress') as any;
     }
-    public set ingress(value: DefaultSecurityGroupIngress[]) {
+    public set ingress(value: DefaultSecurityGroupIngress[] | undefined) {
       this._ingress = value;
     }
     public resetIngress() {
@@ -1022,11 +1094,11 @@ export namespace VPC {
     }
 
     // revoke_rules_on_delete - computed: false, optional: true, required: false
-    private _revokeRulesOnDelete?: boolean | cdktf.IResolvable;
+    private _revokeRulesOnDelete?: boolean | cdktf.IResolvable | undefined; 
     public get revokeRulesOnDelete() {
-      return this.getBooleanAttribute('revoke_rules_on_delete');
+      return this.getBooleanAttribute('revoke_rules_on_delete') as any;
     }
-    public set revokeRulesOnDelete(value: boolean | cdktf.IResolvable ) {
+    public set revokeRulesOnDelete(value: boolean | cdktf.IResolvable | undefined) {
       this._revokeRulesOnDelete = value;
     }
     public resetRevokeRulesOnDelete() {
@@ -1038,11 +1110,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1054,11 +1127,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1070,11 +1144,11 @@ export namespace VPC {
     }
 
     // vpc_id - computed: true, optional: true, required: false
-    private _vpcId?: string;
+    private _vpcId?: string | undefined; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
-    public set vpcId(value: string) {
+    public set vpcId(value: string | undefined) {
       this._vpcId = value;
     }
     public resetVpcId() {
@@ -1147,14 +1221,59 @@ export namespace VPC {
     readonly delete?: string;
   }
 
-  function defaultSubnetTimeoutsToTerraform(struct?: DefaultSubnetTimeouts): any {
+  function defaultSubnetTimeoutsToTerraform(struct?: DefaultSubnetTimeoutsOutputReference | DefaultSubnetTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class DefaultSubnetTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/default_subnet.html aws_default_subnet}
@@ -1209,11 +1328,11 @@ export namespace VPC {
 
     // assign_ipv6_address_on_creation - computed: true, optional: false, required: false
     public get assignIpv6AddressOnCreation() {
-      return this.getBooleanAttribute('assign_ipv6_address_on_creation');
+      return this.getBooleanAttribute('assign_ipv6_address_on_creation') as any;
     }
 
     // availability_zone - computed: false, optional: false, required: true
-    private _availabilityZone: string;
+    private _availabilityZone?: string; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
@@ -1236,11 +1355,11 @@ export namespace VPC {
     }
 
     // customer_owned_ipv4_pool - computed: false, optional: true, required: false
-    private _customerOwnedIpv4Pool?: string;
+    private _customerOwnedIpv4Pool?: string | undefined; 
     public get customerOwnedIpv4Pool() {
       return this.getStringAttribute('customer_owned_ipv4_pool');
     }
-    public set customerOwnedIpv4Pool(value: string ) {
+    public set customerOwnedIpv4Pool(value: string | undefined) {
       this._customerOwnedIpv4Pool = value;
     }
     public resetCustomerOwnedIpv4Pool() {
@@ -1267,11 +1386,11 @@ export namespace VPC {
     }
 
     // map_customer_owned_ip_on_launch - computed: false, optional: true, required: false
-    private _mapCustomerOwnedIpOnLaunch?: boolean | cdktf.IResolvable;
+    private _mapCustomerOwnedIpOnLaunch?: boolean | cdktf.IResolvable | undefined; 
     public get mapCustomerOwnedIpOnLaunch() {
-      return this.getBooleanAttribute('map_customer_owned_ip_on_launch');
+      return this.getBooleanAttribute('map_customer_owned_ip_on_launch') as any;
     }
-    public set mapCustomerOwnedIpOnLaunch(value: boolean | cdktf.IResolvable ) {
+    public set mapCustomerOwnedIpOnLaunch(value: boolean | cdktf.IResolvable | undefined) {
       this._mapCustomerOwnedIpOnLaunch = value;
     }
     public resetMapCustomerOwnedIpOnLaunch() {
@@ -1283,11 +1402,11 @@ export namespace VPC {
     }
 
     // map_public_ip_on_launch - computed: true, optional: true, required: false
-    private _mapPublicIpOnLaunch?: boolean | cdktf.IResolvable;
+    private _mapPublicIpOnLaunch?: boolean | cdktf.IResolvable | undefined; 
     public get mapPublicIpOnLaunch() {
-      return this.getBooleanAttribute('map_public_ip_on_launch');
+      return this.getBooleanAttribute('map_public_ip_on_launch') as any;
     }
-    public set mapPublicIpOnLaunch(value: boolean | cdktf.IResolvable) {
+    public set mapPublicIpOnLaunch(value: boolean | cdktf.IResolvable | undefined) {
       this._mapPublicIpOnLaunch = value;
     }
     public resetMapPublicIpOnLaunch() {
@@ -1299,11 +1418,11 @@ export namespace VPC {
     }
 
     // outpost_arn - computed: false, optional: true, required: false
-    private _outpostArn?: string;
+    private _outpostArn?: string | undefined; 
     public get outpostArn() {
       return this.getStringAttribute('outpost_arn');
     }
-    public set outpostArn(value: string ) {
+    public set outpostArn(value: string | undefined) {
       this._outpostArn = value;
     }
     public resetOutpostArn() {
@@ -1320,11 +1439,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1336,11 +1456,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1357,11 +1478,12 @@ export namespace VPC {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DefaultSubnetTimeouts;
+    private _timeouts?: DefaultSubnetTimeouts | undefined; 
+    private __timeoutsOutput = new DefaultSubnetTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DefaultSubnetTimeouts ) {
+    public putTimeouts(value: DefaultSubnetTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1467,7 +1589,7 @@ export namespace VPC {
 
     // assign_generated_ipv6_cidr_block - computed: true, optional: false, required: false
     public get assignGeneratedIpv6CidrBlock() {
-      return this.getBooleanAttribute('assign_generated_ipv6_cidr_block');
+      return this.getBooleanAttribute('assign_generated_ipv6_cidr_block') as any;
     }
 
     // cidr_block - computed: true, optional: false, required: false
@@ -1496,11 +1618,11 @@ export namespace VPC {
     }
 
     // enable_classiclink - computed: true, optional: true, required: false
-    private _enableClassiclink?: boolean | cdktf.IResolvable;
+    private _enableClassiclink?: boolean | cdktf.IResolvable | undefined; 
     public get enableClassiclink() {
-      return this.getBooleanAttribute('enable_classiclink');
+      return this.getBooleanAttribute('enable_classiclink') as any;
     }
-    public set enableClassiclink(value: boolean | cdktf.IResolvable) {
+    public set enableClassiclink(value: boolean | cdktf.IResolvable | undefined) {
       this._enableClassiclink = value;
     }
     public resetEnableClassiclink() {
@@ -1512,11 +1634,11 @@ export namespace VPC {
     }
 
     // enable_classiclink_dns_support - computed: true, optional: true, required: false
-    private _enableClassiclinkDnsSupport?: boolean | cdktf.IResolvable;
+    private _enableClassiclinkDnsSupport?: boolean | cdktf.IResolvable | undefined; 
     public get enableClassiclinkDnsSupport() {
-      return this.getBooleanAttribute('enable_classiclink_dns_support');
+      return this.getBooleanAttribute('enable_classiclink_dns_support') as any;
     }
-    public set enableClassiclinkDnsSupport(value: boolean | cdktf.IResolvable) {
+    public set enableClassiclinkDnsSupport(value: boolean | cdktf.IResolvable | undefined) {
       this._enableClassiclinkDnsSupport = value;
     }
     public resetEnableClassiclinkDnsSupport() {
@@ -1528,11 +1650,11 @@ export namespace VPC {
     }
 
     // enable_dns_hostnames - computed: true, optional: true, required: false
-    private _enableDnsHostnames?: boolean | cdktf.IResolvable;
+    private _enableDnsHostnames?: boolean | cdktf.IResolvable | undefined; 
     public get enableDnsHostnames() {
-      return this.getBooleanAttribute('enable_dns_hostnames');
+      return this.getBooleanAttribute('enable_dns_hostnames') as any;
     }
-    public set enableDnsHostnames(value: boolean | cdktf.IResolvable) {
+    public set enableDnsHostnames(value: boolean | cdktf.IResolvable | undefined) {
       this._enableDnsHostnames = value;
     }
     public resetEnableDnsHostnames() {
@@ -1544,11 +1666,11 @@ export namespace VPC {
     }
 
     // enable_dns_support - computed: false, optional: true, required: false
-    private _enableDnsSupport?: boolean | cdktf.IResolvable;
+    private _enableDnsSupport?: boolean | cdktf.IResolvable | undefined; 
     public get enableDnsSupport() {
-      return this.getBooleanAttribute('enable_dns_support');
+      return this.getBooleanAttribute('enable_dns_support') as any;
     }
-    public set enableDnsSupport(value: boolean | cdktf.IResolvable ) {
+    public set enableDnsSupport(value: boolean | cdktf.IResolvable | undefined) {
       this._enableDnsSupport = value;
     }
     public resetEnableDnsSupport() {
@@ -1590,11 +1712,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1606,11 +1729,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1723,11 +1847,11 @@ export namespace VPC {
     }
 
     // netbios_name_servers - computed: false, optional: true, required: false
-    private _netbiosNameServers?: string[];
+    private _netbiosNameServers?: string[] | undefined; 
     public get netbiosNameServers() {
       return this.getListAttribute('netbios_name_servers');
     }
-    public set netbiosNameServers(value: string[] ) {
+    public set netbiosNameServers(value: string[] | undefined) {
       this._netbiosNameServers = value;
     }
     public resetNetbiosNameServers() {
@@ -1739,11 +1863,11 @@ export namespace VPC {
     }
 
     // netbios_node_type - computed: false, optional: true, required: false
-    private _netbiosNodeType?: string;
+    private _netbiosNodeType?: string | undefined; 
     public get netbiosNodeType() {
       return this.getStringAttribute('netbios_node_type');
     }
-    public set netbiosNodeType(value: string ) {
+    public set netbiosNodeType(value: string | undefined) {
       this._netbiosNodeType = value;
     }
     public resetNetbiosNodeType() {
@@ -1760,11 +1884,11 @@ export namespace VPC {
     }
 
     // owner_id - computed: true, optional: true, required: false
-    private _ownerId?: string;
+    private _ownerId?: string | undefined; 
     public get ownerId() {
       return this.getStringAttribute('owner_id');
     }
-    public set ownerId(value: string) {
+    public set ownerId(value: string | undefined) {
       this._ownerId = value;
     }
     public resetOwnerId() {
@@ -1776,11 +1900,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1792,11 +1917,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1883,11 +2009,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1899,11 +2026,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1915,7 +2043,7 @@ export namespace VPC {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -1993,7 +2121,7 @@ export namespace VPC {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/flow_log.html#destination_options FlowLog#destination_options}
     */
-    readonly destinationOptions?: FlowLogDestinationOptions[];
+    readonly destinationOptions?: FlowLogDestinationOptions;
   }
   export interface FlowLogDestinationOptions {
     /**
@@ -2010,8 +2138,11 @@ export namespace VPC {
     readonly perHourPartition?: boolean | cdktf.IResolvable;
   }
 
-  function flowLogDestinationOptionsToTerraform(struct?: FlowLogDestinationOptions): any {
+  function flowLogDestinationOptionsToTerraform(struct?: FlowLogDestinationOptionsOutputReference | FlowLogDestinationOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       file_format: cdktf.stringToTerraform(struct!.fileFormat),
       hive_compatible_partitions: cdktf.booleanToTerraform(struct!.hiveCompatiblePartitions),
@@ -2019,6 +2150,64 @@ export namespace VPC {
     }
   }
 
+  export class FlowLogDestinationOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // file_format - computed: false, optional: true, required: false
+    private _fileFormat?: string | undefined; 
+    public get fileFormat() {
+      return this.getStringAttribute('file_format');
+    }
+    public set fileFormat(value: string | undefined) {
+      this._fileFormat = value;
+    }
+    public resetFileFormat() {
+      this._fileFormat = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get fileFormatInput() {
+      return this._fileFormat
+    }
+
+    // hive_compatible_partitions - computed: false, optional: true, required: false
+    private _hiveCompatiblePartitions?: boolean | cdktf.IResolvable | undefined; 
+    public get hiveCompatiblePartitions() {
+      return this.getBooleanAttribute('hive_compatible_partitions') as any;
+    }
+    public set hiveCompatiblePartitions(value: boolean | cdktf.IResolvable | undefined) {
+      this._hiveCompatiblePartitions = value;
+    }
+    public resetHiveCompatiblePartitions() {
+      this._hiveCompatiblePartitions = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get hiveCompatiblePartitionsInput() {
+      return this._hiveCompatiblePartitions
+    }
+
+    // per_hour_partition - computed: false, optional: true, required: false
+    private _perHourPartition?: boolean | cdktf.IResolvable | undefined; 
+    public get perHourPartition() {
+      return this.getBooleanAttribute('per_hour_partition') as any;
+    }
+    public set perHourPartition(value: boolean | cdktf.IResolvable | undefined) {
+      this._perHourPartition = value;
+    }
+    public resetPerHourPartition() {
+      this._perHourPartition = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get perHourPartitionInput() {
+      return this._perHourPartition
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/flow_log.html aws_flow_log}
@@ -2077,11 +2266,11 @@ export namespace VPC {
     }
 
     // eni_id - computed: false, optional: true, required: false
-    private _eniId?: string;
+    private _eniId?: string | undefined; 
     public get eniId() {
       return this.getStringAttribute('eni_id');
     }
-    public set eniId(value: string ) {
+    public set eniId(value: string | undefined) {
       this._eniId = value;
     }
     public resetEniId() {
@@ -2093,11 +2282,11 @@ export namespace VPC {
     }
 
     // iam_role_arn - computed: false, optional: true, required: false
-    private _iamRoleArn?: string;
+    private _iamRoleArn?: string | undefined; 
     public get iamRoleArn() {
       return this.getStringAttribute('iam_role_arn');
     }
-    public set iamRoleArn(value: string ) {
+    public set iamRoleArn(value: string | undefined) {
       this._iamRoleArn = value;
     }
     public resetIamRoleArn() {
@@ -2114,11 +2303,11 @@ export namespace VPC {
     }
 
     // log_destination - computed: true, optional: true, required: false
-    private _logDestination?: string;
+    private _logDestination?: string | undefined; 
     public get logDestination() {
       return this.getStringAttribute('log_destination');
     }
-    public set logDestination(value: string) {
+    public set logDestination(value: string | undefined) {
       this._logDestination = value;
     }
     public resetLogDestination() {
@@ -2130,11 +2319,11 @@ export namespace VPC {
     }
 
     // log_destination_type - computed: false, optional: true, required: false
-    private _logDestinationType?: string;
+    private _logDestinationType?: string | undefined; 
     public get logDestinationType() {
       return this.getStringAttribute('log_destination_type');
     }
-    public set logDestinationType(value: string ) {
+    public set logDestinationType(value: string | undefined) {
       this._logDestinationType = value;
     }
     public resetLogDestinationType() {
@@ -2146,11 +2335,11 @@ export namespace VPC {
     }
 
     // log_format - computed: true, optional: true, required: false
-    private _logFormat?: string;
+    private _logFormat?: string | undefined; 
     public get logFormat() {
       return this.getStringAttribute('log_format');
     }
-    public set logFormat(value: string) {
+    public set logFormat(value: string | undefined) {
       this._logFormat = value;
     }
     public resetLogFormat() {
@@ -2162,11 +2351,11 @@ export namespace VPC {
     }
 
     // log_group_name - computed: true, optional: true, required: false
-    private _logGroupName?: string;
+    private _logGroupName?: string | undefined; 
     public get logGroupName() {
       return this.getStringAttribute('log_group_name');
     }
-    public set logGroupName(value: string) {
+    public set logGroupName(value: string | undefined) {
       this._logGroupName = value;
     }
     public resetLogGroupName() {
@@ -2178,11 +2367,11 @@ export namespace VPC {
     }
 
     // max_aggregation_interval - computed: false, optional: true, required: false
-    private _maxAggregationInterval?: number;
+    private _maxAggregationInterval?: number | undefined; 
     public get maxAggregationInterval() {
       return this.getNumberAttribute('max_aggregation_interval');
     }
-    public set maxAggregationInterval(value: number ) {
+    public set maxAggregationInterval(value: number | undefined) {
       this._maxAggregationInterval = value;
     }
     public resetMaxAggregationInterval() {
@@ -2194,11 +2383,11 @@ export namespace VPC {
     }
 
     // subnet_id - computed: false, optional: true, required: false
-    private _subnetId?: string;
+    private _subnetId?: string | undefined; 
     public get subnetId() {
       return this.getStringAttribute('subnet_id');
     }
-    public set subnetId(value: string ) {
+    public set subnetId(value: string | undefined) {
       this._subnetId = value;
     }
     public resetSubnetId() {
@@ -2210,11 +2399,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2226,11 +2416,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2242,7 +2433,7 @@ export namespace VPC {
     }
 
     // traffic_type - computed: false, optional: false, required: true
-    private _trafficType: string;
+    private _trafficType?: string; 
     public get trafficType() {
       return this.getStringAttribute('traffic_type');
     }
@@ -2255,11 +2446,11 @@ export namespace VPC {
     }
 
     // vpc_id - computed: false, optional: true, required: false
-    private _vpcId?: string;
+    private _vpcId?: string | undefined; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
-    public set vpcId(value: string ) {
+    public set vpcId(value: string | undefined) {
       this._vpcId = value;
     }
     public resetVpcId() {
@@ -2271,11 +2462,12 @@ export namespace VPC {
     }
 
     // destination_options - computed: false, optional: true, required: false
-    private _destinationOptions?: FlowLogDestinationOptions[];
+    private _destinationOptions?: FlowLogDestinationOptions | undefined; 
+    private __destinationOptionsOutput = new FlowLogDestinationOptionsOutputReference(this as any, "destination_options", true);
     public get destinationOptions() {
-      return this.interpolationForAttribute('destination_options') as any;
+      return this.__destinationOptionsOutput;
     }
-    public set destinationOptions(value: FlowLogDestinationOptions[] ) {
+    public putDestinationOptions(value: FlowLogDestinationOptions | undefined) {
       this._destinationOptions = value;
     }
     public resetDestinationOptions() {
@@ -2304,7 +2496,7 @@ export namespace VPC {
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         traffic_type: cdktf.stringToTerraform(this._trafficType),
         vpc_id: cdktf.stringToTerraform(this._vpcId),
-        destination_options: cdktf.listMapper(flowLogDestinationOptionsToTerraform)(this._destinationOptions),
+        destination_options: flowLogDestinationOptionsToTerraform(this._destinationOptions),
       };
     }
   }
@@ -2380,11 +2572,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2396,11 +2589,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2412,11 +2606,11 @@ export namespace VPC {
     }
 
     // vpc_id - computed: false, optional: true, required: false
-    private _vpcId?: string;
+    private _vpcId?: string | undefined; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
-    public set vpcId(value: string ) {
+    public set vpcId(value: string | undefined) {
       this._vpcId = value;
     }
     public resetVpcId() {
@@ -2501,7 +2695,7 @@ export namespace VPC {
     }
 
     // route_table_id - computed: false, optional: false, required: true
-    private _routeTableId: string;
+    private _routeTableId?: string; 
     public get routeTableId() {
       return this.getStringAttribute('route_table_id');
     }
@@ -2514,7 +2708,7 @@ export namespace VPC {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -2604,11 +2798,11 @@ export namespace VPC {
     // ==========
 
     // allocation_id - computed: false, optional: true, required: false
-    private _allocationId?: string;
+    private _allocationId?: string | undefined; 
     public get allocationId() {
       return this.getStringAttribute('allocation_id');
     }
-    public set allocationId(value: string ) {
+    public set allocationId(value: string | undefined) {
       this._allocationId = value;
     }
     public resetAllocationId() {
@@ -2620,11 +2814,11 @@ export namespace VPC {
     }
 
     // connectivity_type - computed: false, optional: true, required: false
-    private _connectivityType?: string;
+    private _connectivityType?: string | undefined; 
     public get connectivityType() {
       return this.getStringAttribute('connectivity_type');
     }
-    public set connectivityType(value: string ) {
+    public set connectivityType(value: string | undefined) {
       this._connectivityType = value;
     }
     public resetConnectivityType() {
@@ -2656,7 +2850,7 @@ export namespace VPC {
     }
 
     // subnet_id - computed: false, optional: false, required: true
-    private _subnetId: string;
+    private _subnetId?: string; 
     public get subnetId() {
       return this.getStringAttribute('subnet_id');
     }
@@ -2669,11 +2863,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2685,11 +2880,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2781,6 +2977,9 @@ export namespace VPC {
 
   function networkAclEgressToTerraform(struct?: NetworkAclEgress): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       action: struct!.action === undefined ? null : cdktf.stringToTerraform(struct!.action),
       cidr_block: struct!.cidrBlock === undefined ? null : cdktf.stringToTerraform(struct!.cidrBlock),
@@ -2835,6 +3034,9 @@ export namespace VPC {
 
   function networkAclIngressToTerraform(struct?: NetworkAclIngress): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       action: struct!.action === undefined ? null : cdktf.stringToTerraform(struct!.action),
       cidr_block: struct!.cidrBlock === undefined ? null : cdktf.stringToTerraform(struct!.cidrBlock),
@@ -2899,11 +3101,12 @@ export namespace VPC {
     }
 
     // egress - computed: true, optional: true, required: false
-    private _egress?: NetworkAclEgress[]
-    public get egress(): NetworkAclEgress[] {
-      return this.interpolationForAttribute('egress') as any; // Getting the computed value is not yet implemented
+    private _egress?: NetworkAclEgress[] | undefined; 
+    public get egress() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('egress') as any;
     }
-    public set egress(value: NetworkAclEgress[]) {
+    public set egress(value: NetworkAclEgress[] | undefined) {
       this._egress = value;
     }
     public resetEgress() {
@@ -2920,11 +3123,12 @@ export namespace VPC {
     }
 
     // ingress - computed: true, optional: true, required: false
-    private _ingress?: NetworkAclIngress[]
-    public get ingress(): NetworkAclIngress[] {
-      return this.interpolationForAttribute('ingress') as any; // Getting the computed value is not yet implemented
+    private _ingress?: NetworkAclIngress[] | undefined; 
+    public get ingress() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('ingress') as any;
     }
-    public set ingress(value: NetworkAclIngress[]) {
+    public set ingress(value: NetworkAclIngress[] | undefined) {
       this._ingress = value;
     }
     public resetIngress() {
@@ -2941,11 +3145,11 @@ export namespace VPC {
     }
 
     // subnet_ids - computed: true, optional: true, required: false
-    private _subnetIds?: string[];
+    private _subnetIds?: string[] | undefined; 
     public get subnetIds() {
       return this.getListAttribute('subnet_ids');
     }
-    public set subnetIds(value: string[]) {
+    public set subnetIds(value: string[] | undefined) {
       this._subnetIds = value;
     }
     public resetSubnetIds() {
@@ -2957,11 +3161,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2973,11 +3178,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2989,7 +3195,7 @@ export namespace VPC {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -3113,11 +3319,11 @@ export namespace VPC {
     // ==========
 
     // cidr_block - computed: false, optional: true, required: false
-    private _cidrBlock?: string;
+    private _cidrBlock?: string | undefined; 
     public get cidrBlock() {
       return this.getStringAttribute('cidr_block');
     }
-    public set cidrBlock(value: string ) {
+    public set cidrBlock(value: string | undefined) {
       this._cidrBlock = value;
     }
     public resetCidrBlock() {
@@ -3129,11 +3335,11 @@ export namespace VPC {
     }
 
     // egress - computed: false, optional: true, required: false
-    private _egress?: boolean | cdktf.IResolvable;
+    private _egress?: boolean | cdktf.IResolvable | undefined; 
     public get egress() {
-      return this.getBooleanAttribute('egress');
+      return this.getBooleanAttribute('egress') as any;
     }
-    public set egress(value: boolean | cdktf.IResolvable ) {
+    public set egress(value: boolean | cdktf.IResolvable | undefined) {
       this._egress = value;
     }
     public resetEgress() {
@@ -3145,11 +3351,11 @@ export namespace VPC {
     }
 
     // from_port - computed: false, optional: true, required: false
-    private _fromPort?: number;
+    private _fromPort?: number | undefined; 
     public get fromPort() {
       return this.getNumberAttribute('from_port');
     }
-    public set fromPort(value: number ) {
+    public set fromPort(value: number | undefined) {
       this._fromPort = value;
     }
     public resetFromPort() {
@@ -3161,11 +3367,11 @@ export namespace VPC {
     }
 
     // icmp_code - computed: false, optional: true, required: false
-    private _icmpCode?: string;
+    private _icmpCode?: string | undefined; 
     public get icmpCode() {
       return this.getStringAttribute('icmp_code');
     }
-    public set icmpCode(value: string ) {
+    public set icmpCode(value: string | undefined) {
       this._icmpCode = value;
     }
     public resetIcmpCode() {
@@ -3177,11 +3383,11 @@ export namespace VPC {
     }
 
     // icmp_type - computed: false, optional: true, required: false
-    private _icmpType?: string;
+    private _icmpType?: string | undefined; 
     public get icmpType() {
       return this.getStringAttribute('icmp_type');
     }
-    public set icmpType(value: string ) {
+    public set icmpType(value: string | undefined) {
       this._icmpType = value;
     }
     public resetIcmpType() {
@@ -3198,11 +3404,11 @@ export namespace VPC {
     }
 
     // ipv6_cidr_block - computed: false, optional: true, required: false
-    private _ipv6CidrBlock?: string;
+    private _ipv6CidrBlock?: string | undefined; 
     public get ipv6CidrBlock() {
       return this.getStringAttribute('ipv6_cidr_block');
     }
-    public set ipv6CidrBlock(value: string ) {
+    public set ipv6CidrBlock(value: string | undefined) {
       this._ipv6CidrBlock = value;
     }
     public resetIpv6CidrBlock() {
@@ -3214,7 +3420,7 @@ export namespace VPC {
     }
 
     // network_acl_id - computed: false, optional: false, required: true
-    private _networkAclId: string;
+    private _networkAclId?: string; 
     public get networkAclId() {
       return this.getStringAttribute('network_acl_id');
     }
@@ -3227,7 +3433,7 @@ export namespace VPC {
     }
 
     // protocol - computed: false, optional: false, required: true
-    private _protocol: string;
+    private _protocol?: string; 
     public get protocol() {
       return this.getStringAttribute('protocol');
     }
@@ -3240,7 +3446,7 @@ export namespace VPC {
     }
 
     // rule_action - computed: false, optional: false, required: true
-    private _ruleAction: string;
+    private _ruleAction?: string; 
     public get ruleAction() {
       return this.getStringAttribute('rule_action');
     }
@@ -3253,7 +3459,7 @@ export namespace VPC {
     }
 
     // rule_number - computed: false, optional: false, required: true
-    private _ruleNumber: number;
+    private _ruleNumber?: number; 
     public get ruleNumber() {
       return this.getNumberAttribute('rule_number');
     }
@@ -3266,11 +3472,11 @@ export namespace VPC {
     }
 
     // to_port - computed: false, optional: true, required: false
-    private _toPort?: number;
+    private _toPort?: number | undefined; 
     public get toPort() {
       return this.getNumberAttribute('to_port');
     }
-    public set toPort(value: number ) {
+    public set toPort(value: number | undefined) {
       this._toPort = value;
     }
     public resetToPort() {
@@ -3370,6 +3576,9 @@ export namespace VPC {
 
   function networkInterfaceAttachmentToTerraform(struct?: NetworkInterfaceAttachment): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       device_index: cdktf.numberToTerraform(struct!.deviceIndex),
       instance: cdktf.stringToTerraform(struct!.instance),
@@ -3429,11 +3638,11 @@ export namespace VPC {
     // ==========
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -3450,11 +3659,11 @@ export namespace VPC {
     }
 
     // interface_type - computed: true, optional: true, required: false
-    private _interfaceType?: string;
+    private _interfaceType?: string | undefined; 
     public get interfaceType() {
       return this.getStringAttribute('interface_type');
     }
-    public set interfaceType(value: string) {
+    public set interfaceType(value: string | undefined) {
       this._interfaceType = value;
     }
     public resetInterfaceType() {
@@ -3466,11 +3675,11 @@ export namespace VPC {
     }
 
     // ipv6_address_count - computed: true, optional: true, required: false
-    private _ipv6AddressCount?: number;
+    private _ipv6AddressCount?: number | undefined; 
     public get ipv6AddressCount() {
       return this.getNumberAttribute('ipv6_address_count');
     }
-    public set ipv6AddressCount(value: number) {
+    public set ipv6AddressCount(value: number | undefined) {
       this._ipv6AddressCount = value;
     }
     public resetIpv6AddressCount() {
@@ -3482,11 +3691,11 @@ export namespace VPC {
     }
 
     // ipv6_addresses - computed: true, optional: true, required: false
-    private _ipv6Addresses?: string[];
+    private _ipv6Addresses?: string[] | undefined; 
     public get ipv6Addresses() {
       return this.getListAttribute('ipv6_addresses');
     }
-    public set ipv6Addresses(value: string[]) {
+    public set ipv6Addresses(value: string[] | undefined) {
       this._ipv6Addresses = value;
     }
     public resetIpv6Addresses() {
@@ -3513,11 +3722,11 @@ export namespace VPC {
     }
 
     // private_ip - computed: true, optional: true, required: false
-    private _privateIp?: string;
+    private _privateIp?: string | undefined; 
     public get privateIp() {
       return this.getStringAttribute('private_ip');
     }
-    public set privateIp(value: string) {
+    public set privateIp(value: string | undefined) {
       this._privateIp = value;
     }
     public resetPrivateIp() {
@@ -3529,11 +3738,11 @@ export namespace VPC {
     }
 
     // private_ips - computed: true, optional: true, required: false
-    private _privateIps?: string[];
+    private _privateIps?: string[] | undefined; 
     public get privateIps() {
       return this.getListAttribute('private_ips');
     }
-    public set privateIps(value: string[]) {
+    public set privateIps(value: string[] | undefined) {
       this._privateIps = value;
     }
     public resetPrivateIps() {
@@ -3545,11 +3754,11 @@ export namespace VPC {
     }
 
     // private_ips_count - computed: true, optional: true, required: false
-    private _privateIpsCount?: number;
+    private _privateIpsCount?: number | undefined; 
     public get privateIpsCount() {
       return this.getNumberAttribute('private_ips_count');
     }
-    public set privateIpsCount(value: number) {
+    public set privateIpsCount(value: number | undefined) {
       this._privateIpsCount = value;
     }
     public resetPrivateIpsCount() {
@@ -3561,11 +3770,11 @@ export namespace VPC {
     }
 
     // security_groups - computed: true, optional: true, required: false
-    private _securityGroups?: string[];
+    private _securityGroups?: string[] | undefined; 
     public get securityGroups() {
       return this.getListAttribute('security_groups');
     }
-    public set securityGroups(value: string[]) {
+    public set securityGroups(value: string[] | undefined) {
       this._securityGroups = value;
     }
     public resetSecurityGroups() {
@@ -3577,11 +3786,11 @@ export namespace VPC {
     }
 
     // source_dest_check - computed: false, optional: true, required: false
-    private _sourceDestCheck?: boolean | cdktf.IResolvable;
+    private _sourceDestCheck?: boolean | cdktf.IResolvable | undefined; 
     public get sourceDestCheck() {
-      return this.getBooleanAttribute('source_dest_check');
+      return this.getBooleanAttribute('source_dest_check') as any;
     }
-    public set sourceDestCheck(value: boolean | cdktf.IResolvable ) {
+    public set sourceDestCheck(value: boolean | cdktf.IResolvable | undefined) {
       this._sourceDestCheck = value;
     }
     public resetSourceDestCheck() {
@@ -3593,7 +3802,7 @@ export namespace VPC {
     }
 
     // subnet_id - computed: false, optional: false, required: true
-    private _subnetId: string;
+    private _subnetId?: string; 
     public get subnetId() {
       return this.getStringAttribute('subnet_id');
     }
@@ -3606,11 +3815,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3622,11 +3832,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -3638,11 +3849,12 @@ export namespace VPC {
     }
 
     // attachment - computed: false, optional: true, required: false
-    private _attachment?: NetworkInterfaceAttachment[];
+    private _attachment?: NetworkInterfaceAttachment[] | undefined; 
     public get attachment() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('attachment') as any;
     }
-    public set attachment(value: NetworkInterfaceAttachment[] ) {
+    public set attachment(value: NetworkInterfaceAttachment[] | undefined) {
       this._attachment = value;
     }
     public resetAttachment() {
@@ -3737,7 +3949,7 @@ export namespace VPC {
     }
 
     // device_index - computed: false, optional: false, required: true
-    private _deviceIndex: number;
+    private _deviceIndex?: number; 
     public get deviceIndex() {
       return this.getNumberAttribute('device_index');
     }
@@ -3755,7 +3967,7 @@ export namespace VPC {
     }
 
     // instance_id - computed: false, optional: false, required: true
-    private _instanceId: string;
+    private _instanceId?: string; 
     public get instanceId() {
       return this.getStringAttribute('instance_id');
     }
@@ -3768,7 +3980,7 @@ export namespace VPC {
     }
 
     // network_interface_id - computed: false, optional: false, required: true
-    private _networkInterfaceId: string;
+    private _networkInterfaceId?: string; 
     public get networkInterfaceId() {
       return this.getStringAttribute('network_interface_id');
     }
@@ -3854,7 +4066,7 @@ export namespace VPC {
     }
 
     // network_interface_id - computed: false, optional: false, required: true
-    private _networkInterfaceId: string;
+    private _networkInterfaceId?: string; 
     public get networkInterfaceId() {
       return this.getStringAttribute('network_interface_id');
     }
@@ -3867,7 +4079,7 @@ export namespace VPC {
     }
 
     // security_group_id - computed: false, optional: false, required: true
-    private _securityGroupId: string;
+    private _securityGroupId?: string; 
     public get securityGroupId() {
       return this.getStringAttribute('security_group_id');
     }
@@ -3969,8 +4181,11 @@ export namespace VPC {
     readonly update?: string;
   }
 
-  function routeTimeoutsToTerraform(struct?: RouteTimeouts): any {
+  function routeTimeoutsToTerraform(struct?: RouteTimeoutsOutputReference | RouteTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -3978,6 +4193,64 @@ export namespace VPC {
     }
   }
 
+  export class RouteTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/route.html aws_route}
@@ -4033,11 +4306,11 @@ export namespace VPC {
     // ==========
 
     // carrier_gateway_id - computed: false, optional: true, required: false
-    private _carrierGatewayId?: string;
+    private _carrierGatewayId?: string | undefined; 
     public get carrierGatewayId() {
       return this.getStringAttribute('carrier_gateway_id');
     }
-    public set carrierGatewayId(value: string ) {
+    public set carrierGatewayId(value: string | undefined) {
       this._carrierGatewayId = value;
     }
     public resetCarrierGatewayId() {
@@ -4049,11 +4322,11 @@ export namespace VPC {
     }
 
     // destination_cidr_block - computed: false, optional: true, required: false
-    private _destinationCidrBlock?: string;
+    private _destinationCidrBlock?: string | undefined; 
     public get destinationCidrBlock() {
       return this.getStringAttribute('destination_cidr_block');
     }
-    public set destinationCidrBlock(value: string ) {
+    public set destinationCidrBlock(value: string | undefined) {
       this._destinationCidrBlock = value;
     }
     public resetDestinationCidrBlock() {
@@ -4065,11 +4338,11 @@ export namespace VPC {
     }
 
     // destination_ipv6_cidr_block - computed: false, optional: true, required: false
-    private _destinationIpv6CidrBlock?: string;
+    private _destinationIpv6CidrBlock?: string | undefined; 
     public get destinationIpv6CidrBlock() {
       return this.getStringAttribute('destination_ipv6_cidr_block');
     }
-    public set destinationIpv6CidrBlock(value: string ) {
+    public set destinationIpv6CidrBlock(value: string | undefined) {
       this._destinationIpv6CidrBlock = value;
     }
     public resetDestinationIpv6CidrBlock() {
@@ -4081,11 +4354,11 @@ export namespace VPC {
     }
 
     // destination_prefix_list_id - computed: false, optional: true, required: false
-    private _destinationPrefixListId?: string;
+    private _destinationPrefixListId?: string | undefined; 
     public get destinationPrefixListId() {
       return this.getStringAttribute('destination_prefix_list_id');
     }
-    public set destinationPrefixListId(value: string ) {
+    public set destinationPrefixListId(value: string | undefined) {
       this._destinationPrefixListId = value;
     }
     public resetDestinationPrefixListId() {
@@ -4097,11 +4370,11 @@ export namespace VPC {
     }
 
     // egress_only_gateway_id - computed: false, optional: true, required: false
-    private _egressOnlyGatewayId?: string;
+    private _egressOnlyGatewayId?: string | undefined; 
     public get egressOnlyGatewayId() {
       return this.getStringAttribute('egress_only_gateway_id');
     }
-    public set egressOnlyGatewayId(value: string ) {
+    public set egressOnlyGatewayId(value: string | undefined) {
       this._egressOnlyGatewayId = value;
     }
     public resetEgressOnlyGatewayId() {
@@ -4113,11 +4386,11 @@ export namespace VPC {
     }
 
     // gateway_id - computed: false, optional: true, required: false
-    private _gatewayId?: string;
+    private _gatewayId?: string | undefined; 
     public get gatewayId() {
       return this.getStringAttribute('gateway_id');
     }
-    public set gatewayId(value: string ) {
+    public set gatewayId(value: string | undefined) {
       this._gatewayId = value;
     }
     public resetGatewayId() {
@@ -4134,11 +4407,11 @@ export namespace VPC {
     }
 
     // instance_id - computed: true, optional: true, required: false
-    private _instanceId?: string;
+    private _instanceId?: string | undefined; 
     public get instanceId() {
       return this.getStringAttribute('instance_id');
     }
-    public set instanceId(value: string) {
+    public set instanceId(value: string | undefined) {
       this._instanceId = value;
     }
     public resetInstanceId() {
@@ -4155,11 +4428,11 @@ export namespace VPC {
     }
 
     // local_gateway_id - computed: false, optional: true, required: false
-    private _localGatewayId?: string;
+    private _localGatewayId?: string | undefined; 
     public get localGatewayId() {
       return this.getStringAttribute('local_gateway_id');
     }
-    public set localGatewayId(value: string ) {
+    public set localGatewayId(value: string | undefined) {
       this._localGatewayId = value;
     }
     public resetLocalGatewayId() {
@@ -4171,11 +4444,11 @@ export namespace VPC {
     }
 
     // nat_gateway_id - computed: false, optional: true, required: false
-    private _natGatewayId?: string;
+    private _natGatewayId?: string | undefined; 
     public get natGatewayId() {
       return this.getStringAttribute('nat_gateway_id');
     }
-    public set natGatewayId(value: string ) {
+    public set natGatewayId(value: string | undefined) {
       this._natGatewayId = value;
     }
     public resetNatGatewayId() {
@@ -4187,11 +4460,11 @@ export namespace VPC {
     }
 
     // network_interface_id - computed: true, optional: true, required: false
-    private _networkInterfaceId?: string;
+    private _networkInterfaceId?: string | undefined; 
     public get networkInterfaceId() {
       return this.getStringAttribute('network_interface_id');
     }
-    public set networkInterfaceId(value: string) {
+    public set networkInterfaceId(value: string | undefined) {
       this._networkInterfaceId = value;
     }
     public resetNetworkInterfaceId() {
@@ -4208,7 +4481,7 @@ export namespace VPC {
     }
 
     // route_table_id - computed: false, optional: false, required: true
-    private _routeTableId: string;
+    private _routeTableId?: string; 
     public get routeTableId() {
       return this.getStringAttribute('route_table_id');
     }
@@ -4226,11 +4499,11 @@ export namespace VPC {
     }
 
     // transit_gateway_id - computed: false, optional: true, required: false
-    private _transitGatewayId?: string;
+    private _transitGatewayId?: string | undefined; 
     public get transitGatewayId() {
       return this.getStringAttribute('transit_gateway_id');
     }
-    public set transitGatewayId(value: string ) {
+    public set transitGatewayId(value: string | undefined) {
       this._transitGatewayId = value;
     }
     public resetTransitGatewayId() {
@@ -4242,11 +4515,11 @@ export namespace VPC {
     }
 
     // vpc_endpoint_id - computed: false, optional: true, required: false
-    private _vpcEndpointId?: string;
+    private _vpcEndpointId?: string | undefined; 
     public get vpcEndpointId() {
       return this.getStringAttribute('vpc_endpoint_id');
     }
-    public set vpcEndpointId(value: string ) {
+    public set vpcEndpointId(value: string | undefined) {
       this._vpcEndpointId = value;
     }
     public resetVpcEndpointId() {
@@ -4258,11 +4531,11 @@ export namespace VPC {
     }
 
     // vpc_peering_connection_id - computed: false, optional: true, required: false
-    private _vpcPeeringConnectionId?: string;
+    private _vpcPeeringConnectionId?: string | undefined; 
     public get vpcPeeringConnectionId() {
       return this.getStringAttribute('vpc_peering_connection_id');
     }
-    public set vpcPeeringConnectionId(value: string ) {
+    public set vpcPeeringConnectionId(value: string | undefined) {
       this._vpcPeeringConnectionId = value;
     }
     public resetVpcPeeringConnectionId() {
@@ -4274,11 +4547,12 @@ export namespace VPC {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: RouteTimeouts;
+    private _timeouts?: RouteTimeouts | undefined; 
+    private __timeoutsOutput = new RouteTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: RouteTimeouts ) {
+    public putTimeouts(value: RouteTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -4398,6 +4672,9 @@ export namespace VPC {
 
   function routeTableRouteToTerraform(struct?: RouteTableRoute): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       carrier_gateway_id: struct!.carrierGatewayId === undefined ? null : cdktf.stringToTerraform(struct!.carrierGatewayId),
       cidr_block: struct!.cidrBlock === undefined ? null : cdktf.stringToTerraform(struct!.cidrBlock),
@@ -4430,8 +4707,11 @@ export namespace VPC {
     readonly update?: string;
   }
 
-  function routeTableTimeoutsToTerraform(struct?: RouteTableTimeouts): any {
+  function routeTableTimeoutsToTerraform(struct?: RouteTableTimeoutsOutputReference | RouteTableTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -4439,6 +4719,64 @@ export namespace VPC {
     }
   }
 
+  export class RouteTableTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/route_table.html aws_route_table}
@@ -4500,11 +4838,11 @@ export namespace VPC {
     }
 
     // propagating_vgws - computed: true, optional: true, required: false
-    private _propagatingVgws?: string[];
+    private _propagatingVgws?: string[] | undefined; 
     public get propagatingVgws() {
       return this.getListAttribute('propagating_vgws');
     }
-    public set propagatingVgws(value: string[]) {
+    public set propagatingVgws(value: string[] | undefined) {
       this._propagatingVgws = value;
     }
     public resetPropagatingVgws() {
@@ -4516,11 +4854,12 @@ export namespace VPC {
     }
 
     // route - computed: true, optional: true, required: false
-    private _route?: RouteTableRoute[]
-    public get route(): RouteTableRoute[] {
-      return this.interpolationForAttribute('route') as any; // Getting the computed value is not yet implemented
+    private _route?: RouteTableRoute[] | undefined; 
+    public get route() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('route') as any;
     }
-    public set route(value: RouteTableRoute[]) {
+    public set route(value: RouteTableRoute[] | undefined) {
       this._route = value;
     }
     public resetRoute() {
@@ -4532,11 +4871,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4548,11 +4888,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -4564,7 +4905,7 @@ export namespace VPC {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -4577,11 +4918,12 @@ export namespace VPC {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: RouteTableTimeouts;
+    private _timeouts?: RouteTableTimeouts | undefined; 
+    private __timeoutsOutput = new RouteTableTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: RouteTableTimeouts ) {
+    public putTimeouts(value: RouteTableTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -4664,11 +5006,11 @@ export namespace VPC {
     // ==========
 
     // gateway_id - computed: false, optional: true, required: false
-    private _gatewayId?: string;
+    private _gatewayId?: string | undefined; 
     public get gatewayId() {
       return this.getStringAttribute('gateway_id');
     }
-    public set gatewayId(value: string ) {
+    public set gatewayId(value: string | undefined) {
       this._gatewayId = value;
     }
     public resetGatewayId() {
@@ -4685,7 +5027,7 @@ export namespace VPC {
     }
 
     // route_table_id - computed: false, optional: false, required: true
-    private _routeTableId: string;
+    private _routeTableId?: string; 
     public get routeTableId() {
       return this.getStringAttribute('route_table_id');
     }
@@ -4698,11 +5040,11 @@ export namespace VPC {
     }
 
     // subnet_id - computed: false, optional: true, required: false
-    private _subnetId?: string;
+    private _subnetId?: string | undefined; 
     public get subnetId() {
       return this.getStringAttribute('subnet_id');
     }
-    public set subnetId(value: string ) {
+    public set subnetId(value: string | undefined) {
       this._subnetId = value;
     }
     public resetSubnetId() {
@@ -4810,6 +5152,9 @@ export namespace VPC {
 
   function securityGroupEgressToTerraform(struct?: SecurityGroupEgress): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cidr_blocks: struct!.cidrBlocks === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform)(struct!.cidrBlocks),
       description: struct!.description === undefined ? null : cdktf.stringToTerraform(struct!.description),
@@ -4864,6 +5209,9 @@ export namespace VPC {
 
   function securityGroupIngressToTerraform(struct?: SecurityGroupIngress): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cidr_blocks: struct!.cidrBlocks === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform)(struct!.cidrBlocks),
       description: struct!.description === undefined ? null : cdktf.stringToTerraform(struct!.description),
@@ -4888,14 +5236,59 @@ export namespace VPC {
     readonly delete?: string;
   }
 
-  function securityGroupTimeoutsToTerraform(struct?: SecurityGroupTimeouts): any {
+  function securityGroupTimeoutsToTerraform(struct?: SecurityGroupTimeoutsOutputReference | SecurityGroupTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class SecurityGroupTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/security_group.html aws_security_group}
@@ -4951,11 +5344,11 @@ export namespace VPC {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -4967,11 +5360,12 @@ export namespace VPC {
     }
 
     // egress - computed: true, optional: true, required: false
-    private _egress?: SecurityGroupEgress[]
-    public get egress(): SecurityGroupEgress[] {
-      return this.interpolationForAttribute('egress') as any; // Getting the computed value is not yet implemented
+    private _egress?: SecurityGroupEgress[] | undefined; 
+    public get egress() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('egress') as any;
     }
-    public set egress(value: SecurityGroupEgress[]) {
+    public set egress(value: SecurityGroupEgress[] | undefined) {
       this._egress = value;
     }
     public resetEgress() {
@@ -4988,11 +5382,12 @@ export namespace VPC {
     }
 
     // ingress - computed: true, optional: true, required: false
-    private _ingress?: SecurityGroupIngress[]
-    public get ingress(): SecurityGroupIngress[] {
-      return this.interpolationForAttribute('ingress') as any; // Getting the computed value is not yet implemented
+    private _ingress?: SecurityGroupIngress[] | undefined; 
+    public get ingress() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('ingress') as any;
     }
-    public set ingress(value: SecurityGroupIngress[]) {
+    public set ingress(value: SecurityGroupIngress[] | undefined) {
       this._ingress = value;
     }
     public resetIngress() {
@@ -5004,11 +5399,11 @@ export namespace VPC {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -5020,11 +5415,11 @@ export namespace VPC {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -5041,11 +5436,11 @@ export namespace VPC {
     }
 
     // revoke_rules_on_delete - computed: false, optional: true, required: false
-    private _revokeRulesOnDelete?: boolean | cdktf.IResolvable;
+    private _revokeRulesOnDelete?: boolean | cdktf.IResolvable | undefined; 
     public get revokeRulesOnDelete() {
-      return this.getBooleanAttribute('revoke_rules_on_delete');
+      return this.getBooleanAttribute('revoke_rules_on_delete') as any;
     }
-    public set revokeRulesOnDelete(value: boolean | cdktf.IResolvable ) {
+    public set revokeRulesOnDelete(value: boolean | cdktf.IResolvable | undefined) {
       this._revokeRulesOnDelete = value;
     }
     public resetRevokeRulesOnDelete() {
@@ -5057,11 +5452,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -5073,11 +5469,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -5089,11 +5486,11 @@ export namespace VPC {
     }
 
     // vpc_id - computed: true, optional: true, required: false
-    private _vpcId?: string;
+    private _vpcId?: string | undefined; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
-    public set vpcId(value: string) {
+    public set vpcId(value: string | undefined) {
       this._vpcId = value;
     }
     public resetVpcId() {
@@ -5105,11 +5502,12 @@ export namespace VPC {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: SecurityGroupTimeouts;
+    private _timeouts?: SecurityGroupTimeouts | undefined; 
+    private __timeoutsOutput = new SecurityGroupTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: SecurityGroupTimeouts ) {
+    public putTimeouts(value: SecurityGroupTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -5238,11 +5636,11 @@ export namespace VPC {
     // ==========
 
     // cidr_blocks - computed: false, optional: true, required: false
-    private _cidrBlocks?: string[];
+    private _cidrBlocks?: string[] | undefined; 
     public get cidrBlocks() {
       return this.getListAttribute('cidr_blocks');
     }
-    public set cidrBlocks(value: string[] ) {
+    public set cidrBlocks(value: string[] | undefined) {
       this._cidrBlocks = value;
     }
     public resetCidrBlocks() {
@@ -5254,11 +5652,11 @@ export namespace VPC {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -5270,7 +5668,7 @@ export namespace VPC {
     }
 
     // from_port - computed: false, optional: false, required: true
-    private _fromPort: number;
+    private _fromPort?: number; 
     public get fromPort() {
       return this.getNumberAttribute('from_port');
     }
@@ -5288,11 +5686,11 @@ export namespace VPC {
     }
 
     // ipv6_cidr_blocks - computed: false, optional: true, required: false
-    private _ipv6CidrBlocks?: string[];
+    private _ipv6CidrBlocks?: string[] | undefined; 
     public get ipv6CidrBlocks() {
       return this.getListAttribute('ipv6_cidr_blocks');
     }
-    public set ipv6CidrBlocks(value: string[] ) {
+    public set ipv6CidrBlocks(value: string[] | undefined) {
       this._ipv6CidrBlocks = value;
     }
     public resetIpv6CidrBlocks() {
@@ -5304,11 +5702,11 @@ export namespace VPC {
     }
 
     // prefix_list_ids - computed: false, optional: true, required: false
-    private _prefixListIds?: string[];
+    private _prefixListIds?: string[] | undefined; 
     public get prefixListIds() {
       return this.getListAttribute('prefix_list_ids');
     }
-    public set prefixListIds(value: string[] ) {
+    public set prefixListIds(value: string[] | undefined) {
       this._prefixListIds = value;
     }
     public resetPrefixListIds() {
@@ -5320,7 +5718,7 @@ export namespace VPC {
     }
 
     // protocol - computed: false, optional: false, required: true
-    private _protocol: string;
+    private _protocol?: string; 
     public get protocol() {
       return this.getStringAttribute('protocol');
     }
@@ -5333,7 +5731,7 @@ export namespace VPC {
     }
 
     // security_group_id - computed: false, optional: false, required: true
-    private _securityGroupId: string;
+    private _securityGroupId?: string; 
     public get securityGroupId() {
       return this.getStringAttribute('security_group_id');
     }
@@ -5346,11 +5744,11 @@ export namespace VPC {
     }
 
     // self - computed: false, optional: true, required: false
-    private _self?: boolean | cdktf.IResolvable;
+    private _self?: boolean | cdktf.IResolvable | undefined; 
     public get selfAttribute() {
-      return this.getBooleanAttribute('self');
+      return this.getBooleanAttribute('self') as any;
     }
-    public set selfAttribute(value: boolean | cdktf.IResolvable ) {
+    public set selfAttribute(value: boolean | cdktf.IResolvable | undefined) {
       this._self = value;
     }
     public resetSelfAttribute() {
@@ -5362,11 +5760,11 @@ export namespace VPC {
     }
 
     // source_security_group_id - computed: true, optional: true, required: false
-    private _sourceSecurityGroupId?: string;
+    private _sourceSecurityGroupId?: string | undefined; 
     public get sourceSecurityGroupId() {
       return this.getStringAttribute('source_security_group_id');
     }
-    public set sourceSecurityGroupId(value: string) {
+    public set sourceSecurityGroupId(value: string | undefined) {
       this._sourceSecurityGroupId = value;
     }
     public resetSourceSecurityGroupId() {
@@ -5378,7 +5776,7 @@ export namespace VPC {
     }
 
     // to_port - computed: false, optional: false, required: true
-    private _toPort: number;
+    private _toPort?: number; 
     public get toPort() {
       return this.getNumberAttribute('to_port');
     }
@@ -5391,7 +5789,7 @@ export namespace VPC {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }
@@ -5490,14 +5888,59 @@ export namespace VPC {
     readonly delete?: string;
   }
 
-  function subnetTimeoutsToTerraform(struct?: SubnetTimeouts): any {
+  function subnetTimeoutsToTerraform(struct?: SubnetTimeoutsOutputReference | SubnetTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class SubnetTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/subnet.html aws_subnet}
@@ -5556,11 +5999,11 @@ export namespace VPC {
     }
 
     // assign_ipv6_address_on_creation - computed: false, optional: true, required: false
-    private _assignIpv6AddressOnCreation?: boolean | cdktf.IResolvable;
+    private _assignIpv6AddressOnCreation?: boolean | cdktf.IResolvable | undefined; 
     public get assignIpv6AddressOnCreation() {
-      return this.getBooleanAttribute('assign_ipv6_address_on_creation');
+      return this.getBooleanAttribute('assign_ipv6_address_on_creation') as any;
     }
-    public set assignIpv6AddressOnCreation(value: boolean | cdktf.IResolvable ) {
+    public set assignIpv6AddressOnCreation(value: boolean | cdktf.IResolvable | undefined) {
       this._assignIpv6AddressOnCreation = value;
     }
     public resetAssignIpv6AddressOnCreation() {
@@ -5572,11 +6015,11 @@ export namespace VPC {
     }
 
     // availability_zone - computed: true, optional: true, required: false
-    private _availabilityZone?: string;
+    private _availabilityZone?: string | undefined; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
-    public set availabilityZone(value: string) {
+    public set availabilityZone(value: string | undefined) {
       this._availabilityZone = value;
     }
     public resetAvailabilityZone() {
@@ -5588,11 +6031,11 @@ export namespace VPC {
     }
 
     // availability_zone_id - computed: true, optional: true, required: false
-    private _availabilityZoneId?: string;
+    private _availabilityZoneId?: string | undefined; 
     public get availabilityZoneId() {
       return this.getStringAttribute('availability_zone_id');
     }
-    public set availabilityZoneId(value: string) {
+    public set availabilityZoneId(value: string | undefined) {
       this._availabilityZoneId = value;
     }
     public resetAvailabilityZoneId() {
@@ -5604,7 +6047,7 @@ export namespace VPC {
     }
 
     // cidr_block - computed: false, optional: false, required: true
-    private _cidrBlock: string;
+    private _cidrBlock?: string; 
     public get cidrBlock() {
       return this.getStringAttribute('cidr_block');
     }
@@ -5617,11 +6060,11 @@ export namespace VPC {
     }
 
     // customer_owned_ipv4_pool - computed: false, optional: true, required: false
-    private _customerOwnedIpv4Pool?: string;
+    private _customerOwnedIpv4Pool?: string | undefined; 
     public get customerOwnedIpv4Pool() {
       return this.getStringAttribute('customer_owned_ipv4_pool');
     }
-    public set customerOwnedIpv4Pool(value: string ) {
+    public set customerOwnedIpv4Pool(value: string | undefined) {
       this._customerOwnedIpv4Pool = value;
     }
     public resetCustomerOwnedIpv4Pool() {
@@ -5638,11 +6081,11 @@ export namespace VPC {
     }
 
     // ipv6_cidr_block - computed: false, optional: true, required: false
-    private _ipv6CidrBlock?: string;
+    private _ipv6CidrBlock?: string | undefined; 
     public get ipv6CidrBlock() {
       return this.getStringAttribute('ipv6_cidr_block');
     }
-    public set ipv6CidrBlock(value: string ) {
+    public set ipv6CidrBlock(value: string | undefined) {
       this._ipv6CidrBlock = value;
     }
     public resetIpv6CidrBlock() {
@@ -5659,11 +6102,11 @@ export namespace VPC {
     }
 
     // map_customer_owned_ip_on_launch - computed: false, optional: true, required: false
-    private _mapCustomerOwnedIpOnLaunch?: boolean | cdktf.IResolvable;
+    private _mapCustomerOwnedIpOnLaunch?: boolean | cdktf.IResolvable | undefined; 
     public get mapCustomerOwnedIpOnLaunch() {
-      return this.getBooleanAttribute('map_customer_owned_ip_on_launch');
+      return this.getBooleanAttribute('map_customer_owned_ip_on_launch') as any;
     }
-    public set mapCustomerOwnedIpOnLaunch(value: boolean | cdktf.IResolvable ) {
+    public set mapCustomerOwnedIpOnLaunch(value: boolean | cdktf.IResolvable | undefined) {
       this._mapCustomerOwnedIpOnLaunch = value;
     }
     public resetMapCustomerOwnedIpOnLaunch() {
@@ -5675,11 +6118,11 @@ export namespace VPC {
     }
 
     // map_public_ip_on_launch - computed: false, optional: true, required: false
-    private _mapPublicIpOnLaunch?: boolean | cdktf.IResolvable;
+    private _mapPublicIpOnLaunch?: boolean | cdktf.IResolvable | undefined; 
     public get mapPublicIpOnLaunch() {
-      return this.getBooleanAttribute('map_public_ip_on_launch');
+      return this.getBooleanAttribute('map_public_ip_on_launch') as any;
     }
-    public set mapPublicIpOnLaunch(value: boolean | cdktf.IResolvable ) {
+    public set mapPublicIpOnLaunch(value: boolean | cdktf.IResolvable | undefined) {
       this._mapPublicIpOnLaunch = value;
     }
     public resetMapPublicIpOnLaunch() {
@@ -5691,11 +6134,11 @@ export namespace VPC {
     }
 
     // outpost_arn - computed: false, optional: true, required: false
-    private _outpostArn?: string;
+    private _outpostArn?: string | undefined; 
     public get outpostArn() {
       return this.getStringAttribute('outpost_arn');
     }
-    public set outpostArn(value: string ) {
+    public set outpostArn(value: string | undefined) {
       this._outpostArn = value;
     }
     public resetOutpostArn() {
@@ -5712,11 +6155,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -5728,11 +6172,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -5744,7 +6189,7 @@ export namespace VPC {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -5757,11 +6202,12 @@ export namespace VPC {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: SubnetTimeouts;
+    private _timeouts?: SubnetTimeouts | undefined; 
+    private __timeoutsOutput = new SubnetTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: SubnetTimeouts ) {
+    public putTimeouts(value: SubnetTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -5886,11 +6332,11 @@ export namespace VPC {
     }
 
     // assign_generated_ipv6_cidr_block - computed: false, optional: true, required: false
-    private _assignGeneratedIpv6CidrBlock?: boolean | cdktf.IResolvable;
+    private _assignGeneratedIpv6CidrBlock?: boolean | cdktf.IResolvable | undefined; 
     public get assignGeneratedIpv6CidrBlock() {
-      return this.getBooleanAttribute('assign_generated_ipv6_cidr_block');
+      return this.getBooleanAttribute('assign_generated_ipv6_cidr_block') as any;
     }
-    public set assignGeneratedIpv6CidrBlock(value: boolean | cdktf.IResolvable ) {
+    public set assignGeneratedIpv6CidrBlock(value: boolean | cdktf.IResolvable | undefined) {
       this._assignGeneratedIpv6CidrBlock = value;
     }
     public resetAssignGeneratedIpv6CidrBlock() {
@@ -5902,7 +6348,7 @@ export namespace VPC {
     }
 
     // cidr_block - computed: false, optional: false, required: true
-    private _cidrBlock: string;
+    private _cidrBlock?: string; 
     public get cidrBlock() {
       return this.getStringAttribute('cidr_block');
     }
@@ -5935,11 +6381,11 @@ export namespace VPC {
     }
 
     // enable_classiclink - computed: true, optional: true, required: false
-    private _enableClassiclink?: boolean | cdktf.IResolvable;
+    private _enableClassiclink?: boolean | cdktf.IResolvable | undefined; 
     public get enableClassiclink() {
-      return this.getBooleanAttribute('enable_classiclink');
+      return this.getBooleanAttribute('enable_classiclink') as any;
     }
-    public set enableClassiclink(value: boolean | cdktf.IResolvable) {
+    public set enableClassiclink(value: boolean | cdktf.IResolvable | undefined) {
       this._enableClassiclink = value;
     }
     public resetEnableClassiclink() {
@@ -5951,11 +6397,11 @@ export namespace VPC {
     }
 
     // enable_classiclink_dns_support - computed: true, optional: true, required: false
-    private _enableClassiclinkDnsSupport?: boolean | cdktf.IResolvable;
+    private _enableClassiclinkDnsSupport?: boolean | cdktf.IResolvable | undefined; 
     public get enableClassiclinkDnsSupport() {
-      return this.getBooleanAttribute('enable_classiclink_dns_support');
+      return this.getBooleanAttribute('enable_classiclink_dns_support') as any;
     }
-    public set enableClassiclinkDnsSupport(value: boolean | cdktf.IResolvable) {
+    public set enableClassiclinkDnsSupport(value: boolean | cdktf.IResolvable | undefined) {
       this._enableClassiclinkDnsSupport = value;
     }
     public resetEnableClassiclinkDnsSupport() {
@@ -5967,11 +6413,11 @@ export namespace VPC {
     }
 
     // enable_dns_hostnames - computed: true, optional: true, required: false
-    private _enableDnsHostnames?: boolean | cdktf.IResolvable;
+    private _enableDnsHostnames?: boolean | cdktf.IResolvable | undefined; 
     public get enableDnsHostnames() {
-      return this.getBooleanAttribute('enable_dns_hostnames');
+      return this.getBooleanAttribute('enable_dns_hostnames') as any;
     }
-    public set enableDnsHostnames(value: boolean | cdktf.IResolvable) {
+    public set enableDnsHostnames(value: boolean | cdktf.IResolvable | undefined) {
       this._enableDnsHostnames = value;
     }
     public resetEnableDnsHostnames() {
@@ -5983,11 +6429,11 @@ export namespace VPC {
     }
 
     // enable_dns_support - computed: false, optional: true, required: false
-    private _enableDnsSupport?: boolean | cdktf.IResolvable;
+    private _enableDnsSupport?: boolean | cdktf.IResolvable | undefined; 
     public get enableDnsSupport() {
-      return this.getBooleanAttribute('enable_dns_support');
+      return this.getBooleanAttribute('enable_dns_support') as any;
     }
-    public set enableDnsSupport(value: boolean | cdktf.IResolvable ) {
+    public set enableDnsSupport(value: boolean | cdktf.IResolvable | undefined) {
       this._enableDnsSupport = value;
     }
     public resetEnableDnsSupport() {
@@ -6004,11 +6450,11 @@ export namespace VPC {
     }
 
     // instance_tenancy - computed: false, optional: true, required: false
-    private _instanceTenancy?: string;
+    private _instanceTenancy?: string | undefined; 
     public get instanceTenancy() {
       return this.getStringAttribute('instance_tenancy');
     }
-    public set instanceTenancy(value: string ) {
+    public set instanceTenancy(value: string | undefined) {
       this._instanceTenancy = value;
     }
     public resetInstanceTenancy() {
@@ -6040,11 +6486,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -6056,11 +6503,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -6171,11 +6619,11 @@ export namespace VPC {
     }
 
     // domain_name - computed: false, optional: true, required: false
-    private _domainName?: string;
+    private _domainName?: string | undefined; 
     public get domainName() {
       return this.getStringAttribute('domain_name');
     }
-    public set domainName(value: string ) {
+    public set domainName(value: string | undefined) {
       this._domainName = value;
     }
     public resetDomainName() {
@@ -6187,11 +6635,11 @@ export namespace VPC {
     }
 
     // domain_name_servers - computed: false, optional: true, required: false
-    private _domainNameServers?: string[];
+    private _domainNameServers?: string[] | undefined; 
     public get domainNameServers() {
       return this.getListAttribute('domain_name_servers');
     }
-    public set domainNameServers(value: string[] ) {
+    public set domainNameServers(value: string[] | undefined) {
       this._domainNameServers = value;
     }
     public resetDomainNameServers() {
@@ -6208,11 +6656,11 @@ export namespace VPC {
     }
 
     // netbios_name_servers - computed: false, optional: true, required: false
-    private _netbiosNameServers?: string[];
+    private _netbiosNameServers?: string[] | undefined; 
     public get netbiosNameServers() {
       return this.getListAttribute('netbios_name_servers');
     }
-    public set netbiosNameServers(value: string[] ) {
+    public set netbiosNameServers(value: string[] | undefined) {
       this._netbiosNameServers = value;
     }
     public resetNetbiosNameServers() {
@@ -6224,11 +6672,11 @@ export namespace VPC {
     }
 
     // netbios_node_type - computed: false, optional: true, required: false
-    private _netbiosNodeType?: string;
+    private _netbiosNodeType?: string | undefined; 
     public get netbiosNodeType() {
       return this.getStringAttribute('netbios_node_type');
     }
-    public set netbiosNodeType(value: string ) {
+    public set netbiosNodeType(value: string | undefined) {
       this._netbiosNodeType = value;
     }
     public resetNetbiosNodeType() {
@@ -6240,11 +6688,11 @@ export namespace VPC {
     }
 
     // ntp_servers - computed: false, optional: true, required: false
-    private _ntpServers?: string[];
+    private _ntpServers?: string[] | undefined; 
     public get ntpServers() {
       return this.getListAttribute('ntp_servers');
     }
-    public set ntpServers(value: string[] ) {
+    public set ntpServers(value: string[] | undefined) {
       this._ntpServers = value;
     }
     public resetNtpServers() {
@@ -6261,11 +6709,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -6277,11 +6726,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -6360,7 +6810,7 @@ export namespace VPC {
     // ==========
 
     // dhcp_options_id - computed: false, optional: false, required: true
-    private _dhcpOptionsId: string;
+    private _dhcpOptionsId?: string; 
     public get dhcpOptionsId() {
       return this.getStringAttribute('dhcp_options_id');
     }
@@ -6378,7 +6828,7 @@ export namespace VPC {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -6480,8 +6930,11 @@ export namespace VPC {
     readonly update?: string;
   }
 
-  function vpcEndpointTimeoutsToTerraform(struct?: VpcEndpointTimeouts): any {
+  function vpcEndpointTimeoutsToTerraform(struct?: VpcEndpointTimeoutsOutputReference | VpcEndpointTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -6489,6 +6942,64 @@ export namespace VPC {
     }
   }
 
+  export class VpcEndpointTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint.html aws_vpc_endpoint}
@@ -6546,11 +7057,11 @@ export namespace VPC {
     }
 
     // auto_accept - computed: false, optional: true, required: false
-    private _autoAccept?: boolean | cdktf.IResolvable;
+    private _autoAccept?: boolean | cdktf.IResolvable | undefined; 
     public get autoAccept() {
-      return this.getBooleanAttribute('auto_accept');
+      return this.getBooleanAttribute('auto_accept') as any;
     }
-    public set autoAccept(value: boolean | cdktf.IResolvable ) {
+    public set autoAccept(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAccept = value;
     }
     public resetAutoAccept() {
@@ -6587,11 +7098,11 @@ export namespace VPC {
     }
 
     // policy - computed: true, optional: true, required: false
-    private _policy?: string;
+    private _policy?: string | undefined; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
-    public set policy(value: string) {
+    public set policy(value: string | undefined) {
       this._policy = value;
     }
     public resetPolicy() {
@@ -6608,11 +7119,11 @@ export namespace VPC {
     }
 
     // private_dns_enabled - computed: false, optional: true, required: false
-    private _privateDnsEnabled?: boolean | cdktf.IResolvable;
+    private _privateDnsEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get privateDnsEnabled() {
-      return this.getBooleanAttribute('private_dns_enabled');
+      return this.getBooleanAttribute('private_dns_enabled') as any;
     }
-    public set privateDnsEnabled(value: boolean | cdktf.IResolvable ) {
+    public set privateDnsEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._privateDnsEnabled = value;
     }
     public resetPrivateDnsEnabled() {
@@ -6625,15 +7136,15 @@ export namespace VPC {
 
     // requester_managed - computed: true, optional: false, required: false
     public get requesterManaged() {
-      return this.getBooleanAttribute('requester_managed');
+      return this.getBooleanAttribute('requester_managed') as any;
     }
 
     // route_table_ids - computed: true, optional: true, required: false
-    private _routeTableIds?: string[];
+    private _routeTableIds?: string[] | undefined; 
     public get routeTableIds() {
       return this.getListAttribute('route_table_ids');
     }
-    public set routeTableIds(value: string[]) {
+    public set routeTableIds(value: string[] | undefined) {
       this._routeTableIds = value;
     }
     public resetRouteTableIds() {
@@ -6645,11 +7156,11 @@ export namespace VPC {
     }
 
     // security_group_ids - computed: true, optional: true, required: false
-    private _securityGroupIds?: string[];
+    private _securityGroupIds?: string[] | undefined; 
     public get securityGroupIds() {
       return this.getListAttribute('security_group_ids');
     }
-    public set securityGroupIds(value: string[]) {
+    public set securityGroupIds(value: string[] | undefined) {
       this._securityGroupIds = value;
     }
     public resetSecurityGroupIds() {
@@ -6661,7 +7172,7 @@ export namespace VPC {
     }
 
     // service_name - computed: false, optional: false, required: true
-    private _serviceName: string;
+    private _serviceName?: string; 
     public get serviceName() {
       return this.getStringAttribute('service_name');
     }
@@ -6679,11 +7190,11 @@ export namespace VPC {
     }
 
     // subnet_ids - computed: true, optional: true, required: false
-    private _subnetIds?: string[];
+    private _subnetIds?: string[] | undefined; 
     public get subnetIds() {
       return this.getListAttribute('subnet_ids');
     }
-    public set subnetIds(value: string[]) {
+    public set subnetIds(value: string[] | undefined) {
       this._subnetIds = value;
     }
     public resetSubnetIds() {
@@ -6695,11 +7206,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -6711,11 +7223,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -6727,11 +7240,11 @@ export namespace VPC {
     }
 
     // vpc_endpoint_type - computed: false, optional: true, required: false
-    private _vpcEndpointType?: string;
+    private _vpcEndpointType?: string | undefined; 
     public get vpcEndpointType() {
       return this.getStringAttribute('vpc_endpoint_type');
     }
-    public set vpcEndpointType(value: string ) {
+    public set vpcEndpointType(value: string | undefined) {
       this._vpcEndpointType = value;
     }
     public resetVpcEndpointType() {
@@ -6743,7 +7256,7 @@ export namespace VPC {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -6756,11 +7269,12 @@ export namespace VPC {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: VpcEndpointTimeouts;
+    private _timeouts?: VpcEndpointTimeouts | undefined; 
+    private __timeoutsOutput = new VpcEndpointTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: VpcEndpointTimeouts ) {
+    public putTimeouts(value: VpcEndpointTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -6854,7 +7368,7 @@ export namespace VPC {
     // ==========
 
     // connection_events - computed: false, optional: false, required: true
-    private _connectionEvents: string[];
+    private _connectionEvents?: string[]; 
     public get connectionEvents() {
       return this.getListAttribute('connection_events');
     }
@@ -6867,7 +7381,7 @@ export namespace VPC {
     }
 
     // connection_notification_arn - computed: false, optional: false, required: true
-    private _connectionNotificationArn: string;
+    private _connectionNotificationArn?: string; 
     public get connectionNotificationArn() {
       return this.getStringAttribute('connection_notification_arn');
     }
@@ -6895,11 +7409,11 @@ export namespace VPC {
     }
 
     // vpc_endpoint_id - computed: false, optional: true, required: false
-    private _vpcEndpointId?: string;
+    private _vpcEndpointId?: string | undefined; 
     public get vpcEndpointId() {
       return this.getStringAttribute('vpc_endpoint_id');
     }
-    public set vpcEndpointId(value: string ) {
+    public set vpcEndpointId(value: string | undefined) {
       this._vpcEndpointId = value;
     }
     public resetVpcEndpointId() {
@@ -6911,11 +7425,11 @@ export namespace VPC {
     }
 
     // vpc_endpoint_service_id - computed: false, optional: true, required: false
-    private _vpcEndpointServiceId?: string;
+    private _vpcEndpointServiceId?: string | undefined; 
     public get vpcEndpointServiceId() {
       return this.getStringAttribute('vpc_endpoint_service_id');
     }
-    public set vpcEndpointServiceId(value: string ) {
+    public set vpcEndpointServiceId(value: string | undefined) {
       this._vpcEndpointServiceId = value;
     }
     public resetVpcEndpointServiceId() {
@@ -6996,7 +7510,7 @@ export namespace VPC {
     }
 
     // route_table_id - computed: false, optional: false, required: true
-    private _routeTableId: string;
+    private _routeTableId?: string; 
     public get routeTableId() {
       return this.getStringAttribute('route_table_id');
     }
@@ -7009,7 +7523,7 @@ export namespace VPC {
     }
 
     // vpc_endpoint_id - computed: false, optional: false, required: true
-    private _vpcEndpointId: string;
+    private _vpcEndpointId?: string; 
     public get vpcEndpointId() {
       return this.getStringAttribute('vpc_endpoint_id');
     }
@@ -7131,9 +7645,9 @@ export namespace VPC {
     // ==========
 
     // acceptance_required - computed: false, optional: false, required: true
-    private _acceptanceRequired: boolean | cdktf.IResolvable;
+    private _acceptanceRequired?: boolean | cdktf.IResolvable; 
     public get acceptanceRequired() {
-      return this.getBooleanAttribute('acceptance_required');
+      return this.getBooleanAttribute('acceptance_required') as any;
     }
     public set acceptanceRequired(value: boolean | cdktf.IResolvable) {
       this._acceptanceRequired = value;
@@ -7144,11 +7658,11 @@ export namespace VPC {
     }
 
     // allowed_principals - computed: true, optional: true, required: false
-    private _allowedPrincipals?: string[];
+    private _allowedPrincipals?: string[] | undefined; 
     public get allowedPrincipals() {
       return this.getListAttribute('allowed_principals');
     }
-    public set allowedPrincipals(value: string[]) {
+    public set allowedPrincipals(value: string[] | undefined) {
       this._allowedPrincipals = value;
     }
     public resetAllowedPrincipals() {
@@ -7175,11 +7689,11 @@ export namespace VPC {
     }
 
     // gateway_load_balancer_arns - computed: false, optional: true, required: false
-    private _gatewayLoadBalancerArns?: string[];
+    private _gatewayLoadBalancerArns?: string[] | undefined; 
     public get gatewayLoadBalancerArns() {
       return this.getListAttribute('gateway_load_balancer_arns');
     }
-    public set gatewayLoadBalancerArns(value: string[] ) {
+    public set gatewayLoadBalancerArns(value: string[] | undefined) {
       this._gatewayLoadBalancerArns = value;
     }
     public resetGatewayLoadBalancerArns() {
@@ -7197,15 +7711,15 @@ export namespace VPC {
 
     // manages_vpc_endpoints - computed: true, optional: false, required: false
     public get managesVpcEndpoints() {
-      return this.getBooleanAttribute('manages_vpc_endpoints');
+      return this.getBooleanAttribute('manages_vpc_endpoints') as any;
     }
 
     // network_load_balancer_arns - computed: false, optional: true, required: false
-    private _networkLoadBalancerArns?: string[];
+    private _networkLoadBalancerArns?: string[] | undefined; 
     public get networkLoadBalancerArns() {
       return this.getListAttribute('network_load_balancer_arns');
     }
-    public set networkLoadBalancerArns(value: string[] ) {
+    public set networkLoadBalancerArns(value: string[] | undefined) {
       this._networkLoadBalancerArns = value;
     }
     public resetNetworkLoadBalancerArns() {
@@ -7217,11 +7731,11 @@ export namespace VPC {
     }
 
     // private_dns_name - computed: true, optional: true, required: false
-    private _privateDnsName?: string;
+    private _privateDnsName?: string | undefined; 
     public get privateDnsName() {
       return this.getStringAttribute('private_dns_name');
     }
-    public set privateDnsName(value: string) {
+    public set privateDnsName(value: string | undefined) {
       this._privateDnsName = value;
     }
     public resetPrivateDnsName() {
@@ -7253,11 +7767,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -7269,11 +7784,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -7357,7 +7873,7 @@ export namespace VPC {
     }
 
     // principal_arn - computed: false, optional: false, required: true
-    private _principalArn: string;
+    private _principalArn?: string; 
     public get principalArn() {
       return this.getStringAttribute('principal_arn');
     }
@@ -7370,7 +7886,7 @@ export namespace VPC {
     }
 
     // vpc_endpoint_service_id - computed: false, optional: false, required: true
-    private _vpcEndpointServiceId: string;
+    private _vpcEndpointServiceId?: string; 
     public get vpcEndpointServiceId() {
       return this.getStringAttribute('vpc_endpoint_service_id');
     }
@@ -7420,14 +7936,59 @@ export namespace VPC {
     readonly delete?: string;
   }
 
-  function vpcEndpointSubnetAssociationTimeoutsToTerraform(struct?: VpcEndpointSubnetAssociationTimeouts): any {
+  function vpcEndpointSubnetAssociationTimeoutsToTerraform(struct?: VpcEndpointSubnetAssociationTimeoutsOutputReference | VpcEndpointSubnetAssociationTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class VpcEndpointSubnetAssociationTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/vpc_endpoint_subnet_association.html aws_vpc_endpoint_subnet_association}
@@ -7476,7 +8037,7 @@ export namespace VPC {
     }
 
     // subnet_id - computed: false, optional: false, required: true
-    private _subnetId: string;
+    private _subnetId?: string; 
     public get subnetId() {
       return this.getStringAttribute('subnet_id');
     }
@@ -7489,7 +8050,7 @@ export namespace VPC {
     }
 
     // vpc_endpoint_id - computed: false, optional: false, required: true
-    private _vpcEndpointId: string;
+    private _vpcEndpointId?: string; 
     public get vpcEndpointId() {
       return this.getStringAttribute('vpc_endpoint_id');
     }
@@ -7502,11 +8063,12 @@ export namespace VPC {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: VpcEndpointSubnetAssociationTimeouts;
+    private _timeouts?: VpcEndpointSubnetAssociationTimeouts | undefined; 
+    private __timeoutsOutput = new VpcEndpointSubnetAssociationTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: VpcEndpointSubnetAssociationTimeouts ) {
+    public putTimeouts(value: VpcEndpointSubnetAssociationTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -7556,14 +8118,59 @@ export namespace VPC {
     readonly delete?: string;
   }
 
-  function vpcIpv4CidrBlockAssociationTimeoutsToTerraform(struct?: VpcIpv4CidrBlockAssociationTimeouts): any {
+  function vpcIpv4CidrBlockAssociationTimeoutsToTerraform(struct?: VpcIpv4CidrBlockAssociationTimeoutsOutputReference | VpcIpv4CidrBlockAssociationTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class VpcIpv4CidrBlockAssociationTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/vpc_ipv4_cidr_block_association.html aws_vpc_ipv4_cidr_block_association}
@@ -7607,7 +8214,7 @@ export namespace VPC {
     // ==========
 
     // cidr_block - computed: false, optional: false, required: true
-    private _cidrBlock: string;
+    private _cidrBlock?: string; 
     public get cidrBlock() {
       return this.getStringAttribute('cidr_block');
     }
@@ -7625,7 +8232,7 @@ export namespace VPC {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -7638,11 +8245,12 @@ export namespace VPC {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: VpcIpv4CidrBlockAssociationTimeouts;
+    private _timeouts?: VpcIpv4CidrBlockAssociationTimeouts | undefined; 
+    private __timeoutsOutput = new VpcIpv4CidrBlockAssociationTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: VpcIpv4CidrBlockAssociationTimeouts ) {
+    public putTimeouts(value: VpcIpv4CidrBlockAssociationTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -7699,13 +8307,13 @@ export namespace VPC {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_peering_connection.html#accepter VpcPeeringConnection#accepter}
     */
-    readonly accepter?: VpcPeeringConnectionAccepter[];
+    readonly accepter?: VpcPeeringConnectionAccepter;
     /**
     * requester block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_peering_connection.html#requester VpcPeeringConnection#requester}
     */
-    readonly requester?: VpcPeeringConnectionRequester[];
+    readonly requester?: VpcPeeringConnectionRequester;
     /**
     * timeouts block
     * 
@@ -7728,8 +8336,11 @@ export namespace VPC {
     readonly allowVpcToRemoteClassicLink?: boolean | cdktf.IResolvable;
   }
 
-  function vpcPeeringConnectionAccepterToTerraform(struct?: VpcPeeringConnectionAccepter): any {
+  function vpcPeeringConnectionAccepterToTerraform(struct?: VpcPeeringConnectionAccepterOutputReference | VpcPeeringConnectionAccepter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allow_classic_link_to_remote_vpc: cdktf.booleanToTerraform(struct!.allowClassicLinkToRemoteVpc),
       allow_remote_vpc_dns_resolution: cdktf.booleanToTerraform(struct!.allowRemoteVpcDnsResolution),
@@ -7737,6 +8348,64 @@ export namespace VPC {
     }
   }
 
+  export class VpcPeeringConnectionAccepterOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // allow_classic_link_to_remote_vpc - computed: false, optional: true, required: false
+    private _allowClassicLinkToRemoteVpc?: boolean | cdktf.IResolvable | undefined; 
+    public get allowClassicLinkToRemoteVpc() {
+      return this.getBooleanAttribute('allow_classic_link_to_remote_vpc') as any;
+    }
+    public set allowClassicLinkToRemoteVpc(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowClassicLinkToRemoteVpc = value;
+    }
+    public resetAllowClassicLinkToRemoteVpc() {
+      this._allowClassicLinkToRemoteVpc = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowClassicLinkToRemoteVpcInput() {
+      return this._allowClassicLinkToRemoteVpc
+    }
+
+    // allow_remote_vpc_dns_resolution - computed: false, optional: true, required: false
+    private _allowRemoteVpcDnsResolution?: boolean | cdktf.IResolvable | undefined; 
+    public get allowRemoteVpcDnsResolution() {
+      return this.getBooleanAttribute('allow_remote_vpc_dns_resolution') as any;
+    }
+    public set allowRemoteVpcDnsResolution(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowRemoteVpcDnsResolution = value;
+    }
+    public resetAllowRemoteVpcDnsResolution() {
+      this._allowRemoteVpcDnsResolution = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowRemoteVpcDnsResolutionInput() {
+      return this._allowRemoteVpcDnsResolution
+    }
+
+    // allow_vpc_to_remote_classic_link - computed: false, optional: true, required: false
+    private _allowVpcToRemoteClassicLink?: boolean | cdktf.IResolvable | undefined; 
+    public get allowVpcToRemoteClassicLink() {
+      return this.getBooleanAttribute('allow_vpc_to_remote_classic_link') as any;
+    }
+    public set allowVpcToRemoteClassicLink(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowVpcToRemoteClassicLink = value;
+    }
+    public resetAllowVpcToRemoteClassicLink() {
+      this._allowVpcToRemoteClassicLink = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowVpcToRemoteClassicLinkInput() {
+      return this._allowVpcToRemoteClassicLink
+    }
+  }
   export interface VpcPeeringConnectionRequester {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_peering_connection.html#allow_classic_link_to_remote_vpc VpcPeeringConnection#allow_classic_link_to_remote_vpc}
@@ -7752,8 +8421,11 @@ export namespace VPC {
     readonly allowVpcToRemoteClassicLink?: boolean | cdktf.IResolvable;
   }
 
-  function vpcPeeringConnectionRequesterToTerraform(struct?: VpcPeeringConnectionRequester): any {
+  function vpcPeeringConnectionRequesterToTerraform(struct?: VpcPeeringConnectionRequesterOutputReference | VpcPeeringConnectionRequester): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allow_classic_link_to_remote_vpc: cdktf.booleanToTerraform(struct!.allowClassicLinkToRemoteVpc),
       allow_remote_vpc_dns_resolution: cdktf.booleanToTerraform(struct!.allowRemoteVpcDnsResolution),
@@ -7761,6 +8433,64 @@ export namespace VPC {
     }
   }
 
+  export class VpcPeeringConnectionRequesterOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // allow_classic_link_to_remote_vpc - computed: false, optional: true, required: false
+    private _allowClassicLinkToRemoteVpc?: boolean | cdktf.IResolvable | undefined; 
+    public get allowClassicLinkToRemoteVpc() {
+      return this.getBooleanAttribute('allow_classic_link_to_remote_vpc') as any;
+    }
+    public set allowClassicLinkToRemoteVpc(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowClassicLinkToRemoteVpc = value;
+    }
+    public resetAllowClassicLinkToRemoteVpc() {
+      this._allowClassicLinkToRemoteVpc = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowClassicLinkToRemoteVpcInput() {
+      return this._allowClassicLinkToRemoteVpc
+    }
+
+    // allow_remote_vpc_dns_resolution - computed: false, optional: true, required: false
+    private _allowRemoteVpcDnsResolution?: boolean | cdktf.IResolvable | undefined; 
+    public get allowRemoteVpcDnsResolution() {
+      return this.getBooleanAttribute('allow_remote_vpc_dns_resolution') as any;
+    }
+    public set allowRemoteVpcDnsResolution(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowRemoteVpcDnsResolution = value;
+    }
+    public resetAllowRemoteVpcDnsResolution() {
+      this._allowRemoteVpcDnsResolution = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowRemoteVpcDnsResolutionInput() {
+      return this._allowRemoteVpcDnsResolution
+    }
+
+    // allow_vpc_to_remote_classic_link - computed: false, optional: true, required: false
+    private _allowVpcToRemoteClassicLink?: boolean | cdktf.IResolvable | undefined; 
+    public get allowVpcToRemoteClassicLink() {
+      return this.getBooleanAttribute('allow_vpc_to_remote_classic_link') as any;
+    }
+    public set allowVpcToRemoteClassicLink(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowVpcToRemoteClassicLink = value;
+    }
+    public resetAllowVpcToRemoteClassicLink() {
+      this._allowVpcToRemoteClassicLink = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowVpcToRemoteClassicLinkInput() {
+      return this._allowVpcToRemoteClassicLink
+    }
+  }
   export interface VpcPeeringConnectionTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_peering_connection.html#create VpcPeeringConnection#create}
@@ -7776,8 +8506,11 @@ export namespace VPC {
     readonly update?: string;
   }
 
-  function vpcPeeringConnectionTimeoutsToTerraform(struct?: VpcPeeringConnectionTimeouts): any {
+  function vpcPeeringConnectionTimeoutsToTerraform(struct?: VpcPeeringConnectionTimeoutsOutputReference | VpcPeeringConnectionTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -7785,6 +8518,64 @@ export namespace VPC {
     }
   }
 
+  export class VpcPeeringConnectionTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/vpc_peering_connection.html aws_vpc_peering_connection}
@@ -7840,11 +8631,11 @@ export namespace VPC {
     }
 
     // auto_accept - computed: false, optional: true, required: false
-    private _autoAccept?: boolean | cdktf.IResolvable;
+    private _autoAccept?: boolean | cdktf.IResolvable | undefined; 
     public get autoAccept() {
-      return this.getBooleanAttribute('auto_accept');
+      return this.getBooleanAttribute('auto_accept') as any;
     }
-    public set autoAccept(value: boolean | cdktf.IResolvable ) {
+    public set autoAccept(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAccept = value;
     }
     public resetAutoAccept() {
@@ -7861,11 +8652,11 @@ export namespace VPC {
     }
 
     // peer_owner_id - computed: true, optional: true, required: false
-    private _peerOwnerId?: string;
+    private _peerOwnerId?: string | undefined; 
     public get peerOwnerId() {
       return this.getStringAttribute('peer_owner_id');
     }
-    public set peerOwnerId(value: string) {
+    public set peerOwnerId(value: string | undefined) {
       this._peerOwnerId = value;
     }
     public resetPeerOwnerId() {
@@ -7877,11 +8668,11 @@ export namespace VPC {
     }
 
     // peer_region - computed: true, optional: true, required: false
-    private _peerRegion?: string;
+    private _peerRegion?: string | undefined; 
     public get peerRegion() {
       return this.getStringAttribute('peer_region');
     }
-    public set peerRegion(value: string) {
+    public set peerRegion(value: string | undefined) {
       this._peerRegion = value;
     }
     public resetPeerRegion() {
@@ -7893,7 +8684,7 @@ export namespace VPC {
     }
 
     // peer_vpc_id - computed: false, optional: false, required: true
-    private _peerVpcId: string;
+    private _peerVpcId?: string; 
     public get peerVpcId() {
       return this.getStringAttribute('peer_vpc_id');
     }
@@ -7906,11 +8697,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -7922,11 +8714,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -7938,7 +8731,7 @@ export namespace VPC {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -7951,11 +8744,12 @@ export namespace VPC {
     }
 
     // accepter - computed: false, optional: true, required: false
-    private _accepter?: VpcPeeringConnectionAccepter[];
+    private _accepter?: VpcPeeringConnectionAccepter | undefined; 
+    private __accepterOutput = new VpcPeeringConnectionAccepterOutputReference(this as any, "accepter", true);
     public get accepter() {
-      return this.interpolationForAttribute('accepter') as any;
+      return this.__accepterOutput;
     }
-    public set accepter(value: VpcPeeringConnectionAccepter[] ) {
+    public putAccepter(value: VpcPeeringConnectionAccepter | undefined) {
       this._accepter = value;
     }
     public resetAccepter() {
@@ -7967,11 +8761,12 @@ export namespace VPC {
     }
 
     // requester - computed: false, optional: true, required: false
-    private _requester?: VpcPeeringConnectionRequester[];
+    private _requester?: VpcPeeringConnectionRequester | undefined; 
+    private __requesterOutput = new VpcPeeringConnectionRequesterOutputReference(this as any, "requester", true);
     public get requester() {
-      return this.interpolationForAttribute('requester') as any;
+      return this.__requesterOutput;
     }
-    public set requester(value: VpcPeeringConnectionRequester[] ) {
+    public putRequester(value: VpcPeeringConnectionRequester | undefined) {
       this._requester = value;
     }
     public resetRequester() {
@@ -7983,11 +8778,12 @@ export namespace VPC {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: VpcPeeringConnectionTimeouts;
+    private _timeouts?: VpcPeeringConnectionTimeouts | undefined; 
+    private __timeoutsOutput = new VpcPeeringConnectionTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: VpcPeeringConnectionTimeouts ) {
+    public putTimeouts(value: VpcPeeringConnectionTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -8011,8 +8807,8 @@ export namespace VPC {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         vpc_id: cdktf.stringToTerraform(this._vpcId),
-        accepter: cdktf.listMapper(vpcPeeringConnectionAccepterToTerraform)(this._accepter),
-        requester: cdktf.listMapper(vpcPeeringConnectionRequesterToTerraform)(this._requester),
+        accepter: vpcPeeringConnectionAccepterToTerraform(this._accepter),
+        requester: vpcPeeringConnectionRequesterToTerraform(this._requester),
         timeouts: vpcPeeringConnectionTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -8039,13 +8835,13 @@ export namespace VPC {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_peering_connection_accepter.html#accepter VpcPeeringConnectionAccepterA#accepter}
     */
-    readonly accepter?: VpcPeeringConnectionAccepterAccepter[];
+    readonly accepter?: VpcPeeringConnectionAccepterAccepter;
     /**
     * requester block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_peering_connection_accepter.html#requester VpcPeeringConnectionAccepterA#requester}
     */
-    readonly requester?: VpcPeeringConnectionAccepterRequester[];
+    readonly requester?: VpcPeeringConnectionAccepterRequester;
   }
   export interface VpcPeeringConnectionAccepterAccepter {
     /**
@@ -8062,8 +8858,11 @@ export namespace VPC {
     readonly allowVpcToRemoteClassicLink?: boolean | cdktf.IResolvable;
   }
 
-  function vpcPeeringConnectionAccepterAccepterToTerraform(struct?: VpcPeeringConnectionAccepterAccepter): any {
+  function vpcPeeringConnectionAccepterAccepterToTerraform(struct?: VpcPeeringConnectionAccepterAccepterOutputReference | VpcPeeringConnectionAccepterAccepter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allow_classic_link_to_remote_vpc: cdktf.booleanToTerraform(struct!.allowClassicLinkToRemoteVpc),
       allow_remote_vpc_dns_resolution: cdktf.booleanToTerraform(struct!.allowRemoteVpcDnsResolution),
@@ -8071,6 +8870,64 @@ export namespace VPC {
     }
   }
 
+  export class VpcPeeringConnectionAccepterAccepterOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // allow_classic_link_to_remote_vpc - computed: false, optional: true, required: false
+    private _allowClassicLinkToRemoteVpc?: boolean | cdktf.IResolvable | undefined; 
+    public get allowClassicLinkToRemoteVpc() {
+      return this.getBooleanAttribute('allow_classic_link_to_remote_vpc') as any;
+    }
+    public set allowClassicLinkToRemoteVpc(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowClassicLinkToRemoteVpc = value;
+    }
+    public resetAllowClassicLinkToRemoteVpc() {
+      this._allowClassicLinkToRemoteVpc = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowClassicLinkToRemoteVpcInput() {
+      return this._allowClassicLinkToRemoteVpc
+    }
+
+    // allow_remote_vpc_dns_resolution - computed: false, optional: true, required: false
+    private _allowRemoteVpcDnsResolution?: boolean | cdktf.IResolvable | undefined; 
+    public get allowRemoteVpcDnsResolution() {
+      return this.getBooleanAttribute('allow_remote_vpc_dns_resolution') as any;
+    }
+    public set allowRemoteVpcDnsResolution(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowRemoteVpcDnsResolution = value;
+    }
+    public resetAllowRemoteVpcDnsResolution() {
+      this._allowRemoteVpcDnsResolution = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowRemoteVpcDnsResolutionInput() {
+      return this._allowRemoteVpcDnsResolution
+    }
+
+    // allow_vpc_to_remote_classic_link - computed: false, optional: true, required: false
+    private _allowVpcToRemoteClassicLink?: boolean | cdktf.IResolvable | undefined; 
+    public get allowVpcToRemoteClassicLink() {
+      return this.getBooleanAttribute('allow_vpc_to_remote_classic_link') as any;
+    }
+    public set allowVpcToRemoteClassicLink(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowVpcToRemoteClassicLink = value;
+    }
+    public resetAllowVpcToRemoteClassicLink() {
+      this._allowVpcToRemoteClassicLink = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowVpcToRemoteClassicLinkInput() {
+      return this._allowVpcToRemoteClassicLink
+    }
+  }
   export interface VpcPeeringConnectionAccepterRequester {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_peering_connection_accepter.html#allow_classic_link_to_remote_vpc VpcPeeringConnectionAccepterA#allow_classic_link_to_remote_vpc}
@@ -8086,8 +8943,11 @@ export namespace VPC {
     readonly allowVpcToRemoteClassicLink?: boolean | cdktf.IResolvable;
   }
 
-  function vpcPeeringConnectionAccepterRequesterToTerraform(struct?: VpcPeeringConnectionAccepterRequester): any {
+  function vpcPeeringConnectionAccepterRequesterToTerraform(struct?: VpcPeeringConnectionAccepterRequesterOutputReference | VpcPeeringConnectionAccepterRequester): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allow_classic_link_to_remote_vpc: cdktf.booleanToTerraform(struct!.allowClassicLinkToRemoteVpc),
       allow_remote_vpc_dns_resolution: cdktf.booleanToTerraform(struct!.allowRemoteVpcDnsResolution),
@@ -8095,6 +8955,64 @@ export namespace VPC {
     }
   }
 
+  export class VpcPeeringConnectionAccepterRequesterOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // allow_classic_link_to_remote_vpc - computed: false, optional: true, required: false
+    private _allowClassicLinkToRemoteVpc?: boolean | cdktf.IResolvable | undefined; 
+    public get allowClassicLinkToRemoteVpc() {
+      return this.getBooleanAttribute('allow_classic_link_to_remote_vpc') as any;
+    }
+    public set allowClassicLinkToRemoteVpc(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowClassicLinkToRemoteVpc = value;
+    }
+    public resetAllowClassicLinkToRemoteVpc() {
+      this._allowClassicLinkToRemoteVpc = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowClassicLinkToRemoteVpcInput() {
+      return this._allowClassicLinkToRemoteVpc
+    }
+
+    // allow_remote_vpc_dns_resolution - computed: false, optional: true, required: false
+    private _allowRemoteVpcDnsResolution?: boolean | cdktf.IResolvable | undefined; 
+    public get allowRemoteVpcDnsResolution() {
+      return this.getBooleanAttribute('allow_remote_vpc_dns_resolution') as any;
+    }
+    public set allowRemoteVpcDnsResolution(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowRemoteVpcDnsResolution = value;
+    }
+    public resetAllowRemoteVpcDnsResolution() {
+      this._allowRemoteVpcDnsResolution = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowRemoteVpcDnsResolutionInput() {
+      return this._allowRemoteVpcDnsResolution
+    }
+
+    // allow_vpc_to_remote_classic_link - computed: false, optional: true, required: false
+    private _allowVpcToRemoteClassicLink?: boolean | cdktf.IResolvable | undefined; 
+    public get allowVpcToRemoteClassicLink() {
+      return this.getBooleanAttribute('allow_vpc_to_remote_classic_link') as any;
+    }
+    public set allowVpcToRemoteClassicLink(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowVpcToRemoteClassicLink = value;
+    }
+    public resetAllowVpcToRemoteClassicLink() {
+      this._allowVpcToRemoteClassicLink = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowVpcToRemoteClassicLinkInput() {
+      return this._allowVpcToRemoteClassicLink
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/vpc_peering_connection_accepter.html aws_vpc_peering_connection_accepter}
@@ -8146,11 +9064,11 @@ export namespace VPC {
     }
 
     // auto_accept - computed: false, optional: true, required: false
-    private _autoAccept?: boolean | cdktf.IResolvable;
+    private _autoAccept?: boolean | cdktf.IResolvable | undefined; 
     public get autoAccept() {
-      return this.getBooleanAttribute('auto_accept');
+      return this.getBooleanAttribute('auto_accept') as any;
     }
-    public set autoAccept(value: boolean | cdktf.IResolvable ) {
+    public set autoAccept(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAccept = value;
     }
     public resetAutoAccept() {
@@ -8182,11 +9100,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -8198,11 +9117,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -8219,7 +9139,7 @@ export namespace VPC {
     }
 
     // vpc_peering_connection_id - computed: false, optional: false, required: true
-    private _vpcPeeringConnectionId: string;
+    private _vpcPeeringConnectionId?: string; 
     public get vpcPeeringConnectionId() {
       return this.getStringAttribute('vpc_peering_connection_id');
     }
@@ -8232,11 +9152,12 @@ export namespace VPC {
     }
 
     // accepter - computed: false, optional: true, required: false
-    private _accepter?: VpcPeeringConnectionAccepterAccepter[];
+    private _accepter?: VpcPeeringConnectionAccepterAccepter | undefined; 
+    private __accepterOutput = new VpcPeeringConnectionAccepterAccepterOutputReference(this as any, "accepter", true);
     public get accepter() {
-      return this.interpolationForAttribute('accepter') as any;
+      return this.__accepterOutput;
     }
-    public set accepter(value: VpcPeeringConnectionAccepterAccepter[] ) {
+    public putAccepter(value: VpcPeeringConnectionAccepterAccepter | undefined) {
       this._accepter = value;
     }
     public resetAccepter() {
@@ -8248,11 +9169,12 @@ export namespace VPC {
     }
 
     // requester - computed: false, optional: true, required: false
-    private _requester?: VpcPeeringConnectionAccepterRequester[];
+    private _requester?: VpcPeeringConnectionAccepterRequester | undefined; 
+    private __requesterOutput = new VpcPeeringConnectionAccepterRequesterOutputReference(this as any, "requester", true);
     public get requester() {
-      return this.interpolationForAttribute('requester') as any;
+      return this.__requesterOutput;
     }
-    public set requester(value: VpcPeeringConnectionAccepterRequester[] ) {
+    public putRequester(value: VpcPeeringConnectionAccepterRequester | undefined) {
       this._requester = value;
     }
     public resetRequester() {
@@ -8273,8 +9195,8 @@ export namespace VPC {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         vpc_peering_connection_id: cdktf.stringToTerraform(this._vpcPeeringConnectionId),
-        accepter: cdktf.listMapper(vpcPeeringConnectionAccepterAccepterToTerraform)(this._accepter),
-        requester: cdktf.listMapper(vpcPeeringConnectionAccepterRequesterToTerraform)(this._requester),
+        accepter: vpcPeeringConnectionAccepterAccepterToTerraform(this._accepter),
+        requester: vpcPeeringConnectionAccepterRequesterToTerraform(this._requester),
       };
     }
   }
@@ -8288,13 +9210,13 @@ export namespace VPC {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_peering_connection_options.html#accepter VpcPeeringConnectionOptions#accepter}
     */
-    readonly accepter?: VpcPeeringConnectionOptionsAccepter[];
+    readonly accepter?: VpcPeeringConnectionOptionsAccepter;
     /**
     * requester block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_peering_connection_options.html#requester VpcPeeringConnectionOptions#requester}
     */
-    readonly requester?: VpcPeeringConnectionOptionsRequester[];
+    readonly requester?: VpcPeeringConnectionOptionsRequester;
   }
   export interface VpcPeeringConnectionOptionsAccepter {
     /**
@@ -8311,8 +9233,11 @@ export namespace VPC {
     readonly allowVpcToRemoteClassicLink?: boolean | cdktf.IResolvable;
   }
 
-  function vpcPeeringConnectionOptionsAccepterToTerraform(struct?: VpcPeeringConnectionOptionsAccepter): any {
+  function vpcPeeringConnectionOptionsAccepterToTerraform(struct?: VpcPeeringConnectionOptionsAccepterOutputReference | VpcPeeringConnectionOptionsAccepter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allow_classic_link_to_remote_vpc: cdktf.booleanToTerraform(struct!.allowClassicLinkToRemoteVpc),
       allow_remote_vpc_dns_resolution: cdktf.booleanToTerraform(struct!.allowRemoteVpcDnsResolution),
@@ -8320,6 +9245,64 @@ export namespace VPC {
     }
   }
 
+  export class VpcPeeringConnectionOptionsAccepterOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // allow_classic_link_to_remote_vpc - computed: false, optional: true, required: false
+    private _allowClassicLinkToRemoteVpc?: boolean | cdktf.IResolvable | undefined; 
+    public get allowClassicLinkToRemoteVpc() {
+      return this.getBooleanAttribute('allow_classic_link_to_remote_vpc') as any;
+    }
+    public set allowClassicLinkToRemoteVpc(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowClassicLinkToRemoteVpc = value;
+    }
+    public resetAllowClassicLinkToRemoteVpc() {
+      this._allowClassicLinkToRemoteVpc = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowClassicLinkToRemoteVpcInput() {
+      return this._allowClassicLinkToRemoteVpc
+    }
+
+    // allow_remote_vpc_dns_resolution - computed: false, optional: true, required: false
+    private _allowRemoteVpcDnsResolution?: boolean | cdktf.IResolvable | undefined; 
+    public get allowRemoteVpcDnsResolution() {
+      return this.getBooleanAttribute('allow_remote_vpc_dns_resolution') as any;
+    }
+    public set allowRemoteVpcDnsResolution(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowRemoteVpcDnsResolution = value;
+    }
+    public resetAllowRemoteVpcDnsResolution() {
+      this._allowRemoteVpcDnsResolution = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowRemoteVpcDnsResolutionInput() {
+      return this._allowRemoteVpcDnsResolution
+    }
+
+    // allow_vpc_to_remote_classic_link - computed: false, optional: true, required: false
+    private _allowVpcToRemoteClassicLink?: boolean | cdktf.IResolvable | undefined; 
+    public get allowVpcToRemoteClassicLink() {
+      return this.getBooleanAttribute('allow_vpc_to_remote_classic_link') as any;
+    }
+    public set allowVpcToRemoteClassicLink(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowVpcToRemoteClassicLink = value;
+    }
+    public resetAllowVpcToRemoteClassicLink() {
+      this._allowVpcToRemoteClassicLink = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowVpcToRemoteClassicLinkInput() {
+      return this._allowVpcToRemoteClassicLink
+    }
+  }
   export interface VpcPeeringConnectionOptionsRequester {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/vpc_peering_connection_options.html#allow_classic_link_to_remote_vpc VpcPeeringConnectionOptions#allow_classic_link_to_remote_vpc}
@@ -8335,8 +9318,11 @@ export namespace VPC {
     readonly allowVpcToRemoteClassicLink?: boolean | cdktf.IResolvable;
   }
 
-  function vpcPeeringConnectionOptionsRequesterToTerraform(struct?: VpcPeeringConnectionOptionsRequester): any {
+  function vpcPeeringConnectionOptionsRequesterToTerraform(struct?: VpcPeeringConnectionOptionsRequesterOutputReference | VpcPeeringConnectionOptionsRequester): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allow_classic_link_to_remote_vpc: cdktf.booleanToTerraform(struct!.allowClassicLinkToRemoteVpc),
       allow_remote_vpc_dns_resolution: cdktf.booleanToTerraform(struct!.allowRemoteVpcDnsResolution),
@@ -8344,6 +9330,64 @@ export namespace VPC {
     }
   }
 
+  export class VpcPeeringConnectionOptionsRequesterOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // allow_classic_link_to_remote_vpc - computed: false, optional: true, required: false
+    private _allowClassicLinkToRemoteVpc?: boolean | cdktf.IResolvable | undefined; 
+    public get allowClassicLinkToRemoteVpc() {
+      return this.getBooleanAttribute('allow_classic_link_to_remote_vpc') as any;
+    }
+    public set allowClassicLinkToRemoteVpc(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowClassicLinkToRemoteVpc = value;
+    }
+    public resetAllowClassicLinkToRemoteVpc() {
+      this._allowClassicLinkToRemoteVpc = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowClassicLinkToRemoteVpcInput() {
+      return this._allowClassicLinkToRemoteVpc
+    }
+
+    // allow_remote_vpc_dns_resolution - computed: false, optional: true, required: false
+    private _allowRemoteVpcDnsResolution?: boolean | cdktf.IResolvable | undefined; 
+    public get allowRemoteVpcDnsResolution() {
+      return this.getBooleanAttribute('allow_remote_vpc_dns_resolution') as any;
+    }
+    public set allowRemoteVpcDnsResolution(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowRemoteVpcDnsResolution = value;
+    }
+    public resetAllowRemoteVpcDnsResolution() {
+      this._allowRemoteVpcDnsResolution = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowRemoteVpcDnsResolutionInput() {
+      return this._allowRemoteVpcDnsResolution
+    }
+
+    // allow_vpc_to_remote_classic_link - computed: false, optional: true, required: false
+    private _allowVpcToRemoteClassicLink?: boolean | cdktf.IResolvable | undefined; 
+    public get allowVpcToRemoteClassicLink() {
+      return this.getBooleanAttribute('allow_vpc_to_remote_classic_link') as any;
+    }
+    public set allowVpcToRemoteClassicLink(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowVpcToRemoteClassicLink = value;
+    }
+    public resetAllowVpcToRemoteClassicLink() {
+      this._allowVpcToRemoteClassicLink = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowVpcToRemoteClassicLinkInput() {
+      return this._allowVpcToRemoteClassicLink
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/vpc_peering_connection_options.html aws_vpc_peering_connection_options}
@@ -8392,7 +9436,7 @@ export namespace VPC {
     }
 
     // vpc_peering_connection_id - computed: false, optional: false, required: true
-    private _vpcPeeringConnectionId: string;
+    private _vpcPeeringConnectionId?: string; 
     public get vpcPeeringConnectionId() {
       return this.getStringAttribute('vpc_peering_connection_id');
     }
@@ -8405,11 +9449,12 @@ export namespace VPC {
     }
 
     // accepter - computed: false, optional: true, required: false
-    private _accepter?: VpcPeeringConnectionOptionsAccepter[];
+    private _accepter?: VpcPeeringConnectionOptionsAccepter | undefined; 
+    private __accepterOutput = new VpcPeeringConnectionOptionsAccepterOutputReference(this as any, "accepter", true);
     public get accepter() {
-      return this.interpolationForAttribute('accepter') as any;
+      return this.__accepterOutput;
     }
-    public set accepter(value: VpcPeeringConnectionOptionsAccepter[] ) {
+    public putAccepter(value: VpcPeeringConnectionOptionsAccepter | undefined) {
       this._accepter = value;
     }
     public resetAccepter() {
@@ -8421,11 +9466,12 @@ export namespace VPC {
     }
 
     // requester - computed: false, optional: true, required: false
-    private _requester?: VpcPeeringConnectionOptionsRequester[];
+    private _requester?: VpcPeeringConnectionOptionsRequester | undefined; 
+    private __requesterOutput = new VpcPeeringConnectionOptionsRequesterOutputReference(this as any, "requester", true);
     public get requester() {
-      return this.interpolationForAttribute('requester') as any;
+      return this.__requesterOutput;
     }
-    public set requester(value: VpcPeeringConnectionOptionsRequester[] ) {
+    public putRequester(value: VpcPeeringConnectionOptionsRequester | undefined) {
       this._requester = value;
     }
     public resetRequester() {
@@ -8443,8 +9489,8 @@ export namespace VPC {
     protected synthesizeAttributes(): { [name: string]: any } {
       return {
         vpc_peering_connection_id: cdktf.stringToTerraform(this._vpcPeeringConnectionId),
-        accepter: cdktf.listMapper(vpcPeeringConnectionOptionsAccepterToTerraform)(this._accepter),
-        requester: cdktf.listMapper(vpcPeeringConnectionOptionsRequesterToTerraform)(this._requester),
+        accepter: vpcPeeringConnectionOptionsAccepterToTerraform(this._accepter),
+        requester: vpcPeeringConnectionOptionsRequesterToTerraform(this._requester),
       };
     }
   }
@@ -8789,7 +9835,7 @@ export namespace VPC {
     }
 
     // customer_gateway_id - computed: false, optional: false, required: true
-    private _customerGatewayId: string;
+    private _customerGatewayId?: string; 
     public get customerGatewayId() {
       return this.getStringAttribute('customer_gateway_id');
     }
@@ -8802,11 +9848,11 @@ export namespace VPC {
     }
 
     // enable_acceleration - computed: true, optional: true, required: false
-    private _enableAcceleration?: boolean | cdktf.IResolvable;
+    private _enableAcceleration?: boolean | cdktf.IResolvable | undefined; 
     public get enableAcceleration() {
-      return this.getBooleanAttribute('enable_acceleration');
+      return this.getBooleanAttribute('enable_acceleration') as any;
     }
-    public set enableAcceleration(value: boolean | cdktf.IResolvable) {
+    public set enableAcceleration(value: boolean | cdktf.IResolvable | undefined) {
       this._enableAcceleration = value;
     }
     public resetEnableAcceleration() {
@@ -8823,11 +9869,11 @@ export namespace VPC {
     }
 
     // local_ipv4_network_cidr - computed: true, optional: true, required: false
-    private _localIpv4NetworkCidr?: string;
+    private _localIpv4NetworkCidr?: string | undefined; 
     public get localIpv4NetworkCidr() {
       return this.getStringAttribute('local_ipv4_network_cidr');
     }
-    public set localIpv4NetworkCidr(value: string) {
+    public set localIpv4NetworkCidr(value: string | undefined) {
       this._localIpv4NetworkCidr = value;
     }
     public resetLocalIpv4NetworkCidr() {
@@ -8839,11 +9885,11 @@ export namespace VPC {
     }
 
     // local_ipv6_network_cidr - computed: true, optional: true, required: false
-    private _localIpv6NetworkCidr?: string;
+    private _localIpv6NetworkCidr?: string | undefined; 
     public get localIpv6NetworkCidr() {
       return this.getStringAttribute('local_ipv6_network_cidr');
     }
-    public set localIpv6NetworkCidr(value: string) {
+    public set localIpv6NetworkCidr(value: string | undefined) {
       this._localIpv6NetworkCidr = value;
     }
     public resetLocalIpv6NetworkCidr() {
@@ -8855,11 +9901,11 @@ export namespace VPC {
     }
 
     // remote_ipv4_network_cidr - computed: true, optional: true, required: false
-    private _remoteIpv4NetworkCidr?: string;
+    private _remoteIpv4NetworkCidr?: string | undefined; 
     public get remoteIpv4NetworkCidr() {
       return this.getStringAttribute('remote_ipv4_network_cidr');
     }
-    public set remoteIpv4NetworkCidr(value: string) {
+    public set remoteIpv4NetworkCidr(value: string | undefined) {
       this._remoteIpv4NetworkCidr = value;
     }
     public resetRemoteIpv4NetworkCidr() {
@@ -8871,11 +9917,11 @@ export namespace VPC {
     }
 
     // remote_ipv6_network_cidr - computed: true, optional: true, required: false
-    private _remoteIpv6NetworkCidr?: string;
+    private _remoteIpv6NetworkCidr?: string | undefined; 
     public get remoteIpv6NetworkCidr() {
       return this.getStringAttribute('remote_ipv6_network_cidr');
     }
-    public set remoteIpv6NetworkCidr(value: string) {
+    public set remoteIpv6NetworkCidr(value: string | undefined) {
       this._remoteIpv6NetworkCidr = value;
     }
     public resetRemoteIpv6NetworkCidr() {
@@ -8892,11 +9938,11 @@ export namespace VPC {
     }
 
     // static_routes_only - computed: true, optional: true, required: false
-    private _staticRoutesOnly?: boolean | cdktf.IResolvable;
+    private _staticRoutesOnly?: boolean | cdktf.IResolvable | undefined; 
     public get staticRoutesOnly() {
-      return this.getBooleanAttribute('static_routes_only');
+      return this.getBooleanAttribute('static_routes_only') as any;
     }
-    public set staticRoutesOnly(value: boolean | cdktf.IResolvable) {
+    public set staticRoutesOnly(value: boolean | cdktf.IResolvable | undefined) {
       this._staticRoutesOnly = value;
     }
     public resetStaticRoutesOnly() {
@@ -8908,11 +9954,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -8924,11 +9971,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -8945,11 +9993,11 @@ export namespace VPC {
     }
 
     // transit_gateway_id - computed: false, optional: true, required: false
-    private _transitGatewayId?: string;
+    private _transitGatewayId?: string | undefined; 
     public get transitGatewayId() {
       return this.getStringAttribute('transit_gateway_id');
     }
-    public set transitGatewayId(value: string ) {
+    public set transitGatewayId(value: string | undefined) {
       this._transitGatewayId = value;
     }
     public resetTransitGatewayId() {
@@ -8981,11 +10029,11 @@ export namespace VPC {
     }
 
     // tunnel1_dpd_timeout_action - computed: false, optional: true, required: false
-    private _tunnel1DpdTimeoutAction?: string;
+    private _tunnel1DpdTimeoutAction?: string | undefined; 
     public get tunnel1DpdTimeoutAction() {
       return this.getStringAttribute('tunnel1_dpd_timeout_action');
     }
-    public set tunnel1DpdTimeoutAction(value: string ) {
+    public set tunnel1DpdTimeoutAction(value: string | undefined) {
       this._tunnel1DpdTimeoutAction = value;
     }
     public resetTunnel1DpdTimeoutAction() {
@@ -8997,11 +10045,11 @@ export namespace VPC {
     }
 
     // tunnel1_dpd_timeout_seconds - computed: false, optional: true, required: false
-    private _tunnel1DpdTimeoutSeconds?: number;
+    private _tunnel1DpdTimeoutSeconds?: number | undefined; 
     public get tunnel1DpdTimeoutSeconds() {
       return this.getNumberAttribute('tunnel1_dpd_timeout_seconds');
     }
-    public set tunnel1DpdTimeoutSeconds(value: number ) {
+    public set tunnel1DpdTimeoutSeconds(value: number | undefined) {
       this._tunnel1DpdTimeoutSeconds = value;
     }
     public resetTunnel1DpdTimeoutSeconds() {
@@ -9013,11 +10061,11 @@ export namespace VPC {
     }
 
     // tunnel1_ike_versions - computed: false, optional: true, required: false
-    private _tunnel1IkeVersions?: string[];
+    private _tunnel1IkeVersions?: string[] | undefined; 
     public get tunnel1IkeVersions() {
       return this.getListAttribute('tunnel1_ike_versions');
     }
-    public set tunnel1IkeVersions(value: string[] ) {
+    public set tunnel1IkeVersions(value: string[] | undefined) {
       this._tunnel1IkeVersions = value;
     }
     public resetTunnel1IkeVersions() {
@@ -9029,11 +10077,11 @@ export namespace VPC {
     }
 
     // tunnel1_inside_cidr - computed: true, optional: true, required: false
-    private _tunnel1InsideCidr?: string;
+    private _tunnel1InsideCidr?: string | undefined; 
     public get tunnel1InsideCidr() {
       return this.getStringAttribute('tunnel1_inside_cidr');
     }
-    public set tunnel1InsideCidr(value: string) {
+    public set tunnel1InsideCidr(value: string | undefined) {
       this._tunnel1InsideCidr = value;
     }
     public resetTunnel1InsideCidr() {
@@ -9045,11 +10093,11 @@ export namespace VPC {
     }
 
     // tunnel1_inside_ipv6_cidr - computed: true, optional: true, required: false
-    private _tunnel1InsideIpv6Cidr?: string;
+    private _tunnel1InsideIpv6Cidr?: string | undefined; 
     public get tunnel1InsideIpv6Cidr() {
       return this.getStringAttribute('tunnel1_inside_ipv6_cidr');
     }
-    public set tunnel1InsideIpv6Cidr(value: string) {
+    public set tunnel1InsideIpv6Cidr(value: string | undefined) {
       this._tunnel1InsideIpv6Cidr = value;
     }
     public resetTunnel1InsideIpv6Cidr() {
@@ -9061,11 +10109,12 @@ export namespace VPC {
     }
 
     // tunnel1_phase1_dh_group_numbers - computed: false, optional: true, required: false
-    private _tunnel1Phase1DhGroupNumbers?: number[];
+    private _tunnel1Phase1DhGroupNumbers?: number[] | undefined; 
     public get tunnel1Phase1DhGroupNumbers() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tunnel1_phase1_dh_group_numbers') as any;
     }
-    public set tunnel1Phase1DhGroupNumbers(value: number[] ) {
+    public set tunnel1Phase1DhGroupNumbers(value: number[] | undefined) {
       this._tunnel1Phase1DhGroupNumbers = value;
     }
     public resetTunnel1Phase1DhGroupNumbers() {
@@ -9077,11 +10126,11 @@ export namespace VPC {
     }
 
     // tunnel1_phase1_encryption_algorithms - computed: false, optional: true, required: false
-    private _tunnel1Phase1EncryptionAlgorithms?: string[];
+    private _tunnel1Phase1EncryptionAlgorithms?: string[] | undefined; 
     public get tunnel1Phase1EncryptionAlgorithms() {
       return this.getListAttribute('tunnel1_phase1_encryption_algorithms');
     }
-    public set tunnel1Phase1EncryptionAlgorithms(value: string[] ) {
+    public set tunnel1Phase1EncryptionAlgorithms(value: string[] | undefined) {
       this._tunnel1Phase1EncryptionAlgorithms = value;
     }
     public resetTunnel1Phase1EncryptionAlgorithms() {
@@ -9093,11 +10142,11 @@ export namespace VPC {
     }
 
     // tunnel1_phase1_integrity_algorithms - computed: false, optional: true, required: false
-    private _tunnel1Phase1IntegrityAlgorithms?: string[];
+    private _tunnel1Phase1IntegrityAlgorithms?: string[] | undefined; 
     public get tunnel1Phase1IntegrityAlgorithms() {
       return this.getListAttribute('tunnel1_phase1_integrity_algorithms');
     }
-    public set tunnel1Phase1IntegrityAlgorithms(value: string[] ) {
+    public set tunnel1Phase1IntegrityAlgorithms(value: string[] | undefined) {
       this._tunnel1Phase1IntegrityAlgorithms = value;
     }
     public resetTunnel1Phase1IntegrityAlgorithms() {
@@ -9109,11 +10158,11 @@ export namespace VPC {
     }
 
     // tunnel1_phase1_lifetime_seconds - computed: false, optional: true, required: false
-    private _tunnel1Phase1LifetimeSeconds?: number;
+    private _tunnel1Phase1LifetimeSeconds?: number | undefined; 
     public get tunnel1Phase1LifetimeSeconds() {
       return this.getNumberAttribute('tunnel1_phase1_lifetime_seconds');
     }
-    public set tunnel1Phase1LifetimeSeconds(value: number ) {
+    public set tunnel1Phase1LifetimeSeconds(value: number | undefined) {
       this._tunnel1Phase1LifetimeSeconds = value;
     }
     public resetTunnel1Phase1LifetimeSeconds() {
@@ -9125,11 +10174,12 @@ export namespace VPC {
     }
 
     // tunnel1_phase2_dh_group_numbers - computed: false, optional: true, required: false
-    private _tunnel1Phase2DhGroupNumbers?: number[];
+    private _tunnel1Phase2DhGroupNumbers?: number[] | undefined; 
     public get tunnel1Phase2DhGroupNumbers() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tunnel1_phase2_dh_group_numbers') as any;
     }
-    public set tunnel1Phase2DhGroupNumbers(value: number[] ) {
+    public set tunnel1Phase2DhGroupNumbers(value: number[] | undefined) {
       this._tunnel1Phase2DhGroupNumbers = value;
     }
     public resetTunnel1Phase2DhGroupNumbers() {
@@ -9141,11 +10191,11 @@ export namespace VPC {
     }
 
     // tunnel1_phase2_encryption_algorithms - computed: false, optional: true, required: false
-    private _tunnel1Phase2EncryptionAlgorithms?: string[];
+    private _tunnel1Phase2EncryptionAlgorithms?: string[] | undefined; 
     public get tunnel1Phase2EncryptionAlgorithms() {
       return this.getListAttribute('tunnel1_phase2_encryption_algorithms');
     }
-    public set tunnel1Phase2EncryptionAlgorithms(value: string[] ) {
+    public set tunnel1Phase2EncryptionAlgorithms(value: string[] | undefined) {
       this._tunnel1Phase2EncryptionAlgorithms = value;
     }
     public resetTunnel1Phase2EncryptionAlgorithms() {
@@ -9157,11 +10207,11 @@ export namespace VPC {
     }
 
     // tunnel1_phase2_integrity_algorithms - computed: false, optional: true, required: false
-    private _tunnel1Phase2IntegrityAlgorithms?: string[];
+    private _tunnel1Phase2IntegrityAlgorithms?: string[] | undefined; 
     public get tunnel1Phase2IntegrityAlgorithms() {
       return this.getListAttribute('tunnel1_phase2_integrity_algorithms');
     }
-    public set tunnel1Phase2IntegrityAlgorithms(value: string[] ) {
+    public set tunnel1Phase2IntegrityAlgorithms(value: string[] | undefined) {
       this._tunnel1Phase2IntegrityAlgorithms = value;
     }
     public resetTunnel1Phase2IntegrityAlgorithms() {
@@ -9173,11 +10223,11 @@ export namespace VPC {
     }
 
     // tunnel1_phase2_lifetime_seconds - computed: false, optional: true, required: false
-    private _tunnel1Phase2LifetimeSeconds?: number;
+    private _tunnel1Phase2LifetimeSeconds?: number | undefined; 
     public get tunnel1Phase2LifetimeSeconds() {
       return this.getNumberAttribute('tunnel1_phase2_lifetime_seconds');
     }
-    public set tunnel1Phase2LifetimeSeconds(value: number ) {
+    public set tunnel1Phase2LifetimeSeconds(value: number | undefined) {
       this._tunnel1Phase2LifetimeSeconds = value;
     }
     public resetTunnel1Phase2LifetimeSeconds() {
@@ -9189,11 +10239,11 @@ export namespace VPC {
     }
 
     // tunnel1_preshared_key - computed: true, optional: true, required: false
-    private _tunnel1PresharedKey?: string;
+    private _tunnel1PresharedKey?: string | undefined; 
     public get tunnel1PresharedKey() {
       return this.getStringAttribute('tunnel1_preshared_key');
     }
-    public set tunnel1PresharedKey(value: string) {
+    public set tunnel1PresharedKey(value: string | undefined) {
       this._tunnel1PresharedKey = value;
     }
     public resetTunnel1PresharedKey() {
@@ -9205,11 +10255,11 @@ export namespace VPC {
     }
 
     // tunnel1_rekey_fuzz_percentage - computed: false, optional: true, required: false
-    private _tunnel1RekeyFuzzPercentage?: number;
+    private _tunnel1RekeyFuzzPercentage?: number | undefined; 
     public get tunnel1RekeyFuzzPercentage() {
       return this.getNumberAttribute('tunnel1_rekey_fuzz_percentage');
     }
-    public set tunnel1RekeyFuzzPercentage(value: number ) {
+    public set tunnel1RekeyFuzzPercentage(value: number | undefined) {
       this._tunnel1RekeyFuzzPercentage = value;
     }
     public resetTunnel1RekeyFuzzPercentage() {
@@ -9221,11 +10271,11 @@ export namespace VPC {
     }
 
     // tunnel1_rekey_margin_time_seconds - computed: false, optional: true, required: false
-    private _tunnel1RekeyMarginTimeSeconds?: number;
+    private _tunnel1RekeyMarginTimeSeconds?: number | undefined; 
     public get tunnel1RekeyMarginTimeSeconds() {
       return this.getNumberAttribute('tunnel1_rekey_margin_time_seconds');
     }
-    public set tunnel1RekeyMarginTimeSeconds(value: number ) {
+    public set tunnel1RekeyMarginTimeSeconds(value: number | undefined) {
       this._tunnel1RekeyMarginTimeSeconds = value;
     }
     public resetTunnel1RekeyMarginTimeSeconds() {
@@ -9237,11 +10287,11 @@ export namespace VPC {
     }
 
     // tunnel1_replay_window_size - computed: false, optional: true, required: false
-    private _tunnel1ReplayWindowSize?: number;
+    private _tunnel1ReplayWindowSize?: number | undefined; 
     public get tunnel1ReplayWindowSize() {
       return this.getNumberAttribute('tunnel1_replay_window_size');
     }
-    public set tunnel1ReplayWindowSize(value: number ) {
+    public set tunnel1ReplayWindowSize(value: number | undefined) {
       this._tunnel1ReplayWindowSize = value;
     }
     public resetTunnel1ReplayWindowSize() {
@@ -9253,11 +10303,11 @@ export namespace VPC {
     }
 
     // tunnel1_startup_action - computed: false, optional: true, required: false
-    private _tunnel1StartupAction?: string;
+    private _tunnel1StartupAction?: string | undefined; 
     public get tunnel1StartupAction() {
       return this.getStringAttribute('tunnel1_startup_action');
     }
-    public set tunnel1StartupAction(value: string ) {
+    public set tunnel1StartupAction(value: string | undefined) {
       this._tunnel1StartupAction = value;
     }
     public resetTunnel1StartupAction() {
@@ -9294,11 +10344,11 @@ export namespace VPC {
     }
 
     // tunnel2_dpd_timeout_action - computed: false, optional: true, required: false
-    private _tunnel2DpdTimeoutAction?: string;
+    private _tunnel2DpdTimeoutAction?: string | undefined; 
     public get tunnel2DpdTimeoutAction() {
       return this.getStringAttribute('tunnel2_dpd_timeout_action');
     }
-    public set tunnel2DpdTimeoutAction(value: string ) {
+    public set tunnel2DpdTimeoutAction(value: string | undefined) {
       this._tunnel2DpdTimeoutAction = value;
     }
     public resetTunnel2DpdTimeoutAction() {
@@ -9310,11 +10360,11 @@ export namespace VPC {
     }
 
     // tunnel2_dpd_timeout_seconds - computed: false, optional: true, required: false
-    private _tunnel2DpdTimeoutSeconds?: number;
+    private _tunnel2DpdTimeoutSeconds?: number | undefined; 
     public get tunnel2DpdTimeoutSeconds() {
       return this.getNumberAttribute('tunnel2_dpd_timeout_seconds');
     }
-    public set tunnel2DpdTimeoutSeconds(value: number ) {
+    public set tunnel2DpdTimeoutSeconds(value: number | undefined) {
       this._tunnel2DpdTimeoutSeconds = value;
     }
     public resetTunnel2DpdTimeoutSeconds() {
@@ -9326,11 +10376,11 @@ export namespace VPC {
     }
 
     // tunnel2_ike_versions - computed: false, optional: true, required: false
-    private _tunnel2IkeVersions?: string[];
+    private _tunnel2IkeVersions?: string[] | undefined; 
     public get tunnel2IkeVersions() {
       return this.getListAttribute('tunnel2_ike_versions');
     }
-    public set tunnel2IkeVersions(value: string[] ) {
+    public set tunnel2IkeVersions(value: string[] | undefined) {
       this._tunnel2IkeVersions = value;
     }
     public resetTunnel2IkeVersions() {
@@ -9342,11 +10392,11 @@ export namespace VPC {
     }
 
     // tunnel2_inside_cidr - computed: true, optional: true, required: false
-    private _tunnel2InsideCidr?: string;
+    private _tunnel2InsideCidr?: string | undefined; 
     public get tunnel2InsideCidr() {
       return this.getStringAttribute('tunnel2_inside_cidr');
     }
-    public set tunnel2InsideCidr(value: string) {
+    public set tunnel2InsideCidr(value: string | undefined) {
       this._tunnel2InsideCidr = value;
     }
     public resetTunnel2InsideCidr() {
@@ -9358,11 +10408,11 @@ export namespace VPC {
     }
 
     // tunnel2_inside_ipv6_cidr - computed: true, optional: true, required: false
-    private _tunnel2InsideIpv6Cidr?: string;
+    private _tunnel2InsideIpv6Cidr?: string | undefined; 
     public get tunnel2InsideIpv6Cidr() {
       return this.getStringAttribute('tunnel2_inside_ipv6_cidr');
     }
-    public set tunnel2InsideIpv6Cidr(value: string) {
+    public set tunnel2InsideIpv6Cidr(value: string | undefined) {
       this._tunnel2InsideIpv6Cidr = value;
     }
     public resetTunnel2InsideIpv6Cidr() {
@@ -9374,11 +10424,12 @@ export namespace VPC {
     }
 
     // tunnel2_phase1_dh_group_numbers - computed: false, optional: true, required: false
-    private _tunnel2Phase1DhGroupNumbers?: number[];
+    private _tunnel2Phase1DhGroupNumbers?: number[] | undefined; 
     public get tunnel2Phase1DhGroupNumbers() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tunnel2_phase1_dh_group_numbers') as any;
     }
-    public set tunnel2Phase1DhGroupNumbers(value: number[] ) {
+    public set tunnel2Phase1DhGroupNumbers(value: number[] | undefined) {
       this._tunnel2Phase1DhGroupNumbers = value;
     }
     public resetTunnel2Phase1DhGroupNumbers() {
@@ -9390,11 +10441,11 @@ export namespace VPC {
     }
 
     // tunnel2_phase1_encryption_algorithms - computed: false, optional: true, required: false
-    private _tunnel2Phase1EncryptionAlgorithms?: string[];
+    private _tunnel2Phase1EncryptionAlgorithms?: string[] | undefined; 
     public get tunnel2Phase1EncryptionAlgorithms() {
       return this.getListAttribute('tunnel2_phase1_encryption_algorithms');
     }
-    public set tunnel2Phase1EncryptionAlgorithms(value: string[] ) {
+    public set tunnel2Phase1EncryptionAlgorithms(value: string[] | undefined) {
       this._tunnel2Phase1EncryptionAlgorithms = value;
     }
     public resetTunnel2Phase1EncryptionAlgorithms() {
@@ -9406,11 +10457,11 @@ export namespace VPC {
     }
 
     // tunnel2_phase1_integrity_algorithms - computed: false, optional: true, required: false
-    private _tunnel2Phase1IntegrityAlgorithms?: string[];
+    private _tunnel2Phase1IntegrityAlgorithms?: string[] | undefined; 
     public get tunnel2Phase1IntegrityAlgorithms() {
       return this.getListAttribute('tunnel2_phase1_integrity_algorithms');
     }
-    public set tunnel2Phase1IntegrityAlgorithms(value: string[] ) {
+    public set tunnel2Phase1IntegrityAlgorithms(value: string[] | undefined) {
       this._tunnel2Phase1IntegrityAlgorithms = value;
     }
     public resetTunnel2Phase1IntegrityAlgorithms() {
@@ -9422,11 +10473,11 @@ export namespace VPC {
     }
 
     // tunnel2_phase1_lifetime_seconds - computed: false, optional: true, required: false
-    private _tunnel2Phase1LifetimeSeconds?: number;
+    private _tunnel2Phase1LifetimeSeconds?: number | undefined; 
     public get tunnel2Phase1LifetimeSeconds() {
       return this.getNumberAttribute('tunnel2_phase1_lifetime_seconds');
     }
-    public set tunnel2Phase1LifetimeSeconds(value: number ) {
+    public set tunnel2Phase1LifetimeSeconds(value: number | undefined) {
       this._tunnel2Phase1LifetimeSeconds = value;
     }
     public resetTunnel2Phase1LifetimeSeconds() {
@@ -9438,11 +10489,12 @@ export namespace VPC {
     }
 
     // tunnel2_phase2_dh_group_numbers - computed: false, optional: true, required: false
-    private _tunnel2Phase2DhGroupNumbers?: number[];
+    private _tunnel2Phase2DhGroupNumbers?: number[] | undefined; 
     public get tunnel2Phase2DhGroupNumbers() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tunnel2_phase2_dh_group_numbers') as any;
     }
-    public set tunnel2Phase2DhGroupNumbers(value: number[] ) {
+    public set tunnel2Phase2DhGroupNumbers(value: number[] | undefined) {
       this._tunnel2Phase2DhGroupNumbers = value;
     }
     public resetTunnel2Phase2DhGroupNumbers() {
@@ -9454,11 +10506,11 @@ export namespace VPC {
     }
 
     // tunnel2_phase2_encryption_algorithms - computed: false, optional: true, required: false
-    private _tunnel2Phase2EncryptionAlgorithms?: string[];
+    private _tunnel2Phase2EncryptionAlgorithms?: string[] | undefined; 
     public get tunnel2Phase2EncryptionAlgorithms() {
       return this.getListAttribute('tunnel2_phase2_encryption_algorithms');
     }
-    public set tunnel2Phase2EncryptionAlgorithms(value: string[] ) {
+    public set tunnel2Phase2EncryptionAlgorithms(value: string[] | undefined) {
       this._tunnel2Phase2EncryptionAlgorithms = value;
     }
     public resetTunnel2Phase2EncryptionAlgorithms() {
@@ -9470,11 +10522,11 @@ export namespace VPC {
     }
 
     // tunnel2_phase2_integrity_algorithms - computed: false, optional: true, required: false
-    private _tunnel2Phase2IntegrityAlgorithms?: string[];
+    private _tunnel2Phase2IntegrityAlgorithms?: string[] | undefined; 
     public get tunnel2Phase2IntegrityAlgorithms() {
       return this.getListAttribute('tunnel2_phase2_integrity_algorithms');
     }
-    public set tunnel2Phase2IntegrityAlgorithms(value: string[] ) {
+    public set tunnel2Phase2IntegrityAlgorithms(value: string[] | undefined) {
       this._tunnel2Phase2IntegrityAlgorithms = value;
     }
     public resetTunnel2Phase2IntegrityAlgorithms() {
@@ -9486,11 +10538,11 @@ export namespace VPC {
     }
 
     // tunnel2_phase2_lifetime_seconds - computed: false, optional: true, required: false
-    private _tunnel2Phase2LifetimeSeconds?: number;
+    private _tunnel2Phase2LifetimeSeconds?: number | undefined; 
     public get tunnel2Phase2LifetimeSeconds() {
       return this.getNumberAttribute('tunnel2_phase2_lifetime_seconds');
     }
-    public set tunnel2Phase2LifetimeSeconds(value: number ) {
+    public set tunnel2Phase2LifetimeSeconds(value: number | undefined) {
       this._tunnel2Phase2LifetimeSeconds = value;
     }
     public resetTunnel2Phase2LifetimeSeconds() {
@@ -9502,11 +10554,11 @@ export namespace VPC {
     }
 
     // tunnel2_preshared_key - computed: true, optional: true, required: false
-    private _tunnel2PresharedKey?: string;
+    private _tunnel2PresharedKey?: string | undefined; 
     public get tunnel2PresharedKey() {
       return this.getStringAttribute('tunnel2_preshared_key');
     }
-    public set tunnel2PresharedKey(value: string) {
+    public set tunnel2PresharedKey(value: string | undefined) {
       this._tunnel2PresharedKey = value;
     }
     public resetTunnel2PresharedKey() {
@@ -9518,11 +10570,11 @@ export namespace VPC {
     }
 
     // tunnel2_rekey_fuzz_percentage - computed: false, optional: true, required: false
-    private _tunnel2RekeyFuzzPercentage?: number;
+    private _tunnel2RekeyFuzzPercentage?: number | undefined; 
     public get tunnel2RekeyFuzzPercentage() {
       return this.getNumberAttribute('tunnel2_rekey_fuzz_percentage');
     }
-    public set tunnel2RekeyFuzzPercentage(value: number ) {
+    public set tunnel2RekeyFuzzPercentage(value: number | undefined) {
       this._tunnel2RekeyFuzzPercentage = value;
     }
     public resetTunnel2RekeyFuzzPercentage() {
@@ -9534,11 +10586,11 @@ export namespace VPC {
     }
 
     // tunnel2_rekey_margin_time_seconds - computed: false, optional: true, required: false
-    private _tunnel2RekeyMarginTimeSeconds?: number;
+    private _tunnel2RekeyMarginTimeSeconds?: number | undefined; 
     public get tunnel2RekeyMarginTimeSeconds() {
       return this.getNumberAttribute('tunnel2_rekey_margin_time_seconds');
     }
-    public set tunnel2RekeyMarginTimeSeconds(value: number ) {
+    public set tunnel2RekeyMarginTimeSeconds(value: number | undefined) {
       this._tunnel2RekeyMarginTimeSeconds = value;
     }
     public resetTunnel2RekeyMarginTimeSeconds() {
@@ -9550,11 +10602,11 @@ export namespace VPC {
     }
 
     // tunnel2_replay_window_size - computed: false, optional: true, required: false
-    private _tunnel2ReplayWindowSize?: number;
+    private _tunnel2ReplayWindowSize?: number | undefined; 
     public get tunnel2ReplayWindowSize() {
       return this.getNumberAttribute('tunnel2_replay_window_size');
     }
-    public set tunnel2ReplayWindowSize(value: number ) {
+    public set tunnel2ReplayWindowSize(value: number | undefined) {
       this._tunnel2ReplayWindowSize = value;
     }
     public resetTunnel2ReplayWindowSize() {
@@ -9566,11 +10618,11 @@ export namespace VPC {
     }
 
     // tunnel2_startup_action - computed: false, optional: true, required: false
-    private _tunnel2StartupAction?: string;
+    private _tunnel2StartupAction?: string | undefined; 
     public get tunnel2StartupAction() {
       return this.getStringAttribute('tunnel2_startup_action');
     }
-    public set tunnel2StartupAction(value: string ) {
+    public set tunnel2StartupAction(value: string | undefined) {
       this._tunnel2StartupAction = value;
     }
     public resetTunnel2StartupAction() {
@@ -9587,11 +10639,11 @@ export namespace VPC {
     }
 
     // tunnel_inside_ip_version - computed: true, optional: true, required: false
-    private _tunnelInsideIpVersion?: string;
+    private _tunnelInsideIpVersion?: string | undefined; 
     public get tunnelInsideIpVersion() {
       return this.getStringAttribute('tunnel_inside_ip_version');
     }
-    public set tunnelInsideIpVersion(value: string) {
+    public set tunnelInsideIpVersion(value: string | undefined) {
       this._tunnelInsideIpVersion = value;
     }
     public resetTunnelInsideIpVersion() {
@@ -9603,7 +10655,7 @@ export namespace VPC {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }
@@ -9621,11 +10673,11 @@ export namespace VPC {
     }
 
     // vpn_gateway_id - computed: false, optional: true, required: false
-    private _vpnGatewayId?: string;
+    private _vpnGatewayId?: string | undefined; 
     public get vpnGatewayId() {
       return this.getStringAttribute('vpn_gateway_id');
     }
-    public set vpnGatewayId(value: string ) {
+    public set vpnGatewayId(value: string | undefined) {
       this._vpnGatewayId = value;
     }
     public resetVpnGatewayId() {
@@ -9746,7 +10798,7 @@ export namespace VPC {
     // ==========
 
     // destination_cidr_block - computed: false, optional: false, required: true
-    private _destinationCidrBlock: string;
+    private _destinationCidrBlock?: string; 
     public get destinationCidrBlock() {
       return this.getStringAttribute('destination_cidr_block');
     }
@@ -9764,7 +10816,7 @@ export namespace VPC {
     }
 
     // vpn_connection_id - computed: false, optional: false, required: true
-    private _vpnConnectionId: string;
+    private _vpnConnectionId?: string; 
     public get vpnConnectionId() {
       return this.getStringAttribute('vpn_connection_id');
     }
@@ -9854,11 +10906,11 @@ export namespace VPC {
     // ==========
 
     // amazon_side_asn - computed: true, optional: true, required: false
-    private _amazonSideAsn?: string;
+    private _amazonSideAsn?: string | undefined; 
     public get amazonSideAsn() {
       return this.getStringAttribute('amazon_side_asn');
     }
-    public set amazonSideAsn(value: string) {
+    public set amazonSideAsn(value: string | undefined) {
       this._amazonSideAsn = value;
     }
     public resetAmazonSideAsn() {
@@ -9875,11 +10927,11 @@ export namespace VPC {
     }
 
     // availability_zone - computed: false, optional: true, required: false
-    private _availabilityZone?: string;
+    private _availabilityZone?: string | undefined; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
-    public set availabilityZone(value: string ) {
+    public set availabilityZone(value: string | undefined) {
       this._availabilityZone = value;
     }
     public resetAvailabilityZone() {
@@ -9896,11 +10948,12 @@ export namespace VPC {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -9912,11 +10965,12 @@ export namespace VPC {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -9928,11 +10982,11 @@ export namespace VPC {
     }
 
     // vpc_id - computed: true, optional: true, required: false
-    private _vpcId?: string;
+    private _vpcId?: string | undefined; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
-    public set vpcId(value: string) {
+    public set vpcId(value: string | undefined) {
       this._vpcId = value;
     }
     public resetVpcId() {
@@ -10014,7 +11068,7 @@ export namespace VPC {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -10027,7 +11081,7 @@ export namespace VPC {
     }
 
     // vpn_gateway_id - computed: false, optional: false, required: true
-    private _vpnGatewayId: string;
+    private _vpnGatewayId?: string; 
     public get vpnGatewayId() {
       return this.getStringAttribute('vpn_gateway_id');
     }
@@ -10077,14 +11131,59 @@ export namespace VPC {
     readonly delete?: string;
   }
 
-  function vpnGatewayRoutePropagationTimeoutsToTerraform(struct?: VpnGatewayRoutePropagationTimeouts): any {
+  function vpnGatewayRoutePropagationTimeoutsToTerraform(struct?: VpnGatewayRoutePropagationTimeoutsOutputReference | VpnGatewayRoutePropagationTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class VpnGatewayRoutePropagationTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/vpn_gateway_route_propagation.html aws_vpn_gateway_route_propagation}
@@ -10133,7 +11232,7 @@ export namespace VPC {
     }
 
     // route_table_id - computed: false, optional: false, required: true
-    private _routeTableId: string;
+    private _routeTableId?: string; 
     public get routeTableId() {
       return this.getStringAttribute('route_table_id');
     }
@@ -10146,7 +11245,7 @@ export namespace VPC {
     }
 
     // vpn_gateway_id - computed: false, optional: false, required: true
-    private _vpnGatewayId: string;
+    private _vpnGatewayId?: string; 
     public get vpnGatewayId() {
       return this.getStringAttribute('vpn_gateway_id');
     }
@@ -10159,11 +11258,12 @@ export namespace VPC {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: VpnGatewayRoutePropagationTimeouts;
+    private _timeouts?: VpnGatewayRoutePropagationTimeouts | undefined; 
+    private __timeoutsOutput = new VpnGatewayRoutePropagationTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: VpnGatewayRoutePropagationTimeouts ) {
+    public putTimeouts(value: VpnGatewayRoutePropagationTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -10211,6 +11311,9 @@ export namespace VPC {
 
   function dataAwsCustomerGatewayFilterToTerraform(struct?: DataAwsCustomerGatewayFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -10284,11 +11387,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -10305,11 +11409,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsCustomerGatewayFilter[];
+    private _filter?: DataAwsCustomerGatewayFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsCustomerGatewayFilter[] ) {
+    public set filter(value: DataAwsCustomerGatewayFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -10372,6 +11477,9 @@ export namespace VPC {
 
   function dataAwsInternetGatewayFilterToTerraform(struct?: DataAwsInternetGatewayFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -10436,11 +11544,11 @@ export namespace VPC {
     }
 
     // internet_gateway_id - computed: true, optional: true, required: false
-    private _internetGatewayId?: string;
+    private _internetGatewayId?: string | undefined; 
     public get internetGatewayId() {
       return this.getStringAttribute('internet_gateway_id');
     }
-    public set internetGatewayId(value: string) {
+    public set internetGatewayId(value: string | undefined) {
       this._internetGatewayId = value;
     }
     public resetInternetGatewayId() {
@@ -10457,11 +11565,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -10473,11 +11582,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsInternetGatewayFilter[];
+    private _filter?: DataAwsInternetGatewayFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsInternetGatewayFilter[] ) {
+    public set filter(value: DataAwsInternetGatewayFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -10537,6 +11647,9 @@ export namespace VPC {
 
   function dataAwsNatGatewayFilterToTerraform(struct?: DataAwsNatGatewayFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -10618,11 +11731,11 @@ export namespace VPC {
     }
 
     // state - computed: true, optional: true, required: false
-    private _state?: string;
+    private _state?: string | undefined; 
     public get state() {
       return this.getStringAttribute('state');
     }
-    public set state(value: string) {
+    public set state(value: string | undefined) {
       this._state = value;
     }
     public resetState() {
@@ -10634,11 +11747,11 @@ export namespace VPC {
     }
 
     // subnet_id - computed: true, optional: true, required: false
-    private _subnetId?: string;
+    private _subnetId?: string | undefined; 
     public get subnetId() {
       return this.getStringAttribute('subnet_id');
     }
-    public set subnetId(value: string) {
+    public set subnetId(value: string | undefined) {
       this._subnetId = value;
     }
     public resetSubnetId() {
@@ -10650,11 +11763,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -10666,11 +11780,11 @@ export namespace VPC {
     }
 
     // vpc_id - computed: true, optional: true, required: false
-    private _vpcId?: string;
+    private _vpcId?: string | undefined; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
-    public set vpcId(value: string) {
+    public set vpcId(value: string | undefined) {
       this._vpcId = value;
     }
     public resetVpcId() {
@@ -10682,11 +11796,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsNatGatewayFilter[];
+    private _filter?: DataAwsNatGatewayFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsNatGatewayFilter[] ) {
+    public set filter(value: DataAwsNatGatewayFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -10740,6 +11855,9 @@ export namespace VPC {
 
   function dataAwsNetworkAclsFilterToTerraform(struct?: DataAwsNetworkAclsFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -10799,11 +11917,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -10815,11 +11934,11 @@ export namespace VPC {
     }
 
     // vpc_id - computed: false, optional: true, required: false
-    private _vpcId?: string;
+    private _vpcId?: string | undefined; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
-    public set vpcId(value: string ) {
+    public set vpcId(value: string | undefined) {
       this._vpcId = value;
     }
     public resetVpcId() {
@@ -10831,11 +11950,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsNetworkAclsFilter[];
+    private _filter?: DataAwsNetworkAclsFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsNetworkAclsFilter[] ) {
+    public set filter(value: DataAwsNetworkAclsFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -10942,6 +12062,9 @@ export namespace VPC {
 
   function dataAwsNetworkInterfaceFilterToTerraform(struct?: DataAwsNetworkInterfaceFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -11070,11 +12193,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -11091,11 +12215,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsNetworkInterfaceFilter[];
+    private _filter?: DataAwsNetworkInterfaceFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsNetworkInterfaceFilter[] ) {
+    public set filter(value: DataAwsNetworkInterfaceFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -11142,6 +12267,9 @@ export namespace VPC {
 
   function dataAwsNetworkInterfacesFilterToTerraform(struct?: DataAwsNetworkInterfacesFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -11200,11 +12328,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -11216,11 +12345,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsNetworkInterfacesFilter[];
+    private _filter?: DataAwsNetworkInterfacesFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsNetworkInterfacesFilter[] ) {
+    public set filter(value: DataAwsNetworkInterfacesFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -11349,11 +12479,11 @@ export namespace VPC {
     // ==========
 
     // carrier_gateway_id - computed: true, optional: true, required: false
-    private _carrierGatewayId?: string;
+    private _carrierGatewayId?: string | undefined; 
     public get carrierGatewayId() {
       return this.getStringAttribute('carrier_gateway_id');
     }
-    public set carrierGatewayId(value: string) {
+    public set carrierGatewayId(value: string | undefined) {
       this._carrierGatewayId = value;
     }
     public resetCarrierGatewayId() {
@@ -11365,11 +12495,11 @@ export namespace VPC {
     }
 
     // destination_cidr_block - computed: true, optional: true, required: false
-    private _destinationCidrBlock?: string;
+    private _destinationCidrBlock?: string | undefined; 
     public get destinationCidrBlock() {
       return this.getStringAttribute('destination_cidr_block');
     }
-    public set destinationCidrBlock(value: string) {
+    public set destinationCidrBlock(value: string | undefined) {
       this._destinationCidrBlock = value;
     }
     public resetDestinationCidrBlock() {
@@ -11381,11 +12511,11 @@ export namespace VPC {
     }
 
     // destination_ipv6_cidr_block - computed: true, optional: true, required: false
-    private _destinationIpv6CidrBlock?: string;
+    private _destinationIpv6CidrBlock?: string | undefined; 
     public get destinationIpv6CidrBlock() {
       return this.getStringAttribute('destination_ipv6_cidr_block');
     }
-    public set destinationIpv6CidrBlock(value: string) {
+    public set destinationIpv6CidrBlock(value: string | undefined) {
       this._destinationIpv6CidrBlock = value;
     }
     public resetDestinationIpv6CidrBlock() {
@@ -11397,11 +12527,11 @@ export namespace VPC {
     }
 
     // destination_prefix_list_id - computed: true, optional: true, required: false
-    private _destinationPrefixListId?: string;
+    private _destinationPrefixListId?: string | undefined; 
     public get destinationPrefixListId() {
       return this.getStringAttribute('destination_prefix_list_id');
     }
-    public set destinationPrefixListId(value: string) {
+    public set destinationPrefixListId(value: string | undefined) {
       this._destinationPrefixListId = value;
     }
     public resetDestinationPrefixListId() {
@@ -11413,11 +12543,11 @@ export namespace VPC {
     }
 
     // egress_only_gateway_id - computed: true, optional: true, required: false
-    private _egressOnlyGatewayId?: string;
+    private _egressOnlyGatewayId?: string | undefined; 
     public get egressOnlyGatewayId() {
       return this.getStringAttribute('egress_only_gateway_id');
     }
-    public set egressOnlyGatewayId(value: string) {
+    public set egressOnlyGatewayId(value: string | undefined) {
       this._egressOnlyGatewayId = value;
     }
     public resetEgressOnlyGatewayId() {
@@ -11429,11 +12559,11 @@ export namespace VPC {
     }
 
     // gateway_id - computed: true, optional: true, required: false
-    private _gatewayId?: string;
+    private _gatewayId?: string | undefined; 
     public get gatewayId() {
       return this.getStringAttribute('gateway_id');
     }
-    public set gatewayId(value: string) {
+    public set gatewayId(value: string | undefined) {
       this._gatewayId = value;
     }
     public resetGatewayId() {
@@ -11450,11 +12580,11 @@ export namespace VPC {
     }
 
     // instance_id - computed: true, optional: true, required: false
-    private _instanceId?: string;
+    private _instanceId?: string | undefined; 
     public get instanceId() {
       return this.getStringAttribute('instance_id');
     }
-    public set instanceId(value: string) {
+    public set instanceId(value: string | undefined) {
       this._instanceId = value;
     }
     public resetInstanceId() {
@@ -11466,11 +12596,11 @@ export namespace VPC {
     }
 
     // local_gateway_id - computed: true, optional: true, required: false
-    private _localGatewayId?: string;
+    private _localGatewayId?: string | undefined; 
     public get localGatewayId() {
       return this.getStringAttribute('local_gateway_id');
     }
-    public set localGatewayId(value: string) {
+    public set localGatewayId(value: string | undefined) {
       this._localGatewayId = value;
     }
     public resetLocalGatewayId() {
@@ -11482,11 +12612,11 @@ export namespace VPC {
     }
 
     // nat_gateway_id - computed: true, optional: true, required: false
-    private _natGatewayId?: string;
+    private _natGatewayId?: string | undefined; 
     public get natGatewayId() {
       return this.getStringAttribute('nat_gateway_id');
     }
-    public set natGatewayId(value: string) {
+    public set natGatewayId(value: string | undefined) {
       this._natGatewayId = value;
     }
     public resetNatGatewayId() {
@@ -11498,11 +12628,11 @@ export namespace VPC {
     }
 
     // network_interface_id - computed: true, optional: true, required: false
-    private _networkInterfaceId?: string;
+    private _networkInterfaceId?: string | undefined; 
     public get networkInterfaceId() {
       return this.getStringAttribute('network_interface_id');
     }
-    public set networkInterfaceId(value: string) {
+    public set networkInterfaceId(value: string | undefined) {
       this._networkInterfaceId = value;
     }
     public resetNetworkInterfaceId() {
@@ -11514,7 +12644,7 @@ export namespace VPC {
     }
 
     // route_table_id - computed: false, optional: false, required: true
-    private _routeTableId: string;
+    private _routeTableId?: string; 
     public get routeTableId() {
       return this.getStringAttribute('route_table_id');
     }
@@ -11527,11 +12657,11 @@ export namespace VPC {
     }
 
     // transit_gateway_id - computed: true, optional: true, required: false
-    private _transitGatewayId?: string;
+    private _transitGatewayId?: string | undefined; 
     public get transitGatewayId() {
       return this.getStringAttribute('transit_gateway_id');
     }
-    public set transitGatewayId(value: string) {
+    public set transitGatewayId(value: string | undefined) {
       this._transitGatewayId = value;
     }
     public resetTransitGatewayId() {
@@ -11543,11 +12673,11 @@ export namespace VPC {
     }
 
     // vpc_peering_connection_id - computed: true, optional: true, required: false
-    private _vpcPeeringConnectionId?: string;
+    private _vpcPeeringConnectionId?: string | undefined; 
     public get vpcPeeringConnectionId() {
       return this.getStringAttribute('vpc_peering_connection_id');
     }
-    public set vpcPeeringConnectionId(value: string) {
+    public set vpcPeeringConnectionId(value: string | undefined) {
       this._vpcPeeringConnectionId = value;
     }
     public resetVpcPeeringConnectionId() {
@@ -11617,7 +12747,7 @@ export namespace VPC {
 
     // main - computed: true, optional: false, required: false
     public get main() {
-      return this.getBooleanAttribute('main');
+      return this.getBooleanAttribute('main') as any;
     }
 
     // route_table_association_id - computed: true, optional: false, required: false
@@ -11715,6 +12845,9 @@ export namespace VPC {
 
   function dataAwsRouteTableFilterToTerraform(struct?: DataAwsRouteTableFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -11777,11 +12910,11 @@ export namespace VPC {
     }
 
     // gateway_id - computed: true, optional: true, required: false
-    private _gatewayId?: string;
+    private _gatewayId?: string | undefined; 
     public get gatewayId() {
       return this.getStringAttribute('gateway_id');
     }
-    public set gatewayId(value: string) {
+    public set gatewayId(value: string | undefined) {
       this._gatewayId = value;
     }
     public resetGatewayId() {
@@ -11803,11 +12936,11 @@ export namespace VPC {
     }
 
     // route_table_id - computed: true, optional: true, required: false
-    private _routeTableId?: string;
+    private _routeTableId?: string | undefined; 
     public get routeTableId() {
       return this.getStringAttribute('route_table_id');
     }
-    public set routeTableId(value: string) {
+    public set routeTableId(value: string | undefined) {
       this._routeTableId = value;
     }
     public resetRouteTableId() {
@@ -11824,11 +12957,11 @@ export namespace VPC {
     }
 
     // subnet_id - computed: true, optional: true, required: false
-    private _subnetId?: string;
+    private _subnetId?: string | undefined; 
     public get subnetId() {
       return this.getStringAttribute('subnet_id');
     }
-    public set subnetId(value: string) {
+    public set subnetId(value: string | undefined) {
       this._subnetId = value;
     }
     public resetSubnetId() {
@@ -11840,11 +12973,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -11856,11 +12990,11 @@ export namespace VPC {
     }
 
     // vpc_id - computed: true, optional: true, required: false
-    private _vpcId?: string;
+    private _vpcId?: string | undefined; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
-    public set vpcId(value: string) {
+    public set vpcId(value: string | undefined) {
       this._vpcId = value;
     }
     public resetVpcId() {
@@ -11872,11 +13006,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsRouteTableFilter[];
+    private _filter?: DataAwsRouteTableFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsRouteTableFilter[] ) {
+    public set filter(value: DataAwsRouteTableFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -11931,6 +13066,9 @@ export namespace VPC {
 
   function dataAwsRouteTablesFilterToTerraform(struct?: DataAwsRouteTablesFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -11990,11 +13128,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -12006,11 +13145,11 @@ export namespace VPC {
     }
 
     // vpc_id - computed: false, optional: true, required: false
-    private _vpcId?: string;
+    private _vpcId?: string | undefined; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
-    public set vpcId(value: string ) {
+    public set vpcId(value: string | undefined) {
       this._vpcId = value;
     }
     public resetVpcId() {
@@ -12022,11 +13161,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsRouteTablesFilter[];
+    private _filter?: DataAwsRouteTablesFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsRouteTablesFilter[] ) {
+    public set filter(value: DataAwsRouteTablesFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -12082,6 +13222,9 @@ export namespace VPC {
 
   function dataAwsSecurityGroupFilterToTerraform(struct?: DataAwsSecurityGroupFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -12147,11 +13290,11 @@ export namespace VPC {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -12163,11 +13306,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -12179,11 +13323,11 @@ export namespace VPC {
     }
 
     // vpc_id - computed: true, optional: true, required: false
-    private _vpcId?: string;
+    private _vpcId?: string | undefined; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
-    public set vpcId(value: string) {
+    public set vpcId(value: string | undefined) {
       this._vpcId = value;
     }
     public resetVpcId() {
@@ -12195,11 +13339,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsSecurityGroupFilter[];
+    private _filter?: DataAwsSecurityGroupFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsSecurityGroupFilter[] ) {
+    public set filter(value: DataAwsSecurityGroupFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -12248,6 +13393,9 @@ export namespace VPC {
 
   function dataAwsSecurityGroupsFilterToTerraform(struct?: DataAwsSecurityGroupsFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -12311,11 +13459,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -12332,11 +13481,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsSecurityGroupsFilter[];
+    private _filter?: DataAwsSecurityGroupsFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsSecurityGroupsFilter[] ) {
+    public set filter(value: DataAwsSecurityGroupsFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -12411,6 +13561,9 @@ export namespace VPC {
 
   function dataAwsSubnetFilterToTerraform(struct?: DataAwsSubnetFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -12472,15 +13625,15 @@ export namespace VPC {
 
     // assign_ipv6_address_on_creation - computed: true, optional: false, required: false
     public get assignIpv6AddressOnCreation() {
-      return this.getBooleanAttribute('assign_ipv6_address_on_creation');
+      return this.getBooleanAttribute('assign_ipv6_address_on_creation') as any;
     }
 
     // availability_zone - computed: true, optional: true, required: false
-    private _availabilityZone?: string;
+    private _availabilityZone?: string | undefined; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
-    public set availabilityZone(value: string) {
+    public set availabilityZone(value: string | undefined) {
       this._availabilityZone = value;
     }
     public resetAvailabilityZone() {
@@ -12492,11 +13645,11 @@ export namespace VPC {
     }
 
     // availability_zone_id - computed: true, optional: true, required: false
-    private _availabilityZoneId?: string;
+    private _availabilityZoneId?: string | undefined; 
     public get availabilityZoneId() {
       return this.getStringAttribute('availability_zone_id');
     }
-    public set availabilityZoneId(value: string) {
+    public set availabilityZoneId(value: string | undefined) {
       this._availabilityZoneId = value;
     }
     public resetAvailabilityZoneId() {
@@ -12513,11 +13666,11 @@ export namespace VPC {
     }
 
     // cidr_block - computed: true, optional: true, required: false
-    private _cidrBlock?: string;
+    private _cidrBlock?: string | undefined; 
     public get cidrBlock() {
       return this.getStringAttribute('cidr_block');
     }
-    public set cidrBlock(value: string) {
+    public set cidrBlock(value: string | undefined) {
       this._cidrBlock = value;
     }
     public resetCidrBlock() {
@@ -12534,11 +13687,11 @@ export namespace VPC {
     }
 
     // default_for_az - computed: true, optional: true, required: false
-    private _defaultForAz?: boolean | cdktf.IResolvable;
+    private _defaultForAz?: boolean | cdktf.IResolvable | undefined; 
     public get defaultForAz() {
-      return this.getBooleanAttribute('default_for_az');
+      return this.getBooleanAttribute('default_for_az') as any;
     }
-    public set defaultForAz(value: boolean | cdktf.IResolvable) {
+    public set defaultForAz(value: boolean | cdktf.IResolvable | undefined) {
       this._defaultForAz = value;
     }
     public resetDefaultForAz() {
@@ -12555,11 +13708,11 @@ export namespace VPC {
     }
 
     // ipv6_cidr_block - computed: true, optional: true, required: false
-    private _ipv6CidrBlock?: string;
+    private _ipv6CidrBlock?: string | undefined; 
     public get ipv6CidrBlock() {
       return this.getStringAttribute('ipv6_cidr_block');
     }
-    public set ipv6CidrBlock(value: string) {
+    public set ipv6CidrBlock(value: string | undefined) {
       this._ipv6CidrBlock = value;
     }
     public resetIpv6CidrBlock() {
@@ -12577,12 +13730,12 @@ export namespace VPC {
 
     // map_customer_owned_ip_on_launch - computed: true, optional: false, required: false
     public get mapCustomerOwnedIpOnLaunch() {
-      return this.getBooleanAttribute('map_customer_owned_ip_on_launch');
+      return this.getBooleanAttribute('map_customer_owned_ip_on_launch') as any;
     }
 
     // map_public_ip_on_launch - computed: true, optional: false, required: false
     public get mapPublicIpOnLaunch() {
-      return this.getBooleanAttribute('map_public_ip_on_launch');
+      return this.getBooleanAttribute('map_public_ip_on_launch') as any;
     }
 
     // outpost_arn - computed: true, optional: false, required: false
@@ -12596,11 +13749,11 @@ export namespace VPC {
     }
 
     // state - computed: true, optional: true, required: false
-    private _state?: string;
+    private _state?: string | undefined; 
     public get state() {
       return this.getStringAttribute('state');
     }
-    public set state(value: string) {
+    public set state(value: string | undefined) {
       this._state = value;
     }
     public resetState() {
@@ -12612,11 +13765,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -12628,11 +13782,11 @@ export namespace VPC {
     }
 
     // vpc_id - computed: true, optional: true, required: false
-    private _vpcId?: string;
+    private _vpcId?: string | undefined; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
-    public set vpcId(value: string) {
+    public set vpcId(value: string | undefined) {
       this._vpcId = value;
     }
     public resetVpcId() {
@@ -12644,11 +13798,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsSubnetFilter[];
+    private _filter?: DataAwsSubnetFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsSubnetFilter[] ) {
+    public set filter(value: DataAwsSubnetFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -12706,6 +13861,9 @@ export namespace VPC {
 
   function dataAwsSubnetIdsFilterToTerraform(struct?: DataAwsSubnetIdsFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -12765,11 +13923,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -12781,7 +13940,7 @@ export namespace VPC {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -12794,11 +13953,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsSubnetIdsFilter[];
+    private _filter?: DataAwsSubnetIdsFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsSubnetIdsFilter[] ) {
+    public set filter(value: DataAwsSubnetIdsFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -12846,6 +14006,9 @@ export namespace VPC {
 
   function dataAwsSubnetsFilterToTerraform(struct?: DataAwsSubnetsFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -12904,11 +14067,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -12920,11 +14084,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsSubnetsFilter[];
+    private _filter?: DataAwsSubnetsFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsSubnetsFilter[] ) {
+    public set filter(value: DataAwsSubnetsFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -13004,6 +14169,9 @@ export namespace VPC {
 
   function dataAwsVpcFilterToTerraform(struct?: DataAwsVpcFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -13061,11 +14229,11 @@ export namespace VPC {
     }
 
     // cidr_block - computed: true, optional: true, required: false
-    private _cidrBlock?: string;
+    private _cidrBlock?: string | undefined; 
     public get cidrBlock() {
       return this.getStringAttribute('cidr_block');
     }
-    public set cidrBlock(value: string) {
+    public set cidrBlock(value: string | undefined) {
       this._cidrBlock = value;
     }
     public resetCidrBlock() {
@@ -13082,11 +14250,11 @@ export namespace VPC {
     }
 
     // default - computed: true, optional: true, required: false
-    private _default?: boolean | cdktf.IResolvable;
+    private _default?: boolean | cdktf.IResolvable | undefined; 
     public get default() {
-      return this.getBooleanAttribute('default');
+      return this.getBooleanAttribute('default') as any;
     }
-    public set default(value: boolean | cdktf.IResolvable) {
+    public set default(value: boolean | cdktf.IResolvable | undefined) {
       this._default = value;
     }
     public resetDefault() {
@@ -13098,11 +14266,11 @@ export namespace VPC {
     }
 
     // dhcp_options_id - computed: true, optional: true, required: false
-    private _dhcpOptionsId?: string;
+    private _dhcpOptionsId?: string | undefined; 
     public get dhcpOptionsId() {
       return this.getStringAttribute('dhcp_options_id');
     }
-    public set dhcpOptionsId(value: string) {
+    public set dhcpOptionsId(value: string | undefined) {
       this._dhcpOptionsId = value;
     }
     public resetDhcpOptionsId() {
@@ -13115,12 +14283,12 @@ export namespace VPC {
 
     // enable_dns_hostnames - computed: true, optional: false, required: false
     public get enableDnsHostnames() {
-      return this.getBooleanAttribute('enable_dns_hostnames');
+      return this.getBooleanAttribute('enable_dns_hostnames') as any;
     }
 
     // enable_dns_support - computed: true, optional: false, required: false
     public get enableDnsSupport() {
-      return this.getBooleanAttribute('enable_dns_support');
+      return this.getBooleanAttribute('enable_dns_support') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -13154,11 +14322,11 @@ export namespace VPC {
     }
 
     // state - computed: true, optional: true, required: false
-    private _state?: string;
+    private _state?: string | undefined; 
     public get state() {
       return this.getStringAttribute('state');
     }
-    public set state(value: string) {
+    public set state(value: string | undefined) {
       this._state = value;
     }
     public resetState() {
@@ -13170,11 +14338,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -13186,11 +14355,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsVpcFilter[];
+    private _filter?: DataAwsVpcFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsVpcFilter[] ) {
+    public set filter(value: DataAwsVpcFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -13245,6 +14415,9 @@ export namespace VPC {
 
   function dataAwsVpcDhcpOptionsFilterToTerraform(struct?: DataAwsVpcDhcpOptionsFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -13299,11 +14472,11 @@ export namespace VPC {
     }
 
     // dhcp_options_id - computed: true, optional: true, required: false
-    private _dhcpOptionsId?: string;
+    private _dhcpOptionsId?: string | undefined; 
     public get dhcpOptionsId() {
       return this.getStringAttribute('dhcp_options_id');
     }
-    public set dhcpOptionsId(value: string) {
+    public set dhcpOptionsId(value: string | undefined) {
       this._dhcpOptionsId = value;
     }
     public resetDhcpOptionsId() {
@@ -13350,11 +14523,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -13366,11 +14540,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsVpcDhcpOptionsFilter[];
+    private _filter?: DataAwsVpcDhcpOptionsFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsVpcDhcpOptionsFilter[] ) {
+    public set filter(value: DataAwsVpcDhcpOptionsFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -13442,6 +14617,9 @@ export namespace VPC {
 
   function dataAwsVpcEndpointFilterToTerraform(struct?: DataAwsVpcEndpointFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -13534,12 +14712,12 @@ export namespace VPC {
 
     // private_dns_enabled - computed: true, optional: false, required: false
     public get privateDnsEnabled() {
-      return this.getBooleanAttribute('private_dns_enabled');
+      return this.getBooleanAttribute('private_dns_enabled') as any;
     }
 
     // requester_managed - computed: true, optional: false, required: false
     public get requesterManaged() {
-      return this.getBooleanAttribute('requester_managed');
+      return this.getBooleanAttribute('requester_managed') as any;
     }
 
     // route_table_ids - computed: true, optional: false, required: false
@@ -13553,11 +14731,11 @@ export namespace VPC {
     }
 
     // service_name - computed: true, optional: true, required: false
-    private _serviceName?: string;
+    private _serviceName?: string | undefined; 
     public get serviceName() {
       return this.getStringAttribute('service_name');
     }
-    public set serviceName(value: string) {
+    public set serviceName(value: string | undefined) {
       this._serviceName = value;
     }
     public resetServiceName() {
@@ -13569,11 +14747,11 @@ export namespace VPC {
     }
 
     // state - computed: true, optional: true, required: false
-    private _state?: string;
+    private _state?: string | undefined; 
     public get state() {
       return this.getStringAttribute('state');
     }
-    public set state(value: string) {
+    public set state(value: string | undefined) {
       this._state = value;
     }
     public resetState() {
@@ -13590,11 +14768,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -13611,11 +14790,11 @@ export namespace VPC {
     }
 
     // vpc_id - computed: true, optional: true, required: false
-    private _vpcId?: string;
+    private _vpcId?: string | undefined; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
-    public set vpcId(value: string) {
+    public set vpcId(value: string | undefined) {
       this._vpcId = value;
     }
     public resetVpcId() {
@@ -13627,11 +14806,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsVpcEndpointFilter[];
+    private _filter?: DataAwsVpcEndpointFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsVpcEndpointFilter[] ) {
+    public set filter(value: DataAwsVpcEndpointFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -13693,6 +14873,9 @@ export namespace VPC {
 
   function dataAwsVpcEndpointServiceFilterToTerraform(struct?: DataAwsVpcEndpointServiceFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -13745,7 +14928,7 @@ export namespace VPC {
 
     // acceptance_required - computed: true, optional: false, required: false
     public get acceptanceRequired() {
-      return this.getBooleanAttribute('acceptance_required');
+      return this.getBooleanAttribute('acceptance_required') as any;
     }
 
     // arn - computed: true, optional: false, required: false
@@ -13770,7 +14953,7 @@ export namespace VPC {
 
     // manages_vpc_endpoints - computed: true, optional: false, required: false
     public get managesVpcEndpoints() {
-      return this.getBooleanAttribute('manages_vpc_endpoints');
+      return this.getBooleanAttribute('manages_vpc_endpoints') as any;
     }
 
     // owner - computed: true, optional: false, required: false
@@ -13784,11 +14967,11 @@ export namespace VPC {
     }
 
     // service - computed: false, optional: true, required: false
-    private _service?: string;
+    private _service?: string | undefined; 
     public get service() {
       return this.getStringAttribute('service');
     }
-    public set service(value: string ) {
+    public set service(value: string | undefined) {
       this._service = value;
     }
     public resetService() {
@@ -13805,11 +14988,11 @@ export namespace VPC {
     }
 
     // service_name - computed: true, optional: true, required: false
-    private _serviceName?: string;
+    private _serviceName?: string | undefined; 
     public get serviceName() {
       return this.getStringAttribute('service_name');
     }
-    public set serviceName(value: string) {
+    public set serviceName(value: string | undefined) {
       this._serviceName = value;
     }
     public resetServiceName() {
@@ -13821,11 +15004,11 @@ export namespace VPC {
     }
 
     // service_type - computed: true, optional: true, required: false
-    private _serviceType?: string;
+    private _serviceType?: string | undefined; 
     public get serviceType() {
       return this.getStringAttribute('service_type');
     }
-    public set serviceType(value: string) {
+    public set serviceType(value: string | undefined) {
       this._serviceType = value;
     }
     public resetServiceType() {
@@ -13837,11 +15020,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -13854,15 +15038,16 @@ export namespace VPC {
 
     // vpc_endpoint_policy_supported - computed: true, optional: false, required: false
     public get vpcEndpointPolicySupported() {
-      return this.getBooleanAttribute('vpc_endpoint_policy_supported');
+      return this.getBooleanAttribute('vpc_endpoint_policy_supported') as any;
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsVpcEndpointServiceFilter[];
+    private _filter?: DataAwsVpcEndpointServiceFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsVpcEndpointServiceFilter[] ) {
+    public set filter(value: DataAwsVpcEndpointServiceFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -13962,6 +15147,9 @@ export namespace VPC {
 
   function dataAwsVpcPeeringConnectionFilterToTerraform(struct?: DataAwsVpcPeeringConnectionFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -14024,11 +15212,11 @@ export namespace VPC {
     }
 
     // cidr_block - computed: true, optional: true, required: false
-    private _cidrBlock?: string;
+    private _cidrBlock?: string | undefined; 
     public get cidrBlock() {
       return this.getStringAttribute('cidr_block');
     }
-    public set cidrBlock(value: string) {
+    public set cidrBlock(value: string | undefined) {
       this._cidrBlock = value;
     }
     public resetCidrBlock() {
@@ -14050,11 +15238,11 @@ export namespace VPC {
     }
 
     // owner_id - computed: true, optional: true, required: false
-    private _ownerId?: string;
+    private _ownerId?: string | undefined; 
     public get ownerId() {
       return this.getStringAttribute('owner_id');
     }
-    public set ownerId(value: string) {
+    public set ownerId(value: string | undefined) {
       this._ownerId = value;
     }
     public resetOwnerId() {
@@ -14066,11 +15254,11 @@ export namespace VPC {
     }
 
     // peer_cidr_block - computed: true, optional: true, required: false
-    private _peerCidrBlock?: string;
+    private _peerCidrBlock?: string | undefined; 
     public get peerCidrBlock() {
       return this.getStringAttribute('peer_cidr_block');
     }
-    public set peerCidrBlock(value: string) {
+    public set peerCidrBlock(value: string | undefined) {
       this._peerCidrBlock = value;
     }
     public resetPeerCidrBlock() {
@@ -14087,11 +15275,11 @@ export namespace VPC {
     }
 
     // peer_owner_id - computed: true, optional: true, required: false
-    private _peerOwnerId?: string;
+    private _peerOwnerId?: string | undefined; 
     public get peerOwnerId() {
       return this.getStringAttribute('peer_owner_id');
     }
-    public set peerOwnerId(value: string) {
+    public set peerOwnerId(value: string | undefined) {
       this._peerOwnerId = value;
     }
     public resetPeerOwnerId() {
@@ -14103,11 +15291,11 @@ export namespace VPC {
     }
 
     // peer_region - computed: true, optional: true, required: false
-    private _peerRegion?: string;
+    private _peerRegion?: string | undefined; 
     public get peerRegion() {
       return this.getStringAttribute('peer_region');
     }
-    public set peerRegion(value: string) {
+    public set peerRegion(value: string | undefined) {
       this._peerRegion = value;
     }
     public resetPeerRegion() {
@@ -14119,11 +15307,11 @@ export namespace VPC {
     }
 
     // peer_vpc_id - computed: true, optional: true, required: false
-    private _peerVpcId?: string;
+    private _peerVpcId?: string | undefined; 
     public get peerVpcId() {
       return this.getStringAttribute('peer_vpc_id');
     }
-    public set peerVpcId(value: string) {
+    public set peerVpcId(value: string | undefined) {
       this._peerVpcId = value;
     }
     public resetPeerVpcId() {
@@ -14135,11 +15323,11 @@ export namespace VPC {
     }
 
     // region - computed: true, optional: true, required: false
-    private _region?: string;
+    private _region?: string | undefined; 
     public get region() {
       return this.getStringAttribute('region');
     }
-    public set region(value: string) {
+    public set region(value: string | undefined) {
       this._region = value;
     }
     public resetRegion() {
@@ -14156,11 +15344,11 @@ export namespace VPC {
     }
 
     // status - computed: true, optional: true, required: false
-    private _status?: string;
+    private _status?: string | undefined; 
     public get status() {
       return this.getStringAttribute('status');
     }
-    public set status(value: string) {
+    public set status(value: string | undefined) {
       this._status = value;
     }
     public resetStatus() {
@@ -14172,11 +15360,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -14188,11 +15377,11 @@ export namespace VPC {
     }
 
     // vpc_id - computed: true, optional: true, required: false
-    private _vpcId?: string;
+    private _vpcId?: string | undefined; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
-    public set vpcId(value: string) {
+    public set vpcId(value: string | undefined) {
       this._vpcId = value;
     }
     public resetVpcId() {
@@ -14204,11 +15393,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsVpcPeeringConnectionFilter[];
+    private _filter?: DataAwsVpcPeeringConnectionFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsVpcPeeringConnectionFilter[] ) {
+    public set filter(value: DataAwsVpcPeeringConnectionFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -14264,6 +15454,9 @@ export namespace VPC {
 
   function dataAwsVpcPeeringConnectionsFilterToTerraform(struct?: DataAwsVpcPeeringConnectionsFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -14322,11 +15515,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -14338,11 +15532,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsVpcPeeringConnectionsFilter[];
+    private _filter?: DataAwsVpcPeeringConnectionsFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsVpcPeeringConnectionsFilter[] ) {
+    public set filter(value: DataAwsVpcPeeringConnectionsFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -14389,6 +15584,9 @@ export namespace VPC {
 
   function dataAwsVpcsFilterToTerraform(struct?: DataAwsVpcsFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -14447,11 +15645,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -14463,11 +15662,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsVpcsFilter[];
+    private _filter?: DataAwsVpcsFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsVpcsFilter[] ) {
+    public set filter(value: DataAwsVpcsFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -14530,6 +15730,9 @@ export namespace VPC {
 
   function dataAwsVpnGatewayFilterToTerraform(struct?: DataAwsVpnGatewayFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -14582,11 +15785,11 @@ export namespace VPC {
     // ==========
 
     // amazon_side_asn - computed: true, optional: true, required: false
-    private _amazonSideAsn?: string;
+    private _amazonSideAsn?: string | undefined; 
     public get amazonSideAsn() {
       return this.getStringAttribute('amazon_side_asn');
     }
-    public set amazonSideAsn(value: string) {
+    public set amazonSideAsn(value: string | undefined) {
       this._amazonSideAsn = value;
     }
     public resetAmazonSideAsn() {
@@ -14603,11 +15806,11 @@ export namespace VPC {
     }
 
     // attached_vpc_id - computed: true, optional: true, required: false
-    private _attachedVpcId?: string;
+    private _attachedVpcId?: string | undefined; 
     public get attachedVpcId() {
       return this.getStringAttribute('attached_vpc_id');
     }
-    public set attachedVpcId(value: string) {
+    public set attachedVpcId(value: string | undefined) {
       this._attachedVpcId = value;
     }
     public resetAttachedVpcId() {
@@ -14619,11 +15822,11 @@ export namespace VPC {
     }
 
     // availability_zone - computed: true, optional: true, required: false
-    private _availabilityZone?: string;
+    private _availabilityZone?: string | undefined; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
-    public set availabilityZone(value: string) {
+    public set availabilityZone(value: string | undefined) {
       this._availabilityZone = value;
     }
     public resetAvailabilityZone() {
@@ -14640,11 +15843,11 @@ export namespace VPC {
     }
 
     // state - computed: true, optional: true, required: false
-    private _state?: string;
+    private _state?: string | undefined; 
     public get state() {
       return this.getStringAttribute('state');
     }
-    public set state(value: string) {
+    public set state(value: string | undefined) {
       this._state = value;
     }
     public resetState() {
@@ -14656,11 +15859,12 @@ export namespace VPC {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -14672,11 +15876,12 @@ export namespace VPC {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsVpnGatewayFilter[];
+    private _filter?: DataAwsVpnGatewayFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsVpnGatewayFilter[] ) {
+    public set filter(value: DataAwsVpnGatewayFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {

@@ -74,11 +74,11 @@ export namespace DeviceFarm {
     }
 
     // default_job_timeout_minutes - computed: false, optional: true, required: false
-    private _defaultJobTimeoutMinutes?: number;
+    private _defaultJobTimeoutMinutes?: number | undefined; 
     public get defaultJobTimeoutMinutes() {
       return this.getNumberAttribute('default_job_timeout_minutes');
     }
-    public set defaultJobTimeoutMinutes(value: number ) {
+    public set defaultJobTimeoutMinutes(value: number | undefined) {
       this._defaultJobTimeoutMinutes = value;
     }
     public resetDefaultJobTimeoutMinutes() {
@@ -95,7 +95,7 @@ export namespace DeviceFarm {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -108,11 +108,12 @@ export namespace DeviceFarm {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -124,11 +125,12 @@ export namespace DeviceFarm {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {

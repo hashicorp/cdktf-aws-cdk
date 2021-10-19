@@ -1,7 +1,5 @@
 import { registerMapping } from "../index";
-import {
-  CloudWatchEventBridge,
-} from "../../aws";
+import { CloudWatchEventBridge } from "../../aws";
 
 // TODO: types for CloudFormation Resources? would be really nice.
 
@@ -29,28 +27,28 @@ registerMapping("AWS::Events::Rule", {
     delete props.RoleArn;
     delete props.ScheduleExpression; // TODO: use some utility for this simple naming mapping (needs to have the mapping in guessing resource mapper made reusable somehow)
 
-    const rule = new CloudWatchEventBridge.CloudwatchEventRule(scope, id, ruleProps);
+    const rule = new CloudWatchEventBridge.CloudwatchEventRule(
+      scope,
+      id,
+      ruleProps
+    );
 
     (props.Targets || []).map((target: any, idx: number) => {
       const targetProps: CloudWatchEventBridge.CloudwatchEventTargetConfig = {
         arn: target.Arn,
         rule: rule.id,
         batchTarget: target.BatchParameters
-          ? [
-              {
-                jobDefinition: target.BatchParameters.JobDefinition,
-                jobName: target.BatchParameters.JobName,
-                arraySize: target.BatchParameters.ArrayProperties?.Size,
-                jobAttempts: target.BatchParameters.RetryStrategy?.Attempts,
-              },
-            ]
+          ? {
+              jobDefinition: target.BatchParameters.JobDefinition,
+              jobName: target.BatchParameters.JobName,
+              arraySize: target.BatchParameters.ArrayProperties?.Size,
+              jobAttempts: target.BatchParameters.RetryStrategy?.Attempts,
+            }
           : undefined,
         deadLetterConfig: target.DeadLetterConfig
-          ? [
-              {
-                arn: target.DeadLetterConfig.Arn,
-              },
-            ]
+          ? {
+              arn: target.DeadLetterConfig.Arn,
+            }
           : undefined,
 
         // TODO: this is incomplete, see: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-events-rule-target.html

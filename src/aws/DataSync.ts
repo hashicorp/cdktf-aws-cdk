@@ -58,13 +58,42 @@ export namespace DataSync {
     readonly create?: string;
   }
 
-  function datasyncAgentTimeoutsToTerraform(struct?: DatasyncAgentTimeouts): any {
+  function datasyncAgentTimeoutsToTerraform(struct?: DatasyncAgentTimeoutsOutputReference | DatasyncAgentTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
     }
   }
 
+  export class DatasyncAgentTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/datasync_agent.html aws_datasync_agent}
@@ -115,11 +144,11 @@ export namespace DataSync {
     // ==========
 
     // activation_key - computed: true, optional: true, required: false
-    private _activationKey?: string;
+    private _activationKey?: string | undefined; 
     public get activationKey() {
       return this.getStringAttribute('activation_key');
     }
-    public set activationKey(value: string) {
+    public set activationKey(value: string | undefined) {
       this._activationKey = value;
     }
     public resetActivationKey() {
@@ -141,11 +170,11 @@ export namespace DataSync {
     }
 
     // ip_address - computed: true, optional: true, required: false
-    private _ipAddress?: string;
+    private _ipAddress?: string | undefined; 
     public get ipAddress() {
       return this.getStringAttribute('ip_address');
     }
-    public set ipAddress(value: string) {
+    public set ipAddress(value: string | undefined) {
       this._ipAddress = value;
     }
     public resetIpAddress() {
@@ -157,11 +186,11 @@ export namespace DataSync {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -173,11 +202,11 @@ export namespace DataSync {
     }
 
     // private_link_endpoint - computed: false, optional: true, required: false
-    private _privateLinkEndpoint?: string;
+    private _privateLinkEndpoint?: string | undefined; 
     public get privateLinkEndpoint() {
       return this.getStringAttribute('private_link_endpoint');
     }
-    public set privateLinkEndpoint(value: string ) {
+    public set privateLinkEndpoint(value: string | undefined) {
       this._privateLinkEndpoint = value;
     }
     public resetPrivateLinkEndpoint() {
@@ -189,11 +218,11 @@ export namespace DataSync {
     }
 
     // security_group_arns - computed: false, optional: true, required: false
-    private _securityGroupArns?: string[];
+    private _securityGroupArns?: string[] | undefined; 
     public get securityGroupArns() {
       return this.getListAttribute('security_group_arns');
     }
-    public set securityGroupArns(value: string[] ) {
+    public set securityGroupArns(value: string[] | undefined) {
       this._securityGroupArns = value;
     }
     public resetSecurityGroupArns() {
@@ -205,11 +234,11 @@ export namespace DataSync {
     }
 
     // subnet_arns - computed: false, optional: true, required: false
-    private _subnetArns?: string[];
+    private _subnetArns?: string[] | undefined; 
     public get subnetArns() {
       return this.getListAttribute('subnet_arns');
     }
-    public set subnetArns(value: string[] ) {
+    public set subnetArns(value: string[] | undefined) {
       this._subnetArns = value;
     }
     public resetSubnetArns() {
@@ -221,11 +250,12 @@ export namespace DataSync {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -237,11 +267,12 @@ export namespace DataSync {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -253,11 +284,11 @@ export namespace DataSync {
     }
 
     // vpc_endpoint_id - computed: false, optional: true, required: false
-    private _vpcEndpointId?: string;
+    private _vpcEndpointId?: string | undefined; 
     public get vpcEndpointId() {
       return this.getStringAttribute('vpc_endpoint_id');
     }
-    public set vpcEndpointId(value: string ) {
+    public set vpcEndpointId(value: string | undefined) {
       this._vpcEndpointId = value;
     }
     public resetVpcEndpointId() {
@@ -269,11 +300,12 @@ export namespace DataSync {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DatasyncAgentTimeouts;
+    private _timeouts?: DatasyncAgentTimeouts | undefined; 
+    private __timeoutsOutput = new DatasyncAgentTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DatasyncAgentTimeouts ) {
+    public putTimeouts(value: DatasyncAgentTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -325,7 +357,7 @@ export namespace DataSync {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datasync_location_efs.html#ec2_config DatasyncLocationEfs#ec2_config}
     */
-    readonly ec2Config: DatasyncLocationEfsEc2Config[];
+    readonly ec2Config: DatasyncLocationEfsEc2Config;
   }
   export interface DatasyncLocationEfsEc2Config {
     /**
@@ -338,14 +370,53 @@ export namespace DataSync {
     readonly subnetArn: string;
   }
 
-  function datasyncLocationEfsEc2ConfigToTerraform(struct?: DatasyncLocationEfsEc2Config): any {
+  function datasyncLocationEfsEc2ConfigToTerraform(struct?: DatasyncLocationEfsEc2ConfigOutputReference | DatasyncLocationEfsEc2Config): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       security_group_arns: cdktf.listMapper(cdktf.stringToTerraform)(struct!.securityGroupArns),
       subnet_arn: cdktf.stringToTerraform(struct!.subnetArn),
     }
   }
 
+  export class DatasyncLocationEfsEc2ConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // security_group_arns - computed: false, optional: false, required: true
+    private _securityGroupArns?: string[]; 
+    public get securityGroupArns() {
+      return this.getListAttribute('security_group_arns');
+    }
+    public set securityGroupArns(value: string[]) {
+      this._securityGroupArns = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get securityGroupArnsInput() {
+      return this._securityGroupArns
+    }
+
+    // subnet_arn - computed: false, optional: false, required: true
+    private _subnetArn?: string; 
+    public get subnetArn() {
+      return this.getStringAttribute('subnet_arn');
+    }
+    public set subnetArn(value: string) {
+      this._subnetArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get subnetArnInput() {
+      return this._subnetArn
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/datasync_location_efs.html aws_datasync_location_efs}
@@ -396,7 +467,7 @@ export namespace DataSync {
     }
 
     // efs_file_system_arn - computed: false, optional: false, required: true
-    private _efsFileSystemArn: string;
+    private _efsFileSystemArn?: string; 
     public get efsFileSystemArn() {
       return this.getStringAttribute('efs_file_system_arn');
     }
@@ -414,11 +485,11 @@ export namespace DataSync {
     }
 
     // subdirectory - computed: false, optional: true, required: false
-    private _subdirectory?: string;
+    private _subdirectory?: string | undefined; 
     public get subdirectory() {
       return this.getStringAttribute('subdirectory');
     }
-    public set subdirectory(value: string ) {
+    public set subdirectory(value: string | undefined) {
       this._subdirectory = value;
     }
     public resetSubdirectory() {
@@ -430,11 +501,12 @@ export namespace DataSync {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -446,11 +518,12 @@ export namespace DataSync {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -467,11 +540,12 @@ export namespace DataSync {
     }
 
     // ec2_config - computed: false, optional: false, required: true
-    private _ec2Config: DatasyncLocationEfsEc2Config[];
+    private _ec2Config?: DatasyncLocationEfsEc2Config; 
+    private __ec2ConfigOutput = new DatasyncLocationEfsEc2ConfigOutputReference(this as any, "ec2_config", true);
     public get ec2Config() {
-      return this.interpolationForAttribute('ec2_config') as any;
+      return this.__ec2ConfigOutput;
     }
-    public set ec2Config(value: DatasyncLocationEfsEc2Config[]) {
+    public putEc2Config(value: DatasyncLocationEfsEc2Config) {
       this._ec2Config = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -489,7 +563,7 @@ export namespace DataSync {
         subdirectory: cdktf.stringToTerraform(this._subdirectory),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        ec2_config: cdktf.listMapper(datasyncLocationEfsEc2ConfigToTerraform)(this._ec2Config),
+        ec2_config: datasyncLocationEfsEc2ConfigToTerraform(this._ec2Config),
       };
     }
   }
@@ -585,11 +659,11 @@ export namespace DataSync {
     }
 
     // domain - computed: false, optional: true, required: false
-    private _domain?: string;
+    private _domain?: string | undefined; 
     public get domain() {
       return this.getStringAttribute('domain');
     }
-    public set domain(value: string ) {
+    public set domain(value: string | undefined) {
       this._domain = value;
     }
     public resetDomain() {
@@ -601,7 +675,7 @@ export namespace DataSync {
     }
 
     // fsx_filesystem_arn - computed: false, optional: false, required: true
-    private _fsxFilesystemArn: string;
+    private _fsxFilesystemArn?: string; 
     public get fsxFilesystemArn() {
       return this.getStringAttribute('fsx_filesystem_arn');
     }
@@ -619,7 +693,7 @@ export namespace DataSync {
     }
 
     // password - computed: false, optional: false, required: true
-    private _password: string;
+    private _password?: string; 
     public get password() {
       return this.getStringAttribute('password');
     }
@@ -632,7 +706,7 @@ export namespace DataSync {
     }
 
     // security_group_arns - computed: false, optional: false, required: true
-    private _securityGroupArns: string[];
+    private _securityGroupArns?: string[]; 
     public get securityGroupArns() {
       return this.getListAttribute('security_group_arns');
     }
@@ -645,11 +719,11 @@ export namespace DataSync {
     }
 
     // subdirectory - computed: true, optional: true, required: false
-    private _subdirectory?: string;
+    private _subdirectory?: string | undefined; 
     public get subdirectory() {
       return this.getStringAttribute('subdirectory');
     }
-    public set subdirectory(value: string) {
+    public set subdirectory(value: string | undefined) {
       this._subdirectory = value;
     }
     public resetSubdirectory() {
@@ -661,11 +735,12 @@ export namespace DataSync {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -677,11 +752,12 @@ export namespace DataSync {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -698,7 +774,7 @@ export namespace DataSync {
     }
 
     // user - computed: false, optional: false, required: true
-    private _user: string;
+    private _user?: string; 
     public get user() {
       return this.getStringAttribute('user');
     }
@@ -749,13 +825,13 @@ export namespace DataSync {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datasync_location_nfs.html#mount_options DatasyncLocationNfs#mount_options}
     */
-    readonly mountOptions?: DatasyncLocationNfsMountOptions[];
+    readonly mountOptions?: DatasyncLocationNfsMountOptions;
     /**
     * on_prem_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datasync_location_nfs.html#on_prem_config DatasyncLocationNfs#on_prem_config}
     */
-    readonly onPremConfig: DatasyncLocationNfsOnPremConfig[];
+    readonly onPremConfig: DatasyncLocationNfsOnPremConfig;
   }
   export interface DatasyncLocationNfsMountOptions {
     /**
@@ -764,13 +840,42 @@ export namespace DataSync {
     readonly version?: string;
   }
 
-  function datasyncLocationNfsMountOptionsToTerraform(struct?: DatasyncLocationNfsMountOptions): any {
+  function datasyncLocationNfsMountOptionsToTerraform(struct?: DatasyncLocationNfsMountOptionsOutputReference | DatasyncLocationNfsMountOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       version: cdktf.stringToTerraform(struct!.version),
     }
   }
 
+  export class DatasyncLocationNfsMountOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // version - computed: false, optional: true, required: false
+    private _version?: string | undefined; 
+    public get version() {
+      return this.getStringAttribute('version');
+    }
+    public set version(value: string | undefined) {
+      this._version = value;
+    }
+    public resetVersion() {
+      this._version = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get versionInput() {
+      return this._version
+    }
+  }
   export interface DatasyncLocationNfsOnPremConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datasync_location_nfs.html#agent_arns DatasyncLocationNfs#agent_arns}
@@ -778,13 +883,39 @@ export namespace DataSync {
     readonly agentArns: string[];
   }
 
-  function datasyncLocationNfsOnPremConfigToTerraform(struct?: DatasyncLocationNfsOnPremConfig): any {
+  function datasyncLocationNfsOnPremConfigToTerraform(struct?: DatasyncLocationNfsOnPremConfigOutputReference | DatasyncLocationNfsOnPremConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       agent_arns: cdktf.listMapper(cdktf.stringToTerraform)(struct!.agentArns),
     }
   }
 
+  export class DatasyncLocationNfsOnPremConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // agent_arns - computed: false, optional: false, required: true
+    private _agentArns?: string[]; 
+    public get agentArns() {
+      return this.getListAttribute('agent_arns');
+    }
+    public set agentArns(value: string[]) {
+      this._agentArns = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get agentArnsInput() {
+      return this._agentArns
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/datasync_location_nfs.html aws_datasync_location_nfs}
@@ -841,7 +972,7 @@ export namespace DataSync {
     }
 
     // server_hostname - computed: false, optional: false, required: true
-    private _serverHostname: string;
+    private _serverHostname?: string; 
     public get serverHostname() {
       return this.getStringAttribute('server_hostname');
     }
@@ -854,7 +985,7 @@ export namespace DataSync {
     }
 
     // subdirectory - computed: false, optional: false, required: true
-    private _subdirectory: string;
+    private _subdirectory?: string; 
     public get subdirectory() {
       return this.getStringAttribute('subdirectory');
     }
@@ -867,11 +998,12 @@ export namespace DataSync {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -883,11 +1015,12 @@ export namespace DataSync {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -904,11 +1037,12 @@ export namespace DataSync {
     }
 
     // mount_options - computed: false, optional: true, required: false
-    private _mountOptions?: DatasyncLocationNfsMountOptions[];
+    private _mountOptions?: DatasyncLocationNfsMountOptions | undefined; 
+    private __mountOptionsOutput = new DatasyncLocationNfsMountOptionsOutputReference(this as any, "mount_options", true);
     public get mountOptions() {
-      return this.interpolationForAttribute('mount_options') as any;
+      return this.__mountOptionsOutput;
     }
-    public set mountOptions(value: DatasyncLocationNfsMountOptions[] ) {
+    public putMountOptions(value: DatasyncLocationNfsMountOptions | undefined) {
       this._mountOptions = value;
     }
     public resetMountOptions() {
@@ -920,11 +1054,12 @@ export namespace DataSync {
     }
 
     // on_prem_config - computed: false, optional: false, required: true
-    private _onPremConfig: DatasyncLocationNfsOnPremConfig[];
+    private _onPremConfig?: DatasyncLocationNfsOnPremConfig; 
+    private __onPremConfigOutput = new DatasyncLocationNfsOnPremConfigOutputReference(this as any, "on_prem_config", true);
     public get onPremConfig() {
-      return this.interpolationForAttribute('on_prem_config') as any;
+      return this.__onPremConfigOutput;
     }
-    public set onPremConfig(value: DatasyncLocationNfsOnPremConfig[]) {
+    public putOnPremConfig(value: DatasyncLocationNfsOnPremConfig) {
       this._onPremConfig = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -942,8 +1077,8 @@ export namespace DataSync {
         subdirectory: cdktf.stringToTerraform(this._subdirectory),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        mount_options: cdktf.listMapper(datasyncLocationNfsMountOptionsToTerraform)(this._mountOptions),
-        on_prem_config: cdktf.listMapper(datasyncLocationNfsOnPremConfigToTerraform)(this._onPremConfig),
+        mount_options: datasyncLocationNfsMountOptionsToTerraform(this._mountOptions),
+        on_prem_config: datasyncLocationNfsOnPremConfigToTerraform(this._onPremConfig),
       };
     }
   }
@@ -977,7 +1112,7 @@ export namespace DataSync {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datasync_location_s3.html#s3_config DatasyncLocationS3#s3_config}
     */
-    readonly s3Config: DatasyncLocationS3S3Config[];
+    readonly s3Config: DatasyncLocationS3S3Config;
   }
   export interface DatasyncLocationS3S3Config {
     /**
@@ -986,13 +1121,39 @@ export namespace DataSync {
     readonly bucketAccessRoleArn: string;
   }
 
-  function datasyncLocationS3S3ConfigToTerraform(struct?: DatasyncLocationS3S3Config): any {
+  function datasyncLocationS3S3ConfigToTerraform(struct?: DatasyncLocationS3S3ConfigOutputReference | DatasyncLocationS3S3Config): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bucket_access_role_arn: cdktf.stringToTerraform(struct!.bucketAccessRoleArn),
     }
   }
 
+  export class DatasyncLocationS3S3ConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // bucket_access_role_arn - computed: false, optional: false, required: true
+    private _bucketAccessRoleArn?: string; 
+    public get bucketAccessRoleArn() {
+      return this.getStringAttribute('bucket_access_role_arn');
+    }
+    public set bucketAccessRoleArn(value: string) {
+      this._bucketAccessRoleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bucketAccessRoleArnInput() {
+      return this._bucketAccessRoleArn
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/datasync_location_s3.html aws_datasync_location_s3}
@@ -1040,11 +1201,11 @@ export namespace DataSync {
     // ==========
 
     // agent_arns - computed: false, optional: true, required: false
-    private _agentArns?: string[];
+    private _agentArns?: string[] | undefined; 
     public get agentArns() {
       return this.getListAttribute('agent_arns');
     }
-    public set agentArns(value: string[] ) {
+    public set agentArns(value: string[] | undefined) {
       this._agentArns = value;
     }
     public resetAgentArns() {
@@ -1066,7 +1227,7 @@ export namespace DataSync {
     }
 
     // s3_bucket_arn - computed: false, optional: false, required: true
-    private _s3BucketArn: string;
+    private _s3BucketArn?: string; 
     public get s3BucketArn() {
       return this.getStringAttribute('s3_bucket_arn');
     }
@@ -1079,11 +1240,11 @@ export namespace DataSync {
     }
 
     // s3_storage_class - computed: true, optional: true, required: false
-    private _s3StorageClass?: string;
+    private _s3StorageClass?: string | undefined; 
     public get s3StorageClass() {
       return this.getStringAttribute('s3_storage_class');
     }
-    public set s3StorageClass(value: string) {
+    public set s3StorageClass(value: string | undefined) {
       this._s3StorageClass = value;
     }
     public resetS3StorageClass() {
@@ -1095,7 +1256,7 @@ export namespace DataSync {
     }
 
     // subdirectory - computed: false, optional: false, required: true
-    private _subdirectory: string;
+    private _subdirectory?: string; 
     public get subdirectory() {
       return this.getStringAttribute('subdirectory');
     }
@@ -1108,11 +1269,12 @@ export namespace DataSync {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1124,11 +1286,12 @@ export namespace DataSync {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1145,11 +1308,12 @@ export namespace DataSync {
     }
 
     // s3_config - computed: false, optional: false, required: true
-    private _s3Config: DatasyncLocationS3S3Config[];
+    private _s3Config?: DatasyncLocationS3S3Config; 
+    private __s3ConfigOutput = new DatasyncLocationS3S3ConfigOutputReference(this as any, "s3_config", true);
     public get s3Config() {
-      return this.interpolationForAttribute('s3_config') as any;
+      return this.__s3ConfigOutput;
     }
-    public set s3Config(value: DatasyncLocationS3S3Config[]) {
+    public putS3Config(value: DatasyncLocationS3S3Config) {
       this._s3Config = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -1169,7 +1333,7 @@ export namespace DataSync {
         subdirectory: cdktf.stringToTerraform(this._subdirectory),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        s3_config: cdktf.listMapper(datasyncLocationS3S3ConfigToTerraform)(this._s3Config),
+        s3_config: datasyncLocationS3S3ConfigToTerraform(this._s3Config),
       };
     }
   }
@@ -1211,7 +1375,7 @@ export namespace DataSync {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datasync_location_smb.html#mount_options DatasyncLocationSmb#mount_options}
     */
-    readonly mountOptions?: DatasyncLocationSmbMountOptions[];
+    readonly mountOptions?: DatasyncLocationSmbMountOptions;
   }
   export interface DatasyncLocationSmbMountOptions {
     /**
@@ -1220,13 +1384,42 @@ export namespace DataSync {
     readonly version?: string;
   }
 
-  function datasyncLocationSmbMountOptionsToTerraform(struct?: DatasyncLocationSmbMountOptions): any {
+  function datasyncLocationSmbMountOptionsToTerraform(struct?: DatasyncLocationSmbMountOptionsOutputReference | DatasyncLocationSmbMountOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       version: cdktf.stringToTerraform(struct!.version),
     }
   }
 
+  export class DatasyncLocationSmbMountOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // version - computed: false, optional: true, required: false
+    private _version?: string | undefined; 
+    public get version() {
+      return this.getStringAttribute('version');
+    }
+    public set version(value: string | undefined) {
+      this._version = value;
+    }
+    public resetVersion() {
+      this._version = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get versionInput() {
+      return this._version
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/datasync_location_smb.html aws_datasync_location_smb}
@@ -1276,7 +1469,7 @@ export namespace DataSync {
     // ==========
 
     // agent_arns - computed: false, optional: false, required: true
-    private _agentArns: string[];
+    private _agentArns?: string[]; 
     public get agentArns() {
       return this.getListAttribute('agent_arns');
     }
@@ -1294,11 +1487,11 @@ export namespace DataSync {
     }
 
     // domain - computed: true, optional: true, required: false
-    private _domain?: string;
+    private _domain?: string | undefined; 
     public get domain() {
       return this.getStringAttribute('domain');
     }
-    public set domain(value: string) {
+    public set domain(value: string | undefined) {
       this._domain = value;
     }
     public resetDomain() {
@@ -1315,7 +1508,7 @@ export namespace DataSync {
     }
 
     // password - computed: false, optional: false, required: true
-    private _password: string;
+    private _password?: string; 
     public get password() {
       return this.getStringAttribute('password');
     }
@@ -1328,7 +1521,7 @@ export namespace DataSync {
     }
 
     // server_hostname - computed: false, optional: false, required: true
-    private _serverHostname: string;
+    private _serverHostname?: string; 
     public get serverHostname() {
       return this.getStringAttribute('server_hostname');
     }
@@ -1341,7 +1534,7 @@ export namespace DataSync {
     }
 
     // subdirectory - computed: false, optional: false, required: true
-    private _subdirectory: string;
+    private _subdirectory?: string; 
     public get subdirectory() {
       return this.getStringAttribute('subdirectory');
     }
@@ -1354,11 +1547,12 @@ export namespace DataSync {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1370,11 +1564,12 @@ export namespace DataSync {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1391,7 +1586,7 @@ export namespace DataSync {
     }
 
     // user - computed: false, optional: false, required: true
-    private _user: string;
+    private _user?: string; 
     public get user() {
       return this.getStringAttribute('user');
     }
@@ -1404,11 +1599,12 @@ export namespace DataSync {
     }
 
     // mount_options - computed: false, optional: true, required: false
-    private _mountOptions?: DatasyncLocationSmbMountOptions[];
+    private _mountOptions?: DatasyncLocationSmbMountOptions | undefined; 
+    private __mountOptionsOutput = new DatasyncLocationSmbMountOptionsOutputReference(this as any, "mount_options", true);
     public get mountOptions() {
-      return this.interpolationForAttribute('mount_options') as any;
+      return this.__mountOptionsOutput;
     }
-    public set mountOptions(value: DatasyncLocationSmbMountOptions[] ) {
+    public putMountOptions(value: DatasyncLocationSmbMountOptions | undefined) {
       this._mountOptions = value;
     }
     public resetMountOptions() {
@@ -1433,7 +1629,7 @@ export namespace DataSync {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         user: cdktf.stringToTerraform(this._user),
-        mount_options: cdktf.listMapper(datasyncLocationSmbMountOptionsToTerraform)(this._mountOptions),
+        mount_options: datasyncLocationSmbMountOptionsToTerraform(this._mountOptions),
       };
     }
   }
@@ -1467,19 +1663,19 @@ export namespace DataSync {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datasync_task.html#excludes DatasyncTask#excludes}
     */
-    readonly excludes?: DatasyncTaskExcludes[];
+    readonly excludes?: DatasyncTaskExcludes;
     /**
     * options block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datasync_task.html#options DatasyncTask#options}
     */
-    readonly options?: DatasyncTaskOptions[];
+    readonly options?: DatasyncTaskOptions;
     /**
     * schedule block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datasync_task.html#schedule DatasyncTask#schedule}
     */
-    readonly schedule?: DatasyncTaskSchedule[];
+    readonly schedule?: DatasyncTaskSchedule;
     /**
     * timeouts block
     * 
@@ -1498,14 +1694,59 @@ export namespace DataSync {
     readonly value?: string;
   }
 
-  function datasyncTaskExcludesToTerraform(struct?: DatasyncTaskExcludes): any {
+  function datasyncTaskExcludesToTerraform(struct?: DatasyncTaskExcludesOutputReference | DatasyncTaskExcludes): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       filter_type: cdktf.stringToTerraform(struct!.filterType),
       value: cdktf.stringToTerraform(struct!.value),
     }
   }
 
+  export class DatasyncTaskExcludesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // filter_type - computed: false, optional: true, required: false
+    private _filterType?: string | undefined; 
+    public get filterType() {
+      return this.getStringAttribute('filter_type');
+    }
+    public set filterType(value: string | undefined) {
+      this._filterType = value;
+    }
+    public resetFilterType() {
+      this._filterType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get filterTypeInput() {
+      return this._filterType
+    }
+
+    // value - computed: false, optional: true, required: false
+    private _value?: string | undefined; 
+    public get value() {
+      return this.getStringAttribute('value');
+    }
+    public set value(value: string | undefined) {
+      this._value = value;
+    }
+    public resetValue() {
+      this._value = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valueInput() {
+      return this._value
+    }
+  }
   export interface DatasyncTaskOptions {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datasync_task.html#atime DatasyncTask#atime}
@@ -1561,8 +1802,11 @@ export namespace DataSync {
     readonly verifyMode?: string;
   }
 
-  function datasyncTaskOptionsToTerraform(struct?: DatasyncTaskOptions): any {
+  function datasyncTaskOptionsToTerraform(struct?: DatasyncTaskOptionsOutputReference | DatasyncTaskOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       atime: cdktf.stringToTerraform(struct!.atime),
       bytes_per_second: cdktf.numberToTerraform(struct!.bytesPerSecond),
@@ -1580,6 +1824,224 @@ export namespace DataSync {
     }
   }
 
+  export class DatasyncTaskOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // atime - computed: false, optional: true, required: false
+    private _atime?: string | undefined; 
+    public get atime() {
+      return this.getStringAttribute('atime');
+    }
+    public set atime(value: string | undefined) {
+      this._atime = value;
+    }
+    public resetAtime() {
+      this._atime = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get atimeInput() {
+      return this._atime
+    }
+
+    // bytes_per_second - computed: false, optional: true, required: false
+    private _bytesPerSecond?: number | undefined; 
+    public get bytesPerSecond() {
+      return this.getNumberAttribute('bytes_per_second');
+    }
+    public set bytesPerSecond(value: number | undefined) {
+      this._bytesPerSecond = value;
+    }
+    public resetBytesPerSecond() {
+      this._bytesPerSecond = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bytesPerSecondInput() {
+      return this._bytesPerSecond
+    }
+
+    // gid - computed: false, optional: true, required: false
+    private _gid?: string | undefined; 
+    public get gid() {
+      return this.getStringAttribute('gid');
+    }
+    public set gid(value: string | undefined) {
+      this._gid = value;
+    }
+    public resetGid() {
+      this._gid = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get gidInput() {
+      return this._gid
+    }
+
+    // log_level - computed: false, optional: true, required: false
+    private _logLevel?: string | undefined; 
+    public get logLevel() {
+      return this.getStringAttribute('log_level');
+    }
+    public set logLevel(value: string | undefined) {
+      this._logLevel = value;
+    }
+    public resetLogLevel() {
+      this._logLevel = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get logLevelInput() {
+      return this._logLevel
+    }
+
+    // mtime - computed: false, optional: true, required: false
+    private _mtime?: string | undefined; 
+    public get mtime() {
+      return this.getStringAttribute('mtime');
+    }
+    public set mtime(value: string | undefined) {
+      this._mtime = value;
+    }
+    public resetMtime() {
+      this._mtime = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get mtimeInput() {
+      return this._mtime
+    }
+
+    // overwrite_mode - computed: false, optional: true, required: false
+    private _overwriteMode?: string | undefined; 
+    public get overwriteMode() {
+      return this.getStringAttribute('overwrite_mode');
+    }
+    public set overwriteMode(value: string | undefined) {
+      this._overwriteMode = value;
+    }
+    public resetOverwriteMode() {
+      this._overwriteMode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get overwriteModeInput() {
+      return this._overwriteMode
+    }
+
+    // posix_permissions - computed: false, optional: true, required: false
+    private _posixPermissions?: string | undefined; 
+    public get posixPermissions() {
+      return this.getStringAttribute('posix_permissions');
+    }
+    public set posixPermissions(value: string | undefined) {
+      this._posixPermissions = value;
+    }
+    public resetPosixPermissions() {
+      this._posixPermissions = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get posixPermissionsInput() {
+      return this._posixPermissions
+    }
+
+    // preserve_deleted_files - computed: false, optional: true, required: false
+    private _preserveDeletedFiles?: string | undefined; 
+    public get preserveDeletedFiles() {
+      return this.getStringAttribute('preserve_deleted_files');
+    }
+    public set preserveDeletedFiles(value: string | undefined) {
+      this._preserveDeletedFiles = value;
+    }
+    public resetPreserveDeletedFiles() {
+      this._preserveDeletedFiles = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get preserveDeletedFilesInput() {
+      return this._preserveDeletedFiles
+    }
+
+    // preserve_devices - computed: false, optional: true, required: false
+    private _preserveDevices?: string | undefined; 
+    public get preserveDevices() {
+      return this.getStringAttribute('preserve_devices');
+    }
+    public set preserveDevices(value: string | undefined) {
+      this._preserveDevices = value;
+    }
+    public resetPreserveDevices() {
+      this._preserveDevices = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get preserveDevicesInput() {
+      return this._preserveDevices
+    }
+
+    // task_queueing - computed: false, optional: true, required: false
+    private _taskQueueing?: string | undefined; 
+    public get taskQueueing() {
+      return this.getStringAttribute('task_queueing');
+    }
+    public set taskQueueing(value: string | undefined) {
+      this._taskQueueing = value;
+    }
+    public resetTaskQueueing() {
+      this._taskQueueing = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get taskQueueingInput() {
+      return this._taskQueueing
+    }
+
+    // transfer_mode - computed: false, optional: true, required: false
+    private _transferMode?: string | undefined; 
+    public get transferMode() {
+      return this.getStringAttribute('transfer_mode');
+    }
+    public set transferMode(value: string | undefined) {
+      this._transferMode = value;
+    }
+    public resetTransferMode() {
+      this._transferMode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get transferModeInput() {
+      return this._transferMode
+    }
+
+    // uid - computed: false, optional: true, required: false
+    private _uid?: string | undefined; 
+    public get uid() {
+      return this.getStringAttribute('uid');
+    }
+    public set uid(value: string | undefined) {
+      this._uid = value;
+    }
+    public resetUid() {
+      this._uid = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get uidInput() {
+      return this._uid
+    }
+
+    // verify_mode - computed: false, optional: true, required: false
+    private _verifyMode?: string | undefined; 
+    public get verifyMode() {
+      return this.getStringAttribute('verify_mode');
+    }
+    public set verifyMode(value: string | undefined) {
+      this._verifyMode = value;
+    }
+    public resetVerifyMode() {
+      this._verifyMode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get verifyModeInput() {
+      return this._verifyMode
+    }
+  }
   export interface DatasyncTaskSchedule {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datasync_task.html#schedule_expression DatasyncTask#schedule_expression}
@@ -1587,13 +2049,39 @@ export namespace DataSync {
     readonly scheduleExpression: string;
   }
 
-  function datasyncTaskScheduleToTerraform(struct?: DatasyncTaskSchedule): any {
+  function datasyncTaskScheduleToTerraform(struct?: DatasyncTaskScheduleOutputReference | DatasyncTaskSchedule): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       schedule_expression: cdktf.stringToTerraform(struct!.scheduleExpression),
     }
   }
 
+  export class DatasyncTaskScheduleOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // schedule_expression - computed: false, optional: false, required: true
+    private _scheduleExpression?: string; 
+    public get scheduleExpression() {
+      return this.getStringAttribute('schedule_expression');
+    }
+    public set scheduleExpression(value: string) {
+      this._scheduleExpression = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get scheduleExpressionInput() {
+      return this._scheduleExpression
+    }
+  }
   export interface DatasyncTaskTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/datasync_task.html#create DatasyncTask#create}
@@ -1601,13 +2089,42 @@ export namespace DataSync {
     readonly create?: string;
   }
 
-  function datasyncTaskTimeoutsToTerraform(struct?: DatasyncTaskTimeouts): any {
+  function datasyncTaskTimeoutsToTerraform(struct?: DatasyncTaskTimeoutsOutputReference | DatasyncTaskTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
     }
   }
 
+  export class DatasyncTaskTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/datasync_task.html aws_datasync_task}
@@ -1663,11 +2180,11 @@ export namespace DataSync {
     }
 
     // cloudwatch_log_group_arn - computed: false, optional: true, required: false
-    private _cloudwatchLogGroupArn?: string;
+    private _cloudwatchLogGroupArn?: string | undefined; 
     public get cloudwatchLogGroupArn() {
       return this.getStringAttribute('cloudwatch_log_group_arn');
     }
-    public set cloudwatchLogGroupArn(value: string ) {
+    public set cloudwatchLogGroupArn(value: string | undefined) {
       this._cloudwatchLogGroupArn = value;
     }
     public resetCloudwatchLogGroupArn() {
@@ -1679,7 +2196,7 @@ export namespace DataSync {
     }
 
     // destination_location_arn - computed: false, optional: false, required: true
-    private _destinationLocationArn: string;
+    private _destinationLocationArn?: string; 
     public get destinationLocationArn() {
       return this.getStringAttribute('destination_location_arn');
     }
@@ -1697,11 +2214,11 @@ export namespace DataSync {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1713,7 +2230,7 @@ export namespace DataSync {
     }
 
     // source_location_arn - computed: false, optional: false, required: true
-    private _sourceLocationArn: string;
+    private _sourceLocationArn?: string; 
     public get sourceLocationArn() {
       return this.getStringAttribute('source_location_arn');
     }
@@ -1726,11 +2243,12 @@ export namespace DataSync {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1742,11 +2260,12 @@ export namespace DataSync {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1758,11 +2277,12 @@ export namespace DataSync {
     }
 
     // excludes - computed: false, optional: true, required: false
-    private _excludes?: DatasyncTaskExcludes[];
+    private _excludes?: DatasyncTaskExcludes | undefined; 
+    private __excludesOutput = new DatasyncTaskExcludesOutputReference(this as any, "excludes", true);
     public get excludes() {
-      return this.interpolationForAttribute('excludes') as any;
+      return this.__excludesOutput;
     }
-    public set excludes(value: DatasyncTaskExcludes[] ) {
+    public putExcludes(value: DatasyncTaskExcludes | undefined) {
       this._excludes = value;
     }
     public resetExcludes() {
@@ -1774,11 +2294,12 @@ export namespace DataSync {
     }
 
     // options - computed: false, optional: true, required: false
-    private _options?: DatasyncTaskOptions[];
+    private _options?: DatasyncTaskOptions | undefined; 
+    private __optionsOutput = new DatasyncTaskOptionsOutputReference(this as any, "options", true);
     public get options() {
-      return this.interpolationForAttribute('options') as any;
+      return this.__optionsOutput;
     }
-    public set options(value: DatasyncTaskOptions[] ) {
+    public putOptions(value: DatasyncTaskOptions | undefined) {
       this._options = value;
     }
     public resetOptions() {
@@ -1790,11 +2311,12 @@ export namespace DataSync {
     }
 
     // schedule - computed: false, optional: true, required: false
-    private _schedule?: DatasyncTaskSchedule[];
+    private _schedule?: DatasyncTaskSchedule | undefined; 
+    private __scheduleOutput = new DatasyncTaskScheduleOutputReference(this as any, "schedule", true);
     public get schedule() {
-      return this.interpolationForAttribute('schedule') as any;
+      return this.__scheduleOutput;
     }
-    public set schedule(value: DatasyncTaskSchedule[] ) {
+    public putSchedule(value: DatasyncTaskSchedule | undefined) {
       this._schedule = value;
     }
     public resetSchedule() {
@@ -1806,11 +2328,12 @@ export namespace DataSync {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DatasyncTaskTimeouts;
+    private _timeouts?: DatasyncTaskTimeouts | undefined; 
+    private __timeoutsOutput = new DatasyncTaskTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DatasyncTaskTimeouts ) {
+    public putTimeouts(value: DatasyncTaskTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1833,9 +2356,9 @@ export namespace DataSync {
         source_location_arn: cdktf.stringToTerraform(this._sourceLocationArn),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        excludes: cdktf.listMapper(datasyncTaskExcludesToTerraform)(this._excludes),
-        options: cdktf.listMapper(datasyncTaskOptionsToTerraform)(this._options),
-        schedule: cdktf.listMapper(datasyncTaskScheduleToTerraform)(this._schedule),
+        excludes: datasyncTaskExcludesToTerraform(this._excludes),
+        options: datasyncTaskOptionsToTerraform(this._options),
+        schedule: datasyncTaskScheduleToTerraform(this._schedule),
         timeouts: datasyncTaskTimeoutsToTerraform(this._timeouts),
       };
     }

@@ -73,19 +73,19 @@ export namespace AppStream {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_fleet.html#compute_capacity AppstreamFleet#compute_capacity}
     */
-    readonly computeCapacity: AppstreamFleetComputeCapacity[];
+    readonly computeCapacity: AppstreamFleetComputeCapacity;
     /**
     * domain_join_info block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_fleet.html#domain_join_info AppstreamFleet#domain_join_info}
     */
-    readonly domainJoinInfo?: AppstreamFleetDomainJoinInfo[];
+    readonly domainJoinInfo?: AppstreamFleetDomainJoinInfo;
     /**
     * vpc_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_fleet.html#vpc_config AppstreamFleet#vpc_config}
     */
-    readonly vpcConfig?: AppstreamFleetVpcConfig[];
+    readonly vpcConfig?: AppstreamFleetVpcConfig;
   }
   export interface AppstreamFleetComputeCapacity {
     /**
@@ -94,13 +94,39 @@ export namespace AppStream {
     readonly desiredInstances: number;
   }
 
-  function appstreamFleetComputeCapacityToTerraform(struct?: AppstreamFleetComputeCapacity): any {
+  function appstreamFleetComputeCapacityToTerraform(struct?: AppstreamFleetComputeCapacityOutputReference | AppstreamFleetComputeCapacity): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       desired_instances: cdktf.numberToTerraform(struct!.desiredInstances),
     }
   }
 
+  export class AppstreamFleetComputeCapacityOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // desired_instances - computed: false, optional: false, required: true
+    private _desiredInstances?: number; 
+    public get desiredInstances() {
+      return this.getNumberAttribute('desired_instances');
+    }
+    public set desiredInstances(value: number) {
+      this._desiredInstances = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get desiredInstancesInput() {
+      return this._desiredInstances
+    }
+  }
   export interface AppstreamFleetDomainJoinInfo {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_fleet.html#directory_name AppstreamFleet#directory_name}
@@ -112,14 +138,59 @@ export namespace AppStream {
     readonly organizationalUnitDistinguishedName?: string;
   }
 
-  function appstreamFleetDomainJoinInfoToTerraform(struct?: AppstreamFleetDomainJoinInfo): any {
+  function appstreamFleetDomainJoinInfoToTerraform(struct?: AppstreamFleetDomainJoinInfoOutputReference | AppstreamFleetDomainJoinInfo): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       directory_name: cdktf.stringToTerraform(struct!.directoryName),
       organizational_unit_distinguished_name: cdktf.stringToTerraform(struct!.organizationalUnitDistinguishedName),
     }
   }
 
+  export class AppstreamFleetDomainJoinInfoOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // directory_name - computed: false, optional: true, required: false
+    private _directoryName?: string | undefined; 
+    public get directoryName() {
+      return this.getStringAttribute('directory_name');
+    }
+    public set directoryName(value: string | undefined) {
+      this._directoryName = value;
+    }
+    public resetDirectoryName() {
+      this._directoryName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get directoryNameInput() {
+      return this._directoryName
+    }
+
+    // organizational_unit_distinguished_name - computed: false, optional: true, required: false
+    private _organizationalUnitDistinguishedName?: string | undefined; 
+    public get organizationalUnitDistinguishedName() {
+      return this.getStringAttribute('organizational_unit_distinguished_name');
+    }
+    public set organizationalUnitDistinguishedName(value: string | undefined) {
+      this._organizationalUnitDistinguishedName = value;
+    }
+    public resetOrganizationalUnitDistinguishedName() {
+      this._organizationalUnitDistinguishedName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get organizationalUnitDistinguishedNameInput() {
+      return this._organizationalUnitDistinguishedName
+    }
+  }
   export interface AppstreamFleetVpcConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_fleet.html#security_group_ids AppstreamFleet#security_group_ids}
@@ -131,14 +202,59 @@ export namespace AppStream {
     readonly subnetIds?: string[];
   }
 
-  function appstreamFleetVpcConfigToTerraform(struct?: AppstreamFleetVpcConfig): any {
+  function appstreamFleetVpcConfigToTerraform(struct?: AppstreamFleetVpcConfigOutputReference | AppstreamFleetVpcConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.securityGroupIds),
       subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.subnetIds),
     }
   }
 
+  export class AppstreamFleetVpcConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // security_group_ids - computed: true, optional: true, required: false
+    private _securityGroupIds?: string[] | undefined; 
+    public get securityGroupIds() {
+      return this.getListAttribute('security_group_ids');
+    }
+    public set securityGroupIds(value: string[] | undefined) {
+      this._securityGroupIds = value;
+    }
+    public resetSecurityGroupIds() {
+      this._securityGroupIds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get securityGroupIdsInput() {
+      return this._securityGroupIds
+    }
+
+    // subnet_ids - computed: true, optional: true, required: false
+    private _subnetIds?: string[] | undefined; 
+    public get subnetIds() {
+      return this.getListAttribute('subnet_ids');
+    }
+    public set subnetIds(value: string[] | undefined) {
+      this._subnetIds = value;
+    }
+    public resetSubnetIds() {
+      this._subnetIds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get subnetIdsInput() {
+      return this._subnetIds
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/appstream_fleet.html aws_appstream_fleet}
@@ -207,11 +323,11 @@ export namespace AppStream {
     }
 
     // description - computed: true, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -223,11 +339,11 @@ export namespace AppStream {
     }
 
     // disconnect_timeout_in_seconds - computed: true, optional: true, required: false
-    private _disconnectTimeoutInSeconds?: number;
+    private _disconnectTimeoutInSeconds?: number | undefined; 
     public get disconnectTimeoutInSeconds() {
       return this.getNumberAttribute('disconnect_timeout_in_seconds');
     }
-    public set disconnectTimeoutInSeconds(value: number) {
+    public set disconnectTimeoutInSeconds(value: number | undefined) {
       this._disconnectTimeoutInSeconds = value;
     }
     public resetDisconnectTimeoutInSeconds() {
@@ -239,11 +355,11 @@ export namespace AppStream {
     }
 
     // display_name - computed: true, optional: true, required: false
-    private _displayName?: string;
+    private _displayName?: string | undefined; 
     public get displayName() {
       return this.getStringAttribute('display_name');
     }
-    public set displayName(value: string) {
+    public set displayName(value: string | undefined) {
       this._displayName = value;
     }
     public resetDisplayName() {
@@ -255,11 +371,11 @@ export namespace AppStream {
     }
 
     // enable_default_internet_access - computed: true, optional: true, required: false
-    private _enableDefaultInternetAccess?: boolean | cdktf.IResolvable;
+    private _enableDefaultInternetAccess?: boolean | cdktf.IResolvable | undefined; 
     public get enableDefaultInternetAccess() {
-      return this.getBooleanAttribute('enable_default_internet_access');
+      return this.getBooleanAttribute('enable_default_internet_access') as any;
     }
-    public set enableDefaultInternetAccess(value: boolean | cdktf.IResolvable) {
+    public set enableDefaultInternetAccess(value: boolean | cdktf.IResolvable | undefined) {
       this._enableDefaultInternetAccess = value;
     }
     public resetEnableDefaultInternetAccess() {
@@ -271,11 +387,11 @@ export namespace AppStream {
     }
 
     // fleet_type - computed: true, optional: true, required: false
-    private _fleetType?: string;
+    private _fleetType?: string | undefined; 
     public get fleetType() {
       return this.getStringAttribute('fleet_type');
     }
-    public set fleetType(value: string) {
+    public set fleetType(value: string | undefined) {
       this._fleetType = value;
     }
     public resetFleetType() {
@@ -287,11 +403,11 @@ export namespace AppStream {
     }
 
     // iam_role_arn - computed: true, optional: true, required: false
-    private _iamRoleArn?: string;
+    private _iamRoleArn?: string | undefined; 
     public get iamRoleArn() {
       return this.getStringAttribute('iam_role_arn');
     }
-    public set iamRoleArn(value: string) {
+    public set iamRoleArn(value: string | undefined) {
       this._iamRoleArn = value;
     }
     public resetIamRoleArn() {
@@ -308,11 +424,11 @@ export namespace AppStream {
     }
 
     // idle_disconnect_timeout_in_seconds - computed: false, optional: true, required: false
-    private _idleDisconnectTimeoutInSeconds?: number;
+    private _idleDisconnectTimeoutInSeconds?: number | undefined; 
     public get idleDisconnectTimeoutInSeconds() {
       return this.getNumberAttribute('idle_disconnect_timeout_in_seconds');
     }
-    public set idleDisconnectTimeoutInSeconds(value: number ) {
+    public set idleDisconnectTimeoutInSeconds(value: number | undefined) {
       this._idleDisconnectTimeoutInSeconds = value;
     }
     public resetIdleDisconnectTimeoutInSeconds() {
@@ -324,11 +440,11 @@ export namespace AppStream {
     }
 
     // image_arn - computed: true, optional: true, required: false
-    private _imageArn?: string;
+    private _imageArn?: string | undefined; 
     public get imageArn() {
       return this.getStringAttribute('image_arn');
     }
-    public set imageArn(value: string) {
+    public set imageArn(value: string | undefined) {
       this._imageArn = value;
     }
     public resetImageArn() {
@@ -340,11 +456,11 @@ export namespace AppStream {
     }
 
     // image_name - computed: true, optional: true, required: false
-    private _imageName?: string;
+    private _imageName?: string | undefined; 
     public get imageName() {
       return this.getStringAttribute('image_name');
     }
-    public set imageName(value: string) {
+    public set imageName(value: string | undefined) {
       this._imageName = value;
     }
     public resetImageName() {
@@ -356,7 +472,7 @@ export namespace AppStream {
     }
 
     // instance_type - computed: false, optional: false, required: true
-    private _instanceType: string;
+    private _instanceType?: string; 
     public get instanceType() {
       return this.getStringAttribute('instance_type');
     }
@@ -369,11 +485,11 @@ export namespace AppStream {
     }
 
     // max_user_duration_in_seconds - computed: true, optional: true, required: false
-    private _maxUserDurationInSeconds?: number;
+    private _maxUserDurationInSeconds?: number | undefined; 
     public get maxUserDurationInSeconds() {
       return this.getNumberAttribute('max_user_duration_in_seconds');
     }
-    public set maxUserDurationInSeconds(value: number) {
+    public set maxUserDurationInSeconds(value: number | undefined) {
       this._maxUserDurationInSeconds = value;
     }
     public resetMaxUserDurationInSeconds() {
@@ -385,7 +501,7 @@ export namespace AppStream {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -403,11 +519,11 @@ export namespace AppStream {
     }
 
     // stream_view - computed: true, optional: true, required: false
-    private _streamView?: string;
+    private _streamView?: string | undefined; 
     public get streamView() {
       return this.getStringAttribute('stream_view');
     }
-    public set streamView(value: string) {
+    public set streamView(value: string | undefined) {
       this._streamView = value;
     }
     public resetStreamView() {
@@ -419,11 +535,12 @@ export namespace AppStream {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -435,11 +552,12 @@ export namespace AppStream {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -451,11 +569,12 @@ export namespace AppStream {
     }
 
     // compute_capacity - computed: false, optional: false, required: true
-    private _computeCapacity: AppstreamFleetComputeCapacity[];
+    private _computeCapacity?: AppstreamFleetComputeCapacity; 
+    private __computeCapacityOutput = new AppstreamFleetComputeCapacityOutputReference(this as any, "compute_capacity", true);
     public get computeCapacity() {
-      return this.interpolationForAttribute('compute_capacity') as any;
+      return this.__computeCapacityOutput;
     }
-    public set computeCapacity(value: AppstreamFleetComputeCapacity[]) {
+    public putComputeCapacity(value: AppstreamFleetComputeCapacity) {
       this._computeCapacity = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -464,11 +583,12 @@ export namespace AppStream {
     }
 
     // domain_join_info - computed: false, optional: true, required: false
-    private _domainJoinInfo?: AppstreamFleetDomainJoinInfo[];
+    private _domainJoinInfo?: AppstreamFleetDomainJoinInfo | undefined; 
+    private __domainJoinInfoOutput = new AppstreamFleetDomainJoinInfoOutputReference(this as any, "domain_join_info", true);
     public get domainJoinInfo() {
-      return this.interpolationForAttribute('domain_join_info') as any;
+      return this.__domainJoinInfoOutput;
     }
-    public set domainJoinInfo(value: AppstreamFleetDomainJoinInfo[] ) {
+    public putDomainJoinInfo(value: AppstreamFleetDomainJoinInfo | undefined) {
       this._domainJoinInfo = value;
     }
     public resetDomainJoinInfo() {
@@ -480,11 +600,12 @@ export namespace AppStream {
     }
 
     // vpc_config - computed: false, optional: true, required: false
-    private _vpcConfig?: AppstreamFleetVpcConfig[];
+    private _vpcConfig?: AppstreamFleetVpcConfig | undefined; 
+    private __vpcConfigOutput = new AppstreamFleetVpcConfigOutputReference(this as any, "vpc_config", true);
     public get vpcConfig() {
-      return this.interpolationForAttribute('vpc_config') as any;
+      return this.__vpcConfigOutput;
     }
-    public set vpcConfig(value: AppstreamFleetVpcConfig[] ) {
+    public putVpcConfig(value: AppstreamFleetVpcConfig | undefined) {
       this._vpcConfig = value;
     }
     public resetVpcConfig() {
@@ -516,9 +637,9 @@ export namespace AppStream {
         stream_view: cdktf.stringToTerraform(this._streamView),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        compute_capacity: cdktf.listMapper(appstreamFleetComputeCapacityToTerraform)(this._computeCapacity),
-        domain_join_info: cdktf.listMapper(appstreamFleetDomainJoinInfoToTerraform)(this._domainJoinInfo),
-        vpc_config: cdktf.listMapper(appstreamFleetVpcConfigToTerraform)(this._vpcConfig),
+        compute_capacity: appstreamFleetComputeCapacityToTerraform(this._computeCapacity),
+        domain_join_info: appstreamFleetDomainJoinInfoToTerraform(this._domainJoinInfo),
+        vpc_config: appstreamFleetVpcConfigToTerraform(this._vpcConfig),
       };
     }
   }
@@ -578,13 +699,13 @@ export namespace AppStream {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_image_builder.html#domain_join_info AppstreamImageBuilder#domain_join_info}
     */
-    readonly domainJoinInfo?: AppstreamImageBuilderDomainJoinInfo[];
+    readonly domainJoinInfo?: AppstreamImageBuilderDomainJoinInfo;
     /**
     * vpc_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_image_builder.html#vpc_config AppstreamImageBuilder#vpc_config}
     */
-    readonly vpcConfig?: AppstreamImageBuilderVpcConfig[];
+    readonly vpcConfig?: AppstreamImageBuilderVpcConfig;
   }
   export interface AppstreamImageBuilderAccessEndpoint {
     /**
@@ -599,6 +720,9 @@ export namespace AppStream {
 
   function appstreamImageBuilderAccessEndpointToTerraform(struct?: AppstreamImageBuilderAccessEndpoint): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       endpoint_type: cdktf.stringToTerraform(struct!.endpointType),
       vpce_id: cdktf.stringToTerraform(struct!.vpceId),
@@ -616,14 +740,59 @@ export namespace AppStream {
     readonly organizationalUnitDistinguishedName?: string;
   }
 
-  function appstreamImageBuilderDomainJoinInfoToTerraform(struct?: AppstreamImageBuilderDomainJoinInfo): any {
+  function appstreamImageBuilderDomainJoinInfoToTerraform(struct?: AppstreamImageBuilderDomainJoinInfoOutputReference | AppstreamImageBuilderDomainJoinInfo): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       directory_name: cdktf.stringToTerraform(struct!.directoryName),
       organizational_unit_distinguished_name: cdktf.stringToTerraform(struct!.organizationalUnitDistinguishedName),
     }
   }
 
+  export class AppstreamImageBuilderDomainJoinInfoOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // directory_name - computed: false, optional: true, required: false
+    private _directoryName?: string | undefined; 
+    public get directoryName() {
+      return this.getStringAttribute('directory_name');
+    }
+    public set directoryName(value: string | undefined) {
+      this._directoryName = value;
+    }
+    public resetDirectoryName() {
+      this._directoryName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get directoryNameInput() {
+      return this._directoryName
+    }
+
+    // organizational_unit_distinguished_name - computed: false, optional: true, required: false
+    private _organizationalUnitDistinguishedName?: string | undefined; 
+    public get organizationalUnitDistinguishedName() {
+      return this.getStringAttribute('organizational_unit_distinguished_name');
+    }
+    public set organizationalUnitDistinguishedName(value: string | undefined) {
+      this._organizationalUnitDistinguishedName = value;
+    }
+    public resetOrganizationalUnitDistinguishedName() {
+      this._organizationalUnitDistinguishedName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get organizationalUnitDistinguishedNameInput() {
+      return this._organizationalUnitDistinguishedName
+    }
+  }
   export interface AppstreamImageBuilderVpcConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_image_builder.html#security_group_ids AppstreamImageBuilder#security_group_ids}
@@ -635,14 +804,59 @@ export namespace AppStream {
     readonly subnetIds?: string[];
   }
 
-  function appstreamImageBuilderVpcConfigToTerraform(struct?: AppstreamImageBuilderVpcConfig): any {
+  function appstreamImageBuilderVpcConfigToTerraform(struct?: AppstreamImageBuilderVpcConfigOutputReference | AppstreamImageBuilderVpcConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.securityGroupIds),
       subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.subnetIds),
     }
   }
 
+  export class AppstreamImageBuilderVpcConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // security_group_ids - computed: true, optional: true, required: false
+    private _securityGroupIds?: string[] | undefined; 
+    public get securityGroupIds() {
+      return this.getListAttribute('security_group_ids');
+    }
+    public set securityGroupIds(value: string[] | undefined) {
+      this._securityGroupIds = value;
+    }
+    public resetSecurityGroupIds() {
+      this._securityGroupIds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get securityGroupIdsInput() {
+      return this._securityGroupIds
+    }
+
+    // subnet_ids - computed: true, optional: true, required: false
+    private _subnetIds?: string[] | undefined; 
+    public get subnetIds() {
+      return this.getListAttribute('subnet_ids');
+    }
+    public set subnetIds(value: string[] | undefined) {
+      this._subnetIds = value;
+    }
+    public resetSubnetIds() {
+      this._subnetIds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get subnetIdsInput() {
+      return this._subnetIds
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/appstream_image_builder.html aws_appstream_image_builder}
@@ -697,11 +911,11 @@ export namespace AppStream {
     // ==========
 
     // appstream_agent_version - computed: true, optional: true, required: false
-    private _appstreamAgentVersion?: string;
+    private _appstreamAgentVersion?: string | undefined; 
     public get appstreamAgentVersion() {
       return this.getStringAttribute('appstream_agent_version');
     }
-    public set appstreamAgentVersion(value: string) {
+    public set appstreamAgentVersion(value: string | undefined) {
       this._appstreamAgentVersion = value;
     }
     public resetAppstreamAgentVersion() {
@@ -723,11 +937,11 @@ export namespace AppStream {
     }
 
     // description - computed: true, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -739,11 +953,11 @@ export namespace AppStream {
     }
 
     // display_name - computed: true, optional: true, required: false
-    private _displayName?: string;
+    private _displayName?: string | undefined; 
     public get displayName() {
       return this.getStringAttribute('display_name');
     }
-    public set displayName(value: string) {
+    public set displayName(value: string | undefined) {
       this._displayName = value;
     }
     public resetDisplayName() {
@@ -755,11 +969,11 @@ export namespace AppStream {
     }
 
     // enable_default_internet_access - computed: true, optional: true, required: false
-    private _enableDefaultInternetAccess?: boolean | cdktf.IResolvable;
+    private _enableDefaultInternetAccess?: boolean | cdktf.IResolvable | undefined; 
     public get enableDefaultInternetAccess() {
-      return this.getBooleanAttribute('enable_default_internet_access');
+      return this.getBooleanAttribute('enable_default_internet_access') as any;
     }
-    public set enableDefaultInternetAccess(value: boolean | cdktf.IResolvable) {
+    public set enableDefaultInternetAccess(value: boolean | cdktf.IResolvable | undefined) {
       this._enableDefaultInternetAccess = value;
     }
     public resetEnableDefaultInternetAccess() {
@@ -771,11 +985,11 @@ export namespace AppStream {
     }
 
     // iam_role_arn - computed: true, optional: true, required: false
-    private _iamRoleArn?: string;
+    private _iamRoleArn?: string | undefined; 
     public get iamRoleArn() {
       return this.getStringAttribute('iam_role_arn');
     }
-    public set iamRoleArn(value: string) {
+    public set iamRoleArn(value: string | undefined) {
       this._iamRoleArn = value;
     }
     public resetIamRoleArn() {
@@ -792,11 +1006,11 @@ export namespace AppStream {
     }
 
     // image_arn - computed: true, optional: true, required: false
-    private _imageArn?: string;
+    private _imageArn?: string | undefined; 
     public get imageArn() {
       return this.getStringAttribute('image_arn');
     }
-    public set imageArn(value: string) {
+    public set imageArn(value: string | undefined) {
       this._imageArn = value;
     }
     public resetImageArn() {
@@ -808,11 +1022,11 @@ export namespace AppStream {
     }
 
     // image_name - computed: true, optional: true, required: false
-    private _imageName?: string;
+    private _imageName?: string | undefined; 
     public get imageName() {
       return this.getStringAttribute('image_name');
     }
-    public set imageName(value: string) {
+    public set imageName(value: string | undefined) {
       this._imageName = value;
     }
     public resetImageName() {
@@ -824,7 +1038,7 @@ export namespace AppStream {
     }
 
     // instance_type - computed: false, optional: false, required: true
-    private _instanceType: string;
+    private _instanceType?: string; 
     public get instanceType() {
       return this.getStringAttribute('instance_type');
     }
@@ -837,7 +1051,7 @@ export namespace AppStream {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -855,11 +1069,12 @@ export namespace AppStream {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -871,11 +1086,12 @@ export namespace AppStream {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -887,11 +1103,12 @@ export namespace AppStream {
     }
 
     // access_endpoint - computed: false, optional: true, required: false
-    private _accessEndpoint?: AppstreamImageBuilderAccessEndpoint[];
+    private _accessEndpoint?: AppstreamImageBuilderAccessEndpoint[] | undefined; 
     public get accessEndpoint() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('access_endpoint') as any;
     }
-    public set accessEndpoint(value: AppstreamImageBuilderAccessEndpoint[] ) {
+    public set accessEndpoint(value: AppstreamImageBuilderAccessEndpoint[] | undefined) {
       this._accessEndpoint = value;
     }
     public resetAccessEndpoint() {
@@ -903,11 +1120,12 @@ export namespace AppStream {
     }
 
     // domain_join_info - computed: false, optional: true, required: false
-    private _domainJoinInfo?: AppstreamImageBuilderDomainJoinInfo[];
+    private _domainJoinInfo?: AppstreamImageBuilderDomainJoinInfo | undefined; 
+    private __domainJoinInfoOutput = new AppstreamImageBuilderDomainJoinInfoOutputReference(this as any, "domain_join_info", true);
     public get domainJoinInfo() {
-      return this.interpolationForAttribute('domain_join_info') as any;
+      return this.__domainJoinInfoOutput;
     }
-    public set domainJoinInfo(value: AppstreamImageBuilderDomainJoinInfo[] ) {
+    public putDomainJoinInfo(value: AppstreamImageBuilderDomainJoinInfo | undefined) {
       this._domainJoinInfo = value;
     }
     public resetDomainJoinInfo() {
@@ -919,11 +1137,12 @@ export namespace AppStream {
     }
 
     // vpc_config - computed: false, optional: true, required: false
-    private _vpcConfig?: AppstreamImageBuilderVpcConfig[];
+    private _vpcConfig?: AppstreamImageBuilderVpcConfig | undefined; 
+    private __vpcConfigOutput = new AppstreamImageBuilderVpcConfigOutputReference(this as any, "vpc_config", true);
     public get vpcConfig() {
-      return this.interpolationForAttribute('vpc_config') as any;
+      return this.__vpcConfigOutput;
     }
-    public set vpcConfig(value: AppstreamImageBuilderVpcConfig[] ) {
+    public putVpcConfig(value: AppstreamImageBuilderVpcConfig | undefined) {
       this._vpcConfig = value;
     }
     public resetVpcConfig() {
@@ -952,8 +1171,8 @@ export namespace AppStream {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         access_endpoint: cdktf.listMapper(appstreamImageBuilderAccessEndpointToTerraform)(this._accessEndpoint),
-        domain_join_info: cdktf.listMapper(appstreamImageBuilderDomainJoinInfoToTerraform)(this._domainJoinInfo),
-        vpc_config: cdktf.listMapper(appstreamImageBuilderVpcConfigToTerraform)(this._vpcConfig),
+        domain_join_info: appstreamImageBuilderDomainJoinInfoToTerraform(this._domainJoinInfo),
+        vpc_config: appstreamImageBuilderVpcConfigToTerraform(this._vpcConfig),
       };
     }
   }
@@ -1001,7 +1220,7 @@ export namespace AppStream {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_stack.html#application_settings AppstreamStack#application_settings}
     */
-    readonly applicationSettings?: AppstreamStackApplicationSettings[];
+    readonly applicationSettings?: AppstreamStackApplicationSettings;
     /**
     * storage_connectors block
     * 
@@ -1028,6 +1247,9 @@ export namespace AppStream {
 
   function appstreamStackAccessEndpointsToTerraform(struct?: AppstreamStackAccessEndpoints): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       endpoint_type: cdktf.stringToTerraform(struct!.endpointType),
       vpce_id: cdktf.stringToTerraform(struct!.vpceId),
@@ -1045,14 +1267,59 @@ export namespace AppStream {
     readonly settingsGroup?: string;
   }
 
-  function appstreamStackApplicationSettingsToTerraform(struct?: AppstreamStackApplicationSettings): any {
+  function appstreamStackApplicationSettingsToTerraform(struct?: AppstreamStackApplicationSettingsOutputReference | AppstreamStackApplicationSettings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       enabled: cdktf.booleanToTerraform(struct!.enabled),
       settings_group: cdktf.stringToTerraform(struct!.settingsGroup),
     }
   }
 
+  export class AppstreamStackApplicationSettingsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // enabled - computed: false, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+
+    // settings_group - computed: false, optional: true, required: false
+    private _settingsGroup?: string | undefined; 
+    public get settingsGroup() {
+      return this.getStringAttribute('settings_group');
+    }
+    public set settingsGroup(value: string | undefined) {
+      this._settingsGroup = value;
+    }
+    public resetSettingsGroup() {
+      this._settingsGroup = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get settingsGroupInput() {
+      return this._settingsGroup
+    }
+  }
   export interface AppstreamStackStorageConnectors {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appstream_stack.html#connector_type AppstreamStack#connector_type}
@@ -1070,6 +1337,9 @@ export namespace AppStream {
 
   function appstreamStackStorageConnectorsToTerraform(struct?: AppstreamStackStorageConnectors): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       connector_type: cdktf.stringToTerraform(struct!.connectorType),
       domains: cdktf.listMapper(cdktf.stringToTerraform)(struct!.domains),
@@ -1090,6 +1360,9 @@ export namespace AppStream {
 
   function appstreamStackUserSettingsToTerraform(struct?: AppstreamStackUserSettings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       action: cdktf.stringToTerraform(struct!.action),
       permission: cdktf.stringToTerraform(struct!.permission),
@@ -1158,11 +1431,11 @@ export namespace AppStream {
     }
 
     // description - computed: true, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1174,11 +1447,11 @@ export namespace AppStream {
     }
 
     // display_name - computed: true, optional: true, required: false
-    private _displayName?: string;
+    private _displayName?: string | undefined; 
     public get displayName() {
       return this.getStringAttribute('display_name');
     }
-    public set displayName(value: string) {
+    public set displayName(value: string | undefined) {
       this._displayName = value;
     }
     public resetDisplayName() {
@@ -1190,11 +1463,11 @@ export namespace AppStream {
     }
 
     // embed_host_domains - computed: true, optional: true, required: false
-    private _embedHostDomains?: string[];
+    private _embedHostDomains?: string[] | undefined; 
     public get embedHostDomains() {
       return this.getListAttribute('embed_host_domains');
     }
-    public set embedHostDomains(value: string[]) {
+    public set embedHostDomains(value: string[] | undefined) {
       this._embedHostDomains = value;
     }
     public resetEmbedHostDomains() {
@@ -1206,11 +1479,11 @@ export namespace AppStream {
     }
 
     // feedback_url - computed: true, optional: true, required: false
-    private _feedbackUrl?: string;
+    private _feedbackUrl?: string | undefined; 
     public get feedbackUrl() {
       return this.getStringAttribute('feedback_url');
     }
-    public set feedbackUrl(value: string) {
+    public set feedbackUrl(value: string | undefined) {
       this._feedbackUrl = value;
     }
     public resetFeedbackUrl() {
@@ -1227,7 +1500,7 @@ export namespace AppStream {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1240,11 +1513,11 @@ export namespace AppStream {
     }
 
     // redirect_url - computed: true, optional: true, required: false
-    private _redirectUrl?: string;
+    private _redirectUrl?: string | undefined; 
     public get redirectUrl() {
       return this.getStringAttribute('redirect_url');
     }
-    public set redirectUrl(value: string) {
+    public set redirectUrl(value: string | undefined) {
       this._redirectUrl = value;
     }
     public resetRedirectUrl() {
@@ -1256,11 +1529,12 @@ export namespace AppStream {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1272,11 +1546,12 @@ export namespace AppStream {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1288,11 +1563,12 @@ export namespace AppStream {
     }
 
     // access_endpoints - computed: false, optional: true, required: false
-    private _accessEndpoints?: AppstreamStackAccessEndpoints[];
+    private _accessEndpoints?: AppstreamStackAccessEndpoints[] | undefined; 
     public get accessEndpoints() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('access_endpoints') as any;
     }
-    public set accessEndpoints(value: AppstreamStackAccessEndpoints[] ) {
+    public set accessEndpoints(value: AppstreamStackAccessEndpoints[] | undefined) {
       this._accessEndpoints = value;
     }
     public resetAccessEndpoints() {
@@ -1304,11 +1580,12 @@ export namespace AppStream {
     }
 
     // application_settings - computed: false, optional: true, required: false
-    private _applicationSettings?: AppstreamStackApplicationSettings[];
+    private _applicationSettings?: AppstreamStackApplicationSettings | undefined; 
+    private __applicationSettingsOutput = new AppstreamStackApplicationSettingsOutputReference(this as any, "application_settings", true);
     public get applicationSettings() {
-      return this.interpolationForAttribute('application_settings') as any;
+      return this.__applicationSettingsOutput;
     }
-    public set applicationSettings(value: AppstreamStackApplicationSettings[] ) {
+    public putApplicationSettings(value: AppstreamStackApplicationSettings | undefined) {
       this._applicationSettings = value;
     }
     public resetApplicationSettings() {
@@ -1320,11 +1597,12 @@ export namespace AppStream {
     }
 
     // storage_connectors - computed: false, optional: true, required: false
-    private _storageConnectors?: AppstreamStackStorageConnectors[];
+    private _storageConnectors?: AppstreamStackStorageConnectors[] | undefined; 
     public get storageConnectors() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('storage_connectors') as any;
     }
-    public set storageConnectors(value: AppstreamStackStorageConnectors[] ) {
+    public set storageConnectors(value: AppstreamStackStorageConnectors[] | undefined) {
       this._storageConnectors = value;
     }
     public resetStorageConnectors() {
@@ -1336,11 +1614,12 @@ export namespace AppStream {
     }
 
     // user_settings - computed: false, optional: true, required: false
-    private _userSettings?: AppstreamStackUserSettings[];
+    private _userSettings?: AppstreamStackUserSettings[] | undefined; 
     public get userSettings() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('user_settings') as any;
     }
-    public set userSettings(value: AppstreamStackUserSettings[] ) {
+    public set userSettings(value: AppstreamStackUserSettings[] | undefined) {
       this._userSettings = value;
     }
     public resetUserSettings() {
@@ -1366,7 +1645,7 @@ export namespace AppStream {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         access_endpoints: cdktf.listMapper(appstreamStackAccessEndpointsToTerraform)(this._accessEndpoints),
-        application_settings: cdktf.listMapper(appstreamStackApplicationSettingsToTerraform)(this._applicationSettings),
+        application_settings: appstreamStackApplicationSettingsToTerraform(this._applicationSettings),
         storage_connectors: cdktf.listMapper(appstreamStackStorageConnectorsToTerraform)(this._storageConnectors),
         user_settings: cdktf.listMapper(appstreamStackUserSettingsToTerraform)(this._userSettings),
       };

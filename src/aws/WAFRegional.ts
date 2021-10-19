@@ -30,14 +30,56 @@ export namespace WAFRegional {
     readonly type: string;
   }
 
-  function wafregionalByteMatchSetByteMatchTuplesFieldToMatchToTerraform(struct?: WafregionalByteMatchSetByteMatchTuplesFieldToMatch): any {
+  function wafregionalByteMatchSetByteMatchTuplesFieldToMatchToTerraform(struct?: WafregionalByteMatchSetByteMatchTuplesFieldToMatchOutputReference | WafregionalByteMatchSetByteMatchTuplesFieldToMatch): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       data: cdktf.stringToTerraform(struct!.data),
       type: cdktf.stringToTerraform(struct!.type),
     }
   }
 
+  export class WafregionalByteMatchSetByteMatchTuplesFieldToMatchOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // data - computed: false, optional: true, required: false
+    private _data?: string | undefined; 
+    public get data() {
+      return this.getStringAttribute('data');
+    }
+    public set data(value: string | undefined) {
+      this._data = value;
+    }
+    public resetData() {
+      this._data = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get dataInput() {
+      return this._data
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
   export interface WafregionalByteMatchSetByteMatchTuples {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_byte_match_set.html#positional_constraint WafregionalByteMatchSet#positional_constraint}
@@ -56,16 +98,19 @@ export namespace WAFRegional {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_byte_match_set.html#field_to_match WafregionalByteMatchSet#field_to_match}
     */
-    readonly fieldToMatch: WafregionalByteMatchSetByteMatchTuplesFieldToMatch[];
+    readonly fieldToMatch: WafregionalByteMatchSetByteMatchTuplesFieldToMatch;
   }
 
   function wafregionalByteMatchSetByteMatchTuplesToTerraform(struct?: WafregionalByteMatchSetByteMatchTuples): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       positional_constraint: cdktf.stringToTerraform(struct!.positionalConstraint),
       target_string: cdktf.stringToTerraform(struct!.targetString),
       text_transformation: cdktf.stringToTerraform(struct!.textTransformation),
-      field_to_match: cdktf.listMapper(wafregionalByteMatchSetByteMatchTuplesFieldToMatchToTerraform)(struct!.fieldToMatch),
+      field_to_match: wafregionalByteMatchSetByteMatchTuplesFieldToMatchToTerraform(struct!.fieldToMatch),
     }
   }
 
@@ -116,7 +161,7 @@ export namespace WAFRegional {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -129,11 +174,12 @@ export namespace WAFRegional {
     }
 
     // byte_match_tuples - computed: false, optional: true, required: false
-    private _byteMatchTuples?: WafregionalByteMatchSetByteMatchTuples[];
+    private _byteMatchTuples?: WafregionalByteMatchSetByteMatchTuples[] | undefined; 
     public get byteMatchTuples() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('byte_match_tuples') as any;
     }
-    public set byteMatchTuples(value: WafregionalByteMatchSetByteMatchTuples[] ) {
+    public set byteMatchTuples(value: WafregionalByteMatchSetByteMatchTuples[] | undefined) {
       this._byteMatchTuples = value;
     }
     public resetByteMatchTuples() {
@@ -180,6 +226,9 @@ export namespace WAFRegional {
 
   function wafregionalGeoMatchSetGeoMatchConstraintToTerraform(struct?: WafregionalGeoMatchSetGeoMatchConstraint): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       type: cdktf.stringToTerraform(struct!.type),
       value: cdktf.stringToTerraform(struct!.value),
@@ -233,7 +282,7 @@ export namespace WAFRegional {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -246,11 +295,12 @@ export namespace WAFRegional {
     }
 
     // geo_match_constraint - computed: false, optional: true, required: false
-    private _geoMatchConstraint?: WafregionalGeoMatchSetGeoMatchConstraint[];
+    private _geoMatchConstraint?: WafregionalGeoMatchSetGeoMatchConstraint[] | undefined; 
     public get geoMatchConstraint() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('geo_match_constraint') as any;
     }
-    public set geoMatchConstraint(value: WafregionalGeoMatchSetGeoMatchConstraint[] ) {
+    public set geoMatchConstraint(value: WafregionalGeoMatchSetGeoMatchConstraint[] | undefined) {
       this._geoMatchConstraint = value;
     }
     public resetGeoMatchConstraint() {
@@ -297,6 +347,9 @@ export namespace WAFRegional {
 
   function wafregionalIpsetIpSetDescriptorToTerraform(struct?: WafregionalIpsetIpSetDescriptor): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       type: cdktf.stringToTerraform(struct!.type),
       value: cdktf.stringToTerraform(struct!.value),
@@ -355,7 +408,7 @@ export namespace WAFRegional {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -368,11 +421,12 @@ export namespace WAFRegional {
     }
 
     // ip_set_descriptor - computed: false, optional: true, required: false
-    private _ipSetDescriptor?: WafregionalIpsetIpSetDescriptor[];
+    private _ipSetDescriptor?: WafregionalIpsetIpSetDescriptor[] | undefined; 
     public get ipSetDescriptor() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ip_set_descriptor') as any;
     }
-    public set ipSetDescriptor(value: WafregionalIpsetIpSetDescriptor[] ) {
+    public set ipSetDescriptor(value: WafregionalIpsetIpSetDescriptor[] | undefined) {
       this._ipSetDescriptor = value;
     }
     public resetIpSetDescriptor() {
@@ -443,6 +497,9 @@ export namespace WAFRegional {
 
   function wafregionalRateBasedRulePredicateToTerraform(struct?: WafregionalRateBasedRulePredicate): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       data_id: cdktf.stringToTerraform(struct!.dataId),
       negated: cdktf.booleanToTerraform(struct!.negated),
@@ -507,7 +564,7 @@ export namespace WAFRegional {
     }
 
     // metric_name - computed: false, optional: false, required: true
-    private _metricName: string;
+    private _metricName?: string; 
     public get metricName() {
       return this.getStringAttribute('metric_name');
     }
@@ -520,7 +577,7 @@ export namespace WAFRegional {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -533,7 +590,7 @@ export namespace WAFRegional {
     }
 
     // rate_key - computed: false, optional: false, required: true
-    private _rateKey: string;
+    private _rateKey?: string; 
     public get rateKey() {
       return this.getStringAttribute('rate_key');
     }
@@ -546,7 +603,7 @@ export namespace WAFRegional {
     }
 
     // rate_limit - computed: false, optional: false, required: true
-    private _rateLimit: number;
+    private _rateLimit?: number; 
     public get rateLimit() {
       return this.getNumberAttribute('rate_limit');
     }
@@ -559,11 +616,12 @@ export namespace WAFRegional {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -575,11 +633,12 @@ export namespace WAFRegional {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -591,11 +650,12 @@ export namespace WAFRegional {
     }
 
     // predicate - computed: false, optional: true, required: false
-    private _predicate?: WafregionalRateBasedRulePredicate[];
+    private _predicate?: WafregionalRateBasedRulePredicate[] | undefined; 
     public get predicate() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('predicate') as any;
     }
-    public set predicate(value: WafregionalRateBasedRulePredicate[] ) {
+    public set predicate(value: WafregionalRateBasedRulePredicate[] | undefined) {
       this._predicate = value;
     }
     public resetPredicate() {
@@ -645,14 +705,56 @@ export namespace WAFRegional {
     readonly type: string;
   }
 
-  function wafregionalRegexMatchSetRegexMatchTupleFieldToMatchToTerraform(struct?: WafregionalRegexMatchSetRegexMatchTupleFieldToMatch): any {
+  function wafregionalRegexMatchSetRegexMatchTupleFieldToMatchToTerraform(struct?: WafregionalRegexMatchSetRegexMatchTupleFieldToMatchOutputReference | WafregionalRegexMatchSetRegexMatchTupleFieldToMatch): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       data: cdktf.stringToTerraform(struct!.data),
       type: cdktf.stringToTerraform(struct!.type),
     }
   }
 
+  export class WafregionalRegexMatchSetRegexMatchTupleFieldToMatchOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // data - computed: false, optional: true, required: false
+    private _data?: string | undefined; 
+    public get data() {
+      return this.getStringAttribute('data');
+    }
+    public set data(value: string | undefined) {
+      this._data = value;
+    }
+    public resetData() {
+      this._data = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get dataInput() {
+      return this._data
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
   export interface WafregionalRegexMatchSetRegexMatchTuple {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_regex_match_set.html#regex_pattern_set_id WafregionalRegexMatchSet#regex_pattern_set_id}
@@ -667,15 +769,18 @@ export namespace WAFRegional {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_regex_match_set.html#field_to_match WafregionalRegexMatchSet#field_to_match}
     */
-    readonly fieldToMatch: WafregionalRegexMatchSetRegexMatchTupleFieldToMatch[];
+    readonly fieldToMatch: WafregionalRegexMatchSetRegexMatchTupleFieldToMatch;
   }
 
   function wafregionalRegexMatchSetRegexMatchTupleToTerraform(struct?: WafregionalRegexMatchSetRegexMatchTuple): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       regex_pattern_set_id: cdktf.stringToTerraform(struct!.regexPatternSetId),
       text_transformation: cdktf.stringToTerraform(struct!.textTransformation),
-      field_to_match: cdktf.listMapper(wafregionalRegexMatchSetRegexMatchTupleFieldToMatchToTerraform)(struct!.fieldToMatch),
+      field_to_match: wafregionalRegexMatchSetRegexMatchTupleFieldToMatchToTerraform(struct!.fieldToMatch),
     }
   }
 
@@ -726,7 +831,7 @@ export namespace WAFRegional {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -739,11 +844,12 @@ export namespace WAFRegional {
     }
 
     // regex_match_tuple - computed: false, optional: true, required: false
-    private _regexMatchTuple?: WafregionalRegexMatchSetRegexMatchTuple[];
+    private _regexMatchTuple?: WafregionalRegexMatchSetRegexMatchTuple[] | undefined; 
     public get regexMatchTuple() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('regex_match_tuple') as any;
     }
-    public set regexMatchTuple(value: WafregionalRegexMatchSetRegexMatchTuple[] ) {
+    public set regexMatchTuple(value: WafregionalRegexMatchSetRegexMatchTuple[] | undefined) {
       this._regexMatchTuple = value;
     }
     public resetRegexMatchTuple() {
@@ -822,7 +928,7 @@ export namespace WAFRegional {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -835,11 +941,11 @@ export namespace WAFRegional {
     }
 
     // regex_pattern_strings - computed: false, optional: true, required: false
-    private _regexPatternStrings?: string[];
+    private _regexPatternStrings?: string[] | undefined; 
     public get regexPatternStrings() {
       return this.getListAttribute('regex_pattern_strings');
     }
-    public set regexPatternStrings(value: string[] ) {
+    public set regexPatternStrings(value: string[] | undefined) {
       this._regexPatternStrings = value;
     }
     public resetRegexPatternStrings() {
@@ -902,6 +1008,9 @@ export namespace WAFRegional {
 
   function wafregionalRulePredicateToTerraform(struct?: WafregionalRulePredicate): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       data_id: cdktf.stringToTerraform(struct!.dataId),
       negated: cdktf.booleanToTerraform(struct!.negated),
@@ -964,7 +1073,7 @@ export namespace WAFRegional {
     }
 
     // metric_name - computed: false, optional: false, required: true
-    private _metricName: string;
+    private _metricName?: string; 
     public get metricName() {
       return this.getStringAttribute('metric_name');
     }
@@ -977,7 +1086,7 @@ export namespace WAFRegional {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -990,11 +1099,12 @@ export namespace WAFRegional {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1006,11 +1116,12 @@ export namespace WAFRegional {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1022,11 +1133,12 @@ export namespace WAFRegional {
     }
 
     // predicate - computed: false, optional: true, required: false
-    private _predicate?: WafregionalRulePredicate[];
+    private _predicate?: WafregionalRulePredicate[] | undefined; 
     public get predicate() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('predicate') as any;
     }
-    public set predicate(value: WafregionalRulePredicate[] ) {
+    public set predicate(value: WafregionalRulePredicate[] | undefined) {
       this._predicate = value;
     }
     public resetPredicate() {
@@ -1082,13 +1194,39 @@ export namespace WAFRegional {
     readonly type: string;
   }
 
-  function wafregionalRuleGroupActivatedRuleActionToTerraform(struct?: WafregionalRuleGroupActivatedRuleAction): any {
+  function wafregionalRuleGroupActivatedRuleActionToTerraform(struct?: WafregionalRuleGroupActivatedRuleActionOutputReference | WafregionalRuleGroupActivatedRuleAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       type: cdktf.stringToTerraform(struct!.type),
     }
   }
 
+  export class WafregionalRuleGroupActivatedRuleActionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
   export interface WafregionalRuleGroupActivatedRule {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_rule_group.html#priority WafregionalRuleGroup#priority}
@@ -1107,16 +1245,19 @@ export namespace WAFRegional {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_rule_group.html#action WafregionalRuleGroup#action}
     */
-    readonly action: WafregionalRuleGroupActivatedRuleAction[];
+    readonly action: WafregionalRuleGroupActivatedRuleAction;
   }
 
   function wafregionalRuleGroupActivatedRuleToTerraform(struct?: WafregionalRuleGroupActivatedRule): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       priority: cdktf.numberToTerraform(struct!.priority),
       rule_id: cdktf.stringToTerraform(struct!.ruleId),
       type: cdktf.stringToTerraform(struct!.type),
-      action: cdktf.listMapper(wafregionalRuleGroupActivatedRuleActionToTerraform)(struct!.action),
+      action: wafregionalRuleGroupActivatedRuleActionToTerraform(struct!.action),
     }
   }
 
@@ -1175,7 +1316,7 @@ export namespace WAFRegional {
     }
 
     // metric_name - computed: false, optional: false, required: true
-    private _metricName: string;
+    private _metricName?: string; 
     public get metricName() {
       return this.getStringAttribute('metric_name');
     }
@@ -1188,7 +1329,7 @@ export namespace WAFRegional {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1201,11 +1342,12 @@ export namespace WAFRegional {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1217,11 +1359,12 @@ export namespace WAFRegional {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1233,11 +1376,12 @@ export namespace WAFRegional {
     }
 
     // activated_rule - computed: false, optional: true, required: false
-    private _activatedRule?: WafregionalRuleGroupActivatedRule[];
+    private _activatedRule?: WafregionalRuleGroupActivatedRule[] | undefined; 
     public get activatedRule() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('activated_rule') as any;
     }
-    public set activatedRule(value: WafregionalRuleGroupActivatedRule[] ) {
+    public set activatedRule(value: WafregionalRuleGroupActivatedRule[] | undefined) {
       this._activatedRule = value;
     }
     public resetActivatedRule() {
@@ -1285,14 +1429,56 @@ export namespace WAFRegional {
     readonly type: string;
   }
 
-  function wafregionalSizeConstraintSetSizeConstraintsFieldToMatchToTerraform(struct?: WafregionalSizeConstraintSetSizeConstraintsFieldToMatch): any {
+  function wafregionalSizeConstraintSetSizeConstraintsFieldToMatchToTerraform(struct?: WafregionalSizeConstraintSetSizeConstraintsFieldToMatchOutputReference | WafregionalSizeConstraintSetSizeConstraintsFieldToMatch): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       data: cdktf.stringToTerraform(struct!.data),
       type: cdktf.stringToTerraform(struct!.type),
     }
   }
 
+  export class WafregionalSizeConstraintSetSizeConstraintsFieldToMatchOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // data - computed: false, optional: true, required: false
+    private _data?: string | undefined; 
+    public get data() {
+      return this.getStringAttribute('data');
+    }
+    public set data(value: string | undefined) {
+      this._data = value;
+    }
+    public resetData() {
+      this._data = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get dataInput() {
+      return this._data
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
   export interface WafregionalSizeConstraintSetSizeConstraints {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_size_constraint_set.html#comparison_operator WafregionalSizeConstraintSet#comparison_operator}
@@ -1311,16 +1497,19 @@ export namespace WAFRegional {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_size_constraint_set.html#field_to_match WafregionalSizeConstraintSet#field_to_match}
     */
-    readonly fieldToMatch: WafregionalSizeConstraintSetSizeConstraintsFieldToMatch[];
+    readonly fieldToMatch: WafregionalSizeConstraintSetSizeConstraintsFieldToMatch;
   }
 
   function wafregionalSizeConstraintSetSizeConstraintsToTerraform(struct?: WafregionalSizeConstraintSetSizeConstraints): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison_operator: cdktf.stringToTerraform(struct!.comparisonOperator),
       size: cdktf.numberToTerraform(struct!.size),
       text_transformation: cdktf.stringToTerraform(struct!.textTransformation),
-      field_to_match: cdktf.listMapper(wafregionalSizeConstraintSetSizeConstraintsFieldToMatchToTerraform)(struct!.fieldToMatch),
+      field_to_match: wafregionalSizeConstraintSetSizeConstraintsFieldToMatchToTerraform(struct!.fieldToMatch),
     }
   }
 
@@ -1376,7 +1565,7 @@ export namespace WAFRegional {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1389,11 +1578,12 @@ export namespace WAFRegional {
     }
 
     // size_constraints - computed: false, optional: true, required: false
-    private _sizeConstraints?: WafregionalSizeConstraintSetSizeConstraints[];
+    private _sizeConstraints?: WafregionalSizeConstraintSetSizeConstraints[] | undefined; 
     public get sizeConstraints() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('size_constraints') as any;
     }
-    public set sizeConstraints(value: WafregionalSizeConstraintSetSizeConstraints[] ) {
+    public set sizeConstraints(value: WafregionalSizeConstraintSetSizeConstraints[] | undefined) {
       this._sizeConstraints = value;
     }
     public resetSizeConstraints() {
@@ -1438,14 +1628,56 @@ export namespace WAFRegional {
     readonly type: string;
   }
 
-  function wafregionalSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchToTerraform(struct?: WafregionalSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatch): any {
+  function wafregionalSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchToTerraform(struct?: WafregionalSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchOutputReference | WafregionalSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatch): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       data: cdktf.stringToTerraform(struct!.data),
       type: cdktf.stringToTerraform(struct!.type),
     }
   }
 
+  export class WafregionalSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // data - computed: false, optional: true, required: false
+    private _data?: string | undefined; 
+    public get data() {
+      return this.getStringAttribute('data');
+    }
+    public set data(value: string | undefined) {
+      this._data = value;
+    }
+    public resetData() {
+      this._data = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get dataInput() {
+      return this._data
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
   export interface WafregionalSqlInjectionMatchSetSqlInjectionMatchTuple {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_sql_injection_match_set.html#text_transformation WafregionalSqlInjectionMatchSet#text_transformation}
@@ -1456,14 +1688,17 @@ export namespace WAFRegional {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_sql_injection_match_set.html#field_to_match WafregionalSqlInjectionMatchSet#field_to_match}
     */
-    readonly fieldToMatch: WafregionalSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatch[];
+    readonly fieldToMatch: WafregionalSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatch;
   }
 
   function wafregionalSqlInjectionMatchSetSqlInjectionMatchTupleToTerraform(struct?: WafregionalSqlInjectionMatchSetSqlInjectionMatchTuple): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       text_transformation: cdktf.stringToTerraform(struct!.textTransformation),
-      field_to_match: cdktf.listMapper(wafregionalSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchToTerraform)(struct!.fieldToMatch),
+      field_to_match: wafregionalSqlInjectionMatchSetSqlInjectionMatchTupleFieldToMatchToTerraform(struct!.fieldToMatch),
     }
   }
 
@@ -1514,7 +1749,7 @@ export namespace WAFRegional {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1527,11 +1762,12 @@ export namespace WAFRegional {
     }
 
     // sql_injection_match_tuple - computed: false, optional: true, required: false
-    private _sqlInjectionMatchTuple?: WafregionalSqlInjectionMatchSetSqlInjectionMatchTuple[];
+    private _sqlInjectionMatchTuple?: WafregionalSqlInjectionMatchSetSqlInjectionMatchTuple[] | undefined; 
     public get sqlInjectionMatchTuple() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('sql_injection_match_tuple') as any;
     }
-    public set sqlInjectionMatchTuple(value: WafregionalSqlInjectionMatchSetSqlInjectionMatchTuple[] ) {
+    public set sqlInjectionMatchTuple(value: WafregionalSqlInjectionMatchSetSqlInjectionMatchTuple[] | undefined) {
       this._sqlInjectionMatchTuple = value;
     }
     public resetSqlInjectionMatchTuple() {
@@ -1575,13 +1811,13 @@ export namespace WAFRegional {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_web_acl.html#default_action WafregionalWebAcl#default_action}
     */
-    readonly defaultAction: WafregionalWebAclDefaultAction[];
+    readonly defaultAction: WafregionalWebAclDefaultAction;
     /**
     * logging_configuration block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_web_acl.html#logging_configuration WafregionalWebAcl#logging_configuration}
     */
-    readonly loggingConfiguration?: WafregionalWebAclLoggingConfiguration[];
+    readonly loggingConfiguration?: WafregionalWebAclLoggingConfiguration;
     /**
     * rule block
     * 
@@ -1596,13 +1832,39 @@ export namespace WAFRegional {
     readonly type: string;
   }
 
-  function wafregionalWebAclDefaultActionToTerraform(struct?: WafregionalWebAclDefaultAction): any {
+  function wafregionalWebAclDefaultActionToTerraform(struct?: WafregionalWebAclDefaultActionOutputReference | WafregionalWebAclDefaultAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       type: cdktf.stringToTerraform(struct!.type),
     }
   }
 
+  export class WafregionalWebAclDefaultActionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
   export interface WafregionalWebAclLoggingConfigurationRedactedFieldsFieldToMatch {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_web_acl.html#data WafregionalWebAcl#data}
@@ -1616,6 +1878,9 @@ export namespace WAFRegional {
 
   function wafregionalWebAclLoggingConfigurationRedactedFieldsFieldToMatchToTerraform(struct?: WafregionalWebAclLoggingConfigurationRedactedFieldsFieldToMatch): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       data: cdktf.stringToTerraform(struct!.data),
       type: cdktf.stringToTerraform(struct!.type),
@@ -1631,13 +1896,40 @@ export namespace WAFRegional {
     readonly fieldToMatch: WafregionalWebAclLoggingConfigurationRedactedFieldsFieldToMatch[];
   }
 
-  function wafregionalWebAclLoggingConfigurationRedactedFieldsToTerraform(struct?: WafregionalWebAclLoggingConfigurationRedactedFields): any {
+  function wafregionalWebAclLoggingConfigurationRedactedFieldsToTerraform(struct?: WafregionalWebAclLoggingConfigurationRedactedFieldsOutputReference | WafregionalWebAclLoggingConfigurationRedactedFields): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       field_to_match: cdktf.listMapper(wafregionalWebAclLoggingConfigurationRedactedFieldsFieldToMatchToTerraform)(struct!.fieldToMatch),
     }
   }
 
+  export class WafregionalWebAclLoggingConfigurationRedactedFieldsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // field_to_match - computed: false, optional: false, required: true
+    private _fieldToMatch?: WafregionalWebAclLoggingConfigurationRedactedFieldsFieldToMatch[]; 
+    public get fieldToMatch() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('field_to_match') as any;
+    }
+    public set fieldToMatch(value: WafregionalWebAclLoggingConfigurationRedactedFieldsFieldToMatch[]) {
+      this._fieldToMatch = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get fieldToMatchInput() {
+      return this._fieldToMatch
+    }
+  }
   export interface WafregionalWebAclLoggingConfiguration {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_web_acl.html#log_destination WafregionalWebAcl#log_destination}
@@ -1648,17 +1940,60 @@ export namespace WAFRegional {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_web_acl.html#redacted_fields WafregionalWebAcl#redacted_fields}
     */
-    readonly redactedFields?: WafregionalWebAclLoggingConfigurationRedactedFields[];
+    readonly redactedFields?: WafregionalWebAclLoggingConfigurationRedactedFields;
   }
 
-  function wafregionalWebAclLoggingConfigurationToTerraform(struct?: WafregionalWebAclLoggingConfiguration): any {
+  function wafregionalWebAclLoggingConfigurationToTerraform(struct?: WafregionalWebAclLoggingConfigurationOutputReference | WafregionalWebAclLoggingConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       log_destination: cdktf.stringToTerraform(struct!.logDestination),
-      redacted_fields: cdktf.listMapper(wafregionalWebAclLoggingConfigurationRedactedFieldsToTerraform)(struct!.redactedFields),
+      redacted_fields: wafregionalWebAclLoggingConfigurationRedactedFieldsToTerraform(struct!.redactedFields),
     }
   }
 
+  export class WafregionalWebAclLoggingConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // log_destination - computed: false, optional: false, required: true
+    private _logDestination?: string; 
+    public get logDestination() {
+      return this.getStringAttribute('log_destination');
+    }
+    public set logDestination(value: string) {
+      this._logDestination = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get logDestinationInput() {
+      return this._logDestination
+    }
+
+    // redacted_fields - computed: false, optional: true, required: false
+    private _redactedFields?: WafregionalWebAclLoggingConfigurationRedactedFields | undefined; 
+    private __redactedFieldsOutput = new WafregionalWebAclLoggingConfigurationRedactedFieldsOutputReference(this as any, "redacted_fields", true);
+    public get redactedFields() {
+      return this.__redactedFieldsOutput;
+    }
+    public putRedactedFields(value: WafregionalWebAclLoggingConfigurationRedactedFields | undefined) {
+      this._redactedFields = value;
+    }
+    public resetRedactedFields() {
+      this._redactedFields = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get redactedFieldsInput() {
+      return this._redactedFields
+    }
+  }
   export interface WafregionalWebAclRuleAction {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_web_acl.html#type WafregionalWebAcl#type}
@@ -1666,13 +2001,39 @@ export namespace WAFRegional {
     readonly type: string;
   }
 
-  function wafregionalWebAclRuleActionToTerraform(struct?: WafregionalWebAclRuleAction): any {
+  function wafregionalWebAclRuleActionToTerraform(struct?: WafregionalWebAclRuleActionOutputReference | WafregionalWebAclRuleAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       type: cdktf.stringToTerraform(struct!.type),
     }
   }
 
+  export class WafregionalWebAclRuleActionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
   export interface WafregionalWebAclRuleOverrideAction {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_web_acl.html#type WafregionalWebAcl#type}
@@ -1680,13 +2041,39 @@ export namespace WAFRegional {
     readonly type: string;
   }
 
-  function wafregionalWebAclRuleOverrideActionToTerraform(struct?: WafregionalWebAclRuleOverrideAction): any {
+  function wafregionalWebAclRuleOverrideActionToTerraform(struct?: WafregionalWebAclRuleOverrideActionOutputReference | WafregionalWebAclRuleOverrideAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       type: cdktf.stringToTerraform(struct!.type),
     }
   }
 
+  export class WafregionalWebAclRuleOverrideActionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
   export interface WafregionalWebAclRule {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_web_acl.html#priority WafregionalWebAcl#priority}
@@ -1705,23 +2092,26 @@ export namespace WAFRegional {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_web_acl.html#action WafregionalWebAcl#action}
     */
-    readonly action?: WafregionalWebAclRuleAction[];
+    readonly action?: WafregionalWebAclRuleAction;
     /**
     * override_action block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_web_acl.html#override_action WafregionalWebAcl#override_action}
     */
-    readonly overrideAction?: WafregionalWebAclRuleOverrideAction[];
+    readonly overrideAction?: WafregionalWebAclRuleOverrideAction;
   }
 
   function wafregionalWebAclRuleToTerraform(struct?: WafregionalWebAclRule): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       priority: cdktf.numberToTerraform(struct!.priority),
       rule_id: cdktf.stringToTerraform(struct!.ruleId),
       type: cdktf.stringToTerraform(struct!.type),
-      action: cdktf.listMapper(wafregionalWebAclRuleActionToTerraform)(struct!.action),
-      override_action: cdktf.listMapper(wafregionalWebAclRuleOverrideActionToTerraform)(struct!.overrideAction),
+      action: wafregionalWebAclRuleActionToTerraform(struct!.action),
+      override_action: wafregionalWebAclRuleOverrideActionToTerraform(struct!.overrideAction),
     }
   }
 
@@ -1782,7 +2172,7 @@ export namespace WAFRegional {
     }
 
     // metric_name - computed: false, optional: false, required: true
-    private _metricName: string;
+    private _metricName?: string; 
     public get metricName() {
       return this.getStringAttribute('metric_name');
     }
@@ -1795,7 +2185,7 @@ export namespace WAFRegional {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1808,11 +2198,12 @@ export namespace WAFRegional {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1824,11 +2215,12 @@ export namespace WAFRegional {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1840,11 +2232,12 @@ export namespace WAFRegional {
     }
 
     // default_action - computed: false, optional: false, required: true
-    private _defaultAction: WafregionalWebAclDefaultAction[];
+    private _defaultAction?: WafregionalWebAclDefaultAction; 
+    private __defaultActionOutput = new WafregionalWebAclDefaultActionOutputReference(this as any, "default_action", true);
     public get defaultAction() {
-      return this.interpolationForAttribute('default_action') as any;
+      return this.__defaultActionOutput;
     }
-    public set defaultAction(value: WafregionalWebAclDefaultAction[]) {
+    public putDefaultAction(value: WafregionalWebAclDefaultAction) {
       this._defaultAction = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -1853,11 +2246,12 @@ export namespace WAFRegional {
     }
 
     // logging_configuration - computed: false, optional: true, required: false
-    private _loggingConfiguration?: WafregionalWebAclLoggingConfiguration[];
+    private _loggingConfiguration?: WafregionalWebAclLoggingConfiguration | undefined; 
+    private __loggingConfigurationOutput = new WafregionalWebAclLoggingConfigurationOutputReference(this as any, "logging_configuration", true);
     public get loggingConfiguration() {
-      return this.interpolationForAttribute('logging_configuration') as any;
+      return this.__loggingConfigurationOutput;
     }
-    public set loggingConfiguration(value: WafregionalWebAclLoggingConfiguration[] ) {
+    public putLoggingConfiguration(value: WafregionalWebAclLoggingConfiguration | undefined) {
       this._loggingConfiguration = value;
     }
     public resetLoggingConfiguration() {
@@ -1869,11 +2263,12 @@ export namespace WAFRegional {
     }
 
     // rule - computed: false, optional: true, required: false
-    private _rule?: WafregionalWebAclRule[];
+    private _rule?: WafregionalWebAclRule[] | undefined; 
     public get rule() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('rule') as any;
     }
-    public set rule(value: WafregionalWebAclRule[] ) {
+    public set rule(value: WafregionalWebAclRule[] | undefined) {
       this._rule = value;
     }
     public resetRule() {
@@ -1894,8 +2289,8 @@ export namespace WAFRegional {
         name: cdktf.stringToTerraform(this._name),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        default_action: cdktf.listMapper(wafregionalWebAclDefaultActionToTerraform)(this._defaultAction),
-        logging_configuration: cdktf.listMapper(wafregionalWebAclLoggingConfigurationToTerraform)(this._loggingConfiguration),
+        default_action: wafregionalWebAclDefaultActionToTerraform(this._defaultAction),
+        logging_configuration: wafregionalWebAclLoggingConfigurationToTerraform(this._loggingConfiguration),
         rule: cdktf.listMapper(wafregionalWebAclRuleToTerraform)(this._rule),
       };
     }
@@ -1957,7 +2352,7 @@ export namespace WAFRegional {
     }
 
     // resource_arn - computed: false, optional: false, required: true
-    private _resourceArn: string;
+    private _resourceArn?: string; 
     public get resourceArn() {
       return this.getStringAttribute('resource_arn');
     }
@@ -1970,7 +2365,7 @@ export namespace WAFRegional {
     }
 
     // web_acl_id - computed: false, optional: false, required: true
-    private _webAclId: string;
+    private _webAclId?: string; 
     public get webAclId() {
       return this.getStringAttribute('web_acl_id');
     }
@@ -2016,14 +2411,56 @@ export namespace WAFRegional {
     readonly type: string;
   }
 
-  function wafregionalXssMatchSetXssMatchTupleFieldToMatchToTerraform(struct?: WafregionalXssMatchSetXssMatchTupleFieldToMatch): any {
+  function wafregionalXssMatchSetXssMatchTupleFieldToMatchToTerraform(struct?: WafregionalXssMatchSetXssMatchTupleFieldToMatchOutputReference | WafregionalXssMatchSetXssMatchTupleFieldToMatch): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       data: cdktf.stringToTerraform(struct!.data),
       type: cdktf.stringToTerraform(struct!.type),
     }
   }
 
+  export class WafregionalXssMatchSetXssMatchTupleFieldToMatchOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // data - computed: false, optional: true, required: false
+    private _data?: string | undefined; 
+    public get data() {
+      return this.getStringAttribute('data');
+    }
+    public set data(value: string | undefined) {
+      this._data = value;
+    }
+    public resetData() {
+      this._data = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get dataInput() {
+      return this._data
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
   export interface WafregionalXssMatchSetXssMatchTuple {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_xss_match_set.html#text_transformation WafregionalXssMatchSet#text_transformation}
@@ -2034,14 +2471,17 @@ export namespace WAFRegional {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafregional_xss_match_set.html#field_to_match WafregionalXssMatchSet#field_to_match}
     */
-    readonly fieldToMatch: WafregionalXssMatchSetXssMatchTupleFieldToMatch[];
+    readonly fieldToMatch: WafregionalXssMatchSetXssMatchTupleFieldToMatch;
   }
 
   function wafregionalXssMatchSetXssMatchTupleToTerraform(struct?: WafregionalXssMatchSetXssMatchTuple): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       text_transformation: cdktf.stringToTerraform(struct!.textTransformation),
-      field_to_match: cdktf.listMapper(wafregionalXssMatchSetXssMatchTupleFieldToMatchToTerraform)(struct!.fieldToMatch),
+      field_to_match: wafregionalXssMatchSetXssMatchTupleFieldToMatchToTerraform(struct!.fieldToMatch),
     }
   }
 
@@ -2092,7 +2532,7 @@ export namespace WAFRegional {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2105,11 +2545,12 @@ export namespace WAFRegional {
     }
 
     // xss_match_tuple - computed: false, optional: true, required: false
-    private _xssMatchTuple?: WafregionalXssMatchSetXssMatchTuple[];
+    private _xssMatchTuple?: WafregionalXssMatchSetXssMatchTuple[] | undefined; 
     public get xssMatchTuple() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('xss_match_tuple') as any;
     }
-    public set xssMatchTuple(value: WafregionalXssMatchSetXssMatchTuple[] ) {
+    public set xssMatchTuple(value: WafregionalXssMatchSetXssMatchTuple[] | undefined) {
       this._xssMatchTuple = value;
     }
     public resetXssMatchTuple() {
@@ -2183,7 +2624,7 @@ export namespace WAFRegional {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2257,7 +2698,7 @@ export namespace WAFRegional {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2331,7 +2772,7 @@ export namespace WAFRegional {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2405,7 +2846,7 @@ export namespace WAFRegional {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }

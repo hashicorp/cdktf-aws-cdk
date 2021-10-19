@@ -38,13 +38,42 @@ export namespace RDS {
     readonly create?: string;
   }
 
-  function dbClusterSnapshotTimeoutsToTerraform(struct?: DbClusterSnapshotTimeouts): any {
+  function dbClusterSnapshotTimeoutsToTerraform(struct?: DbClusterSnapshotTimeoutsOutputReference | DbClusterSnapshotTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
     }
   }
 
+  export class DbClusterSnapshotTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/db_cluster_snapshot.html aws_db_cluster_snapshot}
@@ -100,7 +129,7 @@ export namespace RDS {
     }
 
     // db_cluster_identifier - computed: false, optional: false, required: true
-    private _dbClusterIdentifier: string;
+    private _dbClusterIdentifier?: string; 
     public get dbClusterIdentifier() {
       return this.getStringAttribute('db_cluster_identifier');
     }
@@ -118,7 +147,7 @@ export namespace RDS {
     }
 
     // db_cluster_snapshot_identifier - computed: false, optional: false, required: true
-    private _dbClusterSnapshotIdentifier: string;
+    private _dbClusterSnapshotIdentifier?: string; 
     public get dbClusterSnapshotIdentifier() {
       return this.getStringAttribute('db_cluster_snapshot_identifier');
     }
@@ -177,15 +206,16 @@ export namespace RDS {
 
     // storage_encrypted - computed: true, optional: false, required: false
     public get storageEncrypted() {
-      return this.getBooleanAttribute('storage_encrypted');
+      return this.getBooleanAttribute('storage_encrypted') as any;
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -197,11 +227,12 @@ export namespace RDS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -218,11 +249,12 @@ export namespace RDS {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DbClusterSnapshotTimeouts;
+    private _timeouts?: DbClusterSnapshotTimeouts | undefined; 
+    private __timeoutsOutput = new DbClusterSnapshotTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DbClusterSnapshotTimeouts ) {
+    public putTimeouts(value: DbClusterSnapshotTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -306,8 +338,11 @@ export namespace RDS {
     readonly update?: string;
   }
 
-  function dbEventSubscriptionTimeoutsToTerraform(struct?: DbEventSubscriptionTimeouts): any {
+  function dbEventSubscriptionTimeoutsToTerraform(struct?: DbEventSubscriptionTimeoutsOutputReference | DbEventSubscriptionTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -315,6 +350,64 @@ export namespace RDS {
     }
   }
 
+  export class DbEventSubscriptionTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/db_event_subscription.html aws_db_event_subscription}
@@ -375,11 +468,11 @@ export namespace RDS {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -391,11 +484,11 @@ export namespace RDS {
     }
 
     // event_categories - computed: false, optional: true, required: false
-    private _eventCategories?: string[];
+    private _eventCategories?: string[] | undefined; 
     public get eventCategories() {
       return this.getListAttribute('event_categories');
     }
-    public set eventCategories(value: string[] ) {
+    public set eventCategories(value: string[] | undefined) {
       this._eventCategories = value;
     }
     public resetEventCategories() {
@@ -412,11 +505,11 @@ export namespace RDS {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -428,11 +521,11 @@ export namespace RDS {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -444,7 +537,7 @@ export namespace RDS {
     }
 
     // sns_topic - computed: false, optional: false, required: true
-    private _snsTopic: string;
+    private _snsTopic?: string; 
     public get snsTopic() {
       return this.getStringAttribute('sns_topic');
     }
@@ -457,11 +550,11 @@ export namespace RDS {
     }
 
     // source_ids - computed: false, optional: true, required: false
-    private _sourceIds?: string[];
+    private _sourceIds?: string[] | undefined; 
     public get sourceIds() {
       return this.getListAttribute('source_ids');
     }
-    public set sourceIds(value: string[] ) {
+    public set sourceIds(value: string[] | undefined) {
       this._sourceIds = value;
     }
     public resetSourceIds() {
@@ -473,11 +566,11 @@ export namespace RDS {
     }
 
     // source_type - computed: false, optional: true, required: false
-    private _sourceType?: string;
+    private _sourceType?: string | undefined; 
     public get sourceType() {
       return this.getStringAttribute('source_type');
     }
-    public set sourceType(value: string ) {
+    public set sourceType(value: string | undefined) {
       this._sourceType = value;
     }
     public resetSourceType() {
@@ -489,11 +582,12 @@ export namespace RDS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -505,11 +599,12 @@ export namespace RDS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -521,11 +616,12 @@ export namespace RDS {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DbEventSubscriptionTimeouts;
+    private _timeouts?: DbEventSubscriptionTimeouts | undefined; 
+    private __timeoutsOutput = new DbEventSubscriptionTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DbEventSubscriptionTimeouts ) {
+    public putTimeouts(value: DbEventSubscriptionTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -777,13 +873,13 @@ export namespace RDS {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/db_instance.html#restore_to_point_in_time DbInstance#restore_to_point_in_time}
     */
-    readonly restoreToPointInTime?: DbInstanceRestoreToPointInTime[];
+    readonly restoreToPointInTime?: DbInstanceRestoreToPointInTime;
     /**
     * s3_import block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/db_instance.html#s3_import DbInstance#s3_import}
     */
-    readonly s3Import?: DbInstanceS3Import[];
+    readonly s3Import?: DbInstanceS3Import;
     /**
     * timeouts block
     * 
@@ -810,8 +906,11 @@ export namespace RDS {
     readonly useLatestRestorableTime?: boolean | cdktf.IResolvable;
   }
 
-  function dbInstanceRestoreToPointInTimeToTerraform(struct?: DbInstanceRestoreToPointInTime): any {
+  function dbInstanceRestoreToPointInTimeToTerraform(struct?: DbInstanceRestoreToPointInTimeOutputReference | DbInstanceRestoreToPointInTime): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       restore_time: cdktf.stringToTerraform(struct!.restoreTime),
       source_db_instance_identifier: cdktf.stringToTerraform(struct!.sourceDbInstanceIdentifier),
@@ -820,6 +919,80 @@ export namespace RDS {
     }
   }
 
+  export class DbInstanceRestoreToPointInTimeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // restore_time - computed: false, optional: true, required: false
+    private _restoreTime?: string | undefined; 
+    public get restoreTime() {
+      return this.getStringAttribute('restore_time');
+    }
+    public set restoreTime(value: string | undefined) {
+      this._restoreTime = value;
+    }
+    public resetRestoreTime() {
+      this._restoreTime = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get restoreTimeInput() {
+      return this._restoreTime
+    }
+
+    // source_db_instance_identifier - computed: false, optional: true, required: false
+    private _sourceDbInstanceIdentifier?: string | undefined; 
+    public get sourceDbInstanceIdentifier() {
+      return this.getStringAttribute('source_db_instance_identifier');
+    }
+    public set sourceDbInstanceIdentifier(value: string | undefined) {
+      this._sourceDbInstanceIdentifier = value;
+    }
+    public resetSourceDbInstanceIdentifier() {
+      this._sourceDbInstanceIdentifier = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sourceDbInstanceIdentifierInput() {
+      return this._sourceDbInstanceIdentifier
+    }
+
+    // source_dbi_resource_id - computed: false, optional: true, required: false
+    private _sourceDbiResourceId?: string | undefined; 
+    public get sourceDbiResourceId() {
+      return this.getStringAttribute('source_dbi_resource_id');
+    }
+    public set sourceDbiResourceId(value: string | undefined) {
+      this._sourceDbiResourceId = value;
+    }
+    public resetSourceDbiResourceId() {
+      this._sourceDbiResourceId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sourceDbiResourceIdInput() {
+      return this._sourceDbiResourceId
+    }
+
+    // use_latest_restorable_time - computed: false, optional: true, required: false
+    private _useLatestRestorableTime?: boolean | cdktf.IResolvable | undefined; 
+    public get useLatestRestorableTime() {
+      return this.getBooleanAttribute('use_latest_restorable_time') as any;
+    }
+    public set useLatestRestorableTime(value: boolean | cdktf.IResolvable | undefined) {
+      this._useLatestRestorableTime = value;
+    }
+    public resetUseLatestRestorableTime() {
+      this._useLatestRestorableTime = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get useLatestRestorableTimeInput() {
+      return this._useLatestRestorableTime
+    }
+  }
   export interface DbInstanceS3Import {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/db_instance.html#bucket_name DbInstance#bucket_name}
@@ -843,8 +1016,11 @@ export namespace RDS {
     readonly sourceEngineVersion: string;
   }
 
-  function dbInstanceS3ImportToTerraform(struct?: DbInstanceS3Import): any {
+  function dbInstanceS3ImportToTerraform(struct?: DbInstanceS3ImportOutputReference | DbInstanceS3Import): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bucket_name: cdktf.stringToTerraform(struct!.bucketName),
       bucket_prefix: cdktf.stringToTerraform(struct!.bucketPrefix),
@@ -854,6 +1030,84 @@ export namespace RDS {
     }
   }
 
+  export class DbInstanceS3ImportOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // bucket_name - computed: false, optional: false, required: true
+    private _bucketName?: string; 
+    public get bucketName() {
+      return this.getStringAttribute('bucket_name');
+    }
+    public set bucketName(value: string) {
+      this._bucketName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bucketNameInput() {
+      return this._bucketName
+    }
+
+    // bucket_prefix - computed: false, optional: true, required: false
+    private _bucketPrefix?: string | undefined; 
+    public get bucketPrefix() {
+      return this.getStringAttribute('bucket_prefix');
+    }
+    public set bucketPrefix(value: string | undefined) {
+      this._bucketPrefix = value;
+    }
+    public resetBucketPrefix() {
+      this._bucketPrefix = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bucketPrefixInput() {
+      return this._bucketPrefix
+    }
+
+    // ingestion_role - computed: false, optional: false, required: true
+    private _ingestionRole?: string; 
+    public get ingestionRole() {
+      return this.getStringAttribute('ingestion_role');
+    }
+    public set ingestionRole(value: string) {
+      this._ingestionRole = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get ingestionRoleInput() {
+      return this._ingestionRole
+    }
+
+    // source_engine - computed: false, optional: false, required: true
+    private _sourceEngine?: string; 
+    public get sourceEngine() {
+      return this.getStringAttribute('source_engine');
+    }
+    public set sourceEngine(value: string) {
+      this._sourceEngine = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sourceEngineInput() {
+      return this._sourceEngine
+    }
+
+    // source_engine_version - computed: false, optional: false, required: true
+    private _sourceEngineVersion?: string; 
+    public get sourceEngineVersion() {
+      return this.getStringAttribute('source_engine_version');
+    }
+    public set sourceEngineVersion(value: string) {
+      this._sourceEngineVersion = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sourceEngineVersionInput() {
+      return this._sourceEngineVersion
+    }
+  }
   export interface DbInstanceTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/db_instance.html#create DbInstance#create}
@@ -869,8 +1123,11 @@ export namespace RDS {
     readonly update?: string;
   }
 
-  function dbInstanceTimeoutsToTerraform(struct?: DbInstanceTimeouts): any {
+  function dbInstanceTimeoutsToTerraform(struct?: DbInstanceTimeoutsOutputReference | DbInstanceTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -878,6 +1135,64 @@ export namespace RDS {
     }
   }
 
+  export class DbInstanceTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/db_instance.html aws_db_instance}
@@ -980,11 +1295,11 @@ export namespace RDS {
     }
 
     // allocated_storage - computed: true, optional: true, required: false
-    private _allocatedStorage?: number;
+    private _allocatedStorage?: number | undefined; 
     public get allocatedStorage() {
       return this.getNumberAttribute('allocated_storage');
     }
-    public set allocatedStorage(value: number) {
+    public set allocatedStorage(value: number | undefined) {
       this._allocatedStorage = value;
     }
     public resetAllocatedStorage() {
@@ -996,11 +1311,11 @@ export namespace RDS {
     }
 
     // allow_major_version_upgrade - computed: false, optional: true, required: false
-    private _allowMajorVersionUpgrade?: boolean | cdktf.IResolvable;
+    private _allowMajorVersionUpgrade?: boolean | cdktf.IResolvable | undefined; 
     public get allowMajorVersionUpgrade() {
-      return this.getBooleanAttribute('allow_major_version_upgrade');
+      return this.getBooleanAttribute('allow_major_version_upgrade') as any;
     }
-    public set allowMajorVersionUpgrade(value: boolean | cdktf.IResolvable ) {
+    public set allowMajorVersionUpgrade(value: boolean | cdktf.IResolvable | undefined) {
       this._allowMajorVersionUpgrade = value;
     }
     public resetAllowMajorVersionUpgrade() {
@@ -1012,11 +1327,11 @@ export namespace RDS {
     }
 
     // apply_immediately - computed: true, optional: true, required: false
-    private _applyImmediately?: boolean | cdktf.IResolvable;
+    private _applyImmediately?: boolean | cdktf.IResolvable | undefined; 
     public get applyImmediately() {
-      return this.getBooleanAttribute('apply_immediately');
+      return this.getBooleanAttribute('apply_immediately') as any;
     }
-    public set applyImmediately(value: boolean | cdktf.IResolvable) {
+    public set applyImmediately(value: boolean | cdktf.IResolvable | undefined) {
       this._applyImmediately = value;
     }
     public resetApplyImmediately() {
@@ -1033,11 +1348,11 @@ export namespace RDS {
     }
 
     // auto_minor_version_upgrade - computed: false, optional: true, required: false
-    private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable;
+    private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable | undefined; 
     public get autoMinorVersionUpgrade() {
-      return this.getBooleanAttribute('auto_minor_version_upgrade');
+      return this.getBooleanAttribute('auto_minor_version_upgrade') as any;
     }
-    public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable ) {
+    public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable | undefined) {
       this._autoMinorVersionUpgrade = value;
     }
     public resetAutoMinorVersionUpgrade() {
@@ -1049,11 +1364,11 @@ export namespace RDS {
     }
 
     // availability_zone - computed: true, optional: true, required: false
-    private _availabilityZone?: string;
+    private _availabilityZone?: string | undefined; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
-    public set availabilityZone(value: string) {
+    public set availabilityZone(value: string | undefined) {
       this._availabilityZone = value;
     }
     public resetAvailabilityZone() {
@@ -1065,11 +1380,11 @@ export namespace RDS {
     }
 
     // backup_retention_period - computed: true, optional: true, required: false
-    private _backupRetentionPeriod?: number;
+    private _backupRetentionPeriod?: number | undefined; 
     public get backupRetentionPeriod() {
       return this.getNumberAttribute('backup_retention_period');
     }
-    public set backupRetentionPeriod(value: number) {
+    public set backupRetentionPeriod(value: number | undefined) {
       this._backupRetentionPeriod = value;
     }
     public resetBackupRetentionPeriod() {
@@ -1081,11 +1396,11 @@ export namespace RDS {
     }
 
     // backup_window - computed: true, optional: true, required: false
-    private _backupWindow?: string;
+    private _backupWindow?: string | undefined; 
     public get backupWindow() {
       return this.getStringAttribute('backup_window');
     }
-    public set backupWindow(value: string) {
+    public set backupWindow(value: string | undefined) {
       this._backupWindow = value;
     }
     public resetBackupWindow() {
@@ -1097,11 +1412,11 @@ export namespace RDS {
     }
 
     // ca_cert_identifier - computed: true, optional: true, required: false
-    private _caCertIdentifier?: string;
+    private _caCertIdentifier?: string | undefined; 
     public get caCertIdentifier() {
       return this.getStringAttribute('ca_cert_identifier');
     }
-    public set caCertIdentifier(value: string) {
+    public set caCertIdentifier(value: string | undefined) {
       this._caCertIdentifier = value;
     }
     public resetCaCertIdentifier() {
@@ -1113,11 +1428,11 @@ export namespace RDS {
     }
 
     // character_set_name - computed: true, optional: true, required: false
-    private _characterSetName?: string;
+    private _characterSetName?: string | undefined; 
     public get characterSetName() {
       return this.getStringAttribute('character_set_name');
     }
-    public set characterSetName(value: string) {
+    public set characterSetName(value: string | undefined) {
       this._characterSetName = value;
     }
     public resetCharacterSetName() {
@@ -1129,11 +1444,11 @@ export namespace RDS {
     }
 
     // copy_tags_to_snapshot - computed: false, optional: true, required: false
-    private _copyTagsToSnapshot?: boolean | cdktf.IResolvable;
+    private _copyTagsToSnapshot?: boolean | cdktf.IResolvable | undefined; 
     public get copyTagsToSnapshot() {
-      return this.getBooleanAttribute('copy_tags_to_snapshot');
+      return this.getBooleanAttribute('copy_tags_to_snapshot') as any;
     }
-    public set copyTagsToSnapshot(value: boolean | cdktf.IResolvable ) {
+    public set copyTagsToSnapshot(value: boolean | cdktf.IResolvable | undefined) {
       this._copyTagsToSnapshot = value;
     }
     public resetCopyTagsToSnapshot() {
@@ -1145,11 +1460,11 @@ export namespace RDS {
     }
 
     // customer_owned_ip_enabled - computed: false, optional: true, required: false
-    private _customerOwnedIpEnabled?: boolean | cdktf.IResolvable;
+    private _customerOwnedIpEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get customerOwnedIpEnabled() {
-      return this.getBooleanAttribute('customer_owned_ip_enabled');
+      return this.getBooleanAttribute('customer_owned_ip_enabled') as any;
     }
-    public set customerOwnedIpEnabled(value: boolean | cdktf.IResolvable ) {
+    public set customerOwnedIpEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._customerOwnedIpEnabled = value;
     }
     public resetCustomerOwnedIpEnabled() {
@@ -1161,11 +1476,11 @@ export namespace RDS {
     }
 
     // db_subnet_group_name - computed: true, optional: true, required: false
-    private _dbSubnetGroupName?: string;
+    private _dbSubnetGroupName?: string | undefined; 
     public get dbSubnetGroupName() {
       return this.getStringAttribute('db_subnet_group_name');
     }
-    public set dbSubnetGroupName(value: string) {
+    public set dbSubnetGroupName(value: string | undefined) {
       this._dbSubnetGroupName = value;
     }
     public resetDbSubnetGroupName() {
@@ -1177,11 +1492,11 @@ export namespace RDS {
     }
 
     // delete_automated_backups - computed: false, optional: true, required: false
-    private _deleteAutomatedBackups?: boolean | cdktf.IResolvable;
+    private _deleteAutomatedBackups?: boolean | cdktf.IResolvable | undefined; 
     public get deleteAutomatedBackups() {
-      return this.getBooleanAttribute('delete_automated_backups');
+      return this.getBooleanAttribute('delete_automated_backups') as any;
     }
-    public set deleteAutomatedBackups(value: boolean | cdktf.IResolvable ) {
+    public set deleteAutomatedBackups(value: boolean | cdktf.IResolvable | undefined) {
       this._deleteAutomatedBackups = value;
     }
     public resetDeleteAutomatedBackups() {
@@ -1193,11 +1508,11 @@ export namespace RDS {
     }
 
     // deletion_protection - computed: false, optional: true, required: false
-    private _deletionProtection?: boolean | cdktf.IResolvable;
+    private _deletionProtection?: boolean | cdktf.IResolvable | undefined; 
     public get deletionProtection() {
-      return this.getBooleanAttribute('deletion_protection');
+      return this.getBooleanAttribute('deletion_protection') as any;
     }
-    public set deletionProtection(value: boolean | cdktf.IResolvable ) {
+    public set deletionProtection(value: boolean | cdktf.IResolvable | undefined) {
       this._deletionProtection = value;
     }
     public resetDeletionProtection() {
@@ -1209,11 +1524,11 @@ export namespace RDS {
     }
 
     // domain - computed: false, optional: true, required: false
-    private _domain?: string;
+    private _domain?: string | undefined; 
     public get domain() {
       return this.getStringAttribute('domain');
     }
-    public set domain(value: string ) {
+    public set domain(value: string | undefined) {
       this._domain = value;
     }
     public resetDomain() {
@@ -1225,11 +1540,11 @@ export namespace RDS {
     }
 
     // domain_iam_role_name - computed: false, optional: true, required: false
-    private _domainIamRoleName?: string;
+    private _domainIamRoleName?: string | undefined; 
     public get domainIamRoleName() {
       return this.getStringAttribute('domain_iam_role_name');
     }
-    public set domainIamRoleName(value: string ) {
+    public set domainIamRoleName(value: string | undefined) {
       this._domainIamRoleName = value;
     }
     public resetDomainIamRoleName() {
@@ -1241,11 +1556,11 @@ export namespace RDS {
     }
 
     // enabled_cloudwatch_logs_exports - computed: false, optional: true, required: false
-    private _enabledCloudwatchLogsExports?: string[];
+    private _enabledCloudwatchLogsExports?: string[] | undefined; 
     public get enabledCloudwatchLogsExports() {
       return this.getListAttribute('enabled_cloudwatch_logs_exports');
     }
-    public set enabledCloudwatchLogsExports(value: string[] ) {
+    public set enabledCloudwatchLogsExports(value: string[] | undefined) {
       this._enabledCloudwatchLogsExports = value;
     }
     public resetEnabledCloudwatchLogsExports() {
@@ -1262,11 +1577,11 @@ export namespace RDS {
     }
 
     // engine - computed: true, optional: true, required: false
-    private _engine?: string;
+    private _engine?: string | undefined; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
-    public set engine(value: string) {
+    public set engine(value: string | undefined) {
       this._engine = value;
     }
     public resetEngine() {
@@ -1278,11 +1593,11 @@ export namespace RDS {
     }
 
     // engine_version - computed: true, optional: true, required: false
-    private _engineVersion?: string;
+    private _engineVersion?: string | undefined; 
     public get engineVersion() {
       return this.getStringAttribute('engine_version');
     }
-    public set engineVersion(value: string) {
+    public set engineVersion(value: string | undefined) {
       this._engineVersion = value;
     }
     public resetEngineVersion() {
@@ -1299,11 +1614,11 @@ export namespace RDS {
     }
 
     // final_snapshot_identifier - computed: false, optional: true, required: false
-    private _finalSnapshotIdentifier?: string;
+    private _finalSnapshotIdentifier?: string | undefined; 
     public get finalSnapshotIdentifier() {
       return this.getStringAttribute('final_snapshot_identifier');
     }
-    public set finalSnapshotIdentifier(value: string ) {
+    public set finalSnapshotIdentifier(value: string | undefined) {
       this._finalSnapshotIdentifier = value;
     }
     public resetFinalSnapshotIdentifier() {
@@ -1320,11 +1635,11 @@ export namespace RDS {
     }
 
     // iam_database_authentication_enabled - computed: false, optional: true, required: false
-    private _iamDatabaseAuthenticationEnabled?: boolean | cdktf.IResolvable;
+    private _iamDatabaseAuthenticationEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get iamDatabaseAuthenticationEnabled() {
-      return this.getBooleanAttribute('iam_database_authentication_enabled');
+      return this.getBooleanAttribute('iam_database_authentication_enabled') as any;
     }
-    public set iamDatabaseAuthenticationEnabled(value: boolean | cdktf.IResolvable ) {
+    public set iamDatabaseAuthenticationEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._iamDatabaseAuthenticationEnabled = value;
     }
     public resetIamDatabaseAuthenticationEnabled() {
@@ -1341,11 +1656,11 @@ export namespace RDS {
     }
 
     // identifier - computed: true, optional: true, required: false
-    private _identifier?: string;
+    private _identifier?: string | undefined; 
     public get identifier() {
       return this.getStringAttribute('identifier');
     }
-    public set identifier(value: string) {
+    public set identifier(value: string | undefined) {
       this._identifier = value;
     }
     public resetIdentifier() {
@@ -1357,11 +1672,11 @@ export namespace RDS {
     }
 
     // identifier_prefix - computed: true, optional: true, required: false
-    private _identifierPrefix?: string;
+    private _identifierPrefix?: string | undefined; 
     public get identifierPrefix() {
       return this.getStringAttribute('identifier_prefix');
     }
-    public set identifierPrefix(value: string) {
+    public set identifierPrefix(value: string | undefined) {
       this._identifierPrefix = value;
     }
     public resetIdentifierPrefix() {
@@ -1373,7 +1688,7 @@ export namespace RDS {
     }
 
     // instance_class - computed: false, optional: false, required: true
-    private _instanceClass: string;
+    private _instanceClass?: string; 
     public get instanceClass() {
       return this.getStringAttribute('instance_class');
     }
@@ -1386,11 +1701,11 @@ export namespace RDS {
     }
 
     // iops - computed: false, optional: true, required: false
-    private _iops?: number;
+    private _iops?: number | undefined; 
     public get iops() {
       return this.getNumberAttribute('iops');
     }
-    public set iops(value: number ) {
+    public set iops(value: number | undefined) {
       this._iops = value;
     }
     public resetIops() {
@@ -1402,11 +1717,11 @@ export namespace RDS {
     }
 
     // kms_key_id - computed: true, optional: true, required: false
-    private _kmsKeyId?: string;
+    private _kmsKeyId?: string | undefined; 
     public get kmsKeyId() {
       return this.getStringAttribute('kms_key_id');
     }
-    public set kmsKeyId(value: string) {
+    public set kmsKeyId(value: string | undefined) {
       this._kmsKeyId = value;
     }
     public resetKmsKeyId() {
@@ -1423,11 +1738,11 @@ export namespace RDS {
     }
 
     // license_model - computed: true, optional: true, required: false
-    private _licenseModel?: string;
+    private _licenseModel?: string | undefined; 
     public get licenseModel() {
       return this.getStringAttribute('license_model');
     }
-    public set licenseModel(value: string) {
+    public set licenseModel(value: string | undefined) {
       this._licenseModel = value;
     }
     public resetLicenseModel() {
@@ -1439,11 +1754,11 @@ export namespace RDS {
     }
 
     // maintenance_window - computed: true, optional: true, required: false
-    private _maintenanceWindow?: string;
+    private _maintenanceWindow?: string | undefined; 
     public get maintenanceWindow() {
       return this.getStringAttribute('maintenance_window');
     }
-    public set maintenanceWindow(value: string) {
+    public set maintenanceWindow(value: string | undefined) {
       this._maintenanceWindow = value;
     }
     public resetMaintenanceWindow() {
@@ -1455,11 +1770,11 @@ export namespace RDS {
     }
 
     // max_allocated_storage - computed: false, optional: true, required: false
-    private _maxAllocatedStorage?: number;
+    private _maxAllocatedStorage?: number | undefined; 
     public get maxAllocatedStorage() {
       return this.getNumberAttribute('max_allocated_storage');
     }
-    public set maxAllocatedStorage(value: number ) {
+    public set maxAllocatedStorage(value: number | undefined) {
       this._maxAllocatedStorage = value;
     }
     public resetMaxAllocatedStorage() {
@@ -1471,11 +1786,11 @@ export namespace RDS {
     }
 
     // monitoring_interval - computed: false, optional: true, required: false
-    private _monitoringInterval?: number;
+    private _monitoringInterval?: number | undefined; 
     public get monitoringInterval() {
       return this.getNumberAttribute('monitoring_interval');
     }
-    public set monitoringInterval(value: number ) {
+    public set monitoringInterval(value: number | undefined) {
       this._monitoringInterval = value;
     }
     public resetMonitoringInterval() {
@@ -1487,11 +1802,11 @@ export namespace RDS {
     }
 
     // monitoring_role_arn - computed: true, optional: true, required: false
-    private _monitoringRoleArn?: string;
+    private _monitoringRoleArn?: string | undefined; 
     public get monitoringRoleArn() {
       return this.getStringAttribute('monitoring_role_arn');
     }
-    public set monitoringRoleArn(value: string) {
+    public set monitoringRoleArn(value: string | undefined) {
       this._monitoringRoleArn = value;
     }
     public resetMonitoringRoleArn() {
@@ -1503,11 +1818,11 @@ export namespace RDS {
     }
 
     // multi_az - computed: true, optional: true, required: false
-    private _multiAz?: boolean | cdktf.IResolvable;
+    private _multiAz?: boolean | cdktf.IResolvable | undefined; 
     public get multiAz() {
-      return this.getBooleanAttribute('multi_az');
+      return this.getBooleanAttribute('multi_az') as any;
     }
-    public set multiAz(value: boolean | cdktf.IResolvable) {
+    public set multiAz(value: boolean | cdktf.IResolvable | undefined) {
       this._multiAz = value;
     }
     public resetMultiAz() {
@@ -1519,11 +1834,11 @@ export namespace RDS {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1535,11 +1850,11 @@ export namespace RDS {
     }
 
     // nchar_character_set_name - computed: true, optional: true, required: false
-    private _ncharCharacterSetName?: string;
+    private _ncharCharacterSetName?: string | undefined; 
     public get ncharCharacterSetName() {
       return this.getStringAttribute('nchar_character_set_name');
     }
-    public set ncharCharacterSetName(value: string) {
+    public set ncharCharacterSetName(value: string | undefined) {
       this._ncharCharacterSetName = value;
     }
     public resetNcharCharacterSetName() {
@@ -1551,11 +1866,11 @@ export namespace RDS {
     }
 
     // option_group_name - computed: true, optional: true, required: false
-    private _optionGroupName?: string;
+    private _optionGroupName?: string | undefined; 
     public get optionGroupName() {
       return this.getStringAttribute('option_group_name');
     }
-    public set optionGroupName(value: string) {
+    public set optionGroupName(value: string | undefined) {
       this._optionGroupName = value;
     }
     public resetOptionGroupName() {
@@ -1567,11 +1882,11 @@ export namespace RDS {
     }
 
     // parameter_group_name - computed: true, optional: true, required: false
-    private _parameterGroupName?: string;
+    private _parameterGroupName?: string | undefined; 
     public get parameterGroupName() {
       return this.getStringAttribute('parameter_group_name');
     }
-    public set parameterGroupName(value: string) {
+    public set parameterGroupName(value: string | undefined) {
       this._parameterGroupName = value;
     }
     public resetParameterGroupName() {
@@ -1583,11 +1898,11 @@ export namespace RDS {
     }
 
     // password - computed: false, optional: true, required: false
-    private _password?: string;
+    private _password?: string | undefined; 
     public get password() {
       return this.getStringAttribute('password');
     }
-    public set password(value: string ) {
+    public set password(value: string | undefined) {
       this._password = value;
     }
     public resetPassword() {
@@ -1599,11 +1914,11 @@ export namespace RDS {
     }
 
     // performance_insights_enabled - computed: false, optional: true, required: false
-    private _performanceInsightsEnabled?: boolean | cdktf.IResolvable;
+    private _performanceInsightsEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get performanceInsightsEnabled() {
-      return this.getBooleanAttribute('performance_insights_enabled');
+      return this.getBooleanAttribute('performance_insights_enabled') as any;
     }
-    public set performanceInsightsEnabled(value: boolean | cdktf.IResolvable ) {
+    public set performanceInsightsEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._performanceInsightsEnabled = value;
     }
     public resetPerformanceInsightsEnabled() {
@@ -1615,11 +1930,11 @@ export namespace RDS {
     }
 
     // performance_insights_kms_key_id - computed: true, optional: true, required: false
-    private _performanceInsightsKmsKeyId?: string;
+    private _performanceInsightsKmsKeyId?: string | undefined; 
     public get performanceInsightsKmsKeyId() {
       return this.getStringAttribute('performance_insights_kms_key_id');
     }
-    public set performanceInsightsKmsKeyId(value: string) {
+    public set performanceInsightsKmsKeyId(value: string | undefined) {
       this._performanceInsightsKmsKeyId = value;
     }
     public resetPerformanceInsightsKmsKeyId() {
@@ -1631,11 +1946,11 @@ export namespace RDS {
     }
 
     // performance_insights_retention_period - computed: true, optional: true, required: false
-    private _performanceInsightsRetentionPeriod?: number;
+    private _performanceInsightsRetentionPeriod?: number | undefined; 
     public get performanceInsightsRetentionPeriod() {
       return this.getNumberAttribute('performance_insights_retention_period');
     }
-    public set performanceInsightsRetentionPeriod(value: number) {
+    public set performanceInsightsRetentionPeriod(value: number | undefined) {
       this._performanceInsightsRetentionPeriod = value;
     }
     public resetPerformanceInsightsRetentionPeriod() {
@@ -1647,11 +1962,11 @@ export namespace RDS {
     }
 
     // port - computed: true, optional: true, required: false
-    private _port?: number;
+    private _port?: number | undefined; 
     public get port() {
       return this.getNumberAttribute('port');
     }
-    public set port(value: number) {
+    public set port(value: number | undefined) {
       this._port = value;
     }
     public resetPort() {
@@ -1663,11 +1978,11 @@ export namespace RDS {
     }
 
     // publicly_accessible - computed: false, optional: true, required: false
-    private _publiclyAccessible?: boolean | cdktf.IResolvable;
+    private _publiclyAccessible?: boolean | cdktf.IResolvable | undefined; 
     public get publiclyAccessible() {
-      return this.getBooleanAttribute('publicly_accessible');
+      return this.getBooleanAttribute('publicly_accessible') as any;
     }
-    public set publiclyAccessible(value: boolean | cdktf.IResolvable ) {
+    public set publiclyAccessible(value: boolean | cdktf.IResolvable | undefined) {
       this._publiclyAccessible = value;
     }
     public resetPubliclyAccessible() {
@@ -1679,11 +1994,11 @@ export namespace RDS {
     }
 
     // replica_mode - computed: false, optional: true, required: false
-    private _replicaMode?: string;
+    private _replicaMode?: string | undefined; 
     public get replicaMode() {
       return this.getStringAttribute('replica_mode');
     }
-    public set replicaMode(value: string ) {
+    public set replicaMode(value: string | undefined) {
       this._replicaMode = value;
     }
     public resetReplicaMode() {
@@ -1700,11 +2015,11 @@ export namespace RDS {
     }
 
     // replicate_source_db - computed: false, optional: true, required: false
-    private _replicateSourceDb?: string;
+    private _replicateSourceDb?: string | undefined; 
     public get replicateSourceDb() {
       return this.getStringAttribute('replicate_source_db');
     }
-    public set replicateSourceDb(value: string ) {
+    public set replicateSourceDb(value: string | undefined) {
       this._replicateSourceDb = value;
     }
     public resetReplicateSourceDb() {
@@ -1721,11 +2036,11 @@ export namespace RDS {
     }
 
     // security_group_names - computed: false, optional: true, required: false
-    private _securityGroupNames?: string[];
+    private _securityGroupNames?: string[] | undefined; 
     public get securityGroupNames() {
       return this.getListAttribute('security_group_names');
     }
-    public set securityGroupNames(value: string[] ) {
+    public set securityGroupNames(value: string[] | undefined) {
       this._securityGroupNames = value;
     }
     public resetSecurityGroupNames() {
@@ -1737,11 +2052,11 @@ export namespace RDS {
     }
 
     // skip_final_snapshot - computed: false, optional: true, required: false
-    private _skipFinalSnapshot?: boolean | cdktf.IResolvable;
+    private _skipFinalSnapshot?: boolean | cdktf.IResolvable | undefined; 
     public get skipFinalSnapshot() {
-      return this.getBooleanAttribute('skip_final_snapshot');
+      return this.getBooleanAttribute('skip_final_snapshot') as any;
     }
-    public set skipFinalSnapshot(value: boolean | cdktf.IResolvable ) {
+    public set skipFinalSnapshot(value: boolean | cdktf.IResolvable | undefined) {
       this._skipFinalSnapshot = value;
     }
     public resetSkipFinalSnapshot() {
@@ -1753,11 +2068,11 @@ export namespace RDS {
     }
 
     // snapshot_identifier - computed: true, optional: true, required: false
-    private _snapshotIdentifier?: string;
+    private _snapshotIdentifier?: string | undefined; 
     public get snapshotIdentifier() {
       return this.getStringAttribute('snapshot_identifier');
     }
-    public set snapshotIdentifier(value: string) {
+    public set snapshotIdentifier(value: string | undefined) {
       this._snapshotIdentifier = value;
     }
     public resetSnapshotIdentifier() {
@@ -1774,11 +2089,11 @@ export namespace RDS {
     }
 
     // storage_encrypted - computed: false, optional: true, required: false
-    private _storageEncrypted?: boolean | cdktf.IResolvable;
+    private _storageEncrypted?: boolean | cdktf.IResolvable | undefined; 
     public get storageEncrypted() {
-      return this.getBooleanAttribute('storage_encrypted');
+      return this.getBooleanAttribute('storage_encrypted') as any;
     }
-    public set storageEncrypted(value: boolean | cdktf.IResolvable ) {
+    public set storageEncrypted(value: boolean | cdktf.IResolvable | undefined) {
       this._storageEncrypted = value;
     }
     public resetStorageEncrypted() {
@@ -1790,11 +2105,11 @@ export namespace RDS {
     }
 
     // storage_type - computed: true, optional: true, required: false
-    private _storageType?: string;
+    private _storageType?: string | undefined; 
     public get storageType() {
       return this.getStringAttribute('storage_type');
     }
-    public set storageType(value: string) {
+    public set storageType(value: string | undefined) {
       this._storageType = value;
     }
     public resetStorageType() {
@@ -1806,11 +2121,12 @@ export namespace RDS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1822,11 +2138,12 @@ export namespace RDS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1838,11 +2155,11 @@ export namespace RDS {
     }
 
     // timezone - computed: true, optional: true, required: false
-    private _timezone?: string;
+    private _timezone?: string | undefined; 
     public get timezone() {
       return this.getStringAttribute('timezone');
     }
-    public set timezone(value: string) {
+    public set timezone(value: string | undefined) {
       this._timezone = value;
     }
     public resetTimezone() {
@@ -1854,11 +2171,11 @@ export namespace RDS {
     }
 
     // username - computed: true, optional: true, required: false
-    private _username?: string;
+    private _username?: string | undefined; 
     public get username() {
       return this.getStringAttribute('username');
     }
-    public set username(value: string) {
+    public set username(value: string | undefined) {
       this._username = value;
     }
     public resetUsername() {
@@ -1870,11 +2187,11 @@ export namespace RDS {
     }
 
     // vpc_security_group_ids - computed: true, optional: true, required: false
-    private _vpcSecurityGroupIds?: string[];
+    private _vpcSecurityGroupIds?: string[] | undefined; 
     public get vpcSecurityGroupIds() {
       return this.getListAttribute('vpc_security_group_ids');
     }
-    public set vpcSecurityGroupIds(value: string[]) {
+    public set vpcSecurityGroupIds(value: string[] | undefined) {
       this._vpcSecurityGroupIds = value;
     }
     public resetVpcSecurityGroupIds() {
@@ -1886,11 +2203,12 @@ export namespace RDS {
     }
 
     // restore_to_point_in_time - computed: false, optional: true, required: false
-    private _restoreToPointInTime?: DbInstanceRestoreToPointInTime[];
+    private _restoreToPointInTime?: DbInstanceRestoreToPointInTime | undefined; 
+    private __restoreToPointInTimeOutput = new DbInstanceRestoreToPointInTimeOutputReference(this as any, "restore_to_point_in_time", true);
     public get restoreToPointInTime() {
-      return this.interpolationForAttribute('restore_to_point_in_time') as any;
+      return this.__restoreToPointInTimeOutput;
     }
-    public set restoreToPointInTime(value: DbInstanceRestoreToPointInTime[] ) {
+    public putRestoreToPointInTime(value: DbInstanceRestoreToPointInTime | undefined) {
       this._restoreToPointInTime = value;
     }
     public resetRestoreToPointInTime() {
@@ -1902,11 +2220,12 @@ export namespace RDS {
     }
 
     // s3_import - computed: false, optional: true, required: false
-    private _s3Import?: DbInstanceS3Import[];
+    private _s3Import?: DbInstanceS3Import | undefined; 
+    private __s3ImportOutput = new DbInstanceS3ImportOutputReference(this as any, "s3_import", true);
     public get s3Import() {
-      return this.interpolationForAttribute('s3_import') as any;
+      return this.__s3ImportOutput;
     }
-    public set s3Import(value: DbInstanceS3Import[] ) {
+    public putS3Import(value: DbInstanceS3Import | undefined) {
       this._s3Import = value;
     }
     public resetS3Import() {
@@ -1918,11 +2237,12 @@ export namespace RDS {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DbInstanceTimeouts;
+    private _timeouts?: DbInstanceTimeouts | undefined; 
+    private __timeoutsOutput = new DbInstanceTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DbInstanceTimeouts ) {
+    public putTimeouts(value: DbInstanceTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1993,8 +2313,8 @@ export namespace RDS {
         timezone: cdktf.stringToTerraform(this._timezone),
         username: cdktf.stringToTerraform(this._username),
         vpc_security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._vpcSecurityGroupIds),
-        restore_to_point_in_time: cdktf.listMapper(dbInstanceRestoreToPointInTimeToTerraform)(this._restoreToPointInTime),
-        s3_import: cdktf.listMapper(dbInstanceS3ImportToTerraform)(this._s3Import),
+        restore_to_point_in_time: dbInstanceRestoreToPointInTimeToTerraform(this._restoreToPointInTime),
+        s3_import: dbInstanceS3ImportToTerraform(this._s3Import),
         timeouts: dbInstanceTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -2056,7 +2376,7 @@ export namespace RDS {
     // ==========
 
     // db_instance_identifier - computed: false, optional: false, required: true
-    private _dbInstanceIdentifier: string;
+    private _dbInstanceIdentifier?: string; 
     public get dbInstanceIdentifier() {
       return this.getStringAttribute('db_instance_identifier');
     }
@@ -2069,7 +2389,7 @@ export namespace RDS {
     }
 
     // feature_name - computed: false, optional: false, required: true
-    private _featureName: string;
+    private _featureName?: string; 
     public get featureName() {
       return this.getStringAttribute('feature_name');
     }
@@ -2087,7 +2407,7 @@ export namespace RDS {
     }
 
     // role_arn - computed: false, optional: false, required: true
-    private _roleArn: string;
+    private _roleArn?: string; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
@@ -2166,6 +2486,9 @@ export namespace RDS {
 
   function dbOptionGroupOptionOptionSettingsToTerraform(struct?: DbOptionGroupOptionOptionSettings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       value: cdktf.stringToTerraform(struct!.value),
@@ -2203,6 +2526,9 @@ export namespace RDS {
 
   function dbOptionGroupOptionToTerraform(struct?: DbOptionGroupOption): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       db_security_group_memberships: cdktf.listMapper(cdktf.stringToTerraform)(struct!.dbSecurityGroupMemberships),
       option_name: cdktf.stringToTerraform(struct!.optionName),
@@ -2220,13 +2546,42 @@ export namespace RDS {
     readonly delete?: string;
   }
 
-  function dbOptionGroupTimeoutsToTerraform(struct?: DbOptionGroupTimeouts): any {
+  function dbOptionGroupTimeoutsToTerraform(struct?: DbOptionGroupTimeoutsOutputReference | DbOptionGroupTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class DbOptionGroupTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/db_option_group.html aws_db_option_group}
@@ -2281,7 +2636,7 @@ export namespace RDS {
     }
 
     // engine_name - computed: false, optional: false, required: true
-    private _engineName: string;
+    private _engineName?: string; 
     public get engineName() {
       return this.getStringAttribute('engine_name');
     }
@@ -2299,7 +2654,7 @@ export namespace RDS {
     }
 
     // major_engine_version - computed: false, optional: false, required: true
-    private _majorEngineVersion: string;
+    private _majorEngineVersion?: string; 
     public get majorEngineVersion() {
       return this.getStringAttribute('major_engine_version');
     }
@@ -2312,11 +2667,11 @@ export namespace RDS {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -2328,11 +2683,11 @@ export namespace RDS {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -2344,11 +2699,11 @@ export namespace RDS {
     }
 
     // option_group_description - computed: false, optional: true, required: false
-    private _optionGroupDescription?: string;
+    private _optionGroupDescription?: string | undefined; 
     public get optionGroupDescription() {
       return this.getStringAttribute('option_group_description');
     }
-    public set optionGroupDescription(value: string ) {
+    public set optionGroupDescription(value: string | undefined) {
       this._optionGroupDescription = value;
     }
     public resetOptionGroupDescription() {
@@ -2360,11 +2715,12 @@ export namespace RDS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2376,11 +2732,12 @@ export namespace RDS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2392,11 +2749,12 @@ export namespace RDS {
     }
 
     // option - computed: false, optional: true, required: false
-    private _option?: DbOptionGroupOption[];
+    private _option?: DbOptionGroupOption[] | undefined; 
     public get option() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('option') as any;
     }
-    public set option(value: DbOptionGroupOption[] ) {
+    public set option(value: DbOptionGroupOption[] | undefined) {
       this._option = value;
     }
     public resetOption() {
@@ -2408,11 +2766,12 @@ export namespace RDS {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DbOptionGroupTimeouts;
+    private _timeouts?: DbOptionGroupTimeouts | undefined; 
+    private __timeoutsOutput = new DbOptionGroupTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DbOptionGroupTimeouts ) {
+    public putTimeouts(value: DbOptionGroupTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -2490,6 +2849,9 @@ export namespace RDS {
 
   function dbParameterGroupParameterToTerraform(struct?: DbParameterGroupParameter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       apply_method: cdktf.stringToTerraform(struct!.applyMethod),
       name: cdktf.stringToTerraform(struct!.name),
@@ -2549,11 +2911,11 @@ export namespace RDS {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -2565,7 +2927,7 @@ export namespace RDS {
     }
 
     // family - computed: false, optional: false, required: true
-    private _family: string;
+    private _family?: string; 
     public get family() {
       return this.getStringAttribute('family');
     }
@@ -2583,11 +2945,11 @@ export namespace RDS {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -2599,11 +2961,11 @@ export namespace RDS {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -2615,11 +2977,12 @@ export namespace RDS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2631,11 +2994,12 @@ export namespace RDS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2647,11 +3011,12 @@ export namespace RDS {
     }
 
     // parameter - computed: false, optional: true, required: false
-    private _parameter?: DbParameterGroupParameter[];
+    private _parameter?: DbParameterGroupParameter[] | undefined; 
     public get parameter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('parameter') as any;
     }
-    public set parameter(value: DbParameterGroupParameter[] ) {
+    public set parameter(value: DbParameterGroupParameter[] | undefined) {
       this._parameter = value;
     }
     public resetParameter() {
@@ -2753,6 +3118,9 @@ export namespace RDS {
 
   function dbProxyAuthToTerraform(struct?: DbProxyAuth): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       auth_scheme: cdktf.stringToTerraform(struct!.authScheme),
       description: cdktf.stringToTerraform(struct!.description),
@@ -2776,8 +3144,11 @@ export namespace RDS {
     readonly update?: string;
   }
 
-  function dbProxyTimeoutsToTerraform(struct?: DbProxyTimeouts): any {
+  function dbProxyTimeoutsToTerraform(struct?: DbProxyTimeoutsOutputReference | DbProxyTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -2785,6 +3156,64 @@ export namespace RDS {
     }
   }
 
+  export class DbProxyTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/db_proxy.html aws_db_proxy}
@@ -2842,11 +3271,11 @@ export namespace RDS {
     }
 
     // debug_logging - computed: false, optional: true, required: false
-    private _debugLogging?: boolean | cdktf.IResolvable;
+    private _debugLogging?: boolean | cdktf.IResolvable | undefined; 
     public get debugLogging() {
-      return this.getBooleanAttribute('debug_logging');
+      return this.getBooleanAttribute('debug_logging') as any;
     }
-    public set debugLogging(value: boolean | cdktf.IResolvable ) {
+    public set debugLogging(value: boolean | cdktf.IResolvable | undefined) {
       this._debugLogging = value;
     }
     public resetDebugLogging() {
@@ -2863,7 +3292,7 @@ export namespace RDS {
     }
 
     // engine_family - computed: false, optional: false, required: true
-    private _engineFamily: string;
+    private _engineFamily?: string; 
     public get engineFamily() {
       return this.getStringAttribute('engine_family');
     }
@@ -2881,11 +3310,11 @@ export namespace RDS {
     }
 
     // idle_client_timeout - computed: true, optional: true, required: false
-    private _idleClientTimeout?: number;
+    private _idleClientTimeout?: number | undefined; 
     public get idleClientTimeout() {
       return this.getNumberAttribute('idle_client_timeout');
     }
-    public set idleClientTimeout(value: number) {
+    public set idleClientTimeout(value: number | undefined) {
       this._idleClientTimeout = value;
     }
     public resetIdleClientTimeout() {
@@ -2897,7 +3326,7 @@ export namespace RDS {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2910,11 +3339,11 @@ export namespace RDS {
     }
 
     // require_tls - computed: false, optional: true, required: false
-    private _requireTls?: boolean | cdktf.IResolvable;
+    private _requireTls?: boolean | cdktf.IResolvable | undefined; 
     public get requireTls() {
-      return this.getBooleanAttribute('require_tls');
+      return this.getBooleanAttribute('require_tls') as any;
     }
-    public set requireTls(value: boolean | cdktf.IResolvable ) {
+    public set requireTls(value: boolean | cdktf.IResolvable | undefined) {
       this._requireTls = value;
     }
     public resetRequireTls() {
@@ -2926,7 +3355,7 @@ export namespace RDS {
     }
 
     // role_arn - computed: false, optional: false, required: true
-    private _roleArn: string;
+    private _roleArn?: string; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
@@ -2939,11 +3368,12 @@ export namespace RDS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2955,11 +3385,12 @@ export namespace RDS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2971,11 +3402,11 @@ export namespace RDS {
     }
 
     // vpc_security_group_ids - computed: true, optional: true, required: false
-    private _vpcSecurityGroupIds?: string[];
+    private _vpcSecurityGroupIds?: string[] | undefined; 
     public get vpcSecurityGroupIds() {
       return this.getListAttribute('vpc_security_group_ids');
     }
-    public set vpcSecurityGroupIds(value: string[]) {
+    public set vpcSecurityGroupIds(value: string[] | undefined) {
       this._vpcSecurityGroupIds = value;
     }
     public resetVpcSecurityGroupIds() {
@@ -2987,7 +3418,7 @@ export namespace RDS {
     }
 
     // vpc_subnet_ids - computed: false, optional: false, required: true
-    private _vpcSubnetIds: string[];
+    private _vpcSubnetIds?: string[]; 
     public get vpcSubnetIds() {
       return this.getListAttribute('vpc_subnet_ids');
     }
@@ -3000,8 +3431,9 @@ export namespace RDS {
     }
 
     // auth - computed: false, optional: false, required: true
-    private _auth: DbProxyAuth[];
+    private _auth?: DbProxyAuth[]; 
     public get auth() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('auth') as any;
     }
     public set auth(value: DbProxyAuth[]) {
@@ -3013,11 +3445,12 @@ export namespace RDS {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DbProxyTimeouts;
+    private _timeouts?: DbProxyTimeouts | undefined; 
+    private __timeoutsOutput = new DbProxyTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DbProxyTimeouts ) {
+    public putTimeouts(value: DbProxyTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -3059,7 +3492,7 @@ export namespace RDS {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/db_proxy_default_target_group.html#connection_pool_config DbProxyDefaultTargetGroup#connection_pool_config}
     */
-    readonly connectionPoolConfig?: DbProxyDefaultTargetGroupConnectionPoolConfig[];
+    readonly connectionPoolConfig?: DbProxyDefaultTargetGroupConnectionPoolConfig;
     /**
     * timeouts block
     * 
@@ -3090,8 +3523,11 @@ export namespace RDS {
     readonly sessionPinningFilters?: string[];
   }
 
-  function dbProxyDefaultTargetGroupConnectionPoolConfigToTerraform(struct?: DbProxyDefaultTargetGroupConnectionPoolConfig): any {
+  function dbProxyDefaultTargetGroupConnectionPoolConfigToTerraform(struct?: DbProxyDefaultTargetGroupConnectionPoolConfigOutputReference | DbProxyDefaultTargetGroupConnectionPoolConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       connection_borrow_timeout: cdktf.numberToTerraform(struct!.connectionBorrowTimeout),
       init_query: cdktf.stringToTerraform(struct!.initQuery),
@@ -3101,6 +3537,96 @@ export namespace RDS {
     }
   }
 
+  export class DbProxyDefaultTargetGroupConnectionPoolConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // connection_borrow_timeout - computed: false, optional: true, required: false
+    private _connectionBorrowTimeout?: number | undefined; 
+    public get connectionBorrowTimeout() {
+      return this.getNumberAttribute('connection_borrow_timeout');
+    }
+    public set connectionBorrowTimeout(value: number | undefined) {
+      this._connectionBorrowTimeout = value;
+    }
+    public resetConnectionBorrowTimeout() {
+      this._connectionBorrowTimeout = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get connectionBorrowTimeoutInput() {
+      return this._connectionBorrowTimeout
+    }
+
+    // init_query - computed: false, optional: true, required: false
+    private _initQuery?: string | undefined; 
+    public get initQuery() {
+      return this.getStringAttribute('init_query');
+    }
+    public set initQuery(value: string | undefined) {
+      this._initQuery = value;
+    }
+    public resetInitQuery() {
+      this._initQuery = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get initQueryInput() {
+      return this._initQuery
+    }
+
+    // max_connections_percent - computed: false, optional: true, required: false
+    private _maxConnectionsPercent?: number | undefined; 
+    public get maxConnectionsPercent() {
+      return this.getNumberAttribute('max_connections_percent');
+    }
+    public set maxConnectionsPercent(value: number | undefined) {
+      this._maxConnectionsPercent = value;
+    }
+    public resetMaxConnectionsPercent() {
+      this._maxConnectionsPercent = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maxConnectionsPercentInput() {
+      return this._maxConnectionsPercent
+    }
+
+    // max_idle_connections_percent - computed: false, optional: true, required: false
+    private _maxIdleConnectionsPercent?: number | undefined; 
+    public get maxIdleConnectionsPercent() {
+      return this.getNumberAttribute('max_idle_connections_percent');
+    }
+    public set maxIdleConnectionsPercent(value: number | undefined) {
+      this._maxIdleConnectionsPercent = value;
+    }
+    public resetMaxIdleConnectionsPercent() {
+      this._maxIdleConnectionsPercent = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maxIdleConnectionsPercentInput() {
+      return this._maxIdleConnectionsPercent
+    }
+
+    // session_pinning_filters - computed: false, optional: true, required: false
+    private _sessionPinningFilters?: string[] | undefined; 
+    public get sessionPinningFilters() {
+      return this.getListAttribute('session_pinning_filters');
+    }
+    public set sessionPinningFilters(value: string[] | undefined) {
+      this._sessionPinningFilters = value;
+    }
+    public resetSessionPinningFilters() {
+      this._sessionPinningFilters = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sessionPinningFiltersInput() {
+      return this._sessionPinningFilters
+    }
+  }
   export interface DbProxyDefaultTargetGroupTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/db_proxy_default_target_group.html#create DbProxyDefaultTargetGroup#create}
@@ -3112,14 +3638,59 @@ export namespace RDS {
     readonly update?: string;
   }
 
-  function dbProxyDefaultTargetGroupTimeoutsToTerraform(struct?: DbProxyDefaultTargetGroupTimeouts): any {
+  function dbProxyDefaultTargetGroupTimeoutsToTerraform(struct?: DbProxyDefaultTargetGroupTimeoutsOutputReference | DbProxyDefaultTargetGroupTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       update: cdktf.stringToTerraform(struct!.update),
     }
   }
 
+  export class DbProxyDefaultTargetGroupTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/db_proxy_default_target_group.html aws_db_proxy_default_target_group}
@@ -3168,7 +3739,7 @@ export namespace RDS {
     }
 
     // db_proxy_name - computed: false, optional: false, required: true
-    private _dbProxyName: string;
+    private _dbProxyName?: string; 
     public get dbProxyName() {
       return this.getStringAttribute('db_proxy_name');
     }
@@ -3191,11 +3762,12 @@ export namespace RDS {
     }
 
     // connection_pool_config - computed: false, optional: true, required: false
-    private _connectionPoolConfig?: DbProxyDefaultTargetGroupConnectionPoolConfig[];
+    private _connectionPoolConfig?: DbProxyDefaultTargetGroupConnectionPoolConfig | undefined; 
+    private __connectionPoolConfigOutput = new DbProxyDefaultTargetGroupConnectionPoolConfigOutputReference(this as any, "connection_pool_config", true);
     public get connectionPoolConfig() {
-      return this.interpolationForAttribute('connection_pool_config') as any;
+      return this.__connectionPoolConfigOutput;
     }
-    public set connectionPoolConfig(value: DbProxyDefaultTargetGroupConnectionPoolConfig[] ) {
+    public putConnectionPoolConfig(value: DbProxyDefaultTargetGroupConnectionPoolConfig | undefined) {
       this._connectionPoolConfig = value;
     }
     public resetConnectionPoolConfig() {
@@ -3207,11 +3779,12 @@ export namespace RDS {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DbProxyDefaultTargetGroupTimeouts;
+    private _timeouts?: DbProxyDefaultTargetGroupTimeouts | undefined; 
+    private __timeoutsOutput = new DbProxyDefaultTargetGroupTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DbProxyDefaultTargetGroupTimeouts ) {
+    public putTimeouts(value: DbProxyDefaultTargetGroupTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -3229,7 +3802,7 @@ export namespace RDS {
     protected synthesizeAttributes(): { [name: string]: any } {
       return {
         db_proxy_name: cdktf.stringToTerraform(this._dbProxyName),
-        connection_pool_config: cdktf.listMapper(dbProxyDefaultTargetGroupConnectionPoolConfigToTerraform)(this._connectionPoolConfig),
+        connection_pool_config: dbProxyDefaultTargetGroupConnectionPoolConfigToTerraform(this._connectionPoolConfig),
         timeouts: dbProxyDefaultTargetGroupTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -3285,8 +3858,11 @@ export namespace RDS {
     readonly update?: string;
   }
 
-  function dbProxyEndpointTimeoutsToTerraform(struct?: DbProxyEndpointTimeouts): any {
+  function dbProxyEndpointTimeoutsToTerraform(struct?: DbProxyEndpointTimeoutsOutputReference | DbProxyEndpointTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -3294,6 +3870,64 @@ export namespace RDS {
     }
   }
 
+  export class DbProxyEndpointTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/db_proxy_endpoint.html aws_db_proxy_endpoint}
@@ -3347,7 +3981,7 @@ export namespace RDS {
     }
 
     // db_proxy_endpoint_name - computed: false, optional: false, required: true
-    private _dbProxyEndpointName: string;
+    private _dbProxyEndpointName?: string; 
     public get dbProxyEndpointName() {
       return this.getStringAttribute('db_proxy_endpoint_name');
     }
@@ -3360,7 +3994,7 @@ export namespace RDS {
     }
 
     // db_proxy_name - computed: false, optional: false, required: true
-    private _dbProxyName: string;
+    private _dbProxyName?: string; 
     public get dbProxyName() {
       return this.getStringAttribute('db_proxy_name');
     }
@@ -3384,15 +4018,16 @@ export namespace RDS {
 
     // is_default - computed: true, optional: false, required: false
     public get isDefault() {
-      return this.getBooleanAttribute('is_default');
+      return this.getBooleanAttribute('is_default') as any;
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3404,11 +4039,12 @@ export namespace RDS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -3420,11 +4056,11 @@ export namespace RDS {
     }
 
     // target_role - computed: false, optional: true, required: false
-    private _targetRole?: string;
+    private _targetRole?: string | undefined; 
     public get targetRole() {
       return this.getStringAttribute('target_role');
     }
-    public set targetRole(value: string ) {
+    public set targetRole(value: string | undefined) {
       this._targetRole = value;
     }
     public resetTargetRole() {
@@ -3441,11 +4077,11 @@ export namespace RDS {
     }
 
     // vpc_security_group_ids - computed: true, optional: true, required: false
-    private _vpcSecurityGroupIds?: string[];
+    private _vpcSecurityGroupIds?: string[] | undefined; 
     public get vpcSecurityGroupIds() {
       return this.getListAttribute('vpc_security_group_ids');
     }
-    public set vpcSecurityGroupIds(value: string[]) {
+    public set vpcSecurityGroupIds(value: string[] | undefined) {
       this._vpcSecurityGroupIds = value;
     }
     public resetVpcSecurityGroupIds() {
@@ -3457,7 +4093,7 @@ export namespace RDS {
     }
 
     // vpc_subnet_ids - computed: false, optional: false, required: true
-    private _vpcSubnetIds: string[];
+    private _vpcSubnetIds?: string[]; 
     public get vpcSubnetIds() {
       return this.getListAttribute('vpc_subnet_ids');
     }
@@ -3470,11 +4106,12 @@ export namespace RDS {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DbProxyEndpointTimeouts;
+    private _timeouts?: DbProxyEndpointTimeouts | undefined; 
+    private __timeoutsOutput = new DbProxyEndpointTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DbProxyEndpointTimeouts ) {
+    public putTimeouts(value: DbProxyEndpointTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -3564,11 +4201,11 @@ export namespace RDS {
     // ==========
 
     // db_cluster_identifier - computed: false, optional: true, required: false
-    private _dbClusterIdentifier?: string;
+    private _dbClusterIdentifier?: string | undefined; 
     public get dbClusterIdentifier() {
       return this.getStringAttribute('db_cluster_identifier');
     }
-    public set dbClusterIdentifier(value: string ) {
+    public set dbClusterIdentifier(value: string | undefined) {
       this._dbClusterIdentifier = value;
     }
     public resetDbClusterIdentifier() {
@@ -3580,11 +4217,11 @@ export namespace RDS {
     }
 
     // db_instance_identifier - computed: false, optional: true, required: false
-    private _dbInstanceIdentifier?: string;
+    private _dbInstanceIdentifier?: string | undefined; 
     public get dbInstanceIdentifier() {
       return this.getStringAttribute('db_instance_identifier');
     }
-    public set dbInstanceIdentifier(value: string ) {
+    public set dbInstanceIdentifier(value: string | undefined) {
       this._dbInstanceIdentifier = value;
     }
     public resetDbInstanceIdentifier() {
@@ -3596,7 +4233,7 @@ export namespace RDS {
     }
 
     // db_proxy_name - computed: false, optional: false, required: true
-    private _dbProxyName: string;
+    private _dbProxyName?: string; 
     public get dbProxyName() {
       return this.getStringAttribute('db_proxy_name');
     }
@@ -3634,7 +4271,7 @@ export namespace RDS {
     }
 
     // target_group_name - computed: false, optional: false, required: true
-    private _targetGroupName: string;
+    private _targetGroupName?: string; 
     public get targetGroupName() {
       return this.getStringAttribute('target_group_name');
     }
@@ -3714,6 +4351,9 @@ export namespace RDS {
 
   function dbSecurityGroupIngressToTerraform(struct?: DbSecurityGroupIngress): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cidr: cdktf.stringToTerraform(struct!.cidr),
       security_group_id: cdktf.stringToTerraform(struct!.securityGroupId),
@@ -3772,11 +4412,11 @@ export namespace RDS {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -3793,7 +4433,7 @@ export namespace RDS {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -3806,11 +4446,12 @@ export namespace RDS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3822,11 +4463,12 @@ export namespace RDS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -3838,8 +4480,9 @@ export namespace RDS {
     }
 
     // ingress - computed: false, optional: false, required: true
-    private _ingress: DbSecurityGroupIngress[];
+    private _ingress?: DbSecurityGroupIngress[]; 
     public get ingress() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ingress') as any;
     }
     public set ingress(value: DbSecurityGroupIngress[]) {
@@ -3895,13 +4538,42 @@ export namespace RDS {
     readonly read?: string;
   }
 
-  function dbSnapshotTimeoutsToTerraform(struct?: DbSnapshotTimeouts): any {
+  function dbSnapshotTimeoutsToTerraform(struct?: DbSnapshotTimeoutsOutputReference | DbSnapshotTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       read: cdktf.stringToTerraform(struct!.read),
     }
   }
 
+  export class DbSnapshotTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // read - computed: false, optional: true, required: false
+    private _read?: string | undefined; 
+    public get read() {
+      return this.getStringAttribute('read');
+    }
+    public set read(value: string | undefined) {
+      this._read = value;
+    }
+    public resetRead() {
+      this._read = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get readInput() {
+      return this._read
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/db_snapshot.html aws_db_snapshot}
@@ -3957,7 +4629,7 @@ export namespace RDS {
     }
 
     // db_instance_identifier - computed: false, optional: false, required: true
-    private _dbInstanceIdentifier: string;
+    private _dbInstanceIdentifier?: string; 
     public get dbInstanceIdentifier() {
       return this.getStringAttribute('db_instance_identifier');
     }
@@ -3975,7 +4647,7 @@ export namespace RDS {
     }
 
     // db_snapshot_identifier - computed: false, optional: false, required: true
-    private _dbSnapshotIdentifier: string;
+    private _dbSnapshotIdentifier?: string; 
     public get dbSnapshotIdentifier() {
       return this.getStringAttribute('db_snapshot_identifier');
     }
@@ -3989,7 +4661,7 @@ export namespace RDS {
 
     // encrypted - computed: true, optional: false, required: false
     public get encrypted() {
-      return this.getBooleanAttribute('encrypted');
+      return this.getBooleanAttribute('encrypted') as any;
     }
 
     // engine - computed: true, optional: false, required: false
@@ -4058,11 +4730,12 @@ export namespace RDS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4074,11 +4747,12 @@ export namespace RDS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -4095,11 +4769,12 @@ export namespace RDS {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DbSnapshotTimeouts;
+    private _timeouts?: DbSnapshotTimeouts | undefined; 
+    private __timeoutsOutput = new DbSnapshotTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DbSnapshotTimeouts ) {
+    public putTimeouts(value: DbSnapshotTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -4201,11 +4876,11 @@ export namespace RDS {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -4222,11 +4897,11 @@ export namespace RDS {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -4238,11 +4913,11 @@ export namespace RDS {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -4254,7 +4929,7 @@ export namespace RDS {
     }
 
     // subnet_ids - computed: false, optional: false, required: true
-    private _subnetIds: string[];
+    private _subnetIds?: string[]; 
     public get subnetIds() {
       return this.getListAttribute('subnet_ids');
     }
@@ -4267,11 +4942,12 @@ export namespace RDS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4283,11 +4959,12 @@ export namespace RDS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -4471,19 +5148,19 @@ export namespace RDS {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/rds_cluster.html#restore_to_point_in_time RdsCluster#restore_to_point_in_time}
     */
-    readonly restoreToPointInTime?: RdsClusterRestoreToPointInTime[];
+    readonly restoreToPointInTime?: RdsClusterRestoreToPointInTime;
     /**
     * s3_import block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/rds_cluster.html#s3_import RdsCluster#s3_import}
     */
-    readonly s3Import?: RdsClusterS3Import[];
+    readonly s3Import?: RdsClusterS3Import;
     /**
     * scaling_configuration block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/rds_cluster.html#scaling_configuration RdsCluster#scaling_configuration}
     */
-    readonly scalingConfiguration?: RdsClusterScalingConfiguration[];
+    readonly scalingConfiguration?: RdsClusterScalingConfiguration;
     /**
     * timeouts block
     * 
@@ -4510,8 +5187,11 @@ export namespace RDS {
     readonly useLatestRestorableTime?: boolean | cdktf.IResolvable;
   }
 
-  function rdsClusterRestoreToPointInTimeToTerraform(struct?: RdsClusterRestoreToPointInTime): any {
+  function rdsClusterRestoreToPointInTimeToTerraform(struct?: RdsClusterRestoreToPointInTimeOutputReference | RdsClusterRestoreToPointInTime): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       restore_to_time: cdktf.stringToTerraform(struct!.restoreToTime),
       restore_type: cdktf.stringToTerraform(struct!.restoreType),
@@ -4520,6 +5200,77 @@ export namespace RDS {
     }
   }
 
+  export class RdsClusterRestoreToPointInTimeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // restore_to_time - computed: false, optional: true, required: false
+    private _restoreToTime?: string | undefined; 
+    public get restoreToTime() {
+      return this.getStringAttribute('restore_to_time');
+    }
+    public set restoreToTime(value: string | undefined) {
+      this._restoreToTime = value;
+    }
+    public resetRestoreToTime() {
+      this._restoreToTime = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get restoreToTimeInput() {
+      return this._restoreToTime
+    }
+
+    // restore_type - computed: false, optional: true, required: false
+    private _restoreType?: string | undefined; 
+    public get restoreType() {
+      return this.getStringAttribute('restore_type');
+    }
+    public set restoreType(value: string | undefined) {
+      this._restoreType = value;
+    }
+    public resetRestoreType() {
+      this._restoreType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get restoreTypeInput() {
+      return this._restoreType
+    }
+
+    // source_cluster_identifier - computed: false, optional: false, required: true
+    private _sourceClusterIdentifier?: string; 
+    public get sourceClusterIdentifier() {
+      return this.getStringAttribute('source_cluster_identifier');
+    }
+    public set sourceClusterIdentifier(value: string) {
+      this._sourceClusterIdentifier = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sourceClusterIdentifierInput() {
+      return this._sourceClusterIdentifier
+    }
+
+    // use_latest_restorable_time - computed: false, optional: true, required: false
+    private _useLatestRestorableTime?: boolean | cdktf.IResolvable | undefined; 
+    public get useLatestRestorableTime() {
+      return this.getBooleanAttribute('use_latest_restorable_time') as any;
+    }
+    public set useLatestRestorableTime(value: boolean | cdktf.IResolvable | undefined) {
+      this._useLatestRestorableTime = value;
+    }
+    public resetUseLatestRestorableTime() {
+      this._useLatestRestorableTime = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get useLatestRestorableTimeInput() {
+      return this._useLatestRestorableTime
+    }
+  }
   export interface RdsClusterS3Import {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/rds_cluster.html#bucket_name RdsCluster#bucket_name}
@@ -4543,8 +5294,11 @@ export namespace RDS {
     readonly sourceEngineVersion: string;
   }
 
-  function rdsClusterS3ImportToTerraform(struct?: RdsClusterS3Import): any {
+  function rdsClusterS3ImportToTerraform(struct?: RdsClusterS3ImportOutputReference | RdsClusterS3Import): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bucket_name: cdktf.stringToTerraform(struct!.bucketName),
       bucket_prefix: cdktf.stringToTerraform(struct!.bucketPrefix),
@@ -4554,6 +5308,84 @@ export namespace RDS {
     }
   }
 
+  export class RdsClusterS3ImportOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // bucket_name - computed: false, optional: false, required: true
+    private _bucketName?: string; 
+    public get bucketName() {
+      return this.getStringAttribute('bucket_name');
+    }
+    public set bucketName(value: string) {
+      this._bucketName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bucketNameInput() {
+      return this._bucketName
+    }
+
+    // bucket_prefix - computed: false, optional: true, required: false
+    private _bucketPrefix?: string | undefined; 
+    public get bucketPrefix() {
+      return this.getStringAttribute('bucket_prefix');
+    }
+    public set bucketPrefix(value: string | undefined) {
+      this._bucketPrefix = value;
+    }
+    public resetBucketPrefix() {
+      this._bucketPrefix = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bucketPrefixInput() {
+      return this._bucketPrefix
+    }
+
+    // ingestion_role - computed: false, optional: false, required: true
+    private _ingestionRole?: string; 
+    public get ingestionRole() {
+      return this.getStringAttribute('ingestion_role');
+    }
+    public set ingestionRole(value: string) {
+      this._ingestionRole = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get ingestionRoleInput() {
+      return this._ingestionRole
+    }
+
+    // source_engine - computed: false, optional: false, required: true
+    private _sourceEngine?: string; 
+    public get sourceEngine() {
+      return this.getStringAttribute('source_engine');
+    }
+    public set sourceEngine(value: string) {
+      this._sourceEngine = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sourceEngineInput() {
+      return this._sourceEngine
+    }
+
+    // source_engine_version - computed: false, optional: false, required: true
+    private _sourceEngineVersion?: string; 
+    public get sourceEngineVersion() {
+      return this.getStringAttribute('source_engine_version');
+    }
+    public set sourceEngineVersion(value: string) {
+      this._sourceEngineVersion = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sourceEngineVersionInput() {
+      return this._sourceEngineVersion
+    }
+  }
   export interface RdsClusterScalingConfiguration {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/rds_cluster.html#auto_pause RdsCluster#auto_pause}
@@ -4577,8 +5409,11 @@ export namespace RDS {
     readonly timeoutAction?: string;
   }
 
-  function rdsClusterScalingConfigurationToTerraform(struct?: RdsClusterScalingConfiguration): any {
+  function rdsClusterScalingConfigurationToTerraform(struct?: RdsClusterScalingConfigurationOutputReference | RdsClusterScalingConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       auto_pause: cdktf.booleanToTerraform(struct!.autoPause),
       max_capacity: cdktf.numberToTerraform(struct!.maxCapacity),
@@ -4588,6 +5423,96 @@ export namespace RDS {
     }
   }
 
+  export class RdsClusterScalingConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // auto_pause - computed: false, optional: true, required: false
+    private _autoPause?: boolean | cdktf.IResolvable | undefined; 
+    public get autoPause() {
+      return this.getBooleanAttribute('auto_pause') as any;
+    }
+    public set autoPause(value: boolean | cdktf.IResolvable | undefined) {
+      this._autoPause = value;
+    }
+    public resetAutoPause() {
+      this._autoPause = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get autoPauseInput() {
+      return this._autoPause
+    }
+
+    // max_capacity - computed: false, optional: true, required: false
+    private _maxCapacity?: number | undefined; 
+    public get maxCapacity() {
+      return this.getNumberAttribute('max_capacity');
+    }
+    public set maxCapacity(value: number | undefined) {
+      this._maxCapacity = value;
+    }
+    public resetMaxCapacity() {
+      this._maxCapacity = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maxCapacityInput() {
+      return this._maxCapacity
+    }
+
+    // min_capacity - computed: false, optional: true, required: false
+    private _minCapacity?: number | undefined; 
+    public get minCapacity() {
+      return this.getNumberAttribute('min_capacity');
+    }
+    public set minCapacity(value: number | undefined) {
+      this._minCapacity = value;
+    }
+    public resetMinCapacity() {
+      this._minCapacity = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get minCapacityInput() {
+      return this._minCapacity
+    }
+
+    // seconds_until_auto_pause - computed: false, optional: true, required: false
+    private _secondsUntilAutoPause?: number | undefined; 
+    public get secondsUntilAutoPause() {
+      return this.getNumberAttribute('seconds_until_auto_pause');
+    }
+    public set secondsUntilAutoPause(value: number | undefined) {
+      this._secondsUntilAutoPause = value;
+    }
+    public resetSecondsUntilAutoPause() {
+      this._secondsUntilAutoPause = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get secondsUntilAutoPauseInput() {
+      return this._secondsUntilAutoPause
+    }
+
+    // timeout_action - computed: false, optional: true, required: false
+    private _timeoutAction?: string | undefined; 
+    public get timeoutAction() {
+      return this.getStringAttribute('timeout_action');
+    }
+    public set timeoutAction(value: string | undefined) {
+      this._timeoutAction = value;
+    }
+    public resetTimeoutAction() {
+      this._timeoutAction = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get timeoutActionInput() {
+      return this._timeoutAction
+    }
+  }
   export interface RdsClusterTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/rds_cluster.html#create RdsCluster#create}
@@ -4603,8 +5528,11 @@ export namespace RDS {
     readonly update?: string;
   }
 
-  function rdsClusterTimeoutsToTerraform(struct?: RdsClusterTimeouts): any {
+  function rdsClusterTimeoutsToTerraform(struct?: RdsClusterTimeoutsOutputReference | RdsClusterTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -4612,6 +5540,64 @@ export namespace RDS {
     }
   }
 
+  export class RdsClusterTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/rds_cluster.html aws_rds_cluster}
@@ -4694,11 +5680,11 @@ export namespace RDS {
     // ==========
 
     // allow_major_version_upgrade - computed: false, optional: true, required: false
-    private _allowMajorVersionUpgrade?: boolean | cdktf.IResolvable;
+    private _allowMajorVersionUpgrade?: boolean | cdktf.IResolvable | undefined; 
     public get allowMajorVersionUpgrade() {
-      return this.getBooleanAttribute('allow_major_version_upgrade');
+      return this.getBooleanAttribute('allow_major_version_upgrade') as any;
     }
-    public set allowMajorVersionUpgrade(value: boolean | cdktf.IResolvable ) {
+    public set allowMajorVersionUpgrade(value: boolean | cdktf.IResolvable | undefined) {
       this._allowMajorVersionUpgrade = value;
     }
     public resetAllowMajorVersionUpgrade() {
@@ -4710,11 +5696,11 @@ export namespace RDS {
     }
 
     // apply_immediately - computed: true, optional: true, required: false
-    private _applyImmediately?: boolean | cdktf.IResolvable;
+    private _applyImmediately?: boolean | cdktf.IResolvable | undefined; 
     public get applyImmediately() {
-      return this.getBooleanAttribute('apply_immediately');
+      return this.getBooleanAttribute('apply_immediately') as any;
     }
-    public set applyImmediately(value: boolean | cdktf.IResolvable) {
+    public set applyImmediately(value: boolean | cdktf.IResolvable | undefined) {
       this._applyImmediately = value;
     }
     public resetApplyImmediately() {
@@ -4731,11 +5717,11 @@ export namespace RDS {
     }
 
     // availability_zones - computed: true, optional: true, required: false
-    private _availabilityZones?: string[];
+    private _availabilityZones?: string[] | undefined; 
     public get availabilityZones() {
       return this.getListAttribute('availability_zones');
     }
-    public set availabilityZones(value: string[]) {
+    public set availabilityZones(value: string[] | undefined) {
       this._availabilityZones = value;
     }
     public resetAvailabilityZones() {
@@ -4747,11 +5733,11 @@ export namespace RDS {
     }
 
     // backtrack_window - computed: false, optional: true, required: false
-    private _backtrackWindow?: number;
+    private _backtrackWindow?: number | undefined; 
     public get backtrackWindow() {
       return this.getNumberAttribute('backtrack_window');
     }
-    public set backtrackWindow(value: number ) {
+    public set backtrackWindow(value: number | undefined) {
       this._backtrackWindow = value;
     }
     public resetBacktrackWindow() {
@@ -4763,11 +5749,11 @@ export namespace RDS {
     }
 
     // backup_retention_period - computed: false, optional: true, required: false
-    private _backupRetentionPeriod?: number;
+    private _backupRetentionPeriod?: number | undefined; 
     public get backupRetentionPeriod() {
       return this.getNumberAttribute('backup_retention_period');
     }
-    public set backupRetentionPeriod(value: number ) {
+    public set backupRetentionPeriod(value: number | undefined) {
       this._backupRetentionPeriod = value;
     }
     public resetBackupRetentionPeriod() {
@@ -4779,11 +5765,11 @@ export namespace RDS {
     }
 
     // cluster_identifier - computed: true, optional: true, required: false
-    private _clusterIdentifier?: string;
+    private _clusterIdentifier?: string | undefined; 
     public get clusterIdentifier() {
       return this.getStringAttribute('cluster_identifier');
     }
-    public set clusterIdentifier(value: string) {
+    public set clusterIdentifier(value: string | undefined) {
       this._clusterIdentifier = value;
     }
     public resetClusterIdentifier() {
@@ -4795,11 +5781,11 @@ export namespace RDS {
     }
 
     // cluster_identifier_prefix - computed: true, optional: true, required: false
-    private _clusterIdentifierPrefix?: string;
+    private _clusterIdentifierPrefix?: string | undefined; 
     public get clusterIdentifierPrefix() {
       return this.getStringAttribute('cluster_identifier_prefix');
     }
-    public set clusterIdentifierPrefix(value: string) {
+    public set clusterIdentifierPrefix(value: string | undefined) {
       this._clusterIdentifierPrefix = value;
     }
     public resetClusterIdentifierPrefix() {
@@ -4811,11 +5797,11 @@ export namespace RDS {
     }
 
     // cluster_members - computed: true, optional: true, required: false
-    private _clusterMembers?: string[];
+    private _clusterMembers?: string[] | undefined; 
     public get clusterMembers() {
       return this.getListAttribute('cluster_members');
     }
-    public set clusterMembers(value: string[]) {
+    public set clusterMembers(value: string[] | undefined) {
       this._clusterMembers = value;
     }
     public resetClusterMembers() {
@@ -4832,11 +5818,11 @@ export namespace RDS {
     }
 
     // copy_tags_to_snapshot - computed: false, optional: true, required: false
-    private _copyTagsToSnapshot?: boolean | cdktf.IResolvable;
+    private _copyTagsToSnapshot?: boolean | cdktf.IResolvable | undefined; 
     public get copyTagsToSnapshot() {
-      return this.getBooleanAttribute('copy_tags_to_snapshot');
+      return this.getBooleanAttribute('copy_tags_to_snapshot') as any;
     }
-    public set copyTagsToSnapshot(value: boolean | cdktf.IResolvable ) {
+    public set copyTagsToSnapshot(value: boolean | cdktf.IResolvable | undefined) {
       this._copyTagsToSnapshot = value;
     }
     public resetCopyTagsToSnapshot() {
@@ -4848,11 +5834,11 @@ export namespace RDS {
     }
 
     // database_name - computed: true, optional: true, required: false
-    private _databaseName?: string;
+    private _databaseName?: string | undefined; 
     public get databaseName() {
       return this.getStringAttribute('database_name');
     }
-    public set databaseName(value: string) {
+    public set databaseName(value: string | undefined) {
       this._databaseName = value;
     }
     public resetDatabaseName() {
@@ -4864,11 +5850,11 @@ export namespace RDS {
     }
 
     // db_cluster_parameter_group_name - computed: true, optional: true, required: false
-    private _dbClusterParameterGroupName?: string;
+    private _dbClusterParameterGroupName?: string | undefined; 
     public get dbClusterParameterGroupName() {
       return this.getStringAttribute('db_cluster_parameter_group_name');
     }
-    public set dbClusterParameterGroupName(value: string) {
+    public set dbClusterParameterGroupName(value: string | undefined) {
       this._dbClusterParameterGroupName = value;
     }
     public resetDbClusterParameterGroupName() {
@@ -4880,11 +5866,11 @@ export namespace RDS {
     }
 
     // db_instance_parameter_group_name - computed: false, optional: true, required: false
-    private _dbInstanceParameterGroupName?: string;
+    private _dbInstanceParameterGroupName?: string | undefined; 
     public get dbInstanceParameterGroupName() {
       return this.getStringAttribute('db_instance_parameter_group_name');
     }
-    public set dbInstanceParameterGroupName(value: string ) {
+    public set dbInstanceParameterGroupName(value: string | undefined) {
       this._dbInstanceParameterGroupName = value;
     }
     public resetDbInstanceParameterGroupName() {
@@ -4896,11 +5882,11 @@ export namespace RDS {
     }
 
     // db_subnet_group_name - computed: true, optional: true, required: false
-    private _dbSubnetGroupName?: string;
+    private _dbSubnetGroupName?: string | undefined; 
     public get dbSubnetGroupName() {
       return this.getStringAttribute('db_subnet_group_name');
     }
-    public set dbSubnetGroupName(value: string) {
+    public set dbSubnetGroupName(value: string | undefined) {
       this._dbSubnetGroupName = value;
     }
     public resetDbSubnetGroupName() {
@@ -4912,11 +5898,11 @@ export namespace RDS {
     }
 
     // deletion_protection - computed: false, optional: true, required: false
-    private _deletionProtection?: boolean | cdktf.IResolvable;
+    private _deletionProtection?: boolean | cdktf.IResolvable | undefined; 
     public get deletionProtection() {
-      return this.getBooleanAttribute('deletion_protection');
+      return this.getBooleanAttribute('deletion_protection') as any;
     }
-    public set deletionProtection(value: boolean | cdktf.IResolvable ) {
+    public set deletionProtection(value: boolean | cdktf.IResolvable | undefined) {
       this._deletionProtection = value;
     }
     public resetDeletionProtection() {
@@ -4928,11 +5914,11 @@ export namespace RDS {
     }
 
     // enable_global_write_forwarding - computed: false, optional: true, required: false
-    private _enableGlobalWriteForwarding?: boolean | cdktf.IResolvable;
+    private _enableGlobalWriteForwarding?: boolean | cdktf.IResolvable | undefined; 
     public get enableGlobalWriteForwarding() {
-      return this.getBooleanAttribute('enable_global_write_forwarding');
+      return this.getBooleanAttribute('enable_global_write_forwarding') as any;
     }
-    public set enableGlobalWriteForwarding(value: boolean | cdktf.IResolvable ) {
+    public set enableGlobalWriteForwarding(value: boolean | cdktf.IResolvable | undefined) {
       this._enableGlobalWriteForwarding = value;
     }
     public resetEnableGlobalWriteForwarding() {
@@ -4944,11 +5930,11 @@ export namespace RDS {
     }
 
     // enable_http_endpoint - computed: false, optional: true, required: false
-    private _enableHttpEndpoint?: boolean | cdktf.IResolvable;
+    private _enableHttpEndpoint?: boolean | cdktf.IResolvable | undefined; 
     public get enableHttpEndpoint() {
-      return this.getBooleanAttribute('enable_http_endpoint');
+      return this.getBooleanAttribute('enable_http_endpoint') as any;
     }
-    public set enableHttpEndpoint(value: boolean | cdktf.IResolvable ) {
+    public set enableHttpEndpoint(value: boolean | cdktf.IResolvable | undefined) {
       this._enableHttpEndpoint = value;
     }
     public resetEnableHttpEndpoint() {
@@ -4960,11 +5946,11 @@ export namespace RDS {
     }
 
     // enabled_cloudwatch_logs_exports - computed: false, optional: true, required: false
-    private _enabledCloudwatchLogsExports?: string[];
+    private _enabledCloudwatchLogsExports?: string[] | undefined; 
     public get enabledCloudwatchLogsExports() {
       return this.getListAttribute('enabled_cloudwatch_logs_exports');
     }
-    public set enabledCloudwatchLogsExports(value: string[] ) {
+    public set enabledCloudwatchLogsExports(value: string[] | undefined) {
       this._enabledCloudwatchLogsExports = value;
     }
     public resetEnabledCloudwatchLogsExports() {
@@ -4981,11 +5967,11 @@ export namespace RDS {
     }
 
     // engine - computed: false, optional: true, required: false
-    private _engine?: string;
+    private _engine?: string | undefined; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
-    public set engine(value: string ) {
+    public set engine(value: string | undefined) {
       this._engine = value;
     }
     public resetEngine() {
@@ -4997,11 +5983,11 @@ export namespace RDS {
     }
 
     // engine_mode - computed: false, optional: true, required: false
-    private _engineMode?: string;
+    private _engineMode?: string | undefined; 
     public get engineMode() {
       return this.getStringAttribute('engine_mode');
     }
-    public set engineMode(value: string ) {
+    public set engineMode(value: string | undefined) {
       this._engineMode = value;
     }
     public resetEngineMode() {
@@ -5013,11 +5999,11 @@ export namespace RDS {
     }
 
     // engine_version - computed: true, optional: true, required: false
-    private _engineVersion?: string;
+    private _engineVersion?: string | undefined; 
     public get engineVersion() {
       return this.getStringAttribute('engine_version');
     }
-    public set engineVersion(value: string) {
+    public set engineVersion(value: string | undefined) {
       this._engineVersion = value;
     }
     public resetEngineVersion() {
@@ -5034,11 +6020,11 @@ export namespace RDS {
     }
 
     // final_snapshot_identifier - computed: false, optional: true, required: false
-    private _finalSnapshotIdentifier?: string;
+    private _finalSnapshotIdentifier?: string | undefined; 
     public get finalSnapshotIdentifier() {
       return this.getStringAttribute('final_snapshot_identifier');
     }
-    public set finalSnapshotIdentifier(value: string ) {
+    public set finalSnapshotIdentifier(value: string | undefined) {
       this._finalSnapshotIdentifier = value;
     }
     public resetFinalSnapshotIdentifier() {
@@ -5050,11 +6036,11 @@ export namespace RDS {
     }
 
     // global_cluster_identifier - computed: false, optional: true, required: false
-    private _globalClusterIdentifier?: string;
+    private _globalClusterIdentifier?: string | undefined; 
     public get globalClusterIdentifier() {
       return this.getStringAttribute('global_cluster_identifier');
     }
-    public set globalClusterIdentifier(value: string ) {
+    public set globalClusterIdentifier(value: string | undefined) {
       this._globalClusterIdentifier = value;
     }
     public resetGlobalClusterIdentifier() {
@@ -5071,11 +6057,11 @@ export namespace RDS {
     }
 
     // iam_database_authentication_enabled - computed: false, optional: true, required: false
-    private _iamDatabaseAuthenticationEnabled?: boolean | cdktf.IResolvable;
+    private _iamDatabaseAuthenticationEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get iamDatabaseAuthenticationEnabled() {
-      return this.getBooleanAttribute('iam_database_authentication_enabled');
+      return this.getBooleanAttribute('iam_database_authentication_enabled') as any;
     }
-    public set iamDatabaseAuthenticationEnabled(value: boolean | cdktf.IResolvable ) {
+    public set iamDatabaseAuthenticationEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._iamDatabaseAuthenticationEnabled = value;
     }
     public resetIamDatabaseAuthenticationEnabled() {
@@ -5087,11 +6073,11 @@ export namespace RDS {
     }
 
     // iam_roles - computed: true, optional: true, required: false
-    private _iamRoles?: string[];
+    private _iamRoles?: string[] | undefined; 
     public get iamRoles() {
       return this.getListAttribute('iam_roles');
     }
-    public set iamRoles(value: string[]) {
+    public set iamRoles(value: string[] | undefined) {
       this._iamRoles = value;
     }
     public resetIamRoles() {
@@ -5108,11 +6094,11 @@ export namespace RDS {
     }
 
     // kms_key_id - computed: true, optional: true, required: false
-    private _kmsKeyId?: string;
+    private _kmsKeyId?: string | undefined; 
     public get kmsKeyId() {
       return this.getStringAttribute('kms_key_id');
     }
-    public set kmsKeyId(value: string) {
+    public set kmsKeyId(value: string | undefined) {
       this._kmsKeyId = value;
     }
     public resetKmsKeyId() {
@@ -5124,11 +6110,11 @@ export namespace RDS {
     }
 
     // master_password - computed: false, optional: true, required: false
-    private _masterPassword?: string;
+    private _masterPassword?: string | undefined; 
     public get masterPassword() {
       return this.getStringAttribute('master_password');
     }
-    public set masterPassword(value: string ) {
+    public set masterPassword(value: string | undefined) {
       this._masterPassword = value;
     }
     public resetMasterPassword() {
@@ -5140,11 +6126,11 @@ export namespace RDS {
     }
 
     // master_username - computed: true, optional: true, required: false
-    private _masterUsername?: string;
+    private _masterUsername?: string | undefined; 
     public get masterUsername() {
       return this.getStringAttribute('master_username');
     }
-    public set masterUsername(value: string) {
+    public set masterUsername(value: string | undefined) {
       this._masterUsername = value;
     }
     public resetMasterUsername() {
@@ -5156,11 +6142,11 @@ export namespace RDS {
     }
 
     // port - computed: true, optional: true, required: false
-    private _port?: number;
+    private _port?: number | undefined; 
     public get port() {
       return this.getNumberAttribute('port');
     }
-    public set port(value: number) {
+    public set port(value: number | undefined) {
       this._port = value;
     }
     public resetPort() {
@@ -5172,11 +6158,11 @@ export namespace RDS {
     }
 
     // preferred_backup_window - computed: true, optional: true, required: false
-    private _preferredBackupWindow?: string;
+    private _preferredBackupWindow?: string | undefined; 
     public get preferredBackupWindow() {
       return this.getStringAttribute('preferred_backup_window');
     }
-    public set preferredBackupWindow(value: string) {
+    public set preferredBackupWindow(value: string | undefined) {
       this._preferredBackupWindow = value;
     }
     public resetPreferredBackupWindow() {
@@ -5188,11 +6174,11 @@ export namespace RDS {
     }
 
     // preferred_maintenance_window - computed: true, optional: true, required: false
-    private _preferredMaintenanceWindow?: string;
+    private _preferredMaintenanceWindow?: string | undefined; 
     public get preferredMaintenanceWindow() {
       return this.getStringAttribute('preferred_maintenance_window');
     }
-    public set preferredMaintenanceWindow(value: string) {
+    public set preferredMaintenanceWindow(value: string | undefined) {
       this._preferredMaintenanceWindow = value;
     }
     public resetPreferredMaintenanceWindow() {
@@ -5209,11 +6195,11 @@ export namespace RDS {
     }
 
     // replication_source_identifier - computed: false, optional: true, required: false
-    private _replicationSourceIdentifier?: string;
+    private _replicationSourceIdentifier?: string | undefined; 
     public get replicationSourceIdentifier() {
       return this.getStringAttribute('replication_source_identifier');
     }
-    public set replicationSourceIdentifier(value: string ) {
+    public set replicationSourceIdentifier(value: string | undefined) {
       this._replicationSourceIdentifier = value;
     }
     public resetReplicationSourceIdentifier() {
@@ -5225,11 +6211,11 @@ export namespace RDS {
     }
 
     // skip_final_snapshot - computed: false, optional: true, required: false
-    private _skipFinalSnapshot?: boolean | cdktf.IResolvable;
+    private _skipFinalSnapshot?: boolean | cdktf.IResolvable | undefined; 
     public get skipFinalSnapshot() {
-      return this.getBooleanAttribute('skip_final_snapshot');
+      return this.getBooleanAttribute('skip_final_snapshot') as any;
     }
-    public set skipFinalSnapshot(value: boolean | cdktf.IResolvable ) {
+    public set skipFinalSnapshot(value: boolean | cdktf.IResolvable | undefined) {
       this._skipFinalSnapshot = value;
     }
     public resetSkipFinalSnapshot() {
@@ -5241,11 +6227,11 @@ export namespace RDS {
     }
 
     // snapshot_identifier - computed: false, optional: true, required: false
-    private _snapshotIdentifier?: string;
+    private _snapshotIdentifier?: string | undefined; 
     public get snapshotIdentifier() {
       return this.getStringAttribute('snapshot_identifier');
     }
-    public set snapshotIdentifier(value: string ) {
+    public set snapshotIdentifier(value: string | undefined) {
       this._snapshotIdentifier = value;
     }
     public resetSnapshotIdentifier() {
@@ -5257,11 +6243,11 @@ export namespace RDS {
     }
 
     // source_region - computed: false, optional: true, required: false
-    private _sourceRegion?: string;
+    private _sourceRegion?: string | undefined; 
     public get sourceRegion() {
       return this.getStringAttribute('source_region');
     }
-    public set sourceRegion(value: string ) {
+    public set sourceRegion(value: string | undefined) {
       this._sourceRegion = value;
     }
     public resetSourceRegion() {
@@ -5273,11 +6259,11 @@ export namespace RDS {
     }
 
     // storage_encrypted - computed: true, optional: true, required: false
-    private _storageEncrypted?: boolean | cdktf.IResolvable;
+    private _storageEncrypted?: boolean | cdktf.IResolvable | undefined; 
     public get storageEncrypted() {
-      return this.getBooleanAttribute('storage_encrypted');
+      return this.getBooleanAttribute('storage_encrypted') as any;
     }
-    public set storageEncrypted(value: boolean | cdktf.IResolvable) {
+    public set storageEncrypted(value: boolean | cdktf.IResolvable | undefined) {
       this._storageEncrypted = value;
     }
     public resetStorageEncrypted() {
@@ -5289,11 +6275,12 @@ export namespace RDS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -5305,11 +6292,12 @@ export namespace RDS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -5321,11 +6309,11 @@ export namespace RDS {
     }
 
     // vpc_security_group_ids - computed: true, optional: true, required: false
-    private _vpcSecurityGroupIds?: string[];
+    private _vpcSecurityGroupIds?: string[] | undefined; 
     public get vpcSecurityGroupIds() {
       return this.getListAttribute('vpc_security_group_ids');
     }
-    public set vpcSecurityGroupIds(value: string[]) {
+    public set vpcSecurityGroupIds(value: string[] | undefined) {
       this._vpcSecurityGroupIds = value;
     }
     public resetVpcSecurityGroupIds() {
@@ -5337,11 +6325,12 @@ export namespace RDS {
     }
 
     // restore_to_point_in_time - computed: false, optional: true, required: false
-    private _restoreToPointInTime?: RdsClusterRestoreToPointInTime[];
+    private _restoreToPointInTime?: RdsClusterRestoreToPointInTime | undefined; 
+    private __restoreToPointInTimeOutput = new RdsClusterRestoreToPointInTimeOutputReference(this as any, "restore_to_point_in_time", true);
     public get restoreToPointInTime() {
-      return this.interpolationForAttribute('restore_to_point_in_time') as any;
+      return this.__restoreToPointInTimeOutput;
     }
-    public set restoreToPointInTime(value: RdsClusterRestoreToPointInTime[] ) {
+    public putRestoreToPointInTime(value: RdsClusterRestoreToPointInTime | undefined) {
       this._restoreToPointInTime = value;
     }
     public resetRestoreToPointInTime() {
@@ -5353,11 +6342,12 @@ export namespace RDS {
     }
 
     // s3_import - computed: false, optional: true, required: false
-    private _s3Import?: RdsClusterS3Import[];
+    private _s3Import?: RdsClusterS3Import | undefined; 
+    private __s3ImportOutput = new RdsClusterS3ImportOutputReference(this as any, "s3_import", true);
     public get s3Import() {
-      return this.interpolationForAttribute('s3_import') as any;
+      return this.__s3ImportOutput;
     }
-    public set s3Import(value: RdsClusterS3Import[] ) {
+    public putS3Import(value: RdsClusterS3Import | undefined) {
       this._s3Import = value;
     }
     public resetS3Import() {
@@ -5369,11 +6359,12 @@ export namespace RDS {
     }
 
     // scaling_configuration - computed: false, optional: true, required: false
-    private _scalingConfiguration?: RdsClusterScalingConfiguration[];
+    private _scalingConfiguration?: RdsClusterScalingConfiguration | undefined; 
+    private __scalingConfigurationOutput = new RdsClusterScalingConfigurationOutputReference(this as any, "scaling_configuration", true);
     public get scalingConfiguration() {
-      return this.interpolationForAttribute('scaling_configuration') as any;
+      return this.__scalingConfigurationOutput;
     }
-    public set scalingConfiguration(value: RdsClusterScalingConfiguration[] ) {
+    public putScalingConfiguration(value: RdsClusterScalingConfiguration | undefined) {
       this._scalingConfiguration = value;
     }
     public resetScalingConfiguration() {
@@ -5385,11 +6376,12 @@ export namespace RDS {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: RdsClusterTimeouts;
+    private _timeouts?: RdsClusterTimeouts | undefined; 
+    private __timeoutsOutput = new RdsClusterTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: RdsClusterTimeouts ) {
+    public putTimeouts(value: RdsClusterTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -5444,9 +6436,9 @@ export namespace RDS {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         vpc_security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._vpcSecurityGroupIds),
-        restore_to_point_in_time: cdktf.listMapper(rdsClusterRestoreToPointInTimeToTerraform)(this._restoreToPointInTime),
-        s3_import: cdktf.listMapper(rdsClusterS3ImportToTerraform)(this._s3Import),
-        scaling_configuration: cdktf.listMapper(rdsClusterScalingConfigurationToTerraform)(this._scalingConfiguration),
+        restore_to_point_in_time: rdsClusterRestoreToPointInTimeToTerraform(this._restoreToPointInTime),
+        s3_import: rdsClusterS3ImportToTerraform(this._s3Import),
+        scaling_configuration: rdsClusterScalingConfigurationToTerraform(this._scalingConfiguration),
         timeouts: rdsClusterTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -5533,7 +6525,7 @@ export namespace RDS {
     }
 
     // cluster_endpoint_identifier - computed: false, optional: false, required: true
-    private _clusterEndpointIdentifier: string;
+    private _clusterEndpointIdentifier?: string; 
     public get clusterEndpointIdentifier() {
       return this.getStringAttribute('cluster_endpoint_identifier');
     }
@@ -5546,7 +6538,7 @@ export namespace RDS {
     }
 
     // cluster_identifier - computed: false, optional: false, required: true
-    private _clusterIdentifier: string;
+    private _clusterIdentifier?: string; 
     public get clusterIdentifier() {
       return this.getStringAttribute('cluster_identifier');
     }
@@ -5559,7 +6551,7 @@ export namespace RDS {
     }
 
     // custom_endpoint_type - computed: false, optional: false, required: true
-    private _customEndpointType: string;
+    private _customEndpointType?: string; 
     public get customEndpointType() {
       return this.getStringAttribute('custom_endpoint_type');
     }
@@ -5577,11 +6569,11 @@ export namespace RDS {
     }
 
     // excluded_members - computed: false, optional: true, required: false
-    private _excludedMembers?: string[];
+    private _excludedMembers?: string[] | undefined; 
     public get excludedMembers() {
       return this.getListAttribute('excluded_members');
     }
-    public set excludedMembers(value: string[] ) {
+    public set excludedMembers(value: string[] | undefined) {
       this._excludedMembers = value;
     }
     public resetExcludedMembers() {
@@ -5598,11 +6590,11 @@ export namespace RDS {
     }
 
     // static_members - computed: false, optional: true, required: false
-    private _staticMembers?: string[];
+    private _staticMembers?: string[] | undefined; 
     public get staticMembers() {
       return this.getListAttribute('static_members');
     }
-    public set staticMembers(value: string[] ) {
+    public set staticMembers(value: string[] | undefined) {
       this._staticMembers = value;
     }
     public resetStaticMembers() {
@@ -5614,11 +6606,12 @@ export namespace RDS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -5630,11 +6623,12 @@ export namespace RDS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -5780,8 +6774,11 @@ export namespace RDS {
     readonly update?: string;
   }
 
-  function rdsClusterInstanceTimeoutsToTerraform(struct?: RdsClusterInstanceTimeouts): any {
+  function rdsClusterInstanceTimeoutsToTerraform(struct?: RdsClusterInstanceTimeoutsOutputReference | RdsClusterInstanceTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -5789,6 +6786,64 @@ export namespace RDS {
     }
   }
 
+  export class RdsClusterInstanceTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/rds_cluster_instance.html aws_rds_cluster_instance}
@@ -5854,11 +6909,11 @@ export namespace RDS {
     // ==========
 
     // apply_immediately - computed: true, optional: true, required: false
-    private _applyImmediately?: boolean | cdktf.IResolvable;
+    private _applyImmediately?: boolean | cdktf.IResolvable | undefined; 
     public get applyImmediately() {
-      return this.getBooleanAttribute('apply_immediately');
+      return this.getBooleanAttribute('apply_immediately') as any;
     }
-    public set applyImmediately(value: boolean | cdktf.IResolvable) {
+    public set applyImmediately(value: boolean | cdktf.IResolvable | undefined) {
       this._applyImmediately = value;
     }
     public resetApplyImmediately() {
@@ -5875,11 +6930,11 @@ export namespace RDS {
     }
 
     // auto_minor_version_upgrade - computed: false, optional: true, required: false
-    private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable;
+    private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable | undefined; 
     public get autoMinorVersionUpgrade() {
-      return this.getBooleanAttribute('auto_minor_version_upgrade');
+      return this.getBooleanAttribute('auto_minor_version_upgrade') as any;
     }
-    public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable ) {
+    public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable | undefined) {
       this._autoMinorVersionUpgrade = value;
     }
     public resetAutoMinorVersionUpgrade() {
@@ -5891,11 +6946,11 @@ export namespace RDS {
     }
 
     // availability_zone - computed: true, optional: true, required: false
-    private _availabilityZone?: string;
+    private _availabilityZone?: string | undefined; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
-    public set availabilityZone(value: string) {
+    public set availabilityZone(value: string | undefined) {
       this._availabilityZone = value;
     }
     public resetAvailabilityZone() {
@@ -5907,11 +6962,11 @@ export namespace RDS {
     }
 
     // ca_cert_identifier - computed: true, optional: true, required: false
-    private _caCertIdentifier?: string;
+    private _caCertIdentifier?: string | undefined; 
     public get caCertIdentifier() {
       return this.getStringAttribute('ca_cert_identifier');
     }
-    public set caCertIdentifier(value: string) {
+    public set caCertIdentifier(value: string | undefined) {
       this._caCertIdentifier = value;
     }
     public resetCaCertIdentifier() {
@@ -5923,7 +6978,7 @@ export namespace RDS {
     }
 
     // cluster_identifier - computed: false, optional: false, required: true
-    private _clusterIdentifier: string;
+    private _clusterIdentifier?: string; 
     public get clusterIdentifier() {
       return this.getStringAttribute('cluster_identifier');
     }
@@ -5936,11 +6991,11 @@ export namespace RDS {
     }
 
     // copy_tags_to_snapshot - computed: false, optional: true, required: false
-    private _copyTagsToSnapshot?: boolean | cdktf.IResolvable;
+    private _copyTagsToSnapshot?: boolean | cdktf.IResolvable | undefined; 
     public get copyTagsToSnapshot() {
-      return this.getBooleanAttribute('copy_tags_to_snapshot');
+      return this.getBooleanAttribute('copy_tags_to_snapshot') as any;
     }
-    public set copyTagsToSnapshot(value: boolean | cdktf.IResolvable ) {
+    public set copyTagsToSnapshot(value: boolean | cdktf.IResolvable | undefined) {
       this._copyTagsToSnapshot = value;
     }
     public resetCopyTagsToSnapshot() {
@@ -5952,11 +7007,11 @@ export namespace RDS {
     }
 
     // db_parameter_group_name - computed: true, optional: true, required: false
-    private _dbParameterGroupName?: string;
+    private _dbParameterGroupName?: string | undefined; 
     public get dbParameterGroupName() {
       return this.getStringAttribute('db_parameter_group_name');
     }
-    public set dbParameterGroupName(value: string) {
+    public set dbParameterGroupName(value: string | undefined) {
       this._dbParameterGroupName = value;
     }
     public resetDbParameterGroupName() {
@@ -5968,11 +7023,11 @@ export namespace RDS {
     }
 
     // db_subnet_group_name - computed: true, optional: true, required: false
-    private _dbSubnetGroupName?: string;
+    private _dbSubnetGroupName?: string | undefined; 
     public get dbSubnetGroupName() {
       return this.getStringAttribute('db_subnet_group_name');
     }
-    public set dbSubnetGroupName(value: string) {
+    public set dbSubnetGroupName(value: string | undefined) {
       this._dbSubnetGroupName = value;
     }
     public resetDbSubnetGroupName() {
@@ -5994,11 +7049,11 @@ export namespace RDS {
     }
 
     // engine - computed: false, optional: true, required: false
-    private _engine?: string;
+    private _engine?: string | undefined; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
-    public set engine(value: string ) {
+    public set engine(value: string | undefined) {
       this._engine = value;
     }
     public resetEngine() {
@@ -6010,11 +7065,11 @@ export namespace RDS {
     }
 
     // engine_version - computed: true, optional: true, required: false
-    private _engineVersion?: string;
+    private _engineVersion?: string | undefined; 
     public get engineVersion() {
       return this.getStringAttribute('engine_version');
     }
-    public set engineVersion(value: string) {
+    public set engineVersion(value: string | undefined) {
       this._engineVersion = value;
     }
     public resetEngineVersion() {
@@ -6036,11 +7091,11 @@ export namespace RDS {
     }
 
     // identifier - computed: true, optional: true, required: false
-    private _identifier?: string;
+    private _identifier?: string | undefined; 
     public get identifier() {
       return this.getStringAttribute('identifier');
     }
-    public set identifier(value: string) {
+    public set identifier(value: string | undefined) {
       this._identifier = value;
     }
     public resetIdentifier() {
@@ -6052,11 +7107,11 @@ export namespace RDS {
     }
 
     // identifier_prefix - computed: true, optional: true, required: false
-    private _identifierPrefix?: string;
+    private _identifierPrefix?: string | undefined; 
     public get identifierPrefix() {
       return this.getStringAttribute('identifier_prefix');
     }
-    public set identifierPrefix(value: string) {
+    public set identifierPrefix(value: string | undefined) {
       this._identifierPrefix = value;
     }
     public resetIdentifierPrefix() {
@@ -6068,7 +7123,7 @@ export namespace RDS {
     }
 
     // instance_class - computed: false, optional: false, required: true
-    private _instanceClass: string;
+    private _instanceClass?: string; 
     public get instanceClass() {
       return this.getStringAttribute('instance_class');
     }
@@ -6086,11 +7141,11 @@ export namespace RDS {
     }
 
     // monitoring_interval - computed: false, optional: true, required: false
-    private _monitoringInterval?: number;
+    private _monitoringInterval?: number | undefined; 
     public get monitoringInterval() {
       return this.getNumberAttribute('monitoring_interval');
     }
-    public set monitoringInterval(value: number ) {
+    public set monitoringInterval(value: number | undefined) {
       this._monitoringInterval = value;
     }
     public resetMonitoringInterval() {
@@ -6102,11 +7157,11 @@ export namespace RDS {
     }
 
     // monitoring_role_arn - computed: true, optional: true, required: false
-    private _monitoringRoleArn?: string;
+    private _monitoringRoleArn?: string | undefined; 
     public get monitoringRoleArn() {
       return this.getStringAttribute('monitoring_role_arn');
     }
-    public set monitoringRoleArn(value: string) {
+    public set monitoringRoleArn(value: string | undefined) {
       this._monitoringRoleArn = value;
     }
     public resetMonitoringRoleArn() {
@@ -6118,11 +7173,11 @@ export namespace RDS {
     }
 
     // performance_insights_enabled - computed: true, optional: true, required: false
-    private _performanceInsightsEnabled?: boolean | cdktf.IResolvable;
+    private _performanceInsightsEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get performanceInsightsEnabled() {
-      return this.getBooleanAttribute('performance_insights_enabled');
+      return this.getBooleanAttribute('performance_insights_enabled') as any;
     }
-    public set performanceInsightsEnabled(value: boolean | cdktf.IResolvable) {
+    public set performanceInsightsEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._performanceInsightsEnabled = value;
     }
     public resetPerformanceInsightsEnabled() {
@@ -6134,11 +7189,11 @@ export namespace RDS {
     }
 
     // performance_insights_kms_key_id - computed: true, optional: true, required: false
-    private _performanceInsightsKmsKeyId?: string;
+    private _performanceInsightsKmsKeyId?: string | undefined; 
     public get performanceInsightsKmsKeyId() {
       return this.getStringAttribute('performance_insights_kms_key_id');
     }
-    public set performanceInsightsKmsKeyId(value: string) {
+    public set performanceInsightsKmsKeyId(value: string | undefined) {
       this._performanceInsightsKmsKeyId = value;
     }
     public resetPerformanceInsightsKmsKeyId() {
@@ -6150,11 +7205,11 @@ export namespace RDS {
     }
 
     // performance_insights_retention_period - computed: true, optional: true, required: false
-    private _performanceInsightsRetentionPeriod?: number;
+    private _performanceInsightsRetentionPeriod?: number | undefined; 
     public get performanceInsightsRetentionPeriod() {
       return this.getNumberAttribute('performance_insights_retention_period');
     }
-    public set performanceInsightsRetentionPeriod(value: number) {
+    public set performanceInsightsRetentionPeriod(value: number | undefined) {
       this._performanceInsightsRetentionPeriod = value;
     }
     public resetPerformanceInsightsRetentionPeriod() {
@@ -6171,11 +7226,11 @@ export namespace RDS {
     }
 
     // preferred_backup_window - computed: true, optional: true, required: false
-    private _preferredBackupWindow?: string;
+    private _preferredBackupWindow?: string | undefined; 
     public get preferredBackupWindow() {
       return this.getStringAttribute('preferred_backup_window');
     }
-    public set preferredBackupWindow(value: string) {
+    public set preferredBackupWindow(value: string | undefined) {
       this._preferredBackupWindow = value;
     }
     public resetPreferredBackupWindow() {
@@ -6187,11 +7242,11 @@ export namespace RDS {
     }
 
     // preferred_maintenance_window - computed: true, optional: true, required: false
-    private _preferredMaintenanceWindow?: string;
+    private _preferredMaintenanceWindow?: string | undefined; 
     public get preferredMaintenanceWindow() {
       return this.getStringAttribute('preferred_maintenance_window');
     }
-    public set preferredMaintenanceWindow(value: string) {
+    public set preferredMaintenanceWindow(value: string | undefined) {
       this._preferredMaintenanceWindow = value;
     }
     public resetPreferredMaintenanceWindow() {
@@ -6203,11 +7258,11 @@ export namespace RDS {
     }
 
     // promotion_tier - computed: false, optional: true, required: false
-    private _promotionTier?: number;
+    private _promotionTier?: number | undefined; 
     public get promotionTier() {
       return this.getNumberAttribute('promotion_tier');
     }
-    public set promotionTier(value: number ) {
+    public set promotionTier(value: number | undefined) {
       this._promotionTier = value;
     }
     public resetPromotionTier() {
@@ -6219,11 +7274,11 @@ export namespace RDS {
     }
 
     // publicly_accessible - computed: false, optional: true, required: false
-    private _publiclyAccessible?: boolean | cdktf.IResolvable;
+    private _publiclyAccessible?: boolean | cdktf.IResolvable | undefined; 
     public get publiclyAccessible() {
-      return this.getBooleanAttribute('publicly_accessible');
+      return this.getBooleanAttribute('publicly_accessible') as any;
     }
-    public set publiclyAccessible(value: boolean | cdktf.IResolvable ) {
+    public set publiclyAccessible(value: boolean | cdktf.IResolvable | undefined) {
       this._publiclyAccessible = value;
     }
     public resetPubliclyAccessible() {
@@ -6236,15 +7291,16 @@ export namespace RDS {
 
     // storage_encrypted - computed: true, optional: false, required: false
     public get storageEncrypted() {
-      return this.getBooleanAttribute('storage_encrypted');
+      return this.getBooleanAttribute('storage_encrypted') as any;
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -6256,11 +7312,12 @@ export namespace RDS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -6273,15 +7330,16 @@ export namespace RDS {
 
     // writer - computed: true, optional: false, required: false
     public get writer() {
-      return this.getBooleanAttribute('writer');
+      return this.getBooleanAttribute('writer') as any;
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: RdsClusterInstanceTimeouts;
+    private _timeouts?: RdsClusterInstanceTimeouts | undefined; 
+    private __timeoutsOutput = new RdsClusterInstanceTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: RdsClusterInstanceTimeouts ) {
+    public putTimeouts(value: RdsClusterInstanceTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -6375,6 +7433,9 @@ export namespace RDS {
 
   function rdsClusterParameterGroupParameterToTerraform(struct?: RdsClusterParameterGroupParameter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       apply_method: cdktf.stringToTerraform(struct!.applyMethod),
       name: cdktf.stringToTerraform(struct!.name),
@@ -6434,11 +7495,11 @@ export namespace RDS {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -6450,7 +7511,7 @@ export namespace RDS {
     }
 
     // family - computed: false, optional: false, required: true
-    private _family: string;
+    private _family?: string; 
     public get family() {
       return this.getStringAttribute('family');
     }
@@ -6468,11 +7529,11 @@ export namespace RDS {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -6484,11 +7545,11 @@ export namespace RDS {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -6500,11 +7561,12 @@ export namespace RDS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -6516,11 +7578,12 @@ export namespace RDS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -6532,11 +7595,12 @@ export namespace RDS {
     }
 
     // parameter - computed: false, optional: true, required: false
-    private _parameter?: RdsClusterParameterGroupParameter[];
+    private _parameter?: RdsClusterParameterGroupParameter[] | undefined; 
     public get parameter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('parameter') as any;
     }
-    public set parameter(value: RdsClusterParameterGroupParameter[] ) {
+    public set parameter(value: RdsClusterParameterGroupParameter[] | undefined) {
       this._parameter = value;
     }
     public resetParameter() {
@@ -6620,7 +7684,7 @@ export namespace RDS {
     // ==========
 
     // db_cluster_identifier - computed: false, optional: false, required: true
-    private _dbClusterIdentifier: string;
+    private _dbClusterIdentifier?: string; 
     public get dbClusterIdentifier() {
       return this.getStringAttribute('db_cluster_identifier');
     }
@@ -6633,7 +7697,7 @@ export namespace RDS {
     }
 
     // feature_name - computed: false, optional: false, required: true
-    private _featureName: string;
+    private _featureName?: string; 
     public get featureName() {
       return this.getStringAttribute('feature_name');
     }
@@ -6651,7 +7715,7 @@ export namespace RDS {
     }
 
     // role_arn - computed: false, optional: false, required: true
-    private _roleArn: string;
+    private _roleArn?: string; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
@@ -6718,7 +7782,7 @@ export namespace RDS {
 
     // is_writer - computed: true, optional: false, required: false
     public get isWriter() {
-      return this.getBooleanAttribute('is_writer');
+      return this.getBooleanAttribute('is_writer') as any;
     }
   }
 
@@ -6774,11 +7838,11 @@ export namespace RDS {
     }
 
     // database_name - computed: false, optional: true, required: false
-    private _databaseName?: string;
+    private _databaseName?: string | undefined; 
     public get databaseName() {
       return this.getStringAttribute('database_name');
     }
-    public set databaseName(value: string ) {
+    public set databaseName(value: string | undefined) {
       this._databaseName = value;
     }
     public resetDatabaseName() {
@@ -6790,11 +7854,11 @@ export namespace RDS {
     }
 
     // deletion_protection - computed: false, optional: true, required: false
-    private _deletionProtection?: boolean | cdktf.IResolvable;
+    private _deletionProtection?: boolean | cdktf.IResolvable | undefined; 
     public get deletionProtection() {
-      return this.getBooleanAttribute('deletion_protection');
+      return this.getBooleanAttribute('deletion_protection') as any;
     }
-    public set deletionProtection(value: boolean | cdktf.IResolvable ) {
+    public set deletionProtection(value: boolean | cdktf.IResolvable | undefined) {
       this._deletionProtection = value;
     }
     public resetDeletionProtection() {
@@ -6806,11 +7870,11 @@ export namespace RDS {
     }
 
     // engine - computed: true, optional: true, required: false
-    private _engine?: string;
+    private _engine?: string | undefined; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
-    public set engine(value: string) {
+    public set engine(value: string | undefined) {
       this._engine = value;
     }
     public resetEngine() {
@@ -6822,11 +7886,11 @@ export namespace RDS {
     }
 
     // engine_version - computed: true, optional: true, required: false
-    private _engineVersion?: string;
+    private _engineVersion?: string | undefined; 
     public get engineVersion() {
       return this.getStringAttribute('engine_version');
     }
-    public set engineVersion(value: string) {
+    public set engineVersion(value: string | undefined) {
       this._engineVersion = value;
     }
     public resetEngineVersion() {
@@ -6838,11 +7902,11 @@ export namespace RDS {
     }
 
     // force_destroy - computed: false, optional: true, required: false
-    private _forceDestroy?: boolean | cdktf.IResolvable;
+    private _forceDestroy?: boolean | cdktf.IResolvable | undefined; 
     public get forceDestroy() {
-      return this.getBooleanAttribute('force_destroy');
+      return this.getBooleanAttribute('force_destroy') as any;
     }
-    public set forceDestroy(value: boolean | cdktf.IResolvable ) {
+    public set forceDestroy(value: boolean | cdktf.IResolvable | undefined) {
       this._forceDestroy = value;
     }
     public resetForceDestroy() {
@@ -6854,7 +7918,7 @@ export namespace RDS {
     }
 
     // global_cluster_identifier - computed: false, optional: false, required: true
-    private _globalClusterIdentifier: string;
+    private _globalClusterIdentifier?: string; 
     public get globalClusterIdentifier() {
       return this.getStringAttribute('global_cluster_identifier');
     }
@@ -6882,11 +7946,11 @@ export namespace RDS {
     }
 
     // source_db_cluster_identifier - computed: true, optional: true, required: false
-    private _sourceDbClusterIdentifier?: string;
+    private _sourceDbClusterIdentifier?: string | undefined; 
     public get sourceDbClusterIdentifier() {
       return this.getStringAttribute('source_db_cluster_identifier');
     }
-    public set sourceDbClusterIdentifier(value: string) {
+    public set sourceDbClusterIdentifier(value: string | undefined) {
       this._sourceDbClusterIdentifier = value;
     }
     public resetSourceDbClusterIdentifier() {
@@ -6898,11 +7962,11 @@ export namespace RDS {
     }
 
     // storage_encrypted - computed: true, optional: true, required: false
-    private _storageEncrypted?: boolean | cdktf.IResolvable;
+    private _storageEncrypted?: boolean | cdktf.IResolvable | undefined; 
     public get storageEncrypted() {
-      return this.getBooleanAttribute('storage_encrypted');
+      return this.getBooleanAttribute('storage_encrypted') as any;
     }
-    public set storageEncrypted(value: boolean | cdktf.IResolvable) {
+    public set storageEncrypted(value: boolean | cdktf.IResolvable | undefined) {
       this._storageEncrypted = value;
     }
     public resetStorageEncrypted() {
@@ -7017,11 +8081,11 @@ export namespace RDS {
     }
 
     // db_cluster_identifier - computed: false, optional: true, required: false
-    private _dbClusterIdentifier?: string;
+    private _dbClusterIdentifier?: string | undefined; 
     public get dbClusterIdentifier() {
       return this.getStringAttribute('db_cluster_identifier');
     }
-    public set dbClusterIdentifier(value: string ) {
+    public set dbClusterIdentifier(value: string | undefined) {
       this._dbClusterIdentifier = value;
     }
     public resetDbClusterIdentifier() {
@@ -7038,11 +8102,11 @@ export namespace RDS {
     }
 
     // db_cluster_snapshot_identifier - computed: false, optional: true, required: false
-    private _dbClusterSnapshotIdentifier?: string;
+    private _dbClusterSnapshotIdentifier?: string | undefined; 
     public get dbClusterSnapshotIdentifier() {
       return this.getStringAttribute('db_cluster_snapshot_identifier');
     }
-    public set dbClusterSnapshotIdentifier(value: string ) {
+    public set dbClusterSnapshotIdentifier(value: string | undefined) {
       this._dbClusterSnapshotIdentifier = value;
     }
     public resetDbClusterSnapshotIdentifier() {
@@ -7069,11 +8133,11 @@ export namespace RDS {
     }
 
     // include_public - computed: false, optional: true, required: false
-    private _includePublic?: boolean | cdktf.IResolvable;
+    private _includePublic?: boolean | cdktf.IResolvable | undefined; 
     public get includePublic() {
-      return this.getBooleanAttribute('include_public');
+      return this.getBooleanAttribute('include_public') as any;
     }
-    public set includePublic(value: boolean | cdktf.IResolvable ) {
+    public set includePublic(value: boolean | cdktf.IResolvable | undefined) {
       this._includePublic = value;
     }
     public resetIncludePublic() {
@@ -7085,11 +8149,11 @@ export namespace RDS {
     }
 
     // include_shared - computed: false, optional: true, required: false
-    private _includeShared?: boolean | cdktf.IResolvable;
+    private _includeShared?: boolean | cdktf.IResolvable | undefined; 
     public get includeShared() {
-      return this.getBooleanAttribute('include_shared');
+      return this.getBooleanAttribute('include_shared') as any;
     }
-    public set includeShared(value: boolean | cdktf.IResolvable ) {
+    public set includeShared(value: boolean | cdktf.IResolvable | undefined) {
       this._includeShared = value;
     }
     public resetIncludeShared() {
@@ -7111,11 +8175,11 @@ export namespace RDS {
     }
 
     // most_recent - computed: false, optional: true, required: false
-    private _mostRecent?: boolean | cdktf.IResolvable;
+    private _mostRecent?: boolean | cdktf.IResolvable | undefined; 
     public get mostRecent() {
-      return this.getBooleanAttribute('most_recent');
+      return this.getBooleanAttribute('most_recent') as any;
     }
-    public set mostRecent(value: boolean | cdktf.IResolvable ) {
+    public set mostRecent(value: boolean | cdktf.IResolvable | undefined) {
       this._mostRecent = value;
     }
     public resetMostRecent() {
@@ -7137,11 +8201,11 @@ export namespace RDS {
     }
 
     // snapshot_type - computed: false, optional: true, required: false
-    private _snapshotType?: string;
+    private _snapshotType?: string | undefined; 
     public get snapshotType() {
       return this.getStringAttribute('snapshot_type');
     }
-    public set snapshotType(value: string ) {
+    public set snapshotType(value: string | undefined) {
       this._snapshotType = value;
     }
     public resetSnapshotType() {
@@ -7164,15 +8228,16 @@ export namespace RDS {
 
     // storage_encrypted - computed: true, optional: false, required: false
     public get storageEncrypted() {
-      return this.getBooleanAttribute('storage_encrypted');
+      return this.getBooleanAttribute('storage_encrypted') as any;
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -7261,11 +8326,11 @@ export namespace RDS {
     }
 
     // source_type - computed: false, optional: true, required: false
-    private _sourceType?: string;
+    private _sourceType?: string | undefined; 
     public get sourceType() {
       return this.getStringAttribute('source_type');
     }
-    public set sourceType(value: string ) {
+    public set sourceType(value: string | undefined) {
       this._sourceType = value;
     }
     public resetSourceType() {
@@ -7349,7 +8414,7 @@ export namespace RDS {
 
     // auto_minor_version_upgrade - computed: true, optional: false, required: false
     public get autoMinorVersionUpgrade() {
-      return this.getBooleanAttribute('auto_minor_version_upgrade');
+      return this.getBooleanAttribute('auto_minor_version_upgrade') as any;
     }
 
     // availability_zone - computed: true, optional: false, required: false
@@ -7383,7 +8448,7 @@ export namespace RDS {
     }
 
     // db_instance_identifier - computed: false, optional: false, required: true
-    private _dbInstanceIdentifier: string;
+    private _dbInstanceIdentifier?: string; 
     public get dbInstanceIdentifier() {
       return this.getStringAttribute('db_instance_identifier');
     }
@@ -7482,7 +8547,7 @@ export namespace RDS {
 
     // multi_az - computed: true, optional: false, required: false
     public get multiAz() {
-      return this.getBooleanAttribute('multi_az');
+      return this.getBooleanAttribute('multi_az') as any;
     }
 
     // option_group_memberships - computed: true, optional: false, required: false
@@ -7507,7 +8572,7 @@ export namespace RDS {
 
     // publicly_accessible - computed: true, optional: false, required: false
     public get publiclyAccessible() {
-      return this.getBooleanAttribute('publicly_accessible');
+      return this.getBooleanAttribute('publicly_accessible') as any;
     }
 
     // replicate_source_db - computed: true, optional: false, required: false
@@ -7522,7 +8587,7 @@ export namespace RDS {
 
     // storage_encrypted - computed: true, optional: false, required: false
     public get storageEncrypted() {
-      return this.getBooleanAttribute('storage_encrypted');
+      return this.getBooleanAttribute('storage_encrypted') as any;
     }
 
     // storage_type - computed: true, optional: false, required: false
@@ -7531,11 +8596,12 @@ export namespace RDS {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -7647,7 +8713,7 @@ export namespace RDS {
 
     // debug_logging - computed: true, optional: false, required: false
     public get debugLogging() {
-      return this.getBooleanAttribute('debug_logging');
+      return this.getBooleanAttribute('debug_logging') as any;
     }
 
     // endpoint - computed: true, optional: false, required: false
@@ -7671,7 +8737,7 @@ export namespace RDS {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -7685,7 +8751,7 @@ export namespace RDS {
 
     // require_tls - computed: true, optional: false, required: false
     public get requireTls() {
-      return this.getBooleanAttribute('require_tls');
+      return this.getBooleanAttribute('require_tls') as any;
     }
 
     // role_arn - computed: true, optional: false, required: false
@@ -7800,11 +8866,11 @@ export namespace RDS {
     }
 
     // db_instance_identifier - computed: false, optional: true, required: false
-    private _dbInstanceIdentifier?: string;
+    private _dbInstanceIdentifier?: string | undefined; 
     public get dbInstanceIdentifier() {
       return this.getStringAttribute('db_instance_identifier');
     }
-    public set dbInstanceIdentifier(value: string ) {
+    public set dbInstanceIdentifier(value: string | undefined) {
       this._dbInstanceIdentifier = value;
     }
     public resetDbInstanceIdentifier() {
@@ -7821,11 +8887,11 @@ export namespace RDS {
     }
 
     // db_snapshot_identifier - computed: false, optional: true, required: false
-    private _dbSnapshotIdentifier?: string;
+    private _dbSnapshotIdentifier?: string | undefined; 
     public get dbSnapshotIdentifier() {
       return this.getStringAttribute('db_snapshot_identifier');
     }
-    public set dbSnapshotIdentifier(value: string ) {
+    public set dbSnapshotIdentifier(value: string | undefined) {
       this._dbSnapshotIdentifier = value;
     }
     public resetDbSnapshotIdentifier() {
@@ -7838,7 +8904,7 @@ export namespace RDS {
 
     // encrypted - computed: true, optional: false, required: false
     public get encrypted() {
-      return this.getBooleanAttribute('encrypted');
+      return this.getBooleanAttribute('encrypted') as any;
     }
 
     // engine - computed: true, optional: false, required: false
@@ -7857,11 +8923,11 @@ export namespace RDS {
     }
 
     // include_public - computed: false, optional: true, required: false
-    private _includePublic?: boolean | cdktf.IResolvable;
+    private _includePublic?: boolean | cdktf.IResolvable | undefined; 
     public get includePublic() {
-      return this.getBooleanAttribute('include_public');
+      return this.getBooleanAttribute('include_public') as any;
     }
-    public set includePublic(value: boolean | cdktf.IResolvable ) {
+    public set includePublic(value: boolean | cdktf.IResolvable | undefined) {
       this._includePublic = value;
     }
     public resetIncludePublic() {
@@ -7873,11 +8939,11 @@ export namespace RDS {
     }
 
     // include_shared - computed: false, optional: true, required: false
-    private _includeShared?: boolean | cdktf.IResolvable;
+    private _includeShared?: boolean | cdktf.IResolvable | undefined; 
     public get includeShared() {
-      return this.getBooleanAttribute('include_shared');
+      return this.getBooleanAttribute('include_shared') as any;
     }
-    public set includeShared(value: boolean | cdktf.IResolvable ) {
+    public set includeShared(value: boolean | cdktf.IResolvable | undefined) {
       this._includeShared = value;
     }
     public resetIncludeShared() {
@@ -7904,11 +8970,11 @@ export namespace RDS {
     }
 
     // most_recent - computed: false, optional: true, required: false
-    private _mostRecent?: boolean | cdktf.IResolvable;
+    private _mostRecent?: boolean | cdktf.IResolvable | undefined; 
     public get mostRecent() {
-      return this.getBooleanAttribute('most_recent');
+      return this.getBooleanAttribute('most_recent') as any;
     }
-    public set mostRecent(value: boolean | cdktf.IResolvable ) {
+    public set mostRecent(value: boolean | cdktf.IResolvable | undefined) {
       this._mostRecent = value;
     }
     public resetMostRecent() {
@@ -7935,11 +9001,11 @@ export namespace RDS {
     }
 
     // snapshot_type - computed: false, optional: true, required: false
-    private _snapshotType?: string;
+    private _snapshotType?: string | undefined; 
     public get snapshotType() {
       return this.getStringAttribute('snapshot_type');
     }
-    public set snapshotType(value: string ) {
+    public set snapshotType(value: string | undefined) {
       this._snapshotType = value;
     }
     public resetSnapshotType() {
@@ -8052,7 +9118,7 @@ export namespace RDS {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -8147,7 +9213,7 @@ export namespace RDS {
 
     // customer_override - computed: true, optional: false, required: false
     public get customerOverride() {
-      return this.getBooleanAttribute('customer_override');
+      return this.getBooleanAttribute('customer_override') as any;
     }
 
     // customer_override_valid_till - computed: true, optional: false, required: false
@@ -8161,11 +9227,11 @@ export namespace RDS {
     }
 
     // latest_valid_till - computed: false, optional: true, required: false
-    private _latestValidTill?: boolean | cdktf.IResolvable;
+    private _latestValidTill?: boolean | cdktf.IResolvable | undefined; 
     public get latestValidTill() {
-      return this.getBooleanAttribute('latest_valid_till');
+      return this.getBooleanAttribute('latest_valid_till') as any;
     }
-    public set latestValidTill(value: boolean | cdktf.IResolvable ) {
+    public set latestValidTill(value: boolean | cdktf.IResolvable | undefined) {
       this._latestValidTill = value;
     }
     public resetLatestValidTill() {
@@ -8273,7 +9339,7 @@ export namespace RDS {
     }
 
     // cluster_identifier - computed: false, optional: false, required: true
-    private _clusterIdentifier: string;
+    private _clusterIdentifier?: string; 
     public get clusterIdentifier() {
       return this.getStringAttribute('cluster_identifier');
     }
@@ -8342,7 +9408,7 @@ export namespace RDS {
 
     // iam_database_authentication_enabled - computed: true, optional: false, required: false
     public get iamDatabaseAuthenticationEnabled() {
-      return this.getBooleanAttribute('iam_database_authentication_enabled');
+      return this.getBooleanAttribute('iam_database_authentication_enabled') as any;
     }
 
     // iam_roles - computed: true, optional: false, required: false
@@ -8392,15 +9458,16 @@ export namespace RDS {
 
     // storage_encrypted - computed: true, optional: false, required: false
     public get storageEncrypted() {
-      return this.getBooleanAttribute('storage_encrypted');
+      return this.getBooleanAttribute('storage_encrypted') as any;
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -8494,7 +9561,7 @@ export namespace RDS {
     }
 
     // engine - computed: false, optional: false, required: true
-    private _engine: string;
+    private _engine?: string; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
@@ -8522,11 +9589,11 @@ export namespace RDS {
     }
 
     // parameter_group_family - computed: true, optional: true, required: false
-    private _parameterGroupFamily?: string;
+    private _parameterGroupFamily?: string | undefined; 
     public get parameterGroupFamily() {
       return this.getStringAttribute('parameter_group_family');
     }
-    public set parameterGroupFamily(value: string) {
+    public set parameterGroupFamily(value: string | undefined) {
       this._parameterGroupFamily = value;
     }
     public resetParameterGroupFamily() {
@@ -8538,11 +9605,11 @@ export namespace RDS {
     }
 
     // preferred_versions - computed: false, optional: true, required: false
-    private _preferredVersions?: string[];
+    private _preferredVersions?: string[] | undefined; 
     public get preferredVersions() {
       return this.getListAttribute('preferred_versions');
     }
-    public set preferredVersions(value: string[] ) {
+    public set preferredVersions(value: string[] | undefined) {
       this._preferredVersions = value;
     }
     public resetPreferredVersions() {
@@ -8580,22 +9647,22 @@ export namespace RDS {
 
     // supports_global_databases - computed: true, optional: false, required: false
     public get supportsGlobalDatabases() {
-      return this.getBooleanAttribute('supports_global_databases');
+      return this.getBooleanAttribute('supports_global_databases') as any;
     }
 
     // supports_log_exports_to_cloudwatch - computed: true, optional: false, required: false
     public get supportsLogExportsToCloudwatch() {
-      return this.getBooleanAttribute('supports_log_exports_to_cloudwatch');
+      return this.getBooleanAttribute('supports_log_exports_to_cloudwatch') as any;
     }
 
     // supports_parallel_query - computed: true, optional: false, required: false
     public get supportsParallelQuery() {
-      return this.getBooleanAttribute('supports_parallel_query');
+      return this.getBooleanAttribute('supports_parallel_query') as any;
     }
 
     // supports_read_replica - computed: true, optional: false, required: false
     public get supportsReadReplica() {
-      return this.getBooleanAttribute('supports_read_replica');
+      return this.getBooleanAttribute('supports_read_replica') as any;
     }
 
     // valid_upgrade_targets - computed: true, optional: false, required: false
@@ -8604,11 +9671,11 @@ export namespace RDS {
     }
 
     // version - computed: true, optional: true, required: false
-    private _version?: string;
+    private _version?: string | undefined; 
     public get version() {
       return this.getStringAttribute('version');
     }
-    public set version(value: string) {
+    public set version(value: string | undefined) {
       this._version = value;
     }
     public resetVersion() {
@@ -8764,11 +9831,11 @@ export namespace RDS {
     // ==========
 
     // availability_zone_group - computed: true, optional: true, required: false
-    private _availabilityZoneGroup?: string;
+    private _availabilityZoneGroup?: string | undefined; 
     public get availabilityZoneGroup() {
       return this.getStringAttribute('availability_zone_group');
     }
-    public set availabilityZoneGroup(value: string) {
+    public set availabilityZoneGroup(value: string | undefined) {
       this._availabilityZoneGroup = value;
     }
     public resetAvailabilityZoneGroup() {
@@ -8785,7 +9852,7 @@ export namespace RDS {
     }
 
     // engine - computed: false, optional: false, required: true
-    private _engine: string;
+    private _engine?: string; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
@@ -8798,11 +9865,11 @@ export namespace RDS {
     }
 
     // engine_version - computed: true, optional: true, required: false
-    private _engineVersion?: string;
+    private _engineVersion?: string | undefined; 
     public get engineVersion() {
       return this.getStringAttribute('engine_version');
     }
-    public set engineVersion(value: string) {
+    public set engineVersion(value: string | undefined) {
       this._engineVersion = value;
     }
     public resetEngineVersion() {
@@ -8819,11 +9886,11 @@ export namespace RDS {
     }
 
     // instance_class - computed: true, optional: true, required: false
-    private _instanceClass?: string;
+    private _instanceClass?: string | undefined; 
     public get instanceClass() {
       return this.getStringAttribute('instance_class');
     }
-    public set instanceClass(value: string) {
+    public set instanceClass(value: string | undefined) {
       this._instanceClass = value;
     }
     public resetInstanceClass() {
@@ -8835,11 +9902,11 @@ export namespace RDS {
     }
 
     // license_model - computed: true, optional: true, required: false
-    private _licenseModel?: string;
+    private _licenseModel?: string | undefined; 
     public get licenseModel() {
       return this.getStringAttribute('license_model');
     }
-    public set licenseModel(value: string) {
+    public set licenseModel(value: string | undefined) {
       this._licenseModel = value;
     }
     public resetLicenseModel() {
@@ -8882,20 +9949,20 @@ export namespace RDS {
 
     // multi_az_capable - computed: true, optional: false, required: false
     public get multiAzCapable() {
-      return this.getBooleanAttribute('multi_az_capable');
+      return this.getBooleanAttribute('multi_az_capable') as any;
     }
 
     // outpost_capable - computed: true, optional: false, required: false
     public get outpostCapable() {
-      return this.getBooleanAttribute('outpost_capable');
+      return this.getBooleanAttribute('outpost_capable') as any;
     }
 
     // preferred_engine_versions - computed: false, optional: true, required: false
-    private _preferredEngineVersions?: string[];
+    private _preferredEngineVersions?: string[] | undefined; 
     public get preferredEngineVersions() {
       return this.getListAttribute('preferred_engine_versions');
     }
-    public set preferredEngineVersions(value: string[] ) {
+    public set preferredEngineVersions(value: string[] | undefined) {
       this._preferredEngineVersions = value;
     }
     public resetPreferredEngineVersions() {
@@ -8907,11 +9974,11 @@ export namespace RDS {
     }
 
     // preferred_instance_classes - computed: false, optional: true, required: false
-    private _preferredInstanceClasses?: string[];
+    private _preferredInstanceClasses?: string[] | undefined; 
     public get preferredInstanceClasses() {
       return this.getListAttribute('preferred_instance_classes');
     }
-    public set preferredInstanceClasses(value: string[] ) {
+    public set preferredInstanceClasses(value: string[] | undefined) {
       this._preferredInstanceClasses = value;
     }
     public resetPreferredInstanceClasses() {
@@ -8924,15 +9991,15 @@ export namespace RDS {
 
     // read_replica_capable - computed: true, optional: false, required: false
     public get readReplicaCapable() {
-      return this.getBooleanAttribute('read_replica_capable');
+      return this.getBooleanAttribute('read_replica_capable') as any;
     }
 
     // storage_type - computed: true, optional: true, required: false
-    private _storageType?: string;
+    private _storageType?: string | undefined; 
     public get storageType() {
       return this.getStringAttribute('storage_type');
     }
-    public set storageType(value: string) {
+    public set storageType(value: string | undefined) {
       this._storageType = value;
     }
     public resetStorageType() {
@@ -8949,11 +10016,11 @@ export namespace RDS {
     }
 
     // supports_enhanced_monitoring - computed: true, optional: true, required: false
-    private _supportsEnhancedMonitoring?: boolean | cdktf.IResolvable;
+    private _supportsEnhancedMonitoring?: boolean | cdktf.IResolvable | undefined; 
     public get supportsEnhancedMonitoring() {
-      return this.getBooleanAttribute('supports_enhanced_monitoring');
+      return this.getBooleanAttribute('supports_enhanced_monitoring') as any;
     }
-    public set supportsEnhancedMonitoring(value: boolean | cdktf.IResolvable) {
+    public set supportsEnhancedMonitoring(value: boolean | cdktf.IResolvable | undefined) {
       this._supportsEnhancedMonitoring = value;
     }
     public resetSupportsEnhancedMonitoring() {
@@ -8965,11 +10032,11 @@ export namespace RDS {
     }
 
     // supports_global_databases - computed: true, optional: true, required: false
-    private _supportsGlobalDatabases?: boolean | cdktf.IResolvable;
+    private _supportsGlobalDatabases?: boolean | cdktf.IResolvable | undefined; 
     public get supportsGlobalDatabases() {
-      return this.getBooleanAttribute('supports_global_databases');
+      return this.getBooleanAttribute('supports_global_databases') as any;
     }
-    public set supportsGlobalDatabases(value: boolean | cdktf.IResolvable) {
+    public set supportsGlobalDatabases(value: boolean | cdktf.IResolvable | undefined) {
       this._supportsGlobalDatabases = value;
     }
     public resetSupportsGlobalDatabases() {
@@ -8981,11 +10048,11 @@ export namespace RDS {
     }
 
     // supports_iam_database_authentication - computed: true, optional: true, required: false
-    private _supportsIamDatabaseAuthentication?: boolean | cdktf.IResolvable;
+    private _supportsIamDatabaseAuthentication?: boolean | cdktf.IResolvable | undefined; 
     public get supportsIamDatabaseAuthentication() {
-      return this.getBooleanAttribute('supports_iam_database_authentication');
+      return this.getBooleanAttribute('supports_iam_database_authentication') as any;
     }
-    public set supportsIamDatabaseAuthentication(value: boolean | cdktf.IResolvable) {
+    public set supportsIamDatabaseAuthentication(value: boolean | cdktf.IResolvable | undefined) {
       this._supportsIamDatabaseAuthentication = value;
     }
     public resetSupportsIamDatabaseAuthentication() {
@@ -8997,11 +10064,11 @@ export namespace RDS {
     }
 
     // supports_iops - computed: true, optional: true, required: false
-    private _supportsIops?: boolean | cdktf.IResolvable;
+    private _supportsIops?: boolean | cdktf.IResolvable | undefined; 
     public get supportsIops() {
-      return this.getBooleanAttribute('supports_iops');
+      return this.getBooleanAttribute('supports_iops') as any;
     }
-    public set supportsIops(value: boolean | cdktf.IResolvable) {
+    public set supportsIops(value: boolean | cdktf.IResolvable | undefined) {
       this._supportsIops = value;
     }
     public resetSupportsIops() {
@@ -9013,11 +10080,11 @@ export namespace RDS {
     }
 
     // supports_kerberos_authentication - computed: true, optional: true, required: false
-    private _supportsKerberosAuthentication?: boolean | cdktf.IResolvable;
+    private _supportsKerberosAuthentication?: boolean | cdktf.IResolvable | undefined; 
     public get supportsKerberosAuthentication() {
-      return this.getBooleanAttribute('supports_kerberos_authentication');
+      return this.getBooleanAttribute('supports_kerberos_authentication') as any;
     }
-    public set supportsKerberosAuthentication(value: boolean | cdktf.IResolvable) {
+    public set supportsKerberosAuthentication(value: boolean | cdktf.IResolvable | undefined) {
       this._supportsKerberosAuthentication = value;
     }
     public resetSupportsKerberosAuthentication() {
@@ -9029,11 +10096,11 @@ export namespace RDS {
     }
 
     // supports_performance_insights - computed: true, optional: true, required: false
-    private _supportsPerformanceInsights?: boolean | cdktf.IResolvable;
+    private _supportsPerformanceInsights?: boolean | cdktf.IResolvable | undefined; 
     public get supportsPerformanceInsights() {
-      return this.getBooleanAttribute('supports_performance_insights');
+      return this.getBooleanAttribute('supports_performance_insights') as any;
     }
-    public set supportsPerformanceInsights(value: boolean | cdktf.IResolvable) {
+    public set supportsPerformanceInsights(value: boolean | cdktf.IResolvable | undefined) {
       this._supportsPerformanceInsights = value;
     }
     public resetSupportsPerformanceInsights() {
@@ -9045,11 +10112,11 @@ export namespace RDS {
     }
 
     // supports_storage_autoscaling - computed: true, optional: true, required: false
-    private _supportsStorageAutoscaling?: boolean | cdktf.IResolvable;
+    private _supportsStorageAutoscaling?: boolean | cdktf.IResolvable | undefined; 
     public get supportsStorageAutoscaling() {
-      return this.getBooleanAttribute('supports_storage_autoscaling');
+      return this.getBooleanAttribute('supports_storage_autoscaling') as any;
     }
-    public set supportsStorageAutoscaling(value: boolean | cdktf.IResolvable) {
+    public set supportsStorageAutoscaling(value: boolean | cdktf.IResolvable | undefined) {
       this._supportsStorageAutoscaling = value;
     }
     public resetSupportsStorageAutoscaling() {
@@ -9061,11 +10128,11 @@ export namespace RDS {
     }
 
     // supports_storage_encryption - computed: true, optional: true, required: false
-    private _supportsStorageEncryption?: boolean | cdktf.IResolvable;
+    private _supportsStorageEncryption?: boolean | cdktf.IResolvable | undefined; 
     public get supportsStorageEncryption() {
-      return this.getBooleanAttribute('supports_storage_encryption');
+      return this.getBooleanAttribute('supports_storage_encryption') as any;
     }
-    public set supportsStorageEncryption(value: boolean | cdktf.IResolvable) {
+    public set supportsStorageEncryption(value: boolean | cdktf.IResolvable | undefined) {
       this._supportsStorageEncryption = value;
     }
     public resetSupportsStorageEncryption() {
@@ -9077,11 +10144,11 @@ export namespace RDS {
     }
 
     // vpc - computed: true, optional: true, required: false
-    private _vpc?: boolean | cdktf.IResolvable;
+    private _vpc?: boolean | cdktf.IResolvable | undefined; 
     public get vpc() {
-      return this.getBooleanAttribute('vpc');
+      return this.getBooleanAttribute('vpc') as any;
     }
-    public set vpc(value: boolean | cdktf.IResolvable) {
+    public set vpc(value: boolean | cdktf.IResolvable | undefined) {
       this._vpc = value;
     }
     public resetVpc() {

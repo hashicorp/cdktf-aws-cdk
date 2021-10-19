@@ -86,8 +86,11 @@ export namespace CloudFormation {
     readonly update?: string;
   }
 
-  function cloudformationStackTimeoutsToTerraform(struct?: CloudformationStackTimeouts): any {
+  function cloudformationStackTimeoutsToTerraform(struct?: CloudformationStackTimeoutsOutputReference | CloudformationStackTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -95,6 +98,64 @@ export namespace CloudFormation {
     }
   }
 
+  export class CloudformationStackTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/cloudformation_stack.html aws_cloudformation_stack}
@@ -150,11 +211,11 @@ export namespace CloudFormation {
     // ==========
 
     // capabilities - computed: false, optional: true, required: false
-    private _capabilities?: string[];
+    private _capabilities?: string[] | undefined; 
     public get capabilities() {
       return this.getListAttribute('capabilities');
     }
-    public set capabilities(value: string[] ) {
+    public set capabilities(value: string[] | undefined) {
       this._capabilities = value;
     }
     public resetCapabilities() {
@@ -166,11 +227,11 @@ export namespace CloudFormation {
     }
 
     // disable_rollback - computed: false, optional: true, required: false
-    private _disableRollback?: boolean | cdktf.IResolvable;
+    private _disableRollback?: boolean | cdktf.IResolvable | undefined; 
     public get disableRollback() {
-      return this.getBooleanAttribute('disable_rollback');
+      return this.getBooleanAttribute('disable_rollback') as any;
     }
-    public set disableRollback(value: boolean | cdktf.IResolvable ) {
+    public set disableRollback(value: boolean | cdktf.IResolvable | undefined) {
       this._disableRollback = value;
     }
     public resetDisableRollback() {
@@ -182,11 +243,11 @@ export namespace CloudFormation {
     }
 
     // iam_role_arn - computed: false, optional: true, required: false
-    private _iamRoleArn?: string;
+    private _iamRoleArn?: string | undefined; 
     public get iamRoleArn() {
       return this.getStringAttribute('iam_role_arn');
     }
-    public set iamRoleArn(value: string ) {
+    public set iamRoleArn(value: string | undefined) {
       this._iamRoleArn = value;
     }
     public resetIamRoleArn() {
@@ -203,7 +264,7 @@ export namespace CloudFormation {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -216,11 +277,11 @@ export namespace CloudFormation {
     }
 
     // notification_arns - computed: false, optional: true, required: false
-    private _notificationArns?: string[];
+    private _notificationArns?: string[] | undefined; 
     public get notificationArns() {
       return this.getListAttribute('notification_arns');
     }
-    public set notificationArns(value: string[] ) {
+    public set notificationArns(value: string[] | undefined) {
       this._notificationArns = value;
     }
     public resetNotificationArns() {
@@ -232,11 +293,11 @@ export namespace CloudFormation {
     }
 
     // on_failure - computed: false, optional: true, required: false
-    private _onFailure?: string;
+    private _onFailure?: string | undefined; 
     public get onFailure() {
       return this.getStringAttribute('on_failure');
     }
-    public set onFailure(value: string ) {
+    public set onFailure(value: string | undefined) {
       this._onFailure = value;
     }
     public resetOnFailure() {
@@ -253,11 +314,12 @@ export namespace CloudFormation {
     }
 
     // parameters - computed: true, optional: true, required: false
-    private _parameters?: { [key: string]: string } | cdktf.IResolvable
-    public get parameters(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('parameters') as any; // Getting the computed value is not yet implemented
+    private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get parameters() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('parameters') as any;
     }
-    public set parameters(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._parameters = value;
     }
     public resetParameters() {
@@ -269,11 +331,11 @@ export namespace CloudFormation {
     }
 
     // policy_body - computed: true, optional: true, required: false
-    private _policyBody?: string;
+    private _policyBody?: string | undefined; 
     public get policyBody() {
       return this.getStringAttribute('policy_body');
     }
-    public set policyBody(value: string) {
+    public set policyBody(value: string | undefined) {
       this._policyBody = value;
     }
     public resetPolicyBody() {
@@ -285,11 +347,11 @@ export namespace CloudFormation {
     }
 
     // policy_url - computed: false, optional: true, required: false
-    private _policyUrl?: string;
+    private _policyUrl?: string | undefined; 
     public get policyUrl() {
       return this.getStringAttribute('policy_url');
     }
-    public set policyUrl(value: string ) {
+    public set policyUrl(value: string | undefined) {
       this._policyUrl = value;
     }
     public resetPolicyUrl() {
@@ -301,11 +363,12 @@ export namespace CloudFormation {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -317,11 +380,12 @@ export namespace CloudFormation {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -333,11 +397,11 @@ export namespace CloudFormation {
     }
 
     // template_body - computed: true, optional: true, required: false
-    private _templateBody?: string;
+    private _templateBody?: string | undefined; 
     public get templateBody() {
       return this.getStringAttribute('template_body');
     }
-    public set templateBody(value: string) {
+    public set templateBody(value: string | undefined) {
       this._templateBody = value;
     }
     public resetTemplateBody() {
@@ -349,11 +413,11 @@ export namespace CloudFormation {
     }
 
     // template_url - computed: false, optional: true, required: false
-    private _templateUrl?: string;
+    private _templateUrl?: string | undefined; 
     public get templateUrl() {
       return this.getStringAttribute('template_url');
     }
-    public set templateUrl(value: string ) {
+    public set templateUrl(value: string | undefined) {
       this._templateUrl = value;
     }
     public resetTemplateUrl() {
@@ -365,11 +429,11 @@ export namespace CloudFormation {
     }
 
     // timeout_in_minutes - computed: false, optional: true, required: false
-    private _timeoutInMinutes?: number;
+    private _timeoutInMinutes?: number | undefined; 
     public get timeoutInMinutes() {
       return this.getNumberAttribute('timeout_in_minutes');
     }
-    public set timeoutInMinutes(value: number ) {
+    public set timeoutInMinutes(value: number | undefined) {
       this._timeoutInMinutes = value;
     }
     public resetTimeoutInMinutes() {
@@ -381,11 +445,12 @@ export namespace CloudFormation {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: CloudformationStackTimeouts;
+    private _timeouts?: CloudformationStackTimeouts | undefined; 
+    private __timeoutsOutput = new CloudformationStackTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: CloudformationStackTimeouts ) {
+    public putTimeouts(value: CloudformationStackTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -470,7 +535,7 @@ export namespace CloudFormation {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudformation_stack_set.html#auto_deployment CloudformationStackSet#auto_deployment}
     */
-    readonly autoDeployment?: CloudformationStackSetAutoDeployment[];
+    readonly autoDeployment?: CloudformationStackSetAutoDeployment;
     /**
     * timeouts block
     * 
@@ -489,14 +554,59 @@ export namespace CloudFormation {
     readonly retainStacksOnAccountRemoval?: boolean | cdktf.IResolvable;
   }
 
-  function cloudformationStackSetAutoDeploymentToTerraform(struct?: CloudformationStackSetAutoDeployment): any {
+  function cloudformationStackSetAutoDeploymentToTerraform(struct?: CloudformationStackSetAutoDeploymentOutputReference | CloudformationStackSetAutoDeployment): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       enabled: cdktf.booleanToTerraform(struct!.enabled),
       retain_stacks_on_account_removal: cdktf.booleanToTerraform(struct!.retainStacksOnAccountRemoval),
     }
   }
 
+  export class CloudformationStackSetAutoDeploymentOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // enabled - computed: false, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+
+    // retain_stacks_on_account_removal - computed: false, optional: true, required: false
+    private _retainStacksOnAccountRemoval?: boolean | cdktf.IResolvable | undefined; 
+    public get retainStacksOnAccountRemoval() {
+      return this.getBooleanAttribute('retain_stacks_on_account_removal') as any;
+    }
+    public set retainStacksOnAccountRemoval(value: boolean | cdktf.IResolvable | undefined) {
+      this._retainStacksOnAccountRemoval = value;
+    }
+    public resetRetainStacksOnAccountRemoval() {
+      this._retainStacksOnAccountRemoval = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get retainStacksOnAccountRemovalInput() {
+      return this._retainStacksOnAccountRemoval
+    }
+  }
   export interface CloudformationStackSetTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudformation_stack_set.html#update CloudformationStackSet#update}
@@ -504,13 +614,42 @@ export namespace CloudFormation {
     readonly update?: string;
   }
 
-  function cloudformationStackSetTimeoutsToTerraform(struct?: CloudformationStackSetTimeouts): any {
+  function cloudformationStackSetTimeoutsToTerraform(struct?: CloudformationStackSetTimeoutsOutputReference | CloudformationStackSetTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       update: cdktf.stringToTerraform(struct!.update),
     }
   }
 
+  export class CloudformationStackSetTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/cloudformation_stack_set.html aws_cloudformation_stack_set}
@@ -564,11 +703,11 @@ export namespace CloudFormation {
     // ==========
 
     // administration_role_arn - computed: false, optional: true, required: false
-    private _administrationRoleArn?: string;
+    private _administrationRoleArn?: string | undefined; 
     public get administrationRoleArn() {
       return this.getStringAttribute('administration_role_arn');
     }
-    public set administrationRoleArn(value: string ) {
+    public set administrationRoleArn(value: string | undefined) {
       this._administrationRoleArn = value;
     }
     public resetAdministrationRoleArn() {
@@ -585,11 +724,11 @@ export namespace CloudFormation {
     }
 
     // capabilities - computed: false, optional: true, required: false
-    private _capabilities?: string[];
+    private _capabilities?: string[] | undefined; 
     public get capabilities() {
       return this.getListAttribute('capabilities');
     }
-    public set capabilities(value: string[] ) {
+    public set capabilities(value: string[] | undefined) {
       this._capabilities = value;
     }
     public resetCapabilities() {
@@ -601,11 +740,11 @@ export namespace CloudFormation {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -617,11 +756,11 @@ export namespace CloudFormation {
     }
 
     // execution_role_name - computed: true, optional: true, required: false
-    private _executionRoleName?: string;
+    private _executionRoleName?: string | undefined; 
     public get executionRoleName() {
       return this.getStringAttribute('execution_role_name');
     }
-    public set executionRoleName(value: string) {
+    public set executionRoleName(value: string | undefined) {
       this._executionRoleName = value;
     }
     public resetExecutionRoleName() {
@@ -638,7 +777,7 @@ export namespace CloudFormation {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -651,11 +790,12 @@ export namespace CloudFormation {
     }
 
     // parameters - computed: false, optional: true, required: false
-    private _parameters?: { [key: string]: string } | cdktf.IResolvable;
+    private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get parameters() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('parameters') as any;
     }
-    public set parameters(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._parameters = value;
     }
     public resetParameters() {
@@ -667,11 +807,11 @@ export namespace CloudFormation {
     }
 
     // permission_model - computed: false, optional: true, required: false
-    private _permissionModel?: string;
+    private _permissionModel?: string | undefined; 
     public get permissionModel() {
       return this.getStringAttribute('permission_model');
     }
-    public set permissionModel(value: string ) {
+    public set permissionModel(value: string | undefined) {
       this._permissionModel = value;
     }
     public resetPermissionModel() {
@@ -688,11 +828,12 @@ export namespace CloudFormation {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -704,11 +845,12 @@ export namespace CloudFormation {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -720,11 +862,11 @@ export namespace CloudFormation {
     }
 
     // template_body - computed: true, optional: true, required: false
-    private _templateBody?: string;
+    private _templateBody?: string | undefined; 
     public get templateBody() {
       return this.getStringAttribute('template_body');
     }
-    public set templateBody(value: string) {
+    public set templateBody(value: string | undefined) {
       this._templateBody = value;
     }
     public resetTemplateBody() {
@@ -736,11 +878,11 @@ export namespace CloudFormation {
     }
 
     // template_url - computed: false, optional: true, required: false
-    private _templateUrl?: string;
+    private _templateUrl?: string | undefined; 
     public get templateUrl() {
       return this.getStringAttribute('template_url');
     }
-    public set templateUrl(value: string ) {
+    public set templateUrl(value: string | undefined) {
       this._templateUrl = value;
     }
     public resetTemplateUrl() {
@@ -752,11 +894,12 @@ export namespace CloudFormation {
     }
 
     // auto_deployment - computed: false, optional: true, required: false
-    private _autoDeployment?: CloudformationStackSetAutoDeployment[];
+    private _autoDeployment?: CloudformationStackSetAutoDeployment | undefined; 
+    private __autoDeploymentOutput = new CloudformationStackSetAutoDeploymentOutputReference(this as any, "auto_deployment", true);
     public get autoDeployment() {
-      return this.interpolationForAttribute('auto_deployment') as any;
+      return this.__autoDeploymentOutput;
     }
-    public set autoDeployment(value: CloudformationStackSetAutoDeployment[] ) {
+    public putAutoDeployment(value: CloudformationStackSetAutoDeployment | undefined) {
       this._autoDeployment = value;
     }
     public resetAutoDeployment() {
@@ -768,11 +911,12 @@ export namespace CloudFormation {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: CloudformationStackSetTimeouts;
+    private _timeouts?: CloudformationStackSetTimeouts | undefined; 
+    private __timeoutsOutput = new CloudformationStackSetTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: CloudformationStackSetTimeouts ) {
+    public putTimeouts(value: CloudformationStackSetTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -800,7 +944,7 @@ export namespace CloudFormation {
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         template_body: cdktf.stringToTerraform(this._templateBody),
         template_url: cdktf.stringToTerraform(this._templateUrl),
-        auto_deployment: cdktf.listMapper(cloudformationStackSetAutoDeploymentToTerraform)(this._autoDeployment),
+        auto_deployment: cloudformationStackSetAutoDeploymentToTerraform(this._autoDeployment),
         timeouts: cloudformationStackSetTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -831,7 +975,7 @@ export namespace CloudFormation {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudformation_stack_set_instance.html#deployment_targets CloudformationStackSetInstance#deployment_targets}
     */
-    readonly deploymentTargets?: CloudformationStackSetInstanceDeploymentTargets[];
+    readonly deploymentTargets?: CloudformationStackSetInstanceDeploymentTargets;
     /**
     * timeouts block
     * 
@@ -846,13 +990,42 @@ export namespace CloudFormation {
     readonly organizationalUnitIds?: string[];
   }
 
-  function cloudformationStackSetInstanceDeploymentTargetsToTerraform(struct?: CloudformationStackSetInstanceDeploymentTargets): any {
+  function cloudformationStackSetInstanceDeploymentTargetsToTerraform(struct?: CloudformationStackSetInstanceDeploymentTargetsOutputReference | CloudformationStackSetInstanceDeploymentTargets): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       organizational_unit_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.organizationalUnitIds),
     }
   }
 
+  export class CloudformationStackSetInstanceDeploymentTargetsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // organizational_unit_ids - computed: false, optional: true, required: false
+    private _organizationalUnitIds?: string[] | undefined; 
+    public get organizationalUnitIds() {
+      return this.getListAttribute('organizational_unit_ids');
+    }
+    public set organizationalUnitIds(value: string[] | undefined) {
+      this._organizationalUnitIds = value;
+    }
+    public resetOrganizationalUnitIds() {
+      this._organizationalUnitIds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get organizationalUnitIdsInput() {
+      return this._organizationalUnitIds
+    }
+  }
   export interface CloudformationStackSetInstanceTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudformation_stack_set_instance.html#create CloudformationStackSetInstance#create}
@@ -868,8 +1041,11 @@ export namespace CloudFormation {
     readonly update?: string;
   }
 
-  function cloudformationStackSetInstanceTimeoutsToTerraform(struct?: CloudformationStackSetInstanceTimeouts): any {
+  function cloudformationStackSetInstanceTimeoutsToTerraform(struct?: CloudformationStackSetInstanceTimeoutsOutputReference | CloudformationStackSetInstanceTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -877,6 +1053,64 @@ export namespace CloudFormation {
     }
   }
 
+  export class CloudformationStackSetInstanceTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/cloudformation_stack_set_instance.html aws_cloudformation_stack_set_instance}
@@ -924,11 +1158,11 @@ export namespace CloudFormation {
     // ==========
 
     // account_id - computed: true, optional: true, required: false
-    private _accountId?: string;
+    private _accountId?: string | undefined; 
     public get accountId() {
       return this.getStringAttribute('account_id');
     }
-    public set accountId(value: string) {
+    public set accountId(value: string | undefined) {
       this._accountId = value;
     }
     public resetAccountId() {
@@ -950,11 +1184,12 @@ export namespace CloudFormation {
     }
 
     // parameter_overrides - computed: false, optional: true, required: false
-    private _parameterOverrides?: { [key: string]: string } | cdktf.IResolvable;
+    private _parameterOverrides?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get parameterOverrides() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('parameter_overrides') as any;
     }
-    public set parameterOverrides(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set parameterOverrides(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._parameterOverrides = value;
     }
     public resetParameterOverrides() {
@@ -966,11 +1201,11 @@ export namespace CloudFormation {
     }
 
     // region - computed: true, optional: true, required: false
-    private _region?: string;
+    private _region?: string | undefined; 
     public get region() {
       return this.getStringAttribute('region');
     }
-    public set region(value: string) {
+    public set region(value: string | undefined) {
       this._region = value;
     }
     public resetRegion() {
@@ -982,11 +1217,11 @@ export namespace CloudFormation {
     }
 
     // retain_stack - computed: false, optional: true, required: false
-    private _retainStack?: boolean | cdktf.IResolvable;
+    private _retainStack?: boolean | cdktf.IResolvable | undefined; 
     public get retainStack() {
-      return this.getBooleanAttribute('retain_stack');
+      return this.getBooleanAttribute('retain_stack') as any;
     }
-    public set retainStack(value: boolean | cdktf.IResolvable ) {
+    public set retainStack(value: boolean | cdktf.IResolvable | undefined) {
       this._retainStack = value;
     }
     public resetRetainStack() {
@@ -1003,7 +1238,7 @@ export namespace CloudFormation {
     }
 
     // stack_set_name - computed: false, optional: false, required: true
-    private _stackSetName: string;
+    private _stackSetName?: string; 
     public get stackSetName() {
       return this.getStringAttribute('stack_set_name');
     }
@@ -1016,11 +1251,12 @@ export namespace CloudFormation {
     }
 
     // deployment_targets - computed: false, optional: true, required: false
-    private _deploymentTargets?: CloudformationStackSetInstanceDeploymentTargets[];
+    private _deploymentTargets?: CloudformationStackSetInstanceDeploymentTargets | undefined; 
+    private __deploymentTargetsOutput = new CloudformationStackSetInstanceDeploymentTargetsOutputReference(this as any, "deployment_targets", true);
     public get deploymentTargets() {
-      return this.interpolationForAttribute('deployment_targets') as any;
+      return this.__deploymentTargetsOutput;
     }
-    public set deploymentTargets(value: CloudformationStackSetInstanceDeploymentTargets[] ) {
+    public putDeploymentTargets(value: CloudformationStackSetInstanceDeploymentTargets | undefined) {
       this._deploymentTargets = value;
     }
     public resetDeploymentTargets() {
@@ -1032,11 +1268,12 @@ export namespace CloudFormation {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: CloudformationStackSetInstanceTimeouts;
+    private _timeouts?: CloudformationStackSetInstanceTimeouts | undefined; 
+    private __timeoutsOutput = new CloudformationStackSetInstanceTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: CloudformationStackSetInstanceTimeouts ) {
+    public putTimeouts(value: CloudformationStackSetInstanceTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1058,7 +1295,7 @@ export namespace CloudFormation {
         region: cdktf.stringToTerraform(this._region),
         retain_stack: cdktf.booleanToTerraform(this._retainStack),
         stack_set_name: cdktf.stringToTerraform(this._stackSetName),
-        deployment_targets: cdktf.listMapper(cloudformationStackSetInstanceDeploymentTargetsToTerraform)(this._deploymentTargets),
+        deployment_targets: cloudformationStackSetInstanceDeploymentTargetsToTerraform(this._deploymentTargets),
         timeouts: cloudformationStackSetInstanceTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -1085,7 +1322,7 @@ export namespace CloudFormation {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudformation_type.html#logging_config CloudformationType#logging_config}
     */
-    readonly loggingConfig?: CloudformationTypeLoggingConfig[];
+    readonly loggingConfig?: CloudformationTypeLoggingConfig;
   }
   export interface CloudformationTypeLoggingConfig {
     /**
@@ -1098,14 +1335,53 @@ export namespace CloudFormation {
     readonly logRoleArn: string;
   }
 
-  function cloudformationTypeLoggingConfigToTerraform(struct?: CloudformationTypeLoggingConfig): any {
+  function cloudformationTypeLoggingConfigToTerraform(struct?: CloudformationTypeLoggingConfigOutputReference | CloudformationTypeLoggingConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       log_group_name: cdktf.stringToTerraform(struct!.logGroupName),
       log_role_arn: cdktf.stringToTerraform(struct!.logRoleArn),
     }
   }
 
+  export class CloudformationTypeLoggingConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // log_group_name - computed: false, optional: false, required: true
+    private _logGroupName?: string; 
+    public get logGroupName() {
+      return this.getStringAttribute('log_group_name');
+    }
+    public set logGroupName(value: string) {
+      this._logGroupName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get logGroupNameInput() {
+      return this._logGroupName
+    }
+
+    // log_role_arn - computed: false, optional: false, required: true
+    private _logRoleArn?: string; 
+    public get logRoleArn() {
+      return this.getStringAttribute('log_role_arn');
+    }
+    public set logRoleArn(value: string) {
+      this._logRoleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get logRoleArnInput() {
+      return this._logRoleArn
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/cloudformation_type.html aws_cloudformation_type}
@@ -1176,11 +1452,11 @@ export namespace CloudFormation {
     }
 
     // execution_role_arn - computed: false, optional: true, required: false
-    private _executionRoleArn?: string;
+    private _executionRoleArn?: string | undefined; 
     public get executionRoleArn() {
       return this.getStringAttribute('execution_role_arn');
     }
-    public set executionRoleArn(value: string ) {
+    public set executionRoleArn(value: string | undefined) {
       this._executionRoleArn = value;
     }
     public resetExecutionRoleArn() {
@@ -1198,7 +1474,7 @@ export namespace CloudFormation {
 
     // is_default_version - computed: true, optional: false, required: false
     public get isDefaultVersion() {
-      return this.getBooleanAttribute('is_default_version');
+      return this.getBooleanAttribute('is_default_version') as any;
     }
 
     // provisioning_type - computed: true, optional: false, required: false
@@ -1212,7 +1488,7 @@ export namespace CloudFormation {
     }
 
     // schema_handler_package - computed: false, optional: false, required: true
-    private _schemaHandlerPackage: string;
+    private _schemaHandlerPackage?: string; 
     public get schemaHandlerPackage() {
       return this.getStringAttribute('schema_handler_package');
     }
@@ -1230,11 +1506,11 @@ export namespace CloudFormation {
     }
 
     // type - computed: true, optional: true, required: false
-    private _type?: string;
+    private _type?: string | undefined; 
     public get type() {
       return this.getStringAttribute('type');
     }
-    public set type(value: string) {
+    public set type(value: string | undefined) {
       this._type = value;
     }
     public resetType() {
@@ -1251,7 +1527,7 @@ export namespace CloudFormation {
     }
 
     // type_name - computed: false, optional: false, required: true
-    private _typeName: string;
+    private _typeName?: string; 
     public get typeName() {
       return this.getStringAttribute('type_name');
     }
@@ -1274,11 +1550,12 @@ export namespace CloudFormation {
     }
 
     // logging_config - computed: false, optional: true, required: false
-    private _loggingConfig?: CloudformationTypeLoggingConfig[];
+    private _loggingConfig?: CloudformationTypeLoggingConfig | undefined; 
+    private __loggingConfigOutput = new CloudformationTypeLoggingConfigOutputReference(this as any, "logging_config", true);
     public get loggingConfig() {
-      return this.interpolationForAttribute('logging_config') as any;
+      return this.__loggingConfigOutput;
     }
-    public set loggingConfig(value: CloudformationTypeLoggingConfig[] ) {
+    public putLoggingConfig(value: CloudformationTypeLoggingConfig | undefined) {
       this._loggingConfig = value;
     }
     public resetLoggingConfig() {
@@ -1299,7 +1576,7 @@ export namespace CloudFormation {
         schema_handler_package: cdktf.stringToTerraform(this._schemaHandlerPackage),
         type: cdktf.stringToTerraform(this._type),
         type_name: cdktf.stringToTerraform(this._typeName),
-        logging_config: cdktf.listMapper(cloudformationTypeLoggingConfigToTerraform)(this._loggingConfig),
+        logging_config: cloudformationTypeLoggingConfigToTerraform(this._loggingConfig),
       };
     }
   }
@@ -1360,7 +1637,7 @@ export namespace CloudFormation {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1450,7 +1727,7 @@ export namespace CloudFormation {
 
     // disable_rollback - computed: true, optional: false, required: false
     public get disableRollback() {
-      return this.getBooleanAttribute('disable_rollback');
+      return this.getBooleanAttribute('disable_rollback') as any;
     }
 
     // iam_role_arn - computed: true, optional: false, required: false
@@ -1464,7 +1741,7 @@ export namespace CloudFormation {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1492,11 +1769,12 @@ export namespace CloudFormation {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1633,7 +1911,7 @@ export namespace CloudFormation {
 
     // is_default_version - computed: true, optional: false, required: false
     public get isDefaultVersion() {
-      return this.getBooleanAttribute('is_default_version');
+      return this.getBooleanAttribute('is_default_version') as any;
     }
 
     // logging_config - computed: true, optional: false, required: false
@@ -1657,11 +1935,11 @@ export namespace CloudFormation {
     }
 
     // type - computed: true, optional: true, required: false
-    private _type?: string;
+    private _type?: string | undefined; 
     public get type() {
       return this.getStringAttribute('type');
     }
-    public set type(value: string) {
+    public set type(value: string | undefined) {
       this._type = value;
     }
     public resetType() {
@@ -1678,11 +1956,11 @@ export namespace CloudFormation {
     }
 
     // type_name - computed: true, optional: true, required: false
-    private _typeName?: string;
+    private _typeName?: string | undefined; 
     public get typeName() {
       return this.getStringAttribute('type_name');
     }
-    public set typeName(value: string) {
+    public set typeName(value: string | undefined) {
       this._typeName = value;
     }
     public resetTypeName() {
@@ -1694,11 +1972,11 @@ export namespace CloudFormation {
     }
 
     // version_id - computed: false, optional: true, required: false
-    private _versionId?: string;
+    private _versionId?: string | undefined; 
     public get versionId() {
       return this.getStringAttribute('version_id');
     }
-    public set versionId(value: string ) {
+    public set versionId(value: string | undefined) {
       this._versionId = value;
     }
     public resetVersionId() {

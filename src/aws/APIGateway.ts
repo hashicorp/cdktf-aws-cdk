@@ -66,11 +66,11 @@ export namespace APIGateway {
     // ==========
 
     // cloudwatch_role_arn - computed: false, optional: true, required: false
-    private _cloudwatchRoleArn?: string;
+    private _cloudwatchRoleArn?: string | undefined; 
     public get cloudwatchRoleArn() {
       return this.getStringAttribute('cloudwatch_role_arn');
     }
-    public set cloudwatchRoleArn(value: string ) {
+    public set cloudwatchRoleArn(value: string | undefined) {
       this._cloudwatchRoleArn = value;
     }
     public resetCloudwatchRoleArn() {
@@ -183,11 +183,11 @@ export namespace APIGateway {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -199,11 +199,11 @@ export namespace APIGateway {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -225,7 +225,7 @@ export namespace APIGateway {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -238,11 +238,12 @@ export namespace APIGateway {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -254,11 +255,12 @@ export namespace APIGateway {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -270,11 +272,11 @@ export namespace APIGateway {
     }
 
     // value - computed: true, optional: true, required: false
-    private _value?: string;
+    private _value?: string | undefined; 
     public get value() {
       return this.getStringAttribute('value');
     }
-    public set value(value: string) {
+    public set value(value: string | undefined) {
       this._value = value;
     }
     public resetValue() {
@@ -387,11 +389,11 @@ export namespace APIGateway {
     // ==========
 
     // authorizer_credentials - computed: false, optional: true, required: false
-    private _authorizerCredentials?: string;
+    private _authorizerCredentials?: string | undefined; 
     public get authorizerCredentials() {
       return this.getStringAttribute('authorizer_credentials');
     }
-    public set authorizerCredentials(value: string ) {
+    public set authorizerCredentials(value: string | undefined) {
       this._authorizerCredentials = value;
     }
     public resetAuthorizerCredentials() {
@@ -403,11 +405,11 @@ export namespace APIGateway {
     }
 
     // authorizer_result_ttl_in_seconds - computed: false, optional: true, required: false
-    private _authorizerResultTtlInSeconds?: number;
+    private _authorizerResultTtlInSeconds?: number | undefined; 
     public get authorizerResultTtlInSeconds() {
       return this.getNumberAttribute('authorizer_result_ttl_in_seconds');
     }
-    public set authorizerResultTtlInSeconds(value: number ) {
+    public set authorizerResultTtlInSeconds(value: number | undefined) {
       this._authorizerResultTtlInSeconds = value;
     }
     public resetAuthorizerResultTtlInSeconds() {
@@ -419,11 +421,11 @@ export namespace APIGateway {
     }
 
     // authorizer_uri - computed: false, optional: true, required: false
-    private _authorizerUri?: string;
+    private _authorizerUri?: string | undefined; 
     public get authorizerUri() {
       return this.getStringAttribute('authorizer_uri');
     }
-    public set authorizerUri(value: string ) {
+    public set authorizerUri(value: string | undefined) {
       this._authorizerUri = value;
     }
     public resetAuthorizerUri() {
@@ -440,11 +442,11 @@ export namespace APIGateway {
     }
 
     // identity_source - computed: false, optional: true, required: false
-    private _identitySource?: string;
+    private _identitySource?: string | undefined; 
     public get identitySource() {
       return this.getStringAttribute('identity_source');
     }
-    public set identitySource(value: string ) {
+    public set identitySource(value: string | undefined) {
       this._identitySource = value;
     }
     public resetIdentitySource() {
@@ -456,11 +458,11 @@ export namespace APIGateway {
     }
 
     // identity_validation_expression - computed: false, optional: true, required: false
-    private _identityValidationExpression?: string;
+    private _identityValidationExpression?: string | undefined; 
     public get identityValidationExpression() {
       return this.getStringAttribute('identity_validation_expression');
     }
-    public set identityValidationExpression(value: string ) {
+    public set identityValidationExpression(value: string | undefined) {
       this._identityValidationExpression = value;
     }
     public resetIdentityValidationExpression() {
@@ -472,7 +474,7 @@ export namespace APIGateway {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -485,11 +487,11 @@ export namespace APIGateway {
     }
 
     // provider_arns - computed: false, optional: true, required: false
-    private _providerArns?: string[];
+    private _providerArns?: string[] | undefined; 
     public get providerArns() {
       return this.getListAttribute('provider_arns');
     }
-    public set providerArns(value: string[] ) {
+    public set providerArns(value: string[] | undefined) {
       this._providerArns = value;
     }
     public resetProviderArns() {
@@ -501,7 +503,7 @@ export namespace APIGateway {
     }
 
     // rest_api_id - computed: false, optional: false, required: true
-    private _restApiId: string;
+    private _restApiId?: string; 
     public get restApiId() {
       return this.getStringAttribute('rest_api_id');
     }
@@ -514,11 +516,11 @@ export namespace APIGateway {
     }
 
     // type - computed: false, optional: true, required: false
-    private _type?: string;
+    private _type?: string | undefined; 
     public get type() {
       return this.getStringAttribute('type');
     }
-    public set type(value: string ) {
+    public set type(value: string | undefined) {
       this._type = value;
     }
     public resetType() {
@@ -609,7 +611,7 @@ export namespace APIGateway {
     // ==========
 
     // api_id - computed: false, optional: false, required: true
-    private _apiId: string;
+    private _apiId?: string; 
     public get apiId() {
       return this.getStringAttribute('api_id');
     }
@@ -622,11 +624,11 @@ export namespace APIGateway {
     }
 
     // base_path - computed: false, optional: true, required: false
-    private _basePath?: string;
+    private _basePath?: string | undefined; 
     public get basePath() {
       return this.getStringAttribute('base_path');
     }
-    public set basePath(value: string ) {
+    public set basePath(value: string | undefined) {
       this._basePath = value;
     }
     public resetBasePath() {
@@ -638,7 +640,7 @@ export namespace APIGateway {
     }
 
     // domain_name - computed: false, optional: false, required: true
-    private _domainName: string;
+    private _domainName?: string; 
     public get domainName() {
       return this.getStringAttribute('domain_name');
     }
@@ -656,11 +658,11 @@ export namespace APIGateway {
     }
 
     // stage_name - computed: false, optional: true, required: false
-    private _stageName?: string;
+    private _stageName?: string | undefined; 
     public get stageName() {
       return this.getStringAttribute('stage_name');
     }
-    public set stageName(value: string ) {
+    public set stageName(value: string | undefined) {
       this._stageName = value;
     }
     public resetStageName() {
@@ -751,11 +753,11 @@ export namespace APIGateway {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -782,11 +784,12 @@ export namespace APIGateway {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -798,11 +801,12 @@ export namespace APIGateway {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -902,11 +906,11 @@ export namespace APIGateway {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -933,7 +937,7 @@ export namespace APIGateway {
     }
 
     // rest_api_id - computed: false, optional: false, required: true
-    private _restApiId: string;
+    private _restApiId?: string; 
     public get restApiId() {
       return this.getStringAttribute('rest_api_id');
     }
@@ -946,11 +950,11 @@ export namespace APIGateway {
     }
 
     // stage_description - computed: false, optional: true, required: false
-    private _stageDescription?: string;
+    private _stageDescription?: string | undefined; 
     public get stageDescription() {
       return this.getStringAttribute('stage_description');
     }
-    public set stageDescription(value: string ) {
+    public set stageDescription(value: string | undefined) {
       this._stageDescription = value;
     }
     public resetStageDescription() {
@@ -962,11 +966,11 @@ export namespace APIGateway {
     }
 
     // stage_name - computed: false, optional: true, required: false
-    private _stageName?: string;
+    private _stageName?: string | undefined; 
     public get stageName() {
       return this.getStringAttribute('stage_name');
     }
-    public set stageName(value: string ) {
+    public set stageName(value: string | undefined) {
       this._stageName = value;
     }
     public resetStageName() {
@@ -978,11 +982,12 @@ export namespace APIGateway {
     }
 
     // triggers - computed: false, optional: true, required: false
-    private _triggers?: { [key: string]: string } | cdktf.IResolvable;
+    private _triggers?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get triggers() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('triggers') as any;
     }
-    public set triggers(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set triggers(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._triggers = value;
     }
     public resetTriggers() {
@@ -994,11 +999,12 @@ export namespace APIGateway {
     }
 
     // variables - computed: false, optional: true, required: false
-    private _variables?: { [key: string]: string } | cdktf.IResolvable;
+    private _variables?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get variables() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('variables') as any;
     }
-    public set variables(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set variables(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._variables = value;
     }
     public resetVariables() {
@@ -1038,7 +1044,7 @@ export namespace APIGateway {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_documentation_part.html#location ApiGatewayDocumentationPart#location}
     */
-    readonly location: ApiGatewayDocumentationPartLocation[];
+    readonly location: ApiGatewayDocumentationPartLocation;
   }
   export interface ApiGatewayDocumentationPartLocation {
     /**
@@ -1063,8 +1069,11 @@ export namespace APIGateway {
     readonly type: string;
   }
 
-  function apiGatewayDocumentationPartLocationToTerraform(struct?: ApiGatewayDocumentationPartLocation): any {
+  function apiGatewayDocumentationPartLocationToTerraform(struct?: ApiGatewayDocumentationPartLocationOutputReference | ApiGatewayDocumentationPartLocation): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       method: cdktf.stringToTerraform(struct!.method),
       name: cdktf.stringToTerraform(struct!.name),
@@ -1074,6 +1083,93 @@ export namespace APIGateway {
     }
   }
 
+  export class ApiGatewayDocumentationPartLocationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // method - computed: false, optional: true, required: false
+    private _method?: string | undefined; 
+    public get method() {
+      return this.getStringAttribute('method');
+    }
+    public set method(value: string | undefined) {
+      this._method = value;
+    }
+    public resetMethod() {
+      this._method = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get methodInput() {
+      return this._method
+    }
+
+    // name - computed: false, optional: true, required: false
+    private _name?: string | undefined; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string | undefined) {
+      this._name = value;
+    }
+    public resetName() {
+      this._name = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+
+    // path - computed: false, optional: true, required: false
+    private _path?: string | undefined; 
+    public get path() {
+      return this.getStringAttribute('path');
+    }
+    public set path(value: string | undefined) {
+      this._path = value;
+    }
+    public resetPath() {
+      this._path = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get pathInput() {
+      return this._path
+    }
+
+    // status_code - computed: false, optional: true, required: false
+    private _statusCode?: string | undefined; 
+    public get statusCode() {
+      return this.getStringAttribute('status_code');
+    }
+    public set statusCode(value: string | undefined) {
+      this._statusCode = value;
+    }
+    public resetStatusCode() {
+      this._statusCode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statusCodeInput() {
+      return this._statusCode
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_documentation_part.html aws_api_gateway_documentation_part}
@@ -1122,7 +1218,7 @@ export namespace APIGateway {
     }
 
     // properties - computed: false, optional: false, required: true
-    private _properties: string;
+    private _properties?: string; 
     public get properties() {
       return this.getStringAttribute('properties');
     }
@@ -1135,7 +1231,7 @@ export namespace APIGateway {
     }
 
     // rest_api_id - computed: false, optional: false, required: true
-    private _restApiId: string;
+    private _restApiId?: string; 
     public get restApiId() {
       return this.getStringAttribute('rest_api_id');
     }
@@ -1148,11 +1244,12 @@ export namespace APIGateway {
     }
 
     // location - computed: false, optional: false, required: true
-    private _location: ApiGatewayDocumentationPartLocation[];
+    private _location?: ApiGatewayDocumentationPartLocation; 
+    private __locationOutput = new ApiGatewayDocumentationPartLocationOutputReference(this as any, "location", true);
     public get location() {
-      return this.interpolationForAttribute('location') as any;
+      return this.__locationOutput;
     }
-    public set location(value: ApiGatewayDocumentationPartLocation[]) {
+    public putLocation(value: ApiGatewayDocumentationPartLocation) {
       this._location = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -1168,7 +1265,7 @@ export namespace APIGateway {
       return {
         properties: cdktf.stringToTerraform(this._properties),
         rest_api_id: cdktf.stringToTerraform(this._restApiId),
-        location: cdktf.listMapper(apiGatewayDocumentationPartLocationToTerraform)(this._location),
+        location: apiGatewayDocumentationPartLocationToTerraform(this._location),
       };
     }
   }
@@ -1229,11 +1326,11 @@ export namespace APIGateway {
     // ==========
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1250,7 +1347,7 @@ export namespace APIGateway {
     }
 
     // rest_api_id - computed: false, optional: false, required: true
-    private _restApiId: string;
+    private _restApiId?: string; 
     public get restApiId() {
       return this.getStringAttribute('rest_api_id');
     }
@@ -1263,7 +1360,7 @@ export namespace APIGateway {
     }
 
     // version - computed: false, optional: false, required: true
-    private _version: string;
+    private _version?: string; 
     public get version() {
       return this.getStringAttribute('version');
     }
@@ -1337,13 +1434,13 @@ export namespace APIGateway {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_domain_name.html#endpoint_configuration ApiGatewayDomainName#endpoint_configuration}
     */
-    readonly endpointConfiguration?: ApiGatewayDomainNameEndpointConfiguration[];
+    readonly endpointConfiguration?: ApiGatewayDomainNameEndpointConfiguration;
     /**
     * mutual_tls_authentication block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_domain_name.html#mutual_tls_authentication ApiGatewayDomainName#mutual_tls_authentication}
     */
-    readonly mutualTlsAuthentication?: ApiGatewayDomainNameMutualTlsAuthentication[];
+    readonly mutualTlsAuthentication?: ApiGatewayDomainNameMutualTlsAuthentication;
   }
   export interface ApiGatewayDomainNameEndpointConfiguration {
     /**
@@ -1352,13 +1449,39 @@ export namespace APIGateway {
     readonly types: string[];
   }
 
-  function apiGatewayDomainNameEndpointConfigurationToTerraform(struct?: ApiGatewayDomainNameEndpointConfiguration): any {
+  function apiGatewayDomainNameEndpointConfigurationToTerraform(struct?: ApiGatewayDomainNameEndpointConfigurationOutputReference | ApiGatewayDomainNameEndpointConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       types: cdktf.listMapper(cdktf.stringToTerraform)(struct!.types),
     }
   }
 
+  export class ApiGatewayDomainNameEndpointConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // types - computed: false, optional: false, required: true
+    private _types?: string[]; 
+    public get types() {
+      return this.getListAttribute('types');
+    }
+    public set types(value: string[]) {
+      this._types = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typesInput() {
+      return this._types
+    }
+  }
   export interface ApiGatewayDomainNameMutualTlsAuthentication {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_domain_name.html#truststore_uri ApiGatewayDomainName#truststore_uri}
@@ -1370,14 +1493,56 @@ export namespace APIGateway {
     readonly truststoreVersion?: string;
   }
 
-  function apiGatewayDomainNameMutualTlsAuthenticationToTerraform(struct?: ApiGatewayDomainNameMutualTlsAuthentication): any {
+  function apiGatewayDomainNameMutualTlsAuthenticationToTerraform(struct?: ApiGatewayDomainNameMutualTlsAuthenticationOutputReference | ApiGatewayDomainNameMutualTlsAuthentication): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       truststore_uri: cdktf.stringToTerraform(struct!.truststoreUri),
       truststore_version: cdktf.stringToTerraform(struct!.truststoreVersion),
     }
   }
 
+  export class ApiGatewayDomainNameMutualTlsAuthenticationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // truststore_uri - computed: false, optional: false, required: true
+    private _truststoreUri?: string; 
+    public get truststoreUri() {
+      return this.getStringAttribute('truststore_uri');
+    }
+    public set truststoreUri(value: string) {
+      this._truststoreUri = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get truststoreUriInput() {
+      return this._truststoreUri
+    }
+
+    // truststore_version - computed: false, optional: true, required: false
+    private _truststoreVersion?: string | undefined; 
+    public get truststoreVersion() {
+      return this.getStringAttribute('truststore_version');
+    }
+    public set truststoreVersion(value: string | undefined) {
+      this._truststoreVersion = value;
+    }
+    public resetTruststoreVersion() {
+      this._truststoreVersion = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get truststoreVersionInput() {
+      return this._truststoreVersion
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_domain_name.html aws_api_gateway_domain_name}
@@ -1436,11 +1601,11 @@ export namespace APIGateway {
     }
 
     // certificate_arn - computed: false, optional: true, required: false
-    private _certificateArn?: string;
+    private _certificateArn?: string | undefined; 
     public get certificateArn() {
       return this.getStringAttribute('certificate_arn');
     }
-    public set certificateArn(value: string ) {
+    public set certificateArn(value: string | undefined) {
       this._certificateArn = value;
     }
     public resetCertificateArn() {
@@ -1452,11 +1617,11 @@ export namespace APIGateway {
     }
 
     // certificate_body - computed: false, optional: true, required: false
-    private _certificateBody?: string;
+    private _certificateBody?: string | undefined; 
     public get certificateBody() {
       return this.getStringAttribute('certificate_body');
     }
-    public set certificateBody(value: string ) {
+    public set certificateBody(value: string | undefined) {
       this._certificateBody = value;
     }
     public resetCertificateBody() {
@@ -1468,11 +1633,11 @@ export namespace APIGateway {
     }
 
     // certificate_chain - computed: false, optional: true, required: false
-    private _certificateChain?: string;
+    private _certificateChain?: string | undefined; 
     public get certificateChain() {
       return this.getStringAttribute('certificate_chain');
     }
-    public set certificateChain(value: string ) {
+    public set certificateChain(value: string | undefined) {
       this._certificateChain = value;
     }
     public resetCertificateChain() {
@@ -1484,11 +1649,11 @@ export namespace APIGateway {
     }
 
     // certificate_name - computed: false, optional: true, required: false
-    private _certificateName?: string;
+    private _certificateName?: string | undefined; 
     public get certificateName() {
       return this.getStringAttribute('certificate_name');
     }
-    public set certificateName(value: string ) {
+    public set certificateName(value: string | undefined) {
       this._certificateName = value;
     }
     public resetCertificateName() {
@@ -1500,11 +1665,11 @@ export namespace APIGateway {
     }
 
     // certificate_private_key - computed: false, optional: true, required: false
-    private _certificatePrivateKey?: string;
+    private _certificatePrivateKey?: string | undefined; 
     public get certificatePrivateKey() {
       return this.getStringAttribute('certificate_private_key');
     }
-    public set certificatePrivateKey(value: string ) {
+    public set certificatePrivateKey(value: string | undefined) {
       this._certificatePrivateKey = value;
     }
     public resetCertificatePrivateKey() {
@@ -1531,7 +1696,7 @@ export namespace APIGateway {
     }
 
     // domain_name - computed: false, optional: false, required: true
-    private _domainName: string;
+    private _domainName?: string; 
     public get domainName() {
       return this.getStringAttribute('domain_name');
     }
@@ -1549,11 +1714,11 @@ export namespace APIGateway {
     }
 
     // regional_certificate_arn - computed: false, optional: true, required: false
-    private _regionalCertificateArn?: string;
+    private _regionalCertificateArn?: string | undefined; 
     public get regionalCertificateArn() {
       return this.getStringAttribute('regional_certificate_arn');
     }
-    public set regionalCertificateArn(value: string ) {
+    public set regionalCertificateArn(value: string | undefined) {
       this._regionalCertificateArn = value;
     }
     public resetRegionalCertificateArn() {
@@ -1565,11 +1730,11 @@ export namespace APIGateway {
     }
 
     // regional_certificate_name - computed: false, optional: true, required: false
-    private _regionalCertificateName?: string;
+    private _regionalCertificateName?: string | undefined; 
     public get regionalCertificateName() {
       return this.getStringAttribute('regional_certificate_name');
     }
-    public set regionalCertificateName(value: string ) {
+    public set regionalCertificateName(value: string | undefined) {
       this._regionalCertificateName = value;
     }
     public resetRegionalCertificateName() {
@@ -1591,11 +1756,11 @@ export namespace APIGateway {
     }
 
     // security_policy - computed: true, optional: true, required: false
-    private _securityPolicy?: string;
+    private _securityPolicy?: string | undefined; 
     public get securityPolicy() {
       return this.getStringAttribute('security_policy');
     }
-    public set securityPolicy(value: string) {
+    public set securityPolicy(value: string | undefined) {
       this._securityPolicy = value;
     }
     public resetSecurityPolicy() {
@@ -1607,11 +1772,12 @@ export namespace APIGateway {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1623,11 +1789,12 @@ export namespace APIGateway {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1639,11 +1806,12 @@ export namespace APIGateway {
     }
 
     // endpoint_configuration - computed: false, optional: true, required: false
-    private _endpointConfiguration?: ApiGatewayDomainNameEndpointConfiguration[];
+    private _endpointConfiguration?: ApiGatewayDomainNameEndpointConfiguration | undefined; 
+    private __endpointConfigurationOutput = new ApiGatewayDomainNameEndpointConfigurationOutputReference(this as any, "endpoint_configuration", true);
     public get endpointConfiguration() {
-      return this.interpolationForAttribute('endpoint_configuration') as any;
+      return this.__endpointConfigurationOutput;
     }
-    public set endpointConfiguration(value: ApiGatewayDomainNameEndpointConfiguration[] ) {
+    public putEndpointConfiguration(value: ApiGatewayDomainNameEndpointConfiguration | undefined) {
       this._endpointConfiguration = value;
     }
     public resetEndpointConfiguration() {
@@ -1655,11 +1823,12 @@ export namespace APIGateway {
     }
 
     // mutual_tls_authentication - computed: false, optional: true, required: false
-    private _mutualTlsAuthentication?: ApiGatewayDomainNameMutualTlsAuthentication[];
+    private _mutualTlsAuthentication?: ApiGatewayDomainNameMutualTlsAuthentication | undefined; 
+    private __mutualTlsAuthenticationOutput = new ApiGatewayDomainNameMutualTlsAuthenticationOutputReference(this as any, "mutual_tls_authentication", true);
     public get mutualTlsAuthentication() {
-      return this.interpolationForAttribute('mutual_tls_authentication') as any;
+      return this.__mutualTlsAuthenticationOutput;
     }
-    public set mutualTlsAuthentication(value: ApiGatewayDomainNameMutualTlsAuthentication[] ) {
+    public putMutualTlsAuthentication(value: ApiGatewayDomainNameMutualTlsAuthentication | undefined) {
       this._mutualTlsAuthentication = value;
     }
     public resetMutualTlsAuthentication() {
@@ -1687,8 +1856,8 @@ export namespace APIGateway {
         security_policy: cdktf.stringToTerraform(this._securityPolicy),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        endpoint_configuration: cdktf.listMapper(apiGatewayDomainNameEndpointConfigurationToTerraform)(this._endpointConfiguration),
-        mutual_tls_authentication: cdktf.listMapper(apiGatewayDomainNameMutualTlsAuthenticationToTerraform)(this._mutualTlsAuthentication),
+        endpoint_configuration: apiGatewayDomainNameEndpointConfigurationToTerraform(this._endpointConfiguration),
+        mutual_tls_authentication: apiGatewayDomainNameMutualTlsAuthenticationToTerraform(this._mutualTlsAuthentication),
       };
     }
   }
@@ -1764,11 +1933,12 @@ export namespace APIGateway {
     }
 
     // response_parameters - computed: false, optional: true, required: false
-    private _responseParameters?: { [key: string]: string } | cdktf.IResolvable;
+    private _responseParameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get responseParameters() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('response_parameters') as any;
     }
-    public set responseParameters(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set responseParameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._responseParameters = value;
     }
     public resetResponseParameters() {
@@ -1780,11 +1950,12 @@ export namespace APIGateway {
     }
 
     // response_templates - computed: false, optional: true, required: false
-    private _responseTemplates?: { [key: string]: string } | cdktf.IResolvable;
+    private _responseTemplates?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get responseTemplates() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('response_templates') as any;
     }
-    public set responseTemplates(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set responseTemplates(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._responseTemplates = value;
     }
     public resetResponseTemplates() {
@@ -1796,7 +1967,7 @@ export namespace APIGateway {
     }
 
     // response_type - computed: false, optional: false, required: true
-    private _responseType: string;
+    private _responseType?: string; 
     public get responseType() {
       return this.getStringAttribute('response_type');
     }
@@ -1809,7 +1980,7 @@ export namespace APIGateway {
     }
 
     // rest_api_id - computed: false, optional: false, required: true
-    private _restApiId: string;
+    private _restApiId?: string; 
     public get restApiId() {
       return this.getStringAttribute('rest_api_id');
     }
@@ -1822,11 +1993,11 @@ export namespace APIGateway {
     }
 
     // status_code - computed: false, optional: true, required: false
-    private _statusCode?: string;
+    private _statusCode?: string | undefined; 
     public get statusCode() {
       return this.getStringAttribute('status_code');
     }
-    public set statusCode(value: string ) {
+    public set statusCode(value: string | undefined) {
       this._statusCode = value;
     }
     public resetStatusCode() {
@@ -1921,7 +2092,7 @@ export namespace APIGateway {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration.html#tls_config ApiGatewayIntegration#tls_config}
     */
-    readonly tlsConfig?: ApiGatewayIntegrationTlsConfig[];
+    readonly tlsConfig?: ApiGatewayIntegrationTlsConfig;
   }
   export interface ApiGatewayIntegrationTlsConfig {
     /**
@@ -1930,13 +2101,42 @@ export namespace APIGateway {
     readonly insecureSkipVerification?: boolean | cdktf.IResolvable;
   }
 
-  function apiGatewayIntegrationTlsConfigToTerraform(struct?: ApiGatewayIntegrationTlsConfig): any {
+  function apiGatewayIntegrationTlsConfigToTerraform(struct?: ApiGatewayIntegrationTlsConfigOutputReference | ApiGatewayIntegrationTlsConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       insecure_skip_verification: cdktf.booleanToTerraform(struct!.insecureSkipVerification),
     }
   }
 
+  export class ApiGatewayIntegrationTlsConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // insecure_skip_verification - computed: false, optional: true, required: false
+    private _insecureSkipVerification?: boolean | cdktf.IResolvable | undefined; 
+    public get insecureSkipVerification() {
+      return this.getBooleanAttribute('insecure_skip_verification') as any;
+    }
+    public set insecureSkipVerification(value: boolean | cdktf.IResolvable | undefined) {
+      this._insecureSkipVerification = value;
+    }
+    public resetInsecureSkipVerification() {
+      this._insecureSkipVerification = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get insecureSkipVerificationInput() {
+      return this._insecureSkipVerification
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_integration.html aws_api_gateway_integration}
@@ -1994,11 +2194,11 @@ export namespace APIGateway {
     // ==========
 
     // cache_key_parameters - computed: false, optional: true, required: false
-    private _cacheKeyParameters?: string[];
+    private _cacheKeyParameters?: string[] | undefined; 
     public get cacheKeyParameters() {
       return this.getListAttribute('cache_key_parameters');
     }
-    public set cacheKeyParameters(value: string[] ) {
+    public set cacheKeyParameters(value: string[] | undefined) {
       this._cacheKeyParameters = value;
     }
     public resetCacheKeyParameters() {
@@ -2010,11 +2210,11 @@ export namespace APIGateway {
     }
 
     // cache_namespace - computed: true, optional: true, required: false
-    private _cacheNamespace?: string;
+    private _cacheNamespace?: string | undefined; 
     public get cacheNamespace() {
       return this.getStringAttribute('cache_namespace');
     }
-    public set cacheNamespace(value: string) {
+    public set cacheNamespace(value: string | undefined) {
       this._cacheNamespace = value;
     }
     public resetCacheNamespace() {
@@ -2026,11 +2226,11 @@ export namespace APIGateway {
     }
 
     // connection_id - computed: false, optional: true, required: false
-    private _connectionId?: string;
+    private _connectionId?: string | undefined; 
     public get connectionId() {
       return this.getStringAttribute('connection_id');
     }
-    public set connectionId(value: string ) {
+    public set connectionId(value: string | undefined) {
       this._connectionId = value;
     }
     public resetConnectionId() {
@@ -2042,11 +2242,11 @@ export namespace APIGateway {
     }
 
     // connection_type - computed: false, optional: true, required: false
-    private _connectionType?: string;
+    private _connectionType?: string | undefined; 
     public get connectionType() {
       return this.getStringAttribute('connection_type');
     }
-    public set connectionType(value: string ) {
+    public set connectionType(value: string | undefined) {
       this._connectionType = value;
     }
     public resetConnectionType() {
@@ -2058,11 +2258,11 @@ export namespace APIGateway {
     }
 
     // content_handling - computed: false, optional: true, required: false
-    private _contentHandling?: string;
+    private _contentHandling?: string | undefined; 
     public get contentHandling() {
       return this.getStringAttribute('content_handling');
     }
-    public set contentHandling(value: string ) {
+    public set contentHandling(value: string | undefined) {
       this._contentHandling = value;
     }
     public resetContentHandling() {
@@ -2074,11 +2274,11 @@ export namespace APIGateway {
     }
 
     // credentials - computed: false, optional: true, required: false
-    private _credentials?: string;
+    private _credentials?: string | undefined; 
     public get credentials() {
       return this.getStringAttribute('credentials');
     }
-    public set credentials(value: string ) {
+    public set credentials(value: string | undefined) {
       this._credentials = value;
     }
     public resetCredentials() {
@@ -2090,7 +2290,7 @@ export namespace APIGateway {
     }
 
     // http_method - computed: false, optional: false, required: true
-    private _httpMethod: string;
+    private _httpMethod?: string; 
     public get httpMethod() {
       return this.getStringAttribute('http_method');
     }
@@ -2108,11 +2308,11 @@ export namespace APIGateway {
     }
 
     // integration_http_method - computed: false, optional: true, required: false
-    private _integrationHttpMethod?: string;
+    private _integrationHttpMethod?: string | undefined; 
     public get integrationHttpMethod() {
       return this.getStringAttribute('integration_http_method');
     }
-    public set integrationHttpMethod(value: string ) {
+    public set integrationHttpMethod(value: string | undefined) {
       this._integrationHttpMethod = value;
     }
     public resetIntegrationHttpMethod() {
@@ -2124,11 +2324,11 @@ export namespace APIGateway {
     }
 
     // passthrough_behavior - computed: true, optional: true, required: false
-    private _passthroughBehavior?: string;
+    private _passthroughBehavior?: string | undefined; 
     public get passthroughBehavior() {
       return this.getStringAttribute('passthrough_behavior');
     }
-    public set passthroughBehavior(value: string) {
+    public set passthroughBehavior(value: string | undefined) {
       this._passthroughBehavior = value;
     }
     public resetPassthroughBehavior() {
@@ -2140,11 +2340,12 @@ export namespace APIGateway {
     }
 
     // request_parameters - computed: false, optional: true, required: false
-    private _requestParameters?: { [key: string]: string } | cdktf.IResolvable;
+    private _requestParameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get requestParameters() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('request_parameters') as any;
     }
-    public set requestParameters(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set requestParameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._requestParameters = value;
     }
     public resetRequestParameters() {
@@ -2156,11 +2357,12 @@ export namespace APIGateway {
     }
 
     // request_templates - computed: false, optional: true, required: false
-    private _requestTemplates?: { [key: string]: string } | cdktf.IResolvable;
+    private _requestTemplates?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get requestTemplates() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('request_templates') as any;
     }
-    public set requestTemplates(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set requestTemplates(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._requestTemplates = value;
     }
     public resetRequestTemplates() {
@@ -2172,7 +2374,7 @@ export namespace APIGateway {
     }
 
     // resource_id - computed: false, optional: false, required: true
-    private _resourceId: string;
+    private _resourceId?: string; 
     public get resourceId() {
       return this.getStringAttribute('resource_id');
     }
@@ -2185,7 +2387,7 @@ export namespace APIGateway {
     }
 
     // rest_api_id - computed: false, optional: false, required: true
-    private _restApiId: string;
+    private _restApiId?: string; 
     public get restApiId() {
       return this.getStringAttribute('rest_api_id');
     }
@@ -2198,11 +2400,11 @@ export namespace APIGateway {
     }
 
     // timeout_milliseconds - computed: false, optional: true, required: false
-    private _timeoutMilliseconds?: number;
+    private _timeoutMilliseconds?: number | undefined; 
     public get timeoutMilliseconds() {
       return this.getNumberAttribute('timeout_milliseconds');
     }
-    public set timeoutMilliseconds(value: number ) {
+    public set timeoutMilliseconds(value: number | undefined) {
       this._timeoutMilliseconds = value;
     }
     public resetTimeoutMilliseconds() {
@@ -2214,7 +2416,7 @@ export namespace APIGateway {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }
@@ -2227,11 +2429,11 @@ export namespace APIGateway {
     }
 
     // uri - computed: false, optional: true, required: false
-    private _uri?: string;
+    private _uri?: string | undefined; 
     public get uri() {
       return this.getStringAttribute('uri');
     }
-    public set uri(value: string ) {
+    public set uri(value: string | undefined) {
       this._uri = value;
     }
     public resetUri() {
@@ -2243,11 +2445,12 @@ export namespace APIGateway {
     }
 
     // tls_config - computed: false, optional: true, required: false
-    private _tlsConfig?: ApiGatewayIntegrationTlsConfig[];
+    private _tlsConfig?: ApiGatewayIntegrationTlsConfig | undefined; 
+    private __tlsConfigOutput = new ApiGatewayIntegrationTlsConfigOutputReference(this as any, "tls_config", true);
     public get tlsConfig() {
-      return this.interpolationForAttribute('tls_config') as any;
+      return this.__tlsConfigOutput;
     }
-    public set tlsConfig(value: ApiGatewayIntegrationTlsConfig[] ) {
+    public putTlsConfig(value: ApiGatewayIntegrationTlsConfig | undefined) {
       this._tlsConfig = value;
     }
     public resetTlsConfig() {
@@ -2280,7 +2483,7 @@ export namespace APIGateway {
         timeout_milliseconds: cdktf.numberToTerraform(this._timeoutMilliseconds),
         type: cdktf.stringToTerraform(this._type),
         uri: cdktf.stringToTerraform(this._uri),
-        tls_config: cdktf.listMapper(apiGatewayIntegrationTlsConfigToTerraform)(this._tlsConfig),
+        tls_config: apiGatewayIntegrationTlsConfigToTerraform(this._tlsConfig),
       };
     }
   }
@@ -2366,11 +2569,11 @@ export namespace APIGateway {
     // ==========
 
     // content_handling - computed: false, optional: true, required: false
-    private _contentHandling?: string;
+    private _contentHandling?: string | undefined; 
     public get contentHandling() {
       return this.getStringAttribute('content_handling');
     }
-    public set contentHandling(value: string ) {
+    public set contentHandling(value: string | undefined) {
       this._contentHandling = value;
     }
     public resetContentHandling() {
@@ -2382,7 +2585,7 @@ export namespace APIGateway {
     }
 
     // http_method - computed: false, optional: false, required: true
-    private _httpMethod: string;
+    private _httpMethod?: string; 
     public get httpMethod() {
       return this.getStringAttribute('http_method');
     }
@@ -2400,7 +2603,7 @@ export namespace APIGateway {
     }
 
     // resource_id - computed: false, optional: false, required: true
-    private _resourceId: string;
+    private _resourceId?: string; 
     public get resourceId() {
       return this.getStringAttribute('resource_id');
     }
@@ -2413,11 +2616,12 @@ export namespace APIGateway {
     }
 
     // response_parameters - computed: false, optional: true, required: false
-    private _responseParameters?: { [key: string]: string } | cdktf.IResolvable;
+    private _responseParameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get responseParameters() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('response_parameters') as any;
     }
-    public set responseParameters(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set responseParameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._responseParameters = value;
     }
     public resetResponseParameters() {
@@ -2429,11 +2633,12 @@ export namespace APIGateway {
     }
 
     // response_templates - computed: false, optional: true, required: false
-    private _responseTemplates?: { [key: string]: string } | cdktf.IResolvable;
+    private _responseTemplates?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get responseTemplates() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('response_templates') as any;
     }
-    public set responseTemplates(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set responseTemplates(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._responseTemplates = value;
     }
     public resetResponseTemplates() {
@@ -2445,7 +2650,7 @@ export namespace APIGateway {
     }
 
     // rest_api_id - computed: false, optional: false, required: true
-    private _restApiId: string;
+    private _restApiId?: string; 
     public get restApiId() {
       return this.getStringAttribute('rest_api_id');
     }
@@ -2458,11 +2663,11 @@ export namespace APIGateway {
     }
 
     // selection_pattern - computed: false, optional: true, required: false
-    private _selectionPattern?: string;
+    private _selectionPattern?: string | undefined; 
     public get selectionPattern() {
       return this.getStringAttribute('selection_pattern');
     }
-    public set selectionPattern(value: string ) {
+    public set selectionPattern(value: string | undefined) {
       this._selectionPattern = value;
     }
     public resetSelectionPattern() {
@@ -2474,7 +2679,7 @@ export namespace APIGateway {
     }
 
     // status_code - computed: false, optional: false, required: true
-    private _statusCode: string;
+    private _statusCode?: string; 
     public get statusCode() {
       return this.getStringAttribute('status_code');
     }
@@ -2600,11 +2805,11 @@ export namespace APIGateway {
     // ==========
 
     // api_key_required - computed: false, optional: true, required: false
-    private _apiKeyRequired?: boolean | cdktf.IResolvable;
+    private _apiKeyRequired?: boolean | cdktf.IResolvable | undefined; 
     public get apiKeyRequired() {
-      return this.getBooleanAttribute('api_key_required');
+      return this.getBooleanAttribute('api_key_required') as any;
     }
-    public set apiKeyRequired(value: boolean | cdktf.IResolvable ) {
+    public set apiKeyRequired(value: boolean | cdktf.IResolvable | undefined) {
       this._apiKeyRequired = value;
     }
     public resetApiKeyRequired() {
@@ -2616,7 +2821,7 @@ export namespace APIGateway {
     }
 
     // authorization - computed: false, optional: false, required: true
-    private _authorization: string;
+    private _authorization?: string; 
     public get authorization() {
       return this.getStringAttribute('authorization');
     }
@@ -2629,11 +2834,11 @@ export namespace APIGateway {
     }
 
     // authorization_scopes - computed: false, optional: true, required: false
-    private _authorizationScopes?: string[];
+    private _authorizationScopes?: string[] | undefined; 
     public get authorizationScopes() {
       return this.getListAttribute('authorization_scopes');
     }
-    public set authorizationScopes(value: string[] ) {
+    public set authorizationScopes(value: string[] | undefined) {
       this._authorizationScopes = value;
     }
     public resetAuthorizationScopes() {
@@ -2645,11 +2850,11 @@ export namespace APIGateway {
     }
 
     // authorizer_id - computed: false, optional: true, required: false
-    private _authorizerId?: string;
+    private _authorizerId?: string | undefined; 
     public get authorizerId() {
       return this.getStringAttribute('authorizer_id');
     }
-    public set authorizerId(value: string ) {
+    public set authorizerId(value: string | undefined) {
       this._authorizerId = value;
     }
     public resetAuthorizerId() {
@@ -2661,7 +2866,7 @@ export namespace APIGateway {
     }
 
     // http_method - computed: false, optional: false, required: true
-    private _httpMethod: string;
+    private _httpMethod?: string; 
     public get httpMethod() {
       return this.getStringAttribute('http_method');
     }
@@ -2679,11 +2884,11 @@ export namespace APIGateway {
     }
 
     // operation_name - computed: false, optional: true, required: false
-    private _operationName?: string;
+    private _operationName?: string | undefined; 
     public get operationName() {
       return this.getStringAttribute('operation_name');
     }
-    public set operationName(value: string ) {
+    public set operationName(value: string | undefined) {
       this._operationName = value;
     }
     public resetOperationName() {
@@ -2695,11 +2900,12 @@ export namespace APIGateway {
     }
 
     // request_models - computed: false, optional: true, required: false
-    private _requestModels?: { [key: string]: string } | cdktf.IResolvable;
+    private _requestModels?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get requestModels() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('request_models') as any;
     }
-    public set requestModels(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set requestModels(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._requestModels = value;
     }
     public resetRequestModels() {
@@ -2711,11 +2917,11 @@ export namespace APIGateway {
     }
 
     // request_parameters - computed: false, optional: true, required: false
-    private _requestParameters?: { [key: string]: boolean } | cdktf.IResolvable;
+    private _requestParameters?: { [key: string]: boolean } | cdktf.IResolvable | undefined; 
     public get requestParameters() {
-      return this.getBooleanAttribute('request_parameters');
+      return this.getBooleanAttribute('request_parameters') as any;
     }
-    public set requestParameters(value: { [key: string]: boolean } | cdktf.IResolvable ) {
+    public set requestParameters(value: { [key: string]: boolean } | cdktf.IResolvable | undefined) {
       this._requestParameters = value;
     }
     public resetRequestParameters() {
@@ -2727,11 +2933,11 @@ export namespace APIGateway {
     }
 
     // request_validator_id - computed: false, optional: true, required: false
-    private _requestValidatorId?: string;
+    private _requestValidatorId?: string | undefined; 
     public get requestValidatorId() {
       return this.getStringAttribute('request_validator_id');
     }
-    public set requestValidatorId(value: string ) {
+    public set requestValidatorId(value: string | undefined) {
       this._requestValidatorId = value;
     }
     public resetRequestValidatorId() {
@@ -2743,7 +2949,7 @@ export namespace APIGateway {
     }
 
     // resource_id - computed: false, optional: false, required: true
-    private _resourceId: string;
+    private _resourceId?: string; 
     public get resourceId() {
       return this.getStringAttribute('resource_id');
     }
@@ -2756,7 +2962,7 @@ export namespace APIGateway {
     }
 
     // rest_api_id - computed: false, optional: false, required: true
-    private _restApiId: string;
+    private _restApiId?: string; 
     public get restApiId() {
       return this.getStringAttribute('rest_api_id');
     }
@@ -2860,7 +3066,7 @@ export namespace APIGateway {
     // ==========
 
     // http_method - computed: false, optional: false, required: true
-    private _httpMethod: string;
+    private _httpMethod?: string; 
     public get httpMethod() {
       return this.getStringAttribute('http_method');
     }
@@ -2878,7 +3084,7 @@ export namespace APIGateway {
     }
 
     // resource_id - computed: false, optional: false, required: true
-    private _resourceId: string;
+    private _resourceId?: string; 
     public get resourceId() {
       return this.getStringAttribute('resource_id');
     }
@@ -2891,11 +3097,12 @@ export namespace APIGateway {
     }
 
     // response_models - computed: false, optional: true, required: false
-    private _responseModels?: { [key: string]: string } | cdktf.IResolvable;
+    private _responseModels?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get responseModels() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('response_models') as any;
     }
-    public set responseModels(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set responseModels(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._responseModels = value;
     }
     public resetResponseModels() {
@@ -2907,11 +3114,11 @@ export namespace APIGateway {
     }
 
     // response_parameters - computed: false, optional: true, required: false
-    private _responseParameters?: { [key: string]: boolean } | cdktf.IResolvable;
+    private _responseParameters?: { [key: string]: boolean } | cdktf.IResolvable | undefined; 
     public get responseParameters() {
-      return this.getBooleanAttribute('response_parameters');
+      return this.getBooleanAttribute('response_parameters') as any;
     }
-    public set responseParameters(value: { [key: string]: boolean } | cdktf.IResolvable ) {
+    public set responseParameters(value: { [key: string]: boolean } | cdktf.IResolvable | undefined) {
       this._responseParameters = value;
     }
     public resetResponseParameters() {
@@ -2923,7 +3130,7 @@ export namespace APIGateway {
     }
 
     // rest_api_id - computed: false, optional: false, required: true
-    private _restApiId: string;
+    private _restApiId?: string; 
     public get restApiId() {
       return this.getStringAttribute('rest_api_id');
     }
@@ -2936,7 +3143,7 @@ export namespace APIGateway {
     }
 
     // status_code - computed: false, optional: false, required: true
-    private _statusCode: string;
+    private _statusCode?: string; 
     public get statusCode() {
       return this.getStringAttribute('status_code');
     }
@@ -2981,7 +3188,7 @@ export namespace APIGateway {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_method_settings.html#settings ApiGatewayMethodSettings#settings}
     */
-    readonly settings: ApiGatewayMethodSettingsSettings[];
+    readonly settings: ApiGatewayMethodSettingsSettings;
   }
   export interface ApiGatewayMethodSettingsSettings {
     /**
@@ -3026,8 +3233,11 @@ export namespace APIGateway {
     readonly unauthorizedCacheControlHeaderStrategy?: string;
   }
 
-  function apiGatewayMethodSettingsSettingsToTerraform(struct?: ApiGatewayMethodSettingsSettings): any {
+  function apiGatewayMethodSettingsSettingsToTerraform(struct?: ApiGatewayMethodSettingsSettingsOutputReference | ApiGatewayMethodSettingsSettings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cache_data_encrypted: cdktf.booleanToTerraform(struct!.cacheDataEncrypted),
       cache_ttl_in_seconds: cdktf.numberToTerraform(struct!.cacheTtlInSeconds),
@@ -3042,6 +3252,176 @@ export namespace APIGateway {
     }
   }
 
+  export class ApiGatewayMethodSettingsSettingsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // cache_data_encrypted - computed: true, optional: true, required: false
+    private _cacheDataEncrypted?: boolean | cdktf.IResolvable | undefined; 
+    public get cacheDataEncrypted() {
+      return this.getBooleanAttribute('cache_data_encrypted') as any;
+    }
+    public set cacheDataEncrypted(value: boolean | cdktf.IResolvable | undefined) {
+      this._cacheDataEncrypted = value;
+    }
+    public resetCacheDataEncrypted() {
+      this._cacheDataEncrypted = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cacheDataEncryptedInput() {
+      return this._cacheDataEncrypted
+    }
+
+    // cache_ttl_in_seconds - computed: true, optional: true, required: false
+    private _cacheTtlInSeconds?: number | undefined; 
+    public get cacheTtlInSeconds() {
+      return this.getNumberAttribute('cache_ttl_in_seconds');
+    }
+    public set cacheTtlInSeconds(value: number | undefined) {
+      this._cacheTtlInSeconds = value;
+    }
+    public resetCacheTtlInSeconds() {
+      this._cacheTtlInSeconds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cacheTtlInSecondsInput() {
+      return this._cacheTtlInSeconds
+    }
+
+    // caching_enabled - computed: true, optional: true, required: false
+    private _cachingEnabled?: boolean | cdktf.IResolvable | undefined; 
+    public get cachingEnabled() {
+      return this.getBooleanAttribute('caching_enabled') as any;
+    }
+    public set cachingEnabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._cachingEnabled = value;
+    }
+    public resetCachingEnabled() {
+      this._cachingEnabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cachingEnabledInput() {
+      return this._cachingEnabled
+    }
+
+    // data_trace_enabled - computed: true, optional: true, required: false
+    private _dataTraceEnabled?: boolean | cdktf.IResolvable | undefined; 
+    public get dataTraceEnabled() {
+      return this.getBooleanAttribute('data_trace_enabled') as any;
+    }
+    public set dataTraceEnabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._dataTraceEnabled = value;
+    }
+    public resetDataTraceEnabled() {
+      this._dataTraceEnabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get dataTraceEnabledInput() {
+      return this._dataTraceEnabled
+    }
+
+    // logging_level - computed: true, optional: true, required: false
+    private _loggingLevel?: string | undefined; 
+    public get loggingLevel() {
+      return this.getStringAttribute('logging_level');
+    }
+    public set loggingLevel(value: string | undefined) {
+      this._loggingLevel = value;
+    }
+    public resetLoggingLevel() {
+      this._loggingLevel = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get loggingLevelInput() {
+      return this._loggingLevel
+    }
+
+    // metrics_enabled - computed: true, optional: true, required: false
+    private _metricsEnabled?: boolean | cdktf.IResolvable | undefined; 
+    public get metricsEnabled() {
+      return this.getBooleanAttribute('metrics_enabled') as any;
+    }
+    public set metricsEnabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._metricsEnabled = value;
+    }
+    public resetMetricsEnabled() {
+      this._metricsEnabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get metricsEnabledInput() {
+      return this._metricsEnabled
+    }
+
+    // require_authorization_for_cache_control - computed: true, optional: true, required: false
+    private _requireAuthorizationForCacheControl?: boolean | cdktf.IResolvable | undefined; 
+    public get requireAuthorizationForCacheControl() {
+      return this.getBooleanAttribute('require_authorization_for_cache_control') as any;
+    }
+    public set requireAuthorizationForCacheControl(value: boolean | cdktf.IResolvable | undefined) {
+      this._requireAuthorizationForCacheControl = value;
+    }
+    public resetRequireAuthorizationForCacheControl() {
+      this._requireAuthorizationForCacheControl = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get requireAuthorizationForCacheControlInput() {
+      return this._requireAuthorizationForCacheControl
+    }
+
+    // throttling_burst_limit - computed: false, optional: true, required: false
+    private _throttlingBurstLimit?: number | undefined; 
+    public get throttlingBurstLimit() {
+      return this.getNumberAttribute('throttling_burst_limit');
+    }
+    public set throttlingBurstLimit(value: number | undefined) {
+      this._throttlingBurstLimit = value;
+    }
+    public resetThrottlingBurstLimit() {
+      this._throttlingBurstLimit = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get throttlingBurstLimitInput() {
+      return this._throttlingBurstLimit
+    }
+
+    // throttling_rate_limit - computed: false, optional: true, required: false
+    private _throttlingRateLimit?: number | undefined; 
+    public get throttlingRateLimit() {
+      return this.getNumberAttribute('throttling_rate_limit');
+    }
+    public set throttlingRateLimit(value: number | undefined) {
+      this._throttlingRateLimit = value;
+    }
+    public resetThrottlingRateLimit() {
+      this._throttlingRateLimit = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get throttlingRateLimitInput() {
+      return this._throttlingRateLimit
+    }
+
+    // unauthorized_cache_control_header_strategy - computed: true, optional: true, required: false
+    private _unauthorizedCacheControlHeaderStrategy?: string | undefined; 
+    public get unauthorizedCacheControlHeaderStrategy() {
+      return this.getStringAttribute('unauthorized_cache_control_header_strategy');
+    }
+    public set unauthorizedCacheControlHeaderStrategy(value: string | undefined) {
+      this._unauthorizedCacheControlHeaderStrategy = value;
+    }
+    public resetUnauthorizedCacheControlHeaderStrategy() {
+      this._unauthorizedCacheControlHeaderStrategy = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get unauthorizedCacheControlHeaderStrategyInput() {
+      return this._unauthorizedCacheControlHeaderStrategy
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_method_settings.html aws_api_gateway_method_settings}
@@ -3091,7 +3471,7 @@ export namespace APIGateway {
     }
 
     // method_path - computed: false, optional: false, required: true
-    private _methodPath: string;
+    private _methodPath?: string; 
     public get methodPath() {
       return this.getStringAttribute('method_path');
     }
@@ -3104,7 +3484,7 @@ export namespace APIGateway {
     }
 
     // rest_api_id - computed: false, optional: false, required: true
-    private _restApiId: string;
+    private _restApiId?: string; 
     public get restApiId() {
       return this.getStringAttribute('rest_api_id');
     }
@@ -3117,7 +3497,7 @@ export namespace APIGateway {
     }
 
     // stage_name - computed: false, optional: false, required: true
-    private _stageName: string;
+    private _stageName?: string; 
     public get stageName() {
       return this.getStringAttribute('stage_name');
     }
@@ -3130,11 +3510,12 @@ export namespace APIGateway {
     }
 
     // settings - computed: false, optional: false, required: true
-    private _settings: ApiGatewayMethodSettingsSettings[];
+    private _settings?: ApiGatewayMethodSettingsSettings; 
+    private __settingsOutput = new ApiGatewayMethodSettingsSettingsOutputReference(this as any, "settings", true);
     public get settings() {
-      return this.interpolationForAttribute('settings') as any;
+      return this.__settingsOutput;
     }
-    public set settings(value: ApiGatewayMethodSettingsSettings[]) {
+    public putSettings(value: ApiGatewayMethodSettingsSettings) {
       this._settings = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -3151,7 +3532,7 @@ export namespace APIGateway {
         method_path: cdktf.stringToTerraform(this._methodPath),
         rest_api_id: cdktf.stringToTerraform(this._restApiId),
         stage_name: cdktf.stringToTerraform(this._stageName),
-        settings: cdktf.listMapper(apiGatewayMethodSettingsSettingsToTerraform)(this._settings),
+        settings: apiGatewayMethodSettingsSettingsToTerraform(this._settings),
       };
     }
   }
@@ -3222,7 +3603,7 @@ export namespace APIGateway {
     // ==========
 
     // content_type - computed: false, optional: false, required: true
-    private _contentType: string;
+    private _contentType?: string; 
     public get contentType() {
       return this.getStringAttribute('content_type');
     }
@@ -3235,11 +3616,11 @@ export namespace APIGateway {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -3256,7 +3637,7 @@ export namespace APIGateway {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -3269,7 +3650,7 @@ export namespace APIGateway {
     }
 
     // rest_api_id - computed: false, optional: false, required: true
-    private _restApiId: string;
+    private _restApiId?: string; 
     public get restApiId() {
       return this.getStringAttribute('rest_api_id');
     }
@@ -3282,11 +3663,11 @@ export namespace APIGateway {
     }
 
     // schema - computed: false, optional: true, required: false
-    private _schema?: string;
+    private _schema?: string | undefined; 
     public get schema() {
       return this.getStringAttribute('schema');
     }
-    public set schema(value: string ) {
+    public set schema(value: string | undefined) {
       this._schema = value;
     }
     public resetSchema() {
@@ -3378,7 +3759,7 @@ export namespace APIGateway {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -3391,7 +3772,7 @@ export namespace APIGateway {
     }
 
     // rest_api_id - computed: false, optional: false, required: true
-    private _restApiId: string;
+    private _restApiId?: string; 
     public get restApiId() {
       return this.getStringAttribute('rest_api_id');
     }
@@ -3404,11 +3785,11 @@ export namespace APIGateway {
     }
 
     // validate_request_body - computed: false, optional: true, required: false
-    private _validateRequestBody?: boolean | cdktf.IResolvable;
+    private _validateRequestBody?: boolean | cdktf.IResolvable | undefined; 
     public get validateRequestBody() {
-      return this.getBooleanAttribute('validate_request_body');
+      return this.getBooleanAttribute('validate_request_body') as any;
     }
-    public set validateRequestBody(value: boolean | cdktf.IResolvable ) {
+    public set validateRequestBody(value: boolean | cdktf.IResolvable | undefined) {
       this._validateRequestBody = value;
     }
     public resetValidateRequestBody() {
@@ -3420,11 +3801,11 @@ export namespace APIGateway {
     }
 
     // validate_request_parameters - computed: false, optional: true, required: false
-    private _validateRequestParameters?: boolean | cdktf.IResolvable;
+    private _validateRequestParameters?: boolean | cdktf.IResolvable | undefined; 
     public get validateRequestParameters() {
-      return this.getBooleanAttribute('validate_request_parameters');
+      return this.getBooleanAttribute('validate_request_parameters') as any;
     }
-    public set validateRequestParameters(value: boolean | cdktf.IResolvable ) {
+    public set validateRequestParameters(value: boolean | cdktf.IResolvable | undefined) {
       this._validateRequestParameters = value;
     }
     public resetValidateRequestParameters() {
@@ -3510,7 +3891,7 @@ export namespace APIGateway {
     }
 
     // parent_id - computed: false, optional: false, required: true
-    private _parentId: string;
+    private _parentId?: string; 
     public get parentId() {
       return this.getStringAttribute('parent_id');
     }
@@ -3528,7 +3909,7 @@ export namespace APIGateway {
     }
 
     // path_part - computed: false, optional: false, required: true
-    private _pathPart: string;
+    private _pathPart?: string; 
     public get pathPart() {
       return this.getStringAttribute('path_part');
     }
@@ -3541,7 +3922,7 @@ export namespace APIGateway {
     }
 
     // rest_api_id - computed: false, optional: false, required: true
-    private _restApiId: string;
+    private _restApiId?: string; 
     public get restApiId() {
       return this.getStringAttribute('rest_api_id');
     }
@@ -3615,7 +3996,7 @@ export namespace APIGateway {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_rest_api.html#endpoint_configuration ApiGatewayRestApi#endpoint_configuration}
     */
-    readonly endpointConfiguration?: ApiGatewayRestApiEndpointConfiguration[];
+    readonly endpointConfiguration?: ApiGatewayRestApiEndpointConfiguration;
   }
   export interface ApiGatewayRestApiEndpointConfiguration {
     /**
@@ -3628,14 +4009,56 @@ export namespace APIGateway {
     readonly vpcEndpointIds?: string[];
   }
 
-  function apiGatewayRestApiEndpointConfigurationToTerraform(struct?: ApiGatewayRestApiEndpointConfiguration): any {
+  function apiGatewayRestApiEndpointConfigurationToTerraform(struct?: ApiGatewayRestApiEndpointConfigurationOutputReference | ApiGatewayRestApiEndpointConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       types: cdktf.listMapper(cdktf.stringToTerraform)(struct!.types),
       vpc_endpoint_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.vpcEndpointIds),
     }
   }
 
+  export class ApiGatewayRestApiEndpointConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // types - computed: false, optional: false, required: true
+    private _types?: string[]; 
+    public get types() {
+      return this.getListAttribute('types');
+    }
+    public set types(value: string[]) {
+      this._types = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typesInput() {
+      return this._types
+    }
+
+    // vpc_endpoint_ids - computed: true, optional: true, required: false
+    private _vpcEndpointIds?: string[] | undefined; 
+    public get vpcEndpointIds() {
+      return this.getListAttribute('vpc_endpoint_ids');
+    }
+    public set vpcEndpointIds(value: string[] | undefined) {
+      this._vpcEndpointIds = value;
+    }
+    public resetVpcEndpointIds() {
+      this._vpcEndpointIds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get vpcEndpointIdsInput() {
+      return this._vpcEndpointIds
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_rest_api.html aws_api_gateway_rest_api}
@@ -3688,11 +4111,11 @@ export namespace APIGateway {
     // ==========
 
     // api_key_source - computed: true, optional: true, required: false
-    private _apiKeySource?: string;
+    private _apiKeySource?: string | undefined; 
     public get apiKeySource() {
       return this.getStringAttribute('api_key_source');
     }
-    public set apiKeySource(value: string) {
+    public set apiKeySource(value: string | undefined) {
       this._apiKeySource = value;
     }
     public resetApiKeySource() {
@@ -3709,11 +4132,11 @@ export namespace APIGateway {
     }
 
     // binary_media_types - computed: true, optional: true, required: false
-    private _binaryMediaTypes?: string[];
+    private _binaryMediaTypes?: string[] | undefined; 
     public get binaryMediaTypes() {
       return this.getListAttribute('binary_media_types');
     }
-    public set binaryMediaTypes(value: string[]) {
+    public set binaryMediaTypes(value: string[] | undefined) {
       this._binaryMediaTypes = value;
     }
     public resetBinaryMediaTypes() {
@@ -3725,11 +4148,11 @@ export namespace APIGateway {
     }
 
     // body - computed: false, optional: true, required: false
-    private _body?: string;
+    private _body?: string | undefined; 
     public get body() {
       return this.getStringAttribute('body');
     }
-    public set body(value: string ) {
+    public set body(value: string | undefined) {
       this._body = value;
     }
     public resetBody() {
@@ -3746,11 +4169,11 @@ export namespace APIGateway {
     }
 
     // description - computed: true, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -3762,11 +4185,11 @@ export namespace APIGateway {
     }
 
     // disable_execute_api_endpoint - computed: true, optional: true, required: false
-    private _disableExecuteApiEndpoint?: boolean | cdktf.IResolvable;
+    private _disableExecuteApiEndpoint?: boolean | cdktf.IResolvable | undefined; 
     public get disableExecuteApiEndpoint() {
-      return this.getBooleanAttribute('disable_execute_api_endpoint');
+      return this.getBooleanAttribute('disable_execute_api_endpoint') as any;
     }
-    public set disableExecuteApiEndpoint(value: boolean | cdktf.IResolvable) {
+    public set disableExecuteApiEndpoint(value: boolean | cdktf.IResolvable | undefined) {
       this._disableExecuteApiEndpoint = value;
     }
     public resetDisableExecuteApiEndpoint() {
@@ -3788,11 +4211,11 @@ export namespace APIGateway {
     }
 
     // minimum_compression_size - computed: false, optional: true, required: false
-    private _minimumCompressionSize?: number;
+    private _minimumCompressionSize?: number | undefined; 
     public get minimumCompressionSize() {
       return this.getNumberAttribute('minimum_compression_size');
     }
-    public set minimumCompressionSize(value: number ) {
+    public set minimumCompressionSize(value: number | undefined) {
       this._minimumCompressionSize = value;
     }
     public resetMinimumCompressionSize() {
@@ -3804,7 +4227,7 @@ export namespace APIGateway {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -3817,11 +4240,12 @@ export namespace APIGateway {
     }
 
     // parameters - computed: false, optional: true, required: false
-    private _parameters?: { [key: string]: string } | cdktf.IResolvable;
+    private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get parameters() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('parameters') as any;
     }
-    public set parameters(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._parameters = value;
     }
     public resetParameters() {
@@ -3833,11 +4257,11 @@ export namespace APIGateway {
     }
 
     // policy - computed: true, optional: true, required: false
-    private _policy?: string;
+    private _policy?: string | undefined; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
-    public set policy(value: string) {
+    public set policy(value: string | undefined) {
       this._policy = value;
     }
     public resetPolicy() {
@@ -3854,11 +4278,12 @@ export namespace APIGateway {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3870,11 +4295,12 @@ export namespace APIGateway {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -3886,11 +4312,12 @@ export namespace APIGateway {
     }
 
     // endpoint_configuration - computed: false, optional: true, required: false
-    private _endpointConfiguration?: ApiGatewayRestApiEndpointConfiguration[];
+    private _endpointConfiguration?: ApiGatewayRestApiEndpointConfiguration | undefined; 
+    private __endpointConfigurationOutput = new ApiGatewayRestApiEndpointConfigurationOutputReference(this as any, "endpoint_configuration", true);
     public get endpointConfiguration() {
-      return this.interpolationForAttribute('endpoint_configuration') as any;
+      return this.__endpointConfigurationOutput;
     }
-    public set endpointConfiguration(value: ApiGatewayRestApiEndpointConfiguration[] ) {
+    public putEndpointConfiguration(value: ApiGatewayRestApiEndpointConfiguration | undefined) {
       this._endpointConfiguration = value;
     }
     public resetEndpointConfiguration() {
@@ -3918,7 +4345,7 @@ export namespace APIGateway {
         policy: cdktf.stringToTerraform(this._policy),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        endpoint_configuration: cdktf.listMapper(apiGatewayRestApiEndpointConfigurationToTerraform)(this._endpointConfiguration),
+        endpoint_configuration: apiGatewayRestApiEndpointConfigurationToTerraform(this._endpointConfiguration),
       };
     }
   }
@@ -3979,7 +4406,7 @@ export namespace APIGateway {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -3992,7 +4419,7 @@ export namespace APIGateway {
     }
 
     // rest_api_id - computed: false, optional: false, required: true
-    private _restApiId: string;
+    private _restApiId?: string; 
     public get restApiId() {
       return this.getStringAttribute('rest_api_id');
     }
@@ -4069,7 +4496,7 @@ export namespace APIGateway {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_stage.html#access_log_settings ApiGatewayStage#access_log_settings}
     */
-    readonly accessLogSettings?: ApiGatewayStageAccessLogSettings[];
+    readonly accessLogSettings?: ApiGatewayStageAccessLogSettings;
   }
   export interface ApiGatewayStageAccessLogSettings {
     /**
@@ -4082,14 +4509,53 @@ export namespace APIGateway {
     readonly format: string;
   }
 
-  function apiGatewayStageAccessLogSettingsToTerraform(struct?: ApiGatewayStageAccessLogSettings): any {
+  function apiGatewayStageAccessLogSettingsToTerraform(struct?: ApiGatewayStageAccessLogSettingsOutputReference | ApiGatewayStageAccessLogSettings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       destination_arn: cdktf.stringToTerraform(struct!.destinationArn),
       format: cdktf.stringToTerraform(struct!.format),
     }
   }
 
+  export class ApiGatewayStageAccessLogSettingsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // destination_arn - computed: false, optional: false, required: true
+    private _destinationArn?: string; 
+    public get destinationArn() {
+      return this.getStringAttribute('destination_arn');
+    }
+    public set destinationArn(value: string) {
+      this._destinationArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get destinationArnInput() {
+      return this._destinationArn
+    }
+
+    // format - computed: false, optional: false, required: true
+    private _format?: string; 
+    public get format() {
+      return this.getStringAttribute('format');
+    }
+    public set format(value: string) {
+      this._format = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get formatInput() {
+      return this._format
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_stage.html aws_api_gateway_stage}
@@ -4148,11 +4614,11 @@ export namespace APIGateway {
     }
 
     // cache_cluster_enabled - computed: false, optional: true, required: false
-    private _cacheClusterEnabled?: boolean | cdktf.IResolvable;
+    private _cacheClusterEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get cacheClusterEnabled() {
-      return this.getBooleanAttribute('cache_cluster_enabled');
+      return this.getBooleanAttribute('cache_cluster_enabled') as any;
     }
-    public set cacheClusterEnabled(value: boolean | cdktf.IResolvable ) {
+    public set cacheClusterEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._cacheClusterEnabled = value;
     }
     public resetCacheClusterEnabled() {
@@ -4164,11 +4630,11 @@ export namespace APIGateway {
     }
 
     // cache_cluster_size - computed: false, optional: true, required: false
-    private _cacheClusterSize?: string;
+    private _cacheClusterSize?: string | undefined; 
     public get cacheClusterSize() {
       return this.getStringAttribute('cache_cluster_size');
     }
-    public set cacheClusterSize(value: string ) {
+    public set cacheClusterSize(value: string | undefined) {
       this._cacheClusterSize = value;
     }
     public resetCacheClusterSize() {
@@ -4180,11 +4646,11 @@ export namespace APIGateway {
     }
 
     // client_certificate_id - computed: false, optional: true, required: false
-    private _clientCertificateId?: string;
+    private _clientCertificateId?: string | undefined; 
     public get clientCertificateId() {
       return this.getStringAttribute('client_certificate_id');
     }
-    public set clientCertificateId(value: string ) {
+    public set clientCertificateId(value: string | undefined) {
       this._clientCertificateId = value;
     }
     public resetClientCertificateId() {
@@ -4196,7 +4662,7 @@ export namespace APIGateway {
     }
 
     // deployment_id - computed: false, optional: false, required: true
-    private _deploymentId: string;
+    private _deploymentId?: string; 
     public get deploymentId() {
       return this.getStringAttribute('deployment_id');
     }
@@ -4209,11 +4675,11 @@ export namespace APIGateway {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -4225,11 +4691,11 @@ export namespace APIGateway {
     }
 
     // documentation_version - computed: false, optional: true, required: false
-    private _documentationVersion?: string;
+    private _documentationVersion?: string | undefined; 
     public get documentationVersion() {
       return this.getStringAttribute('documentation_version');
     }
-    public set documentationVersion(value: string ) {
+    public set documentationVersion(value: string | undefined) {
       this._documentationVersion = value;
     }
     public resetDocumentationVersion() {
@@ -4256,7 +4722,7 @@ export namespace APIGateway {
     }
 
     // rest_api_id - computed: false, optional: false, required: true
-    private _restApiId: string;
+    private _restApiId?: string; 
     public get restApiId() {
       return this.getStringAttribute('rest_api_id');
     }
@@ -4269,7 +4735,7 @@ export namespace APIGateway {
     }
 
     // stage_name - computed: false, optional: false, required: true
-    private _stageName: string;
+    private _stageName?: string; 
     public get stageName() {
       return this.getStringAttribute('stage_name');
     }
@@ -4282,11 +4748,12 @@ export namespace APIGateway {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4298,11 +4765,12 @@ export namespace APIGateway {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -4314,11 +4782,12 @@ export namespace APIGateway {
     }
 
     // variables - computed: false, optional: true, required: false
-    private _variables?: { [key: string]: string } | cdktf.IResolvable;
+    private _variables?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get variables() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('variables') as any;
     }
-    public set variables(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set variables(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._variables = value;
     }
     public resetVariables() {
@@ -4330,11 +4799,11 @@ export namespace APIGateway {
     }
 
     // xray_tracing_enabled - computed: false, optional: true, required: false
-    private _xrayTracingEnabled?: boolean | cdktf.IResolvable;
+    private _xrayTracingEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get xrayTracingEnabled() {
-      return this.getBooleanAttribute('xray_tracing_enabled');
+      return this.getBooleanAttribute('xray_tracing_enabled') as any;
     }
-    public set xrayTracingEnabled(value: boolean | cdktf.IResolvable ) {
+    public set xrayTracingEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._xrayTracingEnabled = value;
     }
     public resetXrayTracingEnabled() {
@@ -4346,11 +4815,12 @@ export namespace APIGateway {
     }
 
     // access_log_settings - computed: false, optional: true, required: false
-    private _accessLogSettings?: ApiGatewayStageAccessLogSettings[];
+    private _accessLogSettings?: ApiGatewayStageAccessLogSettings | undefined; 
+    private __accessLogSettingsOutput = new ApiGatewayStageAccessLogSettingsOutputReference(this as any, "access_log_settings", true);
     public get accessLogSettings() {
-      return this.interpolationForAttribute('access_log_settings') as any;
+      return this.__accessLogSettingsOutput;
     }
-    public set accessLogSettings(value: ApiGatewayStageAccessLogSettings[] ) {
+    public putAccessLogSettings(value: ApiGatewayStageAccessLogSettings | undefined) {
       this._accessLogSettings = value;
     }
     public resetAccessLogSettings() {
@@ -4379,7 +4849,7 @@ export namespace APIGateway {
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         variables: cdktf.hashMapper(cdktf.anyToTerraform)(this._variables),
         xray_tracing_enabled: cdktf.booleanToTerraform(this._xrayTracingEnabled),
-        access_log_settings: cdktf.listMapper(apiGatewayStageAccessLogSettingsToTerraform)(this._accessLogSettings),
+        access_log_settings: apiGatewayStageAccessLogSettingsToTerraform(this._accessLogSettings),
       };
     }
   }
@@ -4415,13 +4885,13 @@ export namespace APIGateway {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_usage_plan.html#quota_settings ApiGatewayUsagePlan#quota_settings}
     */
-    readonly quotaSettings?: ApiGatewayUsagePlanQuotaSettings[];
+    readonly quotaSettings?: ApiGatewayUsagePlanQuotaSettings;
     /**
     * throttle_settings block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_usage_plan.html#throttle_settings ApiGatewayUsagePlan#throttle_settings}
     */
-    readonly throttleSettings?: ApiGatewayUsagePlanThrottleSettings[];
+    readonly throttleSettings?: ApiGatewayUsagePlanThrottleSettings;
   }
   export interface ApiGatewayUsagePlanApiStages {
     /**
@@ -4436,6 +4906,9 @@ export namespace APIGateway {
 
   function apiGatewayUsagePlanApiStagesToTerraform(struct?: ApiGatewayUsagePlanApiStages): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       api_id: cdktf.stringToTerraform(struct!.apiId),
       stage: cdktf.stringToTerraform(struct!.stage),
@@ -4457,8 +4930,11 @@ export namespace APIGateway {
     readonly period: string;
   }
 
-  function apiGatewayUsagePlanQuotaSettingsToTerraform(struct?: ApiGatewayUsagePlanQuotaSettings): any {
+  function apiGatewayUsagePlanQuotaSettingsToTerraform(struct?: ApiGatewayUsagePlanQuotaSettingsOutputReference | ApiGatewayUsagePlanQuotaSettings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       limit: cdktf.numberToTerraform(struct!.limit),
       offset: cdktf.numberToTerraform(struct!.offset),
@@ -4466,6 +4942,58 @@ export namespace APIGateway {
     }
   }
 
+  export class ApiGatewayUsagePlanQuotaSettingsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // limit - computed: false, optional: false, required: true
+    private _limit?: number; 
+    public get limit() {
+      return this.getNumberAttribute('limit');
+    }
+    public set limit(value: number) {
+      this._limit = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get limitInput() {
+      return this._limit
+    }
+
+    // offset - computed: false, optional: true, required: false
+    private _offset?: number | undefined; 
+    public get offset() {
+      return this.getNumberAttribute('offset');
+    }
+    public set offset(value: number | undefined) {
+      this._offset = value;
+    }
+    public resetOffset() {
+      this._offset = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get offsetInput() {
+      return this._offset
+    }
+
+    // period - computed: false, optional: false, required: true
+    private _period?: string; 
+    public get period() {
+      return this.getStringAttribute('period');
+    }
+    public set period(value: string) {
+      this._period = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get periodInput() {
+      return this._period
+    }
+  }
   export interface ApiGatewayUsagePlanThrottleSettings {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_usage_plan.html#burst_limit ApiGatewayUsagePlan#burst_limit}
@@ -4477,14 +5005,59 @@ export namespace APIGateway {
     readonly rateLimit?: number;
   }
 
-  function apiGatewayUsagePlanThrottleSettingsToTerraform(struct?: ApiGatewayUsagePlanThrottleSettings): any {
+  function apiGatewayUsagePlanThrottleSettingsToTerraform(struct?: ApiGatewayUsagePlanThrottleSettingsOutputReference | ApiGatewayUsagePlanThrottleSettings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       burst_limit: cdktf.numberToTerraform(struct!.burstLimit),
       rate_limit: cdktf.numberToTerraform(struct!.rateLimit),
     }
   }
 
+  export class ApiGatewayUsagePlanThrottleSettingsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // burst_limit - computed: false, optional: true, required: false
+    private _burstLimit?: number | undefined; 
+    public get burstLimit() {
+      return this.getNumberAttribute('burst_limit');
+    }
+    public set burstLimit(value: number | undefined) {
+      this._burstLimit = value;
+    }
+    public resetBurstLimit() {
+      this._burstLimit = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get burstLimitInput() {
+      return this._burstLimit
+    }
+
+    // rate_limit - computed: false, optional: true, required: false
+    private _rateLimit?: number | undefined; 
+    public get rateLimit() {
+      return this.getNumberAttribute('rate_limit');
+    }
+    public set rateLimit(value: number | undefined) {
+      this._rateLimit = value;
+    }
+    public resetRateLimit() {
+      this._rateLimit = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get rateLimitInput() {
+      return this._rateLimit
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/api_gateway_usage_plan.html aws_api_gateway_usage_plan}
@@ -4538,11 +5111,11 @@ export namespace APIGateway {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -4559,7 +5132,7 @@ export namespace APIGateway {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -4572,11 +5145,11 @@ export namespace APIGateway {
     }
 
     // product_code - computed: false, optional: true, required: false
-    private _productCode?: string;
+    private _productCode?: string | undefined; 
     public get productCode() {
       return this.getStringAttribute('product_code');
     }
-    public set productCode(value: string ) {
+    public set productCode(value: string | undefined) {
       this._productCode = value;
     }
     public resetProductCode() {
@@ -4588,11 +5161,12 @@ export namespace APIGateway {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4604,11 +5178,12 @@ export namespace APIGateway {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -4620,11 +5195,12 @@ export namespace APIGateway {
     }
 
     // api_stages - computed: false, optional: true, required: false
-    private _apiStages?: ApiGatewayUsagePlanApiStages[];
+    private _apiStages?: ApiGatewayUsagePlanApiStages[] | undefined; 
     public get apiStages() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('api_stages') as any;
     }
-    public set apiStages(value: ApiGatewayUsagePlanApiStages[] ) {
+    public set apiStages(value: ApiGatewayUsagePlanApiStages[] | undefined) {
       this._apiStages = value;
     }
     public resetApiStages() {
@@ -4636,11 +5212,12 @@ export namespace APIGateway {
     }
 
     // quota_settings - computed: false, optional: true, required: false
-    private _quotaSettings?: ApiGatewayUsagePlanQuotaSettings[];
+    private _quotaSettings?: ApiGatewayUsagePlanQuotaSettings | undefined; 
+    private __quotaSettingsOutput = new ApiGatewayUsagePlanQuotaSettingsOutputReference(this as any, "quota_settings", true);
     public get quotaSettings() {
-      return this.interpolationForAttribute('quota_settings') as any;
+      return this.__quotaSettingsOutput;
     }
-    public set quotaSettings(value: ApiGatewayUsagePlanQuotaSettings[] ) {
+    public putQuotaSettings(value: ApiGatewayUsagePlanQuotaSettings | undefined) {
       this._quotaSettings = value;
     }
     public resetQuotaSettings() {
@@ -4652,11 +5229,12 @@ export namespace APIGateway {
     }
 
     // throttle_settings - computed: false, optional: true, required: false
-    private _throttleSettings?: ApiGatewayUsagePlanThrottleSettings[];
+    private _throttleSettings?: ApiGatewayUsagePlanThrottleSettings | undefined; 
+    private __throttleSettingsOutput = new ApiGatewayUsagePlanThrottleSettingsOutputReference(this as any, "throttle_settings", true);
     public get throttleSettings() {
-      return this.interpolationForAttribute('throttle_settings') as any;
+      return this.__throttleSettingsOutput;
     }
-    public set throttleSettings(value: ApiGatewayUsagePlanThrottleSettings[] ) {
+    public putThrottleSettings(value: ApiGatewayUsagePlanThrottleSettings | undefined) {
       this._throttleSettings = value;
     }
     public resetThrottleSettings() {
@@ -4679,8 +5257,8 @@ export namespace APIGateway {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         api_stages: cdktf.listMapper(apiGatewayUsagePlanApiStagesToTerraform)(this._apiStages),
-        quota_settings: cdktf.listMapper(apiGatewayUsagePlanQuotaSettingsToTerraform)(this._quotaSettings),
-        throttle_settings: cdktf.listMapper(apiGatewayUsagePlanThrottleSettingsToTerraform)(this._throttleSettings),
+        quota_settings: apiGatewayUsagePlanQuotaSettingsToTerraform(this._quotaSettings),
+        throttle_settings: apiGatewayUsagePlanThrottleSettingsToTerraform(this._throttleSettings),
       };
     }
   }
@@ -4746,7 +5324,7 @@ export namespace APIGateway {
     }
 
     // key_id - computed: false, optional: false, required: true
-    private _keyId: string;
+    private _keyId?: string; 
     public get keyId() {
       return this.getStringAttribute('key_id');
     }
@@ -4759,7 +5337,7 @@ export namespace APIGateway {
     }
 
     // key_type - computed: false, optional: false, required: true
-    private _keyType: string;
+    private _keyType?: string; 
     public get keyType() {
       return this.getStringAttribute('key_type');
     }
@@ -4777,7 +5355,7 @@ export namespace APIGateway {
     }
 
     // usage_plan_id - computed: false, optional: false, required: true
-    private _usagePlanId: string;
+    private _usagePlanId?: string; 
     public get usagePlanId() {
       return this.getStringAttribute('usage_plan_id');
     }
@@ -4878,11 +5456,11 @@ export namespace APIGateway {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -4899,7 +5477,7 @@ export namespace APIGateway {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -4912,11 +5490,12 @@ export namespace APIGateway {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4928,11 +5507,12 @@ export namespace APIGateway {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -4944,7 +5524,7 @@ export namespace APIGateway {
     }
 
     // target_arns - computed: false, optional: false, required: true
-    private _targetArns: string[];
+    private _targetArns?: string[]; 
     public get targetArns() {
       return this.getListAttribute('target_arns');
     }
@@ -5033,11 +5613,11 @@ export namespace APIGateway {
 
     // enabled - computed: true, optional: false, required: false
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
 
     // id - computed: false, optional: false, required: true
-    private _id: string;
+    private _id?: string; 
     public get id() {
       return this.getStringAttribute('id');
     }
@@ -5060,11 +5640,12 @@ export namespace APIGateway {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -5180,7 +5761,7 @@ export namespace APIGateway {
     }
 
     // domain_name - computed: false, optional: false, required: true
-    private _domainName: string;
+    private _domainName?: string; 
     public get domainName() {
       return this.getStringAttribute('domain_name');
     }
@@ -5228,11 +5809,12 @@ export namespace APIGateway {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -5316,7 +5898,7 @@ export namespace APIGateway {
     }
 
     // path - computed: false, optional: false, required: true
-    private _path: string;
+    private _path?: string; 
     public get path() {
       return this.getStringAttribute('path');
     }
@@ -5334,7 +5916,7 @@ export namespace APIGateway {
     }
 
     // rest_api_id - computed: false, optional: false, required: true
-    private _restApiId: string;
+    private _restApiId?: string; 
     public get restApiId() {
       return this.getStringAttribute('rest_api_id');
     }
@@ -5461,7 +6043,7 @@ export namespace APIGateway {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -5484,11 +6066,12 @@ export namespace APIGateway {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -5572,7 +6155,7 @@ export namespace APIGateway {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -5595,11 +6178,12 @@ export namespace APIGateway {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {

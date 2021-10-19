@@ -65,7 +65,7 @@ export namespace DAX {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dax_cluster.html#server_side_encryption DaxCluster#server_side_encryption}
     */
-    readonly serverSideEncryption?: DaxClusterServerSideEncryption[];
+    readonly serverSideEncryption?: DaxClusterServerSideEncryption;
     /**
     * timeouts block
     * 
@@ -102,13 +102,42 @@ export namespace DAX {
     readonly enabled?: boolean | cdktf.IResolvable;
   }
 
-  function daxClusterServerSideEncryptionToTerraform(struct?: DaxClusterServerSideEncryption): any {
+  function daxClusterServerSideEncryptionToTerraform(struct?: DaxClusterServerSideEncryptionOutputReference | DaxClusterServerSideEncryption): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       enabled: cdktf.booleanToTerraform(struct!.enabled),
     }
   }
 
+  export class DaxClusterServerSideEncryptionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // enabled - computed: false, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+  }
   export interface DaxClusterTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dax_cluster.html#create DaxCluster#create}
@@ -124,8 +153,11 @@ export namespace DAX {
     readonly update?: string;
   }
 
-  function daxClusterTimeoutsToTerraform(struct?: DaxClusterTimeouts): any {
+  function daxClusterTimeoutsToTerraform(struct?: DaxClusterTimeoutsOutputReference | DaxClusterTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -133,6 +165,64 @@ export namespace DAX {
     }
   }
 
+  export class DaxClusterTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/dax_cluster.html aws_dax_cluster}
@@ -193,11 +283,11 @@ export namespace DAX {
     }
 
     // availability_zones - computed: false, optional: true, required: false
-    private _availabilityZones?: string[];
+    private _availabilityZones?: string[] | undefined; 
     public get availabilityZones() {
       return this.getListAttribute('availability_zones');
     }
-    public set availabilityZones(value: string[] ) {
+    public set availabilityZones(value: string[] | undefined) {
       this._availabilityZones = value;
     }
     public resetAvailabilityZones() {
@@ -214,7 +304,7 @@ export namespace DAX {
     }
 
     // cluster_name - computed: false, optional: false, required: true
-    private _clusterName: string;
+    private _clusterName?: string; 
     public get clusterName() {
       return this.getStringAttribute('cluster_name');
     }
@@ -232,11 +322,11 @@ export namespace DAX {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -248,7 +338,7 @@ export namespace DAX {
     }
 
     // iam_role_arn - computed: false, optional: false, required: true
-    private _iamRoleArn: string;
+    private _iamRoleArn?: string; 
     public get iamRoleArn() {
       return this.getStringAttribute('iam_role_arn');
     }
@@ -266,11 +356,11 @@ export namespace DAX {
     }
 
     // maintenance_window - computed: true, optional: true, required: false
-    private _maintenanceWindow?: string;
+    private _maintenanceWindow?: string | undefined; 
     public get maintenanceWindow() {
       return this.getStringAttribute('maintenance_window');
     }
-    public set maintenanceWindow(value: string) {
+    public set maintenanceWindow(value: string | undefined) {
       this._maintenanceWindow = value;
     }
     public resetMaintenanceWindow() {
@@ -282,7 +372,7 @@ export namespace DAX {
     }
 
     // node_type - computed: false, optional: false, required: true
-    private _nodeType: string;
+    private _nodeType?: string; 
     public get nodeType() {
       return this.getStringAttribute('node_type');
     }
@@ -300,11 +390,11 @@ export namespace DAX {
     }
 
     // notification_topic_arn - computed: false, optional: true, required: false
-    private _notificationTopicArn?: string;
+    private _notificationTopicArn?: string | undefined; 
     public get notificationTopicArn() {
       return this.getStringAttribute('notification_topic_arn');
     }
-    public set notificationTopicArn(value: string ) {
+    public set notificationTopicArn(value: string | undefined) {
       this._notificationTopicArn = value;
     }
     public resetNotificationTopicArn() {
@@ -316,11 +406,11 @@ export namespace DAX {
     }
 
     // parameter_group_name - computed: true, optional: true, required: false
-    private _parameterGroupName?: string;
+    private _parameterGroupName?: string | undefined; 
     public get parameterGroupName() {
       return this.getStringAttribute('parameter_group_name');
     }
-    public set parameterGroupName(value: string) {
+    public set parameterGroupName(value: string | undefined) {
       this._parameterGroupName = value;
     }
     public resetParameterGroupName() {
@@ -337,7 +427,7 @@ export namespace DAX {
     }
 
     // replication_factor - computed: false, optional: false, required: true
-    private _replicationFactor: number;
+    private _replicationFactor?: number; 
     public get replicationFactor() {
       return this.getNumberAttribute('replication_factor');
     }
@@ -350,11 +440,11 @@ export namespace DAX {
     }
 
     // security_group_ids - computed: true, optional: true, required: false
-    private _securityGroupIds?: string[];
+    private _securityGroupIds?: string[] | undefined; 
     public get securityGroupIds() {
       return this.getListAttribute('security_group_ids');
     }
-    public set securityGroupIds(value: string[]) {
+    public set securityGroupIds(value: string[] | undefined) {
       this._securityGroupIds = value;
     }
     public resetSecurityGroupIds() {
@@ -366,11 +456,11 @@ export namespace DAX {
     }
 
     // subnet_group_name - computed: true, optional: true, required: false
-    private _subnetGroupName?: string;
+    private _subnetGroupName?: string | undefined; 
     public get subnetGroupName() {
       return this.getStringAttribute('subnet_group_name');
     }
-    public set subnetGroupName(value: string) {
+    public set subnetGroupName(value: string | undefined) {
       this._subnetGroupName = value;
     }
     public resetSubnetGroupName() {
@@ -382,11 +472,12 @@ export namespace DAX {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -398,11 +489,12 @@ export namespace DAX {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -414,11 +506,12 @@ export namespace DAX {
     }
 
     // server_side_encryption - computed: false, optional: true, required: false
-    private _serverSideEncryption?: DaxClusterServerSideEncryption[];
+    private _serverSideEncryption?: DaxClusterServerSideEncryption | undefined; 
+    private __serverSideEncryptionOutput = new DaxClusterServerSideEncryptionOutputReference(this as any, "server_side_encryption", true);
     public get serverSideEncryption() {
-      return this.interpolationForAttribute('server_side_encryption') as any;
+      return this.__serverSideEncryptionOutput;
     }
-    public set serverSideEncryption(value: DaxClusterServerSideEncryption[] ) {
+    public putServerSideEncryption(value: DaxClusterServerSideEncryption | undefined) {
       this._serverSideEncryption = value;
     }
     public resetServerSideEncryption() {
@@ -430,11 +523,12 @@ export namespace DAX {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DaxClusterTimeouts;
+    private _timeouts?: DaxClusterTimeouts | undefined; 
+    private __timeoutsOutput = new DaxClusterTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DaxClusterTimeouts ) {
+    public putTimeouts(value: DaxClusterTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -464,7 +558,7 @@ export namespace DAX {
         subnet_group_name: cdktf.stringToTerraform(this._subnetGroupName),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        server_side_encryption: cdktf.listMapper(daxClusterServerSideEncryptionToTerraform)(this._serverSideEncryption),
+        server_side_encryption: daxClusterServerSideEncryptionToTerraform(this._serverSideEncryption),
         timeouts: daxClusterTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -498,6 +592,9 @@ export namespace DAX {
 
   function daxParameterGroupParametersToTerraform(struct?: DaxParameterGroupParameters): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       value: cdktf.stringToTerraform(struct!.value),
@@ -547,11 +644,11 @@ export namespace DAX {
     // ==========
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -568,7 +665,7 @@ export namespace DAX {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -581,11 +678,12 @@ export namespace DAX {
     }
 
     // parameters - computed: false, optional: true, required: false
-    private _parameters?: DaxParameterGroupParameters[];
+    private _parameters?: DaxParameterGroupParameters[] | undefined; 
     public get parameters() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('parameters') as any;
     }
-    public set parameters(value: DaxParameterGroupParameters[] ) {
+    public set parameters(value: DaxParameterGroupParameters[] | undefined) {
       this._parameters = value;
     }
     public resetParameters() {
@@ -665,11 +763,11 @@ export namespace DAX {
     // ==========
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -686,7 +784,7 @@ export namespace DAX {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -699,7 +797,7 @@ export namespace DAX {
     }
 
     // subnet_ids - computed: false, optional: false, required: true
-    private _subnetIds: string[];
+    private _subnetIds?: string[]; 
     public get subnetIds() {
       return this.getListAttribute('subnet_ids');
     }

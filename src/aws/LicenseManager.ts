@@ -64,7 +64,7 @@ export namespace LicenseManager {
     }
 
     // license_configuration_arn - computed: false, optional: false, required: true
-    private _licenseConfigurationArn: string;
+    private _licenseConfigurationArn?: string; 
     public get licenseConfigurationArn() {
       return this.getStringAttribute('license_configuration_arn');
     }
@@ -77,7 +77,7 @@ export namespace LicenseManager {
     }
 
     // resource_arn - computed: false, optional: false, required: true
-    private _resourceArn: string;
+    private _resourceArn?: string; 
     public get resourceArn() {
       return this.getStringAttribute('resource_arn');
     }
@@ -187,11 +187,11 @@ export namespace LicenseManager {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -208,11 +208,11 @@ export namespace LicenseManager {
     }
 
     // license_count - computed: false, optional: true, required: false
-    private _licenseCount?: number;
+    private _licenseCount?: number | undefined; 
     public get licenseCount() {
       return this.getNumberAttribute('license_count');
     }
-    public set licenseCount(value: number ) {
+    public set licenseCount(value: number | undefined) {
       this._licenseCount = value;
     }
     public resetLicenseCount() {
@@ -224,11 +224,11 @@ export namespace LicenseManager {
     }
 
     // license_count_hard_limit - computed: false, optional: true, required: false
-    private _licenseCountHardLimit?: boolean | cdktf.IResolvable;
+    private _licenseCountHardLimit?: boolean | cdktf.IResolvable | undefined; 
     public get licenseCountHardLimit() {
-      return this.getBooleanAttribute('license_count_hard_limit');
+      return this.getBooleanAttribute('license_count_hard_limit') as any;
     }
-    public set licenseCountHardLimit(value: boolean | cdktf.IResolvable ) {
+    public set licenseCountHardLimit(value: boolean | cdktf.IResolvable | undefined) {
       this._licenseCountHardLimit = value;
     }
     public resetLicenseCountHardLimit() {
@@ -240,7 +240,7 @@ export namespace LicenseManager {
     }
 
     // license_counting_type - computed: false, optional: false, required: true
-    private _licenseCountingType: string;
+    private _licenseCountingType?: string; 
     public get licenseCountingType() {
       return this.getStringAttribute('license_counting_type');
     }
@@ -253,11 +253,11 @@ export namespace LicenseManager {
     }
 
     // license_rules - computed: false, optional: true, required: false
-    private _licenseRules?: string[];
+    private _licenseRules?: string[] | undefined; 
     public get licenseRules() {
       return this.getListAttribute('license_rules');
     }
-    public set licenseRules(value: string[] ) {
+    public set licenseRules(value: string[] | undefined) {
       this._licenseRules = value;
     }
     public resetLicenseRules() {
@@ -269,7 +269,7 @@ export namespace LicenseManager {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -287,11 +287,12 @@ export namespace LicenseManager {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -303,11 +304,12 @@ export namespace LicenseManager {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {

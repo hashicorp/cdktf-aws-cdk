@@ -6,7 +6,7 @@ import * as cdktf from 'cdktf';
 /**
 * AWS Lambda
 */
-export namespace Lambda {
+export namespace LambdaFunction {
   export interface LambdaAliasConfig extends cdktf.TerraformMetaArguments {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias.html#description LambdaAlias#description}
@@ -29,7 +29,7 @@ export namespace Lambda {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias.html#routing_config LambdaAlias#routing_config}
     */
-    readonly routingConfig?: LambdaAliasRoutingConfig[];
+    readonly routingConfig?: LambdaAliasRoutingConfig;
   }
   export interface LambdaAliasRoutingConfig {
     /**
@@ -38,13 +38,43 @@ export namespace Lambda {
     readonly additionalVersionWeights?: { [key: string]: number } | cdktf.IResolvable;
   }
 
-  function lambdaAliasRoutingConfigToTerraform(struct?: LambdaAliasRoutingConfig): any {
+  function lambdaAliasRoutingConfigToTerraform(struct?: LambdaAliasRoutingConfigOutputReference | LambdaAliasRoutingConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       additional_version_weights: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.additionalVersionWeights),
     }
   }
 
+  export class LambdaAliasRoutingConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // additional_version_weights - computed: false, optional: true, required: false
+    private _additionalVersionWeights?: { [key: string]: number } | cdktf.IResolvable | undefined; 
+    public get additionalVersionWeights() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('additional_version_weights') as any;
+    }
+    public set additionalVersionWeights(value: { [key: string]: number } | cdktf.IResolvable | undefined) {
+      this._additionalVersionWeights = value;
+    }
+    public resetAdditionalVersionWeights() {
+      this._additionalVersionWeights = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get additionalVersionWeightsInput() {
+      return this._additionalVersionWeights
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/lambda_alias.html aws_lambda_alias}
@@ -95,11 +125,11 @@ export namespace Lambda {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -111,7 +141,7 @@ export namespace Lambda {
     }
 
     // function_name - computed: false, optional: false, required: true
-    private _functionName: string;
+    private _functionName?: string; 
     public get functionName() {
       return this.getStringAttribute('function_name');
     }
@@ -124,7 +154,7 @@ export namespace Lambda {
     }
 
     // function_version - computed: false, optional: false, required: true
-    private _functionVersion: string;
+    private _functionVersion?: string; 
     public get functionVersion() {
       return this.getStringAttribute('function_version');
     }
@@ -147,7 +177,7 @@ export namespace Lambda {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -160,11 +190,12 @@ export namespace Lambda {
     }
 
     // routing_config - computed: false, optional: true, required: false
-    private _routingConfig?: LambdaAliasRoutingConfig[];
+    private _routingConfig?: LambdaAliasRoutingConfig | undefined; 
+    private __routingConfigOutput = new LambdaAliasRoutingConfigOutputReference(this as any, "routing_config", true);
     public get routingConfig() {
-      return this.interpolationForAttribute('routing_config') as any;
+      return this.__routingConfigOutput;
     }
-    public set routingConfig(value: LambdaAliasRoutingConfig[] ) {
+    public putRoutingConfig(value: LambdaAliasRoutingConfig | undefined) {
       this._routingConfig = value;
     }
     public resetRoutingConfig() {
@@ -185,7 +216,7 @@ export namespace Lambda {
         function_name: cdktf.stringToTerraform(this._functionName),
         function_version: cdktf.stringToTerraform(this._functionVersion),
         name: cdktf.stringToTerraform(this._name),
-        routing_config: cdktf.listMapper(lambdaAliasRoutingConfigToTerraform)(this._routingConfig),
+        routing_config: lambdaAliasRoutingConfigToTerraform(this._routingConfig),
       };
     }
   }
@@ -199,13 +230,13 @@ export namespace Lambda {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_code_signing_config.html#allowed_publishers LambdaCodeSigningConfig#allowed_publishers}
     */
-    readonly allowedPublishers: LambdaCodeSigningConfigAllowedPublishers[];
+    readonly allowedPublishers: LambdaCodeSigningConfigAllowedPublishers;
     /**
     * policies block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_code_signing_config.html#policies LambdaCodeSigningConfig#policies}
     */
-    readonly policies?: LambdaCodeSigningConfigPolicies[];
+    readonly policies?: LambdaCodeSigningConfigPolicies;
   }
   export interface LambdaCodeSigningConfigAllowedPublishers {
     /**
@@ -214,13 +245,39 @@ export namespace Lambda {
     readonly signingProfileVersionArns: string[];
   }
 
-  function lambdaCodeSigningConfigAllowedPublishersToTerraform(struct?: LambdaCodeSigningConfigAllowedPublishers): any {
+  function lambdaCodeSigningConfigAllowedPublishersToTerraform(struct?: LambdaCodeSigningConfigAllowedPublishersOutputReference | LambdaCodeSigningConfigAllowedPublishers): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       signing_profile_version_arns: cdktf.listMapper(cdktf.stringToTerraform)(struct!.signingProfileVersionArns),
     }
   }
 
+  export class LambdaCodeSigningConfigAllowedPublishersOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // signing_profile_version_arns - computed: false, optional: false, required: true
+    private _signingProfileVersionArns?: string[]; 
+    public get signingProfileVersionArns() {
+      return this.getListAttribute('signing_profile_version_arns');
+    }
+    public set signingProfileVersionArns(value: string[]) {
+      this._signingProfileVersionArns = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get signingProfileVersionArnsInput() {
+      return this._signingProfileVersionArns
+    }
+  }
   export interface LambdaCodeSigningConfigPolicies {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_code_signing_config.html#untrusted_artifact_on_deployment LambdaCodeSigningConfig#untrusted_artifact_on_deployment}
@@ -228,13 +285,39 @@ export namespace Lambda {
     readonly untrustedArtifactOnDeployment: string;
   }
 
-  function lambdaCodeSigningConfigPoliciesToTerraform(struct?: LambdaCodeSigningConfigPolicies): any {
+  function lambdaCodeSigningConfigPoliciesToTerraform(struct?: LambdaCodeSigningConfigPoliciesOutputReference | LambdaCodeSigningConfigPolicies): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       untrusted_artifact_on_deployment: cdktf.stringToTerraform(struct!.untrustedArtifactOnDeployment),
     }
   }
 
+  export class LambdaCodeSigningConfigPoliciesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // untrusted_artifact_on_deployment - computed: false, optional: false, required: true
+    private _untrustedArtifactOnDeployment?: string; 
+    public get untrustedArtifactOnDeployment() {
+      return this.getStringAttribute('untrusted_artifact_on_deployment');
+    }
+    public set untrustedArtifactOnDeployment(value: string) {
+      this._untrustedArtifactOnDeployment = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get untrustedArtifactOnDeploymentInput() {
+      return this._untrustedArtifactOnDeployment
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/lambda_code_signing_config.html aws_lambda_code_signing_config}
@@ -288,11 +371,11 @@ export namespace Lambda {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -314,11 +397,12 @@ export namespace Lambda {
     }
 
     // allowed_publishers - computed: false, optional: false, required: true
-    private _allowedPublishers: LambdaCodeSigningConfigAllowedPublishers[];
+    private _allowedPublishers?: LambdaCodeSigningConfigAllowedPublishers; 
+    private __allowedPublishersOutput = new LambdaCodeSigningConfigAllowedPublishersOutputReference(this as any, "allowed_publishers", true);
     public get allowedPublishers() {
-      return this.interpolationForAttribute('allowed_publishers') as any;
+      return this.__allowedPublishersOutput;
     }
-    public set allowedPublishers(value: LambdaCodeSigningConfigAllowedPublishers[]) {
+    public putAllowedPublishers(value: LambdaCodeSigningConfigAllowedPublishers) {
       this._allowedPublishers = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -327,11 +411,12 @@ export namespace Lambda {
     }
 
     // policies - computed: false, optional: true, required: false
-    private _policies?: LambdaCodeSigningConfigPolicies[];
+    private _policies?: LambdaCodeSigningConfigPolicies | undefined; 
+    private __policiesOutput = new LambdaCodeSigningConfigPoliciesOutputReference(this as any, "policies", true);
     public get policies() {
-      return this.interpolationForAttribute('policies') as any;
+      return this.__policiesOutput;
     }
-    public set policies(value: LambdaCodeSigningConfigPolicies[] ) {
+    public putPolicies(value: LambdaCodeSigningConfigPolicies | undefined) {
       this._policies = value;
     }
     public resetPolicies() {
@@ -349,8 +434,8 @@ export namespace Lambda {
     protected synthesizeAttributes(): { [name: string]: any } {
       return {
         description: cdktf.stringToTerraform(this._description),
-        allowed_publishers: cdktf.listMapper(lambdaCodeSigningConfigAllowedPublishersToTerraform)(this._allowedPublishers),
-        policies: cdktf.listMapper(lambdaCodeSigningConfigPoliciesToTerraform)(this._policies),
+        allowed_publishers: lambdaCodeSigningConfigAllowedPublishersToTerraform(this._allowedPublishers),
+        policies: lambdaCodeSigningConfigPoliciesToTerraform(this._policies),
       };
     }
   }
@@ -420,13 +505,13 @@ export namespace Lambda {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_event_source_mapping.html#destination_config LambdaEventSourceMapping#destination_config}
     */
-    readonly destinationConfig?: LambdaEventSourceMappingDestinationConfig[];
+    readonly destinationConfig?: LambdaEventSourceMappingDestinationConfig;
     /**
     * self_managed_event_source block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_event_source_mapping.html#self_managed_event_source LambdaEventSourceMapping#self_managed_event_source}
     */
-    readonly selfManagedEventSource?: LambdaEventSourceMappingSelfManagedEventSource[];
+    readonly selfManagedEventSource?: LambdaEventSourceMappingSelfManagedEventSource;
     /**
     * source_access_configuration block
     * 
@@ -441,29 +526,85 @@ export namespace Lambda {
     readonly destinationArn: string;
   }
 
-  function lambdaEventSourceMappingDestinationConfigOnFailureToTerraform(struct?: LambdaEventSourceMappingDestinationConfigOnFailure): any {
+  function lambdaEventSourceMappingDestinationConfigOnFailureToTerraform(struct?: LambdaEventSourceMappingDestinationConfigOnFailureOutputReference | LambdaEventSourceMappingDestinationConfigOnFailure): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       destination_arn: cdktf.stringToTerraform(struct!.destinationArn),
     }
   }
 
+  export class LambdaEventSourceMappingDestinationConfigOnFailureOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // destination_arn - computed: false, optional: false, required: true
+    private _destinationArn?: string; 
+    public get destinationArn() {
+      return this.getStringAttribute('destination_arn');
+    }
+    public set destinationArn(value: string) {
+      this._destinationArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get destinationArnInput() {
+      return this._destinationArn
+    }
+  }
   export interface LambdaEventSourceMappingDestinationConfig {
     /**
     * on_failure block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_event_source_mapping.html#on_failure LambdaEventSourceMapping#on_failure}
     */
-    readonly onFailure?: LambdaEventSourceMappingDestinationConfigOnFailure[];
+    readonly onFailure?: LambdaEventSourceMappingDestinationConfigOnFailure;
   }
 
-  function lambdaEventSourceMappingDestinationConfigToTerraform(struct?: LambdaEventSourceMappingDestinationConfig): any {
+  function lambdaEventSourceMappingDestinationConfigToTerraform(struct?: LambdaEventSourceMappingDestinationConfigOutputReference | LambdaEventSourceMappingDestinationConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      on_failure: cdktf.listMapper(lambdaEventSourceMappingDestinationConfigOnFailureToTerraform)(struct!.onFailure),
+      on_failure: lambdaEventSourceMappingDestinationConfigOnFailureToTerraform(struct!.onFailure),
     }
   }
 
+  export class LambdaEventSourceMappingDestinationConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // on_failure - computed: false, optional: true, required: false
+    private _onFailure?: LambdaEventSourceMappingDestinationConfigOnFailure | undefined; 
+    private __onFailureOutput = new LambdaEventSourceMappingDestinationConfigOnFailureOutputReference(this as any, "on_failure", true);
+    public get onFailure() {
+      return this.__onFailureOutput;
+    }
+    public putOnFailure(value: LambdaEventSourceMappingDestinationConfigOnFailure | undefined) {
+      this._onFailure = value;
+    }
+    public resetOnFailure() {
+      this._onFailure = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get onFailureInput() {
+      return this._onFailure
+    }
+  }
   export interface LambdaEventSourceMappingSelfManagedEventSource {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_event_source_mapping.html#endpoints LambdaEventSourceMapping#endpoints}
@@ -471,13 +612,40 @@ export namespace Lambda {
     readonly endpoints: { [key: string]: string } | cdktf.IResolvable;
   }
 
-  function lambdaEventSourceMappingSelfManagedEventSourceToTerraform(struct?: LambdaEventSourceMappingSelfManagedEventSource): any {
+  function lambdaEventSourceMappingSelfManagedEventSourceToTerraform(struct?: LambdaEventSourceMappingSelfManagedEventSourceOutputReference | LambdaEventSourceMappingSelfManagedEventSource): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       endpoints: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.endpoints),
     }
   }
 
+  export class LambdaEventSourceMappingSelfManagedEventSourceOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // endpoints - computed: false, optional: false, required: true
+    private _endpoints?: { [key: string]: string } | cdktf.IResolvable; 
+    public get endpoints() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('endpoints') as any;
+    }
+    public set endpoints(value: { [key: string]: string } | cdktf.IResolvable) {
+      this._endpoints = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get endpointsInput() {
+      return this._endpoints
+    }
+  }
   export interface LambdaEventSourceMappingSourceAccessConfiguration {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_event_source_mapping.html#type LambdaEventSourceMapping#type}
@@ -491,6 +659,9 @@ export namespace Lambda {
 
   function lambdaEventSourceMappingSourceAccessConfigurationToTerraform(struct?: LambdaEventSourceMappingSourceAccessConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       type: cdktf.stringToTerraform(struct!.type),
       uri: cdktf.stringToTerraform(struct!.uri),
@@ -555,11 +726,11 @@ export namespace Lambda {
     // ==========
 
     // batch_size - computed: false, optional: true, required: false
-    private _batchSize?: number;
+    private _batchSize?: number | undefined; 
     public get batchSize() {
       return this.getNumberAttribute('batch_size');
     }
-    public set batchSize(value: number ) {
+    public set batchSize(value: number | undefined) {
       this._batchSize = value;
     }
     public resetBatchSize() {
@@ -571,11 +742,11 @@ export namespace Lambda {
     }
 
     // bisect_batch_on_function_error - computed: false, optional: true, required: false
-    private _bisectBatchOnFunctionError?: boolean | cdktf.IResolvable;
+    private _bisectBatchOnFunctionError?: boolean | cdktf.IResolvable | undefined; 
     public get bisectBatchOnFunctionError() {
-      return this.getBooleanAttribute('bisect_batch_on_function_error');
+      return this.getBooleanAttribute('bisect_batch_on_function_error') as any;
     }
-    public set bisectBatchOnFunctionError(value: boolean | cdktf.IResolvable ) {
+    public set bisectBatchOnFunctionError(value: boolean | cdktf.IResolvable | undefined) {
       this._bisectBatchOnFunctionError = value;
     }
     public resetBisectBatchOnFunctionError() {
@@ -587,11 +758,11 @@ export namespace Lambda {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -603,11 +774,11 @@ export namespace Lambda {
     }
 
     // event_source_arn - computed: false, optional: true, required: false
-    private _eventSourceArn?: string;
+    private _eventSourceArn?: string | undefined; 
     public get eventSourceArn() {
       return this.getStringAttribute('event_source_arn');
     }
-    public set eventSourceArn(value: string ) {
+    public set eventSourceArn(value: string | undefined) {
       this._eventSourceArn = value;
     }
     public resetEventSourceArn() {
@@ -624,7 +795,7 @@ export namespace Lambda {
     }
 
     // function_name - computed: false, optional: false, required: true
-    private _functionName: string;
+    private _functionName?: string; 
     public get functionName() {
       return this.getStringAttribute('function_name');
     }
@@ -637,11 +808,11 @@ export namespace Lambda {
     }
 
     // function_response_types - computed: false, optional: true, required: false
-    private _functionResponseTypes?: string[];
+    private _functionResponseTypes?: string[] | undefined; 
     public get functionResponseTypes() {
       return this.getListAttribute('function_response_types');
     }
-    public set functionResponseTypes(value: string[] ) {
+    public set functionResponseTypes(value: string[] | undefined) {
       this._functionResponseTypes = value;
     }
     public resetFunctionResponseTypes() {
@@ -668,11 +839,11 @@ export namespace Lambda {
     }
 
     // maximum_batching_window_in_seconds - computed: false, optional: true, required: false
-    private _maximumBatchingWindowInSeconds?: number;
+    private _maximumBatchingWindowInSeconds?: number | undefined; 
     public get maximumBatchingWindowInSeconds() {
       return this.getNumberAttribute('maximum_batching_window_in_seconds');
     }
-    public set maximumBatchingWindowInSeconds(value: number ) {
+    public set maximumBatchingWindowInSeconds(value: number | undefined) {
       this._maximumBatchingWindowInSeconds = value;
     }
     public resetMaximumBatchingWindowInSeconds() {
@@ -684,11 +855,11 @@ export namespace Lambda {
     }
 
     // maximum_record_age_in_seconds - computed: true, optional: true, required: false
-    private _maximumRecordAgeInSeconds?: number;
+    private _maximumRecordAgeInSeconds?: number | undefined; 
     public get maximumRecordAgeInSeconds() {
       return this.getNumberAttribute('maximum_record_age_in_seconds');
     }
-    public set maximumRecordAgeInSeconds(value: number) {
+    public set maximumRecordAgeInSeconds(value: number | undefined) {
       this._maximumRecordAgeInSeconds = value;
     }
     public resetMaximumRecordAgeInSeconds() {
@@ -700,11 +871,11 @@ export namespace Lambda {
     }
 
     // maximum_retry_attempts - computed: true, optional: true, required: false
-    private _maximumRetryAttempts?: number;
+    private _maximumRetryAttempts?: number | undefined; 
     public get maximumRetryAttempts() {
       return this.getNumberAttribute('maximum_retry_attempts');
     }
-    public set maximumRetryAttempts(value: number) {
+    public set maximumRetryAttempts(value: number | undefined) {
       this._maximumRetryAttempts = value;
     }
     public resetMaximumRetryAttempts() {
@@ -716,11 +887,11 @@ export namespace Lambda {
     }
 
     // parallelization_factor - computed: true, optional: true, required: false
-    private _parallelizationFactor?: number;
+    private _parallelizationFactor?: number | undefined; 
     public get parallelizationFactor() {
       return this.getNumberAttribute('parallelization_factor');
     }
-    public set parallelizationFactor(value: number) {
+    public set parallelizationFactor(value: number | undefined) {
       this._parallelizationFactor = value;
     }
     public resetParallelizationFactor() {
@@ -732,11 +903,11 @@ export namespace Lambda {
     }
 
     // queues - computed: false, optional: true, required: false
-    private _queues?: string[];
+    private _queues?: string[] | undefined; 
     public get queues() {
       return this.getListAttribute('queues');
     }
-    public set queues(value: string[] ) {
+    public set queues(value: string[] | undefined) {
       this._queues = value;
     }
     public resetQueues() {
@@ -748,11 +919,11 @@ export namespace Lambda {
     }
 
     // starting_position - computed: false, optional: true, required: false
-    private _startingPosition?: string;
+    private _startingPosition?: string | undefined; 
     public get startingPosition() {
       return this.getStringAttribute('starting_position');
     }
-    public set startingPosition(value: string ) {
+    public set startingPosition(value: string | undefined) {
       this._startingPosition = value;
     }
     public resetStartingPosition() {
@@ -764,11 +935,11 @@ export namespace Lambda {
     }
 
     // starting_position_timestamp - computed: false, optional: true, required: false
-    private _startingPositionTimestamp?: string;
+    private _startingPositionTimestamp?: string | undefined; 
     public get startingPositionTimestamp() {
       return this.getStringAttribute('starting_position_timestamp');
     }
-    public set startingPositionTimestamp(value: string ) {
+    public set startingPositionTimestamp(value: string | undefined) {
       this._startingPositionTimestamp = value;
     }
     public resetStartingPositionTimestamp() {
@@ -790,11 +961,11 @@ export namespace Lambda {
     }
 
     // topics - computed: false, optional: true, required: false
-    private _topics?: string[];
+    private _topics?: string[] | undefined; 
     public get topics() {
       return this.getListAttribute('topics');
     }
-    public set topics(value: string[] ) {
+    public set topics(value: string[] | undefined) {
       this._topics = value;
     }
     public resetTopics() {
@@ -806,11 +977,11 @@ export namespace Lambda {
     }
 
     // tumbling_window_in_seconds - computed: false, optional: true, required: false
-    private _tumblingWindowInSeconds?: number;
+    private _tumblingWindowInSeconds?: number | undefined; 
     public get tumblingWindowInSeconds() {
       return this.getNumberAttribute('tumbling_window_in_seconds');
     }
-    public set tumblingWindowInSeconds(value: number ) {
+    public set tumblingWindowInSeconds(value: number | undefined) {
       this._tumblingWindowInSeconds = value;
     }
     public resetTumblingWindowInSeconds() {
@@ -827,11 +998,12 @@ export namespace Lambda {
     }
 
     // destination_config - computed: false, optional: true, required: false
-    private _destinationConfig?: LambdaEventSourceMappingDestinationConfig[];
+    private _destinationConfig?: LambdaEventSourceMappingDestinationConfig | undefined; 
+    private __destinationConfigOutput = new LambdaEventSourceMappingDestinationConfigOutputReference(this as any, "destination_config", true);
     public get destinationConfig() {
-      return this.interpolationForAttribute('destination_config') as any;
+      return this.__destinationConfigOutput;
     }
-    public set destinationConfig(value: LambdaEventSourceMappingDestinationConfig[] ) {
+    public putDestinationConfig(value: LambdaEventSourceMappingDestinationConfig | undefined) {
       this._destinationConfig = value;
     }
     public resetDestinationConfig() {
@@ -843,11 +1015,12 @@ export namespace Lambda {
     }
 
     // self_managed_event_source - computed: false, optional: true, required: false
-    private _selfManagedEventSource?: LambdaEventSourceMappingSelfManagedEventSource[];
+    private _selfManagedEventSource?: LambdaEventSourceMappingSelfManagedEventSource | undefined; 
+    private __selfManagedEventSourceOutput = new LambdaEventSourceMappingSelfManagedEventSourceOutputReference(this as any, "self_managed_event_source", true);
     public get selfManagedEventSource() {
-      return this.interpolationForAttribute('self_managed_event_source') as any;
+      return this.__selfManagedEventSourceOutput;
     }
-    public set selfManagedEventSource(value: LambdaEventSourceMappingSelfManagedEventSource[] ) {
+    public putSelfManagedEventSource(value: LambdaEventSourceMappingSelfManagedEventSource | undefined) {
       this._selfManagedEventSource = value;
     }
     public resetSelfManagedEventSource() {
@@ -859,11 +1032,12 @@ export namespace Lambda {
     }
 
     // source_access_configuration - computed: false, optional: true, required: false
-    private _sourceAccessConfiguration?: LambdaEventSourceMappingSourceAccessConfiguration[];
+    private _sourceAccessConfiguration?: LambdaEventSourceMappingSourceAccessConfiguration[] | undefined; 
     public get sourceAccessConfiguration() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('source_access_configuration') as any;
     }
-    public set sourceAccessConfiguration(value: LambdaEventSourceMappingSourceAccessConfiguration[] ) {
+    public set sourceAccessConfiguration(value: LambdaEventSourceMappingSourceAccessConfiguration[] | undefined) {
       this._sourceAccessConfiguration = value;
     }
     public resetSourceAccessConfiguration() {
@@ -895,8 +1069,8 @@ export namespace Lambda {
         starting_position_timestamp: cdktf.stringToTerraform(this._startingPositionTimestamp),
         topics: cdktf.listMapper(cdktf.stringToTerraform)(this._topics),
         tumbling_window_in_seconds: cdktf.numberToTerraform(this._tumblingWindowInSeconds),
-        destination_config: cdktf.listMapper(lambdaEventSourceMappingDestinationConfigToTerraform)(this._destinationConfig),
-        self_managed_event_source: cdktf.listMapper(lambdaEventSourceMappingSelfManagedEventSourceToTerraform)(this._selfManagedEventSource),
+        destination_config: lambdaEventSourceMappingDestinationConfigToTerraform(this._destinationConfig),
+        self_managed_event_source: lambdaEventSourceMappingSelfManagedEventSourceToTerraform(this._selfManagedEventSource),
         source_access_configuration: cdktf.listMapper(lambdaEventSourceMappingSourceAccessConfigurationToTerraform)(this._sourceAccessConfiguration),
       };
     }
@@ -995,25 +1169,25 @@ export namespace Lambda {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_function.html#dead_letter_config LambdaFunction#dead_letter_config}
     */
-    readonly deadLetterConfig?: LambdaFunctionDeadLetterConfig[];
+    readonly deadLetterConfig?: LambdaFunctionDeadLetterConfig;
     /**
     * environment block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_function.html#environment LambdaFunction#environment}
     */
-    readonly environment?: LambdaFunctionEnvironment[];
+    readonly environment?: LambdaFunctionEnvironment;
     /**
     * file_system_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_function.html#file_system_config LambdaFunction#file_system_config}
     */
-    readonly fileSystemConfig?: LambdaFunctionFileSystemConfig[];
+    readonly fileSystemConfig?: LambdaFunctionFileSystemConfig;
     /**
     * image_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_function.html#image_config LambdaFunction#image_config}
     */
-    readonly imageConfig?: LambdaFunctionImageConfig[];
+    readonly imageConfig?: LambdaFunctionImageConfig;
     /**
     * timeouts block
     * 
@@ -1025,13 +1199,13 @@ export namespace Lambda {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_function.html#tracing_config LambdaFunction#tracing_config}
     */
-    readonly tracingConfig?: LambdaFunctionTracingConfig[];
+    readonly tracingConfig?: LambdaFunctionTracingConfig;
     /**
     * vpc_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_function.html#vpc_config LambdaFunction#vpc_config}
     */
-    readonly vpcConfig?: LambdaFunctionVpcConfig[];
+    readonly vpcConfig?: LambdaFunctionVpcConfig;
   }
   export interface LambdaFunctionDeadLetterConfig {
     /**
@@ -1040,13 +1214,39 @@ export namespace Lambda {
     readonly targetArn: string;
   }
 
-  function lambdaFunctionDeadLetterConfigToTerraform(struct?: LambdaFunctionDeadLetterConfig): any {
+  function lambdaFunctionDeadLetterConfigToTerraform(struct?: LambdaFunctionDeadLetterConfigOutputReference | LambdaFunctionDeadLetterConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       target_arn: cdktf.stringToTerraform(struct!.targetArn),
     }
   }
 
+  export class LambdaFunctionDeadLetterConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // target_arn - computed: false, optional: false, required: true
+    private _targetArn?: string; 
+    public get targetArn() {
+      return this.getStringAttribute('target_arn');
+    }
+    public set targetArn(value: string) {
+      this._targetArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get targetArnInput() {
+      return this._targetArn
+    }
+  }
   export interface LambdaFunctionEnvironment {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_function.html#variables LambdaFunction#variables}
@@ -1054,13 +1254,43 @@ export namespace Lambda {
     readonly variables?: { [key: string]: string } | cdktf.IResolvable;
   }
 
-  function lambdaFunctionEnvironmentToTerraform(struct?: LambdaFunctionEnvironment): any {
+  function lambdaFunctionEnvironmentToTerraform(struct?: LambdaFunctionEnvironmentOutputReference | LambdaFunctionEnvironment): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       variables: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.variables),
     }
   }
 
+  export class LambdaFunctionEnvironmentOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // variables - computed: false, optional: true, required: false
+    private _variables?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get variables() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('variables') as any;
+    }
+    public set variables(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._variables = value;
+    }
+    public resetVariables() {
+      this._variables = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get variablesInput() {
+      return this._variables
+    }
+  }
   export interface LambdaFunctionFileSystemConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_function.html#arn LambdaFunction#arn}
@@ -1072,14 +1302,53 @@ export namespace Lambda {
     readonly localMountPath: string;
   }
 
-  function lambdaFunctionFileSystemConfigToTerraform(struct?: LambdaFunctionFileSystemConfig): any {
+  function lambdaFunctionFileSystemConfigToTerraform(struct?: LambdaFunctionFileSystemConfigOutputReference | LambdaFunctionFileSystemConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       arn: cdktf.stringToTerraform(struct!.arn),
       local_mount_path: cdktf.stringToTerraform(struct!.localMountPath),
     }
   }
 
+  export class LambdaFunctionFileSystemConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // arn - computed: false, optional: false, required: true
+    private _arn?: string; 
+    public get arn() {
+      return this.getStringAttribute('arn');
+    }
+    public set arn(value: string) {
+      this._arn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get arnInput() {
+      return this._arn
+    }
+
+    // local_mount_path - computed: false, optional: false, required: true
+    private _localMountPath?: string; 
+    public get localMountPath() {
+      return this.getStringAttribute('local_mount_path');
+    }
+    public set localMountPath(value: string) {
+      this._localMountPath = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get localMountPathInput() {
+      return this._localMountPath
+    }
+  }
   export interface LambdaFunctionImageConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_function.html#command LambdaFunction#command}
@@ -1095,8 +1364,11 @@ export namespace Lambda {
     readonly workingDirectory?: string;
   }
 
-  function lambdaFunctionImageConfigToTerraform(struct?: LambdaFunctionImageConfig): any {
+  function lambdaFunctionImageConfigToTerraform(struct?: LambdaFunctionImageConfigOutputReference | LambdaFunctionImageConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       command: cdktf.listMapper(cdktf.stringToTerraform)(struct!.command),
       entry_point: cdktf.listMapper(cdktf.stringToTerraform)(struct!.entryPoint),
@@ -1104,6 +1376,64 @@ export namespace Lambda {
     }
   }
 
+  export class LambdaFunctionImageConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // command - computed: false, optional: true, required: false
+    private _command?: string[] | undefined; 
+    public get command() {
+      return this.getListAttribute('command');
+    }
+    public set command(value: string[] | undefined) {
+      this._command = value;
+    }
+    public resetCommand() {
+      this._command = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get commandInput() {
+      return this._command
+    }
+
+    // entry_point - computed: false, optional: true, required: false
+    private _entryPoint?: string[] | undefined; 
+    public get entryPoint() {
+      return this.getListAttribute('entry_point');
+    }
+    public set entryPoint(value: string[] | undefined) {
+      this._entryPoint = value;
+    }
+    public resetEntryPoint() {
+      this._entryPoint = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get entryPointInput() {
+      return this._entryPoint
+    }
+
+    // working_directory - computed: false, optional: true, required: false
+    private _workingDirectory?: string | undefined; 
+    public get workingDirectory() {
+      return this.getStringAttribute('working_directory');
+    }
+    public set workingDirectory(value: string | undefined) {
+      this._workingDirectory = value;
+    }
+    public resetWorkingDirectory() {
+      this._workingDirectory = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get workingDirectoryInput() {
+      return this._workingDirectory
+    }
+  }
   export interface LambdaFunctionTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_function.html#create LambdaFunction#create}
@@ -1111,13 +1441,42 @@ export namespace Lambda {
     readonly create?: string;
   }
 
-  function lambdaFunctionTimeoutsToTerraform(struct?: LambdaFunctionTimeouts): any {
+  function lambdaFunctionTimeoutsToTerraform(struct?: LambdaFunctionTimeoutsOutputReference | LambdaFunctionTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
     }
   }
 
+  export class LambdaFunctionTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+  }
   export interface LambdaFunctionTracingConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_function.html#mode LambdaFunction#mode}
@@ -1125,13 +1484,39 @@ export namespace Lambda {
     readonly mode: string;
   }
 
-  function lambdaFunctionTracingConfigToTerraform(struct?: LambdaFunctionTracingConfig): any {
+  function lambdaFunctionTracingConfigToTerraform(struct?: LambdaFunctionTracingConfigOutputReference | LambdaFunctionTracingConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       mode: cdktf.stringToTerraform(struct!.mode),
     }
   }
 
+  export class LambdaFunctionTracingConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // mode - computed: false, optional: false, required: true
+    private _mode?: string; 
+    public get mode() {
+      return this.getStringAttribute('mode');
+    }
+    public set mode(value: string) {
+      this._mode = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get modeInput() {
+      return this._mode
+    }
+  }
   export interface LambdaFunctionVpcConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_function.html#security_group_ids LambdaFunction#security_group_ids}
@@ -1143,14 +1528,53 @@ export namespace Lambda {
     readonly subnetIds: string[];
   }
 
-  function lambdaFunctionVpcConfigToTerraform(struct?: LambdaFunctionVpcConfig): any {
+  function lambdaFunctionVpcConfigToTerraform(struct?: LambdaFunctionVpcConfigOutputReference | LambdaFunctionVpcConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.securityGroupIds),
       subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.subnetIds),
     }
   }
 
+  export class LambdaFunctionVpcConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // security_group_ids - computed: false, optional: false, required: true
+    private _securityGroupIds?: string[]; 
+    public get securityGroupIds() {
+      return this.getListAttribute('security_group_ids');
+    }
+    public set securityGroupIds(value: string[]) {
+      this._securityGroupIds = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get securityGroupIdsInput() {
+      return this._securityGroupIds
+    }
+
+    // subnet_ids - computed: false, optional: false, required: true
+    private _subnetIds?: string[]; 
+    public get subnetIds() {
+      return this.getListAttribute('subnet_ids');
+    }
+    public set subnetIds(value: string[]) {
+      this._subnetIds = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get subnetIdsInput() {
+      return this._subnetIds
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/lambda_function.html aws_lambda_function}
@@ -1220,11 +1644,11 @@ export namespace Lambda {
     // ==========
 
     // architectures - computed: true, optional: true, required: false
-    private _architectures?: string[];
+    private _architectures?: string[] | undefined; 
     public get architectures() {
       return this.getListAttribute('architectures');
     }
-    public set architectures(value: string[]) {
+    public set architectures(value: string[] | undefined) {
       this._architectures = value;
     }
     public resetArchitectures() {
@@ -1241,11 +1665,11 @@ export namespace Lambda {
     }
 
     // code_signing_config_arn - computed: false, optional: true, required: false
-    private _codeSigningConfigArn?: string;
+    private _codeSigningConfigArn?: string | undefined; 
     public get codeSigningConfigArn() {
       return this.getStringAttribute('code_signing_config_arn');
     }
-    public set codeSigningConfigArn(value: string ) {
+    public set codeSigningConfigArn(value: string | undefined) {
       this._codeSigningConfigArn = value;
     }
     public resetCodeSigningConfigArn() {
@@ -1257,11 +1681,11 @@ export namespace Lambda {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1273,11 +1697,11 @@ export namespace Lambda {
     }
 
     // filename - computed: false, optional: true, required: false
-    private _filename?: string;
+    private _filename?: string | undefined; 
     public get filename() {
       return this.getStringAttribute('filename');
     }
-    public set filename(value: string ) {
+    public set filename(value: string | undefined) {
       this._filename = value;
     }
     public resetFilename() {
@@ -1289,7 +1713,7 @@ export namespace Lambda {
     }
 
     // function_name - computed: false, optional: false, required: true
-    private _functionName: string;
+    private _functionName?: string; 
     public get functionName() {
       return this.getStringAttribute('function_name');
     }
@@ -1302,11 +1726,11 @@ export namespace Lambda {
     }
 
     // handler - computed: false, optional: true, required: false
-    private _handler?: string;
+    private _handler?: string | undefined; 
     public get handler() {
       return this.getStringAttribute('handler');
     }
-    public set handler(value: string ) {
+    public set handler(value: string | undefined) {
       this._handler = value;
     }
     public resetHandler() {
@@ -1323,11 +1747,11 @@ export namespace Lambda {
     }
 
     // image_uri - computed: false, optional: true, required: false
-    private _imageUri?: string;
+    private _imageUri?: string | undefined; 
     public get imageUri() {
       return this.getStringAttribute('image_uri');
     }
-    public set imageUri(value: string ) {
+    public set imageUri(value: string | undefined) {
       this._imageUri = value;
     }
     public resetImageUri() {
@@ -1344,11 +1768,11 @@ export namespace Lambda {
     }
 
     // kms_key_arn - computed: false, optional: true, required: false
-    private _kmsKeyArn?: string;
+    private _kmsKeyArn?: string | undefined; 
     public get kmsKeyArn() {
       return this.getStringAttribute('kms_key_arn');
     }
-    public set kmsKeyArn(value: string ) {
+    public set kmsKeyArn(value: string | undefined) {
       this._kmsKeyArn = value;
     }
     public resetKmsKeyArn() {
@@ -1365,11 +1789,11 @@ export namespace Lambda {
     }
 
     // layers - computed: false, optional: true, required: false
-    private _layers?: string[];
+    private _layers?: string[] | undefined; 
     public get layers() {
       return this.getListAttribute('layers');
     }
-    public set layers(value: string[] ) {
+    public set layers(value: string[] | undefined) {
       this._layers = value;
     }
     public resetLayers() {
@@ -1381,11 +1805,11 @@ export namespace Lambda {
     }
 
     // memory_size - computed: false, optional: true, required: false
-    private _memorySize?: number;
+    private _memorySize?: number | undefined; 
     public get memorySize() {
       return this.getNumberAttribute('memory_size');
     }
-    public set memorySize(value: number ) {
+    public set memorySize(value: number | undefined) {
       this._memorySize = value;
     }
     public resetMemorySize() {
@@ -1397,11 +1821,11 @@ export namespace Lambda {
     }
 
     // package_type - computed: false, optional: true, required: false
-    private _packageType?: string;
+    private _packageType?: string | undefined; 
     public get packageType() {
       return this.getStringAttribute('package_type');
     }
-    public set packageType(value: string ) {
+    public set packageType(value: string | undefined) {
       this._packageType = value;
     }
     public resetPackageType() {
@@ -1413,11 +1837,11 @@ export namespace Lambda {
     }
 
     // publish - computed: false, optional: true, required: false
-    private _publish?: boolean | cdktf.IResolvable;
+    private _publish?: boolean | cdktf.IResolvable | undefined; 
     public get publish() {
-      return this.getBooleanAttribute('publish');
+      return this.getBooleanAttribute('publish') as any;
     }
-    public set publish(value: boolean | cdktf.IResolvable ) {
+    public set publish(value: boolean | cdktf.IResolvable | undefined) {
       this._publish = value;
     }
     public resetPublish() {
@@ -1434,11 +1858,11 @@ export namespace Lambda {
     }
 
     // reserved_concurrent_executions - computed: false, optional: true, required: false
-    private _reservedConcurrentExecutions?: number;
+    private _reservedConcurrentExecutions?: number | undefined; 
     public get reservedConcurrentExecutions() {
       return this.getNumberAttribute('reserved_concurrent_executions');
     }
-    public set reservedConcurrentExecutions(value: number ) {
+    public set reservedConcurrentExecutions(value: number | undefined) {
       this._reservedConcurrentExecutions = value;
     }
     public resetReservedConcurrentExecutions() {
@@ -1450,7 +1874,7 @@ export namespace Lambda {
     }
 
     // role - computed: false, optional: false, required: true
-    private _role: string;
+    private _role?: string; 
     public get role() {
       return this.getStringAttribute('role');
     }
@@ -1463,11 +1887,11 @@ export namespace Lambda {
     }
 
     // runtime - computed: false, optional: true, required: false
-    private _runtime?: string;
+    private _runtime?: string | undefined; 
     public get runtime() {
       return this.getStringAttribute('runtime');
     }
-    public set runtime(value: string ) {
+    public set runtime(value: string | undefined) {
       this._runtime = value;
     }
     public resetRuntime() {
@@ -1479,11 +1903,11 @@ export namespace Lambda {
     }
 
     // s3_bucket - computed: false, optional: true, required: false
-    private _s3Bucket?: string;
+    private _s3Bucket?: string | undefined; 
     public get s3Bucket() {
       return this.getStringAttribute('s3_bucket');
     }
-    public set s3Bucket(value: string ) {
+    public set s3Bucket(value: string | undefined) {
       this._s3Bucket = value;
     }
     public resetS3Bucket() {
@@ -1495,11 +1919,11 @@ export namespace Lambda {
     }
 
     // s3_key - computed: false, optional: true, required: false
-    private _s3Key?: string;
+    private _s3Key?: string | undefined; 
     public get s3Key() {
       return this.getStringAttribute('s3_key');
     }
-    public set s3Key(value: string ) {
+    public set s3Key(value: string | undefined) {
       this._s3Key = value;
     }
     public resetS3Key() {
@@ -1511,11 +1935,11 @@ export namespace Lambda {
     }
 
     // s3_object_version - computed: false, optional: true, required: false
-    private _s3ObjectVersion?: string;
+    private _s3ObjectVersion?: string | undefined; 
     public get s3ObjectVersion() {
       return this.getStringAttribute('s3_object_version');
     }
-    public set s3ObjectVersion(value: string ) {
+    public set s3ObjectVersion(value: string | undefined) {
       this._s3ObjectVersion = value;
     }
     public resetS3ObjectVersion() {
@@ -1537,11 +1961,11 @@ export namespace Lambda {
     }
 
     // source_code_hash - computed: true, optional: true, required: false
-    private _sourceCodeHash?: string;
+    private _sourceCodeHash?: string | undefined; 
     public get sourceCodeHash() {
       return this.getStringAttribute('source_code_hash');
     }
-    public set sourceCodeHash(value: string) {
+    public set sourceCodeHash(value: string | undefined) {
       this._sourceCodeHash = value;
     }
     public resetSourceCodeHash() {
@@ -1558,11 +1982,12 @@ export namespace Lambda {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1574,11 +1999,12 @@ export namespace Lambda {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1590,11 +2016,11 @@ export namespace Lambda {
     }
 
     // timeout - computed: false, optional: true, required: false
-    private _timeout?: number;
+    private _timeout?: number | undefined; 
     public get timeout() {
       return this.getNumberAttribute('timeout');
     }
-    public set timeout(value: number ) {
+    public set timeout(value: number | undefined) {
       this._timeout = value;
     }
     public resetTimeout() {
@@ -1611,11 +2037,12 @@ export namespace Lambda {
     }
 
     // dead_letter_config - computed: false, optional: true, required: false
-    private _deadLetterConfig?: LambdaFunctionDeadLetterConfig[];
+    private _deadLetterConfig?: LambdaFunctionDeadLetterConfig | undefined; 
+    private __deadLetterConfigOutput = new LambdaFunctionDeadLetterConfigOutputReference(this as any, "dead_letter_config", true);
     public get deadLetterConfig() {
-      return this.interpolationForAttribute('dead_letter_config') as any;
+      return this.__deadLetterConfigOutput;
     }
-    public set deadLetterConfig(value: LambdaFunctionDeadLetterConfig[] ) {
+    public putDeadLetterConfig(value: LambdaFunctionDeadLetterConfig | undefined) {
       this._deadLetterConfig = value;
     }
     public resetDeadLetterConfig() {
@@ -1627,11 +2054,12 @@ export namespace Lambda {
     }
 
     // environment - computed: false, optional: true, required: false
-    private _environment?: LambdaFunctionEnvironment[];
+    private _environment?: LambdaFunctionEnvironment | undefined; 
+    private __environmentOutput = new LambdaFunctionEnvironmentOutputReference(this as any, "environment", true);
     public get environment() {
-      return this.interpolationForAttribute('environment') as any;
+      return this.__environmentOutput;
     }
-    public set environment(value: LambdaFunctionEnvironment[] ) {
+    public putEnvironment(value: LambdaFunctionEnvironment | undefined) {
       this._environment = value;
     }
     public resetEnvironment() {
@@ -1643,11 +2071,12 @@ export namespace Lambda {
     }
 
     // file_system_config - computed: false, optional: true, required: false
-    private _fileSystemConfig?: LambdaFunctionFileSystemConfig[];
+    private _fileSystemConfig?: LambdaFunctionFileSystemConfig | undefined; 
+    private __fileSystemConfigOutput = new LambdaFunctionFileSystemConfigOutputReference(this as any, "file_system_config", true);
     public get fileSystemConfig() {
-      return this.interpolationForAttribute('file_system_config') as any;
+      return this.__fileSystemConfigOutput;
     }
-    public set fileSystemConfig(value: LambdaFunctionFileSystemConfig[] ) {
+    public putFileSystemConfig(value: LambdaFunctionFileSystemConfig | undefined) {
       this._fileSystemConfig = value;
     }
     public resetFileSystemConfig() {
@@ -1659,11 +2088,12 @@ export namespace Lambda {
     }
 
     // image_config - computed: false, optional: true, required: false
-    private _imageConfig?: LambdaFunctionImageConfig[];
+    private _imageConfig?: LambdaFunctionImageConfig | undefined; 
+    private __imageConfigOutput = new LambdaFunctionImageConfigOutputReference(this as any, "image_config", true);
     public get imageConfig() {
-      return this.interpolationForAttribute('image_config') as any;
+      return this.__imageConfigOutput;
     }
-    public set imageConfig(value: LambdaFunctionImageConfig[] ) {
+    public putImageConfig(value: LambdaFunctionImageConfig | undefined) {
       this._imageConfig = value;
     }
     public resetImageConfig() {
@@ -1675,11 +2105,12 @@ export namespace Lambda {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: LambdaFunctionTimeouts;
+    private _timeouts?: LambdaFunctionTimeouts | undefined; 
+    private __timeoutsOutput = new LambdaFunctionTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: LambdaFunctionTimeouts ) {
+    public putTimeouts(value: LambdaFunctionTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1691,11 +2122,12 @@ export namespace Lambda {
     }
 
     // tracing_config - computed: false, optional: true, required: false
-    private _tracingConfig?: LambdaFunctionTracingConfig[];
+    private _tracingConfig?: LambdaFunctionTracingConfig | undefined; 
+    private __tracingConfigOutput = new LambdaFunctionTracingConfigOutputReference(this as any, "tracing_config", true);
     public get tracingConfig() {
-      return this.interpolationForAttribute('tracing_config') as any;
+      return this.__tracingConfigOutput;
     }
-    public set tracingConfig(value: LambdaFunctionTracingConfig[] ) {
+    public putTracingConfig(value: LambdaFunctionTracingConfig | undefined) {
       this._tracingConfig = value;
     }
     public resetTracingConfig() {
@@ -1707,11 +2139,12 @@ export namespace Lambda {
     }
 
     // vpc_config - computed: false, optional: true, required: false
-    private _vpcConfig?: LambdaFunctionVpcConfig[];
+    private _vpcConfig?: LambdaFunctionVpcConfig | undefined; 
+    private __vpcConfigOutput = new LambdaFunctionVpcConfigOutputReference(this as any, "vpc_config", true);
     public get vpcConfig() {
-      return this.interpolationForAttribute('vpc_config') as any;
+      return this.__vpcConfigOutput;
     }
-    public set vpcConfig(value: LambdaFunctionVpcConfig[] ) {
+    public putVpcConfig(value: LambdaFunctionVpcConfig | undefined) {
       this._vpcConfig = value;
     }
     public resetVpcConfig() {
@@ -1750,13 +2183,13 @@ export namespace Lambda {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         timeout: cdktf.numberToTerraform(this._timeout),
-        dead_letter_config: cdktf.listMapper(lambdaFunctionDeadLetterConfigToTerraform)(this._deadLetterConfig),
-        environment: cdktf.listMapper(lambdaFunctionEnvironmentToTerraform)(this._environment),
-        file_system_config: cdktf.listMapper(lambdaFunctionFileSystemConfigToTerraform)(this._fileSystemConfig),
-        image_config: cdktf.listMapper(lambdaFunctionImageConfigToTerraform)(this._imageConfig),
+        dead_letter_config: lambdaFunctionDeadLetterConfigToTerraform(this._deadLetterConfig),
+        environment: lambdaFunctionEnvironmentToTerraform(this._environment),
+        file_system_config: lambdaFunctionFileSystemConfigToTerraform(this._fileSystemConfig),
+        image_config: lambdaFunctionImageConfigToTerraform(this._imageConfig),
         timeouts: lambdaFunctionTimeoutsToTerraform(this._timeouts),
-        tracing_config: cdktf.listMapper(lambdaFunctionTracingConfigToTerraform)(this._tracingConfig),
-        vpc_config: cdktf.listMapper(lambdaFunctionVpcConfigToTerraform)(this._vpcConfig),
+        tracing_config: lambdaFunctionTracingConfigToTerraform(this._tracingConfig),
+        vpc_config: lambdaFunctionVpcConfigToTerraform(this._vpcConfig),
       };
     }
   }
@@ -1782,7 +2215,7 @@ export namespace Lambda {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_function_event_invoke_config.html#destination_config LambdaFunctionEventInvokeConfig#destination_config}
     */
-    readonly destinationConfig?: LambdaFunctionEventInvokeConfigDestinationConfig[];
+    readonly destinationConfig?: LambdaFunctionEventInvokeConfigDestinationConfig;
   }
   export interface LambdaFunctionEventInvokeConfigDestinationConfigOnFailure {
     /**
@@ -1791,13 +2224,39 @@ export namespace Lambda {
     readonly destination: string;
   }
 
-  function lambdaFunctionEventInvokeConfigDestinationConfigOnFailureToTerraform(struct?: LambdaFunctionEventInvokeConfigDestinationConfigOnFailure): any {
+  function lambdaFunctionEventInvokeConfigDestinationConfigOnFailureToTerraform(struct?: LambdaFunctionEventInvokeConfigDestinationConfigOnFailureOutputReference | LambdaFunctionEventInvokeConfigDestinationConfigOnFailure): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       destination: cdktf.stringToTerraform(struct!.destination),
     }
   }
 
+  export class LambdaFunctionEventInvokeConfigDestinationConfigOnFailureOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // destination - computed: false, optional: false, required: true
+    private _destination?: string; 
+    public get destination() {
+      return this.getStringAttribute('destination');
+    }
+    public set destination(value: string) {
+      this._destination = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get destinationInput() {
+      return this._destination
+    }
+  }
   export interface LambdaFunctionEventInvokeConfigDestinationConfigOnSuccess {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_function_event_invoke_config.html#destination LambdaFunctionEventInvokeConfig#destination}
@@ -1805,36 +2264,109 @@ export namespace Lambda {
     readonly destination: string;
   }
 
-  function lambdaFunctionEventInvokeConfigDestinationConfigOnSuccessToTerraform(struct?: LambdaFunctionEventInvokeConfigDestinationConfigOnSuccess): any {
+  function lambdaFunctionEventInvokeConfigDestinationConfigOnSuccessToTerraform(struct?: LambdaFunctionEventInvokeConfigDestinationConfigOnSuccessOutputReference | LambdaFunctionEventInvokeConfigDestinationConfigOnSuccess): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       destination: cdktf.stringToTerraform(struct!.destination),
     }
   }
 
+  export class LambdaFunctionEventInvokeConfigDestinationConfigOnSuccessOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // destination - computed: false, optional: false, required: true
+    private _destination?: string; 
+    public get destination() {
+      return this.getStringAttribute('destination');
+    }
+    public set destination(value: string) {
+      this._destination = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get destinationInput() {
+      return this._destination
+    }
+  }
   export interface LambdaFunctionEventInvokeConfigDestinationConfig {
     /**
     * on_failure block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_function_event_invoke_config.html#on_failure LambdaFunctionEventInvokeConfig#on_failure}
     */
-    readonly onFailure?: LambdaFunctionEventInvokeConfigDestinationConfigOnFailure[];
+    readonly onFailure?: LambdaFunctionEventInvokeConfigDestinationConfigOnFailure;
     /**
     * on_success block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_function_event_invoke_config.html#on_success LambdaFunctionEventInvokeConfig#on_success}
     */
-    readonly onSuccess?: LambdaFunctionEventInvokeConfigDestinationConfigOnSuccess[];
+    readonly onSuccess?: LambdaFunctionEventInvokeConfigDestinationConfigOnSuccess;
   }
 
-  function lambdaFunctionEventInvokeConfigDestinationConfigToTerraform(struct?: LambdaFunctionEventInvokeConfigDestinationConfig): any {
+  function lambdaFunctionEventInvokeConfigDestinationConfigToTerraform(struct?: LambdaFunctionEventInvokeConfigDestinationConfigOutputReference | LambdaFunctionEventInvokeConfigDestinationConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      on_failure: cdktf.listMapper(lambdaFunctionEventInvokeConfigDestinationConfigOnFailureToTerraform)(struct!.onFailure),
-      on_success: cdktf.listMapper(lambdaFunctionEventInvokeConfigDestinationConfigOnSuccessToTerraform)(struct!.onSuccess),
+      on_failure: lambdaFunctionEventInvokeConfigDestinationConfigOnFailureToTerraform(struct!.onFailure),
+      on_success: lambdaFunctionEventInvokeConfigDestinationConfigOnSuccessToTerraform(struct!.onSuccess),
     }
   }
 
+  export class LambdaFunctionEventInvokeConfigDestinationConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // on_failure - computed: false, optional: true, required: false
+    private _onFailure?: LambdaFunctionEventInvokeConfigDestinationConfigOnFailure | undefined; 
+    private __onFailureOutput = new LambdaFunctionEventInvokeConfigDestinationConfigOnFailureOutputReference(this as any, "on_failure", true);
+    public get onFailure() {
+      return this.__onFailureOutput;
+    }
+    public putOnFailure(value: LambdaFunctionEventInvokeConfigDestinationConfigOnFailure | undefined) {
+      this._onFailure = value;
+    }
+    public resetOnFailure() {
+      this._onFailure = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get onFailureInput() {
+      return this._onFailure
+    }
+
+    // on_success - computed: false, optional: true, required: false
+    private _onSuccess?: LambdaFunctionEventInvokeConfigDestinationConfigOnSuccess | undefined; 
+    private __onSuccessOutput = new LambdaFunctionEventInvokeConfigDestinationConfigOnSuccessOutputReference(this as any, "on_success", true);
+    public get onSuccess() {
+      return this.__onSuccessOutput;
+    }
+    public putOnSuccess(value: LambdaFunctionEventInvokeConfigDestinationConfigOnSuccess | undefined) {
+      this._onSuccess = value;
+    }
+    public resetOnSuccess() {
+      this._onSuccess = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get onSuccessInput() {
+      return this._onSuccess
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/lambda_function_event_invoke_config.html aws_lambda_function_event_invoke_config}
@@ -1880,7 +2412,7 @@ export namespace Lambda {
     // ==========
 
     // function_name - computed: false, optional: false, required: true
-    private _functionName: string;
+    private _functionName?: string; 
     public get functionName() {
       return this.getStringAttribute('function_name');
     }
@@ -1898,11 +2430,11 @@ export namespace Lambda {
     }
 
     // maximum_event_age_in_seconds - computed: false, optional: true, required: false
-    private _maximumEventAgeInSeconds?: number;
+    private _maximumEventAgeInSeconds?: number | undefined; 
     public get maximumEventAgeInSeconds() {
       return this.getNumberAttribute('maximum_event_age_in_seconds');
     }
-    public set maximumEventAgeInSeconds(value: number ) {
+    public set maximumEventAgeInSeconds(value: number | undefined) {
       this._maximumEventAgeInSeconds = value;
     }
     public resetMaximumEventAgeInSeconds() {
@@ -1914,11 +2446,11 @@ export namespace Lambda {
     }
 
     // maximum_retry_attempts - computed: false, optional: true, required: false
-    private _maximumRetryAttempts?: number;
+    private _maximumRetryAttempts?: number | undefined; 
     public get maximumRetryAttempts() {
       return this.getNumberAttribute('maximum_retry_attempts');
     }
-    public set maximumRetryAttempts(value: number ) {
+    public set maximumRetryAttempts(value: number | undefined) {
       this._maximumRetryAttempts = value;
     }
     public resetMaximumRetryAttempts() {
@@ -1930,11 +2462,11 @@ export namespace Lambda {
     }
 
     // qualifier - computed: false, optional: true, required: false
-    private _qualifier?: string;
+    private _qualifier?: string | undefined; 
     public get qualifier() {
       return this.getStringAttribute('qualifier');
     }
-    public set qualifier(value: string ) {
+    public set qualifier(value: string | undefined) {
       this._qualifier = value;
     }
     public resetQualifier() {
@@ -1946,11 +2478,12 @@ export namespace Lambda {
     }
 
     // destination_config - computed: false, optional: true, required: false
-    private _destinationConfig?: LambdaFunctionEventInvokeConfigDestinationConfig[];
+    private _destinationConfig?: LambdaFunctionEventInvokeConfigDestinationConfig | undefined; 
+    private __destinationConfigOutput = new LambdaFunctionEventInvokeConfigDestinationConfigOutputReference(this as any, "destination_config", true);
     public get destinationConfig() {
-      return this.interpolationForAttribute('destination_config') as any;
+      return this.__destinationConfigOutput;
     }
-    public set destinationConfig(value: LambdaFunctionEventInvokeConfigDestinationConfig[] ) {
+    public putDestinationConfig(value: LambdaFunctionEventInvokeConfigDestinationConfig | undefined) {
       this._destinationConfig = value;
     }
     public resetDestinationConfig() {
@@ -1971,7 +2504,7 @@ export namespace Lambda {
         maximum_event_age_in_seconds: cdktf.numberToTerraform(this._maximumEventAgeInSeconds),
         maximum_retry_attempts: cdktf.numberToTerraform(this._maximumRetryAttempts),
         qualifier: cdktf.stringToTerraform(this._qualifier),
-        destination_config: cdktf.listMapper(lambdaFunctionEventInvokeConfigDestinationConfigToTerraform)(this._destinationConfig),
+        destination_config: lambdaFunctionEventInvokeConfigDestinationConfigToTerraform(this._destinationConfig),
       };
     }
   }
@@ -2072,11 +2605,11 @@ export namespace Lambda {
     }
 
     // compatible_architectures - computed: false, optional: true, required: false
-    private _compatibleArchitectures?: string[];
+    private _compatibleArchitectures?: string[] | undefined; 
     public get compatibleArchitectures() {
       return this.getListAttribute('compatible_architectures');
     }
-    public set compatibleArchitectures(value: string[] ) {
+    public set compatibleArchitectures(value: string[] | undefined) {
       this._compatibleArchitectures = value;
     }
     public resetCompatibleArchitectures() {
@@ -2088,11 +2621,11 @@ export namespace Lambda {
     }
 
     // compatible_runtimes - computed: false, optional: true, required: false
-    private _compatibleRuntimes?: string[];
+    private _compatibleRuntimes?: string[] | undefined; 
     public get compatibleRuntimes() {
       return this.getListAttribute('compatible_runtimes');
     }
-    public set compatibleRuntimes(value: string[] ) {
+    public set compatibleRuntimes(value: string[] | undefined) {
       this._compatibleRuntimes = value;
     }
     public resetCompatibleRuntimes() {
@@ -2109,11 +2642,11 @@ export namespace Lambda {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -2125,11 +2658,11 @@ export namespace Lambda {
     }
 
     // filename - computed: false, optional: true, required: false
-    private _filename?: string;
+    private _filename?: string | undefined; 
     public get filename() {
       return this.getStringAttribute('filename');
     }
-    public set filename(value: string ) {
+    public set filename(value: string | undefined) {
       this._filename = value;
     }
     public resetFilename() {
@@ -2151,7 +2684,7 @@ export namespace Lambda {
     }
 
     // layer_name - computed: false, optional: false, required: true
-    private _layerName: string;
+    private _layerName?: string; 
     public get layerName() {
       return this.getStringAttribute('layer_name');
     }
@@ -2164,11 +2697,11 @@ export namespace Lambda {
     }
 
     // license_info - computed: false, optional: true, required: false
-    private _licenseInfo?: string;
+    private _licenseInfo?: string | undefined; 
     public get licenseInfo() {
       return this.getStringAttribute('license_info');
     }
-    public set licenseInfo(value: string ) {
+    public set licenseInfo(value: string | undefined) {
       this._licenseInfo = value;
     }
     public resetLicenseInfo() {
@@ -2180,11 +2713,11 @@ export namespace Lambda {
     }
 
     // s3_bucket - computed: false, optional: true, required: false
-    private _s3Bucket?: string;
+    private _s3Bucket?: string | undefined; 
     public get s3Bucket() {
       return this.getStringAttribute('s3_bucket');
     }
-    public set s3Bucket(value: string ) {
+    public set s3Bucket(value: string | undefined) {
       this._s3Bucket = value;
     }
     public resetS3Bucket() {
@@ -2196,11 +2729,11 @@ export namespace Lambda {
     }
 
     // s3_key - computed: false, optional: true, required: false
-    private _s3Key?: string;
+    private _s3Key?: string | undefined; 
     public get s3Key() {
       return this.getStringAttribute('s3_key');
     }
-    public set s3Key(value: string ) {
+    public set s3Key(value: string | undefined) {
       this._s3Key = value;
     }
     public resetS3Key() {
@@ -2212,11 +2745,11 @@ export namespace Lambda {
     }
 
     // s3_object_version - computed: false, optional: true, required: false
-    private _s3ObjectVersion?: string;
+    private _s3ObjectVersion?: string | undefined; 
     public get s3ObjectVersion() {
       return this.getStringAttribute('s3_object_version');
     }
-    public set s3ObjectVersion(value: string ) {
+    public set s3ObjectVersion(value: string | undefined) {
       this._s3ObjectVersion = value;
     }
     public resetS3ObjectVersion() {
@@ -2238,11 +2771,11 @@ export namespace Lambda {
     }
 
     // source_code_hash - computed: true, optional: true, required: false
-    private _sourceCodeHash?: string;
+    private _sourceCodeHash?: string | undefined; 
     public get sourceCodeHash() {
       return this.getStringAttribute('source_code_hash');
     }
-    public set sourceCodeHash(value: string) {
+    public set sourceCodeHash(value: string | undefined) {
       this._sourceCodeHash = value;
     }
     public resetSourceCodeHash() {
@@ -2369,7 +2902,7 @@ export namespace Lambda {
     // ==========
 
     // action - computed: false, optional: false, required: true
-    private _action: string;
+    private _action?: string; 
     public get action() {
       return this.getStringAttribute('action');
     }
@@ -2382,11 +2915,11 @@ export namespace Lambda {
     }
 
     // event_source_token - computed: false, optional: true, required: false
-    private _eventSourceToken?: string;
+    private _eventSourceToken?: string | undefined; 
     public get eventSourceToken() {
       return this.getStringAttribute('event_source_token');
     }
-    public set eventSourceToken(value: string ) {
+    public set eventSourceToken(value: string | undefined) {
       this._eventSourceToken = value;
     }
     public resetEventSourceToken() {
@@ -2398,7 +2931,7 @@ export namespace Lambda {
     }
 
     // function_name - computed: false, optional: false, required: true
-    private _functionName: string;
+    private _functionName?: string; 
     public get functionName() {
       return this.getStringAttribute('function_name');
     }
@@ -2416,7 +2949,7 @@ export namespace Lambda {
     }
 
     // principal - computed: false, optional: false, required: true
-    private _principal: string;
+    private _principal?: string; 
     public get principal() {
       return this.getStringAttribute('principal');
     }
@@ -2429,11 +2962,11 @@ export namespace Lambda {
     }
 
     // qualifier - computed: false, optional: true, required: false
-    private _qualifier?: string;
+    private _qualifier?: string | undefined; 
     public get qualifier() {
       return this.getStringAttribute('qualifier');
     }
-    public set qualifier(value: string ) {
+    public set qualifier(value: string | undefined) {
       this._qualifier = value;
     }
     public resetQualifier() {
@@ -2445,11 +2978,11 @@ export namespace Lambda {
     }
 
     // source_account - computed: false, optional: true, required: false
-    private _sourceAccount?: string;
+    private _sourceAccount?: string | undefined; 
     public get sourceAccount() {
       return this.getStringAttribute('source_account');
     }
-    public set sourceAccount(value: string ) {
+    public set sourceAccount(value: string | undefined) {
       this._sourceAccount = value;
     }
     public resetSourceAccount() {
@@ -2461,11 +2994,11 @@ export namespace Lambda {
     }
 
     // source_arn - computed: false, optional: true, required: false
-    private _sourceArn?: string;
+    private _sourceArn?: string | undefined; 
     public get sourceArn() {
       return this.getStringAttribute('source_arn');
     }
-    public set sourceArn(value: string ) {
+    public set sourceArn(value: string | undefined) {
       this._sourceArn = value;
     }
     public resetSourceArn() {
@@ -2477,11 +3010,11 @@ export namespace Lambda {
     }
 
     // statement_id - computed: true, optional: true, required: false
-    private _statementId?: string;
+    private _statementId?: string | undefined; 
     public get statementId() {
       return this.getStringAttribute('statement_id');
     }
-    public set statementId(value: string) {
+    public set statementId(value: string | undefined) {
       this._statementId = value;
     }
     public resetStatementId() {
@@ -2493,11 +3026,11 @@ export namespace Lambda {
     }
 
     // statement_id_prefix - computed: false, optional: true, required: false
-    private _statementIdPrefix?: string;
+    private _statementIdPrefix?: string | undefined; 
     public get statementIdPrefix() {
       return this.getStringAttribute('statement_id_prefix');
     }
-    public set statementIdPrefix(value: string ) {
+    public set statementIdPrefix(value: string | undefined) {
       this._statementIdPrefix = value;
     }
     public resetStatementIdPrefix() {
@@ -2557,14 +3090,59 @@ export namespace Lambda {
     readonly update?: string;
   }
 
-  function lambdaProvisionedConcurrencyConfigTimeoutsToTerraform(struct?: LambdaProvisionedConcurrencyConfigTimeouts): any {
+  function lambdaProvisionedConcurrencyConfigTimeoutsToTerraform(struct?: LambdaProvisionedConcurrencyConfigTimeoutsOutputReference | LambdaProvisionedConcurrencyConfigTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       update: cdktf.stringToTerraform(struct!.update),
     }
   }
 
+  export class LambdaProvisionedConcurrencyConfigTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/lambda_provisioned_concurrency_config.html aws_lambda_provisioned_concurrency_config}
@@ -2609,7 +3187,7 @@ export namespace Lambda {
     // ==========
 
     // function_name - computed: false, optional: false, required: true
-    private _functionName: string;
+    private _functionName?: string; 
     public get functionName() {
       return this.getStringAttribute('function_name');
     }
@@ -2627,7 +3205,7 @@ export namespace Lambda {
     }
 
     // provisioned_concurrent_executions - computed: false, optional: false, required: true
-    private _provisionedConcurrentExecutions: number;
+    private _provisionedConcurrentExecutions?: number; 
     public get provisionedConcurrentExecutions() {
       return this.getNumberAttribute('provisioned_concurrent_executions');
     }
@@ -2640,7 +3218,7 @@ export namespace Lambda {
     }
 
     // qualifier - computed: false, optional: false, required: true
-    private _qualifier: string;
+    private _qualifier?: string; 
     public get qualifier() {
       return this.getStringAttribute('qualifier');
     }
@@ -2653,11 +3231,12 @@ export namespace Lambda {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: LambdaProvisionedConcurrencyConfigTimeouts;
+    private _timeouts?: LambdaProvisionedConcurrencyConfigTimeouts | undefined; 
+    private __timeoutsOutput = new LambdaProvisionedConcurrencyConfigTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: LambdaProvisionedConcurrencyConfigTimeouts ) {
+    public putTimeouts(value: LambdaProvisionedConcurrencyConfigTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -2743,7 +3322,7 @@ export namespace Lambda {
     }
 
     // function_name - computed: false, optional: false, required: true
-    private _functionName: string;
+    private _functionName?: string; 
     public get functionName() {
       return this.getStringAttribute('function_name');
     }
@@ -2771,7 +3350,7 @@ export namespace Lambda {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2860,7 +3439,7 @@ export namespace Lambda {
     }
 
     // arn - computed: false, optional: false, required: true
-    private _arn: string;
+    private _arn?: string; 
     public get arn() {
       return this.getStringAttribute('arn');
     }
@@ -2932,6 +3511,7 @@ export namespace Lambda {
 
     // variables - computed: true, optional: false, required: false
     public get variables() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('variables') as any;
     }
   }
@@ -3049,7 +3629,7 @@ export namespace Lambda {
     }
 
     // function_name - computed: false, optional: false, required: true
-    private _functionName: string;
+    private _functionName?: string; 
     public get functionName() {
       return this.getStringAttribute('function_name');
     }
@@ -3102,11 +3682,11 @@ export namespace Lambda {
     }
 
     // qualifier - computed: false, optional: true, required: false
-    private _qualifier?: string;
+    private _qualifier?: string | undefined; 
     public get qualifier() {
       return this.getStringAttribute('qualifier');
     }
-    public set qualifier(value: string ) {
+    public set qualifier(value: string | undefined) {
       this._qualifier = value;
     }
     public resetQualifier() {
@@ -3153,11 +3733,12 @@ export namespace Lambda {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3257,7 +3838,7 @@ export namespace Lambda {
     // ==========
 
     // function_name - computed: false, optional: false, required: true
-    private _functionName: string;
+    private _functionName?: string; 
     public get functionName() {
       return this.getStringAttribute('function_name');
     }
@@ -3275,7 +3856,7 @@ export namespace Lambda {
     }
 
     // input - computed: false, optional: false, required: true
-    private _input: string;
+    private _input?: string; 
     public get input() {
       return this.getStringAttribute('input');
     }
@@ -3288,11 +3869,11 @@ export namespace Lambda {
     }
 
     // qualifier - computed: false, optional: true, required: false
-    private _qualifier?: string;
+    private _qualifier?: string | undefined; 
     public get qualifier() {
       return this.getStringAttribute('qualifier');
     }
-    public set qualifier(value: string ) {
+    public set qualifier(value: string | undefined) {
       this._qualifier = value;
     }
     public resetQualifier() {
@@ -3387,11 +3968,11 @@ export namespace Lambda {
     }
 
     // compatible_architecture - computed: false, optional: true, required: false
-    private _compatibleArchitecture?: string;
+    private _compatibleArchitecture?: string | undefined; 
     public get compatibleArchitecture() {
       return this.getStringAttribute('compatible_architecture');
     }
-    public set compatibleArchitecture(value: string ) {
+    public set compatibleArchitecture(value: string | undefined) {
       this._compatibleArchitecture = value;
     }
     public resetCompatibleArchitecture() {
@@ -3408,11 +3989,11 @@ export namespace Lambda {
     }
 
     // compatible_runtime - computed: false, optional: true, required: false
-    private _compatibleRuntime?: string;
+    private _compatibleRuntime?: string | undefined; 
     public get compatibleRuntime() {
       return this.getStringAttribute('compatible_runtime');
     }
-    public set compatibleRuntime(value: string ) {
+    public set compatibleRuntime(value: string | undefined) {
       this._compatibleRuntime = value;
     }
     public resetCompatibleRuntime() {
@@ -3449,7 +4030,7 @@ export namespace Lambda {
     }
 
     // layer_name - computed: false, optional: false, required: true
-    private _layerName: string;
+    private _layerName?: string; 
     public get layerName() {
       return this.getStringAttribute('layer_name');
     }
@@ -3487,11 +4068,11 @@ export namespace Lambda {
     }
 
     // version - computed: true, optional: true, required: false
-    private _version?: number;
+    private _version?: number | undefined; 
     public get version() {
       return this.getNumberAttribute('version');
     }
-    public set version(value: number) {
+    public set version(value: number | undefined) {
       this._version = value;
     }
     public resetVersion() {

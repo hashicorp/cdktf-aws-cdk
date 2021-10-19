@@ -88,11 +88,11 @@ export class Offset extends cdktf.TerraformResource {
   // ==========
 
   // base_rfc3339 - computed: true, optional: true, required: false
-  private _baseRfc3339?: string;
+  private _baseRfc3339?: string | undefined; 
   public get baseRfc3339() {
     return this.getStringAttribute('base_rfc3339');
   }
-  public set baseRfc3339(value: string) {
+  public set baseRfc3339(value: string | undefined) {
     this._baseRfc3339 = value;
   }
   public resetBaseRfc3339() {
@@ -129,11 +129,11 @@ export class Offset extends cdktf.TerraformResource {
   }
 
   // offset_days - computed: false, optional: true, required: false
-  private _offsetDays?: number;
+  private _offsetDays?: number | undefined; 
   public get offsetDays() {
     return this.getNumberAttribute('offset_days');
   }
-  public set offsetDays(value: number ) {
+  public set offsetDays(value: number | undefined) {
     this._offsetDays = value;
   }
   public resetOffsetDays() {
@@ -145,11 +145,11 @@ export class Offset extends cdktf.TerraformResource {
   }
 
   // offset_hours - computed: false, optional: true, required: false
-  private _offsetHours?: number;
+  private _offsetHours?: number | undefined; 
   public get offsetHours() {
     return this.getNumberAttribute('offset_hours');
   }
-  public set offsetHours(value: number ) {
+  public set offsetHours(value: number | undefined) {
     this._offsetHours = value;
   }
   public resetOffsetHours() {
@@ -161,11 +161,11 @@ export class Offset extends cdktf.TerraformResource {
   }
 
   // offset_minutes - computed: false, optional: true, required: false
-  private _offsetMinutes?: number;
+  private _offsetMinutes?: number | undefined; 
   public get offsetMinutes() {
     return this.getNumberAttribute('offset_minutes');
   }
-  public set offsetMinutes(value: number ) {
+  public set offsetMinutes(value: number | undefined) {
     this._offsetMinutes = value;
   }
   public resetOffsetMinutes() {
@@ -177,11 +177,11 @@ export class Offset extends cdktf.TerraformResource {
   }
 
   // offset_months - computed: false, optional: true, required: false
-  private _offsetMonths?: number;
+  private _offsetMonths?: number | undefined; 
   public get offsetMonths() {
     return this.getNumberAttribute('offset_months');
   }
-  public set offsetMonths(value: number ) {
+  public set offsetMonths(value: number | undefined) {
     this._offsetMonths = value;
   }
   public resetOffsetMonths() {
@@ -193,11 +193,11 @@ export class Offset extends cdktf.TerraformResource {
   }
 
   // offset_seconds - computed: false, optional: true, required: false
-  private _offsetSeconds?: number;
+  private _offsetSeconds?: number | undefined; 
   public get offsetSeconds() {
     return this.getNumberAttribute('offset_seconds');
   }
-  public set offsetSeconds(value: number ) {
+  public set offsetSeconds(value: number | undefined) {
     this._offsetSeconds = value;
   }
   public resetOffsetSeconds() {
@@ -209,11 +209,11 @@ export class Offset extends cdktf.TerraformResource {
   }
 
   // offset_years - computed: false, optional: true, required: false
-  private _offsetYears?: number;
+  private _offsetYears?: number | undefined; 
   public get offsetYears() {
     return this.getNumberAttribute('offset_years');
   }
-  public set offsetYears(value: number ) {
+  public set offsetYears(value: number | undefined) {
     this._offsetYears = value;
   }
   public resetOffsetYears() {
@@ -235,11 +235,12 @@ export class Offset extends cdktf.TerraformResource {
   }
 
   // triggers - computed: false, optional: true, required: false
-  private _triggers?: { [key: string]: string } | cdktf.IResolvable;
+  private _triggers?: { [key: string]: string } | cdktf.IResolvable | undefined; 
   public get triggers() {
+    // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('triggers') as any;
   }
-  public set triggers(value: { [key: string]: string } | cdktf.IResolvable ) {
+  public set triggers(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
     this._triggers = value;
   }
   public resetTriggers() {

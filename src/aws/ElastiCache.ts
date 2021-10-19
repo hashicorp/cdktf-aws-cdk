@@ -191,11 +191,11 @@ export namespace ElastiCache {
     // ==========
 
     // apply_immediately - computed: true, optional: true, required: false
-    private _applyImmediately?: boolean | cdktf.IResolvable;
+    private _applyImmediately?: boolean | cdktf.IResolvable | undefined; 
     public get applyImmediately() {
-      return this.getBooleanAttribute('apply_immediately');
+      return this.getBooleanAttribute('apply_immediately') as any;
     }
-    public set applyImmediately(value: boolean | cdktf.IResolvable) {
+    public set applyImmediately(value: boolean | cdktf.IResolvable | undefined) {
       this._applyImmediately = value;
     }
     public resetApplyImmediately() {
@@ -212,11 +212,11 @@ export namespace ElastiCache {
     }
 
     // availability_zone - computed: true, optional: true, required: false
-    private _availabilityZone?: string;
+    private _availabilityZone?: string | undefined; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
-    public set availabilityZone(value: string) {
+    public set availabilityZone(value: string | undefined) {
       this._availabilityZone = value;
     }
     public resetAvailabilityZone() {
@@ -228,11 +228,11 @@ export namespace ElastiCache {
     }
 
     // az_mode - computed: true, optional: true, required: false
-    private _azMode?: string;
+    private _azMode?: string | undefined; 
     public get azMode() {
       return this.getStringAttribute('az_mode');
     }
-    public set azMode(value: string) {
+    public set azMode(value: string | undefined) {
       this._azMode = value;
     }
     public resetAzMode() {
@@ -254,7 +254,7 @@ export namespace ElastiCache {
     }
 
     // cluster_id - computed: false, optional: false, required: true
-    private _clusterId: string;
+    private _clusterId?: string; 
     public get clusterId() {
       return this.getStringAttribute('cluster_id');
     }
@@ -272,11 +272,11 @@ export namespace ElastiCache {
     }
 
     // engine - computed: true, optional: true, required: false
-    private _engine?: string;
+    private _engine?: string | undefined; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
-    public set engine(value: string) {
+    public set engine(value: string | undefined) {
       this._engine = value;
     }
     public resetEngine() {
@@ -288,11 +288,11 @@ export namespace ElastiCache {
     }
 
     // engine_version - computed: true, optional: true, required: false
-    private _engineVersion?: string;
+    private _engineVersion?: string | undefined; 
     public get engineVersion() {
       return this.getStringAttribute('engine_version');
     }
-    public set engineVersion(value: string) {
+    public set engineVersion(value: string | undefined) {
       this._engineVersion = value;
     }
     public resetEngineVersion() {
@@ -309,11 +309,11 @@ export namespace ElastiCache {
     }
 
     // final_snapshot_identifier - computed: false, optional: true, required: false
-    private _finalSnapshotIdentifier?: string;
+    private _finalSnapshotIdentifier?: string | undefined; 
     public get finalSnapshotIdentifier() {
       return this.getStringAttribute('final_snapshot_identifier');
     }
-    public set finalSnapshotIdentifier(value: string ) {
+    public set finalSnapshotIdentifier(value: string | undefined) {
       this._finalSnapshotIdentifier = value;
     }
     public resetFinalSnapshotIdentifier() {
@@ -330,11 +330,11 @@ export namespace ElastiCache {
     }
 
     // maintenance_window - computed: true, optional: true, required: false
-    private _maintenanceWindow?: string;
+    private _maintenanceWindow?: string | undefined; 
     public get maintenanceWindow() {
       return this.getStringAttribute('maintenance_window');
     }
-    public set maintenanceWindow(value: string) {
+    public set maintenanceWindow(value: string | undefined) {
       this._maintenanceWindow = value;
     }
     public resetMaintenanceWindow() {
@@ -346,11 +346,11 @@ export namespace ElastiCache {
     }
 
     // node_type - computed: true, optional: true, required: false
-    private _nodeType?: string;
+    private _nodeType?: string | undefined; 
     public get nodeType() {
       return this.getStringAttribute('node_type');
     }
-    public set nodeType(value: string) {
+    public set nodeType(value: string | undefined) {
       this._nodeType = value;
     }
     public resetNodeType() {
@@ -362,11 +362,11 @@ export namespace ElastiCache {
     }
 
     // notification_topic_arn - computed: false, optional: true, required: false
-    private _notificationTopicArn?: string;
+    private _notificationTopicArn?: string | undefined; 
     public get notificationTopicArn() {
       return this.getStringAttribute('notification_topic_arn');
     }
-    public set notificationTopicArn(value: string ) {
+    public set notificationTopicArn(value: string | undefined) {
       this._notificationTopicArn = value;
     }
     public resetNotificationTopicArn() {
@@ -378,11 +378,11 @@ export namespace ElastiCache {
     }
 
     // num_cache_nodes - computed: true, optional: true, required: false
-    private _numCacheNodes?: number;
+    private _numCacheNodes?: number | undefined; 
     public get numCacheNodes() {
       return this.getNumberAttribute('num_cache_nodes');
     }
-    public set numCacheNodes(value: number) {
+    public set numCacheNodes(value: number | undefined) {
       this._numCacheNodes = value;
     }
     public resetNumCacheNodes() {
@@ -394,11 +394,11 @@ export namespace ElastiCache {
     }
 
     // parameter_group_name - computed: true, optional: true, required: false
-    private _parameterGroupName?: string;
+    private _parameterGroupName?: string | undefined; 
     public get parameterGroupName() {
       return this.getStringAttribute('parameter_group_name');
     }
-    public set parameterGroupName(value: string) {
+    public set parameterGroupName(value: string | undefined) {
       this._parameterGroupName = value;
     }
     public resetParameterGroupName() {
@@ -410,11 +410,11 @@ export namespace ElastiCache {
     }
 
     // port - computed: true, optional: true, required: false
-    private _port?: number;
+    private _port?: number | undefined; 
     public get port() {
       return this.getNumberAttribute('port');
     }
-    public set port(value: number) {
+    public set port(value: number | undefined) {
       this._port = value;
     }
     public resetPort() {
@@ -426,11 +426,11 @@ export namespace ElastiCache {
     }
 
     // preferred_availability_zones - computed: false, optional: true, required: false
-    private _preferredAvailabilityZones?: string[];
+    private _preferredAvailabilityZones?: string[] | undefined; 
     public get preferredAvailabilityZones() {
       return this.getListAttribute('preferred_availability_zones');
     }
-    public set preferredAvailabilityZones(value: string[] ) {
+    public set preferredAvailabilityZones(value: string[] | undefined) {
       this._preferredAvailabilityZones = value;
     }
     public resetPreferredAvailabilityZones() {
@@ -442,11 +442,11 @@ export namespace ElastiCache {
     }
 
     // replication_group_id - computed: true, optional: true, required: false
-    private _replicationGroupId?: string;
+    private _replicationGroupId?: string | undefined; 
     public get replicationGroupId() {
       return this.getStringAttribute('replication_group_id');
     }
-    public set replicationGroupId(value: string) {
+    public set replicationGroupId(value: string | undefined) {
       this._replicationGroupId = value;
     }
     public resetReplicationGroupId() {
@@ -458,11 +458,11 @@ export namespace ElastiCache {
     }
 
     // security_group_ids - computed: true, optional: true, required: false
-    private _securityGroupIds?: string[];
+    private _securityGroupIds?: string[] | undefined; 
     public get securityGroupIds() {
       return this.getListAttribute('security_group_ids');
     }
-    public set securityGroupIds(value: string[]) {
+    public set securityGroupIds(value: string[] | undefined) {
       this._securityGroupIds = value;
     }
     public resetSecurityGroupIds() {
@@ -474,11 +474,11 @@ export namespace ElastiCache {
     }
 
     // security_group_names - computed: true, optional: true, required: false
-    private _securityGroupNames?: string[];
+    private _securityGroupNames?: string[] | undefined; 
     public get securityGroupNames() {
       return this.getListAttribute('security_group_names');
     }
-    public set securityGroupNames(value: string[]) {
+    public set securityGroupNames(value: string[] | undefined) {
       this._securityGroupNames = value;
     }
     public resetSecurityGroupNames() {
@@ -490,11 +490,11 @@ export namespace ElastiCache {
     }
 
     // snapshot_arns - computed: false, optional: true, required: false
-    private _snapshotArns?: string[];
+    private _snapshotArns?: string[] | undefined; 
     public get snapshotArns() {
       return this.getListAttribute('snapshot_arns');
     }
-    public set snapshotArns(value: string[] ) {
+    public set snapshotArns(value: string[] | undefined) {
       this._snapshotArns = value;
     }
     public resetSnapshotArns() {
@@ -506,11 +506,11 @@ export namespace ElastiCache {
     }
 
     // snapshot_name - computed: false, optional: true, required: false
-    private _snapshotName?: string;
+    private _snapshotName?: string | undefined; 
     public get snapshotName() {
       return this.getStringAttribute('snapshot_name');
     }
-    public set snapshotName(value: string ) {
+    public set snapshotName(value: string | undefined) {
       this._snapshotName = value;
     }
     public resetSnapshotName() {
@@ -522,11 +522,11 @@ export namespace ElastiCache {
     }
 
     // snapshot_retention_limit - computed: false, optional: true, required: false
-    private _snapshotRetentionLimit?: number;
+    private _snapshotRetentionLimit?: number | undefined; 
     public get snapshotRetentionLimit() {
       return this.getNumberAttribute('snapshot_retention_limit');
     }
-    public set snapshotRetentionLimit(value: number ) {
+    public set snapshotRetentionLimit(value: number | undefined) {
       this._snapshotRetentionLimit = value;
     }
     public resetSnapshotRetentionLimit() {
@@ -538,11 +538,11 @@ export namespace ElastiCache {
     }
 
     // snapshot_window - computed: true, optional: true, required: false
-    private _snapshotWindow?: string;
+    private _snapshotWindow?: string | undefined; 
     public get snapshotWindow() {
       return this.getStringAttribute('snapshot_window');
     }
-    public set snapshotWindow(value: string) {
+    public set snapshotWindow(value: string | undefined) {
       this._snapshotWindow = value;
     }
     public resetSnapshotWindow() {
@@ -554,11 +554,11 @@ export namespace ElastiCache {
     }
 
     // subnet_group_name - computed: true, optional: true, required: false
-    private _subnetGroupName?: string;
+    private _subnetGroupName?: string | undefined; 
     public get subnetGroupName() {
       return this.getStringAttribute('subnet_group_name');
     }
-    public set subnetGroupName(value: string) {
+    public set subnetGroupName(value: string | undefined) {
       this._subnetGroupName = value;
     }
     public resetSubnetGroupName() {
@@ -570,11 +570,12 @@ export namespace ElastiCache {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -586,11 +587,12 @@ export namespace ElastiCache {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -702,12 +704,12 @@ export namespace ElastiCache {
 
     // at_rest_encryption_enabled - computed: true, optional: false, required: false
     public get atRestEncryptionEnabled() {
-      return this.getBooleanAttribute('at_rest_encryption_enabled');
+      return this.getBooleanAttribute('at_rest_encryption_enabled') as any;
     }
 
     // auth_token_enabled - computed: true, optional: false, required: false
     public get authTokenEnabled() {
-      return this.getBooleanAttribute('auth_token_enabled');
+      return this.getBooleanAttribute('auth_token_enabled') as any;
     }
 
     // cache_node_type - computed: true, optional: false, required: false
@@ -717,7 +719,7 @@ export namespace ElastiCache {
 
     // cluster_enabled - computed: true, optional: false, required: false
     public get clusterEnabled() {
-      return this.getBooleanAttribute('cluster_enabled');
+      return this.getBooleanAttribute('cluster_enabled') as any;
     }
 
     // engine - computed: true, optional: false, required: false
@@ -731,11 +733,11 @@ export namespace ElastiCache {
     }
 
     // global_replication_group_description - computed: false, optional: true, required: false
-    private _globalReplicationGroupDescription?: string;
+    private _globalReplicationGroupDescription?: string | undefined; 
     public get globalReplicationGroupDescription() {
       return this.getStringAttribute('global_replication_group_description');
     }
-    public set globalReplicationGroupDescription(value: string ) {
+    public set globalReplicationGroupDescription(value: string | undefined) {
       this._globalReplicationGroupDescription = value;
     }
     public resetGlobalReplicationGroupDescription() {
@@ -752,7 +754,7 @@ export namespace ElastiCache {
     }
 
     // global_replication_group_id_suffix - computed: false, optional: false, required: true
-    private _globalReplicationGroupIdSuffix: string;
+    private _globalReplicationGroupIdSuffix?: string; 
     public get globalReplicationGroupIdSuffix() {
       return this.getStringAttribute('global_replication_group_id_suffix');
     }
@@ -770,7 +772,7 @@ export namespace ElastiCache {
     }
 
     // primary_replication_group_id - computed: false, optional: false, required: true
-    private _primaryReplicationGroupId: string;
+    private _primaryReplicationGroupId?: string; 
     public get primaryReplicationGroupId() {
       return this.getStringAttribute('primary_replication_group_id');
     }
@@ -784,7 +786,7 @@ export namespace ElastiCache {
 
     // transit_encryption_enabled - computed: true, optional: false, required: false
     public get transitEncryptionEnabled() {
-      return this.getBooleanAttribute('transit_encryption_enabled');
+      return this.getBooleanAttribute('transit_encryption_enabled') as any;
     }
 
     // =========
@@ -840,6 +842,9 @@ export namespace ElastiCache {
 
   function elasticacheParameterGroupParameterToTerraform(struct?: ElasticacheParameterGroupParameter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       value: cdktf.stringToTerraform(struct!.value),
@@ -897,11 +902,11 @@ export namespace ElastiCache {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -913,7 +918,7 @@ export namespace ElastiCache {
     }
 
     // family - computed: false, optional: false, required: true
-    private _family: string;
+    private _family?: string; 
     public get family() {
       return this.getStringAttribute('family');
     }
@@ -931,7 +936,7 @@ export namespace ElastiCache {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -944,11 +949,12 @@ export namespace ElastiCache {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -960,11 +966,12 @@ export namespace ElastiCache {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -976,11 +983,12 @@ export namespace ElastiCache {
     }
 
     // parameter - computed: false, optional: true, required: false
-    private _parameter?: ElasticacheParameterGroupParameter[];
+    private _parameter?: ElasticacheParameterGroupParameter[] | undefined; 
     public get parameter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('parameter') as any;
     }
-    public set parameter(value: ElasticacheParameterGroupParameter[] ) {
+    public set parameter(value: ElasticacheParameterGroupParameter[] | undefined) {
       this._parameter = value;
     }
     public resetParameter() {
@@ -1132,7 +1140,7 @@ export namespace ElastiCache {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elasticache_replication_group.html#cluster_mode ElasticacheReplicationGroup#cluster_mode}
     */
-    readonly clusterMode?: ElasticacheReplicationGroupClusterMode[];
+    readonly clusterMode?: ElasticacheReplicationGroupClusterMode;
     /**
     * timeouts block
     * 
@@ -1151,14 +1159,56 @@ export namespace ElastiCache {
     readonly replicasPerNodeGroup: number;
   }
 
-  function elasticacheReplicationGroupClusterModeToTerraform(struct?: ElasticacheReplicationGroupClusterMode): any {
+  function elasticacheReplicationGroupClusterModeToTerraform(struct?: ElasticacheReplicationGroupClusterModeOutputReference | ElasticacheReplicationGroupClusterMode): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       num_node_groups: cdktf.numberToTerraform(struct!.numNodeGroups),
       replicas_per_node_group: cdktf.numberToTerraform(struct!.replicasPerNodeGroup),
     }
   }
 
+  export class ElasticacheReplicationGroupClusterModeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // num_node_groups - computed: true, optional: true, required: false
+    private _numNodeGroups?: number | undefined; 
+    public get numNodeGroups() {
+      return this.getNumberAttribute('num_node_groups');
+    }
+    public set numNodeGroups(value: number | undefined) {
+      this._numNodeGroups = value;
+    }
+    public resetNumNodeGroups() {
+      this._numNodeGroups = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get numNodeGroupsInput() {
+      return this._numNodeGroups
+    }
+
+    // replicas_per_node_group - computed: false, optional: false, required: true
+    private _replicasPerNodeGroup?: number; 
+    public get replicasPerNodeGroup() {
+      return this.getNumberAttribute('replicas_per_node_group');
+    }
+    public set replicasPerNodeGroup(value: number) {
+      this._replicasPerNodeGroup = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get replicasPerNodeGroupInput() {
+      return this._replicasPerNodeGroup
+    }
+  }
   export interface ElasticacheReplicationGroupTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elasticache_replication_group.html#create ElasticacheReplicationGroup#create}
@@ -1174,8 +1224,11 @@ export namespace ElastiCache {
     readonly update?: string;
   }
 
-  function elasticacheReplicationGroupTimeoutsToTerraform(struct?: ElasticacheReplicationGroupTimeouts): any {
+  function elasticacheReplicationGroupTimeoutsToTerraform(struct?: ElasticacheReplicationGroupTimeoutsOutputReference | ElasticacheReplicationGroupTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -1183,6 +1236,64 @@ export namespace ElastiCache {
     }
   }
 
+  export class ElasticacheReplicationGroupTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/elasticache_replication_group.html aws_elasticache_replication_group}
@@ -1255,11 +1366,11 @@ export namespace ElastiCache {
     // ==========
 
     // apply_immediately - computed: true, optional: true, required: false
-    private _applyImmediately?: boolean | cdktf.IResolvable;
+    private _applyImmediately?: boolean | cdktf.IResolvable | undefined; 
     public get applyImmediately() {
-      return this.getBooleanAttribute('apply_immediately');
+      return this.getBooleanAttribute('apply_immediately') as any;
     }
-    public set applyImmediately(value: boolean | cdktf.IResolvable) {
+    public set applyImmediately(value: boolean | cdktf.IResolvable | undefined) {
       this._applyImmediately = value;
     }
     public resetApplyImmediately() {
@@ -1276,11 +1387,11 @@ export namespace ElastiCache {
     }
 
     // at_rest_encryption_enabled - computed: true, optional: true, required: false
-    private _atRestEncryptionEnabled?: boolean | cdktf.IResolvable;
+    private _atRestEncryptionEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get atRestEncryptionEnabled() {
-      return this.getBooleanAttribute('at_rest_encryption_enabled');
+      return this.getBooleanAttribute('at_rest_encryption_enabled') as any;
     }
-    public set atRestEncryptionEnabled(value: boolean | cdktf.IResolvable) {
+    public set atRestEncryptionEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._atRestEncryptionEnabled = value;
     }
     public resetAtRestEncryptionEnabled() {
@@ -1292,11 +1403,11 @@ export namespace ElastiCache {
     }
 
     // auth_token - computed: false, optional: true, required: false
-    private _authToken?: string;
+    private _authToken?: string | undefined; 
     public get authToken() {
       return this.getStringAttribute('auth_token');
     }
-    public set authToken(value: string ) {
+    public set authToken(value: string | undefined) {
       this._authToken = value;
     }
     public resetAuthToken() {
@@ -1308,11 +1419,11 @@ export namespace ElastiCache {
     }
 
     // auto_minor_version_upgrade - computed: false, optional: true, required: false
-    private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable;
+    private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable | undefined; 
     public get autoMinorVersionUpgrade() {
-      return this.getBooleanAttribute('auto_minor_version_upgrade');
+      return this.getBooleanAttribute('auto_minor_version_upgrade') as any;
     }
-    public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable ) {
+    public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable | undefined) {
       this._autoMinorVersionUpgrade = value;
     }
     public resetAutoMinorVersionUpgrade() {
@@ -1324,11 +1435,11 @@ export namespace ElastiCache {
     }
 
     // automatic_failover_enabled - computed: false, optional: true, required: false
-    private _automaticFailoverEnabled?: boolean | cdktf.IResolvable;
+    private _automaticFailoverEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get automaticFailoverEnabled() {
-      return this.getBooleanAttribute('automatic_failover_enabled');
+      return this.getBooleanAttribute('automatic_failover_enabled') as any;
     }
-    public set automaticFailoverEnabled(value: boolean | cdktf.IResolvable ) {
+    public set automaticFailoverEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._automaticFailoverEnabled = value;
     }
     public resetAutomaticFailoverEnabled() {
@@ -1340,11 +1451,11 @@ export namespace ElastiCache {
     }
 
     // availability_zones - computed: false, optional: true, required: false
-    private _availabilityZones?: string[];
+    private _availabilityZones?: string[] | undefined; 
     public get availabilityZones() {
       return this.getListAttribute('availability_zones');
     }
-    public set availabilityZones(value: string[] ) {
+    public set availabilityZones(value: string[] | undefined) {
       this._availabilityZones = value;
     }
     public resetAvailabilityZones() {
@@ -1357,7 +1468,7 @@ export namespace ElastiCache {
 
     // cluster_enabled - computed: true, optional: false, required: false
     public get clusterEnabled() {
-      return this.getBooleanAttribute('cluster_enabled');
+      return this.getBooleanAttribute('cluster_enabled') as any;
     }
 
     // configuration_endpoint_address - computed: true, optional: false, required: false
@@ -1366,11 +1477,11 @@ export namespace ElastiCache {
     }
 
     // engine - computed: false, optional: true, required: false
-    private _engine?: string;
+    private _engine?: string | undefined; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
-    public set engine(value: string ) {
+    public set engine(value: string | undefined) {
       this._engine = value;
     }
     public resetEngine() {
@@ -1382,11 +1493,11 @@ export namespace ElastiCache {
     }
 
     // engine_version - computed: true, optional: true, required: false
-    private _engineVersion?: string;
+    private _engineVersion?: string | undefined; 
     public get engineVersion() {
       return this.getStringAttribute('engine_version');
     }
-    public set engineVersion(value: string) {
+    public set engineVersion(value: string | undefined) {
       this._engineVersion = value;
     }
     public resetEngineVersion() {
@@ -1403,11 +1514,11 @@ export namespace ElastiCache {
     }
 
     // final_snapshot_identifier - computed: false, optional: true, required: false
-    private _finalSnapshotIdentifier?: string;
+    private _finalSnapshotIdentifier?: string | undefined; 
     public get finalSnapshotIdentifier() {
       return this.getStringAttribute('final_snapshot_identifier');
     }
-    public set finalSnapshotIdentifier(value: string ) {
+    public set finalSnapshotIdentifier(value: string | undefined) {
       this._finalSnapshotIdentifier = value;
     }
     public resetFinalSnapshotIdentifier() {
@@ -1419,11 +1530,11 @@ export namespace ElastiCache {
     }
 
     // global_replication_group_id - computed: true, optional: true, required: false
-    private _globalReplicationGroupId?: string;
+    private _globalReplicationGroupId?: string | undefined; 
     public get globalReplicationGroupId() {
       return this.getStringAttribute('global_replication_group_id');
     }
-    public set globalReplicationGroupId(value: string) {
+    public set globalReplicationGroupId(value: string | undefined) {
       this._globalReplicationGroupId = value;
     }
     public resetGlobalReplicationGroupId() {
@@ -1440,11 +1551,11 @@ export namespace ElastiCache {
     }
 
     // kms_key_id - computed: false, optional: true, required: false
-    private _kmsKeyId?: string;
+    private _kmsKeyId?: string | undefined; 
     public get kmsKeyId() {
       return this.getStringAttribute('kms_key_id');
     }
-    public set kmsKeyId(value: string ) {
+    public set kmsKeyId(value: string | undefined) {
       this._kmsKeyId = value;
     }
     public resetKmsKeyId() {
@@ -1456,11 +1567,11 @@ export namespace ElastiCache {
     }
 
     // maintenance_window - computed: true, optional: true, required: false
-    private _maintenanceWindow?: string;
+    private _maintenanceWindow?: string | undefined; 
     public get maintenanceWindow() {
       return this.getStringAttribute('maintenance_window');
     }
-    public set maintenanceWindow(value: string) {
+    public set maintenanceWindow(value: string | undefined) {
       this._maintenanceWindow = value;
     }
     public resetMaintenanceWindow() {
@@ -1477,11 +1588,11 @@ export namespace ElastiCache {
     }
 
     // multi_az_enabled - computed: false, optional: true, required: false
-    private _multiAzEnabled?: boolean | cdktf.IResolvable;
+    private _multiAzEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get multiAzEnabled() {
-      return this.getBooleanAttribute('multi_az_enabled');
+      return this.getBooleanAttribute('multi_az_enabled') as any;
     }
-    public set multiAzEnabled(value: boolean | cdktf.IResolvable ) {
+    public set multiAzEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._multiAzEnabled = value;
     }
     public resetMultiAzEnabled() {
@@ -1493,11 +1604,11 @@ export namespace ElastiCache {
     }
 
     // node_type - computed: true, optional: true, required: false
-    private _nodeType?: string;
+    private _nodeType?: string | undefined; 
     public get nodeType() {
       return this.getStringAttribute('node_type');
     }
-    public set nodeType(value: string) {
+    public set nodeType(value: string | undefined) {
       this._nodeType = value;
     }
     public resetNodeType() {
@@ -1509,11 +1620,11 @@ export namespace ElastiCache {
     }
 
     // notification_topic_arn - computed: false, optional: true, required: false
-    private _notificationTopicArn?: string;
+    private _notificationTopicArn?: string | undefined; 
     public get notificationTopicArn() {
       return this.getStringAttribute('notification_topic_arn');
     }
-    public set notificationTopicArn(value: string ) {
+    public set notificationTopicArn(value: string | undefined) {
       this._notificationTopicArn = value;
     }
     public resetNotificationTopicArn() {
@@ -1525,11 +1636,11 @@ export namespace ElastiCache {
     }
 
     // number_cache_clusters - computed: true, optional: true, required: false
-    private _numberCacheClusters?: number;
+    private _numberCacheClusters?: number | undefined; 
     public get numberCacheClusters() {
       return this.getNumberAttribute('number_cache_clusters');
     }
-    public set numberCacheClusters(value: number) {
+    public set numberCacheClusters(value: number | undefined) {
       this._numberCacheClusters = value;
     }
     public resetNumberCacheClusters() {
@@ -1541,11 +1652,11 @@ export namespace ElastiCache {
     }
 
     // parameter_group_name - computed: true, optional: true, required: false
-    private _parameterGroupName?: string;
+    private _parameterGroupName?: string | undefined; 
     public get parameterGroupName() {
       return this.getStringAttribute('parameter_group_name');
     }
-    public set parameterGroupName(value: string) {
+    public set parameterGroupName(value: string | undefined) {
       this._parameterGroupName = value;
     }
     public resetParameterGroupName() {
@@ -1557,11 +1668,11 @@ export namespace ElastiCache {
     }
 
     // port - computed: false, optional: true, required: false
-    private _port?: number;
+    private _port?: number | undefined; 
     public get port() {
       return this.getNumberAttribute('port');
     }
-    public set port(value: number ) {
+    public set port(value: number | undefined) {
       this._port = value;
     }
     public resetPort() {
@@ -1583,7 +1694,7 @@ export namespace ElastiCache {
     }
 
     // replication_group_description - computed: false, optional: false, required: true
-    private _replicationGroupDescription: string;
+    private _replicationGroupDescription?: string; 
     public get replicationGroupDescription() {
       return this.getStringAttribute('replication_group_description');
     }
@@ -1596,7 +1707,7 @@ export namespace ElastiCache {
     }
 
     // replication_group_id - computed: false, optional: false, required: true
-    private _replicationGroupId: string;
+    private _replicationGroupId?: string; 
     public get replicationGroupId() {
       return this.getStringAttribute('replication_group_id');
     }
@@ -1609,11 +1720,11 @@ export namespace ElastiCache {
     }
 
     // security_group_ids - computed: true, optional: true, required: false
-    private _securityGroupIds?: string[];
+    private _securityGroupIds?: string[] | undefined; 
     public get securityGroupIds() {
       return this.getListAttribute('security_group_ids');
     }
-    public set securityGroupIds(value: string[]) {
+    public set securityGroupIds(value: string[] | undefined) {
       this._securityGroupIds = value;
     }
     public resetSecurityGroupIds() {
@@ -1625,11 +1736,11 @@ export namespace ElastiCache {
     }
 
     // security_group_names - computed: true, optional: true, required: false
-    private _securityGroupNames?: string[];
+    private _securityGroupNames?: string[] | undefined; 
     public get securityGroupNames() {
       return this.getListAttribute('security_group_names');
     }
-    public set securityGroupNames(value: string[]) {
+    public set securityGroupNames(value: string[] | undefined) {
       this._securityGroupNames = value;
     }
     public resetSecurityGroupNames() {
@@ -1641,11 +1752,11 @@ export namespace ElastiCache {
     }
 
     // snapshot_arns - computed: false, optional: true, required: false
-    private _snapshotArns?: string[];
+    private _snapshotArns?: string[] | undefined; 
     public get snapshotArns() {
       return this.getListAttribute('snapshot_arns');
     }
-    public set snapshotArns(value: string[] ) {
+    public set snapshotArns(value: string[] | undefined) {
       this._snapshotArns = value;
     }
     public resetSnapshotArns() {
@@ -1657,11 +1768,11 @@ export namespace ElastiCache {
     }
 
     // snapshot_name - computed: false, optional: true, required: false
-    private _snapshotName?: string;
+    private _snapshotName?: string | undefined; 
     public get snapshotName() {
       return this.getStringAttribute('snapshot_name');
     }
-    public set snapshotName(value: string ) {
+    public set snapshotName(value: string | undefined) {
       this._snapshotName = value;
     }
     public resetSnapshotName() {
@@ -1673,11 +1784,11 @@ export namespace ElastiCache {
     }
 
     // snapshot_retention_limit - computed: false, optional: true, required: false
-    private _snapshotRetentionLimit?: number;
+    private _snapshotRetentionLimit?: number | undefined; 
     public get snapshotRetentionLimit() {
       return this.getNumberAttribute('snapshot_retention_limit');
     }
-    public set snapshotRetentionLimit(value: number ) {
+    public set snapshotRetentionLimit(value: number | undefined) {
       this._snapshotRetentionLimit = value;
     }
     public resetSnapshotRetentionLimit() {
@@ -1689,11 +1800,11 @@ export namespace ElastiCache {
     }
 
     // snapshot_window - computed: true, optional: true, required: false
-    private _snapshotWindow?: string;
+    private _snapshotWindow?: string | undefined; 
     public get snapshotWindow() {
       return this.getStringAttribute('snapshot_window');
     }
-    public set snapshotWindow(value: string) {
+    public set snapshotWindow(value: string | undefined) {
       this._snapshotWindow = value;
     }
     public resetSnapshotWindow() {
@@ -1705,11 +1816,11 @@ export namespace ElastiCache {
     }
 
     // subnet_group_name - computed: true, optional: true, required: false
-    private _subnetGroupName?: string;
+    private _subnetGroupName?: string | undefined; 
     public get subnetGroupName() {
       return this.getStringAttribute('subnet_group_name');
     }
-    public set subnetGroupName(value: string) {
+    public set subnetGroupName(value: string | undefined) {
       this._subnetGroupName = value;
     }
     public resetSubnetGroupName() {
@@ -1721,11 +1832,12 @@ export namespace ElastiCache {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1737,11 +1849,12 @@ export namespace ElastiCache {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1753,11 +1866,11 @@ export namespace ElastiCache {
     }
 
     // transit_encryption_enabled - computed: true, optional: true, required: false
-    private _transitEncryptionEnabled?: boolean | cdktf.IResolvable;
+    private _transitEncryptionEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get transitEncryptionEnabled() {
-      return this.getBooleanAttribute('transit_encryption_enabled');
+      return this.getBooleanAttribute('transit_encryption_enabled') as any;
     }
-    public set transitEncryptionEnabled(value: boolean | cdktf.IResolvable) {
+    public set transitEncryptionEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._transitEncryptionEnabled = value;
     }
     public resetTransitEncryptionEnabled() {
@@ -1769,11 +1882,12 @@ export namespace ElastiCache {
     }
 
     // cluster_mode - computed: false, optional: true, required: false
-    private _clusterMode?: ElasticacheReplicationGroupClusterMode[];
+    private _clusterMode?: ElasticacheReplicationGroupClusterMode | undefined; 
+    private __clusterModeOutput = new ElasticacheReplicationGroupClusterModeOutputReference(this as any, "cluster_mode", true);
     public get clusterMode() {
-      return this.interpolationForAttribute('cluster_mode') as any;
+      return this.__clusterModeOutput;
     }
-    public set clusterMode(value: ElasticacheReplicationGroupClusterMode[] ) {
+    public putClusterMode(value: ElasticacheReplicationGroupClusterMode | undefined) {
       this._clusterMode = value;
     }
     public resetClusterMode() {
@@ -1785,11 +1899,12 @@ export namespace ElastiCache {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: ElasticacheReplicationGroupTimeouts;
+    private _timeouts?: ElasticacheReplicationGroupTimeouts | undefined; 
+    private __timeoutsOutput = new ElasticacheReplicationGroupTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: ElasticacheReplicationGroupTimeouts ) {
+    public putTimeouts(value: ElasticacheReplicationGroupTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1836,7 +1951,7 @@ export namespace ElastiCache {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         transit_encryption_enabled: cdktf.booleanToTerraform(this._transitEncryptionEnabled),
-        cluster_mode: cdktf.listMapper(elasticacheReplicationGroupClusterModeToTerraform)(this._clusterMode),
+        cluster_mode: elasticacheReplicationGroupClusterModeToTerraform(this._clusterMode),
         timeouts: elasticacheReplicationGroupTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -1898,11 +2013,11 @@ export namespace ElastiCache {
     // ==========
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1919,7 +2034,7 @@ export namespace ElastiCache {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1932,7 +2047,7 @@ export namespace ElastiCache {
     }
 
     // security_group_names - computed: false, optional: false, required: true
-    private _securityGroupNames: string[];
+    private _securityGroupNames?: string[]; 
     public get securityGroupNames() {
       return this.getListAttribute('security_group_names');
     }
@@ -2028,11 +2143,11 @@ export namespace ElastiCache {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -2049,7 +2164,7 @@ export namespace ElastiCache {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2062,7 +2177,7 @@ export namespace ElastiCache {
     }
 
     // subnet_ids - computed: false, optional: false, required: true
-    private _subnetIds: string[];
+    private _subnetIds?: string[]; 
     public get subnetIds() {
       return this.getListAttribute('subnet_ids');
     }
@@ -2075,11 +2190,12 @@ export namespace ElastiCache {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2091,11 +2207,12 @@ export namespace ElastiCache {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2202,7 +2319,7 @@ export namespace ElastiCache {
     // ==========
 
     // access_string - computed: false, optional: false, required: true
-    private _accessString: string;
+    private _accessString?: string; 
     public get accessString() {
       return this.getStringAttribute('access_string');
     }
@@ -2220,7 +2337,7 @@ export namespace ElastiCache {
     }
 
     // engine - computed: false, optional: false, required: true
-    private _engine: string;
+    private _engine?: string; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
@@ -2238,11 +2355,11 @@ export namespace ElastiCache {
     }
 
     // no_password_required - computed: false, optional: true, required: false
-    private _noPasswordRequired?: boolean | cdktf.IResolvable;
+    private _noPasswordRequired?: boolean | cdktf.IResolvable | undefined; 
     public get noPasswordRequired() {
-      return this.getBooleanAttribute('no_password_required');
+      return this.getBooleanAttribute('no_password_required') as any;
     }
-    public set noPasswordRequired(value: boolean | cdktf.IResolvable ) {
+    public set noPasswordRequired(value: boolean | cdktf.IResolvable | undefined) {
       this._noPasswordRequired = value;
     }
     public resetNoPasswordRequired() {
@@ -2254,11 +2371,11 @@ export namespace ElastiCache {
     }
 
     // passwords - computed: false, optional: true, required: false
-    private _passwords?: string[];
+    private _passwords?: string[] | undefined; 
     public get passwords() {
       return this.getListAttribute('passwords');
     }
-    public set passwords(value: string[] ) {
+    public set passwords(value: string[] | undefined) {
       this._passwords = value;
     }
     public resetPasswords() {
@@ -2270,11 +2387,12 @@ export namespace ElastiCache {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2286,11 +2404,12 @@ export namespace ElastiCache {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2302,7 +2421,7 @@ export namespace ElastiCache {
     }
 
     // user_id - computed: false, optional: false, required: true
-    private _userId: string;
+    private _userId?: string; 
     public get userId() {
       return this.getStringAttribute('user_id');
     }
@@ -2315,7 +2434,7 @@ export namespace ElastiCache {
     }
 
     // user_name - computed: false, optional: false, required: true
-    private _userName: string;
+    private _userName?: string; 
     public get userName() {
       return this.getStringAttribute('user_name');
     }
@@ -2416,7 +2535,7 @@ export namespace ElastiCache {
     }
 
     // engine - computed: false, optional: false, required: true
-    private _engine: string;
+    private _engine?: string; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
@@ -2434,11 +2553,12 @@ export namespace ElastiCache {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2450,11 +2570,12 @@ export namespace ElastiCache {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2466,7 +2587,7 @@ export namespace ElastiCache {
     }
 
     // user_group_id - computed: false, optional: false, required: true
-    private _userGroupId: string;
+    private _userGroupId?: string; 
     public get userGroupId() {
       return this.getStringAttribute('user_group_id');
     }
@@ -2479,11 +2600,11 @@ export namespace ElastiCache {
     }
 
     // user_ids - computed: false, optional: true, required: false
-    private _userIds?: string[];
+    private _userIds?: string[] | undefined; 
     public get userIds() {
       return this.getListAttribute('user_ids');
     }
-    public set userIds(value: string[] ) {
+    public set userIds(value: string[] | undefined) {
       this._userIds = value;
     }
     public resetUserIds() {
@@ -2602,7 +2723,7 @@ export namespace ElastiCache {
     }
 
     // cluster_id - computed: false, optional: false, required: true
-    private _clusterId: string;
+    private _clusterId?: string; 
     public get clusterId() {
       return this.getStringAttribute('cluster_id');
     }
@@ -2695,11 +2816,12 @@ export namespace ElastiCache {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2774,12 +2896,12 @@ export namespace ElastiCache {
 
     // auth_token_enabled - computed: true, optional: false, required: false
     public get authTokenEnabled() {
-      return this.getBooleanAttribute('auth_token_enabled');
+      return this.getBooleanAttribute('auth_token_enabled') as any;
     }
 
     // automatic_failover_enabled - computed: true, optional: false, required: false
     public get automaticFailoverEnabled() {
-      return this.getBooleanAttribute('automatic_failover_enabled');
+      return this.getBooleanAttribute('automatic_failover_enabled') as any;
     }
 
     // configuration_endpoint_address - computed: true, optional: false, required: false
@@ -2799,7 +2921,7 @@ export namespace ElastiCache {
 
     // multi_az_enabled - computed: true, optional: false, required: false
     public get multiAzEnabled() {
-      return this.getBooleanAttribute('multi_az_enabled');
+      return this.getBooleanAttribute('multi_az_enabled') as any;
     }
 
     // node_type - computed: true, optional: false, required: false
@@ -2833,7 +2955,7 @@ export namespace ElastiCache {
     }
 
     // replication_group_id - computed: false, optional: false, required: true
-    private _replicationGroupId: string;
+    private _replicationGroupId?: string; 
     public get replicationGroupId() {
       return this.getStringAttribute('replication_group_id');
     }
@@ -2937,11 +3059,11 @@ export namespace ElastiCache {
     // ==========
 
     // access_string - computed: false, optional: true, required: false
-    private _accessString?: string;
+    private _accessString?: string | undefined; 
     public get accessString() {
       return this.getStringAttribute('access_string');
     }
-    public set accessString(value: string ) {
+    public set accessString(value: string | undefined) {
       this._accessString = value;
     }
     public resetAccessString() {
@@ -2953,11 +3075,11 @@ export namespace ElastiCache {
     }
 
     // engine - computed: false, optional: true, required: false
-    private _engine?: string;
+    private _engine?: string | undefined; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
-    public set engine(value: string ) {
+    public set engine(value: string | undefined) {
       this._engine = value;
     }
     public resetEngine() {
@@ -2974,11 +3096,11 @@ export namespace ElastiCache {
     }
 
     // no_password_required - computed: false, optional: true, required: false
-    private _noPasswordRequired?: boolean | cdktf.IResolvable;
+    private _noPasswordRequired?: boolean | cdktf.IResolvable | undefined; 
     public get noPasswordRequired() {
-      return this.getBooleanAttribute('no_password_required');
+      return this.getBooleanAttribute('no_password_required') as any;
     }
-    public set noPasswordRequired(value: boolean | cdktf.IResolvable ) {
+    public set noPasswordRequired(value: boolean | cdktf.IResolvable | undefined) {
       this._noPasswordRequired = value;
     }
     public resetNoPasswordRequired() {
@@ -2990,11 +3112,11 @@ export namespace ElastiCache {
     }
 
     // passwords - computed: false, optional: true, required: false
-    private _passwords?: string[];
+    private _passwords?: string[] | undefined; 
     public get passwords() {
       return this.getListAttribute('passwords');
     }
-    public set passwords(value: string[] ) {
+    public set passwords(value: string[] | undefined) {
       this._passwords = value;
     }
     public resetPasswords() {
@@ -3006,7 +3128,7 @@ export namespace ElastiCache {
     }
 
     // user_id - computed: false, optional: false, required: true
-    private _userId: string;
+    private _userId?: string; 
     public get userId() {
       return this.getStringAttribute('user_id');
     }
@@ -3019,11 +3141,11 @@ export namespace ElastiCache {
     }
 
     // user_name - computed: false, optional: true, required: false
-    private _userName?: string;
+    private _userName?: string | undefined; 
     public get userName() {
       return this.getStringAttribute('user_name');
     }
-    public set userName(value: string ) {
+    public set userName(value: string | undefined) {
       this._userName = value;
     }
     public resetUserName() {

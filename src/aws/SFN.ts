@@ -74,7 +74,7 @@ export namespace SFN {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -87,11 +87,12 @@ export namespace SFN {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -103,11 +104,12 @@ export namespace SFN {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -160,13 +162,13 @@ export namespace SFN {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sfn_state_machine.html#logging_configuration SfnStateMachine#logging_configuration}
     */
-    readonly loggingConfiguration?: SfnStateMachineLoggingConfiguration[];
+    readonly loggingConfiguration?: SfnStateMachineLoggingConfiguration;
     /**
     * tracing_configuration block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sfn_state_machine.html#tracing_configuration SfnStateMachine#tracing_configuration}
     */
-    readonly tracingConfiguration?: SfnStateMachineTracingConfiguration[];
+    readonly tracingConfiguration?: SfnStateMachineTracingConfiguration;
   }
   export interface SfnStateMachineLoggingConfiguration {
     /**
@@ -183,8 +185,11 @@ export namespace SFN {
     readonly logDestination?: string;
   }
 
-  function sfnStateMachineLoggingConfigurationToTerraform(struct?: SfnStateMachineLoggingConfiguration): any {
+  function sfnStateMachineLoggingConfigurationToTerraform(struct?: SfnStateMachineLoggingConfigurationOutputReference | SfnStateMachineLoggingConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       include_execution_data: cdktf.booleanToTerraform(struct!.includeExecutionData),
       level: cdktf.stringToTerraform(struct!.level),
@@ -192,6 +197,64 @@ export namespace SFN {
     }
   }
 
+  export class SfnStateMachineLoggingConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // include_execution_data - computed: false, optional: true, required: false
+    private _includeExecutionData?: boolean | cdktf.IResolvable | undefined; 
+    public get includeExecutionData() {
+      return this.getBooleanAttribute('include_execution_data') as any;
+    }
+    public set includeExecutionData(value: boolean | cdktf.IResolvable | undefined) {
+      this._includeExecutionData = value;
+    }
+    public resetIncludeExecutionData() {
+      this._includeExecutionData = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get includeExecutionDataInput() {
+      return this._includeExecutionData
+    }
+
+    // level - computed: false, optional: true, required: false
+    private _level?: string | undefined; 
+    public get level() {
+      return this.getStringAttribute('level');
+    }
+    public set level(value: string | undefined) {
+      this._level = value;
+    }
+    public resetLevel() {
+      this._level = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get levelInput() {
+      return this._level
+    }
+
+    // log_destination - computed: false, optional: true, required: false
+    private _logDestination?: string | undefined; 
+    public get logDestination() {
+      return this.getStringAttribute('log_destination');
+    }
+    public set logDestination(value: string | undefined) {
+      this._logDestination = value;
+    }
+    public resetLogDestination() {
+      this._logDestination = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get logDestinationInput() {
+      return this._logDestination
+    }
+  }
   export interface SfnStateMachineTracingConfiguration {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/sfn_state_machine.html#enabled SfnStateMachine#enabled}
@@ -199,13 +262,42 @@ export namespace SFN {
     readonly enabled?: boolean | cdktf.IResolvable;
   }
 
-  function sfnStateMachineTracingConfigurationToTerraform(struct?: SfnStateMachineTracingConfiguration): any {
+  function sfnStateMachineTracingConfigurationToTerraform(struct?: SfnStateMachineTracingConfigurationOutputReference | SfnStateMachineTracingConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       enabled: cdktf.booleanToTerraform(struct!.enabled),
     }
   }
 
+  export class SfnStateMachineTracingConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // enabled - computed: false, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/sfn_state_machine.html aws_sfn_state_machine}
@@ -264,7 +356,7 @@ export namespace SFN {
     }
 
     // definition - computed: false, optional: false, required: true
-    private _definition: string;
+    private _definition?: string; 
     public get definition() {
       return this.getStringAttribute('definition');
     }
@@ -282,7 +374,7 @@ export namespace SFN {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -295,7 +387,7 @@ export namespace SFN {
     }
 
     // role_arn - computed: false, optional: false, required: true
-    private _roleArn: string;
+    private _roleArn?: string; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
@@ -313,11 +405,12 @@ export namespace SFN {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -329,11 +422,12 @@ export namespace SFN {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -345,11 +439,11 @@ export namespace SFN {
     }
 
     // type - computed: false, optional: true, required: false
-    private _type?: string;
+    private _type?: string | undefined; 
     public get type() {
       return this.getStringAttribute('type');
     }
-    public set type(value: string ) {
+    public set type(value: string | undefined) {
       this._type = value;
     }
     public resetType() {
@@ -361,11 +455,12 @@ export namespace SFN {
     }
 
     // logging_configuration - computed: false, optional: true, required: false
-    private _loggingConfiguration?: SfnStateMachineLoggingConfiguration[];
+    private _loggingConfiguration?: SfnStateMachineLoggingConfiguration | undefined; 
+    private __loggingConfigurationOutput = new SfnStateMachineLoggingConfigurationOutputReference(this as any, "logging_configuration", true);
     public get loggingConfiguration() {
-      return this.interpolationForAttribute('logging_configuration') as any;
+      return this.__loggingConfigurationOutput;
     }
-    public set loggingConfiguration(value: SfnStateMachineLoggingConfiguration[] ) {
+    public putLoggingConfiguration(value: SfnStateMachineLoggingConfiguration | undefined) {
       this._loggingConfiguration = value;
     }
     public resetLoggingConfiguration() {
@@ -377,11 +472,12 @@ export namespace SFN {
     }
 
     // tracing_configuration - computed: false, optional: true, required: false
-    private _tracingConfiguration?: SfnStateMachineTracingConfiguration[];
+    private _tracingConfiguration?: SfnStateMachineTracingConfiguration | undefined; 
+    private __tracingConfigurationOutput = new SfnStateMachineTracingConfigurationOutputReference(this as any, "tracing_configuration", true);
     public get tracingConfiguration() {
-      return this.interpolationForAttribute('tracing_configuration') as any;
+      return this.__tracingConfigurationOutput;
     }
-    public set tracingConfiguration(value: SfnStateMachineTracingConfiguration[] ) {
+    public putTracingConfiguration(value: SfnStateMachineTracingConfiguration | undefined) {
       this._tracingConfiguration = value;
     }
     public resetTracingConfiguration() {
@@ -404,8 +500,8 @@ export namespace SFN {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         type: cdktf.stringToTerraform(this._type),
-        logging_configuration: cdktf.listMapper(sfnStateMachineLoggingConfigurationToTerraform)(this._loggingConfiguration),
-        tracing_configuration: cdktf.listMapper(sfnStateMachineTracingConfigurationToTerraform)(this._tracingConfiguration),
+        logging_configuration: sfnStateMachineLoggingConfigurationToTerraform(this._loggingConfiguration),
+        tracing_configuration: sfnStateMachineTracingConfigurationToTerraform(this._tracingConfiguration),
       };
     }
   }
@@ -471,11 +567,11 @@ export namespace SFN {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -563,7 +659,7 @@ export namespace SFN {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }

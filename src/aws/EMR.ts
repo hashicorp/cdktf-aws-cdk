@@ -103,37 +103,37 @@ export namespace EMR {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#core_instance_fleet EmrCluster#core_instance_fleet}
     */
-    readonly coreInstanceFleet?: EmrClusterCoreInstanceFleet[];
+    readonly coreInstanceFleet?: EmrClusterCoreInstanceFleet;
     /**
     * core_instance_group block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#core_instance_group EmrCluster#core_instance_group}
     */
-    readonly coreInstanceGroup?: EmrClusterCoreInstanceGroup[];
+    readonly coreInstanceGroup?: EmrClusterCoreInstanceGroup;
     /**
     * ec2_attributes block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#ec2_attributes EmrCluster#ec2_attributes}
     */
-    readonly ec2Attributes?: EmrClusterEc2Attributes[];
+    readonly ec2Attributes?: EmrClusterEc2Attributes;
     /**
     * kerberos_attributes block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#kerberos_attributes EmrCluster#kerberos_attributes}
     */
-    readonly kerberosAttributes?: EmrClusterKerberosAttributes[];
+    readonly kerberosAttributes?: EmrClusterKerberosAttributes;
     /**
     * master_instance_fleet block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#master_instance_fleet EmrCluster#master_instance_fleet}
     */
-    readonly masterInstanceFleet?: EmrClusterMasterInstanceFleet[];
+    readonly masterInstanceFleet?: EmrClusterMasterInstanceFleet;
     /**
     * master_instance_group block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#master_instance_group EmrCluster#master_instance_group}
     */
-    readonly masterInstanceGroup?: EmrClusterMasterInstanceGroup[];
+    readonly masterInstanceGroup?: EmrClusterMasterInstanceGroup;
   }
   export interface EmrClusterStepHadoopJarStep {
     /**
@@ -156,6 +156,9 @@ export namespace EMR {
 
   function emrClusterStepHadoopJarStepToTerraform(struct?: EmrClusterStepHadoopJarStep): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       args: struct!.args === undefined ? null : cdktf.listMapper(cdktf.stringToTerraform)(struct!.args),
       jar: struct!.jar === undefined ? null : cdktf.stringToTerraform(struct!.jar),
@@ -181,6 +184,9 @@ export namespace EMR {
 
   function emrClusterStepToTerraform(struct?: EmrClusterStep): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       action_on_failure: struct!.actionOnFailure === undefined ? null : cdktf.stringToTerraform(struct!.actionOnFailure),
       hadoop_jar_step: struct!.hadoopJarStep === undefined ? null : cdktf.listMapper(emrClusterStepHadoopJarStepToTerraform)(struct!.hadoopJarStep),
@@ -205,6 +211,9 @@ export namespace EMR {
 
   function emrClusterBootstrapActionToTerraform(struct?: EmrClusterBootstrapAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       args: cdktf.listMapper(cdktf.stringToTerraform)(struct!.args),
       name: cdktf.stringToTerraform(struct!.name),
@@ -225,6 +234,9 @@ export namespace EMR {
 
   function emrClusterCoreInstanceFleetInstanceTypeConfigsConfigurationsToTerraform(struct?: EmrClusterCoreInstanceFleetInstanceTypeConfigsConfigurations): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       classification: cdktf.stringToTerraform(struct!.classification),
       properties: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.properties),
@@ -252,6 +264,9 @@ export namespace EMR {
 
   function emrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfigToTerraform(struct?: EmrClusterCoreInstanceFleetInstanceTypeConfigsEbsConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       iops: cdktf.numberToTerraform(struct!.iops),
       size: cdktf.numberToTerraform(struct!.size),
@@ -293,6 +308,9 @@ export namespace EMR {
 
   function emrClusterCoreInstanceFleetInstanceTypeConfigsToTerraform(struct?: EmrClusterCoreInstanceFleetInstanceTypeConfigs): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bid_price: cdktf.stringToTerraform(struct!.bidPrice),
       bid_price_as_percentage_of_on_demand_price: cdktf.numberToTerraform(struct!.bidPriceAsPercentageOfOnDemandPrice),
@@ -312,6 +330,9 @@ export namespace EMR {
 
   function emrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecificationToTerraform(struct?: EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allocation_strategy: cdktf.stringToTerraform(struct!.allocationStrategy),
     }
@@ -338,6 +359,9 @@ export namespace EMR {
 
   function emrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecificationToTerraform(struct?: EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allocation_strategy: cdktf.stringToTerraform(struct!.allocationStrategy),
       block_duration_minutes: cdktf.numberToTerraform(struct!.blockDurationMinutes),
@@ -361,14 +385,61 @@ export namespace EMR {
     readonly spotSpecification?: EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification[];
   }
 
-  function emrClusterCoreInstanceFleetLaunchSpecificationsToTerraform(struct?: EmrClusterCoreInstanceFleetLaunchSpecifications): any {
+  function emrClusterCoreInstanceFleetLaunchSpecificationsToTerraform(struct?: EmrClusterCoreInstanceFleetLaunchSpecificationsOutputReference | EmrClusterCoreInstanceFleetLaunchSpecifications): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       on_demand_specification: cdktf.listMapper(emrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecificationToTerraform)(struct!.onDemandSpecification),
       spot_specification: cdktf.listMapper(emrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecificationToTerraform)(struct!.spotSpecification),
     }
   }
 
+  export class EmrClusterCoreInstanceFleetLaunchSpecificationsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // on_demand_specification - computed: false, optional: true, required: false
+    private _onDemandSpecification?: EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification[] | undefined; 
+    public get onDemandSpecification() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('on_demand_specification') as any;
+    }
+    public set onDemandSpecification(value: EmrClusterCoreInstanceFleetLaunchSpecificationsOnDemandSpecification[] | undefined) {
+      this._onDemandSpecification = value;
+    }
+    public resetOnDemandSpecification() {
+      this._onDemandSpecification = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get onDemandSpecificationInput() {
+      return this._onDemandSpecification
+    }
+
+    // spot_specification - computed: false, optional: true, required: false
+    private _spotSpecification?: EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification[] | undefined; 
+    public get spotSpecification() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('spot_specification') as any;
+    }
+    public set spotSpecification(value: EmrClusterCoreInstanceFleetLaunchSpecificationsSpotSpecification[] | undefined) {
+      this._spotSpecification = value;
+    }
+    public resetSpotSpecification() {
+      this._spotSpecification = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get spotSpecificationInput() {
+      return this._spotSpecification
+    }
+  }
   export interface EmrClusterCoreInstanceFleet {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#name EmrCluster#name}
@@ -393,20 +464,115 @@ export namespace EMR {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#launch_specifications EmrCluster#launch_specifications}
     */
-    readonly launchSpecifications?: EmrClusterCoreInstanceFleetLaunchSpecifications[];
+    readonly launchSpecifications?: EmrClusterCoreInstanceFleetLaunchSpecifications;
   }
 
-  function emrClusterCoreInstanceFleetToTerraform(struct?: EmrClusterCoreInstanceFleet): any {
+  function emrClusterCoreInstanceFleetToTerraform(struct?: EmrClusterCoreInstanceFleetOutputReference | EmrClusterCoreInstanceFleet): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       target_on_demand_capacity: cdktf.numberToTerraform(struct!.targetOnDemandCapacity),
       target_spot_capacity: cdktf.numberToTerraform(struct!.targetSpotCapacity),
       instance_type_configs: cdktf.listMapper(emrClusterCoreInstanceFleetInstanceTypeConfigsToTerraform)(struct!.instanceTypeConfigs),
-      launch_specifications: cdktf.listMapper(emrClusterCoreInstanceFleetLaunchSpecificationsToTerraform)(struct!.launchSpecifications),
+      launch_specifications: emrClusterCoreInstanceFleetLaunchSpecificationsToTerraform(struct!.launchSpecifications),
     }
   }
 
+  export class EmrClusterCoreInstanceFleetOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // name - computed: false, optional: true, required: false
+    private _name?: string | undefined; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string | undefined) {
+      this._name = value;
+    }
+    public resetName() {
+      this._name = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+
+    // target_on_demand_capacity - computed: false, optional: true, required: false
+    private _targetOnDemandCapacity?: number | undefined; 
+    public get targetOnDemandCapacity() {
+      return this.getNumberAttribute('target_on_demand_capacity');
+    }
+    public set targetOnDemandCapacity(value: number | undefined) {
+      this._targetOnDemandCapacity = value;
+    }
+    public resetTargetOnDemandCapacity() {
+      this._targetOnDemandCapacity = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get targetOnDemandCapacityInput() {
+      return this._targetOnDemandCapacity
+    }
+
+    // target_spot_capacity - computed: false, optional: true, required: false
+    private _targetSpotCapacity?: number | undefined; 
+    public get targetSpotCapacity() {
+      return this.getNumberAttribute('target_spot_capacity');
+    }
+    public set targetSpotCapacity(value: number | undefined) {
+      this._targetSpotCapacity = value;
+    }
+    public resetTargetSpotCapacity() {
+      this._targetSpotCapacity = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get targetSpotCapacityInput() {
+      return this._targetSpotCapacity
+    }
+
+    // instance_type_configs - computed: false, optional: true, required: false
+    private _instanceTypeConfigs?: EmrClusterCoreInstanceFleetInstanceTypeConfigs[] | undefined; 
+    public get instanceTypeConfigs() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('instance_type_configs') as any;
+    }
+    public set instanceTypeConfigs(value: EmrClusterCoreInstanceFleetInstanceTypeConfigs[] | undefined) {
+      this._instanceTypeConfigs = value;
+    }
+    public resetInstanceTypeConfigs() {
+      this._instanceTypeConfigs = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get instanceTypeConfigsInput() {
+      return this._instanceTypeConfigs
+    }
+
+    // launch_specifications - computed: false, optional: true, required: false
+    private _launchSpecifications?: EmrClusterCoreInstanceFleetLaunchSpecifications | undefined; 
+    private __launchSpecificationsOutput = new EmrClusterCoreInstanceFleetLaunchSpecificationsOutputReference(this as any, "launch_specifications", true);
+    public get launchSpecifications() {
+      return this.__launchSpecificationsOutput;
+    }
+    public putLaunchSpecifications(value: EmrClusterCoreInstanceFleetLaunchSpecifications | undefined) {
+      this._launchSpecifications = value;
+    }
+    public resetLaunchSpecifications() {
+      this._launchSpecifications = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get launchSpecificationsInput() {
+      return this._launchSpecifications
+    }
+  }
   export interface EmrClusterCoreInstanceGroupEbsConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#iops EmrCluster#iops}
@@ -428,6 +594,9 @@ export namespace EMR {
 
   function emrClusterCoreInstanceGroupEbsConfigToTerraform(struct?: EmrClusterCoreInstanceGroupEbsConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       iops: cdktf.numberToTerraform(struct!.iops),
       size: cdktf.numberToTerraform(struct!.size),
@@ -465,8 +634,11 @@ export namespace EMR {
     readonly ebsConfig?: EmrClusterCoreInstanceGroupEbsConfig[];
   }
 
-  function emrClusterCoreInstanceGroupToTerraform(struct?: EmrClusterCoreInstanceGroup): any {
+  function emrClusterCoreInstanceGroupToTerraform(struct?: EmrClusterCoreInstanceGroupOutputReference | EmrClusterCoreInstanceGroup): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       autoscaling_policy: cdktf.stringToTerraform(struct!.autoscalingPolicy),
       bid_price: cdktf.stringToTerraform(struct!.bidPrice),
@@ -477,6 +649,110 @@ export namespace EMR {
     }
   }
 
+  export class EmrClusterCoreInstanceGroupOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // autoscaling_policy - computed: false, optional: true, required: false
+    private _autoscalingPolicy?: string | undefined; 
+    public get autoscalingPolicy() {
+      return this.getStringAttribute('autoscaling_policy');
+    }
+    public set autoscalingPolicy(value: string | undefined) {
+      this._autoscalingPolicy = value;
+    }
+    public resetAutoscalingPolicy() {
+      this._autoscalingPolicy = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get autoscalingPolicyInput() {
+      return this._autoscalingPolicy
+    }
+
+    // bid_price - computed: false, optional: true, required: false
+    private _bidPrice?: string | undefined; 
+    public get bidPrice() {
+      return this.getStringAttribute('bid_price');
+    }
+    public set bidPrice(value: string | undefined) {
+      this._bidPrice = value;
+    }
+    public resetBidPrice() {
+      this._bidPrice = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bidPriceInput() {
+      return this._bidPrice
+    }
+
+    // instance_count - computed: false, optional: true, required: false
+    private _instanceCount?: number | undefined; 
+    public get instanceCount() {
+      return this.getNumberAttribute('instance_count');
+    }
+    public set instanceCount(value: number | undefined) {
+      this._instanceCount = value;
+    }
+    public resetInstanceCount() {
+      this._instanceCount = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get instanceCountInput() {
+      return this._instanceCount
+    }
+
+    // instance_type - computed: false, optional: false, required: true
+    private _instanceType?: string; 
+    public get instanceType() {
+      return this.getStringAttribute('instance_type');
+    }
+    public set instanceType(value: string) {
+      this._instanceType = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get instanceTypeInput() {
+      return this._instanceType
+    }
+
+    // name - computed: false, optional: true, required: false
+    private _name?: string | undefined; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string | undefined) {
+      this._name = value;
+    }
+    public resetName() {
+      this._name = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+
+    // ebs_config - computed: false, optional: true, required: false
+    private _ebsConfig?: EmrClusterCoreInstanceGroupEbsConfig[] | undefined; 
+    public get ebsConfig() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('ebs_config') as any;
+    }
+    public set ebsConfig(value: EmrClusterCoreInstanceGroupEbsConfig[] | undefined) {
+      this._ebsConfig = value;
+    }
+    public resetEbsConfig() {
+      this._ebsConfig = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get ebsConfigInput() {
+      return this._ebsConfig
+    }
+  }
   export interface EmrClusterEc2Attributes {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#additional_master_security_groups EmrCluster#additional_master_security_groups}
@@ -516,8 +792,11 @@ export namespace EMR {
     readonly subnetIds?: string[];
   }
 
-  function emrClusterEc2AttributesToTerraform(struct?: EmrClusterEc2Attributes): any {
+  function emrClusterEc2AttributesToTerraform(struct?: EmrClusterEc2AttributesOutputReference | EmrClusterEc2Attributes): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       additional_master_security_groups: cdktf.stringToTerraform(struct!.additionalMasterSecurityGroups),
       additional_slave_security_groups: cdktf.stringToTerraform(struct!.additionalSlaveSecurityGroups),
@@ -531,6 +810,157 @@ export namespace EMR {
     }
   }
 
+  export class EmrClusterEc2AttributesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // additional_master_security_groups - computed: false, optional: true, required: false
+    private _additionalMasterSecurityGroups?: string | undefined; 
+    public get additionalMasterSecurityGroups() {
+      return this.getStringAttribute('additional_master_security_groups');
+    }
+    public set additionalMasterSecurityGroups(value: string | undefined) {
+      this._additionalMasterSecurityGroups = value;
+    }
+    public resetAdditionalMasterSecurityGroups() {
+      this._additionalMasterSecurityGroups = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get additionalMasterSecurityGroupsInput() {
+      return this._additionalMasterSecurityGroups
+    }
+
+    // additional_slave_security_groups - computed: false, optional: true, required: false
+    private _additionalSlaveSecurityGroups?: string | undefined; 
+    public get additionalSlaveSecurityGroups() {
+      return this.getStringAttribute('additional_slave_security_groups');
+    }
+    public set additionalSlaveSecurityGroups(value: string | undefined) {
+      this._additionalSlaveSecurityGroups = value;
+    }
+    public resetAdditionalSlaveSecurityGroups() {
+      this._additionalSlaveSecurityGroups = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get additionalSlaveSecurityGroupsInput() {
+      return this._additionalSlaveSecurityGroups
+    }
+
+    // emr_managed_master_security_group - computed: true, optional: true, required: false
+    private _emrManagedMasterSecurityGroup?: string | undefined; 
+    public get emrManagedMasterSecurityGroup() {
+      return this.getStringAttribute('emr_managed_master_security_group');
+    }
+    public set emrManagedMasterSecurityGroup(value: string | undefined) {
+      this._emrManagedMasterSecurityGroup = value;
+    }
+    public resetEmrManagedMasterSecurityGroup() {
+      this._emrManagedMasterSecurityGroup = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get emrManagedMasterSecurityGroupInput() {
+      return this._emrManagedMasterSecurityGroup
+    }
+
+    // emr_managed_slave_security_group - computed: true, optional: true, required: false
+    private _emrManagedSlaveSecurityGroup?: string | undefined; 
+    public get emrManagedSlaveSecurityGroup() {
+      return this.getStringAttribute('emr_managed_slave_security_group');
+    }
+    public set emrManagedSlaveSecurityGroup(value: string | undefined) {
+      this._emrManagedSlaveSecurityGroup = value;
+    }
+    public resetEmrManagedSlaveSecurityGroup() {
+      this._emrManagedSlaveSecurityGroup = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get emrManagedSlaveSecurityGroupInput() {
+      return this._emrManagedSlaveSecurityGroup
+    }
+
+    // instance_profile - computed: false, optional: false, required: true
+    private _instanceProfile?: string; 
+    public get instanceProfile() {
+      return this.getStringAttribute('instance_profile');
+    }
+    public set instanceProfile(value: string) {
+      this._instanceProfile = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get instanceProfileInput() {
+      return this._instanceProfile
+    }
+
+    // key_name - computed: false, optional: true, required: false
+    private _keyName?: string | undefined; 
+    public get keyName() {
+      return this.getStringAttribute('key_name');
+    }
+    public set keyName(value: string | undefined) {
+      this._keyName = value;
+    }
+    public resetKeyName() {
+      this._keyName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get keyNameInput() {
+      return this._keyName
+    }
+
+    // service_access_security_group - computed: true, optional: true, required: false
+    private _serviceAccessSecurityGroup?: string | undefined; 
+    public get serviceAccessSecurityGroup() {
+      return this.getStringAttribute('service_access_security_group');
+    }
+    public set serviceAccessSecurityGroup(value: string | undefined) {
+      this._serviceAccessSecurityGroup = value;
+    }
+    public resetServiceAccessSecurityGroup() {
+      this._serviceAccessSecurityGroup = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get serviceAccessSecurityGroupInput() {
+      return this._serviceAccessSecurityGroup
+    }
+
+    // subnet_id - computed: true, optional: true, required: false
+    private _subnetId?: string | undefined; 
+    public get subnetId() {
+      return this.getStringAttribute('subnet_id');
+    }
+    public set subnetId(value: string | undefined) {
+      this._subnetId = value;
+    }
+    public resetSubnetId() {
+      this._subnetId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get subnetIdInput() {
+      return this._subnetId
+    }
+
+    // subnet_ids - computed: true, optional: true, required: false
+    private _subnetIds?: string[] | undefined; 
+    public get subnetIds() {
+      return this.getListAttribute('subnet_ids');
+    }
+    public set subnetIds(value: string[] | undefined) {
+      this._subnetIds = value;
+    }
+    public resetSubnetIds() {
+      this._subnetIds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get subnetIdsInput() {
+      return this._subnetIds
+    }
+  }
   export interface EmrClusterKerberosAttributes {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#ad_domain_join_password EmrCluster#ad_domain_join_password}
@@ -554,8 +984,11 @@ export namespace EMR {
     readonly realm: string;
   }
 
-  function emrClusterKerberosAttributesToTerraform(struct?: EmrClusterKerberosAttributes): any {
+  function emrClusterKerberosAttributesToTerraform(struct?: EmrClusterKerberosAttributesOutputReference | EmrClusterKerberosAttributes): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       ad_domain_join_password: cdktf.stringToTerraform(struct!.adDomainJoinPassword),
       ad_domain_join_user: cdktf.stringToTerraform(struct!.adDomainJoinUser),
@@ -565,6 +998,90 @@ export namespace EMR {
     }
   }
 
+  export class EmrClusterKerberosAttributesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // ad_domain_join_password - computed: false, optional: true, required: false
+    private _adDomainJoinPassword?: string | undefined; 
+    public get adDomainJoinPassword() {
+      return this.getStringAttribute('ad_domain_join_password');
+    }
+    public set adDomainJoinPassword(value: string | undefined) {
+      this._adDomainJoinPassword = value;
+    }
+    public resetAdDomainJoinPassword() {
+      this._adDomainJoinPassword = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get adDomainJoinPasswordInput() {
+      return this._adDomainJoinPassword
+    }
+
+    // ad_domain_join_user - computed: false, optional: true, required: false
+    private _adDomainJoinUser?: string | undefined; 
+    public get adDomainJoinUser() {
+      return this.getStringAttribute('ad_domain_join_user');
+    }
+    public set adDomainJoinUser(value: string | undefined) {
+      this._adDomainJoinUser = value;
+    }
+    public resetAdDomainJoinUser() {
+      this._adDomainJoinUser = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get adDomainJoinUserInput() {
+      return this._adDomainJoinUser
+    }
+
+    // cross_realm_trust_principal_password - computed: false, optional: true, required: false
+    private _crossRealmTrustPrincipalPassword?: string | undefined; 
+    public get crossRealmTrustPrincipalPassword() {
+      return this.getStringAttribute('cross_realm_trust_principal_password');
+    }
+    public set crossRealmTrustPrincipalPassword(value: string | undefined) {
+      this._crossRealmTrustPrincipalPassword = value;
+    }
+    public resetCrossRealmTrustPrincipalPassword() {
+      this._crossRealmTrustPrincipalPassword = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get crossRealmTrustPrincipalPasswordInput() {
+      return this._crossRealmTrustPrincipalPassword
+    }
+
+    // kdc_admin_password - computed: false, optional: false, required: true
+    private _kdcAdminPassword?: string; 
+    public get kdcAdminPassword() {
+      return this.getStringAttribute('kdc_admin_password');
+    }
+    public set kdcAdminPassword(value: string) {
+      this._kdcAdminPassword = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get kdcAdminPasswordInput() {
+      return this._kdcAdminPassword
+    }
+
+    // realm - computed: false, optional: false, required: true
+    private _realm?: string; 
+    public get realm() {
+      return this.getStringAttribute('realm');
+    }
+    public set realm(value: string) {
+      this._realm = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get realmInput() {
+      return this._realm
+    }
+  }
   export interface EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#classification EmrCluster#classification}
@@ -578,6 +1095,9 @@ export namespace EMR {
 
   function emrClusterMasterInstanceFleetInstanceTypeConfigsConfigurationsToTerraform(struct?: EmrClusterMasterInstanceFleetInstanceTypeConfigsConfigurations): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       classification: cdktf.stringToTerraform(struct!.classification),
       properties: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.properties),
@@ -605,6 +1125,9 @@ export namespace EMR {
 
   function emrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfigToTerraform(struct?: EmrClusterMasterInstanceFleetInstanceTypeConfigsEbsConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       iops: cdktf.numberToTerraform(struct!.iops),
       size: cdktf.numberToTerraform(struct!.size),
@@ -646,6 +1169,9 @@ export namespace EMR {
 
   function emrClusterMasterInstanceFleetInstanceTypeConfigsToTerraform(struct?: EmrClusterMasterInstanceFleetInstanceTypeConfigs): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bid_price: cdktf.stringToTerraform(struct!.bidPrice),
       bid_price_as_percentage_of_on_demand_price: cdktf.numberToTerraform(struct!.bidPriceAsPercentageOfOnDemandPrice),
@@ -665,6 +1191,9 @@ export namespace EMR {
 
   function emrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecificationToTerraform(struct?: EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allocation_strategy: cdktf.stringToTerraform(struct!.allocationStrategy),
     }
@@ -691,6 +1220,9 @@ export namespace EMR {
 
   function emrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecificationToTerraform(struct?: EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allocation_strategy: cdktf.stringToTerraform(struct!.allocationStrategy),
       block_duration_minutes: cdktf.numberToTerraform(struct!.blockDurationMinutes),
@@ -714,14 +1246,61 @@ export namespace EMR {
     readonly spotSpecification?: EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification[];
   }
 
-  function emrClusterMasterInstanceFleetLaunchSpecificationsToTerraform(struct?: EmrClusterMasterInstanceFleetLaunchSpecifications): any {
+  function emrClusterMasterInstanceFleetLaunchSpecificationsToTerraform(struct?: EmrClusterMasterInstanceFleetLaunchSpecificationsOutputReference | EmrClusterMasterInstanceFleetLaunchSpecifications): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       on_demand_specification: cdktf.listMapper(emrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecificationToTerraform)(struct!.onDemandSpecification),
       spot_specification: cdktf.listMapper(emrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecificationToTerraform)(struct!.spotSpecification),
     }
   }
 
+  export class EmrClusterMasterInstanceFleetLaunchSpecificationsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // on_demand_specification - computed: false, optional: true, required: false
+    private _onDemandSpecification?: EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification[] | undefined; 
+    public get onDemandSpecification() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('on_demand_specification') as any;
+    }
+    public set onDemandSpecification(value: EmrClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification[] | undefined) {
+      this._onDemandSpecification = value;
+    }
+    public resetOnDemandSpecification() {
+      this._onDemandSpecification = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get onDemandSpecificationInput() {
+      return this._onDemandSpecification
+    }
+
+    // spot_specification - computed: false, optional: true, required: false
+    private _spotSpecification?: EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification[] | undefined; 
+    public get spotSpecification() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('spot_specification') as any;
+    }
+    public set spotSpecification(value: EmrClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification[] | undefined) {
+      this._spotSpecification = value;
+    }
+    public resetSpotSpecification() {
+      this._spotSpecification = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get spotSpecificationInput() {
+      return this._spotSpecification
+    }
+  }
   export interface EmrClusterMasterInstanceFleet {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#name EmrCluster#name}
@@ -746,20 +1325,115 @@ export namespace EMR {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#launch_specifications EmrCluster#launch_specifications}
     */
-    readonly launchSpecifications?: EmrClusterMasterInstanceFleetLaunchSpecifications[];
+    readonly launchSpecifications?: EmrClusterMasterInstanceFleetLaunchSpecifications;
   }
 
-  function emrClusterMasterInstanceFleetToTerraform(struct?: EmrClusterMasterInstanceFleet): any {
+  function emrClusterMasterInstanceFleetToTerraform(struct?: EmrClusterMasterInstanceFleetOutputReference | EmrClusterMasterInstanceFleet): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       target_on_demand_capacity: cdktf.numberToTerraform(struct!.targetOnDemandCapacity),
       target_spot_capacity: cdktf.numberToTerraform(struct!.targetSpotCapacity),
       instance_type_configs: cdktf.listMapper(emrClusterMasterInstanceFleetInstanceTypeConfigsToTerraform)(struct!.instanceTypeConfigs),
-      launch_specifications: cdktf.listMapper(emrClusterMasterInstanceFleetLaunchSpecificationsToTerraform)(struct!.launchSpecifications),
+      launch_specifications: emrClusterMasterInstanceFleetLaunchSpecificationsToTerraform(struct!.launchSpecifications),
     }
   }
 
+  export class EmrClusterMasterInstanceFleetOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // name - computed: false, optional: true, required: false
+    private _name?: string | undefined; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string | undefined) {
+      this._name = value;
+    }
+    public resetName() {
+      this._name = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+
+    // target_on_demand_capacity - computed: false, optional: true, required: false
+    private _targetOnDemandCapacity?: number | undefined; 
+    public get targetOnDemandCapacity() {
+      return this.getNumberAttribute('target_on_demand_capacity');
+    }
+    public set targetOnDemandCapacity(value: number | undefined) {
+      this._targetOnDemandCapacity = value;
+    }
+    public resetTargetOnDemandCapacity() {
+      this._targetOnDemandCapacity = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get targetOnDemandCapacityInput() {
+      return this._targetOnDemandCapacity
+    }
+
+    // target_spot_capacity - computed: false, optional: true, required: false
+    private _targetSpotCapacity?: number | undefined; 
+    public get targetSpotCapacity() {
+      return this.getNumberAttribute('target_spot_capacity');
+    }
+    public set targetSpotCapacity(value: number | undefined) {
+      this._targetSpotCapacity = value;
+    }
+    public resetTargetSpotCapacity() {
+      this._targetSpotCapacity = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get targetSpotCapacityInput() {
+      return this._targetSpotCapacity
+    }
+
+    // instance_type_configs - computed: false, optional: true, required: false
+    private _instanceTypeConfigs?: EmrClusterMasterInstanceFleetInstanceTypeConfigs[] | undefined; 
+    public get instanceTypeConfigs() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('instance_type_configs') as any;
+    }
+    public set instanceTypeConfigs(value: EmrClusterMasterInstanceFleetInstanceTypeConfigs[] | undefined) {
+      this._instanceTypeConfigs = value;
+    }
+    public resetInstanceTypeConfigs() {
+      this._instanceTypeConfigs = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get instanceTypeConfigsInput() {
+      return this._instanceTypeConfigs
+    }
+
+    // launch_specifications - computed: false, optional: true, required: false
+    private _launchSpecifications?: EmrClusterMasterInstanceFleetLaunchSpecifications | undefined; 
+    private __launchSpecificationsOutput = new EmrClusterMasterInstanceFleetLaunchSpecificationsOutputReference(this as any, "launch_specifications", true);
+    public get launchSpecifications() {
+      return this.__launchSpecificationsOutput;
+    }
+    public putLaunchSpecifications(value: EmrClusterMasterInstanceFleetLaunchSpecifications | undefined) {
+      this._launchSpecifications = value;
+    }
+    public resetLaunchSpecifications() {
+      this._launchSpecifications = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get launchSpecificationsInput() {
+      return this._launchSpecifications
+    }
+  }
   export interface EmrClusterMasterInstanceGroupEbsConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html#iops EmrCluster#iops}
@@ -781,6 +1455,9 @@ export namespace EMR {
 
   function emrClusterMasterInstanceGroupEbsConfigToTerraform(struct?: EmrClusterMasterInstanceGroupEbsConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       iops: cdktf.numberToTerraform(struct!.iops),
       size: cdktf.numberToTerraform(struct!.size),
@@ -814,8 +1491,11 @@ export namespace EMR {
     readonly ebsConfig?: EmrClusterMasterInstanceGroupEbsConfig[];
   }
 
-  function emrClusterMasterInstanceGroupToTerraform(struct?: EmrClusterMasterInstanceGroup): any {
+  function emrClusterMasterInstanceGroupToTerraform(struct?: EmrClusterMasterInstanceGroupOutputReference | EmrClusterMasterInstanceGroup): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bid_price: cdktf.stringToTerraform(struct!.bidPrice),
       instance_count: cdktf.numberToTerraform(struct!.instanceCount),
@@ -825,6 +1505,94 @@ export namespace EMR {
     }
   }
 
+  export class EmrClusterMasterInstanceGroupOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // bid_price - computed: false, optional: true, required: false
+    private _bidPrice?: string | undefined; 
+    public get bidPrice() {
+      return this.getStringAttribute('bid_price');
+    }
+    public set bidPrice(value: string | undefined) {
+      this._bidPrice = value;
+    }
+    public resetBidPrice() {
+      this._bidPrice = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bidPriceInput() {
+      return this._bidPrice
+    }
+
+    // instance_count - computed: false, optional: true, required: false
+    private _instanceCount?: number | undefined; 
+    public get instanceCount() {
+      return this.getNumberAttribute('instance_count');
+    }
+    public set instanceCount(value: number | undefined) {
+      this._instanceCount = value;
+    }
+    public resetInstanceCount() {
+      this._instanceCount = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get instanceCountInput() {
+      return this._instanceCount
+    }
+
+    // instance_type - computed: false, optional: false, required: true
+    private _instanceType?: string; 
+    public get instanceType() {
+      return this.getStringAttribute('instance_type');
+    }
+    public set instanceType(value: string) {
+      this._instanceType = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get instanceTypeInput() {
+      return this._instanceType
+    }
+
+    // name - computed: false, optional: true, required: false
+    private _name?: string | undefined; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string | undefined) {
+      this._name = value;
+    }
+    public resetName() {
+      this._name = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+
+    // ebs_config - computed: false, optional: true, required: false
+    private _ebsConfig?: EmrClusterMasterInstanceGroupEbsConfig[] | undefined; 
+    public get ebsConfig() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('ebs_config') as any;
+    }
+    public set ebsConfig(value: EmrClusterMasterInstanceGroupEbsConfig[] | undefined) {
+      this._ebsConfig = value;
+    }
+    public resetEbsConfig() {
+      this._ebsConfig = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get ebsConfigInput() {
+      return this._ebsConfig
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/emr_cluster.html aws_emr_cluster}
@@ -893,11 +1661,11 @@ export namespace EMR {
     // ==========
 
     // additional_info - computed: false, optional: true, required: false
-    private _additionalInfo?: string;
+    private _additionalInfo?: string | undefined; 
     public get additionalInfo() {
       return this.getStringAttribute('additional_info');
     }
-    public set additionalInfo(value: string ) {
+    public set additionalInfo(value: string | undefined) {
       this._additionalInfo = value;
     }
     public resetAdditionalInfo() {
@@ -909,11 +1677,11 @@ export namespace EMR {
     }
 
     // applications - computed: false, optional: true, required: false
-    private _applications?: string[];
+    private _applications?: string[] | undefined; 
     public get applications() {
       return this.getListAttribute('applications');
     }
-    public set applications(value: string[] ) {
+    public set applications(value: string[] | undefined) {
       this._applications = value;
     }
     public resetApplications() {
@@ -930,11 +1698,11 @@ export namespace EMR {
     }
 
     // autoscaling_role - computed: false, optional: true, required: false
-    private _autoscalingRole?: string;
+    private _autoscalingRole?: string | undefined; 
     public get autoscalingRole() {
       return this.getStringAttribute('autoscaling_role');
     }
-    public set autoscalingRole(value: string ) {
+    public set autoscalingRole(value: string | undefined) {
       this._autoscalingRole = value;
     }
     public resetAutoscalingRole() {
@@ -951,11 +1719,11 @@ export namespace EMR {
     }
 
     // configurations - computed: false, optional: true, required: false
-    private _configurations?: string;
+    private _configurations?: string | undefined; 
     public get configurations() {
       return this.getStringAttribute('configurations');
     }
-    public set configurations(value: string ) {
+    public set configurations(value: string | undefined) {
       this._configurations = value;
     }
     public resetConfigurations() {
@@ -967,11 +1735,11 @@ export namespace EMR {
     }
 
     // configurations_json - computed: false, optional: true, required: false
-    private _configurationsJson?: string;
+    private _configurationsJson?: string | undefined; 
     public get configurationsJson() {
       return this.getStringAttribute('configurations_json');
     }
-    public set configurationsJson(value: string ) {
+    public set configurationsJson(value: string | undefined) {
       this._configurationsJson = value;
     }
     public resetConfigurationsJson() {
@@ -983,11 +1751,11 @@ export namespace EMR {
     }
 
     // custom_ami_id - computed: false, optional: true, required: false
-    private _customAmiId?: string;
+    private _customAmiId?: string | undefined; 
     public get customAmiId() {
       return this.getStringAttribute('custom_ami_id');
     }
-    public set customAmiId(value: string ) {
+    public set customAmiId(value: string | undefined) {
       this._customAmiId = value;
     }
     public resetCustomAmiId() {
@@ -999,11 +1767,11 @@ export namespace EMR {
     }
 
     // ebs_root_volume_size - computed: false, optional: true, required: false
-    private _ebsRootVolumeSize?: number;
+    private _ebsRootVolumeSize?: number | undefined; 
     public get ebsRootVolumeSize() {
       return this.getNumberAttribute('ebs_root_volume_size');
     }
-    public set ebsRootVolumeSize(value: number ) {
+    public set ebsRootVolumeSize(value: number | undefined) {
       this._ebsRootVolumeSize = value;
     }
     public resetEbsRootVolumeSize() {
@@ -1020,11 +1788,11 @@ export namespace EMR {
     }
 
     // keep_job_flow_alive_when_no_steps - computed: true, optional: true, required: false
-    private _keepJobFlowAliveWhenNoSteps?: boolean | cdktf.IResolvable;
+    private _keepJobFlowAliveWhenNoSteps?: boolean | cdktf.IResolvable | undefined; 
     public get keepJobFlowAliveWhenNoSteps() {
-      return this.getBooleanAttribute('keep_job_flow_alive_when_no_steps');
+      return this.getBooleanAttribute('keep_job_flow_alive_when_no_steps') as any;
     }
-    public set keepJobFlowAliveWhenNoSteps(value: boolean | cdktf.IResolvable) {
+    public set keepJobFlowAliveWhenNoSteps(value: boolean | cdktf.IResolvable | undefined) {
       this._keepJobFlowAliveWhenNoSteps = value;
     }
     public resetKeepJobFlowAliveWhenNoSteps() {
@@ -1036,11 +1804,11 @@ export namespace EMR {
     }
 
     // log_encryption_kms_key_id - computed: false, optional: true, required: false
-    private _logEncryptionKmsKeyId?: string;
+    private _logEncryptionKmsKeyId?: string | undefined; 
     public get logEncryptionKmsKeyId() {
       return this.getStringAttribute('log_encryption_kms_key_id');
     }
-    public set logEncryptionKmsKeyId(value: string ) {
+    public set logEncryptionKmsKeyId(value: string | undefined) {
       this._logEncryptionKmsKeyId = value;
     }
     public resetLogEncryptionKmsKeyId() {
@@ -1052,11 +1820,11 @@ export namespace EMR {
     }
 
     // log_uri - computed: false, optional: true, required: false
-    private _logUri?: string;
+    private _logUri?: string | undefined; 
     public get logUri() {
       return this.getStringAttribute('log_uri');
     }
-    public set logUri(value: string ) {
+    public set logUri(value: string | undefined) {
       this._logUri = value;
     }
     public resetLogUri() {
@@ -1073,7 +1841,7 @@ export namespace EMR {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1086,7 +1854,7 @@ export namespace EMR {
     }
 
     // release_label - computed: false, optional: false, required: true
-    private _releaseLabel: string;
+    private _releaseLabel?: string; 
     public get releaseLabel() {
       return this.getStringAttribute('release_label');
     }
@@ -1099,11 +1867,11 @@ export namespace EMR {
     }
 
     // scale_down_behavior - computed: true, optional: true, required: false
-    private _scaleDownBehavior?: string;
+    private _scaleDownBehavior?: string | undefined; 
     public get scaleDownBehavior() {
       return this.getStringAttribute('scale_down_behavior');
     }
-    public set scaleDownBehavior(value: string) {
+    public set scaleDownBehavior(value: string | undefined) {
       this._scaleDownBehavior = value;
     }
     public resetScaleDownBehavior() {
@@ -1115,11 +1883,11 @@ export namespace EMR {
     }
 
     // security_configuration - computed: false, optional: true, required: false
-    private _securityConfiguration?: string;
+    private _securityConfiguration?: string | undefined; 
     public get securityConfiguration() {
       return this.getStringAttribute('security_configuration');
     }
-    public set securityConfiguration(value: string ) {
+    public set securityConfiguration(value: string | undefined) {
       this._securityConfiguration = value;
     }
     public resetSecurityConfiguration() {
@@ -1131,7 +1899,7 @@ export namespace EMR {
     }
 
     // service_role - computed: false, optional: false, required: true
-    private _serviceRole: string;
+    private _serviceRole?: string; 
     public get serviceRole() {
       return this.getStringAttribute('service_role');
     }
@@ -1144,11 +1912,12 @@ export namespace EMR {
     }
 
     // step - computed: true, optional: true, required: false
-    private _step?: EmrClusterStep[]
-    public get step(): EmrClusterStep[] {
-      return this.interpolationForAttribute('step') as any; // Getting the computed value is not yet implemented
+    private _step?: EmrClusterStep[] | undefined; 
+    public get step() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('step') as any;
     }
-    public set step(value: EmrClusterStep[]) {
+    public set step(value: EmrClusterStep[] | undefined) {
       this._step = value;
     }
     public resetStep() {
@@ -1160,11 +1929,11 @@ export namespace EMR {
     }
 
     // step_concurrency_level - computed: false, optional: true, required: false
-    private _stepConcurrencyLevel?: number;
+    private _stepConcurrencyLevel?: number | undefined; 
     public get stepConcurrencyLevel() {
       return this.getNumberAttribute('step_concurrency_level');
     }
-    public set stepConcurrencyLevel(value: number ) {
+    public set stepConcurrencyLevel(value: number | undefined) {
       this._stepConcurrencyLevel = value;
     }
     public resetStepConcurrencyLevel() {
@@ -1176,11 +1945,12 @@ export namespace EMR {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1192,11 +1962,12 @@ export namespace EMR {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1208,11 +1979,11 @@ export namespace EMR {
     }
 
     // termination_protection - computed: true, optional: true, required: false
-    private _terminationProtection?: boolean | cdktf.IResolvable;
+    private _terminationProtection?: boolean | cdktf.IResolvable | undefined; 
     public get terminationProtection() {
-      return this.getBooleanAttribute('termination_protection');
+      return this.getBooleanAttribute('termination_protection') as any;
     }
-    public set terminationProtection(value: boolean | cdktf.IResolvable) {
+    public set terminationProtection(value: boolean | cdktf.IResolvable | undefined) {
       this._terminationProtection = value;
     }
     public resetTerminationProtection() {
@@ -1224,11 +1995,11 @@ export namespace EMR {
     }
 
     // visible_to_all_users - computed: false, optional: true, required: false
-    private _visibleToAllUsers?: boolean | cdktf.IResolvable;
+    private _visibleToAllUsers?: boolean | cdktf.IResolvable | undefined; 
     public get visibleToAllUsers() {
-      return this.getBooleanAttribute('visible_to_all_users');
+      return this.getBooleanAttribute('visible_to_all_users') as any;
     }
-    public set visibleToAllUsers(value: boolean | cdktf.IResolvable ) {
+    public set visibleToAllUsers(value: boolean | cdktf.IResolvable | undefined) {
       this._visibleToAllUsers = value;
     }
     public resetVisibleToAllUsers() {
@@ -1240,11 +2011,12 @@ export namespace EMR {
     }
 
     // bootstrap_action - computed: false, optional: true, required: false
-    private _bootstrapAction?: EmrClusterBootstrapAction[];
+    private _bootstrapAction?: EmrClusterBootstrapAction[] | undefined; 
     public get bootstrapAction() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('bootstrap_action') as any;
     }
-    public set bootstrapAction(value: EmrClusterBootstrapAction[] ) {
+    public set bootstrapAction(value: EmrClusterBootstrapAction[] | undefined) {
       this._bootstrapAction = value;
     }
     public resetBootstrapAction() {
@@ -1256,11 +2028,12 @@ export namespace EMR {
     }
 
     // core_instance_fleet - computed: false, optional: true, required: false
-    private _coreInstanceFleet?: EmrClusterCoreInstanceFleet[];
+    private _coreInstanceFleet?: EmrClusterCoreInstanceFleet | undefined; 
+    private __coreInstanceFleetOutput = new EmrClusterCoreInstanceFleetOutputReference(this as any, "core_instance_fleet", true);
     public get coreInstanceFleet() {
-      return this.interpolationForAttribute('core_instance_fleet') as any;
+      return this.__coreInstanceFleetOutput;
     }
-    public set coreInstanceFleet(value: EmrClusterCoreInstanceFleet[] ) {
+    public putCoreInstanceFleet(value: EmrClusterCoreInstanceFleet | undefined) {
       this._coreInstanceFleet = value;
     }
     public resetCoreInstanceFleet() {
@@ -1272,11 +2045,12 @@ export namespace EMR {
     }
 
     // core_instance_group - computed: false, optional: true, required: false
-    private _coreInstanceGroup?: EmrClusterCoreInstanceGroup[];
+    private _coreInstanceGroup?: EmrClusterCoreInstanceGroup | undefined; 
+    private __coreInstanceGroupOutput = new EmrClusterCoreInstanceGroupOutputReference(this as any, "core_instance_group", true);
     public get coreInstanceGroup() {
-      return this.interpolationForAttribute('core_instance_group') as any;
+      return this.__coreInstanceGroupOutput;
     }
-    public set coreInstanceGroup(value: EmrClusterCoreInstanceGroup[] ) {
+    public putCoreInstanceGroup(value: EmrClusterCoreInstanceGroup | undefined) {
       this._coreInstanceGroup = value;
     }
     public resetCoreInstanceGroup() {
@@ -1288,11 +2062,12 @@ export namespace EMR {
     }
 
     // ec2_attributes - computed: false, optional: true, required: false
-    private _ec2Attributes?: EmrClusterEc2Attributes[];
+    private _ec2Attributes?: EmrClusterEc2Attributes | undefined; 
+    private __ec2AttributesOutput = new EmrClusterEc2AttributesOutputReference(this as any, "ec2_attributes", true);
     public get ec2Attributes() {
-      return this.interpolationForAttribute('ec2_attributes') as any;
+      return this.__ec2AttributesOutput;
     }
-    public set ec2Attributes(value: EmrClusterEc2Attributes[] ) {
+    public putEc2Attributes(value: EmrClusterEc2Attributes | undefined) {
       this._ec2Attributes = value;
     }
     public resetEc2Attributes() {
@@ -1304,11 +2079,12 @@ export namespace EMR {
     }
 
     // kerberos_attributes - computed: false, optional: true, required: false
-    private _kerberosAttributes?: EmrClusterKerberosAttributes[];
+    private _kerberosAttributes?: EmrClusterKerberosAttributes | undefined; 
+    private __kerberosAttributesOutput = new EmrClusterKerberosAttributesOutputReference(this as any, "kerberos_attributes", true);
     public get kerberosAttributes() {
-      return this.interpolationForAttribute('kerberos_attributes') as any;
+      return this.__kerberosAttributesOutput;
     }
-    public set kerberosAttributes(value: EmrClusterKerberosAttributes[] ) {
+    public putKerberosAttributes(value: EmrClusterKerberosAttributes | undefined) {
       this._kerberosAttributes = value;
     }
     public resetKerberosAttributes() {
@@ -1320,11 +2096,12 @@ export namespace EMR {
     }
 
     // master_instance_fleet - computed: false, optional: true, required: false
-    private _masterInstanceFleet?: EmrClusterMasterInstanceFleet[];
+    private _masterInstanceFleet?: EmrClusterMasterInstanceFleet | undefined; 
+    private __masterInstanceFleetOutput = new EmrClusterMasterInstanceFleetOutputReference(this as any, "master_instance_fleet", true);
     public get masterInstanceFleet() {
-      return this.interpolationForAttribute('master_instance_fleet') as any;
+      return this.__masterInstanceFleetOutput;
     }
-    public set masterInstanceFleet(value: EmrClusterMasterInstanceFleet[] ) {
+    public putMasterInstanceFleet(value: EmrClusterMasterInstanceFleet | undefined) {
       this._masterInstanceFleet = value;
     }
     public resetMasterInstanceFleet() {
@@ -1336,11 +2113,12 @@ export namespace EMR {
     }
 
     // master_instance_group - computed: false, optional: true, required: false
-    private _masterInstanceGroup?: EmrClusterMasterInstanceGroup[];
+    private _masterInstanceGroup?: EmrClusterMasterInstanceGroup | undefined; 
+    private __masterInstanceGroupOutput = new EmrClusterMasterInstanceGroupOutputReference(this as any, "master_instance_group", true);
     public get masterInstanceGroup() {
-      return this.interpolationForAttribute('master_instance_group') as any;
+      return this.__masterInstanceGroupOutput;
     }
-    public set masterInstanceGroup(value: EmrClusterMasterInstanceGroup[] ) {
+    public putMasterInstanceGroup(value: EmrClusterMasterInstanceGroup | undefined) {
       this._masterInstanceGroup = value;
     }
     public resetMasterInstanceGroup() {
@@ -1379,12 +2157,12 @@ export namespace EMR {
         termination_protection: cdktf.booleanToTerraform(this._terminationProtection),
         visible_to_all_users: cdktf.booleanToTerraform(this._visibleToAllUsers),
         bootstrap_action: cdktf.listMapper(emrClusterBootstrapActionToTerraform)(this._bootstrapAction),
-        core_instance_fleet: cdktf.listMapper(emrClusterCoreInstanceFleetToTerraform)(this._coreInstanceFleet),
-        core_instance_group: cdktf.listMapper(emrClusterCoreInstanceGroupToTerraform)(this._coreInstanceGroup),
-        ec2_attributes: cdktf.listMapper(emrClusterEc2AttributesToTerraform)(this._ec2Attributes),
-        kerberos_attributes: cdktf.listMapper(emrClusterKerberosAttributesToTerraform)(this._kerberosAttributes),
-        master_instance_fleet: cdktf.listMapper(emrClusterMasterInstanceFleetToTerraform)(this._masterInstanceFleet),
-        master_instance_group: cdktf.listMapper(emrClusterMasterInstanceGroupToTerraform)(this._masterInstanceGroup),
+        core_instance_fleet: emrClusterCoreInstanceFleetToTerraform(this._coreInstanceFleet),
+        core_instance_group: emrClusterCoreInstanceGroupToTerraform(this._coreInstanceGroup),
+        ec2_attributes: emrClusterEc2AttributesToTerraform(this._ec2Attributes),
+        kerberos_attributes: emrClusterKerberosAttributesToTerraform(this._kerberosAttributes),
+        master_instance_fleet: emrClusterMasterInstanceFleetToTerraform(this._masterInstanceFleet),
+        master_instance_group: emrClusterMasterInstanceGroupToTerraform(this._masterInstanceGroup),
       };
     }
   }
@@ -1416,7 +2194,7 @@ export namespace EMR {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/emr_instance_fleet.html#launch_specifications EmrInstanceFleet#launch_specifications}
     */
-    readonly launchSpecifications?: EmrInstanceFleetLaunchSpecifications[];
+    readonly launchSpecifications?: EmrInstanceFleetLaunchSpecifications;
   }
   export interface EmrInstanceFleetInstanceTypeConfigsConfigurations {
     /**
@@ -1431,6 +2209,9 @@ export namespace EMR {
 
   function emrInstanceFleetInstanceTypeConfigsConfigurationsToTerraform(struct?: EmrInstanceFleetInstanceTypeConfigsConfigurations): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       classification: cdktf.stringToTerraform(struct!.classification),
       properties: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.properties),
@@ -1458,6 +2239,9 @@ export namespace EMR {
 
   function emrInstanceFleetInstanceTypeConfigsEbsConfigToTerraform(struct?: EmrInstanceFleetInstanceTypeConfigsEbsConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       iops: cdktf.numberToTerraform(struct!.iops),
       size: cdktf.numberToTerraform(struct!.size),
@@ -1499,6 +2283,9 @@ export namespace EMR {
 
   function emrInstanceFleetInstanceTypeConfigsToTerraform(struct?: EmrInstanceFleetInstanceTypeConfigs): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bid_price: cdktf.stringToTerraform(struct!.bidPrice),
       bid_price_as_percentage_of_on_demand_price: cdktf.numberToTerraform(struct!.bidPriceAsPercentageOfOnDemandPrice),
@@ -1518,6 +2305,9 @@ export namespace EMR {
 
   function emrInstanceFleetLaunchSpecificationsOnDemandSpecificationToTerraform(struct?: EmrInstanceFleetLaunchSpecificationsOnDemandSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allocation_strategy: cdktf.stringToTerraform(struct!.allocationStrategy),
     }
@@ -1544,6 +2334,9 @@ export namespace EMR {
 
   function emrInstanceFleetLaunchSpecificationsSpotSpecificationToTerraform(struct?: EmrInstanceFleetLaunchSpecificationsSpotSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allocation_strategy: cdktf.stringToTerraform(struct!.allocationStrategy),
       block_duration_minutes: cdktf.numberToTerraform(struct!.blockDurationMinutes),
@@ -1567,14 +2360,61 @@ export namespace EMR {
     readonly spotSpecification?: EmrInstanceFleetLaunchSpecificationsSpotSpecification[];
   }
 
-  function emrInstanceFleetLaunchSpecificationsToTerraform(struct?: EmrInstanceFleetLaunchSpecifications): any {
+  function emrInstanceFleetLaunchSpecificationsToTerraform(struct?: EmrInstanceFleetLaunchSpecificationsOutputReference | EmrInstanceFleetLaunchSpecifications): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       on_demand_specification: cdktf.listMapper(emrInstanceFleetLaunchSpecificationsOnDemandSpecificationToTerraform)(struct!.onDemandSpecification),
       spot_specification: cdktf.listMapper(emrInstanceFleetLaunchSpecificationsSpotSpecificationToTerraform)(struct!.spotSpecification),
     }
   }
 
+  export class EmrInstanceFleetLaunchSpecificationsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // on_demand_specification - computed: false, optional: true, required: false
+    private _onDemandSpecification?: EmrInstanceFleetLaunchSpecificationsOnDemandSpecification[] | undefined; 
+    public get onDemandSpecification() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('on_demand_specification') as any;
+    }
+    public set onDemandSpecification(value: EmrInstanceFleetLaunchSpecificationsOnDemandSpecification[] | undefined) {
+      this._onDemandSpecification = value;
+    }
+    public resetOnDemandSpecification() {
+      this._onDemandSpecification = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get onDemandSpecificationInput() {
+      return this._onDemandSpecification
+    }
+
+    // spot_specification - computed: false, optional: true, required: false
+    private _spotSpecification?: EmrInstanceFleetLaunchSpecificationsSpotSpecification[] | undefined; 
+    public get spotSpecification() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('spot_specification') as any;
+    }
+    public set spotSpecification(value: EmrInstanceFleetLaunchSpecificationsSpotSpecification[] | undefined) {
+      this._spotSpecification = value;
+    }
+    public resetSpotSpecification() {
+      this._spotSpecification = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get spotSpecificationInput() {
+      return this._spotSpecification
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/emr_instance_fleet.html aws_emr_instance_fleet}
@@ -1621,7 +2461,7 @@ export namespace EMR {
     // ==========
 
     // cluster_id - computed: false, optional: false, required: true
-    private _clusterId: string;
+    private _clusterId?: string; 
     public get clusterId() {
       return this.getStringAttribute('cluster_id');
     }
@@ -1639,11 +2479,11 @@ export namespace EMR {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1665,11 +2505,11 @@ export namespace EMR {
     }
 
     // target_on_demand_capacity - computed: false, optional: true, required: false
-    private _targetOnDemandCapacity?: number;
+    private _targetOnDemandCapacity?: number | undefined; 
     public get targetOnDemandCapacity() {
       return this.getNumberAttribute('target_on_demand_capacity');
     }
-    public set targetOnDemandCapacity(value: number ) {
+    public set targetOnDemandCapacity(value: number | undefined) {
       this._targetOnDemandCapacity = value;
     }
     public resetTargetOnDemandCapacity() {
@@ -1681,11 +2521,11 @@ export namespace EMR {
     }
 
     // target_spot_capacity - computed: false, optional: true, required: false
-    private _targetSpotCapacity?: number;
+    private _targetSpotCapacity?: number | undefined; 
     public get targetSpotCapacity() {
       return this.getNumberAttribute('target_spot_capacity');
     }
-    public set targetSpotCapacity(value: number ) {
+    public set targetSpotCapacity(value: number | undefined) {
       this._targetSpotCapacity = value;
     }
     public resetTargetSpotCapacity() {
@@ -1697,11 +2537,12 @@ export namespace EMR {
     }
 
     // instance_type_configs - computed: false, optional: true, required: false
-    private _instanceTypeConfigs?: EmrInstanceFleetInstanceTypeConfigs[];
+    private _instanceTypeConfigs?: EmrInstanceFleetInstanceTypeConfigs[] | undefined; 
     public get instanceTypeConfigs() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('instance_type_configs') as any;
     }
-    public set instanceTypeConfigs(value: EmrInstanceFleetInstanceTypeConfigs[] ) {
+    public set instanceTypeConfigs(value: EmrInstanceFleetInstanceTypeConfigs[] | undefined) {
       this._instanceTypeConfigs = value;
     }
     public resetInstanceTypeConfigs() {
@@ -1713,11 +2554,12 @@ export namespace EMR {
     }
 
     // launch_specifications - computed: false, optional: true, required: false
-    private _launchSpecifications?: EmrInstanceFleetLaunchSpecifications[];
+    private _launchSpecifications?: EmrInstanceFleetLaunchSpecifications | undefined; 
+    private __launchSpecificationsOutput = new EmrInstanceFleetLaunchSpecificationsOutputReference(this as any, "launch_specifications", true);
     public get launchSpecifications() {
-      return this.interpolationForAttribute('launch_specifications') as any;
+      return this.__launchSpecificationsOutput;
     }
-    public set launchSpecifications(value: EmrInstanceFleetLaunchSpecifications[] ) {
+    public putLaunchSpecifications(value: EmrInstanceFleetLaunchSpecifications | undefined) {
       this._launchSpecifications = value;
     }
     public resetLaunchSpecifications() {
@@ -1739,7 +2581,7 @@ export namespace EMR {
         target_on_demand_capacity: cdktf.numberToTerraform(this._targetOnDemandCapacity),
         target_spot_capacity: cdktf.numberToTerraform(this._targetSpotCapacity),
         instance_type_configs: cdktf.listMapper(emrInstanceFleetInstanceTypeConfigsToTerraform)(this._instanceTypeConfigs),
-        launch_specifications: cdktf.listMapper(emrInstanceFleetLaunchSpecificationsToTerraform)(this._launchSpecifications),
+        launch_specifications: emrInstanceFleetLaunchSpecificationsToTerraform(this._launchSpecifications),
       };
     }
   }
@@ -1804,6 +2646,9 @@ export namespace EMR {
 
   function emrInstanceGroupEbsConfigToTerraform(struct?: EmrInstanceGroupEbsConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       iops: cdktf.numberToTerraform(struct!.iops),
       size: cdktf.numberToTerraform(struct!.size),
@@ -1861,11 +2706,11 @@ export namespace EMR {
     // ==========
 
     // autoscaling_policy - computed: false, optional: true, required: false
-    private _autoscalingPolicy?: string;
+    private _autoscalingPolicy?: string | undefined; 
     public get autoscalingPolicy() {
       return this.getStringAttribute('autoscaling_policy');
     }
-    public set autoscalingPolicy(value: string ) {
+    public set autoscalingPolicy(value: string | undefined) {
       this._autoscalingPolicy = value;
     }
     public resetAutoscalingPolicy() {
@@ -1877,11 +2722,11 @@ export namespace EMR {
     }
 
     // bid_price - computed: false, optional: true, required: false
-    private _bidPrice?: string;
+    private _bidPrice?: string | undefined; 
     public get bidPrice() {
       return this.getStringAttribute('bid_price');
     }
-    public set bidPrice(value: string ) {
+    public set bidPrice(value: string | undefined) {
       this._bidPrice = value;
     }
     public resetBidPrice() {
@@ -1893,7 +2738,7 @@ export namespace EMR {
     }
 
     // cluster_id - computed: false, optional: false, required: true
-    private _clusterId: string;
+    private _clusterId?: string; 
     public get clusterId() {
       return this.getStringAttribute('cluster_id');
     }
@@ -1906,11 +2751,11 @@ export namespace EMR {
     }
 
     // configurations_json - computed: false, optional: true, required: false
-    private _configurationsJson?: string;
+    private _configurationsJson?: string | undefined; 
     public get configurationsJson() {
       return this.getStringAttribute('configurations_json');
     }
-    public set configurationsJson(value: string ) {
+    public set configurationsJson(value: string | undefined) {
       this._configurationsJson = value;
     }
     public resetConfigurationsJson() {
@@ -1922,11 +2767,11 @@ export namespace EMR {
     }
 
     // ebs_optimized - computed: false, optional: true, required: false
-    private _ebsOptimized?: boolean | cdktf.IResolvable;
+    private _ebsOptimized?: boolean | cdktf.IResolvable | undefined; 
     public get ebsOptimized() {
-      return this.getBooleanAttribute('ebs_optimized');
+      return this.getBooleanAttribute('ebs_optimized') as any;
     }
-    public set ebsOptimized(value: boolean | cdktf.IResolvable ) {
+    public set ebsOptimized(value: boolean | cdktf.IResolvable | undefined) {
       this._ebsOptimized = value;
     }
     public resetEbsOptimized() {
@@ -1943,11 +2788,11 @@ export namespace EMR {
     }
 
     // instance_count - computed: false, optional: true, required: false
-    private _instanceCount?: number;
+    private _instanceCount?: number | undefined; 
     public get instanceCount() {
       return this.getNumberAttribute('instance_count');
     }
-    public set instanceCount(value: number ) {
+    public set instanceCount(value: number | undefined) {
       this._instanceCount = value;
     }
     public resetInstanceCount() {
@@ -1959,7 +2804,7 @@ export namespace EMR {
     }
 
     // instance_type - computed: false, optional: false, required: true
-    private _instanceType: string;
+    private _instanceType?: string; 
     public get instanceType() {
       return this.getStringAttribute('instance_type');
     }
@@ -1972,11 +2817,11 @@ export namespace EMR {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1998,11 +2843,12 @@ export namespace EMR {
     }
 
     // ebs_config - computed: false, optional: true, required: false
-    private _ebsConfig?: EmrInstanceGroupEbsConfig[];
+    private _ebsConfig?: EmrInstanceGroupEbsConfig[] | undefined; 
     public get ebsConfig() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs_config') as any;
     }
-    public set ebsConfig(value: EmrInstanceGroupEbsConfig[] ) {
+    public set ebsConfig(value: EmrInstanceGroupEbsConfig[] | undefined) {
       this._ebsConfig = value;
     }
     public resetEbsConfig() {
@@ -2068,6 +2914,9 @@ export namespace EMR {
 
   function emrManagedScalingPolicyComputeLimitsToTerraform(struct?: EmrManagedScalingPolicyComputeLimits): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       maximum_capacity_units: cdktf.numberToTerraform(struct!.maximumCapacityUnits),
       maximum_core_capacity_units: cdktf.numberToTerraform(struct!.maximumCoreCapacityUnits),
@@ -2119,7 +2968,7 @@ export namespace EMR {
     // ==========
 
     // cluster_id - computed: false, optional: false, required: true
-    private _clusterId: string;
+    private _clusterId?: string; 
     public get clusterId() {
       return this.getStringAttribute('cluster_id');
     }
@@ -2137,8 +2986,9 @@ export namespace EMR {
     }
 
     // compute_limits - computed: false, optional: false, required: true
-    private _computeLimits: EmrManagedScalingPolicyComputeLimits[];
+    private _computeLimits?: EmrManagedScalingPolicyComputeLimits[]; 
     public get computeLimits() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('compute_limits') as any;
     }
     public set computeLimits(value: EmrManagedScalingPolicyComputeLimits[]) {
@@ -2217,7 +3067,7 @@ export namespace EMR {
     // ==========
 
     // configuration - computed: false, optional: false, required: true
-    private _configuration: string;
+    private _configuration?: string; 
     public get configuration() {
       return this.getStringAttribute('configuration');
     }
@@ -2240,11 +3090,11 @@ export namespace EMR {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -2256,11 +3106,11 @@ export namespace EMR {
     }
 
     // name_prefix - computed: false, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string ) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {

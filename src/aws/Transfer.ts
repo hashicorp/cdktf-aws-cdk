@@ -43,7 +43,7 @@ export namespace Transfer {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/transfer_access.html#posix_profile TransferAccess#posix_profile}
     */
-    readonly posixProfile?: TransferAccessPosixProfile[];
+    readonly posixProfile?: TransferAccessPosixProfile;
   }
   export interface TransferAccessHomeDirectoryMappings {
     /**
@@ -58,6 +58,9 @@ export namespace Transfer {
 
   function transferAccessHomeDirectoryMappingsToTerraform(struct?: TransferAccessHomeDirectoryMappings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       entry: cdktf.stringToTerraform(struct!.entry),
       target: cdktf.stringToTerraform(struct!.target),
@@ -79,8 +82,11 @@ export namespace Transfer {
     readonly uid: number;
   }
 
-  function transferAccessPosixProfileToTerraform(struct?: TransferAccessPosixProfile): any {
+  function transferAccessPosixProfileToTerraform(struct?: TransferAccessPosixProfileOutputReference | TransferAccessPosixProfile): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       gid: cdktf.numberToTerraform(struct!.gid),
       secondary_gids: cdktf.listMapper(cdktf.numberToTerraform)(struct!.secondaryGids),
@@ -88,6 +94,59 @@ export namespace Transfer {
     }
   }
 
+  export class TransferAccessPosixProfileOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // gid - computed: false, optional: false, required: true
+    private _gid?: number; 
+    public get gid() {
+      return this.getNumberAttribute('gid');
+    }
+    public set gid(value: number) {
+      this._gid = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get gidInput() {
+      return this._gid
+    }
+
+    // secondary_gids - computed: false, optional: true, required: false
+    private _secondaryGids?: number[] | undefined; 
+    public get secondaryGids() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('secondary_gids') as any;
+    }
+    public set secondaryGids(value: number[] | undefined) {
+      this._secondaryGids = value;
+    }
+    public resetSecondaryGids() {
+      this._secondaryGids = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get secondaryGidsInput() {
+      return this._secondaryGids
+    }
+
+    // uid - computed: false, optional: false, required: true
+    private _uid?: number; 
+    public get uid() {
+      return this.getNumberAttribute('uid');
+    }
+    public set uid(value: number) {
+      this._uid = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get uidInput() {
+      return this._uid
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/transfer_access.html aws_transfer_access}
@@ -136,7 +195,7 @@ export namespace Transfer {
     // ==========
 
     // external_id - computed: false, optional: false, required: true
-    private _externalId: string;
+    private _externalId?: string; 
     public get externalId() {
       return this.getStringAttribute('external_id');
     }
@@ -149,11 +208,11 @@ export namespace Transfer {
     }
 
     // home_directory - computed: false, optional: true, required: false
-    private _homeDirectory?: string;
+    private _homeDirectory?: string | undefined; 
     public get homeDirectory() {
       return this.getStringAttribute('home_directory');
     }
-    public set homeDirectory(value: string ) {
+    public set homeDirectory(value: string | undefined) {
       this._homeDirectory = value;
     }
     public resetHomeDirectory() {
@@ -165,11 +224,11 @@ export namespace Transfer {
     }
 
     // home_directory_type - computed: false, optional: true, required: false
-    private _homeDirectoryType?: string;
+    private _homeDirectoryType?: string | undefined; 
     public get homeDirectoryType() {
       return this.getStringAttribute('home_directory_type');
     }
-    public set homeDirectoryType(value: string ) {
+    public set homeDirectoryType(value: string | undefined) {
       this._homeDirectoryType = value;
     }
     public resetHomeDirectoryType() {
@@ -186,11 +245,11 @@ export namespace Transfer {
     }
 
     // policy - computed: false, optional: true, required: false
-    private _policy?: string;
+    private _policy?: string | undefined; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
-    public set policy(value: string ) {
+    public set policy(value: string | undefined) {
       this._policy = value;
     }
     public resetPolicy() {
@@ -202,11 +261,11 @@ export namespace Transfer {
     }
 
     // role - computed: false, optional: true, required: false
-    private _role?: string;
+    private _role?: string | undefined; 
     public get role() {
       return this.getStringAttribute('role');
     }
-    public set role(value: string ) {
+    public set role(value: string | undefined) {
       this._role = value;
     }
     public resetRole() {
@@ -218,7 +277,7 @@ export namespace Transfer {
     }
 
     // server_id - computed: false, optional: false, required: true
-    private _serverId: string;
+    private _serverId?: string; 
     public get serverId() {
       return this.getStringAttribute('server_id');
     }
@@ -231,11 +290,12 @@ export namespace Transfer {
     }
 
     // home_directory_mappings - computed: false, optional: true, required: false
-    private _homeDirectoryMappings?: TransferAccessHomeDirectoryMappings[];
+    private _homeDirectoryMappings?: TransferAccessHomeDirectoryMappings[] | undefined; 
     public get homeDirectoryMappings() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('home_directory_mappings') as any;
     }
-    public set homeDirectoryMappings(value: TransferAccessHomeDirectoryMappings[] ) {
+    public set homeDirectoryMappings(value: TransferAccessHomeDirectoryMappings[] | undefined) {
       this._homeDirectoryMappings = value;
     }
     public resetHomeDirectoryMappings() {
@@ -247,11 +307,12 @@ export namespace Transfer {
     }
 
     // posix_profile - computed: false, optional: true, required: false
-    private _posixProfile?: TransferAccessPosixProfile[];
+    private _posixProfile?: TransferAccessPosixProfile | undefined; 
+    private __posixProfileOutput = new TransferAccessPosixProfileOutputReference(this as any, "posix_profile", true);
     public get posixProfile() {
-      return this.interpolationForAttribute('posix_profile') as any;
+      return this.__posixProfileOutput;
     }
-    public set posixProfile(value: TransferAccessPosixProfile[] ) {
+    public putPosixProfile(value: TransferAccessPosixProfile | undefined) {
       this._posixProfile = value;
     }
     public resetPosixProfile() {
@@ -275,7 +336,7 @@ export namespace Transfer {
         role: cdktf.stringToTerraform(this._role),
         server_id: cdktf.stringToTerraform(this._serverId),
         home_directory_mappings: cdktf.listMapper(transferAccessHomeDirectoryMappingsToTerraform)(this._homeDirectoryMappings),
-        posix_profile: cdktf.listMapper(transferAccessPosixProfileToTerraform)(this._posixProfile),
+        posix_profile: transferAccessPosixProfileToTerraform(this._posixProfile),
       };
     }
   }
@@ -341,7 +402,7 @@ export namespace Transfer {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/transfer_server.html#endpoint_details TransferServer#endpoint_details}
     */
-    readonly endpointDetails?: TransferServerEndpointDetails[];
+    readonly endpointDetails?: TransferServerEndpointDetails;
   }
   export interface TransferServerEndpointDetails {
     /**
@@ -366,8 +427,11 @@ export namespace Transfer {
     readonly vpcId?: string;
   }
 
-  function transferServerEndpointDetailsToTerraform(struct?: TransferServerEndpointDetails): any {
+  function transferServerEndpointDetailsToTerraform(struct?: TransferServerEndpointDetailsOutputReference | TransferServerEndpointDetails): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       address_allocation_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.addressAllocationIds),
       security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.securityGroupIds),
@@ -377,6 +441,96 @@ export namespace Transfer {
     }
   }
 
+  export class TransferServerEndpointDetailsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // address_allocation_ids - computed: false, optional: true, required: false
+    private _addressAllocationIds?: string[] | undefined; 
+    public get addressAllocationIds() {
+      return this.getListAttribute('address_allocation_ids');
+    }
+    public set addressAllocationIds(value: string[] | undefined) {
+      this._addressAllocationIds = value;
+    }
+    public resetAddressAllocationIds() {
+      this._addressAllocationIds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get addressAllocationIdsInput() {
+      return this._addressAllocationIds
+    }
+
+    // security_group_ids - computed: true, optional: true, required: false
+    private _securityGroupIds?: string[] | undefined; 
+    public get securityGroupIds() {
+      return this.getListAttribute('security_group_ids');
+    }
+    public set securityGroupIds(value: string[] | undefined) {
+      this._securityGroupIds = value;
+    }
+    public resetSecurityGroupIds() {
+      this._securityGroupIds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get securityGroupIdsInput() {
+      return this._securityGroupIds
+    }
+
+    // subnet_ids - computed: false, optional: true, required: false
+    private _subnetIds?: string[] | undefined; 
+    public get subnetIds() {
+      return this.getListAttribute('subnet_ids');
+    }
+    public set subnetIds(value: string[] | undefined) {
+      this._subnetIds = value;
+    }
+    public resetSubnetIds() {
+      this._subnetIds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get subnetIdsInput() {
+      return this._subnetIds
+    }
+
+    // vpc_endpoint_id - computed: true, optional: true, required: false
+    private _vpcEndpointId?: string | undefined; 
+    public get vpcEndpointId() {
+      return this.getStringAttribute('vpc_endpoint_id');
+    }
+    public set vpcEndpointId(value: string | undefined) {
+      this._vpcEndpointId = value;
+    }
+    public resetVpcEndpointId() {
+      this._vpcEndpointId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get vpcEndpointIdInput() {
+      return this._vpcEndpointId
+    }
+
+    // vpc_id - computed: false, optional: true, required: false
+    private _vpcId?: string | undefined; 
+    public get vpcId() {
+      return this.getStringAttribute('vpc_id');
+    }
+    public set vpcId(value: string | undefined) {
+      this._vpcId = value;
+    }
+    public resetVpcId() {
+      this._vpcId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get vpcIdInput() {
+      return this._vpcId
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/transfer_server.html aws_transfer_server}
@@ -437,11 +591,11 @@ export namespace Transfer {
     }
 
     // certificate - computed: false, optional: true, required: false
-    private _certificate?: string;
+    private _certificate?: string | undefined; 
     public get certificate() {
       return this.getStringAttribute('certificate');
     }
-    public set certificate(value: string ) {
+    public set certificate(value: string | undefined) {
       this._certificate = value;
     }
     public resetCertificate() {
@@ -453,11 +607,11 @@ export namespace Transfer {
     }
 
     // directory_id - computed: false, optional: true, required: false
-    private _directoryId?: string;
+    private _directoryId?: string | undefined; 
     public get directoryId() {
       return this.getStringAttribute('directory_id');
     }
-    public set directoryId(value: string ) {
+    public set directoryId(value: string | undefined) {
       this._directoryId = value;
     }
     public resetDirectoryId() {
@@ -469,11 +623,11 @@ export namespace Transfer {
     }
 
     // domain - computed: false, optional: true, required: false
-    private _domain?: string;
+    private _domain?: string | undefined; 
     public get domain() {
       return this.getStringAttribute('domain');
     }
-    public set domain(value: string ) {
+    public set domain(value: string | undefined) {
       this._domain = value;
     }
     public resetDomain() {
@@ -490,11 +644,11 @@ export namespace Transfer {
     }
 
     // endpoint_type - computed: false, optional: true, required: false
-    private _endpointType?: string;
+    private _endpointType?: string | undefined; 
     public get endpointType() {
       return this.getStringAttribute('endpoint_type');
     }
-    public set endpointType(value: string ) {
+    public set endpointType(value: string | undefined) {
       this._endpointType = value;
     }
     public resetEndpointType() {
@@ -506,11 +660,11 @@ export namespace Transfer {
     }
 
     // force_destroy - computed: false, optional: true, required: false
-    private _forceDestroy?: boolean | cdktf.IResolvable;
+    private _forceDestroy?: boolean | cdktf.IResolvable | undefined; 
     public get forceDestroy() {
-      return this.getBooleanAttribute('force_destroy');
+      return this.getBooleanAttribute('force_destroy') as any;
     }
-    public set forceDestroy(value: boolean | cdktf.IResolvable ) {
+    public set forceDestroy(value: boolean | cdktf.IResolvable | undefined) {
       this._forceDestroy = value;
     }
     public resetForceDestroy() {
@@ -522,11 +676,11 @@ export namespace Transfer {
     }
 
     // host_key - computed: false, optional: true, required: false
-    private _hostKey?: string;
+    private _hostKey?: string | undefined; 
     public get hostKey() {
       return this.getStringAttribute('host_key');
     }
-    public set hostKey(value: string ) {
+    public set hostKey(value: string | undefined) {
       this._hostKey = value;
     }
     public resetHostKey() {
@@ -548,11 +702,11 @@ export namespace Transfer {
     }
 
     // identity_provider_type - computed: false, optional: true, required: false
-    private _identityProviderType?: string;
+    private _identityProviderType?: string | undefined; 
     public get identityProviderType() {
       return this.getStringAttribute('identity_provider_type');
     }
-    public set identityProviderType(value: string ) {
+    public set identityProviderType(value: string | undefined) {
       this._identityProviderType = value;
     }
     public resetIdentityProviderType() {
@@ -564,11 +718,11 @@ export namespace Transfer {
     }
 
     // invocation_role - computed: false, optional: true, required: false
-    private _invocationRole?: string;
+    private _invocationRole?: string | undefined; 
     public get invocationRole() {
       return this.getStringAttribute('invocation_role');
     }
-    public set invocationRole(value: string ) {
+    public set invocationRole(value: string | undefined) {
       this._invocationRole = value;
     }
     public resetInvocationRole() {
@@ -580,11 +734,11 @@ export namespace Transfer {
     }
 
     // logging_role - computed: false, optional: true, required: false
-    private _loggingRole?: string;
+    private _loggingRole?: string | undefined; 
     public get loggingRole() {
       return this.getStringAttribute('logging_role');
     }
-    public set loggingRole(value: string ) {
+    public set loggingRole(value: string | undefined) {
       this._loggingRole = value;
     }
     public resetLoggingRole() {
@@ -596,11 +750,11 @@ export namespace Transfer {
     }
 
     // protocols - computed: true, optional: true, required: false
-    private _protocols?: string[];
+    private _protocols?: string[] | undefined; 
     public get protocols() {
       return this.getListAttribute('protocols');
     }
-    public set protocols(value: string[]) {
+    public set protocols(value: string[] | undefined) {
       this._protocols = value;
     }
     public resetProtocols() {
@@ -612,11 +766,11 @@ export namespace Transfer {
     }
 
     // security_policy_name - computed: false, optional: true, required: false
-    private _securityPolicyName?: string;
+    private _securityPolicyName?: string | undefined; 
     public get securityPolicyName() {
       return this.getStringAttribute('security_policy_name');
     }
-    public set securityPolicyName(value: string ) {
+    public set securityPolicyName(value: string | undefined) {
       this._securityPolicyName = value;
     }
     public resetSecurityPolicyName() {
@@ -628,11 +782,12 @@ export namespace Transfer {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -644,11 +799,12 @@ export namespace Transfer {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -660,11 +816,11 @@ export namespace Transfer {
     }
 
     // url - computed: false, optional: true, required: false
-    private _url?: string;
+    private _url?: string | undefined; 
     public get url() {
       return this.getStringAttribute('url');
     }
-    public set url(value: string ) {
+    public set url(value: string | undefined) {
       this._url = value;
     }
     public resetUrl() {
@@ -676,11 +832,12 @@ export namespace Transfer {
     }
 
     // endpoint_details - computed: false, optional: true, required: false
-    private _endpointDetails?: TransferServerEndpointDetails[];
+    private _endpointDetails?: TransferServerEndpointDetails | undefined; 
+    private __endpointDetailsOutput = new TransferServerEndpointDetailsOutputReference(this as any, "endpoint_details", true);
     public get endpointDetails() {
-      return this.interpolationForAttribute('endpoint_details') as any;
+      return this.__endpointDetailsOutput;
     }
-    public set endpointDetails(value: TransferServerEndpointDetails[] ) {
+    public putEndpointDetails(value: TransferServerEndpointDetails | undefined) {
       this._endpointDetails = value;
     }
     public resetEndpointDetails() {
@@ -711,7 +868,7 @@ export namespace Transfer {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         url: cdktf.stringToTerraform(this._url),
-        endpoint_details: cdktf.listMapper(transferServerEndpointDetailsToTerraform)(this._endpointDetails),
+        endpoint_details: transferServerEndpointDetailsToTerraform(this._endpointDetails),
       };
     }
   }
@@ -772,7 +929,7 @@ export namespace Transfer {
     // ==========
 
     // body - computed: false, optional: false, required: true
-    private _body: string;
+    private _body?: string; 
     public get body() {
       return this.getStringAttribute('body');
     }
@@ -790,7 +947,7 @@ export namespace Transfer {
     }
 
     // server_id - computed: false, optional: false, required: true
-    private _serverId: string;
+    private _serverId?: string; 
     public get serverId() {
       return this.getStringAttribute('server_id');
     }
@@ -803,7 +960,7 @@ export namespace Transfer {
     }
 
     // user_name - computed: false, optional: false, required: true
-    private _userName: string;
+    private _userName?: string; 
     public get userName() {
       return this.getStringAttribute('user_name');
     }
@@ -871,7 +1028,7 @@ export namespace Transfer {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/transfer_user.html#posix_profile TransferUser#posix_profile}
     */
-    readonly posixProfile?: TransferUserPosixProfile[];
+    readonly posixProfile?: TransferUserPosixProfile;
   }
   export interface TransferUserHomeDirectoryMappings {
     /**
@@ -886,6 +1043,9 @@ export namespace Transfer {
 
   function transferUserHomeDirectoryMappingsToTerraform(struct?: TransferUserHomeDirectoryMappings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       entry: cdktf.stringToTerraform(struct!.entry),
       target: cdktf.stringToTerraform(struct!.target),
@@ -907,8 +1067,11 @@ export namespace Transfer {
     readonly uid: number;
   }
 
-  function transferUserPosixProfileToTerraform(struct?: TransferUserPosixProfile): any {
+  function transferUserPosixProfileToTerraform(struct?: TransferUserPosixProfileOutputReference | TransferUserPosixProfile): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       gid: cdktf.numberToTerraform(struct!.gid),
       secondary_gids: cdktf.listMapper(cdktf.numberToTerraform)(struct!.secondaryGids),
@@ -916,6 +1079,59 @@ export namespace Transfer {
     }
   }
 
+  export class TransferUserPosixProfileOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // gid - computed: false, optional: false, required: true
+    private _gid?: number; 
+    public get gid() {
+      return this.getNumberAttribute('gid');
+    }
+    public set gid(value: number) {
+      this._gid = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get gidInput() {
+      return this._gid
+    }
+
+    // secondary_gids - computed: false, optional: true, required: false
+    private _secondaryGids?: number[] | undefined; 
+    public get secondaryGids() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('secondary_gids') as any;
+    }
+    public set secondaryGids(value: number[] | undefined) {
+      this._secondaryGids = value;
+    }
+    public resetSecondaryGids() {
+      this._secondaryGids = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get secondaryGidsInput() {
+      return this._secondaryGids
+    }
+
+    // uid - computed: false, optional: false, required: true
+    private _uid?: number; 
+    public get uid() {
+      return this.getNumberAttribute('uid');
+    }
+    public set uid(value: number) {
+      this._uid = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get uidInput() {
+      return this._uid
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/transfer_user.html aws_transfer_user}
@@ -971,11 +1187,11 @@ export namespace Transfer {
     }
 
     // home_directory - computed: false, optional: true, required: false
-    private _homeDirectory?: string;
+    private _homeDirectory?: string | undefined; 
     public get homeDirectory() {
       return this.getStringAttribute('home_directory');
     }
-    public set homeDirectory(value: string ) {
+    public set homeDirectory(value: string | undefined) {
       this._homeDirectory = value;
     }
     public resetHomeDirectory() {
@@ -987,11 +1203,11 @@ export namespace Transfer {
     }
 
     // home_directory_type - computed: false, optional: true, required: false
-    private _homeDirectoryType?: string;
+    private _homeDirectoryType?: string | undefined; 
     public get homeDirectoryType() {
       return this.getStringAttribute('home_directory_type');
     }
-    public set homeDirectoryType(value: string ) {
+    public set homeDirectoryType(value: string | undefined) {
       this._homeDirectoryType = value;
     }
     public resetHomeDirectoryType() {
@@ -1008,11 +1224,11 @@ export namespace Transfer {
     }
 
     // policy - computed: false, optional: true, required: false
-    private _policy?: string;
+    private _policy?: string | undefined; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
-    public set policy(value: string ) {
+    public set policy(value: string | undefined) {
       this._policy = value;
     }
     public resetPolicy() {
@@ -1024,7 +1240,7 @@ export namespace Transfer {
     }
 
     // role - computed: false, optional: false, required: true
-    private _role: string;
+    private _role?: string; 
     public get role() {
       return this.getStringAttribute('role');
     }
@@ -1037,7 +1253,7 @@ export namespace Transfer {
     }
 
     // server_id - computed: false, optional: false, required: true
-    private _serverId: string;
+    private _serverId?: string; 
     public get serverId() {
       return this.getStringAttribute('server_id');
     }
@@ -1050,11 +1266,12 @@ export namespace Transfer {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1066,11 +1283,12 @@ export namespace Transfer {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1082,7 +1300,7 @@ export namespace Transfer {
     }
 
     // user_name - computed: false, optional: false, required: true
-    private _userName: string;
+    private _userName?: string; 
     public get userName() {
       return this.getStringAttribute('user_name');
     }
@@ -1095,11 +1313,12 @@ export namespace Transfer {
     }
 
     // home_directory_mappings - computed: false, optional: true, required: false
-    private _homeDirectoryMappings?: TransferUserHomeDirectoryMappings[];
+    private _homeDirectoryMappings?: TransferUserHomeDirectoryMappings[] | undefined; 
     public get homeDirectoryMappings() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('home_directory_mappings') as any;
     }
-    public set homeDirectoryMappings(value: TransferUserHomeDirectoryMappings[] ) {
+    public set homeDirectoryMappings(value: TransferUserHomeDirectoryMappings[] | undefined) {
       this._homeDirectoryMappings = value;
     }
     public resetHomeDirectoryMappings() {
@@ -1111,11 +1330,12 @@ export namespace Transfer {
     }
 
     // posix_profile - computed: false, optional: true, required: false
-    private _posixProfile?: TransferUserPosixProfile[];
+    private _posixProfile?: TransferUserPosixProfile | undefined; 
+    private __posixProfileOutput = new TransferUserPosixProfileOutputReference(this as any, "posix_profile", true);
     public get posixProfile() {
-      return this.interpolationForAttribute('posix_profile') as any;
+      return this.__posixProfileOutput;
     }
-    public set posixProfile(value: TransferUserPosixProfile[] ) {
+    public putPosixProfile(value: TransferUserPosixProfile | undefined) {
       this._posixProfile = value;
     }
     public resetPosixProfile() {
@@ -1141,7 +1361,7 @@ export namespace Transfer {
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         user_name: cdktf.stringToTerraform(this._userName),
         home_directory_mappings: cdktf.listMapper(transferUserHomeDirectoryMappingsToTerraform)(this._homeDirectoryMappings),
-        posix_profile: cdktf.listMapper(transferUserPosixProfileToTerraform)(this._posixProfile),
+        posix_profile: transferUserPosixProfileToTerraform(this._posixProfile),
       };
     }
   }
@@ -1247,7 +1467,7 @@ export namespace Transfer {
     }
 
     // server_id - computed: false, optional: false, required: true
-    private _serverId: string;
+    private _serverId?: string; 
     public get serverId() {
       return this.getStringAttribute('server_id');
     }

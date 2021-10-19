@@ -112,6 +112,9 @@ export namespace OpsWorks {
 
   function opsworksApplicationAppSourceToTerraform(struct?: OpsworksApplicationAppSource): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       password: cdktf.stringToTerraform(struct!.password),
       revision: cdktf.stringToTerraform(struct!.revision),
@@ -139,6 +142,9 @@ export namespace OpsWorks {
 
   function opsworksApplicationEnvironmentToTerraform(struct?: OpsworksApplicationEnvironment): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
       secure: cdktf.booleanToTerraform(struct!.secure),
@@ -163,6 +169,9 @@ export namespace OpsWorks {
 
   function opsworksApplicationSslConfigurationToTerraform(struct?: OpsworksApplicationSslConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       certificate: cdktf.stringToTerraform(struct!.certificate),
       chain: cdktf.stringToTerraform(struct!.chain),
@@ -227,11 +236,11 @@ export namespace OpsWorks {
     // ==========
 
     // auto_bundle_on_deploy - computed: false, optional: true, required: false
-    private _autoBundleOnDeploy?: string;
+    private _autoBundleOnDeploy?: string | undefined; 
     public get autoBundleOnDeploy() {
       return this.getStringAttribute('auto_bundle_on_deploy');
     }
-    public set autoBundleOnDeploy(value: string ) {
+    public set autoBundleOnDeploy(value: string | undefined) {
       this._autoBundleOnDeploy = value;
     }
     public resetAutoBundleOnDeploy() {
@@ -243,11 +252,11 @@ export namespace OpsWorks {
     }
 
     // aws_flow_ruby_settings - computed: false, optional: true, required: false
-    private _awsFlowRubySettings?: string;
+    private _awsFlowRubySettings?: string | undefined; 
     public get awsFlowRubySettings() {
       return this.getStringAttribute('aws_flow_ruby_settings');
     }
-    public set awsFlowRubySettings(value: string ) {
+    public set awsFlowRubySettings(value: string | undefined) {
       this._awsFlowRubySettings = value;
     }
     public resetAwsFlowRubySettings() {
@@ -259,11 +268,11 @@ export namespace OpsWorks {
     }
 
     // data_source_arn - computed: false, optional: true, required: false
-    private _dataSourceArn?: string;
+    private _dataSourceArn?: string | undefined; 
     public get dataSourceArn() {
       return this.getStringAttribute('data_source_arn');
     }
-    public set dataSourceArn(value: string ) {
+    public set dataSourceArn(value: string | undefined) {
       this._dataSourceArn = value;
     }
     public resetDataSourceArn() {
@@ -275,11 +284,11 @@ export namespace OpsWorks {
     }
 
     // data_source_database_name - computed: false, optional: true, required: false
-    private _dataSourceDatabaseName?: string;
+    private _dataSourceDatabaseName?: string | undefined; 
     public get dataSourceDatabaseName() {
       return this.getStringAttribute('data_source_database_name');
     }
-    public set dataSourceDatabaseName(value: string ) {
+    public set dataSourceDatabaseName(value: string | undefined) {
       this._dataSourceDatabaseName = value;
     }
     public resetDataSourceDatabaseName() {
@@ -291,11 +300,11 @@ export namespace OpsWorks {
     }
 
     // data_source_type - computed: false, optional: true, required: false
-    private _dataSourceType?: string;
+    private _dataSourceType?: string | undefined; 
     public get dataSourceType() {
       return this.getStringAttribute('data_source_type');
     }
-    public set dataSourceType(value: string ) {
+    public set dataSourceType(value: string | undefined) {
       this._dataSourceType = value;
     }
     public resetDataSourceType() {
@@ -307,11 +316,11 @@ export namespace OpsWorks {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -323,11 +332,11 @@ export namespace OpsWorks {
     }
 
     // document_root - computed: false, optional: true, required: false
-    private _documentRoot?: string;
+    private _documentRoot?: string | undefined; 
     public get documentRoot() {
       return this.getStringAttribute('document_root');
     }
-    public set documentRoot(value: string ) {
+    public set documentRoot(value: string | undefined) {
       this._documentRoot = value;
     }
     public resetDocumentRoot() {
@@ -339,11 +348,11 @@ export namespace OpsWorks {
     }
 
     // domains - computed: false, optional: true, required: false
-    private _domains?: string[];
+    private _domains?: string[] | undefined; 
     public get domains() {
       return this.getListAttribute('domains');
     }
-    public set domains(value: string[] ) {
+    public set domains(value: string[] | undefined) {
       this._domains = value;
     }
     public resetDomains() {
@@ -355,11 +364,11 @@ export namespace OpsWorks {
     }
 
     // enable_ssl - computed: false, optional: true, required: false
-    private _enableSsl?: boolean | cdktf.IResolvable;
+    private _enableSsl?: boolean | cdktf.IResolvable | undefined; 
     public get enableSsl() {
-      return this.getBooleanAttribute('enable_ssl');
+      return this.getBooleanAttribute('enable_ssl') as any;
     }
-    public set enableSsl(value: boolean | cdktf.IResolvable ) {
+    public set enableSsl(value: boolean | cdktf.IResolvable | undefined) {
       this._enableSsl = value;
     }
     public resetEnableSsl() {
@@ -376,7 +385,7 @@ export namespace OpsWorks {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -389,11 +398,11 @@ export namespace OpsWorks {
     }
 
     // rails_env - computed: false, optional: true, required: false
-    private _railsEnv?: string;
+    private _railsEnv?: string | undefined; 
     public get railsEnv() {
       return this.getStringAttribute('rails_env');
     }
-    public set railsEnv(value: string ) {
+    public set railsEnv(value: string | undefined) {
       this._railsEnv = value;
     }
     public resetRailsEnv() {
@@ -405,11 +414,11 @@ export namespace OpsWorks {
     }
 
     // short_name - computed: true, optional: true, required: false
-    private _shortName?: string;
+    private _shortName?: string | undefined; 
     public get shortName() {
       return this.getStringAttribute('short_name');
     }
-    public set shortName(value: string) {
+    public set shortName(value: string | undefined) {
       this._shortName = value;
     }
     public resetShortName() {
@@ -421,7 +430,7 @@ export namespace OpsWorks {
     }
 
     // stack_id - computed: false, optional: false, required: true
-    private _stackId: string;
+    private _stackId?: string; 
     public get stackId() {
       return this.getStringAttribute('stack_id');
     }
@@ -434,7 +443,7 @@ export namespace OpsWorks {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }
@@ -447,11 +456,12 @@ export namespace OpsWorks {
     }
 
     // app_source - computed: false, optional: true, required: false
-    private _appSource?: OpsworksApplicationAppSource[];
+    private _appSource?: OpsworksApplicationAppSource[] | undefined; 
     public get appSource() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('app_source') as any;
     }
-    public set appSource(value: OpsworksApplicationAppSource[] ) {
+    public set appSource(value: OpsworksApplicationAppSource[] | undefined) {
       this._appSource = value;
     }
     public resetAppSource() {
@@ -463,11 +473,12 @@ export namespace OpsWorks {
     }
 
     // environment - computed: false, optional: true, required: false
-    private _environment?: OpsworksApplicationEnvironment[];
+    private _environment?: OpsworksApplicationEnvironment[] | undefined; 
     public get environment() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('environment') as any;
     }
-    public set environment(value: OpsworksApplicationEnvironment[] ) {
+    public set environment(value: OpsworksApplicationEnvironment[] | undefined) {
       this._environment = value;
     }
     public resetEnvironment() {
@@ -479,11 +490,12 @@ export namespace OpsWorks {
     }
 
     // ssl_configuration - computed: false, optional: true, required: false
-    private _sslConfiguration?: OpsworksApplicationSslConfiguration[];
+    private _sslConfiguration?: OpsworksApplicationSslConfiguration[] | undefined; 
     public get sslConfiguration() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ssl_configuration') as any;
     }
-    public set sslConfiguration(value: OpsworksApplicationSslConfiguration[] ) {
+    public set sslConfiguration(value: OpsworksApplicationSslConfiguration[] | undefined) {
       this._sslConfiguration = value;
     }
     public resetSslConfiguration() {
@@ -649,6 +661,9 @@ export namespace OpsWorks {
 
   function opsworksCustomLayerEbsVolumeToTerraform(struct?: OpsworksCustomLayerEbsVolume): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       encrypted: cdktf.booleanToTerraform(struct!.encrypted),
       iops: cdktf.numberToTerraform(struct!.iops),
@@ -728,11 +743,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_elastic_ips - computed: false, optional: true, required: false
-    private _autoAssignElasticIps?: boolean | cdktf.IResolvable;
+    private _autoAssignElasticIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignElasticIps() {
-      return this.getBooleanAttribute('auto_assign_elastic_ips');
+      return this.getBooleanAttribute('auto_assign_elastic_ips') as any;
     }
-    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignElasticIps = value;
     }
     public resetAutoAssignElasticIps() {
@@ -744,11 +759,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_public_ips - computed: false, optional: true, required: false
-    private _autoAssignPublicIps?: boolean | cdktf.IResolvable;
+    private _autoAssignPublicIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignPublicIps() {
-      return this.getBooleanAttribute('auto_assign_public_ips');
+      return this.getBooleanAttribute('auto_assign_public_ips') as any;
     }
-    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignPublicIps = value;
     }
     public resetAutoAssignPublicIps() {
@@ -760,11 +775,11 @@ export namespace OpsWorks {
     }
 
     // auto_healing - computed: false, optional: true, required: false
-    private _autoHealing?: boolean | cdktf.IResolvable;
+    private _autoHealing?: boolean | cdktf.IResolvable | undefined; 
     public get autoHealing() {
-      return this.getBooleanAttribute('auto_healing');
+      return this.getBooleanAttribute('auto_healing') as any;
     }
-    public set autoHealing(value: boolean | cdktf.IResolvable ) {
+    public set autoHealing(value: boolean | cdktf.IResolvable | undefined) {
       this._autoHealing = value;
     }
     public resetAutoHealing() {
@@ -776,11 +791,11 @@ export namespace OpsWorks {
     }
 
     // custom_configure_recipes - computed: false, optional: true, required: false
-    private _customConfigureRecipes?: string[];
+    private _customConfigureRecipes?: string[] | undefined; 
     public get customConfigureRecipes() {
       return this.getListAttribute('custom_configure_recipes');
     }
-    public set customConfigureRecipes(value: string[] ) {
+    public set customConfigureRecipes(value: string[] | undefined) {
       this._customConfigureRecipes = value;
     }
     public resetCustomConfigureRecipes() {
@@ -792,11 +807,11 @@ export namespace OpsWorks {
     }
 
     // custom_deploy_recipes - computed: false, optional: true, required: false
-    private _customDeployRecipes?: string[];
+    private _customDeployRecipes?: string[] | undefined; 
     public get customDeployRecipes() {
       return this.getListAttribute('custom_deploy_recipes');
     }
-    public set customDeployRecipes(value: string[] ) {
+    public set customDeployRecipes(value: string[] | undefined) {
       this._customDeployRecipes = value;
     }
     public resetCustomDeployRecipes() {
@@ -808,11 +823,11 @@ export namespace OpsWorks {
     }
 
     // custom_instance_profile_arn - computed: false, optional: true, required: false
-    private _customInstanceProfileArn?: string;
+    private _customInstanceProfileArn?: string | undefined; 
     public get customInstanceProfileArn() {
       return this.getStringAttribute('custom_instance_profile_arn');
     }
-    public set customInstanceProfileArn(value: string ) {
+    public set customInstanceProfileArn(value: string | undefined) {
       this._customInstanceProfileArn = value;
     }
     public resetCustomInstanceProfileArn() {
@@ -824,11 +839,11 @@ export namespace OpsWorks {
     }
 
     // custom_json - computed: false, optional: true, required: false
-    private _customJson?: string;
+    private _customJson?: string | undefined; 
     public get customJson() {
       return this.getStringAttribute('custom_json');
     }
-    public set customJson(value: string ) {
+    public set customJson(value: string | undefined) {
       this._customJson = value;
     }
     public resetCustomJson() {
@@ -840,11 +855,11 @@ export namespace OpsWorks {
     }
 
     // custom_security_group_ids - computed: false, optional: true, required: false
-    private _customSecurityGroupIds?: string[];
+    private _customSecurityGroupIds?: string[] | undefined; 
     public get customSecurityGroupIds() {
       return this.getListAttribute('custom_security_group_ids');
     }
-    public set customSecurityGroupIds(value: string[] ) {
+    public set customSecurityGroupIds(value: string[] | undefined) {
       this._customSecurityGroupIds = value;
     }
     public resetCustomSecurityGroupIds() {
@@ -856,11 +871,11 @@ export namespace OpsWorks {
     }
 
     // custom_setup_recipes - computed: false, optional: true, required: false
-    private _customSetupRecipes?: string[];
+    private _customSetupRecipes?: string[] | undefined; 
     public get customSetupRecipes() {
       return this.getListAttribute('custom_setup_recipes');
     }
-    public set customSetupRecipes(value: string[] ) {
+    public set customSetupRecipes(value: string[] | undefined) {
       this._customSetupRecipes = value;
     }
     public resetCustomSetupRecipes() {
@@ -872,11 +887,11 @@ export namespace OpsWorks {
     }
 
     // custom_shutdown_recipes - computed: false, optional: true, required: false
-    private _customShutdownRecipes?: string[];
+    private _customShutdownRecipes?: string[] | undefined; 
     public get customShutdownRecipes() {
       return this.getListAttribute('custom_shutdown_recipes');
     }
-    public set customShutdownRecipes(value: string[] ) {
+    public set customShutdownRecipes(value: string[] | undefined) {
       this._customShutdownRecipes = value;
     }
     public resetCustomShutdownRecipes() {
@@ -888,11 +903,11 @@ export namespace OpsWorks {
     }
 
     // custom_undeploy_recipes - computed: false, optional: true, required: false
-    private _customUndeployRecipes?: string[];
+    private _customUndeployRecipes?: string[] | undefined; 
     public get customUndeployRecipes() {
       return this.getListAttribute('custom_undeploy_recipes');
     }
-    public set customUndeployRecipes(value: string[] ) {
+    public set customUndeployRecipes(value: string[] | undefined) {
       this._customUndeployRecipes = value;
     }
     public resetCustomUndeployRecipes() {
@@ -904,11 +919,11 @@ export namespace OpsWorks {
     }
 
     // drain_elb_on_shutdown - computed: false, optional: true, required: false
-    private _drainElbOnShutdown?: boolean | cdktf.IResolvable;
+    private _drainElbOnShutdown?: boolean | cdktf.IResolvable | undefined; 
     public get drainElbOnShutdown() {
-      return this.getBooleanAttribute('drain_elb_on_shutdown');
+      return this.getBooleanAttribute('drain_elb_on_shutdown') as any;
     }
-    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable ) {
+    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable | undefined) {
       this._drainElbOnShutdown = value;
     }
     public resetDrainElbOnShutdown() {
@@ -920,11 +935,11 @@ export namespace OpsWorks {
     }
 
     // elastic_load_balancer - computed: false, optional: true, required: false
-    private _elasticLoadBalancer?: string;
+    private _elasticLoadBalancer?: string | undefined; 
     public get elasticLoadBalancer() {
       return this.getStringAttribute('elastic_load_balancer');
     }
-    public set elasticLoadBalancer(value: string ) {
+    public set elasticLoadBalancer(value: string | undefined) {
       this._elasticLoadBalancer = value;
     }
     public resetElasticLoadBalancer() {
@@ -941,11 +956,11 @@ export namespace OpsWorks {
     }
 
     // install_updates_on_boot - computed: false, optional: true, required: false
-    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable;
+    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable | undefined; 
     public get installUpdatesOnBoot() {
-      return this.getBooleanAttribute('install_updates_on_boot');
+      return this.getBooleanAttribute('install_updates_on_boot') as any;
     }
-    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable ) {
+    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable | undefined) {
       this._installUpdatesOnBoot = value;
     }
     public resetInstallUpdatesOnBoot() {
@@ -957,11 +972,11 @@ export namespace OpsWorks {
     }
 
     // instance_shutdown_timeout - computed: false, optional: true, required: false
-    private _instanceShutdownTimeout?: number;
+    private _instanceShutdownTimeout?: number | undefined; 
     public get instanceShutdownTimeout() {
       return this.getNumberAttribute('instance_shutdown_timeout');
     }
-    public set instanceShutdownTimeout(value: number ) {
+    public set instanceShutdownTimeout(value: number | undefined) {
       this._instanceShutdownTimeout = value;
     }
     public resetInstanceShutdownTimeout() {
@@ -973,7 +988,7 @@ export namespace OpsWorks {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -986,7 +1001,7 @@ export namespace OpsWorks {
     }
 
     // short_name - computed: false, optional: false, required: true
-    private _shortName: string;
+    private _shortName?: string; 
     public get shortName() {
       return this.getStringAttribute('short_name');
     }
@@ -999,7 +1014,7 @@ export namespace OpsWorks {
     }
 
     // stack_id - computed: false, optional: false, required: true
-    private _stackId: string;
+    private _stackId?: string; 
     public get stackId() {
       return this.getStringAttribute('stack_id');
     }
@@ -1012,11 +1027,11 @@ export namespace OpsWorks {
     }
 
     // system_packages - computed: false, optional: true, required: false
-    private _systemPackages?: string[];
+    private _systemPackages?: string[] | undefined; 
     public get systemPackages() {
       return this.getListAttribute('system_packages');
     }
-    public set systemPackages(value: string[] ) {
+    public set systemPackages(value: string[] | undefined) {
       this._systemPackages = value;
     }
     public resetSystemPackages() {
@@ -1028,11 +1043,12 @@ export namespace OpsWorks {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1044,11 +1060,12 @@ export namespace OpsWorks {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1060,11 +1077,11 @@ export namespace OpsWorks {
     }
 
     // use_ebs_optimized_instances - computed: false, optional: true, required: false
-    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable;
+    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable | undefined; 
     public get useEbsOptimizedInstances() {
-      return this.getBooleanAttribute('use_ebs_optimized_instances');
+      return this.getBooleanAttribute('use_ebs_optimized_instances') as any;
     }
-    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable ) {
+    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable | undefined) {
       this._useEbsOptimizedInstances = value;
     }
     public resetUseEbsOptimizedInstances() {
@@ -1076,11 +1093,12 @@ export namespace OpsWorks {
     }
 
     // ebs_volume - computed: false, optional: true, required: false
-    private _ebsVolume?: OpsworksCustomLayerEbsVolume[];
+    private _ebsVolume?: OpsworksCustomLayerEbsVolume[] | undefined; 
     public get ebsVolume() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs_volume') as any;
     }
-    public set ebsVolume(value: OpsworksCustomLayerEbsVolume[] ) {
+    public set ebsVolume(value: OpsworksCustomLayerEbsVolume[] | undefined) {
       this._ebsVolume = value;
     }
     public resetEbsVolume() {
@@ -1260,6 +1278,9 @@ export namespace OpsWorks {
 
   function opsworksGangliaLayerEbsVolumeToTerraform(struct?: OpsworksGangliaLayerEbsVolume): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       encrypted: cdktf.booleanToTerraform(struct!.encrypted),
       iops: cdktf.numberToTerraform(struct!.iops),
@@ -1341,11 +1362,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_elastic_ips - computed: false, optional: true, required: false
-    private _autoAssignElasticIps?: boolean | cdktf.IResolvable;
+    private _autoAssignElasticIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignElasticIps() {
-      return this.getBooleanAttribute('auto_assign_elastic_ips');
+      return this.getBooleanAttribute('auto_assign_elastic_ips') as any;
     }
-    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignElasticIps = value;
     }
     public resetAutoAssignElasticIps() {
@@ -1357,11 +1378,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_public_ips - computed: false, optional: true, required: false
-    private _autoAssignPublicIps?: boolean | cdktf.IResolvable;
+    private _autoAssignPublicIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignPublicIps() {
-      return this.getBooleanAttribute('auto_assign_public_ips');
+      return this.getBooleanAttribute('auto_assign_public_ips') as any;
     }
-    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignPublicIps = value;
     }
     public resetAutoAssignPublicIps() {
@@ -1373,11 +1394,11 @@ export namespace OpsWorks {
     }
 
     // auto_healing - computed: false, optional: true, required: false
-    private _autoHealing?: boolean | cdktf.IResolvable;
+    private _autoHealing?: boolean | cdktf.IResolvable | undefined; 
     public get autoHealing() {
-      return this.getBooleanAttribute('auto_healing');
+      return this.getBooleanAttribute('auto_healing') as any;
     }
-    public set autoHealing(value: boolean | cdktf.IResolvable ) {
+    public set autoHealing(value: boolean | cdktf.IResolvable | undefined) {
       this._autoHealing = value;
     }
     public resetAutoHealing() {
@@ -1389,11 +1410,11 @@ export namespace OpsWorks {
     }
 
     // custom_configure_recipes - computed: false, optional: true, required: false
-    private _customConfigureRecipes?: string[];
+    private _customConfigureRecipes?: string[] | undefined; 
     public get customConfigureRecipes() {
       return this.getListAttribute('custom_configure_recipes');
     }
-    public set customConfigureRecipes(value: string[] ) {
+    public set customConfigureRecipes(value: string[] | undefined) {
       this._customConfigureRecipes = value;
     }
     public resetCustomConfigureRecipes() {
@@ -1405,11 +1426,11 @@ export namespace OpsWorks {
     }
 
     // custom_deploy_recipes - computed: false, optional: true, required: false
-    private _customDeployRecipes?: string[];
+    private _customDeployRecipes?: string[] | undefined; 
     public get customDeployRecipes() {
       return this.getListAttribute('custom_deploy_recipes');
     }
-    public set customDeployRecipes(value: string[] ) {
+    public set customDeployRecipes(value: string[] | undefined) {
       this._customDeployRecipes = value;
     }
     public resetCustomDeployRecipes() {
@@ -1421,11 +1442,11 @@ export namespace OpsWorks {
     }
 
     // custom_instance_profile_arn - computed: false, optional: true, required: false
-    private _customInstanceProfileArn?: string;
+    private _customInstanceProfileArn?: string | undefined; 
     public get customInstanceProfileArn() {
       return this.getStringAttribute('custom_instance_profile_arn');
     }
-    public set customInstanceProfileArn(value: string ) {
+    public set customInstanceProfileArn(value: string | undefined) {
       this._customInstanceProfileArn = value;
     }
     public resetCustomInstanceProfileArn() {
@@ -1437,11 +1458,11 @@ export namespace OpsWorks {
     }
 
     // custom_json - computed: false, optional: true, required: false
-    private _customJson?: string;
+    private _customJson?: string | undefined; 
     public get customJson() {
       return this.getStringAttribute('custom_json');
     }
-    public set customJson(value: string ) {
+    public set customJson(value: string | undefined) {
       this._customJson = value;
     }
     public resetCustomJson() {
@@ -1453,11 +1474,11 @@ export namespace OpsWorks {
     }
 
     // custom_security_group_ids - computed: false, optional: true, required: false
-    private _customSecurityGroupIds?: string[];
+    private _customSecurityGroupIds?: string[] | undefined; 
     public get customSecurityGroupIds() {
       return this.getListAttribute('custom_security_group_ids');
     }
-    public set customSecurityGroupIds(value: string[] ) {
+    public set customSecurityGroupIds(value: string[] | undefined) {
       this._customSecurityGroupIds = value;
     }
     public resetCustomSecurityGroupIds() {
@@ -1469,11 +1490,11 @@ export namespace OpsWorks {
     }
 
     // custom_setup_recipes - computed: false, optional: true, required: false
-    private _customSetupRecipes?: string[];
+    private _customSetupRecipes?: string[] | undefined; 
     public get customSetupRecipes() {
       return this.getListAttribute('custom_setup_recipes');
     }
-    public set customSetupRecipes(value: string[] ) {
+    public set customSetupRecipes(value: string[] | undefined) {
       this._customSetupRecipes = value;
     }
     public resetCustomSetupRecipes() {
@@ -1485,11 +1506,11 @@ export namespace OpsWorks {
     }
 
     // custom_shutdown_recipes - computed: false, optional: true, required: false
-    private _customShutdownRecipes?: string[];
+    private _customShutdownRecipes?: string[] | undefined; 
     public get customShutdownRecipes() {
       return this.getListAttribute('custom_shutdown_recipes');
     }
-    public set customShutdownRecipes(value: string[] ) {
+    public set customShutdownRecipes(value: string[] | undefined) {
       this._customShutdownRecipes = value;
     }
     public resetCustomShutdownRecipes() {
@@ -1501,11 +1522,11 @@ export namespace OpsWorks {
     }
 
     // custom_undeploy_recipes - computed: false, optional: true, required: false
-    private _customUndeployRecipes?: string[];
+    private _customUndeployRecipes?: string[] | undefined; 
     public get customUndeployRecipes() {
       return this.getListAttribute('custom_undeploy_recipes');
     }
-    public set customUndeployRecipes(value: string[] ) {
+    public set customUndeployRecipes(value: string[] | undefined) {
       this._customUndeployRecipes = value;
     }
     public resetCustomUndeployRecipes() {
@@ -1517,11 +1538,11 @@ export namespace OpsWorks {
     }
 
     // drain_elb_on_shutdown - computed: false, optional: true, required: false
-    private _drainElbOnShutdown?: boolean | cdktf.IResolvable;
+    private _drainElbOnShutdown?: boolean | cdktf.IResolvable | undefined; 
     public get drainElbOnShutdown() {
-      return this.getBooleanAttribute('drain_elb_on_shutdown');
+      return this.getBooleanAttribute('drain_elb_on_shutdown') as any;
     }
-    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable ) {
+    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable | undefined) {
       this._drainElbOnShutdown = value;
     }
     public resetDrainElbOnShutdown() {
@@ -1533,11 +1554,11 @@ export namespace OpsWorks {
     }
 
     // elastic_load_balancer - computed: false, optional: true, required: false
-    private _elasticLoadBalancer?: string;
+    private _elasticLoadBalancer?: string | undefined; 
     public get elasticLoadBalancer() {
       return this.getStringAttribute('elastic_load_balancer');
     }
-    public set elasticLoadBalancer(value: string ) {
+    public set elasticLoadBalancer(value: string | undefined) {
       this._elasticLoadBalancer = value;
     }
     public resetElasticLoadBalancer() {
@@ -1554,11 +1575,11 @@ export namespace OpsWorks {
     }
 
     // install_updates_on_boot - computed: false, optional: true, required: false
-    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable;
+    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable | undefined; 
     public get installUpdatesOnBoot() {
-      return this.getBooleanAttribute('install_updates_on_boot');
+      return this.getBooleanAttribute('install_updates_on_boot') as any;
     }
-    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable ) {
+    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable | undefined) {
       this._installUpdatesOnBoot = value;
     }
     public resetInstallUpdatesOnBoot() {
@@ -1570,11 +1591,11 @@ export namespace OpsWorks {
     }
 
     // instance_shutdown_timeout - computed: false, optional: true, required: false
-    private _instanceShutdownTimeout?: number;
+    private _instanceShutdownTimeout?: number | undefined; 
     public get instanceShutdownTimeout() {
       return this.getNumberAttribute('instance_shutdown_timeout');
     }
-    public set instanceShutdownTimeout(value: number ) {
+    public set instanceShutdownTimeout(value: number | undefined) {
       this._instanceShutdownTimeout = value;
     }
     public resetInstanceShutdownTimeout() {
@@ -1586,11 +1607,11 @@ export namespace OpsWorks {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1602,7 +1623,7 @@ export namespace OpsWorks {
     }
 
     // password - computed: false, optional: false, required: true
-    private _password: string;
+    private _password?: string; 
     public get password() {
       return this.getStringAttribute('password');
     }
@@ -1615,7 +1636,7 @@ export namespace OpsWorks {
     }
 
     // stack_id - computed: false, optional: false, required: true
-    private _stackId: string;
+    private _stackId?: string; 
     public get stackId() {
       return this.getStringAttribute('stack_id');
     }
@@ -1628,11 +1649,11 @@ export namespace OpsWorks {
     }
 
     // system_packages - computed: false, optional: true, required: false
-    private _systemPackages?: string[];
+    private _systemPackages?: string[] | undefined; 
     public get systemPackages() {
       return this.getListAttribute('system_packages');
     }
-    public set systemPackages(value: string[] ) {
+    public set systemPackages(value: string[] | undefined) {
       this._systemPackages = value;
     }
     public resetSystemPackages() {
@@ -1644,11 +1665,12 @@ export namespace OpsWorks {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1660,11 +1682,12 @@ export namespace OpsWorks {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1676,11 +1699,11 @@ export namespace OpsWorks {
     }
 
     // url - computed: false, optional: true, required: false
-    private _url?: string;
+    private _url?: string | undefined; 
     public get url() {
       return this.getStringAttribute('url');
     }
-    public set url(value: string ) {
+    public set url(value: string | undefined) {
       this._url = value;
     }
     public resetUrl() {
@@ -1692,11 +1715,11 @@ export namespace OpsWorks {
     }
 
     // use_ebs_optimized_instances - computed: false, optional: true, required: false
-    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable;
+    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable | undefined; 
     public get useEbsOptimizedInstances() {
-      return this.getBooleanAttribute('use_ebs_optimized_instances');
+      return this.getBooleanAttribute('use_ebs_optimized_instances') as any;
     }
-    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable ) {
+    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable | undefined) {
       this._useEbsOptimizedInstances = value;
     }
     public resetUseEbsOptimizedInstances() {
@@ -1708,11 +1731,11 @@ export namespace OpsWorks {
     }
 
     // username - computed: false, optional: true, required: false
-    private _username?: string;
+    private _username?: string | undefined; 
     public get username() {
       return this.getStringAttribute('username');
     }
-    public set username(value: string ) {
+    public set username(value: string | undefined) {
       this._username = value;
     }
     public resetUsername() {
@@ -1724,11 +1747,12 @@ export namespace OpsWorks {
     }
 
     // ebs_volume - computed: false, optional: true, required: false
-    private _ebsVolume?: OpsworksGangliaLayerEbsVolume[];
+    private _ebsVolume?: OpsworksGangliaLayerEbsVolume[] | undefined; 
     public get ebsVolume() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs_volume') as any;
     }
-    public set ebsVolume(value: OpsworksGangliaLayerEbsVolume[] ) {
+    public set ebsVolume(value: OpsworksGangliaLayerEbsVolume[] | undefined) {
       this._ebsVolume = value;
     }
     public resetEbsVolume() {
@@ -1922,6 +1946,9 @@ export namespace OpsWorks {
 
   function opsworksHaproxyLayerEbsVolumeToTerraform(struct?: OpsworksHaproxyLayerEbsVolume): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       encrypted: cdktf.booleanToTerraform(struct!.encrypted),
       iops: cdktf.numberToTerraform(struct!.iops),
@@ -2006,11 +2033,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_elastic_ips - computed: false, optional: true, required: false
-    private _autoAssignElasticIps?: boolean | cdktf.IResolvable;
+    private _autoAssignElasticIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignElasticIps() {
-      return this.getBooleanAttribute('auto_assign_elastic_ips');
+      return this.getBooleanAttribute('auto_assign_elastic_ips') as any;
     }
-    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignElasticIps = value;
     }
     public resetAutoAssignElasticIps() {
@@ -2022,11 +2049,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_public_ips - computed: false, optional: true, required: false
-    private _autoAssignPublicIps?: boolean | cdktf.IResolvable;
+    private _autoAssignPublicIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignPublicIps() {
-      return this.getBooleanAttribute('auto_assign_public_ips');
+      return this.getBooleanAttribute('auto_assign_public_ips') as any;
     }
-    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignPublicIps = value;
     }
     public resetAutoAssignPublicIps() {
@@ -2038,11 +2065,11 @@ export namespace OpsWorks {
     }
 
     // auto_healing - computed: false, optional: true, required: false
-    private _autoHealing?: boolean | cdktf.IResolvable;
+    private _autoHealing?: boolean | cdktf.IResolvable | undefined; 
     public get autoHealing() {
-      return this.getBooleanAttribute('auto_healing');
+      return this.getBooleanAttribute('auto_healing') as any;
     }
-    public set autoHealing(value: boolean | cdktf.IResolvable ) {
+    public set autoHealing(value: boolean | cdktf.IResolvable | undefined) {
       this._autoHealing = value;
     }
     public resetAutoHealing() {
@@ -2054,11 +2081,11 @@ export namespace OpsWorks {
     }
 
     // custom_configure_recipes - computed: false, optional: true, required: false
-    private _customConfigureRecipes?: string[];
+    private _customConfigureRecipes?: string[] | undefined; 
     public get customConfigureRecipes() {
       return this.getListAttribute('custom_configure_recipes');
     }
-    public set customConfigureRecipes(value: string[] ) {
+    public set customConfigureRecipes(value: string[] | undefined) {
       this._customConfigureRecipes = value;
     }
     public resetCustomConfigureRecipes() {
@@ -2070,11 +2097,11 @@ export namespace OpsWorks {
     }
 
     // custom_deploy_recipes - computed: false, optional: true, required: false
-    private _customDeployRecipes?: string[];
+    private _customDeployRecipes?: string[] | undefined; 
     public get customDeployRecipes() {
       return this.getListAttribute('custom_deploy_recipes');
     }
-    public set customDeployRecipes(value: string[] ) {
+    public set customDeployRecipes(value: string[] | undefined) {
       this._customDeployRecipes = value;
     }
     public resetCustomDeployRecipes() {
@@ -2086,11 +2113,11 @@ export namespace OpsWorks {
     }
 
     // custom_instance_profile_arn - computed: false, optional: true, required: false
-    private _customInstanceProfileArn?: string;
+    private _customInstanceProfileArn?: string | undefined; 
     public get customInstanceProfileArn() {
       return this.getStringAttribute('custom_instance_profile_arn');
     }
-    public set customInstanceProfileArn(value: string ) {
+    public set customInstanceProfileArn(value: string | undefined) {
       this._customInstanceProfileArn = value;
     }
     public resetCustomInstanceProfileArn() {
@@ -2102,11 +2129,11 @@ export namespace OpsWorks {
     }
 
     // custom_json - computed: false, optional: true, required: false
-    private _customJson?: string;
+    private _customJson?: string | undefined; 
     public get customJson() {
       return this.getStringAttribute('custom_json');
     }
-    public set customJson(value: string ) {
+    public set customJson(value: string | undefined) {
       this._customJson = value;
     }
     public resetCustomJson() {
@@ -2118,11 +2145,11 @@ export namespace OpsWorks {
     }
 
     // custom_security_group_ids - computed: false, optional: true, required: false
-    private _customSecurityGroupIds?: string[];
+    private _customSecurityGroupIds?: string[] | undefined; 
     public get customSecurityGroupIds() {
       return this.getListAttribute('custom_security_group_ids');
     }
-    public set customSecurityGroupIds(value: string[] ) {
+    public set customSecurityGroupIds(value: string[] | undefined) {
       this._customSecurityGroupIds = value;
     }
     public resetCustomSecurityGroupIds() {
@@ -2134,11 +2161,11 @@ export namespace OpsWorks {
     }
 
     // custom_setup_recipes - computed: false, optional: true, required: false
-    private _customSetupRecipes?: string[];
+    private _customSetupRecipes?: string[] | undefined; 
     public get customSetupRecipes() {
       return this.getListAttribute('custom_setup_recipes');
     }
-    public set customSetupRecipes(value: string[] ) {
+    public set customSetupRecipes(value: string[] | undefined) {
       this._customSetupRecipes = value;
     }
     public resetCustomSetupRecipes() {
@@ -2150,11 +2177,11 @@ export namespace OpsWorks {
     }
 
     // custom_shutdown_recipes - computed: false, optional: true, required: false
-    private _customShutdownRecipes?: string[];
+    private _customShutdownRecipes?: string[] | undefined; 
     public get customShutdownRecipes() {
       return this.getListAttribute('custom_shutdown_recipes');
     }
-    public set customShutdownRecipes(value: string[] ) {
+    public set customShutdownRecipes(value: string[] | undefined) {
       this._customShutdownRecipes = value;
     }
     public resetCustomShutdownRecipes() {
@@ -2166,11 +2193,11 @@ export namespace OpsWorks {
     }
 
     // custom_undeploy_recipes - computed: false, optional: true, required: false
-    private _customUndeployRecipes?: string[];
+    private _customUndeployRecipes?: string[] | undefined; 
     public get customUndeployRecipes() {
       return this.getListAttribute('custom_undeploy_recipes');
     }
-    public set customUndeployRecipes(value: string[] ) {
+    public set customUndeployRecipes(value: string[] | undefined) {
       this._customUndeployRecipes = value;
     }
     public resetCustomUndeployRecipes() {
@@ -2182,11 +2209,11 @@ export namespace OpsWorks {
     }
 
     // drain_elb_on_shutdown - computed: false, optional: true, required: false
-    private _drainElbOnShutdown?: boolean | cdktf.IResolvable;
+    private _drainElbOnShutdown?: boolean | cdktf.IResolvable | undefined; 
     public get drainElbOnShutdown() {
-      return this.getBooleanAttribute('drain_elb_on_shutdown');
+      return this.getBooleanAttribute('drain_elb_on_shutdown') as any;
     }
-    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable ) {
+    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable | undefined) {
       this._drainElbOnShutdown = value;
     }
     public resetDrainElbOnShutdown() {
@@ -2198,11 +2225,11 @@ export namespace OpsWorks {
     }
 
     // elastic_load_balancer - computed: false, optional: true, required: false
-    private _elasticLoadBalancer?: string;
+    private _elasticLoadBalancer?: string | undefined; 
     public get elasticLoadBalancer() {
       return this.getStringAttribute('elastic_load_balancer');
     }
-    public set elasticLoadBalancer(value: string ) {
+    public set elasticLoadBalancer(value: string | undefined) {
       this._elasticLoadBalancer = value;
     }
     public resetElasticLoadBalancer() {
@@ -2214,11 +2241,11 @@ export namespace OpsWorks {
     }
 
     // healthcheck_method - computed: false, optional: true, required: false
-    private _healthcheckMethod?: string;
+    private _healthcheckMethod?: string | undefined; 
     public get healthcheckMethod() {
       return this.getStringAttribute('healthcheck_method');
     }
-    public set healthcheckMethod(value: string ) {
+    public set healthcheckMethod(value: string | undefined) {
       this._healthcheckMethod = value;
     }
     public resetHealthcheckMethod() {
@@ -2230,11 +2257,11 @@ export namespace OpsWorks {
     }
 
     // healthcheck_url - computed: false, optional: true, required: false
-    private _healthcheckUrl?: string;
+    private _healthcheckUrl?: string | undefined; 
     public get healthcheckUrl() {
       return this.getStringAttribute('healthcheck_url');
     }
-    public set healthcheckUrl(value: string ) {
+    public set healthcheckUrl(value: string | undefined) {
       this._healthcheckUrl = value;
     }
     public resetHealthcheckUrl() {
@@ -2251,11 +2278,11 @@ export namespace OpsWorks {
     }
 
     // install_updates_on_boot - computed: false, optional: true, required: false
-    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable;
+    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable | undefined; 
     public get installUpdatesOnBoot() {
-      return this.getBooleanAttribute('install_updates_on_boot');
+      return this.getBooleanAttribute('install_updates_on_boot') as any;
     }
-    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable ) {
+    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable | undefined) {
       this._installUpdatesOnBoot = value;
     }
     public resetInstallUpdatesOnBoot() {
@@ -2267,11 +2294,11 @@ export namespace OpsWorks {
     }
 
     // instance_shutdown_timeout - computed: false, optional: true, required: false
-    private _instanceShutdownTimeout?: number;
+    private _instanceShutdownTimeout?: number | undefined; 
     public get instanceShutdownTimeout() {
       return this.getNumberAttribute('instance_shutdown_timeout');
     }
-    public set instanceShutdownTimeout(value: number ) {
+    public set instanceShutdownTimeout(value: number | undefined) {
       this._instanceShutdownTimeout = value;
     }
     public resetInstanceShutdownTimeout() {
@@ -2283,11 +2310,11 @@ export namespace OpsWorks {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -2299,7 +2326,7 @@ export namespace OpsWorks {
     }
 
     // stack_id - computed: false, optional: false, required: true
-    private _stackId: string;
+    private _stackId?: string; 
     public get stackId() {
       return this.getStringAttribute('stack_id');
     }
@@ -2312,11 +2339,11 @@ export namespace OpsWorks {
     }
 
     // stats_enabled - computed: false, optional: true, required: false
-    private _statsEnabled?: boolean | cdktf.IResolvable;
+    private _statsEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get statsEnabled() {
-      return this.getBooleanAttribute('stats_enabled');
+      return this.getBooleanAttribute('stats_enabled') as any;
     }
-    public set statsEnabled(value: boolean | cdktf.IResolvable ) {
+    public set statsEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._statsEnabled = value;
     }
     public resetStatsEnabled() {
@@ -2328,7 +2355,7 @@ export namespace OpsWorks {
     }
 
     // stats_password - computed: false, optional: false, required: true
-    private _statsPassword: string;
+    private _statsPassword?: string; 
     public get statsPassword() {
       return this.getStringAttribute('stats_password');
     }
@@ -2341,11 +2368,11 @@ export namespace OpsWorks {
     }
 
     // stats_url - computed: false, optional: true, required: false
-    private _statsUrl?: string;
+    private _statsUrl?: string | undefined; 
     public get statsUrl() {
       return this.getStringAttribute('stats_url');
     }
-    public set statsUrl(value: string ) {
+    public set statsUrl(value: string | undefined) {
       this._statsUrl = value;
     }
     public resetStatsUrl() {
@@ -2357,11 +2384,11 @@ export namespace OpsWorks {
     }
 
     // stats_user - computed: false, optional: true, required: false
-    private _statsUser?: string;
+    private _statsUser?: string | undefined; 
     public get statsUser() {
       return this.getStringAttribute('stats_user');
     }
-    public set statsUser(value: string ) {
+    public set statsUser(value: string | undefined) {
       this._statsUser = value;
     }
     public resetStatsUser() {
@@ -2373,11 +2400,11 @@ export namespace OpsWorks {
     }
 
     // system_packages - computed: false, optional: true, required: false
-    private _systemPackages?: string[];
+    private _systemPackages?: string[] | undefined; 
     public get systemPackages() {
       return this.getListAttribute('system_packages');
     }
-    public set systemPackages(value: string[] ) {
+    public set systemPackages(value: string[] | undefined) {
       this._systemPackages = value;
     }
     public resetSystemPackages() {
@@ -2389,11 +2416,12 @@ export namespace OpsWorks {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2405,11 +2433,12 @@ export namespace OpsWorks {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2421,11 +2450,11 @@ export namespace OpsWorks {
     }
 
     // use_ebs_optimized_instances - computed: false, optional: true, required: false
-    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable;
+    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable | undefined; 
     public get useEbsOptimizedInstances() {
-      return this.getBooleanAttribute('use_ebs_optimized_instances');
+      return this.getBooleanAttribute('use_ebs_optimized_instances') as any;
     }
-    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable ) {
+    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable | undefined) {
       this._useEbsOptimizedInstances = value;
     }
     public resetUseEbsOptimizedInstances() {
@@ -2437,11 +2466,12 @@ export namespace OpsWorks {
     }
 
     // ebs_volume - computed: false, optional: true, required: false
-    private _ebsVolume?: OpsworksHaproxyLayerEbsVolume[];
+    private _ebsVolume?: OpsworksHaproxyLayerEbsVolume[] | undefined; 
     public get ebsVolume() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs_volume') as any;
     }
-    public set ebsVolume(value: OpsworksHaproxyLayerEbsVolume[] ) {
+    public set ebsVolume(value: OpsworksHaproxyLayerEbsVolume[] | undefined) {
       this._ebsVolume = value;
     }
     public resetEbsVolume() {
@@ -2708,6 +2738,9 @@ export namespace OpsWorks {
 
   function opsworksInstanceEbsBlockDeviceToTerraform(struct?: OpsworksInstanceEbsBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete_on_termination: cdktf.booleanToTerraform(struct!.deleteOnTermination),
       device_name: cdktf.stringToTerraform(struct!.deviceName),
@@ -2731,6 +2764,9 @@ export namespace OpsWorks {
 
   function opsworksInstanceEphemeralBlockDeviceToTerraform(struct?: OpsworksInstanceEphemeralBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       device_name: cdktf.stringToTerraform(struct!.deviceName),
       virtual_name: cdktf.stringToTerraform(struct!.virtualName),
@@ -2758,6 +2794,9 @@ export namespace OpsWorks {
 
   function opsworksInstanceRootBlockDeviceToTerraform(struct?: OpsworksInstanceRootBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete_on_termination: cdktf.booleanToTerraform(struct!.deleteOnTermination),
       iops: cdktf.numberToTerraform(struct!.iops),
@@ -2781,8 +2820,11 @@ export namespace OpsWorks {
     readonly update?: string;
   }
 
-  function opsworksInstanceTimeoutsToTerraform(struct?: OpsworksInstanceTimeouts): any {
+  function opsworksInstanceTimeoutsToTerraform(struct?: OpsworksInstanceTimeoutsOutputReference | OpsworksInstanceTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -2790,6 +2832,64 @@ export namespace OpsWorks {
     }
   }
 
+  export class OpsworksInstanceTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/opsworks_instance.html aws_opsworks_instance}
@@ -2875,11 +2975,11 @@ export namespace OpsWorks {
     // ==========
 
     // agent_version - computed: false, optional: true, required: false
-    private _agentVersion?: string;
+    private _agentVersion?: string | undefined; 
     public get agentVersion() {
       return this.getStringAttribute('agent_version');
     }
-    public set agentVersion(value: string ) {
+    public set agentVersion(value: string | undefined) {
       this._agentVersion = value;
     }
     public resetAgentVersion() {
@@ -2891,11 +2991,11 @@ export namespace OpsWorks {
     }
 
     // ami_id - computed: true, optional: true, required: false
-    private _amiId?: string;
+    private _amiId?: string | undefined; 
     public get amiId() {
       return this.getStringAttribute('ami_id');
     }
-    public set amiId(value: string) {
+    public set amiId(value: string | undefined) {
       this._amiId = value;
     }
     public resetAmiId() {
@@ -2907,11 +3007,11 @@ export namespace OpsWorks {
     }
 
     // architecture - computed: false, optional: true, required: false
-    private _architecture?: string;
+    private _architecture?: string | undefined; 
     public get architecture() {
       return this.getStringAttribute('architecture');
     }
-    public set architecture(value: string ) {
+    public set architecture(value: string | undefined) {
       this._architecture = value;
     }
     public resetArchitecture() {
@@ -2923,11 +3023,11 @@ export namespace OpsWorks {
     }
 
     // auto_scaling_type - computed: false, optional: true, required: false
-    private _autoScalingType?: string;
+    private _autoScalingType?: string | undefined; 
     public get autoScalingType() {
       return this.getStringAttribute('auto_scaling_type');
     }
-    public set autoScalingType(value: string ) {
+    public set autoScalingType(value: string | undefined) {
       this._autoScalingType = value;
     }
     public resetAutoScalingType() {
@@ -2939,11 +3039,11 @@ export namespace OpsWorks {
     }
 
     // availability_zone - computed: true, optional: true, required: false
-    private _availabilityZone?: string;
+    private _availabilityZone?: string | undefined; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
-    public set availabilityZone(value: string) {
+    public set availabilityZone(value: string | undefined) {
       this._availabilityZone = value;
     }
     public resetAvailabilityZone() {
@@ -2955,11 +3055,11 @@ export namespace OpsWorks {
     }
 
     // created_at - computed: true, optional: true, required: false
-    private _createdAt?: string;
+    private _createdAt?: string | undefined; 
     public get createdAt() {
       return this.getStringAttribute('created_at');
     }
-    public set createdAt(value: string) {
+    public set createdAt(value: string | undefined) {
       this._createdAt = value;
     }
     public resetCreatedAt() {
@@ -2971,11 +3071,11 @@ export namespace OpsWorks {
     }
 
     // delete_ebs - computed: false, optional: true, required: false
-    private _deleteEbs?: boolean | cdktf.IResolvable;
+    private _deleteEbs?: boolean | cdktf.IResolvable | undefined; 
     public get deleteEbs() {
-      return this.getBooleanAttribute('delete_ebs');
+      return this.getBooleanAttribute('delete_ebs') as any;
     }
-    public set deleteEbs(value: boolean | cdktf.IResolvable ) {
+    public set deleteEbs(value: boolean | cdktf.IResolvable | undefined) {
       this._deleteEbs = value;
     }
     public resetDeleteEbs() {
@@ -2987,11 +3087,11 @@ export namespace OpsWorks {
     }
 
     // delete_eip - computed: false, optional: true, required: false
-    private _deleteEip?: boolean | cdktf.IResolvable;
+    private _deleteEip?: boolean | cdktf.IResolvable | undefined; 
     public get deleteEip() {
-      return this.getBooleanAttribute('delete_eip');
+      return this.getBooleanAttribute('delete_eip') as any;
     }
-    public set deleteEip(value: boolean | cdktf.IResolvable ) {
+    public set deleteEip(value: boolean | cdktf.IResolvable | undefined) {
       this._deleteEip = value;
     }
     public resetDeleteEip() {
@@ -3003,11 +3103,11 @@ export namespace OpsWorks {
     }
 
     // ebs_optimized - computed: false, optional: true, required: false
-    private _ebsOptimized?: boolean | cdktf.IResolvable;
+    private _ebsOptimized?: boolean | cdktf.IResolvable | undefined; 
     public get ebsOptimized() {
-      return this.getBooleanAttribute('ebs_optimized');
+      return this.getBooleanAttribute('ebs_optimized') as any;
     }
-    public set ebsOptimized(value: boolean | cdktf.IResolvable ) {
+    public set ebsOptimized(value: boolean | cdktf.IResolvable | undefined) {
       this._ebsOptimized = value;
     }
     public resetEbsOptimized() {
@@ -3024,11 +3124,11 @@ export namespace OpsWorks {
     }
 
     // ecs_cluster_arn - computed: true, optional: true, required: false
-    private _ecsClusterArn?: string;
+    private _ecsClusterArn?: string | undefined; 
     public get ecsClusterArn() {
       return this.getStringAttribute('ecs_cluster_arn');
     }
-    public set ecsClusterArn(value: string) {
+    public set ecsClusterArn(value: string | undefined) {
       this._ecsClusterArn = value;
     }
     public resetEcsClusterArn() {
@@ -3040,11 +3140,11 @@ export namespace OpsWorks {
     }
 
     // elastic_ip - computed: true, optional: true, required: false
-    private _elasticIp?: string;
+    private _elasticIp?: string | undefined; 
     public get elasticIp() {
       return this.getStringAttribute('elastic_ip');
     }
-    public set elasticIp(value: string) {
+    public set elasticIp(value: string | undefined) {
       this._elasticIp = value;
     }
     public resetElasticIp() {
@@ -3056,11 +3156,11 @@ export namespace OpsWorks {
     }
 
     // hostname - computed: true, optional: true, required: false
-    private _hostname?: string;
+    private _hostname?: string | undefined; 
     public get hostname() {
       return this.getStringAttribute('hostname');
     }
-    public set hostname(value: string) {
+    public set hostname(value: string | undefined) {
       this._hostname = value;
     }
     public resetHostname() {
@@ -3077,11 +3177,11 @@ export namespace OpsWorks {
     }
 
     // infrastructure_class - computed: true, optional: true, required: false
-    private _infrastructureClass?: string;
+    private _infrastructureClass?: string | undefined; 
     public get infrastructureClass() {
       return this.getStringAttribute('infrastructure_class');
     }
-    public set infrastructureClass(value: string) {
+    public set infrastructureClass(value: string | undefined) {
       this._infrastructureClass = value;
     }
     public resetInfrastructureClass() {
@@ -3093,11 +3193,11 @@ export namespace OpsWorks {
     }
 
     // install_updates_on_boot - computed: false, optional: true, required: false
-    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable;
+    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable | undefined; 
     public get installUpdatesOnBoot() {
-      return this.getBooleanAttribute('install_updates_on_boot');
+      return this.getBooleanAttribute('install_updates_on_boot') as any;
     }
-    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable ) {
+    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable | undefined) {
       this._installUpdatesOnBoot = value;
     }
     public resetInstallUpdatesOnBoot() {
@@ -3109,11 +3209,11 @@ export namespace OpsWorks {
     }
 
     // instance_profile_arn - computed: true, optional: true, required: false
-    private _instanceProfileArn?: string;
+    private _instanceProfileArn?: string | undefined; 
     public get instanceProfileArn() {
       return this.getStringAttribute('instance_profile_arn');
     }
-    public set instanceProfileArn(value: string) {
+    public set instanceProfileArn(value: string | undefined) {
       this._instanceProfileArn = value;
     }
     public resetInstanceProfileArn() {
@@ -3125,11 +3225,11 @@ export namespace OpsWorks {
     }
 
     // instance_type - computed: false, optional: true, required: false
-    private _instanceType?: string;
+    private _instanceType?: string | undefined; 
     public get instanceType() {
       return this.getStringAttribute('instance_type');
     }
-    public set instanceType(value: string ) {
+    public set instanceType(value: string | undefined) {
       this._instanceType = value;
     }
     public resetInstanceType() {
@@ -3141,11 +3241,11 @@ export namespace OpsWorks {
     }
 
     // last_service_error_id - computed: true, optional: true, required: false
-    private _lastServiceErrorId?: string;
+    private _lastServiceErrorId?: string | undefined; 
     public get lastServiceErrorId() {
       return this.getStringAttribute('last_service_error_id');
     }
-    public set lastServiceErrorId(value: string) {
+    public set lastServiceErrorId(value: string | undefined) {
       this._lastServiceErrorId = value;
     }
     public resetLastServiceErrorId() {
@@ -3157,7 +3257,7 @@ export namespace OpsWorks {
     }
 
     // layer_ids - computed: false, optional: false, required: true
-    private _layerIds: string[];
+    private _layerIds?: string[]; 
     public get layerIds() {
       return this.getListAttribute('layer_ids');
     }
@@ -3170,11 +3270,11 @@ export namespace OpsWorks {
     }
 
     // os - computed: true, optional: true, required: false
-    private _os?: string;
+    private _os?: string | undefined; 
     public get os() {
       return this.getStringAttribute('os');
     }
-    public set os(value: string) {
+    public set os(value: string | undefined) {
       this._os = value;
     }
     public resetOs() {
@@ -3186,11 +3286,11 @@ export namespace OpsWorks {
     }
 
     // platform - computed: true, optional: true, required: false
-    private _platform?: string;
+    private _platform?: string | undefined; 
     public get platform() {
       return this.getStringAttribute('platform');
     }
-    public set platform(value: string) {
+    public set platform(value: string | undefined) {
       this._platform = value;
     }
     public resetPlatform() {
@@ -3202,11 +3302,11 @@ export namespace OpsWorks {
     }
 
     // private_dns - computed: true, optional: true, required: false
-    private _privateDns?: string;
+    private _privateDns?: string | undefined; 
     public get privateDns() {
       return this.getStringAttribute('private_dns');
     }
-    public set privateDns(value: string) {
+    public set privateDns(value: string | undefined) {
       this._privateDns = value;
     }
     public resetPrivateDns() {
@@ -3218,11 +3318,11 @@ export namespace OpsWorks {
     }
 
     // private_ip - computed: true, optional: true, required: false
-    private _privateIp?: string;
+    private _privateIp?: string | undefined; 
     public get privateIp() {
       return this.getStringAttribute('private_ip');
     }
-    public set privateIp(value: string) {
+    public set privateIp(value: string | undefined) {
       this._privateIp = value;
     }
     public resetPrivateIp() {
@@ -3234,11 +3334,11 @@ export namespace OpsWorks {
     }
 
     // public_dns - computed: true, optional: true, required: false
-    private _publicDns?: string;
+    private _publicDns?: string | undefined; 
     public get publicDns() {
       return this.getStringAttribute('public_dns');
     }
-    public set publicDns(value: string) {
+    public set publicDns(value: string | undefined) {
       this._publicDns = value;
     }
     public resetPublicDns() {
@@ -3250,11 +3350,11 @@ export namespace OpsWorks {
     }
 
     // public_ip - computed: true, optional: true, required: false
-    private _publicIp?: string;
+    private _publicIp?: string | undefined; 
     public get publicIp() {
       return this.getStringAttribute('public_ip');
     }
-    public set publicIp(value: string) {
+    public set publicIp(value: string | undefined) {
       this._publicIp = value;
     }
     public resetPublicIp() {
@@ -3266,11 +3366,11 @@ export namespace OpsWorks {
     }
 
     // registered_by - computed: true, optional: true, required: false
-    private _registeredBy?: string;
+    private _registeredBy?: string | undefined; 
     public get registeredBy() {
       return this.getStringAttribute('registered_by');
     }
-    public set registeredBy(value: string) {
+    public set registeredBy(value: string | undefined) {
       this._registeredBy = value;
     }
     public resetRegisteredBy() {
@@ -3282,11 +3382,11 @@ export namespace OpsWorks {
     }
 
     // reported_agent_version - computed: true, optional: true, required: false
-    private _reportedAgentVersion?: string;
+    private _reportedAgentVersion?: string | undefined; 
     public get reportedAgentVersion() {
       return this.getStringAttribute('reported_agent_version');
     }
-    public set reportedAgentVersion(value: string) {
+    public set reportedAgentVersion(value: string | undefined) {
       this._reportedAgentVersion = value;
     }
     public resetReportedAgentVersion() {
@@ -3298,11 +3398,11 @@ export namespace OpsWorks {
     }
 
     // reported_os_family - computed: true, optional: true, required: false
-    private _reportedOsFamily?: string;
+    private _reportedOsFamily?: string | undefined; 
     public get reportedOsFamily() {
       return this.getStringAttribute('reported_os_family');
     }
-    public set reportedOsFamily(value: string) {
+    public set reportedOsFamily(value: string | undefined) {
       this._reportedOsFamily = value;
     }
     public resetReportedOsFamily() {
@@ -3314,11 +3414,11 @@ export namespace OpsWorks {
     }
 
     // reported_os_name - computed: true, optional: true, required: false
-    private _reportedOsName?: string;
+    private _reportedOsName?: string | undefined; 
     public get reportedOsName() {
       return this.getStringAttribute('reported_os_name');
     }
-    public set reportedOsName(value: string) {
+    public set reportedOsName(value: string | undefined) {
       this._reportedOsName = value;
     }
     public resetReportedOsName() {
@@ -3330,11 +3430,11 @@ export namespace OpsWorks {
     }
 
     // reported_os_version - computed: true, optional: true, required: false
-    private _reportedOsVersion?: string;
+    private _reportedOsVersion?: string | undefined; 
     public get reportedOsVersion() {
       return this.getStringAttribute('reported_os_version');
     }
-    public set reportedOsVersion(value: string) {
+    public set reportedOsVersion(value: string | undefined) {
       this._reportedOsVersion = value;
     }
     public resetReportedOsVersion() {
@@ -3346,11 +3446,11 @@ export namespace OpsWorks {
     }
 
     // root_device_type - computed: true, optional: true, required: false
-    private _rootDeviceType?: string;
+    private _rootDeviceType?: string | undefined; 
     public get rootDeviceType() {
       return this.getStringAttribute('root_device_type');
     }
-    public set rootDeviceType(value: string) {
+    public set rootDeviceType(value: string | undefined) {
       this._rootDeviceType = value;
     }
     public resetRootDeviceType() {
@@ -3362,11 +3462,11 @@ export namespace OpsWorks {
     }
 
     // root_device_volume_id - computed: true, optional: true, required: false
-    private _rootDeviceVolumeId?: string;
+    private _rootDeviceVolumeId?: string | undefined; 
     public get rootDeviceVolumeId() {
       return this.getStringAttribute('root_device_volume_id');
     }
-    public set rootDeviceVolumeId(value: string) {
+    public set rootDeviceVolumeId(value: string | undefined) {
       this._rootDeviceVolumeId = value;
     }
     public resetRootDeviceVolumeId() {
@@ -3378,11 +3478,11 @@ export namespace OpsWorks {
     }
 
     // security_group_ids - computed: true, optional: true, required: false
-    private _securityGroupIds?: string[];
+    private _securityGroupIds?: string[] | undefined; 
     public get securityGroupIds() {
       return this.getListAttribute('security_group_ids');
     }
-    public set securityGroupIds(value: string[]) {
+    public set securityGroupIds(value: string[] | undefined) {
       this._securityGroupIds = value;
     }
     public resetSecurityGroupIds() {
@@ -3394,11 +3494,11 @@ export namespace OpsWorks {
     }
 
     // ssh_host_dsa_key_fingerprint - computed: true, optional: true, required: false
-    private _sshHostDsaKeyFingerprint?: string;
+    private _sshHostDsaKeyFingerprint?: string | undefined; 
     public get sshHostDsaKeyFingerprint() {
       return this.getStringAttribute('ssh_host_dsa_key_fingerprint');
     }
-    public set sshHostDsaKeyFingerprint(value: string) {
+    public set sshHostDsaKeyFingerprint(value: string | undefined) {
       this._sshHostDsaKeyFingerprint = value;
     }
     public resetSshHostDsaKeyFingerprint() {
@@ -3410,11 +3510,11 @@ export namespace OpsWorks {
     }
 
     // ssh_host_rsa_key_fingerprint - computed: true, optional: true, required: false
-    private _sshHostRsaKeyFingerprint?: string;
+    private _sshHostRsaKeyFingerprint?: string | undefined; 
     public get sshHostRsaKeyFingerprint() {
       return this.getStringAttribute('ssh_host_rsa_key_fingerprint');
     }
-    public set sshHostRsaKeyFingerprint(value: string) {
+    public set sshHostRsaKeyFingerprint(value: string | undefined) {
       this._sshHostRsaKeyFingerprint = value;
     }
     public resetSshHostRsaKeyFingerprint() {
@@ -3426,11 +3526,11 @@ export namespace OpsWorks {
     }
 
     // ssh_key_name - computed: true, optional: true, required: false
-    private _sshKeyName?: string;
+    private _sshKeyName?: string | undefined; 
     public get sshKeyName() {
       return this.getStringAttribute('ssh_key_name');
     }
-    public set sshKeyName(value: string) {
+    public set sshKeyName(value: string | undefined) {
       this._sshKeyName = value;
     }
     public resetSshKeyName() {
@@ -3442,7 +3542,7 @@ export namespace OpsWorks {
     }
 
     // stack_id - computed: false, optional: false, required: true
-    private _stackId: string;
+    private _stackId?: string; 
     public get stackId() {
       return this.getStringAttribute('stack_id');
     }
@@ -3455,11 +3555,11 @@ export namespace OpsWorks {
     }
 
     // state - computed: false, optional: true, required: false
-    private _state?: string;
+    private _state?: string | undefined; 
     public get state() {
       return this.getStringAttribute('state');
     }
-    public set state(value: string ) {
+    public set state(value: string | undefined) {
       this._state = value;
     }
     public resetState() {
@@ -3471,11 +3571,11 @@ export namespace OpsWorks {
     }
 
     // status - computed: true, optional: true, required: false
-    private _status?: string;
+    private _status?: string | undefined; 
     public get status() {
       return this.getStringAttribute('status');
     }
-    public set status(value: string) {
+    public set status(value: string | undefined) {
       this._status = value;
     }
     public resetStatus() {
@@ -3487,11 +3587,11 @@ export namespace OpsWorks {
     }
 
     // subnet_id - computed: true, optional: true, required: false
-    private _subnetId?: string;
+    private _subnetId?: string | undefined; 
     public get subnetId() {
       return this.getStringAttribute('subnet_id');
     }
-    public set subnetId(value: string) {
+    public set subnetId(value: string | undefined) {
       this._subnetId = value;
     }
     public resetSubnetId() {
@@ -3503,11 +3603,11 @@ export namespace OpsWorks {
     }
 
     // tenancy - computed: true, optional: true, required: false
-    private _tenancy?: string;
+    private _tenancy?: string | undefined; 
     public get tenancy() {
       return this.getStringAttribute('tenancy');
     }
-    public set tenancy(value: string) {
+    public set tenancy(value: string | undefined) {
       this._tenancy = value;
     }
     public resetTenancy() {
@@ -3519,11 +3619,11 @@ export namespace OpsWorks {
     }
 
     // virtualization_type - computed: true, optional: true, required: false
-    private _virtualizationType?: string;
+    private _virtualizationType?: string | undefined; 
     public get virtualizationType() {
       return this.getStringAttribute('virtualization_type');
     }
-    public set virtualizationType(value: string) {
+    public set virtualizationType(value: string | undefined) {
       this._virtualizationType = value;
     }
     public resetVirtualizationType() {
@@ -3535,11 +3635,12 @@ export namespace OpsWorks {
     }
 
     // ebs_block_device - computed: false, optional: true, required: false
-    private _ebsBlockDevice?: OpsworksInstanceEbsBlockDevice[];
+    private _ebsBlockDevice?: OpsworksInstanceEbsBlockDevice[] | undefined; 
     public get ebsBlockDevice() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs_block_device') as any;
     }
-    public set ebsBlockDevice(value: OpsworksInstanceEbsBlockDevice[] ) {
+    public set ebsBlockDevice(value: OpsworksInstanceEbsBlockDevice[] | undefined) {
       this._ebsBlockDevice = value;
     }
     public resetEbsBlockDevice() {
@@ -3551,11 +3652,12 @@ export namespace OpsWorks {
     }
 
     // ephemeral_block_device - computed: false, optional: true, required: false
-    private _ephemeralBlockDevice?: OpsworksInstanceEphemeralBlockDevice[];
+    private _ephemeralBlockDevice?: OpsworksInstanceEphemeralBlockDevice[] | undefined; 
     public get ephemeralBlockDevice() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ephemeral_block_device') as any;
     }
-    public set ephemeralBlockDevice(value: OpsworksInstanceEphemeralBlockDevice[] ) {
+    public set ephemeralBlockDevice(value: OpsworksInstanceEphemeralBlockDevice[] | undefined) {
       this._ephemeralBlockDevice = value;
     }
     public resetEphemeralBlockDevice() {
@@ -3567,11 +3669,12 @@ export namespace OpsWorks {
     }
 
     // root_block_device - computed: false, optional: true, required: false
-    private _rootBlockDevice?: OpsworksInstanceRootBlockDevice[];
+    private _rootBlockDevice?: OpsworksInstanceRootBlockDevice[] | undefined; 
     public get rootBlockDevice() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('root_block_device') as any;
     }
-    public set rootBlockDevice(value: OpsworksInstanceRootBlockDevice[] ) {
+    public set rootBlockDevice(value: OpsworksInstanceRootBlockDevice[] | undefined) {
       this._rootBlockDevice = value;
     }
     public resetRootBlockDevice() {
@@ -3583,11 +3686,12 @@ export namespace OpsWorks {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: OpsworksInstanceTimeouts;
+    private _timeouts?: OpsworksInstanceTimeouts | undefined; 
+    private __timeoutsOutput = new OpsworksInstanceTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: OpsworksInstanceTimeouts ) {
+    public putTimeouts(value: OpsworksInstanceTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -3797,6 +3901,9 @@ export namespace OpsWorks {
 
   function opsworksJavaAppLayerEbsVolumeToTerraform(struct?: OpsworksJavaAppLayerEbsVolume): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       encrypted: cdktf.booleanToTerraform(struct!.encrypted),
       iops: cdktf.numberToTerraform(struct!.iops),
@@ -3875,11 +3982,11 @@ export namespace OpsWorks {
     // ==========
 
     // app_server - computed: false, optional: true, required: false
-    private _appServer?: string;
+    private _appServer?: string | undefined; 
     public get appServer() {
       return this.getStringAttribute('app_server');
     }
-    public set appServer(value: string ) {
+    public set appServer(value: string | undefined) {
       this._appServer = value;
     }
     public resetAppServer() {
@@ -3891,11 +3998,11 @@ export namespace OpsWorks {
     }
 
     // app_server_version - computed: false, optional: true, required: false
-    private _appServerVersion?: string;
+    private _appServerVersion?: string | undefined; 
     public get appServerVersion() {
       return this.getStringAttribute('app_server_version');
     }
-    public set appServerVersion(value: string ) {
+    public set appServerVersion(value: string | undefined) {
       this._appServerVersion = value;
     }
     public resetAppServerVersion() {
@@ -3912,11 +4019,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_elastic_ips - computed: false, optional: true, required: false
-    private _autoAssignElasticIps?: boolean | cdktf.IResolvable;
+    private _autoAssignElasticIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignElasticIps() {
-      return this.getBooleanAttribute('auto_assign_elastic_ips');
+      return this.getBooleanAttribute('auto_assign_elastic_ips') as any;
     }
-    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignElasticIps = value;
     }
     public resetAutoAssignElasticIps() {
@@ -3928,11 +4035,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_public_ips - computed: false, optional: true, required: false
-    private _autoAssignPublicIps?: boolean | cdktf.IResolvable;
+    private _autoAssignPublicIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignPublicIps() {
-      return this.getBooleanAttribute('auto_assign_public_ips');
+      return this.getBooleanAttribute('auto_assign_public_ips') as any;
     }
-    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignPublicIps = value;
     }
     public resetAutoAssignPublicIps() {
@@ -3944,11 +4051,11 @@ export namespace OpsWorks {
     }
 
     // auto_healing - computed: false, optional: true, required: false
-    private _autoHealing?: boolean | cdktf.IResolvable;
+    private _autoHealing?: boolean | cdktf.IResolvable | undefined; 
     public get autoHealing() {
-      return this.getBooleanAttribute('auto_healing');
+      return this.getBooleanAttribute('auto_healing') as any;
     }
-    public set autoHealing(value: boolean | cdktf.IResolvable ) {
+    public set autoHealing(value: boolean | cdktf.IResolvable | undefined) {
       this._autoHealing = value;
     }
     public resetAutoHealing() {
@@ -3960,11 +4067,11 @@ export namespace OpsWorks {
     }
 
     // custom_configure_recipes - computed: false, optional: true, required: false
-    private _customConfigureRecipes?: string[];
+    private _customConfigureRecipes?: string[] | undefined; 
     public get customConfigureRecipes() {
       return this.getListAttribute('custom_configure_recipes');
     }
-    public set customConfigureRecipes(value: string[] ) {
+    public set customConfigureRecipes(value: string[] | undefined) {
       this._customConfigureRecipes = value;
     }
     public resetCustomConfigureRecipes() {
@@ -3976,11 +4083,11 @@ export namespace OpsWorks {
     }
 
     // custom_deploy_recipes - computed: false, optional: true, required: false
-    private _customDeployRecipes?: string[];
+    private _customDeployRecipes?: string[] | undefined; 
     public get customDeployRecipes() {
       return this.getListAttribute('custom_deploy_recipes');
     }
-    public set customDeployRecipes(value: string[] ) {
+    public set customDeployRecipes(value: string[] | undefined) {
       this._customDeployRecipes = value;
     }
     public resetCustomDeployRecipes() {
@@ -3992,11 +4099,11 @@ export namespace OpsWorks {
     }
 
     // custom_instance_profile_arn - computed: false, optional: true, required: false
-    private _customInstanceProfileArn?: string;
+    private _customInstanceProfileArn?: string | undefined; 
     public get customInstanceProfileArn() {
       return this.getStringAttribute('custom_instance_profile_arn');
     }
-    public set customInstanceProfileArn(value: string ) {
+    public set customInstanceProfileArn(value: string | undefined) {
       this._customInstanceProfileArn = value;
     }
     public resetCustomInstanceProfileArn() {
@@ -4008,11 +4115,11 @@ export namespace OpsWorks {
     }
 
     // custom_json - computed: false, optional: true, required: false
-    private _customJson?: string;
+    private _customJson?: string | undefined; 
     public get customJson() {
       return this.getStringAttribute('custom_json');
     }
-    public set customJson(value: string ) {
+    public set customJson(value: string | undefined) {
       this._customJson = value;
     }
     public resetCustomJson() {
@@ -4024,11 +4131,11 @@ export namespace OpsWorks {
     }
 
     // custom_security_group_ids - computed: false, optional: true, required: false
-    private _customSecurityGroupIds?: string[];
+    private _customSecurityGroupIds?: string[] | undefined; 
     public get customSecurityGroupIds() {
       return this.getListAttribute('custom_security_group_ids');
     }
-    public set customSecurityGroupIds(value: string[] ) {
+    public set customSecurityGroupIds(value: string[] | undefined) {
       this._customSecurityGroupIds = value;
     }
     public resetCustomSecurityGroupIds() {
@@ -4040,11 +4147,11 @@ export namespace OpsWorks {
     }
 
     // custom_setup_recipes - computed: false, optional: true, required: false
-    private _customSetupRecipes?: string[];
+    private _customSetupRecipes?: string[] | undefined; 
     public get customSetupRecipes() {
       return this.getListAttribute('custom_setup_recipes');
     }
-    public set customSetupRecipes(value: string[] ) {
+    public set customSetupRecipes(value: string[] | undefined) {
       this._customSetupRecipes = value;
     }
     public resetCustomSetupRecipes() {
@@ -4056,11 +4163,11 @@ export namespace OpsWorks {
     }
 
     // custom_shutdown_recipes - computed: false, optional: true, required: false
-    private _customShutdownRecipes?: string[];
+    private _customShutdownRecipes?: string[] | undefined; 
     public get customShutdownRecipes() {
       return this.getListAttribute('custom_shutdown_recipes');
     }
-    public set customShutdownRecipes(value: string[] ) {
+    public set customShutdownRecipes(value: string[] | undefined) {
       this._customShutdownRecipes = value;
     }
     public resetCustomShutdownRecipes() {
@@ -4072,11 +4179,11 @@ export namespace OpsWorks {
     }
 
     // custom_undeploy_recipes - computed: false, optional: true, required: false
-    private _customUndeployRecipes?: string[];
+    private _customUndeployRecipes?: string[] | undefined; 
     public get customUndeployRecipes() {
       return this.getListAttribute('custom_undeploy_recipes');
     }
-    public set customUndeployRecipes(value: string[] ) {
+    public set customUndeployRecipes(value: string[] | undefined) {
       this._customUndeployRecipes = value;
     }
     public resetCustomUndeployRecipes() {
@@ -4088,11 +4195,11 @@ export namespace OpsWorks {
     }
 
     // drain_elb_on_shutdown - computed: false, optional: true, required: false
-    private _drainElbOnShutdown?: boolean | cdktf.IResolvable;
+    private _drainElbOnShutdown?: boolean | cdktf.IResolvable | undefined; 
     public get drainElbOnShutdown() {
-      return this.getBooleanAttribute('drain_elb_on_shutdown');
+      return this.getBooleanAttribute('drain_elb_on_shutdown') as any;
     }
-    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable ) {
+    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable | undefined) {
       this._drainElbOnShutdown = value;
     }
     public resetDrainElbOnShutdown() {
@@ -4104,11 +4211,11 @@ export namespace OpsWorks {
     }
 
     // elastic_load_balancer - computed: false, optional: true, required: false
-    private _elasticLoadBalancer?: string;
+    private _elasticLoadBalancer?: string | undefined; 
     public get elasticLoadBalancer() {
       return this.getStringAttribute('elastic_load_balancer');
     }
-    public set elasticLoadBalancer(value: string ) {
+    public set elasticLoadBalancer(value: string | undefined) {
       this._elasticLoadBalancer = value;
     }
     public resetElasticLoadBalancer() {
@@ -4125,11 +4232,11 @@ export namespace OpsWorks {
     }
 
     // install_updates_on_boot - computed: false, optional: true, required: false
-    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable;
+    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable | undefined; 
     public get installUpdatesOnBoot() {
-      return this.getBooleanAttribute('install_updates_on_boot');
+      return this.getBooleanAttribute('install_updates_on_boot') as any;
     }
-    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable ) {
+    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable | undefined) {
       this._installUpdatesOnBoot = value;
     }
     public resetInstallUpdatesOnBoot() {
@@ -4141,11 +4248,11 @@ export namespace OpsWorks {
     }
 
     // instance_shutdown_timeout - computed: false, optional: true, required: false
-    private _instanceShutdownTimeout?: number;
+    private _instanceShutdownTimeout?: number | undefined; 
     public get instanceShutdownTimeout() {
       return this.getNumberAttribute('instance_shutdown_timeout');
     }
-    public set instanceShutdownTimeout(value: number ) {
+    public set instanceShutdownTimeout(value: number | undefined) {
       this._instanceShutdownTimeout = value;
     }
     public resetInstanceShutdownTimeout() {
@@ -4157,11 +4264,11 @@ export namespace OpsWorks {
     }
 
     // jvm_options - computed: false, optional: true, required: false
-    private _jvmOptions?: string;
+    private _jvmOptions?: string | undefined; 
     public get jvmOptions() {
       return this.getStringAttribute('jvm_options');
     }
-    public set jvmOptions(value: string ) {
+    public set jvmOptions(value: string | undefined) {
       this._jvmOptions = value;
     }
     public resetJvmOptions() {
@@ -4173,11 +4280,11 @@ export namespace OpsWorks {
     }
 
     // jvm_type - computed: false, optional: true, required: false
-    private _jvmType?: string;
+    private _jvmType?: string | undefined; 
     public get jvmType() {
       return this.getStringAttribute('jvm_type');
     }
-    public set jvmType(value: string ) {
+    public set jvmType(value: string | undefined) {
       this._jvmType = value;
     }
     public resetJvmType() {
@@ -4189,11 +4296,11 @@ export namespace OpsWorks {
     }
 
     // jvm_version - computed: false, optional: true, required: false
-    private _jvmVersion?: string;
+    private _jvmVersion?: string | undefined; 
     public get jvmVersion() {
       return this.getStringAttribute('jvm_version');
     }
-    public set jvmVersion(value: string ) {
+    public set jvmVersion(value: string | undefined) {
       this._jvmVersion = value;
     }
     public resetJvmVersion() {
@@ -4205,11 +4312,11 @@ export namespace OpsWorks {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -4221,7 +4328,7 @@ export namespace OpsWorks {
     }
 
     // stack_id - computed: false, optional: false, required: true
-    private _stackId: string;
+    private _stackId?: string; 
     public get stackId() {
       return this.getStringAttribute('stack_id');
     }
@@ -4234,11 +4341,11 @@ export namespace OpsWorks {
     }
 
     // system_packages - computed: false, optional: true, required: false
-    private _systemPackages?: string[];
+    private _systemPackages?: string[] | undefined; 
     public get systemPackages() {
       return this.getListAttribute('system_packages');
     }
-    public set systemPackages(value: string[] ) {
+    public set systemPackages(value: string[] | undefined) {
       this._systemPackages = value;
     }
     public resetSystemPackages() {
@@ -4250,11 +4357,12 @@ export namespace OpsWorks {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4266,11 +4374,12 @@ export namespace OpsWorks {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -4282,11 +4391,11 @@ export namespace OpsWorks {
     }
 
     // use_ebs_optimized_instances - computed: false, optional: true, required: false
-    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable;
+    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable | undefined; 
     public get useEbsOptimizedInstances() {
-      return this.getBooleanAttribute('use_ebs_optimized_instances');
+      return this.getBooleanAttribute('use_ebs_optimized_instances') as any;
     }
-    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable ) {
+    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable | undefined) {
       this._useEbsOptimizedInstances = value;
     }
     public resetUseEbsOptimizedInstances() {
@@ -4298,11 +4407,12 @@ export namespace OpsWorks {
     }
 
     // ebs_volume - computed: false, optional: true, required: false
-    private _ebsVolume?: OpsworksJavaAppLayerEbsVolume[];
+    private _ebsVolume?: OpsworksJavaAppLayerEbsVolume[] | undefined; 
     public get ebsVolume() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs_volume') as any;
     }
-    public set ebsVolume(value: OpsworksJavaAppLayerEbsVolume[] ) {
+    public set ebsVolume(value: OpsworksJavaAppLayerEbsVolume[] | undefined) {
       this._ebsVolume = value;
     }
     public resetEbsVolume() {
@@ -4478,6 +4588,9 @@ export namespace OpsWorks {
 
   function opsworksMemcachedLayerEbsVolumeToTerraform(struct?: OpsworksMemcachedLayerEbsVolume): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       encrypted: cdktf.booleanToTerraform(struct!.encrypted),
       iops: cdktf.numberToTerraform(struct!.iops),
@@ -4552,11 +4665,11 @@ export namespace OpsWorks {
     // ==========
 
     // allocated_memory - computed: false, optional: true, required: false
-    private _allocatedMemory?: number;
+    private _allocatedMemory?: number | undefined; 
     public get allocatedMemory() {
       return this.getNumberAttribute('allocated_memory');
     }
-    public set allocatedMemory(value: number ) {
+    public set allocatedMemory(value: number | undefined) {
       this._allocatedMemory = value;
     }
     public resetAllocatedMemory() {
@@ -4573,11 +4686,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_elastic_ips - computed: false, optional: true, required: false
-    private _autoAssignElasticIps?: boolean | cdktf.IResolvable;
+    private _autoAssignElasticIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignElasticIps() {
-      return this.getBooleanAttribute('auto_assign_elastic_ips');
+      return this.getBooleanAttribute('auto_assign_elastic_ips') as any;
     }
-    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignElasticIps = value;
     }
     public resetAutoAssignElasticIps() {
@@ -4589,11 +4702,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_public_ips - computed: false, optional: true, required: false
-    private _autoAssignPublicIps?: boolean | cdktf.IResolvable;
+    private _autoAssignPublicIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignPublicIps() {
-      return this.getBooleanAttribute('auto_assign_public_ips');
+      return this.getBooleanAttribute('auto_assign_public_ips') as any;
     }
-    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignPublicIps = value;
     }
     public resetAutoAssignPublicIps() {
@@ -4605,11 +4718,11 @@ export namespace OpsWorks {
     }
 
     // auto_healing - computed: false, optional: true, required: false
-    private _autoHealing?: boolean | cdktf.IResolvable;
+    private _autoHealing?: boolean | cdktf.IResolvable | undefined; 
     public get autoHealing() {
-      return this.getBooleanAttribute('auto_healing');
+      return this.getBooleanAttribute('auto_healing') as any;
     }
-    public set autoHealing(value: boolean | cdktf.IResolvable ) {
+    public set autoHealing(value: boolean | cdktf.IResolvable | undefined) {
       this._autoHealing = value;
     }
     public resetAutoHealing() {
@@ -4621,11 +4734,11 @@ export namespace OpsWorks {
     }
 
     // custom_configure_recipes - computed: false, optional: true, required: false
-    private _customConfigureRecipes?: string[];
+    private _customConfigureRecipes?: string[] | undefined; 
     public get customConfigureRecipes() {
       return this.getListAttribute('custom_configure_recipes');
     }
-    public set customConfigureRecipes(value: string[] ) {
+    public set customConfigureRecipes(value: string[] | undefined) {
       this._customConfigureRecipes = value;
     }
     public resetCustomConfigureRecipes() {
@@ -4637,11 +4750,11 @@ export namespace OpsWorks {
     }
 
     // custom_deploy_recipes - computed: false, optional: true, required: false
-    private _customDeployRecipes?: string[];
+    private _customDeployRecipes?: string[] | undefined; 
     public get customDeployRecipes() {
       return this.getListAttribute('custom_deploy_recipes');
     }
-    public set customDeployRecipes(value: string[] ) {
+    public set customDeployRecipes(value: string[] | undefined) {
       this._customDeployRecipes = value;
     }
     public resetCustomDeployRecipes() {
@@ -4653,11 +4766,11 @@ export namespace OpsWorks {
     }
 
     // custom_instance_profile_arn - computed: false, optional: true, required: false
-    private _customInstanceProfileArn?: string;
+    private _customInstanceProfileArn?: string | undefined; 
     public get customInstanceProfileArn() {
       return this.getStringAttribute('custom_instance_profile_arn');
     }
-    public set customInstanceProfileArn(value: string ) {
+    public set customInstanceProfileArn(value: string | undefined) {
       this._customInstanceProfileArn = value;
     }
     public resetCustomInstanceProfileArn() {
@@ -4669,11 +4782,11 @@ export namespace OpsWorks {
     }
 
     // custom_json - computed: false, optional: true, required: false
-    private _customJson?: string;
+    private _customJson?: string | undefined; 
     public get customJson() {
       return this.getStringAttribute('custom_json');
     }
-    public set customJson(value: string ) {
+    public set customJson(value: string | undefined) {
       this._customJson = value;
     }
     public resetCustomJson() {
@@ -4685,11 +4798,11 @@ export namespace OpsWorks {
     }
 
     // custom_security_group_ids - computed: false, optional: true, required: false
-    private _customSecurityGroupIds?: string[];
+    private _customSecurityGroupIds?: string[] | undefined; 
     public get customSecurityGroupIds() {
       return this.getListAttribute('custom_security_group_ids');
     }
-    public set customSecurityGroupIds(value: string[] ) {
+    public set customSecurityGroupIds(value: string[] | undefined) {
       this._customSecurityGroupIds = value;
     }
     public resetCustomSecurityGroupIds() {
@@ -4701,11 +4814,11 @@ export namespace OpsWorks {
     }
 
     // custom_setup_recipes - computed: false, optional: true, required: false
-    private _customSetupRecipes?: string[];
+    private _customSetupRecipes?: string[] | undefined; 
     public get customSetupRecipes() {
       return this.getListAttribute('custom_setup_recipes');
     }
-    public set customSetupRecipes(value: string[] ) {
+    public set customSetupRecipes(value: string[] | undefined) {
       this._customSetupRecipes = value;
     }
     public resetCustomSetupRecipes() {
@@ -4717,11 +4830,11 @@ export namespace OpsWorks {
     }
 
     // custom_shutdown_recipes - computed: false, optional: true, required: false
-    private _customShutdownRecipes?: string[];
+    private _customShutdownRecipes?: string[] | undefined; 
     public get customShutdownRecipes() {
       return this.getListAttribute('custom_shutdown_recipes');
     }
-    public set customShutdownRecipes(value: string[] ) {
+    public set customShutdownRecipes(value: string[] | undefined) {
       this._customShutdownRecipes = value;
     }
     public resetCustomShutdownRecipes() {
@@ -4733,11 +4846,11 @@ export namespace OpsWorks {
     }
 
     // custom_undeploy_recipes - computed: false, optional: true, required: false
-    private _customUndeployRecipes?: string[];
+    private _customUndeployRecipes?: string[] | undefined; 
     public get customUndeployRecipes() {
       return this.getListAttribute('custom_undeploy_recipes');
     }
-    public set customUndeployRecipes(value: string[] ) {
+    public set customUndeployRecipes(value: string[] | undefined) {
       this._customUndeployRecipes = value;
     }
     public resetCustomUndeployRecipes() {
@@ -4749,11 +4862,11 @@ export namespace OpsWorks {
     }
 
     // drain_elb_on_shutdown - computed: false, optional: true, required: false
-    private _drainElbOnShutdown?: boolean | cdktf.IResolvable;
+    private _drainElbOnShutdown?: boolean | cdktf.IResolvable | undefined; 
     public get drainElbOnShutdown() {
-      return this.getBooleanAttribute('drain_elb_on_shutdown');
+      return this.getBooleanAttribute('drain_elb_on_shutdown') as any;
     }
-    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable ) {
+    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable | undefined) {
       this._drainElbOnShutdown = value;
     }
     public resetDrainElbOnShutdown() {
@@ -4765,11 +4878,11 @@ export namespace OpsWorks {
     }
 
     // elastic_load_balancer - computed: false, optional: true, required: false
-    private _elasticLoadBalancer?: string;
+    private _elasticLoadBalancer?: string | undefined; 
     public get elasticLoadBalancer() {
       return this.getStringAttribute('elastic_load_balancer');
     }
-    public set elasticLoadBalancer(value: string ) {
+    public set elasticLoadBalancer(value: string | undefined) {
       this._elasticLoadBalancer = value;
     }
     public resetElasticLoadBalancer() {
@@ -4786,11 +4899,11 @@ export namespace OpsWorks {
     }
 
     // install_updates_on_boot - computed: false, optional: true, required: false
-    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable;
+    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable | undefined; 
     public get installUpdatesOnBoot() {
-      return this.getBooleanAttribute('install_updates_on_boot');
+      return this.getBooleanAttribute('install_updates_on_boot') as any;
     }
-    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable ) {
+    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable | undefined) {
       this._installUpdatesOnBoot = value;
     }
     public resetInstallUpdatesOnBoot() {
@@ -4802,11 +4915,11 @@ export namespace OpsWorks {
     }
 
     // instance_shutdown_timeout - computed: false, optional: true, required: false
-    private _instanceShutdownTimeout?: number;
+    private _instanceShutdownTimeout?: number | undefined; 
     public get instanceShutdownTimeout() {
       return this.getNumberAttribute('instance_shutdown_timeout');
     }
-    public set instanceShutdownTimeout(value: number ) {
+    public set instanceShutdownTimeout(value: number | undefined) {
       this._instanceShutdownTimeout = value;
     }
     public resetInstanceShutdownTimeout() {
@@ -4818,11 +4931,11 @@ export namespace OpsWorks {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -4834,7 +4947,7 @@ export namespace OpsWorks {
     }
 
     // stack_id - computed: false, optional: false, required: true
-    private _stackId: string;
+    private _stackId?: string; 
     public get stackId() {
       return this.getStringAttribute('stack_id');
     }
@@ -4847,11 +4960,11 @@ export namespace OpsWorks {
     }
 
     // system_packages - computed: false, optional: true, required: false
-    private _systemPackages?: string[];
+    private _systemPackages?: string[] | undefined; 
     public get systemPackages() {
       return this.getListAttribute('system_packages');
     }
-    public set systemPackages(value: string[] ) {
+    public set systemPackages(value: string[] | undefined) {
       this._systemPackages = value;
     }
     public resetSystemPackages() {
@@ -4863,11 +4976,12 @@ export namespace OpsWorks {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4879,11 +4993,12 @@ export namespace OpsWorks {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -4895,11 +5010,11 @@ export namespace OpsWorks {
     }
 
     // use_ebs_optimized_instances - computed: false, optional: true, required: false
-    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable;
+    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable | undefined; 
     public get useEbsOptimizedInstances() {
-      return this.getBooleanAttribute('use_ebs_optimized_instances');
+      return this.getBooleanAttribute('use_ebs_optimized_instances') as any;
     }
-    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable ) {
+    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable | undefined) {
       this._useEbsOptimizedInstances = value;
     }
     public resetUseEbsOptimizedInstances() {
@@ -4911,11 +5026,12 @@ export namespace OpsWorks {
     }
 
     // ebs_volume - computed: false, optional: true, required: false
-    private _ebsVolume?: OpsworksMemcachedLayerEbsVolume[];
+    private _ebsVolume?: OpsworksMemcachedLayerEbsVolume[] | undefined; 
     public get ebsVolume() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs_volume') as any;
     }
-    public set ebsVolume(value: OpsworksMemcachedLayerEbsVolume[] ) {
+    public set ebsVolume(value: OpsworksMemcachedLayerEbsVolume[] | undefined) {
       this._ebsVolume = value;
     }
     public resetEbsVolume() {
@@ -5091,6 +5207,9 @@ export namespace OpsWorks {
 
   function opsworksMysqlLayerEbsVolumeToTerraform(struct?: OpsworksMysqlLayerEbsVolume): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       encrypted: cdktf.booleanToTerraform(struct!.encrypted),
       iops: cdktf.numberToTerraform(struct!.iops),
@@ -5171,11 +5290,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_elastic_ips - computed: false, optional: true, required: false
-    private _autoAssignElasticIps?: boolean | cdktf.IResolvable;
+    private _autoAssignElasticIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignElasticIps() {
-      return this.getBooleanAttribute('auto_assign_elastic_ips');
+      return this.getBooleanAttribute('auto_assign_elastic_ips') as any;
     }
-    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignElasticIps = value;
     }
     public resetAutoAssignElasticIps() {
@@ -5187,11 +5306,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_public_ips - computed: false, optional: true, required: false
-    private _autoAssignPublicIps?: boolean | cdktf.IResolvable;
+    private _autoAssignPublicIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignPublicIps() {
-      return this.getBooleanAttribute('auto_assign_public_ips');
+      return this.getBooleanAttribute('auto_assign_public_ips') as any;
     }
-    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignPublicIps = value;
     }
     public resetAutoAssignPublicIps() {
@@ -5203,11 +5322,11 @@ export namespace OpsWorks {
     }
 
     // auto_healing - computed: false, optional: true, required: false
-    private _autoHealing?: boolean | cdktf.IResolvable;
+    private _autoHealing?: boolean | cdktf.IResolvable | undefined; 
     public get autoHealing() {
-      return this.getBooleanAttribute('auto_healing');
+      return this.getBooleanAttribute('auto_healing') as any;
     }
-    public set autoHealing(value: boolean | cdktf.IResolvable ) {
+    public set autoHealing(value: boolean | cdktf.IResolvable | undefined) {
       this._autoHealing = value;
     }
     public resetAutoHealing() {
@@ -5219,11 +5338,11 @@ export namespace OpsWorks {
     }
 
     // custom_configure_recipes - computed: false, optional: true, required: false
-    private _customConfigureRecipes?: string[];
+    private _customConfigureRecipes?: string[] | undefined; 
     public get customConfigureRecipes() {
       return this.getListAttribute('custom_configure_recipes');
     }
-    public set customConfigureRecipes(value: string[] ) {
+    public set customConfigureRecipes(value: string[] | undefined) {
       this._customConfigureRecipes = value;
     }
     public resetCustomConfigureRecipes() {
@@ -5235,11 +5354,11 @@ export namespace OpsWorks {
     }
 
     // custom_deploy_recipes - computed: false, optional: true, required: false
-    private _customDeployRecipes?: string[];
+    private _customDeployRecipes?: string[] | undefined; 
     public get customDeployRecipes() {
       return this.getListAttribute('custom_deploy_recipes');
     }
-    public set customDeployRecipes(value: string[] ) {
+    public set customDeployRecipes(value: string[] | undefined) {
       this._customDeployRecipes = value;
     }
     public resetCustomDeployRecipes() {
@@ -5251,11 +5370,11 @@ export namespace OpsWorks {
     }
 
     // custom_instance_profile_arn - computed: false, optional: true, required: false
-    private _customInstanceProfileArn?: string;
+    private _customInstanceProfileArn?: string | undefined; 
     public get customInstanceProfileArn() {
       return this.getStringAttribute('custom_instance_profile_arn');
     }
-    public set customInstanceProfileArn(value: string ) {
+    public set customInstanceProfileArn(value: string | undefined) {
       this._customInstanceProfileArn = value;
     }
     public resetCustomInstanceProfileArn() {
@@ -5267,11 +5386,11 @@ export namespace OpsWorks {
     }
 
     // custom_json - computed: false, optional: true, required: false
-    private _customJson?: string;
+    private _customJson?: string | undefined; 
     public get customJson() {
       return this.getStringAttribute('custom_json');
     }
-    public set customJson(value: string ) {
+    public set customJson(value: string | undefined) {
       this._customJson = value;
     }
     public resetCustomJson() {
@@ -5283,11 +5402,11 @@ export namespace OpsWorks {
     }
 
     // custom_security_group_ids - computed: false, optional: true, required: false
-    private _customSecurityGroupIds?: string[];
+    private _customSecurityGroupIds?: string[] | undefined; 
     public get customSecurityGroupIds() {
       return this.getListAttribute('custom_security_group_ids');
     }
-    public set customSecurityGroupIds(value: string[] ) {
+    public set customSecurityGroupIds(value: string[] | undefined) {
       this._customSecurityGroupIds = value;
     }
     public resetCustomSecurityGroupIds() {
@@ -5299,11 +5418,11 @@ export namespace OpsWorks {
     }
 
     // custom_setup_recipes - computed: false, optional: true, required: false
-    private _customSetupRecipes?: string[];
+    private _customSetupRecipes?: string[] | undefined; 
     public get customSetupRecipes() {
       return this.getListAttribute('custom_setup_recipes');
     }
-    public set customSetupRecipes(value: string[] ) {
+    public set customSetupRecipes(value: string[] | undefined) {
       this._customSetupRecipes = value;
     }
     public resetCustomSetupRecipes() {
@@ -5315,11 +5434,11 @@ export namespace OpsWorks {
     }
 
     // custom_shutdown_recipes - computed: false, optional: true, required: false
-    private _customShutdownRecipes?: string[];
+    private _customShutdownRecipes?: string[] | undefined; 
     public get customShutdownRecipes() {
       return this.getListAttribute('custom_shutdown_recipes');
     }
-    public set customShutdownRecipes(value: string[] ) {
+    public set customShutdownRecipes(value: string[] | undefined) {
       this._customShutdownRecipes = value;
     }
     public resetCustomShutdownRecipes() {
@@ -5331,11 +5450,11 @@ export namespace OpsWorks {
     }
 
     // custom_undeploy_recipes - computed: false, optional: true, required: false
-    private _customUndeployRecipes?: string[];
+    private _customUndeployRecipes?: string[] | undefined; 
     public get customUndeployRecipes() {
       return this.getListAttribute('custom_undeploy_recipes');
     }
-    public set customUndeployRecipes(value: string[] ) {
+    public set customUndeployRecipes(value: string[] | undefined) {
       this._customUndeployRecipes = value;
     }
     public resetCustomUndeployRecipes() {
@@ -5347,11 +5466,11 @@ export namespace OpsWorks {
     }
 
     // drain_elb_on_shutdown - computed: false, optional: true, required: false
-    private _drainElbOnShutdown?: boolean | cdktf.IResolvable;
+    private _drainElbOnShutdown?: boolean | cdktf.IResolvable | undefined; 
     public get drainElbOnShutdown() {
-      return this.getBooleanAttribute('drain_elb_on_shutdown');
+      return this.getBooleanAttribute('drain_elb_on_shutdown') as any;
     }
-    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable ) {
+    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable | undefined) {
       this._drainElbOnShutdown = value;
     }
     public resetDrainElbOnShutdown() {
@@ -5363,11 +5482,11 @@ export namespace OpsWorks {
     }
 
     // elastic_load_balancer - computed: false, optional: true, required: false
-    private _elasticLoadBalancer?: string;
+    private _elasticLoadBalancer?: string | undefined; 
     public get elasticLoadBalancer() {
       return this.getStringAttribute('elastic_load_balancer');
     }
-    public set elasticLoadBalancer(value: string ) {
+    public set elasticLoadBalancer(value: string | undefined) {
       this._elasticLoadBalancer = value;
     }
     public resetElasticLoadBalancer() {
@@ -5384,11 +5503,11 @@ export namespace OpsWorks {
     }
 
     // install_updates_on_boot - computed: false, optional: true, required: false
-    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable;
+    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable | undefined; 
     public get installUpdatesOnBoot() {
-      return this.getBooleanAttribute('install_updates_on_boot');
+      return this.getBooleanAttribute('install_updates_on_boot') as any;
     }
-    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable ) {
+    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable | undefined) {
       this._installUpdatesOnBoot = value;
     }
     public resetInstallUpdatesOnBoot() {
@@ -5400,11 +5519,11 @@ export namespace OpsWorks {
     }
 
     // instance_shutdown_timeout - computed: false, optional: true, required: false
-    private _instanceShutdownTimeout?: number;
+    private _instanceShutdownTimeout?: number | undefined; 
     public get instanceShutdownTimeout() {
       return this.getNumberAttribute('instance_shutdown_timeout');
     }
-    public set instanceShutdownTimeout(value: number ) {
+    public set instanceShutdownTimeout(value: number | undefined) {
       this._instanceShutdownTimeout = value;
     }
     public resetInstanceShutdownTimeout() {
@@ -5416,11 +5535,11 @@ export namespace OpsWorks {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -5432,11 +5551,11 @@ export namespace OpsWorks {
     }
 
     // root_password - computed: false, optional: true, required: false
-    private _rootPassword?: string;
+    private _rootPassword?: string | undefined; 
     public get rootPassword() {
       return this.getStringAttribute('root_password');
     }
-    public set rootPassword(value: string ) {
+    public set rootPassword(value: string | undefined) {
       this._rootPassword = value;
     }
     public resetRootPassword() {
@@ -5448,11 +5567,11 @@ export namespace OpsWorks {
     }
 
     // root_password_on_all_instances - computed: false, optional: true, required: false
-    private _rootPasswordOnAllInstances?: boolean | cdktf.IResolvable;
+    private _rootPasswordOnAllInstances?: boolean | cdktf.IResolvable | undefined; 
     public get rootPasswordOnAllInstances() {
-      return this.getBooleanAttribute('root_password_on_all_instances');
+      return this.getBooleanAttribute('root_password_on_all_instances') as any;
     }
-    public set rootPasswordOnAllInstances(value: boolean | cdktf.IResolvable ) {
+    public set rootPasswordOnAllInstances(value: boolean | cdktf.IResolvable | undefined) {
       this._rootPasswordOnAllInstances = value;
     }
     public resetRootPasswordOnAllInstances() {
@@ -5464,7 +5583,7 @@ export namespace OpsWorks {
     }
 
     // stack_id - computed: false, optional: false, required: true
-    private _stackId: string;
+    private _stackId?: string; 
     public get stackId() {
       return this.getStringAttribute('stack_id');
     }
@@ -5477,11 +5596,11 @@ export namespace OpsWorks {
     }
 
     // system_packages - computed: false, optional: true, required: false
-    private _systemPackages?: string[];
+    private _systemPackages?: string[] | undefined; 
     public get systemPackages() {
       return this.getListAttribute('system_packages');
     }
-    public set systemPackages(value: string[] ) {
+    public set systemPackages(value: string[] | undefined) {
       this._systemPackages = value;
     }
     public resetSystemPackages() {
@@ -5493,11 +5612,12 @@ export namespace OpsWorks {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -5509,11 +5629,12 @@ export namespace OpsWorks {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -5525,11 +5646,11 @@ export namespace OpsWorks {
     }
 
     // use_ebs_optimized_instances - computed: false, optional: true, required: false
-    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable;
+    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable | undefined; 
     public get useEbsOptimizedInstances() {
-      return this.getBooleanAttribute('use_ebs_optimized_instances');
+      return this.getBooleanAttribute('use_ebs_optimized_instances') as any;
     }
-    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable ) {
+    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable | undefined) {
       this._useEbsOptimizedInstances = value;
     }
     public resetUseEbsOptimizedInstances() {
@@ -5541,11 +5662,12 @@ export namespace OpsWorks {
     }
 
     // ebs_volume - computed: false, optional: true, required: false
-    private _ebsVolume?: OpsworksMysqlLayerEbsVolume[];
+    private _ebsVolume?: OpsworksMysqlLayerEbsVolume[] | undefined; 
     public get ebsVolume() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs_volume') as any;
     }
-    public set ebsVolume(value: OpsworksMysqlLayerEbsVolume[] ) {
+    public set ebsVolume(value: OpsworksMysqlLayerEbsVolume[] | undefined) {
       this._ebsVolume = value;
     }
     public resetEbsVolume() {
@@ -5718,6 +5840,9 @@ export namespace OpsWorks {
 
   function opsworksNodejsAppLayerEbsVolumeToTerraform(struct?: OpsworksNodejsAppLayerEbsVolume): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       encrypted: cdktf.booleanToTerraform(struct!.encrypted),
       iops: cdktf.numberToTerraform(struct!.iops),
@@ -5797,11 +5922,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_elastic_ips - computed: false, optional: true, required: false
-    private _autoAssignElasticIps?: boolean | cdktf.IResolvable;
+    private _autoAssignElasticIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignElasticIps() {
-      return this.getBooleanAttribute('auto_assign_elastic_ips');
+      return this.getBooleanAttribute('auto_assign_elastic_ips') as any;
     }
-    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignElasticIps = value;
     }
     public resetAutoAssignElasticIps() {
@@ -5813,11 +5938,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_public_ips - computed: false, optional: true, required: false
-    private _autoAssignPublicIps?: boolean | cdktf.IResolvable;
+    private _autoAssignPublicIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignPublicIps() {
-      return this.getBooleanAttribute('auto_assign_public_ips');
+      return this.getBooleanAttribute('auto_assign_public_ips') as any;
     }
-    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignPublicIps = value;
     }
     public resetAutoAssignPublicIps() {
@@ -5829,11 +5954,11 @@ export namespace OpsWorks {
     }
 
     // auto_healing - computed: false, optional: true, required: false
-    private _autoHealing?: boolean | cdktf.IResolvable;
+    private _autoHealing?: boolean | cdktf.IResolvable | undefined; 
     public get autoHealing() {
-      return this.getBooleanAttribute('auto_healing');
+      return this.getBooleanAttribute('auto_healing') as any;
     }
-    public set autoHealing(value: boolean | cdktf.IResolvable ) {
+    public set autoHealing(value: boolean | cdktf.IResolvable | undefined) {
       this._autoHealing = value;
     }
     public resetAutoHealing() {
@@ -5845,11 +5970,11 @@ export namespace OpsWorks {
     }
 
     // custom_configure_recipes - computed: false, optional: true, required: false
-    private _customConfigureRecipes?: string[];
+    private _customConfigureRecipes?: string[] | undefined; 
     public get customConfigureRecipes() {
       return this.getListAttribute('custom_configure_recipes');
     }
-    public set customConfigureRecipes(value: string[] ) {
+    public set customConfigureRecipes(value: string[] | undefined) {
       this._customConfigureRecipes = value;
     }
     public resetCustomConfigureRecipes() {
@@ -5861,11 +5986,11 @@ export namespace OpsWorks {
     }
 
     // custom_deploy_recipes - computed: false, optional: true, required: false
-    private _customDeployRecipes?: string[];
+    private _customDeployRecipes?: string[] | undefined; 
     public get customDeployRecipes() {
       return this.getListAttribute('custom_deploy_recipes');
     }
-    public set customDeployRecipes(value: string[] ) {
+    public set customDeployRecipes(value: string[] | undefined) {
       this._customDeployRecipes = value;
     }
     public resetCustomDeployRecipes() {
@@ -5877,11 +6002,11 @@ export namespace OpsWorks {
     }
 
     // custom_instance_profile_arn - computed: false, optional: true, required: false
-    private _customInstanceProfileArn?: string;
+    private _customInstanceProfileArn?: string | undefined; 
     public get customInstanceProfileArn() {
       return this.getStringAttribute('custom_instance_profile_arn');
     }
-    public set customInstanceProfileArn(value: string ) {
+    public set customInstanceProfileArn(value: string | undefined) {
       this._customInstanceProfileArn = value;
     }
     public resetCustomInstanceProfileArn() {
@@ -5893,11 +6018,11 @@ export namespace OpsWorks {
     }
 
     // custom_json - computed: false, optional: true, required: false
-    private _customJson?: string;
+    private _customJson?: string | undefined; 
     public get customJson() {
       return this.getStringAttribute('custom_json');
     }
-    public set customJson(value: string ) {
+    public set customJson(value: string | undefined) {
       this._customJson = value;
     }
     public resetCustomJson() {
@@ -5909,11 +6034,11 @@ export namespace OpsWorks {
     }
 
     // custom_security_group_ids - computed: false, optional: true, required: false
-    private _customSecurityGroupIds?: string[];
+    private _customSecurityGroupIds?: string[] | undefined; 
     public get customSecurityGroupIds() {
       return this.getListAttribute('custom_security_group_ids');
     }
-    public set customSecurityGroupIds(value: string[] ) {
+    public set customSecurityGroupIds(value: string[] | undefined) {
       this._customSecurityGroupIds = value;
     }
     public resetCustomSecurityGroupIds() {
@@ -5925,11 +6050,11 @@ export namespace OpsWorks {
     }
 
     // custom_setup_recipes - computed: false, optional: true, required: false
-    private _customSetupRecipes?: string[];
+    private _customSetupRecipes?: string[] | undefined; 
     public get customSetupRecipes() {
       return this.getListAttribute('custom_setup_recipes');
     }
-    public set customSetupRecipes(value: string[] ) {
+    public set customSetupRecipes(value: string[] | undefined) {
       this._customSetupRecipes = value;
     }
     public resetCustomSetupRecipes() {
@@ -5941,11 +6066,11 @@ export namespace OpsWorks {
     }
 
     // custom_shutdown_recipes - computed: false, optional: true, required: false
-    private _customShutdownRecipes?: string[];
+    private _customShutdownRecipes?: string[] | undefined; 
     public get customShutdownRecipes() {
       return this.getListAttribute('custom_shutdown_recipes');
     }
-    public set customShutdownRecipes(value: string[] ) {
+    public set customShutdownRecipes(value: string[] | undefined) {
       this._customShutdownRecipes = value;
     }
     public resetCustomShutdownRecipes() {
@@ -5957,11 +6082,11 @@ export namespace OpsWorks {
     }
 
     // custom_undeploy_recipes - computed: false, optional: true, required: false
-    private _customUndeployRecipes?: string[];
+    private _customUndeployRecipes?: string[] | undefined; 
     public get customUndeployRecipes() {
       return this.getListAttribute('custom_undeploy_recipes');
     }
-    public set customUndeployRecipes(value: string[] ) {
+    public set customUndeployRecipes(value: string[] | undefined) {
       this._customUndeployRecipes = value;
     }
     public resetCustomUndeployRecipes() {
@@ -5973,11 +6098,11 @@ export namespace OpsWorks {
     }
 
     // drain_elb_on_shutdown - computed: false, optional: true, required: false
-    private _drainElbOnShutdown?: boolean | cdktf.IResolvable;
+    private _drainElbOnShutdown?: boolean | cdktf.IResolvable | undefined; 
     public get drainElbOnShutdown() {
-      return this.getBooleanAttribute('drain_elb_on_shutdown');
+      return this.getBooleanAttribute('drain_elb_on_shutdown') as any;
     }
-    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable ) {
+    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable | undefined) {
       this._drainElbOnShutdown = value;
     }
     public resetDrainElbOnShutdown() {
@@ -5989,11 +6114,11 @@ export namespace OpsWorks {
     }
 
     // elastic_load_balancer - computed: false, optional: true, required: false
-    private _elasticLoadBalancer?: string;
+    private _elasticLoadBalancer?: string | undefined; 
     public get elasticLoadBalancer() {
       return this.getStringAttribute('elastic_load_balancer');
     }
-    public set elasticLoadBalancer(value: string ) {
+    public set elasticLoadBalancer(value: string | undefined) {
       this._elasticLoadBalancer = value;
     }
     public resetElasticLoadBalancer() {
@@ -6010,11 +6135,11 @@ export namespace OpsWorks {
     }
 
     // install_updates_on_boot - computed: false, optional: true, required: false
-    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable;
+    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable | undefined; 
     public get installUpdatesOnBoot() {
-      return this.getBooleanAttribute('install_updates_on_boot');
+      return this.getBooleanAttribute('install_updates_on_boot') as any;
     }
-    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable ) {
+    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable | undefined) {
       this._installUpdatesOnBoot = value;
     }
     public resetInstallUpdatesOnBoot() {
@@ -6026,11 +6151,11 @@ export namespace OpsWorks {
     }
 
     // instance_shutdown_timeout - computed: false, optional: true, required: false
-    private _instanceShutdownTimeout?: number;
+    private _instanceShutdownTimeout?: number | undefined; 
     public get instanceShutdownTimeout() {
       return this.getNumberAttribute('instance_shutdown_timeout');
     }
-    public set instanceShutdownTimeout(value: number ) {
+    public set instanceShutdownTimeout(value: number | undefined) {
       this._instanceShutdownTimeout = value;
     }
     public resetInstanceShutdownTimeout() {
@@ -6042,11 +6167,11 @@ export namespace OpsWorks {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -6058,11 +6183,11 @@ export namespace OpsWorks {
     }
 
     // nodejs_version - computed: false, optional: true, required: false
-    private _nodejsVersion?: string;
+    private _nodejsVersion?: string | undefined; 
     public get nodejsVersion() {
       return this.getStringAttribute('nodejs_version');
     }
-    public set nodejsVersion(value: string ) {
+    public set nodejsVersion(value: string | undefined) {
       this._nodejsVersion = value;
     }
     public resetNodejsVersion() {
@@ -6074,7 +6199,7 @@ export namespace OpsWorks {
     }
 
     // stack_id - computed: false, optional: false, required: true
-    private _stackId: string;
+    private _stackId?: string; 
     public get stackId() {
       return this.getStringAttribute('stack_id');
     }
@@ -6087,11 +6212,11 @@ export namespace OpsWorks {
     }
 
     // system_packages - computed: false, optional: true, required: false
-    private _systemPackages?: string[];
+    private _systemPackages?: string[] | undefined; 
     public get systemPackages() {
       return this.getListAttribute('system_packages');
     }
-    public set systemPackages(value: string[] ) {
+    public set systemPackages(value: string[] | undefined) {
       this._systemPackages = value;
     }
     public resetSystemPackages() {
@@ -6103,11 +6228,12 @@ export namespace OpsWorks {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -6119,11 +6245,12 @@ export namespace OpsWorks {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -6135,11 +6262,11 @@ export namespace OpsWorks {
     }
 
     // use_ebs_optimized_instances - computed: false, optional: true, required: false
-    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable;
+    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable | undefined; 
     public get useEbsOptimizedInstances() {
-      return this.getBooleanAttribute('use_ebs_optimized_instances');
+      return this.getBooleanAttribute('use_ebs_optimized_instances') as any;
     }
-    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable ) {
+    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable | undefined) {
       this._useEbsOptimizedInstances = value;
     }
     public resetUseEbsOptimizedInstances() {
@@ -6151,11 +6278,12 @@ export namespace OpsWorks {
     }
 
     // ebs_volume - computed: false, optional: true, required: false
-    private _ebsVolume?: OpsworksNodejsAppLayerEbsVolume[];
+    private _ebsVolume?: OpsworksNodejsAppLayerEbsVolume[] | undefined; 
     public get ebsVolume() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs_volume') as any;
     }
-    public set ebsVolume(value: OpsworksNodejsAppLayerEbsVolume[] ) {
+    public set ebsVolume(value: OpsworksNodejsAppLayerEbsVolume[] | undefined) {
       this._ebsVolume = value;
     }
     public resetEbsVolume() {
@@ -6265,11 +6393,11 @@ export namespace OpsWorks {
     // ==========
 
     // allow_ssh - computed: true, optional: true, required: false
-    private _allowSsh?: boolean | cdktf.IResolvable;
+    private _allowSsh?: boolean | cdktf.IResolvable | undefined; 
     public get allowSsh() {
-      return this.getBooleanAttribute('allow_ssh');
+      return this.getBooleanAttribute('allow_ssh') as any;
     }
-    public set allowSsh(value: boolean | cdktf.IResolvable) {
+    public set allowSsh(value: boolean | cdktf.IResolvable | undefined) {
       this._allowSsh = value;
     }
     public resetAllowSsh() {
@@ -6281,11 +6409,11 @@ export namespace OpsWorks {
     }
 
     // allow_sudo - computed: true, optional: true, required: false
-    private _allowSudo?: boolean | cdktf.IResolvable;
+    private _allowSudo?: boolean | cdktf.IResolvable | undefined; 
     public get allowSudo() {
-      return this.getBooleanAttribute('allow_sudo');
+      return this.getBooleanAttribute('allow_sudo') as any;
     }
-    public set allowSudo(value: boolean | cdktf.IResolvable) {
+    public set allowSudo(value: boolean | cdktf.IResolvable | undefined) {
       this._allowSudo = value;
     }
     public resetAllowSudo() {
@@ -6302,11 +6430,11 @@ export namespace OpsWorks {
     }
 
     // level - computed: true, optional: true, required: false
-    private _level?: string;
+    private _level?: string | undefined; 
     public get level() {
       return this.getStringAttribute('level');
     }
-    public set level(value: string) {
+    public set level(value: string | undefined) {
       this._level = value;
     }
     public resetLevel() {
@@ -6318,11 +6446,11 @@ export namespace OpsWorks {
     }
 
     // stack_id - computed: true, optional: true, required: false
-    private _stackId?: string;
+    private _stackId?: string | undefined; 
     public get stackId() {
       return this.getStringAttribute('stack_id');
     }
-    public set stackId(value: string) {
+    public set stackId(value: string | undefined) {
       this._stackId = value;
     }
     public resetStackId() {
@@ -6334,7 +6462,7 @@ export namespace OpsWorks {
     }
 
     // user_arn - computed: false, optional: false, required: true
-    private _userArn: string;
+    private _userArn?: string; 
     public get userArn() {
       return this.getStringAttribute('user_arn');
     }
@@ -6485,6 +6613,9 @@ export namespace OpsWorks {
 
   function opsworksPhpAppLayerEbsVolumeToTerraform(struct?: OpsworksPhpAppLayerEbsVolume): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       encrypted: cdktf.booleanToTerraform(struct!.encrypted),
       iops: cdktf.numberToTerraform(struct!.iops),
@@ -6563,11 +6694,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_elastic_ips - computed: false, optional: true, required: false
-    private _autoAssignElasticIps?: boolean | cdktf.IResolvable;
+    private _autoAssignElasticIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignElasticIps() {
-      return this.getBooleanAttribute('auto_assign_elastic_ips');
+      return this.getBooleanAttribute('auto_assign_elastic_ips') as any;
     }
-    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignElasticIps = value;
     }
     public resetAutoAssignElasticIps() {
@@ -6579,11 +6710,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_public_ips - computed: false, optional: true, required: false
-    private _autoAssignPublicIps?: boolean | cdktf.IResolvable;
+    private _autoAssignPublicIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignPublicIps() {
-      return this.getBooleanAttribute('auto_assign_public_ips');
+      return this.getBooleanAttribute('auto_assign_public_ips') as any;
     }
-    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignPublicIps = value;
     }
     public resetAutoAssignPublicIps() {
@@ -6595,11 +6726,11 @@ export namespace OpsWorks {
     }
 
     // auto_healing - computed: false, optional: true, required: false
-    private _autoHealing?: boolean | cdktf.IResolvable;
+    private _autoHealing?: boolean | cdktf.IResolvable | undefined; 
     public get autoHealing() {
-      return this.getBooleanAttribute('auto_healing');
+      return this.getBooleanAttribute('auto_healing') as any;
     }
-    public set autoHealing(value: boolean | cdktf.IResolvable ) {
+    public set autoHealing(value: boolean | cdktf.IResolvable | undefined) {
       this._autoHealing = value;
     }
     public resetAutoHealing() {
@@ -6611,11 +6742,11 @@ export namespace OpsWorks {
     }
 
     // custom_configure_recipes - computed: false, optional: true, required: false
-    private _customConfigureRecipes?: string[];
+    private _customConfigureRecipes?: string[] | undefined; 
     public get customConfigureRecipes() {
       return this.getListAttribute('custom_configure_recipes');
     }
-    public set customConfigureRecipes(value: string[] ) {
+    public set customConfigureRecipes(value: string[] | undefined) {
       this._customConfigureRecipes = value;
     }
     public resetCustomConfigureRecipes() {
@@ -6627,11 +6758,11 @@ export namespace OpsWorks {
     }
 
     // custom_deploy_recipes - computed: false, optional: true, required: false
-    private _customDeployRecipes?: string[];
+    private _customDeployRecipes?: string[] | undefined; 
     public get customDeployRecipes() {
       return this.getListAttribute('custom_deploy_recipes');
     }
-    public set customDeployRecipes(value: string[] ) {
+    public set customDeployRecipes(value: string[] | undefined) {
       this._customDeployRecipes = value;
     }
     public resetCustomDeployRecipes() {
@@ -6643,11 +6774,11 @@ export namespace OpsWorks {
     }
 
     // custom_instance_profile_arn - computed: false, optional: true, required: false
-    private _customInstanceProfileArn?: string;
+    private _customInstanceProfileArn?: string | undefined; 
     public get customInstanceProfileArn() {
       return this.getStringAttribute('custom_instance_profile_arn');
     }
-    public set customInstanceProfileArn(value: string ) {
+    public set customInstanceProfileArn(value: string | undefined) {
       this._customInstanceProfileArn = value;
     }
     public resetCustomInstanceProfileArn() {
@@ -6659,11 +6790,11 @@ export namespace OpsWorks {
     }
 
     // custom_json - computed: false, optional: true, required: false
-    private _customJson?: string;
+    private _customJson?: string | undefined; 
     public get customJson() {
       return this.getStringAttribute('custom_json');
     }
-    public set customJson(value: string ) {
+    public set customJson(value: string | undefined) {
       this._customJson = value;
     }
     public resetCustomJson() {
@@ -6675,11 +6806,11 @@ export namespace OpsWorks {
     }
 
     // custom_security_group_ids - computed: false, optional: true, required: false
-    private _customSecurityGroupIds?: string[];
+    private _customSecurityGroupIds?: string[] | undefined; 
     public get customSecurityGroupIds() {
       return this.getListAttribute('custom_security_group_ids');
     }
-    public set customSecurityGroupIds(value: string[] ) {
+    public set customSecurityGroupIds(value: string[] | undefined) {
       this._customSecurityGroupIds = value;
     }
     public resetCustomSecurityGroupIds() {
@@ -6691,11 +6822,11 @@ export namespace OpsWorks {
     }
 
     // custom_setup_recipes - computed: false, optional: true, required: false
-    private _customSetupRecipes?: string[];
+    private _customSetupRecipes?: string[] | undefined; 
     public get customSetupRecipes() {
       return this.getListAttribute('custom_setup_recipes');
     }
-    public set customSetupRecipes(value: string[] ) {
+    public set customSetupRecipes(value: string[] | undefined) {
       this._customSetupRecipes = value;
     }
     public resetCustomSetupRecipes() {
@@ -6707,11 +6838,11 @@ export namespace OpsWorks {
     }
 
     // custom_shutdown_recipes - computed: false, optional: true, required: false
-    private _customShutdownRecipes?: string[];
+    private _customShutdownRecipes?: string[] | undefined; 
     public get customShutdownRecipes() {
       return this.getListAttribute('custom_shutdown_recipes');
     }
-    public set customShutdownRecipes(value: string[] ) {
+    public set customShutdownRecipes(value: string[] | undefined) {
       this._customShutdownRecipes = value;
     }
     public resetCustomShutdownRecipes() {
@@ -6723,11 +6854,11 @@ export namespace OpsWorks {
     }
 
     // custom_undeploy_recipes - computed: false, optional: true, required: false
-    private _customUndeployRecipes?: string[];
+    private _customUndeployRecipes?: string[] | undefined; 
     public get customUndeployRecipes() {
       return this.getListAttribute('custom_undeploy_recipes');
     }
-    public set customUndeployRecipes(value: string[] ) {
+    public set customUndeployRecipes(value: string[] | undefined) {
       this._customUndeployRecipes = value;
     }
     public resetCustomUndeployRecipes() {
@@ -6739,11 +6870,11 @@ export namespace OpsWorks {
     }
 
     // drain_elb_on_shutdown - computed: false, optional: true, required: false
-    private _drainElbOnShutdown?: boolean | cdktf.IResolvable;
+    private _drainElbOnShutdown?: boolean | cdktf.IResolvable | undefined; 
     public get drainElbOnShutdown() {
-      return this.getBooleanAttribute('drain_elb_on_shutdown');
+      return this.getBooleanAttribute('drain_elb_on_shutdown') as any;
     }
-    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable ) {
+    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable | undefined) {
       this._drainElbOnShutdown = value;
     }
     public resetDrainElbOnShutdown() {
@@ -6755,11 +6886,11 @@ export namespace OpsWorks {
     }
 
     // elastic_load_balancer - computed: false, optional: true, required: false
-    private _elasticLoadBalancer?: string;
+    private _elasticLoadBalancer?: string | undefined; 
     public get elasticLoadBalancer() {
       return this.getStringAttribute('elastic_load_balancer');
     }
-    public set elasticLoadBalancer(value: string ) {
+    public set elasticLoadBalancer(value: string | undefined) {
       this._elasticLoadBalancer = value;
     }
     public resetElasticLoadBalancer() {
@@ -6776,11 +6907,11 @@ export namespace OpsWorks {
     }
 
     // install_updates_on_boot - computed: false, optional: true, required: false
-    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable;
+    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable | undefined; 
     public get installUpdatesOnBoot() {
-      return this.getBooleanAttribute('install_updates_on_boot');
+      return this.getBooleanAttribute('install_updates_on_boot') as any;
     }
-    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable ) {
+    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable | undefined) {
       this._installUpdatesOnBoot = value;
     }
     public resetInstallUpdatesOnBoot() {
@@ -6792,11 +6923,11 @@ export namespace OpsWorks {
     }
 
     // instance_shutdown_timeout - computed: false, optional: true, required: false
-    private _instanceShutdownTimeout?: number;
+    private _instanceShutdownTimeout?: number | undefined; 
     public get instanceShutdownTimeout() {
       return this.getNumberAttribute('instance_shutdown_timeout');
     }
-    public set instanceShutdownTimeout(value: number ) {
+    public set instanceShutdownTimeout(value: number | undefined) {
       this._instanceShutdownTimeout = value;
     }
     public resetInstanceShutdownTimeout() {
@@ -6808,11 +6939,11 @@ export namespace OpsWorks {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -6824,7 +6955,7 @@ export namespace OpsWorks {
     }
 
     // stack_id - computed: false, optional: false, required: true
-    private _stackId: string;
+    private _stackId?: string; 
     public get stackId() {
       return this.getStringAttribute('stack_id');
     }
@@ -6837,11 +6968,11 @@ export namespace OpsWorks {
     }
 
     // system_packages - computed: false, optional: true, required: false
-    private _systemPackages?: string[];
+    private _systemPackages?: string[] | undefined; 
     public get systemPackages() {
       return this.getListAttribute('system_packages');
     }
-    public set systemPackages(value: string[] ) {
+    public set systemPackages(value: string[] | undefined) {
       this._systemPackages = value;
     }
     public resetSystemPackages() {
@@ -6853,11 +6984,12 @@ export namespace OpsWorks {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -6869,11 +7001,12 @@ export namespace OpsWorks {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -6885,11 +7018,11 @@ export namespace OpsWorks {
     }
 
     // use_ebs_optimized_instances - computed: false, optional: true, required: false
-    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable;
+    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable | undefined; 
     public get useEbsOptimizedInstances() {
-      return this.getBooleanAttribute('use_ebs_optimized_instances');
+      return this.getBooleanAttribute('use_ebs_optimized_instances') as any;
     }
-    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable ) {
+    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable | undefined) {
       this._useEbsOptimizedInstances = value;
     }
     public resetUseEbsOptimizedInstances() {
@@ -6901,11 +7034,12 @@ export namespace OpsWorks {
     }
 
     // ebs_volume - computed: false, optional: true, required: false
-    private _ebsVolume?: OpsworksPhpAppLayerEbsVolume[];
+    private _ebsVolume?: OpsworksPhpAppLayerEbsVolume[] | undefined; 
     public get ebsVolume() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs_volume') as any;
     }
-    public set ebsVolume(value: OpsworksPhpAppLayerEbsVolume[] ) {
+    public set ebsVolume(value: OpsworksPhpAppLayerEbsVolume[] | undefined) {
       this._ebsVolume = value;
     }
     public resetEbsVolume() {
@@ -7096,6 +7230,9 @@ export namespace OpsWorks {
 
   function opsworksRailsAppLayerEbsVolumeToTerraform(struct?: OpsworksRailsAppLayerEbsVolume): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       encrypted: cdktf.booleanToTerraform(struct!.encrypted),
       iops: cdktf.numberToTerraform(struct!.iops),
@@ -7175,11 +7312,11 @@ export namespace OpsWorks {
     // ==========
 
     // app_server - computed: false, optional: true, required: false
-    private _appServer?: string;
+    private _appServer?: string | undefined; 
     public get appServer() {
       return this.getStringAttribute('app_server');
     }
-    public set appServer(value: string ) {
+    public set appServer(value: string | undefined) {
       this._appServer = value;
     }
     public resetAppServer() {
@@ -7196,11 +7333,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_elastic_ips - computed: false, optional: true, required: false
-    private _autoAssignElasticIps?: boolean | cdktf.IResolvable;
+    private _autoAssignElasticIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignElasticIps() {
-      return this.getBooleanAttribute('auto_assign_elastic_ips');
+      return this.getBooleanAttribute('auto_assign_elastic_ips') as any;
     }
-    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignElasticIps = value;
     }
     public resetAutoAssignElasticIps() {
@@ -7212,11 +7349,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_public_ips - computed: false, optional: true, required: false
-    private _autoAssignPublicIps?: boolean | cdktf.IResolvable;
+    private _autoAssignPublicIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignPublicIps() {
-      return this.getBooleanAttribute('auto_assign_public_ips');
+      return this.getBooleanAttribute('auto_assign_public_ips') as any;
     }
-    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignPublicIps = value;
     }
     public resetAutoAssignPublicIps() {
@@ -7228,11 +7365,11 @@ export namespace OpsWorks {
     }
 
     // auto_healing - computed: false, optional: true, required: false
-    private _autoHealing?: boolean | cdktf.IResolvable;
+    private _autoHealing?: boolean | cdktf.IResolvable | undefined; 
     public get autoHealing() {
-      return this.getBooleanAttribute('auto_healing');
+      return this.getBooleanAttribute('auto_healing') as any;
     }
-    public set autoHealing(value: boolean | cdktf.IResolvable ) {
+    public set autoHealing(value: boolean | cdktf.IResolvable | undefined) {
       this._autoHealing = value;
     }
     public resetAutoHealing() {
@@ -7244,11 +7381,11 @@ export namespace OpsWorks {
     }
 
     // bundler_version - computed: false, optional: true, required: false
-    private _bundlerVersion?: string;
+    private _bundlerVersion?: string | undefined; 
     public get bundlerVersion() {
       return this.getStringAttribute('bundler_version');
     }
-    public set bundlerVersion(value: string ) {
+    public set bundlerVersion(value: string | undefined) {
       this._bundlerVersion = value;
     }
     public resetBundlerVersion() {
@@ -7260,11 +7397,11 @@ export namespace OpsWorks {
     }
 
     // custom_configure_recipes - computed: false, optional: true, required: false
-    private _customConfigureRecipes?: string[];
+    private _customConfigureRecipes?: string[] | undefined; 
     public get customConfigureRecipes() {
       return this.getListAttribute('custom_configure_recipes');
     }
-    public set customConfigureRecipes(value: string[] ) {
+    public set customConfigureRecipes(value: string[] | undefined) {
       this._customConfigureRecipes = value;
     }
     public resetCustomConfigureRecipes() {
@@ -7276,11 +7413,11 @@ export namespace OpsWorks {
     }
 
     // custom_deploy_recipes - computed: false, optional: true, required: false
-    private _customDeployRecipes?: string[];
+    private _customDeployRecipes?: string[] | undefined; 
     public get customDeployRecipes() {
       return this.getListAttribute('custom_deploy_recipes');
     }
-    public set customDeployRecipes(value: string[] ) {
+    public set customDeployRecipes(value: string[] | undefined) {
       this._customDeployRecipes = value;
     }
     public resetCustomDeployRecipes() {
@@ -7292,11 +7429,11 @@ export namespace OpsWorks {
     }
 
     // custom_instance_profile_arn - computed: false, optional: true, required: false
-    private _customInstanceProfileArn?: string;
+    private _customInstanceProfileArn?: string | undefined; 
     public get customInstanceProfileArn() {
       return this.getStringAttribute('custom_instance_profile_arn');
     }
-    public set customInstanceProfileArn(value: string ) {
+    public set customInstanceProfileArn(value: string | undefined) {
       this._customInstanceProfileArn = value;
     }
     public resetCustomInstanceProfileArn() {
@@ -7308,11 +7445,11 @@ export namespace OpsWorks {
     }
 
     // custom_json - computed: false, optional: true, required: false
-    private _customJson?: string;
+    private _customJson?: string | undefined; 
     public get customJson() {
       return this.getStringAttribute('custom_json');
     }
-    public set customJson(value: string ) {
+    public set customJson(value: string | undefined) {
       this._customJson = value;
     }
     public resetCustomJson() {
@@ -7324,11 +7461,11 @@ export namespace OpsWorks {
     }
 
     // custom_security_group_ids - computed: false, optional: true, required: false
-    private _customSecurityGroupIds?: string[];
+    private _customSecurityGroupIds?: string[] | undefined; 
     public get customSecurityGroupIds() {
       return this.getListAttribute('custom_security_group_ids');
     }
-    public set customSecurityGroupIds(value: string[] ) {
+    public set customSecurityGroupIds(value: string[] | undefined) {
       this._customSecurityGroupIds = value;
     }
     public resetCustomSecurityGroupIds() {
@@ -7340,11 +7477,11 @@ export namespace OpsWorks {
     }
 
     // custom_setup_recipes - computed: false, optional: true, required: false
-    private _customSetupRecipes?: string[];
+    private _customSetupRecipes?: string[] | undefined; 
     public get customSetupRecipes() {
       return this.getListAttribute('custom_setup_recipes');
     }
-    public set customSetupRecipes(value: string[] ) {
+    public set customSetupRecipes(value: string[] | undefined) {
       this._customSetupRecipes = value;
     }
     public resetCustomSetupRecipes() {
@@ -7356,11 +7493,11 @@ export namespace OpsWorks {
     }
 
     // custom_shutdown_recipes - computed: false, optional: true, required: false
-    private _customShutdownRecipes?: string[];
+    private _customShutdownRecipes?: string[] | undefined; 
     public get customShutdownRecipes() {
       return this.getListAttribute('custom_shutdown_recipes');
     }
-    public set customShutdownRecipes(value: string[] ) {
+    public set customShutdownRecipes(value: string[] | undefined) {
       this._customShutdownRecipes = value;
     }
     public resetCustomShutdownRecipes() {
@@ -7372,11 +7509,11 @@ export namespace OpsWorks {
     }
 
     // custom_undeploy_recipes - computed: false, optional: true, required: false
-    private _customUndeployRecipes?: string[];
+    private _customUndeployRecipes?: string[] | undefined; 
     public get customUndeployRecipes() {
       return this.getListAttribute('custom_undeploy_recipes');
     }
-    public set customUndeployRecipes(value: string[] ) {
+    public set customUndeployRecipes(value: string[] | undefined) {
       this._customUndeployRecipes = value;
     }
     public resetCustomUndeployRecipes() {
@@ -7388,11 +7525,11 @@ export namespace OpsWorks {
     }
 
     // drain_elb_on_shutdown - computed: false, optional: true, required: false
-    private _drainElbOnShutdown?: boolean | cdktf.IResolvable;
+    private _drainElbOnShutdown?: boolean | cdktf.IResolvable | undefined; 
     public get drainElbOnShutdown() {
-      return this.getBooleanAttribute('drain_elb_on_shutdown');
+      return this.getBooleanAttribute('drain_elb_on_shutdown') as any;
     }
-    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable ) {
+    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable | undefined) {
       this._drainElbOnShutdown = value;
     }
     public resetDrainElbOnShutdown() {
@@ -7404,11 +7541,11 @@ export namespace OpsWorks {
     }
 
     // elastic_load_balancer - computed: false, optional: true, required: false
-    private _elasticLoadBalancer?: string;
+    private _elasticLoadBalancer?: string | undefined; 
     public get elasticLoadBalancer() {
       return this.getStringAttribute('elastic_load_balancer');
     }
-    public set elasticLoadBalancer(value: string ) {
+    public set elasticLoadBalancer(value: string | undefined) {
       this._elasticLoadBalancer = value;
     }
     public resetElasticLoadBalancer() {
@@ -7425,11 +7562,11 @@ export namespace OpsWorks {
     }
 
     // install_updates_on_boot - computed: false, optional: true, required: false
-    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable;
+    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable | undefined; 
     public get installUpdatesOnBoot() {
-      return this.getBooleanAttribute('install_updates_on_boot');
+      return this.getBooleanAttribute('install_updates_on_boot') as any;
     }
-    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable ) {
+    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable | undefined) {
       this._installUpdatesOnBoot = value;
     }
     public resetInstallUpdatesOnBoot() {
@@ -7441,11 +7578,11 @@ export namespace OpsWorks {
     }
 
     // instance_shutdown_timeout - computed: false, optional: true, required: false
-    private _instanceShutdownTimeout?: number;
+    private _instanceShutdownTimeout?: number | undefined; 
     public get instanceShutdownTimeout() {
       return this.getNumberAttribute('instance_shutdown_timeout');
     }
-    public set instanceShutdownTimeout(value: number ) {
+    public set instanceShutdownTimeout(value: number | undefined) {
       this._instanceShutdownTimeout = value;
     }
     public resetInstanceShutdownTimeout() {
@@ -7457,11 +7594,11 @@ export namespace OpsWorks {
     }
 
     // manage_bundler - computed: false, optional: true, required: false
-    private _manageBundler?: boolean | cdktf.IResolvable;
+    private _manageBundler?: boolean | cdktf.IResolvable | undefined; 
     public get manageBundler() {
-      return this.getBooleanAttribute('manage_bundler');
+      return this.getBooleanAttribute('manage_bundler') as any;
     }
-    public set manageBundler(value: boolean | cdktf.IResolvable ) {
+    public set manageBundler(value: boolean | cdktf.IResolvable | undefined) {
       this._manageBundler = value;
     }
     public resetManageBundler() {
@@ -7473,11 +7610,11 @@ export namespace OpsWorks {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -7489,11 +7626,11 @@ export namespace OpsWorks {
     }
 
     // passenger_version - computed: false, optional: true, required: false
-    private _passengerVersion?: string;
+    private _passengerVersion?: string | undefined; 
     public get passengerVersion() {
       return this.getStringAttribute('passenger_version');
     }
-    public set passengerVersion(value: string ) {
+    public set passengerVersion(value: string | undefined) {
       this._passengerVersion = value;
     }
     public resetPassengerVersion() {
@@ -7505,11 +7642,11 @@ export namespace OpsWorks {
     }
 
     // ruby_version - computed: false, optional: true, required: false
-    private _rubyVersion?: string;
+    private _rubyVersion?: string | undefined; 
     public get rubyVersion() {
       return this.getStringAttribute('ruby_version');
     }
-    public set rubyVersion(value: string ) {
+    public set rubyVersion(value: string | undefined) {
       this._rubyVersion = value;
     }
     public resetRubyVersion() {
@@ -7521,11 +7658,11 @@ export namespace OpsWorks {
     }
 
     // rubygems_version - computed: false, optional: true, required: false
-    private _rubygemsVersion?: string;
+    private _rubygemsVersion?: string | undefined; 
     public get rubygemsVersion() {
       return this.getStringAttribute('rubygems_version');
     }
-    public set rubygemsVersion(value: string ) {
+    public set rubygemsVersion(value: string | undefined) {
       this._rubygemsVersion = value;
     }
     public resetRubygemsVersion() {
@@ -7537,7 +7674,7 @@ export namespace OpsWorks {
     }
 
     // stack_id - computed: false, optional: false, required: true
-    private _stackId: string;
+    private _stackId?: string; 
     public get stackId() {
       return this.getStringAttribute('stack_id');
     }
@@ -7550,11 +7687,11 @@ export namespace OpsWorks {
     }
 
     // system_packages - computed: false, optional: true, required: false
-    private _systemPackages?: string[];
+    private _systemPackages?: string[] | undefined; 
     public get systemPackages() {
       return this.getListAttribute('system_packages');
     }
-    public set systemPackages(value: string[] ) {
+    public set systemPackages(value: string[] | undefined) {
       this._systemPackages = value;
     }
     public resetSystemPackages() {
@@ -7566,11 +7703,12 @@ export namespace OpsWorks {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -7582,11 +7720,12 @@ export namespace OpsWorks {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -7598,11 +7737,11 @@ export namespace OpsWorks {
     }
 
     // use_ebs_optimized_instances - computed: false, optional: true, required: false
-    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable;
+    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable | undefined; 
     public get useEbsOptimizedInstances() {
-      return this.getBooleanAttribute('use_ebs_optimized_instances');
+      return this.getBooleanAttribute('use_ebs_optimized_instances') as any;
     }
-    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable ) {
+    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable | undefined) {
       this._useEbsOptimizedInstances = value;
     }
     public resetUseEbsOptimizedInstances() {
@@ -7614,11 +7753,12 @@ export namespace OpsWorks {
     }
 
     // ebs_volume - computed: false, optional: true, required: false
-    private _ebsVolume?: OpsworksRailsAppLayerEbsVolume[];
+    private _ebsVolume?: OpsworksRailsAppLayerEbsVolume[] | undefined; 
     public get ebsVolume() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs_volume') as any;
     }
-    public set ebsVolume(value: OpsworksRailsAppLayerEbsVolume[] ) {
+    public set ebsVolume(value: OpsworksRailsAppLayerEbsVolume[] | undefined) {
       this._ebsVolume = value;
     }
     public resetEbsVolume() {
@@ -7728,7 +7868,7 @@ export namespace OpsWorks {
     // ==========
 
     // db_password - computed: false, optional: false, required: true
-    private _dbPassword: string;
+    private _dbPassword?: string; 
     public get dbPassword() {
       return this.getStringAttribute('db_password');
     }
@@ -7741,7 +7881,7 @@ export namespace OpsWorks {
     }
 
     // db_user - computed: false, optional: false, required: true
-    private _dbUser: string;
+    private _dbUser?: string; 
     public get dbUser() {
       return this.getStringAttribute('db_user');
     }
@@ -7759,7 +7899,7 @@ export namespace OpsWorks {
     }
 
     // rds_db_instance_arn - computed: false, optional: false, required: true
-    private _rdsDbInstanceArn: string;
+    private _rdsDbInstanceArn?: string; 
     public get rdsDbInstanceArn() {
       return this.getStringAttribute('rds_db_instance_arn');
     }
@@ -7772,7 +7912,7 @@ export namespace OpsWorks {
     }
 
     // stack_id - computed: false, optional: false, required: true
-    private _stackId: string;
+    private _stackId?: string; 
     public get stackId() {
       return this.getStringAttribute('stack_id');
     }
@@ -7922,6 +8062,9 @@ export namespace OpsWorks {
 
   function opsworksStackCustomCookbooksSourceToTerraform(struct?: OpsworksStackCustomCookbooksSource): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       password: cdktf.stringToTerraform(struct!.password),
       revision: cdktf.stringToTerraform(struct!.revision),
@@ -7995,11 +8138,11 @@ export namespace OpsWorks {
     // ==========
 
     // agent_version - computed: true, optional: true, required: false
-    private _agentVersion?: string;
+    private _agentVersion?: string | undefined; 
     public get agentVersion() {
       return this.getStringAttribute('agent_version');
     }
-    public set agentVersion(value: string) {
+    public set agentVersion(value: string | undefined) {
       this._agentVersion = value;
     }
     public resetAgentVersion() {
@@ -8016,11 +8159,11 @@ export namespace OpsWorks {
     }
 
     // berkshelf_version - computed: false, optional: true, required: false
-    private _berkshelfVersion?: string;
+    private _berkshelfVersion?: string | undefined; 
     public get berkshelfVersion() {
       return this.getStringAttribute('berkshelf_version');
     }
-    public set berkshelfVersion(value: string ) {
+    public set berkshelfVersion(value: string | undefined) {
       this._berkshelfVersion = value;
     }
     public resetBerkshelfVersion() {
@@ -8032,11 +8175,11 @@ export namespace OpsWorks {
     }
 
     // color - computed: false, optional: true, required: false
-    private _color?: string;
+    private _color?: string | undefined; 
     public get color() {
       return this.getStringAttribute('color');
     }
-    public set color(value: string ) {
+    public set color(value: string | undefined) {
       this._color = value;
     }
     public resetColor() {
@@ -8048,11 +8191,11 @@ export namespace OpsWorks {
     }
 
     // configuration_manager_name - computed: false, optional: true, required: false
-    private _configurationManagerName?: string;
+    private _configurationManagerName?: string | undefined; 
     public get configurationManagerName() {
       return this.getStringAttribute('configuration_manager_name');
     }
-    public set configurationManagerName(value: string ) {
+    public set configurationManagerName(value: string | undefined) {
       this._configurationManagerName = value;
     }
     public resetConfigurationManagerName() {
@@ -8064,11 +8207,11 @@ export namespace OpsWorks {
     }
 
     // configuration_manager_version - computed: false, optional: true, required: false
-    private _configurationManagerVersion?: string;
+    private _configurationManagerVersion?: string | undefined; 
     public get configurationManagerVersion() {
       return this.getStringAttribute('configuration_manager_version');
     }
-    public set configurationManagerVersion(value: string ) {
+    public set configurationManagerVersion(value: string | undefined) {
       this._configurationManagerVersion = value;
     }
     public resetConfigurationManagerVersion() {
@@ -8080,11 +8223,11 @@ export namespace OpsWorks {
     }
 
     // custom_json - computed: false, optional: true, required: false
-    private _customJson?: string;
+    private _customJson?: string | undefined; 
     public get customJson() {
       return this.getStringAttribute('custom_json');
     }
-    public set customJson(value: string ) {
+    public set customJson(value: string | undefined) {
       this._customJson = value;
     }
     public resetCustomJson() {
@@ -8096,11 +8239,11 @@ export namespace OpsWorks {
     }
 
     // default_availability_zone - computed: true, optional: true, required: false
-    private _defaultAvailabilityZone?: string;
+    private _defaultAvailabilityZone?: string | undefined; 
     public get defaultAvailabilityZone() {
       return this.getStringAttribute('default_availability_zone');
     }
-    public set defaultAvailabilityZone(value: string) {
+    public set defaultAvailabilityZone(value: string | undefined) {
       this._defaultAvailabilityZone = value;
     }
     public resetDefaultAvailabilityZone() {
@@ -8112,7 +8255,7 @@ export namespace OpsWorks {
     }
 
     // default_instance_profile_arn - computed: false, optional: false, required: true
-    private _defaultInstanceProfileArn: string;
+    private _defaultInstanceProfileArn?: string; 
     public get defaultInstanceProfileArn() {
       return this.getStringAttribute('default_instance_profile_arn');
     }
@@ -8125,11 +8268,11 @@ export namespace OpsWorks {
     }
 
     // default_os - computed: false, optional: true, required: false
-    private _defaultOs?: string;
+    private _defaultOs?: string | undefined; 
     public get defaultOs() {
       return this.getStringAttribute('default_os');
     }
-    public set defaultOs(value: string ) {
+    public set defaultOs(value: string | undefined) {
       this._defaultOs = value;
     }
     public resetDefaultOs() {
@@ -8141,11 +8284,11 @@ export namespace OpsWorks {
     }
 
     // default_root_device_type - computed: false, optional: true, required: false
-    private _defaultRootDeviceType?: string;
+    private _defaultRootDeviceType?: string | undefined; 
     public get defaultRootDeviceType() {
       return this.getStringAttribute('default_root_device_type');
     }
-    public set defaultRootDeviceType(value: string ) {
+    public set defaultRootDeviceType(value: string | undefined) {
       this._defaultRootDeviceType = value;
     }
     public resetDefaultRootDeviceType() {
@@ -8157,11 +8300,11 @@ export namespace OpsWorks {
     }
 
     // default_ssh_key_name - computed: false, optional: true, required: false
-    private _defaultSshKeyName?: string;
+    private _defaultSshKeyName?: string | undefined; 
     public get defaultSshKeyName() {
       return this.getStringAttribute('default_ssh_key_name');
     }
-    public set defaultSshKeyName(value: string ) {
+    public set defaultSshKeyName(value: string | undefined) {
       this._defaultSshKeyName = value;
     }
     public resetDefaultSshKeyName() {
@@ -8173,11 +8316,11 @@ export namespace OpsWorks {
     }
 
     // default_subnet_id - computed: true, optional: true, required: false
-    private _defaultSubnetId?: string;
+    private _defaultSubnetId?: string | undefined; 
     public get defaultSubnetId() {
       return this.getStringAttribute('default_subnet_id');
     }
-    public set defaultSubnetId(value: string) {
+    public set defaultSubnetId(value: string | undefined) {
       this._defaultSubnetId = value;
     }
     public resetDefaultSubnetId() {
@@ -8189,11 +8332,11 @@ export namespace OpsWorks {
     }
 
     // hostname_theme - computed: false, optional: true, required: false
-    private _hostnameTheme?: string;
+    private _hostnameTheme?: string | undefined; 
     public get hostnameTheme() {
       return this.getStringAttribute('hostname_theme');
     }
-    public set hostnameTheme(value: string ) {
+    public set hostnameTheme(value: string | undefined) {
       this._hostnameTheme = value;
     }
     public resetHostnameTheme() {
@@ -8210,11 +8353,11 @@ export namespace OpsWorks {
     }
 
     // manage_berkshelf - computed: false, optional: true, required: false
-    private _manageBerkshelf?: boolean | cdktf.IResolvable;
+    private _manageBerkshelf?: boolean | cdktf.IResolvable | undefined; 
     public get manageBerkshelf() {
-      return this.getBooleanAttribute('manage_berkshelf');
+      return this.getBooleanAttribute('manage_berkshelf') as any;
     }
-    public set manageBerkshelf(value: boolean | cdktf.IResolvable ) {
+    public set manageBerkshelf(value: boolean | cdktf.IResolvable | undefined) {
       this._manageBerkshelf = value;
     }
     public resetManageBerkshelf() {
@@ -8226,7 +8369,7 @@ export namespace OpsWorks {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -8239,7 +8382,7 @@ export namespace OpsWorks {
     }
 
     // region - computed: false, optional: false, required: true
-    private _region: string;
+    private _region?: string; 
     public get region() {
       return this.getStringAttribute('region');
     }
@@ -8252,7 +8395,7 @@ export namespace OpsWorks {
     }
 
     // service_role_arn - computed: false, optional: false, required: true
-    private _serviceRoleArn: string;
+    private _serviceRoleArn?: string; 
     public get serviceRoleArn() {
       return this.getStringAttribute('service_role_arn');
     }
@@ -8270,11 +8413,12 @@ export namespace OpsWorks {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -8286,11 +8430,12 @@ export namespace OpsWorks {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -8302,11 +8447,11 @@ export namespace OpsWorks {
     }
 
     // use_custom_cookbooks - computed: false, optional: true, required: false
-    private _useCustomCookbooks?: boolean | cdktf.IResolvable;
+    private _useCustomCookbooks?: boolean | cdktf.IResolvable | undefined; 
     public get useCustomCookbooks() {
-      return this.getBooleanAttribute('use_custom_cookbooks');
+      return this.getBooleanAttribute('use_custom_cookbooks') as any;
     }
-    public set useCustomCookbooks(value: boolean | cdktf.IResolvable ) {
+    public set useCustomCookbooks(value: boolean | cdktf.IResolvable | undefined) {
       this._useCustomCookbooks = value;
     }
     public resetUseCustomCookbooks() {
@@ -8318,11 +8463,11 @@ export namespace OpsWorks {
     }
 
     // use_opsworks_security_groups - computed: false, optional: true, required: false
-    private _useOpsworksSecurityGroups?: boolean | cdktf.IResolvable;
+    private _useOpsworksSecurityGroups?: boolean | cdktf.IResolvable | undefined; 
     public get useOpsworksSecurityGroups() {
-      return this.getBooleanAttribute('use_opsworks_security_groups');
+      return this.getBooleanAttribute('use_opsworks_security_groups') as any;
     }
-    public set useOpsworksSecurityGroups(value: boolean | cdktf.IResolvable ) {
+    public set useOpsworksSecurityGroups(value: boolean | cdktf.IResolvable | undefined) {
       this._useOpsworksSecurityGroups = value;
     }
     public resetUseOpsworksSecurityGroups() {
@@ -8334,11 +8479,11 @@ export namespace OpsWorks {
     }
 
     // vpc_id - computed: true, optional: true, required: false
-    private _vpcId?: string;
+    private _vpcId?: string | undefined; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
-    public set vpcId(value: string) {
+    public set vpcId(value: string | undefined) {
       this._vpcId = value;
     }
     public resetVpcId() {
@@ -8350,11 +8495,12 @@ export namespace OpsWorks {
     }
 
     // custom_cookbooks_source - computed: false, optional: true, required: false
-    private _customCookbooksSource?: OpsworksStackCustomCookbooksSource[];
+    private _customCookbooksSource?: OpsworksStackCustomCookbooksSource[] | undefined; 
     public get customCookbooksSource() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('custom_cookbooks_source') as any;
     }
-    public set customCookbooksSource(value: OpsworksStackCustomCookbooksSource[] ) {
+    public set customCookbooksSource(value: OpsworksStackCustomCookbooksSource[] | undefined) {
       this._customCookbooksSource = value;
     }
     public resetCustomCookbooksSource() {
@@ -8522,6 +8668,9 @@ export namespace OpsWorks {
 
   function opsworksStaticWebLayerEbsVolumeToTerraform(struct?: OpsworksStaticWebLayerEbsVolume): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       encrypted: cdktf.booleanToTerraform(struct!.encrypted),
       iops: cdktf.numberToTerraform(struct!.iops),
@@ -8600,11 +8749,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_elastic_ips - computed: false, optional: true, required: false
-    private _autoAssignElasticIps?: boolean | cdktf.IResolvable;
+    private _autoAssignElasticIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignElasticIps() {
-      return this.getBooleanAttribute('auto_assign_elastic_ips');
+      return this.getBooleanAttribute('auto_assign_elastic_ips') as any;
     }
-    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignElasticIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignElasticIps = value;
     }
     public resetAutoAssignElasticIps() {
@@ -8616,11 +8765,11 @@ export namespace OpsWorks {
     }
 
     // auto_assign_public_ips - computed: false, optional: true, required: false
-    private _autoAssignPublicIps?: boolean | cdktf.IResolvable;
+    private _autoAssignPublicIps?: boolean | cdktf.IResolvable | undefined; 
     public get autoAssignPublicIps() {
-      return this.getBooleanAttribute('auto_assign_public_ips');
+      return this.getBooleanAttribute('auto_assign_public_ips') as any;
     }
-    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable ) {
+    public set autoAssignPublicIps(value: boolean | cdktf.IResolvable | undefined) {
       this._autoAssignPublicIps = value;
     }
     public resetAutoAssignPublicIps() {
@@ -8632,11 +8781,11 @@ export namespace OpsWorks {
     }
 
     // auto_healing - computed: false, optional: true, required: false
-    private _autoHealing?: boolean | cdktf.IResolvable;
+    private _autoHealing?: boolean | cdktf.IResolvable | undefined; 
     public get autoHealing() {
-      return this.getBooleanAttribute('auto_healing');
+      return this.getBooleanAttribute('auto_healing') as any;
     }
-    public set autoHealing(value: boolean | cdktf.IResolvable ) {
+    public set autoHealing(value: boolean | cdktf.IResolvable | undefined) {
       this._autoHealing = value;
     }
     public resetAutoHealing() {
@@ -8648,11 +8797,11 @@ export namespace OpsWorks {
     }
 
     // custom_configure_recipes - computed: false, optional: true, required: false
-    private _customConfigureRecipes?: string[];
+    private _customConfigureRecipes?: string[] | undefined; 
     public get customConfigureRecipes() {
       return this.getListAttribute('custom_configure_recipes');
     }
-    public set customConfigureRecipes(value: string[] ) {
+    public set customConfigureRecipes(value: string[] | undefined) {
       this._customConfigureRecipes = value;
     }
     public resetCustomConfigureRecipes() {
@@ -8664,11 +8813,11 @@ export namespace OpsWorks {
     }
 
     // custom_deploy_recipes - computed: false, optional: true, required: false
-    private _customDeployRecipes?: string[];
+    private _customDeployRecipes?: string[] | undefined; 
     public get customDeployRecipes() {
       return this.getListAttribute('custom_deploy_recipes');
     }
-    public set customDeployRecipes(value: string[] ) {
+    public set customDeployRecipes(value: string[] | undefined) {
       this._customDeployRecipes = value;
     }
     public resetCustomDeployRecipes() {
@@ -8680,11 +8829,11 @@ export namespace OpsWorks {
     }
 
     // custom_instance_profile_arn - computed: false, optional: true, required: false
-    private _customInstanceProfileArn?: string;
+    private _customInstanceProfileArn?: string | undefined; 
     public get customInstanceProfileArn() {
       return this.getStringAttribute('custom_instance_profile_arn');
     }
-    public set customInstanceProfileArn(value: string ) {
+    public set customInstanceProfileArn(value: string | undefined) {
       this._customInstanceProfileArn = value;
     }
     public resetCustomInstanceProfileArn() {
@@ -8696,11 +8845,11 @@ export namespace OpsWorks {
     }
 
     // custom_json - computed: false, optional: true, required: false
-    private _customJson?: string;
+    private _customJson?: string | undefined; 
     public get customJson() {
       return this.getStringAttribute('custom_json');
     }
-    public set customJson(value: string ) {
+    public set customJson(value: string | undefined) {
       this._customJson = value;
     }
     public resetCustomJson() {
@@ -8712,11 +8861,11 @@ export namespace OpsWorks {
     }
 
     // custom_security_group_ids - computed: false, optional: true, required: false
-    private _customSecurityGroupIds?: string[];
+    private _customSecurityGroupIds?: string[] | undefined; 
     public get customSecurityGroupIds() {
       return this.getListAttribute('custom_security_group_ids');
     }
-    public set customSecurityGroupIds(value: string[] ) {
+    public set customSecurityGroupIds(value: string[] | undefined) {
       this._customSecurityGroupIds = value;
     }
     public resetCustomSecurityGroupIds() {
@@ -8728,11 +8877,11 @@ export namespace OpsWorks {
     }
 
     // custom_setup_recipes - computed: false, optional: true, required: false
-    private _customSetupRecipes?: string[];
+    private _customSetupRecipes?: string[] | undefined; 
     public get customSetupRecipes() {
       return this.getListAttribute('custom_setup_recipes');
     }
-    public set customSetupRecipes(value: string[] ) {
+    public set customSetupRecipes(value: string[] | undefined) {
       this._customSetupRecipes = value;
     }
     public resetCustomSetupRecipes() {
@@ -8744,11 +8893,11 @@ export namespace OpsWorks {
     }
 
     // custom_shutdown_recipes - computed: false, optional: true, required: false
-    private _customShutdownRecipes?: string[];
+    private _customShutdownRecipes?: string[] | undefined; 
     public get customShutdownRecipes() {
       return this.getListAttribute('custom_shutdown_recipes');
     }
-    public set customShutdownRecipes(value: string[] ) {
+    public set customShutdownRecipes(value: string[] | undefined) {
       this._customShutdownRecipes = value;
     }
     public resetCustomShutdownRecipes() {
@@ -8760,11 +8909,11 @@ export namespace OpsWorks {
     }
 
     // custom_undeploy_recipes - computed: false, optional: true, required: false
-    private _customUndeployRecipes?: string[];
+    private _customUndeployRecipes?: string[] | undefined; 
     public get customUndeployRecipes() {
       return this.getListAttribute('custom_undeploy_recipes');
     }
-    public set customUndeployRecipes(value: string[] ) {
+    public set customUndeployRecipes(value: string[] | undefined) {
       this._customUndeployRecipes = value;
     }
     public resetCustomUndeployRecipes() {
@@ -8776,11 +8925,11 @@ export namespace OpsWorks {
     }
 
     // drain_elb_on_shutdown - computed: false, optional: true, required: false
-    private _drainElbOnShutdown?: boolean | cdktf.IResolvable;
+    private _drainElbOnShutdown?: boolean | cdktf.IResolvable | undefined; 
     public get drainElbOnShutdown() {
-      return this.getBooleanAttribute('drain_elb_on_shutdown');
+      return this.getBooleanAttribute('drain_elb_on_shutdown') as any;
     }
-    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable ) {
+    public set drainElbOnShutdown(value: boolean | cdktf.IResolvable | undefined) {
       this._drainElbOnShutdown = value;
     }
     public resetDrainElbOnShutdown() {
@@ -8792,11 +8941,11 @@ export namespace OpsWorks {
     }
 
     // elastic_load_balancer - computed: false, optional: true, required: false
-    private _elasticLoadBalancer?: string;
+    private _elasticLoadBalancer?: string | undefined; 
     public get elasticLoadBalancer() {
       return this.getStringAttribute('elastic_load_balancer');
     }
-    public set elasticLoadBalancer(value: string ) {
+    public set elasticLoadBalancer(value: string | undefined) {
       this._elasticLoadBalancer = value;
     }
     public resetElasticLoadBalancer() {
@@ -8813,11 +8962,11 @@ export namespace OpsWorks {
     }
 
     // install_updates_on_boot - computed: false, optional: true, required: false
-    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable;
+    private _installUpdatesOnBoot?: boolean | cdktf.IResolvable | undefined; 
     public get installUpdatesOnBoot() {
-      return this.getBooleanAttribute('install_updates_on_boot');
+      return this.getBooleanAttribute('install_updates_on_boot') as any;
     }
-    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable ) {
+    public set installUpdatesOnBoot(value: boolean | cdktf.IResolvable | undefined) {
       this._installUpdatesOnBoot = value;
     }
     public resetInstallUpdatesOnBoot() {
@@ -8829,11 +8978,11 @@ export namespace OpsWorks {
     }
 
     // instance_shutdown_timeout - computed: false, optional: true, required: false
-    private _instanceShutdownTimeout?: number;
+    private _instanceShutdownTimeout?: number | undefined; 
     public get instanceShutdownTimeout() {
       return this.getNumberAttribute('instance_shutdown_timeout');
     }
-    public set instanceShutdownTimeout(value: number ) {
+    public set instanceShutdownTimeout(value: number | undefined) {
       this._instanceShutdownTimeout = value;
     }
     public resetInstanceShutdownTimeout() {
@@ -8845,11 +8994,11 @@ export namespace OpsWorks {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -8861,7 +9010,7 @@ export namespace OpsWorks {
     }
 
     // stack_id - computed: false, optional: false, required: true
-    private _stackId: string;
+    private _stackId?: string; 
     public get stackId() {
       return this.getStringAttribute('stack_id');
     }
@@ -8874,11 +9023,11 @@ export namespace OpsWorks {
     }
 
     // system_packages - computed: false, optional: true, required: false
-    private _systemPackages?: string[];
+    private _systemPackages?: string[] | undefined; 
     public get systemPackages() {
       return this.getListAttribute('system_packages');
     }
-    public set systemPackages(value: string[] ) {
+    public set systemPackages(value: string[] | undefined) {
       this._systemPackages = value;
     }
     public resetSystemPackages() {
@@ -8890,11 +9039,12 @@ export namespace OpsWorks {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -8906,11 +9056,12 @@ export namespace OpsWorks {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -8922,11 +9073,11 @@ export namespace OpsWorks {
     }
 
     // use_ebs_optimized_instances - computed: false, optional: true, required: false
-    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable;
+    private _useEbsOptimizedInstances?: boolean | cdktf.IResolvable | undefined; 
     public get useEbsOptimizedInstances() {
-      return this.getBooleanAttribute('use_ebs_optimized_instances');
+      return this.getBooleanAttribute('use_ebs_optimized_instances') as any;
     }
-    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable ) {
+    public set useEbsOptimizedInstances(value: boolean | cdktf.IResolvable | undefined) {
       this._useEbsOptimizedInstances = value;
     }
     public resetUseEbsOptimizedInstances() {
@@ -8938,11 +9089,12 @@ export namespace OpsWorks {
     }
 
     // ebs_volume - computed: false, optional: true, required: false
-    private _ebsVolume?: OpsworksStaticWebLayerEbsVolume[];
+    private _ebsVolume?: OpsworksStaticWebLayerEbsVolume[] | undefined; 
     public get ebsVolume() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs_volume') as any;
     }
-    public set ebsVolume(value: OpsworksStaticWebLayerEbsVolume[] ) {
+    public set ebsVolume(value: OpsworksStaticWebLayerEbsVolume[] | undefined) {
       this._ebsVolume = value;
     }
     public resetEbsVolume() {
@@ -9046,11 +9198,11 @@ export namespace OpsWorks {
     // ==========
 
     // allow_self_management - computed: false, optional: true, required: false
-    private _allowSelfManagement?: boolean | cdktf.IResolvable;
+    private _allowSelfManagement?: boolean | cdktf.IResolvable | undefined; 
     public get allowSelfManagement() {
-      return this.getBooleanAttribute('allow_self_management');
+      return this.getBooleanAttribute('allow_self_management') as any;
     }
-    public set allowSelfManagement(value: boolean | cdktf.IResolvable ) {
+    public set allowSelfManagement(value: boolean | cdktf.IResolvable | undefined) {
       this._allowSelfManagement = value;
     }
     public resetAllowSelfManagement() {
@@ -9067,11 +9219,11 @@ export namespace OpsWorks {
     }
 
     // ssh_public_key - computed: false, optional: true, required: false
-    private _sshPublicKey?: string;
+    private _sshPublicKey?: string | undefined; 
     public get sshPublicKey() {
       return this.getStringAttribute('ssh_public_key');
     }
-    public set sshPublicKey(value: string ) {
+    public set sshPublicKey(value: string | undefined) {
       this._sshPublicKey = value;
     }
     public resetSshPublicKey() {
@@ -9083,7 +9235,7 @@ export namespace OpsWorks {
     }
 
     // ssh_username - computed: false, optional: false, required: true
-    private _sshUsername: string;
+    private _sshUsername?: string; 
     public get sshUsername() {
       return this.getStringAttribute('ssh_username');
     }
@@ -9096,7 +9248,7 @@ export namespace OpsWorks {
     }
 
     // user_arn - computed: false, optional: false, required: true
-    private _userArn: string;
+    private _userArn?: string; 
     public get userArn() {
       return this.getStringAttribute('user_arn');
     }

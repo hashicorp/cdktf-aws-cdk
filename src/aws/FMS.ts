@@ -54,11 +54,11 @@ export namespace FMS {
     // ==========
 
     // account_id - computed: true, optional: true, required: false
-    private _accountId?: string;
+    private _accountId?: string | undefined; 
     public get accountId() {
       return this.getStringAttribute('account_id');
     }
-    public set accountId(value: string) {
+    public set accountId(value: string | undefined) {
       this._accountId = value;
     }
     public resetAccountId() {
@@ -118,19 +118,19 @@ export namespace FMS {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fms_policy.html#exclude_map FmsPolicy#exclude_map}
     */
-    readonly excludeMap?: FmsPolicyExcludeMap[];
+    readonly excludeMap?: FmsPolicyExcludeMap;
     /**
     * include_map block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fms_policy.html#include_map FmsPolicy#include_map}
     */
-    readonly includeMap?: FmsPolicyIncludeMap[];
+    readonly includeMap?: FmsPolicyIncludeMap;
     /**
     * security_service_policy_data block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fms_policy.html#security_service_policy_data FmsPolicy#security_service_policy_data}
     */
-    readonly securityServicePolicyData: FmsPolicySecurityServicePolicyData[];
+    readonly securityServicePolicyData: FmsPolicySecurityServicePolicyData;
   }
   export interface FmsPolicyExcludeMap {
     /**
@@ -143,14 +143,59 @@ export namespace FMS {
     readonly orgunit?: string[];
   }
 
-  function fmsPolicyExcludeMapToTerraform(struct?: FmsPolicyExcludeMap): any {
+  function fmsPolicyExcludeMapToTerraform(struct?: FmsPolicyExcludeMapOutputReference | FmsPolicyExcludeMap): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       account: cdktf.listMapper(cdktf.stringToTerraform)(struct!.account),
       orgunit: cdktf.listMapper(cdktf.stringToTerraform)(struct!.orgunit),
     }
   }
 
+  export class FmsPolicyExcludeMapOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // account - computed: false, optional: true, required: false
+    private _account?: string[] | undefined; 
+    public get account() {
+      return this.getListAttribute('account');
+    }
+    public set account(value: string[] | undefined) {
+      this._account = value;
+    }
+    public resetAccount() {
+      this._account = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get accountInput() {
+      return this._account
+    }
+
+    // orgunit - computed: false, optional: true, required: false
+    private _orgunit?: string[] | undefined; 
+    public get orgunit() {
+      return this.getListAttribute('orgunit');
+    }
+    public set orgunit(value: string[] | undefined) {
+      this._orgunit = value;
+    }
+    public resetOrgunit() {
+      this._orgunit = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get orgunitInput() {
+      return this._orgunit
+    }
+  }
   export interface FmsPolicyIncludeMap {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fms_policy.html#account FmsPolicy#account}
@@ -162,14 +207,59 @@ export namespace FMS {
     readonly orgunit?: string[];
   }
 
-  function fmsPolicyIncludeMapToTerraform(struct?: FmsPolicyIncludeMap): any {
+  function fmsPolicyIncludeMapToTerraform(struct?: FmsPolicyIncludeMapOutputReference | FmsPolicyIncludeMap): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       account: cdktf.listMapper(cdktf.stringToTerraform)(struct!.account),
       orgunit: cdktf.listMapper(cdktf.stringToTerraform)(struct!.orgunit),
     }
   }
 
+  export class FmsPolicyIncludeMapOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // account - computed: false, optional: true, required: false
+    private _account?: string[] | undefined; 
+    public get account() {
+      return this.getListAttribute('account');
+    }
+    public set account(value: string[] | undefined) {
+      this._account = value;
+    }
+    public resetAccount() {
+      this._account = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get accountInput() {
+      return this._account
+    }
+
+    // orgunit - computed: false, optional: true, required: false
+    private _orgunit?: string[] | undefined; 
+    public get orgunit() {
+      return this.getListAttribute('orgunit');
+    }
+    public set orgunit(value: string[] | undefined) {
+      this._orgunit = value;
+    }
+    public resetOrgunit() {
+      this._orgunit = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get orgunitInput() {
+      return this._orgunit
+    }
+  }
   export interface FmsPolicySecurityServicePolicyData {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/fms_policy.html#managed_service_data FmsPolicy#managed_service_data}
@@ -181,14 +271,56 @@ export namespace FMS {
     readonly type: string;
   }
 
-  function fmsPolicySecurityServicePolicyDataToTerraform(struct?: FmsPolicySecurityServicePolicyData): any {
+  function fmsPolicySecurityServicePolicyDataToTerraform(struct?: FmsPolicySecurityServicePolicyDataOutputReference | FmsPolicySecurityServicePolicyData): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       managed_service_data: cdktf.stringToTerraform(struct!.managedServiceData),
       type: cdktf.stringToTerraform(struct!.type),
     }
   }
 
+  export class FmsPolicySecurityServicePolicyDataOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // managed_service_data - computed: false, optional: true, required: false
+    private _managedServiceData?: string | undefined; 
+    public get managedServiceData() {
+      return this.getStringAttribute('managed_service_data');
+    }
+    public set managedServiceData(value: string | undefined) {
+      this._managedServiceData = value;
+    }
+    public resetManagedServiceData() {
+      this._managedServiceData = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get managedServiceDataInput() {
+      return this._managedServiceData
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/fms_policy.html aws_fms_policy}
@@ -244,11 +376,11 @@ export namespace FMS {
     }
 
     // delete_all_policy_resources - computed: false, optional: true, required: false
-    private _deleteAllPolicyResources?: boolean | cdktf.IResolvable;
+    private _deleteAllPolicyResources?: boolean | cdktf.IResolvable | undefined; 
     public get deleteAllPolicyResources() {
-      return this.getBooleanAttribute('delete_all_policy_resources');
+      return this.getBooleanAttribute('delete_all_policy_resources') as any;
     }
-    public set deleteAllPolicyResources(value: boolean | cdktf.IResolvable ) {
+    public set deleteAllPolicyResources(value: boolean | cdktf.IResolvable | undefined) {
       this._deleteAllPolicyResources = value;
     }
     public resetDeleteAllPolicyResources() {
@@ -260,9 +392,9 @@ export namespace FMS {
     }
 
     // exclude_resource_tags - computed: false, optional: false, required: true
-    private _excludeResourceTags: boolean | cdktf.IResolvable;
+    private _excludeResourceTags?: boolean | cdktf.IResolvable; 
     public get excludeResourceTags() {
-      return this.getBooleanAttribute('exclude_resource_tags');
+      return this.getBooleanAttribute('exclude_resource_tags') as any;
     }
     public set excludeResourceTags(value: boolean | cdktf.IResolvable) {
       this._excludeResourceTags = value;
@@ -278,7 +410,7 @@ export namespace FMS {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -296,11 +428,11 @@ export namespace FMS {
     }
 
     // remediation_enabled - computed: false, optional: true, required: false
-    private _remediationEnabled?: boolean | cdktf.IResolvable;
+    private _remediationEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get remediationEnabled() {
-      return this.getBooleanAttribute('remediation_enabled');
+      return this.getBooleanAttribute('remediation_enabled') as any;
     }
-    public set remediationEnabled(value: boolean | cdktf.IResolvable ) {
+    public set remediationEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._remediationEnabled = value;
     }
     public resetRemediationEnabled() {
@@ -312,11 +444,12 @@ export namespace FMS {
     }
 
     // resource_tags - computed: false, optional: true, required: false
-    private _resourceTags?: { [key: string]: string } | cdktf.IResolvable;
+    private _resourceTags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get resourceTags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('resource_tags') as any;
     }
-    public set resourceTags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set resourceTags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._resourceTags = value;
     }
     public resetResourceTags() {
@@ -328,11 +461,11 @@ export namespace FMS {
     }
 
     // resource_type - computed: true, optional: true, required: false
-    private _resourceType?: string;
+    private _resourceType?: string | undefined; 
     public get resourceType() {
       return this.getStringAttribute('resource_type');
     }
-    public set resourceType(value: string) {
+    public set resourceType(value: string | undefined) {
       this._resourceType = value;
     }
     public resetResourceType() {
@@ -344,11 +477,11 @@ export namespace FMS {
     }
 
     // resource_type_list - computed: true, optional: true, required: false
-    private _resourceTypeList?: string[];
+    private _resourceTypeList?: string[] | undefined; 
     public get resourceTypeList() {
       return this.getListAttribute('resource_type_list');
     }
-    public set resourceTypeList(value: string[]) {
+    public set resourceTypeList(value: string[] | undefined) {
       this._resourceTypeList = value;
     }
     public resetResourceTypeList() {
@@ -360,11 +493,12 @@ export namespace FMS {
     }
 
     // exclude_map - computed: false, optional: true, required: false
-    private _excludeMap?: FmsPolicyExcludeMap[];
+    private _excludeMap?: FmsPolicyExcludeMap | undefined; 
+    private __excludeMapOutput = new FmsPolicyExcludeMapOutputReference(this as any, "exclude_map", true);
     public get excludeMap() {
-      return this.interpolationForAttribute('exclude_map') as any;
+      return this.__excludeMapOutput;
     }
-    public set excludeMap(value: FmsPolicyExcludeMap[] ) {
+    public putExcludeMap(value: FmsPolicyExcludeMap | undefined) {
       this._excludeMap = value;
     }
     public resetExcludeMap() {
@@ -376,11 +510,12 @@ export namespace FMS {
     }
 
     // include_map - computed: false, optional: true, required: false
-    private _includeMap?: FmsPolicyIncludeMap[];
+    private _includeMap?: FmsPolicyIncludeMap | undefined; 
+    private __includeMapOutput = new FmsPolicyIncludeMapOutputReference(this as any, "include_map", true);
     public get includeMap() {
-      return this.interpolationForAttribute('include_map') as any;
+      return this.__includeMapOutput;
     }
-    public set includeMap(value: FmsPolicyIncludeMap[] ) {
+    public putIncludeMap(value: FmsPolicyIncludeMap | undefined) {
       this._includeMap = value;
     }
     public resetIncludeMap() {
@@ -392,11 +527,12 @@ export namespace FMS {
     }
 
     // security_service_policy_data - computed: false, optional: false, required: true
-    private _securityServicePolicyData: FmsPolicySecurityServicePolicyData[];
+    private _securityServicePolicyData?: FmsPolicySecurityServicePolicyData; 
+    private __securityServicePolicyDataOutput = new FmsPolicySecurityServicePolicyDataOutputReference(this as any, "security_service_policy_data", true);
     public get securityServicePolicyData() {
-      return this.interpolationForAttribute('security_service_policy_data') as any;
+      return this.__securityServicePolicyDataOutput;
     }
-    public set securityServicePolicyData(value: FmsPolicySecurityServicePolicyData[]) {
+    public putSecurityServicePolicyData(value: FmsPolicySecurityServicePolicyData) {
       this._securityServicePolicyData = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -417,9 +553,9 @@ export namespace FMS {
         resource_tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._resourceTags),
         resource_type: cdktf.stringToTerraform(this._resourceType),
         resource_type_list: cdktf.listMapper(cdktf.stringToTerraform)(this._resourceTypeList),
-        exclude_map: cdktf.listMapper(fmsPolicyExcludeMapToTerraform)(this._excludeMap),
-        include_map: cdktf.listMapper(fmsPolicyIncludeMapToTerraform)(this._includeMap),
-        security_service_policy_data: cdktf.listMapper(fmsPolicySecurityServicePolicyDataToTerraform)(this._securityServicePolicyData),
+        exclude_map: fmsPolicyExcludeMapToTerraform(this._excludeMap),
+        include_map: fmsPolicyIncludeMapToTerraform(this._includeMap),
+        security_service_policy_data: fmsPolicySecurityServicePolicyDataToTerraform(this._securityServicePolicyData),
       };
     }
   }

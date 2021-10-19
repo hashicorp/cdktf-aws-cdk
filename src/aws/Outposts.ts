@@ -84,11 +84,11 @@ export namespace Outposts {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -100,11 +100,11 @@ export namespace Outposts {
     }
 
     // owner_id - computed: true, optional: true, required: false
-    private _ownerId?: string;
+    private _ownerId?: string | undefined; 
     public get ownerId() {
       return this.getStringAttribute('owner_id');
     }
-    public set ownerId(value: string) {
+    public set ownerId(value: string | undefined) {
       this._ownerId = value;
     }
     public resetOwnerId() {
@@ -188,7 +188,7 @@ export namespace Outposts {
     // ==========
 
     // arn - computed: false, optional: false, required: true
-    private _arn: string;
+    private _arn?: string; 
     public get arn() {
       return this.getStringAttribute('arn');
     }
@@ -206,11 +206,11 @@ export namespace Outposts {
     }
 
     // instance_type - computed: true, optional: true, required: false
-    private _instanceType?: string;
+    private _instanceType?: string | undefined; 
     public get instanceType() {
       return this.getStringAttribute('instance_type');
     }
-    public set instanceType(value: string) {
+    public set instanceType(value: string | undefined) {
       this._instanceType = value;
     }
     public resetInstanceType() {
@@ -222,11 +222,11 @@ export namespace Outposts {
     }
 
     // preferred_instance_types - computed: false, optional: true, required: false
-    private _preferredInstanceTypes?: string[];
+    private _preferredInstanceTypes?: string[] | undefined; 
     public get preferredInstanceTypes() {
       return this.getListAttribute('preferred_instance_types');
     }
-    public set preferredInstanceTypes(value: string[] ) {
+    public set preferredInstanceTypes(value: string[] | undefined) {
       this._preferredInstanceTypes = value;
     }
     public resetPreferredInstanceTypes() {
@@ -296,7 +296,7 @@ export namespace Outposts {
     // ==========
 
     // arn - computed: false, optional: false, required: true
-    private _arn: string;
+    private _arn?: string; 
     public get arn() {
       return this.getStringAttribute('arn');
     }
@@ -395,11 +395,11 @@ export namespace Outposts {
     }
 
     // availability_zone - computed: true, optional: true, required: false
-    private _availabilityZone?: string;
+    private _availabilityZone?: string | undefined; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
-    public set availabilityZone(value: string) {
+    public set availabilityZone(value: string | undefined) {
       this._availabilityZone = value;
     }
     public resetAvailabilityZone() {
@@ -411,11 +411,11 @@ export namespace Outposts {
     }
 
     // availability_zone_id - computed: true, optional: true, required: false
-    private _availabilityZoneId?: string;
+    private _availabilityZoneId?: string | undefined; 
     public get availabilityZoneId() {
       return this.getStringAttribute('availability_zone_id');
     }
-    public set availabilityZoneId(value: string) {
+    public set availabilityZoneId(value: string | undefined) {
       this._availabilityZoneId = value;
     }
     public resetAvailabilityZoneId() {
@@ -437,11 +437,11 @@ export namespace Outposts {
     }
 
     // owner_id - computed: true, optional: true, required: false
-    private _ownerId?: string;
+    private _ownerId?: string | undefined; 
     public get ownerId() {
       return this.getStringAttribute('owner_id');
     }
-    public set ownerId(value: string) {
+    public set ownerId(value: string | undefined) {
       this._ownerId = value;
     }
     public resetOwnerId() {
@@ -453,11 +453,11 @@ export namespace Outposts {
     }
 
     // site_id - computed: true, optional: true, required: false
-    private _siteId?: string;
+    private _siteId?: string | undefined; 
     public get siteId() {
       return this.getStringAttribute('site_id');
     }
-    public set siteId(value: string) {
+    public set siteId(value: string | undefined) {
       this._siteId = value;
     }
     public resetSiteId() {
@@ -543,11 +543,11 @@ export namespace Outposts {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {

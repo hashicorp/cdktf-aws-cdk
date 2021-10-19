@@ -69,11 +69,11 @@ export namespace Route53 {
     }
 
     // reference_name - computed: false, optional: true, required: false
-    private _referenceName?: string;
+    private _referenceName?: string | undefined; 
     public get referenceName() {
       return this.getStringAttribute('reference_name');
     }
-    public set referenceName(value: string ) {
+    public set referenceName(value: string | undefined) {
       this._referenceName = value;
     }
     public resetReferenceName() {
@@ -251,11 +251,11 @@ export namespace Route53 {
     }
 
     // child_health_threshold - computed: false, optional: true, required: false
-    private _childHealthThreshold?: number;
+    private _childHealthThreshold?: number | undefined; 
     public get childHealthThreshold() {
       return this.getNumberAttribute('child_health_threshold');
     }
-    public set childHealthThreshold(value: number ) {
+    public set childHealthThreshold(value: number | undefined) {
       this._childHealthThreshold = value;
     }
     public resetChildHealthThreshold() {
@@ -267,11 +267,11 @@ export namespace Route53 {
     }
 
     // child_healthchecks - computed: false, optional: true, required: false
-    private _childHealthchecks?: string[];
+    private _childHealthchecks?: string[] | undefined; 
     public get childHealthchecks() {
       return this.getListAttribute('child_healthchecks');
     }
-    public set childHealthchecks(value: string[] ) {
+    public set childHealthchecks(value: string[] | undefined) {
       this._childHealthchecks = value;
     }
     public resetChildHealthchecks() {
@@ -283,11 +283,11 @@ export namespace Route53 {
     }
 
     // cloudwatch_alarm_name - computed: false, optional: true, required: false
-    private _cloudwatchAlarmName?: string;
+    private _cloudwatchAlarmName?: string | undefined; 
     public get cloudwatchAlarmName() {
       return this.getStringAttribute('cloudwatch_alarm_name');
     }
-    public set cloudwatchAlarmName(value: string ) {
+    public set cloudwatchAlarmName(value: string | undefined) {
       this._cloudwatchAlarmName = value;
     }
     public resetCloudwatchAlarmName() {
@@ -299,11 +299,11 @@ export namespace Route53 {
     }
 
     // cloudwatch_alarm_region - computed: false, optional: true, required: false
-    private _cloudwatchAlarmRegion?: string;
+    private _cloudwatchAlarmRegion?: string | undefined; 
     public get cloudwatchAlarmRegion() {
       return this.getStringAttribute('cloudwatch_alarm_region');
     }
-    public set cloudwatchAlarmRegion(value: string ) {
+    public set cloudwatchAlarmRegion(value: string | undefined) {
       this._cloudwatchAlarmRegion = value;
     }
     public resetCloudwatchAlarmRegion() {
@@ -315,11 +315,11 @@ export namespace Route53 {
     }
 
     // disabled - computed: false, optional: true, required: false
-    private _disabled?: boolean | cdktf.IResolvable;
+    private _disabled?: boolean | cdktf.IResolvable | undefined; 
     public get disabled() {
-      return this.getBooleanAttribute('disabled');
+      return this.getBooleanAttribute('disabled') as any;
     }
-    public set disabled(value: boolean | cdktf.IResolvable ) {
+    public set disabled(value: boolean | cdktf.IResolvable | undefined) {
       this._disabled = value;
     }
     public resetDisabled() {
@@ -331,11 +331,11 @@ export namespace Route53 {
     }
 
     // enable_sni - computed: true, optional: true, required: false
-    private _enableSni?: boolean | cdktf.IResolvable;
+    private _enableSni?: boolean | cdktf.IResolvable | undefined; 
     public get enableSni() {
-      return this.getBooleanAttribute('enable_sni');
+      return this.getBooleanAttribute('enable_sni') as any;
     }
-    public set enableSni(value: boolean | cdktf.IResolvable) {
+    public set enableSni(value: boolean | cdktf.IResolvable | undefined) {
       this._enableSni = value;
     }
     public resetEnableSni() {
@@ -347,11 +347,11 @@ export namespace Route53 {
     }
 
     // failure_threshold - computed: true, optional: true, required: false
-    private _failureThreshold?: number;
+    private _failureThreshold?: number | undefined; 
     public get failureThreshold() {
       return this.getNumberAttribute('failure_threshold');
     }
-    public set failureThreshold(value: number) {
+    public set failureThreshold(value: number | undefined) {
       this._failureThreshold = value;
     }
     public resetFailureThreshold() {
@@ -363,11 +363,11 @@ export namespace Route53 {
     }
 
     // fqdn - computed: false, optional: true, required: false
-    private _fqdn?: string;
+    private _fqdn?: string | undefined; 
     public get fqdn() {
       return this.getStringAttribute('fqdn');
     }
-    public set fqdn(value: string ) {
+    public set fqdn(value: string | undefined) {
       this._fqdn = value;
     }
     public resetFqdn() {
@@ -384,11 +384,11 @@ export namespace Route53 {
     }
 
     // insufficient_data_health_status - computed: false, optional: true, required: false
-    private _insufficientDataHealthStatus?: string;
+    private _insufficientDataHealthStatus?: string | undefined; 
     public get insufficientDataHealthStatus() {
       return this.getStringAttribute('insufficient_data_health_status');
     }
-    public set insufficientDataHealthStatus(value: string ) {
+    public set insufficientDataHealthStatus(value: string | undefined) {
       this._insufficientDataHealthStatus = value;
     }
     public resetInsufficientDataHealthStatus() {
@@ -400,11 +400,11 @@ export namespace Route53 {
     }
 
     // invert_healthcheck - computed: false, optional: true, required: false
-    private _invertHealthcheck?: boolean | cdktf.IResolvable;
+    private _invertHealthcheck?: boolean | cdktf.IResolvable | undefined; 
     public get invertHealthcheck() {
-      return this.getBooleanAttribute('invert_healthcheck');
+      return this.getBooleanAttribute('invert_healthcheck') as any;
     }
-    public set invertHealthcheck(value: boolean | cdktf.IResolvable ) {
+    public set invertHealthcheck(value: boolean | cdktf.IResolvable | undefined) {
       this._invertHealthcheck = value;
     }
     public resetInvertHealthcheck() {
@@ -416,11 +416,11 @@ export namespace Route53 {
     }
 
     // ip_address - computed: false, optional: true, required: false
-    private _ipAddress?: string;
+    private _ipAddress?: string | undefined; 
     public get ipAddress() {
       return this.getStringAttribute('ip_address');
     }
-    public set ipAddress(value: string ) {
+    public set ipAddress(value: string | undefined) {
       this._ipAddress = value;
     }
     public resetIpAddress() {
@@ -432,11 +432,11 @@ export namespace Route53 {
     }
 
     // measure_latency - computed: false, optional: true, required: false
-    private _measureLatency?: boolean | cdktf.IResolvable;
+    private _measureLatency?: boolean | cdktf.IResolvable | undefined; 
     public get measureLatency() {
-      return this.getBooleanAttribute('measure_latency');
+      return this.getBooleanAttribute('measure_latency') as any;
     }
-    public set measureLatency(value: boolean | cdktf.IResolvable ) {
+    public set measureLatency(value: boolean | cdktf.IResolvable | undefined) {
       this._measureLatency = value;
     }
     public resetMeasureLatency() {
@@ -448,11 +448,11 @@ export namespace Route53 {
     }
 
     // port - computed: false, optional: true, required: false
-    private _port?: number;
+    private _port?: number | undefined; 
     public get port() {
       return this.getNumberAttribute('port');
     }
-    public set port(value: number ) {
+    public set port(value: number | undefined) {
       this._port = value;
     }
     public resetPort() {
@@ -464,11 +464,11 @@ export namespace Route53 {
     }
 
     // reference_name - computed: false, optional: true, required: false
-    private _referenceName?: string;
+    private _referenceName?: string | undefined; 
     public get referenceName() {
       return this.getStringAttribute('reference_name');
     }
-    public set referenceName(value: string ) {
+    public set referenceName(value: string | undefined) {
       this._referenceName = value;
     }
     public resetReferenceName() {
@@ -480,11 +480,11 @@ export namespace Route53 {
     }
 
     // regions - computed: false, optional: true, required: false
-    private _regions?: string[];
+    private _regions?: string[] | undefined; 
     public get regions() {
       return this.getListAttribute('regions');
     }
-    public set regions(value: string[] ) {
+    public set regions(value: string[] | undefined) {
       this._regions = value;
     }
     public resetRegions() {
@@ -496,11 +496,11 @@ export namespace Route53 {
     }
 
     // request_interval - computed: false, optional: true, required: false
-    private _requestInterval?: number;
+    private _requestInterval?: number | undefined; 
     public get requestInterval() {
       return this.getNumberAttribute('request_interval');
     }
-    public set requestInterval(value: number ) {
+    public set requestInterval(value: number | undefined) {
       this._requestInterval = value;
     }
     public resetRequestInterval() {
@@ -512,11 +512,11 @@ export namespace Route53 {
     }
 
     // resource_path - computed: false, optional: true, required: false
-    private _resourcePath?: string;
+    private _resourcePath?: string | undefined; 
     public get resourcePath() {
       return this.getStringAttribute('resource_path');
     }
-    public set resourcePath(value: string ) {
+    public set resourcePath(value: string | undefined) {
       this._resourcePath = value;
     }
     public resetResourcePath() {
@@ -528,11 +528,11 @@ export namespace Route53 {
     }
 
     // routing_control_arn - computed: false, optional: true, required: false
-    private _routingControlArn?: string;
+    private _routingControlArn?: string | undefined; 
     public get routingControlArn() {
       return this.getStringAttribute('routing_control_arn');
     }
-    public set routingControlArn(value: string ) {
+    public set routingControlArn(value: string | undefined) {
       this._routingControlArn = value;
     }
     public resetRoutingControlArn() {
@@ -544,11 +544,11 @@ export namespace Route53 {
     }
 
     // search_string - computed: false, optional: true, required: false
-    private _searchString?: string;
+    private _searchString?: string | undefined; 
     public get searchString() {
       return this.getStringAttribute('search_string');
     }
-    public set searchString(value: string ) {
+    public set searchString(value: string | undefined) {
       this._searchString = value;
     }
     public resetSearchString() {
@@ -560,11 +560,12 @@ export namespace Route53 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -576,11 +577,12 @@ export namespace Route53 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -592,7 +594,7 @@ export namespace Route53 {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }
@@ -687,7 +689,7 @@ export namespace Route53 {
     // ==========
 
     // hosted_zone_id - computed: false, optional: false, required: true
-    private _hostedZoneId: string;
+    private _hostedZoneId?: string; 
     public get hostedZoneId() {
       return this.getStringAttribute('hosted_zone_id');
     }
@@ -705,11 +707,11 @@ export namespace Route53 {
     }
 
     // signing_status - computed: false, optional: true, required: false
-    private _signingStatus?: string;
+    private _signingStatus?: string | undefined; 
     public get signingStatus() {
       return this.getStringAttribute('signing_status');
     }
-    public set signingStatus(value: string ) {
+    public set signingStatus(value: string | undefined) {
       this._signingStatus = value;
     }
     public resetSigningStatus() {
@@ -823,7 +825,7 @@ export namespace Route53 {
     }
 
     // hosted_zone_id - computed: false, optional: false, required: true
-    private _hostedZoneId: string;
+    private _hostedZoneId?: string; 
     public get hostedZoneId() {
       return this.getStringAttribute('hosted_zone_id');
     }
@@ -841,7 +843,7 @@ export namespace Route53 {
     }
 
     // key_management_service_arn - computed: false, optional: false, required: true
-    private _keyManagementServiceArn: string;
+    private _keyManagementServiceArn?: string; 
     public get keyManagementServiceArn() {
       return this.getStringAttribute('key_management_service_arn');
     }
@@ -859,7 +861,7 @@ export namespace Route53 {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -887,11 +889,11 @@ export namespace Route53 {
     }
 
     // status - computed: false, optional: true, required: false
-    private _status?: string;
+    private _status?: string | undefined; 
     public get status() {
       return this.getStringAttribute('status');
     }
-    public set status(value: string ) {
+    public set status(value: string | undefined) {
       this._status = value;
     }
     public resetStatus() {
@@ -972,7 +974,7 @@ export namespace Route53 {
     }
 
     // cloudwatch_log_group_arn - computed: false, optional: false, required: true
-    private _cloudwatchLogGroupArn: string;
+    private _cloudwatchLogGroupArn?: string; 
     public get cloudwatchLogGroupArn() {
       return this.getStringAttribute('cloudwatch_log_group_arn');
     }
@@ -990,7 +992,7 @@ export namespace Route53 {
     }
 
     // zone_id - computed: false, optional: false, required: true
-    private _zoneId: string;
+    private _zoneId?: string; 
     public get zoneId() {
       return this.getStringAttribute('zone_id');
     }
@@ -1098,6 +1100,9 @@ export namespace Route53 {
 
   function route53RecordAliasToTerraform(struct?: Route53RecordAlias): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       evaluate_target_health: cdktf.booleanToTerraform(struct!.evaluateTargetHealth),
       name: cdktf.stringToTerraform(struct!.name),
@@ -1114,6 +1119,9 @@ export namespace Route53 {
 
   function route53RecordFailoverRoutingPolicyToTerraform(struct?: Route53RecordFailoverRoutingPolicy): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       type: cdktf.stringToTerraform(struct!.type),
     }
@@ -1136,6 +1144,9 @@ export namespace Route53 {
 
   function route53RecordGeolocationRoutingPolicyToTerraform(struct?: Route53RecordGeolocationRoutingPolicy): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       continent: cdktf.stringToTerraform(struct!.continent),
       country: cdktf.stringToTerraform(struct!.country),
@@ -1152,6 +1163,9 @@ export namespace Route53 {
 
   function route53RecordLatencyRoutingPolicyToTerraform(struct?: Route53RecordLatencyRoutingPolicy): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       region: cdktf.stringToTerraform(struct!.region),
     }
@@ -1166,6 +1180,9 @@ export namespace Route53 {
 
   function route53RecordWeightedRoutingPolicyToTerraform(struct?: Route53RecordWeightedRoutingPolicy): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       weight: cdktf.numberToTerraform(struct!.weight),
     }
@@ -1225,11 +1242,11 @@ export namespace Route53 {
     // ==========
 
     // allow_overwrite - computed: true, optional: true, required: false
-    private _allowOverwrite?: boolean | cdktf.IResolvable;
+    private _allowOverwrite?: boolean | cdktf.IResolvable | undefined; 
     public get allowOverwrite() {
-      return this.getBooleanAttribute('allow_overwrite');
+      return this.getBooleanAttribute('allow_overwrite') as any;
     }
-    public set allowOverwrite(value: boolean | cdktf.IResolvable) {
+    public set allowOverwrite(value: boolean | cdktf.IResolvable | undefined) {
       this._allowOverwrite = value;
     }
     public resetAllowOverwrite() {
@@ -1246,11 +1263,11 @@ export namespace Route53 {
     }
 
     // health_check_id - computed: false, optional: true, required: false
-    private _healthCheckId?: string;
+    private _healthCheckId?: string | undefined; 
     public get healthCheckId() {
       return this.getStringAttribute('health_check_id');
     }
-    public set healthCheckId(value: string ) {
+    public set healthCheckId(value: string | undefined) {
       this._healthCheckId = value;
     }
     public resetHealthCheckId() {
@@ -1267,11 +1284,11 @@ export namespace Route53 {
     }
 
     // multivalue_answer_routing_policy - computed: false, optional: true, required: false
-    private _multivalueAnswerRoutingPolicy?: boolean | cdktf.IResolvable;
+    private _multivalueAnswerRoutingPolicy?: boolean | cdktf.IResolvable | undefined; 
     public get multivalueAnswerRoutingPolicy() {
-      return this.getBooleanAttribute('multivalue_answer_routing_policy');
+      return this.getBooleanAttribute('multivalue_answer_routing_policy') as any;
     }
-    public set multivalueAnswerRoutingPolicy(value: boolean | cdktf.IResolvable ) {
+    public set multivalueAnswerRoutingPolicy(value: boolean | cdktf.IResolvable | undefined) {
       this._multivalueAnswerRoutingPolicy = value;
     }
     public resetMultivalueAnswerRoutingPolicy() {
@@ -1283,7 +1300,7 @@ export namespace Route53 {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1296,11 +1313,11 @@ export namespace Route53 {
     }
 
     // records - computed: false, optional: true, required: false
-    private _records?: string[];
+    private _records?: string[] | undefined; 
     public get records() {
       return this.getListAttribute('records');
     }
-    public set records(value: string[] ) {
+    public set records(value: string[] | undefined) {
       this._records = value;
     }
     public resetRecords() {
@@ -1312,11 +1329,11 @@ export namespace Route53 {
     }
 
     // set_identifier - computed: false, optional: true, required: false
-    private _setIdentifier?: string;
+    private _setIdentifier?: string | undefined; 
     public get setIdentifier() {
       return this.getStringAttribute('set_identifier');
     }
-    public set setIdentifier(value: string ) {
+    public set setIdentifier(value: string | undefined) {
       this._setIdentifier = value;
     }
     public resetSetIdentifier() {
@@ -1328,11 +1345,11 @@ export namespace Route53 {
     }
 
     // ttl - computed: false, optional: true, required: false
-    private _ttl?: number;
+    private _ttl?: number | undefined; 
     public get ttl() {
       return this.getNumberAttribute('ttl');
     }
-    public set ttl(value: number ) {
+    public set ttl(value: number | undefined) {
       this._ttl = value;
     }
     public resetTtl() {
@@ -1344,7 +1361,7 @@ export namespace Route53 {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }
@@ -1357,7 +1374,7 @@ export namespace Route53 {
     }
 
     // zone_id - computed: false, optional: false, required: true
-    private _zoneId: string;
+    private _zoneId?: string; 
     public get zoneId() {
       return this.getStringAttribute('zone_id');
     }
@@ -1370,11 +1387,12 @@ export namespace Route53 {
     }
 
     // alias - computed: false, optional: true, required: false
-    private _alias?: Route53RecordAlias[];
+    private _alias?: Route53RecordAlias[] | undefined; 
     public get alias() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('alias') as any;
     }
-    public set alias(value: Route53RecordAlias[] ) {
+    public set alias(value: Route53RecordAlias[] | undefined) {
       this._alias = value;
     }
     public resetAlias() {
@@ -1386,11 +1404,12 @@ export namespace Route53 {
     }
 
     // failover_routing_policy - computed: false, optional: true, required: false
-    private _failoverRoutingPolicy?: Route53RecordFailoverRoutingPolicy[];
+    private _failoverRoutingPolicy?: Route53RecordFailoverRoutingPolicy[] | undefined; 
     public get failoverRoutingPolicy() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('failover_routing_policy') as any;
     }
-    public set failoverRoutingPolicy(value: Route53RecordFailoverRoutingPolicy[] ) {
+    public set failoverRoutingPolicy(value: Route53RecordFailoverRoutingPolicy[] | undefined) {
       this._failoverRoutingPolicy = value;
     }
     public resetFailoverRoutingPolicy() {
@@ -1402,11 +1421,12 @@ export namespace Route53 {
     }
 
     // geolocation_routing_policy - computed: false, optional: true, required: false
-    private _geolocationRoutingPolicy?: Route53RecordGeolocationRoutingPolicy[];
+    private _geolocationRoutingPolicy?: Route53RecordGeolocationRoutingPolicy[] | undefined; 
     public get geolocationRoutingPolicy() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('geolocation_routing_policy') as any;
     }
-    public set geolocationRoutingPolicy(value: Route53RecordGeolocationRoutingPolicy[] ) {
+    public set geolocationRoutingPolicy(value: Route53RecordGeolocationRoutingPolicy[] | undefined) {
       this._geolocationRoutingPolicy = value;
     }
     public resetGeolocationRoutingPolicy() {
@@ -1418,11 +1438,12 @@ export namespace Route53 {
     }
 
     // latency_routing_policy - computed: false, optional: true, required: false
-    private _latencyRoutingPolicy?: Route53RecordLatencyRoutingPolicy[];
+    private _latencyRoutingPolicy?: Route53RecordLatencyRoutingPolicy[] | undefined; 
     public get latencyRoutingPolicy() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('latency_routing_policy') as any;
     }
-    public set latencyRoutingPolicy(value: Route53RecordLatencyRoutingPolicy[] ) {
+    public set latencyRoutingPolicy(value: Route53RecordLatencyRoutingPolicy[] | undefined) {
       this._latencyRoutingPolicy = value;
     }
     public resetLatencyRoutingPolicy() {
@@ -1434,11 +1455,12 @@ export namespace Route53 {
     }
 
     // weighted_routing_policy - computed: false, optional: true, required: false
-    private _weightedRoutingPolicy?: Route53RecordWeightedRoutingPolicy[];
+    private _weightedRoutingPolicy?: Route53RecordWeightedRoutingPolicy[] | undefined; 
     public get weightedRoutingPolicy() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('weighted_routing_policy') as any;
     }
-    public set weightedRoutingPolicy(value: Route53RecordWeightedRoutingPolicy[] ) {
+    public set weightedRoutingPolicy(value: Route53RecordWeightedRoutingPolicy[] | undefined) {
       this._weightedRoutingPolicy = value;
     }
     public resetWeightedRoutingPolicy() {
@@ -1534,7 +1556,7 @@ export namespace Route53 {
     }
 
     // resource_id - computed: false, optional: false, required: true
-    private _resourceId: string;
+    private _resourceId?: string; 
     public get resourceId() {
       return this.getStringAttribute('resource_id');
     }
@@ -1608,6 +1630,9 @@ export namespace Route53 {
 
   function route53ResolverEndpointIpAddressToTerraform(struct?: Route53ResolverEndpointIpAddress): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       ip: cdktf.stringToTerraform(struct!.ip),
       subnet_id: cdktf.stringToTerraform(struct!.subnetId),
@@ -1629,8 +1654,11 @@ export namespace Route53 {
     readonly update?: string;
   }
 
-  function route53ResolverEndpointTimeoutsToTerraform(struct?: Route53ResolverEndpointTimeouts): any {
+  function route53ResolverEndpointTimeoutsToTerraform(struct?: Route53ResolverEndpointTimeoutsOutputReference | Route53ResolverEndpointTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -1638,6 +1666,64 @@ export namespace Route53 {
     }
   }
 
+  export class Route53ResolverEndpointTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/route53_resolver_endpoint.html aws_route53_resolver_endpoint}
@@ -1690,7 +1776,7 @@ export namespace Route53 {
     }
 
     // direction - computed: false, optional: false, required: true
-    private _direction: string;
+    private _direction?: string; 
     public get direction() {
       return this.getStringAttribute('direction');
     }
@@ -1713,11 +1799,11 @@ export namespace Route53 {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1729,7 +1815,7 @@ export namespace Route53 {
     }
 
     // security_group_ids - computed: false, optional: false, required: true
-    private _securityGroupIds: string[];
+    private _securityGroupIds?: string[]; 
     public get securityGroupIds() {
       return this.getListAttribute('security_group_ids');
     }
@@ -1742,11 +1828,12 @@ export namespace Route53 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1758,11 +1845,12 @@ export namespace Route53 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1774,8 +1862,9 @@ export namespace Route53 {
     }
 
     // ip_address - computed: false, optional: false, required: true
-    private _ipAddress: Route53ResolverEndpointIpAddress[];
+    private _ipAddress?: Route53ResolverEndpointIpAddress[]; 
     public get ipAddress() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ip_address') as any;
     }
     public set ipAddress(value: Route53ResolverEndpointIpAddress[]) {
@@ -1787,11 +1876,12 @@ export namespace Route53 {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: Route53ResolverEndpointTimeouts;
+    private _timeouts?: Route53ResolverEndpointTimeouts | undefined; 
+    private __timeoutsOutput = new Route53ResolverEndpointTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: Route53ResolverEndpointTimeouts ) {
+    public putTimeouts(value: Route53ResolverEndpointTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1870,11 +1960,11 @@ export namespace Route53 {
     // ==========
 
     // firewall_fail_open - computed: true, optional: true, required: false
-    private _firewallFailOpen?: string;
+    private _firewallFailOpen?: string | undefined; 
     public get firewallFailOpen() {
       return this.getStringAttribute('firewall_fail_open');
     }
-    public set firewallFailOpen(value: string) {
+    public set firewallFailOpen(value: string | undefined) {
       this._firewallFailOpen = value;
     }
     public resetFirewallFailOpen() {
@@ -1896,7 +1986,7 @@ export namespace Route53 {
     }
 
     // resource_id - computed: false, optional: false, required: true
-    private _resourceId: string;
+    private _resourceId?: string; 
     public get resourceId() {
       return this.getStringAttribute('resource_id');
     }
@@ -1986,11 +2076,11 @@ export namespace Route53 {
     }
 
     // domains - computed: false, optional: true, required: false
-    private _domains?: string[];
+    private _domains?: string[] | undefined; 
     public get domains() {
       return this.getListAttribute('domains');
     }
-    public set domains(value: string[] ) {
+    public set domains(value: string[] | undefined) {
       this._domains = value;
     }
     public resetDomains() {
@@ -2007,7 +2097,7 @@ export namespace Route53 {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2020,11 +2110,12 @@ export namespace Route53 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2036,11 +2127,12 @@ export namespace Route53 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2151,7 +2243,7 @@ export namespace Route53 {
     // ==========
 
     // action - computed: false, optional: false, required: true
-    private _action: string;
+    private _action?: string; 
     public get action() {
       return this.getStringAttribute('action');
     }
@@ -2164,11 +2256,11 @@ export namespace Route53 {
     }
 
     // block_override_dns_type - computed: false, optional: true, required: false
-    private _blockOverrideDnsType?: string;
+    private _blockOverrideDnsType?: string | undefined; 
     public get blockOverrideDnsType() {
       return this.getStringAttribute('block_override_dns_type');
     }
-    public set blockOverrideDnsType(value: string ) {
+    public set blockOverrideDnsType(value: string | undefined) {
       this._blockOverrideDnsType = value;
     }
     public resetBlockOverrideDnsType() {
@@ -2180,11 +2272,11 @@ export namespace Route53 {
     }
 
     // block_override_domain - computed: false, optional: true, required: false
-    private _blockOverrideDomain?: string;
+    private _blockOverrideDomain?: string | undefined; 
     public get blockOverrideDomain() {
       return this.getStringAttribute('block_override_domain');
     }
-    public set blockOverrideDomain(value: string ) {
+    public set blockOverrideDomain(value: string | undefined) {
       this._blockOverrideDomain = value;
     }
     public resetBlockOverrideDomain() {
@@ -2196,11 +2288,11 @@ export namespace Route53 {
     }
 
     // block_override_ttl - computed: false, optional: true, required: false
-    private _blockOverrideTtl?: number;
+    private _blockOverrideTtl?: number | undefined; 
     public get blockOverrideTtl() {
       return this.getNumberAttribute('block_override_ttl');
     }
-    public set blockOverrideTtl(value: number ) {
+    public set blockOverrideTtl(value: number | undefined) {
       this._blockOverrideTtl = value;
     }
     public resetBlockOverrideTtl() {
@@ -2212,11 +2304,11 @@ export namespace Route53 {
     }
 
     // block_response - computed: false, optional: true, required: false
-    private _blockResponse?: string;
+    private _blockResponse?: string | undefined; 
     public get blockResponse() {
       return this.getStringAttribute('block_response');
     }
-    public set blockResponse(value: string ) {
+    public set blockResponse(value: string | undefined) {
       this._blockResponse = value;
     }
     public resetBlockResponse() {
@@ -2228,7 +2320,7 @@ export namespace Route53 {
     }
 
     // firewall_domain_list_id - computed: false, optional: false, required: true
-    private _firewallDomainListId: string;
+    private _firewallDomainListId?: string; 
     public get firewallDomainListId() {
       return this.getStringAttribute('firewall_domain_list_id');
     }
@@ -2241,7 +2333,7 @@ export namespace Route53 {
     }
 
     // firewall_rule_group_id - computed: false, optional: false, required: true
-    private _firewallRuleGroupId: string;
+    private _firewallRuleGroupId?: string; 
     public get firewallRuleGroupId() {
       return this.getStringAttribute('firewall_rule_group_id');
     }
@@ -2259,7 +2351,7 @@ export namespace Route53 {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2272,7 +2364,7 @@ export namespace Route53 {
     }
 
     // priority - computed: false, optional: false, required: true
-    private _priority: number;
+    private _priority?: number; 
     public get priority() {
       return this.getNumberAttribute('priority');
     }
@@ -2369,7 +2461,7 @@ export namespace Route53 {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2392,11 +2484,12 @@ export namespace Route53 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2408,11 +2501,12 @@ export namespace Route53 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2517,7 +2611,7 @@ export namespace Route53 {
     }
 
     // firewall_rule_group_id - computed: false, optional: false, required: true
-    private _firewallRuleGroupId: string;
+    private _firewallRuleGroupId?: string; 
     public get firewallRuleGroupId() {
       return this.getStringAttribute('firewall_rule_group_id');
     }
@@ -2535,11 +2629,11 @@ export namespace Route53 {
     }
 
     // mutation_protection - computed: true, optional: true, required: false
-    private _mutationProtection?: string;
+    private _mutationProtection?: string | undefined; 
     public get mutationProtection() {
       return this.getStringAttribute('mutation_protection');
     }
-    public set mutationProtection(value: string) {
+    public set mutationProtection(value: string | undefined) {
       this._mutationProtection = value;
     }
     public resetMutationProtection() {
@@ -2551,7 +2645,7 @@ export namespace Route53 {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2564,7 +2658,7 @@ export namespace Route53 {
     }
 
     // priority - computed: false, optional: false, required: true
-    private _priority: number;
+    private _priority?: number; 
     public get priority() {
       return this.getNumberAttribute('priority');
     }
@@ -2577,11 +2671,12 @@ export namespace Route53 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2593,11 +2688,12 @@ export namespace Route53 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2609,7 +2705,7 @@ export namespace Route53 {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -2704,7 +2800,7 @@ export namespace Route53 {
     }
 
     // destination_arn - computed: false, optional: false, required: true
-    private _destinationArn: string;
+    private _destinationArn?: string; 
     public get destinationArn() {
       return this.getStringAttribute('destination_arn');
     }
@@ -2722,7 +2818,7 @@ export namespace Route53 {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2745,11 +2841,12 @@ export namespace Route53 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2761,11 +2858,12 @@ export namespace Route53 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2846,7 +2944,7 @@ export namespace Route53 {
     }
 
     // resolver_query_log_config_id - computed: false, optional: false, required: true
-    private _resolverQueryLogConfigId: string;
+    private _resolverQueryLogConfigId?: string; 
     public get resolverQueryLogConfigId() {
       return this.getStringAttribute('resolver_query_log_config_id');
     }
@@ -2859,7 +2957,7 @@ export namespace Route53 {
     }
 
     // resource_id - computed: false, optional: false, required: true
-    private _resourceId: string;
+    private _resourceId?: string; 
     public get resourceId() {
       return this.getStringAttribute('resource_id');
     }
@@ -2933,6 +3031,9 @@ export namespace Route53 {
 
   function route53ResolverRuleTargetIpToTerraform(struct?: Route53ResolverRuleTargetIp): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       ip: cdktf.stringToTerraform(struct!.ip),
       port: cdktf.numberToTerraform(struct!.port),
@@ -2954,8 +3055,11 @@ export namespace Route53 {
     readonly update?: string;
   }
 
-  function route53ResolverRuleTimeoutsToTerraform(struct?: Route53ResolverRuleTimeouts): any {
+  function route53ResolverRuleTimeoutsToTerraform(struct?: Route53ResolverRuleTimeoutsOutputReference | Route53ResolverRuleTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -2963,6 +3067,64 @@ export namespace Route53 {
     }
   }
 
+  export class Route53ResolverRuleTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/route53_resolver_rule.html aws_route53_resolver_rule}
@@ -3016,7 +3178,7 @@ export namespace Route53 {
     }
 
     // domain_name - computed: false, optional: false, required: true
-    private _domainName: string;
+    private _domainName?: string; 
     public get domainName() {
       return this.getStringAttribute('domain_name');
     }
@@ -3034,11 +3196,11 @@ export namespace Route53 {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -3055,11 +3217,11 @@ export namespace Route53 {
     }
 
     // resolver_endpoint_id - computed: false, optional: true, required: false
-    private _resolverEndpointId?: string;
+    private _resolverEndpointId?: string | undefined; 
     public get resolverEndpointId() {
       return this.getStringAttribute('resolver_endpoint_id');
     }
-    public set resolverEndpointId(value: string ) {
+    public set resolverEndpointId(value: string | undefined) {
       this._resolverEndpointId = value;
     }
     public resetResolverEndpointId() {
@@ -3071,7 +3233,7 @@ export namespace Route53 {
     }
 
     // rule_type - computed: false, optional: false, required: true
-    private _ruleType: string;
+    private _ruleType?: string; 
     public get ruleType() {
       return this.getStringAttribute('rule_type');
     }
@@ -3089,11 +3251,12 @@ export namespace Route53 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3105,11 +3268,12 @@ export namespace Route53 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -3121,11 +3285,12 @@ export namespace Route53 {
     }
 
     // target_ip - computed: false, optional: true, required: false
-    private _targetIp?: Route53ResolverRuleTargetIp[];
+    private _targetIp?: Route53ResolverRuleTargetIp[] | undefined; 
     public get targetIp() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('target_ip') as any;
     }
-    public set targetIp(value: Route53ResolverRuleTargetIp[] ) {
+    public set targetIp(value: Route53ResolverRuleTargetIp[] | undefined) {
       this._targetIp = value;
     }
     public resetTargetIp() {
@@ -3137,11 +3302,12 @@ export namespace Route53 {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: Route53ResolverRuleTimeouts;
+    private _timeouts?: Route53ResolverRuleTimeouts | undefined; 
+    private __timeoutsOutput = new Route53ResolverRuleTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: Route53ResolverRuleTimeouts ) {
+    public putTimeouts(value: Route53ResolverRuleTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -3200,14 +3366,59 @@ export namespace Route53 {
     readonly delete?: string;
   }
 
-  function route53ResolverRuleAssociationTimeoutsToTerraform(struct?: Route53ResolverRuleAssociationTimeouts): any {
+  function route53ResolverRuleAssociationTimeoutsToTerraform(struct?: Route53ResolverRuleAssociationTimeoutsOutputReference | Route53ResolverRuleAssociationTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class Route53ResolverRuleAssociationTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/route53_resolver_rule_association.html aws_route53_resolver_rule_association}
@@ -3257,11 +3468,11 @@ export namespace Route53 {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -3273,7 +3484,7 @@ export namespace Route53 {
     }
 
     // resolver_rule_id - computed: false, optional: false, required: true
-    private _resolverRuleId: string;
+    private _resolverRuleId?: string; 
     public get resolverRuleId() {
       return this.getStringAttribute('resolver_rule_id');
     }
@@ -3286,7 +3497,7 @@ export namespace Route53 {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -3299,11 +3510,12 @@ export namespace Route53 {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: Route53ResolverRuleAssociationTimeouts;
+    private _timeouts?: Route53ResolverRuleAssociationTimeouts | undefined; 
+    private __timeoutsOutput = new Route53ResolverRuleAssociationTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: Route53ResolverRuleAssociationTimeouts ) {
+    public putTimeouts(value: Route53ResolverRuleAssociationTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -3389,7 +3601,7 @@ export namespace Route53 {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -3402,11 +3614,11 @@ export namespace Route53 {
     }
 
     // vpc_region - computed: true, optional: true, required: false
-    private _vpcRegion?: string;
+    private _vpcRegion?: string | undefined; 
     public get vpcRegion() {
       return this.getStringAttribute('vpc_region');
     }
-    public set vpcRegion(value: string) {
+    public set vpcRegion(value: string | undefined) {
       this._vpcRegion = value;
     }
     public resetVpcRegion() {
@@ -3418,7 +3630,7 @@ export namespace Route53 {
     }
 
     // zone_id - computed: false, optional: false, required: true
-    private _zoneId: string;
+    private _zoneId?: string; 
     public get zoneId() {
       return this.getStringAttribute('zone_id');
     }
@@ -3487,6 +3699,9 @@ export namespace Route53 {
 
   function route53ZoneVpcToTerraform(struct?: Route53ZoneVpc): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       vpc_id: cdktf.stringToTerraform(struct!.vpcId),
       vpc_region: cdktf.stringToTerraform(struct!.vpcRegion),
@@ -3545,11 +3760,11 @@ export namespace Route53 {
     }
 
     // comment - computed: false, optional: true, required: false
-    private _comment?: string;
+    private _comment?: string | undefined; 
     public get comment() {
       return this.getStringAttribute('comment');
     }
-    public set comment(value: string ) {
+    public set comment(value: string | undefined) {
       this._comment = value;
     }
     public resetComment() {
@@ -3561,11 +3776,11 @@ export namespace Route53 {
     }
 
     // delegation_set_id - computed: false, optional: true, required: false
-    private _delegationSetId?: string;
+    private _delegationSetId?: string | undefined; 
     public get delegationSetId() {
       return this.getStringAttribute('delegation_set_id');
     }
-    public set delegationSetId(value: string ) {
+    public set delegationSetId(value: string | undefined) {
       this._delegationSetId = value;
     }
     public resetDelegationSetId() {
@@ -3577,11 +3792,11 @@ export namespace Route53 {
     }
 
     // force_destroy - computed: false, optional: true, required: false
-    private _forceDestroy?: boolean | cdktf.IResolvable;
+    private _forceDestroy?: boolean | cdktf.IResolvable | undefined; 
     public get forceDestroy() {
-      return this.getBooleanAttribute('force_destroy');
+      return this.getBooleanAttribute('force_destroy') as any;
     }
-    public set forceDestroy(value: boolean | cdktf.IResolvable ) {
+    public set forceDestroy(value: boolean | cdktf.IResolvable | undefined) {
       this._forceDestroy = value;
     }
     public resetForceDestroy() {
@@ -3598,7 +3813,7 @@ export namespace Route53 {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -3616,11 +3831,12 @@ export namespace Route53 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3632,11 +3848,12 @@ export namespace Route53 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -3653,11 +3870,12 @@ export namespace Route53 {
     }
 
     // vpc - computed: false, optional: true, required: false
-    private _vpc?: Route53ZoneVpc[];
+    private _vpc?: Route53ZoneVpc[] | undefined; 
     public get vpc() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('vpc') as any;
     }
-    public set vpc(value: Route53ZoneVpc[] ) {
+    public set vpc(value: Route53ZoneVpc[] | undefined) {
       this._vpc = value;
     }
     public resetVpc() {
@@ -3751,7 +3969,7 @@ export namespace Route53 {
     }
 
     // vpc_id - computed: false, optional: false, required: true
-    private _vpcId: string;
+    private _vpcId?: string; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
@@ -3764,11 +3982,11 @@ export namespace Route53 {
     }
 
     // vpc_region - computed: true, optional: true, required: false
-    private _vpcRegion?: string;
+    private _vpcRegion?: string | undefined; 
     public get vpcRegion() {
       return this.getStringAttribute('vpc_region');
     }
-    public set vpcRegion(value: string) {
+    public set vpcRegion(value: string | undefined) {
       this._vpcRegion = value;
     }
     public resetVpcRegion() {
@@ -3780,7 +3998,7 @@ export namespace Route53 {
     }
 
     // zone_id - computed: false, optional: false, required: true
-    private _zoneId: string;
+    private _zoneId?: string; 
     public get zoneId() {
       return this.getStringAttribute('zone_id');
     }
@@ -3878,7 +4096,7 @@ export namespace Route53 {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -3962,7 +4180,7 @@ export namespace Route53 {
     }
 
     // cluster_arn - computed: false, optional: false, required: true
-    private _clusterArn: string;
+    private _clusterArn?: string; 
     public get clusterArn() {
       return this.getStringAttribute('cluster_arn');
     }
@@ -3976,7 +4194,7 @@ export namespace Route53 {
 
     // default_control_panel - computed: true, optional: false, required: false
     public get defaultControlPanel() {
-      return this.getBooleanAttribute('default_control_panel');
+      return this.getBooleanAttribute('default_control_panel') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -3985,7 +4203,7 @@ export namespace Route53 {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -4080,7 +4298,7 @@ export namespace Route53 {
     }
 
     // cluster_arn - computed: false, optional: false, required: true
-    private _clusterArn: string;
+    private _clusterArn?: string; 
     public get clusterArn() {
       return this.getStringAttribute('cluster_arn');
     }
@@ -4093,11 +4311,11 @@ export namespace Route53 {
     }
 
     // control_panel_arn - computed: true, optional: true, required: false
-    private _controlPanelArn?: string;
+    private _controlPanelArn?: string | undefined; 
     public get controlPanelArn() {
       return this.getStringAttribute('control_panel_arn');
     }
-    public set controlPanelArn(value: string) {
+    public set controlPanelArn(value: string | undefined) {
       this._controlPanelArn = value;
     }
     public resetControlPanelArn() {
@@ -4114,7 +4332,7 @@ export namespace Route53 {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -4173,7 +4391,7 @@ export namespace Route53 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/route53recoverycontrolconfig_safety_rule.html#rule_config Route53RecoverycontrolconfigSafetyRule#rule_config}
     */
-    readonly ruleConfig: Route53RecoverycontrolconfigSafetyRuleRuleConfig[];
+    readonly ruleConfig: Route53RecoverycontrolconfigSafetyRuleRuleConfig;
   }
   export interface Route53RecoverycontrolconfigSafetyRuleRuleConfig {
     /**
@@ -4190,8 +4408,11 @@ export namespace Route53 {
     readonly type: string;
   }
 
-  function route53RecoverycontrolconfigSafetyRuleRuleConfigToTerraform(struct?: Route53RecoverycontrolconfigSafetyRuleRuleConfig): any {
+  function route53RecoverycontrolconfigSafetyRuleRuleConfigToTerraform(struct?: Route53RecoverycontrolconfigSafetyRuleRuleConfigOutputReference | Route53RecoverycontrolconfigSafetyRuleRuleConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       inverted: cdktf.booleanToTerraform(struct!.inverted),
       threshold: cdktf.numberToTerraform(struct!.threshold),
@@ -4199,6 +4420,55 @@ export namespace Route53 {
     }
   }
 
+  export class Route53RecoverycontrolconfigSafetyRuleRuleConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // inverted - computed: false, optional: false, required: true
+    private _inverted?: boolean | cdktf.IResolvable; 
+    public get inverted() {
+      return this.getBooleanAttribute('inverted') as any;
+    }
+    public set inverted(value: boolean | cdktf.IResolvable) {
+      this._inverted = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get invertedInput() {
+      return this._inverted
+    }
+
+    // threshold - computed: false, optional: false, required: true
+    private _threshold?: number; 
+    public get threshold() {
+      return this.getNumberAttribute('threshold');
+    }
+    public set threshold(value: number) {
+      this._threshold = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get thresholdInput() {
+      return this._threshold
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/route53recoverycontrolconfig_safety_rule.html aws_route53recoverycontrolconfig_safety_rule}
@@ -4251,11 +4521,11 @@ export namespace Route53 {
     }
 
     // asserted_controls - computed: false, optional: true, required: false
-    private _assertedControls?: string[];
+    private _assertedControls?: string[] | undefined; 
     public get assertedControls() {
       return this.getListAttribute('asserted_controls');
     }
-    public set assertedControls(value: string[] ) {
+    public set assertedControls(value: string[] | undefined) {
       this._assertedControls = value;
     }
     public resetAssertedControls() {
@@ -4267,7 +4537,7 @@ export namespace Route53 {
     }
 
     // control_panel_arn - computed: false, optional: false, required: true
-    private _controlPanelArn: string;
+    private _controlPanelArn?: string; 
     public get controlPanelArn() {
       return this.getStringAttribute('control_panel_arn');
     }
@@ -4280,11 +4550,11 @@ export namespace Route53 {
     }
 
     // gating_controls - computed: false, optional: true, required: false
-    private _gatingControls?: string[];
+    private _gatingControls?: string[] | undefined; 
     public get gatingControls() {
       return this.getListAttribute('gating_controls');
     }
-    public set gatingControls(value: string[] ) {
+    public set gatingControls(value: string[] | undefined) {
       this._gatingControls = value;
     }
     public resetGatingControls() {
@@ -4301,7 +4571,7 @@ export namespace Route53 {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -4319,11 +4589,11 @@ export namespace Route53 {
     }
 
     // target_controls - computed: false, optional: true, required: false
-    private _targetControls?: string[];
+    private _targetControls?: string[] | undefined; 
     public get targetControls() {
       return this.getListAttribute('target_controls');
     }
-    public set targetControls(value: string[] ) {
+    public set targetControls(value: string[] | undefined) {
       this._targetControls = value;
     }
     public resetTargetControls() {
@@ -4335,7 +4605,7 @@ export namespace Route53 {
     }
 
     // wait_period_ms - computed: false, optional: false, required: true
-    private _waitPeriodMs: number;
+    private _waitPeriodMs?: number; 
     public get waitPeriodMs() {
       return this.getNumberAttribute('wait_period_ms');
     }
@@ -4348,11 +4618,12 @@ export namespace Route53 {
     }
 
     // rule_config - computed: false, optional: false, required: true
-    private _ruleConfig: Route53RecoverycontrolconfigSafetyRuleRuleConfig[];
+    private _ruleConfig?: Route53RecoverycontrolconfigSafetyRuleRuleConfig; 
+    private __ruleConfigOutput = new Route53RecoverycontrolconfigSafetyRuleRuleConfigOutputReference(this as any, "rule_config", true);
     public get ruleConfig() {
-      return this.interpolationForAttribute('rule_config') as any;
+      return this.__ruleConfigOutput;
     }
-    public set ruleConfig(value: Route53RecoverycontrolconfigSafetyRuleRuleConfig[]) {
+    public putRuleConfig(value: Route53RecoverycontrolconfigSafetyRuleRuleConfig) {
       this._ruleConfig = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -4372,7 +4643,7 @@ export namespace Route53 {
         name: cdktf.stringToTerraform(this._name),
         target_controls: cdktf.listMapper(cdktf.stringToTerraform)(this._targetControls),
         wait_period_ms: cdktf.numberToTerraform(this._waitPeriodMs),
-        rule_config: cdktf.listMapper(route53RecoverycontrolconfigSafetyRuleRuleConfigToTerraform)(this._ruleConfig),
+        rule_config: route53RecoverycontrolconfigSafetyRuleRuleConfigToTerraform(this._ruleConfig),
       };
     }
   }
@@ -4407,13 +4678,42 @@ export namespace Route53 {
     readonly delete?: string;
   }
 
-  function route53RecoveryreadinessCellTimeoutsToTerraform(struct?: Route53RecoveryreadinessCellTimeouts): any {
+  function route53RecoveryreadinessCellTimeoutsToTerraform(struct?: Route53RecoveryreadinessCellTimeoutsOutputReference | Route53RecoveryreadinessCellTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class Route53RecoveryreadinessCellTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/route53recoveryreadiness_cell.html aws_route53recoveryreadiness_cell}
@@ -4464,7 +4764,7 @@ export namespace Route53 {
     }
 
     // cell_name - computed: false, optional: false, required: true
-    private _cellName: string;
+    private _cellName?: string; 
     public get cellName() {
       return this.getStringAttribute('cell_name');
     }
@@ -4477,11 +4777,11 @@ export namespace Route53 {
     }
 
     // cells - computed: false, optional: true, required: false
-    private _cells?: string[];
+    private _cells?: string[] | undefined; 
     public get cells() {
       return this.getListAttribute('cells');
     }
-    public set cells(value: string[] ) {
+    public set cells(value: string[] | undefined) {
       this._cells = value;
     }
     public resetCells() {
@@ -4503,11 +4803,12 @@ export namespace Route53 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4519,11 +4820,12 @@ export namespace Route53 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -4535,11 +4837,12 @@ export namespace Route53 {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: Route53RecoveryreadinessCellTimeouts;
+    private _timeouts?: Route53RecoveryreadinessCellTimeouts | undefined; 
+    private __timeoutsOutput = new Route53RecoveryreadinessCellTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: Route53RecoveryreadinessCellTimeouts ) {
+    public putTimeouts(value: Route53RecoveryreadinessCellTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -4595,13 +4898,42 @@ export namespace Route53 {
     readonly delete?: string;
   }
 
-  function route53RecoveryreadinessReadinessCheckTimeoutsToTerraform(struct?: Route53RecoveryreadinessReadinessCheckTimeouts): any {
+  function route53RecoveryreadinessReadinessCheckTimeoutsToTerraform(struct?: Route53RecoveryreadinessReadinessCheckTimeoutsOutputReference | Route53RecoveryreadinessReadinessCheckTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class Route53RecoveryreadinessReadinessCheckTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/route53recoveryreadiness_readiness_check.html aws_route53recoveryreadiness_readiness_check}
@@ -4657,7 +4989,7 @@ export namespace Route53 {
     }
 
     // readiness_check_name - computed: false, optional: false, required: true
-    private _readinessCheckName: string;
+    private _readinessCheckName?: string; 
     public get readinessCheckName() {
       return this.getStringAttribute('readiness_check_name');
     }
@@ -4670,7 +5002,7 @@ export namespace Route53 {
     }
 
     // resource_set_name - computed: false, optional: false, required: true
-    private _resourceSetName: string;
+    private _resourceSetName?: string; 
     public get resourceSetName() {
       return this.getStringAttribute('resource_set_name');
     }
@@ -4683,11 +5015,12 @@ export namespace Route53 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4699,11 +5032,12 @@ export namespace Route53 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -4715,11 +5049,12 @@ export namespace Route53 {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: Route53RecoveryreadinessReadinessCheckTimeouts;
+    private _timeouts?: Route53RecoveryreadinessReadinessCheckTimeouts | undefined; 
+    private __timeoutsOutput = new Route53RecoveryreadinessReadinessCheckTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: Route53RecoveryreadinessReadinessCheckTimeouts ) {
+    public putTimeouts(value: Route53RecoveryreadinessReadinessCheckTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -4775,13 +5110,42 @@ export namespace Route53 {
     readonly delete?: string;
   }
 
-  function route53RecoveryreadinessRecoveryGroupTimeoutsToTerraform(struct?: Route53RecoveryreadinessRecoveryGroupTimeouts): any {
+  function route53RecoveryreadinessRecoveryGroupTimeoutsToTerraform(struct?: Route53RecoveryreadinessRecoveryGroupTimeoutsOutputReference | Route53RecoveryreadinessRecoveryGroupTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class Route53RecoveryreadinessRecoveryGroupTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/route53recoveryreadiness_recovery_group.html aws_route53recoveryreadiness_recovery_group}
@@ -4832,11 +5196,11 @@ export namespace Route53 {
     }
 
     // cells - computed: false, optional: true, required: false
-    private _cells?: string[];
+    private _cells?: string[] | undefined; 
     public get cells() {
       return this.getListAttribute('cells');
     }
-    public set cells(value: string[] ) {
+    public set cells(value: string[] | undefined) {
       this._cells = value;
     }
     public resetCells() {
@@ -4853,7 +5217,7 @@ export namespace Route53 {
     }
 
     // recovery_group_name - computed: false, optional: false, required: true
-    private _recoveryGroupName: string;
+    private _recoveryGroupName?: string; 
     public get recoveryGroupName() {
       return this.getStringAttribute('recovery_group_name');
     }
@@ -4866,11 +5230,12 @@ export namespace Route53 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4882,11 +5247,12 @@ export namespace Route53 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -4898,11 +5264,12 @@ export namespace Route53 {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: Route53RecoveryreadinessRecoveryGroupTimeouts;
+    private _timeouts?: Route53RecoveryreadinessRecoveryGroupTimeouts | undefined; 
+    private __timeoutsOutput = new Route53RecoveryreadinessRecoveryGroupTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: Route53RecoveryreadinessRecoveryGroupTimeouts ) {
+    public putTimeouts(value: Route53RecoveryreadinessRecoveryGroupTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -4964,13 +5331,42 @@ export namespace Route53 {
     readonly arn?: string;
   }
 
-  function route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResourceToTerraform(struct?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResource): any {
+  function route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResourceToTerraform(struct?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResourceOutputReference | Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResource): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       arn: cdktf.stringToTerraform(struct!.arn),
     }
   }
 
+  export class Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResourceOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // arn - computed: false, optional: true, required: false
+    private _arn?: string | undefined; 
+    public get arn() {
+      return this.getStringAttribute('arn');
+    }
+    public set arn(value: string | undefined) {
+      this._arn = value;
+    }
+    public resetArn() {
+      this._arn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get arnInput() {
+      return this._arn
+    }
+  }
   export interface Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53Resource {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/route53recoveryreadiness_resource_set.html#domain_name Route53RecoveryreadinessResourceSet#domain_name}
@@ -4982,37 +5378,129 @@ export namespace Route53 {
     readonly recordSetId?: string;
   }
 
-  function route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53ResourceToTerraform(struct?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53Resource): any {
+  function route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53ResourceToTerraform(struct?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53ResourceOutputReference | Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53Resource): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       domain_name: cdktf.stringToTerraform(struct!.domainName),
       record_set_id: cdktf.stringToTerraform(struct!.recordSetId),
     }
   }
 
+  export class Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53ResourceOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // domain_name - computed: false, optional: true, required: false
+    private _domainName?: string | undefined; 
+    public get domainName() {
+      return this.getStringAttribute('domain_name');
+    }
+    public set domainName(value: string | undefined) {
+      this._domainName = value;
+    }
+    public resetDomainName() {
+      this._domainName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get domainNameInput() {
+      return this._domainName
+    }
+
+    // record_set_id - computed: false, optional: true, required: false
+    private _recordSetId?: string | undefined; 
+    public get recordSetId() {
+      return this.getStringAttribute('record_set_id');
+    }
+    public set recordSetId(value: string | undefined) {
+      this._recordSetId = value;
+    }
+    public resetRecordSetId() {
+      this._recordSetId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get recordSetIdInput() {
+      return this._recordSetId
+    }
+  }
   export interface Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResource {
     /**
     * nlb_resource block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/route53recoveryreadiness_resource_set.html#nlb_resource Route53RecoveryreadinessResourceSet#nlb_resource}
     */
-    readonly nlbResource?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResource[];
+    readonly nlbResource?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResource;
     /**
     * r53_resource block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/route53recoveryreadiness_resource_set.html#r53_resource Route53RecoveryreadinessResourceSet#r53_resource}
     */
-    readonly r53Resource?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53Resource[];
+    readonly r53Resource?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53Resource;
   }
 
-  function route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceToTerraform(struct?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResource): any {
+  function route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceToTerraform(struct?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceOutputReference | Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResource): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      nlb_resource: cdktf.listMapper(route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResourceToTerraform)(struct!.nlbResource),
-      r53_resource: cdktf.listMapper(route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53ResourceToTerraform)(struct!.r53Resource),
+      nlb_resource: route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResourceToTerraform(struct!.nlbResource),
+      r53_resource: route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53ResourceToTerraform(struct!.r53Resource),
     }
   }
 
+  export class Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // nlb_resource - computed: false, optional: true, required: false
+    private _nlbResource?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResource | undefined; 
+    private __nlbResourceOutput = new Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResourceOutputReference(this as any, "nlb_resource", true);
+    public get nlbResource() {
+      return this.__nlbResourceOutput;
+    }
+    public putNlbResource(value: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceNlbResource | undefined) {
+      this._nlbResource = value;
+    }
+    public resetNlbResource() {
+      this._nlbResource = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nlbResourceInput() {
+      return this._nlbResource
+    }
+
+    // r53_resource - computed: false, optional: true, required: false
+    private _r53Resource?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53Resource | undefined; 
+    private __r53ResourceOutput = new Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53ResourceOutputReference(this as any, "r53_resource", true);
+    public get r53Resource() {
+      return this.__r53ResourceOutput;
+    }
+    public putR53Resource(value: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceR53Resource | undefined) {
+      this._r53Resource = value;
+    }
+    public resetR53Resource() {
+      this._r53Resource = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get r53ResourceInput() {
+      return this._r53Resource
+    }
+  }
   export interface Route53RecoveryreadinessResourceSetResourcesDnsTargetResource {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/route53recoveryreadiness_resource_set.html#domain_name Route53RecoveryreadinessResourceSet#domain_name}
@@ -5035,20 +5523,111 @@ export namespace Route53 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/route53recoveryreadiness_resource_set.html#target_resource Route53RecoveryreadinessResourceSet#target_resource}
     */
-    readonly targetResource?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResource[];
+    readonly targetResource?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResource;
   }
 
-  function route53RecoveryreadinessResourceSetResourcesDnsTargetResourceToTerraform(struct?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResource): any {
+  function route53RecoveryreadinessResourceSetResourcesDnsTargetResourceToTerraform(struct?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceOutputReference | Route53RecoveryreadinessResourceSetResourcesDnsTargetResource): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       domain_name: cdktf.stringToTerraform(struct!.domainName),
       hosted_zone_arn: cdktf.stringToTerraform(struct!.hostedZoneArn),
       record_set_id: cdktf.stringToTerraform(struct!.recordSetId),
       record_type: cdktf.stringToTerraform(struct!.recordType),
-      target_resource: cdktf.listMapper(route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceToTerraform)(struct!.targetResource),
+      target_resource: route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceToTerraform(struct!.targetResource),
     }
   }
 
+  export class Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // domain_name - computed: false, optional: false, required: true
+    private _domainName?: string; 
+    public get domainName() {
+      return this.getStringAttribute('domain_name');
+    }
+    public set domainName(value: string) {
+      this._domainName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get domainNameInput() {
+      return this._domainName
+    }
+
+    // hosted_zone_arn - computed: false, optional: true, required: false
+    private _hostedZoneArn?: string | undefined; 
+    public get hostedZoneArn() {
+      return this.getStringAttribute('hosted_zone_arn');
+    }
+    public set hostedZoneArn(value: string | undefined) {
+      this._hostedZoneArn = value;
+    }
+    public resetHostedZoneArn() {
+      this._hostedZoneArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get hostedZoneArnInput() {
+      return this._hostedZoneArn
+    }
+
+    // record_set_id - computed: false, optional: true, required: false
+    private _recordSetId?: string | undefined; 
+    public get recordSetId() {
+      return this.getStringAttribute('record_set_id');
+    }
+    public set recordSetId(value: string | undefined) {
+      this._recordSetId = value;
+    }
+    public resetRecordSetId() {
+      this._recordSetId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get recordSetIdInput() {
+      return this._recordSetId
+    }
+
+    // record_type - computed: false, optional: true, required: false
+    private _recordType?: string | undefined; 
+    public get recordType() {
+      return this.getStringAttribute('record_type');
+    }
+    public set recordType(value: string | undefined) {
+      this._recordType = value;
+    }
+    public resetRecordType() {
+      this._recordType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get recordTypeInput() {
+      return this._recordType
+    }
+
+    // target_resource - computed: false, optional: true, required: false
+    private _targetResource?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResource | undefined; 
+    private __targetResourceOutput = new Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResourceOutputReference(this as any, "target_resource", true);
+    public get targetResource() {
+      return this.__targetResourceOutput;
+    }
+    public putTargetResource(value: Route53RecoveryreadinessResourceSetResourcesDnsTargetResourceTargetResource | undefined) {
+      this._targetResource = value;
+    }
+    public resetTargetResource() {
+      this._targetResource = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get targetResourceInput() {
+      return this._targetResource
+    }
+  }
   export interface Route53RecoveryreadinessResourceSetResources {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/route53recoveryreadiness_resource_set.html#readiness_scopes Route53RecoveryreadinessResourceSet#readiness_scopes}
@@ -5063,15 +5642,18 @@ export namespace Route53 {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/route53recoveryreadiness_resource_set.html#dns_target_resource Route53RecoveryreadinessResourceSet#dns_target_resource}
     */
-    readonly dnsTargetResource?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResource[];
+    readonly dnsTargetResource?: Route53RecoveryreadinessResourceSetResourcesDnsTargetResource;
   }
 
   function route53RecoveryreadinessResourceSetResourcesToTerraform(struct?: Route53RecoveryreadinessResourceSetResources): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       readiness_scopes: cdktf.listMapper(cdktf.stringToTerraform)(struct!.readinessScopes),
       resource_arn: cdktf.stringToTerraform(struct!.resourceArn),
-      dns_target_resource: cdktf.listMapper(route53RecoveryreadinessResourceSetResourcesDnsTargetResourceToTerraform)(struct!.dnsTargetResource),
+      dns_target_resource: route53RecoveryreadinessResourceSetResourcesDnsTargetResourceToTerraform(struct!.dnsTargetResource),
     }
   }
 
@@ -5082,13 +5664,42 @@ export namespace Route53 {
     readonly delete?: string;
   }
 
-  function route53RecoveryreadinessResourceSetTimeoutsToTerraform(struct?: Route53RecoveryreadinessResourceSetTimeouts): any {
+  function route53RecoveryreadinessResourceSetTimeoutsToTerraform(struct?: Route53RecoveryreadinessResourceSetTimeoutsOutputReference | Route53RecoveryreadinessResourceSetTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class Route53RecoveryreadinessResourceSetTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/route53recoveryreadiness_resource_set.html aws_route53recoveryreadiness_resource_set}
@@ -5145,7 +5756,7 @@ export namespace Route53 {
     }
 
     // resource_set_name - computed: false, optional: false, required: true
-    private _resourceSetName: string;
+    private _resourceSetName?: string; 
     public get resourceSetName() {
       return this.getStringAttribute('resource_set_name');
     }
@@ -5158,7 +5769,7 @@ export namespace Route53 {
     }
 
     // resource_set_type - computed: false, optional: false, required: true
-    private _resourceSetType: string;
+    private _resourceSetType?: string; 
     public get resourceSetType() {
       return this.getStringAttribute('resource_set_type');
     }
@@ -5171,11 +5782,12 @@ export namespace Route53 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -5187,11 +5799,12 @@ export namespace Route53 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -5203,8 +5816,9 @@ export namespace Route53 {
     }
 
     // resources - computed: false, optional: false, required: true
-    private _resources: Route53RecoveryreadinessResourceSetResources[];
+    private _resources?: Route53RecoveryreadinessResourceSetResources[]; 
     public get resources() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('resources') as any;
     }
     public set resources(value: Route53RecoveryreadinessResourceSetResources[]) {
@@ -5216,11 +5830,12 @@ export namespace Route53 {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: Route53RecoveryreadinessResourceSetTimeouts;
+    private _timeouts?: Route53RecoveryreadinessResourceSetTimeouts | undefined; 
+    private __timeoutsOutput = new Route53RecoveryreadinessResourceSetTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: Route53RecoveryreadinessResourceSetTimeouts ) {
+    public putTimeouts(value: Route53RecoveryreadinessResourceSetTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -5303,7 +5918,7 @@ export namespace Route53 {
     }
 
     // id - computed: false, optional: false, required: true
-    private _id: string;
+    private _id?: string; 
     public get id() {
       return this.getStringAttribute('id');
     }
@@ -5355,6 +5970,9 @@ export namespace Route53 {
 
   function dataAwsRoute53ResolverEndpointFilterToTerraform(struct?: DataAwsRoute53ResolverEndpointFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -5428,11 +6046,11 @@ export namespace Route53 {
     }
 
     // resolver_endpoint_id - computed: false, optional: true, required: false
-    private _resolverEndpointId?: string;
+    private _resolverEndpointId?: string | undefined; 
     public get resolverEndpointId() {
       return this.getStringAttribute('resolver_endpoint_id');
     }
-    public set resolverEndpointId(value: string ) {
+    public set resolverEndpointId(value: string | undefined) {
       this._resolverEndpointId = value;
     }
     public resetResolverEndpointId() {
@@ -5454,11 +6072,12 @@ export namespace Route53 {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsRoute53ResolverEndpointFilter[];
+    private _filter?: DataAwsRoute53ResolverEndpointFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsRoute53ResolverEndpointFilter[] ) {
+    public set filter(value: DataAwsRoute53ResolverEndpointFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -5557,11 +6176,11 @@ export namespace Route53 {
     }
 
     // domain_name - computed: true, optional: true, required: false
-    private _domainName?: string;
+    private _domainName?: string | undefined; 
     public get domainName() {
       return this.getStringAttribute('domain_name');
     }
-    public set domainName(value: string) {
+    public set domainName(value: string | undefined) {
       this._domainName = value;
     }
     public resetDomainName() {
@@ -5578,11 +6197,11 @@ export namespace Route53 {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -5599,11 +6218,11 @@ export namespace Route53 {
     }
 
     // resolver_endpoint_id - computed: true, optional: true, required: false
-    private _resolverEndpointId?: string;
+    private _resolverEndpointId?: string | undefined; 
     public get resolverEndpointId() {
       return this.getStringAttribute('resolver_endpoint_id');
     }
-    public set resolverEndpointId(value: string) {
+    public set resolverEndpointId(value: string | undefined) {
       this._resolverEndpointId = value;
     }
     public resetResolverEndpointId() {
@@ -5615,11 +6234,11 @@ export namespace Route53 {
     }
 
     // resolver_rule_id - computed: true, optional: true, required: false
-    private _resolverRuleId?: string;
+    private _resolverRuleId?: string | undefined; 
     public get resolverRuleId() {
       return this.getStringAttribute('resolver_rule_id');
     }
-    public set resolverRuleId(value: string) {
+    public set resolverRuleId(value: string | undefined) {
       this._resolverRuleId = value;
     }
     public resetResolverRuleId() {
@@ -5631,11 +6250,11 @@ export namespace Route53 {
     }
 
     // rule_type - computed: true, optional: true, required: false
-    private _ruleType?: string;
+    private _ruleType?: string | undefined; 
     public get ruleType() {
       return this.getStringAttribute('rule_type');
     }
-    public set ruleType(value: string) {
+    public set ruleType(value: string | undefined) {
       this._ruleType = value;
     }
     public resetRuleType() {
@@ -5652,11 +6271,12 @@ export namespace Route53 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -5749,11 +6369,11 @@ export namespace Route53 {
     }
 
     // owner_id - computed: false, optional: true, required: false
-    private _ownerId?: string;
+    private _ownerId?: string | undefined; 
     public get ownerId() {
       return this.getStringAttribute('owner_id');
     }
-    public set ownerId(value: string ) {
+    public set ownerId(value: string | undefined) {
       this._ownerId = value;
     }
     public resetOwnerId() {
@@ -5765,11 +6385,11 @@ export namespace Route53 {
     }
 
     // resolver_endpoint_id - computed: false, optional: true, required: false
-    private _resolverEndpointId?: string;
+    private _resolverEndpointId?: string | undefined; 
     public get resolverEndpointId() {
       return this.getStringAttribute('resolver_endpoint_id');
     }
-    public set resolverEndpointId(value: string ) {
+    public set resolverEndpointId(value: string | undefined) {
       this._resolverEndpointId = value;
     }
     public resetResolverEndpointId() {
@@ -5786,11 +6406,11 @@ export namespace Route53 {
     }
 
     // rule_type - computed: false, optional: true, required: false
-    private _ruleType?: string;
+    private _ruleType?: string | undefined; 
     public get ruleType() {
       return this.getStringAttribute('rule_type');
     }
-    public set ruleType(value: string ) {
+    public set ruleType(value: string | undefined) {
       this._ruleType = value;
     }
     public resetRuleType() {
@@ -5802,11 +6422,11 @@ export namespace Route53 {
     }
 
     // share_status - computed: false, optional: true, required: false
-    private _shareStatus?: string;
+    private _shareStatus?: string | undefined; 
     public get shareStatus() {
       return this.getStringAttribute('share_status');
     }
-    public set shareStatus(value: string ) {
+    public set shareStatus(value: string | undefined) {
       this._shareStatus = value;
     }
     public resetShareStatus() {
@@ -5932,11 +6552,11 @@ export namespace Route53 {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -5953,11 +6573,11 @@ export namespace Route53 {
     }
 
     // private_zone - computed: false, optional: true, required: false
-    private _privateZone?: boolean | cdktf.IResolvable;
+    private _privateZone?: boolean | cdktf.IResolvable | undefined; 
     public get privateZone() {
-      return this.getBooleanAttribute('private_zone');
+      return this.getBooleanAttribute('private_zone') as any;
     }
-    public set privateZone(value: boolean | cdktf.IResolvable ) {
+    public set privateZone(value: boolean | cdktf.IResolvable | undefined) {
       this._privateZone = value;
     }
     public resetPrivateZone() {
@@ -5969,11 +6589,11 @@ export namespace Route53 {
     }
 
     // resource_record_set_count - computed: true, optional: true, required: false
-    private _resourceRecordSetCount?: number;
+    private _resourceRecordSetCount?: number | undefined; 
     public get resourceRecordSetCount() {
       return this.getNumberAttribute('resource_record_set_count');
     }
-    public set resourceRecordSetCount(value: number) {
+    public set resourceRecordSetCount(value: number | undefined) {
       this._resourceRecordSetCount = value;
     }
     public resetResourceRecordSetCount() {
@@ -5985,11 +6605,12 @@ export namespace Route53 {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -6001,11 +6622,11 @@ export namespace Route53 {
     }
 
     // vpc_id - computed: true, optional: true, required: false
-    private _vpcId?: string;
+    private _vpcId?: string | undefined; 
     public get vpcId() {
       return this.getStringAttribute('vpc_id');
     }
-    public set vpcId(value: string) {
+    public set vpcId(value: string | undefined) {
       this._vpcId = value;
     }
     public resetVpcId() {
@@ -6017,11 +6638,11 @@ export namespace Route53 {
     }
 
     // zone_id - computed: true, optional: true, required: false
-    private _zoneId?: string;
+    private _zoneId?: string | undefined; 
     public get zoneId() {
       return this.getStringAttribute('zone_id');
     }
-    public set zoneId(value: string) {
+    public set zoneId(value: string | undefined) {
       this._zoneId = value;
     }
     public resetZoneId() {

@@ -34,6 +34,9 @@ export namespace DynamoDB {
 
   function dynamodbGlobalTableReplicaToTerraform(struct?: DynamodbGlobalTableReplica): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       region_name: cdktf.stringToTerraform(struct!.regionName),
     }
@@ -54,8 +57,11 @@ export namespace DynamoDB {
     readonly update?: string;
   }
 
-  function dynamodbGlobalTableTimeoutsToTerraform(struct?: DynamodbGlobalTableTimeouts): any {
+  function dynamodbGlobalTableTimeoutsToTerraform(struct?: DynamodbGlobalTableTimeoutsOutputReference | DynamodbGlobalTableTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -63,6 +69,64 @@ export namespace DynamoDB {
     }
   }
 
+  export class DynamodbGlobalTableTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/dynamodb_global_table.html aws_dynamodb_global_table}
@@ -116,7 +180,7 @@ export namespace DynamoDB {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -129,8 +193,9 @@ export namespace DynamoDB {
     }
 
     // replica - computed: false, optional: false, required: true
-    private _replica: DynamodbGlobalTableReplica[];
+    private _replica?: DynamodbGlobalTableReplica[]; 
     public get replica() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('replica') as any;
     }
     public set replica(value: DynamodbGlobalTableReplica[]) {
@@ -142,11 +207,12 @@ export namespace DynamoDB {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DynamodbGlobalTableTimeouts;
+    private _timeouts?: DynamodbGlobalTableTimeouts | undefined; 
+    private __timeoutsOutput = new DynamodbGlobalTableTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DynamodbGlobalTableTimeouts ) {
+    public putTimeouts(value: DynamodbGlobalTableTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -226,7 +292,7 @@ export namespace DynamoDB {
     }
 
     // stream_arn - computed: false, optional: false, required: true
-    private _streamArn: string;
+    private _streamArn?: string; 
     public get streamArn() {
       return this.getStringAttribute('stream_arn');
     }
@@ -239,7 +305,7 @@ export namespace DynamoDB {
     }
 
     // table_name - computed: false, optional: false, required: true
-    private _tableName: string;
+    private _tableName?: string; 
     public get tableName() {
       return this.getStringAttribute('table_name');
     }
@@ -326,7 +392,7 @@ export namespace DynamoDB {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dynamodb_table.html#point_in_time_recovery DynamodbTable#point_in_time_recovery}
     */
-    readonly pointInTimeRecovery?: DynamodbTablePointInTimeRecovery[];
+    readonly pointInTimeRecovery?: DynamodbTablePointInTimeRecovery;
     /**
     * replica block
     * 
@@ -338,7 +404,7 @@ export namespace DynamoDB {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dynamodb_table.html#server_side_encryption DynamodbTable#server_side_encryption}
     */
-    readonly serverSideEncryption?: DynamodbTableServerSideEncryption[];
+    readonly serverSideEncryption?: DynamodbTableServerSideEncryption;
     /**
     * timeouts block
     * 
@@ -350,7 +416,7 @@ export namespace DynamoDB {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dynamodb_table.html#ttl DynamodbTable#ttl}
     */
-    readonly ttl?: DynamodbTableTtl[];
+    readonly ttl?: DynamodbTableTtl;
   }
   export interface DynamodbTableAttribute {
     /**
@@ -365,6 +431,9 @@ export namespace DynamoDB {
 
   function dynamodbTableAttributeToTerraform(struct?: DynamodbTableAttribute): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       type: cdktf.stringToTerraform(struct!.type),
@@ -404,6 +473,9 @@ export namespace DynamoDB {
 
   function dynamodbTableGlobalSecondaryIndexToTerraform(struct?: DynamodbTableGlobalSecondaryIndex): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       hash_key: cdktf.stringToTerraform(struct!.hashKey),
       name: cdktf.stringToTerraform(struct!.name),
@@ -436,6 +508,9 @@ export namespace DynamoDB {
 
   function dynamodbTableLocalSecondaryIndexToTerraform(struct?: DynamodbTableLocalSecondaryIndex): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       non_key_attributes: cdktf.listMapper(cdktf.stringToTerraform)(struct!.nonKeyAttributes),
@@ -451,13 +526,39 @@ export namespace DynamoDB {
     readonly enabled: boolean | cdktf.IResolvable;
   }
 
-  function dynamodbTablePointInTimeRecoveryToTerraform(struct?: DynamodbTablePointInTimeRecovery): any {
+  function dynamodbTablePointInTimeRecoveryToTerraform(struct?: DynamodbTablePointInTimeRecoveryOutputReference | DynamodbTablePointInTimeRecovery): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       enabled: cdktf.booleanToTerraform(struct!.enabled),
     }
   }
 
+  export class DynamodbTablePointInTimeRecoveryOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // enabled - computed: false, optional: false, required: true
+    private _enabled?: boolean | cdktf.IResolvable; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable) {
+      this._enabled = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+  }
   export interface DynamodbTableReplica {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dynamodb_table.html#kms_key_arn DynamodbTable#kms_key_arn}
@@ -471,6 +572,9 @@ export namespace DynamoDB {
 
   function dynamodbTableReplicaToTerraform(struct?: DynamodbTableReplica): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       kms_key_arn: cdktf.stringToTerraform(struct!.kmsKeyArn),
       region_name: cdktf.stringToTerraform(struct!.regionName),
@@ -488,14 +592,56 @@ export namespace DynamoDB {
     readonly kmsKeyArn?: string;
   }
 
-  function dynamodbTableServerSideEncryptionToTerraform(struct?: DynamodbTableServerSideEncryption): any {
+  function dynamodbTableServerSideEncryptionToTerraform(struct?: DynamodbTableServerSideEncryptionOutputReference | DynamodbTableServerSideEncryption): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       enabled: cdktf.booleanToTerraform(struct!.enabled),
       kms_key_arn: cdktf.stringToTerraform(struct!.kmsKeyArn),
     }
   }
 
+  export class DynamodbTableServerSideEncryptionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // enabled - computed: false, optional: false, required: true
+    private _enabled?: boolean | cdktf.IResolvable; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable) {
+      this._enabled = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+
+    // kms_key_arn - computed: true, optional: true, required: false
+    private _kmsKeyArn?: string | undefined; 
+    public get kmsKeyArn() {
+      return this.getStringAttribute('kms_key_arn');
+    }
+    public set kmsKeyArn(value: string | undefined) {
+      this._kmsKeyArn = value;
+    }
+    public resetKmsKeyArn() {
+      this._kmsKeyArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get kmsKeyArnInput() {
+      return this._kmsKeyArn
+    }
+  }
   export interface DynamodbTableTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dynamodb_table.html#create DynamodbTable#create}
@@ -511,8 +657,11 @@ export namespace DynamoDB {
     readonly update?: string;
   }
 
-  function dynamodbTableTimeoutsToTerraform(struct?: DynamodbTableTimeouts): any {
+  function dynamodbTableTimeoutsToTerraform(struct?: DynamodbTableTimeoutsOutputReference | DynamodbTableTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -520,6 +669,64 @@ export namespace DynamoDB {
     }
   }
 
+  export class DynamodbTableTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
   export interface DynamodbTableTtl {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dynamodb_table.html#attribute_name DynamodbTable#attribute_name}
@@ -535,8 +742,11 @@ export namespace DynamoDB {
     readonly kmsKeyArn?: string;
   }
 
-  function dynamodbTableTtlToTerraform(struct?: DynamodbTableTtl): any {
+  function dynamodbTableTtlToTerraform(struct?: DynamodbTableTtlOutputReference | DynamodbTableTtl): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       attribute_name: cdktf.stringToTerraform(struct!.attributeName),
       enabled: cdktf.booleanToTerraform(struct!.enabled),
@@ -544,6 +754,61 @@ export namespace DynamoDB {
     }
   }
 
+  export class DynamodbTableTtlOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // attribute_name - computed: false, optional: false, required: true
+    private _attributeName?: string; 
+    public get attributeName() {
+      return this.getStringAttribute('attribute_name');
+    }
+    public set attributeName(value: string) {
+      this._attributeName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get attributeNameInput() {
+      return this._attributeName
+    }
+
+    // enabled - computed: false, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+
+    // kms_key_arn - computed: true, optional: true, required: false
+    private _kmsKeyArn?: string | undefined; 
+    public get kmsKeyArn() {
+      return this.getStringAttribute('kms_key_arn');
+    }
+    public set kmsKeyArn(value: string | undefined) {
+      this._kmsKeyArn = value;
+    }
+    public resetKmsKeyArn() {
+      this._kmsKeyArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get kmsKeyArnInput() {
+      return this._kmsKeyArn
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/dynamodb_table.html aws_dynamodb_table}
@@ -607,11 +872,11 @@ export namespace DynamoDB {
     }
 
     // billing_mode - computed: false, optional: true, required: false
-    private _billingMode?: string;
+    private _billingMode?: string | undefined; 
     public get billingMode() {
       return this.getStringAttribute('billing_mode');
     }
-    public set billingMode(value: string ) {
+    public set billingMode(value: string | undefined) {
       this._billingMode = value;
     }
     public resetBillingMode() {
@@ -623,7 +888,7 @@ export namespace DynamoDB {
     }
 
     // hash_key - computed: false, optional: false, required: true
-    private _hashKey: string;
+    private _hashKey?: string; 
     public get hashKey() {
       return this.getStringAttribute('hash_key');
     }
@@ -641,7 +906,7 @@ export namespace DynamoDB {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -654,11 +919,11 @@ export namespace DynamoDB {
     }
 
     // range_key - computed: false, optional: true, required: false
-    private _rangeKey?: string;
+    private _rangeKey?: string | undefined; 
     public get rangeKey() {
       return this.getStringAttribute('range_key');
     }
-    public set rangeKey(value: string ) {
+    public set rangeKey(value: string | undefined) {
       this._rangeKey = value;
     }
     public resetRangeKey() {
@@ -670,11 +935,11 @@ export namespace DynamoDB {
     }
 
     // read_capacity - computed: false, optional: true, required: false
-    private _readCapacity?: number;
+    private _readCapacity?: number | undefined; 
     public get readCapacity() {
       return this.getNumberAttribute('read_capacity');
     }
-    public set readCapacity(value: number ) {
+    public set readCapacity(value: number | undefined) {
       this._readCapacity = value;
     }
     public resetReadCapacity() {
@@ -691,11 +956,11 @@ export namespace DynamoDB {
     }
 
     // stream_enabled - computed: false, optional: true, required: false
-    private _streamEnabled?: boolean | cdktf.IResolvable;
+    private _streamEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get streamEnabled() {
-      return this.getBooleanAttribute('stream_enabled');
+      return this.getBooleanAttribute('stream_enabled') as any;
     }
-    public set streamEnabled(value: boolean | cdktf.IResolvable ) {
+    public set streamEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._streamEnabled = value;
     }
     public resetStreamEnabled() {
@@ -712,11 +977,11 @@ export namespace DynamoDB {
     }
 
     // stream_view_type - computed: true, optional: true, required: false
-    private _streamViewType?: string;
+    private _streamViewType?: string | undefined; 
     public get streamViewType() {
       return this.getStringAttribute('stream_view_type');
     }
-    public set streamViewType(value: string) {
+    public set streamViewType(value: string | undefined) {
       this._streamViewType = value;
     }
     public resetStreamViewType() {
@@ -728,11 +993,12 @@ export namespace DynamoDB {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -744,11 +1010,12 @@ export namespace DynamoDB {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -760,11 +1027,11 @@ export namespace DynamoDB {
     }
 
     // write_capacity - computed: false, optional: true, required: false
-    private _writeCapacity?: number;
+    private _writeCapacity?: number | undefined; 
     public get writeCapacity() {
       return this.getNumberAttribute('write_capacity');
     }
-    public set writeCapacity(value: number ) {
+    public set writeCapacity(value: number | undefined) {
       this._writeCapacity = value;
     }
     public resetWriteCapacity() {
@@ -776,8 +1043,9 @@ export namespace DynamoDB {
     }
 
     // attribute - computed: false, optional: false, required: true
-    private _attribute: DynamodbTableAttribute[];
+    private _attribute?: DynamodbTableAttribute[]; 
     public get attribute() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('attribute') as any;
     }
     public set attribute(value: DynamodbTableAttribute[]) {
@@ -789,11 +1057,12 @@ export namespace DynamoDB {
     }
 
     // global_secondary_index - computed: false, optional: true, required: false
-    private _globalSecondaryIndex?: DynamodbTableGlobalSecondaryIndex[];
+    private _globalSecondaryIndex?: DynamodbTableGlobalSecondaryIndex[] | undefined; 
     public get globalSecondaryIndex() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('global_secondary_index') as any;
     }
-    public set globalSecondaryIndex(value: DynamodbTableGlobalSecondaryIndex[] ) {
+    public set globalSecondaryIndex(value: DynamodbTableGlobalSecondaryIndex[] | undefined) {
       this._globalSecondaryIndex = value;
     }
     public resetGlobalSecondaryIndex() {
@@ -805,11 +1074,12 @@ export namespace DynamoDB {
     }
 
     // local_secondary_index - computed: false, optional: true, required: false
-    private _localSecondaryIndex?: DynamodbTableLocalSecondaryIndex[];
+    private _localSecondaryIndex?: DynamodbTableLocalSecondaryIndex[] | undefined; 
     public get localSecondaryIndex() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('local_secondary_index') as any;
     }
-    public set localSecondaryIndex(value: DynamodbTableLocalSecondaryIndex[] ) {
+    public set localSecondaryIndex(value: DynamodbTableLocalSecondaryIndex[] | undefined) {
       this._localSecondaryIndex = value;
     }
     public resetLocalSecondaryIndex() {
@@ -821,11 +1091,12 @@ export namespace DynamoDB {
     }
 
     // point_in_time_recovery - computed: false, optional: true, required: false
-    private _pointInTimeRecovery?: DynamodbTablePointInTimeRecovery[];
+    private _pointInTimeRecovery?: DynamodbTablePointInTimeRecovery | undefined; 
+    private __pointInTimeRecoveryOutput = new DynamodbTablePointInTimeRecoveryOutputReference(this as any, "point_in_time_recovery", true);
     public get pointInTimeRecovery() {
-      return this.interpolationForAttribute('point_in_time_recovery') as any;
+      return this.__pointInTimeRecoveryOutput;
     }
-    public set pointInTimeRecovery(value: DynamodbTablePointInTimeRecovery[] ) {
+    public putPointInTimeRecovery(value: DynamodbTablePointInTimeRecovery | undefined) {
       this._pointInTimeRecovery = value;
     }
     public resetPointInTimeRecovery() {
@@ -837,11 +1108,12 @@ export namespace DynamoDB {
     }
 
     // replica - computed: false, optional: true, required: false
-    private _replica?: DynamodbTableReplica[];
+    private _replica?: DynamodbTableReplica[] | undefined; 
     public get replica() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('replica') as any;
     }
-    public set replica(value: DynamodbTableReplica[] ) {
+    public set replica(value: DynamodbTableReplica[] | undefined) {
       this._replica = value;
     }
     public resetReplica() {
@@ -853,11 +1125,12 @@ export namespace DynamoDB {
     }
 
     // server_side_encryption - computed: false, optional: true, required: false
-    private _serverSideEncryption?: DynamodbTableServerSideEncryption[];
+    private _serverSideEncryption?: DynamodbTableServerSideEncryption | undefined; 
+    private __serverSideEncryptionOutput = new DynamodbTableServerSideEncryptionOutputReference(this as any, "server_side_encryption", true);
     public get serverSideEncryption() {
-      return this.interpolationForAttribute('server_side_encryption') as any;
+      return this.__serverSideEncryptionOutput;
     }
-    public set serverSideEncryption(value: DynamodbTableServerSideEncryption[] ) {
+    public putServerSideEncryption(value: DynamodbTableServerSideEncryption | undefined) {
       this._serverSideEncryption = value;
     }
     public resetServerSideEncryption() {
@@ -869,11 +1142,12 @@ export namespace DynamoDB {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DynamodbTableTimeouts;
+    private _timeouts?: DynamodbTableTimeouts | undefined; 
+    private __timeoutsOutput = new DynamodbTableTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DynamodbTableTimeouts ) {
+    public putTimeouts(value: DynamodbTableTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -885,11 +1159,12 @@ export namespace DynamoDB {
     }
 
     // ttl - computed: false, optional: true, required: false
-    private _ttl?: DynamodbTableTtl[];
+    private _ttl?: DynamodbTableTtl | undefined; 
+    private __ttlOutput = new DynamodbTableTtlOutputReference(this as any, "ttl", true);
     public get ttl() {
-      return this.interpolationForAttribute('ttl') as any;
+      return this.__ttlOutput;
     }
-    public set ttl(value: DynamodbTableTtl[] ) {
+    public putTtl(value: DynamodbTableTtl | undefined) {
       this._ttl = value;
     }
     public resetTtl() {
@@ -919,11 +1194,11 @@ export namespace DynamoDB {
         attribute: cdktf.listMapper(dynamodbTableAttributeToTerraform)(this._attribute),
         global_secondary_index: cdktf.listMapper(dynamodbTableGlobalSecondaryIndexToTerraform)(this._globalSecondaryIndex),
         local_secondary_index: cdktf.listMapper(dynamodbTableLocalSecondaryIndexToTerraform)(this._localSecondaryIndex),
-        point_in_time_recovery: cdktf.listMapper(dynamodbTablePointInTimeRecoveryToTerraform)(this._pointInTimeRecovery),
+        point_in_time_recovery: dynamodbTablePointInTimeRecoveryToTerraform(this._pointInTimeRecovery),
         replica: cdktf.listMapper(dynamodbTableReplicaToTerraform)(this._replica),
-        server_side_encryption: cdktf.listMapper(dynamodbTableServerSideEncryptionToTerraform)(this._serverSideEncryption),
+        server_side_encryption: dynamodbTableServerSideEncryptionToTerraform(this._serverSideEncryption),
         timeouts: dynamodbTableTimeoutsToTerraform(this._timeouts),
-        ttl: cdktf.listMapper(dynamodbTableTtlToTerraform)(this._ttl),
+        ttl: dynamodbTableTtlToTerraform(this._ttl),
       };
     }
   }
@@ -989,7 +1264,7 @@ export namespace DynamoDB {
     // ==========
 
     // hash_key - computed: false, optional: false, required: true
-    private _hashKey: string;
+    private _hashKey?: string; 
     public get hashKey() {
       return this.getStringAttribute('hash_key');
     }
@@ -1007,7 +1282,7 @@ export namespace DynamoDB {
     }
 
     // item - computed: false, optional: false, required: true
-    private _item: string;
+    private _item?: string; 
     public get item() {
       return this.getStringAttribute('item');
     }
@@ -1020,11 +1295,11 @@ export namespace DynamoDB {
     }
 
     // range_key - computed: false, optional: true, required: false
-    private _rangeKey?: string;
+    private _rangeKey?: string | undefined; 
     public get rangeKey() {
       return this.getStringAttribute('range_key');
     }
-    public set rangeKey(value: string ) {
+    public set rangeKey(value: string | undefined) {
       this._rangeKey = value;
     }
     public resetRangeKey() {
@@ -1036,7 +1311,7 @@ export namespace DynamoDB {
     }
 
     // table_name - computed: false, optional: false, required: true
-    private _tableName: string;
+    private _tableName?: string; 
     public get tableName() {
       return this.getStringAttribute('table_name');
     }
@@ -1123,7 +1398,7 @@ export namespace DynamoDB {
     }
 
     // key - computed: false, optional: false, required: true
-    private _key: string;
+    private _key?: string; 
     public get key() {
       return this.getStringAttribute('key');
     }
@@ -1136,7 +1411,7 @@ export namespace DynamoDB {
     }
 
     // resource_arn - computed: false, optional: false, required: true
-    private _resourceArn: string;
+    private _resourceArn?: string; 
     public get resourceArn() {
       return this.getStringAttribute('resource_arn');
     }
@@ -1149,7 +1424,7 @@ export namespace DynamoDB {
     }
 
     // value - computed: false, optional: false, required: true
-    private _value: string;
+    private _value?: string; 
     public get value() {
       return this.getStringAttribute('value');
     }
@@ -1187,7 +1462,7 @@ export namespace DynamoDB {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/d/dynamodb_table.html#server_side_encryption DataAwsDynamodbTable#server_side_encryption}
     */
-    readonly serverSideEncryption?: DataAwsDynamodbTableServerSideEncryption[];
+    readonly serverSideEncryption?: DataAwsDynamodbTableServerSideEncryption;
   }
   export class DataAwsDynamodbTableAttribute extends cdktf.ComplexComputedList {
 
@@ -1264,7 +1539,7 @@ export namespace DynamoDB {
 
     // enabled - computed: true, optional: false, required: false
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
   }
   export class DataAwsDynamodbTableReplica extends cdktf.ComplexComputedList {
@@ -1288,18 +1563,31 @@ export namespace DynamoDB {
 
     // enabled - computed: true, optional: false, required: false
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
   }
   export interface DataAwsDynamodbTableServerSideEncryption {
   }
 
-  function dataAwsDynamodbTableServerSideEncryptionToTerraform(struct?: DataAwsDynamodbTableServerSideEncryption): any {
+  function dataAwsDynamodbTableServerSideEncryptionToTerraform(struct?: DataAwsDynamodbTableServerSideEncryptionOutputReference | DataAwsDynamodbTableServerSideEncryption): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
     }
   }
 
+  export class DataAwsDynamodbTableServerSideEncryptionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/d/dynamodb_table.html aws_dynamodb_table}
@@ -1378,7 +1666,7 @@ export namespace DynamoDB {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1417,7 +1705,7 @@ export namespace DynamoDB {
 
     // stream_enabled - computed: true, optional: false, required: false
     public get streamEnabled() {
-      return this.getBooleanAttribute('stream_enabled');
+      return this.getBooleanAttribute('stream_enabled') as any;
     }
 
     // stream_label - computed: true, optional: false, required: false
@@ -1431,11 +1719,12 @@ export namespace DynamoDB {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1457,11 +1746,12 @@ export namespace DynamoDB {
     }
 
     // server_side_encryption - computed: false, optional: true, required: false
-    private _serverSideEncryption?: DataAwsDynamodbTableServerSideEncryption[];
+    private _serverSideEncryption?: DataAwsDynamodbTableServerSideEncryption | undefined; 
+    private __serverSideEncryptionOutput = new DataAwsDynamodbTableServerSideEncryptionOutputReference(this as any, "server_side_encryption", true);
     public get serverSideEncryption() {
-      return this.interpolationForAttribute('server_side_encryption') as any;
+      return this.__serverSideEncryptionOutput;
     }
-    public set serverSideEncryption(value: DataAwsDynamodbTableServerSideEncryption[] ) {
+    public putServerSideEncryption(value: DataAwsDynamodbTableServerSideEncryption | undefined) {
       this._serverSideEncryption = value;
     }
     public resetServerSideEncryption() {
@@ -1480,7 +1770,7 @@ export namespace DynamoDB {
       return {
         name: cdktf.stringToTerraform(this._name),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
-        server_side_encryption: cdktf.listMapper(dataAwsDynamodbTableServerSideEncryptionToTerraform)(this._serverSideEncryption),
+        server_side_encryption: dataAwsDynamodbTableServerSideEncryptionToTerraform(this._serverSideEncryption),
       };
     }
   }

@@ -59,7 +59,7 @@ export namespace ServiceCatalog {
     // ==========
 
     // budget_name - computed: false, optional: false, required: true
-    private _budgetName: string;
+    private _budgetName?: string; 
     public get budgetName() {
       return this.getStringAttribute('budget_name');
     }
@@ -77,7 +77,7 @@ export namespace ServiceCatalog {
     }
 
     // resource_id - computed: false, optional: false, required: true
-    private _resourceId: string;
+    private _resourceId?: string; 
     public get resourceId() {
       return this.getStringAttribute('resource_id');
     }
@@ -172,11 +172,11 @@ export namespace ServiceCatalog {
     // ==========
 
     // accept_language - computed: false, optional: true, required: false
-    private _acceptLanguage?: string;
+    private _acceptLanguage?: string | undefined; 
     public get acceptLanguage() {
       return this.getStringAttribute('accept_language');
     }
-    public set acceptLanguage(value: string ) {
+    public set acceptLanguage(value: string | undefined) {
       this._acceptLanguage = value;
     }
     public resetAcceptLanguage() {
@@ -188,11 +188,11 @@ export namespace ServiceCatalog {
     }
 
     // description - computed: true, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -214,7 +214,7 @@ export namespace ServiceCatalog {
     }
 
     // parameters - computed: false, optional: false, required: true
-    private _parameters: string;
+    private _parameters?: string; 
     public get parameters() {
       return this.getStringAttribute('parameters');
     }
@@ -227,7 +227,7 @@ export namespace ServiceCatalog {
     }
 
     // portfolio_id - computed: false, optional: false, required: true
-    private _portfolioId: string;
+    private _portfolioId?: string; 
     public get portfolioId() {
       return this.getStringAttribute('portfolio_id');
     }
@@ -240,7 +240,7 @@ export namespace ServiceCatalog {
     }
 
     // product_id - computed: false, optional: false, required: true
-    private _productId: string;
+    private _productId?: string; 
     public get productId() {
       return this.getStringAttribute('product_id');
     }
@@ -258,7 +258,7 @@ export namespace ServiceCatalog {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }
@@ -332,9 +332,9 @@ export namespace ServiceCatalog {
     // ==========
 
     // enabled - computed: false, optional: false, required: true
-    private _enabled: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
     public set enabled(value: boolean | cdktf.IResolvable) {
       this._enabled = value;
@@ -402,8 +402,11 @@ export namespace ServiceCatalog {
     readonly update?: string;
   }
 
-  function servicecatalogPortfolioTimeoutsToTerraform(struct?: ServicecatalogPortfolioTimeouts): any {
+  function servicecatalogPortfolioTimeoutsToTerraform(struct?: ServicecatalogPortfolioTimeoutsOutputReference | ServicecatalogPortfolioTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -411,6 +414,64 @@ export namespace ServiceCatalog {
     }
   }
 
+  export class ServicecatalogPortfolioTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_portfolio.html aws_servicecatalog_portfolio}
@@ -467,11 +528,11 @@ export namespace ServiceCatalog {
     }
 
     // description - computed: true, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -488,7 +549,7 @@ export namespace ServiceCatalog {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -501,7 +562,7 @@ export namespace ServiceCatalog {
     }
 
     // provider_name - computed: false, optional: false, required: true
-    private _providerName: string;
+    private _providerName?: string; 
     public get providerName() {
       return this.getStringAttribute('provider_name');
     }
@@ -514,11 +575,12 @@ export namespace ServiceCatalog {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -530,11 +592,12 @@ export namespace ServiceCatalog {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -546,11 +609,12 @@ export namespace ServiceCatalog {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: ServicecatalogPortfolioTimeouts;
+    private _timeouts?: ServicecatalogPortfolioTimeouts | undefined; 
+    private __timeoutsOutput = new ServicecatalogPortfolioTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: ServicecatalogPortfolioTimeouts ) {
+    public putTimeouts(value: ServicecatalogPortfolioTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -648,11 +712,11 @@ export namespace ServiceCatalog {
     // ==========
 
     // accept_language - computed: false, optional: true, required: false
-    private _acceptLanguage?: string;
+    private _acceptLanguage?: string | undefined; 
     public get acceptLanguage() {
       return this.getStringAttribute('accept_language');
     }
-    public set acceptLanguage(value: string ) {
+    public set acceptLanguage(value: string | undefined) {
       this._acceptLanguage = value;
     }
     public resetAcceptLanguage() {
@@ -665,7 +729,7 @@ export namespace ServiceCatalog {
 
     // accepted - computed: true, optional: false, required: false
     public get accepted() {
-      return this.getBooleanAttribute('accepted');
+      return this.getBooleanAttribute('accepted') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -674,7 +738,7 @@ export namespace ServiceCatalog {
     }
 
     // portfolio_id - computed: false, optional: false, required: true
-    private _portfolioId: string;
+    private _portfolioId?: string; 
     public get portfolioId() {
       return this.getStringAttribute('portfolio_id');
     }
@@ -687,7 +751,7 @@ export namespace ServiceCatalog {
     }
 
     // principal_id - computed: false, optional: false, required: true
-    private _principalId: string;
+    private _principalId?: string; 
     public get principalId() {
       return this.getStringAttribute('principal_id');
     }
@@ -700,11 +764,11 @@ export namespace ServiceCatalog {
     }
 
     // share_tag_options - computed: false, optional: true, required: false
-    private _shareTagOptions?: boolean | cdktf.IResolvable;
+    private _shareTagOptions?: boolean | cdktf.IResolvable | undefined; 
     public get shareTagOptions() {
-      return this.getBooleanAttribute('share_tag_options');
+      return this.getBooleanAttribute('share_tag_options') as any;
     }
-    public set shareTagOptions(value: boolean | cdktf.IResolvable ) {
+    public set shareTagOptions(value: boolean | cdktf.IResolvable | undefined) {
       this._shareTagOptions = value;
     }
     public resetShareTagOptions() {
@@ -716,7 +780,7 @@ export namespace ServiceCatalog {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }
@@ -729,11 +793,11 @@ export namespace ServiceCatalog {
     }
 
     // wait_for_acceptance - computed: false, optional: true, required: false
-    private _waitForAcceptance?: boolean | cdktf.IResolvable;
+    private _waitForAcceptance?: boolean | cdktf.IResolvable | undefined; 
     public get waitForAcceptance() {
-      return this.getBooleanAttribute('wait_for_acceptance');
+      return this.getBooleanAttribute('wait_for_acceptance') as any;
     }
-    public set waitForAcceptance(value: boolean | cdktf.IResolvable ) {
+    public set waitForAcceptance(value: boolean | cdktf.IResolvable | undefined) {
       this._waitForAcceptance = value;
     }
     public resetWaitForAcceptance() {
@@ -821,11 +885,11 @@ export namespace ServiceCatalog {
     // ==========
 
     // accept_language - computed: false, optional: true, required: false
-    private _acceptLanguage?: string;
+    private _acceptLanguage?: string | undefined; 
     public get acceptLanguage() {
       return this.getStringAttribute('accept_language');
     }
-    public set acceptLanguage(value: string ) {
+    public set acceptLanguage(value: string | undefined) {
       this._acceptLanguage = value;
     }
     public resetAcceptLanguage() {
@@ -842,7 +906,7 @@ export namespace ServiceCatalog {
     }
 
     // portfolio_id - computed: false, optional: false, required: true
-    private _portfolioId: string;
+    private _portfolioId?: string; 
     public get portfolioId() {
       return this.getStringAttribute('portfolio_id');
     }
@@ -855,7 +919,7 @@ export namespace ServiceCatalog {
     }
 
     // principal_arn - computed: false, optional: false, required: true
-    private _principalArn: string;
+    private _principalArn?: string; 
     public get principalArn() {
       return this.getStringAttribute('principal_arn');
     }
@@ -868,11 +932,11 @@ export namespace ServiceCatalog {
     }
 
     // principal_type - computed: false, optional: true, required: false
-    private _principalType?: string;
+    private _principalType?: string | undefined; 
     public get principalType() {
       return this.getStringAttribute('principal_type');
     }
-    public set principalType(value: string ) {
+    public set principalType(value: string | undefined) {
       this._principalType = value;
     }
     public resetPrincipalType() {
@@ -946,7 +1010,7 @@ export namespace ServiceCatalog {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_product.html#provisioning_artifact_parameters ServicecatalogProduct#provisioning_artifact_parameters}
     */
-    readonly provisioningArtifactParameters: ServicecatalogProductProvisioningArtifactParameters[];
+    readonly provisioningArtifactParameters: ServicecatalogProductProvisioningArtifactParameters;
   }
   export interface ServicecatalogProductProvisioningArtifactParameters {
     /**
@@ -975,8 +1039,11 @@ export namespace ServiceCatalog {
     readonly type?: string;
   }
 
-  function servicecatalogProductProvisioningArtifactParametersToTerraform(struct?: ServicecatalogProductProvisioningArtifactParameters): any {
+  function servicecatalogProductProvisioningArtifactParametersToTerraform(struct?: ServicecatalogProductProvisioningArtifactParametersOutputReference | ServicecatalogProductProvisioningArtifactParameters): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       description: cdktf.stringToTerraform(struct!.description),
       disable_template_validation: cdktf.booleanToTerraform(struct!.disableTemplateValidation),
@@ -987,6 +1054,112 @@ export namespace ServiceCatalog {
     }
   }
 
+  export class ServicecatalogProductProvisioningArtifactParametersOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // description - computed: false, optional: true, required: false
+    private _description?: string | undefined; 
+    public get description() {
+      return this.getStringAttribute('description');
+    }
+    public set description(value: string | undefined) {
+      this._description = value;
+    }
+    public resetDescription() {
+      this._description = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get descriptionInput() {
+      return this._description
+    }
+
+    // disable_template_validation - computed: false, optional: true, required: false
+    private _disableTemplateValidation?: boolean | cdktf.IResolvable | undefined; 
+    public get disableTemplateValidation() {
+      return this.getBooleanAttribute('disable_template_validation') as any;
+    }
+    public set disableTemplateValidation(value: boolean | cdktf.IResolvable | undefined) {
+      this._disableTemplateValidation = value;
+    }
+    public resetDisableTemplateValidation() {
+      this._disableTemplateValidation = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get disableTemplateValidationInput() {
+      return this._disableTemplateValidation
+    }
+
+    // name - computed: false, optional: true, required: false
+    private _name?: string | undefined; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string | undefined) {
+      this._name = value;
+    }
+    public resetName() {
+      this._name = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+
+    // template_physical_id - computed: false, optional: true, required: false
+    private _templatePhysicalId?: string | undefined; 
+    public get templatePhysicalId() {
+      return this.getStringAttribute('template_physical_id');
+    }
+    public set templatePhysicalId(value: string | undefined) {
+      this._templatePhysicalId = value;
+    }
+    public resetTemplatePhysicalId() {
+      this._templatePhysicalId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get templatePhysicalIdInput() {
+      return this._templatePhysicalId
+    }
+
+    // template_url - computed: false, optional: true, required: false
+    private _templateUrl?: string | undefined; 
+    public get templateUrl() {
+      return this.getStringAttribute('template_url');
+    }
+    public set templateUrl(value: string | undefined) {
+      this._templateUrl = value;
+    }
+    public resetTemplateUrl() {
+      this._templateUrl = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get templateUrlInput() {
+      return this._templateUrl
+    }
+
+    // type - computed: false, optional: true, required: false
+    private _type?: string | undefined; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string | undefined) {
+      this._type = value;
+    }
+    public resetType() {
+      this._type = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_product.html aws_servicecatalog_product}
@@ -1039,11 +1212,11 @@ export namespace ServiceCatalog {
     // ==========
 
     // accept_language - computed: false, optional: true, required: false
-    private _acceptLanguage?: string;
+    private _acceptLanguage?: string | undefined; 
     public get acceptLanguage() {
       return this.getStringAttribute('accept_language');
     }
-    public set acceptLanguage(value: string ) {
+    public set acceptLanguage(value: string | undefined) {
       this._acceptLanguage = value;
     }
     public resetAcceptLanguage() {
@@ -1065,11 +1238,11 @@ export namespace ServiceCatalog {
     }
 
     // description - computed: true, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1081,11 +1254,11 @@ export namespace ServiceCatalog {
     }
 
     // distributor - computed: true, optional: true, required: false
-    private _distributor?: string;
+    private _distributor?: string | undefined; 
     public get distributor() {
       return this.getStringAttribute('distributor');
     }
-    public set distributor(value: string) {
+    public set distributor(value: string | undefined) {
       this._distributor = value;
     }
     public resetDistributor() {
@@ -1098,7 +1271,7 @@ export namespace ServiceCatalog {
 
     // has_default_path - computed: true, optional: false, required: false
     public get hasDefaultPath() {
-      return this.getBooleanAttribute('has_default_path');
+      return this.getBooleanAttribute('has_default_path') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -1107,7 +1280,7 @@ export namespace ServiceCatalog {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1120,7 +1293,7 @@ export namespace ServiceCatalog {
     }
 
     // owner - computed: false, optional: false, required: true
-    private _owner: string;
+    private _owner?: string; 
     public get owner() {
       return this.getStringAttribute('owner');
     }
@@ -1138,11 +1311,11 @@ export namespace ServiceCatalog {
     }
 
     // support_description - computed: true, optional: true, required: false
-    private _supportDescription?: string;
+    private _supportDescription?: string | undefined; 
     public get supportDescription() {
       return this.getStringAttribute('support_description');
     }
-    public set supportDescription(value: string) {
+    public set supportDescription(value: string | undefined) {
       this._supportDescription = value;
     }
     public resetSupportDescription() {
@@ -1154,11 +1327,11 @@ export namespace ServiceCatalog {
     }
 
     // support_email - computed: true, optional: true, required: false
-    private _supportEmail?: string;
+    private _supportEmail?: string | undefined; 
     public get supportEmail() {
       return this.getStringAttribute('support_email');
     }
-    public set supportEmail(value: string) {
+    public set supportEmail(value: string | undefined) {
       this._supportEmail = value;
     }
     public resetSupportEmail() {
@@ -1170,11 +1343,11 @@ export namespace ServiceCatalog {
     }
 
     // support_url - computed: true, optional: true, required: false
-    private _supportUrl?: string;
+    private _supportUrl?: string | undefined; 
     public get supportUrl() {
       return this.getStringAttribute('support_url');
     }
-    public set supportUrl(value: string) {
+    public set supportUrl(value: string | undefined) {
       this._supportUrl = value;
     }
     public resetSupportUrl() {
@@ -1186,11 +1359,12 @@ export namespace ServiceCatalog {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1202,11 +1376,12 @@ export namespace ServiceCatalog {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1218,7 +1393,7 @@ export namespace ServiceCatalog {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }
@@ -1231,11 +1406,12 @@ export namespace ServiceCatalog {
     }
 
     // provisioning_artifact_parameters - computed: false, optional: false, required: true
-    private _provisioningArtifactParameters: ServicecatalogProductProvisioningArtifactParameters[];
+    private _provisioningArtifactParameters?: ServicecatalogProductProvisioningArtifactParameters; 
+    private __provisioningArtifactParametersOutput = new ServicecatalogProductProvisioningArtifactParametersOutputReference(this as any, "provisioning_artifact_parameters", true);
     public get provisioningArtifactParameters() {
-      return this.interpolationForAttribute('provisioning_artifact_parameters') as any;
+      return this.__provisioningArtifactParametersOutput;
     }
-    public set provisioningArtifactParameters(value: ServicecatalogProductProvisioningArtifactParameters[]) {
+    public putProvisioningArtifactParameters(value: ServicecatalogProductProvisioningArtifactParameters) {
       this._provisioningArtifactParameters = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -1260,7 +1436,7 @@ export namespace ServiceCatalog {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         type: cdktf.stringToTerraform(this._type),
-        provisioning_artifact_parameters: cdktf.listMapper(servicecatalogProductProvisioningArtifactParametersToTerraform)(this._provisioningArtifactParameters),
+        provisioning_artifact_parameters: servicecatalogProductProvisioningArtifactParametersToTerraform(this._provisioningArtifactParameters),
       };
     }
   }
@@ -1326,11 +1502,11 @@ export namespace ServiceCatalog {
     // ==========
 
     // accept_language - computed: false, optional: true, required: false
-    private _acceptLanguage?: string;
+    private _acceptLanguage?: string | undefined; 
     public get acceptLanguage() {
       return this.getStringAttribute('accept_language');
     }
-    public set acceptLanguage(value: string ) {
+    public set acceptLanguage(value: string | undefined) {
       this._acceptLanguage = value;
     }
     public resetAcceptLanguage() {
@@ -1347,7 +1523,7 @@ export namespace ServiceCatalog {
     }
 
     // portfolio_id - computed: false, optional: false, required: true
-    private _portfolioId: string;
+    private _portfolioId?: string; 
     public get portfolioId() {
       return this.getStringAttribute('portfolio_id');
     }
@@ -1360,7 +1536,7 @@ export namespace ServiceCatalog {
     }
 
     // product_id - computed: false, optional: false, required: true
-    private _productId: string;
+    private _productId?: string; 
     public get productId() {
       return this.getStringAttribute('product_id');
     }
@@ -1373,11 +1549,11 @@ export namespace ServiceCatalog {
     }
 
     // source_portfolio_id - computed: false, optional: true, required: false
-    private _sourcePortfolioId?: string;
+    private _sourcePortfolioId?: string | undefined; 
     public get sourcePortfolioId() {
       return this.getStringAttribute('source_portfolio_id');
     }
-    public set sourcePortfolioId(value: string ) {
+    public set sourcePortfolioId(value: string | undefined) {
       this._sourcePortfolioId = value;
     }
     public resetSourcePortfolioId() {
@@ -1465,7 +1641,7 @@ export namespace ServiceCatalog {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_provisioned_product.html#stack_set_provisioning_preferences ServicecatalogProvisionedProduct#stack_set_provisioning_preferences}
     */
-    readonly stackSetProvisioningPreferences?: ServicecatalogProvisionedProductStackSetProvisioningPreferences[];
+    readonly stackSetProvisioningPreferences?: ServicecatalogProvisionedProductStackSetProvisioningPreferences;
     /**
     * timeouts block
     * 
@@ -1490,6 +1666,9 @@ export namespace ServiceCatalog {
 
   function servicecatalogProvisionedProductProvisioningParametersToTerraform(struct?: ServicecatalogProvisionedProductProvisioningParameters): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
       use_previous_value: cdktf.booleanToTerraform(struct!.usePreviousValue),
@@ -1524,8 +1703,11 @@ export namespace ServiceCatalog {
     readonly regions?: string[];
   }
 
-  function servicecatalogProvisionedProductStackSetProvisioningPreferencesToTerraform(struct?: ServicecatalogProvisionedProductStackSetProvisioningPreferences): any {
+  function servicecatalogProvisionedProductStackSetProvisioningPreferencesToTerraform(struct?: ServicecatalogProvisionedProductStackSetProvisioningPreferencesOutputReference | ServicecatalogProvisionedProductStackSetProvisioningPreferences): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       accounts: cdktf.listMapper(cdktf.stringToTerraform)(struct!.accounts),
       failure_tolerance_count: cdktf.numberToTerraform(struct!.failureToleranceCount),
@@ -1536,6 +1718,112 @@ export namespace ServiceCatalog {
     }
   }
 
+  export class ServicecatalogProvisionedProductStackSetProvisioningPreferencesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // accounts - computed: false, optional: true, required: false
+    private _accounts?: string[] | undefined; 
+    public get accounts() {
+      return this.getListAttribute('accounts');
+    }
+    public set accounts(value: string[] | undefined) {
+      this._accounts = value;
+    }
+    public resetAccounts() {
+      this._accounts = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get accountsInput() {
+      return this._accounts
+    }
+
+    // failure_tolerance_count - computed: false, optional: true, required: false
+    private _failureToleranceCount?: number | undefined; 
+    public get failureToleranceCount() {
+      return this.getNumberAttribute('failure_tolerance_count');
+    }
+    public set failureToleranceCount(value: number | undefined) {
+      this._failureToleranceCount = value;
+    }
+    public resetFailureToleranceCount() {
+      this._failureToleranceCount = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get failureToleranceCountInput() {
+      return this._failureToleranceCount
+    }
+
+    // failure_tolerance_percentage - computed: false, optional: true, required: false
+    private _failureTolerancePercentage?: number | undefined; 
+    public get failureTolerancePercentage() {
+      return this.getNumberAttribute('failure_tolerance_percentage');
+    }
+    public set failureTolerancePercentage(value: number | undefined) {
+      this._failureTolerancePercentage = value;
+    }
+    public resetFailureTolerancePercentage() {
+      this._failureTolerancePercentage = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get failureTolerancePercentageInput() {
+      return this._failureTolerancePercentage
+    }
+
+    // max_concurrency_count - computed: false, optional: true, required: false
+    private _maxConcurrencyCount?: number | undefined; 
+    public get maxConcurrencyCount() {
+      return this.getNumberAttribute('max_concurrency_count');
+    }
+    public set maxConcurrencyCount(value: number | undefined) {
+      this._maxConcurrencyCount = value;
+    }
+    public resetMaxConcurrencyCount() {
+      this._maxConcurrencyCount = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maxConcurrencyCountInput() {
+      return this._maxConcurrencyCount
+    }
+
+    // max_concurrency_percentage - computed: false, optional: true, required: false
+    private _maxConcurrencyPercentage?: number | undefined; 
+    public get maxConcurrencyPercentage() {
+      return this.getNumberAttribute('max_concurrency_percentage');
+    }
+    public set maxConcurrencyPercentage(value: number | undefined) {
+      this._maxConcurrencyPercentage = value;
+    }
+    public resetMaxConcurrencyPercentage() {
+      this._maxConcurrencyPercentage = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maxConcurrencyPercentageInput() {
+      return this._maxConcurrencyPercentage
+    }
+
+    // regions - computed: false, optional: true, required: false
+    private _regions?: string[] | undefined; 
+    public get regions() {
+      return this.getListAttribute('regions');
+    }
+    public set regions(value: string[] | undefined) {
+      this._regions = value;
+    }
+    public resetRegions() {
+      this._regions = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get regionsInput() {
+      return this._regions
+    }
+  }
   export interface ServicecatalogProvisionedProductTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_provisioned_product.html#create ServicecatalogProvisionedProduct#create}
@@ -1551,8 +1839,11 @@ export namespace ServiceCatalog {
     readonly update?: string;
   }
 
-  function servicecatalogProvisionedProductTimeoutsToTerraform(struct?: ServicecatalogProvisionedProductTimeouts): any {
+  function servicecatalogProvisionedProductTimeoutsToTerraform(struct?: ServicecatalogProvisionedProductTimeoutsOutputReference | ServicecatalogProvisionedProductTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -1560,6 +1851,64 @@ export namespace ServiceCatalog {
     }
   }
 
+  export class ServicecatalogProvisionedProductTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_provisioned_product.html aws_servicecatalog_provisioned_product}
@@ -1616,11 +1965,11 @@ export namespace ServiceCatalog {
     // ==========
 
     // accept_language - computed: false, optional: true, required: false
-    private _acceptLanguage?: string;
+    private _acceptLanguage?: string | undefined; 
     public get acceptLanguage() {
       return this.getStringAttribute('accept_language');
     }
-    public set acceptLanguage(value: string ) {
+    public set acceptLanguage(value: string | undefined) {
       this._acceptLanguage = value;
     }
     public resetAcceptLanguage() {
@@ -1652,11 +2001,11 @@ export namespace ServiceCatalog {
     }
 
     // ignore_errors - computed: false, optional: true, required: false
-    private _ignoreErrors?: boolean | cdktf.IResolvable;
+    private _ignoreErrors?: boolean | cdktf.IResolvable | undefined; 
     public get ignoreErrors() {
-      return this.getBooleanAttribute('ignore_errors');
+      return this.getBooleanAttribute('ignore_errors') as any;
     }
-    public set ignoreErrors(value: boolean | cdktf.IResolvable ) {
+    public set ignoreErrors(value: boolean | cdktf.IResolvable | undefined) {
       this._ignoreErrors = value;
     }
     public resetIgnoreErrors() {
@@ -1688,7 +2037,7 @@ export namespace ServiceCatalog {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1701,11 +2050,11 @@ export namespace ServiceCatalog {
     }
 
     // notification_arns - computed: false, optional: true, required: false
-    private _notificationArns?: string[];
+    private _notificationArns?: string[] | undefined; 
     public get notificationArns() {
       return this.getListAttribute('notification_arns');
     }
-    public set notificationArns(value: string[] ) {
+    public set notificationArns(value: string[] | undefined) {
       this._notificationArns = value;
     }
     public resetNotificationArns() {
@@ -1717,11 +2066,11 @@ export namespace ServiceCatalog {
     }
 
     // path_id - computed: true, optional: true, required: false
-    private _pathId?: string;
+    private _pathId?: string | undefined; 
     public get pathId() {
       return this.getStringAttribute('path_id');
     }
-    public set pathId(value: string) {
+    public set pathId(value: string | undefined) {
       this._pathId = value;
     }
     public resetPathId() {
@@ -1733,11 +2082,11 @@ export namespace ServiceCatalog {
     }
 
     // path_name - computed: false, optional: true, required: false
-    private _pathName?: string;
+    private _pathName?: string | undefined; 
     public get pathName() {
       return this.getStringAttribute('path_name');
     }
-    public set pathName(value: string ) {
+    public set pathName(value: string | undefined) {
       this._pathName = value;
     }
     public resetPathName() {
@@ -1749,11 +2098,11 @@ export namespace ServiceCatalog {
     }
 
     // product_id - computed: true, optional: true, required: false
-    private _productId?: string;
+    private _productId?: string | undefined; 
     public get productId() {
       return this.getStringAttribute('product_id');
     }
-    public set productId(value: string) {
+    public set productId(value: string | undefined) {
       this._productId = value;
     }
     public resetProductId() {
@@ -1765,11 +2114,11 @@ export namespace ServiceCatalog {
     }
 
     // product_name - computed: false, optional: true, required: false
-    private _productName?: string;
+    private _productName?: string | undefined; 
     public get productName() {
       return this.getStringAttribute('product_name');
     }
-    public set productName(value: string ) {
+    public set productName(value: string | undefined) {
       this._productName = value;
     }
     public resetProductName() {
@@ -1781,11 +2130,11 @@ export namespace ServiceCatalog {
     }
 
     // provisioning_artifact_id - computed: true, optional: true, required: false
-    private _provisioningArtifactId?: string;
+    private _provisioningArtifactId?: string | undefined; 
     public get provisioningArtifactId() {
       return this.getStringAttribute('provisioning_artifact_id');
     }
-    public set provisioningArtifactId(value: string) {
+    public set provisioningArtifactId(value: string | undefined) {
       this._provisioningArtifactId = value;
     }
     public resetProvisioningArtifactId() {
@@ -1797,11 +2146,11 @@ export namespace ServiceCatalog {
     }
 
     // provisioning_artifact_name - computed: false, optional: true, required: false
-    private _provisioningArtifactName?: string;
+    private _provisioningArtifactName?: string | undefined; 
     public get provisioningArtifactName() {
       return this.getStringAttribute('provisioning_artifact_name');
     }
-    public set provisioningArtifactName(value: string ) {
+    public set provisioningArtifactName(value: string | undefined) {
       this._provisioningArtifactName = value;
     }
     public resetProvisioningArtifactName() {
@@ -1813,11 +2162,11 @@ export namespace ServiceCatalog {
     }
 
     // retain_physical_resources - computed: false, optional: true, required: false
-    private _retainPhysicalResources?: boolean | cdktf.IResolvable;
+    private _retainPhysicalResources?: boolean | cdktf.IResolvable | undefined; 
     public get retainPhysicalResources() {
-      return this.getBooleanAttribute('retain_physical_resources');
+      return this.getBooleanAttribute('retain_physical_resources') as any;
     }
-    public set retainPhysicalResources(value: boolean | cdktf.IResolvable ) {
+    public set retainPhysicalResources(value: boolean | cdktf.IResolvable | undefined) {
       this._retainPhysicalResources = value;
     }
     public resetRetainPhysicalResources() {
@@ -1839,11 +2188,12 @@ export namespace ServiceCatalog {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1855,11 +2205,12 @@ export namespace ServiceCatalog {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1876,11 +2227,12 @@ export namespace ServiceCatalog {
     }
 
     // provisioning_parameters - computed: false, optional: true, required: false
-    private _provisioningParameters?: ServicecatalogProvisionedProductProvisioningParameters[];
+    private _provisioningParameters?: ServicecatalogProvisionedProductProvisioningParameters[] | undefined; 
     public get provisioningParameters() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('provisioning_parameters') as any;
     }
-    public set provisioningParameters(value: ServicecatalogProvisionedProductProvisioningParameters[] ) {
+    public set provisioningParameters(value: ServicecatalogProvisionedProductProvisioningParameters[] | undefined) {
       this._provisioningParameters = value;
     }
     public resetProvisioningParameters() {
@@ -1892,11 +2244,12 @@ export namespace ServiceCatalog {
     }
 
     // stack_set_provisioning_preferences - computed: false, optional: true, required: false
-    private _stackSetProvisioningPreferences?: ServicecatalogProvisionedProductStackSetProvisioningPreferences[];
+    private _stackSetProvisioningPreferences?: ServicecatalogProvisionedProductStackSetProvisioningPreferences | undefined; 
+    private __stackSetProvisioningPreferencesOutput = new ServicecatalogProvisionedProductStackSetProvisioningPreferencesOutputReference(this as any, "stack_set_provisioning_preferences", true);
     public get stackSetProvisioningPreferences() {
-      return this.interpolationForAttribute('stack_set_provisioning_preferences') as any;
+      return this.__stackSetProvisioningPreferencesOutput;
     }
-    public set stackSetProvisioningPreferences(value: ServicecatalogProvisionedProductStackSetProvisioningPreferences[] ) {
+    public putStackSetProvisioningPreferences(value: ServicecatalogProvisionedProductStackSetProvisioningPreferences | undefined) {
       this._stackSetProvisioningPreferences = value;
     }
     public resetStackSetProvisioningPreferences() {
@@ -1908,11 +2261,12 @@ export namespace ServiceCatalog {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: ServicecatalogProvisionedProductTimeouts;
+    private _timeouts?: ServicecatalogProvisionedProductTimeouts | undefined; 
+    private __timeoutsOutput = new ServicecatalogProvisionedProductTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: ServicecatalogProvisionedProductTimeouts ) {
+    public putTimeouts(value: ServicecatalogProvisionedProductTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1943,7 +2297,7 @@ export namespace ServiceCatalog {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         provisioning_parameters: cdktf.listMapper(servicecatalogProvisionedProductProvisioningParametersToTerraform)(this._provisioningParameters),
-        stack_set_provisioning_preferences: cdktf.listMapper(servicecatalogProvisionedProductStackSetProvisioningPreferencesToTerraform)(this._stackSetProvisioningPreferences),
+        stack_set_provisioning_preferences: servicecatalogProvisionedProductStackSetProvisioningPreferencesToTerraform(this._stackSetProvisioningPreferences),
         timeouts: servicecatalogProvisionedProductTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -2040,11 +2394,11 @@ export namespace ServiceCatalog {
     // ==========
 
     // accept_language - computed: false, optional: true, required: false
-    private _acceptLanguage?: string;
+    private _acceptLanguage?: string | undefined; 
     public get acceptLanguage() {
       return this.getStringAttribute('accept_language');
     }
-    public set acceptLanguage(value: string ) {
+    public set acceptLanguage(value: string | undefined) {
       this._acceptLanguage = value;
     }
     public resetAcceptLanguage() {
@@ -2056,11 +2410,11 @@ export namespace ServiceCatalog {
     }
 
     // active - computed: false, optional: true, required: false
-    private _active?: boolean | cdktf.IResolvable;
+    private _active?: boolean | cdktf.IResolvable | undefined; 
     public get active() {
-      return this.getBooleanAttribute('active');
+      return this.getBooleanAttribute('active') as any;
     }
-    public set active(value: boolean | cdktf.IResolvable ) {
+    public set active(value: boolean | cdktf.IResolvable | undefined) {
       this._active = value;
     }
     public resetActive() {
@@ -2077,11 +2431,11 @@ export namespace ServiceCatalog {
     }
 
     // description - computed: true, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -2093,11 +2447,11 @@ export namespace ServiceCatalog {
     }
 
     // disable_template_validation - computed: false, optional: true, required: false
-    private _disableTemplateValidation?: boolean | cdktf.IResolvable;
+    private _disableTemplateValidation?: boolean | cdktf.IResolvable | undefined; 
     public get disableTemplateValidation() {
-      return this.getBooleanAttribute('disable_template_validation');
+      return this.getBooleanAttribute('disable_template_validation') as any;
     }
-    public set disableTemplateValidation(value: boolean | cdktf.IResolvable ) {
+    public set disableTemplateValidation(value: boolean | cdktf.IResolvable | undefined) {
       this._disableTemplateValidation = value;
     }
     public resetDisableTemplateValidation() {
@@ -2109,11 +2463,11 @@ export namespace ServiceCatalog {
     }
 
     // guidance - computed: false, optional: true, required: false
-    private _guidance?: string;
+    private _guidance?: string | undefined; 
     public get guidance() {
       return this.getStringAttribute('guidance');
     }
-    public set guidance(value: string ) {
+    public set guidance(value: string | undefined) {
       this._guidance = value;
     }
     public resetGuidance() {
@@ -2130,11 +2484,11 @@ export namespace ServiceCatalog {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -2146,7 +2500,7 @@ export namespace ServiceCatalog {
     }
 
     // product_id - computed: false, optional: false, required: true
-    private _productId: string;
+    private _productId?: string; 
     public get productId() {
       return this.getStringAttribute('product_id');
     }
@@ -2159,11 +2513,11 @@ export namespace ServiceCatalog {
     }
 
     // template_physical_id - computed: false, optional: true, required: false
-    private _templatePhysicalId?: string;
+    private _templatePhysicalId?: string | undefined; 
     public get templatePhysicalId() {
       return this.getStringAttribute('template_physical_id');
     }
-    public set templatePhysicalId(value: string ) {
+    public set templatePhysicalId(value: string | undefined) {
       this._templatePhysicalId = value;
     }
     public resetTemplatePhysicalId() {
@@ -2175,11 +2529,11 @@ export namespace ServiceCatalog {
     }
 
     // template_url - computed: false, optional: true, required: false
-    private _templateUrl?: string;
+    private _templateUrl?: string | undefined; 
     public get templateUrl() {
       return this.getStringAttribute('template_url');
     }
-    public set templateUrl(value: string ) {
+    public set templateUrl(value: string | undefined) {
       this._templateUrl = value;
     }
     public resetTemplateUrl() {
@@ -2191,11 +2545,11 @@ export namespace ServiceCatalog {
     }
 
     // type - computed: false, optional: true, required: false
-    private _type?: string;
+    private _type?: string | undefined; 
     public get type() {
       return this.getStringAttribute('type');
     }
-    public set type(value: string ) {
+    public set type(value: string | undefined) {
       this._type = value;
     }
     public resetType() {
@@ -2243,7 +2597,7 @@ export namespace ServiceCatalog {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_service_action.html#definition ServicecatalogServiceAction#definition}
     */
-    readonly definition: ServicecatalogServiceActionDefinition[];
+    readonly definition: ServicecatalogServiceActionDefinition;
   }
   export interface ServicecatalogServiceActionDefinition {
     /**
@@ -2268,8 +2622,11 @@ export namespace ServiceCatalog {
     readonly version: string;
   }
 
-  function servicecatalogServiceActionDefinitionToTerraform(struct?: ServicecatalogServiceActionDefinition): any {
+  function servicecatalogServiceActionDefinitionToTerraform(struct?: ServicecatalogServiceActionDefinitionOutputReference | ServicecatalogServiceActionDefinition): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       assume_role: cdktf.stringToTerraform(struct!.assumeRole),
       name: cdktf.stringToTerraform(struct!.name),
@@ -2279,6 +2636,90 @@ export namespace ServiceCatalog {
     }
   }
 
+  export class ServicecatalogServiceActionDefinitionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // assume_role - computed: false, optional: true, required: false
+    private _assumeRole?: string | undefined; 
+    public get assumeRole() {
+      return this.getStringAttribute('assume_role');
+    }
+    public set assumeRole(value: string | undefined) {
+      this._assumeRole = value;
+    }
+    public resetAssumeRole() {
+      this._assumeRole = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get assumeRoleInput() {
+      return this._assumeRole
+    }
+
+    // name - computed: false, optional: false, required: true
+    private _name?: string; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string) {
+      this._name = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+
+    // parameters - computed: false, optional: true, required: false
+    private _parameters?: string | undefined; 
+    public get parameters() {
+      return this.getStringAttribute('parameters');
+    }
+    public set parameters(value: string | undefined) {
+      this._parameters = value;
+    }
+    public resetParameters() {
+      this._parameters = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get parametersInput() {
+      return this._parameters
+    }
+
+    // type - computed: false, optional: true, required: false
+    private _type?: string | undefined; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string | undefined) {
+      this._type = value;
+    }
+    public resetType() {
+      this._type = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+
+    // version - computed: false, optional: false, required: true
+    private _version?: string; 
+    public get version() {
+      return this.getStringAttribute('version');
+    }
+    public set version(value: string) {
+      this._version = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get versionInput() {
+      return this._version
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/servicecatalog_service_action.html aws_servicecatalog_service_action}
@@ -2323,11 +2764,11 @@ export namespace ServiceCatalog {
     // ==========
 
     // accept_language - computed: false, optional: true, required: false
-    private _acceptLanguage?: string;
+    private _acceptLanguage?: string | undefined; 
     public get acceptLanguage() {
       return this.getStringAttribute('accept_language');
     }
-    public set acceptLanguage(value: string ) {
+    public set acceptLanguage(value: string | undefined) {
       this._acceptLanguage = value;
     }
     public resetAcceptLanguage() {
@@ -2339,11 +2780,11 @@ export namespace ServiceCatalog {
     }
 
     // description - computed: true, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -2360,7 +2801,7 @@ export namespace ServiceCatalog {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2373,11 +2814,12 @@ export namespace ServiceCatalog {
     }
 
     // definition - computed: false, optional: false, required: true
-    private _definition: ServicecatalogServiceActionDefinition[];
+    private _definition?: ServicecatalogServiceActionDefinition; 
+    private __definitionOutput = new ServicecatalogServiceActionDefinitionOutputReference(this as any, "definition", true);
     public get definition() {
-      return this.interpolationForAttribute('definition') as any;
+      return this.__definitionOutput;
     }
-    public set definition(value: ServicecatalogServiceActionDefinition[]) {
+    public putDefinition(value: ServicecatalogServiceActionDefinition) {
       this._definition = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -2394,7 +2836,7 @@ export namespace ServiceCatalog {
         accept_language: cdktf.stringToTerraform(this._acceptLanguage),
         description: cdktf.stringToTerraform(this._description),
         name: cdktf.stringToTerraform(this._name),
-        definition: cdktf.listMapper(servicecatalogServiceActionDefinitionToTerraform)(this._definition),
+        definition: servicecatalogServiceActionDefinitionToTerraform(this._definition),
       };
     }
   }
@@ -2455,11 +2897,11 @@ export namespace ServiceCatalog {
     // ==========
 
     // active - computed: false, optional: true, required: false
-    private _active?: boolean | cdktf.IResolvable;
+    private _active?: boolean | cdktf.IResolvable | undefined; 
     public get active() {
-      return this.getBooleanAttribute('active');
+      return this.getBooleanAttribute('active') as any;
     }
-    public set active(value: boolean | cdktf.IResolvable ) {
+    public set active(value: boolean | cdktf.IResolvable | undefined) {
       this._active = value;
     }
     public resetActive() {
@@ -2476,7 +2918,7 @@ export namespace ServiceCatalog {
     }
 
     // key - computed: false, optional: false, required: true
-    private _key: string;
+    private _key?: string; 
     public get key() {
       return this.getStringAttribute('key');
     }
@@ -2494,7 +2936,7 @@ export namespace ServiceCatalog {
     }
 
     // value - computed: false, optional: false, required: true
-    private _value: string;
+    private _value?: string; 
     public get value() {
       return this.getStringAttribute('value');
     }
@@ -2590,7 +3032,7 @@ export namespace ServiceCatalog {
     }
 
     // resource_id - computed: false, optional: false, required: true
-    private _resourceId: string;
+    private _resourceId?: string; 
     public get resourceId() {
       return this.getStringAttribute('resource_id');
     }
@@ -2608,7 +3050,7 @@ export namespace ServiceCatalog {
     }
 
     // tag_option_id - computed: false, optional: false, required: true
-    private _tagOptionId: string;
+    private _tagOptionId?: string; 
     public get tagOptionId() {
       return this.getStringAttribute('tag_option_id');
     }
@@ -2688,11 +3130,11 @@ export namespace ServiceCatalog {
     // ==========
 
     // accept_language - computed: false, optional: true, required: false
-    private _acceptLanguage?: string;
+    private _acceptLanguage?: string | undefined; 
     public get acceptLanguage() {
       return this.getStringAttribute('accept_language');
     }
-    public set acceptLanguage(value: string ) {
+    public set acceptLanguage(value: string | undefined) {
       this._acceptLanguage = value;
     }
     public resetAcceptLanguage() {
@@ -2704,11 +3146,11 @@ export namespace ServiceCatalog {
     }
 
     // description - computed: true, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -2720,7 +3162,7 @@ export namespace ServiceCatalog {
     }
 
     // id - computed: false, optional: false, required: true
-    private _id: string;
+    private _id?: string; 
     public get id() {
       return this.getStringAttribute('id');
     }
@@ -2800,6 +3242,7 @@ export namespace ServiceCatalog {
 
     // constraint_summaries - computed: true, optional: false, required: false
     public get constraintSummaries() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('constraint_summaries') as any;
     }
 
@@ -2815,6 +3258,7 @@ export namespace ServiceCatalog {
 
     // tags - computed: true, optional: false, required: false
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
   }
@@ -2860,11 +3304,11 @@ export namespace ServiceCatalog {
     // ==========
 
     // accept_language - computed: false, optional: true, required: false
-    private _acceptLanguage?: string;
+    private _acceptLanguage?: string | undefined; 
     public get acceptLanguage() {
       return this.getStringAttribute('accept_language');
     }
-    public set acceptLanguage(value: string ) {
+    public set acceptLanguage(value: string | undefined) {
       this._acceptLanguage = value;
     }
     public resetAcceptLanguage() {
@@ -2881,7 +3325,7 @@ export namespace ServiceCatalog {
     }
 
     // product_id - computed: false, optional: false, required: true
-    private _productId: string;
+    private _productId?: string; 
     public get productId() {
       return this.getStringAttribute('product_id');
     }
@@ -2966,11 +3410,11 @@ export namespace ServiceCatalog {
     // ==========
 
     // accept_language - computed: false, optional: true, required: false
-    private _acceptLanguage?: string;
+    private _acceptLanguage?: string | undefined; 
     public get acceptLanguage() {
       return this.getStringAttribute('accept_language');
     }
-    public set acceptLanguage(value: string ) {
+    public set acceptLanguage(value: string | undefined) {
       this._acceptLanguage = value;
     }
     public resetAcceptLanguage() {
@@ -2997,7 +3441,7 @@ export namespace ServiceCatalog {
     }
 
     // id - computed: false, optional: false, required: true
-    private _id: string;
+    private _id?: string; 
     public get id() {
       return this.getStringAttribute('id');
     }
@@ -3020,11 +3464,12 @@ export namespace ServiceCatalog {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3136,11 +3581,11 @@ export namespace ServiceCatalog {
     // ==========
 
     // accept_language - computed: false, optional: true, required: false
-    private _acceptLanguage?: string;
+    private _acceptLanguage?: string | undefined; 
     public get acceptLanguage() {
       return this.getStringAttribute('accept_language');
     }
-    public set acceptLanguage(value: string ) {
+    public set acceptLanguage(value: string | undefined) {
       this._acceptLanguage = value;
     }
     public resetAcceptLanguage() {
@@ -3162,7 +3607,7 @@ export namespace ServiceCatalog {
     }
 
     // portfolio_id - computed: false, optional: false, required: true
-    private _portfolioId: string;
+    private _portfolioId?: string; 
     public get portfolioId() {
       return this.getStringAttribute('portfolio_id');
     }
@@ -3175,11 +3620,11 @@ export namespace ServiceCatalog {
     }
 
     // product_id - computed: false, optional: true, required: false
-    private _productId?: string;
+    private _productId?: string | undefined; 
     public get productId() {
       return this.getStringAttribute('product_id');
     }
-    public set productId(value: string ) {
+    public set productId(value: string | undefined) {
       this._productId = value;
     }
     public resetProductId() {
@@ -3259,11 +3704,11 @@ export namespace ServiceCatalog {
     // ==========
 
     // accept_language - computed: false, optional: true, required: false
-    private _acceptLanguage?: string;
+    private _acceptLanguage?: string | undefined; 
     public get acceptLanguage() {
       return this.getStringAttribute('accept_language');
     }
-    public set acceptLanguage(value: string ) {
+    public set acceptLanguage(value: string | undefined) {
       this._acceptLanguage = value;
     }
     public resetAcceptLanguage() {
@@ -3296,11 +3741,11 @@ export namespace ServiceCatalog {
 
     // has_default_path - computed: true, optional: false, required: false
     public get hasDefaultPath() {
-      return this.getBooleanAttribute('has_default_path');
+      return this.getBooleanAttribute('has_default_path') as any;
     }
 
     // id - computed: false, optional: false, required: true
-    private _id: string;
+    private _id?: string; 
     public get id() {
       return this.getStringAttribute('id');
     }
@@ -3343,11 +3788,12 @@ export namespace ServiceCatalog {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {

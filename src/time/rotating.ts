@@ -113,11 +113,11 @@ export class Rotating extends cdktf.TerraformResource {
   }
 
   // rfc3339 - computed: true, optional: true, required: false
-  private _rfc3339?: string;
+  private _rfc3339?: string | undefined; 
   public get rfc3339() {
     return this.getStringAttribute('rfc3339');
   }
-  public set rfc3339(value: string) {
+  public set rfc3339(value: string | undefined) {
     this._rfc3339 = value;
   }
   public resetRfc3339() {
@@ -129,11 +129,11 @@ export class Rotating extends cdktf.TerraformResource {
   }
 
   // rotation_days - computed: false, optional: true, required: false
-  private _rotationDays?: number;
+  private _rotationDays?: number | undefined; 
   public get rotationDays() {
     return this.getNumberAttribute('rotation_days');
   }
-  public set rotationDays(value: number ) {
+  public set rotationDays(value: number | undefined) {
     this._rotationDays = value;
   }
   public resetRotationDays() {
@@ -145,11 +145,11 @@ export class Rotating extends cdktf.TerraformResource {
   }
 
   // rotation_hours - computed: false, optional: true, required: false
-  private _rotationHours?: number;
+  private _rotationHours?: number | undefined; 
   public get rotationHours() {
     return this.getNumberAttribute('rotation_hours');
   }
-  public set rotationHours(value: number ) {
+  public set rotationHours(value: number | undefined) {
     this._rotationHours = value;
   }
   public resetRotationHours() {
@@ -161,11 +161,11 @@ export class Rotating extends cdktf.TerraformResource {
   }
 
   // rotation_minutes - computed: false, optional: true, required: false
-  private _rotationMinutes?: number;
+  private _rotationMinutes?: number | undefined; 
   public get rotationMinutes() {
     return this.getNumberAttribute('rotation_minutes');
   }
-  public set rotationMinutes(value: number ) {
+  public set rotationMinutes(value: number | undefined) {
     this._rotationMinutes = value;
   }
   public resetRotationMinutes() {
@@ -177,11 +177,11 @@ export class Rotating extends cdktf.TerraformResource {
   }
 
   // rotation_months - computed: false, optional: true, required: false
-  private _rotationMonths?: number;
+  private _rotationMonths?: number | undefined; 
   public get rotationMonths() {
     return this.getNumberAttribute('rotation_months');
   }
-  public set rotationMonths(value: number ) {
+  public set rotationMonths(value: number | undefined) {
     this._rotationMonths = value;
   }
   public resetRotationMonths() {
@@ -193,11 +193,11 @@ export class Rotating extends cdktf.TerraformResource {
   }
 
   // rotation_rfc3339 - computed: true, optional: true, required: false
-  private _rotationRfc3339?: string;
+  private _rotationRfc3339?: string | undefined; 
   public get rotationRfc3339() {
     return this.getStringAttribute('rotation_rfc3339');
   }
-  public set rotationRfc3339(value: string) {
+  public set rotationRfc3339(value: string | undefined) {
     this._rotationRfc3339 = value;
   }
   public resetRotationRfc3339() {
@@ -209,11 +209,11 @@ export class Rotating extends cdktf.TerraformResource {
   }
 
   // rotation_years - computed: false, optional: true, required: false
-  private _rotationYears?: number;
+  private _rotationYears?: number | undefined; 
   public get rotationYears() {
     return this.getNumberAttribute('rotation_years');
   }
-  public set rotationYears(value: number ) {
+  public set rotationYears(value: number | undefined) {
     this._rotationYears = value;
   }
   public resetRotationYears() {
@@ -230,11 +230,12 @@ export class Rotating extends cdktf.TerraformResource {
   }
 
   // triggers - computed: false, optional: true, required: false
-  private _triggers?: { [key: string]: string } | cdktf.IResolvable;
+  private _triggers?: { [key: string]: string } | cdktf.IResolvable | undefined; 
   public get triggers() {
+    // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('triggers') as any;
   }
-  public set triggers(value: { [key: string]: string } | cdktf.IResolvable ) {
+  public set triggers(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
     this._triggers = value;
   }
   public resetTriggers() {

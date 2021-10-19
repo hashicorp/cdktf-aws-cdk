@@ -59,7 +59,7 @@ export namespace Lightsail {
     }
 
     // domain_name - computed: false, optional: false, required: true
-    private _domainName: string;
+    private _domainName?: string; 
     public get domainName() {
       return this.getStringAttribute('domain_name');
     }
@@ -173,7 +173,7 @@ export namespace Lightsail {
     }
 
     // availability_zone - computed: false, optional: false, required: true
-    private _availabilityZone: string;
+    private _availabilityZone?: string; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
@@ -186,7 +186,7 @@ export namespace Lightsail {
     }
 
     // blueprint_id - computed: false, optional: false, required: true
-    private _blueprintId: string;
+    private _blueprintId?: string; 
     public get blueprintId() {
       return this.getStringAttribute('blueprint_id');
     }
@@ -199,7 +199,7 @@ export namespace Lightsail {
     }
 
     // bundle_id - computed: false, optional: false, required: true
-    private _bundleId: string;
+    private _bundleId?: string; 
     public get bundleId() {
       return this.getStringAttribute('bundle_id');
     }
@@ -238,15 +238,15 @@ export namespace Lightsail {
 
     // is_static_ip - computed: true, optional: false, required: false
     public get isStaticIp() {
-      return this.getBooleanAttribute('is_static_ip');
+      return this.getBooleanAttribute('is_static_ip') as any;
     }
 
     // key_pair_name - computed: false, optional: true, required: false
-    private _keyPairName?: string;
+    private _keyPairName?: string | undefined; 
     public get keyPairName() {
       return this.getStringAttribute('key_pair_name');
     }
-    public set keyPairName(value: string ) {
+    public set keyPairName(value: string | undefined) {
       this._keyPairName = value;
     }
     public resetKeyPairName() {
@@ -258,7 +258,7 @@ export namespace Lightsail {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -286,11 +286,12 @@ export namespace Lightsail {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -302,11 +303,12 @@ export namespace Lightsail {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -318,11 +320,11 @@ export namespace Lightsail {
     }
 
     // user_data - computed: false, optional: true, required: false
-    private _userData?: string;
+    private _userData?: string | undefined; 
     public get userData() {
       return this.getStringAttribute('user_data');
     }
-    public set userData(value: string ) {
+    public set userData(value: string | undefined) {
       this._userData = value;
     }
     public resetUserData() {
@@ -388,6 +390,9 @@ export namespace Lightsail {
 
   function lightsailInstancePublicPortsPortInfoToTerraform(struct?: LightsailInstancePublicPortsPortInfo): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cidrs: cdktf.listMapper(cdktf.stringToTerraform)(struct!.cidrs),
       from_port: cdktf.numberToTerraform(struct!.fromPort),
@@ -443,7 +448,7 @@ export namespace Lightsail {
     }
 
     // instance_name - computed: false, optional: false, required: true
-    private _instanceName: string;
+    private _instanceName?: string; 
     public get instanceName() {
       return this.getStringAttribute('instance_name');
     }
@@ -456,8 +461,9 @@ export namespace Lightsail {
     }
 
     // port_info - computed: false, optional: false, required: true
-    private _portInfo: LightsailInstancePublicPortsPortInfo[];
+    private _portInfo?: LightsailInstancePublicPortsPortInfo[]; 
     public get portInfo() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('port_info') as any;
     }
     public set portInfo(value: LightsailInstancePublicPortsPortInfo[]) {
@@ -566,11 +572,11 @@ export namespace Lightsail {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -582,11 +588,11 @@ export namespace Lightsail {
     }
 
     // name_prefix - computed: false, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string ) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -598,11 +604,11 @@ export namespace Lightsail {
     }
 
     // pgp_key - computed: false, optional: true, required: false
-    private _pgpKey?: string;
+    private _pgpKey?: string | undefined; 
     public get pgpKey() {
       return this.getStringAttribute('pgp_key');
     }
-    public set pgpKey(value: string ) {
+    public set pgpKey(value: string | undefined) {
       this._pgpKey = value;
     }
     public resetPgpKey() {
@@ -619,11 +625,11 @@ export namespace Lightsail {
     }
 
     // public_key - computed: true, optional: true, required: false
-    private _publicKey?: string;
+    private _publicKey?: string | undefined; 
     public get publicKey() {
       return this.getStringAttribute('public_key');
     }
-    public set publicKey(value: string) {
+    public set publicKey(value: string | undefined) {
       this._publicKey = value;
     }
     public resetPublicKey() {
@@ -709,7 +715,7 @@ export namespace Lightsail {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -793,7 +799,7 @@ export namespace Lightsail {
     }
 
     // instance_name - computed: false, optional: false, required: true
-    private _instanceName: string;
+    private _instanceName?: string; 
     public get instanceName() {
       return this.getStringAttribute('instance_name');
     }
@@ -811,7 +817,7 @@ export namespace Lightsail {
     }
 
     // static_ip_name - computed: false, optional: false, required: true
-    private _staticIpName: string;
+    private _staticIpName?: string; 
     public get staticIpName() {
       return this.getStringAttribute('static_ip_name');
     }

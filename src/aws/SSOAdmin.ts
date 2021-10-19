@@ -84,7 +84,7 @@ export namespace SSOAdmin {
     }
 
     // instance_arn - computed: false, optional: false, required: true
-    private _instanceArn: string;
+    private _instanceArn?: string; 
     public get instanceArn() {
       return this.getStringAttribute('instance_arn');
     }
@@ -97,7 +97,7 @@ export namespace SSOAdmin {
     }
 
     // permission_set_arn - computed: false, optional: false, required: true
-    private _permissionSetArn: string;
+    private _permissionSetArn?: string; 
     public get permissionSetArn() {
       return this.getStringAttribute('permission_set_arn');
     }
@@ -110,7 +110,7 @@ export namespace SSOAdmin {
     }
 
     // principal_id - computed: false, optional: false, required: true
-    private _principalId: string;
+    private _principalId?: string; 
     public get principalId() {
       return this.getStringAttribute('principal_id');
     }
@@ -123,7 +123,7 @@ export namespace SSOAdmin {
     }
 
     // principal_type - computed: false, optional: false, required: true
-    private _principalType: string;
+    private _principalType?: string; 
     public get principalType() {
       return this.getStringAttribute('principal_type');
     }
@@ -136,7 +136,7 @@ export namespace SSOAdmin {
     }
 
     // target_id - computed: false, optional: false, required: true
-    private _targetId: string;
+    private _targetId?: string; 
     public get targetId() {
       return this.getStringAttribute('target_id');
     }
@@ -149,11 +149,11 @@ export namespace SSOAdmin {
     }
 
     // target_type - computed: false, optional: true, required: false
-    private _targetType?: string;
+    private _targetType?: string | undefined; 
     public get targetType() {
       return this.getStringAttribute('target_type');
     }
-    public set targetType(value: string ) {
+    public set targetType(value: string | undefined) {
       this._targetType = value;
     }
     public resetTargetType() {
@@ -241,7 +241,7 @@ export namespace SSOAdmin {
     }
 
     // instance_arn - computed: false, optional: false, required: true
-    private _instanceArn: string;
+    private _instanceArn?: string; 
     public get instanceArn() {
       return this.getStringAttribute('instance_arn');
     }
@@ -254,7 +254,7 @@ export namespace SSOAdmin {
     }
 
     // managed_policy_arn - computed: false, optional: false, required: true
-    private _managedPolicyArn: string;
+    private _managedPolicyArn?: string; 
     public get managedPolicyArn() {
       return this.getStringAttribute('managed_policy_arn');
     }
@@ -272,7 +272,7 @@ export namespace SSOAdmin {
     }
 
     // permission_set_arn - computed: false, optional: false, required: true
-    private _permissionSetArn: string;
+    private _permissionSetArn?: string; 
     public get permissionSetArn() {
       return this.getStringAttribute('permission_set_arn');
     }
@@ -383,11 +383,11 @@ export namespace SSOAdmin {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -404,7 +404,7 @@ export namespace SSOAdmin {
     }
 
     // instance_arn - computed: false, optional: false, required: true
-    private _instanceArn: string;
+    private _instanceArn?: string; 
     public get instanceArn() {
       return this.getStringAttribute('instance_arn');
     }
@@ -417,7 +417,7 @@ export namespace SSOAdmin {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -430,11 +430,11 @@ export namespace SSOAdmin {
     }
 
     // relay_state - computed: false, optional: true, required: false
-    private _relayState?: string;
+    private _relayState?: string | undefined; 
     public get relayState() {
       return this.getStringAttribute('relay_state');
     }
-    public set relayState(value: string ) {
+    public set relayState(value: string | undefined) {
       this._relayState = value;
     }
     public resetRelayState() {
@@ -446,11 +446,11 @@ export namespace SSOAdmin {
     }
 
     // session_duration - computed: false, optional: true, required: false
-    private _sessionDuration?: string;
+    private _sessionDuration?: string | undefined; 
     public get sessionDuration() {
       return this.getStringAttribute('session_duration');
     }
-    public set sessionDuration(value: string ) {
+    public set sessionDuration(value: string | undefined) {
       this._sessionDuration = value;
     }
     public resetSessionDuration() {
@@ -462,11 +462,12 @@ export namespace SSOAdmin {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -478,11 +479,12 @@ export namespace SSOAdmin {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -571,7 +573,7 @@ export namespace SSOAdmin {
     }
 
     // inline_policy - computed: false, optional: false, required: true
-    private _inlinePolicy: string;
+    private _inlinePolicy?: string; 
     public get inlinePolicy() {
       return this.getStringAttribute('inline_policy');
     }
@@ -584,7 +586,7 @@ export namespace SSOAdmin {
     }
 
     // instance_arn - computed: false, optional: false, required: true
-    private _instanceArn: string;
+    private _instanceArn?: string; 
     public get instanceArn() {
       return this.getStringAttribute('instance_arn');
     }
@@ -597,7 +599,7 @@ export namespace SSOAdmin {
     }
 
     // permission_set_arn - computed: false, optional: false, required: true
-    private _permissionSetArn: string;
+    private _permissionSetArn?: string; 
     public get permissionSetArn() {
       return this.getStringAttribute('permission_set_arn');
     }
@@ -763,7 +765,7 @@ export namespace SSOAdmin {
     }
 
     // instance_arn - computed: false, optional: false, required: true
-    private _instanceArn: string;
+    private _instanceArn?: string; 
     public get instanceArn() {
       return this.getStringAttribute('instance_arn');
     }
@@ -776,11 +778,11 @@ export namespace SSOAdmin {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -802,11 +804,12 @@ export namespace SSOAdmin {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {

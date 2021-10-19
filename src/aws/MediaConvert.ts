@@ -37,7 +37,7 @@ export namespace MediaConvert {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/media_convert_queue.html#reservation_plan_settings MediaConvertQueue#reservation_plan_settings}
     */
-    readonly reservationPlanSettings?: MediaConvertQueueReservationPlanSettings[];
+    readonly reservationPlanSettings?: MediaConvertQueueReservationPlanSettings;
   }
   export interface MediaConvertQueueReservationPlanSettings {
     /**
@@ -54,8 +54,11 @@ export namespace MediaConvert {
     readonly reservedSlots: number;
   }
 
-  function mediaConvertQueueReservationPlanSettingsToTerraform(struct?: MediaConvertQueueReservationPlanSettings): any {
+  function mediaConvertQueueReservationPlanSettingsToTerraform(struct?: MediaConvertQueueReservationPlanSettingsOutputReference | MediaConvertQueueReservationPlanSettings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       commitment: cdktf.stringToTerraform(struct!.commitment),
       renewal_type: cdktf.stringToTerraform(struct!.renewalType),
@@ -63,6 +66,55 @@ export namespace MediaConvert {
     }
   }
 
+  export class MediaConvertQueueReservationPlanSettingsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // commitment - computed: false, optional: false, required: true
+    private _commitment?: string; 
+    public get commitment() {
+      return this.getStringAttribute('commitment');
+    }
+    public set commitment(value: string) {
+      this._commitment = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get commitmentInput() {
+      return this._commitment
+    }
+
+    // renewal_type - computed: false, optional: false, required: true
+    private _renewalType?: string; 
+    public get renewalType() {
+      return this.getStringAttribute('renewal_type');
+    }
+    public set renewalType(value: string) {
+      this._renewalType = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get renewalTypeInput() {
+      return this._renewalType
+    }
+
+    // reserved_slots - computed: false, optional: false, required: true
+    private _reservedSlots?: number; 
+    public get reservedSlots() {
+      return this.getNumberAttribute('reserved_slots');
+    }
+    public set reservedSlots(value: number) {
+      this._reservedSlots = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get reservedSlotsInput() {
+      return this._reservedSlots
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/media_convert_queue.html aws_media_convert_queue}
@@ -115,11 +167,11 @@ export namespace MediaConvert {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -136,7 +188,7 @@ export namespace MediaConvert {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -149,11 +201,11 @@ export namespace MediaConvert {
     }
 
     // pricing_plan - computed: false, optional: true, required: false
-    private _pricingPlan?: string;
+    private _pricingPlan?: string | undefined; 
     public get pricingPlan() {
       return this.getStringAttribute('pricing_plan');
     }
-    public set pricingPlan(value: string ) {
+    public set pricingPlan(value: string | undefined) {
       this._pricingPlan = value;
     }
     public resetPricingPlan() {
@@ -165,11 +217,11 @@ export namespace MediaConvert {
     }
 
     // status - computed: false, optional: true, required: false
-    private _status?: string;
+    private _status?: string | undefined; 
     public get status() {
       return this.getStringAttribute('status');
     }
-    public set status(value: string ) {
+    public set status(value: string | undefined) {
       this._status = value;
     }
     public resetStatus() {
@@ -181,11 +233,12 @@ export namespace MediaConvert {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -197,11 +250,12 @@ export namespace MediaConvert {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -213,11 +267,12 @@ export namespace MediaConvert {
     }
 
     // reservation_plan_settings - computed: false, optional: true, required: false
-    private _reservationPlanSettings?: MediaConvertQueueReservationPlanSettings[];
+    private _reservationPlanSettings?: MediaConvertQueueReservationPlanSettings | undefined; 
+    private __reservationPlanSettingsOutput = new MediaConvertQueueReservationPlanSettingsOutputReference(this as any, "reservation_plan_settings", true);
     public get reservationPlanSettings() {
-      return this.interpolationForAttribute('reservation_plan_settings') as any;
+      return this.__reservationPlanSettingsOutput;
     }
-    public set reservationPlanSettings(value: MediaConvertQueueReservationPlanSettings[] ) {
+    public putReservationPlanSettings(value: MediaConvertQueueReservationPlanSettings | undefined) {
       this._reservationPlanSettings = value;
     }
     public resetReservationPlanSettings() {
@@ -240,7 +295,7 @@ export namespace MediaConvert {
         status: cdktf.stringToTerraform(this._status),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        reservation_plan_settings: cdktf.listMapper(mediaConvertQueueReservationPlanSettingsToTerraform)(this._reservationPlanSettings),
+        reservation_plan_settings: mediaConvertQueueReservationPlanSettingsToTerraform(this._reservationPlanSettings),
       };
     }
   }

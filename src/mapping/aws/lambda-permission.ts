@@ -2,11 +2,11 @@
 
 import { createGuessingResourceMapper } from "../helper";
 import { registerMapping } from "../index";
-import { Lambda } from "../../aws";
+import { LambdaFunction } from "../../aws";
 
 registerMapping("AWS::Lambda::Permission", {
-  resource: createGuessingResourceMapper(Lambda.LambdaPermission),
+  resource: createGuessingResourceMapper(LambdaFunction.LambdaPermission),
   attributes: {
-    Ref: (permission: Lambda.LambdaPermission) => permission.id,
+    Ref: (permission: LambdaFunction.LambdaPermission) => permission.id,
   },
 });

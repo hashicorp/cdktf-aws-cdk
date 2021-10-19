@@ -94,11 +94,11 @@ export namespace CloudWatch {
     // ==========
 
     // actions_enabled - computed: false, optional: true, required: false
-    private _actionsEnabled?: boolean | cdktf.IResolvable;
+    private _actionsEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get actionsEnabled() {
-      return this.getBooleanAttribute('actions_enabled');
+      return this.getBooleanAttribute('actions_enabled') as any;
     }
-    public set actionsEnabled(value: boolean | cdktf.IResolvable ) {
+    public set actionsEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._actionsEnabled = value;
     }
     public resetActionsEnabled() {
@@ -110,11 +110,11 @@ export namespace CloudWatch {
     }
 
     // alarm_actions - computed: false, optional: true, required: false
-    private _alarmActions?: string[];
+    private _alarmActions?: string[] | undefined; 
     public get alarmActions() {
       return this.getListAttribute('alarm_actions');
     }
-    public set alarmActions(value: string[] ) {
+    public set alarmActions(value: string[] | undefined) {
       this._alarmActions = value;
     }
     public resetAlarmActions() {
@@ -126,11 +126,11 @@ export namespace CloudWatch {
     }
 
     // alarm_description - computed: false, optional: true, required: false
-    private _alarmDescription?: string;
+    private _alarmDescription?: string | undefined; 
     public get alarmDescription() {
       return this.getStringAttribute('alarm_description');
     }
-    public set alarmDescription(value: string ) {
+    public set alarmDescription(value: string | undefined) {
       this._alarmDescription = value;
     }
     public resetAlarmDescription() {
@@ -142,7 +142,7 @@ export namespace CloudWatch {
     }
 
     // alarm_name - computed: false, optional: false, required: true
-    private _alarmName: string;
+    private _alarmName?: string; 
     public get alarmName() {
       return this.getStringAttribute('alarm_name');
     }
@@ -155,7 +155,7 @@ export namespace CloudWatch {
     }
 
     // alarm_rule - computed: false, optional: false, required: true
-    private _alarmRule: string;
+    private _alarmRule?: string; 
     public get alarmRule() {
       return this.getStringAttribute('alarm_rule');
     }
@@ -178,11 +178,11 @@ export namespace CloudWatch {
     }
 
     // insufficient_data_actions - computed: false, optional: true, required: false
-    private _insufficientDataActions?: string[];
+    private _insufficientDataActions?: string[] | undefined; 
     public get insufficientDataActions() {
       return this.getListAttribute('insufficient_data_actions');
     }
-    public set insufficientDataActions(value: string[] ) {
+    public set insufficientDataActions(value: string[] | undefined) {
       this._insufficientDataActions = value;
     }
     public resetInsufficientDataActions() {
@@ -194,11 +194,11 @@ export namespace CloudWatch {
     }
 
     // ok_actions - computed: false, optional: true, required: false
-    private _okActions?: string[];
+    private _okActions?: string[] | undefined; 
     public get okActions() {
       return this.getListAttribute('ok_actions');
     }
-    public set okActions(value: string[] ) {
+    public set okActions(value: string[] | undefined) {
       this._okActions = value;
     }
     public resetOkActions() {
@@ -210,11 +210,12 @@ export namespace CloudWatch {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -226,11 +227,12 @@ export namespace CloudWatch {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -316,7 +318,7 @@ export namespace CloudWatch {
     }
 
     // dashboard_body - computed: false, optional: false, required: true
-    private _dashboardBody: string;
+    private _dashboardBody?: string; 
     public get dashboardBody() {
       return this.getStringAttribute('dashboard_body');
     }
@@ -329,7 +331,7 @@ export namespace CloudWatch {
     }
 
     // dashboard_name - computed: false, optional: false, required: true
-    private _dashboardName: string;
+    private _dashboardName?: string; 
     public get dashboardName() {
       return this.getStringAttribute('dashboard_name');
     }
@@ -424,7 +426,7 @@ export namespace CloudWatch {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -437,7 +439,7 @@ export namespace CloudWatch {
     }
 
     // role_arn - computed: false, optional: false, required: true
-    private _roleArn: string;
+    private _roleArn?: string; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
@@ -450,7 +452,7 @@ export namespace CloudWatch {
     }
 
     // target_arn - computed: false, optional: false, required: true
-    private _targetArn: string;
+    private _targetArn?: string; 
     public get targetArn() {
       return this.getStringAttribute('target_arn');
     }
@@ -526,7 +528,7 @@ export namespace CloudWatch {
     // ==========
 
     // access_policy - computed: false, optional: false, required: true
-    private _accessPolicy: string;
+    private _accessPolicy?: string; 
     public get accessPolicy() {
       return this.getStringAttribute('access_policy');
     }
@@ -539,7 +541,7 @@ export namespace CloudWatch {
     }
 
     // destination_name - computed: false, optional: false, required: true
-    private _destinationName: string;
+    private _destinationName?: string; 
     public get destinationName() {
       return this.getStringAttribute('destination_name');
     }
@@ -649,11 +651,11 @@ export namespace CloudWatch {
     }
 
     // kms_key_id - computed: false, optional: true, required: false
-    private _kmsKeyId?: string;
+    private _kmsKeyId?: string | undefined; 
     public get kmsKeyId() {
       return this.getStringAttribute('kms_key_id');
     }
-    public set kmsKeyId(value: string ) {
+    public set kmsKeyId(value: string | undefined) {
       this._kmsKeyId = value;
     }
     public resetKmsKeyId() {
@@ -665,11 +667,11 @@ export namespace CloudWatch {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -681,11 +683,11 @@ export namespace CloudWatch {
     }
 
     // name_prefix - computed: false, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string ) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -697,11 +699,11 @@ export namespace CloudWatch {
     }
 
     // retention_in_days - computed: false, optional: true, required: false
-    private _retentionInDays?: number;
+    private _retentionInDays?: number | undefined; 
     public get retentionInDays() {
       return this.getNumberAttribute('retention_in_days');
     }
-    public set retentionInDays(value: number ) {
+    public set retentionInDays(value: number | undefined) {
       this._retentionInDays = value;
     }
     public resetRetentionInDays() {
@@ -713,11 +715,12 @@ export namespace CloudWatch {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -729,11 +732,12 @@ export namespace CloudWatch {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -777,7 +781,7 @@ export namespace CloudWatch {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_log_metric_filter.html#metric_transformation CloudwatchLogMetricFilter#metric_transformation}
     */
-    readonly metricTransformation: CloudwatchLogMetricFilterMetricTransformation[];
+    readonly metricTransformation: CloudwatchLogMetricFilterMetricTransformation;
   }
   export interface CloudwatchLogMetricFilterMetricTransformation {
     /**
@@ -806,8 +810,11 @@ export namespace CloudWatch {
     readonly value: string;
   }
 
-  function cloudwatchLogMetricFilterMetricTransformationToTerraform(struct?: CloudwatchLogMetricFilterMetricTransformation): any {
+  function cloudwatchLogMetricFilterMetricTransformationToTerraform(struct?: CloudwatchLogMetricFilterMetricTransformationOutputReference | CloudwatchLogMetricFilterMetricTransformation): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       default_value: cdktf.stringToTerraform(struct!.defaultValue),
       dimensions: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.dimensions),
@@ -818,6 +825,104 @@ export namespace CloudWatch {
     }
   }
 
+  export class CloudwatchLogMetricFilterMetricTransformationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // default_value - computed: false, optional: true, required: false
+    private _defaultValue?: string | undefined; 
+    public get defaultValue() {
+      return this.getStringAttribute('default_value');
+    }
+    public set defaultValue(value: string | undefined) {
+      this._defaultValue = value;
+    }
+    public resetDefaultValue() {
+      this._defaultValue = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get defaultValueInput() {
+      return this._defaultValue
+    }
+
+    // dimensions - computed: false, optional: true, required: false
+    private _dimensions?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get dimensions() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('dimensions') as any;
+    }
+    public set dimensions(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._dimensions = value;
+    }
+    public resetDimensions() {
+      this._dimensions = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get dimensionsInput() {
+      return this._dimensions
+    }
+
+    // name - computed: false, optional: false, required: true
+    private _name?: string; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string) {
+      this._name = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+
+    // namespace - computed: false, optional: false, required: true
+    private _namespace?: string; 
+    public get namespace() {
+      return this.getStringAttribute('namespace');
+    }
+    public set namespace(value: string) {
+      this._namespace = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get namespaceInput() {
+      return this._namespace
+    }
+
+    // unit - computed: false, optional: true, required: false
+    private _unit?: string | undefined; 
+    public get unit() {
+      return this.getStringAttribute('unit');
+    }
+    public set unit(value: string | undefined) {
+      this._unit = value;
+    }
+    public resetUnit() {
+      this._unit = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get unitInput() {
+      return this._unit
+    }
+
+    // value - computed: false, optional: false, required: true
+    private _value?: string; 
+    public get value() {
+      return this.getStringAttribute('value');
+    }
+    public set value(value: string) {
+      this._value = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valueInput() {
+      return this._value
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_log_metric_filter.html aws_cloudwatch_log_metric_filter}
@@ -867,7 +972,7 @@ export namespace CloudWatch {
     }
 
     // log_group_name - computed: false, optional: false, required: true
-    private _logGroupName: string;
+    private _logGroupName?: string; 
     public get logGroupName() {
       return this.getStringAttribute('log_group_name');
     }
@@ -880,7 +985,7 @@ export namespace CloudWatch {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -893,7 +998,7 @@ export namespace CloudWatch {
     }
 
     // pattern - computed: false, optional: false, required: true
-    private _pattern: string;
+    private _pattern?: string; 
     public get pattern() {
       return this.getStringAttribute('pattern');
     }
@@ -906,11 +1011,12 @@ export namespace CloudWatch {
     }
 
     // metric_transformation - computed: false, optional: false, required: true
-    private _metricTransformation: CloudwatchLogMetricFilterMetricTransformation[];
+    private _metricTransformation?: CloudwatchLogMetricFilterMetricTransformation; 
+    private __metricTransformationOutput = new CloudwatchLogMetricFilterMetricTransformationOutputReference(this as any, "metric_transformation", true);
     public get metricTransformation() {
-      return this.interpolationForAttribute('metric_transformation') as any;
+      return this.__metricTransformationOutput;
     }
-    public set metricTransformation(value: CloudwatchLogMetricFilterMetricTransformation[]) {
+    public putMetricTransformation(value: CloudwatchLogMetricFilterMetricTransformation) {
       this._metricTransformation = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -927,7 +1033,7 @@ export namespace CloudWatch {
         log_group_name: cdktf.stringToTerraform(this._logGroupName),
         name: cdktf.stringToTerraform(this._name),
         pattern: cdktf.stringToTerraform(this._pattern),
-        metric_transformation: cdktf.listMapper(cloudwatchLogMetricFilterMetricTransformationToTerraform)(this._metricTransformation),
+        metric_transformation: cloudwatchLogMetricFilterMetricTransformationToTerraform(this._metricTransformation),
       };
     }
   }
@@ -988,7 +1094,7 @@ export namespace CloudWatch {
     }
 
     // policy_document - computed: false, optional: false, required: true
-    private _policyDocument: string;
+    private _policyDocument?: string; 
     public get policyDocument() {
       return this.getStringAttribute('policy_document');
     }
@@ -1001,7 +1107,7 @@ export namespace CloudWatch {
     }
 
     // policy_name - computed: false, optional: false, required: true
-    private _policyName: string;
+    private _policyName?: string; 
     public get policyName() {
       return this.getStringAttribute('policy_name');
     }
@@ -1086,7 +1192,7 @@ export namespace CloudWatch {
     }
 
     // log_group_name - computed: false, optional: false, required: true
-    private _logGroupName: string;
+    private _logGroupName?: string; 
     public get logGroupName() {
       return this.getStringAttribute('log_group_name');
     }
@@ -1099,7 +1205,7 @@ export namespace CloudWatch {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1194,7 +1300,7 @@ export namespace CloudWatch {
     // ==========
 
     // destination_arn - computed: false, optional: false, required: true
-    private _destinationArn: string;
+    private _destinationArn?: string; 
     public get destinationArn() {
       return this.getStringAttribute('destination_arn');
     }
@@ -1207,11 +1313,11 @@ export namespace CloudWatch {
     }
 
     // distribution - computed: false, optional: true, required: false
-    private _distribution?: string;
+    private _distribution?: string | undefined; 
     public get distribution() {
       return this.getStringAttribute('distribution');
     }
-    public set distribution(value: string ) {
+    public set distribution(value: string | undefined) {
       this._distribution = value;
     }
     public resetDistribution() {
@@ -1223,7 +1329,7 @@ export namespace CloudWatch {
     }
 
     // filter_pattern - computed: false, optional: false, required: true
-    private _filterPattern: string;
+    private _filterPattern?: string; 
     public get filterPattern() {
       return this.getStringAttribute('filter_pattern');
     }
@@ -1241,7 +1347,7 @@ export namespace CloudWatch {
     }
 
     // log_group_name - computed: false, optional: false, required: true
-    private _logGroupName: string;
+    private _logGroupName?: string; 
     public get logGroupName() {
       return this.getStringAttribute('log_group_name');
     }
@@ -1254,7 +1360,7 @@ export namespace CloudWatch {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1267,11 +1373,11 @@ export namespace CloudWatch {
     }
 
     // role_arn - computed: true, optional: true, required: false
-    private _roleArn?: string;
+    private _roleArn?: string | undefined; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
-    public set roleArn(value: string) {
+    public set roleArn(value: string | undefined) {
       this._roleArn = value;
     }
     public resetRoleArn() {
@@ -1420,8 +1526,11 @@ export namespace CloudWatch {
     readonly unit?: string;
   }
 
-  function cloudwatchMetricAlarmMetricQueryMetricToTerraform(struct?: CloudwatchMetricAlarmMetricQueryMetric): any {
+  function cloudwatchMetricAlarmMetricQueryMetricToTerraform(struct?: CloudwatchMetricAlarmMetricQueryMetricOutputReference | CloudwatchMetricAlarmMetricQueryMetric): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       dimensions: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.dimensions),
       metric_name: cdktf.stringToTerraform(struct!.metricName),
@@ -1432,6 +1541,104 @@ export namespace CloudWatch {
     }
   }
 
+  export class CloudwatchMetricAlarmMetricQueryMetricOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // dimensions - computed: false, optional: true, required: false
+    private _dimensions?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get dimensions() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('dimensions') as any;
+    }
+    public set dimensions(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._dimensions = value;
+    }
+    public resetDimensions() {
+      this._dimensions = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get dimensionsInput() {
+      return this._dimensions
+    }
+
+    // metric_name - computed: false, optional: false, required: true
+    private _metricName?: string; 
+    public get metricName() {
+      return this.getStringAttribute('metric_name');
+    }
+    public set metricName(value: string) {
+      this._metricName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get metricNameInput() {
+      return this._metricName
+    }
+
+    // namespace - computed: false, optional: true, required: false
+    private _namespace?: string | undefined; 
+    public get namespace() {
+      return this.getStringAttribute('namespace');
+    }
+    public set namespace(value: string | undefined) {
+      this._namespace = value;
+    }
+    public resetNamespace() {
+      this._namespace = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get namespaceInput() {
+      return this._namespace
+    }
+
+    // period - computed: false, optional: false, required: true
+    private _period?: number; 
+    public get period() {
+      return this.getNumberAttribute('period');
+    }
+    public set period(value: number) {
+      this._period = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get periodInput() {
+      return this._period
+    }
+
+    // stat - computed: false, optional: false, required: true
+    private _stat?: string; 
+    public get stat() {
+      return this.getStringAttribute('stat');
+    }
+    public set stat(value: string) {
+      this._stat = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statInput() {
+      return this._stat
+    }
+
+    // unit - computed: false, optional: true, required: false
+    private _unit?: string | undefined; 
+    public get unit() {
+      return this.getStringAttribute('unit');
+    }
+    public set unit(value: string | undefined) {
+      this._unit = value;
+    }
+    public resetUnit() {
+      this._unit = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get unitInput() {
+      return this._unit
+    }
+  }
   export interface CloudwatchMetricAlarmMetricQuery {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_alarm.html#account_id CloudwatchMetricAlarm#account_id}
@@ -1458,18 +1665,21 @@ export namespace CloudWatch {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_alarm.html#metric CloudwatchMetricAlarm#metric}
     */
-    readonly metric?: CloudwatchMetricAlarmMetricQueryMetric[];
+    readonly metric?: CloudwatchMetricAlarmMetricQueryMetric;
   }
 
   function cloudwatchMetricAlarmMetricQueryToTerraform(struct?: CloudwatchMetricAlarmMetricQuery): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       account_id: cdktf.stringToTerraform(struct!.accountId),
       expression: cdktf.stringToTerraform(struct!.expression),
       id: cdktf.stringToTerraform(struct!.id),
       label: cdktf.stringToTerraform(struct!.label),
       return_data: cdktf.booleanToTerraform(struct!.returnData),
-      metric: cdktf.listMapper(cloudwatchMetricAlarmMetricQueryMetricToTerraform)(struct!.metric),
+      metric: cloudwatchMetricAlarmMetricQueryMetricToTerraform(struct!.metric),
     }
   }
 
@@ -1536,11 +1746,11 @@ export namespace CloudWatch {
     // ==========
 
     // actions_enabled - computed: false, optional: true, required: false
-    private _actionsEnabled?: boolean | cdktf.IResolvable;
+    private _actionsEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get actionsEnabled() {
-      return this.getBooleanAttribute('actions_enabled');
+      return this.getBooleanAttribute('actions_enabled') as any;
     }
-    public set actionsEnabled(value: boolean | cdktf.IResolvable ) {
+    public set actionsEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._actionsEnabled = value;
     }
     public resetActionsEnabled() {
@@ -1552,11 +1762,11 @@ export namespace CloudWatch {
     }
 
     // alarm_actions - computed: false, optional: true, required: false
-    private _alarmActions?: string[];
+    private _alarmActions?: string[] | undefined; 
     public get alarmActions() {
       return this.getListAttribute('alarm_actions');
     }
-    public set alarmActions(value: string[] ) {
+    public set alarmActions(value: string[] | undefined) {
       this._alarmActions = value;
     }
     public resetAlarmActions() {
@@ -1568,11 +1778,11 @@ export namespace CloudWatch {
     }
 
     // alarm_description - computed: false, optional: true, required: false
-    private _alarmDescription?: string;
+    private _alarmDescription?: string | undefined; 
     public get alarmDescription() {
       return this.getStringAttribute('alarm_description');
     }
-    public set alarmDescription(value: string ) {
+    public set alarmDescription(value: string | undefined) {
       this._alarmDescription = value;
     }
     public resetAlarmDescription() {
@@ -1584,7 +1794,7 @@ export namespace CloudWatch {
     }
 
     // alarm_name - computed: false, optional: false, required: true
-    private _alarmName: string;
+    private _alarmName?: string; 
     public get alarmName() {
       return this.getStringAttribute('alarm_name');
     }
@@ -1602,7 +1812,7 @@ export namespace CloudWatch {
     }
 
     // comparison_operator - computed: false, optional: false, required: true
-    private _comparisonOperator: string;
+    private _comparisonOperator?: string; 
     public get comparisonOperator() {
       return this.getStringAttribute('comparison_operator');
     }
@@ -1615,11 +1825,11 @@ export namespace CloudWatch {
     }
 
     // datapoints_to_alarm - computed: false, optional: true, required: false
-    private _datapointsToAlarm?: number;
+    private _datapointsToAlarm?: number | undefined; 
     public get datapointsToAlarm() {
       return this.getNumberAttribute('datapoints_to_alarm');
     }
-    public set datapointsToAlarm(value: number ) {
+    public set datapointsToAlarm(value: number | undefined) {
       this._datapointsToAlarm = value;
     }
     public resetDatapointsToAlarm() {
@@ -1631,11 +1841,12 @@ export namespace CloudWatch {
     }
 
     // dimensions - computed: false, optional: true, required: false
-    private _dimensions?: { [key: string]: string } | cdktf.IResolvable;
+    private _dimensions?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get dimensions() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('dimensions') as any;
     }
-    public set dimensions(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set dimensions(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._dimensions = value;
     }
     public resetDimensions() {
@@ -1647,11 +1858,11 @@ export namespace CloudWatch {
     }
 
     // evaluate_low_sample_count_percentiles - computed: true, optional: true, required: false
-    private _evaluateLowSampleCountPercentiles?: string;
+    private _evaluateLowSampleCountPercentiles?: string | undefined; 
     public get evaluateLowSampleCountPercentiles() {
       return this.getStringAttribute('evaluate_low_sample_count_percentiles');
     }
-    public set evaluateLowSampleCountPercentiles(value: string) {
+    public set evaluateLowSampleCountPercentiles(value: string | undefined) {
       this._evaluateLowSampleCountPercentiles = value;
     }
     public resetEvaluateLowSampleCountPercentiles() {
@@ -1663,7 +1874,7 @@ export namespace CloudWatch {
     }
 
     // evaluation_periods - computed: false, optional: false, required: true
-    private _evaluationPeriods: number;
+    private _evaluationPeriods?: number; 
     public get evaluationPeriods() {
       return this.getNumberAttribute('evaluation_periods');
     }
@@ -1676,11 +1887,11 @@ export namespace CloudWatch {
     }
 
     // extended_statistic - computed: false, optional: true, required: false
-    private _extendedStatistic?: string;
+    private _extendedStatistic?: string | undefined; 
     public get extendedStatistic() {
       return this.getStringAttribute('extended_statistic');
     }
-    public set extendedStatistic(value: string ) {
+    public set extendedStatistic(value: string | undefined) {
       this._extendedStatistic = value;
     }
     public resetExtendedStatistic() {
@@ -1697,11 +1908,11 @@ export namespace CloudWatch {
     }
 
     // insufficient_data_actions - computed: false, optional: true, required: false
-    private _insufficientDataActions?: string[];
+    private _insufficientDataActions?: string[] | undefined; 
     public get insufficientDataActions() {
       return this.getListAttribute('insufficient_data_actions');
     }
-    public set insufficientDataActions(value: string[] ) {
+    public set insufficientDataActions(value: string[] | undefined) {
       this._insufficientDataActions = value;
     }
     public resetInsufficientDataActions() {
@@ -1713,11 +1924,11 @@ export namespace CloudWatch {
     }
 
     // metric_name - computed: false, optional: true, required: false
-    private _metricName?: string;
+    private _metricName?: string | undefined; 
     public get metricName() {
       return this.getStringAttribute('metric_name');
     }
-    public set metricName(value: string ) {
+    public set metricName(value: string | undefined) {
       this._metricName = value;
     }
     public resetMetricName() {
@@ -1729,11 +1940,11 @@ export namespace CloudWatch {
     }
 
     // namespace - computed: false, optional: true, required: false
-    private _namespace?: string;
+    private _namespace?: string | undefined; 
     public get namespace() {
       return this.getStringAttribute('namespace');
     }
-    public set namespace(value: string ) {
+    public set namespace(value: string | undefined) {
       this._namespace = value;
     }
     public resetNamespace() {
@@ -1745,11 +1956,11 @@ export namespace CloudWatch {
     }
 
     // ok_actions - computed: false, optional: true, required: false
-    private _okActions?: string[];
+    private _okActions?: string[] | undefined; 
     public get okActions() {
       return this.getListAttribute('ok_actions');
     }
-    public set okActions(value: string[] ) {
+    public set okActions(value: string[] | undefined) {
       this._okActions = value;
     }
     public resetOkActions() {
@@ -1761,11 +1972,11 @@ export namespace CloudWatch {
     }
 
     // period - computed: false, optional: true, required: false
-    private _period?: number;
+    private _period?: number | undefined; 
     public get period() {
       return this.getNumberAttribute('period');
     }
-    public set period(value: number ) {
+    public set period(value: number | undefined) {
       this._period = value;
     }
     public resetPeriod() {
@@ -1777,11 +1988,11 @@ export namespace CloudWatch {
     }
 
     // statistic - computed: false, optional: true, required: false
-    private _statistic?: string;
+    private _statistic?: string | undefined; 
     public get statistic() {
       return this.getStringAttribute('statistic');
     }
-    public set statistic(value: string ) {
+    public set statistic(value: string | undefined) {
       this._statistic = value;
     }
     public resetStatistic() {
@@ -1793,11 +2004,12 @@ export namespace CloudWatch {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1809,11 +2021,12 @@ export namespace CloudWatch {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1825,11 +2038,11 @@ export namespace CloudWatch {
     }
 
     // threshold - computed: false, optional: true, required: false
-    private _threshold?: number;
+    private _threshold?: number | undefined; 
     public get threshold() {
       return this.getNumberAttribute('threshold');
     }
-    public set threshold(value: number ) {
+    public set threshold(value: number | undefined) {
       this._threshold = value;
     }
     public resetThreshold() {
@@ -1841,11 +2054,11 @@ export namespace CloudWatch {
     }
 
     // threshold_metric_id - computed: false, optional: true, required: false
-    private _thresholdMetricId?: string;
+    private _thresholdMetricId?: string | undefined; 
     public get thresholdMetricId() {
       return this.getStringAttribute('threshold_metric_id');
     }
-    public set thresholdMetricId(value: string ) {
+    public set thresholdMetricId(value: string | undefined) {
       this._thresholdMetricId = value;
     }
     public resetThresholdMetricId() {
@@ -1857,11 +2070,11 @@ export namespace CloudWatch {
     }
 
     // treat_missing_data - computed: false, optional: true, required: false
-    private _treatMissingData?: string;
+    private _treatMissingData?: string | undefined; 
     public get treatMissingData() {
       return this.getStringAttribute('treat_missing_data');
     }
-    public set treatMissingData(value: string ) {
+    public set treatMissingData(value: string | undefined) {
       this._treatMissingData = value;
     }
     public resetTreatMissingData() {
@@ -1873,11 +2086,11 @@ export namespace CloudWatch {
     }
 
     // unit - computed: false, optional: true, required: false
-    private _unit?: string;
+    private _unit?: string | undefined; 
     public get unit() {
       return this.getStringAttribute('unit');
     }
-    public set unit(value: string ) {
+    public set unit(value: string | undefined) {
       this._unit = value;
     }
     public resetUnit() {
@@ -1889,11 +2102,12 @@ export namespace CloudWatch {
     }
 
     // metric_query - computed: false, optional: true, required: false
-    private _metricQuery?: CloudwatchMetricAlarmMetricQuery[];
+    private _metricQuery?: CloudwatchMetricAlarmMetricQuery[] | undefined; 
     public get metricQuery() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('metric_query') as any;
     }
-    public set metricQuery(value: CloudwatchMetricAlarmMetricQuery[] ) {
+    public set metricQuery(value: CloudwatchMetricAlarmMetricQuery[] | undefined) {
       this._metricQuery = value;
     }
     public resetMetricQuery() {
@@ -1993,6 +2207,9 @@ export namespace CloudWatch {
 
   function cloudwatchMetricStreamExcludeFilterToTerraform(struct?: CloudwatchMetricStreamExcludeFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       namespace: cdktf.stringToTerraform(struct!.namespace),
     }
@@ -2007,6 +2224,9 @@ export namespace CloudWatch {
 
   function cloudwatchMetricStreamIncludeFilterToTerraform(struct?: CloudwatchMetricStreamIncludeFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       namespace: cdktf.stringToTerraform(struct!.namespace),
     }
@@ -2023,14 +2243,59 @@ export namespace CloudWatch {
     readonly delete?: string;
   }
 
-  function cloudwatchMetricStreamTimeoutsToTerraform(struct?: CloudwatchMetricStreamTimeouts): any {
+  function cloudwatchMetricStreamTimeoutsToTerraform(struct?: CloudwatchMetricStreamTimeoutsOutputReference | CloudwatchMetricStreamTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class CloudwatchMetricStreamTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_metric_stream.html aws_cloudwatch_metric_stream}
@@ -2091,7 +2356,7 @@ export namespace CloudWatch {
     }
 
     // firehose_arn - computed: false, optional: false, required: true
-    private _firehoseArn: string;
+    private _firehoseArn?: string; 
     public get firehoseArn() {
       return this.getStringAttribute('firehose_arn');
     }
@@ -2114,11 +2379,11 @@ export namespace CloudWatch {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -2130,11 +2395,11 @@ export namespace CloudWatch {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -2146,7 +2411,7 @@ export namespace CloudWatch {
     }
 
     // output_format - computed: false, optional: false, required: true
-    private _outputFormat: string;
+    private _outputFormat?: string; 
     public get outputFormat() {
       return this.getStringAttribute('output_format');
     }
@@ -2159,7 +2424,7 @@ export namespace CloudWatch {
     }
 
     // role_arn - computed: false, optional: false, required: true
-    private _roleArn: string;
+    private _roleArn?: string; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
@@ -2177,11 +2442,12 @@ export namespace CloudWatch {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2193,11 +2459,12 @@ export namespace CloudWatch {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2209,11 +2476,12 @@ export namespace CloudWatch {
     }
 
     // exclude_filter - computed: false, optional: true, required: false
-    private _excludeFilter?: CloudwatchMetricStreamExcludeFilter[];
+    private _excludeFilter?: CloudwatchMetricStreamExcludeFilter[] | undefined; 
     public get excludeFilter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('exclude_filter') as any;
     }
-    public set excludeFilter(value: CloudwatchMetricStreamExcludeFilter[] ) {
+    public set excludeFilter(value: CloudwatchMetricStreamExcludeFilter[] | undefined) {
       this._excludeFilter = value;
     }
     public resetExcludeFilter() {
@@ -2225,11 +2493,12 @@ export namespace CloudWatch {
     }
 
     // include_filter - computed: false, optional: true, required: false
-    private _includeFilter?: CloudwatchMetricStreamIncludeFilter[];
+    private _includeFilter?: CloudwatchMetricStreamIncludeFilter[] | undefined; 
     public get includeFilter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('include_filter') as any;
     }
-    public set includeFilter(value: CloudwatchMetricStreamIncludeFilter[] ) {
+    public set includeFilter(value: CloudwatchMetricStreamIncludeFilter[] | undefined) {
       this._includeFilter = value;
     }
     public resetIncludeFilter() {
@@ -2241,11 +2510,12 @@ export namespace CloudWatch {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: CloudwatchMetricStreamTimeouts;
+    private _timeouts?: CloudwatchMetricStreamTimeouts | undefined; 
+    private __timeoutsOutput = new CloudwatchMetricStreamTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: CloudwatchMetricStreamTimeouts ) {
+    public putTimeouts(value: CloudwatchMetricStreamTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -2337,11 +2607,11 @@ export namespace CloudWatch {
     }
 
     // log_group_names - computed: false, optional: true, required: false
-    private _logGroupNames?: string[];
+    private _logGroupNames?: string[] | undefined; 
     public get logGroupNames() {
       return this.getListAttribute('log_group_names');
     }
-    public set logGroupNames(value: string[] ) {
+    public set logGroupNames(value: string[] | undefined) {
       this._logGroupNames = value;
     }
     public resetLogGroupNames() {
@@ -2353,7 +2623,7 @@ export namespace CloudWatch {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2371,7 +2641,7 @@ export namespace CloudWatch {
     }
 
     // query_string - computed: false, optional: false, required: true
-    private _queryString: string;
+    private _queryString?: string; 
     public get queryString() {
       return this.getStringAttribute('query_string');
     }
@@ -2467,7 +2737,7 @@ export namespace CloudWatch {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2485,11 +2755,12 @@ export namespace CloudWatch {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2568,7 +2839,7 @@ export namespace CloudWatch {
     }
 
     // log_group_name_prefix - computed: false, optional: false, required: true
-    private _logGroupNamePrefix: string;
+    private _logGroupNamePrefix?: string; 
     public get logGroupNamePrefix() {
       return this.getStringAttribute('log_group_name_prefix');
     }

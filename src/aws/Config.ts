@@ -69,7 +69,7 @@ export namespace Config {
     // ==========
 
     // account_id - computed: false, optional: false, required: true
-    private _accountId: string;
+    private _accountId?: string; 
     public get accountId() {
       return this.getStringAttribute('account_id');
     }
@@ -92,7 +92,7 @@ export namespace Config {
     }
 
     // region - computed: false, optional: false, required: true
-    private _region: string;
+    private _region?: string; 
     public get region() {
       return this.getStringAttribute('region');
     }
@@ -105,11 +105,12 @@ export namespace Config {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -121,11 +122,12 @@ export namespace Config {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -179,13 +181,13 @@ export namespace Config {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#scope ConfigConfigRule#scope}
     */
-    readonly scope?: ConfigConfigRuleScope[];
+    readonly scope?: ConfigConfigRuleScope;
     /**
     * source block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#source ConfigConfigRule#source}
     */
-    readonly source: ConfigConfigRuleSource[];
+    readonly source: ConfigConfigRuleSource;
   }
   export interface ConfigConfigRuleScope {
     /**
@@ -206,8 +208,11 @@ export namespace Config {
     readonly tagValue?: string;
   }
 
-  function configConfigRuleScopeToTerraform(struct?: ConfigConfigRuleScope): any {
+  function configConfigRuleScopeToTerraform(struct?: ConfigConfigRuleScopeOutputReference | ConfigConfigRuleScope): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       compliance_resource_id: cdktf.stringToTerraform(struct!.complianceResourceId),
       compliance_resource_types: cdktf.listMapper(cdktf.stringToTerraform)(struct!.complianceResourceTypes),
@@ -216,6 +221,80 @@ export namespace Config {
     }
   }
 
+  export class ConfigConfigRuleScopeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // compliance_resource_id - computed: false, optional: true, required: false
+    private _complianceResourceId?: string | undefined; 
+    public get complianceResourceId() {
+      return this.getStringAttribute('compliance_resource_id');
+    }
+    public set complianceResourceId(value: string | undefined) {
+      this._complianceResourceId = value;
+    }
+    public resetComplianceResourceId() {
+      this._complianceResourceId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get complianceResourceIdInput() {
+      return this._complianceResourceId
+    }
+
+    // compliance_resource_types - computed: false, optional: true, required: false
+    private _complianceResourceTypes?: string[] | undefined; 
+    public get complianceResourceTypes() {
+      return this.getListAttribute('compliance_resource_types');
+    }
+    public set complianceResourceTypes(value: string[] | undefined) {
+      this._complianceResourceTypes = value;
+    }
+    public resetComplianceResourceTypes() {
+      this._complianceResourceTypes = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get complianceResourceTypesInput() {
+      return this._complianceResourceTypes
+    }
+
+    // tag_key - computed: false, optional: true, required: false
+    private _tagKey?: string | undefined; 
+    public get tagKey() {
+      return this.getStringAttribute('tag_key');
+    }
+    public set tagKey(value: string | undefined) {
+      this._tagKey = value;
+    }
+    public resetTagKey() {
+      this._tagKey = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tagKeyInput() {
+      return this._tagKey
+    }
+
+    // tag_value - computed: false, optional: true, required: false
+    private _tagValue?: string | undefined; 
+    public get tagValue() {
+      return this.getStringAttribute('tag_value');
+    }
+    public set tagValue(value: string | undefined) {
+      this._tagValue = value;
+    }
+    public resetTagValue() {
+      this._tagValue = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tagValueInput() {
+      return this._tagValue
+    }
+  }
   export interface ConfigConfigRuleSourceSourceDetail {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html#event_source ConfigConfigRule#event_source}
@@ -233,6 +312,9 @@ export namespace Config {
 
   function configConfigRuleSourceSourceDetailToTerraform(struct?: ConfigConfigRuleSourceSourceDetail): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       event_source: cdktf.stringToTerraform(struct!.eventSource),
       maximum_execution_frequency: cdktf.stringToTerraform(struct!.maximumExecutionFrequency),
@@ -257,8 +339,11 @@ export namespace Config {
     readonly sourceDetail?: ConfigConfigRuleSourceSourceDetail[];
   }
 
-  function configConfigRuleSourceToTerraform(struct?: ConfigConfigRuleSource): any {
+  function configConfigRuleSourceToTerraform(struct?: ConfigConfigRuleSourceOutputReference | ConfigConfigRuleSource): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       owner: cdktf.stringToTerraform(struct!.owner),
       source_identifier: cdktf.stringToTerraform(struct!.sourceIdentifier),
@@ -266,6 +351,59 @@ export namespace Config {
     }
   }
 
+  export class ConfigConfigRuleSourceOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // owner - computed: false, optional: false, required: true
+    private _owner?: string; 
+    public get owner() {
+      return this.getStringAttribute('owner');
+    }
+    public set owner(value: string) {
+      this._owner = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get ownerInput() {
+      return this._owner
+    }
+
+    // source_identifier - computed: false, optional: false, required: true
+    private _sourceIdentifier?: string; 
+    public get sourceIdentifier() {
+      return this.getStringAttribute('source_identifier');
+    }
+    public set sourceIdentifier(value: string) {
+      this._sourceIdentifier = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sourceIdentifierInput() {
+      return this._sourceIdentifier
+    }
+
+    // source_detail - computed: false, optional: true, required: false
+    private _sourceDetail?: ConfigConfigRuleSourceSourceDetail[] | undefined; 
+    public get sourceDetail() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('source_detail') as any;
+    }
+    public set sourceDetail(value: ConfigConfigRuleSourceSourceDetail[] | undefined) {
+      this._sourceDetail = value;
+    }
+    public resetSourceDetail() {
+      this._sourceDetail = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sourceDetailInput() {
+      return this._sourceDetail
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/config_config_rule.html aws_config_config_rule}
@@ -319,11 +457,11 @@ export namespace Config {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -340,11 +478,11 @@ export namespace Config {
     }
 
     // input_parameters - computed: false, optional: true, required: false
-    private _inputParameters?: string;
+    private _inputParameters?: string | undefined; 
     public get inputParameters() {
       return this.getStringAttribute('input_parameters');
     }
-    public set inputParameters(value: string ) {
+    public set inputParameters(value: string | undefined) {
       this._inputParameters = value;
     }
     public resetInputParameters() {
@@ -356,11 +494,11 @@ export namespace Config {
     }
 
     // maximum_execution_frequency - computed: false, optional: true, required: false
-    private _maximumExecutionFrequency?: string;
+    private _maximumExecutionFrequency?: string | undefined; 
     public get maximumExecutionFrequency() {
       return this.getStringAttribute('maximum_execution_frequency');
     }
-    public set maximumExecutionFrequency(value: string ) {
+    public set maximumExecutionFrequency(value: string | undefined) {
       this._maximumExecutionFrequency = value;
     }
     public resetMaximumExecutionFrequency() {
@@ -372,7 +510,7 @@ export namespace Config {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -390,11 +528,12 @@ export namespace Config {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -406,11 +545,12 @@ export namespace Config {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -422,11 +562,12 @@ export namespace Config {
     }
 
     // scope - computed: false, optional: true, required: false
-    private _scope?: ConfigConfigRuleScope[];
+    private _scope?: ConfigConfigRuleScope | undefined; 
+    private __scopeOutput = new ConfigConfigRuleScopeOutputReference(this as any, "scope", true);
     public get scope() {
-      return this.interpolationForAttribute('scope') as any;
+      return this.__scopeOutput;
     }
-    public set scope(value: ConfigConfigRuleScope[] ) {
+    public putScope(value: ConfigConfigRuleScope | undefined) {
       this._scope = value;
     }
     public resetScope() {
@@ -438,11 +579,12 @@ export namespace Config {
     }
 
     // source - computed: false, optional: false, required: true
-    private _source: ConfigConfigRuleSource[];
+    private _source?: ConfigConfigRuleSource; 
+    private __sourceOutput = new ConfigConfigRuleSourceOutputReference(this as any, "source", true);
     public get source() {
-      return this.interpolationForAttribute('source') as any;
+      return this.__sourceOutput;
     }
-    public set source(value: ConfigConfigRuleSource[]) {
+    public putSource(value: ConfigConfigRuleSource) {
       this._source = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -462,8 +604,8 @@ export namespace Config {
         name: cdktf.stringToTerraform(this._name),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        scope: cdktf.listMapper(configConfigRuleScopeToTerraform)(this._scope),
-        source: cdktf.listMapper(configConfigRuleSourceToTerraform)(this._source),
+        scope: configConfigRuleScopeToTerraform(this._scope),
+        source: configConfigRuleSourceToTerraform(this._source),
       };
     }
   }
@@ -485,13 +627,13 @@ export namespace Config {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator.html#account_aggregation_source ConfigConfigurationAggregator#account_aggregation_source}
     */
-    readonly accountAggregationSource?: ConfigConfigurationAggregatorAccountAggregationSource[];
+    readonly accountAggregationSource?: ConfigConfigurationAggregatorAccountAggregationSource;
     /**
     * organization_aggregation_source block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator.html#organization_aggregation_source ConfigConfigurationAggregator#organization_aggregation_source}
     */
-    readonly organizationAggregationSource?: ConfigConfigurationAggregatorOrganizationAggregationSource[];
+    readonly organizationAggregationSource?: ConfigConfigurationAggregatorOrganizationAggregationSource;
   }
   export interface ConfigConfigurationAggregatorAccountAggregationSource {
     /**
@@ -508,8 +650,11 @@ export namespace Config {
     readonly regions?: string[];
   }
 
-  function configConfigurationAggregatorAccountAggregationSourceToTerraform(struct?: ConfigConfigurationAggregatorAccountAggregationSource): any {
+  function configConfigurationAggregatorAccountAggregationSourceToTerraform(struct?: ConfigConfigurationAggregatorAccountAggregationSourceOutputReference | ConfigConfigurationAggregatorAccountAggregationSource): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       account_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.accountIds),
       all_regions: cdktf.booleanToTerraform(struct!.allRegions),
@@ -517,6 +662,61 @@ export namespace Config {
     }
   }
 
+  export class ConfigConfigurationAggregatorAccountAggregationSourceOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // account_ids - computed: false, optional: false, required: true
+    private _accountIds?: string[]; 
+    public get accountIds() {
+      return this.getListAttribute('account_ids');
+    }
+    public set accountIds(value: string[]) {
+      this._accountIds = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get accountIdsInput() {
+      return this._accountIds
+    }
+
+    // all_regions - computed: false, optional: true, required: false
+    private _allRegions?: boolean | cdktf.IResolvable | undefined; 
+    public get allRegions() {
+      return this.getBooleanAttribute('all_regions') as any;
+    }
+    public set allRegions(value: boolean | cdktf.IResolvable | undefined) {
+      this._allRegions = value;
+    }
+    public resetAllRegions() {
+      this._allRegions = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allRegionsInput() {
+      return this._allRegions
+    }
+
+    // regions - computed: false, optional: true, required: false
+    private _regions?: string[] | undefined; 
+    public get regions() {
+      return this.getListAttribute('regions');
+    }
+    public set regions(value: string[] | undefined) {
+      this._regions = value;
+    }
+    public resetRegions() {
+      this._regions = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get regionsInput() {
+      return this._regions
+    }
+  }
   export interface ConfigConfigurationAggregatorOrganizationAggregationSource {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator.html#all_regions ConfigConfigurationAggregator#all_regions}
@@ -532,8 +732,11 @@ export namespace Config {
     readonly roleArn: string;
   }
 
-  function configConfigurationAggregatorOrganizationAggregationSourceToTerraform(struct?: ConfigConfigurationAggregatorOrganizationAggregationSource): any {
+  function configConfigurationAggregatorOrganizationAggregationSourceToTerraform(struct?: ConfigConfigurationAggregatorOrganizationAggregationSourceOutputReference | ConfigConfigurationAggregatorOrganizationAggregationSource): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       all_regions: cdktf.booleanToTerraform(struct!.allRegions),
       regions: cdktf.listMapper(cdktf.stringToTerraform)(struct!.regions),
@@ -541,6 +744,61 @@ export namespace Config {
     }
   }
 
+  export class ConfigConfigurationAggregatorOrganizationAggregationSourceOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // all_regions - computed: false, optional: true, required: false
+    private _allRegions?: boolean | cdktf.IResolvable | undefined; 
+    public get allRegions() {
+      return this.getBooleanAttribute('all_regions') as any;
+    }
+    public set allRegions(value: boolean | cdktf.IResolvable | undefined) {
+      this._allRegions = value;
+    }
+    public resetAllRegions() {
+      this._allRegions = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allRegionsInput() {
+      return this._allRegions
+    }
+
+    // regions - computed: false, optional: true, required: false
+    private _regions?: string[] | undefined; 
+    public get regions() {
+      return this.getListAttribute('regions');
+    }
+    public set regions(value: string[] | undefined) {
+      this._regions = value;
+    }
+    public resetRegions() {
+      this._regions = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get regionsInput() {
+      return this._regions
+    }
+
+    // role_arn - computed: false, optional: false, required: true
+    private _roleArn?: string; 
+    public get roleArn() {
+      return this.getStringAttribute('role_arn');
+    }
+    public set roleArn(value: string) {
+      this._roleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleArnInput() {
+      return this._roleArn
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_aggregator.html aws_config_configuration_aggregator}
@@ -596,7 +854,7 @@ export namespace Config {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -609,11 +867,12 @@ export namespace Config {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -625,11 +884,12 @@ export namespace Config {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -641,11 +901,12 @@ export namespace Config {
     }
 
     // account_aggregation_source - computed: false, optional: true, required: false
-    private _accountAggregationSource?: ConfigConfigurationAggregatorAccountAggregationSource[];
+    private _accountAggregationSource?: ConfigConfigurationAggregatorAccountAggregationSource | undefined; 
+    private __accountAggregationSourceOutput = new ConfigConfigurationAggregatorAccountAggregationSourceOutputReference(this as any, "account_aggregation_source", true);
     public get accountAggregationSource() {
-      return this.interpolationForAttribute('account_aggregation_source') as any;
+      return this.__accountAggregationSourceOutput;
     }
-    public set accountAggregationSource(value: ConfigConfigurationAggregatorAccountAggregationSource[] ) {
+    public putAccountAggregationSource(value: ConfigConfigurationAggregatorAccountAggregationSource | undefined) {
       this._accountAggregationSource = value;
     }
     public resetAccountAggregationSource() {
@@ -657,11 +918,12 @@ export namespace Config {
     }
 
     // organization_aggregation_source - computed: false, optional: true, required: false
-    private _organizationAggregationSource?: ConfigConfigurationAggregatorOrganizationAggregationSource[];
+    private _organizationAggregationSource?: ConfigConfigurationAggregatorOrganizationAggregationSource | undefined; 
+    private __organizationAggregationSourceOutput = new ConfigConfigurationAggregatorOrganizationAggregationSourceOutputReference(this as any, "organization_aggregation_source", true);
     public get organizationAggregationSource() {
-      return this.interpolationForAttribute('organization_aggregation_source') as any;
+      return this.__organizationAggregationSourceOutput;
     }
-    public set organizationAggregationSource(value: ConfigConfigurationAggregatorOrganizationAggregationSource[] ) {
+    public putOrganizationAggregationSource(value: ConfigConfigurationAggregatorOrganizationAggregationSource | undefined) {
       this._organizationAggregationSource = value;
     }
     public resetOrganizationAggregationSource() {
@@ -681,8 +943,8 @@ export namespace Config {
         name: cdktf.stringToTerraform(this._name),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        account_aggregation_source: cdktf.listMapper(configConfigurationAggregatorAccountAggregationSourceToTerraform)(this._accountAggregationSource),
-        organization_aggregation_source: cdktf.listMapper(configConfigurationAggregatorOrganizationAggregationSourceToTerraform)(this._organizationAggregationSource),
+        account_aggregation_source: configConfigurationAggregatorAccountAggregationSourceToTerraform(this._accountAggregationSource),
+        organization_aggregation_source: configConfigurationAggregatorOrganizationAggregationSourceToTerraform(this._organizationAggregationSource),
       };
     }
   }
@@ -700,7 +962,7 @@ export namespace Config {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder.html#recording_group ConfigConfigurationRecorder#recording_group}
     */
-    readonly recordingGroup?: ConfigConfigurationRecorderRecordingGroup[];
+    readonly recordingGroup?: ConfigConfigurationRecorderRecordingGroup;
   }
   export interface ConfigConfigurationRecorderRecordingGroup {
     /**
@@ -717,8 +979,11 @@ export namespace Config {
     readonly resourceTypes?: string[];
   }
 
-  function configConfigurationRecorderRecordingGroupToTerraform(struct?: ConfigConfigurationRecorderRecordingGroup): any {
+  function configConfigurationRecorderRecordingGroupToTerraform(struct?: ConfigConfigurationRecorderRecordingGroupOutputReference | ConfigConfigurationRecorderRecordingGroup): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       all_supported: cdktf.booleanToTerraform(struct!.allSupported),
       include_global_resource_types: cdktf.booleanToTerraform(struct!.includeGlobalResourceTypes),
@@ -726,6 +991,64 @@ export namespace Config {
     }
   }
 
+  export class ConfigConfigurationRecorderRecordingGroupOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // all_supported - computed: false, optional: true, required: false
+    private _allSupported?: boolean | cdktf.IResolvable | undefined; 
+    public get allSupported() {
+      return this.getBooleanAttribute('all_supported') as any;
+    }
+    public set allSupported(value: boolean | cdktf.IResolvable | undefined) {
+      this._allSupported = value;
+    }
+    public resetAllSupported() {
+      this._allSupported = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allSupportedInput() {
+      return this._allSupported
+    }
+
+    // include_global_resource_types - computed: false, optional: true, required: false
+    private _includeGlobalResourceTypes?: boolean | cdktf.IResolvable | undefined; 
+    public get includeGlobalResourceTypes() {
+      return this.getBooleanAttribute('include_global_resource_types') as any;
+    }
+    public set includeGlobalResourceTypes(value: boolean | cdktf.IResolvable | undefined) {
+      this._includeGlobalResourceTypes = value;
+    }
+    public resetIncludeGlobalResourceTypes() {
+      this._includeGlobalResourceTypes = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get includeGlobalResourceTypesInput() {
+      return this._includeGlobalResourceTypes
+    }
+
+    // resource_types - computed: false, optional: true, required: false
+    private _resourceTypes?: string[] | undefined; 
+    public get resourceTypes() {
+      return this.getListAttribute('resource_types');
+    }
+    public set resourceTypes(value: string[] | undefined) {
+      this._resourceTypes = value;
+    }
+    public resetResourceTypes() {
+      this._resourceTypes = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceTypesInput() {
+      return this._resourceTypes
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/config_configuration_recorder.html aws_config_configuration_recorder}
@@ -774,11 +1097,11 @@ export namespace Config {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -790,7 +1113,7 @@ export namespace Config {
     }
 
     // role_arn - computed: false, optional: false, required: true
-    private _roleArn: string;
+    private _roleArn?: string; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
@@ -803,11 +1126,12 @@ export namespace Config {
     }
 
     // recording_group - computed: false, optional: true, required: false
-    private _recordingGroup?: ConfigConfigurationRecorderRecordingGroup[];
+    private _recordingGroup?: ConfigConfigurationRecorderRecordingGroup | undefined; 
+    private __recordingGroupOutput = new ConfigConfigurationRecorderRecordingGroupOutputReference(this as any, "recording_group", true);
     public get recordingGroup() {
-      return this.interpolationForAttribute('recording_group') as any;
+      return this.__recordingGroupOutput;
     }
-    public set recordingGroup(value: ConfigConfigurationRecorderRecordingGroup[] ) {
+    public putRecordingGroup(value: ConfigConfigurationRecorderRecordingGroup | undefined) {
       this._recordingGroup = value;
     }
     public resetRecordingGroup() {
@@ -826,7 +1150,7 @@ export namespace Config {
       return {
         name: cdktf.stringToTerraform(this._name),
         role_arn: cdktf.stringToTerraform(this._roleArn),
-        recording_group: cdktf.listMapper(configConfigurationRecorderRecordingGroupToTerraform)(this._recordingGroup),
+        recording_group: configConfigurationRecorderRecordingGroupToTerraform(this._recordingGroup),
       };
     }
   }
@@ -887,9 +1211,9 @@ export namespace Config {
     }
 
     // is_enabled - computed: false, optional: false, required: true
-    private _isEnabled: boolean | cdktf.IResolvable;
+    private _isEnabled?: boolean | cdktf.IResolvable; 
     public get isEnabled() {
-      return this.getBooleanAttribute('is_enabled');
+      return this.getBooleanAttribute('is_enabled') as any;
     }
     public set isEnabled(value: boolean | cdktf.IResolvable) {
       this._isEnabled = value;
@@ -900,7 +1224,7 @@ export namespace Config {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -964,6 +1288,9 @@ export namespace Config {
 
   function configConformancePackInputParameterToTerraform(struct?: ConfigConformancePackInputParameter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       parameter_name: cdktf.stringToTerraform(struct!.parameterName),
       parameter_value: cdktf.stringToTerraform(struct!.parameterValue),
@@ -1021,11 +1348,11 @@ export namespace Config {
     }
 
     // delivery_s3_bucket - computed: false, optional: true, required: false
-    private _deliveryS3Bucket?: string;
+    private _deliveryS3Bucket?: string | undefined; 
     public get deliveryS3Bucket() {
       return this.getStringAttribute('delivery_s3_bucket');
     }
-    public set deliveryS3Bucket(value: string ) {
+    public set deliveryS3Bucket(value: string | undefined) {
       this._deliveryS3Bucket = value;
     }
     public resetDeliveryS3Bucket() {
@@ -1037,11 +1364,11 @@ export namespace Config {
     }
 
     // delivery_s3_key_prefix - computed: false, optional: true, required: false
-    private _deliveryS3KeyPrefix?: string;
+    private _deliveryS3KeyPrefix?: string | undefined; 
     public get deliveryS3KeyPrefix() {
       return this.getStringAttribute('delivery_s3_key_prefix');
     }
-    public set deliveryS3KeyPrefix(value: string ) {
+    public set deliveryS3KeyPrefix(value: string | undefined) {
       this._deliveryS3KeyPrefix = value;
     }
     public resetDeliveryS3KeyPrefix() {
@@ -1058,7 +1385,7 @@ export namespace Config {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1071,11 +1398,11 @@ export namespace Config {
     }
 
     // template_body - computed: false, optional: true, required: false
-    private _templateBody?: string;
+    private _templateBody?: string | undefined; 
     public get templateBody() {
       return this.getStringAttribute('template_body');
     }
-    public set templateBody(value: string ) {
+    public set templateBody(value: string | undefined) {
       this._templateBody = value;
     }
     public resetTemplateBody() {
@@ -1087,11 +1414,11 @@ export namespace Config {
     }
 
     // template_s3_uri - computed: false, optional: true, required: false
-    private _templateS3Uri?: string;
+    private _templateS3Uri?: string | undefined; 
     public get templateS3Uri() {
       return this.getStringAttribute('template_s3_uri');
     }
-    public set templateS3Uri(value: string ) {
+    public set templateS3Uri(value: string | undefined) {
       this._templateS3Uri = value;
     }
     public resetTemplateS3Uri() {
@@ -1103,11 +1430,12 @@ export namespace Config {
     }
 
     // input_parameter - computed: false, optional: true, required: false
-    private _inputParameter?: ConfigConformancePackInputParameter[];
+    private _inputParameter?: ConfigConformancePackInputParameter[] | undefined; 
     public get inputParameter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('input_parameter') as any;
     }
-    public set inputParameter(value: ConfigConformancePackInputParameter[] ) {
+    public set inputParameter(value: ConfigConformancePackInputParameter[] | undefined) {
       this._inputParameter = value;
     }
     public resetInputParameter() {
@@ -1159,7 +1487,7 @@ export namespace Config {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/config_delivery_channel.html#snapshot_delivery_properties ConfigDeliveryChannel#snapshot_delivery_properties}
     */
-    readonly snapshotDeliveryProperties?: ConfigDeliveryChannelSnapshotDeliveryProperties[];
+    readonly snapshotDeliveryProperties?: ConfigDeliveryChannelSnapshotDeliveryProperties;
   }
   export interface ConfigDeliveryChannelSnapshotDeliveryProperties {
     /**
@@ -1168,13 +1496,42 @@ export namespace Config {
     readonly deliveryFrequency?: string;
   }
 
-  function configDeliveryChannelSnapshotDeliveryPropertiesToTerraform(struct?: ConfigDeliveryChannelSnapshotDeliveryProperties): any {
+  function configDeliveryChannelSnapshotDeliveryPropertiesToTerraform(struct?: ConfigDeliveryChannelSnapshotDeliveryPropertiesOutputReference | ConfigDeliveryChannelSnapshotDeliveryProperties): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delivery_frequency: cdktf.stringToTerraform(struct!.deliveryFrequency),
     }
   }
 
+  export class ConfigDeliveryChannelSnapshotDeliveryPropertiesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // delivery_frequency - computed: false, optional: true, required: false
+    private _deliveryFrequency?: string | undefined; 
+    public get deliveryFrequency() {
+      return this.getStringAttribute('delivery_frequency');
+    }
+    public set deliveryFrequency(value: string | undefined) {
+      this._deliveryFrequency = value;
+    }
+    public resetDeliveryFrequency() {
+      this._deliveryFrequency = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deliveryFrequencyInput() {
+      return this._deliveryFrequency
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/config_delivery_channel.html aws_config_delivery_channel}
@@ -1226,11 +1583,11 @@ export namespace Config {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1242,7 +1599,7 @@ export namespace Config {
     }
 
     // s3_bucket_name - computed: false, optional: false, required: true
-    private _s3BucketName: string;
+    private _s3BucketName?: string; 
     public get s3BucketName() {
       return this.getStringAttribute('s3_bucket_name');
     }
@@ -1255,11 +1612,11 @@ export namespace Config {
     }
 
     // s3_key_prefix - computed: false, optional: true, required: false
-    private _s3KeyPrefix?: string;
+    private _s3KeyPrefix?: string | undefined; 
     public get s3KeyPrefix() {
       return this.getStringAttribute('s3_key_prefix');
     }
-    public set s3KeyPrefix(value: string ) {
+    public set s3KeyPrefix(value: string | undefined) {
       this._s3KeyPrefix = value;
     }
     public resetS3KeyPrefix() {
@@ -1271,11 +1628,11 @@ export namespace Config {
     }
 
     // s3_kms_key_arn - computed: false, optional: true, required: false
-    private _s3KmsKeyArn?: string;
+    private _s3KmsKeyArn?: string | undefined; 
     public get s3KmsKeyArn() {
       return this.getStringAttribute('s3_kms_key_arn');
     }
-    public set s3KmsKeyArn(value: string ) {
+    public set s3KmsKeyArn(value: string | undefined) {
       this._s3KmsKeyArn = value;
     }
     public resetS3KmsKeyArn() {
@@ -1287,11 +1644,11 @@ export namespace Config {
     }
 
     // sns_topic_arn - computed: false, optional: true, required: false
-    private _snsTopicArn?: string;
+    private _snsTopicArn?: string | undefined; 
     public get snsTopicArn() {
       return this.getStringAttribute('sns_topic_arn');
     }
-    public set snsTopicArn(value: string ) {
+    public set snsTopicArn(value: string | undefined) {
       this._snsTopicArn = value;
     }
     public resetSnsTopicArn() {
@@ -1303,11 +1660,12 @@ export namespace Config {
     }
 
     // snapshot_delivery_properties - computed: false, optional: true, required: false
-    private _snapshotDeliveryProperties?: ConfigDeliveryChannelSnapshotDeliveryProperties[];
+    private _snapshotDeliveryProperties?: ConfigDeliveryChannelSnapshotDeliveryProperties | undefined; 
+    private __snapshotDeliveryPropertiesOutput = new ConfigDeliveryChannelSnapshotDeliveryPropertiesOutputReference(this as any, "snapshot_delivery_properties", true);
     public get snapshotDeliveryProperties() {
-      return this.interpolationForAttribute('snapshot_delivery_properties') as any;
+      return this.__snapshotDeliveryPropertiesOutput;
     }
-    public set snapshotDeliveryProperties(value: ConfigDeliveryChannelSnapshotDeliveryProperties[] ) {
+    public putSnapshotDeliveryProperties(value: ConfigDeliveryChannelSnapshotDeliveryProperties | undefined) {
       this._snapshotDeliveryProperties = value;
     }
     public resetSnapshotDeliveryProperties() {
@@ -1329,7 +1687,7 @@ export namespace Config {
         s3_key_prefix: cdktf.stringToTerraform(this._s3KeyPrefix),
         s3_kms_key_arn: cdktf.stringToTerraform(this._s3KmsKeyArn),
         sns_topic_arn: cdktf.stringToTerraform(this._snsTopicArn),
-        snapshot_delivery_properties: cdktf.listMapper(configDeliveryChannelSnapshotDeliveryPropertiesToTerraform)(this._snapshotDeliveryProperties),
+        snapshot_delivery_properties: configDeliveryChannelSnapshotDeliveryPropertiesToTerraform(this._snapshotDeliveryProperties),
       };
     }
   }
@@ -1384,6 +1742,9 @@ export namespace Config {
 
   function configOrganizationConformancePackInputParameterToTerraform(struct?: ConfigOrganizationConformancePackInputParameter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       parameter_name: cdktf.stringToTerraform(struct!.parameterName),
       parameter_value: cdktf.stringToTerraform(struct!.parameterValue),
@@ -1405,8 +1766,11 @@ export namespace Config {
     readonly update?: string;
   }
 
-  function configOrganizationConformancePackTimeoutsToTerraform(struct?: ConfigOrganizationConformancePackTimeouts): any {
+  function configOrganizationConformancePackTimeoutsToTerraform(struct?: ConfigOrganizationConformancePackTimeoutsOutputReference | ConfigOrganizationConformancePackTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -1414,6 +1778,64 @@ export namespace Config {
     }
   }
 
+  export class ConfigOrganizationConformancePackTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/config_organization_conformance_pack.html aws_config_organization_conformance_pack}
@@ -1467,11 +1889,11 @@ export namespace Config {
     }
 
     // delivery_s3_bucket - computed: false, optional: true, required: false
-    private _deliveryS3Bucket?: string;
+    private _deliveryS3Bucket?: string | undefined; 
     public get deliveryS3Bucket() {
       return this.getStringAttribute('delivery_s3_bucket');
     }
-    public set deliveryS3Bucket(value: string ) {
+    public set deliveryS3Bucket(value: string | undefined) {
       this._deliveryS3Bucket = value;
     }
     public resetDeliveryS3Bucket() {
@@ -1483,11 +1905,11 @@ export namespace Config {
     }
 
     // delivery_s3_key_prefix - computed: false, optional: true, required: false
-    private _deliveryS3KeyPrefix?: string;
+    private _deliveryS3KeyPrefix?: string | undefined; 
     public get deliveryS3KeyPrefix() {
       return this.getStringAttribute('delivery_s3_key_prefix');
     }
-    public set deliveryS3KeyPrefix(value: string ) {
+    public set deliveryS3KeyPrefix(value: string | undefined) {
       this._deliveryS3KeyPrefix = value;
     }
     public resetDeliveryS3KeyPrefix() {
@@ -1499,11 +1921,11 @@ export namespace Config {
     }
 
     // excluded_accounts - computed: false, optional: true, required: false
-    private _excludedAccounts?: string[];
+    private _excludedAccounts?: string[] | undefined; 
     public get excludedAccounts() {
       return this.getListAttribute('excluded_accounts');
     }
-    public set excludedAccounts(value: string[] ) {
+    public set excludedAccounts(value: string[] | undefined) {
       this._excludedAccounts = value;
     }
     public resetExcludedAccounts() {
@@ -1520,7 +1942,7 @@ export namespace Config {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1533,11 +1955,11 @@ export namespace Config {
     }
 
     // template_body - computed: false, optional: true, required: false
-    private _templateBody?: string;
+    private _templateBody?: string | undefined; 
     public get templateBody() {
       return this.getStringAttribute('template_body');
     }
-    public set templateBody(value: string ) {
+    public set templateBody(value: string | undefined) {
       this._templateBody = value;
     }
     public resetTemplateBody() {
@@ -1549,11 +1971,11 @@ export namespace Config {
     }
 
     // template_s3_uri - computed: false, optional: true, required: false
-    private _templateS3Uri?: string;
+    private _templateS3Uri?: string | undefined; 
     public get templateS3Uri() {
       return this.getStringAttribute('template_s3_uri');
     }
-    public set templateS3Uri(value: string ) {
+    public set templateS3Uri(value: string | undefined) {
       this._templateS3Uri = value;
     }
     public resetTemplateS3Uri() {
@@ -1565,11 +1987,12 @@ export namespace Config {
     }
 
     // input_parameter - computed: false, optional: true, required: false
-    private _inputParameter?: ConfigOrganizationConformancePackInputParameter[];
+    private _inputParameter?: ConfigOrganizationConformancePackInputParameter[] | undefined; 
     public get inputParameter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('input_parameter') as any;
     }
-    public set inputParameter(value: ConfigOrganizationConformancePackInputParameter[] ) {
+    public set inputParameter(value: ConfigOrganizationConformancePackInputParameter[] | undefined) {
       this._inputParameter = value;
     }
     public resetInputParameter() {
@@ -1581,11 +2004,12 @@ export namespace Config {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: ConfigOrganizationConformancePackTimeouts;
+    private _timeouts?: ConfigOrganizationConformancePackTimeouts | undefined; 
+    private __timeoutsOutput = new ConfigOrganizationConformancePackTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: ConfigOrganizationConformancePackTimeouts ) {
+    public putTimeouts(value: ConfigOrganizationConformancePackTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1680,8 +2104,11 @@ export namespace Config {
     readonly update?: string;
   }
 
-  function configOrganizationCustomRuleTimeoutsToTerraform(struct?: ConfigOrganizationCustomRuleTimeouts): any {
+  function configOrganizationCustomRuleTimeoutsToTerraform(struct?: ConfigOrganizationCustomRuleTimeoutsOutputReference | ConfigOrganizationCustomRuleTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -1689,6 +2116,64 @@ export namespace Config {
     }
   }
 
+  export class ConfigOrganizationCustomRuleTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/config_organization_custom_rule.html aws_config_organization_custom_rule}
@@ -1746,11 +2231,11 @@ export namespace Config {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1762,11 +2247,11 @@ export namespace Config {
     }
 
     // excluded_accounts - computed: false, optional: true, required: false
-    private _excludedAccounts?: string[];
+    private _excludedAccounts?: string[] | undefined; 
     public get excludedAccounts() {
       return this.getListAttribute('excluded_accounts');
     }
-    public set excludedAccounts(value: string[] ) {
+    public set excludedAccounts(value: string[] | undefined) {
       this._excludedAccounts = value;
     }
     public resetExcludedAccounts() {
@@ -1783,11 +2268,11 @@ export namespace Config {
     }
 
     // input_parameters - computed: false, optional: true, required: false
-    private _inputParameters?: string;
+    private _inputParameters?: string | undefined; 
     public get inputParameters() {
       return this.getStringAttribute('input_parameters');
     }
-    public set inputParameters(value: string ) {
+    public set inputParameters(value: string | undefined) {
       this._inputParameters = value;
     }
     public resetInputParameters() {
@@ -1799,7 +2284,7 @@ export namespace Config {
     }
 
     // lambda_function_arn - computed: false, optional: false, required: true
-    private _lambdaFunctionArn: string;
+    private _lambdaFunctionArn?: string; 
     public get lambdaFunctionArn() {
       return this.getStringAttribute('lambda_function_arn');
     }
@@ -1812,11 +2297,11 @@ export namespace Config {
     }
 
     // maximum_execution_frequency - computed: false, optional: true, required: false
-    private _maximumExecutionFrequency?: string;
+    private _maximumExecutionFrequency?: string | undefined; 
     public get maximumExecutionFrequency() {
       return this.getStringAttribute('maximum_execution_frequency');
     }
-    public set maximumExecutionFrequency(value: string ) {
+    public set maximumExecutionFrequency(value: string | undefined) {
       this._maximumExecutionFrequency = value;
     }
     public resetMaximumExecutionFrequency() {
@@ -1828,7 +2313,7 @@ export namespace Config {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1841,11 +2326,11 @@ export namespace Config {
     }
 
     // resource_id_scope - computed: false, optional: true, required: false
-    private _resourceIdScope?: string;
+    private _resourceIdScope?: string | undefined; 
     public get resourceIdScope() {
       return this.getStringAttribute('resource_id_scope');
     }
-    public set resourceIdScope(value: string ) {
+    public set resourceIdScope(value: string | undefined) {
       this._resourceIdScope = value;
     }
     public resetResourceIdScope() {
@@ -1857,11 +2342,11 @@ export namespace Config {
     }
 
     // resource_types_scope - computed: false, optional: true, required: false
-    private _resourceTypesScope?: string[];
+    private _resourceTypesScope?: string[] | undefined; 
     public get resourceTypesScope() {
       return this.getListAttribute('resource_types_scope');
     }
-    public set resourceTypesScope(value: string[] ) {
+    public set resourceTypesScope(value: string[] | undefined) {
       this._resourceTypesScope = value;
     }
     public resetResourceTypesScope() {
@@ -1873,11 +2358,11 @@ export namespace Config {
     }
 
     // tag_key_scope - computed: false, optional: true, required: false
-    private _tagKeyScope?: string;
+    private _tagKeyScope?: string | undefined; 
     public get tagKeyScope() {
       return this.getStringAttribute('tag_key_scope');
     }
-    public set tagKeyScope(value: string ) {
+    public set tagKeyScope(value: string | undefined) {
       this._tagKeyScope = value;
     }
     public resetTagKeyScope() {
@@ -1889,11 +2374,11 @@ export namespace Config {
     }
 
     // tag_value_scope - computed: false, optional: true, required: false
-    private _tagValueScope?: string;
+    private _tagValueScope?: string | undefined; 
     public get tagValueScope() {
       return this.getStringAttribute('tag_value_scope');
     }
-    public set tagValueScope(value: string ) {
+    public set tagValueScope(value: string | undefined) {
       this._tagValueScope = value;
     }
     public resetTagValueScope() {
@@ -1905,7 +2390,7 @@ export namespace Config {
     }
 
     // trigger_types - computed: false, optional: false, required: true
-    private _triggerTypes: string[];
+    private _triggerTypes?: string[]; 
     public get triggerTypes() {
       return this.getListAttribute('trigger_types');
     }
@@ -1918,11 +2403,12 @@ export namespace Config {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: ConfigOrganizationCustomRuleTimeouts;
+    private _timeouts?: ConfigOrganizationCustomRuleTimeouts | undefined; 
+    private __timeoutsOutput = new ConfigOrganizationCustomRuleTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: ConfigOrganizationCustomRuleTimeouts ) {
+    public putTimeouts(value: ConfigOrganizationCustomRuleTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -2017,8 +2503,11 @@ export namespace Config {
     readonly update?: string;
   }
 
-  function configOrganizationManagedRuleTimeoutsToTerraform(struct?: ConfigOrganizationManagedRuleTimeouts): any {
+  function configOrganizationManagedRuleTimeoutsToTerraform(struct?: ConfigOrganizationManagedRuleTimeoutsOutputReference | ConfigOrganizationManagedRuleTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -2026,6 +2515,64 @@ export namespace Config {
     }
   }
 
+  export class ConfigOrganizationManagedRuleTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/config_organization_managed_rule.html aws_config_organization_managed_rule}
@@ -2082,11 +2629,11 @@ export namespace Config {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -2098,11 +2645,11 @@ export namespace Config {
     }
 
     // excluded_accounts - computed: false, optional: true, required: false
-    private _excludedAccounts?: string[];
+    private _excludedAccounts?: string[] | undefined; 
     public get excludedAccounts() {
       return this.getListAttribute('excluded_accounts');
     }
-    public set excludedAccounts(value: string[] ) {
+    public set excludedAccounts(value: string[] | undefined) {
       this._excludedAccounts = value;
     }
     public resetExcludedAccounts() {
@@ -2119,11 +2666,11 @@ export namespace Config {
     }
 
     // input_parameters - computed: false, optional: true, required: false
-    private _inputParameters?: string;
+    private _inputParameters?: string | undefined; 
     public get inputParameters() {
       return this.getStringAttribute('input_parameters');
     }
-    public set inputParameters(value: string ) {
+    public set inputParameters(value: string | undefined) {
       this._inputParameters = value;
     }
     public resetInputParameters() {
@@ -2135,11 +2682,11 @@ export namespace Config {
     }
 
     // maximum_execution_frequency - computed: false, optional: true, required: false
-    private _maximumExecutionFrequency?: string;
+    private _maximumExecutionFrequency?: string | undefined; 
     public get maximumExecutionFrequency() {
       return this.getStringAttribute('maximum_execution_frequency');
     }
-    public set maximumExecutionFrequency(value: string ) {
+    public set maximumExecutionFrequency(value: string | undefined) {
       this._maximumExecutionFrequency = value;
     }
     public resetMaximumExecutionFrequency() {
@@ -2151,7 +2698,7 @@ export namespace Config {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2164,11 +2711,11 @@ export namespace Config {
     }
 
     // resource_id_scope - computed: false, optional: true, required: false
-    private _resourceIdScope?: string;
+    private _resourceIdScope?: string | undefined; 
     public get resourceIdScope() {
       return this.getStringAttribute('resource_id_scope');
     }
-    public set resourceIdScope(value: string ) {
+    public set resourceIdScope(value: string | undefined) {
       this._resourceIdScope = value;
     }
     public resetResourceIdScope() {
@@ -2180,11 +2727,11 @@ export namespace Config {
     }
 
     // resource_types_scope - computed: false, optional: true, required: false
-    private _resourceTypesScope?: string[];
+    private _resourceTypesScope?: string[] | undefined; 
     public get resourceTypesScope() {
       return this.getListAttribute('resource_types_scope');
     }
-    public set resourceTypesScope(value: string[] ) {
+    public set resourceTypesScope(value: string[] | undefined) {
       this._resourceTypesScope = value;
     }
     public resetResourceTypesScope() {
@@ -2196,7 +2743,7 @@ export namespace Config {
     }
 
     // rule_identifier - computed: false, optional: false, required: true
-    private _ruleIdentifier: string;
+    private _ruleIdentifier?: string; 
     public get ruleIdentifier() {
       return this.getStringAttribute('rule_identifier');
     }
@@ -2209,11 +2756,11 @@ export namespace Config {
     }
 
     // tag_key_scope - computed: false, optional: true, required: false
-    private _tagKeyScope?: string;
+    private _tagKeyScope?: string | undefined; 
     public get tagKeyScope() {
       return this.getStringAttribute('tag_key_scope');
     }
-    public set tagKeyScope(value: string ) {
+    public set tagKeyScope(value: string | undefined) {
       this._tagKeyScope = value;
     }
     public resetTagKeyScope() {
@@ -2225,11 +2772,11 @@ export namespace Config {
     }
 
     // tag_value_scope - computed: false, optional: true, required: false
-    private _tagValueScope?: string;
+    private _tagValueScope?: string | undefined; 
     public get tagValueScope() {
       return this.getStringAttribute('tag_value_scope');
     }
-    public set tagValueScope(value: string ) {
+    public set tagValueScope(value: string | undefined) {
       this._tagValueScope = value;
     }
     public resetTagValueScope() {
@@ -2241,11 +2788,12 @@ export namespace Config {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: ConfigOrganizationManagedRuleTimeouts;
+    private _timeouts?: ConfigOrganizationManagedRuleTimeouts | undefined; 
+    private __timeoutsOutput = new ConfigOrganizationManagedRuleTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: ConfigOrganizationManagedRuleTimeouts ) {
+    public putTimeouts(value: ConfigOrganizationManagedRuleTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -2321,6 +2869,9 @@ export namespace Config {
 
   function configRemediationConfigurationParameterToTerraform(struct?: ConfigRemediationConfigurationParameter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       resource_value: cdktf.stringToTerraform(struct!.resourceValue),
@@ -2379,7 +2930,7 @@ export namespace Config {
     }
 
     // config_rule_name - computed: false, optional: false, required: true
-    private _configRuleName: string;
+    private _configRuleName?: string; 
     public get configRuleName() {
       return this.getStringAttribute('config_rule_name');
     }
@@ -2397,11 +2948,11 @@ export namespace Config {
     }
 
     // resource_type - computed: false, optional: true, required: false
-    private _resourceType?: string;
+    private _resourceType?: string | undefined; 
     public get resourceType() {
       return this.getStringAttribute('resource_type');
     }
-    public set resourceType(value: string ) {
+    public set resourceType(value: string | undefined) {
       this._resourceType = value;
     }
     public resetResourceType() {
@@ -2413,7 +2964,7 @@ export namespace Config {
     }
 
     // target_id - computed: false, optional: false, required: true
-    private _targetId: string;
+    private _targetId?: string; 
     public get targetId() {
       return this.getStringAttribute('target_id');
     }
@@ -2426,7 +2977,7 @@ export namespace Config {
     }
 
     // target_type - computed: false, optional: false, required: true
-    private _targetType: string;
+    private _targetType?: string; 
     public get targetType() {
       return this.getStringAttribute('target_type');
     }
@@ -2439,11 +2990,11 @@ export namespace Config {
     }
 
     // target_version - computed: false, optional: true, required: false
-    private _targetVersion?: string;
+    private _targetVersion?: string | undefined; 
     public get targetVersion() {
       return this.getStringAttribute('target_version');
     }
-    public set targetVersion(value: string ) {
+    public set targetVersion(value: string | undefined) {
       this._targetVersion = value;
     }
     public resetTargetVersion() {
@@ -2455,11 +3006,12 @@ export namespace Config {
     }
 
     // parameter - computed: false, optional: true, required: false
-    private _parameter?: ConfigRemediationConfigurationParameter[];
+    private _parameter?: ConfigRemediationConfigurationParameter[] | undefined; 
     public get parameter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('parameter') as any;
     }
-    public set parameter(value: ConfigRemediationConfigurationParameter[] ) {
+    public set parameter(value: ConfigRemediationConfigurationParameter[] | undefined) {
       this._parameter = value;
     }
     public resetParameter() {
