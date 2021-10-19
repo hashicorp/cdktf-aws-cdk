@@ -17,7 +17,7 @@ export class CdktfConfig {
     const cdktfVersion = options.cdktfVersion;
     const constructsVersion = options.constructsVersion;
 
-    project.addPeerDeps(`cdktf@${cdktfVersion}`);
+    project.addPeerDeps(`cdktf@^${cdktfVersion}`);
     project.addPeerDeps(`constructs@${constructsVersion}`);
     project.addPeerDeps(`aws-cdk-lib@^2.0.0-rc.17`);
 

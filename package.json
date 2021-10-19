@@ -62,7 +62,7 @@
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.0.0-rc.17",
-    "cdktf": "0.6.4-pre.372",
+    "cdktf": "^0.6.4-pre.372",
     "constructs": "^10.0.0"
   },
   "dependencies": {
