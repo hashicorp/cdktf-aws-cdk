@@ -68,14 +68,14 @@ export class CdktfAwsCdkProject extends JsiiProject {
       repositoryUrl: `https://github.com/${githubNamespace}/cdktf-aws-cdk.git`,
       mergify: false,
       eslint: false,
-      python: {
-        distName: `${namespace}-aws-cdk`,
-        module: `${namespace}_aws_cdk`,
-      },
-      publishToNuget: {
-        dotNetNamespace: nugetName,
-        packageId: nugetName,
-      },
+      // python: {
+      //   distName: `${namespace}-aws-cdk`,
+      //   module: `${namespace}_aws_cdk`,
+      // },
+      // publishToNuget: {
+      //   dotNetNamespace: nugetName,
+      //   packageId: nugetName,
+      // },
       peerDependencyOptions: {
         pinnedDevDependency: false,
       },

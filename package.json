@@ -22,8 +22,6 @@
     "package": "npx projen package",
     "compat": "npx projen compat",
     "publish:npm": "npx projen publish:npm",
-    "publish:pypi": "npx projen publish:pypi",
-    "publish:nuget": "npx projen publish:nuget",
     "docgen": "npx projen docgen",
     "default": "npx projen default",
     "release": "npx projen release",
@@ -147,16 +145,7 @@
   "stability": "stable",
   "jsii": {
     "outdir": "dist",
-    "targets": {
-      "python": {
-        "distName": "cdktf-aws-cdk",
-        "module": "cdktf_aws_cdk"
-      },
-      "dotnet": {
-        "namespace": "HashiCorp.Cdktf.AwsCdk",
-        "packageId": "HashiCorp.Cdktf.AwsCdk"
-      }
-    },
+    "targets": {},
     "tsc": {
       "outDir": "lib",
       "rootDir": "src"
