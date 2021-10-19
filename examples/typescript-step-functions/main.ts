@@ -71,6 +71,6 @@ export class StepFunctionsStack extends TerraformStack {
 }
 
 const app = new App();
-new StepFunctionsStack(app, "typescript-cron-lambda");
+new StepFunctionsStack(app, "typescript-step-functions");
 
 app.synth();
