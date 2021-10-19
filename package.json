@@ -7,7 +7,7 @@
   },
   "scripts": {
     "clobber": "npx projen clobber",
-    "compile": "jsii --silence-warnings=reserved-word",
+    "compile": "NODE_OPTIONS=\"--max-old-space-size=7516\" jsii --silence-warnings=reserved-word",
     "test:compile": "npx projen test:compile",
     "test": "jest",
     "build": "npx projen build",

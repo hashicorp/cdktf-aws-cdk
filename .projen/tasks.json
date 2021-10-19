@@ -35,6 +35,9 @@
     "compile": {
       "name": "compile",
       "description": "Only compile",
+      "env": {
+        "NODE_OPTIONS": "--max-old-space-size=7516"
+      },
       "steps": [
         {
           "exec": "jsii --silence-warnings=reserved-word --no-fix-peer-dependencies"

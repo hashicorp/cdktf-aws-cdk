@@ -52,7 +52,7 @@ export class CdktfConfig {
       "prebump",
       "yarn fetch && yarn compile && yarn run commit && yarn run should-release"
     );
-    project.setScript("compile", "jsii --silence-warnings=reserved-word");
+    project.setScript("compile", 'NODE_OPTIONS="--max-old-space-size=7516" jsii --silence-warnings=reserved-word');
 
     project.setScript(
       "build-provider",
