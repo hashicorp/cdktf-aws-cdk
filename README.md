@@ -1,49 +1,27 @@
+# [technical preview] AWS Adapter
 
-# Terraform CDK aws Provider ~> 3.0
+> **The AWS Adapter is a technical preview and not ready for production usage.** Its API is not stable and things might break unexpectedly.
 
-This repo builds and publishes the Terraform aws Provider bindings for [cdktf](https://cdk.tf).
+The `AwsTerraformAdapter` (included in the `@cdktf/aws-cdk` package) allows you to use Amazon Web Services Cloud Development Kit (AWS CDK) constructs in your CDK for Terraform (CDKTF) projects.
 
-Current build targets are:
+The `AwsTerraformAdapter` uses the [`aws_cloudcontrolapi_resource`](https://www.terraform.io/docs/providers/aws/r/cloudcontrolapi_resource.html) Terraform resource to communicate with the [AWS Cloud Control API](https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/what-is-cloudcontrolapi.html). Reference this [list of supported resources](https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/supported-resources.html) for the Cloud Control API.
 
-- npm
-- Pypi
-- Nuget
-- Maven
+You need to manually map resources that the AWS Cloud Control API does not yet support to specific Terraform resources because attribute names and resource types differ between CloudFormation and Terraform. Some manual mappings are already [included](https://github.com/hashicorp/cdktf-aws-cdk/tree/main/src/mapping/aws) in the adapter. Manual mappings will become obsolete over time as AWS Cloud Control API expands its coverage. In the meantime, we are happy to accept PRs adding manual mappings for currently unsupported resources!
+
+## Requirements
+
+The `AwsTerraformAdapter` currenly only supports TypeScript projects:
+
+- `aws-cdk-lib` >= 2.0.0 (requires `constructs` version 10)
+- `cdktf` >= 0.7.0
+- `@cdktf/aws-cdk` >= 0.1 (contains the adapter)
+
+
+```
+npm install @cdktf/aws-cdk
+```
 
 ## Docs
+Read the [docs on Terraform.io](https://www.terraform.io/docs/cdktf/create-and-deploy/aws-adapter.html).
 
-Find auto-generated docs for this provider here: [./API.md](./API.md)
-
-## Versioning
-
-This project is explicitly not tracking the Terraform aws Provider version 1:1. In fact, it always tracks `latest` of `~> 3.0` with every release. If there scenarios where you explicitly have to pin your provider version, you can do so by generating the [provider constructs manually](https://cdk.tf/imports).
-
-These are the upstream dependencies:
-
-- [Terraform CDK](https://cdk.tf)
-- [Terraform aws Provider](https://github.com/terraform-providers/terraform-provider-aws)
-- [Terraform Engine](https://terraform.io)
-
-If there are breaking changes (backward incompatible) in any of the above, the major version of this project will be bumped. While the Terraform Engine and the Terraform aws Provider are relatively stable, the Terraform CDK is in an early stage. Therefore, it's likely that there will be breaking changes.
-
-## Features / Issues / Bugs
-
-Please report bugs and issues to the [terraform cdk](https://cdk.tf) project:
-
-- [Create bug report](https://cdk.tf/bug)
-- [Create feature request](https://cdk.tf/feature)
-
-## Contributing
-
-## projen
-
-This is mostly based on [projen](https://github.com/eladb/projen), which takes care of generating the entire repository.
-
-## cdktf-provider-project based on projen
-
-There's a custom [project builder](https://github.com/terraform-cdk-providers/cdktf-provider-project) which encapsulate the common settings for all `cdktf` providers.
-
-## provider version
-
-The provider version can be adjusted in [./.projenrc.js](./.projenrc.js).
-
+Find auto-generated API docs for this package here: [./API.md](./API.md)
