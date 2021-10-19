@@ -950,16 +950,16 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cdktf/hcl2cdk@0.6.4-pre.379":
-  version "0.6.4-pre.379"
-  resolved "https://registry.yarnpkg.com/@cdktf/hcl2cdk/-/hcl2cdk-0.6.4-pre.379.tgz#f2ed1a2c322fdb000094fbcf470f6853fd95a617"
-  integrity sha512-SBFbGgXtmCSrP+a0S+P25j8ucvJLXjInyZoIOHLfq2J2TH6gbGDtNlOFCqj9yeO4RqOYKVJsl4GwEfFbpta3vg==
+"@cdktf/hcl2cdk@0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@cdktf/hcl2cdk/-/hcl2cdk-0.7.0.tgz#b9f136ee8f05ba4fe8d4fee483a4108c56af5ebb"
+  integrity sha512-HASCRZcHX/qnDYD8sgdh/AY3Npj3AW6zZlFKUAyWM3veutWoYcUl+sPC7HwpQYkREhoNRMYWbrcq6VurgrpnOg==
   dependencies:
     "@babel/generator" "^7.14.5"
     "@babel/template" "^7.14.5"
     "@babel/types" "^7.14.5"
-    "@cdktf/hcl2json" "0.6.4-pre.379"
-    "@cdktf/provider-generator" "0.6.4-pre.379"
+    "@cdktf/hcl2json" "0.7.0"
+    "@cdktf/provider-generator" "0.7.0"
     camelcase "^6.2.0"
     glob "7.1.7"
     graphology "^0.20.0"
@@ -969,21 +969,21 @@
     reserved-words "^0.1.2"
     zod "^1.11.7"
 
-"@cdktf/hcl2json@0.6.4-pre.379":
-  version "0.6.4-pre.379"
-  resolved "https://registry.yarnpkg.com/@cdktf/hcl2json/-/hcl2json-0.6.4-pre.379.tgz#68a544cf5793af00c908cb8d751126a487457fd3"
-  integrity sha512-O5Ys0rb9Qhhdz18eZHaQwNyohGO7mVYV07W6CoIFap0Mp0e9CQnD665IGkVR5WrtldJ+nqCXSMsaWNIWSb7zDw==
+"@cdktf/hcl2json@0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@cdktf/hcl2json/-/hcl2json-0.7.0.tgz#becc4cffffb2605d7ce449c357bd00dd1bfddb67"
+  integrity sha512-YwZnPwEYplGalUsfJzptlIer2w7o/FmtGNblZEVlLRXqioALvDXMRrmwSeOFAQ1ycPaCMTllB4nXIaqftfTVWg==
   dependencies:
     "@types/node-fetch" "^2.5.8"
     node-fetch "^2.6.1"
 
-"@cdktf/provider-generator@0.6.4-pre.379":
-  version "0.6.4-pre.379"
-  resolved "https://registry.yarnpkg.com/@cdktf/provider-generator/-/provider-generator-0.6.4-pre.379.tgz#5b2949261c67edc9a34d5f5a442d8bd11f6eef33"
-  integrity sha512-fCdc17h1pjVjA+iaX8txFUu9YEfWYNyNgAFl3gUyRki9zfEde7ZE2PfUrtE/fj8us2kksGVaIfupLYfgU8Fw5w==
+"@cdktf/provider-generator@0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@cdktf/provider-generator/-/provider-generator-0.7.0.tgz#87574783f78590f37755d0bb5aac56a2e060845d"
+  integrity sha512-PzL3qTxZEnXWFGB+nQOHub8xmEykJKhHLgc6CUEfu9z8PCmK9dnPLK6BKvDgvQtnTT2/aXmFjDr9GVbuOZ5Gsw==
   dependencies:
     "@skorfmann/jsii-srcmak" "^0.1.272"
-    cdktf "0.6.4-pre.379"
+    cdktf "0.7.0"
     codemaker "^0.22.0"
     fs-extra "^8.1.0"
     is-valid-domain "^0.1.2"
@@ -2536,15 +2536,15 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
-cdktf-cli@0.6.4-pre.379:
-  version "0.6.4-pre.379"
-  resolved "https://registry.yarnpkg.com/cdktf-cli/-/cdktf-cli-0.6.4-pre.379.tgz#964721a1fa2da1d91fb57426741c9279d15fded9"
-  integrity sha512-O6js0SMxf+VRTGyN4I3j5v0xlrAF/PjnBsQ4edHN/dxjXrcZJABTTThKTSvR6/bhlyA8ywH1fuhcNG6DKwolrw==
+cdktf-cli@0.7:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/cdktf-cli/-/cdktf-cli-0.7.0.tgz#1e0a072e765470bf41724242f582ad41fc1fcd9e"
+  integrity sha512-N0U5YgquMYZTqfO+SSIdP6K/EAnFqS5gHj8eISvP2ZjrphfSFM7hs4VO0bVvzNoMe/ByBbUtQMHXCs5r1XdB9Q==
   dependencies:
     "@apollo/client" "^3.3.21"
-    "@cdktf/hcl2cdk" "0.6.4-pre.379"
-    "@cdktf/hcl2json" "0.6.4-pre.379"
-    "@cdktf/provider-generator" "0.6.4-pre.379"
+    "@cdktf/hcl2cdk" "0.7.0"
+    "@cdktf/hcl2json" "0.7.0"
+    "@cdktf/provider-generator" "0.7.0"
     "@graphql-tools/graphql-file-loader" "^6.2.7"
     "@graphql-tools/load" "^6.2.8"
     "@npmcli/ci-detect" "^1.3.0"
@@ -2555,7 +2555,7 @@ cdktf-cli@0.6.4-pre.379:
     apollo-server-core "^3.0.2"
     apollo-server-express "^3.0.2"
     archiver "^5.1.0"
-    cdktf "0.6.4-pre.379"
+    cdktf "0.7.0"
     chalk "^4.1.0"
     chokidar "^3.5.2"
     cli-spinners "2.6.0"
@@ -2592,10 +2592,10 @@ cdktf-cli@0.6.4-pre.379:
     yargs "^17.0"
     zod "^1.11.7"
 
-cdktf@0.6.4-pre.379:
-  version "0.6.4-pre.379"
-  resolved "https://registry.yarnpkg.com/cdktf/-/cdktf-0.6.4-pre.379.tgz#3c457b6db13e73dfa5b1d3bb79bd70d5385d7474"
-  integrity sha512-19m+gJs1siwaDHhdP81I+gaBCJCJ/aLn4FbhkpBsy15OuB6vjrGkLZz9BV1GIA2rRkAabAltIOwPkd1axdcyWA==
+cdktf@0.7, cdktf@0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/cdktf/-/cdktf-0.7.0.tgz#542f11b53ad071599c2414952d1f48721200e0f1"
+  integrity sha512-AhT3I6O3XAeBh2t2MiiAuPelPXmtaD4P3wIbcDtPxtlAX4gO5jTGVNHqHp11SdwvbncbDuhetdI7Egyor/EsEQ==
   dependencies:
     archiver "5.3.0"
 
