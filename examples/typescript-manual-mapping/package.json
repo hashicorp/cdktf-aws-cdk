@@ -1,5 +1,5 @@
 {
-  "name": "@cdktf/aws-adapter-example-typescript-cron-lambda",
+  "name": "@cdktf/aws-adapter-example-typescript-manual-mapping",
   "version": "0.0.0",
   "main": "index.js",
   "license": "MPL-2.0",
