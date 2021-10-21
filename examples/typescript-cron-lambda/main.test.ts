@@ -1,15 +1,10 @@
-import { Aspects, Testing } from "cdktf";
+import { Testing } from "cdktf";
 import "cdktf/lib/testing/adapters/jest";
 import { CronLambdaStack } from "./main";
 
 describe("typescript-cron-lambda", () => {
   it("should synthesize", () => {
     const stack = new CronLambdaStack(Testing.app(), "test");
-
-    // Aspects are currently not invoked via Testing.synth / Testing.synthScope
-    // This makes sure the AWS Adapter converts all constructs to cdktf
-    // TODO: link to GH issue for this shortcoming
-    Aspects.of(stack).all.forEach((aspect) => aspect.visit(stack));
 
     const synthResult = Testing.synth(stack);
 
@@ -30,6 +25,9 @@ describe("typescript-cron-lambda", () => {
         \\"resource\\": {
           \\"aws_cloudcontrolapi_resource\\": {
             \\"adapter_lambda8B5974B5_06304D76\\": {
+              \\"depends_on\\": [
+                \\"time_sleep.adapter_lambdaServiceRole494E4CA6_sleep_lambdaServiceRole494E4CA6_73847BDD\\"
+              ],
               \\"desired_state\\": \\"{\\\\\\"Code\\\\\\":{\\\\\\"ZipFile\\\\\\":\\\\\\"def main(event, context):\\\\\\\\n    print(\\\\\\\\\\\\\\"I'm running!\\\\\\\\\\\\\\")\\\\\\"},\\\\\\"Role\\\\\\":\\\\\\"\${aws_iam_role.adapter_lambdaServiceRole494E4CA6_7D4D29EC.arn}\\\\\\",\\\\\\"Handler\\\\\\":\\\\\\"index.main\\\\\\",\\\\\\"Runtime\\\\\\":\\\\\\"python3.6\\\\\\",\\\\\\"Timeout\\\\\\":300}\\",
               \\"type_name\\": \\"AWS::Lambda::Function\\"
             }
@@ -60,6 +58,16 @@ describe("typescript-cron-lambda", () => {
               \\"function_name\\": \\"\${jsondecode(aws_cloudcontrolapi_resource.adapter_lambda8B5974B5_06304D76.properties)[\\\\\\"Arn\\\\\\"]}\\",
               \\"principal\\": \\"events.amazonaws.com\\",
               \\"source_arn\\": \\"\${aws_cloudwatch_event_rule.adapter_ruleF2C1DCDC_10BF962A.arn}\\"
+            }
+          },
+          \\"time_sleep\\": {
+            \\"adapter_lambdaServiceRole494E4CA6_sleep_lambdaServiceRole494E4CA6_73847BDD\\": {
+              \\"create_duration\\": \\"20s\\",
+              \\"depends_on\\": [
+                \\"aws_iam_role.adapter_lambdaServiceRole494E4CA6_7D4D29EC\\"
+              ],
+              \\"destroy_duration\\": \\"0s\\",
+              \\"provider\\": \\"time.awsadapter_eventual_consistency_workaround_aspect\\"
             }
           }
         },

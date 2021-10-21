@@ -8,7 +8,8 @@
     "compile": "tsc --pretty",
     "synth": "cdktf synth",
     "pretest": "yarn run build",
-    "test": "jest"
+    "test": "jest",
+    "test:local": "npm install --no-save ../../dist/js/aws-cdk@0.0.0.jsii.tgz && yarn test"
   },
   "devDependencies": {
     "@types/jest": "27.0.1",
