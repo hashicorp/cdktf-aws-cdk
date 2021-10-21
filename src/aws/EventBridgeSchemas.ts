@@ -74,11 +74,11 @@ export namespace EventBridgeSchemas {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -95,7 +95,7 @@ export namespace EventBridgeSchemas {
     }
 
     // source_arn - computed: false, optional: false, required: true
-    private _sourceArn: string;
+    private _sourceArn?: string; 
     public get sourceArn() {
       return this.getStringAttribute('source_arn');
     }
@@ -108,11 +108,12 @@ export namespace EventBridgeSchemas {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -124,11 +125,12 @@ export namespace EventBridgeSchemas {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -219,11 +221,11 @@ export namespace EventBridgeSchemas {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -240,7 +242,7 @@ export namespace EventBridgeSchemas {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -253,11 +255,12 @@ export namespace EventBridgeSchemas {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -269,11 +272,12 @@ export namespace EventBridgeSchemas {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -379,7 +383,7 @@ export namespace EventBridgeSchemas {
     }
 
     // content - computed: false, optional: false, required: true
-    private _content: string;
+    private _content?: string; 
     public get content() {
       return this.getStringAttribute('content');
     }
@@ -392,11 +396,11 @@ export namespace EventBridgeSchemas {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -418,7 +422,7 @@ export namespace EventBridgeSchemas {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -431,7 +435,7 @@ export namespace EventBridgeSchemas {
     }
 
     // registry_name - computed: false, optional: false, required: true
-    private _registryName: string;
+    private _registryName?: string; 
     public get registryName() {
       return this.getStringAttribute('registry_name');
     }
@@ -444,11 +448,12 @@ export namespace EventBridgeSchemas {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -460,11 +465,12 @@ export namespace EventBridgeSchemas {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -476,7 +482,7 @@ export namespace EventBridgeSchemas {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }

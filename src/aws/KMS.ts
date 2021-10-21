@@ -74,11 +74,11 @@ export namespace KMS {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -90,11 +90,11 @@ export namespace KMS {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -111,7 +111,7 @@ export namespace KMS {
     }
 
     // target_key_id - computed: false, optional: false, required: true
-    private _targetKeyId: string;
+    private _targetKeyId?: string; 
     public get targetKeyId() {
       return this.getStringAttribute('target_key_id');
     }
@@ -197,11 +197,12 @@ export namespace KMS {
     }
 
     // context - computed: false, optional: true, required: false
-    private _context?: { [key: string]: string } | cdktf.IResolvable;
+    private _context?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get context() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('context') as any;
     }
-    public set context(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set context(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._context = value;
     }
     public resetContext() {
@@ -218,7 +219,7 @@ export namespace KMS {
     }
 
     // key_id - computed: false, optional: false, required: true
-    private _keyId: string;
+    private _keyId?: string; 
     public get keyId() {
       return this.getStringAttribute('key_id');
     }
@@ -231,7 +232,7 @@ export namespace KMS {
     }
 
     // plaintext - computed: false, optional: false, required: true
-    private _plaintext: string;
+    private _plaintext?: string; 
     public get plaintext() {
       return this.getStringAttribute('plaintext');
     }
@@ -347,11 +348,11 @@ export namespace KMS {
     }
 
     // bypass_policy_lockout_safety_check - computed: false, optional: true, required: false
-    private _bypassPolicyLockoutSafetyCheck?: boolean | cdktf.IResolvable;
+    private _bypassPolicyLockoutSafetyCheck?: boolean | cdktf.IResolvable | undefined; 
     public get bypassPolicyLockoutSafetyCheck() {
-      return this.getBooleanAttribute('bypass_policy_lockout_safety_check');
+      return this.getBooleanAttribute('bypass_policy_lockout_safety_check') as any;
     }
-    public set bypassPolicyLockoutSafetyCheck(value: boolean | cdktf.IResolvable ) {
+    public set bypassPolicyLockoutSafetyCheck(value: boolean | cdktf.IResolvable | undefined) {
       this._bypassPolicyLockoutSafetyCheck = value;
     }
     public resetBypassPolicyLockoutSafetyCheck() {
@@ -363,11 +364,11 @@ export namespace KMS {
     }
 
     // deletion_window_in_days - computed: false, optional: true, required: false
-    private _deletionWindowInDays?: number;
+    private _deletionWindowInDays?: number | undefined; 
     public get deletionWindowInDays() {
       return this.getNumberAttribute('deletion_window_in_days');
     }
-    public set deletionWindowInDays(value: number ) {
+    public set deletionWindowInDays(value: number | undefined) {
       this._deletionWindowInDays = value;
     }
     public resetDeletionWindowInDays() {
@@ -379,11 +380,11 @@ export namespace KMS {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -395,11 +396,11 @@ export namespace KMS {
     }
 
     // enabled - computed: true, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -421,11 +422,11 @@ export namespace KMS {
     }
 
     // key_material_base64 - computed: false, optional: true, required: false
-    private _keyMaterialBase64?: string;
+    private _keyMaterialBase64?: string | undefined; 
     public get keyMaterialBase64() {
       return this.getStringAttribute('key_material_base64');
     }
-    public set keyMaterialBase64(value: string ) {
+    public set keyMaterialBase64(value: string | undefined) {
       this._keyMaterialBase64 = value;
     }
     public resetKeyMaterialBase64() {
@@ -447,11 +448,11 @@ export namespace KMS {
     }
 
     // policy - computed: true, optional: true, required: false
-    private _policy?: string;
+    private _policy?: string | undefined; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
-    public set policy(value: string) {
+    public set policy(value: string | undefined) {
       this._policy = value;
     }
     public resetPolicy() {
@@ -463,11 +464,12 @@ export namespace KMS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -479,11 +481,12 @@ export namespace KMS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -495,11 +498,11 @@ export namespace KMS {
     }
 
     // valid_to - computed: false, optional: true, required: false
-    private _validTo?: string;
+    private _validTo?: string | undefined; 
     public get validTo() {
       return this.getStringAttribute('valid_to');
     }
-    public set validTo(value: string ) {
+    public set validTo(value: string | undefined) {
       this._validTo = value;
     }
     public resetValidTo() {
@@ -577,6 +580,9 @@ export namespace KMS {
 
   function kmsGrantConstraintsToTerraform(struct?: KmsGrantConstraints): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       encryption_context_equals: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.encryptionContextEquals),
       encryption_context_subset: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.encryptionContextSubset),
@@ -631,11 +637,11 @@ export namespace KMS {
     // ==========
 
     // grant_creation_tokens - computed: false, optional: true, required: false
-    private _grantCreationTokens?: string[];
+    private _grantCreationTokens?: string[] | undefined; 
     public get grantCreationTokens() {
       return this.getListAttribute('grant_creation_tokens');
     }
-    public set grantCreationTokens(value: string[] ) {
+    public set grantCreationTokens(value: string[] | undefined) {
       this._grantCreationTokens = value;
     }
     public resetGrantCreationTokens() {
@@ -657,7 +663,7 @@ export namespace KMS {
     }
 
     // grantee_principal - computed: false, optional: false, required: true
-    private _granteePrincipal: string;
+    private _granteePrincipal?: string; 
     public get granteePrincipal() {
       return this.getStringAttribute('grantee_principal');
     }
@@ -675,7 +681,7 @@ export namespace KMS {
     }
 
     // key_id - computed: false, optional: false, required: true
-    private _keyId: string;
+    private _keyId?: string; 
     public get keyId() {
       return this.getStringAttribute('key_id');
     }
@@ -688,11 +694,11 @@ export namespace KMS {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -704,7 +710,7 @@ export namespace KMS {
     }
 
     // operations - computed: false, optional: false, required: true
-    private _operations: string[];
+    private _operations?: string[]; 
     public get operations() {
       return this.getListAttribute('operations');
     }
@@ -717,11 +723,11 @@ export namespace KMS {
     }
 
     // retire_on_delete - computed: false, optional: true, required: false
-    private _retireOnDelete?: boolean | cdktf.IResolvable;
+    private _retireOnDelete?: boolean | cdktf.IResolvable | undefined; 
     public get retireOnDelete() {
-      return this.getBooleanAttribute('retire_on_delete');
+      return this.getBooleanAttribute('retire_on_delete') as any;
     }
-    public set retireOnDelete(value: boolean | cdktf.IResolvable ) {
+    public set retireOnDelete(value: boolean | cdktf.IResolvable | undefined) {
       this._retireOnDelete = value;
     }
     public resetRetireOnDelete() {
@@ -733,11 +739,11 @@ export namespace KMS {
     }
 
     // retiring_principal - computed: false, optional: true, required: false
-    private _retiringPrincipal?: string;
+    private _retiringPrincipal?: string | undefined; 
     public get retiringPrincipal() {
       return this.getStringAttribute('retiring_principal');
     }
-    public set retiringPrincipal(value: string ) {
+    public set retiringPrincipal(value: string | undefined) {
       this._retiringPrincipal = value;
     }
     public resetRetiringPrincipal() {
@@ -749,11 +755,12 @@ export namespace KMS {
     }
 
     // constraints - computed: false, optional: true, required: false
-    private _constraints?: KmsGrantConstraints[];
+    private _constraints?: KmsGrantConstraints[] | undefined; 
     public get constraints() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('constraints') as any;
     }
-    public set constraints(value: KmsGrantConstraints[] ) {
+    public set constraints(value: KmsGrantConstraints[] | undefined) {
       this._constraints = value;
     }
     public resetConstraints() {
@@ -878,11 +885,11 @@ export namespace KMS {
     }
 
     // bypass_policy_lockout_safety_check - computed: false, optional: true, required: false
-    private _bypassPolicyLockoutSafetyCheck?: boolean | cdktf.IResolvable;
+    private _bypassPolicyLockoutSafetyCheck?: boolean | cdktf.IResolvable | undefined; 
     public get bypassPolicyLockoutSafetyCheck() {
-      return this.getBooleanAttribute('bypass_policy_lockout_safety_check');
+      return this.getBooleanAttribute('bypass_policy_lockout_safety_check') as any;
     }
-    public set bypassPolicyLockoutSafetyCheck(value: boolean | cdktf.IResolvable ) {
+    public set bypassPolicyLockoutSafetyCheck(value: boolean | cdktf.IResolvable | undefined) {
       this._bypassPolicyLockoutSafetyCheck = value;
     }
     public resetBypassPolicyLockoutSafetyCheck() {
@@ -894,11 +901,11 @@ export namespace KMS {
     }
 
     // customer_master_key_spec - computed: false, optional: true, required: false
-    private _customerMasterKeySpec?: string;
+    private _customerMasterKeySpec?: string | undefined; 
     public get customerMasterKeySpec() {
       return this.getStringAttribute('customer_master_key_spec');
     }
-    public set customerMasterKeySpec(value: string ) {
+    public set customerMasterKeySpec(value: string | undefined) {
       this._customerMasterKeySpec = value;
     }
     public resetCustomerMasterKeySpec() {
@@ -910,11 +917,11 @@ export namespace KMS {
     }
 
     // deletion_window_in_days - computed: false, optional: true, required: false
-    private _deletionWindowInDays?: number;
+    private _deletionWindowInDays?: number | undefined; 
     public get deletionWindowInDays() {
       return this.getNumberAttribute('deletion_window_in_days');
     }
-    public set deletionWindowInDays(value: number ) {
+    public set deletionWindowInDays(value: number | undefined) {
       this._deletionWindowInDays = value;
     }
     public resetDeletionWindowInDays() {
@@ -926,11 +933,11 @@ export namespace KMS {
     }
 
     // description - computed: true, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -942,11 +949,11 @@ export namespace KMS {
     }
 
     // enable_key_rotation - computed: false, optional: true, required: false
-    private _enableKeyRotation?: boolean | cdktf.IResolvable;
+    private _enableKeyRotation?: boolean | cdktf.IResolvable | undefined; 
     public get enableKeyRotation() {
-      return this.getBooleanAttribute('enable_key_rotation');
+      return this.getBooleanAttribute('enable_key_rotation') as any;
     }
-    public set enableKeyRotation(value: boolean | cdktf.IResolvable ) {
+    public set enableKeyRotation(value: boolean | cdktf.IResolvable | undefined) {
       this._enableKeyRotation = value;
     }
     public resetEnableKeyRotation() {
@@ -963,11 +970,11 @@ export namespace KMS {
     }
 
     // is_enabled - computed: false, optional: true, required: false
-    private _isEnabled?: boolean | cdktf.IResolvable;
+    private _isEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get isEnabled() {
-      return this.getBooleanAttribute('is_enabled');
+      return this.getBooleanAttribute('is_enabled') as any;
     }
-    public set isEnabled(value: boolean | cdktf.IResolvable ) {
+    public set isEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._isEnabled = value;
     }
     public resetIsEnabled() {
@@ -984,11 +991,11 @@ export namespace KMS {
     }
 
     // key_usage - computed: false, optional: true, required: false
-    private _keyUsage?: string;
+    private _keyUsage?: string | undefined; 
     public get keyUsage() {
       return this.getStringAttribute('key_usage');
     }
-    public set keyUsage(value: string ) {
+    public set keyUsage(value: string | undefined) {
       this._keyUsage = value;
     }
     public resetKeyUsage() {
@@ -1000,11 +1007,11 @@ export namespace KMS {
     }
 
     // policy - computed: true, optional: true, required: false
-    private _policy?: string;
+    private _policy?: string | undefined; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
-    public set policy(value: string) {
+    public set policy(value: string | undefined) {
       this._policy = value;
     }
     public resetPolicy() {
@@ -1016,11 +1023,12 @@ export namespace KMS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1032,11 +1040,12 @@ export namespace KMS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1123,7 +1132,7 @@ export namespace KMS {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1217,11 +1226,12 @@ export namespace KMS {
     }
 
     // context - computed: false, optional: true, required: false
-    private _context?: { [key: string]: string } | cdktf.IResolvable;
+    private _context?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get context() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('context') as any;
     }
-    public set context(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set context(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._context = value;
     }
     public resetContext() {
@@ -1238,7 +1248,7 @@ export namespace KMS {
     }
 
     // key_id - computed: false, optional: false, required: true
-    private _keyId: string;
+    private _keyId?: string; 
     public get keyId() {
       return this.getStringAttribute('key_id');
     }
@@ -1251,7 +1261,7 @@ export namespace KMS {
     }
 
     // plaintext - computed: false, optional: false, required: true
-    private _plaintext: string;
+    private _plaintext?: string; 
     public get plaintext() {
       return this.getStringAttribute('plaintext');
     }
@@ -1358,7 +1368,7 @@ export namespace KMS {
 
     // enabled - computed: true, optional: false, required: false
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
 
     // expiration_model - computed: true, optional: false, required: false
@@ -1367,11 +1377,11 @@ export namespace KMS {
     }
 
     // grant_tokens - computed: false, optional: true, required: false
-    private _grantTokens?: string[];
+    private _grantTokens?: string[] | undefined; 
     public get grantTokens() {
       return this.getListAttribute('grant_tokens');
     }
-    public set grantTokens(value: string[] ) {
+    public set grantTokens(value: string[] | undefined) {
       this._grantTokens = value;
     }
     public resetGrantTokens() {
@@ -1388,7 +1398,7 @@ export namespace KMS {
     }
 
     // key_id - computed: false, optional: false, required: true
-    private _keyId: string;
+    private _keyId?: string; 
     public get keyId() {
       return this.getStringAttribute('key_id');
     }
@@ -1503,11 +1513,11 @@ export namespace KMS {
     }
 
     // grant_tokens - computed: false, optional: true, required: false
-    private _grantTokens?: string[];
+    private _grantTokens?: string[] | undefined; 
     public get grantTokens() {
       return this.getListAttribute('grant_tokens');
     }
-    public set grantTokens(value: string[] ) {
+    public set grantTokens(value: string[] | undefined) {
       this._grantTokens = value;
     }
     public resetGrantTokens() {
@@ -1524,7 +1534,7 @@ export namespace KMS {
     }
 
     // key_id - computed: false, optional: false, required: true
-    private _keyId: string;
+    private _keyId?: string; 
     public get keyId() {
       return this.getStringAttribute('key_id');
     }
@@ -1591,6 +1601,9 @@ export namespace KMS {
 
   function dataAwsKmsSecretSecretToTerraform(struct?: DataAwsKmsSecretSecret): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       context: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.context),
       grant_tokens: cdktf.listMapper(cdktf.stringToTerraform)(struct!.grantTokens),
@@ -1645,8 +1658,9 @@ export namespace KMS {
     }
 
     // secret - computed: false, optional: false, required: true
-    private _secret: DataAwsKmsSecretSecret[];
+    private _secret?: DataAwsKmsSecretSecret[]; 
     public get secret() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('secret') as any;
     }
     public set secret(value: DataAwsKmsSecretSecret[]) {
@@ -1696,6 +1710,9 @@ export namespace KMS {
 
   function dataAwsKmsSecretsSecretToTerraform(struct?: DataAwsKmsSecretsSecret): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       context: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.context),
       grant_tokens: cdktf.listMapper(cdktf.stringToTerraform)(struct!.grantTokens),
@@ -1755,8 +1772,9 @@ export namespace KMS {
     }
 
     // secret - computed: false, optional: false, required: true
-    private _secret: DataAwsKmsSecretsSecret[];
+    private _secret?: DataAwsKmsSecretsSecret[]; 
     public get secret() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('secret') as any;
     }
     public set secret(value: DataAwsKmsSecretsSecret[]) {

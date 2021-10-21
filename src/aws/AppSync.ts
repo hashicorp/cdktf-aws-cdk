@@ -64,7 +64,7 @@ export namespace AppSync {
     // ==========
 
     // api_id - computed: false, optional: false, required: true
-    private _apiId: string;
+    private _apiId?: string; 
     public get apiId() {
       return this.getStringAttribute('api_id');
     }
@@ -77,11 +77,11 @@ export namespace AppSync {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -93,11 +93,11 @@ export namespace AppSync {
     }
 
     // expires - computed: false, optional: true, required: false
-    private _expires?: string;
+    private _expires?: string | undefined; 
     public get expires() {
       return this.getStringAttribute('expires');
     }
-    public set expires(value: string ) {
+    public set expires(value: string | undefined) {
       this._expires = value;
     }
     public resetExpires() {
@@ -156,25 +156,25 @@ export namespace AppSync {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#dynamodb_config AppsyncDatasource#dynamodb_config}
     */
-    readonly dynamodbConfig?: AppsyncDatasourceDynamodbConfig[];
+    readonly dynamodbConfig?: AppsyncDatasourceDynamodbConfig;
     /**
     * elasticsearch_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#elasticsearch_config AppsyncDatasource#elasticsearch_config}
     */
-    readonly elasticsearchConfig?: AppsyncDatasourceElasticsearchConfig[];
+    readonly elasticsearchConfig?: AppsyncDatasourceElasticsearchConfig;
     /**
     * http_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#http_config AppsyncDatasource#http_config}
     */
-    readonly httpConfig?: AppsyncDatasourceHttpConfig[];
+    readonly httpConfig?: AppsyncDatasourceHttpConfig;
     /**
     * lambda_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#lambda_config AppsyncDatasource#lambda_config}
     */
-    readonly lambdaConfig?: AppsyncDatasourceLambdaConfig[];
+    readonly lambdaConfig?: AppsyncDatasourceLambdaConfig;
   }
   export interface AppsyncDatasourceDynamodbConfig {
     /**
@@ -191,8 +191,11 @@ export namespace AppSync {
     readonly useCallerCredentials?: boolean | cdktf.IResolvable;
   }
 
-  function appsyncDatasourceDynamodbConfigToTerraform(struct?: AppsyncDatasourceDynamodbConfig): any {
+  function appsyncDatasourceDynamodbConfigToTerraform(struct?: AppsyncDatasourceDynamodbConfigOutputReference | AppsyncDatasourceDynamodbConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       region: cdktf.stringToTerraform(struct!.region),
       table_name: cdktf.stringToTerraform(struct!.tableName),
@@ -200,6 +203,61 @@ export namespace AppSync {
     }
   }
 
+  export class AppsyncDatasourceDynamodbConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // region - computed: true, optional: true, required: false
+    private _region?: string | undefined; 
+    public get region() {
+      return this.getStringAttribute('region');
+    }
+    public set region(value: string | undefined) {
+      this._region = value;
+    }
+    public resetRegion() {
+      this._region = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get regionInput() {
+      return this._region
+    }
+
+    // table_name - computed: false, optional: false, required: true
+    private _tableName?: string; 
+    public get tableName() {
+      return this.getStringAttribute('table_name');
+    }
+    public set tableName(value: string) {
+      this._tableName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tableNameInput() {
+      return this._tableName
+    }
+
+    // use_caller_credentials - computed: false, optional: true, required: false
+    private _useCallerCredentials?: boolean | cdktf.IResolvable | undefined; 
+    public get useCallerCredentials() {
+      return this.getBooleanAttribute('use_caller_credentials') as any;
+    }
+    public set useCallerCredentials(value: boolean | cdktf.IResolvable | undefined) {
+      this._useCallerCredentials = value;
+    }
+    public resetUseCallerCredentials() {
+      this._useCallerCredentials = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get useCallerCredentialsInput() {
+      return this._useCallerCredentials
+    }
+  }
   export interface AppsyncDatasourceElasticsearchConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#endpoint AppsyncDatasource#endpoint}
@@ -211,14 +269,56 @@ export namespace AppSync {
     readonly region?: string;
   }
 
-  function appsyncDatasourceElasticsearchConfigToTerraform(struct?: AppsyncDatasourceElasticsearchConfig): any {
+  function appsyncDatasourceElasticsearchConfigToTerraform(struct?: AppsyncDatasourceElasticsearchConfigOutputReference | AppsyncDatasourceElasticsearchConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       endpoint: cdktf.stringToTerraform(struct!.endpoint),
       region: cdktf.stringToTerraform(struct!.region),
     }
   }
 
+  export class AppsyncDatasourceElasticsearchConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // endpoint - computed: false, optional: false, required: true
+    private _endpoint?: string; 
+    public get endpoint() {
+      return this.getStringAttribute('endpoint');
+    }
+    public set endpoint(value: string) {
+      this._endpoint = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get endpointInput() {
+      return this._endpoint
+    }
+
+    // region - computed: true, optional: true, required: false
+    private _region?: string | undefined; 
+    public get region() {
+      return this.getStringAttribute('region');
+    }
+    public set region(value: string | undefined) {
+      this._region = value;
+    }
+    public resetRegion() {
+      this._region = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get regionInput() {
+      return this._region
+    }
+  }
   export interface AppsyncDatasourceHttpConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#endpoint AppsyncDatasource#endpoint}
@@ -226,13 +326,39 @@ export namespace AppSync {
     readonly endpoint: string;
   }
 
-  function appsyncDatasourceHttpConfigToTerraform(struct?: AppsyncDatasourceHttpConfig): any {
+  function appsyncDatasourceHttpConfigToTerraform(struct?: AppsyncDatasourceHttpConfigOutputReference | AppsyncDatasourceHttpConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       endpoint: cdktf.stringToTerraform(struct!.endpoint),
     }
   }
 
+  export class AppsyncDatasourceHttpConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // endpoint - computed: false, optional: false, required: true
+    private _endpoint?: string; 
+    public get endpoint() {
+      return this.getStringAttribute('endpoint');
+    }
+    public set endpoint(value: string) {
+      this._endpoint = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get endpointInput() {
+      return this._endpoint
+    }
+  }
   export interface AppsyncDatasourceLambdaConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html#function_arn AppsyncDatasource#function_arn}
@@ -240,13 +366,39 @@ export namespace AppSync {
     readonly functionArn: string;
   }
 
-  function appsyncDatasourceLambdaConfigToTerraform(struct?: AppsyncDatasourceLambdaConfig): any {
+  function appsyncDatasourceLambdaConfigToTerraform(struct?: AppsyncDatasourceLambdaConfigOutputReference | AppsyncDatasourceLambdaConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       function_arn: cdktf.stringToTerraform(struct!.functionArn),
     }
   }
 
+  export class AppsyncDatasourceLambdaConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // function_arn - computed: false, optional: false, required: true
+    private _functionArn?: string; 
+    public get functionArn() {
+      return this.getStringAttribute('function_arn');
+    }
+    public set functionArn(value: string) {
+      this._functionArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get functionArnInput() {
+      return this._functionArn
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/appsync_datasource.html aws_appsync_datasource}
@@ -296,7 +448,7 @@ export namespace AppSync {
     // ==========
 
     // api_id - computed: false, optional: false, required: true
-    private _apiId: string;
+    private _apiId?: string; 
     public get apiId() {
       return this.getStringAttribute('api_id');
     }
@@ -314,11 +466,11 @@ export namespace AppSync {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -335,7 +487,7 @@ export namespace AppSync {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -348,11 +500,11 @@ export namespace AppSync {
     }
 
     // service_role_arn - computed: false, optional: true, required: false
-    private _serviceRoleArn?: string;
+    private _serviceRoleArn?: string | undefined; 
     public get serviceRoleArn() {
       return this.getStringAttribute('service_role_arn');
     }
-    public set serviceRoleArn(value: string ) {
+    public set serviceRoleArn(value: string | undefined) {
       this._serviceRoleArn = value;
     }
     public resetServiceRoleArn() {
@@ -364,7 +516,7 @@ export namespace AppSync {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }
@@ -377,11 +529,12 @@ export namespace AppSync {
     }
 
     // dynamodb_config - computed: false, optional: true, required: false
-    private _dynamodbConfig?: AppsyncDatasourceDynamodbConfig[];
+    private _dynamodbConfig?: AppsyncDatasourceDynamodbConfig | undefined; 
+    private __dynamodbConfigOutput = new AppsyncDatasourceDynamodbConfigOutputReference(this as any, "dynamodb_config", true);
     public get dynamodbConfig() {
-      return this.interpolationForAttribute('dynamodb_config') as any;
+      return this.__dynamodbConfigOutput;
     }
-    public set dynamodbConfig(value: AppsyncDatasourceDynamodbConfig[] ) {
+    public putDynamodbConfig(value: AppsyncDatasourceDynamodbConfig | undefined) {
       this._dynamodbConfig = value;
     }
     public resetDynamodbConfig() {
@@ -393,11 +546,12 @@ export namespace AppSync {
     }
 
     // elasticsearch_config - computed: false, optional: true, required: false
-    private _elasticsearchConfig?: AppsyncDatasourceElasticsearchConfig[];
+    private _elasticsearchConfig?: AppsyncDatasourceElasticsearchConfig | undefined; 
+    private __elasticsearchConfigOutput = new AppsyncDatasourceElasticsearchConfigOutputReference(this as any, "elasticsearch_config", true);
     public get elasticsearchConfig() {
-      return this.interpolationForAttribute('elasticsearch_config') as any;
+      return this.__elasticsearchConfigOutput;
     }
-    public set elasticsearchConfig(value: AppsyncDatasourceElasticsearchConfig[] ) {
+    public putElasticsearchConfig(value: AppsyncDatasourceElasticsearchConfig | undefined) {
       this._elasticsearchConfig = value;
     }
     public resetElasticsearchConfig() {
@@ -409,11 +563,12 @@ export namespace AppSync {
     }
 
     // http_config - computed: false, optional: true, required: false
-    private _httpConfig?: AppsyncDatasourceHttpConfig[];
+    private _httpConfig?: AppsyncDatasourceHttpConfig | undefined; 
+    private __httpConfigOutput = new AppsyncDatasourceHttpConfigOutputReference(this as any, "http_config", true);
     public get httpConfig() {
-      return this.interpolationForAttribute('http_config') as any;
+      return this.__httpConfigOutput;
     }
-    public set httpConfig(value: AppsyncDatasourceHttpConfig[] ) {
+    public putHttpConfig(value: AppsyncDatasourceHttpConfig | undefined) {
       this._httpConfig = value;
     }
     public resetHttpConfig() {
@@ -425,11 +580,12 @@ export namespace AppSync {
     }
 
     // lambda_config - computed: false, optional: true, required: false
-    private _lambdaConfig?: AppsyncDatasourceLambdaConfig[];
+    private _lambdaConfig?: AppsyncDatasourceLambdaConfig | undefined; 
+    private __lambdaConfigOutput = new AppsyncDatasourceLambdaConfigOutputReference(this as any, "lambda_config", true);
     public get lambdaConfig() {
-      return this.interpolationForAttribute('lambda_config') as any;
+      return this.__lambdaConfigOutput;
     }
-    public set lambdaConfig(value: AppsyncDatasourceLambdaConfig[] ) {
+    public putLambdaConfig(value: AppsyncDatasourceLambdaConfig | undefined) {
       this._lambdaConfig = value;
     }
     public resetLambdaConfig() {
@@ -451,10 +607,10 @@ export namespace AppSync {
         name: cdktf.stringToTerraform(this._name),
         service_role_arn: cdktf.stringToTerraform(this._serviceRoleArn),
         type: cdktf.stringToTerraform(this._type),
-        dynamodb_config: cdktf.listMapper(appsyncDatasourceDynamodbConfigToTerraform)(this._dynamodbConfig),
-        elasticsearch_config: cdktf.listMapper(appsyncDatasourceElasticsearchConfigToTerraform)(this._elasticsearchConfig),
-        http_config: cdktf.listMapper(appsyncDatasourceHttpConfigToTerraform)(this._httpConfig),
-        lambda_config: cdktf.listMapper(appsyncDatasourceLambdaConfigToTerraform)(this._lambdaConfig),
+        dynamodb_config: appsyncDatasourceDynamodbConfigToTerraform(this._dynamodbConfig),
+        elasticsearch_config: appsyncDatasourceElasticsearchConfigToTerraform(this._elasticsearchConfig),
+        http_config: appsyncDatasourceHttpConfigToTerraform(this._httpConfig),
+        lambda_config: appsyncDatasourceLambdaConfigToTerraform(this._lambdaConfig),
       };
     }
   }
@@ -535,7 +691,7 @@ export namespace AppSync {
     // ==========
 
     // api_id - computed: false, optional: false, required: true
-    private _apiId: string;
+    private _apiId?: string; 
     public get apiId() {
       return this.getStringAttribute('api_id');
     }
@@ -553,7 +709,7 @@ export namespace AppSync {
     }
 
     // data_source - computed: false, optional: false, required: true
-    private _dataSource: string;
+    private _dataSource?: string; 
     public get dataSource() {
       return this.getStringAttribute('data_source');
     }
@@ -566,11 +722,11 @@ export namespace AppSync {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -587,11 +743,11 @@ export namespace AppSync {
     }
 
     // function_version - computed: false, optional: true, required: false
-    private _functionVersion?: string;
+    private _functionVersion?: string | undefined; 
     public get functionVersion() {
       return this.getStringAttribute('function_version');
     }
-    public set functionVersion(value: string ) {
+    public set functionVersion(value: string | undefined) {
       this._functionVersion = value;
     }
     public resetFunctionVersion() {
@@ -608,7 +764,7 @@ export namespace AppSync {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -621,7 +777,7 @@ export namespace AppSync {
     }
 
     // request_mapping_template - computed: false, optional: false, required: true
-    private _requestMappingTemplate: string;
+    private _requestMappingTemplate?: string; 
     public get requestMappingTemplate() {
       return this.getStringAttribute('request_mapping_template');
     }
@@ -634,7 +790,7 @@ export namespace AppSync {
     }
 
     // response_mapping_template - computed: false, optional: false, required: true
-    private _responseMappingTemplate: string;
+    private _responseMappingTemplate?: string; 
     public get responseMappingTemplate() {
       return this.getStringAttribute('response_mapping_template');
     }
@@ -698,19 +854,19 @@ export namespace AppSync {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_graphql_api.html#log_config AppsyncGraphqlApi#log_config}
     */
-    readonly logConfig?: AppsyncGraphqlApiLogConfig[];
+    readonly logConfig?: AppsyncGraphqlApiLogConfig;
     /**
     * openid_connect_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_graphql_api.html#openid_connect_config AppsyncGraphqlApi#openid_connect_config}
     */
-    readonly openidConnectConfig?: AppsyncGraphqlApiOpenidConnectConfig[];
+    readonly openidConnectConfig?: AppsyncGraphqlApiOpenidConnectConfig;
     /**
     * user_pool_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_graphql_api.html#user_pool_config AppsyncGraphqlApi#user_pool_config}
     */
-    readonly userPoolConfig?: AppsyncGraphqlApiUserPoolConfig[];
+    readonly userPoolConfig?: AppsyncGraphqlApiUserPoolConfig;
   }
   export interface AppsyncGraphqlApiAdditionalAuthenticationProviderOpenidConnectConfig {
     /**
@@ -731,8 +887,11 @@ export namespace AppSync {
     readonly issuer: string;
   }
 
-  function appsyncGraphqlApiAdditionalAuthenticationProviderOpenidConnectConfigToTerraform(struct?: AppsyncGraphqlApiAdditionalAuthenticationProviderOpenidConnectConfig): any {
+  function appsyncGraphqlApiAdditionalAuthenticationProviderOpenidConnectConfigToTerraform(struct?: AppsyncGraphqlApiAdditionalAuthenticationProviderOpenidConnectConfigOutputReference | AppsyncGraphqlApiAdditionalAuthenticationProviderOpenidConnectConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       auth_ttl: cdktf.numberToTerraform(struct!.authTtl),
       client_id: cdktf.stringToTerraform(struct!.clientId),
@@ -741,6 +900,77 @@ export namespace AppSync {
     }
   }
 
+  export class AppsyncGraphqlApiAdditionalAuthenticationProviderOpenidConnectConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // auth_ttl - computed: false, optional: true, required: false
+    private _authTtl?: number | undefined; 
+    public get authTtl() {
+      return this.getNumberAttribute('auth_ttl');
+    }
+    public set authTtl(value: number | undefined) {
+      this._authTtl = value;
+    }
+    public resetAuthTtl() {
+      this._authTtl = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get authTtlInput() {
+      return this._authTtl
+    }
+
+    // client_id - computed: false, optional: true, required: false
+    private _clientId?: string | undefined; 
+    public get clientId() {
+      return this.getStringAttribute('client_id');
+    }
+    public set clientId(value: string | undefined) {
+      this._clientId = value;
+    }
+    public resetClientId() {
+      this._clientId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get clientIdInput() {
+      return this._clientId
+    }
+
+    // iat_ttl - computed: false, optional: true, required: false
+    private _iatTtl?: number | undefined; 
+    public get iatTtl() {
+      return this.getNumberAttribute('iat_ttl');
+    }
+    public set iatTtl(value: number | undefined) {
+      this._iatTtl = value;
+    }
+    public resetIatTtl() {
+      this._iatTtl = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get iatTtlInput() {
+      return this._iatTtl
+    }
+
+    // issuer - computed: false, optional: false, required: true
+    private _issuer?: string; 
+    public get issuer() {
+      return this.getStringAttribute('issuer');
+    }
+    public set issuer(value: string) {
+      this._issuer = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get issuerInput() {
+      return this._issuer
+    }
+  }
   export interface AppsyncGraphqlApiAdditionalAuthenticationProviderUserPoolConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_graphql_api.html#app_id_client_regex AppsyncGraphqlApi#app_id_client_regex}
@@ -756,8 +986,11 @@ export namespace AppSync {
     readonly userPoolId: string;
   }
 
-  function appsyncGraphqlApiAdditionalAuthenticationProviderUserPoolConfigToTerraform(struct?: AppsyncGraphqlApiAdditionalAuthenticationProviderUserPoolConfig): any {
+  function appsyncGraphqlApiAdditionalAuthenticationProviderUserPoolConfigToTerraform(struct?: AppsyncGraphqlApiAdditionalAuthenticationProviderUserPoolConfigOutputReference | AppsyncGraphqlApiAdditionalAuthenticationProviderUserPoolConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       app_id_client_regex: cdktf.stringToTerraform(struct!.appIdClientRegex),
       aws_region: cdktf.stringToTerraform(struct!.awsRegion),
@@ -765,6 +998,61 @@ export namespace AppSync {
     }
   }
 
+  export class AppsyncGraphqlApiAdditionalAuthenticationProviderUserPoolConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // app_id_client_regex - computed: false, optional: true, required: false
+    private _appIdClientRegex?: string | undefined; 
+    public get appIdClientRegex() {
+      return this.getStringAttribute('app_id_client_regex');
+    }
+    public set appIdClientRegex(value: string | undefined) {
+      this._appIdClientRegex = value;
+    }
+    public resetAppIdClientRegex() {
+      this._appIdClientRegex = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get appIdClientRegexInput() {
+      return this._appIdClientRegex
+    }
+
+    // aws_region - computed: true, optional: true, required: false
+    private _awsRegion?: string | undefined; 
+    public get awsRegion() {
+      return this.getStringAttribute('aws_region');
+    }
+    public set awsRegion(value: string | undefined) {
+      this._awsRegion = value;
+    }
+    public resetAwsRegion() {
+      this._awsRegion = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get awsRegionInput() {
+      return this._awsRegion
+    }
+
+    // user_pool_id - computed: false, optional: false, required: true
+    private _userPoolId?: string; 
+    public get userPoolId() {
+      return this.getStringAttribute('user_pool_id');
+    }
+    public set userPoolId(value: string) {
+      this._userPoolId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userPoolIdInput() {
+      return this._userPoolId
+    }
+  }
   export interface AppsyncGraphqlApiAdditionalAuthenticationProvider {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_graphql_api.html#authentication_type AppsyncGraphqlApi#authentication_type}
@@ -775,21 +1063,24 @@ export namespace AppSync {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_graphql_api.html#openid_connect_config AppsyncGraphqlApi#openid_connect_config}
     */
-    readonly openidConnectConfig?: AppsyncGraphqlApiAdditionalAuthenticationProviderOpenidConnectConfig[];
+    readonly openidConnectConfig?: AppsyncGraphqlApiAdditionalAuthenticationProviderOpenidConnectConfig;
     /**
     * user_pool_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_graphql_api.html#user_pool_config AppsyncGraphqlApi#user_pool_config}
     */
-    readonly userPoolConfig?: AppsyncGraphqlApiAdditionalAuthenticationProviderUserPoolConfig[];
+    readonly userPoolConfig?: AppsyncGraphqlApiAdditionalAuthenticationProviderUserPoolConfig;
   }
 
   function appsyncGraphqlApiAdditionalAuthenticationProviderToTerraform(struct?: AppsyncGraphqlApiAdditionalAuthenticationProvider): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       authentication_type: cdktf.stringToTerraform(struct!.authenticationType),
-      openid_connect_config: cdktf.listMapper(appsyncGraphqlApiAdditionalAuthenticationProviderOpenidConnectConfigToTerraform)(struct!.openidConnectConfig),
-      user_pool_config: cdktf.listMapper(appsyncGraphqlApiAdditionalAuthenticationProviderUserPoolConfigToTerraform)(struct!.userPoolConfig),
+      openid_connect_config: appsyncGraphqlApiAdditionalAuthenticationProviderOpenidConnectConfigToTerraform(struct!.openidConnectConfig),
+      user_pool_config: appsyncGraphqlApiAdditionalAuthenticationProviderUserPoolConfigToTerraform(struct!.userPoolConfig),
     }
   }
 
@@ -808,8 +1099,11 @@ export namespace AppSync {
     readonly fieldLogLevel: string;
   }
 
-  function appsyncGraphqlApiLogConfigToTerraform(struct?: AppsyncGraphqlApiLogConfig): any {
+  function appsyncGraphqlApiLogConfigToTerraform(struct?: AppsyncGraphqlApiLogConfigOutputReference | AppsyncGraphqlApiLogConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cloudwatch_logs_role_arn: cdktf.stringToTerraform(struct!.cloudwatchLogsRoleArn),
       exclude_verbose_content: cdktf.booleanToTerraform(struct!.excludeVerboseContent),
@@ -817,6 +1111,58 @@ export namespace AppSync {
     }
   }
 
+  export class AppsyncGraphqlApiLogConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // cloudwatch_logs_role_arn - computed: false, optional: false, required: true
+    private _cloudwatchLogsRoleArn?: string; 
+    public get cloudwatchLogsRoleArn() {
+      return this.getStringAttribute('cloudwatch_logs_role_arn');
+    }
+    public set cloudwatchLogsRoleArn(value: string) {
+      this._cloudwatchLogsRoleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cloudwatchLogsRoleArnInput() {
+      return this._cloudwatchLogsRoleArn
+    }
+
+    // exclude_verbose_content - computed: false, optional: true, required: false
+    private _excludeVerboseContent?: boolean | cdktf.IResolvable | undefined; 
+    public get excludeVerboseContent() {
+      return this.getBooleanAttribute('exclude_verbose_content') as any;
+    }
+    public set excludeVerboseContent(value: boolean | cdktf.IResolvable | undefined) {
+      this._excludeVerboseContent = value;
+    }
+    public resetExcludeVerboseContent() {
+      this._excludeVerboseContent = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get excludeVerboseContentInput() {
+      return this._excludeVerboseContent
+    }
+
+    // field_log_level - computed: false, optional: false, required: true
+    private _fieldLogLevel?: string; 
+    public get fieldLogLevel() {
+      return this.getStringAttribute('field_log_level');
+    }
+    public set fieldLogLevel(value: string) {
+      this._fieldLogLevel = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get fieldLogLevelInput() {
+      return this._fieldLogLevel
+    }
+  }
   export interface AppsyncGraphqlApiOpenidConnectConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_graphql_api.html#auth_ttl AppsyncGraphqlApi#auth_ttl}
@@ -836,8 +1182,11 @@ export namespace AppSync {
     readonly issuer: string;
   }
 
-  function appsyncGraphqlApiOpenidConnectConfigToTerraform(struct?: AppsyncGraphqlApiOpenidConnectConfig): any {
+  function appsyncGraphqlApiOpenidConnectConfigToTerraform(struct?: AppsyncGraphqlApiOpenidConnectConfigOutputReference | AppsyncGraphqlApiOpenidConnectConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       auth_ttl: cdktf.numberToTerraform(struct!.authTtl),
       client_id: cdktf.stringToTerraform(struct!.clientId),
@@ -846,6 +1195,77 @@ export namespace AppSync {
     }
   }
 
+  export class AppsyncGraphqlApiOpenidConnectConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // auth_ttl - computed: false, optional: true, required: false
+    private _authTtl?: number | undefined; 
+    public get authTtl() {
+      return this.getNumberAttribute('auth_ttl');
+    }
+    public set authTtl(value: number | undefined) {
+      this._authTtl = value;
+    }
+    public resetAuthTtl() {
+      this._authTtl = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get authTtlInput() {
+      return this._authTtl
+    }
+
+    // client_id - computed: false, optional: true, required: false
+    private _clientId?: string | undefined; 
+    public get clientId() {
+      return this.getStringAttribute('client_id');
+    }
+    public set clientId(value: string | undefined) {
+      this._clientId = value;
+    }
+    public resetClientId() {
+      this._clientId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get clientIdInput() {
+      return this._clientId
+    }
+
+    // iat_ttl - computed: false, optional: true, required: false
+    private _iatTtl?: number | undefined; 
+    public get iatTtl() {
+      return this.getNumberAttribute('iat_ttl');
+    }
+    public set iatTtl(value: number | undefined) {
+      this._iatTtl = value;
+    }
+    public resetIatTtl() {
+      this._iatTtl = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get iatTtlInput() {
+      return this._iatTtl
+    }
+
+    // issuer - computed: false, optional: false, required: true
+    private _issuer?: string; 
+    public get issuer() {
+      return this.getStringAttribute('issuer');
+    }
+    public set issuer(value: string) {
+      this._issuer = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get issuerInput() {
+      return this._issuer
+    }
+  }
   export interface AppsyncGraphqlApiUserPoolConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_graphql_api.html#app_id_client_regex AppsyncGraphqlApi#app_id_client_regex}
@@ -865,8 +1285,11 @@ export namespace AppSync {
     readonly userPoolId: string;
   }
 
-  function appsyncGraphqlApiUserPoolConfigToTerraform(struct?: AppsyncGraphqlApiUserPoolConfig): any {
+  function appsyncGraphqlApiUserPoolConfigToTerraform(struct?: AppsyncGraphqlApiUserPoolConfigOutputReference | AppsyncGraphqlApiUserPoolConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       app_id_client_regex: cdktf.stringToTerraform(struct!.appIdClientRegex),
       aws_region: cdktf.stringToTerraform(struct!.awsRegion),
@@ -875,6 +1298,74 @@ export namespace AppSync {
     }
   }
 
+  export class AppsyncGraphqlApiUserPoolConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // app_id_client_regex - computed: false, optional: true, required: false
+    private _appIdClientRegex?: string | undefined; 
+    public get appIdClientRegex() {
+      return this.getStringAttribute('app_id_client_regex');
+    }
+    public set appIdClientRegex(value: string | undefined) {
+      this._appIdClientRegex = value;
+    }
+    public resetAppIdClientRegex() {
+      this._appIdClientRegex = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get appIdClientRegexInput() {
+      return this._appIdClientRegex
+    }
+
+    // aws_region - computed: true, optional: true, required: false
+    private _awsRegion?: string | undefined; 
+    public get awsRegion() {
+      return this.getStringAttribute('aws_region');
+    }
+    public set awsRegion(value: string | undefined) {
+      this._awsRegion = value;
+    }
+    public resetAwsRegion() {
+      this._awsRegion = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get awsRegionInput() {
+      return this._awsRegion
+    }
+
+    // default_action - computed: false, optional: false, required: true
+    private _defaultAction?: string; 
+    public get defaultAction() {
+      return this.getStringAttribute('default_action');
+    }
+    public set defaultAction(value: string) {
+      this._defaultAction = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get defaultActionInput() {
+      return this._defaultAction
+    }
+
+    // user_pool_id - computed: false, optional: false, required: true
+    private _userPoolId?: string; 
+    public get userPoolId() {
+      return this.getStringAttribute('user_pool_id');
+    }
+    public set userPoolId(value: string) {
+      this._userPoolId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userPoolIdInput() {
+      return this._userPoolId
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/appsync_graphql_api.html aws_appsync_graphql_api}
@@ -930,7 +1421,7 @@ export namespace AppSync {
     }
 
     // authentication_type - computed: false, optional: false, required: true
-    private _authenticationType: string;
+    private _authenticationType?: string; 
     public get authenticationType() {
       return this.getStringAttribute('authentication_type');
     }
@@ -948,7 +1439,7 @@ export namespace AppSync {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -961,11 +1452,11 @@ export namespace AppSync {
     }
 
     // schema - computed: false, optional: true, required: false
-    private _schema?: string;
+    private _schema?: string | undefined; 
     public get schema() {
       return this.getStringAttribute('schema');
     }
-    public set schema(value: string ) {
+    public set schema(value: string | undefined) {
       this._schema = value;
     }
     public resetSchema() {
@@ -977,11 +1468,12 @@ export namespace AppSync {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -993,11 +1485,12 @@ export namespace AppSync {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1014,11 +1507,11 @@ export namespace AppSync {
     }
 
     // xray_enabled - computed: false, optional: true, required: false
-    private _xrayEnabled?: boolean | cdktf.IResolvable;
+    private _xrayEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get xrayEnabled() {
-      return this.getBooleanAttribute('xray_enabled');
+      return this.getBooleanAttribute('xray_enabled') as any;
     }
-    public set xrayEnabled(value: boolean | cdktf.IResolvable ) {
+    public set xrayEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._xrayEnabled = value;
     }
     public resetXrayEnabled() {
@@ -1030,11 +1523,12 @@ export namespace AppSync {
     }
 
     // additional_authentication_provider - computed: false, optional: true, required: false
-    private _additionalAuthenticationProvider?: AppsyncGraphqlApiAdditionalAuthenticationProvider[];
+    private _additionalAuthenticationProvider?: AppsyncGraphqlApiAdditionalAuthenticationProvider[] | undefined; 
     public get additionalAuthenticationProvider() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('additional_authentication_provider') as any;
     }
-    public set additionalAuthenticationProvider(value: AppsyncGraphqlApiAdditionalAuthenticationProvider[] ) {
+    public set additionalAuthenticationProvider(value: AppsyncGraphqlApiAdditionalAuthenticationProvider[] | undefined) {
       this._additionalAuthenticationProvider = value;
     }
     public resetAdditionalAuthenticationProvider() {
@@ -1046,11 +1540,12 @@ export namespace AppSync {
     }
 
     // log_config - computed: false, optional: true, required: false
-    private _logConfig?: AppsyncGraphqlApiLogConfig[];
+    private _logConfig?: AppsyncGraphqlApiLogConfig | undefined; 
+    private __logConfigOutput = new AppsyncGraphqlApiLogConfigOutputReference(this as any, "log_config", true);
     public get logConfig() {
-      return this.interpolationForAttribute('log_config') as any;
+      return this.__logConfigOutput;
     }
-    public set logConfig(value: AppsyncGraphqlApiLogConfig[] ) {
+    public putLogConfig(value: AppsyncGraphqlApiLogConfig | undefined) {
       this._logConfig = value;
     }
     public resetLogConfig() {
@@ -1062,11 +1557,12 @@ export namespace AppSync {
     }
 
     // openid_connect_config - computed: false, optional: true, required: false
-    private _openidConnectConfig?: AppsyncGraphqlApiOpenidConnectConfig[];
+    private _openidConnectConfig?: AppsyncGraphqlApiOpenidConnectConfig | undefined; 
+    private __openidConnectConfigOutput = new AppsyncGraphqlApiOpenidConnectConfigOutputReference(this as any, "openid_connect_config", true);
     public get openidConnectConfig() {
-      return this.interpolationForAttribute('openid_connect_config') as any;
+      return this.__openidConnectConfigOutput;
     }
-    public set openidConnectConfig(value: AppsyncGraphqlApiOpenidConnectConfig[] ) {
+    public putOpenidConnectConfig(value: AppsyncGraphqlApiOpenidConnectConfig | undefined) {
       this._openidConnectConfig = value;
     }
     public resetOpenidConnectConfig() {
@@ -1078,11 +1574,12 @@ export namespace AppSync {
     }
 
     // user_pool_config - computed: false, optional: true, required: false
-    private _userPoolConfig?: AppsyncGraphqlApiUserPoolConfig[];
+    private _userPoolConfig?: AppsyncGraphqlApiUserPoolConfig | undefined; 
+    private __userPoolConfigOutput = new AppsyncGraphqlApiUserPoolConfigOutputReference(this as any, "user_pool_config", true);
     public get userPoolConfig() {
-      return this.interpolationForAttribute('user_pool_config') as any;
+      return this.__userPoolConfigOutput;
     }
-    public set userPoolConfig(value: AppsyncGraphqlApiUserPoolConfig[] ) {
+    public putUserPoolConfig(value: AppsyncGraphqlApiUserPoolConfig | undefined) {
       this._userPoolConfig = value;
     }
     public resetUserPoolConfig() {
@@ -1106,9 +1603,9 @@ export namespace AppSync {
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         xray_enabled: cdktf.booleanToTerraform(this._xrayEnabled),
         additional_authentication_provider: cdktf.listMapper(appsyncGraphqlApiAdditionalAuthenticationProviderToTerraform)(this._additionalAuthenticationProvider),
-        log_config: cdktf.listMapper(appsyncGraphqlApiLogConfigToTerraform)(this._logConfig),
-        openid_connect_config: cdktf.listMapper(appsyncGraphqlApiOpenidConnectConfigToTerraform)(this._openidConnectConfig),
-        user_pool_config: cdktf.listMapper(appsyncGraphqlApiUserPoolConfigToTerraform)(this._userPoolConfig),
+        log_config: appsyncGraphqlApiLogConfigToTerraform(this._logConfig),
+        openid_connect_config: appsyncGraphqlApiOpenidConnectConfigToTerraform(this._openidConnectConfig),
+        user_pool_config: appsyncGraphqlApiUserPoolConfigToTerraform(this._userPoolConfig),
       };
     }
   }
@@ -1146,13 +1643,13 @@ export namespace AppSync {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_resolver.html#caching_config AppsyncResolver#caching_config}
     */
-    readonly cachingConfig?: AppsyncResolverCachingConfig[];
+    readonly cachingConfig?: AppsyncResolverCachingConfig;
     /**
     * pipeline_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_resolver.html#pipeline_config AppsyncResolver#pipeline_config}
     */
-    readonly pipelineConfig?: AppsyncResolverPipelineConfig[];
+    readonly pipelineConfig?: AppsyncResolverPipelineConfig;
   }
   export interface AppsyncResolverCachingConfig {
     /**
@@ -1165,14 +1662,59 @@ export namespace AppSync {
     readonly ttl?: number;
   }
 
-  function appsyncResolverCachingConfigToTerraform(struct?: AppsyncResolverCachingConfig): any {
+  function appsyncResolverCachingConfigToTerraform(struct?: AppsyncResolverCachingConfigOutputReference | AppsyncResolverCachingConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       caching_keys: cdktf.listMapper(cdktf.stringToTerraform)(struct!.cachingKeys),
       ttl: cdktf.numberToTerraform(struct!.ttl),
     }
   }
 
+  export class AppsyncResolverCachingConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // caching_keys - computed: false, optional: true, required: false
+    private _cachingKeys?: string[] | undefined; 
+    public get cachingKeys() {
+      return this.getListAttribute('caching_keys');
+    }
+    public set cachingKeys(value: string[] | undefined) {
+      this._cachingKeys = value;
+    }
+    public resetCachingKeys() {
+      this._cachingKeys = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cachingKeysInput() {
+      return this._cachingKeys
+    }
+
+    // ttl - computed: false, optional: true, required: false
+    private _ttl?: number | undefined; 
+    public get ttl() {
+      return this.getNumberAttribute('ttl');
+    }
+    public set ttl(value: number | undefined) {
+      this._ttl = value;
+    }
+    public resetTtl() {
+      this._ttl = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get ttlInput() {
+      return this._ttl
+    }
+  }
   export interface AppsyncResolverPipelineConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/appsync_resolver.html#functions AppsyncResolver#functions}
@@ -1180,13 +1722,42 @@ export namespace AppSync {
     readonly functions?: string[];
   }
 
-  function appsyncResolverPipelineConfigToTerraform(struct?: AppsyncResolverPipelineConfig): any {
+  function appsyncResolverPipelineConfigToTerraform(struct?: AppsyncResolverPipelineConfigOutputReference | AppsyncResolverPipelineConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       functions: cdktf.listMapper(cdktf.stringToTerraform)(struct!.functions),
     }
   }
 
+  export class AppsyncResolverPipelineConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // functions - computed: false, optional: true, required: false
+    private _functions?: string[] | undefined; 
+    public get functions() {
+      return this.getListAttribute('functions');
+    }
+    public set functions(value: string[] | undefined) {
+      this._functions = value;
+    }
+    public resetFunctions() {
+      this._functions = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get functionsInput() {
+      return this._functions
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/appsync_resolver.html aws_appsync_resolver}
@@ -1236,7 +1807,7 @@ export namespace AppSync {
     // ==========
 
     // api_id - computed: false, optional: false, required: true
-    private _apiId: string;
+    private _apiId?: string; 
     public get apiId() {
       return this.getStringAttribute('api_id');
     }
@@ -1254,11 +1825,11 @@ export namespace AppSync {
     }
 
     // data_source - computed: false, optional: true, required: false
-    private _dataSource?: string;
+    private _dataSource?: string | undefined; 
     public get dataSource() {
       return this.getStringAttribute('data_source');
     }
-    public set dataSource(value: string ) {
+    public set dataSource(value: string | undefined) {
       this._dataSource = value;
     }
     public resetDataSource() {
@@ -1270,7 +1841,7 @@ export namespace AppSync {
     }
 
     // field - computed: false, optional: false, required: true
-    private _field: string;
+    private _field?: string; 
     public get field() {
       return this.getStringAttribute('field');
     }
@@ -1288,11 +1859,11 @@ export namespace AppSync {
     }
 
     // kind - computed: false, optional: true, required: false
-    private _kind?: string;
+    private _kind?: string | undefined; 
     public get kind() {
       return this.getStringAttribute('kind');
     }
-    public set kind(value: string ) {
+    public set kind(value: string | undefined) {
       this._kind = value;
     }
     public resetKind() {
@@ -1304,11 +1875,11 @@ export namespace AppSync {
     }
 
     // request_template - computed: false, optional: true, required: false
-    private _requestTemplate?: string;
+    private _requestTemplate?: string | undefined; 
     public get requestTemplate() {
       return this.getStringAttribute('request_template');
     }
-    public set requestTemplate(value: string ) {
+    public set requestTemplate(value: string | undefined) {
       this._requestTemplate = value;
     }
     public resetRequestTemplate() {
@@ -1320,11 +1891,11 @@ export namespace AppSync {
     }
 
     // response_template - computed: false, optional: true, required: false
-    private _responseTemplate?: string;
+    private _responseTemplate?: string | undefined; 
     public get responseTemplate() {
       return this.getStringAttribute('response_template');
     }
-    public set responseTemplate(value: string ) {
+    public set responseTemplate(value: string | undefined) {
       this._responseTemplate = value;
     }
     public resetResponseTemplate() {
@@ -1336,7 +1907,7 @@ export namespace AppSync {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }
@@ -1349,11 +1920,12 @@ export namespace AppSync {
     }
 
     // caching_config - computed: false, optional: true, required: false
-    private _cachingConfig?: AppsyncResolverCachingConfig[];
+    private _cachingConfig?: AppsyncResolverCachingConfig | undefined; 
+    private __cachingConfigOutput = new AppsyncResolverCachingConfigOutputReference(this as any, "caching_config", true);
     public get cachingConfig() {
-      return this.interpolationForAttribute('caching_config') as any;
+      return this.__cachingConfigOutput;
     }
-    public set cachingConfig(value: AppsyncResolverCachingConfig[] ) {
+    public putCachingConfig(value: AppsyncResolverCachingConfig | undefined) {
       this._cachingConfig = value;
     }
     public resetCachingConfig() {
@@ -1365,11 +1937,12 @@ export namespace AppSync {
     }
 
     // pipeline_config - computed: false, optional: true, required: false
-    private _pipelineConfig?: AppsyncResolverPipelineConfig[];
+    private _pipelineConfig?: AppsyncResolverPipelineConfig | undefined; 
+    private __pipelineConfigOutput = new AppsyncResolverPipelineConfigOutputReference(this as any, "pipeline_config", true);
     public get pipelineConfig() {
-      return this.interpolationForAttribute('pipeline_config') as any;
+      return this.__pipelineConfigOutput;
     }
-    public set pipelineConfig(value: AppsyncResolverPipelineConfig[] ) {
+    public putPipelineConfig(value: AppsyncResolverPipelineConfig | undefined) {
       this._pipelineConfig = value;
     }
     public resetPipelineConfig() {
@@ -1393,8 +1966,8 @@ export namespace AppSync {
         request_template: cdktf.stringToTerraform(this._requestTemplate),
         response_template: cdktf.stringToTerraform(this._responseTemplate),
         type: cdktf.stringToTerraform(this._type),
-        caching_config: cdktf.listMapper(appsyncResolverCachingConfigToTerraform)(this._cachingConfig),
-        pipeline_config: cdktf.listMapper(appsyncResolverPipelineConfigToTerraform)(this._pipelineConfig),
+        caching_config: appsyncResolverCachingConfigToTerraform(this._cachingConfig),
+        pipeline_config: appsyncResolverPipelineConfigToTerraform(this._pipelineConfig),
       };
     }
   }

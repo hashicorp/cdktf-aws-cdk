@@ -29,7 +29,7 @@ export namespace ResourceGroups {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/resourcegroups_group.html#resource_query ResourcegroupsGroup#resource_query}
     */
-    readonly resourceQuery: ResourcegroupsGroupResourceQuery[];
+    readonly resourceQuery: ResourcegroupsGroupResourceQuery;
   }
   export interface ResourcegroupsGroupResourceQuery {
     /**
@@ -42,14 +42,56 @@ export namespace ResourceGroups {
     readonly type?: string;
   }
 
-  function resourcegroupsGroupResourceQueryToTerraform(struct?: ResourcegroupsGroupResourceQuery): any {
+  function resourcegroupsGroupResourceQueryToTerraform(struct?: ResourcegroupsGroupResourceQueryOutputReference | ResourcegroupsGroupResourceQuery): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       query: cdktf.stringToTerraform(struct!.query),
       type: cdktf.stringToTerraform(struct!.type),
     }
   }
 
+  export class ResourcegroupsGroupResourceQueryOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // query - computed: false, optional: false, required: true
+    private _query?: string; 
+    public get query() {
+      return this.getStringAttribute('query');
+    }
+    public set query(value: string) {
+      this._query = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get queryInput() {
+      return this._query
+    }
+
+    // type - computed: false, optional: true, required: false
+    private _type?: string | undefined; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string | undefined) {
+      this._type = value;
+    }
+    public resetType() {
+      this._type = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/resourcegroups_group.html aws_resourcegroups_group}
@@ -100,11 +142,11 @@ export namespace ResourceGroups {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -121,7 +163,7 @@ export namespace ResourceGroups {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -134,11 +176,12 @@ export namespace ResourceGroups {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -150,11 +193,12 @@ export namespace ResourceGroups {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -166,11 +210,12 @@ export namespace ResourceGroups {
     }
 
     // resource_query - computed: false, optional: false, required: true
-    private _resourceQuery: ResourcegroupsGroupResourceQuery[];
+    private _resourceQuery?: ResourcegroupsGroupResourceQuery; 
+    private __resourceQueryOutput = new ResourcegroupsGroupResourceQueryOutputReference(this as any, "resource_query", true);
     public get resourceQuery() {
-      return this.interpolationForAttribute('resource_query') as any;
+      return this.__resourceQueryOutput;
     }
-    public set resourceQuery(value: ResourcegroupsGroupResourceQuery[]) {
+    public putResourceQuery(value: ResourcegroupsGroupResourceQuery) {
       this._resourceQuery = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -188,7 +233,7 @@ export namespace ResourceGroups {
         name: cdktf.stringToTerraform(this._name),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        resource_query: cdktf.listMapper(resourcegroupsGroupResourceQueryToTerraform)(this._resourceQuery),
+        resource_query: resourcegroupsGroupResourceQueryToTerraform(this._resourceQuery),
       };
     }
   }
@@ -220,7 +265,7 @@ export namespace ResourceGroups {
 
     // compliance_status - computed: true, optional: false, required: false
     public get complianceStatus() {
-      return this.getBooleanAttribute('compliance_status');
+      return this.getBooleanAttribute('compliance_status') as any;
     }
 
     // keys_with_noncompliant_values - computed: true, optional: false, required: false
@@ -237,6 +282,7 @@ export namespace ResourceGroups {
 
     // compliance_details - computed: true, optional: false, required: false
     public get complianceDetails() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('compliance_details') as any;
     }
 
@@ -247,6 +293,7 @@ export namespace ResourceGroups {
 
     // tags - computed: true, optional: false, required: false
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
   }
@@ -263,6 +310,9 @@ export namespace ResourceGroups {
 
   function dataAwsResourcegroupstaggingapiResourcesTagFilterToTerraform(struct?: DataAwsResourcegroupstaggingapiResourcesTagFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -314,11 +364,11 @@ export namespace ResourceGroups {
     // ==========
 
     // exclude_compliant_resources - computed: false, optional: true, required: false
-    private _excludeCompliantResources?: boolean | cdktf.IResolvable;
+    private _excludeCompliantResources?: boolean | cdktf.IResolvable | undefined; 
     public get excludeCompliantResources() {
-      return this.getBooleanAttribute('exclude_compliant_resources');
+      return this.getBooleanAttribute('exclude_compliant_resources') as any;
     }
-    public set excludeCompliantResources(value: boolean | cdktf.IResolvable ) {
+    public set excludeCompliantResources(value: boolean | cdktf.IResolvable | undefined) {
       this._excludeCompliantResources = value;
     }
     public resetExcludeCompliantResources() {
@@ -335,11 +385,11 @@ export namespace ResourceGroups {
     }
 
     // include_compliance_details - computed: false, optional: true, required: false
-    private _includeComplianceDetails?: boolean | cdktf.IResolvable;
+    private _includeComplianceDetails?: boolean | cdktf.IResolvable | undefined; 
     public get includeComplianceDetails() {
-      return this.getBooleanAttribute('include_compliance_details');
+      return this.getBooleanAttribute('include_compliance_details') as any;
     }
-    public set includeComplianceDetails(value: boolean | cdktf.IResolvable ) {
+    public set includeComplianceDetails(value: boolean | cdktf.IResolvable | undefined) {
       this._includeComplianceDetails = value;
     }
     public resetIncludeComplianceDetails() {
@@ -351,11 +401,11 @@ export namespace ResourceGroups {
     }
 
     // resource_arn_list - computed: false, optional: true, required: false
-    private _resourceArnList?: string[];
+    private _resourceArnList?: string[] | undefined; 
     public get resourceArnList() {
       return this.getListAttribute('resource_arn_list');
     }
-    public set resourceArnList(value: string[] ) {
+    public set resourceArnList(value: string[] | undefined) {
       this._resourceArnList = value;
     }
     public resetResourceArnList() {
@@ -372,11 +422,11 @@ export namespace ResourceGroups {
     }
 
     // resource_type_filters - computed: false, optional: true, required: false
-    private _resourceTypeFilters?: string[];
+    private _resourceTypeFilters?: string[] | undefined; 
     public get resourceTypeFilters() {
       return this.getListAttribute('resource_type_filters');
     }
-    public set resourceTypeFilters(value: string[] ) {
+    public set resourceTypeFilters(value: string[] | undefined) {
       this._resourceTypeFilters = value;
     }
     public resetResourceTypeFilters() {
@@ -388,11 +438,12 @@ export namespace ResourceGroups {
     }
 
     // tag_filter - computed: false, optional: true, required: false
-    private _tagFilter?: DataAwsResourcegroupstaggingapiResourcesTagFilter[];
+    private _tagFilter?: DataAwsResourcegroupstaggingapiResourcesTagFilter[] | undefined; 
     public get tagFilter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tag_filter') as any;
     }
-    public set tagFilter(value: DataAwsResourcegroupstaggingapiResourcesTagFilter[] ) {
+    public set tagFilter(value: DataAwsResourcegroupstaggingapiResourcesTagFilter[] | undefined) {
       this._tagFilter = value;
     }
     public resetTagFilter() {

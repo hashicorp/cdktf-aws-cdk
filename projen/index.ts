@@ -87,6 +87,10 @@ export class CdktfAwsCdkProject extends JsiiProject {
       exec: `ts-node --skip-project --compiler-options '{"target":"es6"}' .projenrc.ts`,
     });
 
+    [this.tasks.tryFind("compile"), this.tasks.tryFind("test")].forEach(
+      (task) => task.env("NODE_OPTIONS", "--max-old-space-size=7516")
+    );
+
     // for local developing (e.g. linking local changes to cdktf)
     this.addGitIgnore(".yalc");
     this.addGitIgnore("yalc.lock");

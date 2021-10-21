@@ -139,11 +139,11 @@ export namespace SQS {
     }
 
     // content_based_deduplication - computed: false, optional: true, required: false
-    private _contentBasedDeduplication?: boolean | cdktf.IResolvable;
+    private _contentBasedDeduplication?: boolean | cdktf.IResolvable | undefined; 
     public get contentBasedDeduplication() {
-      return this.getBooleanAttribute('content_based_deduplication');
+      return this.getBooleanAttribute('content_based_deduplication') as any;
     }
-    public set contentBasedDeduplication(value: boolean | cdktf.IResolvable ) {
+    public set contentBasedDeduplication(value: boolean | cdktf.IResolvable | undefined) {
       this._contentBasedDeduplication = value;
     }
     public resetContentBasedDeduplication() {
@@ -155,11 +155,11 @@ export namespace SQS {
     }
 
     // deduplication_scope - computed: true, optional: true, required: false
-    private _deduplicationScope?: string;
+    private _deduplicationScope?: string | undefined; 
     public get deduplicationScope() {
       return this.getStringAttribute('deduplication_scope');
     }
-    public set deduplicationScope(value: string) {
+    public set deduplicationScope(value: string | undefined) {
       this._deduplicationScope = value;
     }
     public resetDeduplicationScope() {
@@ -171,11 +171,11 @@ export namespace SQS {
     }
 
     // delay_seconds - computed: false, optional: true, required: false
-    private _delaySeconds?: number;
+    private _delaySeconds?: number | undefined; 
     public get delaySeconds() {
       return this.getNumberAttribute('delay_seconds');
     }
-    public set delaySeconds(value: number ) {
+    public set delaySeconds(value: number | undefined) {
       this._delaySeconds = value;
     }
     public resetDelaySeconds() {
@@ -187,11 +187,11 @@ export namespace SQS {
     }
 
     // fifo_queue - computed: false, optional: true, required: false
-    private _fifoQueue?: boolean | cdktf.IResolvable;
+    private _fifoQueue?: boolean | cdktf.IResolvable | undefined; 
     public get fifoQueue() {
-      return this.getBooleanAttribute('fifo_queue');
+      return this.getBooleanAttribute('fifo_queue') as any;
     }
-    public set fifoQueue(value: boolean | cdktf.IResolvable ) {
+    public set fifoQueue(value: boolean | cdktf.IResolvable | undefined) {
       this._fifoQueue = value;
     }
     public resetFifoQueue() {
@@ -203,11 +203,11 @@ export namespace SQS {
     }
 
     // fifo_throughput_limit - computed: true, optional: true, required: false
-    private _fifoThroughputLimit?: string;
+    private _fifoThroughputLimit?: string | undefined; 
     public get fifoThroughputLimit() {
       return this.getStringAttribute('fifo_throughput_limit');
     }
-    public set fifoThroughputLimit(value: string) {
+    public set fifoThroughputLimit(value: string | undefined) {
       this._fifoThroughputLimit = value;
     }
     public resetFifoThroughputLimit() {
@@ -224,11 +224,11 @@ export namespace SQS {
     }
 
     // kms_data_key_reuse_period_seconds - computed: true, optional: true, required: false
-    private _kmsDataKeyReusePeriodSeconds?: number;
+    private _kmsDataKeyReusePeriodSeconds?: number | undefined; 
     public get kmsDataKeyReusePeriodSeconds() {
       return this.getNumberAttribute('kms_data_key_reuse_period_seconds');
     }
-    public set kmsDataKeyReusePeriodSeconds(value: number) {
+    public set kmsDataKeyReusePeriodSeconds(value: number | undefined) {
       this._kmsDataKeyReusePeriodSeconds = value;
     }
     public resetKmsDataKeyReusePeriodSeconds() {
@@ -240,11 +240,11 @@ export namespace SQS {
     }
 
     // kms_master_key_id - computed: false, optional: true, required: false
-    private _kmsMasterKeyId?: string;
+    private _kmsMasterKeyId?: string | undefined; 
     public get kmsMasterKeyId() {
       return this.getStringAttribute('kms_master_key_id');
     }
-    public set kmsMasterKeyId(value: string ) {
+    public set kmsMasterKeyId(value: string | undefined) {
       this._kmsMasterKeyId = value;
     }
     public resetKmsMasterKeyId() {
@@ -256,11 +256,11 @@ export namespace SQS {
     }
 
     // max_message_size - computed: false, optional: true, required: false
-    private _maxMessageSize?: number;
+    private _maxMessageSize?: number | undefined; 
     public get maxMessageSize() {
       return this.getNumberAttribute('max_message_size');
     }
-    public set maxMessageSize(value: number ) {
+    public set maxMessageSize(value: number | undefined) {
       this._maxMessageSize = value;
     }
     public resetMaxMessageSize() {
@@ -272,11 +272,11 @@ export namespace SQS {
     }
 
     // message_retention_seconds - computed: false, optional: true, required: false
-    private _messageRetentionSeconds?: number;
+    private _messageRetentionSeconds?: number | undefined; 
     public get messageRetentionSeconds() {
       return this.getNumberAttribute('message_retention_seconds');
     }
-    public set messageRetentionSeconds(value: number ) {
+    public set messageRetentionSeconds(value: number | undefined) {
       this._messageRetentionSeconds = value;
     }
     public resetMessageRetentionSeconds() {
@@ -288,11 +288,11 @@ export namespace SQS {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -304,11 +304,11 @@ export namespace SQS {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -320,11 +320,11 @@ export namespace SQS {
     }
 
     // policy - computed: true, optional: true, required: false
-    private _policy?: string;
+    private _policy?: string | undefined; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
-    public set policy(value: string) {
+    public set policy(value: string | undefined) {
       this._policy = value;
     }
     public resetPolicy() {
@@ -336,11 +336,11 @@ export namespace SQS {
     }
 
     // receive_wait_time_seconds - computed: false, optional: true, required: false
-    private _receiveWaitTimeSeconds?: number;
+    private _receiveWaitTimeSeconds?: number | undefined; 
     public get receiveWaitTimeSeconds() {
       return this.getNumberAttribute('receive_wait_time_seconds');
     }
-    public set receiveWaitTimeSeconds(value: number ) {
+    public set receiveWaitTimeSeconds(value: number | undefined) {
       this._receiveWaitTimeSeconds = value;
     }
     public resetReceiveWaitTimeSeconds() {
@@ -352,11 +352,11 @@ export namespace SQS {
     }
 
     // redrive_policy - computed: false, optional: true, required: false
-    private _redrivePolicy?: string;
+    private _redrivePolicy?: string | undefined; 
     public get redrivePolicy() {
       return this.getStringAttribute('redrive_policy');
     }
-    public set redrivePolicy(value: string ) {
+    public set redrivePolicy(value: string | undefined) {
       this._redrivePolicy = value;
     }
     public resetRedrivePolicy() {
@@ -368,11 +368,12 @@ export namespace SQS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -384,11 +385,12 @@ export namespace SQS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -405,11 +407,11 @@ export namespace SQS {
     }
 
     // visibility_timeout_seconds - computed: false, optional: true, required: false
-    private _visibilityTimeoutSeconds?: number;
+    private _visibilityTimeoutSeconds?: number | undefined; 
     public get visibilityTimeoutSeconds() {
       return this.getNumberAttribute('visibility_timeout_seconds');
     }
-    public set visibilityTimeoutSeconds(value: number ) {
+    public set visibilityTimeoutSeconds(value: number | undefined) {
       this._visibilityTimeoutSeconds = value;
     }
     public resetVisibilityTimeoutSeconds() {
@@ -503,7 +505,7 @@ export namespace SQS {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -516,7 +518,7 @@ export namespace SQS {
     }
 
     // queue_url - computed: false, optional: false, required: true
-    private _queueUrl: string;
+    private _queueUrl?: string; 
     public get queueUrl() {
       return this.getStringAttribute('queue_url');
     }
@@ -601,7 +603,7 @@ export namespace SQS {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -614,11 +616,12 @@ export namespace SQS {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {

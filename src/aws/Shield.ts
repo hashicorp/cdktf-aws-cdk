@@ -79,7 +79,7 @@ export namespace Shield {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -92,7 +92,7 @@ export namespace Shield {
     }
 
     // resource_arn - computed: false, optional: false, required: true
-    private _resourceArn: string;
+    private _resourceArn?: string; 
     public get resourceArn() {
       return this.getStringAttribute('resource_arn');
     }
@@ -105,11 +105,12 @@ export namespace Shield {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -121,11 +122,12 @@ export namespace Shield {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -226,7 +228,7 @@ export namespace Shield {
     // ==========
 
     // aggregation - computed: false, optional: false, required: true
-    private _aggregation: string;
+    private _aggregation?: string; 
     public get aggregation() {
       return this.getStringAttribute('aggregation');
     }
@@ -244,11 +246,11 @@ export namespace Shield {
     }
 
     // members - computed: false, optional: true, required: false
-    private _members?: string[];
+    private _members?: string[] | undefined; 
     public get members() {
       return this.getListAttribute('members');
     }
-    public set members(value: string[] ) {
+    public set members(value: string[] | undefined) {
       this._members = value;
     }
     public resetMembers() {
@@ -260,7 +262,7 @@ export namespace Shield {
     }
 
     // pattern - computed: false, optional: false, required: true
-    private _pattern: string;
+    private _pattern?: string; 
     public get pattern() {
       return this.getStringAttribute('pattern');
     }
@@ -278,7 +280,7 @@ export namespace Shield {
     }
 
     // protection_group_id - computed: false, optional: false, required: true
-    private _protectionGroupId: string;
+    private _protectionGroupId?: string; 
     public get protectionGroupId() {
       return this.getStringAttribute('protection_group_id');
     }
@@ -291,11 +293,11 @@ export namespace Shield {
     }
 
     // resource_type - computed: false, optional: true, required: false
-    private _resourceType?: string;
+    private _resourceType?: string | undefined; 
     public get resourceType() {
       return this.getStringAttribute('resource_type');
     }
-    public set resourceType(value: string ) {
+    public set resourceType(value: string | undefined) {
       this._resourceType = value;
     }
     public resetResourceType() {
@@ -307,11 +309,12 @@ export namespace Shield {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -323,11 +326,12 @@ export namespace Shield {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {

@@ -59,7 +59,7 @@ export namespace Macie {
     }
 
     // member_account_id - computed: false, optional: false, required: true
-    private _memberAccountId: string;
+    private _memberAccountId?: string; 
     public get memberAccountId() {
       return this.getStringAttribute('member_account_id');
     }
@@ -99,7 +99,7 @@ export namespace Macie {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/macie_s3_bucket_association.html#classification_type MacieS3BucketAssociation#classification_type}
     */
-    readonly classificationType?: MacieS3BucketAssociationClassificationType[];
+    readonly classificationType?: MacieS3BucketAssociationClassificationType;
   }
   export interface MacieS3BucketAssociationClassificationType {
     /**
@@ -112,14 +112,59 @@ export namespace Macie {
     readonly oneTime?: string;
   }
 
-  function macieS3BucketAssociationClassificationTypeToTerraform(struct?: MacieS3BucketAssociationClassificationType): any {
+  function macieS3BucketAssociationClassificationTypeToTerraform(struct?: MacieS3BucketAssociationClassificationTypeOutputReference | MacieS3BucketAssociationClassificationType): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       continuous: cdktf.stringToTerraform(struct!.continuous),
       one_time: cdktf.stringToTerraform(struct!.oneTime),
     }
   }
 
+  export class MacieS3BucketAssociationClassificationTypeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // continuous - computed: false, optional: true, required: false
+    private _continuous?: string | undefined; 
+    public get continuous() {
+      return this.getStringAttribute('continuous');
+    }
+    public set continuous(value: string | undefined) {
+      this._continuous = value;
+    }
+    public resetContinuous() {
+      this._continuous = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get continuousInput() {
+      return this._continuous
+    }
+
+    // one_time - computed: false, optional: true, required: false
+    private _oneTime?: string | undefined; 
+    public get oneTime() {
+      return this.getStringAttribute('one_time');
+    }
+    public set oneTime(value: string | undefined) {
+      this._oneTime = value;
+    }
+    public resetOneTime() {
+      this._oneTime = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get oneTimeInput() {
+      return this._oneTime
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/macie_s3_bucket_association.html aws_macie_s3_bucket_association}
@@ -164,7 +209,7 @@ export namespace Macie {
     // ==========
 
     // bucket_name - computed: false, optional: false, required: true
-    private _bucketName: string;
+    private _bucketName?: string; 
     public get bucketName() {
       return this.getStringAttribute('bucket_name');
     }
@@ -182,11 +227,11 @@ export namespace Macie {
     }
 
     // member_account_id - computed: false, optional: true, required: false
-    private _memberAccountId?: string;
+    private _memberAccountId?: string | undefined; 
     public get memberAccountId() {
       return this.getStringAttribute('member_account_id');
     }
-    public set memberAccountId(value: string ) {
+    public set memberAccountId(value: string | undefined) {
       this._memberAccountId = value;
     }
     public resetMemberAccountId() {
@@ -198,11 +243,11 @@ export namespace Macie {
     }
 
     // prefix - computed: false, optional: true, required: false
-    private _prefix?: string;
+    private _prefix?: string | undefined; 
     public get prefix() {
       return this.getStringAttribute('prefix');
     }
-    public set prefix(value: string ) {
+    public set prefix(value: string | undefined) {
       this._prefix = value;
     }
     public resetPrefix() {
@@ -214,11 +259,12 @@ export namespace Macie {
     }
 
     // classification_type - computed: false, optional: true, required: false
-    private _classificationType?: MacieS3BucketAssociationClassificationType[];
+    private _classificationType?: MacieS3BucketAssociationClassificationType | undefined; 
+    private __classificationTypeOutput = new MacieS3BucketAssociationClassificationTypeOutputReference(this as any, "classification_type", true);
     public get classificationType() {
-      return this.interpolationForAttribute('classification_type') as any;
+      return this.__classificationTypeOutput;
     }
-    public set classificationType(value: MacieS3BucketAssociationClassificationType[] ) {
+    public putClassificationType(value: MacieS3BucketAssociationClassificationType | undefined) {
       this._classificationType = value;
     }
     public resetClassificationType() {
@@ -238,7 +284,7 @@ export namespace Macie {
         bucket_name: cdktf.stringToTerraform(this._bucketName),
         member_account_id: cdktf.stringToTerraform(this._memberAccountId),
         prefix: cdktf.stringToTerraform(this._prefix),
-        classification_type: cdktf.listMapper(macieS3BucketAssociationClassificationTypeToTerraform)(this._classificationType),
+        classification_type: macieS3BucketAssociationClassificationTypeToTerraform(this._classificationType),
       };
     }
   }

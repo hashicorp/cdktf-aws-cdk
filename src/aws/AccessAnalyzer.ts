@@ -69,7 +69,7 @@ export namespace AccessAnalyzer {
     // ==========
 
     // analyzer_name - computed: false, optional: false, required: true
-    private _analyzerName: string;
+    private _analyzerName?: string; 
     public get analyzerName() {
       return this.getStringAttribute('analyzer_name');
     }
@@ -92,11 +92,12 @@ export namespace AccessAnalyzer {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -108,11 +109,12 @@ export namespace AccessAnalyzer {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -124,11 +126,11 @@ export namespace AccessAnalyzer {
     }
 
     // type - computed: false, optional: true, required: false
-    private _type?: string;
+    private _type?: string | undefined; 
     public get type() {
       return this.getStringAttribute('type');
     }
-    public set type(value: string ) {
+    public set type(value: string | undefined) {
       this._type = value;
     }
     public resetType() {

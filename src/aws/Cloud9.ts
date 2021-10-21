@@ -94,11 +94,11 @@ export namespace Cloud9 {
     }
 
     // automatic_stop_time_minutes - computed: false, optional: true, required: false
-    private _automaticStopTimeMinutes?: number;
+    private _automaticStopTimeMinutes?: number | undefined; 
     public get automaticStopTimeMinutes() {
       return this.getNumberAttribute('automatic_stop_time_minutes');
     }
-    public set automaticStopTimeMinutes(value: number ) {
+    public set automaticStopTimeMinutes(value: number | undefined) {
       this._automaticStopTimeMinutes = value;
     }
     public resetAutomaticStopTimeMinutes() {
@@ -110,11 +110,11 @@ export namespace Cloud9 {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -131,7 +131,7 @@ export namespace Cloud9 {
     }
 
     // instance_type - computed: false, optional: false, required: true
-    private _instanceType: string;
+    private _instanceType?: string; 
     public get instanceType() {
       return this.getStringAttribute('instance_type');
     }
@@ -144,7 +144,7 @@ export namespace Cloud9 {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -157,11 +157,11 @@ export namespace Cloud9 {
     }
 
     // owner_arn - computed: true, optional: true, required: false
-    private _ownerArn?: string;
+    private _ownerArn?: string | undefined; 
     public get ownerArn() {
       return this.getStringAttribute('owner_arn');
     }
-    public set ownerArn(value: string) {
+    public set ownerArn(value: string | undefined) {
       this._ownerArn = value;
     }
     public resetOwnerArn() {
@@ -173,11 +173,11 @@ export namespace Cloud9 {
     }
 
     // subnet_id - computed: false, optional: true, required: false
-    private _subnetId?: string;
+    private _subnetId?: string | undefined; 
     public get subnetId() {
       return this.getStringAttribute('subnet_id');
     }
-    public set subnetId(value: string ) {
+    public set subnetId(value: string | undefined) {
       this._subnetId = value;
     }
     public resetSubnetId() {
@@ -189,11 +189,12 @@ export namespace Cloud9 {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -205,11 +206,12 @@ export namespace Cloud9 {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {

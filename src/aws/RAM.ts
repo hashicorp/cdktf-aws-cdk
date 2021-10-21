@@ -64,7 +64,7 @@ export namespace RAM {
     }
 
     // principal - computed: false, optional: false, required: true
-    private _principal: string;
+    private _principal?: string; 
     public get principal() {
       return this.getStringAttribute('principal');
     }
@@ -77,7 +77,7 @@ export namespace RAM {
     }
 
     // resource_share_arn - computed: false, optional: false, required: true
-    private _resourceShareArn: string;
+    private _resourceShareArn?: string; 
     public get resourceShareArn() {
       return this.getStringAttribute('resource_share_arn');
     }
@@ -157,7 +157,7 @@ export namespace RAM {
     }
 
     // resource_arn - computed: false, optional: false, required: true
-    private _resourceArn: string;
+    private _resourceArn?: string; 
     public get resourceArn() {
       return this.getStringAttribute('resource_arn');
     }
@@ -170,7 +170,7 @@ export namespace RAM {
     }
 
     // resource_share_arn - computed: false, optional: false, required: true
-    private _resourceShareArn: string;
+    private _resourceShareArn?: string; 
     public get resourceShareArn() {
       return this.getStringAttribute('resource_share_arn');
     }
@@ -228,14 +228,59 @@ export namespace RAM {
     readonly delete?: string;
   }
 
-  function ramResourceShareTimeoutsToTerraform(struct?: RamResourceShareTimeouts): any {
+  function ramResourceShareTimeoutsToTerraform(struct?: RamResourceShareTimeoutsOutputReference | RamResourceShareTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class RamResourceShareTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/ram_resource_share.html aws_ram_resource_share}
@@ -281,11 +326,11 @@ export namespace RAM {
     // ==========
 
     // allow_external_principals - computed: false, optional: true, required: false
-    private _allowExternalPrincipals?: boolean | cdktf.IResolvable;
+    private _allowExternalPrincipals?: boolean | cdktf.IResolvable | undefined; 
     public get allowExternalPrincipals() {
-      return this.getBooleanAttribute('allow_external_principals');
+      return this.getBooleanAttribute('allow_external_principals') as any;
     }
-    public set allowExternalPrincipals(value: boolean | cdktf.IResolvable ) {
+    public set allowExternalPrincipals(value: boolean | cdktf.IResolvable | undefined) {
       this._allowExternalPrincipals = value;
     }
     public resetAllowExternalPrincipals() {
@@ -307,7 +352,7 @@ export namespace RAM {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -320,11 +365,12 @@ export namespace RAM {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -336,11 +382,12 @@ export namespace RAM {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -352,11 +399,12 @@ export namespace RAM {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: RamResourceShareTimeouts;
+    private _timeouts?: RamResourceShareTimeouts | undefined; 
+    private __timeoutsOutput = new RamResourceShareTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: RamResourceShareTimeouts ) {
+    public putTimeouts(value: RamResourceShareTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -404,14 +452,59 @@ export namespace RAM {
     readonly delete?: string;
   }
 
-  function ramResourceShareAccepterTimeoutsToTerraform(struct?: RamResourceShareAccepterTimeouts): any {
+  function ramResourceShareAccepterTimeoutsToTerraform(struct?: RamResourceShareAccepterTimeoutsOutputReference | RamResourceShareAccepterTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class RamResourceShareAccepterTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/ram_resource_share_accepter.html aws_ram_resource_share_accepter}
@@ -479,7 +572,7 @@ export namespace RAM {
     }
 
     // share_arn - computed: false, optional: false, required: true
-    private _shareArn: string;
+    private _shareArn?: string; 
     public get shareArn() {
       return this.getStringAttribute('share_arn');
     }
@@ -507,11 +600,12 @@ export namespace RAM {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: RamResourceShareAccepterTimeouts;
+    private _timeouts?: RamResourceShareAccepterTimeouts | undefined; 
+    private __timeoutsOutput = new RamResourceShareAccepterTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: RamResourceShareAccepterTimeouts ) {
+    public putTimeouts(value: RamResourceShareAccepterTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -566,6 +660,9 @@ export namespace RAM {
 
   function dataAwsRamResourceShareFilterToTerraform(struct?: DataAwsRamResourceShareFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -626,7 +723,7 @@ export namespace RAM {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -644,7 +741,7 @@ export namespace RAM {
     }
 
     // resource_owner - computed: false, optional: false, required: true
-    private _resourceOwner: string;
+    private _resourceOwner?: string; 
     public get resourceOwner() {
       return this.getStringAttribute('resource_owner');
     }
@@ -662,11 +759,12 @@ export namespace RAM {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -678,11 +776,12 @@ export namespace RAM {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsRamResourceShareFilter[];
+    private _filter?: DataAwsRamResourceShareFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsRamResourceShareFilter[] ) {
+    public set filter(value: DataAwsRamResourceShareFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {

@@ -69,13 +69,13 @@ export namespace DataSources {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elb.html#access_logs Elb#access_logs}
     */
-    readonly accessLogs?: ElbAccessLogs[];
+    readonly accessLogs?: ElbAccessLogs;
     /**
     * health_check block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elb.html#health_check Elb#health_check}
     */
-    readonly healthCheck?: ElbHealthCheck[];
+    readonly healthCheck?: ElbHealthCheck;
     /**
     * listener block
     * 
@@ -102,8 +102,11 @@ export namespace DataSources {
     readonly interval?: number;
   }
 
-  function elbAccessLogsToTerraform(struct?: ElbAccessLogs): any {
+  function elbAccessLogsToTerraform(struct?: ElbAccessLogsOutputReference | ElbAccessLogs): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bucket: cdktf.stringToTerraform(struct!.bucket),
       bucket_prefix: cdktf.stringToTerraform(struct!.bucketPrefix),
@@ -112,6 +115,77 @@ export namespace DataSources {
     }
   }
 
+  export class ElbAccessLogsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // bucket - computed: false, optional: false, required: true
+    private _bucket?: string; 
+    public get bucket() {
+      return this.getStringAttribute('bucket');
+    }
+    public set bucket(value: string) {
+      this._bucket = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bucketInput() {
+      return this._bucket
+    }
+
+    // bucket_prefix - computed: false, optional: true, required: false
+    private _bucketPrefix?: string | undefined; 
+    public get bucketPrefix() {
+      return this.getStringAttribute('bucket_prefix');
+    }
+    public set bucketPrefix(value: string | undefined) {
+      this._bucketPrefix = value;
+    }
+    public resetBucketPrefix() {
+      this._bucketPrefix = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bucketPrefixInput() {
+      return this._bucketPrefix
+    }
+
+    // enabled - computed: false, optional: true, required: false
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
+    public get enabled() {
+      return this.getBooleanAttribute('enabled') as any;
+    }
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._enabled = value;
+    }
+    public resetEnabled() {
+      this._enabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enabledInput() {
+      return this._enabled
+    }
+
+    // interval - computed: false, optional: true, required: false
+    private _interval?: number | undefined; 
+    public get interval() {
+      return this.getNumberAttribute('interval');
+    }
+    public set interval(value: number | undefined) {
+      this._interval = value;
+    }
+    public resetInterval() {
+      this._interval = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get intervalInput() {
+      return this._interval
+    }
+  }
   export interface ElbHealthCheck {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elb.html#healthy_threshold Elb#healthy_threshold}
@@ -135,8 +209,11 @@ export namespace DataSources {
     readonly unhealthyThreshold: number;
   }
 
-  function elbHealthCheckToTerraform(struct?: ElbHealthCheck): any {
+  function elbHealthCheckToTerraform(struct?: ElbHealthCheckOutputReference | ElbHealthCheck): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       healthy_threshold: cdktf.numberToTerraform(struct!.healthyThreshold),
       interval: cdktf.numberToTerraform(struct!.interval),
@@ -146,6 +223,81 @@ export namespace DataSources {
     }
   }
 
+  export class ElbHealthCheckOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // healthy_threshold - computed: false, optional: false, required: true
+    private _healthyThreshold?: number; 
+    public get healthyThreshold() {
+      return this.getNumberAttribute('healthy_threshold');
+    }
+    public set healthyThreshold(value: number) {
+      this._healthyThreshold = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get healthyThresholdInput() {
+      return this._healthyThreshold
+    }
+
+    // interval - computed: false, optional: false, required: true
+    private _interval?: number; 
+    public get interval() {
+      return this.getNumberAttribute('interval');
+    }
+    public set interval(value: number) {
+      this._interval = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get intervalInput() {
+      return this._interval
+    }
+
+    // target - computed: false, optional: false, required: true
+    private _target?: string; 
+    public get target() {
+      return this.getStringAttribute('target');
+    }
+    public set target(value: string) {
+      this._target = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get targetInput() {
+      return this._target
+    }
+
+    // timeout - computed: false, optional: false, required: true
+    private _timeout?: number; 
+    public get timeout() {
+      return this.getNumberAttribute('timeout');
+    }
+    public set timeout(value: number) {
+      this._timeout = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get timeoutInput() {
+      return this._timeout
+    }
+
+    // unhealthy_threshold - computed: false, optional: false, required: true
+    private _unhealthyThreshold?: number; 
+    public get unhealthyThreshold() {
+      return this.getNumberAttribute('unhealthy_threshold');
+    }
+    public set unhealthyThreshold(value: number) {
+      this._unhealthyThreshold = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get unhealthyThresholdInput() {
+      return this._unhealthyThreshold
+    }
+  }
   export interface ElbListener {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elb.html#instance_port Elb#instance_port}
@@ -171,6 +323,9 @@ export namespace DataSources {
 
   function elbListenerToTerraform(struct?: ElbListener): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       instance_port: cdktf.numberToTerraform(struct!.instancePort),
       instance_protocol: cdktf.stringToTerraform(struct!.instanceProtocol),
@@ -242,11 +397,11 @@ export namespace DataSources {
     }
 
     // availability_zones - computed: true, optional: true, required: false
-    private _availabilityZones?: string[];
+    private _availabilityZones?: string[] | undefined; 
     public get availabilityZones() {
       return this.getListAttribute('availability_zones');
     }
-    public set availabilityZones(value: string[]) {
+    public set availabilityZones(value: string[] | undefined) {
       this._availabilityZones = value;
     }
     public resetAvailabilityZones() {
@@ -258,11 +413,11 @@ export namespace DataSources {
     }
 
     // connection_draining - computed: false, optional: true, required: false
-    private _connectionDraining?: boolean | cdktf.IResolvable;
+    private _connectionDraining?: boolean | cdktf.IResolvable | undefined; 
     public get connectionDraining() {
-      return this.getBooleanAttribute('connection_draining');
+      return this.getBooleanAttribute('connection_draining') as any;
     }
-    public set connectionDraining(value: boolean | cdktf.IResolvable ) {
+    public set connectionDraining(value: boolean | cdktf.IResolvable | undefined) {
       this._connectionDraining = value;
     }
     public resetConnectionDraining() {
@@ -274,11 +429,11 @@ export namespace DataSources {
     }
 
     // connection_draining_timeout - computed: false, optional: true, required: false
-    private _connectionDrainingTimeout?: number;
+    private _connectionDrainingTimeout?: number | undefined; 
     public get connectionDrainingTimeout() {
       return this.getNumberAttribute('connection_draining_timeout');
     }
-    public set connectionDrainingTimeout(value: number ) {
+    public set connectionDrainingTimeout(value: number | undefined) {
       this._connectionDrainingTimeout = value;
     }
     public resetConnectionDrainingTimeout() {
@@ -290,11 +445,11 @@ export namespace DataSources {
     }
 
     // cross_zone_load_balancing - computed: false, optional: true, required: false
-    private _crossZoneLoadBalancing?: boolean | cdktf.IResolvable;
+    private _crossZoneLoadBalancing?: boolean | cdktf.IResolvable | undefined; 
     public get crossZoneLoadBalancing() {
-      return this.getBooleanAttribute('cross_zone_load_balancing');
+      return this.getBooleanAttribute('cross_zone_load_balancing') as any;
     }
-    public set crossZoneLoadBalancing(value: boolean | cdktf.IResolvable ) {
+    public set crossZoneLoadBalancing(value: boolean | cdktf.IResolvable | undefined) {
       this._crossZoneLoadBalancing = value;
     }
     public resetCrossZoneLoadBalancing() {
@@ -316,11 +471,11 @@ export namespace DataSources {
     }
 
     // idle_timeout - computed: false, optional: true, required: false
-    private _idleTimeout?: number;
+    private _idleTimeout?: number | undefined; 
     public get idleTimeout() {
       return this.getNumberAttribute('idle_timeout');
     }
-    public set idleTimeout(value: number ) {
+    public set idleTimeout(value: number | undefined) {
       this._idleTimeout = value;
     }
     public resetIdleTimeout() {
@@ -332,11 +487,11 @@ export namespace DataSources {
     }
 
     // instances - computed: true, optional: true, required: false
-    private _instances?: string[];
+    private _instances?: string[] | undefined; 
     public get instances() {
       return this.getListAttribute('instances');
     }
-    public set instances(value: string[]) {
+    public set instances(value: string[] | undefined) {
       this._instances = value;
     }
     public resetInstances() {
@@ -348,11 +503,11 @@ export namespace DataSources {
     }
 
     // internal - computed: true, optional: true, required: false
-    private _internal?: boolean | cdktf.IResolvable;
+    private _internal?: boolean | cdktf.IResolvable | undefined; 
     public get internal() {
-      return this.getBooleanAttribute('internal');
+      return this.getBooleanAttribute('internal') as any;
     }
-    public set internal(value: boolean | cdktf.IResolvable) {
+    public set internal(value: boolean | cdktf.IResolvable | undefined) {
       this._internal = value;
     }
     public resetInternal() {
@@ -364,11 +519,11 @@ export namespace DataSources {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -380,11 +535,11 @@ export namespace DataSources {
     }
 
     // name_prefix - computed: false, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string ) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -396,11 +551,11 @@ export namespace DataSources {
     }
 
     // security_groups - computed: true, optional: true, required: false
-    private _securityGroups?: string[];
+    private _securityGroups?: string[] | undefined; 
     public get securityGroups() {
       return this.getListAttribute('security_groups');
     }
-    public set securityGroups(value: string[]) {
+    public set securityGroups(value: string[] | undefined) {
       this._securityGroups = value;
     }
     public resetSecurityGroups() {
@@ -412,11 +567,11 @@ export namespace DataSources {
     }
 
     // source_security_group - computed: true, optional: true, required: false
-    private _sourceSecurityGroup?: string;
+    private _sourceSecurityGroup?: string | undefined; 
     public get sourceSecurityGroup() {
       return this.getStringAttribute('source_security_group');
     }
-    public set sourceSecurityGroup(value: string) {
+    public set sourceSecurityGroup(value: string | undefined) {
       this._sourceSecurityGroup = value;
     }
     public resetSourceSecurityGroup() {
@@ -433,11 +588,11 @@ export namespace DataSources {
     }
 
     // subnets - computed: true, optional: true, required: false
-    private _subnets?: string[];
+    private _subnets?: string[] | undefined; 
     public get subnets() {
       return this.getListAttribute('subnets');
     }
-    public set subnets(value: string[]) {
+    public set subnets(value: string[] | undefined) {
       this._subnets = value;
     }
     public resetSubnets() {
@@ -449,11 +604,12 @@ export namespace DataSources {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -465,11 +621,12 @@ export namespace DataSources {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -486,11 +643,12 @@ export namespace DataSources {
     }
 
     // access_logs - computed: false, optional: true, required: false
-    private _accessLogs?: ElbAccessLogs[];
+    private _accessLogs?: ElbAccessLogs | undefined; 
+    private __accessLogsOutput = new ElbAccessLogsOutputReference(this as any, "access_logs", true);
     public get accessLogs() {
-      return this.interpolationForAttribute('access_logs') as any;
+      return this.__accessLogsOutput;
     }
-    public set accessLogs(value: ElbAccessLogs[] ) {
+    public putAccessLogs(value: ElbAccessLogs | undefined) {
       this._accessLogs = value;
     }
     public resetAccessLogs() {
@@ -502,11 +660,12 @@ export namespace DataSources {
     }
 
     // health_check - computed: false, optional: true, required: false
-    private _healthCheck?: ElbHealthCheck[];
+    private _healthCheck?: ElbHealthCheck | undefined; 
+    private __healthCheckOutput = new ElbHealthCheckOutputReference(this as any, "health_check", true);
     public get healthCheck() {
-      return this.interpolationForAttribute('health_check') as any;
+      return this.__healthCheckOutput;
     }
-    public set healthCheck(value: ElbHealthCheck[] ) {
+    public putHealthCheck(value: ElbHealthCheck | undefined) {
       this._healthCheck = value;
     }
     public resetHealthCheck() {
@@ -518,8 +677,9 @@ export namespace DataSources {
     }
 
     // listener - computed: false, optional: false, required: true
-    private _listener: ElbListener[];
+    private _listener?: ElbListener[]; 
     public get listener() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('listener') as any;
     }
     public set listener(value: ElbListener[]) {
@@ -550,8 +710,8 @@ export namespace DataSources {
         subnets: cdktf.listMapper(cdktf.stringToTerraform)(this._subnets),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        access_logs: cdktf.listMapper(elbAccessLogsToTerraform)(this._accessLogs),
-        health_check: cdktf.listMapper(elbHealthCheckToTerraform)(this._healthCheck),
+        access_logs: elbAccessLogsToTerraform(this._accessLogs),
+        health_check: elbHealthCheckToTerraform(this._healthCheck),
         listener: cdktf.listMapper(elbListenerToTerraform)(this._listener),
       };
     }
@@ -608,7 +768,7 @@ export namespace DataSources {
     // ==========
 
     // elb - computed: false, optional: false, required: true
-    private _elb: string;
+    private _elb?: string; 
     public get elb() {
       return this.getStringAttribute('elb');
     }
@@ -626,7 +786,7 @@ export namespace DataSources {
     }
 
     // instance - computed: false, optional: false, required: true
-    private _instance: string;
+    private _instance?: string; 
     public get instance() {
       return this.getStringAttribute('instance');
     }
@@ -731,13 +891,13 @@ export namespace DataSources {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_configuration.html#metadata_options LaunchConfiguration#metadata_options}
     */
-    readonly metadataOptions?: LaunchConfigurationMetadataOptions[];
+    readonly metadataOptions?: LaunchConfigurationMetadataOptions;
     /**
     * root_block_device block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_configuration.html#root_block_device LaunchConfiguration#root_block_device}
     */
-    readonly rootBlockDevice?: LaunchConfigurationRootBlockDevice[];
+    readonly rootBlockDevice?: LaunchConfigurationRootBlockDevice;
   }
   export interface LaunchConfigurationEbsBlockDevice {
     /**
@@ -780,6 +940,9 @@ export namespace DataSources {
 
   function launchConfigurationEbsBlockDeviceToTerraform(struct?: LaunchConfigurationEbsBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete_on_termination: cdktf.booleanToTerraform(struct!.deleteOnTermination),
       device_name: cdktf.stringToTerraform(struct!.deviceName),
@@ -806,6 +969,9 @@ export namespace DataSources {
 
   function launchConfigurationEphemeralBlockDeviceToTerraform(struct?: LaunchConfigurationEphemeralBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       device_name: cdktf.stringToTerraform(struct!.deviceName),
       virtual_name: cdktf.stringToTerraform(struct!.virtualName),
@@ -827,8 +993,11 @@ export namespace DataSources {
     readonly httpTokens?: string;
   }
 
-  function launchConfigurationMetadataOptionsToTerraform(struct?: LaunchConfigurationMetadataOptions): any {
+  function launchConfigurationMetadataOptionsToTerraform(struct?: LaunchConfigurationMetadataOptionsOutputReference | LaunchConfigurationMetadataOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       http_endpoint: cdktf.stringToTerraform(struct!.httpEndpoint),
       http_put_response_hop_limit: cdktf.numberToTerraform(struct!.httpPutResponseHopLimit),
@@ -836,6 +1005,64 @@ export namespace DataSources {
     }
   }
 
+  export class LaunchConfigurationMetadataOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // http_endpoint - computed: true, optional: true, required: false
+    private _httpEndpoint?: string | undefined; 
+    public get httpEndpoint() {
+      return this.getStringAttribute('http_endpoint');
+    }
+    public set httpEndpoint(value: string | undefined) {
+      this._httpEndpoint = value;
+    }
+    public resetHttpEndpoint() {
+      this._httpEndpoint = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get httpEndpointInput() {
+      return this._httpEndpoint
+    }
+
+    // http_put_response_hop_limit - computed: true, optional: true, required: false
+    private _httpPutResponseHopLimit?: number | undefined; 
+    public get httpPutResponseHopLimit() {
+      return this.getNumberAttribute('http_put_response_hop_limit');
+    }
+    public set httpPutResponseHopLimit(value: number | undefined) {
+      this._httpPutResponseHopLimit = value;
+    }
+    public resetHttpPutResponseHopLimit() {
+      this._httpPutResponseHopLimit = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get httpPutResponseHopLimitInput() {
+      return this._httpPutResponseHopLimit
+    }
+
+    // http_tokens - computed: true, optional: true, required: false
+    private _httpTokens?: string | undefined; 
+    public get httpTokens() {
+      return this.getStringAttribute('http_tokens');
+    }
+    public set httpTokens(value: string | undefined) {
+      this._httpTokens = value;
+    }
+    public resetHttpTokens() {
+      this._httpTokens = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get httpTokensInput() {
+      return this._httpTokens
+    }
+  }
   export interface LaunchConfigurationRootBlockDevice {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_configuration.html#delete_on_termination LaunchConfiguration#delete_on_termination}
@@ -863,8 +1090,11 @@ export namespace DataSources {
     readonly volumeType?: string;
   }
 
-  function launchConfigurationRootBlockDeviceToTerraform(struct?: LaunchConfigurationRootBlockDevice): any {
+  function launchConfigurationRootBlockDeviceToTerraform(struct?: LaunchConfigurationRootBlockDeviceOutputReference | LaunchConfigurationRootBlockDevice): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete_on_termination: cdktf.booleanToTerraform(struct!.deleteOnTermination),
       encrypted: cdktf.booleanToTerraform(struct!.encrypted),
@@ -875,6 +1105,112 @@ export namespace DataSources {
     }
   }
 
+  export class LaunchConfigurationRootBlockDeviceOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // delete_on_termination - computed: false, optional: true, required: false
+    private _deleteOnTermination?: boolean | cdktf.IResolvable | undefined; 
+    public get deleteOnTermination() {
+      return this.getBooleanAttribute('delete_on_termination') as any;
+    }
+    public set deleteOnTermination(value: boolean | cdktf.IResolvable | undefined) {
+      this._deleteOnTermination = value;
+    }
+    public resetDeleteOnTermination() {
+      this._deleteOnTermination = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteOnTerminationInput() {
+      return this._deleteOnTermination
+    }
+
+    // encrypted - computed: true, optional: true, required: false
+    private _encrypted?: boolean | cdktf.IResolvable | undefined; 
+    public get encrypted() {
+      return this.getBooleanAttribute('encrypted') as any;
+    }
+    public set encrypted(value: boolean | cdktf.IResolvable | undefined) {
+      this._encrypted = value;
+    }
+    public resetEncrypted() {
+      this._encrypted = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get encryptedInput() {
+      return this._encrypted
+    }
+
+    // iops - computed: true, optional: true, required: false
+    private _iops?: number | undefined; 
+    public get iops() {
+      return this.getNumberAttribute('iops');
+    }
+    public set iops(value: number | undefined) {
+      this._iops = value;
+    }
+    public resetIops() {
+      this._iops = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get iopsInput() {
+      return this._iops
+    }
+
+    // throughput - computed: true, optional: true, required: false
+    private _throughput?: number | undefined; 
+    public get throughput() {
+      return this.getNumberAttribute('throughput');
+    }
+    public set throughput(value: number | undefined) {
+      this._throughput = value;
+    }
+    public resetThroughput() {
+      this._throughput = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get throughputInput() {
+      return this._throughput
+    }
+
+    // volume_size - computed: true, optional: true, required: false
+    private _volumeSize?: number | undefined; 
+    public get volumeSize() {
+      return this.getNumberAttribute('volume_size');
+    }
+    public set volumeSize(value: number | undefined) {
+      this._volumeSize = value;
+    }
+    public resetVolumeSize() {
+      this._volumeSize = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get volumeSizeInput() {
+      return this._volumeSize
+    }
+
+    // volume_type - computed: true, optional: true, required: false
+    private _volumeType?: string | undefined; 
+    public get volumeType() {
+      return this.getStringAttribute('volume_type');
+    }
+    public set volumeType(value: string | undefined) {
+      this._volumeType = value;
+    }
+    public resetVolumeType() {
+      this._volumeType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get volumeTypeInput() {
+      return this._volumeType
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/launch_configuration.html aws_launch_configuration}
@@ -940,11 +1276,11 @@ export namespace DataSources {
     }
 
     // associate_public_ip_address - computed: false, optional: true, required: false
-    private _associatePublicIpAddress?: boolean | cdktf.IResolvable;
+    private _associatePublicIpAddress?: boolean | cdktf.IResolvable | undefined; 
     public get associatePublicIpAddress() {
-      return this.getBooleanAttribute('associate_public_ip_address');
+      return this.getBooleanAttribute('associate_public_ip_address') as any;
     }
-    public set associatePublicIpAddress(value: boolean | cdktf.IResolvable ) {
+    public set associatePublicIpAddress(value: boolean | cdktf.IResolvable | undefined) {
       this._associatePublicIpAddress = value;
     }
     public resetAssociatePublicIpAddress() {
@@ -956,11 +1292,11 @@ export namespace DataSources {
     }
 
     // ebs_optimized - computed: true, optional: true, required: false
-    private _ebsOptimized?: boolean | cdktf.IResolvable;
+    private _ebsOptimized?: boolean | cdktf.IResolvable | undefined; 
     public get ebsOptimized() {
-      return this.getBooleanAttribute('ebs_optimized');
+      return this.getBooleanAttribute('ebs_optimized') as any;
     }
-    public set ebsOptimized(value: boolean | cdktf.IResolvable) {
+    public set ebsOptimized(value: boolean | cdktf.IResolvable | undefined) {
       this._ebsOptimized = value;
     }
     public resetEbsOptimized() {
@@ -972,11 +1308,11 @@ export namespace DataSources {
     }
 
     // enable_monitoring - computed: false, optional: true, required: false
-    private _enableMonitoring?: boolean | cdktf.IResolvable;
+    private _enableMonitoring?: boolean | cdktf.IResolvable | undefined; 
     public get enableMonitoring() {
-      return this.getBooleanAttribute('enable_monitoring');
+      return this.getBooleanAttribute('enable_monitoring') as any;
     }
-    public set enableMonitoring(value: boolean | cdktf.IResolvable ) {
+    public set enableMonitoring(value: boolean | cdktf.IResolvable | undefined) {
       this._enableMonitoring = value;
     }
     public resetEnableMonitoring() {
@@ -988,11 +1324,11 @@ export namespace DataSources {
     }
 
     // iam_instance_profile - computed: false, optional: true, required: false
-    private _iamInstanceProfile?: string;
+    private _iamInstanceProfile?: string | undefined; 
     public get iamInstanceProfile() {
       return this.getStringAttribute('iam_instance_profile');
     }
-    public set iamInstanceProfile(value: string ) {
+    public set iamInstanceProfile(value: string | undefined) {
       this._iamInstanceProfile = value;
     }
     public resetIamInstanceProfile() {
@@ -1009,7 +1345,7 @@ export namespace DataSources {
     }
 
     // image_id - computed: false, optional: false, required: true
-    private _imageId: string;
+    private _imageId?: string; 
     public get imageId() {
       return this.getStringAttribute('image_id');
     }
@@ -1022,7 +1358,7 @@ export namespace DataSources {
     }
 
     // instance_type - computed: false, optional: false, required: true
-    private _instanceType: string;
+    private _instanceType?: string; 
     public get instanceType() {
       return this.getStringAttribute('instance_type');
     }
@@ -1035,11 +1371,11 @@ export namespace DataSources {
     }
 
     // key_name - computed: true, optional: true, required: false
-    private _keyName?: string;
+    private _keyName?: string | undefined; 
     public get keyName() {
       return this.getStringAttribute('key_name');
     }
-    public set keyName(value: string) {
+    public set keyName(value: string | undefined) {
       this._keyName = value;
     }
     public resetKeyName() {
@@ -1051,11 +1387,11 @@ export namespace DataSources {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1067,11 +1403,11 @@ export namespace DataSources {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -1083,11 +1419,11 @@ export namespace DataSources {
     }
 
     // placement_tenancy - computed: false, optional: true, required: false
-    private _placementTenancy?: string;
+    private _placementTenancy?: string | undefined; 
     public get placementTenancy() {
       return this.getStringAttribute('placement_tenancy');
     }
-    public set placementTenancy(value: string ) {
+    public set placementTenancy(value: string | undefined) {
       this._placementTenancy = value;
     }
     public resetPlacementTenancy() {
@@ -1099,11 +1435,11 @@ export namespace DataSources {
     }
 
     // security_groups - computed: false, optional: true, required: false
-    private _securityGroups?: string[];
+    private _securityGroups?: string[] | undefined; 
     public get securityGroups() {
       return this.getListAttribute('security_groups');
     }
-    public set securityGroups(value: string[] ) {
+    public set securityGroups(value: string[] | undefined) {
       this._securityGroups = value;
     }
     public resetSecurityGroups() {
@@ -1115,11 +1451,11 @@ export namespace DataSources {
     }
 
     // spot_price - computed: false, optional: true, required: false
-    private _spotPrice?: string;
+    private _spotPrice?: string | undefined; 
     public get spotPrice() {
       return this.getStringAttribute('spot_price');
     }
-    public set spotPrice(value: string ) {
+    public set spotPrice(value: string | undefined) {
       this._spotPrice = value;
     }
     public resetSpotPrice() {
@@ -1131,11 +1467,11 @@ export namespace DataSources {
     }
 
     // user_data - computed: false, optional: true, required: false
-    private _userData?: string;
+    private _userData?: string | undefined; 
     public get userData() {
       return this.getStringAttribute('user_data');
     }
-    public set userData(value: string ) {
+    public set userData(value: string | undefined) {
       this._userData = value;
     }
     public resetUserData() {
@@ -1147,11 +1483,11 @@ export namespace DataSources {
     }
 
     // user_data_base64 - computed: false, optional: true, required: false
-    private _userDataBase64?: string;
+    private _userDataBase64?: string | undefined; 
     public get userDataBase64() {
       return this.getStringAttribute('user_data_base64');
     }
-    public set userDataBase64(value: string ) {
+    public set userDataBase64(value: string | undefined) {
       this._userDataBase64 = value;
     }
     public resetUserDataBase64() {
@@ -1163,11 +1499,11 @@ export namespace DataSources {
     }
 
     // vpc_classic_link_id - computed: false, optional: true, required: false
-    private _vpcClassicLinkId?: string;
+    private _vpcClassicLinkId?: string | undefined; 
     public get vpcClassicLinkId() {
       return this.getStringAttribute('vpc_classic_link_id');
     }
-    public set vpcClassicLinkId(value: string ) {
+    public set vpcClassicLinkId(value: string | undefined) {
       this._vpcClassicLinkId = value;
     }
     public resetVpcClassicLinkId() {
@@ -1179,11 +1515,11 @@ export namespace DataSources {
     }
 
     // vpc_classic_link_security_groups - computed: false, optional: true, required: false
-    private _vpcClassicLinkSecurityGroups?: string[];
+    private _vpcClassicLinkSecurityGroups?: string[] | undefined; 
     public get vpcClassicLinkSecurityGroups() {
       return this.getListAttribute('vpc_classic_link_security_groups');
     }
-    public set vpcClassicLinkSecurityGroups(value: string[] ) {
+    public set vpcClassicLinkSecurityGroups(value: string[] | undefined) {
       this._vpcClassicLinkSecurityGroups = value;
     }
     public resetVpcClassicLinkSecurityGroups() {
@@ -1195,11 +1531,12 @@ export namespace DataSources {
     }
 
     // ebs_block_device - computed: false, optional: true, required: false
-    private _ebsBlockDevice?: LaunchConfigurationEbsBlockDevice[];
+    private _ebsBlockDevice?: LaunchConfigurationEbsBlockDevice[] | undefined; 
     public get ebsBlockDevice() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs_block_device') as any;
     }
-    public set ebsBlockDevice(value: LaunchConfigurationEbsBlockDevice[] ) {
+    public set ebsBlockDevice(value: LaunchConfigurationEbsBlockDevice[] | undefined) {
       this._ebsBlockDevice = value;
     }
     public resetEbsBlockDevice() {
@@ -1211,11 +1548,12 @@ export namespace DataSources {
     }
 
     // ephemeral_block_device - computed: false, optional: true, required: false
-    private _ephemeralBlockDevice?: LaunchConfigurationEphemeralBlockDevice[];
+    private _ephemeralBlockDevice?: LaunchConfigurationEphemeralBlockDevice[] | undefined; 
     public get ephemeralBlockDevice() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ephemeral_block_device') as any;
     }
-    public set ephemeralBlockDevice(value: LaunchConfigurationEphemeralBlockDevice[] ) {
+    public set ephemeralBlockDevice(value: LaunchConfigurationEphemeralBlockDevice[] | undefined) {
       this._ephemeralBlockDevice = value;
     }
     public resetEphemeralBlockDevice() {
@@ -1227,11 +1565,12 @@ export namespace DataSources {
     }
 
     // metadata_options - computed: false, optional: true, required: false
-    private _metadataOptions?: LaunchConfigurationMetadataOptions[];
+    private _metadataOptions?: LaunchConfigurationMetadataOptions | undefined; 
+    private __metadataOptionsOutput = new LaunchConfigurationMetadataOptionsOutputReference(this as any, "metadata_options", true);
     public get metadataOptions() {
-      return this.interpolationForAttribute('metadata_options') as any;
+      return this.__metadataOptionsOutput;
     }
-    public set metadataOptions(value: LaunchConfigurationMetadataOptions[] ) {
+    public putMetadataOptions(value: LaunchConfigurationMetadataOptions | undefined) {
       this._metadataOptions = value;
     }
     public resetMetadataOptions() {
@@ -1243,11 +1582,12 @@ export namespace DataSources {
     }
 
     // root_block_device - computed: false, optional: true, required: false
-    private _rootBlockDevice?: LaunchConfigurationRootBlockDevice[];
+    private _rootBlockDevice?: LaunchConfigurationRootBlockDevice | undefined; 
+    private __rootBlockDeviceOutput = new LaunchConfigurationRootBlockDeviceOutputReference(this as any, "root_block_device", true);
     public get rootBlockDevice() {
-      return this.interpolationForAttribute('root_block_device') as any;
+      return this.__rootBlockDeviceOutput;
     }
-    public set rootBlockDevice(value: LaunchConfigurationRootBlockDevice[] ) {
+    public putRootBlockDevice(value: LaunchConfigurationRootBlockDevice | undefined) {
       this._rootBlockDevice = value;
     }
     public resetRootBlockDevice() {
@@ -1282,8 +1622,8 @@ export namespace DataSources {
         vpc_classic_link_security_groups: cdktf.listMapper(cdktf.stringToTerraform)(this._vpcClassicLinkSecurityGroups),
         ebs_block_device: cdktf.listMapper(launchConfigurationEbsBlockDeviceToTerraform)(this._ebsBlockDevice),
         ephemeral_block_device: cdktf.listMapper(launchConfigurationEphemeralBlockDeviceToTerraform)(this._ephemeralBlockDevice),
-        metadata_options: cdktf.listMapper(launchConfigurationMetadataOptionsToTerraform)(this._metadataOptions),
-        root_block_device: cdktf.listMapper(launchConfigurationRootBlockDeviceToTerraform)(this._rootBlockDevice),
+        metadata_options: launchConfigurationMetadataOptionsToTerraform(this._metadataOptions),
+        root_block_device: launchConfigurationRootBlockDeviceToTerraform(this._rootBlockDevice),
       };
     }
   }
@@ -1339,7 +1679,7 @@ export namespace DataSources {
     }
 
     // arn - computed: false, optional: false, required: true
-    private _arn: string;
+    private _arn?: string; 
     public get arn() {
       return this.getStringAttribute('arn');
     }
@@ -1423,6 +1763,9 @@ export namespace DataSources {
 
   function dataAwsAvailabilityZoneFilterToTerraform(struct?: DataAwsAvailabilityZoneFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -1474,11 +1817,11 @@ export namespace DataSources {
     // ==========
 
     // all_availability_zones - computed: false, optional: true, required: false
-    private _allAvailabilityZones?: boolean | cdktf.IResolvable;
+    private _allAvailabilityZones?: boolean | cdktf.IResolvable | undefined; 
     public get allAvailabilityZones() {
-      return this.getBooleanAttribute('all_availability_zones');
+      return this.getBooleanAttribute('all_availability_zones') as any;
     }
-    public set allAvailabilityZones(value: boolean | cdktf.IResolvable ) {
+    public set allAvailabilityZones(value: boolean | cdktf.IResolvable | undefined) {
       this._allAvailabilityZones = value;
     }
     public resetAllAvailabilityZones() {
@@ -1500,11 +1843,11 @@ export namespace DataSources {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1546,11 +1889,11 @@ export namespace DataSources {
     }
 
     // state - computed: true, optional: true, required: false
-    private _state?: string;
+    private _state?: string | undefined; 
     public get state() {
       return this.getStringAttribute('state');
     }
-    public set state(value: string) {
+    public set state(value: string | undefined) {
       this._state = value;
     }
     public resetState() {
@@ -1562,11 +1905,11 @@ export namespace DataSources {
     }
 
     // zone_id - computed: true, optional: true, required: false
-    private _zoneId?: string;
+    private _zoneId?: string | undefined; 
     public get zoneId() {
       return this.getStringAttribute('zone_id');
     }
-    public set zoneId(value: string) {
+    public set zoneId(value: string | undefined) {
       this._zoneId = value;
     }
     public resetZoneId() {
@@ -1583,11 +1926,12 @@ export namespace DataSources {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsAvailabilityZoneFilter[];
+    private _filter?: DataAwsAvailabilityZoneFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsAvailabilityZoneFilter[] ) {
+    public set filter(value: DataAwsAvailabilityZoneFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -1649,6 +1993,9 @@ export namespace DataSources {
 
   function dataAwsAvailabilityZonesFilterToTerraform(struct?: DataAwsAvailabilityZonesFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -1700,11 +2047,11 @@ export namespace DataSources {
     // ==========
 
     // all_availability_zones - computed: false, optional: true, required: false
-    private _allAvailabilityZones?: boolean | cdktf.IResolvable;
+    private _allAvailabilityZones?: boolean | cdktf.IResolvable | undefined; 
     public get allAvailabilityZones() {
-      return this.getBooleanAttribute('all_availability_zones');
+      return this.getBooleanAttribute('all_availability_zones') as any;
     }
-    public set allAvailabilityZones(value: boolean | cdktf.IResolvable ) {
+    public set allAvailabilityZones(value: boolean | cdktf.IResolvable | undefined) {
       this._allAvailabilityZones = value;
     }
     public resetAllAvailabilityZones() {
@@ -1716,11 +2063,11 @@ export namespace DataSources {
     }
 
     // exclude_names - computed: false, optional: true, required: false
-    private _excludeNames?: string[];
+    private _excludeNames?: string[] | undefined; 
     public get excludeNames() {
       return this.getListAttribute('exclude_names');
     }
-    public set excludeNames(value: string[] ) {
+    public set excludeNames(value: string[] | undefined) {
       this._excludeNames = value;
     }
     public resetExcludeNames() {
@@ -1732,11 +2079,11 @@ export namespace DataSources {
     }
 
     // exclude_zone_ids - computed: false, optional: true, required: false
-    private _excludeZoneIds?: string[];
+    private _excludeZoneIds?: string[] | undefined; 
     public get excludeZoneIds() {
       return this.getListAttribute('exclude_zone_ids');
     }
-    public set excludeZoneIds(value: string[] ) {
+    public set excludeZoneIds(value: string[] | undefined) {
       this._excludeZoneIds = value;
     }
     public resetExcludeZoneIds() {
@@ -1763,11 +2110,11 @@ export namespace DataSources {
     }
 
     // state - computed: false, optional: true, required: false
-    private _state?: string;
+    private _state?: string | undefined; 
     public get state() {
       return this.getStringAttribute('state');
     }
-    public set state(value: string ) {
+    public set state(value: string | undefined) {
       this._state = value;
     }
     public resetState() {
@@ -1784,11 +2131,12 @@ export namespace DataSources {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsAvailabilityZonesFilter[];
+    private _filter?: DataAwsAvailabilityZonesFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsAvailabilityZonesFilter[] ) {
+    public set filter(value: DataAwsAvailabilityZonesFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -2027,7 +2375,7 @@ export namespace DataSources {
 
     // enabled - computed: true, optional: false, required: false
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
 
     // interval - computed: true, optional: false, required: false
@@ -2147,7 +2495,7 @@ export namespace DataSources {
 
     // connection_draining - computed: true, optional: false, required: false
     public get connectionDraining() {
-      return this.getBooleanAttribute('connection_draining');
+      return this.getBooleanAttribute('connection_draining') as any;
     }
 
     // connection_draining_timeout - computed: true, optional: false, required: false
@@ -2157,7 +2505,7 @@ export namespace DataSources {
 
     // cross_zone_load_balancing - computed: true, optional: false, required: false
     public get crossZoneLoadBalancing() {
-      return this.getBooleanAttribute('cross_zone_load_balancing');
+      return this.getBooleanAttribute('cross_zone_load_balancing') as any;
     }
 
     // dns_name - computed: true, optional: false, required: false
@@ -2187,7 +2535,7 @@ export namespace DataSources {
 
     // internal - computed: true, optional: false, required: false
     public get internal() {
-      return this.getBooleanAttribute('internal');
+      return this.getBooleanAttribute('internal') as any;
     }
 
     // listener - computed: true, optional: false, required: false
@@ -2196,7 +2544,7 @@ export namespace DataSources {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2229,11 +2577,12 @@ export namespace DataSources {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2312,11 +2661,11 @@ export namespace DataSources {
     }
 
     // region - computed: false, optional: true, required: false
-    private _region?: string;
+    private _region?: string | undefined; 
     public get region() {
       return this.getStringAttribute('region');
     }
-    public set region(value: string ) {
+    public set region(value: string | undefined) {
       this._region = value;
     }
     public resetRegion() {
@@ -2394,11 +2743,11 @@ export namespace DataSources {
     }
 
     // region - computed: false, optional: true, required: false
-    private _region?: string;
+    private _region?: string | undefined; 
     public get region() {
       return this.getStringAttribute('region');
     }
-    public set region(value: string ) {
+    public set region(value: string | undefined) {
       this._region = value;
     }
     public resetRegion() {
@@ -2496,11 +2845,11 @@ export namespace DataSources {
     }
 
     // regions - computed: false, optional: true, required: false
-    private _regions?: string[];
+    private _regions?: string[] | undefined; 
     public get regions() {
       return this.getListAttribute('regions');
     }
-    public set regions(value: string[] ) {
+    public set regions(value: string[] | undefined) {
       this._regions = value;
     }
     public resetRegions() {
@@ -2512,7 +2861,7 @@ export namespace DataSources {
     }
 
     // services - computed: false, optional: false, required: true
-    private _services: string[];
+    private _services?: string[]; 
     public get services() {
       return this.getListAttribute('services');
     }
@@ -2530,11 +2879,11 @@ export namespace DataSources {
     }
 
     // url - computed: false, optional: true, required: false
-    private _url?: string;
+    private _url?: string | undefined; 
     public get url() {
       return this.getStringAttribute('url');
     }
-    public set url(value: string ) {
+    public set url(value: string | undefined) {
       this._url = value;
     }
     public resetUrl() {
@@ -2567,7 +2916,7 @@ export namespace DataSources {
 
     // delete_on_termination - computed: true, optional: false, required: false
     public get deleteOnTermination() {
-      return this.getBooleanAttribute('delete_on_termination');
+      return this.getBooleanAttribute('delete_on_termination') as any;
     }
 
     // device_name - computed: true, optional: false, required: false
@@ -2577,7 +2926,7 @@ export namespace DataSources {
 
     // encrypted - computed: true, optional: false, required: false
     public get encrypted() {
-      return this.getBooleanAttribute('encrypted');
+      return this.getBooleanAttribute('encrypted') as any;
     }
 
     // iops - computed: true, optional: false, required: false
@@ -2587,7 +2936,7 @@ export namespace DataSources {
 
     // no_device - computed: true, optional: false, required: false
     public get noDevice() {
-      return this.getBooleanAttribute('no_device');
+      return this.getBooleanAttribute('no_device') as any;
     }
 
     // snapshot_id - computed: true, optional: false, required: false
@@ -2597,7 +2946,7 @@ export namespace DataSources {
 
     // throughput - computed: true, optional: false, required: false
     public get throughput() {
-      return this.getBooleanAttribute('throughput');
+      return this.getBooleanAttribute('throughput') as any;
     }
 
     // volume_size - computed: true, optional: false, required: false
@@ -2643,12 +2992,12 @@ export namespace DataSources {
 
     // delete_on_termination - computed: true, optional: false, required: false
     public get deleteOnTermination() {
-      return this.getBooleanAttribute('delete_on_termination');
+      return this.getBooleanAttribute('delete_on_termination') as any;
     }
 
     // encrypted - computed: true, optional: false, required: false
     public get encrypted() {
-      return this.getBooleanAttribute('encrypted');
+      return this.getBooleanAttribute('encrypted') as any;
     }
 
     // iops - computed: true, optional: false, required: false
@@ -2658,7 +3007,7 @@ export namespace DataSources {
 
     // throughput - computed: true, optional: false, required: false
     public get throughput() {
-      return this.getBooleanAttribute('throughput');
+      return this.getBooleanAttribute('throughput') as any;
     }
 
     // volume_size - computed: true, optional: false, required: false
@@ -2718,7 +3067,7 @@ export namespace DataSources {
 
     // associate_public_ip_address - computed: true, optional: false, required: false
     public get associatePublicIpAddress() {
-      return this.getBooleanAttribute('associate_public_ip_address');
+      return this.getBooleanAttribute('associate_public_ip_address') as any;
     }
 
     // ebs_block_device - computed: true, optional: false, required: false
@@ -2728,12 +3077,12 @@ export namespace DataSources {
 
     // ebs_optimized - computed: true, optional: false, required: false
     public get ebsOptimized() {
-      return this.getBooleanAttribute('ebs_optimized');
+      return this.getBooleanAttribute('ebs_optimized') as any;
     }
 
     // enable_monitoring - computed: true, optional: false, required: false
     public get enableMonitoring() {
-      return this.getBooleanAttribute('enable_monitoring');
+      return this.getBooleanAttribute('enable_monitoring') as any;
     }
 
     // ephemeral_block_device - computed: true, optional: false, required: false
@@ -2772,7 +3121,7 @@ export namespace DataSources {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2928,6 +3277,9 @@ export namespace DataSources {
 
   function dataAwsPrefixListFilterToTerraform(struct?: DataAwsPrefixListFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -2987,11 +3339,11 @@ export namespace DataSources {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -3003,11 +3355,11 @@ export namespace DataSources {
     }
 
     // prefix_list_id - computed: false, optional: true, required: false
-    private _prefixListId?: string;
+    private _prefixListId?: string | undefined; 
     public get prefixListId() {
       return this.getStringAttribute('prefix_list_id');
     }
-    public set prefixListId(value: string ) {
+    public set prefixListId(value: string | undefined) {
       this._prefixListId = value;
     }
     public resetPrefixListId() {
@@ -3019,11 +3371,12 @@ export namespace DataSources {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsPrefixListFilter[];
+    private _filter?: DataAwsPrefixListFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsPrefixListFilter[] ) {
+    public set filter(value: DataAwsPrefixListFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {
@@ -3103,11 +3456,11 @@ export namespace DataSources {
     }
 
     // endpoint - computed: true, optional: true, required: false
-    private _endpoint?: string;
+    private _endpoint?: string | undefined; 
     public get endpoint() {
       return this.getStringAttribute('endpoint');
     }
-    public set endpoint(value: string) {
+    public set endpoint(value: string | undefined) {
       this._endpoint = value;
     }
     public resetEndpoint() {
@@ -3124,11 +3477,11 @@ export namespace DataSources {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -3175,6 +3528,9 @@ export namespace DataSources {
 
   function dataAwsRegionsFilterToTerraform(struct?: DataAwsRegionsFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -3223,11 +3579,11 @@ export namespace DataSources {
     // ==========
 
     // all_regions - computed: false, optional: true, required: false
-    private _allRegions?: boolean | cdktf.IResolvable;
+    private _allRegions?: boolean | cdktf.IResolvable | undefined; 
     public get allRegions() {
-      return this.getBooleanAttribute('all_regions');
+      return this.getBooleanAttribute('all_regions') as any;
     }
-    public set allRegions(value: boolean | cdktf.IResolvable ) {
+    public set allRegions(value: boolean | cdktf.IResolvable | undefined) {
       this._allRegions = value;
     }
     public resetAllRegions() {
@@ -3249,11 +3605,12 @@ export namespace DataSources {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsRegionsFilter[];
+    private _filter?: DataAwsRegionsFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsRegionsFilter[] ) {
+    public set filter(value: DataAwsRegionsFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {

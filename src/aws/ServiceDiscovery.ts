@@ -74,11 +74,11 @@ export namespace ServiceDiscovery {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -95,7 +95,7 @@ export namespace ServiceDiscovery {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -108,11 +108,12 @@ export namespace ServiceDiscovery {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -124,11 +125,12 @@ export namespace ServiceDiscovery {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -209,8 +211,9 @@ export namespace ServiceDiscovery {
     // ==========
 
     // attributes - computed: false, optional: false, required: true
-    private _attributes: { [key: string]: string } | cdktf.IResolvable;
+    private _attributes?: { [key: string]: string } | cdktf.IResolvable; 
     public get attributes() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('attributes') as any;
     }
     public set attributes(value: { [key: string]: string } | cdktf.IResolvable) {
@@ -227,7 +230,7 @@ export namespace ServiceDiscovery {
     }
 
     // instance_id - computed: false, optional: false, required: true
-    private _instanceId: string;
+    private _instanceId?: string; 
     public get instanceId() {
       return this.getStringAttribute('instance_id');
     }
@@ -240,7 +243,7 @@ export namespace ServiceDiscovery {
     }
 
     // service_id - computed: false, optional: false, required: true
-    private _serviceId: string;
+    private _serviceId?: string; 
     public get serviceId() {
       return this.getStringAttribute('service_id');
     }
@@ -336,11 +339,11 @@ export namespace ServiceDiscovery {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -362,7 +365,7 @@ export namespace ServiceDiscovery {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -375,11 +378,12 @@ export namespace ServiceDiscovery {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -391,11 +395,12 @@ export namespace ServiceDiscovery {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -407,7 +412,7 @@ export namespace ServiceDiscovery {
     }
 
     // vpc - computed: false, optional: false, required: true
-    private _vpc: string;
+    private _vpc?: string; 
     public get vpc() {
       return this.getStringAttribute('vpc');
     }
@@ -500,11 +505,11 @@ export namespace ServiceDiscovery {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -526,7 +531,7 @@ export namespace ServiceDiscovery {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -539,11 +544,12 @@ export namespace ServiceDiscovery {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -555,11 +561,12 @@ export namespace ServiceDiscovery {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -613,19 +620,19 @@ export namespace ServiceDiscovery {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/service_discovery_service.html#dns_config ServiceDiscoveryService#dns_config}
     */
-    readonly dnsConfig?: ServiceDiscoveryServiceDnsConfig[];
+    readonly dnsConfig?: ServiceDiscoveryServiceDnsConfig;
     /**
     * health_check_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/service_discovery_service.html#health_check_config ServiceDiscoveryService#health_check_config}
     */
-    readonly healthCheckConfig?: ServiceDiscoveryServiceHealthCheckConfig[];
+    readonly healthCheckConfig?: ServiceDiscoveryServiceHealthCheckConfig;
     /**
     * health_check_custom_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/service_discovery_service.html#health_check_custom_config ServiceDiscoveryService#health_check_custom_config}
     */
-    readonly healthCheckCustomConfig?: ServiceDiscoveryServiceHealthCheckCustomConfig[];
+    readonly healthCheckCustomConfig?: ServiceDiscoveryServiceHealthCheckCustomConfig;
   }
   export interface ServiceDiscoveryServiceDnsConfigDnsRecords {
     /**
@@ -640,6 +647,9 @@ export namespace ServiceDiscovery {
 
   function serviceDiscoveryServiceDnsConfigDnsRecordsToTerraform(struct?: ServiceDiscoveryServiceDnsConfigDnsRecords): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       ttl: cdktf.numberToTerraform(struct!.ttl),
       type: cdktf.stringToTerraform(struct!.type),
@@ -663,8 +673,11 @@ export namespace ServiceDiscovery {
     readonly dnsRecords: ServiceDiscoveryServiceDnsConfigDnsRecords[];
   }
 
-  function serviceDiscoveryServiceDnsConfigToTerraform(struct?: ServiceDiscoveryServiceDnsConfig): any {
+  function serviceDiscoveryServiceDnsConfigToTerraform(struct?: ServiceDiscoveryServiceDnsConfigOutputReference | ServiceDiscoveryServiceDnsConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       namespace_id: cdktf.stringToTerraform(struct!.namespaceId),
       routing_policy: cdktf.stringToTerraform(struct!.routingPolicy),
@@ -672,6 +685,59 @@ export namespace ServiceDiscovery {
     }
   }
 
+  export class ServiceDiscoveryServiceDnsConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // namespace_id - computed: false, optional: false, required: true
+    private _namespaceId?: string; 
+    public get namespaceId() {
+      return this.getStringAttribute('namespace_id');
+    }
+    public set namespaceId(value: string) {
+      this._namespaceId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get namespaceIdInput() {
+      return this._namespaceId
+    }
+
+    // routing_policy - computed: false, optional: true, required: false
+    private _routingPolicy?: string | undefined; 
+    public get routingPolicy() {
+      return this.getStringAttribute('routing_policy');
+    }
+    public set routingPolicy(value: string | undefined) {
+      this._routingPolicy = value;
+    }
+    public resetRoutingPolicy() {
+      this._routingPolicy = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get routingPolicyInput() {
+      return this._routingPolicy
+    }
+
+    // dns_records - computed: false, optional: false, required: true
+    private _dnsRecords?: ServiceDiscoveryServiceDnsConfigDnsRecords[]; 
+    public get dnsRecords() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('dns_records') as any;
+    }
+    public set dnsRecords(value: ServiceDiscoveryServiceDnsConfigDnsRecords[]) {
+      this._dnsRecords = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get dnsRecordsInput() {
+      return this._dnsRecords
+    }
+  }
   export interface ServiceDiscoveryServiceHealthCheckConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/service_discovery_service.html#failure_threshold ServiceDiscoveryService#failure_threshold}
@@ -687,8 +753,11 @@ export namespace ServiceDiscovery {
     readonly type?: string;
   }
 
-  function serviceDiscoveryServiceHealthCheckConfigToTerraform(struct?: ServiceDiscoveryServiceHealthCheckConfig): any {
+  function serviceDiscoveryServiceHealthCheckConfigToTerraform(struct?: ServiceDiscoveryServiceHealthCheckConfigOutputReference | ServiceDiscoveryServiceHealthCheckConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       failure_threshold: cdktf.numberToTerraform(struct!.failureThreshold),
       resource_path: cdktf.stringToTerraform(struct!.resourcePath),
@@ -696,6 +765,64 @@ export namespace ServiceDiscovery {
     }
   }
 
+  export class ServiceDiscoveryServiceHealthCheckConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // failure_threshold - computed: false, optional: true, required: false
+    private _failureThreshold?: number | undefined; 
+    public get failureThreshold() {
+      return this.getNumberAttribute('failure_threshold');
+    }
+    public set failureThreshold(value: number | undefined) {
+      this._failureThreshold = value;
+    }
+    public resetFailureThreshold() {
+      this._failureThreshold = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get failureThresholdInput() {
+      return this._failureThreshold
+    }
+
+    // resource_path - computed: false, optional: true, required: false
+    private _resourcePath?: string | undefined; 
+    public get resourcePath() {
+      return this.getStringAttribute('resource_path');
+    }
+    public set resourcePath(value: string | undefined) {
+      this._resourcePath = value;
+    }
+    public resetResourcePath() {
+      this._resourcePath = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourcePathInput() {
+      return this._resourcePath
+    }
+
+    // type - computed: false, optional: true, required: false
+    private _type?: string | undefined; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string | undefined) {
+      this._type = value;
+    }
+    public resetType() {
+      this._type = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
   export interface ServiceDiscoveryServiceHealthCheckCustomConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/service_discovery_service.html#failure_threshold ServiceDiscoveryService#failure_threshold}
@@ -703,13 +830,42 @@ export namespace ServiceDiscovery {
     readonly failureThreshold?: number;
   }
 
-  function serviceDiscoveryServiceHealthCheckCustomConfigToTerraform(struct?: ServiceDiscoveryServiceHealthCheckCustomConfig): any {
+  function serviceDiscoveryServiceHealthCheckCustomConfigToTerraform(struct?: ServiceDiscoveryServiceHealthCheckCustomConfigOutputReference | ServiceDiscoveryServiceHealthCheckCustomConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       failure_threshold: cdktf.numberToTerraform(struct!.failureThreshold),
     }
   }
 
+  export class ServiceDiscoveryServiceHealthCheckCustomConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // failure_threshold - computed: false, optional: true, required: false
+    private _failureThreshold?: number | undefined; 
+    public get failureThreshold() {
+      return this.getNumberAttribute('failure_threshold');
+    }
+    public set failureThreshold(value: number | undefined) {
+      this._failureThreshold = value;
+    }
+    public resetFailureThreshold() {
+      this._failureThreshold = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get failureThresholdInput() {
+      return this._failureThreshold
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/service_discovery_service.html aws_service_discovery_service}
@@ -764,11 +920,11 @@ export namespace ServiceDiscovery {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -780,11 +936,11 @@ export namespace ServiceDiscovery {
     }
 
     // force_destroy - computed: false, optional: true, required: false
-    private _forceDestroy?: boolean | cdktf.IResolvable;
+    private _forceDestroy?: boolean | cdktf.IResolvable | undefined; 
     public get forceDestroy() {
-      return this.getBooleanAttribute('force_destroy');
+      return this.getBooleanAttribute('force_destroy') as any;
     }
-    public set forceDestroy(value: boolean | cdktf.IResolvable ) {
+    public set forceDestroy(value: boolean | cdktf.IResolvable | undefined) {
       this._forceDestroy = value;
     }
     public resetForceDestroy() {
@@ -801,7 +957,7 @@ export namespace ServiceDiscovery {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -814,11 +970,11 @@ export namespace ServiceDiscovery {
     }
 
     // namespace_id - computed: true, optional: true, required: false
-    private _namespaceId?: string;
+    private _namespaceId?: string | undefined; 
     public get namespaceId() {
       return this.getStringAttribute('namespace_id');
     }
-    public set namespaceId(value: string) {
+    public set namespaceId(value: string | undefined) {
       this._namespaceId = value;
     }
     public resetNamespaceId() {
@@ -830,11 +986,12 @@ export namespace ServiceDiscovery {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -846,11 +1003,12 @@ export namespace ServiceDiscovery {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -862,11 +1020,12 @@ export namespace ServiceDiscovery {
     }
 
     // dns_config - computed: false, optional: true, required: false
-    private _dnsConfig?: ServiceDiscoveryServiceDnsConfig[];
+    private _dnsConfig?: ServiceDiscoveryServiceDnsConfig | undefined; 
+    private __dnsConfigOutput = new ServiceDiscoveryServiceDnsConfigOutputReference(this as any, "dns_config", true);
     public get dnsConfig() {
-      return this.interpolationForAttribute('dns_config') as any;
+      return this.__dnsConfigOutput;
     }
-    public set dnsConfig(value: ServiceDiscoveryServiceDnsConfig[] ) {
+    public putDnsConfig(value: ServiceDiscoveryServiceDnsConfig | undefined) {
       this._dnsConfig = value;
     }
     public resetDnsConfig() {
@@ -878,11 +1037,12 @@ export namespace ServiceDiscovery {
     }
 
     // health_check_config - computed: false, optional: true, required: false
-    private _healthCheckConfig?: ServiceDiscoveryServiceHealthCheckConfig[];
+    private _healthCheckConfig?: ServiceDiscoveryServiceHealthCheckConfig | undefined; 
+    private __healthCheckConfigOutput = new ServiceDiscoveryServiceHealthCheckConfigOutputReference(this as any, "health_check_config", true);
     public get healthCheckConfig() {
-      return this.interpolationForAttribute('health_check_config') as any;
+      return this.__healthCheckConfigOutput;
     }
-    public set healthCheckConfig(value: ServiceDiscoveryServiceHealthCheckConfig[] ) {
+    public putHealthCheckConfig(value: ServiceDiscoveryServiceHealthCheckConfig | undefined) {
       this._healthCheckConfig = value;
     }
     public resetHealthCheckConfig() {
@@ -894,11 +1054,12 @@ export namespace ServiceDiscovery {
     }
 
     // health_check_custom_config - computed: false, optional: true, required: false
-    private _healthCheckCustomConfig?: ServiceDiscoveryServiceHealthCheckCustomConfig[];
+    private _healthCheckCustomConfig?: ServiceDiscoveryServiceHealthCheckCustomConfig | undefined; 
+    private __healthCheckCustomConfigOutput = new ServiceDiscoveryServiceHealthCheckCustomConfigOutputReference(this as any, "health_check_custom_config", true);
     public get healthCheckCustomConfig() {
-      return this.interpolationForAttribute('health_check_custom_config') as any;
+      return this.__healthCheckCustomConfigOutput;
     }
-    public set healthCheckCustomConfig(value: ServiceDiscoveryServiceHealthCheckCustomConfig[] ) {
+    public putHealthCheckCustomConfig(value: ServiceDiscoveryServiceHealthCheckCustomConfig | undefined) {
       this._healthCheckCustomConfig = value;
     }
     public resetHealthCheckCustomConfig() {
@@ -921,9 +1082,9 @@ export namespace ServiceDiscovery {
         namespace_id: cdktf.stringToTerraform(this._namespaceId),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        dns_config: cdktf.listMapper(serviceDiscoveryServiceDnsConfigToTerraform)(this._dnsConfig),
-        health_check_config: cdktf.listMapper(serviceDiscoveryServiceHealthCheckConfigToTerraform)(this._healthCheckConfig),
-        health_check_custom_config: cdktf.listMapper(serviceDiscoveryServiceHealthCheckCustomConfigToTerraform)(this._healthCheckCustomConfig),
+        dns_config: serviceDiscoveryServiceDnsConfigToTerraform(this._dnsConfig),
+        health_check_config: serviceDiscoveryServiceHealthCheckConfigToTerraform(this._healthCheckConfig),
+        health_check_custom_config: serviceDiscoveryServiceHealthCheckCustomConfigToTerraform(this._healthCheckCustomConfig),
       };
     }
   }
@@ -999,7 +1160,7 @@ export namespace ServiceDiscovery {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1012,7 +1173,7 @@ export namespace ServiceDiscovery {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }

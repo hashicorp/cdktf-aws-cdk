@@ -25,13 +25,13 @@ export namespace EFS {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/efs_access_point.html#posix_user EfsAccessPoint#posix_user}
     */
-    readonly posixUser?: EfsAccessPointPosixUser[];
+    readonly posixUser?: EfsAccessPointPosixUser;
     /**
     * root_directory block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/efs_access_point.html#root_directory EfsAccessPoint#root_directory}
     */
-    readonly rootDirectory?: EfsAccessPointRootDirectory[];
+    readonly rootDirectory?: EfsAccessPointRootDirectory;
   }
   export interface EfsAccessPointPosixUser {
     /**
@@ -48,8 +48,11 @@ export namespace EFS {
     readonly uid: number;
   }
 
-  function efsAccessPointPosixUserToTerraform(struct?: EfsAccessPointPosixUser): any {
+  function efsAccessPointPosixUserToTerraform(struct?: EfsAccessPointPosixUserOutputReference | EfsAccessPointPosixUser): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       gid: cdktf.numberToTerraform(struct!.gid),
       secondary_gids: cdktf.listMapper(cdktf.numberToTerraform)(struct!.secondaryGids),
@@ -57,6 +60,59 @@ export namespace EFS {
     }
   }
 
+  export class EfsAccessPointPosixUserOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // gid - computed: false, optional: false, required: true
+    private _gid?: number; 
+    public get gid() {
+      return this.getNumberAttribute('gid');
+    }
+    public set gid(value: number) {
+      this._gid = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get gidInput() {
+      return this._gid
+    }
+
+    // secondary_gids - computed: false, optional: true, required: false
+    private _secondaryGids?: number[] | undefined; 
+    public get secondaryGids() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('secondary_gids') as any;
+    }
+    public set secondaryGids(value: number[] | undefined) {
+      this._secondaryGids = value;
+    }
+    public resetSecondaryGids() {
+      this._secondaryGids = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get secondaryGidsInput() {
+      return this._secondaryGids
+    }
+
+    // uid - computed: false, optional: false, required: true
+    private _uid?: number; 
+    public get uid() {
+      return this.getNumberAttribute('uid');
+    }
+    public set uid(value: number) {
+      this._uid = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get uidInput() {
+      return this._uid
+    }
+  }
   export interface EfsAccessPointRootDirectoryCreationInfo {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/efs_access_point.html#owner_gid EfsAccessPoint#owner_gid}
@@ -72,8 +128,11 @@ export namespace EFS {
     readonly permissions: string;
   }
 
-  function efsAccessPointRootDirectoryCreationInfoToTerraform(struct?: EfsAccessPointRootDirectoryCreationInfo): any {
+  function efsAccessPointRootDirectoryCreationInfoToTerraform(struct?: EfsAccessPointRootDirectoryCreationInfoOutputReference | EfsAccessPointRootDirectoryCreationInfo): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       owner_gid: cdktf.numberToTerraform(struct!.ownerGid),
       owner_uid: cdktf.numberToTerraform(struct!.ownerUid),
@@ -81,6 +140,55 @@ export namespace EFS {
     }
   }
 
+  export class EfsAccessPointRootDirectoryCreationInfoOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // owner_gid - computed: false, optional: false, required: true
+    private _ownerGid?: number; 
+    public get ownerGid() {
+      return this.getNumberAttribute('owner_gid');
+    }
+    public set ownerGid(value: number) {
+      this._ownerGid = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get ownerGidInput() {
+      return this._ownerGid
+    }
+
+    // owner_uid - computed: false, optional: false, required: true
+    private _ownerUid?: number; 
+    public get ownerUid() {
+      return this.getNumberAttribute('owner_uid');
+    }
+    public set ownerUid(value: number) {
+      this._ownerUid = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get ownerUidInput() {
+      return this._ownerUid
+    }
+
+    // permissions - computed: false, optional: false, required: true
+    private _permissions?: string; 
+    public get permissions() {
+      return this.getStringAttribute('permissions');
+    }
+    public set permissions(value: string) {
+      this._permissions = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get permissionsInput() {
+      return this._permissions
+    }
+  }
   export interface EfsAccessPointRootDirectory {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/efs_access_point.html#path EfsAccessPoint#path}
@@ -91,17 +199,63 @@ export namespace EFS {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/efs_access_point.html#creation_info EfsAccessPoint#creation_info}
     */
-    readonly creationInfo?: EfsAccessPointRootDirectoryCreationInfo[];
+    readonly creationInfo?: EfsAccessPointRootDirectoryCreationInfo;
   }
 
-  function efsAccessPointRootDirectoryToTerraform(struct?: EfsAccessPointRootDirectory): any {
+  function efsAccessPointRootDirectoryToTerraform(struct?: EfsAccessPointRootDirectoryOutputReference | EfsAccessPointRootDirectory): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       path: cdktf.stringToTerraform(struct!.path),
-      creation_info: cdktf.listMapper(efsAccessPointRootDirectoryCreationInfoToTerraform)(struct!.creationInfo),
+      creation_info: efsAccessPointRootDirectoryCreationInfoToTerraform(struct!.creationInfo),
     }
   }
 
+  export class EfsAccessPointRootDirectoryOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // path - computed: true, optional: true, required: false
+    private _path?: string | undefined; 
+    public get path() {
+      return this.getStringAttribute('path');
+    }
+    public set path(value: string | undefined) {
+      this._path = value;
+    }
+    public resetPath() {
+      this._path = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get pathInput() {
+      return this._path
+    }
+
+    // creation_info - computed: false, optional: true, required: false
+    private _creationInfo?: EfsAccessPointRootDirectoryCreationInfo | undefined; 
+    private __creationInfoOutput = new EfsAccessPointRootDirectoryCreationInfoOutputReference(this as any, "creation_info", true);
+    public get creationInfo() {
+      return this.__creationInfoOutput;
+    }
+    public putCreationInfo(value: EfsAccessPointRootDirectoryCreationInfo | undefined) {
+      this._creationInfo = value;
+    }
+    public resetCreationInfo() {
+      this._creationInfo = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get creationInfoInput() {
+      return this._creationInfo
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/efs_access_point.html aws_efs_access_point}
@@ -157,7 +311,7 @@ export namespace EFS {
     }
 
     // file_system_id - computed: false, optional: false, required: true
-    private _fileSystemId: string;
+    private _fileSystemId?: string; 
     public get fileSystemId() {
       return this.getStringAttribute('file_system_id');
     }
@@ -180,11 +334,12 @@ export namespace EFS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -196,11 +351,12 @@ export namespace EFS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -212,11 +368,12 @@ export namespace EFS {
     }
 
     // posix_user - computed: false, optional: true, required: false
-    private _posixUser?: EfsAccessPointPosixUser[];
+    private _posixUser?: EfsAccessPointPosixUser | undefined; 
+    private __posixUserOutput = new EfsAccessPointPosixUserOutputReference(this as any, "posix_user", true);
     public get posixUser() {
-      return this.interpolationForAttribute('posix_user') as any;
+      return this.__posixUserOutput;
     }
-    public set posixUser(value: EfsAccessPointPosixUser[] ) {
+    public putPosixUser(value: EfsAccessPointPosixUser | undefined) {
       this._posixUser = value;
     }
     public resetPosixUser() {
@@ -228,11 +385,12 @@ export namespace EFS {
     }
 
     // root_directory - computed: false, optional: true, required: false
-    private _rootDirectory?: EfsAccessPointRootDirectory[];
+    private _rootDirectory?: EfsAccessPointRootDirectory | undefined; 
+    private __rootDirectoryOutput = new EfsAccessPointRootDirectoryOutputReference(this as any, "root_directory", true);
     public get rootDirectory() {
-      return this.interpolationForAttribute('root_directory') as any;
+      return this.__rootDirectoryOutput;
     }
-    public set rootDirectory(value: EfsAccessPointRootDirectory[] ) {
+    public putRootDirectory(value: EfsAccessPointRootDirectory | undefined) {
       this._rootDirectory = value;
     }
     public resetRootDirectory() {
@@ -252,8 +410,8 @@ export namespace EFS {
         file_system_id: cdktf.stringToTerraform(this._fileSystemId),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        posix_user: cdktf.listMapper(efsAccessPointPosixUserToTerraform)(this._posixUser),
-        root_directory: cdktf.listMapper(efsAccessPointRootDirectoryToTerraform)(this._rootDirectory),
+        posix_user: efsAccessPointPosixUserToTerraform(this._posixUser),
+        root_directory: efsAccessPointRootDirectoryToTerraform(this._rootDirectory),
       };
     }
   }
@@ -267,7 +425,7 @@ export namespace EFS {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/efs_backup_policy.html#backup_policy EfsBackupPolicy#backup_policy}
     */
-    readonly backupPolicy: EfsBackupPolicyBackupPolicy[];
+    readonly backupPolicy: EfsBackupPolicyBackupPolicy;
   }
   export interface EfsBackupPolicyBackupPolicy {
     /**
@@ -276,13 +434,39 @@ export namespace EFS {
     readonly status: string;
   }
 
-  function efsBackupPolicyBackupPolicyToTerraform(struct?: EfsBackupPolicyBackupPolicy): any {
+  function efsBackupPolicyBackupPolicyToTerraform(struct?: EfsBackupPolicyBackupPolicyOutputReference | EfsBackupPolicyBackupPolicy): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       status: cdktf.stringToTerraform(struct!.status),
     }
   }
 
+  export class EfsBackupPolicyBackupPolicyOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // status - computed: false, optional: false, required: true
+    private _status?: string; 
+    public get status() {
+      return this.getStringAttribute('status');
+    }
+    public set status(value: string) {
+      this._status = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statusInput() {
+      return this._status
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/efs_backup_policy.html aws_efs_backup_policy}
@@ -325,7 +509,7 @@ export namespace EFS {
     // ==========
 
     // file_system_id - computed: false, optional: false, required: true
-    private _fileSystemId: string;
+    private _fileSystemId?: string; 
     public get fileSystemId() {
       return this.getStringAttribute('file_system_id');
     }
@@ -343,11 +527,12 @@ export namespace EFS {
     }
 
     // backup_policy - computed: false, optional: false, required: true
-    private _backupPolicy: EfsBackupPolicyBackupPolicy[];
+    private _backupPolicy?: EfsBackupPolicyBackupPolicy; 
+    private __backupPolicyOutput = new EfsBackupPolicyBackupPolicyOutputReference(this as any, "backup_policy", true);
     public get backupPolicy() {
-      return this.interpolationForAttribute('backup_policy') as any;
+      return this.__backupPolicyOutput;
     }
-    public set backupPolicy(value: EfsBackupPolicyBackupPolicy[]) {
+    public putBackupPolicy(value: EfsBackupPolicyBackupPolicy) {
       this._backupPolicy = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -362,7 +547,7 @@ export namespace EFS {
     protected synthesizeAttributes(): { [name: string]: any } {
       return {
         file_system_id: cdktf.stringToTerraform(this._fileSystemId),
-        backup_policy: cdktf.listMapper(efsBackupPolicyBackupPolicyToTerraform)(this._backupPolicy),
+        backup_policy: efsBackupPolicyBackupPolicyToTerraform(this._backupPolicy),
       };
     }
   }
@@ -440,6 +625,9 @@ export namespace EFS {
 
   function efsFileSystemLifecyclePolicyToTerraform(struct?: EfsFileSystemLifecyclePolicy): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       transition_to_ia: cdktf.stringToTerraform(struct!.transitionToIa),
       transition_to_primary_storage_class: cdktf.stringToTerraform(struct!.transitionToPrimaryStorageClass),
@@ -506,11 +694,11 @@ export namespace EFS {
     }
 
     // availability_zone_name - computed: true, optional: true, required: false
-    private _availabilityZoneName?: string;
+    private _availabilityZoneName?: string | undefined; 
     public get availabilityZoneName() {
       return this.getStringAttribute('availability_zone_name');
     }
-    public set availabilityZoneName(value: string) {
+    public set availabilityZoneName(value: string | undefined) {
       this._availabilityZoneName = value;
     }
     public resetAvailabilityZoneName() {
@@ -522,11 +710,11 @@ export namespace EFS {
     }
 
     // creation_token - computed: true, optional: true, required: false
-    private _creationToken?: string;
+    private _creationToken?: string | undefined; 
     public get creationToken() {
       return this.getStringAttribute('creation_token');
     }
-    public set creationToken(value: string) {
+    public set creationToken(value: string | undefined) {
       this._creationToken = value;
     }
     public resetCreationToken() {
@@ -543,11 +731,11 @@ export namespace EFS {
     }
 
     // encrypted - computed: true, optional: true, required: false
-    private _encrypted?: boolean | cdktf.IResolvable;
+    private _encrypted?: boolean | cdktf.IResolvable | undefined; 
     public get encrypted() {
-      return this.getBooleanAttribute('encrypted');
+      return this.getBooleanAttribute('encrypted') as any;
     }
-    public set encrypted(value: boolean | cdktf.IResolvable) {
+    public set encrypted(value: boolean | cdktf.IResolvable | undefined) {
       this._encrypted = value;
     }
     public resetEncrypted() {
@@ -564,11 +752,11 @@ export namespace EFS {
     }
 
     // kms_key_id - computed: true, optional: true, required: false
-    private _kmsKeyId?: string;
+    private _kmsKeyId?: string | undefined; 
     public get kmsKeyId() {
       return this.getStringAttribute('kms_key_id');
     }
-    public set kmsKeyId(value: string) {
+    public set kmsKeyId(value: string | undefined) {
       this._kmsKeyId = value;
     }
     public resetKmsKeyId() {
@@ -590,11 +778,11 @@ export namespace EFS {
     }
 
     // performance_mode - computed: true, optional: true, required: false
-    private _performanceMode?: string;
+    private _performanceMode?: string | undefined; 
     public get performanceMode() {
       return this.getStringAttribute('performance_mode');
     }
-    public set performanceMode(value: string) {
+    public set performanceMode(value: string | undefined) {
       this._performanceMode = value;
     }
     public resetPerformanceMode() {
@@ -606,11 +794,11 @@ export namespace EFS {
     }
 
     // provisioned_throughput_in_mibps - computed: false, optional: true, required: false
-    private _provisionedThroughputInMibps?: number;
+    private _provisionedThroughputInMibps?: number | undefined; 
     public get provisionedThroughputInMibps() {
       return this.getNumberAttribute('provisioned_throughput_in_mibps');
     }
-    public set provisionedThroughputInMibps(value: number ) {
+    public set provisionedThroughputInMibps(value: number | undefined) {
       this._provisionedThroughputInMibps = value;
     }
     public resetProvisionedThroughputInMibps() {
@@ -627,11 +815,12 @@ export namespace EFS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -643,11 +832,12 @@ export namespace EFS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -659,11 +849,11 @@ export namespace EFS {
     }
 
     // throughput_mode - computed: false, optional: true, required: false
-    private _throughputMode?: string;
+    private _throughputMode?: string | undefined; 
     public get throughputMode() {
       return this.getStringAttribute('throughput_mode');
     }
-    public set throughputMode(value: string ) {
+    public set throughputMode(value: string | undefined) {
       this._throughputMode = value;
     }
     public resetThroughputMode() {
@@ -675,11 +865,12 @@ export namespace EFS {
     }
 
     // lifecycle_policy - computed: false, optional: true, required: false
-    private _lifecyclePolicy?: EfsFileSystemLifecyclePolicy[];
+    private _lifecyclePolicy?: EfsFileSystemLifecyclePolicy[] | undefined; 
     public get lifecyclePolicy() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('lifecycle_policy') as any;
     }
-    public set lifecyclePolicy(value: EfsFileSystemLifecyclePolicy[] ) {
+    public set lifecyclePolicy(value: EfsFileSystemLifecyclePolicy[] | undefined) {
       this._lifecyclePolicy = value;
     }
     public resetLifecyclePolicy() {
@@ -766,11 +957,11 @@ export namespace EFS {
     // ==========
 
     // bypass_policy_lockout_safety_check - computed: false, optional: true, required: false
-    private _bypassPolicyLockoutSafetyCheck?: boolean | cdktf.IResolvable;
+    private _bypassPolicyLockoutSafetyCheck?: boolean | cdktf.IResolvable | undefined; 
     public get bypassPolicyLockoutSafetyCheck() {
-      return this.getBooleanAttribute('bypass_policy_lockout_safety_check');
+      return this.getBooleanAttribute('bypass_policy_lockout_safety_check') as any;
     }
-    public set bypassPolicyLockoutSafetyCheck(value: boolean | cdktf.IResolvable ) {
+    public set bypassPolicyLockoutSafetyCheck(value: boolean | cdktf.IResolvable | undefined) {
       this._bypassPolicyLockoutSafetyCheck = value;
     }
     public resetBypassPolicyLockoutSafetyCheck() {
@@ -782,7 +973,7 @@ export namespace EFS {
     }
 
     // file_system_id - computed: false, optional: false, required: true
-    private _fileSystemId: string;
+    private _fileSystemId?: string; 
     public get fileSystemId() {
       return this.getStringAttribute('file_system_id');
     }
@@ -800,7 +991,7 @@ export namespace EFS {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -906,7 +1097,7 @@ export namespace EFS {
     }
 
     // file_system_id - computed: false, optional: false, required: true
-    private _fileSystemId: string;
+    private _fileSystemId?: string; 
     public get fileSystemId() {
       return this.getStringAttribute('file_system_id');
     }
@@ -924,11 +1115,11 @@ export namespace EFS {
     }
 
     // ip_address - computed: true, optional: true, required: false
-    private _ipAddress?: string;
+    private _ipAddress?: string | undefined; 
     public get ipAddress() {
       return this.getStringAttribute('ip_address');
     }
-    public set ipAddress(value: string) {
+    public set ipAddress(value: string | undefined) {
       this._ipAddress = value;
     }
     public resetIpAddress() {
@@ -955,11 +1146,11 @@ export namespace EFS {
     }
 
     // security_groups - computed: true, optional: true, required: false
-    private _securityGroups?: string[];
+    private _securityGroups?: string[] | undefined; 
     public get securityGroups() {
       return this.getListAttribute('security_groups');
     }
-    public set securityGroups(value: string[]) {
+    public set securityGroups(value: string[] | undefined) {
       this._securityGroups = value;
     }
     public resetSecurityGroups() {
@@ -971,7 +1162,7 @@ export namespace EFS {
     }
 
     // subnet_id - computed: false, optional: false, required: true
-    private _subnetId: string;
+    private _subnetId?: string; 
     public get subnetId() {
       return this.getStringAttribute('subnet_id');
     }
@@ -1015,6 +1206,7 @@ export namespace EFS {
 
     // secondary_gids - computed: true, optional: false, required: false
     public get secondaryGids() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('secondary_gids') as any;
     }
 
@@ -1044,6 +1236,7 @@ export namespace EFS {
 
     // creation_info - computed: true, optional: false, required: false
     public get creationInfo() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('creation_info') as any;
     }
 
@@ -1094,7 +1287,7 @@ export namespace EFS {
     // ==========
 
     // access_point_id - computed: false, optional: false, required: true
-    private _accessPointId: string;
+    private _accessPointId?: string; 
     public get accessPointId() {
       return this.getStringAttribute('access_point_id');
     }
@@ -1142,11 +1335,12 @@ export namespace EFS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1220,7 +1414,7 @@ export namespace EFS {
     }
 
     // file_system_id - computed: false, optional: false, required: true
-    private _fileSystemId: string;
+    private _fileSystemId?: string; 
     public get fileSystemId() {
       return this.getStringAttribute('file_system_id');
     }
@@ -1336,11 +1530,11 @@ export namespace EFS {
     }
 
     // creation_token - computed: true, optional: true, required: false
-    private _creationToken?: string;
+    private _creationToken?: string | undefined; 
     public get creationToken() {
       return this.getStringAttribute('creation_token');
     }
-    public set creationToken(value: string) {
+    public set creationToken(value: string | undefined) {
       this._creationToken = value;
     }
     public resetCreationToken() {
@@ -1358,15 +1552,15 @@ export namespace EFS {
 
     // encrypted - computed: true, optional: false, required: false
     public get encrypted() {
-      return this.getBooleanAttribute('encrypted');
+      return this.getBooleanAttribute('encrypted') as any;
     }
 
     // file_system_id - computed: true, optional: true, required: false
-    private _fileSystemId?: string;
+    private _fileSystemId?: string | undefined; 
     public get fileSystemId() {
       return this.getStringAttribute('file_system_id');
     }
-    public set fileSystemId(value: string) {
+    public set fileSystemId(value: string | undefined) {
       this._fileSystemId = value;
     }
     public resetFileSystemId() {
@@ -1408,11 +1602,12 @@ export namespace EFS {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1497,11 +1692,11 @@ export namespace EFS {
     // ==========
 
     // access_point_id - computed: false, optional: true, required: false
-    private _accessPointId?: string;
+    private _accessPointId?: string | undefined; 
     public get accessPointId() {
       return this.getStringAttribute('access_point_id');
     }
-    public set accessPointId(value: string ) {
+    public set accessPointId(value: string | undefined) {
       this._accessPointId = value;
     }
     public resetAccessPointId() {
@@ -1533,11 +1728,11 @@ export namespace EFS {
     }
 
     // file_system_id - computed: true, optional: true, required: false
-    private _fileSystemId?: string;
+    private _fileSystemId?: string | undefined; 
     public get fileSystemId() {
       return this.getStringAttribute('file_system_id');
     }
-    public set fileSystemId(value: string) {
+    public set fileSystemId(value: string | undefined) {
       this._fileSystemId = value;
     }
     public resetFileSystemId() {
@@ -1564,11 +1759,11 @@ export namespace EFS {
     }
 
     // mount_target_id - computed: true, optional: true, required: false
-    private _mountTargetId?: string;
+    private _mountTargetId?: string | undefined; 
     public get mountTargetId() {
       return this.getStringAttribute('mount_target_id');
     }
-    public set mountTargetId(value: string) {
+    public set mountTargetId(value: string | undefined) {
       this._mountTargetId = value;
     }
     public resetMountTargetId() {

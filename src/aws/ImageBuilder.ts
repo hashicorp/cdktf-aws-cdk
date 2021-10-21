@@ -109,11 +109,11 @@ export namespace ImageBuilder {
     }
 
     // change_description - computed: false, optional: true, required: false
-    private _changeDescription?: string;
+    private _changeDescription?: string | undefined; 
     public get changeDescription() {
       return this.getStringAttribute('change_description');
     }
-    public set changeDescription(value: string ) {
+    public set changeDescription(value: string | undefined) {
       this._changeDescription = value;
     }
     public resetChangeDescription() {
@@ -125,11 +125,11 @@ export namespace ImageBuilder {
     }
 
     // data - computed: true, optional: true, required: false
-    private _data?: string;
+    private _data?: string | undefined; 
     public get data() {
       return this.getStringAttribute('data');
     }
-    public set data(value: string) {
+    public set data(value: string | undefined) {
       this._data = value;
     }
     public resetData() {
@@ -146,11 +146,11 @@ export namespace ImageBuilder {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -163,7 +163,7 @@ export namespace ImageBuilder {
 
     // encrypted - computed: true, optional: false, required: false
     public get encrypted() {
-      return this.getBooleanAttribute('encrypted');
+      return this.getBooleanAttribute('encrypted') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -172,11 +172,11 @@ export namespace ImageBuilder {
     }
 
     // kms_key_id - computed: false, optional: true, required: false
-    private _kmsKeyId?: string;
+    private _kmsKeyId?: string | undefined; 
     public get kmsKeyId() {
       return this.getStringAttribute('kms_key_id');
     }
-    public set kmsKeyId(value: string ) {
+    public set kmsKeyId(value: string | undefined) {
       this._kmsKeyId = value;
     }
     public resetKmsKeyId() {
@@ -188,7 +188,7 @@ export namespace ImageBuilder {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -206,7 +206,7 @@ export namespace ImageBuilder {
     }
 
     // platform - computed: false, optional: false, required: true
-    private _platform: string;
+    private _platform?: string; 
     public get platform() {
       return this.getStringAttribute('platform');
     }
@@ -219,11 +219,11 @@ export namespace ImageBuilder {
     }
 
     // supported_os_versions - computed: false, optional: true, required: false
-    private _supportedOsVersions?: string[];
+    private _supportedOsVersions?: string[] | undefined; 
     public get supportedOsVersions() {
       return this.getListAttribute('supported_os_versions');
     }
-    public set supportedOsVersions(value: string[] ) {
+    public set supportedOsVersions(value: string[] | undefined) {
       this._supportedOsVersions = value;
     }
     public resetSupportedOsVersions() {
@@ -235,11 +235,12 @@ export namespace ImageBuilder {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -251,11 +252,12 @@ export namespace ImageBuilder {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -272,11 +274,11 @@ export namespace ImageBuilder {
     }
 
     // uri - computed: false, optional: true, required: false
-    private _uri?: string;
+    private _uri?: string | undefined; 
     public get uri() {
       return this.getStringAttribute('uri');
     }
-    public set uri(value: string ) {
+    public set uri(value: string | undefined) {
       this._uri = value;
     }
     public resetUri() {
@@ -288,7 +290,7 @@ export namespace ImageBuilder {
     }
 
     // version - computed: false, optional: false, required: true
-    private _version: string;
+    private _version?: string; 
     public get version() {
       return this.getStringAttribute('version');
     }
@@ -355,14 +357,59 @@ export namespace ImageBuilder {
     readonly userIds?: string[];
   }
 
-  function imagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionToTerraform(struct?: ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission): any {
+  function imagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionToTerraform(struct?: ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionOutputReference | ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       user_groups: cdktf.listMapper(cdktf.stringToTerraform)(struct!.userGroups),
       user_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.userIds),
     }
   }
 
+  export class ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // user_groups - computed: false, optional: true, required: false
+    private _userGroups?: string[] | undefined; 
+    public get userGroups() {
+      return this.getListAttribute('user_groups');
+    }
+    public set userGroups(value: string[] | undefined) {
+      this._userGroups = value;
+    }
+    public resetUserGroups() {
+      this._userGroups = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userGroupsInput() {
+      return this._userGroups
+    }
+
+    // user_ids - computed: false, optional: true, required: false
+    private _userIds?: string[] | undefined; 
+    public get userIds() {
+      return this.getListAttribute('user_ids');
+    }
+    public set userIds(value: string[] | undefined) {
+      this._userIds = value;
+    }
+    public resetUserIds() {
+      this._userIds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userIdsInput() {
+      return this._userIds
+    }
+  }
   export interface ImagebuilderDistributionConfigurationDistributionAmiDistributionConfiguration {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration.html#ami_tags ImagebuilderDistributionConfiguration#ami_tags}
@@ -389,21 +436,132 @@ export namespace ImageBuilder {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration.html#launch_permission ImagebuilderDistributionConfiguration#launch_permission}
     */
-    readonly launchPermission?: ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission[];
+    readonly launchPermission?: ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission;
   }
 
-  function imagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationToTerraform(struct?: ImagebuilderDistributionConfigurationDistributionAmiDistributionConfiguration): any {
+  function imagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationToTerraform(struct?: ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationOutputReference | ImagebuilderDistributionConfigurationDistributionAmiDistributionConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       ami_tags: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.amiTags),
       description: cdktf.stringToTerraform(struct!.description),
       kms_key_id: cdktf.stringToTerraform(struct!.kmsKeyId),
       name: cdktf.stringToTerraform(struct!.name),
       target_account_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.targetAccountIds),
-      launch_permission: cdktf.listMapper(imagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionToTerraform)(struct!.launchPermission),
+      launch_permission: imagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionToTerraform(struct!.launchPermission),
     }
   }
 
+  export class ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // ami_tags - computed: false, optional: true, required: false
+    private _amiTags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get amiTags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('ami_tags') as any;
+    }
+    public set amiTags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._amiTags = value;
+    }
+    public resetAmiTags() {
+      this._amiTags = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get amiTagsInput() {
+      return this._amiTags
+    }
+
+    // description - computed: false, optional: true, required: false
+    private _description?: string | undefined; 
+    public get description() {
+      return this.getStringAttribute('description');
+    }
+    public set description(value: string | undefined) {
+      this._description = value;
+    }
+    public resetDescription() {
+      this._description = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get descriptionInput() {
+      return this._description
+    }
+
+    // kms_key_id - computed: false, optional: true, required: false
+    private _kmsKeyId?: string | undefined; 
+    public get kmsKeyId() {
+      return this.getStringAttribute('kms_key_id');
+    }
+    public set kmsKeyId(value: string | undefined) {
+      this._kmsKeyId = value;
+    }
+    public resetKmsKeyId() {
+      this._kmsKeyId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get kmsKeyIdInput() {
+      return this._kmsKeyId
+    }
+
+    // name - computed: false, optional: true, required: false
+    private _name?: string | undefined; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string | undefined) {
+      this._name = value;
+    }
+    public resetName() {
+      this._name = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+
+    // target_account_ids - computed: false, optional: true, required: false
+    private _targetAccountIds?: string[] | undefined; 
+    public get targetAccountIds() {
+      return this.getListAttribute('target_account_ids');
+    }
+    public set targetAccountIds(value: string[] | undefined) {
+      this._targetAccountIds = value;
+    }
+    public resetTargetAccountIds() {
+      this._targetAccountIds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get targetAccountIdsInput() {
+      return this._targetAccountIds
+    }
+
+    // launch_permission - computed: false, optional: true, required: false
+    private _launchPermission?: ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission | undefined; 
+    private __launchPermissionOutput = new ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionOutputReference(this as any, "launch_permission", true);
+    public get launchPermission() {
+      return this.__launchPermissionOutput;
+    }
+    public putLaunchPermission(value: ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission | undefined) {
+      this._launchPermission = value;
+    }
+    public resetLaunchPermission() {
+      this._launchPermission = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get launchPermissionInput() {
+      return this._launchPermission
+    }
+  }
   export interface ImagebuilderDistributionConfigurationDistribution {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration.html#license_configuration_arns ImagebuilderDistributionConfiguration#license_configuration_arns}
@@ -418,15 +576,18 @@ export namespace ImageBuilder {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_distribution_configuration.html#ami_distribution_configuration ImagebuilderDistributionConfiguration#ami_distribution_configuration}
     */
-    readonly amiDistributionConfiguration?: ImagebuilderDistributionConfigurationDistributionAmiDistributionConfiguration[];
+    readonly amiDistributionConfiguration?: ImagebuilderDistributionConfigurationDistributionAmiDistributionConfiguration;
   }
 
   function imagebuilderDistributionConfigurationDistributionToTerraform(struct?: ImagebuilderDistributionConfigurationDistribution): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       license_configuration_arns: cdktf.listMapper(cdktf.stringToTerraform)(struct!.licenseConfigurationArns),
       region: cdktf.stringToTerraform(struct!.region),
-      ami_distribution_configuration: cdktf.listMapper(imagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationToTerraform)(struct!.amiDistributionConfiguration),
+      ami_distribution_configuration: imagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationToTerraform(struct!.amiDistributionConfiguration),
     }
   }
 
@@ -490,11 +651,11 @@ export namespace ImageBuilder {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -511,7 +672,7 @@ export namespace ImageBuilder {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -524,11 +685,12 @@ export namespace ImageBuilder {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -540,11 +702,12 @@ export namespace ImageBuilder {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -556,8 +719,9 @@ export namespace ImageBuilder {
     }
 
     // distribution - computed: false, optional: false, required: true
-    private _distribution: ImagebuilderDistributionConfigurationDistribution[];
+    private _distribution?: ImagebuilderDistributionConfigurationDistribution[]; 
     public get distribution() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('distribution') as any;
     }
     public set distribution(value: ImagebuilderDistributionConfigurationDistribution[]) {
@@ -612,7 +776,7 @@ export namespace ImageBuilder {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_image.html#image_tests_configuration ImagebuilderImage#image_tests_configuration}
     */
-    readonly imageTestsConfiguration?: ImagebuilderImageImageTestsConfiguration[];
+    readonly imageTestsConfiguration?: ImagebuilderImageImageTestsConfiguration;
     /**
     * timeouts block
     * 
@@ -651,6 +815,7 @@ export namespace ImageBuilder {
 
     // amis - computed: true, optional: false, required: false
     public get amis() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('amis') as any;
     }
   }
@@ -665,14 +830,59 @@ export namespace ImageBuilder {
     readonly timeoutMinutes?: number;
   }
 
-  function imagebuilderImageImageTestsConfigurationToTerraform(struct?: ImagebuilderImageImageTestsConfiguration): any {
+  function imagebuilderImageImageTestsConfigurationToTerraform(struct?: ImagebuilderImageImageTestsConfigurationOutputReference | ImagebuilderImageImageTestsConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       image_tests_enabled: cdktf.booleanToTerraform(struct!.imageTestsEnabled),
       timeout_minutes: cdktf.numberToTerraform(struct!.timeoutMinutes),
     }
   }
 
+  export class ImagebuilderImageImageTestsConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // image_tests_enabled - computed: false, optional: true, required: false
+    private _imageTestsEnabled?: boolean | cdktf.IResolvable | undefined; 
+    public get imageTestsEnabled() {
+      return this.getBooleanAttribute('image_tests_enabled') as any;
+    }
+    public set imageTestsEnabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._imageTestsEnabled = value;
+    }
+    public resetImageTestsEnabled() {
+      this._imageTestsEnabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get imageTestsEnabledInput() {
+      return this._imageTestsEnabled
+    }
+
+    // timeout_minutes - computed: false, optional: true, required: false
+    private _timeoutMinutes?: number | undefined; 
+    public get timeoutMinutes() {
+      return this.getNumberAttribute('timeout_minutes');
+    }
+    public set timeoutMinutes(value: number | undefined) {
+      this._timeoutMinutes = value;
+    }
+    public resetTimeoutMinutes() {
+      this._timeoutMinutes = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get timeoutMinutesInput() {
+      return this._timeoutMinutes
+    }
+  }
   export interface ImagebuilderImageTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_image.html#create ImagebuilderImage#create}
@@ -680,13 +890,42 @@ export namespace ImageBuilder {
     readonly create?: string;
   }
 
-  function imagebuilderImageTimeoutsToTerraform(struct?: ImagebuilderImageTimeouts): any {
+  function imagebuilderImageTimeoutsToTerraform(struct?: ImagebuilderImageTimeoutsOutputReference | ImagebuilderImageTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
     }
   }
 
+  export class ImagebuilderImageTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_image.html aws_imagebuilder_image}
@@ -745,11 +984,11 @@ export namespace ImageBuilder {
     }
 
     // distribution_configuration_arn - computed: false, optional: true, required: false
-    private _distributionConfigurationArn?: string;
+    private _distributionConfigurationArn?: string | undefined; 
     public get distributionConfigurationArn() {
       return this.getStringAttribute('distribution_configuration_arn');
     }
-    public set distributionConfigurationArn(value: string ) {
+    public set distributionConfigurationArn(value: string | undefined) {
       this._distributionConfigurationArn = value;
     }
     public resetDistributionConfigurationArn() {
@@ -761,11 +1000,11 @@ export namespace ImageBuilder {
     }
 
     // enhanced_image_metadata_enabled - computed: false, optional: true, required: false
-    private _enhancedImageMetadataEnabled?: boolean | cdktf.IResolvable;
+    private _enhancedImageMetadataEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get enhancedImageMetadataEnabled() {
-      return this.getBooleanAttribute('enhanced_image_metadata_enabled');
+      return this.getBooleanAttribute('enhanced_image_metadata_enabled') as any;
     }
-    public set enhancedImageMetadataEnabled(value: boolean | cdktf.IResolvable ) {
+    public set enhancedImageMetadataEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enhancedImageMetadataEnabled = value;
     }
     public resetEnhancedImageMetadataEnabled() {
@@ -782,7 +1021,7 @@ export namespace ImageBuilder {
     }
 
     // image_recipe_arn - computed: false, optional: false, required: true
-    private _imageRecipeArn: string;
+    private _imageRecipeArn?: string; 
     public get imageRecipeArn() {
       return this.getStringAttribute('image_recipe_arn');
     }
@@ -795,7 +1034,7 @@ export namespace ImageBuilder {
     }
 
     // infrastructure_configuration_arn - computed: false, optional: false, required: true
-    private _infrastructureConfigurationArn: string;
+    private _infrastructureConfigurationArn?: string; 
     public get infrastructureConfigurationArn() {
       return this.getStringAttribute('infrastructure_configuration_arn');
     }
@@ -828,11 +1067,12 @@ export namespace ImageBuilder {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -844,11 +1084,12 @@ export namespace ImageBuilder {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -865,11 +1106,12 @@ export namespace ImageBuilder {
     }
 
     // image_tests_configuration - computed: false, optional: true, required: false
-    private _imageTestsConfiguration?: ImagebuilderImageImageTestsConfiguration[];
+    private _imageTestsConfiguration?: ImagebuilderImageImageTestsConfiguration | undefined; 
+    private __imageTestsConfigurationOutput = new ImagebuilderImageImageTestsConfigurationOutputReference(this as any, "image_tests_configuration", true);
     public get imageTestsConfiguration() {
-      return this.interpolationForAttribute('image_tests_configuration') as any;
+      return this.__imageTestsConfigurationOutput;
     }
-    public set imageTestsConfiguration(value: ImagebuilderImageImageTestsConfiguration[] ) {
+    public putImageTestsConfiguration(value: ImagebuilderImageImageTestsConfiguration | undefined) {
       this._imageTestsConfiguration = value;
     }
     public resetImageTestsConfiguration() {
@@ -881,11 +1123,12 @@ export namespace ImageBuilder {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: ImagebuilderImageTimeouts;
+    private _timeouts?: ImagebuilderImageTimeouts | undefined; 
+    private __timeoutsOutput = new ImagebuilderImageTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: ImagebuilderImageTimeouts ) {
+    public putTimeouts(value: ImagebuilderImageTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -908,7 +1151,7 @@ export namespace ImageBuilder {
         infrastructure_configuration_arn: cdktf.stringToTerraform(this._infrastructureConfigurationArn),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        image_tests_configuration: cdktf.listMapper(imagebuilderImageImageTestsConfigurationToTerraform)(this._imageTestsConfiguration),
+        image_tests_configuration: imagebuilderImageImageTestsConfigurationToTerraform(this._imageTestsConfiguration),
         timeouts: imagebuilderImageTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -955,13 +1198,13 @@ export namespace ImageBuilder {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_image_pipeline.html#image_tests_configuration ImagebuilderImagePipeline#image_tests_configuration}
     */
-    readonly imageTestsConfiguration?: ImagebuilderImagePipelineImageTestsConfiguration[];
+    readonly imageTestsConfiguration?: ImagebuilderImagePipelineImageTestsConfiguration;
     /**
     * schedule block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_image_pipeline.html#schedule ImagebuilderImagePipeline#schedule}
     */
-    readonly schedule?: ImagebuilderImagePipelineSchedule[];
+    readonly schedule?: ImagebuilderImagePipelineSchedule;
   }
   export interface ImagebuilderImagePipelineImageTestsConfiguration {
     /**
@@ -974,14 +1217,59 @@ export namespace ImageBuilder {
     readonly timeoutMinutes?: number;
   }
 
-  function imagebuilderImagePipelineImageTestsConfigurationToTerraform(struct?: ImagebuilderImagePipelineImageTestsConfiguration): any {
+  function imagebuilderImagePipelineImageTestsConfigurationToTerraform(struct?: ImagebuilderImagePipelineImageTestsConfigurationOutputReference | ImagebuilderImagePipelineImageTestsConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       image_tests_enabled: cdktf.booleanToTerraform(struct!.imageTestsEnabled),
       timeout_minutes: cdktf.numberToTerraform(struct!.timeoutMinutes),
     }
   }
 
+  export class ImagebuilderImagePipelineImageTestsConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // image_tests_enabled - computed: false, optional: true, required: false
+    private _imageTestsEnabled?: boolean | cdktf.IResolvable | undefined; 
+    public get imageTestsEnabled() {
+      return this.getBooleanAttribute('image_tests_enabled') as any;
+    }
+    public set imageTestsEnabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._imageTestsEnabled = value;
+    }
+    public resetImageTestsEnabled() {
+      this._imageTestsEnabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get imageTestsEnabledInput() {
+      return this._imageTestsEnabled
+    }
+
+    // timeout_minutes - computed: false, optional: true, required: false
+    private _timeoutMinutes?: number | undefined; 
+    public get timeoutMinutes() {
+      return this.getNumberAttribute('timeout_minutes');
+    }
+    public set timeoutMinutes(value: number | undefined) {
+      this._timeoutMinutes = value;
+    }
+    public resetTimeoutMinutes() {
+      this._timeoutMinutes = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get timeoutMinutesInput() {
+      return this._timeoutMinutes
+    }
+  }
   export interface ImagebuilderImagePipelineSchedule {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_image_pipeline.html#pipeline_execution_start_condition ImagebuilderImagePipeline#pipeline_execution_start_condition}
@@ -993,14 +1281,56 @@ export namespace ImageBuilder {
     readonly scheduleExpression: string;
   }
 
-  function imagebuilderImagePipelineScheduleToTerraform(struct?: ImagebuilderImagePipelineSchedule): any {
+  function imagebuilderImagePipelineScheduleToTerraform(struct?: ImagebuilderImagePipelineScheduleOutputReference | ImagebuilderImagePipelineSchedule): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       pipeline_execution_start_condition: cdktf.stringToTerraform(struct!.pipelineExecutionStartCondition),
       schedule_expression: cdktf.stringToTerraform(struct!.scheduleExpression),
     }
   }
 
+  export class ImagebuilderImagePipelineScheduleOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // pipeline_execution_start_condition - computed: false, optional: true, required: false
+    private _pipelineExecutionStartCondition?: string | undefined; 
+    public get pipelineExecutionStartCondition() {
+      return this.getStringAttribute('pipeline_execution_start_condition');
+    }
+    public set pipelineExecutionStartCondition(value: string | undefined) {
+      this._pipelineExecutionStartCondition = value;
+    }
+    public resetPipelineExecutionStartCondition() {
+      this._pipelineExecutionStartCondition = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get pipelineExecutionStartConditionInput() {
+      return this._pipelineExecutionStartCondition
+    }
+
+    // schedule_expression - computed: false, optional: false, required: true
+    private _scheduleExpression?: string; 
+    public get scheduleExpression() {
+      return this.getStringAttribute('schedule_expression');
+    }
+    public set scheduleExpression(value: string) {
+      this._scheduleExpression = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get scheduleExpressionInput() {
+      return this._scheduleExpression
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_image_pipeline.html aws_imagebuilder_image_pipeline}
@@ -1077,11 +1407,11 @@ export namespace ImageBuilder {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1093,11 +1423,11 @@ export namespace ImageBuilder {
     }
 
     // distribution_configuration_arn - computed: false, optional: true, required: false
-    private _distributionConfigurationArn?: string;
+    private _distributionConfigurationArn?: string | undefined; 
     public get distributionConfigurationArn() {
       return this.getStringAttribute('distribution_configuration_arn');
     }
-    public set distributionConfigurationArn(value: string ) {
+    public set distributionConfigurationArn(value: string | undefined) {
       this._distributionConfigurationArn = value;
     }
     public resetDistributionConfigurationArn() {
@@ -1109,11 +1439,11 @@ export namespace ImageBuilder {
     }
 
     // enhanced_image_metadata_enabled - computed: false, optional: true, required: false
-    private _enhancedImageMetadataEnabled?: boolean | cdktf.IResolvable;
+    private _enhancedImageMetadataEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get enhancedImageMetadataEnabled() {
-      return this.getBooleanAttribute('enhanced_image_metadata_enabled');
+      return this.getBooleanAttribute('enhanced_image_metadata_enabled') as any;
     }
-    public set enhancedImageMetadataEnabled(value: boolean | cdktf.IResolvable ) {
+    public set enhancedImageMetadataEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enhancedImageMetadataEnabled = value;
     }
     public resetEnhancedImageMetadataEnabled() {
@@ -1130,7 +1460,7 @@ export namespace ImageBuilder {
     }
 
     // image_recipe_arn - computed: false, optional: false, required: true
-    private _imageRecipeArn: string;
+    private _imageRecipeArn?: string; 
     public get imageRecipeArn() {
       return this.getStringAttribute('image_recipe_arn');
     }
@@ -1143,7 +1473,7 @@ export namespace ImageBuilder {
     }
 
     // infrastructure_configuration_arn - computed: false, optional: false, required: true
-    private _infrastructureConfigurationArn: string;
+    private _infrastructureConfigurationArn?: string; 
     public get infrastructureConfigurationArn() {
       return this.getStringAttribute('infrastructure_configuration_arn');
     }
@@ -1156,7 +1486,7 @@ export namespace ImageBuilder {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1174,11 +1504,11 @@ export namespace ImageBuilder {
     }
 
     // status - computed: false, optional: true, required: false
-    private _status?: string;
+    private _status?: string | undefined; 
     public get status() {
       return this.getStringAttribute('status');
     }
-    public set status(value: string ) {
+    public set status(value: string | undefined) {
       this._status = value;
     }
     public resetStatus() {
@@ -1190,11 +1520,12 @@ export namespace ImageBuilder {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1206,11 +1537,12 @@ export namespace ImageBuilder {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1222,11 +1554,12 @@ export namespace ImageBuilder {
     }
 
     // image_tests_configuration - computed: false, optional: true, required: false
-    private _imageTestsConfiguration?: ImagebuilderImagePipelineImageTestsConfiguration[];
+    private _imageTestsConfiguration?: ImagebuilderImagePipelineImageTestsConfiguration | undefined; 
+    private __imageTestsConfigurationOutput = new ImagebuilderImagePipelineImageTestsConfigurationOutputReference(this as any, "image_tests_configuration", true);
     public get imageTestsConfiguration() {
-      return this.interpolationForAttribute('image_tests_configuration') as any;
+      return this.__imageTestsConfigurationOutput;
     }
-    public set imageTestsConfiguration(value: ImagebuilderImagePipelineImageTestsConfiguration[] ) {
+    public putImageTestsConfiguration(value: ImagebuilderImagePipelineImageTestsConfiguration | undefined) {
       this._imageTestsConfiguration = value;
     }
     public resetImageTestsConfiguration() {
@@ -1238,11 +1571,12 @@ export namespace ImageBuilder {
     }
 
     // schedule - computed: false, optional: true, required: false
-    private _schedule?: ImagebuilderImagePipelineSchedule[];
+    private _schedule?: ImagebuilderImagePipelineSchedule | undefined; 
+    private __scheduleOutput = new ImagebuilderImagePipelineScheduleOutputReference(this as any, "schedule", true);
     public get schedule() {
-      return this.interpolationForAttribute('schedule') as any;
+      return this.__scheduleOutput;
     }
-    public set schedule(value: ImagebuilderImagePipelineSchedule[] ) {
+    public putSchedule(value: ImagebuilderImagePipelineSchedule | undefined) {
       this._schedule = value;
     }
     public resetSchedule() {
@@ -1268,8 +1602,8 @@ export namespace ImageBuilder {
         status: cdktf.stringToTerraform(this._status),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        image_tests_configuration: cdktf.listMapper(imagebuilderImagePipelineImageTestsConfigurationToTerraform)(this._imageTestsConfiguration),
-        schedule: cdktf.listMapper(imagebuilderImagePipelineScheduleToTerraform)(this._schedule),
+        image_tests_configuration: imagebuilderImagePipelineImageTestsConfigurationToTerraform(this._imageTestsConfiguration),
+        schedule: imagebuilderImagePipelineScheduleToTerraform(this._schedule),
       };
     }
   }
@@ -1346,8 +1680,11 @@ export namespace ImageBuilder {
     readonly volumeType?: string;
   }
 
-  function imagebuilderImageRecipeBlockDeviceMappingEbsToTerraform(struct?: ImagebuilderImageRecipeBlockDeviceMappingEbs): any {
+  function imagebuilderImageRecipeBlockDeviceMappingEbsToTerraform(struct?: ImagebuilderImageRecipeBlockDeviceMappingEbsOutputReference | ImagebuilderImageRecipeBlockDeviceMappingEbs): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete_on_termination: cdktf.stringToTerraform(struct!.deleteOnTermination),
       encrypted: cdktf.stringToTerraform(struct!.encrypted),
@@ -1359,6 +1696,128 @@ export namespace ImageBuilder {
     }
   }
 
+  export class ImagebuilderImageRecipeBlockDeviceMappingEbsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // delete_on_termination - computed: false, optional: true, required: false
+    private _deleteOnTermination?: string | undefined; 
+    public get deleteOnTermination() {
+      return this.getStringAttribute('delete_on_termination');
+    }
+    public set deleteOnTermination(value: string | undefined) {
+      this._deleteOnTermination = value;
+    }
+    public resetDeleteOnTermination() {
+      this._deleteOnTermination = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteOnTerminationInput() {
+      return this._deleteOnTermination
+    }
+
+    // encrypted - computed: false, optional: true, required: false
+    private _encrypted?: string | undefined; 
+    public get encrypted() {
+      return this.getStringAttribute('encrypted');
+    }
+    public set encrypted(value: string | undefined) {
+      this._encrypted = value;
+    }
+    public resetEncrypted() {
+      this._encrypted = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get encryptedInput() {
+      return this._encrypted
+    }
+
+    // iops - computed: false, optional: true, required: false
+    private _iops?: number | undefined; 
+    public get iops() {
+      return this.getNumberAttribute('iops');
+    }
+    public set iops(value: number | undefined) {
+      this._iops = value;
+    }
+    public resetIops() {
+      this._iops = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get iopsInput() {
+      return this._iops
+    }
+
+    // kms_key_id - computed: false, optional: true, required: false
+    private _kmsKeyId?: string | undefined; 
+    public get kmsKeyId() {
+      return this.getStringAttribute('kms_key_id');
+    }
+    public set kmsKeyId(value: string | undefined) {
+      this._kmsKeyId = value;
+    }
+    public resetKmsKeyId() {
+      this._kmsKeyId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get kmsKeyIdInput() {
+      return this._kmsKeyId
+    }
+
+    // snapshot_id - computed: false, optional: true, required: false
+    private _snapshotId?: string | undefined; 
+    public get snapshotId() {
+      return this.getStringAttribute('snapshot_id');
+    }
+    public set snapshotId(value: string | undefined) {
+      this._snapshotId = value;
+    }
+    public resetSnapshotId() {
+      this._snapshotId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get snapshotIdInput() {
+      return this._snapshotId
+    }
+
+    // volume_size - computed: false, optional: true, required: false
+    private _volumeSize?: number | undefined; 
+    public get volumeSize() {
+      return this.getNumberAttribute('volume_size');
+    }
+    public set volumeSize(value: number | undefined) {
+      this._volumeSize = value;
+    }
+    public resetVolumeSize() {
+      this._volumeSize = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get volumeSizeInput() {
+      return this._volumeSize
+    }
+
+    // volume_type - computed: false, optional: true, required: false
+    private _volumeType?: string | undefined; 
+    public get volumeType() {
+      return this.getStringAttribute('volume_type');
+    }
+    public set volumeType(value: string | undefined) {
+      this._volumeType = value;
+    }
+    public resetVolumeType() {
+      this._volumeType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get volumeTypeInput() {
+      return this._volumeType
+    }
+  }
   export interface ImagebuilderImageRecipeBlockDeviceMapping {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_image_recipe.html#device_name ImagebuilderImageRecipe#device_name}
@@ -1377,16 +1836,19 @@ export namespace ImageBuilder {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_image_recipe.html#ebs ImagebuilderImageRecipe#ebs}
     */
-    readonly ebs?: ImagebuilderImageRecipeBlockDeviceMappingEbs[];
+    readonly ebs?: ImagebuilderImageRecipeBlockDeviceMappingEbs;
   }
 
   function imagebuilderImageRecipeBlockDeviceMappingToTerraform(struct?: ImagebuilderImageRecipeBlockDeviceMapping): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       device_name: cdktf.stringToTerraform(struct!.deviceName),
       no_device: cdktf.booleanToTerraform(struct!.noDevice),
       virtual_name: cdktf.stringToTerraform(struct!.virtualName),
-      ebs: cdktf.listMapper(imagebuilderImageRecipeBlockDeviceMappingEbsToTerraform)(struct!.ebs),
+      ebs: imagebuilderImageRecipeBlockDeviceMappingEbsToTerraform(struct!.ebs),
     }
   }
 
@@ -1399,6 +1861,9 @@ export namespace ImageBuilder {
 
   function imagebuilderImageRecipeComponentToTerraform(struct?: ImagebuilderImageRecipeComponent): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       component_arn: cdktf.stringToTerraform(struct!.componentArn),
     }
@@ -1463,11 +1928,11 @@ export namespace ImageBuilder {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1484,7 +1949,7 @@ export namespace ImageBuilder {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1502,7 +1967,7 @@ export namespace ImageBuilder {
     }
 
     // parent_image - computed: false, optional: false, required: true
-    private _parentImage: string;
+    private _parentImage?: string; 
     public get parentImage() {
       return this.getStringAttribute('parent_image');
     }
@@ -1520,11 +1985,12 @@ export namespace ImageBuilder {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1536,11 +2002,12 @@ export namespace ImageBuilder {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1552,7 +2019,7 @@ export namespace ImageBuilder {
     }
 
     // version - computed: false, optional: false, required: true
-    private _version: string;
+    private _version?: string; 
     public get version() {
       return this.getStringAttribute('version');
     }
@@ -1565,11 +2032,11 @@ export namespace ImageBuilder {
     }
 
     // working_directory - computed: false, optional: true, required: false
-    private _workingDirectory?: string;
+    private _workingDirectory?: string | undefined; 
     public get workingDirectory() {
       return this.getStringAttribute('working_directory');
     }
-    public set workingDirectory(value: string ) {
+    public set workingDirectory(value: string | undefined) {
       this._workingDirectory = value;
     }
     public resetWorkingDirectory() {
@@ -1581,11 +2048,12 @@ export namespace ImageBuilder {
     }
 
     // block_device_mapping - computed: false, optional: true, required: false
-    private _blockDeviceMapping?: ImagebuilderImageRecipeBlockDeviceMapping[];
+    private _blockDeviceMapping?: ImagebuilderImageRecipeBlockDeviceMapping[] | undefined; 
     public get blockDeviceMapping() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('block_device_mapping') as any;
     }
-    public set blockDeviceMapping(value: ImagebuilderImageRecipeBlockDeviceMapping[] ) {
+    public set blockDeviceMapping(value: ImagebuilderImageRecipeBlockDeviceMapping[] | undefined) {
       this._blockDeviceMapping = value;
     }
     public resetBlockDeviceMapping() {
@@ -1597,8 +2065,9 @@ export namespace ImageBuilder {
     }
 
     // component - computed: false, optional: false, required: true
-    private _component: ImagebuilderImageRecipeComponent[];
+    private _component?: ImagebuilderImageRecipeComponent[]; 
     public get component() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('component') as any;
     }
     public set component(value: ImagebuilderImageRecipeComponent[]) {
@@ -1681,7 +2150,7 @@ export namespace ImageBuilder {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_infrastructure_configuration.html#logging ImagebuilderInfrastructureConfiguration#logging}
     */
-    readonly logging?: ImagebuilderInfrastructureConfigurationLogging[];
+    readonly logging?: ImagebuilderInfrastructureConfigurationLogging;
   }
   export interface ImagebuilderInfrastructureConfigurationLoggingS3Logs {
     /**
@@ -1694,30 +2163,99 @@ export namespace ImageBuilder {
     readonly s3KeyPrefix?: string;
   }
 
-  function imagebuilderInfrastructureConfigurationLoggingS3LogsToTerraform(struct?: ImagebuilderInfrastructureConfigurationLoggingS3Logs): any {
+  function imagebuilderInfrastructureConfigurationLoggingS3LogsToTerraform(struct?: ImagebuilderInfrastructureConfigurationLoggingS3LogsOutputReference | ImagebuilderInfrastructureConfigurationLoggingS3Logs): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       s3_bucket_name: cdktf.stringToTerraform(struct!.s3BucketName),
       s3_key_prefix: cdktf.stringToTerraform(struct!.s3KeyPrefix),
     }
   }
 
+  export class ImagebuilderInfrastructureConfigurationLoggingS3LogsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // s3_bucket_name - computed: false, optional: false, required: true
+    private _s3BucketName?: string; 
+    public get s3BucketName() {
+      return this.getStringAttribute('s3_bucket_name');
+    }
+    public set s3BucketName(value: string) {
+      this._s3BucketName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get s3BucketNameInput() {
+      return this._s3BucketName
+    }
+
+    // s3_key_prefix - computed: false, optional: true, required: false
+    private _s3KeyPrefix?: string | undefined; 
+    public get s3KeyPrefix() {
+      return this.getStringAttribute('s3_key_prefix');
+    }
+    public set s3KeyPrefix(value: string | undefined) {
+      this._s3KeyPrefix = value;
+    }
+    public resetS3KeyPrefix() {
+      this._s3KeyPrefix = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get s3KeyPrefixInput() {
+      return this._s3KeyPrefix
+    }
+  }
   export interface ImagebuilderInfrastructureConfigurationLogging {
     /**
     * s3_logs block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_infrastructure_configuration.html#s3_logs ImagebuilderInfrastructureConfiguration#s3_logs}
     */
-    readonly s3Logs: ImagebuilderInfrastructureConfigurationLoggingS3Logs[];
+    readonly s3Logs: ImagebuilderInfrastructureConfigurationLoggingS3Logs;
   }
 
-  function imagebuilderInfrastructureConfigurationLoggingToTerraform(struct?: ImagebuilderInfrastructureConfigurationLogging): any {
+  function imagebuilderInfrastructureConfigurationLoggingToTerraform(struct?: ImagebuilderInfrastructureConfigurationLoggingOutputReference | ImagebuilderInfrastructureConfigurationLogging): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      s3_logs: cdktf.listMapper(imagebuilderInfrastructureConfigurationLoggingS3LogsToTerraform)(struct!.s3Logs),
+      s3_logs: imagebuilderInfrastructureConfigurationLoggingS3LogsToTerraform(struct!.s3Logs),
     }
   }
 
+  export class ImagebuilderInfrastructureConfigurationLoggingOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // s3_logs - computed: false, optional: false, required: true
+    private _s3Logs?: ImagebuilderInfrastructureConfigurationLoggingS3Logs; 
+    private __s3LogsOutput = new ImagebuilderInfrastructureConfigurationLoggingS3LogsOutputReference(this as any, "s3_logs", true);
+    public get s3Logs() {
+      return this.__s3LogsOutput;
+    }
+    public putS3Logs(value: ImagebuilderInfrastructureConfigurationLoggingS3Logs) {
+      this._s3Logs = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get s3LogsInput() {
+      return this._s3Logs
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/imagebuilder_infrastructure_configuration.html aws_imagebuilder_infrastructure_configuration}
@@ -1786,11 +2324,11 @@ export namespace ImageBuilder {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1807,7 +2345,7 @@ export namespace ImageBuilder {
     }
 
     // instance_profile_name - computed: false, optional: false, required: true
-    private _instanceProfileName: string;
+    private _instanceProfileName?: string; 
     public get instanceProfileName() {
       return this.getStringAttribute('instance_profile_name');
     }
@@ -1820,11 +2358,11 @@ export namespace ImageBuilder {
     }
 
     // instance_types - computed: false, optional: true, required: false
-    private _instanceTypes?: string[];
+    private _instanceTypes?: string[] | undefined; 
     public get instanceTypes() {
       return this.getListAttribute('instance_types');
     }
-    public set instanceTypes(value: string[] ) {
+    public set instanceTypes(value: string[] | undefined) {
       this._instanceTypes = value;
     }
     public resetInstanceTypes() {
@@ -1836,11 +2374,11 @@ export namespace ImageBuilder {
     }
 
     // key_pair - computed: false, optional: true, required: false
-    private _keyPair?: string;
+    private _keyPair?: string | undefined; 
     public get keyPair() {
       return this.getStringAttribute('key_pair');
     }
-    public set keyPair(value: string ) {
+    public set keyPair(value: string | undefined) {
       this._keyPair = value;
     }
     public resetKeyPair() {
@@ -1852,7 +2390,7 @@ export namespace ImageBuilder {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1865,11 +2403,12 @@ export namespace ImageBuilder {
     }
 
     // resource_tags - computed: false, optional: true, required: false
-    private _resourceTags?: { [key: string]: string } | cdktf.IResolvable;
+    private _resourceTags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get resourceTags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('resource_tags') as any;
     }
-    public set resourceTags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set resourceTags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._resourceTags = value;
     }
     public resetResourceTags() {
@@ -1881,11 +2420,11 @@ export namespace ImageBuilder {
     }
 
     // security_group_ids - computed: false, optional: true, required: false
-    private _securityGroupIds?: string[];
+    private _securityGroupIds?: string[] | undefined; 
     public get securityGroupIds() {
       return this.getListAttribute('security_group_ids');
     }
-    public set securityGroupIds(value: string[] ) {
+    public set securityGroupIds(value: string[] | undefined) {
       this._securityGroupIds = value;
     }
     public resetSecurityGroupIds() {
@@ -1897,11 +2436,11 @@ export namespace ImageBuilder {
     }
 
     // sns_topic_arn - computed: false, optional: true, required: false
-    private _snsTopicArn?: string;
+    private _snsTopicArn?: string | undefined; 
     public get snsTopicArn() {
       return this.getStringAttribute('sns_topic_arn');
     }
-    public set snsTopicArn(value: string ) {
+    public set snsTopicArn(value: string | undefined) {
       this._snsTopicArn = value;
     }
     public resetSnsTopicArn() {
@@ -1913,11 +2452,11 @@ export namespace ImageBuilder {
     }
 
     // subnet_id - computed: false, optional: true, required: false
-    private _subnetId?: string;
+    private _subnetId?: string | undefined; 
     public get subnetId() {
       return this.getStringAttribute('subnet_id');
     }
-    public set subnetId(value: string ) {
+    public set subnetId(value: string | undefined) {
       this._subnetId = value;
     }
     public resetSubnetId() {
@@ -1929,11 +2468,12 @@ export namespace ImageBuilder {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1945,11 +2485,12 @@ export namespace ImageBuilder {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1961,11 +2502,11 @@ export namespace ImageBuilder {
     }
 
     // terminate_instance_on_failure - computed: false, optional: true, required: false
-    private _terminateInstanceOnFailure?: boolean | cdktf.IResolvable;
+    private _terminateInstanceOnFailure?: boolean | cdktf.IResolvable | undefined; 
     public get terminateInstanceOnFailure() {
-      return this.getBooleanAttribute('terminate_instance_on_failure');
+      return this.getBooleanAttribute('terminate_instance_on_failure') as any;
     }
-    public set terminateInstanceOnFailure(value: boolean | cdktf.IResolvable ) {
+    public set terminateInstanceOnFailure(value: boolean | cdktf.IResolvable | undefined) {
       this._terminateInstanceOnFailure = value;
     }
     public resetTerminateInstanceOnFailure() {
@@ -1977,11 +2518,12 @@ export namespace ImageBuilder {
     }
 
     // logging - computed: false, optional: true, required: false
-    private _logging?: ImagebuilderInfrastructureConfigurationLogging[];
+    private _logging?: ImagebuilderInfrastructureConfigurationLogging | undefined; 
+    private __loggingOutput = new ImagebuilderInfrastructureConfigurationLoggingOutputReference(this as any, "logging", true);
     public get logging() {
-      return this.interpolationForAttribute('logging') as any;
+      return this.__loggingOutput;
     }
-    public set logging(value: ImagebuilderInfrastructureConfigurationLogging[] ) {
+    public putLogging(value: ImagebuilderInfrastructureConfigurationLogging | undefined) {
       this._logging = value;
     }
     public resetLogging() {
@@ -2010,7 +2552,7 @@ export namespace ImageBuilder {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         terminate_instance_on_failure: cdktf.booleanToTerraform(this._terminateInstanceOnFailure),
-        logging: cdktf.listMapper(imagebuilderInfrastructureConfigurationLoggingToTerraform)(this._logging),
+        logging: imagebuilderInfrastructureConfigurationLoggingToTerraform(this._logging),
       };
     }
   }
@@ -2066,7 +2608,7 @@ export namespace ImageBuilder {
     // ==========
 
     // arn - computed: false, optional: false, required: true
-    private _arn: string;
+    private _arn?: string; 
     public get arn() {
       return this.getStringAttribute('arn');
     }
@@ -2100,7 +2642,7 @@ export namespace ImageBuilder {
 
     // encrypted - computed: true, optional: false, required: false
     public get encrypted() {
-      return this.getBooleanAttribute('encrypted');
+      return this.getBooleanAttribute('encrypted') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -2134,11 +2676,12 @@ export namespace ImageBuilder {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2196,6 +2739,7 @@ export namespace ImageBuilder {
 
     // ami_tags - computed: true, optional: false, required: false
     public get amiTags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ami_tags') as any;
     }
 
@@ -2211,6 +2755,7 @@ export namespace ImageBuilder {
 
     // launch_permission - computed: true, optional: false, required: false
     public get launchPermission() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('launch_permission') as any;
     }
 
@@ -2228,6 +2773,7 @@ export namespace ImageBuilder {
 
     // ami_distribution_configuration - computed: true, optional: false, required: false
     public get amiDistributionConfiguration() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ami_distribution_configuration') as any;
     }
 
@@ -2283,7 +2829,7 @@ export namespace ImageBuilder {
     // ==========
 
     // arn - computed: false, optional: false, required: true
-    private _arn: string;
+    private _arn?: string; 
     public get arn() {
       return this.getStringAttribute('arn');
     }
@@ -2326,11 +2872,12 @@ export namespace ImageBuilder {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2366,7 +2913,7 @@ export namespace ImageBuilder {
 
     // image_tests_enabled - computed: true, optional: false, required: false
     public get imageTestsEnabled() {
-      return this.getBooleanAttribute('image_tests_enabled');
+      return this.getBooleanAttribute('image_tests_enabled') as any;
     }
 
     // timeout_minutes - computed: true, optional: false, required: false
@@ -2405,6 +2952,7 @@ export namespace ImageBuilder {
 
     // amis - computed: true, optional: false, required: false
     public get amis() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('amis') as any;
     }
   }
@@ -2450,7 +2998,7 @@ export namespace ImageBuilder {
     // ==========
 
     // arn - computed: false, optional: false, required: true
-    private _arn: string;
+    private _arn?: string; 
     public get arn() {
       return this.getStringAttribute('arn');
     }
@@ -2479,7 +3027,7 @@ export namespace ImageBuilder {
 
     // enhanced_image_metadata_enabled - computed: true, optional: false, required: false
     public get enhancedImageMetadataEnabled() {
-      return this.getBooleanAttribute('enhanced_image_metadata_enabled');
+      return this.getBooleanAttribute('enhanced_image_metadata_enabled') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -2523,11 +3071,12 @@ export namespace ImageBuilder {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2568,7 +3117,7 @@ export namespace ImageBuilder {
 
     // image_tests_enabled - computed: true, optional: false, required: false
     public get imageTestsEnabled() {
-      return this.getBooleanAttribute('image_tests_enabled');
+      return this.getBooleanAttribute('image_tests_enabled') as any;
     }
 
     // timeout_minutes - computed: true, optional: false, required: false
@@ -2630,7 +3179,7 @@ export namespace ImageBuilder {
     // ==========
 
     // arn - computed: false, optional: false, required: true
-    private _arn: string;
+    private _arn?: string; 
     public get arn() {
       return this.getStringAttribute('arn');
     }
@@ -2674,7 +3223,7 @@ export namespace ImageBuilder {
 
     // enhanced_image_metadata_enabled - computed: true, optional: false, required: false
     public get enhancedImageMetadataEnabled() {
-      return this.getBooleanAttribute('enhanced_image_metadata_enabled');
+      return this.getBooleanAttribute('enhanced_image_metadata_enabled') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -2718,11 +3267,12 @@ export namespace ImageBuilder {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2758,12 +3308,12 @@ export namespace ImageBuilder {
 
     // delete_on_termination - computed: true, optional: false, required: false
     public get deleteOnTermination() {
-      return this.getBooleanAttribute('delete_on_termination');
+      return this.getBooleanAttribute('delete_on_termination') as any;
     }
 
     // encrypted - computed: true, optional: false, required: false
     public get encrypted() {
-      return this.getBooleanAttribute('encrypted');
+      return this.getBooleanAttribute('encrypted') as any;
     }
 
     // iops - computed: true, optional: false, required: false
@@ -2800,6 +3350,7 @@ export namespace ImageBuilder {
 
     // ebs - computed: true, optional: false, required: false
     public get ebs() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ebs') as any;
     }
 
@@ -2862,7 +3413,7 @@ export namespace ImageBuilder {
     // ==========
 
     // arn - computed: false, optional: false, required: true
-    private _arn: string;
+    private _arn?: string; 
     public get arn() {
       return this.getStringAttribute('arn');
     }
@@ -2920,11 +3471,12 @@ export namespace ImageBuilder {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2986,6 +3538,7 @@ export namespace ImageBuilder {
 
     // s3_logs - computed: true, optional: false, required: false
     public get s3Logs() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('s3_logs') as any;
     }
   }
@@ -3032,7 +3585,7 @@ export namespace ImageBuilder {
     // ==========
 
     // arn - computed: false, optional: false, required: true
-    private _arn: string;
+    private _arn?: string; 
     public get arn() {
       return this.getStringAttribute('arn');
     }
@@ -3090,11 +3643,12 @@ export namespace ImageBuilder {
     }
 
     // resource_tags - computed: true, optional: true, required: false
-    private _resourceTags?: { [key: string]: string } | cdktf.IResolvable
-    public get resourceTags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('resource_tags') as any; // Getting the computed value is not yet implemented
+    private _resourceTags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get resourceTags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_tags') as any;
     }
-    public set resourceTags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set resourceTags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._resourceTags = value;
     }
     public resetResourceTags() {
@@ -3121,11 +3675,12 @@ export namespace ImageBuilder {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3138,7 +3693,7 @@ export namespace ImageBuilder {
 
     // terminate_instance_on_failure - computed: true, optional: false, required: false
     public get terminateInstanceOnFailure() {
-      return this.getBooleanAttribute('terminate_instance_on_failure');
+      return this.getBooleanAttribute('terminate_instance_on_failure') as any;
     }
 
     // =========

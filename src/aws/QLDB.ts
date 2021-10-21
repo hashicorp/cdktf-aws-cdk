@@ -79,11 +79,11 @@ export namespace QLDB {
     }
 
     // deletion_protection - computed: false, optional: true, required: false
-    private _deletionProtection?: boolean | cdktf.IResolvable;
+    private _deletionProtection?: boolean | cdktf.IResolvable | undefined; 
     public get deletionProtection() {
-      return this.getBooleanAttribute('deletion_protection');
+      return this.getBooleanAttribute('deletion_protection') as any;
     }
-    public set deletionProtection(value: boolean | cdktf.IResolvable ) {
+    public set deletionProtection(value: boolean | cdktf.IResolvable | undefined) {
       this._deletionProtection = value;
     }
     public resetDeletionProtection() {
@@ -100,11 +100,11 @@ export namespace QLDB {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -116,7 +116,7 @@ export namespace QLDB {
     }
 
     // permissions_mode - computed: false, optional: false, required: true
-    private _permissionsMode: string;
+    private _permissionsMode?: string; 
     public get permissionsMode() {
       return this.getStringAttribute('permissions_mode');
     }
@@ -129,11 +129,12 @@ export namespace QLDB {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -145,11 +146,12 @@ export namespace QLDB {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -227,7 +229,7 @@ export namespace QLDB {
 
     // deletion_protection - computed: true, optional: false, required: false
     public get deletionProtection() {
-      return this.getBooleanAttribute('deletion_protection');
+      return this.getBooleanAttribute('deletion_protection') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -236,7 +238,7 @@ export namespace QLDB {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }

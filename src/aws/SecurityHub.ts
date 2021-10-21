@@ -124,7 +124,7 @@ export namespace SecurityHub {
     }
 
     // description - computed: false, optional: false, required: true
-    private _description: string;
+    private _description?: string; 
     public get description() {
       return this.getStringAttribute('description');
     }
@@ -142,7 +142,7 @@ export namespace SecurityHub {
     }
 
     // identifier - computed: false, optional: false, required: true
-    private _identifier: string;
+    private _identifier?: string; 
     public get identifier() {
       return this.getStringAttribute('identifier');
     }
@@ -155,7 +155,7 @@ export namespace SecurityHub {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -193,7 +193,7 @@ export namespace SecurityHub {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#filters SecurityhubInsight#filters}
     */
-    readonly filters: SecurityhubInsightFilters[];
+    readonly filters: SecurityhubInsightFilters;
   }
   export interface SecurityhubInsightFiltersAwsAccountId {
     /**
@@ -208,6 +208,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersAwsAccountIdToTerraform(struct?: SecurityhubInsightFiltersAwsAccountId): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -227,6 +230,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersCompanyNameToTerraform(struct?: SecurityhubInsightFiltersCompanyName): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -246,6 +252,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersComplianceStatusToTerraform(struct?: SecurityhubInsightFiltersComplianceStatus): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -269,6 +278,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersConfidenceToTerraform(struct?: SecurityhubInsightFiltersConfidence): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       eq: cdktf.stringToTerraform(struct!.eq),
       gte: cdktf.stringToTerraform(struct!.gte),
@@ -287,14 +299,53 @@ export namespace SecurityHub {
     readonly value: number;
   }
 
-  function securityhubInsightFiltersCreatedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersCreatedAtDateRange): any {
+  function securityhubInsightFiltersCreatedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersCreatedAtDateRangeOutputReference | SecurityhubInsightFiltersCreatedAtDateRange): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       unit: cdktf.stringToTerraform(struct!.unit),
       value: cdktf.numberToTerraform(struct!.value),
     }
   }
 
+  export class SecurityhubInsightFiltersCreatedAtDateRangeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // unit - computed: false, optional: false, required: true
+    private _unit?: string; 
+    public get unit() {
+      return this.getStringAttribute('unit');
+    }
+    public set unit(value: string) {
+      this._unit = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get unitInput() {
+      return this._unit
+    }
+
+    // value - computed: false, optional: false, required: true
+    private _value?: number; 
+    public get value() {
+      return this.getNumberAttribute('value');
+    }
+    public set value(value: number) {
+      this._value = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valueInput() {
+      return this._value
+    }
+  }
   export interface SecurityhubInsightFiltersCreatedAt {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
@@ -309,15 +360,18 @@ export namespace SecurityHub {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
     */
-    readonly dateRange?: SecurityhubInsightFiltersCreatedAtDateRange[];
+    readonly dateRange?: SecurityhubInsightFiltersCreatedAtDateRange;
   }
 
   function securityhubInsightFiltersCreatedAtToTerraform(struct?: SecurityhubInsightFiltersCreatedAt): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       end: cdktf.stringToTerraform(struct!.end),
       start: cdktf.stringToTerraform(struct!.start),
-      date_range: cdktf.listMapper(securityhubInsightFiltersCreatedAtDateRangeToTerraform)(struct!.dateRange),
+      date_range: securityhubInsightFiltersCreatedAtDateRangeToTerraform(struct!.dateRange),
     }
   }
 
@@ -338,6 +392,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersCriticalityToTerraform(struct?: SecurityhubInsightFiltersCriticality): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       eq: cdktf.stringToTerraform(struct!.eq),
       gte: cdktf.stringToTerraform(struct!.gte),
@@ -358,6 +415,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersDescriptionToTerraform(struct?: SecurityhubInsightFiltersDescription): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -381,6 +441,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersFindingProviderFieldsConfidenceToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsConfidence): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       eq: cdktf.stringToTerraform(struct!.eq),
       gte: cdktf.stringToTerraform(struct!.gte),
@@ -405,6 +468,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersFindingProviderFieldsCriticalityToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsCriticality): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       eq: cdktf.stringToTerraform(struct!.eq),
       gte: cdktf.stringToTerraform(struct!.gte),
@@ -425,6 +491,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersFindingProviderFieldsRelatedFindingsIdToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsId): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -444,6 +513,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArnToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArn): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -463,6 +535,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersFindingProviderFieldsSeverityLabelToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsSeverityLabel): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -482,6 +557,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersFindingProviderFieldsSeverityOriginalToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsSeverityOriginal): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -501,6 +579,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersFindingProviderFieldsTypesToTerraform(struct?: SecurityhubInsightFiltersFindingProviderFieldsTypes): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -518,14 +599,53 @@ export namespace SecurityHub {
     readonly value: number;
   }
 
-  function securityhubInsightFiltersFirstObservedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersFirstObservedAtDateRange): any {
+  function securityhubInsightFiltersFirstObservedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersFirstObservedAtDateRangeOutputReference | SecurityhubInsightFiltersFirstObservedAtDateRange): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       unit: cdktf.stringToTerraform(struct!.unit),
       value: cdktf.numberToTerraform(struct!.value),
     }
   }
 
+  export class SecurityhubInsightFiltersFirstObservedAtDateRangeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // unit - computed: false, optional: false, required: true
+    private _unit?: string; 
+    public get unit() {
+      return this.getStringAttribute('unit');
+    }
+    public set unit(value: string) {
+      this._unit = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get unitInput() {
+      return this._unit
+    }
+
+    // value - computed: false, optional: false, required: true
+    private _value?: number; 
+    public get value() {
+      return this.getNumberAttribute('value');
+    }
+    public set value(value: number) {
+      this._value = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valueInput() {
+      return this._value
+    }
+  }
   export interface SecurityhubInsightFiltersFirstObservedAt {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
@@ -540,15 +660,18 @@ export namespace SecurityHub {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
     */
-    readonly dateRange?: SecurityhubInsightFiltersFirstObservedAtDateRange[];
+    readonly dateRange?: SecurityhubInsightFiltersFirstObservedAtDateRange;
   }
 
   function securityhubInsightFiltersFirstObservedAtToTerraform(struct?: SecurityhubInsightFiltersFirstObservedAt): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       end: cdktf.stringToTerraform(struct!.end),
       start: cdktf.stringToTerraform(struct!.start),
-      date_range: cdktf.listMapper(securityhubInsightFiltersFirstObservedAtDateRangeToTerraform)(struct!.dateRange),
+      date_range: securityhubInsightFiltersFirstObservedAtDateRangeToTerraform(struct!.dateRange),
     }
   }
 
@@ -565,6 +688,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersGeneratorIdToTerraform(struct?: SecurityhubInsightFiltersGeneratorId): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -584,6 +710,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersIdToTerraform(struct?: SecurityhubInsightFiltersId): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -599,6 +728,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersKeywordToTerraform(struct?: SecurityhubInsightFiltersKeyword): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       value: cdktf.stringToTerraform(struct!.value),
     }
@@ -615,14 +747,53 @@ export namespace SecurityHub {
     readonly value: number;
   }
 
-  function securityhubInsightFiltersLastObservedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersLastObservedAtDateRange): any {
+  function securityhubInsightFiltersLastObservedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersLastObservedAtDateRangeOutputReference | SecurityhubInsightFiltersLastObservedAtDateRange): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       unit: cdktf.stringToTerraform(struct!.unit),
       value: cdktf.numberToTerraform(struct!.value),
     }
   }
 
+  export class SecurityhubInsightFiltersLastObservedAtDateRangeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // unit - computed: false, optional: false, required: true
+    private _unit?: string; 
+    public get unit() {
+      return this.getStringAttribute('unit');
+    }
+    public set unit(value: string) {
+      this._unit = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get unitInput() {
+      return this._unit
+    }
+
+    // value - computed: false, optional: false, required: true
+    private _value?: number; 
+    public get value() {
+      return this.getNumberAttribute('value');
+    }
+    public set value(value: number) {
+      this._value = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valueInput() {
+      return this._value
+    }
+  }
   export interface SecurityhubInsightFiltersLastObservedAt {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
@@ -637,15 +808,18 @@ export namespace SecurityHub {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
     */
-    readonly dateRange?: SecurityhubInsightFiltersLastObservedAtDateRange[];
+    readonly dateRange?: SecurityhubInsightFiltersLastObservedAtDateRange;
   }
 
   function securityhubInsightFiltersLastObservedAtToTerraform(struct?: SecurityhubInsightFiltersLastObservedAt): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       end: cdktf.stringToTerraform(struct!.end),
       start: cdktf.stringToTerraform(struct!.start),
-      date_range: cdktf.listMapper(securityhubInsightFiltersLastObservedAtDateRangeToTerraform)(struct!.dateRange),
+      date_range: securityhubInsightFiltersLastObservedAtDateRangeToTerraform(struct!.dateRange),
     }
   }
 
@@ -662,6 +836,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersMalwareNameToTerraform(struct?: SecurityhubInsightFiltersMalwareName): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -681,6 +858,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersMalwarePathToTerraform(struct?: SecurityhubInsightFiltersMalwarePath): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -700,6 +880,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersMalwareStateToTerraform(struct?: SecurityhubInsightFiltersMalwareState): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -719,6 +902,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersMalwareTypeToTerraform(struct?: SecurityhubInsightFiltersMalwareType): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -738,6 +924,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersNetworkDestinationDomainToTerraform(struct?: SecurityhubInsightFiltersNetworkDestinationDomain): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -753,6 +942,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersNetworkDestinationIpv4ToTerraform(struct?: SecurityhubInsightFiltersNetworkDestinationIpv4): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cidr: cdktf.stringToTerraform(struct!.cidr),
     }
@@ -767,6 +959,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersNetworkDestinationIpv6ToTerraform(struct?: SecurityhubInsightFiltersNetworkDestinationIpv6): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cidr: cdktf.stringToTerraform(struct!.cidr),
     }
@@ -789,6 +984,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersNetworkDestinationPortToTerraform(struct?: SecurityhubInsightFiltersNetworkDestinationPort): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       eq: cdktf.stringToTerraform(struct!.eq),
       gte: cdktf.stringToTerraform(struct!.gte),
@@ -809,6 +1007,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersNetworkDirectionToTerraform(struct?: SecurityhubInsightFiltersNetworkDirection): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -828,6 +1029,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersNetworkProtocolToTerraform(struct?: SecurityhubInsightFiltersNetworkProtocol): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -847,6 +1051,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersNetworkSourceDomainToTerraform(struct?: SecurityhubInsightFiltersNetworkSourceDomain): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -862,6 +1069,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersNetworkSourceIpv4ToTerraform(struct?: SecurityhubInsightFiltersNetworkSourceIpv4): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cidr: cdktf.stringToTerraform(struct!.cidr),
     }
@@ -876,6 +1086,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersNetworkSourceIpv6ToTerraform(struct?: SecurityhubInsightFiltersNetworkSourceIpv6): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cidr: cdktf.stringToTerraform(struct!.cidr),
     }
@@ -894,6 +1107,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersNetworkSourceMacToTerraform(struct?: SecurityhubInsightFiltersNetworkSourceMac): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -917,6 +1133,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersNetworkSourcePortToTerraform(struct?: SecurityhubInsightFiltersNetworkSourcePort): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       eq: cdktf.stringToTerraform(struct!.eq),
       gte: cdktf.stringToTerraform(struct!.gte),
@@ -937,6 +1156,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersNoteTextToTerraform(struct?: SecurityhubInsightFiltersNoteText): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -954,14 +1176,53 @@ export namespace SecurityHub {
     readonly value: number;
   }
 
-  function securityhubInsightFiltersNoteUpdatedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersNoteUpdatedAtDateRange): any {
+  function securityhubInsightFiltersNoteUpdatedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersNoteUpdatedAtDateRangeOutputReference | SecurityhubInsightFiltersNoteUpdatedAtDateRange): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       unit: cdktf.stringToTerraform(struct!.unit),
       value: cdktf.numberToTerraform(struct!.value),
     }
   }
 
+  export class SecurityhubInsightFiltersNoteUpdatedAtDateRangeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // unit - computed: false, optional: false, required: true
+    private _unit?: string; 
+    public get unit() {
+      return this.getStringAttribute('unit');
+    }
+    public set unit(value: string) {
+      this._unit = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get unitInput() {
+      return this._unit
+    }
+
+    // value - computed: false, optional: false, required: true
+    private _value?: number; 
+    public get value() {
+      return this.getNumberAttribute('value');
+    }
+    public set value(value: number) {
+      this._value = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valueInput() {
+      return this._value
+    }
+  }
   export interface SecurityhubInsightFiltersNoteUpdatedAt {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
@@ -976,15 +1237,18 @@ export namespace SecurityHub {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
     */
-    readonly dateRange?: SecurityhubInsightFiltersNoteUpdatedAtDateRange[];
+    readonly dateRange?: SecurityhubInsightFiltersNoteUpdatedAtDateRange;
   }
 
   function securityhubInsightFiltersNoteUpdatedAtToTerraform(struct?: SecurityhubInsightFiltersNoteUpdatedAt): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       end: cdktf.stringToTerraform(struct!.end),
       start: cdktf.stringToTerraform(struct!.start),
-      date_range: cdktf.listMapper(securityhubInsightFiltersNoteUpdatedAtDateRangeToTerraform)(struct!.dateRange),
+      date_range: securityhubInsightFiltersNoteUpdatedAtDateRangeToTerraform(struct!.dateRange),
     }
   }
 
@@ -1001,6 +1265,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersNoteUpdatedByToTerraform(struct?: SecurityhubInsightFiltersNoteUpdatedBy): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1018,14 +1285,53 @@ export namespace SecurityHub {
     readonly value: number;
   }
 
-  function securityhubInsightFiltersProcessLaunchedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersProcessLaunchedAtDateRange): any {
+  function securityhubInsightFiltersProcessLaunchedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersProcessLaunchedAtDateRangeOutputReference | SecurityhubInsightFiltersProcessLaunchedAtDateRange): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       unit: cdktf.stringToTerraform(struct!.unit),
       value: cdktf.numberToTerraform(struct!.value),
     }
   }
 
+  export class SecurityhubInsightFiltersProcessLaunchedAtDateRangeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // unit - computed: false, optional: false, required: true
+    private _unit?: string; 
+    public get unit() {
+      return this.getStringAttribute('unit');
+    }
+    public set unit(value: string) {
+      this._unit = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get unitInput() {
+      return this._unit
+    }
+
+    // value - computed: false, optional: false, required: true
+    private _value?: number; 
+    public get value() {
+      return this.getNumberAttribute('value');
+    }
+    public set value(value: number) {
+      this._value = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valueInput() {
+      return this._value
+    }
+  }
   export interface SecurityhubInsightFiltersProcessLaunchedAt {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
@@ -1040,15 +1346,18 @@ export namespace SecurityHub {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
     */
-    readonly dateRange?: SecurityhubInsightFiltersProcessLaunchedAtDateRange[];
+    readonly dateRange?: SecurityhubInsightFiltersProcessLaunchedAtDateRange;
   }
 
   function securityhubInsightFiltersProcessLaunchedAtToTerraform(struct?: SecurityhubInsightFiltersProcessLaunchedAt): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       end: cdktf.stringToTerraform(struct!.end),
       start: cdktf.stringToTerraform(struct!.start),
-      date_range: cdktf.listMapper(securityhubInsightFiltersProcessLaunchedAtDateRangeToTerraform)(struct!.dateRange),
+      date_range: securityhubInsightFiltersProcessLaunchedAtDateRangeToTerraform(struct!.dateRange),
     }
   }
 
@@ -1065,6 +1374,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersProcessNameToTerraform(struct?: SecurityhubInsightFiltersProcessName): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1088,6 +1400,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersProcessParentPidToTerraform(struct?: SecurityhubInsightFiltersProcessParentPid): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       eq: cdktf.stringToTerraform(struct!.eq),
       gte: cdktf.stringToTerraform(struct!.gte),
@@ -1108,6 +1423,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersProcessPathToTerraform(struct?: SecurityhubInsightFiltersProcessPath): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1131,6 +1449,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersProcessPidToTerraform(struct?: SecurityhubInsightFiltersProcessPid): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       eq: cdktf.stringToTerraform(struct!.eq),
       gte: cdktf.stringToTerraform(struct!.gte),
@@ -1149,14 +1470,53 @@ export namespace SecurityHub {
     readonly value: number;
   }
 
-  function securityhubInsightFiltersProcessTerminatedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersProcessTerminatedAtDateRange): any {
+  function securityhubInsightFiltersProcessTerminatedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersProcessTerminatedAtDateRangeOutputReference | SecurityhubInsightFiltersProcessTerminatedAtDateRange): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       unit: cdktf.stringToTerraform(struct!.unit),
       value: cdktf.numberToTerraform(struct!.value),
     }
   }
 
+  export class SecurityhubInsightFiltersProcessTerminatedAtDateRangeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // unit - computed: false, optional: false, required: true
+    private _unit?: string; 
+    public get unit() {
+      return this.getStringAttribute('unit');
+    }
+    public set unit(value: string) {
+      this._unit = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get unitInput() {
+      return this._unit
+    }
+
+    // value - computed: false, optional: false, required: true
+    private _value?: number; 
+    public get value() {
+      return this.getNumberAttribute('value');
+    }
+    public set value(value: number) {
+      this._value = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valueInput() {
+      return this._value
+    }
+  }
   export interface SecurityhubInsightFiltersProcessTerminatedAt {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
@@ -1171,15 +1531,18 @@ export namespace SecurityHub {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
     */
-    readonly dateRange?: SecurityhubInsightFiltersProcessTerminatedAtDateRange[];
+    readonly dateRange?: SecurityhubInsightFiltersProcessTerminatedAtDateRange;
   }
 
   function securityhubInsightFiltersProcessTerminatedAtToTerraform(struct?: SecurityhubInsightFiltersProcessTerminatedAt): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       end: cdktf.stringToTerraform(struct!.end),
       start: cdktf.stringToTerraform(struct!.start),
-      date_range: cdktf.listMapper(securityhubInsightFiltersProcessTerminatedAtDateRangeToTerraform)(struct!.dateRange),
+      date_range: securityhubInsightFiltersProcessTerminatedAtDateRangeToTerraform(struct!.dateRange),
     }
   }
 
@@ -1196,6 +1559,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersProductArnToTerraform(struct?: SecurityhubInsightFiltersProductArn): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1219,6 +1585,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersProductFieldsToTerraform(struct?: SecurityhubInsightFiltersProductFields): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       key: cdktf.stringToTerraform(struct!.key),
@@ -1239,6 +1608,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersProductNameToTerraform(struct?: SecurityhubInsightFiltersProductName): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1258,6 +1630,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersRecommendationTextToTerraform(struct?: SecurityhubInsightFiltersRecommendationText): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1277,6 +1652,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersRecordStateToTerraform(struct?: SecurityhubInsightFiltersRecordState): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1296,6 +1674,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersRelatedFindingsIdToTerraform(struct?: SecurityhubInsightFiltersRelatedFindingsId): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1315,6 +1696,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersRelatedFindingsProductArnToTerraform(struct?: SecurityhubInsightFiltersRelatedFindingsProductArn): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1334,6 +1718,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArnToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1353,6 +1740,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceAwsEc2InstanceImageIdToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceImageId): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1368,6 +1758,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceAwsEc2InstanceIpv4AddressesToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv4Addresses): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cidr: cdktf.stringToTerraform(struct!.cidr),
     }
@@ -1382,6 +1775,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceAwsEc2InstanceIpv6AddressesToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv6Addresses): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cidr: cdktf.stringToTerraform(struct!.cidr),
     }
@@ -1400,6 +1796,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceAwsEc2InstanceKeyNameToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceKeyName): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1417,14 +1816,53 @@ export namespace SecurityHub {
     readonly value: number;
   }
 
-  function securityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange): any {
+  function securityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRangeOutputReference | SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       unit: cdktf.stringToTerraform(struct!.unit),
       value: cdktf.numberToTerraform(struct!.value),
     }
   }
 
+  export class SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRangeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // unit - computed: false, optional: false, required: true
+    private _unit?: string; 
+    public get unit() {
+      return this.getStringAttribute('unit');
+    }
+    public set unit(value: string) {
+      this._unit = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get unitInput() {
+      return this._unit
+    }
+
+    // value - computed: false, optional: false, required: true
+    private _value?: number; 
+    public get value() {
+      return this.getNumberAttribute('value');
+    }
+    public set value(value: number) {
+      this._value = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valueInput() {
+      return this._value
+    }
+  }
   export interface SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAt {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
@@ -1439,15 +1877,18 @@ export namespace SecurityHub {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
     */
-    readonly dateRange?: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange[];
+    readonly dateRange?: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange;
   }
 
   function securityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAt): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       end: cdktf.stringToTerraform(struct!.end),
       start: cdktf.stringToTerraform(struct!.start),
-      date_range: cdktf.listMapper(securityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRangeToTerraform)(struct!.dateRange),
+      date_range: securityhubInsightFiltersResourceAwsEc2InstanceLaunchedAtDateRangeToTerraform(struct!.dateRange),
     }
   }
 
@@ -1464,6 +1905,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceAwsEc2InstanceSubnetIdToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceSubnetId): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1483,6 +1927,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceAwsEc2InstanceTypeToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceType): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1502,6 +1949,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceAwsEc2InstanceVpcIdToTerraform(struct?: SecurityhubInsightFiltersResourceAwsEc2InstanceVpcId): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1519,14 +1969,53 @@ export namespace SecurityHub {
     readonly value: number;
   }
 
-  function securityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRange): any {
+  function securityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRangeOutputReference | SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRange): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       unit: cdktf.stringToTerraform(struct!.unit),
       value: cdktf.numberToTerraform(struct!.value),
     }
   }
 
+  export class SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRangeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // unit - computed: false, optional: false, required: true
+    private _unit?: string; 
+    public get unit() {
+      return this.getStringAttribute('unit');
+    }
+    public set unit(value: string) {
+      this._unit = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get unitInput() {
+      return this._unit
+    }
+
+    // value - computed: false, optional: false, required: true
+    private _value?: number; 
+    public get value() {
+      return this.getNumberAttribute('value');
+    }
+    public set value(value: number) {
+      this._value = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valueInput() {
+      return this._value
+    }
+  }
   export interface SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAt {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
@@ -1541,15 +2030,18 @@ export namespace SecurityHub {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
     */
-    readonly dateRange?: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRange[];
+    readonly dateRange?: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRange;
   }
 
   function securityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtToTerraform(struct?: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAt): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       end: cdktf.stringToTerraform(struct!.end),
       start: cdktf.stringToTerraform(struct!.start),
-      date_range: cdktf.listMapper(securityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRangeToTerraform)(struct!.dateRange),
+      date_range: securityhubInsightFiltersResourceAwsIamAccessKeyCreatedAtDateRangeToTerraform(struct!.dateRange),
     }
   }
 
@@ -1566,6 +2058,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceAwsIamAccessKeyStatusToTerraform(struct?: SecurityhubInsightFiltersResourceAwsIamAccessKeyStatus): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1585,6 +2080,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceAwsIamAccessKeyUserNameToTerraform(struct?: SecurityhubInsightFiltersResourceAwsIamAccessKeyUserName): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1604,6 +2102,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceAwsS3BucketOwnerIdToTerraform(struct?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerId): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1623,6 +2124,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceAwsS3BucketOwnerNameToTerraform(struct?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerName): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1642,6 +2146,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceContainerImageIdToTerraform(struct?: SecurityhubInsightFiltersResourceContainerImageId): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1661,6 +2168,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceContainerImageNameToTerraform(struct?: SecurityhubInsightFiltersResourceContainerImageName): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1678,14 +2188,53 @@ export namespace SecurityHub {
     readonly value: number;
   }
 
-  function securityhubInsightFiltersResourceContainerLaunchedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersResourceContainerLaunchedAtDateRange): any {
+  function securityhubInsightFiltersResourceContainerLaunchedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersResourceContainerLaunchedAtDateRangeOutputReference | SecurityhubInsightFiltersResourceContainerLaunchedAtDateRange): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       unit: cdktf.stringToTerraform(struct!.unit),
       value: cdktf.numberToTerraform(struct!.value),
     }
   }
 
+  export class SecurityhubInsightFiltersResourceContainerLaunchedAtDateRangeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // unit - computed: false, optional: false, required: true
+    private _unit?: string; 
+    public get unit() {
+      return this.getStringAttribute('unit');
+    }
+    public set unit(value: string) {
+      this._unit = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get unitInput() {
+      return this._unit
+    }
+
+    // value - computed: false, optional: false, required: true
+    private _value?: number; 
+    public get value() {
+      return this.getNumberAttribute('value');
+    }
+    public set value(value: number) {
+      this._value = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valueInput() {
+      return this._value
+    }
+  }
   export interface SecurityhubInsightFiltersResourceContainerLaunchedAt {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
@@ -1700,15 +2249,18 @@ export namespace SecurityHub {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
     */
-    readonly dateRange?: SecurityhubInsightFiltersResourceContainerLaunchedAtDateRange[];
+    readonly dateRange?: SecurityhubInsightFiltersResourceContainerLaunchedAtDateRange;
   }
 
   function securityhubInsightFiltersResourceContainerLaunchedAtToTerraform(struct?: SecurityhubInsightFiltersResourceContainerLaunchedAt): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       end: cdktf.stringToTerraform(struct!.end),
       start: cdktf.stringToTerraform(struct!.start),
-      date_range: cdktf.listMapper(securityhubInsightFiltersResourceContainerLaunchedAtDateRangeToTerraform)(struct!.dateRange),
+      date_range: securityhubInsightFiltersResourceContainerLaunchedAtDateRangeToTerraform(struct!.dateRange),
     }
   }
 
@@ -1725,6 +2277,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceContainerNameToTerraform(struct?: SecurityhubInsightFiltersResourceContainerName): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1748,6 +2303,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceDetailsOtherToTerraform(struct?: SecurityhubInsightFiltersResourceDetailsOther): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       key: cdktf.stringToTerraform(struct!.key),
@@ -1768,6 +2326,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceIdToTerraform(struct?: SecurityhubInsightFiltersResourceId): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1787,6 +2348,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourcePartitionToTerraform(struct?: SecurityhubInsightFiltersResourcePartition): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1806,6 +2370,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceRegionToTerraform(struct?: SecurityhubInsightFiltersResourceRegion): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1829,6 +2396,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceTagsToTerraform(struct?: SecurityhubInsightFiltersResourceTags): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       key: cdktf.stringToTerraform(struct!.key),
@@ -1849,6 +2419,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersResourceTypeToTerraform(struct?: SecurityhubInsightFiltersResourceType): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1868,6 +2441,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersSeverityLabelToTerraform(struct?: SecurityhubInsightFiltersSeverityLabel): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1887,6 +2463,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersSourceUrlToTerraform(struct?: SecurityhubInsightFiltersSourceUrl): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1906,6 +2485,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersThreatIntelIndicatorCategoryToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorCategory): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1923,14 +2505,53 @@ export namespace SecurityHub {
     readonly value: number;
   }
 
-  function securityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRange): any {
+  function securityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRangeOutputReference | SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRange): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       unit: cdktf.stringToTerraform(struct!.unit),
       value: cdktf.numberToTerraform(struct!.value),
     }
   }
 
+  export class SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRangeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // unit - computed: false, optional: false, required: true
+    private _unit?: string; 
+    public get unit() {
+      return this.getStringAttribute('unit');
+    }
+    public set unit(value: string) {
+      this._unit = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get unitInput() {
+      return this._unit
+    }
+
+    // value - computed: false, optional: false, required: true
+    private _value?: number; 
+    public get value() {
+      return this.getNumberAttribute('value');
+    }
+    public set value(value: number) {
+      this._value = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valueInput() {
+      return this._value
+    }
+  }
   export interface SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAt {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
@@ -1945,15 +2566,18 @@ export namespace SecurityHub {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
     */
-    readonly dateRange?: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRange[];
+    readonly dateRange?: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRange;
   }
 
   function securityhubInsightFiltersThreatIntelIndicatorLastObservedAtToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAt): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       end: cdktf.stringToTerraform(struct!.end),
       start: cdktf.stringToTerraform(struct!.start),
-      date_range: cdktf.listMapper(securityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRangeToTerraform)(struct!.dateRange),
+      date_range: securityhubInsightFiltersThreatIntelIndicatorLastObservedAtDateRangeToTerraform(struct!.dateRange),
     }
   }
 
@@ -1970,6 +2594,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersThreatIntelIndicatorSourceToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorSource): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -1989,6 +2616,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersThreatIntelIndicatorSourceUrlToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorSourceUrl): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -2008,6 +2638,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersThreatIntelIndicatorTypeToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorType): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -2027,6 +2660,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersThreatIntelIndicatorValueToTerraform(struct?: SecurityhubInsightFiltersThreatIntelIndicatorValue): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -2046,6 +2682,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersTitleToTerraform(struct?: SecurityhubInsightFiltersTitle): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -2065,6 +2704,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersTypeToTerraform(struct?: SecurityhubInsightFiltersType): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -2082,14 +2724,53 @@ export namespace SecurityHub {
     readonly value: number;
   }
 
-  function securityhubInsightFiltersUpdatedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersUpdatedAtDateRange): any {
+  function securityhubInsightFiltersUpdatedAtDateRangeToTerraform(struct?: SecurityhubInsightFiltersUpdatedAtDateRangeOutputReference | SecurityhubInsightFiltersUpdatedAtDateRange): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       unit: cdktf.stringToTerraform(struct!.unit),
       value: cdktf.numberToTerraform(struct!.value),
     }
   }
 
+  export class SecurityhubInsightFiltersUpdatedAtDateRangeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // unit - computed: false, optional: false, required: true
+    private _unit?: string; 
+    public get unit() {
+      return this.getStringAttribute('unit');
+    }
+    public set unit(value: string) {
+      this._unit = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get unitInput() {
+      return this._unit
+    }
+
+    // value - computed: false, optional: false, required: true
+    private _value?: number; 
+    public get value() {
+      return this.getNumberAttribute('value');
+    }
+    public set value(value: number) {
+      this._value = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valueInput() {
+      return this._value
+    }
+  }
   export interface SecurityhubInsightFiltersUpdatedAt {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#end SecurityhubInsight#end}
@@ -2104,15 +2785,18 @@ export namespace SecurityHub {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html#date_range SecurityhubInsight#date_range}
     */
-    readonly dateRange?: SecurityhubInsightFiltersUpdatedAtDateRange[];
+    readonly dateRange?: SecurityhubInsightFiltersUpdatedAtDateRange;
   }
 
   function securityhubInsightFiltersUpdatedAtToTerraform(struct?: SecurityhubInsightFiltersUpdatedAt): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       end: cdktf.stringToTerraform(struct!.end),
       start: cdktf.stringToTerraform(struct!.start),
-      date_range: cdktf.listMapper(securityhubInsightFiltersUpdatedAtDateRangeToTerraform)(struct!.dateRange),
+      date_range: securityhubInsightFiltersUpdatedAtDateRangeToTerraform(struct!.dateRange),
     }
   }
 
@@ -2133,6 +2817,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersUserDefinedValuesToTerraform(struct?: SecurityhubInsightFiltersUserDefinedValues): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       key: cdktf.stringToTerraform(struct!.key),
@@ -2153,6 +2840,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersVerificationStateToTerraform(struct?: SecurityhubInsightFiltersVerificationState): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -2172,6 +2862,9 @@ export namespace SecurityHub {
 
   function securityhubInsightFiltersWorkflowStatusToTerraform(struct?: SecurityhubInsightFiltersWorkflowStatus): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comparison: cdktf.stringToTerraform(struct!.comparison),
       value: cdktf.stringToTerraform(struct!.value),
@@ -2709,8 +3402,11 @@ export namespace SecurityHub {
     readonly workflowStatus?: SecurityhubInsightFiltersWorkflowStatus[];
   }
 
-  function securityhubInsightFiltersToTerraform(struct?: SecurityhubInsightFilters): any {
+  function securityhubInsightFiltersToTerraform(struct?: SecurityhubInsightFiltersOutputReference | SecurityhubInsightFilters): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       aws_account_id: cdktf.listMapper(securityhubInsightFiltersAwsAccountIdToTerraform)(struct!.awsAccountId),
       company_name: cdktf.listMapper(securityhubInsightFiltersCompanyNameToTerraform)(struct!.companyName),
@@ -2803,6 +3499,1512 @@ export namespace SecurityHub {
     }
   }
 
+  export class SecurityhubInsightFiltersOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // aws_account_id - computed: false, optional: true, required: false
+    private _awsAccountId?: SecurityhubInsightFiltersAwsAccountId[] | undefined; 
+    public get awsAccountId() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('aws_account_id') as any;
+    }
+    public set awsAccountId(value: SecurityhubInsightFiltersAwsAccountId[] | undefined) {
+      this._awsAccountId = value;
+    }
+    public resetAwsAccountId() {
+      this._awsAccountId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get awsAccountIdInput() {
+      return this._awsAccountId
+    }
+
+    // company_name - computed: false, optional: true, required: false
+    private _companyName?: SecurityhubInsightFiltersCompanyName[] | undefined; 
+    public get companyName() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('company_name') as any;
+    }
+    public set companyName(value: SecurityhubInsightFiltersCompanyName[] | undefined) {
+      this._companyName = value;
+    }
+    public resetCompanyName() {
+      this._companyName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get companyNameInput() {
+      return this._companyName
+    }
+
+    // compliance_status - computed: false, optional: true, required: false
+    private _complianceStatus?: SecurityhubInsightFiltersComplianceStatus[] | undefined; 
+    public get complianceStatus() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('compliance_status') as any;
+    }
+    public set complianceStatus(value: SecurityhubInsightFiltersComplianceStatus[] | undefined) {
+      this._complianceStatus = value;
+    }
+    public resetComplianceStatus() {
+      this._complianceStatus = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get complianceStatusInput() {
+      return this._complianceStatus
+    }
+
+    // confidence - computed: false, optional: true, required: false
+    private _confidence?: SecurityhubInsightFiltersConfidence[] | undefined; 
+    public get confidence() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('confidence') as any;
+    }
+    public set confidence(value: SecurityhubInsightFiltersConfidence[] | undefined) {
+      this._confidence = value;
+    }
+    public resetConfidence() {
+      this._confidence = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get confidenceInput() {
+      return this._confidence
+    }
+
+    // created_at - computed: false, optional: true, required: false
+    private _createdAt?: SecurityhubInsightFiltersCreatedAt[] | undefined; 
+    public get createdAt() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('created_at') as any;
+    }
+    public set createdAt(value: SecurityhubInsightFiltersCreatedAt[] | undefined) {
+      this._createdAt = value;
+    }
+    public resetCreatedAt() {
+      this._createdAt = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createdAtInput() {
+      return this._createdAt
+    }
+
+    // criticality - computed: false, optional: true, required: false
+    private _criticality?: SecurityhubInsightFiltersCriticality[] | undefined; 
+    public get criticality() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('criticality') as any;
+    }
+    public set criticality(value: SecurityhubInsightFiltersCriticality[] | undefined) {
+      this._criticality = value;
+    }
+    public resetCriticality() {
+      this._criticality = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get criticalityInput() {
+      return this._criticality
+    }
+
+    // description - computed: false, optional: true, required: false
+    private _description?: SecurityhubInsightFiltersDescription[] | undefined; 
+    public get description() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('description') as any;
+    }
+    public set description(value: SecurityhubInsightFiltersDescription[] | undefined) {
+      this._description = value;
+    }
+    public resetDescription() {
+      this._description = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get descriptionInput() {
+      return this._description
+    }
+
+    // finding_provider_fields_confidence - computed: false, optional: true, required: false
+    private _findingProviderFieldsConfidence?: SecurityhubInsightFiltersFindingProviderFieldsConfidence[] | undefined; 
+    public get findingProviderFieldsConfidence() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('finding_provider_fields_confidence') as any;
+    }
+    public set findingProviderFieldsConfidence(value: SecurityhubInsightFiltersFindingProviderFieldsConfidence[] | undefined) {
+      this._findingProviderFieldsConfidence = value;
+    }
+    public resetFindingProviderFieldsConfidence() {
+      this._findingProviderFieldsConfidence = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get findingProviderFieldsConfidenceInput() {
+      return this._findingProviderFieldsConfidence
+    }
+
+    // finding_provider_fields_criticality - computed: false, optional: true, required: false
+    private _findingProviderFieldsCriticality?: SecurityhubInsightFiltersFindingProviderFieldsCriticality[] | undefined; 
+    public get findingProviderFieldsCriticality() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('finding_provider_fields_criticality') as any;
+    }
+    public set findingProviderFieldsCriticality(value: SecurityhubInsightFiltersFindingProviderFieldsCriticality[] | undefined) {
+      this._findingProviderFieldsCriticality = value;
+    }
+    public resetFindingProviderFieldsCriticality() {
+      this._findingProviderFieldsCriticality = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get findingProviderFieldsCriticalityInput() {
+      return this._findingProviderFieldsCriticality
+    }
+
+    // finding_provider_fields_related_findings_id - computed: false, optional: true, required: false
+    private _findingProviderFieldsRelatedFindingsId?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsId[] | undefined; 
+    public get findingProviderFieldsRelatedFindingsId() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('finding_provider_fields_related_findings_id') as any;
+    }
+    public set findingProviderFieldsRelatedFindingsId(value: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsId[] | undefined) {
+      this._findingProviderFieldsRelatedFindingsId = value;
+    }
+    public resetFindingProviderFieldsRelatedFindingsId() {
+      this._findingProviderFieldsRelatedFindingsId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get findingProviderFieldsRelatedFindingsIdInput() {
+      return this._findingProviderFieldsRelatedFindingsId
+    }
+
+    // finding_provider_fields_related_findings_product_arn - computed: false, optional: true, required: false
+    private _findingProviderFieldsRelatedFindingsProductArn?: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArn[] | undefined; 
+    public get findingProviderFieldsRelatedFindingsProductArn() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('finding_provider_fields_related_findings_product_arn') as any;
+    }
+    public set findingProviderFieldsRelatedFindingsProductArn(value: SecurityhubInsightFiltersFindingProviderFieldsRelatedFindingsProductArn[] | undefined) {
+      this._findingProviderFieldsRelatedFindingsProductArn = value;
+    }
+    public resetFindingProviderFieldsRelatedFindingsProductArn() {
+      this._findingProviderFieldsRelatedFindingsProductArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get findingProviderFieldsRelatedFindingsProductArnInput() {
+      return this._findingProviderFieldsRelatedFindingsProductArn
+    }
+
+    // finding_provider_fields_severity_label - computed: false, optional: true, required: false
+    private _findingProviderFieldsSeverityLabel?: SecurityhubInsightFiltersFindingProviderFieldsSeverityLabel[] | undefined; 
+    public get findingProviderFieldsSeverityLabel() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('finding_provider_fields_severity_label') as any;
+    }
+    public set findingProviderFieldsSeverityLabel(value: SecurityhubInsightFiltersFindingProviderFieldsSeverityLabel[] | undefined) {
+      this._findingProviderFieldsSeverityLabel = value;
+    }
+    public resetFindingProviderFieldsSeverityLabel() {
+      this._findingProviderFieldsSeverityLabel = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get findingProviderFieldsSeverityLabelInput() {
+      return this._findingProviderFieldsSeverityLabel
+    }
+
+    // finding_provider_fields_severity_original - computed: false, optional: true, required: false
+    private _findingProviderFieldsSeverityOriginal?: SecurityhubInsightFiltersFindingProviderFieldsSeverityOriginal[] | undefined; 
+    public get findingProviderFieldsSeverityOriginal() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('finding_provider_fields_severity_original') as any;
+    }
+    public set findingProviderFieldsSeverityOriginal(value: SecurityhubInsightFiltersFindingProviderFieldsSeverityOriginal[] | undefined) {
+      this._findingProviderFieldsSeverityOriginal = value;
+    }
+    public resetFindingProviderFieldsSeverityOriginal() {
+      this._findingProviderFieldsSeverityOriginal = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get findingProviderFieldsSeverityOriginalInput() {
+      return this._findingProviderFieldsSeverityOriginal
+    }
+
+    // finding_provider_fields_types - computed: false, optional: true, required: false
+    private _findingProviderFieldsTypes?: SecurityhubInsightFiltersFindingProviderFieldsTypes[] | undefined; 
+    public get findingProviderFieldsTypes() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('finding_provider_fields_types') as any;
+    }
+    public set findingProviderFieldsTypes(value: SecurityhubInsightFiltersFindingProviderFieldsTypes[] | undefined) {
+      this._findingProviderFieldsTypes = value;
+    }
+    public resetFindingProviderFieldsTypes() {
+      this._findingProviderFieldsTypes = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get findingProviderFieldsTypesInput() {
+      return this._findingProviderFieldsTypes
+    }
+
+    // first_observed_at - computed: false, optional: true, required: false
+    private _firstObservedAt?: SecurityhubInsightFiltersFirstObservedAt[] | undefined; 
+    public get firstObservedAt() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('first_observed_at') as any;
+    }
+    public set firstObservedAt(value: SecurityhubInsightFiltersFirstObservedAt[] | undefined) {
+      this._firstObservedAt = value;
+    }
+    public resetFirstObservedAt() {
+      this._firstObservedAt = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get firstObservedAtInput() {
+      return this._firstObservedAt
+    }
+
+    // generator_id - computed: false, optional: true, required: false
+    private _generatorId?: SecurityhubInsightFiltersGeneratorId[] | undefined; 
+    public get generatorId() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('generator_id') as any;
+    }
+    public set generatorId(value: SecurityhubInsightFiltersGeneratorId[] | undefined) {
+      this._generatorId = value;
+    }
+    public resetGeneratorId() {
+      this._generatorId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get generatorIdInput() {
+      return this._generatorId
+    }
+
+    // id - computed: false, optional: true, required: false
+    private _id?: SecurityhubInsightFiltersId[] | undefined; 
+    public get id() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('id') as any;
+    }
+    public set id(value: SecurityhubInsightFiltersId[] | undefined) {
+      this._id = value;
+    }
+    public resetId() {
+      this._id = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get idInput() {
+      return this._id
+    }
+
+    // keyword - computed: false, optional: true, required: false
+    private _keyword?: SecurityhubInsightFiltersKeyword[] | undefined; 
+    public get keyword() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('keyword') as any;
+    }
+    public set keyword(value: SecurityhubInsightFiltersKeyword[] | undefined) {
+      this._keyword = value;
+    }
+    public resetKeyword() {
+      this._keyword = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get keywordInput() {
+      return this._keyword
+    }
+
+    // last_observed_at - computed: false, optional: true, required: false
+    private _lastObservedAt?: SecurityhubInsightFiltersLastObservedAt[] | undefined; 
+    public get lastObservedAt() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('last_observed_at') as any;
+    }
+    public set lastObservedAt(value: SecurityhubInsightFiltersLastObservedAt[] | undefined) {
+      this._lastObservedAt = value;
+    }
+    public resetLastObservedAt() {
+      this._lastObservedAt = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get lastObservedAtInput() {
+      return this._lastObservedAt
+    }
+
+    // malware_name - computed: false, optional: true, required: false
+    private _malwareName?: SecurityhubInsightFiltersMalwareName[] | undefined; 
+    public get malwareName() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('malware_name') as any;
+    }
+    public set malwareName(value: SecurityhubInsightFiltersMalwareName[] | undefined) {
+      this._malwareName = value;
+    }
+    public resetMalwareName() {
+      this._malwareName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get malwareNameInput() {
+      return this._malwareName
+    }
+
+    // malware_path - computed: false, optional: true, required: false
+    private _malwarePath?: SecurityhubInsightFiltersMalwarePath[] | undefined; 
+    public get malwarePath() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('malware_path') as any;
+    }
+    public set malwarePath(value: SecurityhubInsightFiltersMalwarePath[] | undefined) {
+      this._malwarePath = value;
+    }
+    public resetMalwarePath() {
+      this._malwarePath = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get malwarePathInput() {
+      return this._malwarePath
+    }
+
+    // malware_state - computed: false, optional: true, required: false
+    private _malwareState?: SecurityhubInsightFiltersMalwareState[] | undefined; 
+    public get malwareState() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('malware_state') as any;
+    }
+    public set malwareState(value: SecurityhubInsightFiltersMalwareState[] | undefined) {
+      this._malwareState = value;
+    }
+    public resetMalwareState() {
+      this._malwareState = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get malwareStateInput() {
+      return this._malwareState
+    }
+
+    // malware_type - computed: false, optional: true, required: false
+    private _malwareType?: SecurityhubInsightFiltersMalwareType[] | undefined; 
+    public get malwareType() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('malware_type') as any;
+    }
+    public set malwareType(value: SecurityhubInsightFiltersMalwareType[] | undefined) {
+      this._malwareType = value;
+    }
+    public resetMalwareType() {
+      this._malwareType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get malwareTypeInput() {
+      return this._malwareType
+    }
+
+    // network_destination_domain - computed: false, optional: true, required: false
+    private _networkDestinationDomain?: SecurityhubInsightFiltersNetworkDestinationDomain[] | undefined; 
+    public get networkDestinationDomain() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('network_destination_domain') as any;
+    }
+    public set networkDestinationDomain(value: SecurityhubInsightFiltersNetworkDestinationDomain[] | undefined) {
+      this._networkDestinationDomain = value;
+    }
+    public resetNetworkDestinationDomain() {
+      this._networkDestinationDomain = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get networkDestinationDomainInput() {
+      return this._networkDestinationDomain
+    }
+
+    // network_destination_ipv4 - computed: false, optional: true, required: false
+    private _networkDestinationIpv4?: SecurityhubInsightFiltersNetworkDestinationIpv4[] | undefined; 
+    public get networkDestinationIpv4() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('network_destination_ipv4') as any;
+    }
+    public set networkDestinationIpv4(value: SecurityhubInsightFiltersNetworkDestinationIpv4[] | undefined) {
+      this._networkDestinationIpv4 = value;
+    }
+    public resetNetworkDestinationIpv4() {
+      this._networkDestinationIpv4 = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get networkDestinationIpv4Input() {
+      return this._networkDestinationIpv4
+    }
+
+    // network_destination_ipv6 - computed: false, optional: true, required: false
+    private _networkDestinationIpv6?: SecurityhubInsightFiltersNetworkDestinationIpv6[] | undefined; 
+    public get networkDestinationIpv6() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('network_destination_ipv6') as any;
+    }
+    public set networkDestinationIpv6(value: SecurityhubInsightFiltersNetworkDestinationIpv6[] | undefined) {
+      this._networkDestinationIpv6 = value;
+    }
+    public resetNetworkDestinationIpv6() {
+      this._networkDestinationIpv6 = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get networkDestinationIpv6Input() {
+      return this._networkDestinationIpv6
+    }
+
+    // network_destination_port - computed: false, optional: true, required: false
+    private _networkDestinationPort?: SecurityhubInsightFiltersNetworkDestinationPort[] | undefined; 
+    public get networkDestinationPort() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('network_destination_port') as any;
+    }
+    public set networkDestinationPort(value: SecurityhubInsightFiltersNetworkDestinationPort[] | undefined) {
+      this._networkDestinationPort = value;
+    }
+    public resetNetworkDestinationPort() {
+      this._networkDestinationPort = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get networkDestinationPortInput() {
+      return this._networkDestinationPort
+    }
+
+    // network_direction - computed: false, optional: true, required: false
+    private _networkDirection?: SecurityhubInsightFiltersNetworkDirection[] | undefined; 
+    public get networkDirection() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('network_direction') as any;
+    }
+    public set networkDirection(value: SecurityhubInsightFiltersNetworkDirection[] | undefined) {
+      this._networkDirection = value;
+    }
+    public resetNetworkDirection() {
+      this._networkDirection = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get networkDirectionInput() {
+      return this._networkDirection
+    }
+
+    // network_protocol - computed: false, optional: true, required: false
+    private _networkProtocol?: SecurityhubInsightFiltersNetworkProtocol[] | undefined; 
+    public get networkProtocol() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('network_protocol') as any;
+    }
+    public set networkProtocol(value: SecurityhubInsightFiltersNetworkProtocol[] | undefined) {
+      this._networkProtocol = value;
+    }
+    public resetNetworkProtocol() {
+      this._networkProtocol = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get networkProtocolInput() {
+      return this._networkProtocol
+    }
+
+    // network_source_domain - computed: false, optional: true, required: false
+    private _networkSourceDomain?: SecurityhubInsightFiltersNetworkSourceDomain[] | undefined; 
+    public get networkSourceDomain() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('network_source_domain') as any;
+    }
+    public set networkSourceDomain(value: SecurityhubInsightFiltersNetworkSourceDomain[] | undefined) {
+      this._networkSourceDomain = value;
+    }
+    public resetNetworkSourceDomain() {
+      this._networkSourceDomain = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get networkSourceDomainInput() {
+      return this._networkSourceDomain
+    }
+
+    // network_source_ipv4 - computed: false, optional: true, required: false
+    private _networkSourceIpv4?: SecurityhubInsightFiltersNetworkSourceIpv4[] | undefined; 
+    public get networkSourceIpv4() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('network_source_ipv4') as any;
+    }
+    public set networkSourceIpv4(value: SecurityhubInsightFiltersNetworkSourceIpv4[] | undefined) {
+      this._networkSourceIpv4 = value;
+    }
+    public resetNetworkSourceIpv4() {
+      this._networkSourceIpv4 = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get networkSourceIpv4Input() {
+      return this._networkSourceIpv4
+    }
+
+    // network_source_ipv6 - computed: false, optional: true, required: false
+    private _networkSourceIpv6?: SecurityhubInsightFiltersNetworkSourceIpv6[] | undefined; 
+    public get networkSourceIpv6() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('network_source_ipv6') as any;
+    }
+    public set networkSourceIpv6(value: SecurityhubInsightFiltersNetworkSourceIpv6[] | undefined) {
+      this._networkSourceIpv6 = value;
+    }
+    public resetNetworkSourceIpv6() {
+      this._networkSourceIpv6 = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get networkSourceIpv6Input() {
+      return this._networkSourceIpv6
+    }
+
+    // network_source_mac - computed: false, optional: true, required: false
+    private _networkSourceMac?: SecurityhubInsightFiltersNetworkSourceMac[] | undefined; 
+    public get networkSourceMac() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('network_source_mac') as any;
+    }
+    public set networkSourceMac(value: SecurityhubInsightFiltersNetworkSourceMac[] | undefined) {
+      this._networkSourceMac = value;
+    }
+    public resetNetworkSourceMac() {
+      this._networkSourceMac = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get networkSourceMacInput() {
+      return this._networkSourceMac
+    }
+
+    // network_source_port - computed: false, optional: true, required: false
+    private _networkSourcePort?: SecurityhubInsightFiltersNetworkSourcePort[] | undefined; 
+    public get networkSourcePort() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('network_source_port') as any;
+    }
+    public set networkSourcePort(value: SecurityhubInsightFiltersNetworkSourcePort[] | undefined) {
+      this._networkSourcePort = value;
+    }
+    public resetNetworkSourcePort() {
+      this._networkSourcePort = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get networkSourcePortInput() {
+      return this._networkSourcePort
+    }
+
+    // note_text - computed: false, optional: true, required: false
+    private _noteText?: SecurityhubInsightFiltersNoteText[] | undefined; 
+    public get noteText() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('note_text') as any;
+    }
+    public set noteText(value: SecurityhubInsightFiltersNoteText[] | undefined) {
+      this._noteText = value;
+    }
+    public resetNoteText() {
+      this._noteText = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get noteTextInput() {
+      return this._noteText
+    }
+
+    // note_updated_at - computed: false, optional: true, required: false
+    private _noteUpdatedAt?: SecurityhubInsightFiltersNoteUpdatedAt[] | undefined; 
+    public get noteUpdatedAt() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('note_updated_at') as any;
+    }
+    public set noteUpdatedAt(value: SecurityhubInsightFiltersNoteUpdatedAt[] | undefined) {
+      this._noteUpdatedAt = value;
+    }
+    public resetNoteUpdatedAt() {
+      this._noteUpdatedAt = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get noteUpdatedAtInput() {
+      return this._noteUpdatedAt
+    }
+
+    // note_updated_by - computed: false, optional: true, required: false
+    private _noteUpdatedBy?: SecurityhubInsightFiltersNoteUpdatedBy[] | undefined; 
+    public get noteUpdatedBy() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('note_updated_by') as any;
+    }
+    public set noteUpdatedBy(value: SecurityhubInsightFiltersNoteUpdatedBy[] | undefined) {
+      this._noteUpdatedBy = value;
+    }
+    public resetNoteUpdatedBy() {
+      this._noteUpdatedBy = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get noteUpdatedByInput() {
+      return this._noteUpdatedBy
+    }
+
+    // process_launched_at - computed: false, optional: true, required: false
+    private _processLaunchedAt?: SecurityhubInsightFiltersProcessLaunchedAt[] | undefined; 
+    public get processLaunchedAt() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('process_launched_at') as any;
+    }
+    public set processLaunchedAt(value: SecurityhubInsightFiltersProcessLaunchedAt[] | undefined) {
+      this._processLaunchedAt = value;
+    }
+    public resetProcessLaunchedAt() {
+      this._processLaunchedAt = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get processLaunchedAtInput() {
+      return this._processLaunchedAt
+    }
+
+    // process_name - computed: false, optional: true, required: false
+    private _processName?: SecurityhubInsightFiltersProcessName[] | undefined; 
+    public get processName() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('process_name') as any;
+    }
+    public set processName(value: SecurityhubInsightFiltersProcessName[] | undefined) {
+      this._processName = value;
+    }
+    public resetProcessName() {
+      this._processName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get processNameInput() {
+      return this._processName
+    }
+
+    // process_parent_pid - computed: false, optional: true, required: false
+    private _processParentPid?: SecurityhubInsightFiltersProcessParentPid[] | undefined; 
+    public get processParentPid() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('process_parent_pid') as any;
+    }
+    public set processParentPid(value: SecurityhubInsightFiltersProcessParentPid[] | undefined) {
+      this._processParentPid = value;
+    }
+    public resetProcessParentPid() {
+      this._processParentPid = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get processParentPidInput() {
+      return this._processParentPid
+    }
+
+    // process_path - computed: false, optional: true, required: false
+    private _processPath?: SecurityhubInsightFiltersProcessPath[] | undefined; 
+    public get processPath() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('process_path') as any;
+    }
+    public set processPath(value: SecurityhubInsightFiltersProcessPath[] | undefined) {
+      this._processPath = value;
+    }
+    public resetProcessPath() {
+      this._processPath = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get processPathInput() {
+      return this._processPath
+    }
+
+    // process_pid - computed: false, optional: true, required: false
+    private _processPid?: SecurityhubInsightFiltersProcessPid[] | undefined; 
+    public get processPid() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('process_pid') as any;
+    }
+    public set processPid(value: SecurityhubInsightFiltersProcessPid[] | undefined) {
+      this._processPid = value;
+    }
+    public resetProcessPid() {
+      this._processPid = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get processPidInput() {
+      return this._processPid
+    }
+
+    // process_terminated_at - computed: false, optional: true, required: false
+    private _processTerminatedAt?: SecurityhubInsightFiltersProcessTerminatedAt[] | undefined; 
+    public get processTerminatedAt() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('process_terminated_at') as any;
+    }
+    public set processTerminatedAt(value: SecurityhubInsightFiltersProcessTerminatedAt[] | undefined) {
+      this._processTerminatedAt = value;
+    }
+    public resetProcessTerminatedAt() {
+      this._processTerminatedAt = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get processTerminatedAtInput() {
+      return this._processTerminatedAt
+    }
+
+    // product_arn - computed: false, optional: true, required: false
+    private _productArn?: SecurityhubInsightFiltersProductArn[] | undefined; 
+    public get productArn() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('product_arn') as any;
+    }
+    public set productArn(value: SecurityhubInsightFiltersProductArn[] | undefined) {
+      this._productArn = value;
+    }
+    public resetProductArn() {
+      this._productArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get productArnInput() {
+      return this._productArn
+    }
+
+    // product_fields - computed: false, optional: true, required: false
+    private _productFields?: SecurityhubInsightFiltersProductFields[] | undefined; 
+    public get productFields() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('product_fields') as any;
+    }
+    public set productFields(value: SecurityhubInsightFiltersProductFields[] | undefined) {
+      this._productFields = value;
+    }
+    public resetProductFields() {
+      this._productFields = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get productFieldsInput() {
+      return this._productFields
+    }
+
+    // product_name - computed: false, optional: true, required: false
+    private _productName?: SecurityhubInsightFiltersProductName[] | undefined; 
+    public get productName() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('product_name') as any;
+    }
+    public set productName(value: SecurityhubInsightFiltersProductName[] | undefined) {
+      this._productName = value;
+    }
+    public resetProductName() {
+      this._productName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get productNameInput() {
+      return this._productName
+    }
+
+    // recommendation_text - computed: false, optional: true, required: false
+    private _recommendationText?: SecurityhubInsightFiltersRecommendationText[] | undefined; 
+    public get recommendationText() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('recommendation_text') as any;
+    }
+    public set recommendationText(value: SecurityhubInsightFiltersRecommendationText[] | undefined) {
+      this._recommendationText = value;
+    }
+    public resetRecommendationText() {
+      this._recommendationText = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get recommendationTextInput() {
+      return this._recommendationText
+    }
+
+    // record_state - computed: false, optional: true, required: false
+    private _recordState?: SecurityhubInsightFiltersRecordState[] | undefined; 
+    public get recordState() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('record_state') as any;
+    }
+    public set recordState(value: SecurityhubInsightFiltersRecordState[] | undefined) {
+      this._recordState = value;
+    }
+    public resetRecordState() {
+      this._recordState = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get recordStateInput() {
+      return this._recordState
+    }
+
+    // related_findings_id - computed: false, optional: true, required: false
+    private _relatedFindingsId?: SecurityhubInsightFiltersRelatedFindingsId[] | undefined; 
+    public get relatedFindingsId() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('related_findings_id') as any;
+    }
+    public set relatedFindingsId(value: SecurityhubInsightFiltersRelatedFindingsId[] | undefined) {
+      this._relatedFindingsId = value;
+    }
+    public resetRelatedFindingsId() {
+      this._relatedFindingsId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get relatedFindingsIdInput() {
+      return this._relatedFindingsId
+    }
+
+    // related_findings_product_arn - computed: false, optional: true, required: false
+    private _relatedFindingsProductArn?: SecurityhubInsightFiltersRelatedFindingsProductArn[] | undefined; 
+    public get relatedFindingsProductArn() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('related_findings_product_arn') as any;
+    }
+    public set relatedFindingsProductArn(value: SecurityhubInsightFiltersRelatedFindingsProductArn[] | undefined) {
+      this._relatedFindingsProductArn = value;
+    }
+    public resetRelatedFindingsProductArn() {
+      this._relatedFindingsProductArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get relatedFindingsProductArnInput() {
+      return this._relatedFindingsProductArn
+    }
+
+    // resource_aws_ec2_instance_iam_instance_profile_arn - computed: false, optional: true, required: false
+    private _resourceAwsEc2InstanceIamInstanceProfileArn?: SecurityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn[] | undefined; 
+    public get resourceAwsEc2InstanceIamInstanceProfileArn() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_aws_ec2_instance_iam_instance_profile_arn') as any;
+    }
+    public set resourceAwsEc2InstanceIamInstanceProfileArn(value: SecurityhubInsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn[] | undefined) {
+      this._resourceAwsEc2InstanceIamInstanceProfileArn = value;
+    }
+    public resetResourceAwsEc2InstanceIamInstanceProfileArn() {
+      this._resourceAwsEc2InstanceIamInstanceProfileArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceAwsEc2InstanceIamInstanceProfileArnInput() {
+      return this._resourceAwsEc2InstanceIamInstanceProfileArn
+    }
+
+    // resource_aws_ec2_instance_image_id - computed: false, optional: true, required: false
+    private _resourceAwsEc2InstanceImageId?: SecurityhubInsightFiltersResourceAwsEc2InstanceImageId[] | undefined; 
+    public get resourceAwsEc2InstanceImageId() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_aws_ec2_instance_image_id') as any;
+    }
+    public set resourceAwsEc2InstanceImageId(value: SecurityhubInsightFiltersResourceAwsEc2InstanceImageId[] | undefined) {
+      this._resourceAwsEc2InstanceImageId = value;
+    }
+    public resetResourceAwsEc2InstanceImageId() {
+      this._resourceAwsEc2InstanceImageId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceAwsEc2InstanceImageIdInput() {
+      return this._resourceAwsEc2InstanceImageId
+    }
+
+    // resource_aws_ec2_instance_ipv4_addresses - computed: false, optional: true, required: false
+    private _resourceAwsEc2InstanceIpv4Addresses?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv4Addresses[] | undefined; 
+    public get resourceAwsEc2InstanceIpv4Addresses() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_aws_ec2_instance_ipv4_addresses') as any;
+    }
+    public set resourceAwsEc2InstanceIpv4Addresses(value: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv4Addresses[] | undefined) {
+      this._resourceAwsEc2InstanceIpv4Addresses = value;
+    }
+    public resetResourceAwsEc2InstanceIpv4Addresses() {
+      this._resourceAwsEc2InstanceIpv4Addresses = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceAwsEc2InstanceIpv4AddressesInput() {
+      return this._resourceAwsEc2InstanceIpv4Addresses
+    }
+
+    // resource_aws_ec2_instance_ipv6_addresses - computed: false, optional: true, required: false
+    private _resourceAwsEc2InstanceIpv6Addresses?: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv6Addresses[] | undefined; 
+    public get resourceAwsEc2InstanceIpv6Addresses() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_aws_ec2_instance_ipv6_addresses') as any;
+    }
+    public set resourceAwsEc2InstanceIpv6Addresses(value: SecurityhubInsightFiltersResourceAwsEc2InstanceIpv6Addresses[] | undefined) {
+      this._resourceAwsEc2InstanceIpv6Addresses = value;
+    }
+    public resetResourceAwsEc2InstanceIpv6Addresses() {
+      this._resourceAwsEc2InstanceIpv6Addresses = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceAwsEc2InstanceIpv6AddressesInput() {
+      return this._resourceAwsEc2InstanceIpv6Addresses
+    }
+
+    // resource_aws_ec2_instance_key_name - computed: false, optional: true, required: false
+    private _resourceAwsEc2InstanceKeyName?: SecurityhubInsightFiltersResourceAwsEc2InstanceKeyName[] | undefined; 
+    public get resourceAwsEc2InstanceKeyName() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_aws_ec2_instance_key_name') as any;
+    }
+    public set resourceAwsEc2InstanceKeyName(value: SecurityhubInsightFiltersResourceAwsEc2InstanceKeyName[] | undefined) {
+      this._resourceAwsEc2InstanceKeyName = value;
+    }
+    public resetResourceAwsEc2InstanceKeyName() {
+      this._resourceAwsEc2InstanceKeyName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceAwsEc2InstanceKeyNameInput() {
+      return this._resourceAwsEc2InstanceKeyName
+    }
+
+    // resource_aws_ec2_instance_launched_at - computed: false, optional: true, required: false
+    private _resourceAwsEc2InstanceLaunchedAt?: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAt[] | undefined; 
+    public get resourceAwsEc2InstanceLaunchedAt() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_aws_ec2_instance_launched_at') as any;
+    }
+    public set resourceAwsEc2InstanceLaunchedAt(value: SecurityhubInsightFiltersResourceAwsEc2InstanceLaunchedAt[] | undefined) {
+      this._resourceAwsEc2InstanceLaunchedAt = value;
+    }
+    public resetResourceAwsEc2InstanceLaunchedAt() {
+      this._resourceAwsEc2InstanceLaunchedAt = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceAwsEc2InstanceLaunchedAtInput() {
+      return this._resourceAwsEc2InstanceLaunchedAt
+    }
+
+    // resource_aws_ec2_instance_subnet_id - computed: false, optional: true, required: false
+    private _resourceAwsEc2InstanceSubnetId?: SecurityhubInsightFiltersResourceAwsEc2InstanceSubnetId[] | undefined; 
+    public get resourceAwsEc2InstanceSubnetId() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_aws_ec2_instance_subnet_id') as any;
+    }
+    public set resourceAwsEc2InstanceSubnetId(value: SecurityhubInsightFiltersResourceAwsEc2InstanceSubnetId[] | undefined) {
+      this._resourceAwsEc2InstanceSubnetId = value;
+    }
+    public resetResourceAwsEc2InstanceSubnetId() {
+      this._resourceAwsEc2InstanceSubnetId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceAwsEc2InstanceSubnetIdInput() {
+      return this._resourceAwsEc2InstanceSubnetId
+    }
+
+    // resource_aws_ec2_instance_type - computed: false, optional: true, required: false
+    private _resourceAwsEc2InstanceType?: SecurityhubInsightFiltersResourceAwsEc2InstanceType[] | undefined; 
+    public get resourceAwsEc2InstanceType() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_aws_ec2_instance_type') as any;
+    }
+    public set resourceAwsEc2InstanceType(value: SecurityhubInsightFiltersResourceAwsEc2InstanceType[] | undefined) {
+      this._resourceAwsEc2InstanceType = value;
+    }
+    public resetResourceAwsEc2InstanceType() {
+      this._resourceAwsEc2InstanceType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceAwsEc2InstanceTypeInput() {
+      return this._resourceAwsEc2InstanceType
+    }
+
+    // resource_aws_ec2_instance_vpc_id - computed: false, optional: true, required: false
+    private _resourceAwsEc2InstanceVpcId?: SecurityhubInsightFiltersResourceAwsEc2InstanceVpcId[] | undefined; 
+    public get resourceAwsEc2InstanceVpcId() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_aws_ec2_instance_vpc_id') as any;
+    }
+    public set resourceAwsEc2InstanceVpcId(value: SecurityhubInsightFiltersResourceAwsEc2InstanceVpcId[] | undefined) {
+      this._resourceAwsEc2InstanceVpcId = value;
+    }
+    public resetResourceAwsEc2InstanceVpcId() {
+      this._resourceAwsEc2InstanceVpcId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceAwsEc2InstanceVpcIdInput() {
+      return this._resourceAwsEc2InstanceVpcId
+    }
+
+    // resource_aws_iam_access_key_created_at - computed: false, optional: true, required: false
+    private _resourceAwsIamAccessKeyCreatedAt?: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAt[] | undefined; 
+    public get resourceAwsIamAccessKeyCreatedAt() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_aws_iam_access_key_created_at') as any;
+    }
+    public set resourceAwsIamAccessKeyCreatedAt(value: SecurityhubInsightFiltersResourceAwsIamAccessKeyCreatedAt[] | undefined) {
+      this._resourceAwsIamAccessKeyCreatedAt = value;
+    }
+    public resetResourceAwsIamAccessKeyCreatedAt() {
+      this._resourceAwsIamAccessKeyCreatedAt = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceAwsIamAccessKeyCreatedAtInput() {
+      return this._resourceAwsIamAccessKeyCreatedAt
+    }
+
+    // resource_aws_iam_access_key_status - computed: false, optional: true, required: false
+    private _resourceAwsIamAccessKeyStatus?: SecurityhubInsightFiltersResourceAwsIamAccessKeyStatus[] | undefined; 
+    public get resourceAwsIamAccessKeyStatus() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_aws_iam_access_key_status') as any;
+    }
+    public set resourceAwsIamAccessKeyStatus(value: SecurityhubInsightFiltersResourceAwsIamAccessKeyStatus[] | undefined) {
+      this._resourceAwsIamAccessKeyStatus = value;
+    }
+    public resetResourceAwsIamAccessKeyStatus() {
+      this._resourceAwsIamAccessKeyStatus = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceAwsIamAccessKeyStatusInput() {
+      return this._resourceAwsIamAccessKeyStatus
+    }
+
+    // resource_aws_iam_access_key_user_name - computed: false, optional: true, required: false
+    private _resourceAwsIamAccessKeyUserName?: SecurityhubInsightFiltersResourceAwsIamAccessKeyUserName[] | undefined; 
+    public get resourceAwsIamAccessKeyUserName() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_aws_iam_access_key_user_name') as any;
+    }
+    public set resourceAwsIamAccessKeyUserName(value: SecurityhubInsightFiltersResourceAwsIamAccessKeyUserName[] | undefined) {
+      this._resourceAwsIamAccessKeyUserName = value;
+    }
+    public resetResourceAwsIamAccessKeyUserName() {
+      this._resourceAwsIamAccessKeyUserName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceAwsIamAccessKeyUserNameInput() {
+      return this._resourceAwsIamAccessKeyUserName
+    }
+
+    // resource_aws_s3_bucket_owner_id - computed: false, optional: true, required: false
+    private _resourceAwsS3BucketOwnerId?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerId[] | undefined; 
+    public get resourceAwsS3BucketOwnerId() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_aws_s3_bucket_owner_id') as any;
+    }
+    public set resourceAwsS3BucketOwnerId(value: SecurityhubInsightFiltersResourceAwsS3BucketOwnerId[] | undefined) {
+      this._resourceAwsS3BucketOwnerId = value;
+    }
+    public resetResourceAwsS3BucketOwnerId() {
+      this._resourceAwsS3BucketOwnerId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceAwsS3BucketOwnerIdInput() {
+      return this._resourceAwsS3BucketOwnerId
+    }
+
+    // resource_aws_s3_bucket_owner_name - computed: false, optional: true, required: false
+    private _resourceAwsS3BucketOwnerName?: SecurityhubInsightFiltersResourceAwsS3BucketOwnerName[] | undefined; 
+    public get resourceAwsS3BucketOwnerName() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_aws_s3_bucket_owner_name') as any;
+    }
+    public set resourceAwsS3BucketOwnerName(value: SecurityhubInsightFiltersResourceAwsS3BucketOwnerName[] | undefined) {
+      this._resourceAwsS3BucketOwnerName = value;
+    }
+    public resetResourceAwsS3BucketOwnerName() {
+      this._resourceAwsS3BucketOwnerName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceAwsS3BucketOwnerNameInput() {
+      return this._resourceAwsS3BucketOwnerName
+    }
+
+    // resource_container_image_id - computed: false, optional: true, required: false
+    private _resourceContainerImageId?: SecurityhubInsightFiltersResourceContainerImageId[] | undefined; 
+    public get resourceContainerImageId() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_container_image_id') as any;
+    }
+    public set resourceContainerImageId(value: SecurityhubInsightFiltersResourceContainerImageId[] | undefined) {
+      this._resourceContainerImageId = value;
+    }
+    public resetResourceContainerImageId() {
+      this._resourceContainerImageId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceContainerImageIdInput() {
+      return this._resourceContainerImageId
+    }
+
+    // resource_container_image_name - computed: false, optional: true, required: false
+    private _resourceContainerImageName?: SecurityhubInsightFiltersResourceContainerImageName[] | undefined; 
+    public get resourceContainerImageName() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_container_image_name') as any;
+    }
+    public set resourceContainerImageName(value: SecurityhubInsightFiltersResourceContainerImageName[] | undefined) {
+      this._resourceContainerImageName = value;
+    }
+    public resetResourceContainerImageName() {
+      this._resourceContainerImageName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceContainerImageNameInput() {
+      return this._resourceContainerImageName
+    }
+
+    // resource_container_launched_at - computed: false, optional: true, required: false
+    private _resourceContainerLaunchedAt?: SecurityhubInsightFiltersResourceContainerLaunchedAt[] | undefined; 
+    public get resourceContainerLaunchedAt() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_container_launched_at') as any;
+    }
+    public set resourceContainerLaunchedAt(value: SecurityhubInsightFiltersResourceContainerLaunchedAt[] | undefined) {
+      this._resourceContainerLaunchedAt = value;
+    }
+    public resetResourceContainerLaunchedAt() {
+      this._resourceContainerLaunchedAt = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceContainerLaunchedAtInput() {
+      return this._resourceContainerLaunchedAt
+    }
+
+    // resource_container_name - computed: false, optional: true, required: false
+    private _resourceContainerName?: SecurityhubInsightFiltersResourceContainerName[] | undefined; 
+    public get resourceContainerName() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_container_name') as any;
+    }
+    public set resourceContainerName(value: SecurityhubInsightFiltersResourceContainerName[] | undefined) {
+      this._resourceContainerName = value;
+    }
+    public resetResourceContainerName() {
+      this._resourceContainerName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceContainerNameInput() {
+      return this._resourceContainerName
+    }
+
+    // resource_details_other - computed: false, optional: true, required: false
+    private _resourceDetailsOther?: SecurityhubInsightFiltersResourceDetailsOther[] | undefined; 
+    public get resourceDetailsOther() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_details_other') as any;
+    }
+    public set resourceDetailsOther(value: SecurityhubInsightFiltersResourceDetailsOther[] | undefined) {
+      this._resourceDetailsOther = value;
+    }
+    public resetResourceDetailsOther() {
+      this._resourceDetailsOther = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceDetailsOtherInput() {
+      return this._resourceDetailsOther
+    }
+
+    // resource_id - computed: false, optional: true, required: false
+    private _resourceId?: SecurityhubInsightFiltersResourceId[] | undefined; 
+    public get resourceId() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_id') as any;
+    }
+    public set resourceId(value: SecurityhubInsightFiltersResourceId[] | undefined) {
+      this._resourceId = value;
+    }
+    public resetResourceId() {
+      this._resourceId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceIdInput() {
+      return this._resourceId
+    }
+
+    // resource_partition - computed: false, optional: true, required: false
+    private _resourcePartition?: SecurityhubInsightFiltersResourcePartition[] | undefined; 
+    public get resourcePartition() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_partition') as any;
+    }
+    public set resourcePartition(value: SecurityhubInsightFiltersResourcePartition[] | undefined) {
+      this._resourcePartition = value;
+    }
+    public resetResourcePartition() {
+      this._resourcePartition = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourcePartitionInput() {
+      return this._resourcePartition
+    }
+
+    // resource_region - computed: false, optional: true, required: false
+    private _resourceRegion?: SecurityhubInsightFiltersResourceRegion[] | undefined; 
+    public get resourceRegion() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_region') as any;
+    }
+    public set resourceRegion(value: SecurityhubInsightFiltersResourceRegion[] | undefined) {
+      this._resourceRegion = value;
+    }
+    public resetResourceRegion() {
+      this._resourceRegion = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceRegionInput() {
+      return this._resourceRegion
+    }
+
+    // resource_tags - computed: false, optional: true, required: false
+    private _resourceTags?: SecurityhubInsightFiltersResourceTags[] | undefined; 
+    public get resourceTags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_tags') as any;
+    }
+    public set resourceTags(value: SecurityhubInsightFiltersResourceTags[] | undefined) {
+      this._resourceTags = value;
+    }
+    public resetResourceTags() {
+      this._resourceTags = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceTagsInput() {
+      return this._resourceTags
+    }
+
+    // resource_type - computed: false, optional: true, required: false
+    private _resourceType?: SecurityhubInsightFiltersResourceType[] | undefined; 
+    public get resourceType() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('resource_type') as any;
+    }
+    public set resourceType(value: SecurityhubInsightFiltersResourceType[] | undefined) {
+      this._resourceType = value;
+    }
+    public resetResourceType() {
+      this._resourceType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceTypeInput() {
+      return this._resourceType
+    }
+
+    // severity_label - computed: false, optional: true, required: false
+    private _severityLabel?: SecurityhubInsightFiltersSeverityLabel[] | undefined; 
+    public get severityLabel() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('severity_label') as any;
+    }
+    public set severityLabel(value: SecurityhubInsightFiltersSeverityLabel[] | undefined) {
+      this._severityLabel = value;
+    }
+    public resetSeverityLabel() {
+      this._severityLabel = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get severityLabelInput() {
+      return this._severityLabel
+    }
+
+    // source_url - computed: false, optional: true, required: false
+    private _sourceUrl?: SecurityhubInsightFiltersSourceUrl[] | undefined; 
+    public get sourceUrl() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('source_url') as any;
+    }
+    public set sourceUrl(value: SecurityhubInsightFiltersSourceUrl[] | undefined) {
+      this._sourceUrl = value;
+    }
+    public resetSourceUrl() {
+      this._sourceUrl = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sourceUrlInput() {
+      return this._sourceUrl
+    }
+
+    // threat_intel_indicator_category - computed: false, optional: true, required: false
+    private _threatIntelIndicatorCategory?: SecurityhubInsightFiltersThreatIntelIndicatorCategory[] | undefined; 
+    public get threatIntelIndicatorCategory() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('threat_intel_indicator_category') as any;
+    }
+    public set threatIntelIndicatorCategory(value: SecurityhubInsightFiltersThreatIntelIndicatorCategory[] | undefined) {
+      this._threatIntelIndicatorCategory = value;
+    }
+    public resetThreatIntelIndicatorCategory() {
+      this._threatIntelIndicatorCategory = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get threatIntelIndicatorCategoryInput() {
+      return this._threatIntelIndicatorCategory
+    }
+
+    // threat_intel_indicator_last_observed_at - computed: false, optional: true, required: false
+    private _threatIntelIndicatorLastObservedAt?: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAt[] | undefined; 
+    public get threatIntelIndicatorLastObservedAt() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('threat_intel_indicator_last_observed_at') as any;
+    }
+    public set threatIntelIndicatorLastObservedAt(value: SecurityhubInsightFiltersThreatIntelIndicatorLastObservedAt[] | undefined) {
+      this._threatIntelIndicatorLastObservedAt = value;
+    }
+    public resetThreatIntelIndicatorLastObservedAt() {
+      this._threatIntelIndicatorLastObservedAt = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get threatIntelIndicatorLastObservedAtInput() {
+      return this._threatIntelIndicatorLastObservedAt
+    }
+
+    // threat_intel_indicator_source - computed: false, optional: true, required: false
+    private _threatIntelIndicatorSource?: SecurityhubInsightFiltersThreatIntelIndicatorSource[] | undefined; 
+    public get threatIntelIndicatorSource() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('threat_intel_indicator_source') as any;
+    }
+    public set threatIntelIndicatorSource(value: SecurityhubInsightFiltersThreatIntelIndicatorSource[] | undefined) {
+      this._threatIntelIndicatorSource = value;
+    }
+    public resetThreatIntelIndicatorSource() {
+      this._threatIntelIndicatorSource = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get threatIntelIndicatorSourceInput() {
+      return this._threatIntelIndicatorSource
+    }
+
+    // threat_intel_indicator_source_url - computed: false, optional: true, required: false
+    private _threatIntelIndicatorSourceUrl?: SecurityhubInsightFiltersThreatIntelIndicatorSourceUrl[] | undefined; 
+    public get threatIntelIndicatorSourceUrl() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('threat_intel_indicator_source_url') as any;
+    }
+    public set threatIntelIndicatorSourceUrl(value: SecurityhubInsightFiltersThreatIntelIndicatorSourceUrl[] | undefined) {
+      this._threatIntelIndicatorSourceUrl = value;
+    }
+    public resetThreatIntelIndicatorSourceUrl() {
+      this._threatIntelIndicatorSourceUrl = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get threatIntelIndicatorSourceUrlInput() {
+      return this._threatIntelIndicatorSourceUrl
+    }
+
+    // threat_intel_indicator_type - computed: false, optional: true, required: false
+    private _threatIntelIndicatorType?: SecurityhubInsightFiltersThreatIntelIndicatorType[] | undefined; 
+    public get threatIntelIndicatorType() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('threat_intel_indicator_type') as any;
+    }
+    public set threatIntelIndicatorType(value: SecurityhubInsightFiltersThreatIntelIndicatorType[] | undefined) {
+      this._threatIntelIndicatorType = value;
+    }
+    public resetThreatIntelIndicatorType() {
+      this._threatIntelIndicatorType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get threatIntelIndicatorTypeInput() {
+      return this._threatIntelIndicatorType
+    }
+
+    // threat_intel_indicator_value - computed: false, optional: true, required: false
+    private _threatIntelIndicatorValue?: SecurityhubInsightFiltersThreatIntelIndicatorValue[] | undefined; 
+    public get threatIntelIndicatorValue() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('threat_intel_indicator_value') as any;
+    }
+    public set threatIntelIndicatorValue(value: SecurityhubInsightFiltersThreatIntelIndicatorValue[] | undefined) {
+      this._threatIntelIndicatorValue = value;
+    }
+    public resetThreatIntelIndicatorValue() {
+      this._threatIntelIndicatorValue = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get threatIntelIndicatorValueInput() {
+      return this._threatIntelIndicatorValue
+    }
+
+    // title - computed: false, optional: true, required: false
+    private _title?: SecurityhubInsightFiltersTitle[] | undefined; 
+    public get title() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('title') as any;
+    }
+    public set title(value: SecurityhubInsightFiltersTitle[] | undefined) {
+      this._title = value;
+    }
+    public resetTitle() {
+      this._title = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get titleInput() {
+      return this._title
+    }
+
+    // type - computed: false, optional: true, required: false
+    private _type?: SecurityhubInsightFiltersType[] | undefined; 
+    public get type() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('type') as any;
+    }
+    public set type(value: SecurityhubInsightFiltersType[] | undefined) {
+      this._type = value;
+    }
+    public resetType() {
+      this._type = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+
+    // updated_at - computed: false, optional: true, required: false
+    private _updatedAt?: SecurityhubInsightFiltersUpdatedAt[] | undefined; 
+    public get updatedAt() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('updated_at') as any;
+    }
+    public set updatedAt(value: SecurityhubInsightFiltersUpdatedAt[] | undefined) {
+      this._updatedAt = value;
+    }
+    public resetUpdatedAt() {
+      this._updatedAt = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updatedAtInput() {
+      return this._updatedAt
+    }
+
+    // user_defined_values - computed: false, optional: true, required: false
+    private _userDefinedValues?: SecurityhubInsightFiltersUserDefinedValues[] | undefined; 
+    public get userDefinedValues() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('user_defined_values') as any;
+    }
+    public set userDefinedValues(value: SecurityhubInsightFiltersUserDefinedValues[] | undefined) {
+      this._userDefinedValues = value;
+    }
+    public resetUserDefinedValues() {
+      this._userDefinedValues = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userDefinedValuesInput() {
+      return this._userDefinedValues
+    }
+
+    // verification_state - computed: false, optional: true, required: false
+    private _verificationState?: SecurityhubInsightFiltersVerificationState[] | undefined; 
+    public get verificationState() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('verification_state') as any;
+    }
+    public set verificationState(value: SecurityhubInsightFiltersVerificationState[] | undefined) {
+      this._verificationState = value;
+    }
+    public resetVerificationState() {
+      this._verificationState = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get verificationStateInput() {
+      return this._verificationState
+    }
+
+    // workflow_status - computed: false, optional: true, required: false
+    private _workflowStatus?: SecurityhubInsightFiltersWorkflowStatus[] | undefined; 
+    public get workflowStatus() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('workflow_status') as any;
+    }
+    public set workflowStatus(value: SecurityhubInsightFiltersWorkflowStatus[] | undefined) {
+      this._workflowStatus = value;
+    }
+    public resetWorkflowStatus() {
+      this._workflowStatus = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get workflowStatusInput() {
+      return this._workflowStatus
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/securityhub_insight.html aws_securityhub_insight}
@@ -2851,7 +5053,7 @@ export namespace SecurityHub {
     }
 
     // group_by_attribute - computed: false, optional: false, required: true
-    private _groupByAttribute: string;
+    private _groupByAttribute?: string; 
     public get groupByAttribute() {
       return this.getStringAttribute('group_by_attribute');
     }
@@ -2869,7 +5071,7 @@ export namespace SecurityHub {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2882,11 +5084,12 @@ export namespace SecurityHub {
     }
 
     // filters - computed: false, optional: false, required: true
-    private _filters: SecurityhubInsightFilters[];
+    private _filters?: SecurityhubInsightFilters; 
+    private __filtersOutput = new SecurityhubInsightFiltersOutputReference(this as any, "filters", true);
     public get filters() {
-      return this.interpolationForAttribute('filters') as any;
+      return this.__filtersOutput;
     }
-    public set filters(value: SecurityhubInsightFilters[]) {
+    public putFilters(value: SecurityhubInsightFilters) {
       this._filters = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -2902,7 +5105,7 @@ export namespace SecurityHub {
       return {
         group_by_attribute: cdktf.stringToTerraform(this._groupByAttribute),
         name: cdktf.stringToTerraform(this._name),
-        filters: cdktf.listMapper(securityhubInsightFiltersToTerraform)(this._filters),
+        filters: securityhubInsightFiltersToTerraform(this._filters),
       };
     }
   }
@@ -2963,7 +5166,7 @@ export namespace SecurityHub {
     }
 
     // master_id - computed: false, optional: false, required: true
-    private _masterId: string;
+    private _masterId?: string; 
     public get masterId() {
       return this.getStringAttribute('master_id');
     }
@@ -3042,7 +5245,7 @@ export namespace SecurityHub {
     // ==========
 
     // account_id - computed: false, optional: false, required: true
-    private _accountId: string;
+    private _accountId?: string; 
     public get accountId() {
       return this.getStringAttribute('account_id');
     }
@@ -3055,7 +5258,7 @@ export namespace SecurityHub {
     }
 
     // email - computed: false, optional: false, required: true
-    private _email: string;
+    private _email?: string; 
     public get email() {
       return this.getStringAttribute('email');
     }
@@ -3073,11 +5276,11 @@ export namespace SecurityHub {
     }
 
     // invite - computed: false, optional: true, required: false
-    private _invite?: boolean | cdktf.IResolvable;
+    private _invite?: boolean | cdktf.IResolvable | undefined; 
     public get invite() {
-      return this.getBooleanAttribute('invite');
+      return this.getBooleanAttribute('invite') as any;
     }
-    public set invite(value: boolean | cdktf.IResolvable ) {
+    public set invite(value: boolean | cdktf.IResolvable | undefined) {
       this._invite = value;
     }
     public resetInvite() {
@@ -3157,7 +5360,7 @@ export namespace SecurityHub {
     // ==========
 
     // admin_account_id - computed: false, optional: false, required: true
-    private _adminAccountId: string;
+    private _adminAccountId?: string; 
     public get adminAccountId() {
       return this.getStringAttribute('admin_account_id');
     }
@@ -3231,9 +5434,9 @@ export namespace SecurityHub {
     // ==========
 
     // auto_enable - computed: false, optional: false, required: true
-    private _autoEnable: boolean | cdktf.IResolvable;
+    private _autoEnable?: boolean | cdktf.IResolvable; 
     public get autoEnable() {
-      return this.getBooleanAttribute('auto_enable');
+      return this.getBooleanAttribute('auto_enable') as any;
     }
     public set autoEnable(value: boolean | cdktf.IResolvable) {
       this._autoEnable = value;
@@ -3315,7 +5518,7 @@ export namespace SecurityHub {
     }
 
     // product_arn - computed: false, optional: false, required: true
-    private _productArn: string;
+    private _productArn?: string; 
     public get productArn() {
       return this.getStringAttribute('product_arn');
     }
@@ -3399,7 +5602,7 @@ export namespace SecurityHub {
     }
 
     // control_status - computed: false, optional: false, required: true
-    private _controlStatus: string;
+    private _controlStatus?: string; 
     public get controlStatus() {
       return this.getStringAttribute('control_status');
     }
@@ -3422,11 +5625,11 @@ export namespace SecurityHub {
     }
 
     // disabled_reason - computed: true, optional: true, required: false
-    private _disabledReason?: string;
+    private _disabledReason?: string | undefined; 
     public get disabledReason() {
       return this.getStringAttribute('disabled_reason');
     }
-    public set disabledReason(value: string) {
+    public set disabledReason(value: string | undefined) {
       this._disabledReason = value;
     }
     public resetDisabledReason() {
@@ -3458,7 +5661,7 @@ export namespace SecurityHub {
     }
 
     // standards_control_arn - computed: false, optional: false, required: true
-    private _standardsControlArn: string;
+    private _standardsControlArn?: string; 
     public get standardsControlArn() {
       return this.getStringAttribute('standards_control_arn');
     }
@@ -3539,7 +5742,7 @@ export namespace SecurityHub {
     }
 
     // standards_arn - computed: false, optional: false, required: true
-    private _standardsArn: string;
+    private _standardsArn?: string; 
     public get standardsArn() {
       return this.getStringAttribute('standards_arn');
     }

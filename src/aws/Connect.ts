@@ -62,14 +62,59 @@ export namespace Connect {
     readonly update?: string;
   }
 
-  function connectContactFlowTimeoutsToTerraform(struct?: ConnectContactFlowTimeouts): any {
+  function connectContactFlowTimeoutsToTerraform(struct?: ConnectContactFlowTimeoutsOutputReference | ConnectContactFlowTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       update: cdktf.stringToTerraform(struct!.update),
     }
   }
 
+  export class ConnectContactFlowTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/connect_contact_flow.html aws_connect_contact_flow}
@@ -130,11 +175,11 @@ export namespace Connect {
     }
 
     // content - computed: true, optional: true, required: false
-    private _content?: string;
+    private _content?: string | undefined; 
     public get content() {
       return this.getStringAttribute('content');
     }
-    public set content(value: string) {
+    public set content(value: string | undefined) {
       this._content = value;
     }
     public resetContent() {
@@ -146,11 +191,11 @@ export namespace Connect {
     }
 
     // content_hash - computed: false, optional: true, required: false
-    private _contentHash?: string;
+    private _contentHash?: string | undefined; 
     public get contentHash() {
       return this.getStringAttribute('content_hash');
     }
-    public set contentHash(value: string ) {
+    public set contentHash(value: string | undefined) {
       this._contentHash = value;
     }
     public resetContentHash() {
@@ -162,11 +207,11 @@ export namespace Connect {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -178,11 +223,11 @@ export namespace Connect {
     }
 
     // filename - computed: false, optional: true, required: false
-    private _filename?: string;
+    private _filename?: string | undefined; 
     public get filename() {
       return this.getStringAttribute('filename');
     }
-    public set filename(value: string ) {
+    public set filename(value: string | undefined) {
       this._filename = value;
     }
     public resetFilename() {
@@ -199,7 +244,7 @@ export namespace Connect {
     }
 
     // instance_id - computed: false, optional: false, required: true
-    private _instanceId: string;
+    private _instanceId?: string; 
     public get instanceId() {
       return this.getStringAttribute('instance_id');
     }
@@ -212,7 +257,7 @@ export namespace Connect {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -225,11 +270,12 @@ export namespace Connect {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -241,11 +287,12 @@ export namespace Connect {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -257,11 +304,11 @@ export namespace Connect {
     }
 
     // type - computed: false, optional: true, required: false
-    private _type?: string;
+    private _type?: string | undefined; 
     public get type() {
       return this.getStringAttribute('type');
     }
-    public set type(value: string ) {
+    public set type(value: string | undefined) {
       this._type = value;
     }
     public resetType() {
@@ -273,11 +320,12 @@ export namespace Connect {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: ConnectContactFlowTimeouts;
+    private _timeouts?: ConnectContactFlowTimeouts | undefined; 
+    private __timeoutsOutput = new ConnectContactFlowTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: ConnectContactFlowTimeouts ) {
+    public putTimeouts(value: ConnectContactFlowTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -362,14 +410,59 @@ export namespace Connect {
     readonly delete?: string;
   }
 
-  function connectInstanceTimeoutsToTerraform(struct?: ConnectInstanceTimeouts): any {
+  function connectInstanceTimeoutsToTerraform(struct?: ConnectInstanceTimeoutsOutputReference | ConnectInstanceTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class ConnectInstanceTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/connect_instance.html aws_connect_instance}
@@ -425,11 +518,11 @@ export namespace Connect {
     }
 
     // auto_resolve_best_voices_enabled - computed: false, optional: true, required: false
-    private _autoResolveBestVoicesEnabled?: boolean | cdktf.IResolvable;
+    private _autoResolveBestVoicesEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get autoResolveBestVoicesEnabled() {
-      return this.getBooleanAttribute('auto_resolve_best_voices_enabled');
+      return this.getBooleanAttribute('auto_resolve_best_voices_enabled') as any;
     }
-    public set autoResolveBestVoicesEnabled(value: boolean | cdktf.IResolvable ) {
+    public set autoResolveBestVoicesEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._autoResolveBestVoicesEnabled = value;
     }
     public resetAutoResolveBestVoicesEnabled() {
@@ -441,11 +534,11 @@ export namespace Connect {
     }
 
     // contact_flow_logs_enabled - computed: false, optional: true, required: false
-    private _contactFlowLogsEnabled?: boolean | cdktf.IResolvable;
+    private _contactFlowLogsEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get contactFlowLogsEnabled() {
-      return this.getBooleanAttribute('contact_flow_logs_enabled');
+      return this.getBooleanAttribute('contact_flow_logs_enabled') as any;
     }
-    public set contactFlowLogsEnabled(value: boolean | cdktf.IResolvable ) {
+    public set contactFlowLogsEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._contactFlowLogsEnabled = value;
     }
     public resetContactFlowLogsEnabled() {
@@ -457,11 +550,11 @@ export namespace Connect {
     }
 
     // contact_lens_enabled - computed: false, optional: true, required: false
-    private _contactLensEnabled?: boolean | cdktf.IResolvable;
+    private _contactLensEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get contactLensEnabled() {
-      return this.getBooleanAttribute('contact_lens_enabled');
+      return this.getBooleanAttribute('contact_lens_enabled') as any;
     }
-    public set contactLensEnabled(value: boolean | cdktf.IResolvable ) {
+    public set contactLensEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._contactLensEnabled = value;
     }
     public resetContactLensEnabled() {
@@ -478,11 +571,11 @@ export namespace Connect {
     }
 
     // directory_id - computed: false, optional: true, required: false
-    private _directoryId?: string;
+    private _directoryId?: string | undefined; 
     public get directoryId() {
       return this.getStringAttribute('directory_id');
     }
-    public set directoryId(value: string ) {
+    public set directoryId(value: string | undefined) {
       this._directoryId = value;
     }
     public resetDirectoryId() {
@@ -494,11 +587,11 @@ export namespace Connect {
     }
 
     // early_media_enabled - computed: false, optional: true, required: false
-    private _earlyMediaEnabled?: boolean | cdktf.IResolvable;
+    private _earlyMediaEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get earlyMediaEnabled() {
-      return this.getBooleanAttribute('early_media_enabled');
+      return this.getBooleanAttribute('early_media_enabled') as any;
     }
-    public set earlyMediaEnabled(value: boolean | cdktf.IResolvable ) {
+    public set earlyMediaEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._earlyMediaEnabled = value;
     }
     public resetEarlyMediaEnabled() {
@@ -515,7 +608,7 @@ export namespace Connect {
     }
 
     // identity_management_type - computed: false, optional: false, required: true
-    private _identityManagementType: string;
+    private _identityManagementType?: string; 
     public get identityManagementType() {
       return this.getStringAttribute('identity_management_type');
     }
@@ -528,9 +621,9 @@ export namespace Connect {
     }
 
     // inbound_calls_enabled - computed: false, optional: false, required: true
-    private _inboundCallsEnabled: boolean | cdktf.IResolvable;
+    private _inboundCallsEnabled?: boolean | cdktf.IResolvable; 
     public get inboundCallsEnabled() {
-      return this.getBooleanAttribute('inbound_calls_enabled');
+      return this.getBooleanAttribute('inbound_calls_enabled') as any;
     }
     public set inboundCallsEnabled(value: boolean | cdktf.IResolvable) {
       this._inboundCallsEnabled = value;
@@ -541,11 +634,11 @@ export namespace Connect {
     }
 
     // instance_alias - computed: false, optional: true, required: false
-    private _instanceAlias?: string;
+    private _instanceAlias?: string | undefined; 
     public get instanceAlias() {
       return this.getStringAttribute('instance_alias');
     }
-    public set instanceAlias(value: string ) {
+    public set instanceAlias(value: string | undefined) {
       this._instanceAlias = value;
     }
     public resetInstanceAlias() {
@@ -557,9 +650,9 @@ export namespace Connect {
     }
 
     // outbound_calls_enabled - computed: false, optional: false, required: true
-    private _outboundCallsEnabled: boolean | cdktf.IResolvable;
+    private _outboundCallsEnabled?: boolean | cdktf.IResolvable; 
     public get outboundCallsEnabled() {
-      return this.getBooleanAttribute('outbound_calls_enabled');
+      return this.getBooleanAttribute('outbound_calls_enabled') as any;
     }
     public set outboundCallsEnabled(value: boolean | cdktf.IResolvable) {
       this._outboundCallsEnabled = value;
@@ -580,11 +673,12 @@ export namespace Connect {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: ConnectInstanceTimeouts;
+    private _timeouts?: ConnectInstanceTimeouts | undefined; 
+    private __timeoutsOutput = new ConnectInstanceTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: ConnectInstanceTimeouts ) {
+    public putTimeouts(value: ConnectInstanceTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -686,11 +780,11 @@ export namespace Connect {
     }
 
     // contact_flow_id - computed: true, optional: true, required: false
-    private _contactFlowId?: string;
+    private _contactFlowId?: string | undefined; 
     public get contactFlowId() {
       return this.getStringAttribute('contact_flow_id');
     }
-    public set contactFlowId(value: string) {
+    public set contactFlowId(value: string | undefined) {
       this._contactFlowId = value;
     }
     public resetContactFlowId() {
@@ -717,7 +811,7 @@ export namespace Connect {
     }
 
     // instance_id - computed: false, optional: false, required: true
-    private _instanceId: string;
+    private _instanceId?: string; 
     public get instanceId() {
       return this.getStringAttribute('instance_id');
     }
@@ -730,11 +824,11 @@ export namespace Connect {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -746,11 +840,12 @@ export namespace Connect {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -762,11 +857,11 @@ export namespace Connect {
     }
 
     // type - computed: false, optional: true, required: false
-    private _type?: string;
+    private _type?: string | undefined; 
     public get type() {
       return this.getStringAttribute('type');
     }
-    public set type(value: string ) {
+    public set type(value: string | undefined) {
       this._type = value;
     }
     public resetType() {
@@ -849,17 +944,17 @@ export namespace Connect {
 
     // auto_resolve_best_voices_enabled - computed: true, optional: false, required: false
     public get autoResolveBestVoicesEnabled() {
-      return this.getBooleanAttribute('auto_resolve_best_voices_enabled');
+      return this.getBooleanAttribute('auto_resolve_best_voices_enabled') as any;
     }
 
     // contact_flow_logs_enabled - computed: true, optional: false, required: false
     public get contactFlowLogsEnabled() {
-      return this.getBooleanAttribute('contact_flow_logs_enabled');
+      return this.getBooleanAttribute('contact_flow_logs_enabled') as any;
     }
 
     // contact_lens_enabled - computed: true, optional: false, required: false
     public get contactLensEnabled() {
-      return this.getBooleanAttribute('contact_lens_enabled');
+      return this.getBooleanAttribute('contact_lens_enabled') as any;
     }
 
     // created_time - computed: true, optional: false, required: false
@@ -869,7 +964,7 @@ export namespace Connect {
 
     // early_media_enabled - computed: true, optional: false, required: false
     public get earlyMediaEnabled() {
-      return this.getBooleanAttribute('early_media_enabled');
+      return this.getBooleanAttribute('early_media_enabled') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -884,15 +979,15 @@ export namespace Connect {
 
     // inbound_calls_enabled - computed: true, optional: false, required: false
     public get inboundCallsEnabled() {
-      return this.getBooleanAttribute('inbound_calls_enabled');
+      return this.getBooleanAttribute('inbound_calls_enabled') as any;
     }
 
     // instance_alias - computed: true, optional: true, required: false
-    private _instanceAlias?: string;
+    private _instanceAlias?: string | undefined; 
     public get instanceAlias() {
       return this.getStringAttribute('instance_alias');
     }
-    public set instanceAlias(value: string) {
+    public set instanceAlias(value: string | undefined) {
       this._instanceAlias = value;
     }
     public resetInstanceAlias() {
@@ -904,11 +999,11 @@ export namespace Connect {
     }
 
     // instance_id - computed: true, optional: true, required: false
-    private _instanceId?: string;
+    private _instanceId?: string | undefined; 
     public get instanceId() {
       return this.getStringAttribute('instance_id');
     }
-    public set instanceId(value: string) {
+    public set instanceId(value: string | undefined) {
       this._instanceId = value;
     }
     public resetInstanceId() {
@@ -921,7 +1016,7 @@ export namespace Connect {
 
     // outbound_calls_enabled - computed: true, optional: false, required: false
     public get outboundCallsEnabled() {
-      return this.getBooleanAttribute('outbound_calls_enabled');
+      return this.getBooleanAttribute('outbound_calls_enabled') as any;
     }
 
     // service_role - computed: true, optional: false, required: false

@@ -46,6 +46,7 @@ export namespace MediaPackage {
 
     // ingest_endpoints - computed: true, optional: false, required: false
     public get ingestEndpoints() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ingest_endpoints') as any;
     }
   }
@@ -98,7 +99,7 @@ export namespace MediaPackage {
     }
 
     // channel_id - computed: false, optional: false, required: true
-    private _channelId: string;
+    private _channelId?: string; 
     public get channelId() {
       return this.getStringAttribute('channel_id');
     }
@@ -111,11 +112,11 @@ export namespace MediaPackage {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -137,11 +138,12 @@ export namespace MediaPackage {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -153,11 +155,12 @@ export namespace MediaPackage {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {

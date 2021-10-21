@@ -104,11 +104,11 @@ export namespace Cur {
     // ==========
 
     // additional_artifacts - computed: false, optional: true, required: false
-    private _additionalArtifacts?: string[];
+    private _additionalArtifacts?: string[] | undefined; 
     public get additionalArtifacts() {
       return this.getListAttribute('additional_artifacts');
     }
-    public set additionalArtifacts(value: string[] ) {
+    public set additionalArtifacts(value: string[] | undefined) {
       this._additionalArtifacts = value;
     }
     public resetAdditionalArtifacts() {
@@ -120,7 +120,7 @@ export namespace Cur {
     }
 
     // additional_schema_elements - computed: false, optional: false, required: true
-    private _additionalSchemaElements: string[];
+    private _additionalSchemaElements?: string[]; 
     public get additionalSchemaElements() {
       return this.getListAttribute('additional_schema_elements');
     }
@@ -138,7 +138,7 @@ export namespace Cur {
     }
 
     // compression - computed: false, optional: false, required: true
-    private _compression: string;
+    private _compression?: string; 
     public get compression() {
       return this.getStringAttribute('compression');
     }
@@ -151,7 +151,7 @@ export namespace Cur {
     }
 
     // format - computed: false, optional: false, required: true
-    private _format: string;
+    private _format?: string; 
     public get format() {
       return this.getStringAttribute('format');
     }
@@ -169,11 +169,11 @@ export namespace Cur {
     }
 
     // refresh_closed_reports - computed: false, optional: true, required: false
-    private _refreshClosedReports?: boolean | cdktf.IResolvable;
+    private _refreshClosedReports?: boolean | cdktf.IResolvable | undefined; 
     public get refreshClosedReports() {
-      return this.getBooleanAttribute('refresh_closed_reports');
+      return this.getBooleanAttribute('refresh_closed_reports') as any;
     }
-    public set refreshClosedReports(value: boolean | cdktf.IResolvable ) {
+    public set refreshClosedReports(value: boolean | cdktf.IResolvable | undefined) {
       this._refreshClosedReports = value;
     }
     public resetRefreshClosedReports() {
@@ -185,7 +185,7 @@ export namespace Cur {
     }
 
     // report_name - computed: false, optional: false, required: true
-    private _reportName: string;
+    private _reportName?: string; 
     public get reportName() {
       return this.getStringAttribute('report_name');
     }
@@ -198,11 +198,11 @@ export namespace Cur {
     }
 
     // report_versioning - computed: false, optional: true, required: false
-    private _reportVersioning?: string;
+    private _reportVersioning?: string | undefined; 
     public get reportVersioning() {
       return this.getStringAttribute('report_versioning');
     }
-    public set reportVersioning(value: string ) {
+    public set reportVersioning(value: string | undefined) {
       this._reportVersioning = value;
     }
     public resetReportVersioning() {
@@ -214,7 +214,7 @@ export namespace Cur {
     }
 
     // s3_bucket - computed: false, optional: false, required: true
-    private _s3Bucket: string;
+    private _s3Bucket?: string; 
     public get s3Bucket() {
       return this.getStringAttribute('s3_bucket');
     }
@@ -227,11 +227,11 @@ export namespace Cur {
     }
 
     // s3_prefix - computed: false, optional: true, required: false
-    private _s3Prefix?: string;
+    private _s3Prefix?: string | undefined; 
     public get s3Prefix() {
       return this.getStringAttribute('s3_prefix');
     }
-    public set s3Prefix(value: string ) {
+    public set s3Prefix(value: string | undefined) {
       this._s3Prefix = value;
     }
     public resetS3Prefix() {
@@ -243,7 +243,7 @@ export namespace Cur {
     }
 
     // s3_region - computed: false, optional: false, required: true
-    private _s3Region: string;
+    private _s3Region?: string; 
     public get s3Region() {
       return this.getStringAttribute('s3_region');
     }
@@ -256,7 +256,7 @@ export namespace Cur {
     }
 
     // time_unit - computed: false, optional: false, required: true
-    private _timeUnit: string;
+    private _timeUnit?: string; 
     public get timeUnit() {
       return this.getStringAttribute('time_unit');
     }
@@ -361,11 +361,11 @@ export namespace Cur {
 
     // refresh_closed_reports - computed: true, optional: false, required: false
     public get refreshClosedReports() {
-      return this.getBooleanAttribute('refresh_closed_reports');
+      return this.getBooleanAttribute('refresh_closed_reports') as any;
     }
 
     // report_name - computed: false, optional: false, required: true
-    private _reportName: string;
+    private _reportName?: string; 
     public get reportName() {
       return this.getStringAttribute('report_name');
     }

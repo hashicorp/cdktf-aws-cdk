@@ -64,11 +64,11 @@ export namespace Chime {
     // ==========
 
     // aws_region - computed: false, optional: true, required: false
-    private _awsRegion?: string;
+    private _awsRegion?: string | undefined; 
     public get awsRegion() {
       return this.getStringAttribute('aws_region');
     }
-    public set awsRegion(value: string ) {
+    public set awsRegion(value: string | undefined) {
       this._awsRegion = value;
     }
     public resetAwsRegion() {
@@ -85,7 +85,7 @@ export namespace Chime {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -103,9 +103,9 @@ export namespace Chime {
     }
 
     // require_encryption - computed: false, optional: false, required: true
-    private _requireEncryption: boolean | cdktf.IResolvable;
+    private _requireEncryption?: boolean | cdktf.IResolvable; 
     public get requireEncryption() {
-      return this.getBooleanAttribute('require_encryption');
+      return this.getBooleanAttribute('require_encryption') as any;
     }
     public set requireEncryption(value: boolean | cdktf.IResolvable) {
       this._requireEncryption = value;
@@ -152,6 +152,9 @@ export namespace Chime {
 
   function chimeVoiceConnectorGroupConnectorToTerraform(struct?: ChimeVoiceConnectorGroupConnector): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       priority: cdktf.numberToTerraform(struct!.priority),
       voice_connector_id: cdktf.stringToTerraform(struct!.voiceConnectorId),
@@ -205,7 +208,7 @@ export namespace Chime {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -218,11 +221,12 @@ export namespace Chime {
     }
 
     // connector - computed: false, optional: true, required: false
-    private _connector?: ChimeVoiceConnectorGroupConnector[];
+    private _connector?: ChimeVoiceConnectorGroupConnector[] | undefined; 
     public get connector() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('connector') as any;
     }
-    public set connector(value: ChimeVoiceConnectorGroupConnector[] ) {
+    public set connector(value: ChimeVoiceConnectorGroupConnector[] | undefined) {
       this._connector = value;
     }
     public resetConnector() {
@@ -296,11 +300,11 @@ export namespace Chime {
     // ==========
 
     // enable_sip_logs - computed: false, optional: true, required: false
-    private _enableSipLogs?: boolean | cdktf.IResolvable;
+    private _enableSipLogs?: boolean | cdktf.IResolvable | undefined; 
     public get enableSipLogs() {
-      return this.getBooleanAttribute('enable_sip_logs');
+      return this.getBooleanAttribute('enable_sip_logs') as any;
     }
-    public set enableSipLogs(value: boolean | cdktf.IResolvable ) {
+    public set enableSipLogs(value: boolean | cdktf.IResolvable | undefined) {
       this._enableSipLogs = value;
     }
     public resetEnableSipLogs() {
@@ -317,7 +321,7 @@ export namespace Chime {
     }
 
     // voice_connector_id - computed: false, optional: false, required: true
-    private _voiceConnectorId: string;
+    private _voiceConnectorId?: string; 
     public get voiceConnectorId() {
       return this.getStringAttribute('voice_connector_id');
     }
@@ -381,6 +385,9 @@ export namespace Chime {
 
   function chimeVoiceConnectorOriginationRouteToTerraform(struct?: ChimeVoiceConnectorOriginationRoute): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       host: cdktf.stringToTerraform(struct!.host),
       port: cdktf.numberToTerraform(struct!.port),
@@ -433,11 +440,11 @@ export namespace Chime {
     // ==========
 
     // disabled - computed: false, optional: true, required: false
-    private _disabled?: boolean | cdktf.IResolvable;
+    private _disabled?: boolean | cdktf.IResolvable | undefined; 
     public get disabled() {
-      return this.getBooleanAttribute('disabled');
+      return this.getBooleanAttribute('disabled') as any;
     }
-    public set disabled(value: boolean | cdktf.IResolvable ) {
+    public set disabled(value: boolean | cdktf.IResolvable | undefined) {
       this._disabled = value;
     }
     public resetDisabled() {
@@ -454,7 +461,7 @@ export namespace Chime {
     }
 
     // voice_connector_id - computed: false, optional: false, required: true
-    private _voiceConnectorId: string;
+    private _voiceConnectorId?: string; 
     public get voiceConnectorId() {
       return this.getStringAttribute('voice_connector_id');
     }
@@ -467,8 +474,9 @@ export namespace Chime {
     }
 
     // route - computed: false, optional: false, required: true
-    private _route: ChimeVoiceConnectorOriginationRoute[];
+    private _route?: ChimeVoiceConnectorOriginationRoute[]; 
     public get route() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('route') as any;
     }
     public set route(value: ChimeVoiceConnectorOriginationRoute[]) {
@@ -553,7 +561,7 @@ export namespace Chime {
     // ==========
 
     // data_retention - computed: false, optional: false, required: true
-    private _dataRetention: number;
+    private _dataRetention?: number; 
     public get dataRetention() {
       return this.getNumberAttribute('data_retention');
     }
@@ -566,11 +574,11 @@ export namespace Chime {
     }
 
     // disabled - computed: false, optional: true, required: false
-    private _disabled?: boolean | cdktf.IResolvable;
+    private _disabled?: boolean | cdktf.IResolvable | undefined; 
     public get disabled() {
-      return this.getBooleanAttribute('disabled');
+      return this.getBooleanAttribute('disabled') as any;
     }
-    public set disabled(value: boolean | cdktf.IResolvable ) {
+    public set disabled(value: boolean | cdktf.IResolvable | undefined) {
       this._disabled = value;
     }
     public resetDisabled() {
@@ -587,11 +595,11 @@ export namespace Chime {
     }
 
     // streaming_notification_targets - computed: false, optional: true, required: false
-    private _streamingNotificationTargets?: string[];
+    private _streamingNotificationTargets?: string[] | undefined; 
     public get streamingNotificationTargets() {
       return this.getListAttribute('streaming_notification_targets');
     }
-    public set streamingNotificationTargets(value: string[] ) {
+    public set streamingNotificationTargets(value: string[] | undefined) {
       this._streamingNotificationTargets = value;
     }
     public resetStreamingNotificationTargets() {
@@ -603,7 +611,7 @@ export namespace Chime {
     }
 
     // voice_connector_id - computed: false, optional: false, required: true
-    private _voiceConnectorId: string;
+    private _voiceConnectorId?: string; 
     public get voiceConnectorId() {
       return this.getStringAttribute('voice_connector_id');
     }
@@ -700,7 +708,7 @@ export namespace Chime {
     // ==========
 
     // calling_regions - computed: false, optional: false, required: true
-    private _callingRegions: string[];
+    private _callingRegions?: string[]; 
     public get callingRegions() {
       return this.getListAttribute('calling_regions');
     }
@@ -713,7 +721,7 @@ export namespace Chime {
     }
 
     // cidr_allow_list - computed: false, optional: false, required: true
-    private _cidrAllowList: string[];
+    private _cidrAllowList?: string[]; 
     public get cidrAllowList() {
       return this.getListAttribute('cidr_allow_list');
     }
@@ -726,11 +734,11 @@ export namespace Chime {
     }
 
     // cps_limit - computed: false, optional: true, required: false
-    private _cpsLimit?: number;
+    private _cpsLimit?: number | undefined; 
     public get cpsLimit() {
       return this.getNumberAttribute('cps_limit');
     }
-    public set cpsLimit(value: number ) {
+    public set cpsLimit(value: number | undefined) {
       this._cpsLimit = value;
     }
     public resetCpsLimit() {
@@ -742,11 +750,11 @@ export namespace Chime {
     }
 
     // default_phone_number - computed: false, optional: true, required: false
-    private _defaultPhoneNumber?: string;
+    private _defaultPhoneNumber?: string | undefined; 
     public get defaultPhoneNumber() {
       return this.getStringAttribute('default_phone_number');
     }
-    public set defaultPhoneNumber(value: string ) {
+    public set defaultPhoneNumber(value: string | undefined) {
       this._defaultPhoneNumber = value;
     }
     public resetDefaultPhoneNumber() {
@@ -758,11 +766,11 @@ export namespace Chime {
     }
 
     // disabled - computed: false, optional: true, required: false
-    private _disabled?: boolean | cdktf.IResolvable;
+    private _disabled?: boolean | cdktf.IResolvable | undefined; 
     public get disabled() {
-      return this.getBooleanAttribute('disabled');
+      return this.getBooleanAttribute('disabled') as any;
     }
-    public set disabled(value: boolean | cdktf.IResolvable ) {
+    public set disabled(value: boolean | cdktf.IResolvable | undefined) {
       this._disabled = value;
     }
     public resetDisabled() {
@@ -779,7 +787,7 @@ export namespace Chime {
     }
 
     // voice_connector_id - computed: false, optional: false, required: true
-    private _voiceConnectorId: string;
+    private _voiceConnectorId?: string; 
     public get voiceConnectorId() {
       return this.getStringAttribute('voice_connector_id');
     }
@@ -831,6 +839,9 @@ export namespace Chime {
 
   function chimeVoiceConnectorTerminationCredentialsCredentialsToTerraform(struct?: ChimeVoiceConnectorTerminationCredentialsCredentials): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       password: cdktf.stringToTerraform(struct!.password),
       username: cdktf.stringToTerraform(struct!.username),
@@ -884,7 +895,7 @@ export namespace Chime {
     }
 
     // voice_connector_id - computed: false, optional: false, required: true
-    private _voiceConnectorId: string;
+    private _voiceConnectorId?: string; 
     public get voiceConnectorId() {
       return this.getStringAttribute('voice_connector_id');
     }
@@ -897,8 +908,9 @@ export namespace Chime {
     }
 
     // credentials - computed: false, optional: false, required: true
-    private _credentials: ChimeVoiceConnectorTerminationCredentialsCredentials[];
+    private _credentials?: ChimeVoiceConnectorTerminationCredentialsCredentials[]; 
     public get credentials() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('credentials') as any;
     }
     public set credentials(value: ChimeVoiceConnectorTerminationCredentialsCredentials[]) {

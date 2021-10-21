@@ -48,14 +48,53 @@ export namespace CodePipeline {
     readonly type: string;
   }
 
-  function codepipelineArtifactStoreEncryptionKeyToTerraform(struct?: CodepipelineArtifactStoreEncryptionKey): any {
+  function codepipelineArtifactStoreEncryptionKeyToTerraform(struct?: CodepipelineArtifactStoreEncryptionKeyOutputReference | CodepipelineArtifactStoreEncryptionKey): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       id: cdktf.stringToTerraform(struct!.id),
       type: cdktf.stringToTerraform(struct!.type),
     }
   }
 
+  export class CodepipelineArtifactStoreEncryptionKeyOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // id - computed: false, optional: false, required: true
+    private _id?: string; 
+    public get id() {
+      return this.getStringAttribute('id');
+    }
+    public set id(value: string) {
+      this._id = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get idInput() {
+      return this._id
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
   export interface CodepipelineArtifactStore {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codepipeline.html#location Codepipeline#location}
@@ -74,16 +113,19 @@ export namespace CodePipeline {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codepipeline.html#encryption_key Codepipeline#encryption_key}
     */
-    readonly encryptionKey?: CodepipelineArtifactStoreEncryptionKey[];
+    readonly encryptionKey?: CodepipelineArtifactStoreEncryptionKey;
   }
 
   function codepipelineArtifactStoreToTerraform(struct?: CodepipelineArtifactStore): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       location: cdktf.stringToTerraform(struct!.location),
       region: cdktf.stringToTerraform(struct!.region),
       type: cdktf.stringToTerraform(struct!.type),
-      encryption_key: cdktf.listMapper(codepipelineArtifactStoreEncryptionKeyToTerraform)(struct!.encryptionKey),
+      encryption_key: codepipelineArtifactStoreEncryptionKeyToTerraform(struct!.encryptionKey),
     }
   }
 
@@ -140,6 +182,9 @@ export namespace CodePipeline {
 
   function codepipelineStageActionToTerraform(struct?: CodepipelineStageAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       category: cdktf.stringToTerraform(struct!.category),
       configuration: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.configuration),
@@ -171,6 +216,9 @@ export namespace CodePipeline {
 
   function codepipelineStageToTerraform(struct?: CodepipelineStage): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       action: cdktf.listMapper(codepipelineStageActionToTerraform)(struct!.action),
@@ -233,7 +281,7 @@ export namespace CodePipeline {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -246,7 +294,7 @@ export namespace CodePipeline {
     }
 
     // role_arn - computed: false, optional: false, required: true
-    private _roleArn: string;
+    private _roleArn?: string; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
@@ -259,11 +307,12 @@ export namespace CodePipeline {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -275,11 +324,12 @@ export namespace CodePipeline {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -291,8 +341,9 @@ export namespace CodePipeline {
     }
 
     // artifact_store - computed: false, optional: false, required: true
-    private _artifactStore: CodepipelineArtifactStore[];
+    private _artifactStore?: CodepipelineArtifactStore[]; 
     public get artifactStore() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('artifact_store') as any;
     }
     public set artifactStore(value: CodepipelineArtifactStore[]) {
@@ -304,8 +355,9 @@ export namespace CodePipeline {
     }
 
     // stage - computed: false, optional: false, required: true
-    private _stage: CodepipelineStage[];
+    private _stage?: CodepipelineStage[]; 
     public get stage() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('stage') as any;
     }
     public set stage(value: CodepipelineStage[]) {
@@ -361,7 +413,7 @@ export namespace CodePipeline {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codepipeline_webhook.html#authentication_configuration CodepipelineWebhook#authentication_configuration}
     */
-    readonly authenticationConfiguration?: CodepipelineWebhookAuthenticationConfiguration[];
+    readonly authenticationConfiguration?: CodepipelineWebhookAuthenticationConfiguration;
     /**
     * filter block
     * 
@@ -380,14 +432,59 @@ export namespace CodePipeline {
     readonly secretToken?: string;
   }
 
-  function codepipelineWebhookAuthenticationConfigurationToTerraform(struct?: CodepipelineWebhookAuthenticationConfiguration): any {
+  function codepipelineWebhookAuthenticationConfigurationToTerraform(struct?: CodepipelineWebhookAuthenticationConfigurationOutputReference | CodepipelineWebhookAuthenticationConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allowed_ip_range: cdktf.stringToTerraform(struct!.allowedIpRange),
       secret_token: cdktf.stringToTerraform(struct!.secretToken),
     }
   }
 
+  export class CodepipelineWebhookAuthenticationConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // allowed_ip_range - computed: false, optional: true, required: false
+    private _allowedIpRange?: string | undefined; 
+    public get allowedIpRange() {
+      return this.getStringAttribute('allowed_ip_range');
+    }
+    public set allowedIpRange(value: string | undefined) {
+      this._allowedIpRange = value;
+    }
+    public resetAllowedIpRange() {
+      this._allowedIpRange = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowedIpRangeInput() {
+      return this._allowedIpRange
+    }
+
+    // secret_token - computed: false, optional: true, required: false
+    private _secretToken?: string | undefined; 
+    public get secretToken() {
+      return this.getStringAttribute('secret_token');
+    }
+    public set secretToken(value: string | undefined) {
+      this._secretToken = value;
+    }
+    public resetSecretToken() {
+      this._secretToken = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get secretTokenInput() {
+      return this._secretToken
+    }
+  }
   export interface CodepipelineWebhookFilter {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codepipeline_webhook.html#json_path CodepipelineWebhook#json_path}
@@ -401,6 +498,9 @@ export namespace CodePipeline {
 
   function codepipelineWebhookFilterToTerraform(struct?: CodepipelineWebhookFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       json_path: cdktf.stringToTerraform(struct!.jsonPath),
       match_equals: cdktf.stringToTerraform(struct!.matchEquals),
@@ -455,7 +555,7 @@ export namespace CodePipeline {
     // ==========
 
     // authentication - computed: false, optional: false, required: true
-    private _authentication: string;
+    private _authentication?: string; 
     public get authentication() {
       return this.getStringAttribute('authentication');
     }
@@ -473,7 +573,7 @@ export namespace CodePipeline {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -486,11 +586,12 @@ export namespace CodePipeline {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -502,11 +603,12 @@ export namespace CodePipeline {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -518,7 +620,7 @@ export namespace CodePipeline {
     }
 
     // target_action - computed: false, optional: false, required: true
-    private _targetAction: string;
+    private _targetAction?: string; 
     public get targetAction() {
       return this.getStringAttribute('target_action');
     }
@@ -531,7 +633,7 @@ export namespace CodePipeline {
     }
 
     // target_pipeline - computed: false, optional: false, required: true
-    private _targetPipeline: string;
+    private _targetPipeline?: string; 
     public get targetPipeline() {
       return this.getStringAttribute('target_pipeline');
     }
@@ -549,11 +651,12 @@ export namespace CodePipeline {
     }
 
     // authentication_configuration - computed: false, optional: true, required: false
-    private _authenticationConfiguration?: CodepipelineWebhookAuthenticationConfiguration[];
+    private _authenticationConfiguration?: CodepipelineWebhookAuthenticationConfiguration | undefined; 
+    private __authenticationConfigurationOutput = new CodepipelineWebhookAuthenticationConfigurationOutputReference(this as any, "authentication_configuration", true);
     public get authenticationConfiguration() {
-      return this.interpolationForAttribute('authentication_configuration') as any;
+      return this.__authenticationConfigurationOutput;
     }
-    public set authenticationConfiguration(value: CodepipelineWebhookAuthenticationConfiguration[] ) {
+    public putAuthenticationConfiguration(value: CodepipelineWebhookAuthenticationConfiguration | undefined) {
       this._authenticationConfiguration = value;
     }
     public resetAuthenticationConfiguration() {
@@ -565,8 +668,9 @@ export namespace CodePipeline {
     }
 
     // filter - computed: false, optional: false, required: true
-    private _filter: CodepipelineWebhookFilter[];
+    private _filter?: CodepipelineWebhookFilter[]; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
     public set filter(value: CodepipelineWebhookFilter[]) {
@@ -589,7 +693,7 @@ export namespace CodePipeline {
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         target_action: cdktf.stringToTerraform(this._targetAction),
         target_pipeline: cdktf.stringToTerraform(this._targetPipeline),
-        authentication_configuration: cdktf.listMapper(codepipelineWebhookAuthenticationConfigurationToTerraform)(this._authenticationConfiguration),
+        authentication_configuration: codepipelineWebhookAuthenticationConfigurationToTerraform(this._authenticationConfiguration),
         filter: cdktf.listMapper(codepipelineWebhookFilterToTerraform)(this._filter),
       };
     }

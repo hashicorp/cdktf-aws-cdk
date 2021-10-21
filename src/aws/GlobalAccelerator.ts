@@ -33,7 +33,7 @@ export namespace GlobalAccelerator {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/globalaccelerator_accelerator.html#attributes GlobalacceleratorAccelerator#attributes}
     */
-    readonly attributes?: GlobalacceleratorAcceleratorAttributes[];
+    readonly attributes?: GlobalacceleratorAcceleratorAttributes;
     /**
     * timeouts block
     * 
@@ -68,8 +68,11 @@ export namespace GlobalAccelerator {
     readonly flowLogsS3Prefix?: string;
   }
 
-  function globalacceleratorAcceleratorAttributesToTerraform(struct?: GlobalacceleratorAcceleratorAttributes): any {
+  function globalacceleratorAcceleratorAttributesToTerraform(struct?: GlobalacceleratorAcceleratorAttributesOutputReference | GlobalacceleratorAcceleratorAttributes): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       flow_logs_enabled: cdktf.booleanToTerraform(struct!.flowLogsEnabled),
       flow_logs_s3_bucket: cdktf.stringToTerraform(struct!.flowLogsS3Bucket),
@@ -77,6 +80,64 @@ export namespace GlobalAccelerator {
     }
   }
 
+  export class GlobalacceleratorAcceleratorAttributesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // flow_logs_enabled - computed: false, optional: true, required: false
+    private _flowLogsEnabled?: boolean | cdktf.IResolvable | undefined; 
+    public get flowLogsEnabled() {
+      return this.getBooleanAttribute('flow_logs_enabled') as any;
+    }
+    public set flowLogsEnabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._flowLogsEnabled = value;
+    }
+    public resetFlowLogsEnabled() {
+      this._flowLogsEnabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get flowLogsEnabledInput() {
+      return this._flowLogsEnabled
+    }
+
+    // flow_logs_s3_bucket - computed: false, optional: true, required: false
+    private _flowLogsS3Bucket?: string | undefined; 
+    public get flowLogsS3Bucket() {
+      return this.getStringAttribute('flow_logs_s3_bucket');
+    }
+    public set flowLogsS3Bucket(value: string | undefined) {
+      this._flowLogsS3Bucket = value;
+    }
+    public resetFlowLogsS3Bucket() {
+      this._flowLogsS3Bucket = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get flowLogsS3BucketInput() {
+      return this._flowLogsS3Bucket
+    }
+
+    // flow_logs_s3_prefix - computed: false, optional: true, required: false
+    private _flowLogsS3Prefix?: string | undefined; 
+    public get flowLogsS3Prefix() {
+      return this.getStringAttribute('flow_logs_s3_prefix');
+    }
+    public set flowLogsS3Prefix(value: string | undefined) {
+      this._flowLogsS3Prefix = value;
+    }
+    public resetFlowLogsS3Prefix() {
+      this._flowLogsS3Prefix = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get flowLogsS3PrefixInput() {
+      return this._flowLogsS3Prefix
+    }
+  }
   export interface GlobalacceleratorAcceleratorTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/globalaccelerator_accelerator.html#create GlobalacceleratorAccelerator#create}
@@ -88,14 +149,59 @@ export namespace GlobalAccelerator {
     readonly update?: string;
   }
 
-  function globalacceleratorAcceleratorTimeoutsToTerraform(struct?: GlobalacceleratorAcceleratorTimeouts): any {
+  function globalacceleratorAcceleratorTimeoutsToTerraform(struct?: GlobalacceleratorAcceleratorTimeoutsOutputReference | GlobalacceleratorAcceleratorTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       update: cdktf.stringToTerraform(struct!.update),
     }
   }
 
+  export class GlobalacceleratorAcceleratorTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/globalaccelerator_accelerator.html aws_globalaccelerator_accelerator}
@@ -148,11 +254,11 @@ export namespace GlobalAccelerator {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -174,11 +280,11 @@ export namespace GlobalAccelerator {
     }
 
     // ip_address_type - computed: false, optional: true, required: false
-    private _ipAddressType?: string;
+    private _ipAddressType?: string | undefined; 
     public get ipAddressType() {
       return this.getStringAttribute('ip_address_type');
     }
-    public set ipAddressType(value: string ) {
+    public set ipAddressType(value: string | undefined) {
       this._ipAddressType = value;
     }
     public resetIpAddressType() {
@@ -195,7 +301,7 @@ export namespace GlobalAccelerator {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -208,11 +314,12 @@ export namespace GlobalAccelerator {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -224,11 +331,12 @@ export namespace GlobalAccelerator {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -240,11 +348,12 @@ export namespace GlobalAccelerator {
     }
 
     // attributes - computed: false, optional: true, required: false
-    private _attributes?: GlobalacceleratorAcceleratorAttributes[];
+    private _attributes?: GlobalacceleratorAcceleratorAttributes | undefined; 
+    private __attributesOutput = new GlobalacceleratorAcceleratorAttributesOutputReference(this as any, "attributes", true);
     public get attributes() {
-      return this.interpolationForAttribute('attributes') as any;
+      return this.__attributesOutput;
     }
-    public set attributes(value: GlobalacceleratorAcceleratorAttributes[] ) {
+    public putAttributes(value: GlobalacceleratorAcceleratorAttributes | undefined) {
       this._attributes = value;
     }
     public resetAttributes() {
@@ -256,11 +365,12 @@ export namespace GlobalAccelerator {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: GlobalacceleratorAcceleratorTimeouts;
+    private _timeouts?: GlobalacceleratorAcceleratorTimeouts | undefined; 
+    private __timeoutsOutput = new GlobalacceleratorAcceleratorTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: GlobalacceleratorAcceleratorTimeouts ) {
+    public putTimeouts(value: GlobalacceleratorAcceleratorTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -282,7 +392,7 @@ export namespace GlobalAccelerator {
         name: cdktf.stringToTerraform(this._name),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        attributes: cdktf.listMapper(globalacceleratorAcceleratorAttributesToTerraform)(this._attributes),
+        attributes: globalacceleratorAcceleratorAttributesToTerraform(this._attributes),
         timeouts: globalacceleratorAcceleratorTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -356,6 +466,9 @@ export namespace GlobalAccelerator {
 
   function globalacceleratorEndpointGroupEndpointConfigurationToTerraform(struct?: GlobalacceleratorEndpointGroupEndpointConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       client_ip_preservation_enabled: cdktf.booleanToTerraform(struct!.clientIpPreservationEnabled),
       endpoint_id: cdktf.stringToTerraform(struct!.endpointId),
@@ -376,6 +489,9 @@ export namespace GlobalAccelerator {
 
   function globalacceleratorEndpointGroupPortOverrideToTerraform(struct?: GlobalacceleratorEndpointGroupPortOverride): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       endpoint_port: cdktf.numberToTerraform(struct!.endpointPort),
       listener_port: cdktf.numberToTerraform(struct!.listenerPort),
@@ -397,8 +513,11 @@ export namespace GlobalAccelerator {
     readonly update?: string;
   }
 
-  function globalacceleratorEndpointGroupTimeoutsToTerraform(struct?: GlobalacceleratorEndpointGroupTimeouts): any {
+  function globalacceleratorEndpointGroupTimeoutsToTerraform(struct?: GlobalacceleratorEndpointGroupTimeoutsOutputReference | GlobalacceleratorEndpointGroupTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -406,6 +525,64 @@ export namespace GlobalAccelerator {
     }
   }
 
+  export class GlobalacceleratorEndpointGroupTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/globalaccelerator_endpoint_group.html aws_globalaccelerator_endpoint_group}
@@ -462,11 +639,11 @@ export namespace GlobalAccelerator {
     }
 
     // endpoint_group_region - computed: true, optional: true, required: false
-    private _endpointGroupRegion?: string;
+    private _endpointGroupRegion?: string | undefined; 
     public get endpointGroupRegion() {
       return this.getStringAttribute('endpoint_group_region');
     }
-    public set endpointGroupRegion(value: string) {
+    public set endpointGroupRegion(value: string | undefined) {
       this._endpointGroupRegion = value;
     }
     public resetEndpointGroupRegion() {
@@ -478,11 +655,11 @@ export namespace GlobalAccelerator {
     }
 
     // health_check_interval_seconds - computed: false, optional: true, required: false
-    private _healthCheckIntervalSeconds?: number;
+    private _healthCheckIntervalSeconds?: number | undefined; 
     public get healthCheckIntervalSeconds() {
       return this.getNumberAttribute('health_check_interval_seconds');
     }
-    public set healthCheckIntervalSeconds(value: number ) {
+    public set healthCheckIntervalSeconds(value: number | undefined) {
       this._healthCheckIntervalSeconds = value;
     }
     public resetHealthCheckIntervalSeconds() {
@@ -494,11 +671,11 @@ export namespace GlobalAccelerator {
     }
 
     // health_check_path - computed: true, optional: true, required: false
-    private _healthCheckPath?: string;
+    private _healthCheckPath?: string | undefined; 
     public get healthCheckPath() {
       return this.getStringAttribute('health_check_path');
     }
-    public set healthCheckPath(value: string) {
+    public set healthCheckPath(value: string | undefined) {
       this._healthCheckPath = value;
     }
     public resetHealthCheckPath() {
@@ -510,11 +687,11 @@ export namespace GlobalAccelerator {
     }
 
     // health_check_port - computed: true, optional: true, required: false
-    private _healthCheckPort?: number;
+    private _healthCheckPort?: number | undefined; 
     public get healthCheckPort() {
       return this.getNumberAttribute('health_check_port');
     }
-    public set healthCheckPort(value: number) {
+    public set healthCheckPort(value: number | undefined) {
       this._healthCheckPort = value;
     }
     public resetHealthCheckPort() {
@@ -526,11 +703,11 @@ export namespace GlobalAccelerator {
     }
 
     // health_check_protocol - computed: false, optional: true, required: false
-    private _healthCheckProtocol?: string;
+    private _healthCheckProtocol?: string | undefined; 
     public get healthCheckProtocol() {
       return this.getStringAttribute('health_check_protocol');
     }
-    public set healthCheckProtocol(value: string ) {
+    public set healthCheckProtocol(value: string | undefined) {
       this._healthCheckProtocol = value;
     }
     public resetHealthCheckProtocol() {
@@ -547,7 +724,7 @@ export namespace GlobalAccelerator {
     }
 
     // listener_arn - computed: false, optional: false, required: true
-    private _listenerArn: string;
+    private _listenerArn?: string; 
     public get listenerArn() {
       return this.getStringAttribute('listener_arn');
     }
@@ -560,11 +737,11 @@ export namespace GlobalAccelerator {
     }
 
     // threshold_count - computed: false, optional: true, required: false
-    private _thresholdCount?: number;
+    private _thresholdCount?: number | undefined; 
     public get thresholdCount() {
       return this.getNumberAttribute('threshold_count');
     }
-    public set thresholdCount(value: number ) {
+    public set thresholdCount(value: number | undefined) {
       this._thresholdCount = value;
     }
     public resetThresholdCount() {
@@ -576,11 +753,11 @@ export namespace GlobalAccelerator {
     }
 
     // traffic_dial_percentage - computed: false, optional: true, required: false
-    private _trafficDialPercentage?: number;
+    private _trafficDialPercentage?: number | undefined; 
     public get trafficDialPercentage() {
       return this.getNumberAttribute('traffic_dial_percentage');
     }
-    public set trafficDialPercentage(value: number ) {
+    public set trafficDialPercentage(value: number | undefined) {
       this._trafficDialPercentage = value;
     }
     public resetTrafficDialPercentage() {
@@ -592,11 +769,12 @@ export namespace GlobalAccelerator {
     }
 
     // endpoint_configuration - computed: false, optional: true, required: false
-    private _endpointConfiguration?: GlobalacceleratorEndpointGroupEndpointConfiguration[];
+    private _endpointConfiguration?: GlobalacceleratorEndpointGroupEndpointConfiguration[] | undefined; 
     public get endpointConfiguration() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('endpoint_configuration') as any;
     }
-    public set endpointConfiguration(value: GlobalacceleratorEndpointGroupEndpointConfiguration[] ) {
+    public set endpointConfiguration(value: GlobalacceleratorEndpointGroupEndpointConfiguration[] | undefined) {
       this._endpointConfiguration = value;
     }
     public resetEndpointConfiguration() {
@@ -608,11 +786,12 @@ export namespace GlobalAccelerator {
     }
 
     // port_override - computed: false, optional: true, required: false
-    private _portOverride?: GlobalacceleratorEndpointGroupPortOverride[];
+    private _portOverride?: GlobalacceleratorEndpointGroupPortOverride[] | undefined; 
     public get portOverride() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('port_override') as any;
     }
-    public set portOverride(value: GlobalacceleratorEndpointGroupPortOverride[] ) {
+    public set portOverride(value: GlobalacceleratorEndpointGroupPortOverride[] | undefined) {
       this._portOverride = value;
     }
     public resetPortOverride() {
@@ -624,11 +803,12 @@ export namespace GlobalAccelerator {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: GlobalacceleratorEndpointGroupTimeouts;
+    private _timeouts?: GlobalacceleratorEndpointGroupTimeouts | undefined; 
+    private __timeoutsOutput = new GlobalacceleratorEndpointGroupTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: GlobalacceleratorEndpointGroupTimeouts ) {
+    public putTimeouts(value: GlobalacceleratorEndpointGroupTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -698,6 +878,9 @@ export namespace GlobalAccelerator {
 
   function globalacceleratorListenerPortRangeToTerraform(struct?: GlobalacceleratorListenerPortRange): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       from_port: cdktf.numberToTerraform(struct!.fromPort),
       to_port: cdktf.numberToTerraform(struct!.toPort),
@@ -719,8 +902,11 @@ export namespace GlobalAccelerator {
     readonly update?: string;
   }
 
-  function globalacceleratorListenerTimeoutsToTerraform(struct?: GlobalacceleratorListenerTimeouts): any {
+  function globalacceleratorListenerTimeoutsToTerraform(struct?: GlobalacceleratorListenerTimeoutsOutputReference | GlobalacceleratorListenerTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -728,6 +914,64 @@ export namespace GlobalAccelerator {
     }
   }
 
+  export class GlobalacceleratorListenerTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/globalaccelerator_listener.html aws_globalaccelerator_listener}
@@ -773,7 +1017,7 @@ export namespace GlobalAccelerator {
     // ==========
 
     // accelerator_arn - computed: false, optional: false, required: true
-    private _acceleratorArn: string;
+    private _acceleratorArn?: string; 
     public get acceleratorArn() {
       return this.getStringAttribute('accelerator_arn');
     }
@@ -786,11 +1030,11 @@ export namespace GlobalAccelerator {
     }
 
     // client_affinity - computed: false, optional: true, required: false
-    private _clientAffinity?: string;
+    private _clientAffinity?: string | undefined; 
     public get clientAffinity() {
       return this.getStringAttribute('client_affinity');
     }
-    public set clientAffinity(value: string ) {
+    public set clientAffinity(value: string | undefined) {
       this._clientAffinity = value;
     }
     public resetClientAffinity() {
@@ -807,7 +1051,7 @@ export namespace GlobalAccelerator {
     }
 
     // protocol - computed: false, optional: false, required: true
-    private _protocol: string;
+    private _protocol?: string; 
     public get protocol() {
       return this.getStringAttribute('protocol');
     }
@@ -820,8 +1064,9 @@ export namespace GlobalAccelerator {
     }
 
     // port_range - computed: false, optional: false, required: true
-    private _portRange: GlobalacceleratorListenerPortRange[];
+    private _portRange?: GlobalacceleratorListenerPortRange[]; 
     public get portRange() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('port_range') as any;
     }
     public set portRange(value: GlobalacceleratorListenerPortRange[]) {
@@ -833,11 +1078,12 @@ export namespace GlobalAccelerator {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: GlobalacceleratorListenerTimeouts;
+    private _timeouts?: GlobalacceleratorListenerTimeouts | undefined; 
+    private __timeoutsOutput = new GlobalacceleratorListenerTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: GlobalacceleratorListenerTimeouts ) {
+    public putTimeouts(value: GlobalacceleratorListenerTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -876,7 +1122,7 @@ export namespace GlobalAccelerator {
 
     // flow_logs_enabled - computed: true, optional: false, required: false
     public get flowLogsEnabled() {
-      return this.getBooleanAttribute('flow_logs_enabled');
+      return this.getBooleanAttribute('flow_logs_enabled') as any;
     }
 
     // flow_logs_s3_bucket - computed: true, optional: false, required: false
@@ -959,7 +1205,7 @@ export namespace GlobalAccelerator {
 
     // enabled - computed: true, optional: false, required: false
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
 
     // hosted_zone_id - computed: true, optional: false, required: false
@@ -983,11 +1229,11 @@ export namespace GlobalAccelerator {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -999,11 +1245,12 @@ export namespace GlobalAccelerator {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {

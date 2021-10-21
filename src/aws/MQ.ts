@@ -69,31 +69,31 @@ export namespace MQ {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/mq_broker.html#configuration MqBroker#configuration}
     */
-    readonly configuration?: MqBrokerConfiguration[];
+    readonly configuration?: MqBrokerConfiguration;
     /**
     * encryption_options block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/mq_broker.html#encryption_options MqBroker#encryption_options}
     */
-    readonly encryptionOptions?: MqBrokerEncryptionOptions[];
+    readonly encryptionOptions?: MqBrokerEncryptionOptions;
     /**
     * ldap_server_metadata block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/mq_broker.html#ldap_server_metadata MqBroker#ldap_server_metadata}
     */
-    readonly ldapServerMetadata?: MqBrokerLdapServerMetadata[];
+    readonly ldapServerMetadata?: MqBrokerLdapServerMetadata;
     /**
     * logs block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/mq_broker.html#logs MqBroker#logs}
     */
-    readonly logs?: MqBrokerLogs[];
+    readonly logs?: MqBrokerLogs;
     /**
     * maintenance_window_start_time block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/mq_broker.html#maintenance_window_start_time MqBroker#maintenance_window_start_time}
     */
-    readonly maintenanceWindowStartTime?: MqBrokerMaintenanceWindowStartTime[];
+    readonly maintenanceWindowStartTime?: MqBrokerMaintenanceWindowStartTime;
     /**
     * user block
     * 
@@ -129,14 +129,47 @@ export namespace MQ {
     readonly revision?: number;
   }
 
-  function mqBrokerConfigurationToTerraform(struct?: MqBrokerConfiguration): any {
+  function mqBrokerConfigurationToTerraform(struct?: MqBrokerConfigurationOutputReference | MqBrokerConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      id: cdktf.stringToTerraform(struct!.id),
       revision: cdktf.numberToTerraform(struct!.revision),
     }
   }
 
+  export class MqBrokerConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // id - computed: true, optional: true, required: false
+    public get id() {
+      return this.getStringAttribute('id');
+    }
+
+    // revision - computed: true, optional: true, required: false
+    private _revision?: number | undefined; 
+    public get revision() {
+      return this.getNumberAttribute('revision');
+    }
+    public set revision(value: number | undefined) {
+      this._revision = value;
+    }
+    public resetRevision() {
+      this._revision = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get revisionInput() {
+      return this._revision
+    }
+  }
   export interface MqBrokerEncryptionOptions {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/mq_broker.html#kms_key_id MqBroker#kms_key_id}
@@ -148,14 +181,59 @@ export namespace MQ {
     readonly useAwsOwnedKey?: boolean | cdktf.IResolvable;
   }
 
-  function mqBrokerEncryptionOptionsToTerraform(struct?: MqBrokerEncryptionOptions): any {
+  function mqBrokerEncryptionOptionsToTerraform(struct?: MqBrokerEncryptionOptionsOutputReference | MqBrokerEncryptionOptions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       kms_key_id: cdktf.stringToTerraform(struct!.kmsKeyId),
       use_aws_owned_key: cdktf.booleanToTerraform(struct!.useAwsOwnedKey),
     }
   }
 
+  export class MqBrokerEncryptionOptionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // kms_key_id - computed: true, optional: true, required: false
+    private _kmsKeyId?: string | undefined; 
+    public get kmsKeyId() {
+      return this.getStringAttribute('kms_key_id');
+    }
+    public set kmsKeyId(value: string | undefined) {
+      this._kmsKeyId = value;
+    }
+    public resetKmsKeyId() {
+      this._kmsKeyId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get kmsKeyIdInput() {
+      return this._kmsKeyId
+    }
+
+    // use_aws_owned_key - computed: false, optional: true, required: false
+    private _useAwsOwnedKey?: boolean | cdktf.IResolvable | undefined; 
+    public get useAwsOwnedKey() {
+      return this.getBooleanAttribute('use_aws_owned_key') as any;
+    }
+    public set useAwsOwnedKey(value: boolean | cdktf.IResolvable | undefined) {
+      this._useAwsOwnedKey = value;
+    }
+    public resetUseAwsOwnedKey() {
+      this._useAwsOwnedKey = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get useAwsOwnedKeyInput() {
+      return this._useAwsOwnedKey
+    }
+  }
   export interface MqBrokerLdapServerMetadata {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/mq_broker.html#hosts MqBroker#hosts}
@@ -203,8 +281,11 @@ export namespace MQ {
     readonly userSearchSubtree?: boolean | cdktf.IResolvable;
   }
 
-  function mqBrokerLdapServerMetadataToTerraform(struct?: MqBrokerLdapServerMetadata): any {
+  function mqBrokerLdapServerMetadataToTerraform(struct?: MqBrokerLdapServerMetadataOutputReference | MqBrokerLdapServerMetadata): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       hosts: cdktf.listMapper(cdktf.stringToTerraform)(struct!.hosts),
       role_base: cdktf.stringToTerraform(struct!.roleBase),
@@ -220,6 +301,192 @@ export namespace MQ {
     }
   }
 
+  export class MqBrokerLdapServerMetadataOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // hosts - computed: false, optional: true, required: false
+    private _hosts?: string[] | undefined; 
+    public get hosts() {
+      return this.getListAttribute('hosts');
+    }
+    public set hosts(value: string[] | undefined) {
+      this._hosts = value;
+    }
+    public resetHosts() {
+      this._hosts = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get hostsInput() {
+      return this._hosts
+    }
+
+    // role_base - computed: false, optional: true, required: false
+    private _roleBase?: string | undefined; 
+    public get roleBase() {
+      return this.getStringAttribute('role_base');
+    }
+    public set roleBase(value: string | undefined) {
+      this._roleBase = value;
+    }
+    public resetRoleBase() {
+      this._roleBase = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleBaseInput() {
+      return this._roleBase
+    }
+
+    // role_name - computed: false, optional: true, required: false
+    private _roleName?: string | undefined; 
+    public get roleName() {
+      return this.getStringAttribute('role_name');
+    }
+    public set roleName(value: string | undefined) {
+      this._roleName = value;
+    }
+    public resetRoleName() {
+      this._roleName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleNameInput() {
+      return this._roleName
+    }
+
+    // role_search_matching - computed: false, optional: true, required: false
+    private _roleSearchMatching?: string | undefined; 
+    public get roleSearchMatching() {
+      return this.getStringAttribute('role_search_matching');
+    }
+    public set roleSearchMatching(value: string | undefined) {
+      this._roleSearchMatching = value;
+    }
+    public resetRoleSearchMatching() {
+      this._roleSearchMatching = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleSearchMatchingInput() {
+      return this._roleSearchMatching
+    }
+
+    // role_search_subtree - computed: false, optional: true, required: false
+    private _roleSearchSubtree?: boolean | cdktf.IResolvable | undefined; 
+    public get roleSearchSubtree() {
+      return this.getBooleanAttribute('role_search_subtree') as any;
+    }
+    public set roleSearchSubtree(value: boolean | cdktf.IResolvable | undefined) {
+      this._roleSearchSubtree = value;
+    }
+    public resetRoleSearchSubtree() {
+      this._roleSearchSubtree = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleSearchSubtreeInput() {
+      return this._roleSearchSubtree
+    }
+
+    // service_account_password - computed: false, optional: true, required: false
+    private _serviceAccountPassword?: string | undefined; 
+    public get serviceAccountPassword() {
+      return this.getStringAttribute('service_account_password');
+    }
+    public set serviceAccountPassword(value: string | undefined) {
+      this._serviceAccountPassword = value;
+    }
+    public resetServiceAccountPassword() {
+      this._serviceAccountPassword = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get serviceAccountPasswordInput() {
+      return this._serviceAccountPassword
+    }
+
+    // service_account_username - computed: false, optional: true, required: false
+    private _serviceAccountUsername?: string | undefined; 
+    public get serviceAccountUsername() {
+      return this.getStringAttribute('service_account_username');
+    }
+    public set serviceAccountUsername(value: string | undefined) {
+      this._serviceAccountUsername = value;
+    }
+    public resetServiceAccountUsername() {
+      this._serviceAccountUsername = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get serviceAccountUsernameInput() {
+      return this._serviceAccountUsername
+    }
+
+    // user_base - computed: false, optional: true, required: false
+    private _userBase?: string | undefined; 
+    public get userBase() {
+      return this.getStringAttribute('user_base');
+    }
+    public set userBase(value: string | undefined) {
+      this._userBase = value;
+    }
+    public resetUserBase() {
+      this._userBase = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userBaseInput() {
+      return this._userBase
+    }
+
+    // user_role_name - computed: false, optional: true, required: false
+    private _userRoleName?: string | undefined; 
+    public get userRoleName() {
+      return this.getStringAttribute('user_role_name');
+    }
+    public set userRoleName(value: string | undefined) {
+      this._userRoleName = value;
+    }
+    public resetUserRoleName() {
+      this._userRoleName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userRoleNameInput() {
+      return this._userRoleName
+    }
+
+    // user_search_matching - computed: false, optional: true, required: false
+    private _userSearchMatching?: string | undefined; 
+    public get userSearchMatching() {
+      return this.getStringAttribute('user_search_matching');
+    }
+    public set userSearchMatching(value: string | undefined) {
+      this._userSearchMatching = value;
+    }
+    public resetUserSearchMatching() {
+      this._userSearchMatching = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userSearchMatchingInput() {
+      return this._userSearchMatching
+    }
+
+    // user_search_subtree - computed: false, optional: true, required: false
+    private _userSearchSubtree?: boolean | cdktf.IResolvable | undefined; 
+    public get userSearchSubtree() {
+      return this.getBooleanAttribute('user_search_subtree') as any;
+    }
+    public set userSearchSubtree(value: boolean | cdktf.IResolvable | undefined) {
+      this._userSearchSubtree = value;
+    }
+    public resetUserSearchSubtree() {
+      this._userSearchSubtree = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get userSearchSubtreeInput() {
+      return this._userSearchSubtree
+    }
+  }
   export interface MqBrokerLogs {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/mq_broker.html#audit MqBroker#audit}
@@ -231,14 +498,59 @@ export namespace MQ {
     readonly general?: boolean | cdktf.IResolvable;
   }
 
-  function mqBrokerLogsToTerraform(struct?: MqBrokerLogs): any {
+  function mqBrokerLogsToTerraform(struct?: MqBrokerLogsOutputReference | MqBrokerLogs): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       audit: cdktf.stringToTerraform(struct!.audit),
       general: cdktf.booleanToTerraform(struct!.general),
     }
   }
 
+  export class MqBrokerLogsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // audit - computed: false, optional: true, required: false
+    private _audit?: string | undefined; 
+    public get audit() {
+      return this.getStringAttribute('audit');
+    }
+    public set audit(value: string | undefined) {
+      this._audit = value;
+    }
+    public resetAudit() {
+      this._audit = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get auditInput() {
+      return this._audit
+    }
+
+    // general - computed: false, optional: true, required: false
+    private _general?: boolean | cdktf.IResolvable | undefined; 
+    public get general() {
+      return this.getBooleanAttribute('general') as any;
+    }
+    public set general(value: boolean | cdktf.IResolvable | undefined) {
+      this._general = value;
+    }
+    public resetGeneral() {
+      this._general = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get generalInput() {
+      return this._general
+    }
+  }
   export interface MqBrokerMaintenanceWindowStartTime {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/mq_broker.html#day_of_week MqBroker#day_of_week}
@@ -254,8 +566,11 @@ export namespace MQ {
     readonly timeZone: string;
   }
 
-  function mqBrokerMaintenanceWindowStartTimeToTerraform(struct?: MqBrokerMaintenanceWindowStartTime): any {
+  function mqBrokerMaintenanceWindowStartTimeToTerraform(struct?: MqBrokerMaintenanceWindowStartTimeOutputReference | MqBrokerMaintenanceWindowStartTime): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       day_of_week: cdktf.stringToTerraform(struct!.dayOfWeek),
       time_of_day: cdktf.stringToTerraform(struct!.timeOfDay),
@@ -263,6 +578,55 @@ export namespace MQ {
     }
   }
 
+  export class MqBrokerMaintenanceWindowStartTimeOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // day_of_week - computed: false, optional: false, required: true
+    private _dayOfWeek?: string; 
+    public get dayOfWeek() {
+      return this.getStringAttribute('day_of_week');
+    }
+    public set dayOfWeek(value: string) {
+      this._dayOfWeek = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get dayOfWeekInput() {
+      return this._dayOfWeek
+    }
+
+    // time_of_day - computed: false, optional: false, required: true
+    private _timeOfDay?: string; 
+    public get timeOfDay() {
+      return this.getStringAttribute('time_of_day');
+    }
+    public set timeOfDay(value: string) {
+      this._timeOfDay = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get timeOfDayInput() {
+      return this._timeOfDay
+    }
+
+    // time_zone - computed: false, optional: false, required: true
+    private _timeZone?: string; 
+    public get timeZone() {
+      return this.getStringAttribute('time_zone');
+    }
+    public set timeZone(value: string) {
+      this._timeZone = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get timeZoneInput() {
+      return this._timeZone
+    }
+  }
   export interface MqBrokerUser {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/mq_broker.html#console_access MqBroker#console_access}
@@ -284,6 +648,9 @@ export namespace MQ {
 
   function mqBrokerUserToTerraform(struct?: MqBrokerUser): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       console_access: cdktf.booleanToTerraform(struct!.consoleAccess),
       groups: cdktf.listMapper(cdktf.stringToTerraform)(struct!.groups),
@@ -352,11 +719,11 @@ export namespace MQ {
     // ==========
 
     // apply_immediately - computed: false, optional: true, required: false
-    private _applyImmediately?: boolean | cdktf.IResolvable;
+    private _applyImmediately?: boolean | cdktf.IResolvable | undefined; 
     public get applyImmediately() {
-      return this.getBooleanAttribute('apply_immediately');
+      return this.getBooleanAttribute('apply_immediately') as any;
     }
-    public set applyImmediately(value: boolean | cdktf.IResolvable ) {
+    public set applyImmediately(value: boolean | cdktf.IResolvable | undefined) {
       this._applyImmediately = value;
     }
     public resetApplyImmediately() {
@@ -373,11 +740,11 @@ export namespace MQ {
     }
 
     // authentication_strategy - computed: true, optional: true, required: false
-    private _authenticationStrategy?: string;
+    private _authenticationStrategy?: string | undefined; 
     public get authenticationStrategy() {
       return this.getStringAttribute('authentication_strategy');
     }
-    public set authenticationStrategy(value: string) {
+    public set authenticationStrategy(value: string | undefined) {
       this._authenticationStrategy = value;
     }
     public resetAuthenticationStrategy() {
@@ -389,11 +756,11 @@ export namespace MQ {
     }
 
     // auto_minor_version_upgrade - computed: false, optional: true, required: false
-    private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable;
+    private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable | undefined; 
     public get autoMinorVersionUpgrade() {
-      return this.getBooleanAttribute('auto_minor_version_upgrade');
+      return this.getBooleanAttribute('auto_minor_version_upgrade') as any;
     }
-    public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable ) {
+    public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable | undefined) {
       this._autoMinorVersionUpgrade = value;
     }
     public resetAutoMinorVersionUpgrade() {
@@ -405,7 +772,7 @@ export namespace MQ {
     }
 
     // broker_name - computed: false, optional: false, required: true
-    private _brokerName: string;
+    private _brokerName?: string; 
     public get brokerName() {
       return this.getStringAttribute('broker_name');
     }
@@ -418,11 +785,11 @@ export namespace MQ {
     }
 
     // deployment_mode - computed: false, optional: true, required: false
-    private _deploymentMode?: string;
+    private _deploymentMode?: string | undefined; 
     public get deploymentMode() {
       return this.getStringAttribute('deployment_mode');
     }
-    public set deploymentMode(value: string ) {
+    public set deploymentMode(value: string | undefined) {
       this._deploymentMode = value;
     }
     public resetDeploymentMode() {
@@ -434,7 +801,7 @@ export namespace MQ {
     }
 
     // engine_type - computed: false, optional: false, required: true
-    private _engineType: string;
+    private _engineType?: string; 
     public get engineType() {
       return this.getStringAttribute('engine_type');
     }
@@ -447,7 +814,7 @@ export namespace MQ {
     }
 
     // engine_version - computed: false, optional: false, required: true
-    private _engineVersion: string;
+    private _engineVersion?: string; 
     public get engineVersion() {
       return this.getStringAttribute('engine_version');
     }
@@ -460,7 +827,7 @@ export namespace MQ {
     }
 
     // host_instance_type - computed: false, optional: false, required: true
-    private _hostInstanceType: string;
+    private _hostInstanceType?: string; 
     public get hostInstanceType() {
       return this.getStringAttribute('host_instance_type');
     }
@@ -483,11 +850,11 @@ export namespace MQ {
     }
 
     // publicly_accessible - computed: false, optional: true, required: false
-    private _publiclyAccessible?: boolean | cdktf.IResolvable;
+    private _publiclyAccessible?: boolean | cdktf.IResolvable | undefined; 
     public get publiclyAccessible() {
-      return this.getBooleanAttribute('publicly_accessible');
+      return this.getBooleanAttribute('publicly_accessible') as any;
     }
-    public set publiclyAccessible(value: boolean | cdktf.IResolvable ) {
+    public set publiclyAccessible(value: boolean | cdktf.IResolvable | undefined) {
       this._publiclyAccessible = value;
     }
     public resetPubliclyAccessible() {
@@ -499,11 +866,11 @@ export namespace MQ {
     }
 
     // security_groups - computed: false, optional: true, required: false
-    private _securityGroups?: string[];
+    private _securityGroups?: string[] | undefined; 
     public get securityGroups() {
       return this.getListAttribute('security_groups');
     }
-    public set securityGroups(value: string[] ) {
+    public set securityGroups(value: string[] | undefined) {
       this._securityGroups = value;
     }
     public resetSecurityGroups() {
@@ -515,11 +882,11 @@ export namespace MQ {
     }
 
     // storage_type - computed: true, optional: true, required: false
-    private _storageType?: string;
+    private _storageType?: string | undefined; 
     public get storageType() {
       return this.getStringAttribute('storage_type');
     }
-    public set storageType(value: string) {
+    public set storageType(value: string | undefined) {
       this._storageType = value;
     }
     public resetStorageType() {
@@ -531,11 +898,11 @@ export namespace MQ {
     }
 
     // subnet_ids - computed: true, optional: true, required: false
-    private _subnetIds?: string[];
+    private _subnetIds?: string[] | undefined; 
     public get subnetIds() {
       return this.getListAttribute('subnet_ids');
     }
-    public set subnetIds(value: string[]) {
+    public set subnetIds(value: string[] | undefined) {
       this._subnetIds = value;
     }
     public resetSubnetIds() {
@@ -547,11 +914,12 @@ export namespace MQ {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -563,11 +931,12 @@ export namespace MQ {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -579,11 +948,12 @@ export namespace MQ {
     }
 
     // configuration - computed: false, optional: true, required: false
-    private _configuration?: MqBrokerConfiguration[];
+    private _configuration?: MqBrokerConfiguration | undefined; 
+    private __configurationOutput = new MqBrokerConfigurationOutputReference(this as any, "configuration", true);
     public get configuration() {
-      return this.interpolationForAttribute('configuration') as any;
+      return this.__configurationOutput;
     }
-    public set configuration(value: MqBrokerConfiguration[] ) {
+    public putConfiguration(value: MqBrokerConfiguration | undefined) {
       this._configuration = value;
     }
     public resetConfiguration() {
@@ -595,11 +965,12 @@ export namespace MQ {
     }
 
     // encryption_options - computed: false, optional: true, required: false
-    private _encryptionOptions?: MqBrokerEncryptionOptions[];
+    private _encryptionOptions?: MqBrokerEncryptionOptions | undefined; 
+    private __encryptionOptionsOutput = new MqBrokerEncryptionOptionsOutputReference(this as any, "encryption_options", true);
     public get encryptionOptions() {
-      return this.interpolationForAttribute('encryption_options') as any;
+      return this.__encryptionOptionsOutput;
     }
-    public set encryptionOptions(value: MqBrokerEncryptionOptions[] ) {
+    public putEncryptionOptions(value: MqBrokerEncryptionOptions | undefined) {
       this._encryptionOptions = value;
     }
     public resetEncryptionOptions() {
@@ -611,11 +982,12 @@ export namespace MQ {
     }
 
     // ldap_server_metadata - computed: false, optional: true, required: false
-    private _ldapServerMetadata?: MqBrokerLdapServerMetadata[];
+    private _ldapServerMetadata?: MqBrokerLdapServerMetadata | undefined; 
+    private __ldapServerMetadataOutput = new MqBrokerLdapServerMetadataOutputReference(this as any, "ldap_server_metadata", true);
     public get ldapServerMetadata() {
-      return this.interpolationForAttribute('ldap_server_metadata') as any;
+      return this.__ldapServerMetadataOutput;
     }
-    public set ldapServerMetadata(value: MqBrokerLdapServerMetadata[] ) {
+    public putLdapServerMetadata(value: MqBrokerLdapServerMetadata | undefined) {
       this._ldapServerMetadata = value;
     }
     public resetLdapServerMetadata() {
@@ -627,11 +999,12 @@ export namespace MQ {
     }
 
     // logs - computed: false, optional: true, required: false
-    private _logs?: MqBrokerLogs[];
+    private _logs?: MqBrokerLogs | undefined; 
+    private __logsOutput = new MqBrokerLogsOutputReference(this as any, "logs", true);
     public get logs() {
-      return this.interpolationForAttribute('logs') as any;
+      return this.__logsOutput;
     }
-    public set logs(value: MqBrokerLogs[] ) {
+    public putLogs(value: MqBrokerLogs | undefined) {
       this._logs = value;
     }
     public resetLogs() {
@@ -643,11 +1016,12 @@ export namespace MQ {
     }
 
     // maintenance_window_start_time - computed: false, optional: true, required: false
-    private _maintenanceWindowStartTime?: MqBrokerMaintenanceWindowStartTime[];
+    private _maintenanceWindowStartTime?: MqBrokerMaintenanceWindowStartTime | undefined; 
+    private __maintenanceWindowStartTimeOutput = new MqBrokerMaintenanceWindowStartTimeOutputReference(this as any, "maintenance_window_start_time", true);
     public get maintenanceWindowStartTime() {
-      return this.interpolationForAttribute('maintenance_window_start_time') as any;
+      return this.__maintenanceWindowStartTimeOutput;
     }
-    public set maintenanceWindowStartTime(value: MqBrokerMaintenanceWindowStartTime[] ) {
+    public putMaintenanceWindowStartTime(value: MqBrokerMaintenanceWindowStartTime | undefined) {
       this._maintenanceWindowStartTime = value;
     }
     public resetMaintenanceWindowStartTime() {
@@ -659,8 +1033,9 @@ export namespace MQ {
     }
 
     // user - computed: false, optional: false, required: true
-    private _user: MqBrokerUser[];
+    private _user?: MqBrokerUser[]; 
     public get user() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('user') as any;
     }
     public set user(value: MqBrokerUser[]) {
@@ -691,11 +1066,11 @@ export namespace MQ {
         subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._subnetIds),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        configuration: cdktf.listMapper(mqBrokerConfigurationToTerraform)(this._configuration),
-        encryption_options: cdktf.listMapper(mqBrokerEncryptionOptionsToTerraform)(this._encryptionOptions),
-        ldap_server_metadata: cdktf.listMapper(mqBrokerLdapServerMetadataToTerraform)(this._ldapServerMetadata),
-        logs: cdktf.listMapper(mqBrokerLogsToTerraform)(this._logs),
-        maintenance_window_start_time: cdktf.listMapper(mqBrokerMaintenanceWindowStartTimeToTerraform)(this._maintenanceWindowStartTime),
+        configuration: mqBrokerConfigurationToTerraform(this._configuration),
+        encryption_options: mqBrokerEncryptionOptionsToTerraform(this._encryptionOptions),
+        ldap_server_metadata: mqBrokerLdapServerMetadataToTerraform(this._ldapServerMetadata),
+        logs: mqBrokerLogsToTerraform(this._logs),
+        maintenance_window_start_time: mqBrokerMaintenanceWindowStartTimeToTerraform(this._maintenanceWindowStartTime),
         user: cdktf.listMapper(mqBrokerUserToTerraform)(this._user),
       };
     }
@@ -787,11 +1162,11 @@ export namespace MQ {
     }
 
     // authentication_strategy - computed: true, optional: true, required: false
-    private _authenticationStrategy?: string;
+    private _authenticationStrategy?: string | undefined; 
     public get authenticationStrategy() {
       return this.getStringAttribute('authentication_strategy');
     }
-    public set authenticationStrategy(value: string) {
+    public set authenticationStrategy(value: string | undefined) {
       this._authenticationStrategy = value;
     }
     public resetAuthenticationStrategy() {
@@ -803,7 +1178,7 @@ export namespace MQ {
     }
 
     // data - computed: false, optional: false, required: true
-    private _data: string;
+    private _data?: string; 
     public get data() {
       return this.getStringAttribute('data');
     }
@@ -816,11 +1191,11 @@ export namespace MQ {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -832,7 +1207,7 @@ export namespace MQ {
     }
 
     // engine_type - computed: false, optional: false, required: true
-    private _engineType: string;
+    private _engineType?: string; 
     public get engineType() {
       return this.getStringAttribute('engine_type');
     }
@@ -845,7 +1220,7 @@ export namespace MQ {
     }
 
     // engine_version - computed: false, optional: false, required: true
-    private _engineVersion: string;
+    private _engineVersion?: string; 
     public get engineVersion() {
       return this.getStringAttribute('engine_version');
     }
@@ -868,7 +1243,7 @@ export namespace MQ {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -881,11 +1256,12 @@ export namespace MQ {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -897,11 +1273,12 @@ export namespace MQ {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -964,7 +1341,7 @@ export namespace MQ {
 
     // use_aws_owned_key - computed: true, optional: false, required: false
     public get useAwsOwnedKey() {
-      return this.getBooleanAttribute('use_aws_owned_key');
+      return this.getBooleanAttribute('use_aws_owned_key') as any;
     }
   }
   export class DataAwsMqBrokerInstances extends cdktf.ComplexComputedList {
@@ -1008,7 +1385,7 @@ export namespace MQ {
 
     // role_search_subtree - computed: true, optional: false, required: false
     public get roleSearchSubtree() {
-      return this.getBooleanAttribute('role_search_subtree');
+      return this.getBooleanAttribute('role_search_subtree') as any;
     }
 
     // service_account_password - computed: true, optional: false, required: false
@@ -1038,7 +1415,7 @@ export namespace MQ {
 
     // user_search_subtree - computed: true, optional: false, required: false
     public get userSearchSubtree() {
-      return this.getBooleanAttribute('user_search_subtree');
+      return this.getBooleanAttribute('user_search_subtree') as any;
     }
   }
   export class DataAwsMqBrokerLogs extends cdktf.ComplexComputedList {
@@ -1050,7 +1427,7 @@ export namespace MQ {
 
     // general - computed: true, optional: false, required: false
     public get general() {
-      return this.getBooleanAttribute('general');
+      return this.getBooleanAttribute('general') as any;
     }
   }
   export class DataAwsMqBrokerMaintenanceWindowStartTime extends cdktf.ComplexComputedList {
@@ -1074,7 +1451,7 @@ export namespace MQ {
 
     // console_access - computed: true, optional: false, required: false
     public get consoleAccess() {
-      return this.getBooleanAttribute('console_access');
+      return this.getBooleanAttribute('console_access') as any;
     }
 
     // groups - computed: true, optional: false, required: false
@@ -1141,15 +1518,15 @@ export namespace MQ {
 
     // auto_minor_version_upgrade - computed: true, optional: false, required: false
     public get autoMinorVersionUpgrade() {
-      return this.getBooleanAttribute('auto_minor_version_upgrade');
+      return this.getBooleanAttribute('auto_minor_version_upgrade') as any;
     }
 
     // broker_id - computed: true, optional: true, required: false
-    private _brokerId?: string;
+    private _brokerId?: string | undefined; 
     public get brokerId() {
       return this.getStringAttribute('broker_id');
     }
-    public set brokerId(value: string) {
+    public set brokerId(value: string | undefined) {
       this._brokerId = value;
     }
     public resetBrokerId() {
@@ -1161,11 +1538,11 @@ export namespace MQ {
     }
 
     // broker_name - computed: true, optional: true, required: false
-    private _brokerName?: string;
+    private _brokerName?: string | undefined; 
     public get brokerName() {
       return this.getStringAttribute('broker_name');
     }
-    public set brokerName(value: string) {
+    public set brokerName(value: string | undefined) {
       this._brokerName = value;
     }
     public resetBrokerName() {
@@ -1233,7 +1610,7 @@ export namespace MQ {
 
     // publicly_accessible - computed: true, optional: false, required: false
     public get publiclyAccessible() {
-      return this.getBooleanAttribute('publicly_accessible');
+      return this.getBooleanAttribute('publicly_accessible') as any;
     }
 
     // security_groups - computed: true, optional: false, required: false
@@ -1252,11 +1629,12 @@ export namespace MQ {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {

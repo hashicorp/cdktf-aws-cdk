@@ -84,7 +84,7 @@ export namespace IoT {
     }
 
     // authorizer_function_arn - computed: false, optional: false, required: true
-    private _authorizerFunctionArn: string;
+    private _authorizerFunctionArn?: string; 
     public get authorizerFunctionArn() {
       return this.getStringAttribute('authorizer_function_arn');
     }
@@ -102,7 +102,7 @@ export namespace IoT {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -115,11 +115,11 @@ export namespace IoT {
     }
 
     // signing_disabled - computed: false, optional: true, required: false
-    private _signingDisabled?: boolean | cdktf.IResolvable;
+    private _signingDisabled?: boolean | cdktf.IResolvable | undefined; 
     public get signingDisabled() {
-      return this.getBooleanAttribute('signing_disabled');
+      return this.getBooleanAttribute('signing_disabled') as any;
     }
-    public set signingDisabled(value: boolean | cdktf.IResolvable ) {
+    public set signingDisabled(value: boolean | cdktf.IResolvable | undefined) {
       this._signingDisabled = value;
     }
     public resetSigningDisabled() {
@@ -131,11 +131,11 @@ export namespace IoT {
     }
 
     // status - computed: false, optional: true, required: false
-    private _status?: string;
+    private _status?: string | undefined; 
     public get status() {
       return this.getStringAttribute('status');
     }
-    public set status(value: string ) {
+    public set status(value: string | undefined) {
       this._status = value;
     }
     public resetStatus() {
@@ -147,11 +147,11 @@ export namespace IoT {
     }
 
     // token_key_name - computed: false, optional: true, required: false
-    private _tokenKeyName?: string;
+    private _tokenKeyName?: string | undefined; 
     public get tokenKeyName() {
       return this.getStringAttribute('token_key_name');
     }
-    public set tokenKeyName(value: string ) {
+    public set tokenKeyName(value: string | undefined) {
       this._tokenKeyName = value;
     }
     public resetTokenKeyName() {
@@ -163,11 +163,12 @@ export namespace IoT {
     }
 
     // token_signing_public_keys - computed: false, optional: true, required: false
-    private _tokenSigningPublicKeys?: { [key: string]: string } | cdktf.IResolvable;
+    private _tokenSigningPublicKeys?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tokenSigningPublicKeys() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('token_signing_public_keys') as any;
     }
-    public set tokenSigningPublicKeys(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tokenSigningPublicKeys(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tokenSigningPublicKeys = value;
     }
     public resetTokenSigningPublicKeys() {
@@ -245,9 +246,9 @@ export namespace IoT {
     // ==========
 
     // active - computed: false, optional: false, required: true
-    private _active: boolean | cdktf.IResolvable;
+    private _active?: boolean | cdktf.IResolvable; 
     public get active() {
-      return this.getBooleanAttribute('active');
+      return this.getBooleanAttribute('active') as any;
     }
     public set active(value: boolean | cdktf.IResolvable) {
       this._active = value;
@@ -268,11 +269,11 @@ export namespace IoT {
     }
 
     // csr - computed: false, optional: true, required: false
-    private _csr?: string;
+    private _csr?: string | undefined; 
     public get csr() {
       return this.getStringAttribute('csr');
     }
-    public set csr(value: string ) {
+    public set csr(value: string | undefined) {
       this._csr = value;
     }
     public resetCsr() {
@@ -376,7 +377,7 @@ export namespace IoT {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -389,7 +390,7 @@ export namespace IoT {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -469,7 +470,7 @@ export namespace IoT {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -482,7 +483,7 @@ export namespace IoT {
     }
 
     // target - computed: false, optional: false, required: true
-    private _target: string;
+    private _target?: string; 
     public get target() {
       return this.getStringAttribute('target');
     }
@@ -562,7 +563,7 @@ export namespace IoT {
     // ==========
 
     // alias - computed: false, optional: false, required: true
-    private _alias: string;
+    private _alias?: string; 
     public get alias() {
       return this.getStringAttribute('alias');
     }
@@ -580,11 +581,11 @@ export namespace IoT {
     }
 
     // credential_duration - computed: false, optional: true, required: false
-    private _credentialDuration?: number;
+    private _credentialDuration?: number | undefined; 
     public get credentialDuration() {
       return this.getNumberAttribute('credential_duration');
     }
-    public set credentialDuration(value: number ) {
+    public set credentialDuration(value: number | undefined) {
       this._credentialDuration = value;
     }
     public resetCredentialDuration() {
@@ -601,7 +602,7 @@ export namespace IoT {
     }
 
     // role_arn - computed: false, optional: false, required: true
-    private _roleArn: string;
+    private _roleArn?: string; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
@@ -687,11 +688,12 @@ export namespace IoT {
     }
 
     // attributes - computed: false, optional: true, required: false
-    private _attributes?: { [key: string]: string } | cdktf.IResolvable;
+    private _attributes?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get attributes() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('attributes') as any;
     }
-    public set attributes(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set attributes(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._attributes = value;
     }
     public resetAttributes() {
@@ -713,7 +715,7 @@ export namespace IoT {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -726,11 +728,11 @@ export namespace IoT {
     }
 
     // thing_type_name - computed: false, optional: true, required: false
-    private _thingTypeName?: string;
+    private _thingTypeName?: string | undefined; 
     public get thingTypeName() {
       return this.getStringAttribute('thing_type_name');
     }
-    public set thingTypeName(value: string ) {
+    public set thingTypeName(value: string | undefined) {
       this._thingTypeName = value;
     }
     public resetThingTypeName() {
@@ -815,7 +817,7 @@ export namespace IoT {
     }
 
     // principal - computed: false, optional: false, required: true
-    private _principal: string;
+    private _principal?: string; 
     public get principal() {
       return this.getStringAttribute('principal');
     }
@@ -828,7 +830,7 @@ export namespace IoT {
     }
 
     // thing - computed: false, optional: false, required: true
-    private _thing: string;
+    private _thing?: string; 
     public get thing() {
       return this.getStringAttribute('thing');
     }
@@ -865,7 +867,7 @@ export namespace IoT {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_thing_type.html#properties IotThingType#properties}
     */
-    readonly properties?: IotThingTypeProperties[];
+    readonly properties?: IotThingTypeProperties;
   }
   export interface IotThingTypeProperties {
     /**
@@ -878,14 +880,59 @@ export namespace IoT {
     readonly searchableAttributes?: string[];
   }
 
-  function iotThingTypePropertiesToTerraform(struct?: IotThingTypeProperties): any {
+  function iotThingTypePropertiesToTerraform(struct?: IotThingTypePropertiesOutputReference | IotThingTypeProperties): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       description: cdktf.stringToTerraform(struct!.description),
       searchable_attributes: cdktf.listMapper(cdktf.stringToTerraform)(struct!.searchableAttributes),
     }
   }
 
+  export class IotThingTypePropertiesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // description - computed: false, optional: true, required: false
+    private _description?: string | undefined; 
+    public get description() {
+      return this.getStringAttribute('description');
+    }
+    public set description(value: string | undefined) {
+      this._description = value;
+    }
+    public resetDescription() {
+      this._description = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get descriptionInput() {
+      return this._description
+    }
+
+    // searchable_attributes - computed: true, optional: true, required: false
+    private _searchableAttributes?: string[] | undefined; 
+    public get searchableAttributes() {
+      return this.getListAttribute('searchable_attributes');
+    }
+    public set searchableAttributes(value: string[] | undefined) {
+      this._searchableAttributes = value;
+    }
+    public resetSearchableAttributes() {
+      this._searchableAttributes = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get searchableAttributesInput() {
+      return this._searchableAttributes
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/iot_thing_type.html aws_iot_thing_type}
@@ -934,11 +981,11 @@ export namespace IoT {
     }
 
     // deprecated - computed: false, optional: true, required: false
-    private _deprecated?: boolean | cdktf.IResolvable;
+    private _deprecated?: boolean | cdktf.IResolvable | undefined; 
     public get deprecated() {
-      return this.getBooleanAttribute('deprecated');
+      return this.getBooleanAttribute('deprecated') as any;
     }
-    public set deprecated(value: boolean | cdktf.IResolvable ) {
+    public set deprecated(value: boolean | cdktf.IResolvable | undefined) {
       this._deprecated = value;
     }
     public resetDeprecated() {
@@ -955,7 +1002,7 @@ export namespace IoT {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -968,11 +1015,12 @@ export namespace IoT {
     }
 
     // properties - computed: false, optional: true, required: false
-    private _properties?: IotThingTypeProperties[];
+    private _properties?: IotThingTypeProperties | undefined; 
+    private __propertiesOutput = new IotThingTypePropertiesOutputReference(this as any, "properties", true);
     public get properties() {
-      return this.interpolationForAttribute('properties') as any;
+      return this.__propertiesOutput;
     }
-    public set properties(value: IotThingTypeProperties[] ) {
+    public putProperties(value: IotThingTypeProperties | undefined) {
       this._properties = value;
     }
     public resetProperties() {
@@ -991,7 +1039,7 @@ export namespace IoT {
       return {
         deprecated: cdktf.booleanToTerraform(this._deprecated),
         name: cdktf.stringToTerraform(this._name),
-        properties: cdktf.listMapper(iotThingTypePropertiesToTerraform)(this._properties),
+        properties: iotThingTypePropertiesToTerraform(this._properties),
       };
     }
   }
@@ -1059,7 +1107,7 @@ export namespace IoT {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#error_action IotTopicRule#error_action}
     */
-    readonly errorAction?: IotTopicRuleErrorAction[];
+    readonly errorAction?: IotTopicRuleErrorAction;
     /**
     * firehose block
     * 
@@ -1142,6 +1190,9 @@ export namespace IoT {
 
   function iotTopicRuleCloudwatchAlarmToTerraform(struct?: IotTopicRuleCloudwatchAlarm): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       alarm_name: cdktf.stringToTerraform(struct!.alarmName),
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
@@ -1179,6 +1230,9 @@ export namespace IoT {
 
   function iotTopicRuleCloudwatchMetricToTerraform(struct?: IotTopicRuleCloudwatchMetric): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       metric_name: cdktf.stringToTerraform(struct!.metricName),
       metric_namespace: cdktf.stringToTerraform(struct!.metricNamespace),
@@ -1234,6 +1288,9 @@ export namespace IoT {
 
   function iotTopicRuleDynamodbToTerraform(struct?: IotTopicRuleDynamodb): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       hash_key_field: cdktf.stringToTerraform(struct!.hashKeyField),
       hash_key_type: cdktf.stringToTerraform(struct!.hashKeyType),
@@ -1255,13 +1312,39 @@ export namespace IoT {
     readonly tableName: string;
   }
 
-  function iotTopicRuleDynamodbv2PutItemToTerraform(struct?: IotTopicRuleDynamodbv2PutItem): any {
+  function iotTopicRuleDynamodbv2PutItemToTerraform(struct?: IotTopicRuleDynamodbv2PutItemOutputReference | IotTopicRuleDynamodbv2PutItem): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       table_name: cdktf.stringToTerraform(struct!.tableName),
     }
   }
 
+  export class IotTopicRuleDynamodbv2PutItemOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // table_name - computed: false, optional: false, required: true
+    private _tableName?: string; 
+    public get tableName() {
+      return this.getStringAttribute('table_name');
+    }
+    public set tableName(value: string) {
+      this._tableName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tableNameInput() {
+      return this._tableName
+    }
+  }
   export interface IotTopicRuleDynamodbv2 {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#role_arn IotTopicRule#role_arn}
@@ -1272,14 +1355,17 @@ export namespace IoT {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#put_item IotTopicRule#put_item}
     */
-    readonly putItem?: IotTopicRuleDynamodbv2PutItem[];
+    readonly putItem?: IotTopicRuleDynamodbv2PutItem;
   }
 
   function iotTopicRuleDynamodbv2ToTerraform(struct?: IotTopicRuleDynamodbv2): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
-      put_item: cdktf.listMapper(iotTopicRuleDynamodbv2PutItemToTerraform)(struct!.putItem),
+      put_item: iotTopicRuleDynamodbv2PutItemToTerraform(struct!.putItem),
     }
   }
 
@@ -1308,6 +1394,9 @@ export namespace IoT {
 
   function iotTopicRuleElasticsearchToTerraform(struct?: IotTopicRuleElasticsearch): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       endpoint: cdktf.stringToTerraform(struct!.endpoint),
       id: cdktf.stringToTerraform(struct!.id),
@@ -1336,8 +1425,11 @@ export namespace IoT {
     readonly stateValue: string;
   }
 
-  function iotTopicRuleErrorActionCloudwatchAlarmToTerraform(struct?: IotTopicRuleErrorActionCloudwatchAlarm): any {
+  function iotTopicRuleErrorActionCloudwatchAlarmToTerraform(struct?: IotTopicRuleErrorActionCloudwatchAlarmOutputReference | IotTopicRuleErrorActionCloudwatchAlarm): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       alarm_name: cdktf.stringToTerraform(struct!.alarmName),
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
@@ -1346,6 +1438,68 @@ export namespace IoT {
     }
   }
 
+  export class IotTopicRuleErrorActionCloudwatchAlarmOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // alarm_name - computed: false, optional: false, required: true
+    private _alarmName?: string; 
+    public get alarmName() {
+      return this.getStringAttribute('alarm_name');
+    }
+    public set alarmName(value: string) {
+      this._alarmName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get alarmNameInput() {
+      return this._alarmName
+    }
+
+    // role_arn - computed: false, optional: false, required: true
+    private _roleArn?: string; 
+    public get roleArn() {
+      return this.getStringAttribute('role_arn');
+    }
+    public set roleArn(value: string) {
+      this._roleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleArnInput() {
+      return this._roleArn
+    }
+
+    // state_reason - computed: false, optional: false, required: true
+    private _stateReason?: string; 
+    public get stateReason() {
+      return this.getStringAttribute('state_reason');
+    }
+    public set stateReason(value: string) {
+      this._stateReason = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get stateReasonInput() {
+      return this._stateReason
+    }
+
+    // state_value - computed: false, optional: false, required: true
+    private _stateValue?: string; 
+    public get stateValue() {
+      return this.getStringAttribute('state_value');
+    }
+    public set stateValue(value: string) {
+      this._stateValue = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get stateValueInput() {
+      return this._stateValue
+    }
+  }
   export interface IotTopicRuleErrorActionCloudwatchMetric {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#metric_name IotTopicRule#metric_name}
@@ -1373,8 +1527,11 @@ export namespace IoT {
     readonly roleArn: string;
   }
 
-  function iotTopicRuleErrorActionCloudwatchMetricToTerraform(struct?: IotTopicRuleErrorActionCloudwatchMetric): any {
+  function iotTopicRuleErrorActionCloudwatchMetricToTerraform(struct?: IotTopicRuleErrorActionCloudwatchMetricOutputReference | IotTopicRuleErrorActionCloudwatchMetric): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       metric_name: cdktf.stringToTerraform(struct!.metricName),
       metric_namespace: cdktf.stringToTerraform(struct!.metricNamespace),
@@ -1385,6 +1542,97 @@ export namespace IoT {
     }
   }
 
+  export class IotTopicRuleErrorActionCloudwatchMetricOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // metric_name - computed: false, optional: false, required: true
+    private _metricName?: string; 
+    public get metricName() {
+      return this.getStringAttribute('metric_name');
+    }
+    public set metricName(value: string) {
+      this._metricName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get metricNameInput() {
+      return this._metricName
+    }
+
+    // metric_namespace - computed: false, optional: false, required: true
+    private _metricNamespace?: string; 
+    public get metricNamespace() {
+      return this.getStringAttribute('metric_namespace');
+    }
+    public set metricNamespace(value: string) {
+      this._metricNamespace = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get metricNamespaceInput() {
+      return this._metricNamespace
+    }
+
+    // metric_timestamp - computed: false, optional: true, required: false
+    private _metricTimestamp?: string | undefined; 
+    public get metricTimestamp() {
+      return this.getStringAttribute('metric_timestamp');
+    }
+    public set metricTimestamp(value: string | undefined) {
+      this._metricTimestamp = value;
+    }
+    public resetMetricTimestamp() {
+      this._metricTimestamp = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get metricTimestampInput() {
+      return this._metricTimestamp
+    }
+
+    // metric_unit - computed: false, optional: false, required: true
+    private _metricUnit?: string; 
+    public get metricUnit() {
+      return this.getStringAttribute('metric_unit');
+    }
+    public set metricUnit(value: string) {
+      this._metricUnit = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get metricUnitInput() {
+      return this._metricUnit
+    }
+
+    // metric_value - computed: false, optional: false, required: true
+    private _metricValue?: string; 
+    public get metricValue() {
+      return this.getStringAttribute('metric_value');
+    }
+    public set metricValue(value: string) {
+      this._metricValue = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get metricValueInput() {
+      return this._metricValue
+    }
+
+    // role_arn - computed: false, optional: false, required: true
+    private _roleArn?: string; 
+    public get roleArn() {
+      return this.getStringAttribute('role_arn');
+    }
+    public set roleArn(value: string) {
+      this._roleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleArnInput() {
+      return this._roleArn
+    }
+  }
   export interface IotTopicRuleErrorActionDynamodb {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#hash_key_field IotTopicRule#hash_key_field}
@@ -1428,8 +1676,11 @@ export namespace IoT {
     readonly tableName: string;
   }
 
-  function iotTopicRuleErrorActionDynamodbToTerraform(struct?: IotTopicRuleErrorActionDynamodb): any {
+  function iotTopicRuleErrorActionDynamodbToTerraform(struct?: IotTopicRuleErrorActionDynamodbOutputReference | IotTopicRuleErrorActionDynamodb): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       hash_key_field: cdktf.stringToTerraform(struct!.hashKeyField),
       hash_key_type: cdktf.stringToTerraform(struct!.hashKeyType),
@@ -1444,6 +1695,164 @@ export namespace IoT {
     }
   }
 
+  export class IotTopicRuleErrorActionDynamodbOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // hash_key_field - computed: false, optional: false, required: true
+    private _hashKeyField?: string; 
+    public get hashKeyField() {
+      return this.getStringAttribute('hash_key_field');
+    }
+    public set hashKeyField(value: string) {
+      this._hashKeyField = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get hashKeyFieldInput() {
+      return this._hashKeyField
+    }
+
+    // hash_key_type - computed: false, optional: true, required: false
+    private _hashKeyType?: string | undefined; 
+    public get hashKeyType() {
+      return this.getStringAttribute('hash_key_type');
+    }
+    public set hashKeyType(value: string | undefined) {
+      this._hashKeyType = value;
+    }
+    public resetHashKeyType() {
+      this._hashKeyType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get hashKeyTypeInput() {
+      return this._hashKeyType
+    }
+
+    // hash_key_value - computed: false, optional: false, required: true
+    private _hashKeyValue?: string; 
+    public get hashKeyValue() {
+      return this.getStringAttribute('hash_key_value');
+    }
+    public set hashKeyValue(value: string) {
+      this._hashKeyValue = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get hashKeyValueInput() {
+      return this._hashKeyValue
+    }
+
+    // operation - computed: false, optional: true, required: false
+    private _operation?: string | undefined; 
+    public get operation() {
+      return this.getStringAttribute('operation');
+    }
+    public set operation(value: string | undefined) {
+      this._operation = value;
+    }
+    public resetOperation() {
+      this._operation = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get operationInput() {
+      return this._operation
+    }
+
+    // payload_field - computed: false, optional: true, required: false
+    private _payloadField?: string | undefined; 
+    public get payloadField() {
+      return this.getStringAttribute('payload_field');
+    }
+    public set payloadField(value: string | undefined) {
+      this._payloadField = value;
+    }
+    public resetPayloadField() {
+      this._payloadField = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get payloadFieldInput() {
+      return this._payloadField
+    }
+
+    // range_key_field - computed: false, optional: true, required: false
+    private _rangeKeyField?: string | undefined; 
+    public get rangeKeyField() {
+      return this.getStringAttribute('range_key_field');
+    }
+    public set rangeKeyField(value: string | undefined) {
+      this._rangeKeyField = value;
+    }
+    public resetRangeKeyField() {
+      this._rangeKeyField = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get rangeKeyFieldInput() {
+      return this._rangeKeyField
+    }
+
+    // range_key_type - computed: false, optional: true, required: false
+    private _rangeKeyType?: string | undefined; 
+    public get rangeKeyType() {
+      return this.getStringAttribute('range_key_type');
+    }
+    public set rangeKeyType(value: string | undefined) {
+      this._rangeKeyType = value;
+    }
+    public resetRangeKeyType() {
+      this._rangeKeyType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get rangeKeyTypeInput() {
+      return this._rangeKeyType
+    }
+
+    // range_key_value - computed: false, optional: true, required: false
+    private _rangeKeyValue?: string | undefined; 
+    public get rangeKeyValue() {
+      return this.getStringAttribute('range_key_value');
+    }
+    public set rangeKeyValue(value: string | undefined) {
+      this._rangeKeyValue = value;
+    }
+    public resetRangeKeyValue() {
+      this._rangeKeyValue = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get rangeKeyValueInput() {
+      return this._rangeKeyValue
+    }
+
+    // role_arn - computed: false, optional: false, required: true
+    private _roleArn?: string; 
+    public get roleArn() {
+      return this.getStringAttribute('role_arn');
+    }
+    public set roleArn(value: string) {
+      this._roleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleArnInput() {
+      return this._roleArn
+    }
+
+    // table_name - computed: false, optional: false, required: true
+    private _tableName?: string; 
+    public get tableName() {
+      return this.getStringAttribute('table_name');
+    }
+    public set tableName(value: string) {
+      this._tableName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tableNameInput() {
+      return this._tableName
+    }
+  }
   export interface IotTopicRuleErrorActionDynamodbv2PutItem {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#table_name IotTopicRule#table_name}
@@ -1451,13 +1860,39 @@ export namespace IoT {
     readonly tableName: string;
   }
 
-  function iotTopicRuleErrorActionDynamodbv2PutItemToTerraform(struct?: IotTopicRuleErrorActionDynamodbv2PutItem): any {
+  function iotTopicRuleErrorActionDynamodbv2PutItemToTerraform(struct?: IotTopicRuleErrorActionDynamodbv2PutItemOutputReference | IotTopicRuleErrorActionDynamodbv2PutItem): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       table_name: cdktf.stringToTerraform(struct!.tableName),
     }
   }
 
+  export class IotTopicRuleErrorActionDynamodbv2PutItemOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // table_name - computed: false, optional: false, required: true
+    private _tableName?: string; 
+    public get tableName() {
+      return this.getStringAttribute('table_name');
+    }
+    public set tableName(value: string) {
+      this._tableName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tableNameInput() {
+      return this._tableName
+    }
+  }
   export interface IotTopicRuleErrorActionDynamodbv2 {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#role_arn IotTopicRule#role_arn}
@@ -1468,17 +1903,60 @@ export namespace IoT {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#put_item IotTopicRule#put_item}
     */
-    readonly putItem?: IotTopicRuleErrorActionDynamodbv2PutItem[];
+    readonly putItem?: IotTopicRuleErrorActionDynamodbv2PutItem;
   }
 
-  function iotTopicRuleErrorActionDynamodbv2ToTerraform(struct?: IotTopicRuleErrorActionDynamodbv2): any {
+  function iotTopicRuleErrorActionDynamodbv2ToTerraform(struct?: IotTopicRuleErrorActionDynamodbv2OutputReference | IotTopicRuleErrorActionDynamodbv2): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
-      put_item: cdktf.listMapper(iotTopicRuleErrorActionDynamodbv2PutItemToTerraform)(struct!.putItem),
+      put_item: iotTopicRuleErrorActionDynamodbv2PutItemToTerraform(struct!.putItem),
     }
   }
 
+  export class IotTopicRuleErrorActionDynamodbv2OutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // role_arn - computed: false, optional: false, required: true
+    private _roleArn?: string; 
+    public get roleArn() {
+      return this.getStringAttribute('role_arn');
+    }
+    public set roleArn(value: string) {
+      this._roleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleArnInput() {
+      return this._roleArn
+    }
+
+    // put_item - computed: false, optional: true, required: false
+    private _putItem?: IotTopicRuleErrorActionDynamodbv2PutItem | undefined; 
+    private __putItemOutput = new IotTopicRuleErrorActionDynamodbv2PutItemOutputReference(this as any, "put_item", true);
+    public get putItem() {
+      return this.__putItemOutput;
+    }
+    public putPutItem(value: IotTopicRuleErrorActionDynamodbv2PutItem | undefined) {
+      this._putItem = value;
+    }
+    public resetPutItem() {
+      this._putItem = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get putItemInput() {
+      return this._putItem
+    }
+  }
   export interface IotTopicRuleErrorActionElasticsearch {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#endpoint IotTopicRule#endpoint}
@@ -1502,8 +1980,11 @@ export namespace IoT {
     readonly type: string;
   }
 
-  function iotTopicRuleErrorActionElasticsearchToTerraform(struct?: IotTopicRuleErrorActionElasticsearch): any {
+  function iotTopicRuleErrorActionElasticsearchToTerraform(struct?: IotTopicRuleErrorActionElasticsearchOutputReference | IotTopicRuleErrorActionElasticsearch): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       endpoint: cdktf.stringToTerraform(struct!.endpoint),
       id: cdktf.stringToTerraform(struct!.id),
@@ -1513,6 +1994,81 @@ export namespace IoT {
     }
   }
 
+  export class IotTopicRuleErrorActionElasticsearchOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // endpoint - computed: false, optional: false, required: true
+    private _endpoint?: string; 
+    public get endpoint() {
+      return this.getStringAttribute('endpoint');
+    }
+    public set endpoint(value: string) {
+      this._endpoint = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get endpointInput() {
+      return this._endpoint
+    }
+
+    // id - computed: false, optional: false, required: true
+    private _id?: string; 
+    public get id() {
+      return this.getStringAttribute('id');
+    }
+    public set id(value: string) {
+      this._id = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get idInput() {
+      return this._id
+    }
+
+    // index - computed: false, optional: false, required: true
+    private _index?: string; 
+    public get index() {
+      return this.getStringAttribute('index');
+    }
+    public set index(value: string) {
+      this._index = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get indexInput() {
+      return this._index
+    }
+
+    // role_arn - computed: false, optional: false, required: true
+    private _roleArn?: string; 
+    public get roleArn() {
+      return this.getStringAttribute('role_arn');
+    }
+    public set roleArn(value: string) {
+      this._roleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleArnInput() {
+      return this._roleArn
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
   export interface IotTopicRuleErrorActionFirehose {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#delivery_stream_name IotTopicRule#delivery_stream_name}
@@ -1528,8 +2084,11 @@ export namespace IoT {
     readonly separator?: string;
   }
 
-  function iotTopicRuleErrorActionFirehoseToTerraform(struct?: IotTopicRuleErrorActionFirehose): any {
+  function iotTopicRuleErrorActionFirehoseToTerraform(struct?: IotTopicRuleErrorActionFirehoseOutputReference | IotTopicRuleErrorActionFirehose): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delivery_stream_name: cdktf.stringToTerraform(struct!.deliveryStreamName),
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
@@ -1537,6 +2096,58 @@ export namespace IoT {
     }
   }
 
+  export class IotTopicRuleErrorActionFirehoseOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // delivery_stream_name - computed: false, optional: false, required: true
+    private _deliveryStreamName?: string; 
+    public get deliveryStreamName() {
+      return this.getStringAttribute('delivery_stream_name');
+    }
+    public set deliveryStreamName(value: string) {
+      this._deliveryStreamName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deliveryStreamNameInput() {
+      return this._deliveryStreamName
+    }
+
+    // role_arn - computed: false, optional: false, required: true
+    private _roleArn?: string; 
+    public get roleArn() {
+      return this.getStringAttribute('role_arn');
+    }
+    public set roleArn(value: string) {
+      this._roleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleArnInput() {
+      return this._roleArn
+    }
+
+    // separator - computed: false, optional: true, required: false
+    private _separator?: string | undefined; 
+    public get separator() {
+      return this.getStringAttribute('separator');
+    }
+    public set separator(value: string | undefined) {
+      this._separator = value;
+    }
+    public resetSeparator() {
+      this._separator = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get separatorInput() {
+      return this._separator
+    }
+  }
   export interface IotTopicRuleErrorActionIotAnalytics {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#channel_name IotTopicRule#channel_name}
@@ -1548,14 +2159,53 @@ export namespace IoT {
     readonly roleArn: string;
   }
 
-  function iotTopicRuleErrorActionIotAnalyticsToTerraform(struct?: IotTopicRuleErrorActionIotAnalytics): any {
+  function iotTopicRuleErrorActionIotAnalyticsToTerraform(struct?: IotTopicRuleErrorActionIotAnalyticsOutputReference | IotTopicRuleErrorActionIotAnalytics): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       channel_name: cdktf.stringToTerraform(struct!.channelName),
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
     }
   }
 
+  export class IotTopicRuleErrorActionIotAnalyticsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // channel_name - computed: false, optional: false, required: true
+    private _channelName?: string; 
+    public get channelName() {
+      return this.getStringAttribute('channel_name');
+    }
+    public set channelName(value: string) {
+      this._channelName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get channelNameInput() {
+      return this._channelName
+    }
+
+    // role_arn - computed: false, optional: false, required: true
+    private _roleArn?: string; 
+    public get roleArn() {
+      return this.getStringAttribute('role_arn');
+    }
+    public set roleArn(value: string) {
+      this._roleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleArnInput() {
+      return this._roleArn
+    }
+  }
   export interface IotTopicRuleErrorActionIotEvents {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#input_name IotTopicRule#input_name}
@@ -1571,8 +2221,11 @@ export namespace IoT {
     readonly roleArn: string;
   }
 
-  function iotTopicRuleErrorActionIotEventsToTerraform(struct?: IotTopicRuleErrorActionIotEvents): any {
+  function iotTopicRuleErrorActionIotEventsToTerraform(struct?: IotTopicRuleErrorActionIotEventsOutputReference | IotTopicRuleErrorActionIotEvents): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       input_name: cdktf.stringToTerraform(struct!.inputName),
       message_id: cdktf.stringToTerraform(struct!.messageId),
@@ -1580,6 +2233,58 @@ export namespace IoT {
     }
   }
 
+  export class IotTopicRuleErrorActionIotEventsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // input_name - computed: false, optional: false, required: true
+    private _inputName?: string; 
+    public get inputName() {
+      return this.getStringAttribute('input_name');
+    }
+    public set inputName(value: string) {
+      this._inputName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get inputNameInput() {
+      return this._inputName
+    }
+
+    // message_id - computed: false, optional: true, required: false
+    private _messageId?: string | undefined; 
+    public get messageId() {
+      return this.getStringAttribute('message_id');
+    }
+    public set messageId(value: string | undefined) {
+      this._messageId = value;
+    }
+    public resetMessageId() {
+      this._messageId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get messageIdInput() {
+      return this._messageId
+    }
+
+    // role_arn - computed: false, optional: false, required: true
+    private _roleArn?: string; 
+    public get roleArn() {
+      return this.getStringAttribute('role_arn');
+    }
+    public set roleArn(value: string) {
+      this._roleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleArnInput() {
+      return this._roleArn
+    }
+  }
   export interface IotTopicRuleErrorActionKinesis {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#partition_key IotTopicRule#partition_key}
@@ -1595,8 +2300,11 @@ export namespace IoT {
     readonly streamName: string;
   }
 
-  function iotTopicRuleErrorActionKinesisToTerraform(struct?: IotTopicRuleErrorActionKinesis): any {
+  function iotTopicRuleErrorActionKinesisToTerraform(struct?: IotTopicRuleErrorActionKinesisOutputReference | IotTopicRuleErrorActionKinesis): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       partition_key: cdktf.stringToTerraform(struct!.partitionKey),
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
@@ -1604,6 +2312,58 @@ export namespace IoT {
     }
   }
 
+  export class IotTopicRuleErrorActionKinesisOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // partition_key - computed: false, optional: true, required: false
+    private _partitionKey?: string | undefined; 
+    public get partitionKey() {
+      return this.getStringAttribute('partition_key');
+    }
+    public set partitionKey(value: string | undefined) {
+      this._partitionKey = value;
+    }
+    public resetPartitionKey() {
+      this._partitionKey = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get partitionKeyInput() {
+      return this._partitionKey
+    }
+
+    // role_arn - computed: false, optional: false, required: true
+    private _roleArn?: string; 
+    public get roleArn() {
+      return this.getStringAttribute('role_arn');
+    }
+    public set roleArn(value: string) {
+      this._roleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleArnInput() {
+      return this._roleArn
+    }
+
+    // stream_name - computed: false, optional: false, required: true
+    private _streamName?: string; 
+    public get streamName() {
+      return this.getStringAttribute('stream_name');
+    }
+    public set streamName(value: string) {
+      this._streamName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get streamNameInput() {
+      return this._streamName
+    }
+  }
   export interface IotTopicRuleErrorActionLambda {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#function_arn IotTopicRule#function_arn}
@@ -1611,13 +2371,39 @@ export namespace IoT {
     readonly functionArn: string;
   }
 
-  function iotTopicRuleErrorActionLambdaToTerraform(struct?: IotTopicRuleErrorActionLambda): any {
+  function iotTopicRuleErrorActionLambdaToTerraform(struct?: IotTopicRuleErrorActionLambdaOutputReference | IotTopicRuleErrorActionLambda): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       function_arn: cdktf.stringToTerraform(struct!.functionArn),
     }
   }
 
+  export class IotTopicRuleErrorActionLambdaOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // function_arn - computed: false, optional: false, required: true
+    private _functionArn?: string; 
+    public get functionArn() {
+      return this.getStringAttribute('function_arn');
+    }
+    public set functionArn(value: string) {
+      this._functionArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get functionArnInput() {
+      return this._functionArn
+    }
+  }
   export interface IotTopicRuleErrorActionRepublish {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#qos IotTopicRule#qos}
@@ -1633,8 +2419,11 @@ export namespace IoT {
     readonly topic: string;
   }
 
-  function iotTopicRuleErrorActionRepublishToTerraform(struct?: IotTopicRuleErrorActionRepublish): any {
+  function iotTopicRuleErrorActionRepublishToTerraform(struct?: IotTopicRuleErrorActionRepublishOutputReference | IotTopicRuleErrorActionRepublish): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       qos: cdktf.numberToTerraform(struct!.qos),
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
@@ -1642,6 +2431,58 @@ export namespace IoT {
     }
   }
 
+  export class IotTopicRuleErrorActionRepublishOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // qos - computed: false, optional: true, required: false
+    private _qos?: number | undefined; 
+    public get qos() {
+      return this.getNumberAttribute('qos');
+    }
+    public set qos(value: number | undefined) {
+      this._qos = value;
+    }
+    public resetQos() {
+      this._qos = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get qosInput() {
+      return this._qos
+    }
+
+    // role_arn - computed: false, optional: false, required: true
+    private _roleArn?: string; 
+    public get roleArn() {
+      return this.getStringAttribute('role_arn');
+    }
+    public set roleArn(value: string) {
+      this._roleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleArnInput() {
+      return this._roleArn
+    }
+
+    // topic - computed: false, optional: false, required: true
+    private _topic?: string; 
+    public get topic() {
+      return this.getStringAttribute('topic');
+    }
+    public set topic(value: string) {
+      this._topic = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get topicInput() {
+      return this._topic
+    }
+  }
   export interface IotTopicRuleErrorActionS3 {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#bucket_name IotTopicRule#bucket_name}
@@ -1657,8 +2498,11 @@ export namespace IoT {
     readonly roleArn: string;
   }
 
-  function iotTopicRuleErrorActionS3ToTerraform(struct?: IotTopicRuleErrorActionS3): any {
+  function iotTopicRuleErrorActionS3ToTerraform(struct?: IotTopicRuleErrorActionS3OutputReference | IotTopicRuleErrorActionS3): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bucket_name: cdktf.stringToTerraform(struct!.bucketName),
       key: cdktf.stringToTerraform(struct!.key),
@@ -1666,6 +2510,55 @@ export namespace IoT {
     }
   }
 
+  export class IotTopicRuleErrorActionS3OutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // bucket_name - computed: false, optional: false, required: true
+    private _bucketName?: string; 
+    public get bucketName() {
+      return this.getStringAttribute('bucket_name');
+    }
+    public set bucketName(value: string) {
+      this._bucketName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bucketNameInput() {
+      return this._bucketName
+    }
+
+    // key - computed: false, optional: false, required: true
+    private _key?: string; 
+    public get key() {
+      return this.getStringAttribute('key');
+    }
+    public set key(value: string) {
+      this._key = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get keyInput() {
+      return this._key
+    }
+
+    // role_arn - computed: false, optional: false, required: true
+    private _roleArn?: string; 
+    public get roleArn() {
+      return this.getStringAttribute('role_arn');
+    }
+    public set roleArn(value: string) {
+      this._roleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleArnInput() {
+      return this._roleArn
+    }
+  }
   export interface IotTopicRuleErrorActionSns {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#message_format IotTopicRule#message_format}
@@ -1681,8 +2574,11 @@ export namespace IoT {
     readonly targetArn: string;
   }
 
-  function iotTopicRuleErrorActionSnsToTerraform(struct?: IotTopicRuleErrorActionSns): any {
+  function iotTopicRuleErrorActionSnsToTerraform(struct?: IotTopicRuleErrorActionSnsOutputReference | IotTopicRuleErrorActionSns): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       message_format: cdktf.stringToTerraform(struct!.messageFormat),
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
@@ -1690,6 +2586,58 @@ export namespace IoT {
     }
   }
 
+  export class IotTopicRuleErrorActionSnsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // message_format - computed: false, optional: true, required: false
+    private _messageFormat?: string | undefined; 
+    public get messageFormat() {
+      return this.getStringAttribute('message_format');
+    }
+    public set messageFormat(value: string | undefined) {
+      this._messageFormat = value;
+    }
+    public resetMessageFormat() {
+      this._messageFormat = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get messageFormatInput() {
+      return this._messageFormat
+    }
+
+    // role_arn - computed: false, optional: false, required: true
+    private _roleArn?: string; 
+    public get roleArn() {
+      return this.getStringAttribute('role_arn');
+    }
+    public set roleArn(value: string) {
+      this._roleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleArnInput() {
+      return this._roleArn
+    }
+
+    // target_arn - computed: false, optional: false, required: true
+    private _targetArn?: string; 
+    public get targetArn() {
+      return this.getStringAttribute('target_arn');
+    }
+    public set targetArn(value: string) {
+      this._targetArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get targetArnInput() {
+      return this._targetArn
+    }
+  }
   export interface IotTopicRuleErrorActionSqs {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#queue_url IotTopicRule#queue_url}
@@ -1705,8 +2653,11 @@ export namespace IoT {
     readonly useBase64: boolean | cdktf.IResolvable;
   }
 
-  function iotTopicRuleErrorActionSqsToTerraform(struct?: IotTopicRuleErrorActionSqs): any {
+  function iotTopicRuleErrorActionSqsToTerraform(struct?: IotTopicRuleErrorActionSqsOutputReference | IotTopicRuleErrorActionSqs): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       queue_url: cdktf.stringToTerraform(struct!.queueUrl),
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
@@ -1714,6 +2665,55 @@ export namespace IoT {
     }
   }
 
+  export class IotTopicRuleErrorActionSqsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // queue_url - computed: false, optional: false, required: true
+    private _queueUrl?: string; 
+    public get queueUrl() {
+      return this.getStringAttribute('queue_url');
+    }
+    public set queueUrl(value: string) {
+      this._queueUrl = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get queueUrlInput() {
+      return this._queueUrl
+    }
+
+    // role_arn - computed: false, optional: false, required: true
+    private _roleArn?: string; 
+    public get roleArn() {
+      return this.getStringAttribute('role_arn');
+    }
+    public set roleArn(value: string) {
+      this._roleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleArnInput() {
+      return this._roleArn
+    }
+
+    // use_base64 - computed: false, optional: false, required: true
+    private _useBase64?: boolean | cdktf.IResolvable; 
+    public get useBase64() {
+      return this.getBooleanAttribute('use_base64') as any;
+    }
+    public set useBase64(value: boolean | cdktf.IResolvable) {
+      this._useBase64 = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get useBase64Input() {
+      return this._useBase64
+    }
+  }
   export interface IotTopicRuleErrorActionStepFunctions {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#execution_name_prefix IotTopicRule#execution_name_prefix}
@@ -1729,8 +2729,11 @@ export namespace IoT {
     readonly stateMachineName: string;
   }
 
-  function iotTopicRuleErrorActionStepFunctionsToTerraform(struct?: IotTopicRuleErrorActionStepFunctions): any {
+  function iotTopicRuleErrorActionStepFunctionsToTerraform(struct?: IotTopicRuleErrorActionStepFunctionsOutputReference | IotTopicRuleErrorActionStepFunctions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       execution_name_prefix: cdktf.stringToTerraform(struct!.executionNamePrefix),
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
@@ -1738,120 +2741,440 @@ export namespace IoT {
     }
   }
 
+  export class IotTopicRuleErrorActionStepFunctionsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // execution_name_prefix - computed: false, optional: true, required: false
+    private _executionNamePrefix?: string | undefined; 
+    public get executionNamePrefix() {
+      return this.getStringAttribute('execution_name_prefix');
+    }
+    public set executionNamePrefix(value: string | undefined) {
+      this._executionNamePrefix = value;
+    }
+    public resetExecutionNamePrefix() {
+      this._executionNamePrefix = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get executionNamePrefixInput() {
+      return this._executionNamePrefix
+    }
+
+    // role_arn - computed: false, optional: false, required: true
+    private _roleArn?: string; 
+    public get roleArn() {
+      return this.getStringAttribute('role_arn');
+    }
+    public set roleArn(value: string) {
+      this._roleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleArnInput() {
+      return this._roleArn
+    }
+
+    // state_machine_name - computed: false, optional: false, required: true
+    private _stateMachineName?: string; 
+    public get stateMachineName() {
+      return this.getStringAttribute('state_machine_name');
+    }
+    public set stateMachineName(value: string) {
+      this._stateMachineName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get stateMachineNameInput() {
+      return this._stateMachineName
+    }
+  }
   export interface IotTopicRuleErrorAction {
     /**
     * cloudwatch_alarm block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#cloudwatch_alarm IotTopicRule#cloudwatch_alarm}
     */
-    readonly cloudwatchAlarm?: IotTopicRuleErrorActionCloudwatchAlarm[];
+    readonly cloudwatchAlarm?: IotTopicRuleErrorActionCloudwatchAlarm;
     /**
     * cloudwatch_metric block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#cloudwatch_metric IotTopicRule#cloudwatch_metric}
     */
-    readonly cloudwatchMetric?: IotTopicRuleErrorActionCloudwatchMetric[];
+    readonly cloudwatchMetric?: IotTopicRuleErrorActionCloudwatchMetric;
     /**
     * dynamodb block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#dynamodb IotTopicRule#dynamodb}
     */
-    readonly dynamodb?: IotTopicRuleErrorActionDynamodb[];
+    readonly dynamodb?: IotTopicRuleErrorActionDynamodb;
     /**
     * dynamodbv2 block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#dynamodbv2 IotTopicRule#dynamodbv2}
     */
-    readonly dynamodbv2?: IotTopicRuleErrorActionDynamodbv2[];
+    readonly dynamodbv2?: IotTopicRuleErrorActionDynamodbv2;
     /**
     * elasticsearch block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#elasticsearch IotTopicRule#elasticsearch}
     */
-    readonly elasticsearch?: IotTopicRuleErrorActionElasticsearch[];
+    readonly elasticsearch?: IotTopicRuleErrorActionElasticsearch;
     /**
     * firehose block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#firehose IotTopicRule#firehose}
     */
-    readonly firehose?: IotTopicRuleErrorActionFirehose[];
+    readonly firehose?: IotTopicRuleErrorActionFirehose;
     /**
     * iot_analytics block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#iot_analytics IotTopicRule#iot_analytics}
     */
-    readonly iotAnalytics?: IotTopicRuleErrorActionIotAnalytics[];
+    readonly iotAnalytics?: IotTopicRuleErrorActionIotAnalytics;
     /**
     * iot_events block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#iot_events IotTopicRule#iot_events}
     */
-    readonly iotEvents?: IotTopicRuleErrorActionIotEvents[];
+    readonly iotEvents?: IotTopicRuleErrorActionIotEvents;
     /**
     * kinesis block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#kinesis IotTopicRule#kinesis}
     */
-    readonly kinesis?: IotTopicRuleErrorActionKinesis[];
+    readonly kinesis?: IotTopicRuleErrorActionKinesis;
     /**
     * lambda block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#lambda IotTopicRule#lambda}
     */
-    readonly lambda?: IotTopicRuleErrorActionLambda[];
+    readonly lambda?: IotTopicRuleErrorActionLambda;
     /**
     * republish block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#republish IotTopicRule#republish}
     */
-    readonly republish?: IotTopicRuleErrorActionRepublish[];
+    readonly republish?: IotTopicRuleErrorActionRepublish;
     /**
     * s3 block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#s3 IotTopicRule#s3}
     */
-    readonly s3?: IotTopicRuleErrorActionS3[];
+    readonly s3?: IotTopicRuleErrorActionS3;
     /**
     * sns block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#sns IotTopicRule#sns}
     */
-    readonly sns?: IotTopicRuleErrorActionSns[];
+    readonly sns?: IotTopicRuleErrorActionSns;
     /**
     * sqs block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#sqs IotTopicRule#sqs}
     */
-    readonly sqs?: IotTopicRuleErrorActionSqs[];
+    readonly sqs?: IotTopicRuleErrorActionSqs;
     /**
     * step_functions block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#step_functions IotTopicRule#step_functions}
     */
-    readonly stepFunctions?: IotTopicRuleErrorActionStepFunctions[];
+    readonly stepFunctions?: IotTopicRuleErrorActionStepFunctions;
   }
 
-  function iotTopicRuleErrorActionToTerraform(struct?: IotTopicRuleErrorAction): any {
+  function iotTopicRuleErrorActionToTerraform(struct?: IotTopicRuleErrorActionOutputReference | IotTopicRuleErrorAction): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      cloudwatch_alarm: cdktf.listMapper(iotTopicRuleErrorActionCloudwatchAlarmToTerraform)(struct!.cloudwatchAlarm),
-      cloudwatch_metric: cdktf.listMapper(iotTopicRuleErrorActionCloudwatchMetricToTerraform)(struct!.cloudwatchMetric),
-      dynamodb: cdktf.listMapper(iotTopicRuleErrorActionDynamodbToTerraform)(struct!.dynamodb),
-      dynamodbv2: cdktf.listMapper(iotTopicRuleErrorActionDynamodbv2ToTerraform)(struct!.dynamodbv2),
-      elasticsearch: cdktf.listMapper(iotTopicRuleErrorActionElasticsearchToTerraform)(struct!.elasticsearch),
-      firehose: cdktf.listMapper(iotTopicRuleErrorActionFirehoseToTerraform)(struct!.firehose),
-      iot_analytics: cdktf.listMapper(iotTopicRuleErrorActionIotAnalyticsToTerraform)(struct!.iotAnalytics),
-      iot_events: cdktf.listMapper(iotTopicRuleErrorActionIotEventsToTerraform)(struct!.iotEvents),
-      kinesis: cdktf.listMapper(iotTopicRuleErrorActionKinesisToTerraform)(struct!.kinesis),
-      lambda: cdktf.listMapper(iotTopicRuleErrorActionLambdaToTerraform)(struct!.lambda),
-      republish: cdktf.listMapper(iotTopicRuleErrorActionRepublishToTerraform)(struct!.republish),
-      s3: cdktf.listMapper(iotTopicRuleErrorActionS3ToTerraform)(struct!.s3),
-      sns: cdktf.listMapper(iotTopicRuleErrorActionSnsToTerraform)(struct!.sns),
-      sqs: cdktf.listMapper(iotTopicRuleErrorActionSqsToTerraform)(struct!.sqs),
-      step_functions: cdktf.listMapper(iotTopicRuleErrorActionStepFunctionsToTerraform)(struct!.stepFunctions),
+      cloudwatch_alarm: iotTopicRuleErrorActionCloudwatchAlarmToTerraform(struct!.cloudwatchAlarm),
+      cloudwatch_metric: iotTopicRuleErrorActionCloudwatchMetricToTerraform(struct!.cloudwatchMetric),
+      dynamodb: iotTopicRuleErrorActionDynamodbToTerraform(struct!.dynamodb),
+      dynamodbv2: iotTopicRuleErrorActionDynamodbv2ToTerraform(struct!.dynamodbv2),
+      elasticsearch: iotTopicRuleErrorActionElasticsearchToTerraform(struct!.elasticsearch),
+      firehose: iotTopicRuleErrorActionFirehoseToTerraform(struct!.firehose),
+      iot_analytics: iotTopicRuleErrorActionIotAnalyticsToTerraform(struct!.iotAnalytics),
+      iot_events: iotTopicRuleErrorActionIotEventsToTerraform(struct!.iotEvents),
+      kinesis: iotTopicRuleErrorActionKinesisToTerraform(struct!.kinesis),
+      lambda: iotTopicRuleErrorActionLambdaToTerraform(struct!.lambda),
+      republish: iotTopicRuleErrorActionRepublishToTerraform(struct!.republish),
+      s3: iotTopicRuleErrorActionS3ToTerraform(struct!.s3),
+      sns: iotTopicRuleErrorActionSnsToTerraform(struct!.sns),
+      sqs: iotTopicRuleErrorActionSqsToTerraform(struct!.sqs),
+      step_functions: iotTopicRuleErrorActionStepFunctionsToTerraform(struct!.stepFunctions),
     }
   }
 
+  export class IotTopicRuleErrorActionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // cloudwatch_alarm - computed: false, optional: true, required: false
+    private _cloudwatchAlarm?: IotTopicRuleErrorActionCloudwatchAlarm | undefined; 
+    private __cloudwatchAlarmOutput = new IotTopicRuleErrorActionCloudwatchAlarmOutputReference(this as any, "cloudwatch_alarm", true);
+    public get cloudwatchAlarm() {
+      return this.__cloudwatchAlarmOutput;
+    }
+    public putCloudwatchAlarm(value: IotTopicRuleErrorActionCloudwatchAlarm | undefined) {
+      this._cloudwatchAlarm = value;
+    }
+    public resetCloudwatchAlarm() {
+      this._cloudwatchAlarm = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cloudwatchAlarmInput() {
+      return this._cloudwatchAlarm
+    }
+
+    // cloudwatch_metric - computed: false, optional: true, required: false
+    private _cloudwatchMetric?: IotTopicRuleErrorActionCloudwatchMetric | undefined; 
+    private __cloudwatchMetricOutput = new IotTopicRuleErrorActionCloudwatchMetricOutputReference(this as any, "cloudwatch_metric", true);
+    public get cloudwatchMetric() {
+      return this.__cloudwatchMetricOutput;
+    }
+    public putCloudwatchMetric(value: IotTopicRuleErrorActionCloudwatchMetric | undefined) {
+      this._cloudwatchMetric = value;
+    }
+    public resetCloudwatchMetric() {
+      this._cloudwatchMetric = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cloudwatchMetricInput() {
+      return this._cloudwatchMetric
+    }
+
+    // dynamodb - computed: false, optional: true, required: false
+    private _dynamodb?: IotTopicRuleErrorActionDynamodb | undefined; 
+    private __dynamodbOutput = new IotTopicRuleErrorActionDynamodbOutputReference(this as any, "dynamodb", true);
+    public get dynamodb() {
+      return this.__dynamodbOutput;
+    }
+    public putDynamodb(value: IotTopicRuleErrorActionDynamodb | undefined) {
+      this._dynamodb = value;
+    }
+    public resetDynamodb() {
+      this._dynamodb = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get dynamodbInput() {
+      return this._dynamodb
+    }
+
+    // dynamodbv2 - computed: false, optional: true, required: false
+    private _dynamodbv2?: IotTopicRuleErrorActionDynamodbv2 | undefined; 
+    private __dynamodbv2Output = new IotTopicRuleErrorActionDynamodbv2OutputReference(this as any, "dynamodbv2", true);
+    public get dynamodbv2() {
+      return this.__dynamodbv2Output;
+    }
+    public putDynamodbv2(value: IotTopicRuleErrorActionDynamodbv2 | undefined) {
+      this._dynamodbv2 = value;
+    }
+    public resetDynamodbv2() {
+      this._dynamodbv2 = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get dynamodbv2Input() {
+      return this._dynamodbv2
+    }
+
+    // elasticsearch - computed: false, optional: true, required: false
+    private _elasticsearch?: IotTopicRuleErrorActionElasticsearch | undefined; 
+    private __elasticsearchOutput = new IotTopicRuleErrorActionElasticsearchOutputReference(this as any, "elasticsearch", true);
+    public get elasticsearch() {
+      return this.__elasticsearchOutput;
+    }
+    public putElasticsearch(value: IotTopicRuleErrorActionElasticsearch | undefined) {
+      this._elasticsearch = value;
+    }
+    public resetElasticsearch() {
+      this._elasticsearch = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get elasticsearchInput() {
+      return this._elasticsearch
+    }
+
+    // firehose - computed: false, optional: true, required: false
+    private _firehose?: IotTopicRuleErrorActionFirehose | undefined; 
+    private __firehoseOutput = new IotTopicRuleErrorActionFirehoseOutputReference(this as any, "firehose", true);
+    public get firehose() {
+      return this.__firehoseOutput;
+    }
+    public putFirehose(value: IotTopicRuleErrorActionFirehose | undefined) {
+      this._firehose = value;
+    }
+    public resetFirehose() {
+      this._firehose = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get firehoseInput() {
+      return this._firehose
+    }
+
+    // iot_analytics - computed: false, optional: true, required: false
+    private _iotAnalytics?: IotTopicRuleErrorActionIotAnalytics | undefined; 
+    private __iotAnalyticsOutput = new IotTopicRuleErrorActionIotAnalyticsOutputReference(this as any, "iot_analytics", true);
+    public get iotAnalytics() {
+      return this.__iotAnalyticsOutput;
+    }
+    public putIotAnalytics(value: IotTopicRuleErrorActionIotAnalytics | undefined) {
+      this._iotAnalytics = value;
+    }
+    public resetIotAnalytics() {
+      this._iotAnalytics = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get iotAnalyticsInput() {
+      return this._iotAnalytics
+    }
+
+    // iot_events - computed: false, optional: true, required: false
+    private _iotEvents?: IotTopicRuleErrorActionIotEvents | undefined; 
+    private __iotEventsOutput = new IotTopicRuleErrorActionIotEventsOutputReference(this as any, "iot_events", true);
+    public get iotEvents() {
+      return this.__iotEventsOutput;
+    }
+    public putIotEvents(value: IotTopicRuleErrorActionIotEvents | undefined) {
+      this._iotEvents = value;
+    }
+    public resetIotEvents() {
+      this._iotEvents = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get iotEventsInput() {
+      return this._iotEvents
+    }
+
+    // kinesis - computed: false, optional: true, required: false
+    private _kinesis?: IotTopicRuleErrorActionKinesis | undefined; 
+    private __kinesisOutput = new IotTopicRuleErrorActionKinesisOutputReference(this as any, "kinesis", true);
+    public get kinesis() {
+      return this.__kinesisOutput;
+    }
+    public putKinesis(value: IotTopicRuleErrorActionKinesis | undefined) {
+      this._kinesis = value;
+    }
+    public resetKinesis() {
+      this._kinesis = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get kinesisInput() {
+      return this._kinesis
+    }
+
+    // lambda - computed: false, optional: true, required: false
+    private _lambda?: IotTopicRuleErrorActionLambda | undefined; 
+    private __lambdaOutput = new IotTopicRuleErrorActionLambdaOutputReference(this as any, "lambda", true);
+    public get lambda() {
+      return this.__lambdaOutput;
+    }
+    public putLambda(value: IotTopicRuleErrorActionLambda | undefined) {
+      this._lambda = value;
+    }
+    public resetLambda() {
+      this._lambda = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get lambdaInput() {
+      return this._lambda
+    }
+
+    // republish - computed: false, optional: true, required: false
+    private _republish?: IotTopicRuleErrorActionRepublish | undefined; 
+    private __republishOutput = new IotTopicRuleErrorActionRepublishOutputReference(this as any, "republish", true);
+    public get republish() {
+      return this.__republishOutput;
+    }
+    public putRepublish(value: IotTopicRuleErrorActionRepublish | undefined) {
+      this._republish = value;
+    }
+    public resetRepublish() {
+      this._republish = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get republishInput() {
+      return this._republish
+    }
+
+    // s3 - computed: false, optional: true, required: false
+    private _s3?: IotTopicRuleErrorActionS3 | undefined; 
+    private __s3Output = new IotTopicRuleErrorActionS3OutputReference(this as any, "s3", true);
+    public get s3() {
+      return this.__s3Output;
+    }
+    public putS3(value: IotTopicRuleErrorActionS3 | undefined) {
+      this._s3 = value;
+    }
+    public resetS3() {
+      this._s3 = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get s3Input() {
+      return this._s3
+    }
+
+    // sns - computed: false, optional: true, required: false
+    private _sns?: IotTopicRuleErrorActionSns | undefined; 
+    private __snsOutput = new IotTopicRuleErrorActionSnsOutputReference(this as any, "sns", true);
+    public get sns() {
+      return this.__snsOutput;
+    }
+    public putSns(value: IotTopicRuleErrorActionSns | undefined) {
+      this._sns = value;
+    }
+    public resetSns() {
+      this._sns = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get snsInput() {
+      return this._sns
+    }
+
+    // sqs - computed: false, optional: true, required: false
+    private _sqs?: IotTopicRuleErrorActionSqs | undefined; 
+    private __sqsOutput = new IotTopicRuleErrorActionSqsOutputReference(this as any, "sqs", true);
+    public get sqs() {
+      return this.__sqsOutput;
+    }
+    public putSqs(value: IotTopicRuleErrorActionSqs | undefined) {
+      this._sqs = value;
+    }
+    public resetSqs() {
+      this._sqs = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sqsInput() {
+      return this._sqs
+    }
+
+    // step_functions - computed: false, optional: true, required: false
+    private _stepFunctions?: IotTopicRuleErrorActionStepFunctions | undefined; 
+    private __stepFunctionsOutput = new IotTopicRuleErrorActionStepFunctionsOutputReference(this as any, "step_functions", true);
+    public get stepFunctions() {
+      return this.__stepFunctionsOutput;
+    }
+    public putStepFunctions(value: IotTopicRuleErrorActionStepFunctions | undefined) {
+      this._stepFunctions = value;
+    }
+    public resetStepFunctions() {
+      this._stepFunctions = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get stepFunctionsInput() {
+      return this._stepFunctions
+    }
+  }
   export interface IotTopicRuleFirehose {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_topic_rule.html#delivery_stream_name IotTopicRule#delivery_stream_name}
@@ -1869,6 +3192,9 @@ export namespace IoT {
 
   function iotTopicRuleFirehoseToTerraform(struct?: IotTopicRuleFirehose): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delivery_stream_name: cdktf.stringToTerraform(struct!.deliveryStreamName),
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
@@ -1889,6 +3215,9 @@ export namespace IoT {
 
   function iotTopicRuleIotAnalyticsToTerraform(struct?: IotTopicRuleIotAnalytics): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       channel_name: cdktf.stringToTerraform(struct!.channelName),
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
@@ -1912,6 +3241,9 @@ export namespace IoT {
 
   function iotTopicRuleIotEventsToTerraform(struct?: IotTopicRuleIotEvents): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       input_name: cdktf.stringToTerraform(struct!.inputName),
       message_id: cdktf.stringToTerraform(struct!.messageId),
@@ -1936,6 +3268,9 @@ export namespace IoT {
 
   function iotTopicRuleKinesisToTerraform(struct?: IotTopicRuleKinesis): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       partition_key: cdktf.stringToTerraform(struct!.partitionKey),
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
@@ -1952,6 +3287,9 @@ export namespace IoT {
 
   function iotTopicRuleLambdaToTerraform(struct?: IotTopicRuleLambda): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       function_arn: cdktf.stringToTerraform(struct!.functionArn),
     }
@@ -1974,6 +3312,9 @@ export namespace IoT {
 
   function iotTopicRuleRepublishToTerraform(struct?: IotTopicRuleRepublish): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       qos: cdktf.numberToTerraform(struct!.qos),
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
@@ -1998,6 +3339,9 @@ export namespace IoT {
 
   function iotTopicRuleS3ToTerraform(struct?: IotTopicRuleS3): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bucket_name: cdktf.stringToTerraform(struct!.bucketName),
       key: cdktf.stringToTerraform(struct!.key),
@@ -2022,6 +3366,9 @@ export namespace IoT {
 
   function iotTopicRuleSnsToTerraform(struct?: IotTopicRuleSns): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       message_format: cdktf.stringToTerraform(struct!.messageFormat),
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
@@ -2046,6 +3393,9 @@ export namespace IoT {
 
   function iotTopicRuleSqsToTerraform(struct?: IotTopicRuleSqs): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       queue_url: cdktf.stringToTerraform(struct!.queueUrl),
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
@@ -2070,6 +3420,9 @@ export namespace IoT {
 
   function iotTopicRuleStepFunctionsToTerraform(struct?: IotTopicRuleStepFunctions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       execution_name_prefix: cdktf.stringToTerraform(struct!.executionNamePrefix),
       role_arn: cdktf.stringToTerraform(struct!.roleArn),
@@ -2145,11 +3498,11 @@ export namespace IoT {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -2161,9 +3514,9 @@ export namespace IoT {
     }
 
     // enabled - computed: false, optional: false, required: true
-    private _enabled: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
     public set enabled(value: boolean | cdktf.IResolvable) {
       this._enabled = value;
@@ -2179,7 +3532,7 @@ export namespace IoT {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2192,7 +3545,7 @@ export namespace IoT {
     }
 
     // sql - computed: false, optional: false, required: true
-    private _sql: string;
+    private _sql?: string; 
     public get sql() {
       return this.getStringAttribute('sql');
     }
@@ -2205,7 +3558,7 @@ export namespace IoT {
     }
 
     // sql_version - computed: false, optional: false, required: true
-    private _sqlVersion: string;
+    private _sqlVersion?: string; 
     public get sqlVersion() {
       return this.getStringAttribute('sql_version');
     }
@@ -2218,11 +3571,12 @@ export namespace IoT {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2234,11 +3588,12 @@ export namespace IoT {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2250,11 +3605,12 @@ export namespace IoT {
     }
 
     // cloudwatch_alarm - computed: false, optional: true, required: false
-    private _cloudwatchAlarm?: IotTopicRuleCloudwatchAlarm[];
+    private _cloudwatchAlarm?: IotTopicRuleCloudwatchAlarm[] | undefined; 
     public get cloudwatchAlarm() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('cloudwatch_alarm') as any;
     }
-    public set cloudwatchAlarm(value: IotTopicRuleCloudwatchAlarm[] ) {
+    public set cloudwatchAlarm(value: IotTopicRuleCloudwatchAlarm[] | undefined) {
       this._cloudwatchAlarm = value;
     }
     public resetCloudwatchAlarm() {
@@ -2266,11 +3622,12 @@ export namespace IoT {
     }
 
     // cloudwatch_metric - computed: false, optional: true, required: false
-    private _cloudwatchMetric?: IotTopicRuleCloudwatchMetric[];
+    private _cloudwatchMetric?: IotTopicRuleCloudwatchMetric[] | undefined; 
     public get cloudwatchMetric() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('cloudwatch_metric') as any;
     }
-    public set cloudwatchMetric(value: IotTopicRuleCloudwatchMetric[] ) {
+    public set cloudwatchMetric(value: IotTopicRuleCloudwatchMetric[] | undefined) {
       this._cloudwatchMetric = value;
     }
     public resetCloudwatchMetric() {
@@ -2282,11 +3639,12 @@ export namespace IoT {
     }
 
     // dynamodb - computed: false, optional: true, required: false
-    private _dynamodb?: IotTopicRuleDynamodb[];
+    private _dynamodb?: IotTopicRuleDynamodb[] | undefined; 
     public get dynamodb() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('dynamodb') as any;
     }
-    public set dynamodb(value: IotTopicRuleDynamodb[] ) {
+    public set dynamodb(value: IotTopicRuleDynamodb[] | undefined) {
       this._dynamodb = value;
     }
     public resetDynamodb() {
@@ -2298,11 +3656,12 @@ export namespace IoT {
     }
 
     // dynamodbv2 - computed: false, optional: true, required: false
-    private _dynamodbv2?: IotTopicRuleDynamodbv2[];
+    private _dynamodbv2?: IotTopicRuleDynamodbv2[] | undefined; 
     public get dynamodbv2() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('dynamodbv2') as any;
     }
-    public set dynamodbv2(value: IotTopicRuleDynamodbv2[] ) {
+    public set dynamodbv2(value: IotTopicRuleDynamodbv2[] | undefined) {
       this._dynamodbv2 = value;
     }
     public resetDynamodbv2() {
@@ -2314,11 +3673,12 @@ export namespace IoT {
     }
 
     // elasticsearch - computed: false, optional: true, required: false
-    private _elasticsearch?: IotTopicRuleElasticsearch[];
+    private _elasticsearch?: IotTopicRuleElasticsearch[] | undefined; 
     public get elasticsearch() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('elasticsearch') as any;
     }
-    public set elasticsearch(value: IotTopicRuleElasticsearch[] ) {
+    public set elasticsearch(value: IotTopicRuleElasticsearch[] | undefined) {
       this._elasticsearch = value;
     }
     public resetElasticsearch() {
@@ -2330,11 +3690,12 @@ export namespace IoT {
     }
 
     // error_action - computed: false, optional: true, required: false
-    private _errorAction?: IotTopicRuleErrorAction[];
+    private _errorAction?: IotTopicRuleErrorAction | undefined; 
+    private __errorActionOutput = new IotTopicRuleErrorActionOutputReference(this as any, "error_action", true);
     public get errorAction() {
-      return this.interpolationForAttribute('error_action') as any;
+      return this.__errorActionOutput;
     }
-    public set errorAction(value: IotTopicRuleErrorAction[] ) {
+    public putErrorAction(value: IotTopicRuleErrorAction | undefined) {
       this._errorAction = value;
     }
     public resetErrorAction() {
@@ -2346,11 +3707,12 @@ export namespace IoT {
     }
 
     // firehose - computed: false, optional: true, required: false
-    private _firehose?: IotTopicRuleFirehose[];
+    private _firehose?: IotTopicRuleFirehose[] | undefined; 
     public get firehose() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('firehose') as any;
     }
-    public set firehose(value: IotTopicRuleFirehose[] ) {
+    public set firehose(value: IotTopicRuleFirehose[] | undefined) {
       this._firehose = value;
     }
     public resetFirehose() {
@@ -2362,11 +3724,12 @@ export namespace IoT {
     }
 
     // iot_analytics - computed: false, optional: true, required: false
-    private _iotAnalytics?: IotTopicRuleIotAnalytics[];
+    private _iotAnalytics?: IotTopicRuleIotAnalytics[] | undefined; 
     public get iotAnalytics() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('iot_analytics') as any;
     }
-    public set iotAnalytics(value: IotTopicRuleIotAnalytics[] ) {
+    public set iotAnalytics(value: IotTopicRuleIotAnalytics[] | undefined) {
       this._iotAnalytics = value;
     }
     public resetIotAnalytics() {
@@ -2378,11 +3741,12 @@ export namespace IoT {
     }
 
     // iot_events - computed: false, optional: true, required: false
-    private _iotEvents?: IotTopicRuleIotEvents[];
+    private _iotEvents?: IotTopicRuleIotEvents[] | undefined; 
     public get iotEvents() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('iot_events') as any;
     }
-    public set iotEvents(value: IotTopicRuleIotEvents[] ) {
+    public set iotEvents(value: IotTopicRuleIotEvents[] | undefined) {
       this._iotEvents = value;
     }
     public resetIotEvents() {
@@ -2394,11 +3758,12 @@ export namespace IoT {
     }
 
     // kinesis - computed: false, optional: true, required: false
-    private _kinesis?: IotTopicRuleKinesis[];
+    private _kinesis?: IotTopicRuleKinesis[] | undefined; 
     public get kinesis() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('kinesis') as any;
     }
-    public set kinesis(value: IotTopicRuleKinesis[] ) {
+    public set kinesis(value: IotTopicRuleKinesis[] | undefined) {
       this._kinesis = value;
     }
     public resetKinesis() {
@@ -2410,11 +3775,12 @@ export namespace IoT {
     }
 
     // lambda - computed: false, optional: true, required: false
-    private _lambda?: IotTopicRuleLambda[];
+    private _lambda?: IotTopicRuleLambda[] | undefined; 
     public get lambda() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('lambda') as any;
     }
-    public set lambda(value: IotTopicRuleLambda[] ) {
+    public set lambda(value: IotTopicRuleLambda[] | undefined) {
       this._lambda = value;
     }
     public resetLambda() {
@@ -2426,11 +3792,12 @@ export namespace IoT {
     }
 
     // republish - computed: false, optional: true, required: false
-    private _republish?: IotTopicRuleRepublish[];
+    private _republish?: IotTopicRuleRepublish[] | undefined; 
     public get republish() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('republish') as any;
     }
-    public set republish(value: IotTopicRuleRepublish[] ) {
+    public set republish(value: IotTopicRuleRepublish[] | undefined) {
       this._republish = value;
     }
     public resetRepublish() {
@@ -2442,11 +3809,12 @@ export namespace IoT {
     }
 
     // s3 - computed: false, optional: true, required: false
-    private _s3?: IotTopicRuleS3[];
+    private _s3?: IotTopicRuleS3[] | undefined; 
     public get s3() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('s3') as any;
     }
-    public set s3(value: IotTopicRuleS3[] ) {
+    public set s3(value: IotTopicRuleS3[] | undefined) {
       this._s3 = value;
     }
     public resetS3() {
@@ -2458,11 +3826,12 @@ export namespace IoT {
     }
 
     // sns - computed: false, optional: true, required: false
-    private _sns?: IotTopicRuleSns[];
+    private _sns?: IotTopicRuleSns[] | undefined; 
     public get sns() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('sns') as any;
     }
-    public set sns(value: IotTopicRuleSns[] ) {
+    public set sns(value: IotTopicRuleSns[] | undefined) {
       this._sns = value;
     }
     public resetSns() {
@@ -2474,11 +3843,12 @@ export namespace IoT {
     }
 
     // sqs - computed: false, optional: true, required: false
-    private _sqs?: IotTopicRuleSqs[];
+    private _sqs?: IotTopicRuleSqs[] | undefined; 
     public get sqs() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('sqs') as any;
     }
-    public set sqs(value: IotTopicRuleSqs[] ) {
+    public set sqs(value: IotTopicRuleSqs[] | undefined) {
       this._sqs = value;
     }
     public resetSqs() {
@@ -2490,11 +3860,12 @@ export namespace IoT {
     }
 
     // step_functions - computed: false, optional: true, required: false
-    private _stepFunctions?: IotTopicRuleStepFunctions[];
+    private _stepFunctions?: IotTopicRuleStepFunctions[] | undefined; 
     public get stepFunctions() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('step_functions') as any;
     }
-    public set stepFunctions(value: IotTopicRuleStepFunctions[] ) {
+    public set stepFunctions(value: IotTopicRuleStepFunctions[] | undefined) {
       this._stepFunctions = value;
     }
     public resetStepFunctions() {
@@ -2523,7 +3894,7 @@ export namespace IoT {
         dynamodb: cdktf.listMapper(iotTopicRuleDynamodbToTerraform)(this._dynamodb),
         dynamodbv2: cdktf.listMapper(iotTopicRuleDynamodbv2ToTerraform)(this._dynamodbv2),
         elasticsearch: cdktf.listMapper(iotTopicRuleElasticsearchToTerraform)(this._elasticsearch),
-        error_action: cdktf.listMapper(iotTopicRuleErrorActionToTerraform)(this._errorAction),
+        error_action: iotTopicRuleErrorActionToTerraform(this._errorAction),
         firehose: cdktf.listMapper(iotTopicRuleFirehoseToTerraform)(this._firehose),
         iot_analytics: cdktf.listMapper(iotTopicRuleIotAnalyticsToTerraform)(this._iotAnalytics),
         iot_events: cdktf.listMapper(iotTopicRuleIotEventsToTerraform)(this._iotEvents),
@@ -2589,11 +3960,11 @@ export namespace IoT {
     }
 
     // endpoint_type - computed: false, optional: true, required: false
-    private _endpointType?: string;
+    private _endpointType?: string | undefined; 
     public get endpointType() {
       return this.getStringAttribute('endpoint_type');
     }
-    public set endpointType(value: string ) {
+    public set endpointType(value: string | undefined) {
       this._endpointType = value;
     }
     public resetEndpointType() {

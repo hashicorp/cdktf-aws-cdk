@@ -25,7 +25,7 @@ export namespace Athena {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/athena_database.html#encryption_configuration AthenaDatabase#encryption_configuration}
     */
-    readonly encryptionConfiguration?: AthenaDatabaseEncryptionConfiguration[];
+    readonly encryptionConfiguration?: AthenaDatabaseEncryptionConfiguration;
   }
   export interface AthenaDatabaseEncryptionConfiguration {
     /**
@@ -38,14 +38,56 @@ export namespace Athena {
     readonly kmsKey?: string;
   }
 
-  function athenaDatabaseEncryptionConfigurationToTerraform(struct?: AthenaDatabaseEncryptionConfiguration): any {
+  function athenaDatabaseEncryptionConfigurationToTerraform(struct?: AthenaDatabaseEncryptionConfigurationOutputReference | AthenaDatabaseEncryptionConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       encryption_option: cdktf.stringToTerraform(struct!.encryptionOption),
       kms_key: cdktf.stringToTerraform(struct!.kmsKey),
     }
   }
 
+  export class AthenaDatabaseEncryptionConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // encryption_option - computed: false, optional: false, required: true
+    private _encryptionOption?: string; 
+    public get encryptionOption() {
+      return this.getStringAttribute('encryption_option');
+    }
+    public set encryptionOption(value: string) {
+      this._encryptionOption = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get encryptionOptionInput() {
+      return this._encryptionOption
+    }
+
+    // kms_key - computed: false, optional: true, required: false
+    private _kmsKey?: string | undefined; 
+    public get kmsKey() {
+      return this.getStringAttribute('kms_key');
+    }
+    public set kmsKey(value: string | undefined) {
+      this._kmsKey = value;
+    }
+    public resetKmsKey() {
+      this._kmsKey = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get kmsKeyInput() {
+      return this._kmsKey
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/athena_database.html aws_athena_database}
@@ -90,7 +132,7 @@ export namespace Athena {
     // ==========
 
     // bucket - computed: false, optional: false, required: true
-    private _bucket: string;
+    private _bucket?: string; 
     public get bucket() {
       return this.getStringAttribute('bucket');
     }
@@ -103,11 +145,11 @@ export namespace Athena {
     }
 
     // force_destroy - computed: false, optional: true, required: false
-    private _forceDestroy?: boolean | cdktf.IResolvable;
+    private _forceDestroy?: boolean | cdktf.IResolvable | undefined; 
     public get forceDestroy() {
-      return this.getBooleanAttribute('force_destroy');
+      return this.getBooleanAttribute('force_destroy') as any;
     }
-    public set forceDestroy(value: boolean | cdktf.IResolvable ) {
+    public set forceDestroy(value: boolean | cdktf.IResolvable | undefined) {
       this._forceDestroy = value;
     }
     public resetForceDestroy() {
@@ -124,7 +166,7 @@ export namespace Athena {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -137,11 +179,12 @@ export namespace Athena {
     }
 
     // encryption_configuration - computed: false, optional: true, required: false
-    private _encryptionConfiguration?: AthenaDatabaseEncryptionConfiguration[];
+    private _encryptionConfiguration?: AthenaDatabaseEncryptionConfiguration | undefined; 
+    private __encryptionConfigurationOutput = new AthenaDatabaseEncryptionConfigurationOutputReference(this as any, "encryption_configuration", true);
     public get encryptionConfiguration() {
-      return this.interpolationForAttribute('encryption_configuration') as any;
+      return this.__encryptionConfigurationOutput;
     }
-    public set encryptionConfiguration(value: AthenaDatabaseEncryptionConfiguration[] ) {
+    public putEncryptionConfiguration(value: AthenaDatabaseEncryptionConfiguration | undefined) {
       this._encryptionConfiguration = value;
     }
     public resetEncryptionConfiguration() {
@@ -161,7 +204,7 @@ export namespace Athena {
         bucket: cdktf.stringToTerraform(this._bucket),
         force_destroy: cdktf.booleanToTerraform(this._forceDestroy),
         name: cdktf.stringToTerraform(this._name),
-        encryption_configuration: cdktf.listMapper(athenaDatabaseEncryptionConfigurationToTerraform)(this._encryptionConfiguration),
+        encryption_configuration: athenaDatabaseEncryptionConfigurationToTerraform(this._encryptionConfiguration),
       };
     }
   }
@@ -232,7 +275,7 @@ export namespace Athena {
     // ==========
 
     // database - computed: false, optional: false, required: true
-    private _database: string;
+    private _database?: string; 
     public get database() {
       return this.getStringAttribute('database');
     }
@@ -245,11 +288,11 @@ export namespace Athena {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -266,7 +309,7 @@ export namespace Athena {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -279,7 +322,7 @@ export namespace Athena {
     }
 
     // query - computed: false, optional: false, required: true
-    private _query: string;
+    private _query?: string; 
     public get query() {
       return this.getStringAttribute('query');
     }
@@ -292,11 +335,11 @@ export namespace Athena {
     }
 
     // workgroup - computed: false, optional: true, required: false
-    private _workgroup?: string;
+    private _workgroup?: string | undefined; 
     public get workgroup() {
       return this.getStringAttribute('workgroup');
     }
-    public set workgroup(value: string ) {
+    public set workgroup(value: string | undefined) {
       this._workgroup = value;
     }
     public resetWorkgroup() {
@@ -351,7 +394,7 @@ export namespace Athena {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/athena_workgroup.html#configuration AthenaWorkgroup#configuration}
     */
-    readonly configuration?: AthenaWorkgroupConfiguration[];
+    readonly configuration?: AthenaWorkgroupConfiguration;
   }
   export interface AthenaWorkgroupConfigurationResultConfigurationEncryptionConfiguration {
     /**
@@ -364,14 +407,59 @@ export namespace Athena {
     readonly kmsKeyArn?: string;
   }
 
-  function athenaWorkgroupConfigurationResultConfigurationEncryptionConfigurationToTerraform(struct?: AthenaWorkgroupConfigurationResultConfigurationEncryptionConfiguration): any {
+  function athenaWorkgroupConfigurationResultConfigurationEncryptionConfigurationToTerraform(struct?: AthenaWorkgroupConfigurationResultConfigurationEncryptionConfigurationOutputReference | AthenaWorkgroupConfigurationResultConfigurationEncryptionConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       encryption_option: cdktf.stringToTerraform(struct!.encryptionOption),
       kms_key_arn: cdktf.stringToTerraform(struct!.kmsKeyArn),
     }
   }
 
+  export class AthenaWorkgroupConfigurationResultConfigurationEncryptionConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // encryption_option - computed: false, optional: true, required: false
+    private _encryptionOption?: string | undefined; 
+    public get encryptionOption() {
+      return this.getStringAttribute('encryption_option');
+    }
+    public set encryptionOption(value: string | undefined) {
+      this._encryptionOption = value;
+    }
+    public resetEncryptionOption() {
+      this._encryptionOption = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get encryptionOptionInput() {
+      return this._encryptionOption
+    }
+
+    // kms_key_arn - computed: false, optional: true, required: false
+    private _kmsKeyArn?: string | undefined; 
+    public get kmsKeyArn() {
+      return this.getStringAttribute('kms_key_arn');
+    }
+    public set kmsKeyArn(value: string | undefined) {
+      this._kmsKeyArn = value;
+    }
+    public resetKmsKeyArn() {
+      this._kmsKeyArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get kmsKeyArnInput() {
+      return this._kmsKeyArn
+    }
+  }
   export interface AthenaWorkgroupConfigurationResultConfiguration {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/athena_workgroup.html#output_location AthenaWorkgroup#output_location}
@@ -382,17 +470,63 @@ export namespace Athena {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/athena_workgroup.html#encryption_configuration AthenaWorkgroup#encryption_configuration}
     */
-    readonly encryptionConfiguration?: AthenaWorkgroupConfigurationResultConfigurationEncryptionConfiguration[];
+    readonly encryptionConfiguration?: AthenaWorkgroupConfigurationResultConfigurationEncryptionConfiguration;
   }
 
-  function athenaWorkgroupConfigurationResultConfigurationToTerraform(struct?: AthenaWorkgroupConfigurationResultConfiguration): any {
+  function athenaWorkgroupConfigurationResultConfigurationToTerraform(struct?: AthenaWorkgroupConfigurationResultConfigurationOutputReference | AthenaWorkgroupConfigurationResultConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       output_location: cdktf.stringToTerraform(struct!.outputLocation),
-      encryption_configuration: cdktf.listMapper(athenaWorkgroupConfigurationResultConfigurationEncryptionConfigurationToTerraform)(struct!.encryptionConfiguration),
+      encryption_configuration: athenaWorkgroupConfigurationResultConfigurationEncryptionConfigurationToTerraform(struct!.encryptionConfiguration),
     }
   }
 
+  export class AthenaWorkgroupConfigurationResultConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // output_location - computed: false, optional: true, required: false
+    private _outputLocation?: string | undefined; 
+    public get outputLocation() {
+      return this.getStringAttribute('output_location');
+    }
+    public set outputLocation(value: string | undefined) {
+      this._outputLocation = value;
+    }
+    public resetOutputLocation() {
+      this._outputLocation = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get outputLocationInput() {
+      return this._outputLocation
+    }
+
+    // encryption_configuration - computed: false, optional: true, required: false
+    private _encryptionConfiguration?: AthenaWorkgroupConfigurationResultConfigurationEncryptionConfiguration | undefined; 
+    private __encryptionConfigurationOutput = new AthenaWorkgroupConfigurationResultConfigurationEncryptionConfigurationOutputReference(this as any, "encryption_configuration", true);
+    public get encryptionConfiguration() {
+      return this.__encryptionConfigurationOutput;
+    }
+    public putEncryptionConfiguration(value: AthenaWorkgroupConfigurationResultConfigurationEncryptionConfiguration | undefined) {
+      this._encryptionConfiguration = value;
+    }
+    public resetEncryptionConfiguration() {
+      this._encryptionConfiguration = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get encryptionConfigurationInput() {
+      return this._encryptionConfiguration
+    }
+  }
   export interface AthenaWorkgroupConfiguration {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/athena_workgroup.html#bytes_scanned_cutoff_per_query AthenaWorkgroup#bytes_scanned_cutoff_per_query}
@@ -415,20 +549,114 @@ export namespace Athena {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/athena_workgroup.html#result_configuration AthenaWorkgroup#result_configuration}
     */
-    readonly resultConfiguration?: AthenaWorkgroupConfigurationResultConfiguration[];
+    readonly resultConfiguration?: AthenaWorkgroupConfigurationResultConfiguration;
   }
 
-  function athenaWorkgroupConfigurationToTerraform(struct?: AthenaWorkgroupConfiguration): any {
+  function athenaWorkgroupConfigurationToTerraform(struct?: AthenaWorkgroupConfigurationOutputReference | AthenaWorkgroupConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bytes_scanned_cutoff_per_query: cdktf.numberToTerraform(struct!.bytesScannedCutoffPerQuery),
       enforce_workgroup_configuration: cdktf.booleanToTerraform(struct!.enforceWorkgroupConfiguration),
       publish_cloudwatch_metrics_enabled: cdktf.booleanToTerraform(struct!.publishCloudwatchMetricsEnabled),
       requester_pays_enabled: cdktf.booleanToTerraform(struct!.requesterPaysEnabled),
-      result_configuration: cdktf.listMapper(athenaWorkgroupConfigurationResultConfigurationToTerraform)(struct!.resultConfiguration),
+      result_configuration: athenaWorkgroupConfigurationResultConfigurationToTerraform(struct!.resultConfiguration),
     }
   }
 
+  export class AthenaWorkgroupConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // bytes_scanned_cutoff_per_query - computed: false, optional: true, required: false
+    private _bytesScannedCutoffPerQuery?: number | undefined; 
+    public get bytesScannedCutoffPerQuery() {
+      return this.getNumberAttribute('bytes_scanned_cutoff_per_query');
+    }
+    public set bytesScannedCutoffPerQuery(value: number | undefined) {
+      this._bytesScannedCutoffPerQuery = value;
+    }
+    public resetBytesScannedCutoffPerQuery() {
+      this._bytesScannedCutoffPerQuery = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bytesScannedCutoffPerQueryInput() {
+      return this._bytesScannedCutoffPerQuery
+    }
+
+    // enforce_workgroup_configuration - computed: false, optional: true, required: false
+    private _enforceWorkgroupConfiguration?: boolean | cdktf.IResolvable | undefined; 
+    public get enforceWorkgroupConfiguration() {
+      return this.getBooleanAttribute('enforce_workgroup_configuration') as any;
+    }
+    public set enforceWorkgroupConfiguration(value: boolean | cdktf.IResolvable | undefined) {
+      this._enforceWorkgroupConfiguration = value;
+    }
+    public resetEnforceWorkgroupConfiguration() {
+      this._enforceWorkgroupConfiguration = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enforceWorkgroupConfigurationInput() {
+      return this._enforceWorkgroupConfiguration
+    }
+
+    // publish_cloudwatch_metrics_enabled - computed: false, optional: true, required: false
+    private _publishCloudwatchMetricsEnabled?: boolean | cdktf.IResolvable | undefined; 
+    public get publishCloudwatchMetricsEnabled() {
+      return this.getBooleanAttribute('publish_cloudwatch_metrics_enabled') as any;
+    }
+    public set publishCloudwatchMetricsEnabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._publishCloudwatchMetricsEnabled = value;
+    }
+    public resetPublishCloudwatchMetricsEnabled() {
+      this._publishCloudwatchMetricsEnabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get publishCloudwatchMetricsEnabledInput() {
+      return this._publishCloudwatchMetricsEnabled
+    }
+
+    // requester_pays_enabled - computed: false, optional: true, required: false
+    private _requesterPaysEnabled?: boolean | cdktf.IResolvable | undefined; 
+    public get requesterPaysEnabled() {
+      return this.getBooleanAttribute('requester_pays_enabled') as any;
+    }
+    public set requesterPaysEnabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._requesterPaysEnabled = value;
+    }
+    public resetRequesterPaysEnabled() {
+      this._requesterPaysEnabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get requesterPaysEnabledInput() {
+      return this._requesterPaysEnabled
+    }
+
+    // result_configuration - computed: false, optional: true, required: false
+    private _resultConfiguration?: AthenaWorkgroupConfigurationResultConfiguration | undefined; 
+    private __resultConfigurationOutput = new AthenaWorkgroupConfigurationResultConfigurationOutputReference(this as any, "result_configuration", true);
+    public get resultConfiguration() {
+      return this.__resultConfigurationOutput;
+    }
+    public putResultConfiguration(value: AthenaWorkgroupConfigurationResultConfiguration | undefined) {
+      this._resultConfiguration = value;
+    }
+    public resetResultConfiguration() {
+      this._resultConfiguration = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resultConfigurationInput() {
+      return this._resultConfiguration
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/athena_workgroup.html aws_athena_workgroup}
@@ -481,11 +709,11 @@ export namespace Athena {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -497,11 +725,11 @@ export namespace Athena {
     }
 
     // force_destroy - computed: false, optional: true, required: false
-    private _forceDestroy?: boolean | cdktf.IResolvable;
+    private _forceDestroy?: boolean | cdktf.IResolvable | undefined; 
     public get forceDestroy() {
-      return this.getBooleanAttribute('force_destroy');
+      return this.getBooleanAttribute('force_destroy') as any;
     }
-    public set forceDestroy(value: boolean | cdktf.IResolvable ) {
+    public set forceDestroy(value: boolean | cdktf.IResolvable | undefined) {
       this._forceDestroy = value;
     }
     public resetForceDestroy() {
@@ -518,7 +746,7 @@ export namespace Athena {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -531,11 +759,11 @@ export namespace Athena {
     }
 
     // state - computed: false, optional: true, required: false
-    private _state?: string;
+    private _state?: string | undefined; 
     public get state() {
       return this.getStringAttribute('state');
     }
-    public set state(value: string ) {
+    public set state(value: string | undefined) {
       this._state = value;
     }
     public resetState() {
@@ -547,11 +775,12 @@ export namespace Athena {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -563,11 +792,12 @@ export namespace Athena {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -579,11 +809,12 @@ export namespace Athena {
     }
 
     // configuration - computed: false, optional: true, required: false
-    private _configuration?: AthenaWorkgroupConfiguration[];
+    private _configuration?: AthenaWorkgroupConfiguration | undefined; 
+    private __configurationOutput = new AthenaWorkgroupConfigurationOutputReference(this as any, "configuration", true);
     public get configuration() {
-      return this.interpolationForAttribute('configuration') as any;
+      return this.__configurationOutput;
     }
-    public set configuration(value: AthenaWorkgroupConfiguration[] ) {
+    public putConfiguration(value: AthenaWorkgroupConfiguration | undefined) {
       this._configuration = value;
     }
     public resetConfiguration() {
@@ -606,7 +837,7 @@ export namespace Athena {
         state: cdktf.stringToTerraform(this._state),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        configuration: cdktf.listMapper(athenaWorkgroupConfigurationToTerraform)(this._configuration),
+        configuration: athenaWorkgroupConfigurationToTerraform(this._configuration),
       };
     }
   }

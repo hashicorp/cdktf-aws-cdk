@@ -89,7 +89,7 @@ export namespace Organizations {
     }
 
     // email - computed: false, optional: false, required: true
-    private _email: string;
+    private _email?: string; 
     public get email() {
       return this.getStringAttribute('email');
     }
@@ -102,11 +102,11 @@ export namespace Organizations {
     }
 
     // iam_user_access_to_billing - computed: false, optional: true, required: false
-    private _iamUserAccessToBilling?: string;
+    private _iamUserAccessToBilling?: string | undefined; 
     public get iamUserAccessToBilling() {
       return this.getStringAttribute('iam_user_access_to_billing');
     }
-    public set iamUserAccessToBilling(value: string ) {
+    public set iamUserAccessToBilling(value: string | undefined) {
       this._iamUserAccessToBilling = value;
     }
     public resetIamUserAccessToBilling() {
@@ -133,7 +133,7 @@ export namespace Organizations {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -146,11 +146,11 @@ export namespace Organizations {
     }
 
     // parent_id - computed: true, optional: true, required: false
-    private _parentId?: string;
+    private _parentId?: string | undefined; 
     public get parentId() {
       return this.getStringAttribute('parent_id');
     }
-    public set parentId(value: string) {
+    public set parentId(value: string | undefined) {
       this._parentId = value;
     }
     public resetParentId() {
@@ -162,11 +162,11 @@ export namespace Organizations {
     }
 
     // role_name - computed: false, optional: true, required: false
-    private _roleName?: string;
+    private _roleName?: string | undefined; 
     public get roleName() {
       return this.getStringAttribute('role_name');
     }
-    public set roleName(value: string ) {
+    public set roleName(value: string | undefined) {
       this._roleName = value;
     }
     public resetRoleName() {
@@ -183,11 +183,12 @@ export namespace Organizations {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -199,11 +200,12 @@ export namespace Organizations {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -282,7 +284,7 @@ export namespace Organizations {
     // ==========
 
     // account_id - computed: false, optional: false, required: true
-    private _accountId: string;
+    private _accountId?: string; 
     public get accountId() {
       return this.getStringAttribute('account_id');
     }
@@ -330,7 +332,7 @@ export namespace Organizations {
     }
 
     // service_principal - computed: false, optional: false, required: true
-    private _servicePrincipal: string;
+    private _servicePrincipal?: string; 
     public get servicePrincipal() {
       return this.getStringAttribute('service_principal');
     }
@@ -457,6 +459,7 @@ export namespace Organizations {
 
     // policy_types - computed: true, optional: false, required: false
     public get policyTypes() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('policy_types') as any;
     }
   }
@@ -513,11 +516,11 @@ export namespace Organizations {
     }
 
     // aws_service_access_principals - computed: false, optional: true, required: false
-    private _awsServiceAccessPrincipals?: string[];
+    private _awsServiceAccessPrincipals?: string[] | undefined; 
     public get awsServiceAccessPrincipals() {
       return this.getListAttribute('aws_service_access_principals');
     }
-    public set awsServiceAccessPrincipals(value: string[] ) {
+    public set awsServiceAccessPrincipals(value: string[] | undefined) {
       this._awsServiceAccessPrincipals = value;
     }
     public resetAwsServiceAccessPrincipals() {
@@ -529,11 +532,11 @@ export namespace Organizations {
     }
 
     // enabled_policy_types - computed: false, optional: true, required: false
-    private _enabledPolicyTypes?: string[];
+    private _enabledPolicyTypes?: string[] | undefined; 
     public get enabledPolicyTypes() {
       return this.getListAttribute('enabled_policy_types');
     }
-    public set enabledPolicyTypes(value: string[] ) {
+    public set enabledPolicyTypes(value: string[] | undefined) {
       this._enabledPolicyTypes = value;
     }
     public resetEnabledPolicyTypes() {
@@ -545,11 +548,11 @@ export namespace Organizations {
     }
 
     // feature_set - computed: false, optional: true, required: false
-    private _featureSet?: string;
+    private _featureSet?: string | undefined; 
     public get featureSet() {
       return this.getStringAttribute('feature_set');
     }
-    public set featureSet(value: string ) {
+    public set featureSet(value: string | undefined) {
       this._featureSet = value;
     }
     public resetFeatureSet() {
@@ -701,7 +704,7 @@ export namespace Organizations {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -714,7 +717,7 @@ export namespace Organizations {
     }
 
     // parent_id - computed: false, optional: false, required: true
-    private _parentId: string;
+    private _parentId?: string; 
     public get parentId() {
       return this.getStringAttribute('parent_id');
     }
@@ -727,11 +730,12 @@ export namespace Organizations {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -743,11 +747,12 @@ export namespace Organizations {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -848,7 +853,7 @@ export namespace Organizations {
     }
 
     // content - computed: false, optional: false, required: true
-    private _content: string;
+    private _content?: string; 
     public get content() {
       return this.getStringAttribute('content');
     }
@@ -861,11 +866,11 @@ export namespace Organizations {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -882,7 +887,7 @@ export namespace Organizations {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -895,11 +900,12 @@ export namespace Organizations {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -911,11 +917,12 @@ export namespace Organizations {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -927,11 +934,11 @@ export namespace Organizations {
     }
 
     // type - computed: false, optional: true, required: false
-    private _type?: string;
+    private _type?: string | undefined; 
     public get type() {
       return this.getStringAttribute('type');
     }
-    public set type(value: string ) {
+    public set type(value: string | undefined) {
       this._type = value;
     }
     public resetType() {
@@ -1014,7 +1021,7 @@ export namespace Organizations {
     }
 
     // policy_id - computed: false, optional: false, required: true
-    private _policyId: string;
+    private _policyId?: string; 
     public get policyId() {
       return this.getStringAttribute('policy_id');
     }
@@ -1027,7 +1034,7 @@ export namespace Organizations {
     }
 
     // target_id - computed: false, optional: false, required: true
-    private _targetId: string;
+    private _targetId?: string; 
     public get targetId() {
       return this.getStringAttribute('target_id');
     }
@@ -1149,11 +1156,11 @@ export namespace Organizations {
     }
 
     // service_principal - computed: false, optional: true, required: false
-    private _servicePrincipal?: string;
+    private _servicePrincipal?: string | undefined; 
     public get servicePrincipal() {
       return this.getStringAttribute('service_principal');
     }
-    public set servicePrincipal(value: string ) {
+    public set servicePrincipal(value: string | undefined) {
       this._servicePrincipal = value;
     }
     public resetServicePrincipal() {
@@ -1233,7 +1240,7 @@ export namespace Organizations {
     // ==========
 
     // account_id - computed: false, optional: false, required: true
-    private _accountId: string;
+    private _accountId?: string; 
     public get accountId() {
       return this.getStringAttribute('account_id');
     }
@@ -1352,6 +1359,7 @@ export namespace Organizations {
 
     // policy_types - computed: true, optional: false, required: false
     public get policyTypes() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('policy_types') as any;
     }
   }
@@ -1532,7 +1540,7 @@ export namespace Organizations {
     }
 
     // parent_id - computed: false, optional: false, required: true
-    private _parentId: string;
+    private _parentId?: string; 
     public get parentId() {
       return this.getStringAttribute('parent_id');
     }

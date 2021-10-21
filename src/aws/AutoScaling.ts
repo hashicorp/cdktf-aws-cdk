@@ -64,11 +64,11 @@ export namespace AutoScaling {
     // ==========
 
     // alb_target_group_arn - computed: false, optional: true, required: false
-    private _albTargetGroupArn?: string;
+    private _albTargetGroupArn?: string | undefined; 
     public get albTargetGroupArn() {
       return this.getStringAttribute('alb_target_group_arn');
     }
-    public set albTargetGroupArn(value: string ) {
+    public set albTargetGroupArn(value: string | undefined) {
       this._albTargetGroupArn = value;
     }
     public resetAlbTargetGroupArn() {
@@ -80,7 +80,7 @@ export namespace AutoScaling {
     }
 
     // autoscaling_group_name - computed: false, optional: false, required: true
-    private _autoscalingGroupName: string;
+    private _autoscalingGroupName?: string; 
     public get autoscalingGroupName() {
       return this.getStringAttribute('autoscaling_group_name');
     }
@@ -93,11 +93,11 @@ export namespace AutoScaling {
     }
 
     // elb - computed: false, optional: true, required: false
-    private _elb?: string;
+    private _elb?: string | undefined; 
     public get elb() {
       return this.getStringAttribute('elb');
     }
-    public set elb(value: string ) {
+    public set elb(value: string | undefined) {
       this._elb = value;
     }
     public resetElb() {
@@ -249,19 +249,19 @@ export namespace AutoScaling {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#instance_refresh AutoscalingGroup#instance_refresh}
     */
-    readonly instanceRefresh?: AutoscalingGroupInstanceRefresh[];
+    readonly instanceRefresh?: AutoscalingGroupInstanceRefresh;
     /**
     * launch_template block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#launch_template AutoscalingGroup#launch_template}
     */
-    readonly launchTemplate?: AutoscalingGroupLaunchTemplate[];
+    readonly launchTemplate?: AutoscalingGroupLaunchTemplate;
     /**
     * mixed_instances_policy block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#mixed_instances_policy AutoscalingGroup#mixed_instances_policy}
     */
-    readonly mixedInstancesPolicy?: AutoscalingGroupMixedInstancesPolicy[];
+    readonly mixedInstancesPolicy?: AutoscalingGroupMixedInstancesPolicy;
     /**
     * tag block
     * 
@@ -279,7 +279,7 @@ export namespace AutoScaling {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#warm_pool AutoscalingGroup#warm_pool}
     */
-    readonly warmPool?: AutoscalingGroupWarmPool[];
+    readonly warmPool?: AutoscalingGroupWarmPool;
   }
   export interface AutoscalingGroupInitialLifecycleHook {
     /**
@@ -314,6 +314,9 @@ export namespace AutoScaling {
 
   function autoscalingGroupInitialLifecycleHookToTerraform(struct?: AutoscalingGroupInitialLifecycleHook): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       default_result: cdktf.stringToTerraform(struct!.defaultResult),
       heartbeat_timeout: cdktf.numberToTerraform(struct!.heartbeatTimeout),
@@ -336,14 +339,59 @@ export namespace AutoScaling {
     readonly minHealthyPercentage?: number;
   }
 
-  function autoscalingGroupInstanceRefreshPreferencesToTerraform(struct?: AutoscalingGroupInstanceRefreshPreferences): any {
+  function autoscalingGroupInstanceRefreshPreferencesToTerraform(struct?: AutoscalingGroupInstanceRefreshPreferencesOutputReference | AutoscalingGroupInstanceRefreshPreferences): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       instance_warmup: cdktf.stringToTerraform(struct!.instanceWarmup),
       min_healthy_percentage: cdktf.numberToTerraform(struct!.minHealthyPercentage),
     }
   }
 
+  export class AutoscalingGroupInstanceRefreshPreferencesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // instance_warmup - computed: false, optional: true, required: false
+    private _instanceWarmup?: string | undefined; 
+    public get instanceWarmup() {
+      return this.getStringAttribute('instance_warmup');
+    }
+    public set instanceWarmup(value: string | undefined) {
+      this._instanceWarmup = value;
+    }
+    public resetInstanceWarmup() {
+      this._instanceWarmup = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get instanceWarmupInput() {
+      return this._instanceWarmup
+    }
+
+    // min_healthy_percentage - computed: false, optional: true, required: false
+    private _minHealthyPercentage?: number | undefined; 
+    public get minHealthyPercentage() {
+      return this.getNumberAttribute('min_healthy_percentage');
+    }
+    public set minHealthyPercentage(value: number | undefined) {
+      this._minHealthyPercentage = value;
+    }
+    public resetMinHealthyPercentage() {
+      this._minHealthyPercentage = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get minHealthyPercentageInput() {
+      return this._minHealthyPercentage
+    }
+  }
   export interface AutoscalingGroupInstanceRefresh {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#strategy AutoscalingGroup#strategy}
@@ -358,18 +406,77 @@ export namespace AutoScaling {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#preferences AutoscalingGroup#preferences}
     */
-    readonly preferences?: AutoscalingGroupInstanceRefreshPreferences[];
+    readonly preferences?: AutoscalingGroupInstanceRefreshPreferences;
   }
 
-  function autoscalingGroupInstanceRefreshToTerraform(struct?: AutoscalingGroupInstanceRefresh): any {
+  function autoscalingGroupInstanceRefreshToTerraform(struct?: AutoscalingGroupInstanceRefreshOutputReference | AutoscalingGroupInstanceRefresh): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       strategy: cdktf.stringToTerraform(struct!.strategy),
       triggers: cdktf.listMapper(cdktf.stringToTerraform)(struct!.triggers),
-      preferences: cdktf.listMapper(autoscalingGroupInstanceRefreshPreferencesToTerraform)(struct!.preferences),
+      preferences: autoscalingGroupInstanceRefreshPreferencesToTerraform(struct!.preferences),
     }
   }
 
+  export class AutoscalingGroupInstanceRefreshOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // strategy - computed: false, optional: false, required: true
+    private _strategy?: string; 
+    public get strategy() {
+      return this.getStringAttribute('strategy');
+    }
+    public set strategy(value: string) {
+      this._strategy = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get strategyInput() {
+      return this._strategy
+    }
+
+    // triggers - computed: false, optional: true, required: false
+    private _triggers?: string[] | undefined; 
+    public get triggers() {
+      return this.getListAttribute('triggers');
+    }
+    public set triggers(value: string[] | undefined) {
+      this._triggers = value;
+    }
+    public resetTriggers() {
+      this._triggers = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get triggersInput() {
+      return this._triggers
+    }
+
+    // preferences - computed: false, optional: true, required: false
+    private _preferences?: AutoscalingGroupInstanceRefreshPreferences | undefined; 
+    private __preferencesOutput = new AutoscalingGroupInstanceRefreshPreferencesOutputReference(this as any, "preferences", true);
+    public get preferences() {
+      return this.__preferencesOutput;
+    }
+    public putPreferences(value: AutoscalingGroupInstanceRefreshPreferences | undefined) {
+      this._preferences = value;
+    }
+    public resetPreferences() {
+      this._preferences = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get preferencesInput() {
+      return this._preferences
+    }
+  }
   export interface AutoscalingGroupLaunchTemplate {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#id AutoscalingGroup#id}
@@ -385,15 +492,64 @@ export namespace AutoScaling {
     readonly version?: string;
   }
 
-  function autoscalingGroupLaunchTemplateToTerraform(struct?: AutoscalingGroupLaunchTemplate): any {
+  function autoscalingGroupLaunchTemplateToTerraform(struct?: AutoscalingGroupLaunchTemplateOutputReference | AutoscalingGroupLaunchTemplate): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      id: cdktf.stringToTerraform(struct!.id),
       name: cdktf.stringToTerraform(struct!.name),
       version: cdktf.stringToTerraform(struct!.version),
     }
   }
 
+  export class AutoscalingGroupLaunchTemplateOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // id - computed: true, optional: true, required: false
+    public get id() {
+      return this.getStringAttribute('id');
+    }
+
+    // name - computed: true, optional: true, required: false
+    private _name?: string | undefined; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string | undefined) {
+      this._name = value;
+    }
+    public resetName() {
+      this._name = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+
+    // version - computed: false, optional: true, required: false
+    private _version?: string | undefined; 
+    public get version() {
+      return this.getStringAttribute('version');
+    }
+    public set version(value: string | undefined) {
+      this._version = value;
+    }
+    public resetVersion() {
+      this._version = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get versionInput() {
+      return this._version
+    }
+  }
   export interface AutoscalingGroupMixedInstancesPolicyInstancesDistribution {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#on_demand_allocation_strategy AutoscalingGroup#on_demand_allocation_strategy}
@@ -421,8 +577,11 @@ export namespace AutoScaling {
     readonly spotMaxPrice?: string;
   }
 
-  function autoscalingGroupMixedInstancesPolicyInstancesDistributionToTerraform(struct?: AutoscalingGroupMixedInstancesPolicyInstancesDistribution): any {
+  function autoscalingGroupMixedInstancesPolicyInstancesDistributionToTerraform(struct?: AutoscalingGroupMixedInstancesPolicyInstancesDistributionOutputReference | AutoscalingGroupMixedInstancesPolicyInstancesDistribution): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       on_demand_allocation_strategy: cdktf.stringToTerraform(struct!.onDemandAllocationStrategy),
       on_demand_base_capacity: cdktf.numberToTerraform(struct!.onDemandBaseCapacity),
@@ -433,6 +592,112 @@ export namespace AutoScaling {
     }
   }
 
+  export class AutoscalingGroupMixedInstancesPolicyInstancesDistributionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // on_demand_allocation_strategy - computed: true, optional: true, required: false
+    private _onDemandAllocationStrategy?: string | undefined; 
+    public get onDemandAllocationStrategy() {
+      return this.getStringAttribute('on_demand_allocation_strategy');
+    }
+    public set onDemandAllocationStrategy(value: string | undefined) {
+      this._onDemandAllocationStrategy = value;
+    }
+    public resetOnDemandAllocationStrategy() {
+      this._onDemandAllocationStrategy = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get onDemandAllocationStrategyInput() {
+      return this._onDemandAllocationStrategy
+    }
+
+    // on_demand_base_capacity - computed: true, optional: true, required: false
+    private _onDemandBaseCapacity?: number | undefined; 
+    public get onDemandBaseCapacity() {
+      return this.getNumberAttribute('on_demand_base_capacity');
+    }
+    public set onDemandBaseCapacity(value: number | undefined) {
+      this._onDemandBaseCapacity = value;
+    }
+    public resetOnDemandBaseCapacity() {
+      this._onDemandBaseCapacity = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get onDemandBaseCapacityInput() {
+      return this._onDemandBaseCapacity
+    }
+
+    // on_demand_percentage_above_base_capacity - computed: true, optional: true, required: false
+    private _onDemandPercentageAboveBaseCapacity?: number | undefined; 
+    public get onDemandPercentageAboveBaseCapacity() {
+      return this.getNumberAttribute('on_demand_percentage_above_base_capacity');
+    }
+    public set onDemandPercentageAboveBaseCapacity(value: number | undefined) {
+      this._onDemandPercentageAboveBaseCapacity = value;
+    }
+    public resetOnDemandPercentageAboveBaseCapacity() {
+      this._onDemandPercentageAboveBaseCapacity = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get onDemandPercentageAboveBaseCapacityInput() {
+      return this._onDemandPercentageAboveBaseCapacity
+    }
+
+    // spot_allocation_strategy - computed: true, optional: true, required: false
+    private _spotAllocationStrategy?: string | undefined; 
+    public get spotAllocationStrategy() {
+      return this.getStringAttribute('spot_allocation_strategy');
+    }
+    public set spotAllocationStrategy(value: string | undefined) {
+      this._spotAllocationStrategy = value;
+    }
+    public resetSpotAllocationStrategy() {
+      this._spotAllocationStrategy = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get spotAllocationStrategyInput() {
+      return this._spotAllocationStrategy
+    }
+
+    // spot_instance_pools - computed: true, optional: true, required: false
+    private _spotInstancePools?: number | undefined; 
+    public get spotInstancePools() {
+      return this.getNumberAttribute('spot_instance_pools');
+    }
+    public set spotInstancePools(value: number | undefined) {
+      this._spotInstancePools = value;
+    }
+    public resetSpotInstancePools() {
+      this._spotInstancePools = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get spotInstancePoolsInput() {
+      return this._spotInstancePools
+    }
+
+    // spot_max_price - computed: false, optional: true, required: false
+    private _spotMaxPrice?: string | undefined; 
+    public get spotMaxPrice() {
+      return this.getStringAttribute('spot_max_price');
+    }
+    public set spotMaxPrice(value: string | undefined) {
+      this._spotMaxPrice = value;
+    }
+    public resetSpotMaxPrice() {
+      this._spotMaxPrice = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get spotMaxPriceInput() {
+      return this._spotMaxPrice
+    }
+  }
   export interface AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#launch_template_id AutoscalingGroup#launch_template_id}
@@ -448,8 +713,11 @@ export namespace AutoScaling {
     readonly version?: string;
   }
 
-  function autoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationToTerraform(struct?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification): any {
+  function autoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationToTerraform(struct?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationOutputReference | AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       launch_template_id: cdktf.stringToTerraform(struct!.launchTemplateId),
       launch_template_name: cdktf.stringToTerraform(struct!.launchTemplateName),
@@ -457,6 +725,64 @@ export namespace AutoScaling {
     }
   }
 
+  export class AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // launch_template_id - computed: true, optional: true, required: false
+    private _launchTemplateId?: string | undefined; 
+    public get launchTemplateId() {
+      return this.getStringAttribute('launch_template_id');
+    }
+    public set launchTemplateId(value: string | undefined) {
+      this._launchTemplateId = value;
+    }
+    public resetLaunchTemplateId() {
+      this._launchTemplateId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get launchTemplateIdInput() {
+      return this._launchTemplateId
+    }
+
+    // launch_template_name - computed: true, optional: true, required: false
+    private _launchTemplateName?: string | undefined; 
+    public get launchTemplateName() {
+      return this.getStringAttribute('launch_template_name');
+    }
+    public set launchTemplateName(value: string | undefined) {
+      this._launchTemplateName = value;
+    }
+    public resetLaunchTemplateName() {
+      this._launchTemplateName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get launchTemplateNameInput() {
+      return this._launchTemplateName
+    }
+
+    // version - computed: false, optional: true, required: false
+    private _version?: string | undefined; 
+    public get version() {
+      return this.getStringAttribute('version');
+    }
+    public set version(value: string | undefined) {
+      this._version = value;
+    }
+    public resetVersion() {
+      this._version = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get versionInput() {
+      return this._version
+    }
+  }
   export interface AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#launch_template_id AutoscalingGroup#launch_template_id}
@@ -472,8 +798,11 @@ export namespace AutoScaling {
     readonly version?: string;
   }
 
-  function autoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationToTerraform(struct?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification): any {
+  function autoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationToTerraform(struct?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationOutputReference | AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       launch_template_id: cdktf.stringToTerraform(struct!.launchTemplateId),
       launch_template_name: cdktf.stringToTerraform(struct!.launchTemplateName),
@@ -481,6 +810,64 @@ export namespace AutoScaling {
     }
   }
 
+  export class AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // launch_template_id - computed: true, optional: true, required: false
+    private _launchTemplateId?: string | undefined; 
+    public get launchTemplateId() {
+      return this.getStringAttribute('launch_template_id');
+    }
+    public set launchTemplateId(value: string | undefined) {
+      this._launchTemplateId = value;
+    }
+    public resetLaunchTemplateId() {
+      this._launchTemplateId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get launchTemplateIdInput() {
+      return this._launchTemplateId
+    }
+
+    // launch_template_name - computed: true, optional: true, required: false
+    private _launchTemplateName?: string | undefined; 
+    public get launchTemplateName() {
+      return this.getStringAttribute('launch_template_name');
+    }
+    public set launchTemplateName(value: string | undefined) {
+      this._launchTemplateName = value;
+    }
+    public resetLaunchTemplateName() {
+      this._launchTemplateName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get launchTemplateNameInput() {
+      return this._launchTemplateName
+    }
+
+    // version - computed: false, optional: true, required: false
+    private _version?: string | undefined; 
+    public get version() {
+      return this.getStringAttribute('version');
+    }
+    public set version(value: string | undefined) {
+      this._version = value;
+    }
+    public resetVersion() {
+      this._version = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get versionInput() {
+      return this._version
+    }
+  }
   export interface AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#instance_type AutoscalingGroup#instance_type}
@@ -495,15 +882,18 @@ export namespace AutoScaling {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#launch_template_specification AutoscalingGroup#launch_template_specification}
     */
-    readonly launchTemplateSpecification?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification[];
+    readonly launchTemplateSpecification?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification;
   }
 
   function autoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideToTerraform(struct?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       instance_type: cdktf.stringToTerraform(struct!.instanceType),
       weighted_capacity: cdktf.stringToTerraform(struct!.weightedCapacity),
-      launch_template_specification: cdktf.listMapper(autoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationToTerraform)(struct!.launchTemplateSpecification),
+      launch_template_specification: autoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificationToTerraform(struct!.launchTemplateSpecification),
     }
   }
 
@@ -513,7 +903,7 @@ export namespace AutoScaling {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#launch_template_specification AutoscalingGroup#launch_template_specification}
     */
-    readonly launchTemplateSpecification: AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification[];
+    readonly launchTemplateSpecification: AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification;
     /**
     * override block
     * 
@@ -522,37 +912,125 @@ export namespace AutoScaling {
     readonly override?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride[];
   }
 
-  function autoscalingGroupMixedInstancesPolicyLaunchTemplateToTerraform(struct?: AutoscalingGroupMixedInstancesPolicyLaunchTemplate): any {
+  function autoscalingGroupMixedInstancesPolicyLaunchTemplateToTerraform(struct?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOutputReference | AutoscalingGroupMixedInstancesPolicyLaunchTemplate): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      launch_template_specification: cdktf.listMapper(autoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationToTerraform)(struct!.launchTemplateSpecification),
+      launch_template_specification: autoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationToTerraform(struct!.launchTemplateSpecification),
       override: cdktf.listMapper(autoscalingGroupMixedInstancesPolicyLaunchTemplateOverrideToTerraform)(struct!.override),
     }
   }
 
+  export class AutoscalingGroupMixedInstancesPolicyLaunchTemplateOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // launch_template_specification - computed: false, optional: false, required: true
+    private _launchTemplateSpecification?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification; 
+    private __launchTemplateSpecificationOutput = new AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationOutputReference(this as any, "launch_template_specification", true);
+    public get launchTemplateSpecification() {
+      return this.__launchTemplateSpecificationOutput;
+    }
+    public putLaunchTemplateSpecification(value: AutoscalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification) {
+      this._launchTemplateSpecification = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get launchTemplateSpecificationInput() {
+      return this._launchTemplateSpecification
+    }
+
+    // override - computed: false, optional: true, required: false
+    private _override?: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride[] | undefined; 
+    public get override() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('override') as any;
+    }
+    public set override(value: AutoscalingGroupMixedInstancesPolicyLaunchTemplateOverride[] | undefined) {
+      this._override = value;
+    }
+    public resetOverride() {
+      this._override = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get overrideInput() {
+      return this._override
+    }
+  }
   export interface AutoscalingGroupMixedInstancesPolicy {
     /**
     * instances_distribution block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#instances_distribution AutoscalingGroup#instances_distribution}
     */
-    readonly instancesDistribution?: AutoscalingGroupMixedInstancesPolicyInstancesDistribution[];
+    readonly instancesDistribution?: AutoscalingGroupMixedInstancesPolicyInstancesDistribution;
     /**
     * launch_template block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#launch_template AutoscalingGroup#launch_template}
     */
-    readonly launchTemplate: AutoscalingGroupMixedInstancesPolicyLaunchTemplate[];
+    readonly launchTemplate: AutoscalingGroupMixedInstancesPolicyLaunchTemplate;
   }
 
-  function autoscalingGroupMixedInstancesPolicyToTerraform(struct?: AutoscalingGroupMixedInstancesPolicy): any {
+  function autoscalingGroupMixedInstancesPolicyToTerraform(struct?: AutoscalingGroupMixedInstancesPolicyOutputReference | AutoscalingGroupMixedInstancesPolicy): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      instances_distribution: cdktf.listMapper(autoscalingGroupMixedInstancesPolicyInstancesDistributionToTerraform)(struct!.instancesDistribution),
-      launch_template: cdktf.listMapper(autoscalingGroupMixedInstancesPolicyLaunchTemplateToTerraform)(struct!.launchTemplate),
+      instances_distribution: autoscalingGroupMixedInstancesPolicyInstancesDistributionToTerraform(struct!.instancesDistribution),
+      launch_template: autoscalingGroupMixedInstancesPolicyLaunchTemplateToTerraform(struct!.launchTemplate),
     }
   }
 
+  export class AutoscalingGroupMixedInstancesPolicyOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // instances_distribution - computed: false, optional: true, required: false
+    private _instancesDistribution?: AutoscalingGroupMixedInstancesPolicyInstancesDistribution | undefined; 
+    private __instancesDistributionOutput = new AutoscalingGroupMixedInstancesPolicyInstancesDistributionOutputReference(this as any, "instances_distribution", true);
+    public get instancesDistribution() {
+      return this.__instancesDistributionOutput;
+    }
+    public putInstancesDistribution(value: AutoscalingGroupMixedInstancesPolicyInstancesDistribution | undefined) {
+      this._instancesDistribution = value;
+    }
+    public resetInstancesDistribution() {
+      this._instancesDistribution = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get instancesDistributionInput() {
+      return this._instancesDistribution
+    }
+
+    // launch_template - computed: false, optional: false, required: true
+    private _launchTemplate?: AutoscalingGroupMixedInstancesPolicyLaunchTemplate; 
+    private __launchTemplateOutput = new AutoscalingGroupMixedInstancesPolicyLaunchTemplateOutputReference(this as any, "launch_template", true);
+    public get launchTemplate() {
+      return this.__launchTemplateOutput;
+    }
+    public putLaunchTemplate(value: AutoscalingGroupMixedInstancesPolicyLaunchTemplate) {
+      this._launchTemplate = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get launchTemplateInput() {
+      return this._launchTemplate
+    }
+  }
   export interface AutoscalingGroupTag {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#key AutoscalingGroup#key}
@@ -570,6 +1048,9 @@ export namespace AutoScaling {
 
   function autoscalingGroupTagToTerraform(struct?: AutoscalingGroupTag): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
       propagate_at_launch: cdktf.booleanToTerraform(struct!.propagateAtLaunch),
@@ -584,13 +1065,42 @@ export namespace AutoScaling {
     readonly delete?: string;
   }
 
-  function autoscalingGroupTimeoutsToTerraform(struct?: AutoscalingGroupTimeouts): any {
+  function autoscalingGroupTimeoutsToTerraform(struct?: AutoscalingGroupTimeoutsOutputReference | AutoscalingGroupTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class AutoscalingGroupTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
   export interface AutoscalingGroupWarmPool {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html#max_group_prepared_capacity AutoscalingGroup#max_group_prepared_capacity}
@@ -606,8 +1116,11 @@ export namespace AutoScaling {
     readonly poolState?: string;
   }
 
-  function autoscalingGroupWarmPoolToTerraform(struct?: AutoscalingGroupWarmPool): any {
+  function autoscalingGroupWarmPoolToTerraform(struct?: AutoscalingGroupWarmPoolOutputReference | AutoscalingGroupWarmPool): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       max_group_prepared_capacity: cdktf.numberToTerraform(struct!.maxGroupPreparedCapacity),
       min_size: cdktf.numberToTerraform(struct!.minSize),
@@ -615,6 +1128,64 @@ export namespace AutoScaling {
     }
   }
 
+  export class AutoscalingGroupWarmPoolOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // max_group_prepared_capacity - computed: false, optional: true, required: false
+    private _maxGroupPreparedCapacity?: number | undefined; 
+    public get maxGroupPreparedCapacity() {
+      return this.getNumberAttribute('max_group_prepared_capacity');
+    }
+    public set maxGroupPreparedCapacity(value: number | undefined) {
+      this._maxGroupPreparedCapacity = value;
+    }
+    public resetMaxGroupPreparedCapacity() {
+      this._maxGroupPreparedCapacity = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maxGroupPreparedCapacityInput() {
+      return this._maxGroupPreparedCapacity
+    }
+
+    // min_size - computed: false, optional: true, required: false
+    private _minSize?: number | undefined; 
+    public get minSize() {
+      return this.getNumberAttribute('min_size');
+    }
+    public set minSize(value: number | undefined) {
+      this._minSize = value;
+    }
+    public resetMinSize() {
+      this._minSize = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get minSizeInput() {
+      return this._minSize
+    }
+
+    // pool_state - computed: false, optional: true, required: false
+    private _poolState?: string | undefined; 
+    public get poolState() {
+      return this.getStringAttribute('pool_state');
+    }
+    public set poolState(value: string | undefined) {
+      this._poolState = value;
+    }
+    public resetPoolState() {
+      this._poolState = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get poolStateInput() {
+      return this._poolState
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html aws_autoscaling_group}
@@ -695,11 +1266,11 @@ export namespace AutoScaling {
     }
 
     // availability_zones - computed: true, optional: true, required: false
-    private _availabilityZones?: string[];
+    private _availabilityZones?: string[] | undefined; 
     public get availabilityZones() {
       return this.getListAttribute('availability_zones');
     }
-    public set availabilityZones(value: string[]) {
+    public set availabilityZones(value: string[] | undefined) {
       this._availabilityZones = value;
     }
     public resetAvailabilityZones() {
@@ -711,11 +1282,11 @@ export namespace AutoScaling {
     }
 
     // capacity_rebalance - computed: false, optional: true, required: false
-    private _capacityRebalance?: boolean | cdktf.IResolvable;
+    private _capacityRebalance?: boolean | cdktf.IResolvable | undefined; 
     public get capacityRebalance() {
-      return this.getBooleanAttribute('capacity_rebalance');
+      return this.getBooleanAttribute('capacity_rebalance') as any;
     }
-    public set capacityRebalance(value: boolean | cdktf.IResolvable ) {
+    public set capacityRebalance(value: boolean | cdktf.IResolvable | undefined) {
       this._capacityRebalance = value;
     }
     public resetCapacityRebalance() {
@@ -727,11 +1298,11 @@ export namespace AutoScaling {
     }
 
     // default_cooldown - computed: true, optional: true, required: false
-    private _defaultCooldown?: number;
+    private _defaultCooldown?: number | undefined; 
     public get defaultCooldown() {
       return this.getNumberAttribute('default_cooldown');
     }
-    public set defaultCooldown(value: number) {
+    public set defaultCooldown(value: number | undefined) {
       this._defaultCooldown = value;
     }
     public resetDefaultCooldown() {
@@ -743,11 +1314,11 @@ export namespace AutoScaling {
     }
 
     // desired_capacity - computed: true, optional: true, required: false
-    private _desiredCapacity?: number;
+    private _desiredCapacity?: number | undefined; 
     public get desiredCapacity() {
       return this.getNumberAttribute('desired_capacity');
     }
-    public set desiredCapacity(value: number) {
+    public set desiredCapacity(value: number | undefined) {
       this._desiredCapacity = value;
     }
     public resetDesiredCapacity() {
@@ -759,11 +1330,11 @@ export namespace AutoScaling {
     }
 
     // enabled_metrics - computed: false, optional: true, required: false
-    private _enabledMetrics?: string[];
+    private _enabledMetrics?: string[] | undefined; 
     public get enabledMetrics() {
       return this.getListAttribute('enabled_metrics');
     }
-    public set enabledMetrics(value: string[] ) {
+    public set enabledMetrics(value: string[] | undefined) {
       this._enabledMetrics = value;
     }
     public resetEnabledMetrics() {
@@ -775,11 +1346,11 @@ export namespace AutoScaling {
     }
 
     // force_delete - computed: false, optional: true, required: false
-    private _forceDelete?: boolean | cdktf.IResolvable;
+    private _forceDelete?: boolean | cdktf.IResolvable | undefined; 
     public get forceDelete() {
-      return this.getBooleanAttribute('force_delete');
+      return this.getBooleanAttribute('force_delete') as any;
     }
-    public set forceDelete(value: boolean | cdktf.IResolvable ) {
+    public set forceDelete(value: boolean | cdktf.IResolvable | undefined) {
       this._forceDelete = value;
     }
     public resetForceDelete() {
@@ -791,11 +1362,11 @@ export namespace AutoScaling {
     }
 
     // force_delete_warm_pool - computed: false, optional: true, required: false
-    private _forceDeleteWarmPool?: boolean | cdktf.IResolvable;
+    private _forceDeleteWarmPool?: boolean | cdktf.IResolvable | undefined; 
     public get forceDeleteWarmPool() {
-      return this.getBooleanAttribute('force_delete_warm_pool');
+      return this.getBooleanAttribute('force_delete_warm_pool') as any;
     }
-    public set forceDeleteWarmPool(value: boolean | cdktf.IResolvable ) {
+    public set forceDeleteWarmPool(value: boolean | cdktf.IResolvable | undefined) {
       this._forceDeleteWarmPool = value;
     }
     public resetForceDeleteWarmPool() {
@@ -807,11 +1378,11 @@ export namespace AutoScaling {
     }
 
     // health_check_grace_period - computed: false, optional: true, required: false
-    private _healthCheckGracePeriod?: number;
+    private _healthCheckGracePeriod?: number | undefined; 
     public get healthCheckGracePeriod() {
       return this.getNumberAttribute('health_check_grace_period');
     }
-    public set healthCheckGracePeriod(value: number ) {
+    public set healthCheckGracePeriod(value: number | undefined) {
       this._healthCheckGracePeriod = value;
     }
     public resetHealthCheckGracePeriod() {
@@ -823,11 +1394,11 @@ export namespace AutoScaling {
     }
 
     // health_check_type - computed: true, optional: true, required: false
-    private _healthCheckType?: string;
+    private _healthCheckType?: string | undefined; 
     public get healthCheckType() {
       return this.getStringAttribute('health_check_type');
     }
-    public set healthCheckType(value: string) {
+    public set healthCheckType(value: string | undefined) {
       this._healthCheckType = value;
     }
     public resetHealthCheckType() {
@@ -844,11 +1415,11 @@ export namespace AutoScaling {
     }
 
     // launch_configuration - computed: false, optional: true, required: false
-    private _launchConfiguration?: string;
+    private _launchConfiguration?: string | undefined; 
     public get launchConfiguration() {
       return this.getStringAttribute('launch_configuration');
     }
-    public set launchConfiguration(value: string ) {
+    public set launchConfiguration(value: string | undefined) {
       this._launchConfiguration = value;
     }
     public resetLaunchConfiguration() {
@@ -860,11 +1431,11 @@ export namespace AutoScaling {
     }
 
     // load_balancers - computed: false, optional: true, required: false
-    private _loadBalancers?: string[];
+    private _loadBalancers?: string[] | undefined; 
     public get loadBalancers() {
       return this.getListAttribute('load_balancers');
     }
-    public set loadBalancers(value: string[] ) {
+    public set loadBalancers(value: string[] | undefined) {
       this._loadBalancers = value;
     }
     public resetLoadBalancers() {
@@ -876,11 +1447,11 @@ export namespace AutoScaling {
     }
 
     // max_instance_lifetime - computed: false, optional: true, required: false
-    private _maxInstanceLifetime?: number;
+    private _maxInstanceLifetime?: number | undefined; 
     public get maxInstanceLifetime() {
       return this.getNumberAttribute('max_instance_lifetime');
     }
-    public set maxInstanceLifetime(value: number ) {
+    public set maxInstanceLifetime(value: number | undefined) {
       this._maxInstanceLifetime = value;
     }
     public resetMaxInstanceLifetime() {
@@ -892,7 +1463,7 @@ export namespace AutoScaling {
     }
 
     // max_size - computed: false, optional: false, required: true
-    private _maxSize: number;
+    private _maxSize?: number; 
     public get maxSize() {
       return this.getNumberAttribute('max_size');
     }
@@ -905,11 +1476,11 @@ export namespace AutoScaling {
     }
 
     // metrics_granularity - computed: false, optional: true, required: false
-    private _metricsGranularity?: string;
+    private _metricsGranularity?: string | undefined; 
     public get metricsGranularity() {
       return this.getStringAttribute('metrics_granularity');
     }
-    public set metricsGranularity(value: string ) {
+    public set metricsGranularity(value: string | undefined) {
       this._metricsGranularity = value;
     }
     public resetMetricsGranularity() {
@@ -921,11 +1492,11 @@ export namespace AutoScaling {
     }
 
     // min_elb_capacity - computed: false, optional: true, required: false
-    private _minElbCapacity?: number;
+    private _minElbCapacity?: number | undefined; 
     public get minElbCapacity() {
       return this.getNumberAttribute('min_elb_capacity');
     }
-    public set minElbCapacity(value: number ) {
+    public set minElbCapacity(value: number | undefined) {
       this._minElbCapacity = value;
     }
     public resetMinElbCapacity() {
@@ -937,7 +1508,7 @@ export namespace AutoScaling {
     }
 
     // min_size - computed: false, optional: false, required: true
-    private _minSize: number;
+    private _minSize?: number; 
     public get minSize() {
       return this.getNumberAttribute('min_size');
     }
@@ -950,11 +1521,11 @@ export namespace AutoScaling {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -966,11 +1537,11 @@ export namespace AutoScaling {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -982,11 +1553,11 @@ export namespace AutoScaling {
     }
 
     // placement_group - computed: false, optional: true, required: false
-    private _placementGroup?: string;
+    private _placementGroup?: string | undefined; 
     public get placementGroup() {
       return this.getStringAttribute('placement_group');
     }
-    public set placementGroup(value: string ) {
+    public set placementGroup(value: string | undefined) {
       this._placementGroup = value;
     }
     public resetPlacementGroup() {
@@ -998,11 +1569,11 @@ export namespace AutoScaling {
     }
 
     // protect_from_scale_in - computed: false, optional: true, required: false
-    private _protectFromScaleIn?: boolean | cdktf.IResolvable;
+    private _protectFromScaleIn?: boolean | cdktf.IResolvable | undefined; 
     public get protectFromScaleIn() {
-      return this.getBooleanAttribute('protect_from_scale_in');
+      return this.getBooleanAttribute('protect_from_scale_in') as any;
     }
-    public set protectFromScaleIn(value: boolean | cdktf.IResolvable ) {
+    public set protectFromScaleIn(value: boolean | cdktf.IResolvable | undefined) {
       this._protectFromScaleIn = value;
     }
     public resetProtectFromScaleIn() {
@@ -1014,11 +1585,11 @@ export namespace AutoScaling {
     }
 
     // service_linked_role_arn - computed: true, optional: true, required: false
-    private _serviceLinkedRoleArn?: string;
+    private _serviceLinkedRoleArn?: string | undefined; 
     public get serviceLinkedRoleArn() {
       return this.getStringAttribute('service_linked_role_arn');
     }
-    public set serviceLinkedRoleArn(value: string) {
+    public set serviceLinkedRoleArn(value: string | undefined) {
       this._serviceLinkedRoleArn = value;
     }
     public resetServiceLinkedRoleArn() {
@@ -1030,11 +1601,11 @@ export namespace AutoScaling {
     }
 
     // suspended_processes - computed: false, optional: true, required: false
-    private _suspendedProcesses?: string[];
+    private _suspendedProcesses?: string[] | undefined; 
     public get suspendedProcesses() {
       return this.getListAttribute('suspended_processes');
     }
-    public set suspendedProcesses(value: string[] ) {
+    public set suspendedProcesses(value: string[] | undefined) {
       this._suspendedProcesses = value;
     }
     public resetSuspendedProcesses() {
@@ -1046,11 +1617,12 @@ export namespace AutoScaling {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1062,11 +1634,11 @@ export namespace AutoScaling {
     }
 
     // target_group_arns - computed: false, optional: true, required: false
-    private _targetGroupArns?: string[];
+    private _targetGroupArns?: string[] | undefined; 
     public get targetGroupArns() {
       return this.getListAttribute('target_group_arns');
     }
-    public set targetGroupArns(value: string[] ) {
+    public set targetGroupArns(value: string[] | undefined) {
       this._targetGroupArns = value;
     }
     public resetTargetGroupArns() {
@@ -1078,11 +1650,11 @@ export namespace AutoScaling {
     }
 
     // termination_policies - computed: false, optional: true, required: false
-    private _terminationPolicies?: string[];
+    private _terminationPolicies?: string[] | undefined; 
     public get terminationPolicies() {
       return this.getListAttribute('termination_policies');
     }
-    public set terminationPolicies(value: string[] ) {
+    public set terminationPolicies(value: string[] | undefined) {
       this._terminationPolicies = value;
     }
     public resetTerminationPolicies() {
@@ -1094,11 +1666,11 @@ export namespace AutoScaling {
     }
 
     // vpc_zone_identifier - computed: true, optional: true, required: false
-    private _vpcZoneIdentifier?: string[];
+    private _vpcZoneIdentifier?: string[] | undefined; 
     public get vpcZoneIdentifier() {
       return this.getListAttribute('vpc_zone_identifier');
     }
-    public set vpcZoneIdentifier(value: string[]) {
+    public set vpcZoneIdentifier(value: string[] | undefined) {
       this._vpcZoneIdentifier = value;
     }
     public resetVpcZoneIdentifier() {
@@ -1110,11 +1682,11 @@ export namespace AutoScaling {
     }
 
     // wait_for_capacity_timeout - computed: false, optional: true, required: false
-    private _waitForCapacityTimeout?: string;
+    private _waitForCapacityTimeout?: string | undefined; 
     public get waitForCapacityTimeout() {
       return this.getStringAttribute('wait_for_capacity_timeout');
     }
-    public set waitForCapacityTimeout(value: string ) {
+    public set waitForCapacityTimeout(value: string | undefined) {
       this._waitForCapacityTimeout = value;
     }
     public resetWaitForCapacityTimeout() {
@@ -1126,11 +1698,11 @@ export namespace AutoScaling {
     }
 
     // wait_for_elb_capacity - computed: false, optional: true, required: false
-    private _waitForElbCapacity?: number;
+    private _waitForElbCapacity?: number | undefined; 
     public get waitForElbCapacity() {
       return this.getNumberAttribute('wait_for_elb_capacity');
     }
-    public set waitForElbCapacity(value: number ) {
+    public set waitForElbCapacity(value: number | undefined) {
       this._waitForElbCapacity = value;
     }
     public resetWaitForElbCapacity() {
@@ -1142,11 +1714,12 @@ export namespace AutoScaling {
     }
 
     // initial_lifecycle_hook - computed: false, optional: true, required: false
-    private _initialLifecycleHook?: AutoscalingGroupInitialLifecycleHook[];
+    private _initialLifecycleHook?: AutoscalingGroupInitialLifecycleHook[] | undefined; 
     public get initialLifecycleHook() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('initial_lifecycle_hook') as any;
     }
-    public set initialLifecycleHook(value: AutoscalingGroupInitialLifecycleHook[] ) {
+    public set initialLifecycleHook(value: AutoscalingGroupInitialLifecycleHook[] | undefined) {
       this._initialLifecycleHook = value;
     }
     public resetInitialLifecycleHook() {
@@ -1158,11 +1731,12 @@ export namespace AutoScaling {
     }
 
     // instance_refresh - computed: false, optional: true, required: false
-    private _instanceRefresh?: AutoscalingGroupInstanceRefresh[];
+    private _instanceRefresh?: AutoscalingGroupInstanceRefresh | undefined; 
+    private __instanceRefreshOutput = new AutoscalingGroupInstanceRefreshOutputReference(this as any, "instance_refresh", true);
     public get instanceRefresh() {
-      return this.interpolationForAttribute('instance_refresh') as any;
+      return this.__instanceRefreshOutput;
     }
-    public set instanceRefresh(value: AutoscalingGroupInstanceRefresh[] ) {
+    public putInstanceRefresh(value: AutoscalingGroupInstanceRefresh | undefined) {
       this._instanceRefresh = value;
     }
     public resetInstanceRefresh() {
@@ -1174,11 +1748,12 @@ export namespace AutoScaling {
     }
 
     // launch_template - computed: false, optional: true, required: false
-    private _launchTemplate?: AutoscalingGroupLaunchTemplate[];
+    private _launchTemplate?: AutoscalingGroupLaunchTemplate | undefined; 
+    private __launchTemplateOutput = new AutoscalingGroupLaunchTemplateOutputReference(this as any, "launch_template", true);
     public get launchTemplate() {
-      return this.interpolationForAttribute('launch_template') as any;
+      return this.__launchTemplateOutput;
     }
-    public set launchTemplate(value: AutoscalingGroupLaunchTemplate[] ) {
+    public putLaunchTemplate(value: AutoscalingGroupLaunchTemplate | undefined) {
       this._launchTemplate = value;
     }
     public resetLaunchTemplate() {
@@ -1190,11 +1765,12 @@ export namespace AutoScaling {
     }
 
     // mixed_instances_policy - computed: false, optional: true, required: false
-    private _mixedInstancesPolicy?: AutoscalingGroupMixedInstancesPolicy[];
+    private _mixedInstancesPolicy?: AutoscalingGroupMixedInstancesPolicy | undefined; 
+    private __mixedInstancesPolicyOutput = new AutoscalingGroupMixedInstancesPolicyOutputReference(this as any, "mixed_instances_policy", true);
     public get mixedInstancesPolicy() {
-      return this.interpolationForAttribute('mixed_instances_policy') as any;
+      return this.__mixedInstancesPolicyOutput;
     }
-    public set mixedInstancesPolicy(value: AutoscalingGroupMixedInstancesPolicy[] ) {
+    public putMixedInstancesPolicy(value: AutoscalingGroupMixedInstancesPolicy | undefined) {
       this._mixedInstancesPolicy = value;
     }
     public resetMixedInstancesPolicy() {
@@ -1206,11 +1782,12 @@ export namespace AutoScaling {
     }
 
     // tag - computed: false, optional: true, required: false
-    private _tag?: AutoscalingGroupTag[];
+    private _tag?: AutoscalingGroupTag[] | undefined; 
     public get tag() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tag') as any;
     }
-    public set tag(value: AutoscalingGroupTag[] ) {
+    public set tag(value: AutoscalingGroupTag[] | undefined) {
       this._tag = value;
     }
     public resetTag() {
@@ -1222,11 +1799,12 @@ export namespace AutoScaling {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: AutoscalingGroupTimeouts;
+    private _timeouts?: AutoscalingGroupTimeouts | undefined; 
+    private __timeoutsOutput = new AutoscalingGroupTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: AutoscalingGroupTimeouts ) {
+    public putTimeouts(value: AutoscalingGroupTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1238,11 +1816,12 @@ export namespace AutoScaling {
     }
 
     // warm_pool - computed: false, optional: true, required: false
-    private _warmPool?: AutoscalingGroupWarmPool[];
+    private _warmPool?: AutoscalingGroupWarmPool | undefined; 
+    private __warmPoolOutput = new AutoscalingGroupWarmPoolOutputReference(this as any, "warm_pool", true);
     public get warmPool() {
-      return this.interpolationForAttribute('warm_pool') as any;
+      return this.__warmPoolOutput;
     }
-    public set warmPool(value: AutoscalingGroupWarmPool[] ) {
+    public putWarmPool(value: AutoscalingGroupWarmPool | undefined) {
       this._warmPool = value;
     }
     public resetWarmPool() {
@@ -1288,12 +1867,12 @@ export namespace AutoScaling {
         wait_for_capacity_timeout: cdktf.stringToTerraform(this._waitForCapacityTimeout),
         wait_for_elb_capacity: cdktf.numberToTerraform(this._waitForElbCapacity),
         initial_lifecycle_hook: cdktf.listMapper(autoscalingGroupInitialLifecycleHookToTerraform)(this._initialLifecycleHook),
-        instance_refresh: cdktf.listMapper(autoscalingGroupInstanceRefreshToTerraform)(this._instanceRefresh),
-        launch_template: cdktf.listMapper(autoscalingGroupLaunchTemplateToTerraform)(this._launchTemplate),
-        mixed_instances_policy: cdktf.listMapper(autoscalingGroupMixedInstancesPolicyToTerraform)(this._mixedInstancesPolicy),
+        instance_refresh: autoscalingGroupInstanceRefreshToTerraform(this._instanceRefresh),
+        launch_template: autoscalingGroupLaunchTemplateToTerraform(this._launchTemplate),
+        mixed_instances_policy: autoscalingGroupMixedInstancesPolicyToTerraform(this._mixedInstancesPolicy),
         tag: cdktf.listMapper(autoscalingGroupTagToTerraform)(this._tag),
         timeouts: autoscalingGroupTimeoutsToTerraform(this._timeouts),
-        warm_pool: cdktf.listMapper(autoscalingGroupWarmPoolToTerraform)(this._warmPool),
+        warm_pool: autoscalingGroupWarmPoolToTerraform(this._warmPool),
       };
     }
   }
@@ -1307,7 +1886,7 @@ export namespace AutoScaling {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group_tag.html#tag AutoscalingGroupTagA#tag}
     */
-    readonly tag: AutoscalingGroupTagTag[];
+    readonly tag: AutoscalingGroupTagTag;
   }
   export interface AutoscalingGroupTagTag {
     /**
@@ -1324,8 +1903,11 @@ export namespace AutoScaling {
     readonly value: string;
   }
 
-  function autoscalingGroupTagTagToTerraform(struct?: AutoscalingGroupTagTag): any {
+  function autoscalingGroupTagTagToTerraform(struct?: AutoscalingGroupTagTagOutputReference | AutoscalingGroupTagTag): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
       propagate_at_launch: cdktf.booleanToTerraform(struct!.propagateAtLaunch),
@@ -1333,6 +1915,55 @@ export namespace AutoScaling {
     }
   }
 
+  export class AutoscalingGroupTagTagOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // key - computed: false, optional: false, required: true
+    private _key?: string; 
+    public get key() {
+      return this.getStringAttribute('key');
+    }
+    public set key(value: string) {
+      this._key = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get keyInput() {
+      return this._key
+    }
+
+    // propagate_at_launch - computed: false, optional: false, required: true
+    private _propagateAtLaunch?: boolean | cdktf.IResolvable; 
+    public get propagateAtLaunch() {
+      return this.getBooleanAttribute('propagate_at_launch') as any;
+    }
+    public set propagateAtLaunch(value: boolean | cdktf.IResolvable) {
+      this._propagateAtLaunch = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get propagateAtLaunchInput() {
+      return this._propagateAtLaunch
+    }
+
+    // value - computed: false, optional: false, required: true
+    private _value?: string; 
+    public get value() {
+      return this.getStringAttribute('value');
+    }
+    public set value(value: string) {
+      this._value = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valueInput() {
+      return this._value
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_group_tag.html aws_autoscaling_group_tag}
@@ -1375,7 +2006,7 @@ export namespace AutoScaling {
     // ==========
 
     // autoscaling_group_name - computed: false, optional: false, required: true
-    private _autoscalingGroupName: string;
+    private _autoscalingGroupName?: string; 
     public get autoscalingGroupName() {
       return this.getStringAttribute('autoscaling_group_name');
     }
@@ -1393,11 +2024,12 @@ export namespace AutoScaling {
     }
 
     // tag - computed: false, optional: false, required: true
-    private _tag: AutoscalingGroupTagTag[];
+    private _tag?: AutoscalingGroupTagTag; 
+    private __tagOutput = new AutoscalingGroupTagTagOutputReference(this as any, "tag", true);
     public get tag() {
-      return this.interpolationForAttribute('tag') as any;
+      return this.__tagOutput;
     }
-    public set tag(value: AutoscalingGroupTagTag[]) {
+    public putTag(value: AutoscalingGroupTagTag) {
       this._tag = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -1412,7 +2044,7 @@ export namespace AutoScaling {
     protected synthesizeAttributes(): { [name: string]: any } {
       return {
         autoscaling_group_name: cdktf.stringToTerraform(this._autoscalingGroupName),
-        tag: cdktf.listMapper(autoscalingGroupTagTagToTerraform)(this._tag),
+        tag: autoscalingGroupTagTagToTerraform(this._tag),
       };
     }
   }
@@ -1498,7 +2130,7 @@ export namespace AutoScaling {
     // ==========
 
     // autoscaling_group_name - computed: false, optional: false, required: true
-    private _autoscalingGroupName: string;
+    private _autoscalingGroupName?: string; 
     public get autoscalingGroupName() {
       return this.getStringAttribute('autoscaling_group_name');
     }
@@ -1511,11 +2143,11 @@ export namespace AutoScaling {
     }
 
     // default_result - computed: true, optional: true, required: false
-    private _defaultResult?: string;
+    private _defaultResult?: string | undefined; 
     public get defaultResult() {
       return this.getStringAttribute('default_result');
     }
-    public set defaultResult(value: string) {
+    public set defaultResult(value: string | undefined) {
       this._defaultResult = value;
     }
     public resetDefaultResult() {
@@ -1527,11 +2159,11 @@ export namespace AutoScaling {
     }
 
     // heartbeat_timeout - computed: false, optional: true, required: false
-    private _heartbeatTimeout?: number;
+    private _heartbeatTimeout?: number | undefined; 
     public get heartbeatTimeout() {
       return this.getNumberAttribute('heartbeat_timeout');
     }
-    public set heartbeatTimeout(value: number ) {
+    public set heartbeatTimeout(value: number | undefined) {
       this._heartbeatTimeout = value;
     }
     public resetHeartbeatTimeout() {
@@ -1548,7 +2180,7 @@ export namespace AutoScaling {
     }
 
     // lifecycle_transition - computed: false, optional: false, required: true
-    private _lifecycleTransition: string;
+    private _lifecycleTransition?: string; 
     public get lifecycleTransition() {
       return this.getStringAttribute('lifecycle_transition');
     }
@@ -1561,7 +2193,7 @@ export namespace AutoScaling {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1574,11 +2206,11 @@ export namespace AutoScaling {
     }
 
     // notification_metadata - computed: false, optional: true, required: false
-    private _notificationMetadata?: string;
+    private _notificationMetadata?: string | undefined; 
     public get notificationMetadata() {
       return this.getStringAttribute('notification_metadata');
     }
-    public set notificationMetadata(value: string ) {
+    public set notificationMetadata(value: string | undefined) {
       this._notificationMetadata = value;
     }
     public resetNotificationMetadata() {
@@ -1590,11 +2222,11 @@ export namespace AutoScaling {
     }
 
     // notification_target_arn - computed: false, optional: true, required: false
-    private _notificationTargetArn?: string;
+    private _notificationTargetArn?: string | undefined; 
     public get notificationTargetArn() {
       return this.getStringAttribute('notification_target_arn');
     }
-    public set notificationTargetArn(value: string ) {
+    public set notificationTargetArn(value: string | undefined) {
       this._notificationTargetArn = value;
     }
     public resetNotificationTargetArn() {
@@ -1606,11 +2238,11 @@ export namespace AutoScaling {
     }
 
     // role_arn - computed: false, optional: true, required: false
-    private _roleArn?: string;
+    private _roleArn?: string | undefined; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
-    public set roleArn(value: string ) {
+    public set roleArn(value: string | undefined) {
       this._roleArn = value;
     }
     public resetRoleArn() {
@@ -1695,7 +2327,7 @@ export namespace AutoScaling {
     // ==========
 
     // group_names - computed: false, optional: false, required: true
-    private _groupNames: string[];
+    private _groupNames?: string[]; 
     public get groupNames() {
       return this.getListAttribute('group_names');
     }
@@ -1713,7 +2345,7 @@ export namespace AutoScaling {
     }
 
     // notifications - computed: false, optional: false, required: true
-    private _notifications: string[];
+    private _notifications?: string[]; 
     public get notifications() {
       return this.getListAttribute('notifications');
     }
@@ -1726,7 +2358,7 @@ export namespace AutoScaling {
     }
 
     // topic_arn - computed: false, optional: false, required: true
-    private _topicArn: string;
+    private _topicArn?: string; 
     public get topicArn() {
       return this.getStringAttribute('topic_arn');
     }
@@ -1792,7 +2424,7 @@ export namespace AutoScaling {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_policy.html#predictive_scaling_configuration AutoscalingPolicy#predictive_scaling_configuration}
     */
-    readonly predictiveScalingConfiguration?: AutoscalingPolicyPredictiveScalingConfiguration[];
+    readonly predictiveScalingConfiguration?: AutoscalingPolicyPredictiveScalingConfiguration;
     /**
     * step_adjustment block
     * 
@@ -1804,7 +2436,7 @@ export namespace AutoScaling {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_policy.html#target_tracking_configuration AutoscalingPolicy#target_tracking_configuration}
     */
-    readonly targetTrackingConfiguration?: AutoscalingPolicyTargetTrackingConfiguration[];
+    readonly targetTrackingConfiguration?: AutoscalingPolicyTargetTrackingConfiguration;
   }
   export interface AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification {
     /**
@@ -1817,14 +2449,53 @@ export namespace AutoScaling {
     readonly resourceLabel: string;
   }
 
-  function autoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecificationToTerraform(struct?: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification): any {
+  function autoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecificationToTerraform(struct?: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecificationOutputReference | AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       predefined_metric_type: cdktf.stringToTerraform(struct!.predefinedMetricType),
       resource_label: cdktf.stringToTerraform(struct!.resourceLabel),
     }
   }
 
+  export class AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecificationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // predefined_metric_type - computed: false, optional: false, required: true
+    private _predefinedMetricType?: string; 
+    public get predefinedMetricType() {
+      return this.getStringAttribute('predefined_metric_type');
+    }
+    public set predefinedMetricType(value: string) {
+      this._predefinedMetricType = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get predefinedMetricTypeInput() {
+      return this._predefinedMetricType
+    }
+
+    // resource_label - computed: false, optional: false, required: true
+    private _resourceLabel?: string; 
+    public get resourceLabel() {
+      return this.getStringAttribute('resource_label');
+    }
+    public set resourceLabel(value: string) {
+      this._resourceLabel = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceLabelInput() {
+      return this._resourceLabel
+    }
+  }
   export interface AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_policy.html#predefined_metric_type AutoscalingPolicy#predefined_metric_type}
@@ -1836,14 +2507,53 @@ export namespace AutoScaling {
     readonly resourceLabel: string;
   }
 
-  function autoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecificationToTerraform(struct?: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification): any {
+  function autoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecificationToTerraform(struct?: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecificationOutputReference | AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       predefined_metric_type: cdktf.stringToTerraform(struct!.predefinedMetricType),
       resource_label: cdktf.stringToTerraform(struct!.resourceLabel),
     }
   }
 
+  export class AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecificationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // predefined_metric_type - computed: false, optional: false, required: true
+    private _predefinedMetricType?: string; 
+    public get predefinedMetricType() {
+      return this.getStringAttribute('predefined_metric_type');
+    }
+    public set predefinedMetricType(value: string) {
+      this._predefinedMetricType = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get predefinedMetricTypeInput() {
+      return this._predefinedMetricType
+    }
+
+    // resource_label - computed: false, optional: false, required: true
+    private _resourceLabel?: string; 
+    public get resourceLabel() {
+      return this.getStringAttribute('resource_label');
+    }
+    public set resourceLabel(value: string) {
+      this._resourceLabel = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceLabelInput() {
+      return this._resourceLabel
+    }
+  }
   export interface AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_policy.html#predefined_metric_type AutoscalingPolicy#predefined_metric_type}
@@ -1855,14 +2565,53 @@ export namespace AutoScaling {
     readonly resourceLabel: string;
   }
 
-  function autoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecificationToTerraform(struct?: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification): any {
+  function autoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecificationToTerraform(struct?: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecificationOutputReference | AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       predefined_metric_type: cdktf.stringToTerraform(struct!.predefinedMetricType),
       resource_label: cdktf.stringToTerraform(struct!.resourceLabel),
     }
   }
 
+  export class AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecificationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // predefined_metric_type - computed: false, optional: false, required: true
+    private _predefinedMetricType?: string; 
+    public get predefinedMetricType() {
+      return this.getStringAttribute('predefined_metric_type');
+    }
+    public set predefinedMetricType(value: string) {
+      this._predefinedMetricType = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get predefinedMetricTypeInput() {
+      return this._predefinedMetricType
+    }
+
+    // resource_label - computed: false, optional: false, required: true
+    private _resourceLabel?: string; 
+    public get resourceLabel() {
+      return this.getStringAttribute('resource_label');
+    }
+    public set resourceLabel(value: string) {
+      this._resourceLabel = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceLabelInput() {
+      return this._resourceLabel
+    }
+  }
   export interface AutoscalingPolicyPredictiveScalingConfigurationMetricSpecification {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_policy.html#target_value AutoscalingPolicy#target_value}
@@ -1873,31 +2622,108 @@ export namespace AutoScaling {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_policy.html#predefined_load_metric_specification AutoscalingPolicy#predefined_load_metric_specification}
     */
-    readonly predefinedLoadMetricSpecification?: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification[];
+    readonly predefinedLoadMetricSpecification?: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification;
     /**
     * predefined_metric_pair_specification block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_policy.html#predefined_metric_pair_specification AutoscalingPolicy#predefined_metric_pair_specification}
     */
-    readonly predefinedMetricPairSpecification?: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification[];
+    readonly predefinedMetricPairSpecification?: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification;
     /**
     * predefined_scaling_metric_specification block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_policy.html#predefined_scaling_metric_specification AutoscalingPolicy#predefined_scaling_metric_specification}
     */
-    readonly predefinedScalingMetricSpecification?: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification[];
+    readonly predefinedScalingMetricSpecification?: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification;
   }
 
-  function autoscalingPolicyPredictiveScalingConfigurationMetricSpecificationToTerraform(struct?: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecification): any {
+  function autoscalingPolicyPredictiveScalingConfigurationMetricSpecificationToTerraform(struct?: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationOutputReference | AutoscalingPolicyPredictiveScalingConfigurationMetricSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       target_value: cdktf.numberToTerraform(struct!.targetValue),
-      predefined_load_metric_specification: cdktf.listMapper(autoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecificationToTerraform)(struct!.predefinedLoadMetricSpecification),
-      predefined_metric_pair_specification: cdktf.listMapper(autoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecificationToTerraform)(struct!.predefinedMetricPairSpecification),
-      predefined_scaling_metric_specification: cdktf.listMapper(autoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecificationToTerraform)(struct!.predefinedScalingMetricSpecification),
+      predefined_load_metric_specification: autoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecificationToTerraform(struct!.predefinedLoadMetricSpecification),
+      predefined_metric_pair_specification: autoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecificationToTerraform(struct!.predefinedMetricPairSpecification),
+      predefined_scaling_metric_specification: autoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecificationToTerraform(struct!.predefinedScalingMetricSpecification),
     }
   }
 
+  export class AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // target_value - computed: false, optional: false, required: true
+    private _targetValue?: number; 
+    public get targetValue() {
+      return this.getNumberAttribute('target_value');
+    }
+    public set targetValue(value: number) {
+      this._targetValue = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get targetValueInput() {
+      return this._targetValue
+    }
+
+    // predefined_load_metric_specification - computed: false, optional: true, required: false
+    private _predefinedLoadMetricSpecification?: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification | undefined; 
+    private __predefinedLoadMetricSpecificationOutput = new AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecificationOutputReference(this as any, "predefined_load_metric_specification", true);
+    public get predefinedLoadMetricSpecification() {
+      return this.__predefinedLoadMetricSpecificationOutput;
+    }
+    public putPredefinedLoadMetricSpecification(value: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedLoadMetricSpecification | undefined) {
+      this._predefinedLoadMetricSpecification = value;
+    }
+    public resetPredefinedLoadMetricSpecification() {
+      this._predefinedLoadMetricSpecification = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get predefinedLoadMetricSpecificationInput() {
+      return this._predefinedLoadMetricSpecification
+    }
+
+    // predefined_metric_pair_specification - computed: false, optional: true, required: false
+    private _predefinedMetricPairSpecification?: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification | undefined; 
+    private __predefinedMetricPairSpecificationOutput = new AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecificationOutputReference(this as any, "predefined_metric_pair_specification", true);
+    public get predefinedMetricPairSpecification() {
+      return this.__predefinedMetricPairSpecificationOutput;
+    }
+    public putPredefinedMetricPairSpecification(value: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedMetricPairSpecification | undefined) {
+      this._predefinedMetricPairSpecification = value;
+    }
+    public resetPredefinedMetricPairSpecification() {
+      this._predefinedMetricPairSpecification = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get predefinedMetricPairSpecificationInput() {
+      return this._predefinedMetricPairSpecification
+    }
+
+    // predefined_scaling_metric_specification - computed: false, optional: true, required: false
+    private _predefinedScalingMetricSpecification?: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification | undefined; 
+    private __predefinedScalingMetricSpecificationOutput = new AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecificationOutputReference(this as any, "predefined_scaling_metric_specification", true);
+    public get predefinedScalingMetricSpecification() {
+      return this.__predefinedScalingMetricSpecificationOutput;
+    }
+    public putPredefinedScalingMetricSpecification(value: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationPredefinedScalingMetricSpecification | undefined) {
+      this._predefinedScalingMetricSpecification = value;
+    }
+    public resetPredefinedScalingMetricSpecification() {
+      this._predefinedScalingMetricSpecification = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get predefinedScalingMetricSpecificationInput() {
+      return this._predefinedScalingMetricSpecification
+    }
+  }
   export interface AutoscalingPolicyPredictiveScalingConfiguration {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_policy.html#max_capacity_breach_behavior AutoscalingPolicy#max_capacity_breach_behavior}
@@ -1920,20 +2746,111 @@ export namespace AutoScaling {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_policy.html#metric_specification AutoscalingPolicy#metric_specification}
     */
-    readonly metricSpecification: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecification[];
+    readonly metricSpecification: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecification;
   }
 
-  function autoscalingPolicyPredictiveScalingConfigurationToTerraform(struct?: AutoscalingPolicyPredictiveScalingConfiguration): any {
+  function autoscalingPolicyPredictiveScalingConfigurationToTerraform(struct?: AutoscalingPolicyPredictiveScalingConfigurationOutputReference | AutoscalingPolicyPredictiveScalingConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       max_capacity_breach_behavior: cdktf.stringToTerraform(struct!.maxCapacityBreachBehavior),
       max_capacity_buffer: cdktf.stringToTerraform(struct!.maxCapacityBuffer),
       mode: cdktf.stringToTerraform(struct!.mode),
       scheduling_buffer_time: cdktf.stringToTerraform(struct!.schedulingBufferTime),
-      metric_specification: cdktf.listMapper(autoscalingPolicyPredictiveScalingConfigurationMetricSpecificationToTerraform)(struct!.metricSpecification),
+      metric_specification: autoscalingPolicyPredictiveScalingConfigurationMetricSpecificationToTerraform(struct!.metricSpecification),
     }
   }
 
+  export class AutoscalingPolicyPredictiveScalingConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // max_capacity_breach_behavior - computed: false, optional: true, required: false
+    private _maxCapacityBreachBehavior?: string | undefined; 
+    public get maxCapacityBreachBehavior() {
+      return this.getStringAttribute('max_capacity_breach_behavior');
+    }
+    public set maxCapacityBreachBehavior(value: string | undefined) {
+      this._maxCapacityBreachBehavior = value;
+    }
+    public resetMaxCapacityBreachBehavior() {
+      this._maxCapacityBreachBehavior = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maxCapacityBreachBehaviorInput() {
+      return this._maxCapacityBreachBehavior
+    }
+
+    // max_capacity_buffer - computed: false, optional: true, required: false
+    private _maxCapacityBuffer?: string | undefined; 
+    public get maxCapacityBuffer() {
+      return this.getStringAttribute('max_capacity_buffer');
+    }
+    public set maxCapacityBuffer(value: string | undefined) {
+      this._maxCapacityBuffer = value;
+    }
+    public resetMaxCapacityBuffer() {
+      this._maxCapacityBuffer = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maxCapacityBufferInput() {
+      return this._maxCapacityBuffer
+    }
+
+    // mode - computed: false, optional: true, required: false
+    private _mode?: string | undefined; 
+    public get mode() {
+      return this.getStringAttribute('mode');
+    }
+    public set mode(value: string | undefined) {
+      this._mode = value;
+    }
+    public resetMode() {
+      this._mode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get modeInput() {
+      return this._mode
+    }
+
+    // scheduling_buffer_time - computed: false, optional: true, required: false
+    private _schedulingBufferTime?: string | undefined; 
+    public get schedulingBufferTime() {
+      return this.getStringAttribute('scheduling_buffer_time');
+    }
+    public set schedulingBufferTime(value: string | undefined) {
+      this._schedulingBufferTime = value;
+    }
+    public resetSchedulingBufferTime() {
+      this._schedulingBufferTime = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get schedulingBufferTimeInput() {
+      return this._schedulingBufferTime
+    }
+
+    // metric_specification - computed: false, optional: false, required: true
+    private _metricSpecification?: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecification; 
+    private __metricSpecificationOutput = new AutoscalingPolicyPredictiveScalingConfigurationMetricSpecificationOutputReference(this as any, "metric_specification", true);
+    public get metricSpecification() {
+      return this.__metricSpecificationOutput;
+    }
+    public putMetricSpecification(value: AutoscalingPolicyPredictiveScalingConfigurationMetricSpecification) {
+      this._metricSpecification = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get metricSpecificationInput() {
+      return this._metricSpecification
+    }
+  }
   export interface AutoscalingPolicyStepAdjustment {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_policy.html#metric_interval_lower_bound AutoscalingPolicy#metric_interval_lower_bound}
@@ -1951,6 +2868,9 @@ export namespace AutoScaling {
 
   function autoscalingPolicyStepAdjustmentToTerraform(struct?: AutoscalingPolicyStepAdjustment): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       metric_interval_lower_bound: cdktf.stringToTerraform(struct!.metricIntervalLowerBound),
       metric_interval_upper_bound: cdktf.stringToTerraform(struct!.metricIntervalUpperBound),
@@ -1971,6 +2891,9 @@ export namespace AutoScaling {
 
   function autoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionToTerraform(struct?: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       value: cdktf.stringToTerraform(struct!.value),
@@ -2002,8 +2925,11 @@ export namespace AutoScaling {
     readonly metricDimension?: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension[];
   }
 
-  function autoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationToTerraform(struct?: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecification): any {
+  function autoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationToTerraform(struct?: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationOutputReference | AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       metric_name: cdktf.stringToTerraform(struct!.metricName),
       namespace: cdktf.stringToTerraform(struct!.namespace),
@@ -2013,6 +2939,88 @@ export namespace AutoScaling {
     }
   }
 
+  export class AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // metric_name - computed: false, optional: false, required: true
+    private _metricName?: string; 
+    public get metricName() {
+      return this.getStringAttribute('metric_name');
+    }
+    public set metricName(value: string) {
+      this._metricName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get metricNameInput() {
+      return this._metricName
+    }
+
+    // namespace - computed: false, optional: false, required: true
+    private _namespace?: string; 
+    public get namespace() {
+      return this.getStringAttribute('namespace');
+    }
+    public set namespace(value: string) {
+      this._namespace = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get namespaceInput() {
+      return this._namespace
+    }
+
+    // statistic - computed: false, optional: false, required: true
+    private _statistic?: string; 
+    public get statistic() {
+      return this.getStringAttribute('statistic');
+    }
+    public set statistic(value: string) {
+      this._statistic = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statisticInput() {
+      return this._statistic
+    }
+
+    // unit - computed: false, optional: true, required: false
+    private _unit?: string | undefined; 
+    public get unit() {
+      return this.getStringAttribute('unit');
+    }
+    public set unit(value: string | undefined) {
+      this._unit = value;
+    }
+    public resetUnit() {
+      this._unit = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get unitInput() {
+      return this._unit
+    }
+
+    // metric_dimension - computed: false, optional: true, required: false
+    private _metricDimension?: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension[] | undefined; 
+    public get metricDimension() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('metric_dimension') as any;
+    }
+    public set metricDimension(value: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension[] | undefined) {
+      this._metricDimension = value;
+    }
+    public resetMetricDimension() {
+      this._metricDimension = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get metricDimensionInput() {
+      return this._metricDimension
+    }
+  }
   export interface AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecification {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_policy.html#predefined_metric_type AutoscalingPolicy#predefined_metric_type}
@@ -2024,14 +3032,56 @@ export namespace AutoScaling {
     readonly resourceLabel?: string;
   }
 
-  function autoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationToTerraform(struct?: AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecification): any {
+  function autoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationToTerraform(struct?: AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationOutputReference | AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecification): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       predefined_metric_type: cdktf.stringToTerraform(struct!.predefinedMetricType),
       resource_label: cdktf.stringToTerraform(struct!.resourceLabel),
     }
   }
 
+  export class AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // predefined_metric_type - computed: false, optional: false, required: true
+    private _predefinedMetricType?: string; 
+    public get predefinedMetricType() {
+      return this.getStringAttribute('predefined_metric_type');
+    }
+    public set predefinedMetricType(value: string) {
+      this._predefinedMetricType = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get predefinedMetricTypeInput() {
+      return this._predefinedMetricType
+    }
+
+    // resource_label - computed: false, optional: true, required: false
+    private _resourceLabel?: string | undefined; 
+    public get resourceLabel() {
+      return this.getStringAttribute('resource_label');
+    }
+    public set resourceLabel(value: string | undefined) {
+      this._resourceLabel = value;
+    }
+    public resetResourceLabel() {
+      this._resourceLabel = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourceLabelInput() {
+      return this._resourceLabel
+    }
+  }
   export interface AutoscalingPolicyTargetTrackingConfiguration {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_policy.html#disable_scale_in AutoscalingPolicy#disable_scale_in}
@@ -2046,25 +3096,101 @@ export namespace AutoScaling {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_policy.html#customized_metric_specification AutoscalingPolicy#customized_metric_specification}
     */
-    readonly customizedMetricSpecification?: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecification[];
+    readonly customizedMetricSpecification?: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecification;
     /**
     * predefined_metric_specification block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_policy.html#predefined_metric_specification AutoscalingPolicy#predefined_metric_specification}
     */
-    readonly predefinedMetricSpecification?: AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecification[];
+    readonly predefinedMetricSpecification?: AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecification;
   }
 
-  function autoscalingPolicyTargetTrackingConfigurationToTerraform(struct?: AutoscalingPolicyTargetTrackingConfiguration): any {
+  function autoscalingPolicyTargetTrackingConfigurationToTerraform(struct?: AutoscalingPolicyTargetTrackingConfigurationOutputReference | AutoscalingPolicyTargetTrackingConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       disable_scale_in: cdktf.booleanToTerraform(struct!.disableScaleIn),
       target_value: cdktf.numberToTerraform(struct!.targetValue),
-      customized_metric_specification: cdktf.listMapper(autoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationToTerraform)(struct!.customizedMetricSpecification),
-      predefined_metric_specification: cdktf.listMapper(autoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationToTerraform)(struct!.predefinedMetricSpecification),
+      customized_metric_specification: autoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationToTerraform(struct!.customizedMetricSpecification),
+      predefined_metric_specification: autoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationToTerraform(struct!.predefinedMetricSpecification),
     }
   }
 
+  export class AutoscalingPolicyTargetTrackingConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // disable_scale_in - computed: false, optional: true, required: false
+    private _disableScaleIn?: boolean | cdktf.IResolvable | undefined; 
+    public get disableScaleIn() {
+      return this.getBooleanAttribute('disable_scale_in') as any;
+    }
+    public set disableScaleIn(value: boolean | cdktf.IResolvable | undefined) {
+      this._disableScaleIn = value;
+    }
+    public resetDisableScaleIn() {
+      this._disableScaleIn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get disableScaleInInput() {
+      return this._disableScaleIn
+    }
+
+    // target_value - computed: false, optional: false, required: true
+    private _targetValue?: number; 
+    public get targetValue() {
+      return this.getNumberAttribute('target_value');
+    }
+    public set targetValue(value: number) {
+      this._targetValue = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get targetValueInput() {
+      return this._targetValue
+    }
+
+    // customized_metric_specification - computed: false, optional: true, required: false
+    private _customizedMetricSpecification?: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecification | undefined; 
+    private __customizedMetricSpecificationOutput = new AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationOutputReference(this as any, "customized_metric_specification", true);
+    public get customizedMetricSpecification() {
+      return this.__customizedMetricSpecificationOutput;
+    }
+    public putCustomizedMetricSpecification(value: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecification | undefined) {
+      this._customizedMetricSpecification = value;
+    }
+    public resetCustomizedMetricSpecification() {
+      this._customizedMetricSpecification = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get customizedMetricSpecificationInput() {
+      return this._customizedMetricSpecification
+    }
+
+    // predefined_metric_specification - computed: false, optional: true, required: false
+    private _predefinedMetricSpecification?: AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecification | undefined; 
+    private __predefinedMetricSpecificationOutput = new AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationOutputReference(this as any, "predefined_metric_specification", true);
+    public get predefinedMetricSpecification() {
+      return this.__predefinedMetricSpecificationOutput;
+    }
+    public putPredefinedMetricSpecification(value: AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecification | undefined) {
+      this._predefinedMetricSpecification = value;
+    }
+    public resetPredefinedMetricSpecification() {
+      this._predefinedMetricSpecification = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get predefinedMetricSpecificationInput() {
+      return this._predefinedMetricSpecification
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/autoscaling_policy.html aws_autoscaling_policy}
@@ -2117,11 +3243,11 @@ export namespace AutoScaling {
     // ==========
 
     // adjustment_type - computed: false, optional: true, required: false
-    private _adjustmentType?: string;
+    private _adjustmentType?: string | undefined; 
     public get adjustmentType() {
       return this.getStringAttribute('adjustment_type');
     }
-    public set adjustmentType(value: string ) {
+    public set adjustmentType(value: string | undefined) {
       this._adjustmentType = value;
     }
     public resetAdjustmentType() {
@@ -2138,7 +3264,7 @@ export namespace AutoScaling {
     }
 
     // autoscaling_group_name - computed: false, optional: false, required: true
-    private _autoscalingGroupName: string;
+    private _autoscalingGroupName?: string; 
     public get autoscalingGroupName() {
       return this.getStringAttribute('autoscaling_group_name');
     }
@@ -2151,11 +3277,11 @@ export namespace AutoScaling {
     }
 
     // cooldown - computed: false, optional: true, required: false
-    private _cooldown?: number;
+    private _cooldown?: number | undefined; 
     public get cooldown() {
       return this.getNumberAttribute('cooldown');
     }
-    public set cooldown(value: number ) {
+    public set cooldown(value: number | undefined) {
       this._cooldown = value;
     }
     public resetCooldown() {
@@ -2167,11 +3293,11 @@ export namespace AutoScaling {
     }
 
     // estimated_instance_warmup - computed: false, optional: true, required: false
-    private _estimatedInstanceWarmup?: number;
+    private _estimatedInstanceWarmup?: number | undefined; 
     public get estimatedInstanceWarmup() {
       return this.getNumberAttribute('estimated_instance_warmup');
     }
-    public set estimatedInstanceWarmup(value: number ) {
+    public set estimatedInstanceWarmup(value: number | undefined) {
       this._estimatedInstanceWarmup = value;
     }
     public resetEstimatedInstanceWarmup() {
@@ -2188,11 +3314,11 @@ export namespace AutoScaling {
     }
 
     // metric_aggregation_type - computed: true, optional: true, required: false
-    private _metricAggregationType?: string;
+    private _metricAggregationType?: string | undefined; 
     public get metricAggregationType() {
       return this.getStringAttribute('metric_aggregation_type');
     }
-    public set metricAggregationType(value: string) {
+    public set metricAggregationType(value: string | undefined) {
       this._metricAggregationType = value;
     }
     public resetMetricAggregationType() {
@@ -2204,11 +3330,11 @@ export namespace AutoScaling {
     }
 
     // min_adjustment_magnitude - computed: false, optional: true, required: false
-    private _minAdjustmentMagnitude?: number;
+    private _minAdjustmentMagnitude?: number | undefined; 
     public get minAdjustmentMagnitude() {
       return this.getNumberAttribute('min_adjustment_magnitude');
     }
-    public set minAdjustmentMagnitude(value: number ) {
+    public set minAdjustmentMagnitude(value: number | undefined) {
       this._minAdjustmentMagnitude = value;
     }
     public resetMinAdjustmentMagnitude() {
@@ -2220,7 +3346,7 @@ export namespace AutoScaling {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2233,11 +3359,11 @@ export namespace AutoScaling {
     }
 
     // policy_type - computed: false, optional: true, required: false
-    private _policyType?: string;
+    private _policyType?: string | undefined; 
     public get policyType() {
       return this.getStringAttribute('policy_type');
     }
-    public set policyType(value: string ) {
+    public set policyType(value: string | undefined) {
       this._policyType = value;
     }
     public resetPolicyType() {
@@ -2249,11 +3375,11 @@ export namespace AutoScaling {
     }
 
     // scaling_adjustment - computed: false, optional: true, required: false
-    private _scalingAdjustment?: number;
+    private _scalingAdjustment?: number | undefined; 
     public get scalingAdjustment() {
       return this.getNumberAttribute('scaling_adjustment');
     }
-    public set scalingAdjustment(value: number ) {
+    public set scalingAdjustment(value: number | undefined) {
       this._scalingAdjustment = value;
     }
     public resetScalingAdjustment() {
@@ -2265,11 +3391,12 @@ export namespace AutoScaling {
     }
 
     // predictive_scaling_configuration - computed: false, optional: true, required: false
-    private _predictiveScalingConfiguration?: AutoscalingPolicyPredictiveScalingConfiguration[];
+    private _predictiveScalingConfiguration?: AutoscalingPolicyPredictiveScalingConfiguration | undefined; 
+    private __predictiveScalingConfigurationOutput = new AutoscalingPolicyPredictiveScalingConfigurationOutputReference(this as any, "predictive_scaling_configuration", true);
     public get predictiveScalingConfiguration() {
-      return this.interpolationForAttribute('predictive_scaling_configuration') as any;
+      return this.__predictiveScalingConfigurationOutput;
     }
-    public set predictiveScalingConfiguration(value: AutoscalingPolicyPredictiveScalingConfiguration[] ) {
+    public putPredictiveScalingConfiguration(value: AutoscalingPolicyPredictiveScalingConfiguration | undefined) {
       this._predictiveScalingConfiguration = value;
     }
     public resetPredictiveScalingConfiguration() {
@@ -2281,11 +3408,12 @@ export namespace AutoScaling {
     }
 
     // step_adjustment - computed: false, optional: true, required: false
-    private _stepAdjustment?: AutoscalingPolicyStepAdjustment[];
+    private _stepAdjustment?: AutoscalingPolicyStepAdjustment[] | undefined; 
     public get stepAdjustment() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('step_adjustment') as any;
     }
-    public set stepAdjustment(value: AutoscalingPolicyStepAdjustment[] ) {
+    public set stepAdjustment(value: AutoscalingPolicyStepAdjustment[] | undefined) {
       this._stepAdjustment = value;
     }
     public resetStepAdjustment() {
@@ -2297,11 +3425,12 @@ export namespace AutoScaling {
     }
 
     // target_tracking_configuration - computed: false, optional: true, required: false
-    private _targetTrackingConfiguration?: AutoscalingPolicyTargetTrackingConfiguration[];
+    private _targetTrackingConfiguration?: AutoscalingPolicyTargetTrackingConfiguration | undefined; 
+    private __targetTrackingConfigurationOutput = new AutoscalingPolicyTargetTrackingConfigurationOutputReference(this as any, "target_tracking_configuration", true);
     public get targetTrackingConfiguration() {
-      return this.interpolationForAttribute('target_tracking_configuration') as any;
+      return this.__targetTrackingConfigurationOutput;
     }
-    public set targetTrackingConfiguration(value: AutoscalingPolicyTargetTrackingConfiguration[] ) {
+    public putTargetTrackingConfiguration(value: AutoscalingPolicyTargetTrackingConfiguration | undefined) {
       this._targetTrackingConfiguration = value;
     }
     public resetTargetTrackingConfiguration() {
@@ -2327,9 +3456,9 @@ export namespace AutoScaling {
         name: cdktf.stringToTerraform(this._name),
         policy_type: cdktf.stringToTerraform(this._policyType),
         scaling_adjustment: cdktf.numberToTerraform(this._scalingAdjustment),
-        predictive_scaling_configuration: cdktf.listMapper(autoscalingPolicyPredictiveScalingConfigurationToTerraform)(this._predictiveScalingConfiguration),
+        predictive_scaling_configuration: autoscalingPolicyPredictiveScalingConfigurationToTerraform(this._predictiveScalingConfiguration),
         step_adjustment: cdktf.listMapper(autoscalingPolicyStepAdjustmentToTerraform)(this._stepAdjustment),
-        target_tracking_configuration: cdktf.listMapper(autoscalingPolicyTargetTrackingConfigurationToTerraform)(this._targetTrackingConfiguration),
+        target_tracking_configuration: autoscalingPolicyTargetTrackingConfigurationToTerraform(this._targetTrackingConfiguration),
       };
     }
   }
@@ -2425,7 +3554,7 @@ export namespace AutoScaling {
     }
 
     // autoscaling_group_name - computed: false, optional: false, required: true
-    private _autoscalingGroupName: string;
+    private _autoscalingGroupName?: string; 
     public get autoscalingGroupName() {
       return this.getStringAttribute('autoscaling_group_name');
     }
@@ -2438,11 +3567,11 @@ export namespace AutoScaling {
     }
 
     // desired_capacity - computed: true, optional: true, required: false
-    private _desiredCapacity?: number;
+    private _desiredCapacity?: number | undefined; 
     public get desiredCapacity() {
       return this.getNumberAttribute('desired_capacity');
     }
-    public set desiredCapacity(value: number) {
+    public set desiredCapacity(value: number | undefined) {
       this._desiredCapacity = value;
     }
     public resetDesiredCapacity() {
@@ -2454,11 +3583,11 @@ export namespace AutoScaling {
     }
 
     // end_time - computed: true, optional: true, required: false
-    private _endTime?: string;
+    private _endTime?: string | undefined; 
     public get endTime() {
       return this.getStringAttribute('end_time');
     }
-    public set endTime(value: string) {
+    public set endTime(value: string | undefined) {
       this._endTime = value;
     }
     public resetEndTime() {
@@ -2475,11 +3604,11 @@ export namespace AutoScaling {
     }
 
     // max_size - computed: true, optional: true, required: false
-    private _maxSize?: number;
+    private _maxSize?: number | undefined; 
     public get maxSize() {
       return this.getNumberAttribute('max_size');
     }
-    public set maxSize(value: number) {
+    public set maxSize(value: number | undefined) {
       this._maxSize = value;
     }
     public resetMaxSize() {
@@ -2491,11 +3620,11 @@ export namespace AutoScaling {
     }
 
     // min_size - computed: true, optional: true, required: false
-    private _minSize?: number;
+    private _minSize?: number | undefined; 
     public get minSize() {
       return this.getNumberAttribute('min_size');
     }
-    public set minSize(value: number) {
+    public set minSize(value: number | undefined) {
       this._minSize = value;
     }
     public resetMinSize() {
@@ -2507,11 +3636,11 @@ export namespace AutoScaling {
     }
 
     // recurrence - computed: true, optional: true, required: false
-    private _recurrence?: string;
+    private _recurrence?: string | undefined; 
     public get recurrence() {
       return this.getStringAttribute('recurrence');
     }
-    public set recurrence(value: string) {
+    public set recurrence(value: string | undefined) {
       this._recurrence = value;
     }
     public resetRecurrence() {
@@ -2523,7 +3652,7 @@ export namespace AutoScaling {
     }
 
     // scheduled_action_name - computed: false, optional: false, required: true
-    private _scheduledActionName: string;
+    private _scheduledActionName?: string; 
     public get scheduledActionName() {
       return this.getStringAttribute('scheduled_action_name');
     }
@@ -2536,11 +3665,11 @@ export namespace AutoScaling {
     }
 
     // start_time - computed: true, optional: true, required: false
-    private _startTime?: string;
+    private _startTime?: string | undefined; 
     public get startTime() {
       return this.getStringAttribute('start_time');
     }
-    public set startTime(value: string) {
+    public set startTime(value: string | undefined) {
       this._startTime = value;
     }
     public resetStartTime() {
@@ -2552,11 +3681,11 @@ export namespace AutoScaling {
     }
 
     // time_zone - computed: true, optional: true, required: false
-    private _timeZone?: string;
+    private _timeZone?: string | undefined; 
     public get timeZone() {
       return this.getStringAttribute('time_zone');
     }
-    public set timeZone(value: string) {
+    public set timeZone(value: string | undefined) {
       this._timeZone = value;
     }
     public resetTimeZone() {
@@ -2709,7 +3838,7 @@ export namespace AutoScaling {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2723,7 +3852,7 @@ export namespace AutoScaling {
 
     // new_instances_protected_from_scale_in - computed: true, optional: false, required: false
     public get newInstancesProtectedFromScaleIn() {
-      return this.getBooleanAttribute('new_instances_protected_from_scale_in');
+      return this.getBooleanAttribute('new_instances_protected_from_scale_in') as any;
     }
 
     // placement_group - computed: true, optional: false, required: false
@@ -2787,6 +3916,9 @@ export namespace AutoScaling {
 
   function dataAwsAutoscalingGroupsFilterToTerraform(struct?: DataAwsAutoscalingGroupsFilter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -2849,11 +3981,12 @@ export namespace AutoScaling {
     }
 
     // filter - computed: false, optional: true, required: false
-    private _filter?: DataAwsAutoscalingGroupsFilter[];
+    private _filter?: DataAwsAutoscalingGroupsFilter[] | undefined; 
     public get filter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filter') as any;
     }
-    public set filter(value: DataAwsAutoscalingGroupsFilter[] ) {
+    public set filter(value: DataAwsAutoscalingGroupsFilter[] | undefined) {
       this._filter = value;
     }
     public resetFilter() {

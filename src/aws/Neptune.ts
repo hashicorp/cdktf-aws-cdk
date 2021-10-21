@@ -134,8 +134,11 @@ export namespace Neptune {
     readonly update?: string;
   }
 
-  function neptuneClusterTimeoutsToTerraform(struct?: NeptuneClusterTimeouts): any {
+  function neptuneClusterTimeoutsToTerraform(struct?: NeptuneClusterTimeoutsOutputReference | NeptuneClusterTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -143,6 +146,64 @@ export namespace Neptune {
     }
   }
 
+  export class NeptuneClusterTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/neptune_cluster.html aws_neptune_cluster}
@@ -210,11 +271,11 @@ export namespace Neptune {
     // ==========
 
     // apply_immediately - computed: true, optional: true, required: false
-    private _applyImmediately?: boolean | cdktf.IResolvable;
+    private _applyImmediately?: boolean | cdktf.IResolvable | undefined; 
     public get applyImmediately() {
-      return this.getBooleanAttribute('apply_immediately');
+      return this.getBooleanAttribute('apply_immediately') as any;
     }
-    public set applyImmediately(value: boolean | cdktf.IResolvable) {
+    public set applyImmediately(value: boolean | cdktf.IResolvable | undefined) {
       this._applyImmediately = value;
     }
     public resetApplyImmediately() {
@@ -231,11 +292,11 @@ export namespace Neptune {
     }
 
     // availability_zones - computed: true, optional: true, required: false
-    private _availabilityZones?: string[];
+    private _availabilityZones?: string[] | undefined; 
     public get availabilityZones() {
       return this.getListAttribute('availability_zones');
     }
-    public set availabilityZones(value: string[]) {
+    public set availabilityZones(value: string[] | undefined) {
       this._availabilityZones = value;
     }
     public resetAvailabilityZones() {
@@ -247,11 +308,11 @@ export namespace Neptune {
     }
 
     // backup_retention_period - computed: false, optional: true, required: false
-    private _backupRetentionPeriod?: number;
+    private _backupRetentionPeriod?: number | undefined; 
     public get backupRetentionPeriod() {
       return this.getNumberAttribute('backup_retention_period');
     }
-    public set backupRetentionPeriod(value: number ) {
+    public set backupRetentionPeriod(value: number | undefined) {
       this._backupRetentionPeriod = value;
     }
     public resetBackupRetentionPeriod() {
@@ -263,11 +324,11 @@ export namespace Neptune {
     }
 
     // cluster_identifier - computed: true, optional: true, required: false
-    private _clusterIdentifier?: string;
+    private _clusterIdentifier?: string | undefined; 
     public get clusterIdentifier() {
       return this.getStringAttribute('cluster_identifier');
     }
-    public set clusterIdentifier(value: string) {
+    public set clusterIdentifier(value: string | undefined) {
       this._clusterIdentifier = value;
     }
     public resetClusterIdentifier() {
@@ -279,11 +340,11 @@ export namespace Neptune {
     }
 
     // cluster_identifier_prefix - computed: true, optional: true, required: false
-    private _clusterIdentifierPrefix?: string;
+    private _clusterIdentifierPrefix?: string | undefined; 
     public get clusterIdentifierPrefix() {
       return this.getStringAttribute('cluster_identifier_prefix');
     }
-    public set clusterIdentifierPrefix(value: string) {
+    public set clusterIdentifierPrefix(value: string | undefined) {
       this._clusterIdentifierPrefix = value;
     }
     public resetClusterIdentifierPrefix() {
@@ -305,11 +366,11 @@ export namespace Neptune {
     }
 
     // copy_tags_to_snapshot - computed: false, optional: true, required: false
-    private _copyTagsToSnapshot?: boolean | cdktf.IResolvable;
+    private _copyTagsToSnapshot?: boolean | cdktf.IResolvable | undefined; 
     public get copyTagsToSnapshot() {
-      return this.getBooleanAttribute('copy_tags_to_snapshot');
+      return this.getBooleanAttribute('copy_tags_to_snapshot') as any;
     }
-    public set copyTagsToSnapshot(value: boolean | cdktf.IResolvable ) {
+    public set copyTagsToSnapshot(value: boolean | cdktf.IResolvable | undefined) {
       this._copyTagsToSnapshot = value;
     }
     public resetCopyTagsToSnapshot() {
@@ -321,11 +382,11 @@ export namespace Neptune {
     }
 
     // deletion_protection - computed: false, optional: true, required: false
-    private _deletionProtection?: boolean | cdktf.IResolvable;
+    private _deletionProtection?: boolean | cdktf.IResolvable | undefined; 
     public get deletionProtection() {
-      return this.getBooleanAttribute('deletion_protection');
+      return this.getBooleanAttribute('deletion_protection') as any;
     }
-    public set deletionProtection(value: boolean | cdktf.IResolvable ) {
+    public set deletionProtection(value: boolean | cdktf.IResolvable | undefined) {
       this._deletionProtection = value;
     }
     public resetDeletionProtection() {
@@ -337,11 +398,11 @@ export namespace Neptune {
     }
 
     // enable_cloudwatch_logs_exports - computed: false, optional: true, required: false
-    private _enableCloudwatchLogsExports?: string[];
+    private _enableCloudwatchLogsExports?: string[] | undefined; 
     public get enableCloudwatchLogsExports() {
       return this.getListAttribute('enable_cloudwatch_logs_exports');
     }
-    public set enableCloudwatchLogsExports(value: string[] ) {
+    public set enableCloudwatchLogsExports(value: string[] | undefined) {
       this._enableCloudwatchLogsExports = value;
     }
     public resetEnableCloudwatchLogsExports() {
@@ -358,11 +419,11 @@ export namespace Neptune {
     }
 
     // engine - computed: false, optional: true, required: false
-    private _engine?: string;
+    private _engine?: string | undefined; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
-    public set engine(value: string ) {
+    public set engine(value: string | undefined) {
       this._engine = value;
     }
     public resetEngine() {
@@ -374,11 +435,11 @@ export namespace Neptune {
     }
 
     // engine_version - computed: true, optional: true, required: false
-    private _engineVersion?: string;
+    private _engineVersion?: string | undefined; 
     public get engineVersion() {
       return this.getStringAttribute('engine_version');
     }
-    public set engineVersion(value: string) {
+    public set engineVersion(value: string | undefined) {
       this._engineVersion = value;
     }
     public resetEngineVersion() {
@@ -390,11 +451,11 @@ export namespace Neptune {
     }
 
     // final_snapshot_identifier - computed: false, optional: true, required: false
-    private _finalSnapshotIdentifier?: string;
+    private _finalSnapshotIdentifier?: string | undefined; 
     public get finalSnapshotIdentifier() {
       return this.getStringAttribute('final_snapshot_identifier');
     }
-    public set finalSnapshotIdentifier(value: string ) {
+    public set finalSnapshotIdentifier(value: string | undefined) {
       this._finalSnapshotIdentifier = value;
     }
     public resetFinalSnapshotIdentifier() {
@@ -411,11 +472,11 @@ export namespace Neptune {
     }
 
     // iam_database_authentication_enabled - computed: false, optional: true, required: false
-    private _iamDatabaseAuthenticationEnabled?: boolean | cdktf.IResolvable;
+    private _iamDatabaseAuthenticationEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get iamDatabaseAuthenticationEnabled() {
-      return this.getBooleanAttribute('iam_database_authentication_enabled');
+      return this.getBooleanAttribute('iam_database_authentication_enabled') as any;
     }
-    public set iamDatabaseAuthenticationEnabled(value: boolean | cdktf.IResolvable ) {
+    public set iamDatabaseAuthenticationEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._iamDatabaseAuthenticationEnabled = value;
     }
     public resetIamDatabaseAuthenticationEnabled() {
@@ -427,11 +488,11 @@ export namespace Neptune {
     }
 
     // iam_roles - computed: false, optional: true, required: false
-    private _iamRoles?: string[];
+    private _iamRoles?: string[] | undefined; 
     public get iamRoles() {
       return this.getListAttribute('iam_roles');
     }
-    public set iamRoles(value: string[] ) {
+    public set iamRoles(value: string[] | undefined) {
       this._iamRoles = value;
     }
     public resetIamRoles() {
@@ -448,11 +509,11 @@ export namespace Neptune {
     }
 
     // kms_key_arn - computed: true, optional: true, required: false
-    private _kmsKeyArn?: string;
+    private _kmsKeyArn?: string | undefined; 
     public get kmsKeyArn() {
       return this.getStringAttribute('kms_key_arn');
     }
-    public set kmsKeyArn(value: string) {
+    public set kmsKeyArn(value: string | undefined) {
       this._kmsKeyArn = value;
     }
     public resetKmsKeyArn() {
@@ -464,11 +525,11 @@ export namespace Neptune {
     }
 
     // neptune_cluster_parameter_group_name - computed: false, optional: true, required: false
-    private _neptuneClusterParameterGroupName?: string;
+    private _neptuneClusterParameterGroupName?: string | undefined; 
     public get neptuneClusterParameterGroupName() {
       return this.getStringAttribute('neptune_cluster_parameter_group_name');
     }
-    public set neptuneClusterParameterGroupName(value: string ) {
+    public set neptuneClusterParameterGroupName(value: string | undefined) {
       this._neptuneClusterParameterGroupName = value;
     }
     public resetNeptuneClusterParameterGroupName() {
@@ -480,11 +541,11 @@ export namespace Neptune {
     }
 
     // neptune_subnet_group_name - computed: true, optional: true, required: false
-    private _neptuneSubnetGroupName?: string;
+    private _neptuneSubnetGroupName?: string | undefined; 
     public get neptuneSubnetGroupName() {
       return this.getStringAttribute('neptune_subnet_group_name');
     }
-    public set neptuneSubnetGroupName(value: string) {
+    public set neptuneSubnetGroupName(value: string | undefined) {
       this._neptuneSubnetGroupName = value;
     }
     public resetNeptuneSubnetGroupName() {
@@ -496,11 +557,11 @@ export namespace Neptune {
     }
 
     // port - computed: false, optional: true, required: false
-    private _port?: number;
+    private _port?: number | undefined; 
     public get port() {
       return this.getNumberAttribute('port');
     }
-    public set port(value: number ) {
+    public set port(value: number | undefined) {
       this._port = value;
     }
     public resetPort() {
@@ -512,11 +573,11 @@ export namespace Neptune {
     }
 
     // preferred_backup_window - computed: true, optional: true, required: false
-    private _preferredBackupWindow?: string;
+    private _preferredBackupWindow?: string | undefined; 
     public get preferredBackupWindow() {
       return this.getStringAttribute('preferred_backup_window');
     }
-    public set preferredBackupWindow(value: string) {
+    public set preferredBackupWindow(value: string | undefined) {
       this._preferredBackupWindow = value;
     }
     public resetPreferredBackupWindow() {
@@ -528,11 +589,11 @@ export namespace Neptune {
     }
 
     // preferred_maintenance_window - computed: true, optional: true, required: false
-    private _preferredMaintenanceWindow?: string;
+    private _preferredMaintenanceWindow?: string | undefined; 
     public get preferredMaintenanceWindow() {
       return this.getStringAttribute('preferred_maintenance_window');
     }
-    public set preferredMaintenanceWindow(value: string) {
+    public set preferredMaintenanceWindow(value: string | undefined) {
       this._preferredMaintenanceWindow = value;
     }
     public resetPreferredMaintenanceWindow() {
@@ -549,11 +610,11 @@ export namespace Neptune {
     }
 
     // replication_source_identifier - computed: false, optional: true, required: false
-    private _replicationSourceIdentifier?: string;
+    private _replicationSourceIdentifier?: string | undefined; 
     public get replicationSourceIdentifier() {
       return this.getStringAttribute('replication_source_identifier');
     }
-    public set replicationSourceIdentifier(value: string ) {
+    public set replicationSourceIdentifier(value: string | undefined) {
       this._replicationSourceIdentifier = value;
     }
     public resetReplicationSourceIdentifier() {
@@ -565,11 +626,11 @@ export namespace Neptune {
     }
 
     // skip_final_snapshot - computed: false, optional: true, required: false
-    private _skipFinalSnapshot?: boolean | cdktf.IResolvable;
+    private _skipFinalSnapshot?: boolean | cdktf.IResolvable | undefined; 
     public get skipFinalSnapshot() {
-      return this.getBooleanAttribute('skip_final_snapshot');
+      return this.getBooleanAttribute('skip_final_snapshot') as any;
     }
-    public set skipFinalSnapshot(value: boolean | cdktf.IResolvable ) {
+    public set skipFinalSnapshot(value: boolean | cdktf.IResolvable | undefined) {
       this._skipFinalSnapshot = value;
     }
     public resetSkipFinalSnapshot() {
@@ -581,11 +642,11 @@ export namespace Neptune {
     }
 
     // snapshot_identifier - computed: false, optional: true, required: false
-    private _snapshotIdentifier?: string;
+    private _snapshotIdentifier?: string | undefined; 
     public get snapshotIdentifier() {
       return this.getStringAttribute('snapshot_identifier');
     }
-    public set snapshotIdentifier(value: string ) {
+    public set snapshotIdentifier(value: string | undefined) {
       this._snapshotIdentifier = value;
     }
     public resetSnapshotIdentifier() {
@@ -597,11 +658,11 @@ export namespace Neptune {
     }
 
     // storage_encrypted - computed: false, optional: true, required: false
-    private _storageEncrypted?: boolean | cdktf.IResolvable;
+    private _storageEncrypted?: boolean | cdktf.IResolvable | undefined; 
     public get storageEncrypted() {
-      return this.getBooleanAttribute('storage_encrypted');
+      return this.getBooleanAttribute('storage_encrypted') as any;
     }
-    public set storageEncrypted(value: boolean | cdktf.IResolvable ) {
+    public set storageEncrypted(value: boolean | cdktf.IResolvable | undefined) {
       this._storageEncrypted = value;
     }
     public resetStorageEncrypted() {
@@ -613,11 +674,12 @@ export namespace Neptune {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -629,11 +691,12 @@ export namespace Neptune {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -645,11 +708,11 @@ export namespace Neptune {
     }
 
     // vpc_security_group_ids - computed: true, optional: true, required: false
-    private _vpcSecurityGroupIds?: string[];
+    private _vpcSecurityGroupIds?: string[] | undefined; 
     public get vpcSecurityGroupIds() {
       return this.getListAttribute('vpc_security_group_ids');
     }
-    public set vpcSecurityGroupIds(value: string[]) {
+    public set vpcSecurityGroupIds(value: string[] | undefined) {
       this._vpcSecurityGroupIds = value;
     }
     public resetVpcSecurityGroupIds() {
@@ -661,11 +724,12 @@ export namespace Neptune {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: NeptuneClusterTimeouts;
+    private _timeouts?: NeptuneClusterTimeouts | undefined; 
+    private __timeoutsOutput = new NeptuneClusterTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: NeptuneClusterTimeouts ) {
+    public putTimeouts(value: NeptuneClusterTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -794,7 +858,7 @@ export namespace Neptune {
     }
 
     // cluster_endpoint_identifier - computed: false, optional: false, required: true
-    private _clusterEndpointIdentifier: string;
+    private _clusterEndpointIdentifier?: string; 
     public get clusterEndpointIdentifier() {
       return this.getStringAttribute('cluster_endpoint_identifier');
     }
@@ -807,7 +871,7 @@ export namespace Neptune {
     }
 
     // cluster_identifier - computed: false, optional: false, required: true
-    private _clusterIdentifier: string;
+    private _clusterIdentifier?: string; 
     public get clusterIdentifier() {
       return this.getStringAttribute('cluster_identifier');
     }
@@ -825,7 +889,7 @@ export namespace Neptune {
     }
 
     // endpoint_type - computed: false, optional: false, required: true
-    private _endpointType: string;
+    private _endpointType?: string; 
     public get endpointType() {
       return this.getStringAttribute('endpoint_type');
     }
@@ -838,11 +902,11 @@ export namespace Neptune {
     }
 
     // excluded_members - computed: false, optional: true, required: false
-    private _excludedMembers?: string[];
+    private _excludedMembers?: string[] | undefined; 
     public get excludedMembers() {
       return this.getListAttribute('excluded_members');
     }
-    public set excludedMembers(value: string[] ) {
+    public set excludedMembers(value: string[] | undefined) {
       this._excludedMembers = value;
     }
     public resetExcludedMembers() {
@@ -859,11 +923,11 @@ export namespace Neptune {
     }
 
     // static_members - computed: false, optional: true, required: false
-    private _staticMembers?: string[];
+    private _staticMembers?: string[] | undefined; 
     public get staticMembers() {
       return this.getListAttribute('static_members');
     }
-    public set staticMembers(value: string[] ) {
+    public set staticMembers(value: string[] | undefined) {
       this._staticMembers = value;
     }
     public resetStaticMembers() {
@@ -875,11 +939,12 @@ export namespace Neptune {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -891,11 +956,12 @@ export namespace Neptune {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1017,8 +1083,11 @@ export namespace Neptune {
     readonly update?: string;
   }
 
-  function neptuneClusterInstanceTimeoutsToTerraform(struct?: NeptuneClusterInstanceTimeouts): any {
+  function neptuneClusterInstanceTimeoutsToTerraform(struct?: NeptuneClusterInstanceTimeoutsOutputReference | NeptuneClusterInstanceTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -1026,6 +1095,64 @@ export namespace Neptune {
     }
   }
 
+  export class NeptuneClusterInstanceTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/neptune_cluster_instance.html aws_neptune_cluster_instance}
@@ -1090,11 +1217,11 @@ export namespace Neptune {
     }
 
     // apply_immediately - computed: true, optional: true, required: false
-    private _applyImmediately?: boolean | cdktf.IResolvable;
+    private _applyImmediately?: boolean | cdktf.IResolvable | undefined; 
     public get applyImmediately() {
-      return this.getBooleanAttribute('apply_immediately');
+      return this.getBooleanAttribute('apply_immediately') as any;
     }
-    public set applyImmediately(value: boolean | cdktf.IResolvable) {
+    public set applyImmediately(value: boolean | cdktf.IResolvable | undefined) {
       this._applyImmediately = value;
     }
     public resetApplyImmediately() {
@@ -1111,11 +1238,11 @@ export namespace Neptune {
     }
 
     // auto_minor_version_upgrade - computed: false, optional: true, required: false
-    private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable;
+    private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable | undefined; 
     public get autoMinorVersionUpgrade() {
-      return this.getBooleanAttribute('auto_minor_version_upgrade');
+      return this.getBooleanAttribute('auto_minor_version_upgrade') as any;
     }
-    public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable ) {
+    public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable | undefined) {
       this._autoMinorVersionUpgrade = value;
     }
     public resetAutoMinorVersionUpgrade() {
@@ -1127,11 +1254,11 @@ export namespace Neptune {
     }
 
     // availability_zone - computed: true, optional: true, required: false
-    private _availabilityZone?: string;
+    private _availabilityZone?: string | undefined; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
-    public set availabilityZone(value: string) {
+    public set availabilityZone(value: string | undefined) {
       this._availabilityZone = value;
     }
     public resetAvailabilityZone() {
@@ -1143,7 +1270,7 @@ export namespace Neptune {
     }
 
     // cluster_identifier - computed: false, optional: false, required: true
-    private _clusterIdentifier: string;
+    private _clusterIdentifier?: string; 
     public get clusterIdentifier() {
       return this.getStringAttribute('cluster_identifier');
     }
@@ -1166,11 +1293,11 @@ export namespace Neptune {
     }
 
     // engine - computed: false, optional: true, required: false
-    private _engine?: string;
+    private _engine?: string | undefined; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
-    public set engine(value: string ) {
+    public set engine(value: string | undefined) {
       this._engine = value;
     }
     public resetEngine() {
@@ -1182,11 +1309,11 @@ export namespace Neptune {
     }
 
     // engine_version - computed: true, optional: true, required: false
-    private _engineVersion?: string;
+    private _engineVersion?: string | undefined; 
     public get engineVersion() {
       return this.getStringAttribute('engine_version');
     }
-    public set engineVersion(value: string) {
+    public set engineVersion(value: string | undefined) {
       this._engineVersion = value;
     }
     public resetEngineVersion() {
@@ -1203,11 +1330,11 @@ export namespace Neptune {
     }
 
     // identifier - computed: true, optional: true, required: false
-    private _identifier?: string;
+    private _identifier?: string | undefined; 
     public get identifier() {
       return this.getStringAttribute('identifier');
     }
-    public set identifier(value: string) {
+    public set identifier(value: string | undefined) {
       this._identifier = value;
     }
     public resetIdentifier() {
@@ -1219,11 +1346,11 @@ export namespace Neptune {
     }
 
     // identifier_prefix - computed: true, optional: true, required: false
-    private _identifierPrefix?: string;
+    private _identifierPrefix?: string | undefined; 
     public get identifierPrefix() {
       return this.getStringAttribute('identifier_prefix');
     }
-    public set identifierPrefix(value: string) {
+    public set identifierPrefix(value: string | undefined) {
       this._identifierPrefix = value;
     }
     public resetIdentifierPrefix() {
@@ -1235,7 +1362,7 @@ export namespace Neptune {
     }
 
     // instance_class - computed: false, optional: false, required: true
-    private _instanceClass: string;
+    private _instanceClass?: string; 
     public get instanceClass() {
       return this.getStringAttribute('instance_class');
     }
@@ -1253,11 +1380,11 @@ export namespace Neptune {
     }
 
     // neptune_parameter_group_name - computed: false, optional: true, required: false
-    private _neptuneParameterGroupName?: string;
+    private _neptuneParameterGroupName?: string | undefined; 
     public get neptuneParameterGroupName() {
       return this.getStringAttribute('neptune_parameter_group_name');
     }
-    public set neptuneParameterGroupName(value: string ) {
+    public set neptuneParameterGroupName(value: string | undefined) {
       this._neptuneParameterGroupName = value;
     }
     public resetNeptuneParameterGroupName() {
@@ -1269,11 +1396,11 @@ export namespace Neptune {
     }
 
     // neptune_subnet_group_name - computed: true, optional: true, required: false
-    private _neptuneSubnetGroupName?: string;
+    private _neptuneSubnetGroupName?: string | undefined; 
     public get neptuneSubnetGroupName() {
       return this.getStringAttribute('neptune_subnet_group_name');
     }
-    public set neptuneSubnetGroupName(value: string) {
+    public set neptuneSubnetGroupName(value: string | undefined) {
       this._neptuneSubnetGroupName = value;
     }
     public resetNeptuneSubnetGroupName() {
@@ -1285,11 +1412,11 @@ export namespace Neptune {
     }
 
     // port - computed: false, optional: true, required: false
-    private _port?: number;
+    private _port?: number | undefined; 
     public get port() {
       return this.getNumberAttribute('port');
     }
-    public set port(value: number ) {
+    public set port(value: number | undefined) {
       this._port = value;
     }
     public resetPort() {
@@ -1301,11 +1428,11 @@ export namespace Neptune {
     }
 
     // preferred_backup_window - computed: true, optional: true, required: false
-    private _preferredBackupWindow?: string;
+    private _preferredBackupWindow?: string | undefined; 
     public get preferredBackupWindow() {
       return this.getStringAttribute('preferred_backup_window');
     }
-    public set preferredBackupWindow(value: string) {
+    public set preferredBackupWindow(value: string | undefined) {
       this._preferredBackupWindow = value;
     }
     public resetPreferredBackupWindow() {
@@ -1317,11 +1444,11 @@ export namespace Neptune {
     }
 
     // preferred_maintenance_window - computed: true, optional: true, required: false
-    private _preferredMaintenanceWindow?: string;
+    private _preferredMaintenanceWindow?: string | undefined; 
     public get preferredMaintenanceWindow() {
       return this.getStringAttribute('preferred_maintenance_window');
     }
-    public set preferredMaintenanceWindow(value: string) {
+    public set preferredMaintenanceWindow(value: string | undefined) {
       this._preferredMaintenanceWindow = value;
     }
     public resetPreferredMaintenanceWindow() {
@@ -1333,11 +1460,11 @@ export namespace Neptune {
     }
 
     // promotion_tier - computed: false, optional: true, required: false
-    private _promotionTier?: number;
+    private _promotionTier?: number | undefined; 
     public get promotionTier() {
       return this.getNumberAttribute('promotion_tier');
     }
-    public set promotionTier(value: number ) {
+    public set promotionTier(value: number | undefined) {
       this._promotionTier = value;
     }
     public resetPromotionTier() {
@@ -1349,11 +1476,11 @@ export namespace Neptune {
     }
 
     // publicly_accessible - computed: false, optional: true, required: false
-    private _publiclyAccessible?: boolean | cdktf.IResolvable;
+    private _publiclyAccessible?: boolean | cdktf.IResolvable | undefined; 
     public get publiclyAccessible() {
-      return this.getBooleanAttribute('publicly_accessible');
+      return this.getBooleanAttribute('publicly_accessible') as any;
     }
-    public set publiclyAccessible(value: boolean | cdktf.IResolvable ) {
+    public set publiclyAccessible(value: boolean | cdktf.IResolvable | undefined) {
       this._publiclyAccessible = value;
     }
     public resetPubliclyAccessible() {
@@ -1366,15 +1493,16 @@ export namespace Neptune {
 
     // storage_encrypted - computed: true, optional: false, required: false
     public get storageEncrypted() {
-      return this.getBooleanAttribute('storage_encrypted');
+      return this.getBooleanAttribute('storage_encrypted') as any;
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1386,11 +1514,12 @@ export namespace Neptune {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1403,15 +1532,16 @@ export namespace Neptune {
 
     // writer - computed: true, optional: false, required: false
     public get writer() {
-      return this.getBooleanAttribute('writer');
+      return this.getBooleanAttribute('writer') as any;
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: NeptuneClusterInstanceTimeouts;
+    private _timeouts?: NeptuneClusterInstanceTimeouts | undefined; 
+    private __timeoutsOutput = new NeptuneClusterInstanceTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: NeptuneClusterInstanceTimeouts ) {
+    public putTimeouts(value: NeptuneClusterInstanceTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1499,6 +1629,9 @@ export namespace Neptune {
 
   function neptuneClusterParameterGroupParameterToTerraform(struct?: NeptuneClusterParameterGroupParameter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       apply_method: cdktf.stringToTerraform(struct!.applyMethod),
       name: cdktf.stringToTerraform(struct!.name),
@@ -1558,11 +1691,11 @@ export namespace Neptune {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1574,7 +1707,7 @@ export namespace Neptune {
     }
 
     // family - computed: false, optional: false, required: true
-    private _family: string;
+    private _family?: string; 
     public get family() {
       return this.getStringAttribute('family');
     }
@@ -1592,11 +1725,11 @@ export namespace Neptune {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1608,11 +1741,11 @@ export namespace Neptune {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -1624,11 +1757,12 @@ export namespace Neptune {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1640,11 +1774,12 @@ export namespace Neptune {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1656,11 +1791,12 @@ export namespace Neptune {
     }
 
     // parameter - computed: false, optional: true, required: false
-    private _parameter?: NeptuneClusterParameterGroupParameter[];
+    private _parameter?: NeptuneClusterParameterGroupParameter[] | undefined; 
     public get parameter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('parameter') as any;
     }
-    public set parameter(value: NeptuneClusterParameterGroupParameter[] ) {
+    public set parameter(value: NeptuneClusterParameterGroupParameter[] | undefined) {
       this._parameter = value;
     }
     public resetParameter() {
@@ -1710,13 +1846,42 @@ export namespace Neptune {
     readonly create?: string;
   }
 
-  function neptuneClusterSnapshotTimeoutsToTerraform(struct?: NeptuneClusterSnapshotTimeouts): any {
+  function neptuneClusterSnapshotTimeoutsToTerraform(struct?: NeptuneClusterSnapshotTimeoutsOutputReference | NeptuneClusterSnapshotTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
     }
   }
 
+  export class NeptuneClusterSnapshotTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/neptune_cluster_snapshot.html aws_neptune_cluster_snapshot}
@@ -1770,7 +1935,7 @@ export namespace Neptune {
     }
 
     // db_cluster_identifier - computed: false, optional: false, required: true
-    private _dbClusterIdentifier: string;
+    private _dbClusterIdentifier?: string; 
     public get dbClusterIdentifier() {
       return this.getStringAttribute('db_cluster_identifier');
     }
@@ -1788,7 +1953,7 @@ export namespace Neptune {
     }
 
     // db_cluster_snapshot_identifier - computed: false, optional: false, required: true
-    private _dbClusterSnapshotIdentifier: string;
+    private _dbClusterSnapshotIdentifier?: string; 
     public get dbClusterSnapshotIdentifier() {
       return this.getStringAttribute('db_cluster_snapshot_identifier');
     }
@@ -1847,7 +2012,7 @@ export namespace Neptune {
 
     // storage_encrypted - computed: true, optional: false, required: false
     public get storageEncrypted() {
-      return this.getBooleanAttribute('storage_encrypted');
+      return this.getBooleanAttribute('storage_encrypted') as any;
     }
 
     // vpc_id - computed: true, optional: false, required: false
@@ -1856,11 +2021,12 @@ export namespace Neptune {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: NeptuneClusterSnapshotTimeouts;
+    private _timeouts?: NeptuneClusterSnapshotTimeouts | undefined; 
+    private __timeoutsOutput = new NeptuneClusterSnapshotTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: NeptuneClusterSnapshotTimeouts ) {
+    public putTimeouts(value: NeptuneClusterSnapshotTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1942,8 +2108,11 @@ export namespace Neptune {
     readonly update?: string;
   }
 
-  function neptuneEventSubscriptionTimeoutsToTerraform(struct?: NeptuneEventSubscriptionTimeouts): any {
+  function neptuneEventSubscriptionTimeoutsToTerraform(struct?: NeptuneEventSubscriptionTimeoutsOutputReference | NeptuneEventSubscriptionTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -1951,6 +2120,64 @@ export namespace Neptune {
     }
   }
 
+  export class NeptuneEventSubscriptionTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/neptune_event_subscription.html aws_neptune_event_subscription}
@@ -2011,11 +2238,11 @@ export namespace Neptune {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -2027,11 +2254,11 @@ export namespace Neptune {
     }
 
     // event_categories - computed: false, optional: true, required: false
-    private _eventCategories?: string[];
+    private _eventCategories?: string[] | undefined; 
     public get eventCategories() {
       return this.getListAttribute('event_categories');
     }
-    public set eventCategories(value: string[] ) {
+    public set eventCategories(value: string[] | undefined) {
       this._eventCategories = value;
     }
     public resetEventCategories() {
@@ -2048,11 +2275,11 @@ export namespace Neptune {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -2064,11 +2291,11 @@ export namespace Neptune {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -2080,7 +2307,7 @@ export namespace Neptune {
     }
 
     // sns_topic_arn - computed: false, optional: false, required: true
-    private _snsTopicArn: string;
+    private _snsTopicArn?: string; 
     public get snsTopicArn() {
       return this.getStringAttribute('sns_topic_arn');
     }
@@ -2093,11 +2320,11 @@ export namespace Neptune {
     }
 
     // source_ids - computed: false, optional: true, required: false
-    private _sourceIds?: string[];
+    private _sourceIds?: string[] | undefined; 
     public get sourceIds() {
       return this.getListAttribute('source_ids');
     }
-    public set sourceIds(value: string[] ) {
+    public set sourceIds(value: string[] | undefined) {
       this._sourceIds = value;
     }
     public resetSourceIds() {
@@ -2109,11 +2336,11 @@ export namespace Neptune {
     }
 
     // source_type - computed: false, optional: true, required: false
-    private _sourceType?: string;
+    private _sourceType?: string | undefined; 
     public get sourceType() {
       return this.getStringAttribute('source_type');
     }
-    public set sourceType(value: string ) {
+    public set sourceType(value: string | undefined) {
       this._sourceType = value;
     }
     public resetSourceType() {
@@ -2125,11 +2352,12 @@ export namespace Neptune {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2141,11 +2369,12 @@ export namespace Neptune {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2157,11 +2386,12 @@ export namespace Neptune {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: NeptuneEventSubscriptionTimeouts;
+    private _timeouts?: NeptuneEventSubscriptionTimeouts | undefined; 
+    private __timeoutsOutput = new NeptuneEventSubscriptionTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: NeptuneEventSubscriptionTimeouts ) {
+    public putTimeouts(value: NeptuneEventSubscriptionTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -2236,6 +2466,9 @@ export namespace Neptune {
 
   function neptuneParameterGroupParameterToTerraform(struct?: NeptuneParameterGroupParameter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       apply_method: cdktf.stringToTerraform(struct!.applyMethod),
       name: cdktf.stringToTerraform(struct!.name),
@@ -2294,11 +2527,11 @@ export namespace Neptune {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -2310,7 +2543,7 @@ export namespace Neptune {
     }
 
     // family - computed: false, optional: false, required: true
-    private _family: string;
+    private _family?: string; 
     public get family() {
       return this.getStringAttribute('family');
     }
@@ -2328,7 +2561,7 @@ export namespace Neptune {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2341,11 +2574,12 @@ export namespace Neptune {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2357,11 +2591,12 @@ export namespace Neptune {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2373,11 +2608,12 @@ export namespace Neptune {
     }
 
     // parameter - computed: false, optional: true, required: false
-    private _parameter?: NeptuneParameterGroupParameter[];
+    private _parameter?: NeptuneParameterGroupParameter[] | undefined; 
     public get parameter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('parameter') as any;
     }
-    public set parameter(value: NeptuneParameterGroupParameter[] ) {
+    public set parameter(value: NeptuneParameterGroupParameter[] | undefined) {
       this._parameter = value;
     }
     public resetParameter() {
@@ -2480,11 +2716,11 @@ export namespace Neptune {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -2501,11 +2737,11 @@ export namespace Neptune {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -2517,11 +2753,11 @@ export namespace Neptune {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -2533,7 +2769,7 @@ export namespace Neptune {
     }
 
     // subnet_ids - computed: false, optional: false, required: true
-    private _subnetIds: string[];
+    private _subnetIds?: string[]; 
     public get subnetIds() {
       return this.getListAttribute('subnet_ids');
     }
@@ -2546,11 +2782,12 @@ export namespace Neptune {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2562,11 +2799,12 @@ export namespace Neptune {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2654,11 +2892,11 @@ export namespace Neptune {
     // ==========
 
     // engine - computed: false, optional: true, required: false
-    private _engine?: string;
+    private _engine?: string | undefined; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
-    public set engine(value: string ) {
+    public set engine(value: string | undefined) {
       this._engine = value;
     }
     public resetEngine() {
@@ -2685,11 +2923,11 @@ export namespace Neptune {
     }
 
     // parameter_group_family - computed: true, optional: true, required: false
-    private _parameterGroupFamily?: string;
+    private _parameterGroupFamily?: string | undefined; 
     public get parameterGroupFamily() {
       return this.getStringAttribute('parameter_group_family');
     }
-    public set parameterGroupFamily(value: string) {
+    public set parameterGroupFamily(value: string | undefined) {
       this._parameterGroupFamily = value;
     }
     public resetParameterGroupFamily() {
@@ -2701,11 +2939,11 @@ export namespace Neptune {
     }
 
     // preferred_versions - computed: false, optional: true, required: false
-    private _preferredVersions?: string[];
+    private _preferredVersions?: string[] | undefined; 
     public get preferredVersions() {
       return this.getListAttribute('preferred_versions');
     }
-    public set preferredVersions(value: string[] ) {
+    public set preferredVersions(value: string[] | undefined) {
       this._preferredVersions = value;
     }
     public resetPreferredVersions() {
@@ -2723,12 +2961,12 @@ export namespace Neptune {
 
     // supports_log_exports_to_cloudwatch - computed: true, optional: false, required: false
     public get supportsLogExportsToCloudwatch() {
-      return this.getBooleanAttribute('supports_log_exports_to_cloudwatch');
+      return this.getBooleanAttribute('supports_log_exports_to_cloudwatch') as any;
     }
 
     // supports_read_replica - computed: true, optional: false, required: false
     public get supportsReadReplica() {
-      return this.getBooleanAttribute('supports_read_replica');
+      return this.getBooleanAttribute('supports_read_replica') as any;
     }
 
     // valid_upgrade_targets - computed: true, optional: false, required: false
@@ -2737,11 +2975,11 @@ export namespace Neptune {
     }
 
     // version - computed: true, optional: true, required: false
-    private _version?: string;
+    private _version?: string | undefined; 
     public get version() {
       return this.getStringAttribute('version');
     }
-    public set version(value: string) {
+    public set version(value: string | undefined) {
       this._version = value;
     }
     public resetVersion() {
@@ -2847,11 +3085,11 @@ export namespace Neptune {
     }
 
     // engine - computed: false, optional: true, required: false
-    private _engine?: string;
+    private _engine?: string | undefined; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
-    public set engine(value: string ) {
+    public set engine(value: string | undefined) {
       this._engine = value;
     }
     public resetEngine() {
@@ -2863,11 +3101,11 @@ export namespace Neptune {
     }
 
     // engine_version - computed: true, optional: true, required: false
-    private _engineVersion?: string;
+    private _engineVersion?: string | undefined; 
     public get engineVersion() {
       return this.getStringAttribute('engine_version');
     }
-    public set engineVersion(value: string) {
+    public set engineVersion(value: string | undefined) {
       this._engineVersion = value;
     }
     public resetEngineVersion() {
@@ -2884,11 +3122,11 @@ export namespace Neptune {
     }
 
     // instance_class - computed: true, optional: true, required: false
-    private _instanceClass?: string;
+    private _instanceClass?: string | undefined; 
     public get instanceClass() {
       return this.getStringAttribute('instance_class');
     }
-    public set instanceClass(value: string) {
+    public set instanceClass(value: string | undefined) {
       this._instanceClass = value;
     }
     public resetInstanceClass() {
@@ -2900,11 +3138,11 @@ export namespace Neptune {
     }
 
     // license_model - computed: false, optional: true, required: false
-    private _licenseModel?: string;
+    private _licenseModel?: string | undefined; 
     public get licenseModel() {
       return this.getStringAttribute('license_model');
     }
-    public set licenseModel(value: string ) {
+    public set licenseModel(value: string | undefined) {
       this._licenseModel = value;
     }
     public resetLicenseModel() {
@@ -2947,15 +3185,15 @@ export namespace Neptune {
 
     // multi_az_capable - computed: true, optional: false, required: false
     public get multiAzCapable() {
-      return this.getBooleanAttribute('multi_az_capable');
+      return this.getBooleanAttribute('multi_az_capable') as any;
     }
 
     // preferred_instance_classes - computed: false, optional: true, required: false
-    private _preferredInstanceClasses?: string[];
+    private _preferredInstanceClasses?: string[] | undefined; 
     public get preferredInstanceClasses() {
       return this.getListAttribute('preferred_instance_classes');
     }
-    public set preferredInstanceClasses(value: string[] ) {
+    public set preferredInstanceClasses(value: string[] | undefined) {
       this._preferredInstanceClasses = value;
     }
     public resetPreferredInstanceClasses() {
@@ -2968,7 +3206,7 @@ export namespace Neptune {
 
     // read_replica_capable - computed: true, optional: false, required: false
     public get readReplicaCapable() {
-      return this.getBooleanAttribute('read_replica_capable');
+      return this.getBooleanAttribute('read_replica_capable') as any;
     }
 
     // storage_type - computed: true, optional: false, required: false
@@ -2978,35 +3216,35 @@ export namespace Neptune {
 
     // supports_enhanced_monitoring - computed: true, optional: false, required: false
     public get supportsEnhancedMonitoring() {
-      return this.getBooleanAttribute('supports_enhanced_monitoring');
+      return this.getBooleanAttribute('supports_enhanced_monitoring') as any;
     }
 
     // supports_iam_database_authentication - computed: true, optional: false, required: false
     public get supportsIamDatabaseAuthentication() {
-      return this.getBooleanAttribute('supports_iam_database_authentication');
+      return this.getBooleanAttribute('supports_iam_database_authentication') as any;
     }
 
     // supports_iops - computed: true, optional: false, required: false
     public get supportsIops() {
-      return this.getBooleanAttribute('supports_iops');
+      return this.getBooleanAttribute('supports_iops') as any;
     }
 
     // supports_performance_insights - computed: true, optional: false, required: false
     public get supportsPerformanceInsights() {
-      return this.getBooleanAttribute('supports_performance_insights');
+      return this.getBooleanAttribute('supports_performance_insights') as any;
     }
 
     // supports_storage_encryption - computed: true, optional: false, required: false
     public get supportsStorageEncryption() {
-      return this.getBooleanAttribute('supports_storage_encryption');
+      return this.getBooleanAttribute('supports_storage_encryption') as any;
     }
 
     // vpc - computed: true, optional: true, required: false
-    private _vpc?: boolean | cdktf.IResolvable;
+    private _vpc?: boolean | cdktf.IResolvable | undefined; 
     public get vpc() {
-      return this.getBooleanAttribute('vpc');
+      return this.getBooleanAttribute('vpc') as any;
     }
-    public set vpc(value: boolean | cdktf.IResolvable) {
+    public set vpc(value: boolean | cdktf.IResolvable | undefined) {
       this._vpc = value;
     }
     public resetVpc() {

@@ -83,11 +83,11 @@ export class Static extends cdktf.TerraformResource {
   }
 
   // rfc3339 - computed: true, optional: true, required: false
-  private _rfc3339?: string;
+  private _rfc3339?: string | undefined; 
   public get rfc3339() {
     return this.getStringAttribute('rfc3339');
   }
-  public set rfc3339(value: string) {
+  public set rfc3339(value: string | undefined) {
     this._rfc3339 = value;
   }
   public resetRfc3339() {
@@ -104,11 +104,12 @@ export class Static extends cdktf.TerraformResource {
   }
 
   // triggers - computed: false, optional: true, required: false
-  private _triggers?: { [key: string]: string } | cdktf.IResolvable;
+  private _triggers?: { [key: string]: string } | cdktf.IResolvable | undefined; 
   public get triggers() {
+    // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('triggers') as any;
   }
-  public set triggers(value: { [key: string]: string } | cdktf.IResolvable ) {
+  public set triggers(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
     this._triggers = value;
   }
   public resetTriggers() {

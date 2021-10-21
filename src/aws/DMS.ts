@@ -79,7 +79,7 @@ export namespace DMS {
     }
 
     // certificate_id - computed: false, optional: false, required: true
-    private _certificateId: string;
+    private _certificateId?: string; 
     public get certificateId() {
       return this.getStringAttribute('certificate_id');
     }
@@ -92,11 +92,11 @@ export namespace DMS {
     }
 
     // certificate_pem - computed: false, optional: true, required: false
-    private _certificatePem?: string;
+    private _certificatePem?: string | undefined; 
     public get certificatePem() {
       return this.getStringAttribute('certificate_pem');
     }
-    public set certificatePem(value: string ) {
+    public set certificatePem(value: string | undefined) {
       this._certificatePem = value;
     }
     public resetCertificatePem() {
@@ -108,11 +108,11 @@ export namespace DMS {
     }
 
     // certificate_wallet - computed: false, optional: true, required: false
-    private _certificateWallet?: string;
+    private _certificateWallet?: string | undefined; 
     public get certificateWallet() {
       return this.getStringAttribute('certificate_wallet');
     }
-    public set certificateWallet(value: string ) {
+    public set certificateWallet(value: string | undefined) {
       this._certificateWallet = value;
     }
     public resetCertificateWallet() {
@@ -129,11 +129,12 @@ export namespace DMS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -145,11 +146,12 @@ export namespace DMS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -240,31 +242,31 @@ export namespace DMS {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dms_endpoint.html#elasticsearch_settings DmsEndpoint#elasticsearch_settings}
     */
-    readonly elasticsearchSettings?: DmsEndpointElasticsearchSettings[];
+    readonly elasticsearchSettings?: DmsEndpointElasticsearchSettings;
     /**
     * kafka_settings block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dms_endpoint.html#kafka_settings DmsEndpoint#kafka_settings}
     */
-    readonly kafkaSettings?: DmsEndpointKafkaSettings[];
+    readonly kafkaSettings?: DmsEndpointKafkaSettings;
     /**
     * kinesis_settings block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dms_endpoint.html#kinesis_settings DmsEndpoint#kinesis_settings}
     */
-    readonly kinesisSettings?: DmsEndpointKinesisSettings[];
+    readonly kinesisSettings?: DmsEndpointKinesisSettings;
     /**
     * mongodb_settings block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dms_endpoint.html#mongodb_settings DmsEndpoint#mongodb_settings}
     */
-    readonly mongodbSettings?: DmsEndpointMongodbSettings[];
+    readonly mongodbSettings?: DmsEndpointMongodbSettings;
     /**
     * s3_settings block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dms_endpoint.html#s3_settings DmsEndpoint#s3_settings}
     */
-    readonly s3Settings?: DmsEndpointS3Settings[];
+    readonly s3Settings?: DmsEndpointS3Settings;
   }
   export interface DmsEndpointElasticsearchSettings {
     /**
@@ -285,8 +287,11 @@ export namespace DMS {
     readonly serviceAccessRoleArn: string;
   }
 
-  function dmsEndpointElasticsearchSettingsToTerraform(struct?: DmsEndpointElasticsearchSettings): any {
+  function dmsEndpointElasticsearchSettingsToTerraform(struct?: DmsEndpointElasticsearchSettingsOutputReference | DmsEndpointElasticsearchSettings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       endpoint_uri: cdktf.stringToTerraform(struct!.endpointUri),
       error_retry_duration: cdktf.numberToTerraform(struct!.errorRetryDuration),
@@ -295,6 +300,74 @@ export namespace DMS {
     }
   }
 
+  export class DmsEndpointElasticsearchSettingsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // endpoint_uri - computed: false, optional: false, required: true
+    private _endpointUri?: string; 
+    public get endpointUri() {
+      return this.getStringAttribute('endpoint_uri');
+    }
+    public set endpointUri(value: string) {
+      this._endpointUri = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get endpointUriInput() {
+      return this._endpointUri
+    }
+
+    // error_retry_duration - computed: false, optional: true, required: false
+    private _errorRetryDuration?: number | undefined; 
+    public get errorRetryDuration() {
+      return this.getNumberAttribute('error_retry_duration');
+    }
+    public set errorRetryDuration(value: number | undefined) {
+      this._errorRetryDuration = value;
+    }
+    public resetErrorRetryDuration() {
+      this._errorRetryDuration = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get errorRetryDurationInput() {
+      return this._errorRetryDuration
+    }
+
+    // full_load_error_percentage - computed: false, optional: true, required: false
+    private _fullLoadErrorPercentage?: number | undefined; 
+    public get fullLoadErrorPercentage() {
+      return this.getNumberAttribute('full_load_error_percentage');
+    }
+    public set fullLoadErrorPercentage(value: number | undefined) {
+      this._fullLoadErrorPercentage = value;
+    }
+    public resetFullLoadErrorPercentage() {
+      this._fullLoadErrorPercentage = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get fullLoadErrorPercentageInput() {
+      return this._fullLoadErrorPercentage
+    }
+
+    // service_access_role_arn - computed: false, optional: false, required: true
+    private _serviceAccessRoleArn?: string; 
+    public get serviceAccessRoleArn() {
+      return this.getStringAttribute('service_access_role_arn');
+    }
+    public set serviceAccessRoleArn(value: string) {
+      this._serviceAccessRoleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get serviceAccessRoleArnInput() {
+      return this._serviceAccessRoleArn
+    }
+  }
   export interface DmsEndpointKafkaSettings {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dms_endpoint.html#broker DmsEndpoint#broker}
@@ -370,8 +443,11 @@ export namespace DMS {
     readonly topic?: string;
   }
 
-  function dmsEndpointKafkaSettingsToTerraform(struct?: DmsEndpointKafkaSettings): any {
+  function dmsEndpointKafkaSettingsToTerraform(struct?: DmsEndpointKafkaSettingsOutputReference | DmsEndpointKafkaSettings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       broker: cdktf.stringToTerraform(struct!.broker),
       include_control_details: cdktf.booleanToTerraform(struct!.includeControlDetails),
@@ -394,6 +470,301 @@ export namespace DMS {
     }
   }
 
+  export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // broker - computed: false, optional: false, required: true
+    private _broker?: string; 
+    public get broker() {
+      return this.getStringAttribute('broker');
+    }
+    public set broker(value: string) {
+      this._broker = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get brokerInput() {
+      return this._broker
+    }
+
+    // include_control_details - computed: false, optional: true, required: false
+    private _includeControlDetails?: boolean | cdktf.IResolvable | undefined; 
+    public get includeControlDetails() {
+      return this.getBooleanAttribute('include_control_details') as any;
+    }
+    public set includeControlDetails(value: boolean | cdktf.IResolvable | undefined) {
+      this._includeControlDetails = value;
+    }
+    public resetIncludeControlDetails() {
+      this._includeControlDetails = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get includeControlDetailsInput() {
+      return this._includeControlDetails
+    }
+
+    // include_null_and_empty - computed: false, optional: true, required: false
+    private _includeNullAndEmpty?: boolean | cdktf.IResolvable | undefined; 
+    public get includeNullAndEmpty() {
+      return this.getBooleanAttribute('include_null_and_empty') as any;
+    }
+    public set includeNullAndEmpty(value: boolean | cdktf.IResolvable | undefined) {
+      this._includeNullAndEmpty = value;
+    }
+    public resetIncludeNullAndEmpty() {
+      this._includeNullAndEmpty = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get includeNullAndEmptyInput() {
+      return this._includeNullAndEmpty
+    }
+
+    // include_partition_value - computed: false, optional: true, required: false
+    private _includePartitionValue?: boolean | cdktf.IResolvable | undefined; 
+    public get includePartitionValue() {
+      return this.getBooleanAttribute('include_partition_value') as any;
+    }
+    public set includePartitionValue(value: boolean | cdktf.IResolvable | undefined) {
+      this._includePartitionValue = value;
+    }
+    public resetIncludePartitionValue() {
+      this._includePartitionValue = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get includePartitionValueInput() {
+      return this._includePartitionValue
+    }
+
+    // include_table_alter_operations - computed: false, optional: true, required: false
+    private _includeTableAlterOperations?: boolean | cdktf.IResolvable | undefined; 
+    public get includeTableAlterOperations() {
+      return this.getBooleanAttribute('include_table_alter_operations') as any;
+    }
+    public set includeTableAlterOperations(value: boolean | cdktf.IResolvable | undefined) {
+      this._includeTableAlterOperations = value;
+    }
+    public resetIncludeTableAlterOperations() {
+      this._includeTableAlterOperations = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get includeTableAlterOperationsInput() {
+      return this._includeTableAlterOperations
+    }
+
+    // include_transaction_details - computed: false, optional: true, required: false
+    private _includeTransactionDetails?: boolean | cdktf.IResolvable | undefined; 
+    public get includeTransactionDetails() {
+      return this.getBooleanAttribute('include_transaction_details') as any;
+    }
+    public set includeTransactionDetails(value: boolean | cdktf.IResolvable | undefined) {
+      this._includeTransactionDetails = value;
+    }
+    public resetIncludeTransactionDetails() {
+      this._includeTransactionDetails = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get includeTransactionDetailsInput() {
+      return this._includeTransactionDetails
+    }
+
+    // message_format - computed: false, optional: true, required: false
+    private _messageFormat?: string | undefined; 
+    public get messageFormat() {
+      return this.getStringAttribute('message_format');
+    }
+    public set messageFormat(value: string | undefined) {
+      this._messageFormat = value;
+    }
+    public resetMessageFormat() {
+      this._messageFormat = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get messageFormatInput() {
+      return this._messageFormat
+    }
+
+    // message_max_bytes - computed: false, optional: true, required: false
+    private _messageMaxBytes?: number | undefined; 
+    public get messageMaxBytes() {
+      return this.getNumberAttribute('message_max_bytes');
+    }
+    public set messageMaxBytes(value: number | undefined) {
+      this._messageMaxBytes = value;
+    }
+    public resetMessageMaxBytes() {
+      this._messageMaxBytes = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get messageMaxBytesInput() {
+      return this._messageMaxBytes
+    }
+
+    // no_hex_prefix - computed: false, optional: true, required: false
+    private _noHexPrefix?: boolean | cdktf.IResolvable | undefined; 
+    public get noHexPrefix() {
+      return this.getBooleanAttribute('no_hex_prefix') as any;
+    }
+    public set noHexPrefix(value: boolean | cdktf.IResolvable | undefined) {
+      this._noHexPrefix = value;
+    }
+    public resetNoHexPrefix() {
+      this._noHexPrefix = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get noHexPrefixInput() {
+      return this._noHexPrefix
+    }
+
+    // partition_include_schema_table - computed: false, optional: true, required: false
+    private _partitionIncludeSchemaTable?: boolean | cdktf.IResolvable | undefined; 
+    public get partitionIncludeSchemaTable() {
+      return this.getBooleanAttribute('partition_include_schema_table') as any;
+    }
+    public set partitionIncludeSchemaTable(value: boolean | cdktf.IResolvable | undefined) {
+      this._partitionIncludeSchemaTable = value;
+    }
+    public resetPartitionIncludeSchemaTable() {
+      this._partitionIncludeSchemaTable = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get partitionIncludeSchemaTableInput() {
+      return this._partitionIncludeSchemaTable
+    }
+
+    // sasl_password - computed: false, optional: true, required: false
+    private _saslPassword?: string | undefined; 
+    public get saslPassword() {
+      return this.getStringAttribute('sasl_password');
+    }
+    public set saslPassword(value: string | undefined) {
+      this._saslPassword = value;
+    }
+    public resetSaslPassword() {
+      this._saslPassword = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get saslPasswordInput() {
+      return this._saslPassword
+    }
+
+    // sasl_username - computed: false, optional: true, required: false
+    private _saslUsername?: string | undefined; 
+    public get saslUsername() {
+      return this.getStringAttribute('sasl_username');
+    }
+    public set saslUsername(value: string | undefined) {
+      this._saslUsername = value;
+    }
+    public resetSaslUsername() {
+      this._saslUsername = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get saslUsernameInput() {
+      return this._saslUsername
+    }
+
+    // security_protocol - computed: false, optional: true, required: false
+    private _securityProtocol?: string | undefined; 
+    public get securityProtocol() {
+      return this.getStringAttribute('security_protocol');
+    }
+    public set securityProtocol(value: string | undefined) {
+      this._securityProtocol = value;
+    }
+    public resetSecurityProtocol() {
+      this._securityProtocol = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get securityProtocolInput() {
+      return this._securityProtocol
+    }
+
+    // ssl_ca_certificate_arn - computed: false, optional: true, required: false
+    private _sslCaCertificateArn?: string | undefined; 
+    public get sslCaCertificateArn() {
+      return this.getStringAttribute('ssl_ca_certificate_arn');
+    }
+    public set sslCaCertificateArn(value: string | undefined) {
+      this._sslCaCertificateArn = value;
+    }
+    public resetSslCaCertificateArn() {
+      this._sslCaCertificateArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sslCaCertificateArnInput() {
+      return this._sslCaCertificateArn
+    }
+
+    // ssl_client_certificate_arn - computed: false, optional: true, required: false
+    private _sslClientCertificateArn?: string | undefined; 
+    public get sslClientCertificateArn() {
+      return this.getStringAttribute('ssl_client_certificate_arn');
+    }
+    public set sslClientCertificateArn(value: string | undefined) {
+      this._sslClientCertificateArn = value;
+    }
+    public resetSslClientCertificateArn() {
+      this._sslClientCertificateArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sslClientCertificateArnInput() {
+      return this._sslClientCertificateArn
+    }
+
+    // ssl_client_key_arn - computed: false, optional: true, required: false
+    private _sslClientKeyArn?: string | undefined; 
+    public get sslClientKeyArn() {
+      return this.getStringAttribute('ssl_client_key_arn');
+    }
+    public set sslClientKeyArn(value: string | undefined) {
+      this._sslClientKeyArn = value;
+    }
+    public resetSslClientKeyArn() {
+      this._sslClientKeyArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sslClientKeyArnInput() {
+      return this._sslClientKeyArn
+    }
+
+    // ssl_client_key_password - computed: false, optional: true, required: false
+    private _sslClientKeyPassword?: string | undefined; 
+    public get sslClientKeyPassword() {
+      return this.getStringAttribute('ssl_client_key_password');
+    }
+    public set sslClientKeyPassword(value: string | undefined) {
+      this._sslClientKeyPassword = value;
+    }
+    public resetSslClientKeyPassword() {
+      this._sslClientKeyPassword = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sslClientKeyPasswordInput() {
+      return this._sslClientKeyPassword
+    }
+
+    // topic - computed: false, optional: true, required: false
+    private _topic?: string | undefined; 
+    public get topic() {
+      return this.getStringAttribute('topic');
+    }
+    public set topic(value: string | undefined) {
+      this._topic = value;
+    }
+    public resetTopic() {
+      this._topic = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get topicInput() {
+      return this._topic
+    }
+  }
   export interface DmsEndpointKinesisSettings {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dms_endpoint.html#message_format DmsEndpoint#message_format}
@@ -409,8 +780,11 @@ export namespace DMS {
     readonly streamArn?: string;
   }
 
-  function dmsEndpointKinesisSettingsToTerraform(struct?: DmsEndpointKinesisSettings): any {
+  function dmsEndpointKinesisSettingsToTerraform(struct?: DmsEndpointKinesisSettingsOutputReference | DmsEndpointKinesisSettings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       message_format: cdktf.stringToTerraform(struct!.messageFormat),
       service_access_role_arn: cdktf.stringToTerraform(struct!.serviceAccessRoleArn),
@@ -418,6 +792,64 @@ export namespace DMS {
     }
   }
 
+  export class DmsEndpointKinesisSettingsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // message_format - computed: false, optional: true, required: false
+    private _messageFormat?: string | undefined; 
+    public get messageFormat() {
+      return this.getStringAttribute('message_format');
+    }
+    public set messageFormat(value: string | undefined) {
+      this._messageFormat = value;
+    }
+    public resetMessageFormat() {
+      this._messageFormat = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get messageFormatInput() {
+      return this._messageFormat
+    }
+
+    // service_access_role_arn - computed: false, optional: true, required: false
+    private _serviceAccessRoleArn?: string | undefined; 
+    public get serviceAccessRoleArn() {
+      return this.getStringAttribute('service_access_role_arn');
+    }
+    public set serviceAccessRoleArn(value: string | undefined) {
+      this._serviceAccessRoleArn = value;
+    }
+    public resetServiceAccessRoleArn() {
+      this._serviceAccessRoleArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get serviceAccessRoleArnInput() {
+      return this._serviceAccessRoleArn
+    }
+
+    // stream_arn - computed: false, optional: true, required: false
+    private _streamArn?: string | undefined; 
+    public get streamArn() {
+      return this.getStringAttribute('stream_arn');
+    }
+    public set streamArn(value: string | undefined) {
+      this._streamArn = value;
+    }
+    public resetStreamArn() {
+      this._streamArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get streamArnInput() {
+      return this._streamArn
+    }
+  }
   export interface DmsEndpointMongodbSettings {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dms_endpoint.html#auth_mechanism DmsEndpoint#auth_mechanism}
@@ -445,8 +877,11 @@ export namespace DMS {
     readonly nestingLevel?: string;
   }
 
-  function dmsEndpointMongodbSettingsToTerraform(struct?: DmsEndpointMongodbSettings): any {
+  function dmsEndpointMongodbSettingsToTerraform(struct?: DmsEndpointMongodbSettingsOutputReference | DmsEndpointMongodbSettings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       auth_mechanism: cdktf.stringToTerraform(struct!.authMechanism),
       auth_source: cdktf.stringToTerraform(struct!.authSource),
@@ -457,6 +892,112 @@ export namespace DMS {
     }
   }
 
+  export class DmsEndpointMongodbSettingsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // auth_mechanism - computed: false, optional: true, required: false
+    private _authMechanism?: string | undefined; 
+    public get authMechanism() {
+      return this.getStringAttribute('auth_mechanism');
+    }
+    public set authMechanism(value: string | undefined) {
+      this._authMechanism = value;
+    }
+    public resetAuthMechanism() {
+      this._authMechanism = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get authMechanismInput() {
+      return this._authMechanism
+    }
+
+    // auth_source - computed: false, optional: true, required: false
+    private _authSource?: string | undefined; 
+    public get authSource() {
+      return this.getStringAttribute('auth_source');
+    }
+    public set authSource(value: string | undefined) {
+      this._authSource = value;
+    }
+    public resetAuthSource() {
+      this._authSource = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get authSourceInput() {
+      return this._authSource
+    }
+
+    // auth_type - computed: false, optional: true, required: false
+    private _authType?: string | undefined; 
+    public get authType() {
+      return this.getStringAttribute('auth_type');
+    }
+    public set authType(value: string | undefined) {
+      this._authType = value;
+    }
+    public resetAuthType() {
+      this._authType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get authTypeInput() {
+      return this._authType
+    }
+
+    // docs_to_investigate - computed: false, optional: true, required: false
+    private _docsToInvestigate?: string | undefined; 
+    public get docsToInvestigate() {
+      return this.getStringAttribute('docs_to_investigate');
+    }
+    public set docsToInvestigate(value: string | undefined) {
+      this._docsToInvestigate = value;
+    }
+    public resetDocsToInvestigate() {
+      this._docsToInvestigate = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get docsToInvestigateInput() {
+      return this._docsToInvestigate
+    }
+
+    // extract_doc_id - computed: false, optional: true, required: false
+    private _extractDocId?: string | undefined; 
+    public get extractDocId() {
+      return this.getStringAttribute('extract_doc_id');
+    }
+    public set extractDocId(value: string | undefined) {
+      this._extractDocId = value;
+    }
+    public resetExtractDocId() {
+      this._extractDocId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get extractDocIdInput() {
+      return this._extractDocId
+    }
+
+    // nesting_level - computed: false, optional: true, required: false
+    private _nestingLevel?: string | undefined; 
+    public get nestingLevel() {
+      return this.getStringAttribute('nesting_level');
+    }
+    public set nestingLevel(value: string | undefined) {
+      this._nestingLevel = value;
+    }
+    public resetNestingLevel() {
+      this._nestingLevel = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nestingLevelInput() {
+      return this._nestingLevel
+    }
+  }
   export interface DmsEndpointS3Settings {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/dms_endpoint.html#bucket_folder DmsEndpoint#bucket_folder}
@@ -512,8 +1053,11 @@ export namespace DMS {
     readonly serviceAccessRoleArn?: string;
   }
 
-  function dmsEndpointS3SettingsToTerraform(struct?: DmsEndpointS3Settings): any {
+  function dmsEndpointS3SettingsToTerraform(struct?: DmsEndpointS3SettingsOutputReference | DmsEndpointS3Settings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bucket_folder: cdktf.stringToTerraform(struct!.bucketFolder),
       bucket_name: cdktf.stringToTerraform(struct!.bucketName),
@@ -531,6 +1075,224 @@ export namespace DMS {
     }
   }
 
+  export class DmsEndpointS3SettingsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // bucket_folder - computed: false, optional: true, required: false
+    private _bucketFolder?: string | undefined; 
+    public get bucketFolder() {
+      return this.getStringAttribute('bucket_folder');
+    }
+    public set bucketFolder(value: string | undefined) {
+      this._bucketFolder = value;
+    }
+    public resetBucketFolder() {
+      this._bucketFolder = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bucketFolderInput() {
+      return this._bucketFolder
+    }
+
+    // bucket_name - computed: false, optional: true, required: false
+    private _bucketName?: string | undefined; 
+    public get bucketName() {
+      return this.getStringAttribute('bucket_name');
+    }
+    public set bucketName(value: string | undefined) {
+      this._bucketName = value;
+    }
+    public resetBucketName() {
+      this._bucketName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bucketNameInput() {
+      return this._bucketName
+    }
+
+    // compression_type - computed: false, optional: true, required: false
+    private _compressionType?: string | undefined; 
+    public get compressionType() {
+      return this.getStringAttribute('compression_type');
+    }
+    public set compressionType(value: string | undefined) {
+      this._compressionType = value;
+    }
+    public resetCompressionType() {
+      this._compressionType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get compressionTypeInput() {
+      return this._compressionType
+    }
+
+    // csv_delimiter - computed: false, optional: true, required: false
+    private _csvDelimiter?: string | undefined; 
+    public get csvDelimiter() {
+      return this.getStringAttribute('csv_delimiter');
+    }
+    public set csvDelimiter(value: string | undefined) {
+      this._csvDelimiter = value;
+    }
+    public resetCsvDelimiter() {
+      this._csvDelimiter = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get csvDelimiterInput() {
+      return this._csvDelimiter
+    }
+
+    // csv_row_delimiter - computed: false, optional: true, required: false
+    private _csvRowDelimiter?: string | undefined; 
+    public get csvRowDelimiter() {
+      return this.getStringAttribute('csv_row_delimiter');
+    }
+    public set csvRowDelimiter(value: string | undefined) {
+      this._csvRowDelimiter = value;
+    }
+    public resetCsvRowDelimiter() {
+      this._csvRowDelimiter = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get csvRowDelimiterInput() {
+      return this._csvRowDelimiter
+    }
+
+    // data_format - computed: false, optional: true, required: false
+    private _dataFormat?: string | undefined; 
+    public get dataFormat() {
+      return this.getStringAttribute('data_format');
+    }
+    public set dataFormat(value: string | undefined) {
+      this._dataFormat = value;
+    }
+    public resetDataFormat() {
+      this._dataFormat = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get dataFormatInput() {
+      return this._dataFormat
+    }
+
+    // date_partition_enabled - computed: false, optional: true, required: false
+    private _datePartitionEnabled?: boolean | cdktf.IResolvable | undefined; 
+    public get datePartitionEnabled() {
+      return this.getBooleanAttribute('date_partition_enabled') as any;
+    }
+    public set datePartitionEnabled(value: boolean | cdktf.IResolvable | undefined) {
+      this._datePartitionEnabled = value;
+    }
+    public resetDatePartitionEnabled() {
+      this._datePartitionEnabled = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get datePartitionEnabledInput() {
+      return this._datePartitionEnabled
+    }
+
+    // encryption_mode - computed: false, optional: true, required: false
+    private _encryptionMode?: string | undefined; 
+    public get encryptionMode() {
+      return this.getStringAttribute('encryption_mode');
+    }
+    public set encryptionMode(value: string | undefined) {
+      this._encryptionMode = value;
+    }
+    public resetEncryptionMode() {
+      this._encryptionMode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get encryptionModeInput() {
+      return this._encryptionMode
+    }
+
+    // external_table_definition - computed: false, optional: true, required: false
+    private _externalTableDefinition?: string | undefined; 
+    public get externalTableDefinition() {
+      return this.getStringAttribute('external_table_definition');
+    }
+    public set externalTableDefinition(value: string | undefined) {
+      this._externalTableDefinition = value;
+    }
+    public resetExternalTableDefinition() {
+      this._externalTableDefinition = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get externalTableDefinitionInput() {
+      return this._externalTableDefinition
+    }
+
+    // parquet_timestamp_in_millisecond - computed: false, optional: true, required: false
+    private _parquetTimestampInMillisecond?: boolean | cdktf.IResolvable | undefined; 
+    public get parquetTimestampInMillisecond() {
+      return this.getBooleanAttribute('parquet_timestamp_in_millisecond') as any;
+    }
+    public set parquetTimestampInMillisecond(value: boolean | cdktf.IResolvable | undefined) {
+      this._parquetTimestampInMillisecond = value;
+    }
+    public resetParquetTimestampInMillisecond() {
+      this._parquetTimestampInMillisecond = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get parquetTimestampInMillisecondInput() {
+      return this._parquetTimestampInMillisecond
+    }
+
+    // parquet_version - computed: false, optional: true, required: false
+    private _parquetVersion?: string | undefined; 
+    public get parquetVersion() {
+      return this.getStringAttribute('parquet_version');
+    }
+    public set parquetVersion(value: string | undefined) {
+      this._parquetVersion = value;
+    }
+    public resetParquetVersion() {
+      this._parquetVersion = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get parquetVersionInput() {
+      return this._parquetVersion
+    }
+
+    // server_side_encryption_kms_key_id - computed: false, optional: true, required: false
+    private _serverSideEncryptionKmsKeyId?: string | undefined; 
+    public get serverSideEncryptionKmsKeyId() {
+      return this.getStringAttribute('server_side_encryption_kms_key_id');
+    }
+    public set serverSideEncryptionKmsKeyId(value: string | undefined) {
+      this._serverSideEncryptionKmsKeyId = value;
+    }
+    public resetServerSideEncryptionKmsKeyId() {
+      this._serverSideEncryptionKmsKeyId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get serverSideEncryptionKmsKeyIdInput() {
+      return this._serverSideEncryptionKmsKeyId
+    }
+
+    // service_access_role_arn - computed: false, optional: true, required: false
+    private _serviceAccessRoleArn?: string | undefined; 
+    public get serviceAccessRoleArn() {
+      return this.getStringAttribute('service_access_role_arn');
+    }
+    public set serviceAccessRoleArn(value: string | undefined) {
+      this._serviceAccessRoleArn = value;
+    }
+    public resetServiceAccessRoleArn() {
+      this._serviceAccessRoleArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get serviceAccessRoleArnInput() {
+      return this._serviceAccessRoleArn
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/dms_endpoint.html aws_dms_endpoint}
@@ -591,11 +1353,11 @@ export namespace DMS {
     // ==========
 
     // certificate_arn - computed: true, optional: true, required: false
-    private _certificateArn?: string;
+    private _certificateArn?: string | undefined; 
     public get certificateArn() {
       return this.getStringAttribute('certificate_arn');
     }
-    public set certificateArn(value: string) {
+    public set certificateArn(value: string | undefined) {
       this._certificateArn = value;
     }
     public resetCertificateArn() {
@@ -607,11 +1369,11 @@ export namespace DMS {
     }
 
     // database_name - computed: false, optional: true, required: false
-    private _databaseName?: string;
+    private _databaseName?: string | undefined; 
     public get databaseName() {
       return this.getStringAttribute('database_name');
     }
-    public set databaseName(value: string ) {
+    public set databaseName(value: string | undefined) {
       this._databaseName = value;
     }
     public resetDatabaseName() {
@@ -628,7 +1390,7 @@ export namespace DMS {
     }
 
     // endpoint_id - computed: false, optional: false, required: true
-    private _endpointId: string;
+    private _endpointId?: string; 
     public get endpointId() {
       return this.getStringAttribute('endpoint_id');
     }
@@ -641,7 +1403,7 @@ export namespace DMS {
     }
 
     // endpoint_type - computed: false, optional: false, required: true
-    private _endpointType: string;
+    private _endpointType?: string; 
     public get endpointType() {
       return this.getStringAttribute('endpoint_type');
     }
@@ -654,7 +1416,7 @@ export namespace DMS {
     }
 
     // engine_name - computed: false, optional: false, required: true
-    private _engineName: string;
+    private _engineName?: string; 
     public get engineName() {
       return this.getStringAttribute('engine_name');
     }
@@ -667,11 +1429,11 @@ export namespace DMS {
     }
 
     // extra_connection_attributes - computed: true, optional: true, required: false
-    private _extraConnectionAttributes?: string;
+    private _extraConnectionAttributes?: string | undefined; 
     public get extraConnectionAttributes() {
       return this.getStringAttribute('extra_connection_attributes');
     }
-    public set extraConnectionAttributes(value: string) {
+    public set extraConnectionAttributes(value: string | undefined) {
       this._extraConnectionAttributes = value;
     }
     public resetExtraConnectionAttributes() {
@@ -688,11 +1450,11 @@ export namespace DMS {
     }
 
     // kms_key_arn - computed: true, optional: true, required: false
-    private _kmsKeyArn?: string;
+    private _kmsKeyArn?: string | undefined; 
     public get kmsKeyArn() {
       return this.getStringAttribute('kms_key_arn');
     }
-    public set kmsKeyArn(value: string) {
+    public set kmsKeyArn(value: string | undefined) {
       this._kmsKeyArn = value;
     }
     public resetKmsKeyArn() {
@@ -704,11 +1466,11 @@ export namespace DMS {
     }
 
     // password - computed: false, optional: true, required: false
-    private _password?: string;
+    private _password?: string | undefined; 
     public get password() {
       return this.getStringAttribute('password');
     }
-    public set password(value: string ) {
+    public set password(value: string | undefined) {
       this._password = value;
     }
     public resetPassword() {
@@ -720,11 +1482,11 @@ export namespace DMS {
     }
 
     // port - computed: false, optional: true, required: false
-    private _port?: number;
+    private _port?: number | undefined; 
     public get port() {
       return this.getNumberAttribute('port');
     }
-    public set port(value: number ) {
+    public set port(value: number | undefined) {
       this._port = value;
     }
     public resetPort() {
@@ -736,11 +1498,11 @@ export namespace DMS {
     }
 
     // server_name - computed: false, optional: true, required: false
-    private _serverName?: string;
+    private _serverName?: string | undefined; 
     public get serverName() {
       return this.getStringAttribute('server_name');
     }
-    public set serverName(value: string ) {
+    public set serverName(value: string | undefined) {
       this._serverName = value;
     }
     public resetServerName() {
@@ -752,11 +1514,11 @@ export namespace DMS {
     }
 
     // service_access_role - computed: false, optional: true, required: false
-    private _serviceAccessRole?: string;
+    private _serviceAccessRole?: string | undefined; 
     public get serviceAccessRole() {
       return this.getStringAttribute('service_access_role');
     }
-    public set serviceAccessRole(value: string ) {
+    public set serviceAccessRole(value: string | undefined) {
       this._serviceAccessRole = value;
     }
     public resetServiceAccessRole() {
@@ -768,11 +1530,11 @@ export namespace DMS {
     }
 
     // ssl_mode - computed: true, optional: true, required: false
-    private _sslMode?: string;
+    private _sslMode?: string | undefined; 
     public get sslMode() {
       return this.getStringAttribute('ssl_mode');
     }
-    public set sslMode(value: string) {
+    public set sslMode(value: string | undefined) {
       this._sslMode = value;
     }
     public resetSslMode() {
@@ -784,11 +1546,12 @@ export namespace DMS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -800,11 +1563,12 @@ export namespace DMS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -816,11 +1580,11 @@ export namespace DMS {
     }
 
     // username - computed: false, optional: true, required: false
-    private _username?: string;
+    private _username?: string | undefined; 
     public get username() {
       return this.getStringAttribute('username');
     }
-    public set username(value: string ) {
+    public set username(value: string | undefined) {
       this._username = value;
     }
     public resetUsername() {
@@ -832,11 +1596,12 @@ export namespace DMS {
     }
 
     // elasticsearch_settings - computed: false, optional: true, required: false
-    private _elasticsearchSettings?: DmsEndpointElasticsearchSettings[];
+    private _elasticsearchSettings?: DmsEndpointElasticsearchSettings | undefined; 
+    private __elasticsearchSettingsOutput = new DmsEndpointElasticsearchSettingsOutputReference(this as any, "elasticsearch_settings", true);
     public get elasticsearchSettings() {
-      return this.interpolationForAttribute('elasticsearch_settings') as any;
+      return this.__elasticsearchSettingsOutput;
     }
-    public set elasticsearchSettings(value: DmsEndpointElasticsearchSettings[] ) {
+    public putElasticsearchSettings(value: DmsEndpointElasticsearchSettings | undefined) {
       this._elasticsearchSettings = value;
     }
     public resetElasticsearchSettings() {
@@ -848,11 +1613,12 @@ export namespace DMS {
     }
 
     // kafka_settings - computed: false, optional: true, required: false
-    private _kafkaSettings?: DmsEndpointKafkaSettings[];
+    private _kafkaSettings?: DmsEndpointKafkaSettings | undefined; 
+    private __kafkaSettingsOutput = new DmsEndpointKafkaSettingsOutputReference(this as any, "kafka_settings", true);
     public get kafkaSettings() {
-      return this.interpolationForAttribute('kafka_settings') as any;
+      return this.__kafkaSettingsOutput;
     }
-    public set kafkaSettings(value: DmsEndpointKafkaSettings[] ) {
+    public putKafkaSettings(value: DmsEndpointKafkaSettings | undefined) {
       this._kafkaSettings = value;
     }
     public resetKafkaSettings() {
@@ -864,11 +1630,12 @@ export namespace DMS {
     }
 
     // kinesis_settings - computed: false, optional: true, required: false
-    private _kinesisSettings?: DmsEndpointKinesisSettings[];
+    private _kinesisSettings?: DmsEndpointKinesisSettings | undefined; 
+    private __kinesisSettingsOutput = new DmsEndpointKinesisSettingsOutputReference(this as any, "kinesis_settings", true);
     public get kinesisSettings() {
-      return this.interpolationForAttribute('kinesis_settings') as any;
+      return this.__kinesisSettingsOutput;
     }
-    public set kinesisSettings(value: DmsEndpointKinesisSettings[] ) {
+    public putKinesisSettings(value: DmsEndpointKinesisSettings | undefined) {
       this._kinesisSettings = value;
     }
     public resetKinesisSettings() {
@@ -880,11 +1647,12 @@ export namespace DMS {
     }
 
     // mongodb_settings - computed: false, optional: true, required: false
-    private _mongodbSettings?: DmsEndpointMongodbSettings[];
+    private _mongodbSettings?: DmsEndpointMongodbSettings | undefined; 
+    private __mongodbSettingsOutput = new DmsEndpointMongodbSettingsOutputReference(this as any, "mongodb_settings", true);
     public get mongodbSettings() {
-      return this.interpolationForAttribute('mongodb_settings') as any;
+      return this.__mongodbSettingsOutput;
     }
-    public set mongodbSettings(value: DmsEndpointMongodbSettings[] ) {
+    public putMongodbSettings(value: DmsEndpointMongodbSettings | undefined) {
       this._mongodbSettings = value;
     }
     public resetMongodbSettings() {
@@ -896,11 +1664,12 @@ export namespace DMS {
     }
 
     // s3_settings - computed: false, optional: true, required: false
-    private _s3Settings?: DmsEndpointS3Settings[];
+    private _s3Settings?: DmsEndpointS3Settings | undefined; 
+    private __s3SettingsOutput = new DmsEndpointS3SettingsOutputReference(this as any, "s3_settings", true);
     public get s3Settings() {
-      return this.interpolationForAttribute('s3_settings') as any;
+      return this.__s3SettingsOutput;
     }
-    public set s3Settings(value: DmsEndpointS3Settings[] ) {
+    public putS3Settings(value: DmsEndpointS3Settings | undefined) {
       this._s3Settings = value;
     }
     public resetS3Settings() {
@@ -932,11 +1701,11 @@ export namespace DMS {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         username: cdktf.stringToTerraform(this._username),
-        elasticsearch_settings: cdktf.listMapper(dmsEndpointElasticsearchSettingsToTerraform)(this._elasticsearchSettings),
-        kafka_settings: cdktf.listMapper(dmsEndpointKafkaSettingsToTerraform)(this._kafkaSettings),
-        kinesis_settings: cdktf.listMapper(dmsEndpointKinesisSettingsToTerraform)(this._kinesisSettings),
-        mongodb_settings: cdktf.listMapper(dmsEndpointMongodbSettingsToTerraform)(this._mongodbSettings),
-        s3_settings: cdktf.listMapper(dmsEndpointS3SettingsToTerraform)(this._s3Settings),
+        elasticsearch_settings: dmsEndpointElasticsearchSettingsToTerraform(this._elasticsearchSettings),
+        kafka_settings: dmsEndpointKafkaSettingsToTerraform(this._kafkaSettings),
+        kinesis_settings: dmsEndpointKinesisSettingsToTerraform(this._kinesisSettings),
+        mongodb_settings: dmsEndpointMongodbSettingsToTerraform(this._mongodbSettings),
+        s3_settings: dmsEndpointS3SettingsToTerraform(this._s3Settings),
       };
     }
   }
@@ -995,8 +1764,11 @@ export namespace DMS {
     readonly update?: string;
   }
 
-  function dmsEventSubscriptionTimeoutsToTerraform(struct?: DmsEventSubscriptionTimeouts): any {
+  function dmsEventSubscriptionTimeoutsToTerraform(struct?: DmsEventSubscriptionTimeoutsOutputReference | DmsEventSubscriptionTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -1004,6 +1776,64 @@ export namespace DMS {
     }
   }
 
+  export class DmsEventSubscriptionTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/dms_event_subscription.html aws_dms_event_subscription}
@@ -1058,11 +1888,11 @@ export namespace DMS {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -1074,7 +1904,7 @@ export namespace DMS {
     }
 
     // event_categories - computed: false, optional: false, required: true
-    private _eventCategories: string[];
+    private _eventCategories?: string[]; 
     public get eventCategories() {
       return this.getListAttribute('event_categories');
     }
@@ -1092,7 +1922,7 @@ export namespace DMS {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1105,7 +1935,7 @@ export namespace DMS {
     }
 
     // sns_topic_arn - computed: false, optional: false, required: true
-    private _snsTopicArn: string;
+    private _snsTopicArn?: string; 
     public get snsTopicArn() {
       return this.getStringAttribute('sns_topic_arn');
     }
@@ -1118,11 +1948,11 @@ export namespace DMS {
     }
 
     // source_ids - computed: false, optional: true, required: false
-    private _sourceIds?: string[];
+    private _sourceIds?: string[] | undefined; 
     public get sourceIds() {
       return this.getListAttribute('source_ids');
     }
-    public set sourceIds(value: string[] ) {
+    public set sourceIds(value: string[] | undefined) {
       this._sourceIds = value;
     }
     public resetSourceIds() {
@@ -1134,11 +1964,11 @@ export namespace DMS {
     }
 
     // source_type - computed: false, optional: true, required: false
-    private _sourceType?: string;
+    private _sourceType?: string | undefined; 
     public get sourceType() {
       return this.getStringAttribute('source_type');
     }
-    public set sourceType(value: string ) {
+    public set sourceType(value: string | undefined) {
       this._sourceType = value;
     }
     public resetSourceType() {
@@ -1150,11 +1980,12 @@ export namespace DMS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1166,11 +1997,12 @@ export namespace DMS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1182,11 +2014,12 @@ export namespace DMS {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DmsEventSubscriptionTimeouts;
+    private _timeouts?: DmsEventSubscriptionTimeouts | undefined; 
+    private __timeoutsOutput = new DmsEventSubscriptionTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DmsEventSubscriptionTimeouts ) {
+    public putTimeouts(value: DmsEventSubscriptionTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1302,8 +2135,11 @@ export namespace DMS {
     readonly update?: string;
   }
 
-  function dmsReplicationInstanceTimeoutsToTerraform(struct?: DmsReplicationInstanceTimeouts): any {
+  function dmsReplicationInstanceTimeoutsToTerraform(struct?: DmsReplicationInstanceTimeoutsOutputReference | DmsReplicationInstanceTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -1311,6 +2147,64 @@ export namespace DMS {
     }
   }
 
+  export class DmsReplicationInstanceTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/dms_replication_instance.html aws_dms_replication_instance}
@@ -1368,11 +2262,11 @@ export namespace DMS {
     // ==========
 
     // allocated_storage - computed: true, optional: true, required: false
-    private _allocatedStorage?: number;
+    private _allocatedStorage?: number | undefined; 
     public get allocatedStorage() {
       return this.getNumberAttribute('allocated_storage');
     }
-    public set allocatedStorage(value: number) {
+    public set allocatedStorage(value: number | undefined) {
       this._allocatedStorage = value;
     }
     public resetAllocatedStorage() {
@@ -1384,11 +2278,11 @@ export namespace DMS {
     }
 
     // allow_major_version_upgrade - computed: false, optional: true, required: false
-    private _allowMajorVersionUpgrade?: boolean | cdktf.IResolvable;
+    private _allowMajorVersionUpgrade?: boolean | cdktf.IResolvable | undefined; 
     public get allowMajorVersionUpgrade() {
-      return this.getBooleanAttribute('allow_major_version_upgrade');
+      return this.getBooleanAttribute('allow_major_version_upgrade') as any;
     }
-    public set allowMajorVersionUpgrade(value: boolean | cdktf.IResolvable ) {
+    public set allowMajorVersionUpgrade(value: boolean | cdktf.IResolvable | undefined) {
       this._allowMajorVersionUpgrade = value;
     }
     public resetAllowMajorVersionUpgrade() {
@@ -1400,11 +2294,11 @@ export namespace DMS {
     }
 
     // apply_immediately - computed: false, optional: true, required: false
-    private _applyImmediately?: boolean | cdktf.IResolvable;
+    private _applyImmediately?: boolean | cdktf.IResolvable | undefined; 
     public get applyImmediately() {
-      return this.getBooleanAttribute('apply_immediately');
+      return this.getBooleanAttribute('apply_immediately') as any;
     }
-    public set applyImmediately(value: boolean | cdktf.IResolvable ) {
+    public set applyImmediately(value: boolean | cdktf.IResolvable | undefined) {
       this._applyImmediately = value;
     }
     public resetApplyImmediately() {
@@ -1416,11 +2310,11 @@ export namespace DMS {
     }
 
     // auto_minor_version_upgrade - computed: true, optional: true, required: false
-    private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable;
+    private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable | undefined; 
     public get autoMinorVersionUpgrade() {
-      return this.getBooleanAttribute('auto_minor_version_upgrade');
+      return this.getBooleanAttribute('auto_minor_version_upgrade') as any;
     }
-    public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable) {
+    public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable | undefined) {
       this._autoMinorVersionUpgrade = value;
     }
     public resetAutoMinorVersionUpgrade() {
@@ -1432,11 +2326,11 @@ export namespace DMS {
     }
 
     // availability_zone - computed: true, optional: true, required: false
-    private _availabilityZone?: string;
+    private _availabilityZone?: string | undefined; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
-    public set availabilityZone(value: string) {
+    public set availabilityZone(value: string | undefined) {
       this._availabilityZone = value;
     }
     public resetAvailabilityZone() {
@@ -1448,11 +2342,11 @@ export namespace DMS {
     }
 
     // engine_version - computed: true, optional: true, required: false
-    private _engineVersion?: string;
+    private _engineVersion?: string | undefined; 
     public get engineVersion() {
       return this.getStringAttribute('engine_version');
     }
-    public set engineVersion(value: string) {
+    public set engineVersion(value: string | undefined) {
       this._engineVersion = value;
     }
     public resetEngineVersion() {
@@ -1469,11 +2363,11 @@ export namespace DMS {
     }
 
     // kms_key_arn - computed: true, optional: true, required: false
-    private _kmsKeyArn?: string;
+    private _kmsKeyArn?: string | undefined; 
     public get kmsKeyArn() {
       return this.getStringAttribute('kms_key_arn');
     }
-    public set kmsKeyArn(value: string) {
+    public set kmsKeyArn(value: string | undefined) {
       this._kmsKeyArn = value;
     }
     public resetKmsKeyArn() {
@@ -1485,11 +2379,11 @@ export namespace DMS {
     }
 
     // multi_az - computed: true, optional: true, required: false
-    private _multiAz?: boolean | cdktf.IResolvable;
+    private _multiAz?: boolean | cdktf.IResolvable | undefined; 
     public get multiAz() {
-      return this.getBooleanAttribute('multi_az');
+      return this.getBooleanAttribute('multi_az') as any;
     }
-    public set multiAz(value: boolean | cdktf.IResolvable) {
+    public set multiAz(value: boolean | cdktf.IResolvable | undefined) {
       this._multiAz = value;
     }
     public resetMultiAz() {
@@ -1501,11 +2395,11 @@ export namespace DMS {
     }
 
     // preferred_maintenance_window - computed: true, optional: true, required: false
-    private _preferredMaintenanceWindow?: string;
+    private _preferredMaintenanceWindow?: string | undefined; 
     public get preferredMaintenanceWindow() {
       return this.getStringAttribute('preferred_maintenance_window');
     }
-    public set preferredMaintenanceWindow(value: string) {
+    public set preferredMaintenanceWindow(value: string | undefined) {
       this._preferredMaintenanceWindow = value;
     }
     public resetPreferredMaintenanceWindow() {
@@ -1517,11 +2411,11 @@ export namespace DMS {
     }
 
     // publicly_accessible - computed: true, optional: true, required: false
-    private _publiclyAccessible?: boolean | cdktf.IResolvable;
+    private _publiclyAccessible?: boolean | cdktf.IResolvable | undefined; 
     public get publiclyAccessible() {
-      return this.getBooleanAttribute('publicly_accessible');
+      return this.getBooleanAttribute('publicly_accessible') as any;
     }
-    public set publiclyAccessible(value: boolean | cdktf.IResolvable) {
+    public set publiclyAccessible(value: boolean | cdktf.IResolvable | undefined) {
       this._publiclyAccessible = value;
     }
     public resetPubliclyAccessible() {
@@ -1538,7 +2432,7 @@ export namespace DMS {
     }
 
     // replication_instance_class - computed: false, optional: false, required: true
-    private _replicationInstanceClass: string;
+    private _replicationInstanceClass?: string; 
     public get replicationInstanceClass() {
       return this.getStringAttribute('replication_instance_class');
     }
@@ -1551,7 +2445,7 @@ export namespace DMS {
     }
 
     // replication_instance_id - computed: false, optional: false, required: true
-    private _replicationInstanceId: string;
+    private _replicationInstanceId?: string; 
     public get replicationInstanceId() {
       return this.getStringAttribute('replication_instance_id');
     }
@@ -1574,11 +2468,11 @@ export namespace DMS {
     }
 
     // replication_subnet_group_id - computed: true, optional: true, required: false
-    private _replicationSubnetGroupId?: string;
+    private _replicationSubnetGroupId?: string | undefined; 
     public get replicationSubnetGroupId() {
       return this.getStringAttribute('replication_subnet_group_id');
     }
-    public set replicationSubnetGroupId(value: string) {
+    public set replicationSubnetGroupId(value: string | undefined) {
       this._replicationSubnetGroupId = value;
     }
     public resetReplicationSubnetGroupId() {
@@ -1590,11 +2484,12 @@ export namespace DMS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1606,11 +2501,12 @@ export namespace DMS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1622,11 +2518,11 @@ export namespace DMS {
     }
 
     // vpc_security_group_ids - computed: true, optional: true, required: false
-    private _vpcSecurityGroupIds?: string[];
+    private _vpcSecurityGroupIds?: string[] | undefined; 
     public get vpcSecurityGroupIds() {
       return this.getListAttribute('vpc_security_group_ids');
     }
-    public set vpcSecurityGroupIds(value: string[]) {
+    public set vpcSecurityGroupIds(value: string[] | undefined) {
       this._vpcSecurityGroupIds = value;
     }
     public resetVpcSecurityGroupIds() {
@@ -1638,11 +2534,12 @@ export namespace DMS {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DmsReplicationInstanceTimeouts;
+    private _timeouts?: DmsReplicationInstanceTimeouts | undefined; 
+    private __timeoutsOutput = new DmsReplicationInstanceTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DmsReplicationInstanceTimeouts ) {
+    public putTimeouts(value: DmsReplicationInstanceTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1756,7 +2653,7 @@ export namespace DMS {
     }
 
     // replication_subnet_group_description - computed: false, optional: false, required: true
-    private _replicationSubnetGroupDescription: string;
+    private _replicationSubnetGroupDescription?: string; 
     public get replicationSubnetGroupDescription() {
       return this.getStringAttribute('replication_subnet_group_description');
     }
@@ -1769,7 +2666,7 @@ export namespace DMS {
     }
 
     // replication_subnet_group_id - computed: false, optional: false, required: true
-    private _replicationSubnetGroupId: string;
+    private _replicationSubnetGroupId?: string; 
     public get replicationSubnetGroupId() {
       return this.getStringAttribute('replication_subnet_group_id');
     }
@@ -1782,7 +2679,7 @@ export namespace DMS {
     }
 
     // subnet_ids - computed: false, optional: false, required: true
-    private _subnetIds: string[];
+    private _subnetIds?: string[]; 
     public get subnetIds() {
       return this.getListAttribute('subnet_ids');
     }
@@ -1795,11 +2692,12 @@ export namespace DMS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1811,11 +2709,12 @@ export namespace DMS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1942,11 +2841,11 @@ export namespace DMS {
     // ==========
 
     // cdc_start_position - computed: false, optional: true, required: false
-    private _cdcStartPosition?: string;
+    private _cdcStartPosition?: string | undefined; 
     public get cdcStartPosition() {
       return this.getStringAttribute('cdc_start_position');
     }
-    public set cdcStartPosition(value: string ) {
+    public set cdcStartPosition(value: string | undefined) {
       this._cdcStartPosition = value;
     }
     public resetCdcStartPosition() {
@@ -1958,11 +2857,11 @@ export namespace DMS {
     }
 
     // cdc_start_time - computed: false, optional: true, required: false
-    private _cdcStartTime?: string;
+    private _cdcStartTime?: string | undefined; 
     public get cdcStartTime() {
       return this.getStringAttribute('cdc_start_time');
     }
-    public set cdcStartTime(value: string ) {
+    public set cdcStartTime(value: string | undefined) {
       this._cdcStartTime = value;
     }
     public resetCdcStartTime() {
@@ -1979,7 +2878,7 @@ export namespace DMS {
     }
 
     // migration_type - computed: false, optional: false, required: true
-    private _migrationType: string;
+    private _migrationType?: string; 
     public get migrationType() {
       return this.getStringAttribute('migration_type');
     }
@@ -1992,7 +2891,7 @@ export namespace DMS {
     }
 
     // replication_instance_arn - computed: false, optional: false, required: true
-    private _replicationInstanceArn: string;
+    private _replicationInstanceArn?: string; 
     public get replicationInstanceArn() {
       return this.getStringAttribute('replication_instance_arn');
     }
@@ -2010,7 +2909,7 @@ export namespace DMS {
     }
 
     // replication_task_id - computed: false, optional: false, required: true
-    private _replicationTaskId: string;
+    private _replicationTaskId?: string; 
     public get replicationTaskId() {
       return this.getStringAttribute('replication_task_id');
     }
@@ -2023,11 +2922,11 @@ export namespace DMS {
     }
 
     // replication_task_settings - computed: false, optional: true, required: false
-    private _replicationTaskSettings?: string;
+    private _replicationTaskSettings?: string | undefined; 
     public get replicationTaskSettings() {
       return this.getStringAttribute('replication_task_settings');
     }
-    public set replicationTaskSettings(value: string ) {
+    public set replicationTaskSettings(value: string | undefined) {
       this._replicationTaskSettings = value;
     }
     public resetReplicationTaskSettings() {
@@ -2039,7 +2938,7 @@ export namespace DMS {
     }
 
     // source_endpoint_arn - computed: false, optional: false, required: true
-    private _sourceEndpointArn: string;
+    private _sourceEndpointArn?: string; 
     public get sourceEndpointArn() {
       return this.getStringAttribute('source_endpoint_arn');
     }
@@ -2052,7 +2951,7 @@ export namespace DMS {
     }
 
     // table_mappings - computed: false, optional: false, required: true
-    private _tableMappings: string;
+    private _tableMappings?: string; 
     public get tableMappings() {
       return this.getStringAttribute('table_mappings');
     }
@@ -2065,11 +2964,12 @@ export namespace DMS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2081,11 +2981,12 @@ export namespace DMS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2097,7 +2998,7 @@ export namespace DMS {
     }
 
     // target_endpoint_arn - computed: false, optional: false, required: true
-    private _targetEndpointArn: string;
+    private _targetEndpointArn?: string; 
     public get targetEndpointArn() {
       return this.getStringAttribute('target_endpoint_arn');
     }

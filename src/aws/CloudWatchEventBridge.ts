@@ -84,7 +84,7 @@ export namespace CloudWatchEventBridge {
     }
 
     // connection_arn - computed: false, optional: false, required: true
-    private _connectionArn: string;
+    private _connectionArn?: string; 
     public get connectionArn() {
       return this.getStringAttribute('connection_arn');
     }
@@ -97,11 +97,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -113,7 +113,7 @@ export namespace CloudWatchEventBridge {
     }
 
     // http_method - computed: false, optional: false, required: true
-    private _httpMethod: string;
+    private _httpMethod?: string; 
     public get httpMethod() {
       return this.getStringAttribute('http_method');
     }
@@ -131,7 +131,7 @@ export namespace CloudWatchEventBridge {
     }
 
     // invocation_endpoint - computed: false, optional: false, required: true
-    private _invocationEndpoint: string;
+    private _invocationEndpoint?: string; 
     public get invocationEndpoint() {
       return this.getStringAttribute('invocation_endpoint');
     }
@@ -144,11 +144,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // invocation_rate_limit_per_second - computed: false, optional: true, required: false
-    private _invocationRateLimitPerSecond?: number;
+    private _invocationRateLimitPerSecond?: number | undefined; 
     public get invocationRateLimitPerSecond() {
       return this.getNumberAttribute('invocation_rate_limit_per_second');
     }
-    public set invocationRateLimitPerSecond(value: number ) {
+    public set invocationRateLimitPerSecond(value: number | undefined) {
       this._invocationRateLimitPerSecond = value;
     }
     public resetInvocationRateLimitPerSecond() {
@@ -160,7 +160,7 @@ export namespace CloudWatchEventBridge {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -259,11 +259,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -275,11 +275,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // event_pattern - computed: false, optional: true, required: false
-    private _eventPattern?: string;
+    private _eventPattern?: string | undefined; 
     public get eventPattern() {
       return this.getStringAttribute('event_pattern');
     }
-    public set eventPattern(value: string ) {
+    public set eventPattern(value: string | undefined) {
       this._eventPattern = value;
     }
     public resetEventPattern() {
@@ -291,7 +291,7 @@ export namespace CloudWatchEventBridge {
     }
 
     // event_source_arn - computed: false, optional: false, required: true
-    private _eventSourceArn: string;
+    private _eventSourceArn?: string; 
     public get eventSourceArn() {
       return this.getStringAttribute('event_source_arn');
     }
@@ -309,7 +309,7 @@ export namespace CloudWatchEventBridge {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -322,11 +322,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // retention_days - computed: false, optional: true, required: false
-    private _retentionDays?: number;
+    private _retentionDays?: number | undefined; 
     public get retentionDays() {
       return this.getNumberAttribute('retention_days');
     }
-    public set retentionDays(value: number ) {
+    public set retentionDays(value: number | undefined) {
       this._retentionDays = value;
     }
     public resetRetentionDays() {
@@ -418,11 +418,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // event_source_name - computed: false, optional: true, required: false
-    private _eventSourceName?: string;
+    private _eventSourceName?: string | undefined; 
     public get eventSourceName() {
       return this.getStringAttribute('event_source_name');
     }
-    public set eventSourceName(value: string ) {
+    public set eventSourceName(value: string | undefined) {
       this._eventSourceName = value;
     }
     public resetEventSourceName() {
@@ -439,7 +439,7 @@ export namespace CloudWatchEventBridge {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -452,11 +452,12 @@ export namespace CloudWatchEventBridge {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -468,11 +469,12 @@ export namespace CloudWatchEventBridge {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -548,11 +550,11 @@ export namespace CloudWatchEventBridge {
     // ==========
 
     // event_bus_name - computed: false, optional: true, required: false
-    private _eventBusName?: string;
+    private _eventBusName?: string | undefined; 
     public get eventBusName() {
       return this.getStringAttribute('event_bus_name');
     }
-    public set eventBusName(value: string ) {
+    public set eventBusName(value: string | undefined) {
       this._eventBusName = value;
     }
     public resetEventBusName() {
@@ -569,7 +571,7 @@ export namespace CloudWatchEventBridge {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -610,7 +612,7 @@ export namespace CloudWatchEventBridge {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_connection.html#auth_parameters CloudwatchEventConnection#auth_parameters}
     */
-    readonly authParameters: CloudwatchEventConnectionAuthParameters[];
+    readonly authParameters: CloudwatchEventConnectionAuthParameters;
   }
   export interface CloudwatchEventConnectionAuthParametersApiKey {
     /**
@@ -623,14 +625,53 @@ export namespace CloudWatchEventBridge {
     readonly value: string;
   }
 
-  function cloudwatchEventConnectionAuthParametersApiKeyToTerraform(struct?: CloudwatchEventConnectionAuthParametersApiKey): any {
+  function cloudwatchEventConnectionAuthParametersApiKeyToTerraform(struct?: CloudwatchEventConnectionAuthParametersApiKeyOutputReference | CloudwatchEventConnectionAuthParametersApiKey): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
       value: cdktf.stringToTerraform(struct!.value),
     }
   }
 
+  export class CloudwatchEventConnectionAuthParametersApiKeyOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // key - computed: false, optional: false, required: true
+    private _key?: string; 
+    public get key() {
+      return this.getStringAttribute('key');
+    }
+    public set key(value: string) {
+      this._key = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get keyInput() {
+      return this._key
+    }
+
+    // value - computed: false, optional: false, required: true
+    private _value?: string; 
+    public get value() {
+      return this.getStringAttribute('value');
+    }
+    public set value(value: string) {
+      this._value = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valueInput() {
+      return this._value
+    }
+  }
   export interface CloudwatchEventConnectionAuthParametersBasic {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_connection.html#password CloudwatchEventConnection#password}
@@ -642,14 +683,53 @@ export namespace CloudWatchEventBridge {
     readonly username: string;
   }
 
-  function cloudwatchEventConnectionAuthParametersBasicToTerraform(struct?: CloudwatchEventConnectionAuthParametersBasic): any {
+  function cloudwatchEventConnectionAuthParametersBasicToTerraform(struct?: CloudwatchEventConnectionAuthParametersBasicOutputReference | CloudwatchEventConnectionAuthParametersBasic): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       password: cdktf.stringToTerraform(struct!.password),
       username: cdktf.stringToTerraform(struct!.username),
     }
   }
 
+  export class CloudwatchEventConnectionAuthParametersBasicOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // password - computed: false, optional: false, required: true
+    private _password?: string; 
+    public get password() {
+      return this.getStringAttribute('password');
+    }
+    public set password(value: string) {
+      this._password = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get passwordInput() {
+      return this._password
+    }
+
+    // username - computed: false, optional: false, required: true
+    private _username?: string; 
+    public get username() {
+      return this.getStringAttribute('username');
+    }
+    public set username(value: string) {
+      this._username = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get usernameInput() {
+      return this._username
+    }
+  }
   export interface CloudwatchEventConnectionAuthParametersInvocationHttpParametersBody {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_connection.html#is_value_secret CloudwatchEventConnection#is_value_secret}
@@ -667,6 +747,9 @@ export namespace CloudWatchEventBridge {
 
   function cloudwatchEventConnectionAuthParametersInvocationHttpParametersBodyToTerraform(struct?: CloudwatchEventConnectionAuthParametersInvocationHttpParametersBody): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       is_value_secret: cdktf.booleanToTerraform(struct!.isValueSecret),
       key: cdktf.stringToTerraform(struct!.key),
@@ -691,6 +774,9 @@ export namespace CloudWatchEventBridge {
 
   function cloudwatchEventConnectionAuthParametersInvocationHttpParametersHeaderToTerraform(struct?: CloudwatchEventConnectionAuthParametersInvocationHttpParametersHeader): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       is_value_secret: cdktf.booleanToTerraform(struct!.isValueSecret),
       key: cdktf.stringToTerraform(struct!.key),
@@ -715,6 +801,9 @@ export namespace CloudWatchEventBridge {
 
   function cloudwatchEventConnectionAuthParametersInvocationHttpParametersQueryStringToTerraform(struct?: CloudwatchEventConnectionAuthParametersInvocationHttpParametersQueryString): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       is_value_secret: cdktf.booleanToTerraform(struct!.isValueSecret),
       key: cdktf.stringToTerraform(struct!.key),
@@ -743,8 +832,11 @@ export namespace CloudWatchEventBridge {
     readonly queryString?: CloudwatchEventConnectionAuthParametersInvocationHttpParametersQueryString[];
   }
 
-  function cloudwatchEventConnectionAuthParametersInvocationHttpParametersToTerraform(struct?: CloudwatchEventConnectionAuthParametersInvocationHttpParameters): any {
+  function cloudwatchEventConnectionAuthParametersInvocationHttpParametersToTerraform(struct?: CloudwatchEventConnectionAuthParametersInvocationHttpParametersOutputReference | CloudwatchEventConnectionAuthParametersInvocationHttpParameters): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       body: cdktf.listMapper(cloudwatchEventConnectionAuthParametersInvocationHttpParametersBodyToTerraform)(struct!.body),
       header: cdktf.listMapper(cloudwatchEventConnectionAuthParametersInvocationHttpParametersHeaderToTerraform)(struct!.header),
@@ -752,6 +844,67 @@ export namespace CloudWatchEventBridge {
     }
   }
 
+  export class CloudwatchEventConnectionAuthParametersInvocationHttpParametersOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // body - computed: false, optional: true, required: false
+    private _body?: CloudwatchEventConnectionAuthParametersInvocationHttpParametersBody[] | undefined; 
+    public get body() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('body') as any;
+    }
+    public set body(value: CloudwatchEventConnectionAuthParametersInvocationHttpParametersBody[] | undefined) {
+      this._body = value;
+    }
+    public resetBody() {
+      this._body = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bodyInput() {
+      return this._body
+    }
+
+    // header - computed: false, optional: true, required: false
+    private _header?: CloudwatchEventConnectionAuthParametersInvocationHttpParametersHeader[] | undefined; 
+    public get header() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('header') as any;
+    }
+    public set header(value: CloudwatchEventConnectionAuthParametersInvocationHttpParametersHeader[] | undefined) {
+      this._header = value;
+    }
+    public resetHeader() {
+      this._header = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get headerInput() {
+      return this._header
+    }
+
+    // query_string - computed: false, optional: true, required: false
+    private _queryString?: CloudwatchEventConnectionAuthParametersInvocationHttpParametersQueryString[] | undefined; 
+    public get queryString() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('query_string') as any;
+    }
+    public set queryString(value: CloudwatchEventConnectionAuthParametersInvocationHttpParametersQueryString[] | undefined) {
+      this._queryString = value;
+    }
+    public resetQueryString() {
+      this._queryString = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get queryStringInput() {
+      return this._queryString
+    }
+  }
   export interface CloudwatchEventConnectionAuthParametersOauthClientParameters {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_connection.html#client_id CloudwatchEventConnection#client_id}
@@ -763,14 +916,53 @@ export namespace CloudWatchEventBridge {
     readonly clientSecret: string;
   }
 
-  function cloudwatchEventConnectionAuthParametersOauthClientParametersToTerraform(struct?: CloudwatchEventConnectionAuthParametersOauthClientParameters): any {
+  function cloudwatchEventConnectionAuthParametersOauthClientParametersToTerraform(struct?: CloudwatchEventConnectionAuthParametersOauthClientParametersOutputReference | CloudwatchEventConnectionAuthParametersOauthClientParameters): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       client_id: cdktf.stringToTerraform(struct!.clientId),
       client_secret: cdktf.stringToTerraform(struct!.clientSecret),
     }
   }
 
+  export class CloudwatchEventConnectionAuthParametersOauthClientParametersOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // client_id - computed: false, optional: false, required: true
+    private _clientId?: string; 
+    public get clientId() {
+      return this.getStringAttribute('client_id');
+    }
+    public set clientId(value: string) {
+      this._clientId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get clientIdInput() {
+      return this._clientId
+    }
+
+    // client_secret - computed: false, optional: false, required: true
+    private _clientSecret?: string; 
+    public get clientSecret() {
+      return this.getStringAttribute('client_secret');
+    }
+    public set clientSecret(value: string) {
+      this._clientSecret = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get clientSecretInput() {
+      return this._clientSecret
+    }
+  }
   export interface CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersBody {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_connection.html#is_value_secret CloudwatchEventConnection#is_value_secret}
@@ -788,6 +980,9 @@ export namespace CloudWatchEventBridge {
 
   function cloudwatchEventConnectionAuthParametersOauthOauthHttpParametersBodyToTerraform(struct?: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersBody): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       is_value_secret: cdktf.booleanToTerraform(struct!.isValueSecret),
       key: cdktf.stringToTerraform(struct!.key),
@@ -812,6 +1007,9 @@ export namespace CloudWatchEventBridge {
 
   function cloudwatchEventConnectionAuthParametersOauthOauthHttpParametersHeaderToTerraform(struct?: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersHeader): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       is_value_secret: cdktf.booleanToTerraform(struct!.isValueSecret),
       key: cdktf.stringToTerraform(struct!.key),
@@ -836,6 +1034,9 @@ export namespace CloudWatchEventBridge {
 
   function cloudwatchEventConnectionAuthParametersOauthOauthHttpParametersQueryStringToTerraform(struct?: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersQueryString): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       is_value_secret: cdktf.booleanToTerraform(struct!.isValueSecret),
       key: cdktf.stringToTerraform(struct!.key),
@@ -864,8 +1065,11 @@ export namespace CloudWatchEventBridge {
     readonly queryString?: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersQueryString[];
   }
 
-  function cloudwatchEventConnectionAuthParametersOauthOauthHttpParametersToTerraform(struct?: CloudwatchEventConnectionAuthParametersOauthOauthHttpParameters): any {
+  function cloudwatchEventConnectionAuthParametersOauthOauthHttpParametersToTerraform(struct?: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersOutputReference | CloudwatchEventConnectionAuthParametersOauthOauthHttpParameters): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       body: cdktf.listMapper(cloudwatchEventConnectionAuthParametersOauthOauthHttpParametersBodyToTerraform)(struct!.body),
       header: cdktf.listMapper(cloudwatchEventConnectionAuthParametersOauthOauthHttpParametersHeaderToTerraform)(struct!.header),
@@ -873,6 +1077,67 @@ export namespace CloudWatchEventBridge {
     }
   }
 
+  export class CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // body - computed: false, optional: true, required: false
+    private _body?: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersBody[] | undefined; 
+    public get body() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('body') as any;
+    }
+    public set body(value: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersBody[] | undefined) {
+      this._body = value;
+    }
+    public resetBody() {
+      this._body = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bodyInput() {
+      return this._body
+    }
+
+    // header - computed: false, optional: true, required: false
+    private _header?: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersHeader[] | undefined; 
+    public get header() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('header') as any;
+    }
+    public set header(value: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersHeader[] | undefined) {
+      this._header = value;
+    }
+    public resetHeader() {
+      this._header = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get headerInput() {
+      return this._header
+    }
+
+    // query_string - computed: false, optional: true, required: false
+    private _queryString?: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersQueryString[] | undefined; 
+    public get queryString() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('query_string') as any;
+    }
+    public set queryString(value: CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersQueryString[] | undefined) {
+      this._queryString = value;
+    }
+    public resetQueryString() {
+      this._queryString = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get queryStringInput() {
+      return this._queryString
+    }
+  }
   export interface CloudwatchEventConnectionAuthParametersOauth {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_connection.html#authorization_endpoint CloudwatchEventConnection#authorization_endpoint}
@@ -887,62 +1152,213 @@ export namespace CloudWatchEventBridge {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_connection.html#client_parameters CloudwatchEventConnection#client_parameters}
     */
-    readonly clientParameters?: CloudwatchEventConnectionAuthParametersOauthClientParameters[];
+    readonly clientParameters?: CloudwatchEventConnectionAuthParametersOauthClientParameters;
     /**
     * oauth_http_parameters block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_connection.html#oauth_http_parameters CloudwatchEventConnection#oauth_http_parameters}
     */
-    readonly oauthHttpParameters: CloudwatchEventConnectionAuthParametersOauthOauthHttpParameters[];
+    readonly oauthHttpParameters: CloudwatchEventConnectionAuthParametersOauthOauthHttpParameters;
   }
 
-  function cloudwatchEventConnectionAuthParametersOauthToTerraform(struct?: CloudwatchEventConnectionAuthParametersOauth): any {
+  function cloudwatchEventConnectionAuthParametersOauthToTerraform(struct?: CloudwatchEventConnectionAuthParametersOauthOutputReference | CloudwatchEventConnectionAuthParametersOauth): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       authorization_endpoint: cdktf.stringToTerraform(struct!.authorizationEndpoint),
       http_method: cdktf.stringToTerraform(struct!.httpMethod),
-      client_parameters: cdktf.listMapper(cloudwatchEventConnectionAuthParametersOauthClientParametersToTerraform)(struct!.clientParameters),
-      oauth_http_parameters: cdktf.listMapper(cloudwatchEventConnectionAuthParametersOauthOauthHttpParametersToTerraform)(struct!.oauthHttpParameters),
+      client_parameters: cloudwatchEventConnectionAuthParametersOauthClientParametersToTerraform(struct!.clientParameters),
+      oauth_http_parameters: cloudwatchEventConnectionAuthParametersOauthOauthHttpParametersToTerraform(struct!.oauthHttpParameters),
     }
   }
 
+  export class CloudwatchEventConnectionAuthParametersOauthOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // authorization_endpoint - computed: false, optional: false, required: true
+    private _authorizationEndpoint?: string; 
+    public get authorizationEndpoint() {
+      return this.getStringAttribute('authorization_endpoint');
+    }
+    public set authorizationEndpoint(value: string) {
+      this._authorizationEndpoint = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get authorizationEndpointInput() {
+      return this._authorizationEndpoint
+    }
+
+    // http_method - computed: false, optional: false, required: true
+    private _httpMethod?: string; 
+    public get httpMethod() {
+      return this.getStringAttribute('http_method');
+    }
+    public set httpMethod(value: string) {
+      this._httpMethod = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get httpMethodInput() {
+      return this._httpMethod
+    }
+
+    // client_parameters - computed: false, optional: true, required: false
+    private _clientParameters?: CloudwatchEventConnectionAuthParametersOauthClientParameters | undefined; 
+    private __clientParametersOutput = new CloudwatchEventConnectionAuthParametersOauthClientParametersOutputReference(this as any, "client_parameters", true);
+    public get clientParameters() {
+      return this.__clientParametersOutput;
+    }
+    public putClientParameters(value: CloudwatchEventConnectionAuthParametersOauthClientParameters | undefined) {
+      this._clientParameters = value;
+    }
+    public resetClientParameters() {
+      this._clientParameters = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get clientParametersInput() {
+      return this._clientParameters
+    }
+
+    // oauth_http_parameters - computed: false, optional: false, required: true
+    private _oauthHttpParameters?: CloudwatchEventConnectionAuthParametersOauthOauthHttpParameters; 
+    private __oauthHttpParametersOutput = new CloudwatchEventConnectionAuthParametersOauthOauthHttpParametersOutputReference(this as any, "oauth_http_parameters", true);
+    public get oauthHttpParameters() {
+      return this.__oauthHttpParametersOutput;
+    }
+    public putOauthHttpParameters(value: CloudwatchEventConnectionAuthParametersOauthOauthHttpParameters) {
+      this._oauthHttpParameters = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get oauthHttpParametersInput() {
+      return this._oauthHttpParameters
+    }
+  }
   export interface CloudwatchEventConnectionAuthParameters {
     /**
     * api_key block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_connection.html#api_key CloudwatchEventConnection#api_key}
     */
-    readonly apiKey?: CloudwatchEventConnectionAuthParametersApiKey[];
+    readonly apiKey?: CloudwatchEventConnectionAuthParametersApiKey;
     /**
     * basic block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_connection.html#basic CloudwatchEventConnection#basic}
     */
-    readonly basic?: CloudwatchEventConnectionAuthParametersBasic[];
+    readonly basic?: CloudwatchEventConnectionAuthParametersBasic;
     /**
     * invocation_http_parameters block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_connection.html#invocation_http_parameters CloudwatchEventConnection#invocation_http_parameters}
     */
-    readonly invocationHttpParameters?: CloudwatchEventConnectionAuthParametersInvocationHttpParameters[];
+    readonly invocationHttpParameters?: CloudwatchEventConnectionAuthParametersInvocationHttpParameters;
     /**
     * oauth block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_connection.html#oauth CloudwatchEventConnection#oauth}
     */
-    readonly oauth?: CloudwatchEventConnectionAuthParametersOauth[];
+    readonly oauth?: CloudwatchEventConnectionAuthParametersOauth;
   }
 
-  function cloudwatchEventConnectionAuthParametersToTerraform(struct?: CloudwatchEventConnectionAuthParameters): any {
+  function cloudwatchEventConnectionAuthParametersToTerraform(struct?: CloudwatchEventConnectionAuthParametersOutputReference | CloudwatchEventConnectionAuthParameters): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      api_key: cdktf.listMapper(cloudwatchEventConnectionAuthParametersApiKeyToTerraform)(struct!.apiKey),
-      basic: cdktf.listMapper(cloudwatchEventConnectionAuthParametersBasicToTerraform)(struct!.basic),
-      invocation_http_parameters: cdktf.listMapper(cloudwatchEventConnectionAuthParametersInvocationHttpParametersToTerraform)(struct!.invocationHttpParameters),
-      oauth: cdktf.listMapper(cloudwatchEventConnectionAuthParametersOauthToTerraform)(struct!.oauth),
+      api_key: cloudwatchEventConnectionAuthParametersApiKeyToTerraform(struct!.apiKey),
+      basic: cloudwatchEventConnectionAuthParametersBasicToTerraform(struct!.basic),
+      invocation_http_parameters: cloudwatchEventConnectionAuthParametersInvocationHttpParametersToTerraform(struct!.invocationHttpParameters),
+      oauth: cloudwatchEventConnectionAuthParametersOauthToTerraform(struct!.oauth),
     }
   }
 
+  export class CloudwatchEventConnectionAuthParametersOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // api_key - computed: false, optional: true, required: false
+    private _apiKey?: CloudwatchEventConnectionAuthParametersApiKey | undefined; 
+    private __apiKeyOutput = new CloudwatchEventConnectionAuthParametersApiKeyOutputReference(this as any, "api_key", true);
+    public get apiKey() {
+      return this.__apiKeyOutput;
+    }
+    public putApiKey(value: CloudwatchEventConnectionAuthParametersApiKey | undefined) {
+      this._apiKey = value;
+    }
+    public resetApiKey() {
+      this._apiKey = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get apiKeyInput() {
+      return this._apiKey
+    }
+
+    // basic - computed: false, optional: true, required: false
+    private _basic?: CloudwatchEventConnectionAuthParametersBasic | undefined; 
+    private __basicOutput = new CloudwatchEventConnectionAuthParametersBasicOutputReference(this as any, "basic", true);
+    public get basic() {
+      return this.__basicOutput;
+    }
+    public putBasic(value: CloudwatchEventConnectionAuthParametersBasic | undefined) {
+      this._basic = value;
+    }
+    public resetBasic() {
+      this._basic = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get basicInput() {
+      return this._basic
+    }
+
+    // invocation_http_parameters - computed: false, optional: true, required: false
+    private _invocationHttpParameters?: CloudwatchEventConnectionAuthParametersInvocationHttpParameters | undefined; 
+    private __invocationHttpParametersOutput = new CloudwatchEventConnectionAuthParametersInvocationHttpParametersOutputReference(this as any, "invocation_http_parameters", true);
+    public get invocationHttpParameters() {
+      return this.__invocationHttpParametersOutput;
+    }
+    public putInvocationHttpParameters(value: CloudwatchEventConnectionAuthParametersInvocationHttpParameters | undefined) {
+      this._invocationHttpParameters = value;
+    }
+    public resetInvocationHttpParameters() {
+      this._invocationHttpParameters = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get invocationHttpParametersInput() {
+      return this._invocationHttpParameters
+    }
+
+    // oauth - computed: false, optional: true, required: false
+    private _oauth?: CloudwatchEventConnectionAuthParametersOauth | undefined; 
+    private __oauthOutput = new CloudwatchEventConnectionAuthParametersOauthOutputReference(this as any, "oauth", true);
+    public get oauth() {
+      return this.__oauthOutput;
+    }
+    public putOauth(value: CloudwatchEventConnectionAuthParametersOauth | undefined) {
+      this._oauth = value;
+    }
+    public resetOauth() {
+      this._oauth = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get oauthInput() {
+      return this._oauth
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_connection.html aws_cloudwatch_event_connection}
@@ -992,7 +1408,7 @@ export namespace CloudWatchEventBridge {
     }
 
     // authorization_type - computed: false, optional: false, required: true
-    private _authorizationType: string;
+    private _authorizationType?: string; 
     public get authorizationType() {
       return this.getStringAttribute('authorization_type');
     }
@@ -1005,11 +1421,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1026,7 +1442,7 @@ export namespace CloudWatchEventBridge {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1044,11 +1460,12 @@ export namespace CloudWatchEventBridge {
     }
 
     // auth_parameters - computed: false, optional: false, required: true
-    private _authParameters: CloudwatchEventConnectionAuthParameters[];
+    private _authParameters?: CloudwatchEventConnectionAuthParameters; 
+    private __authParametersOutput = new CloudwatchEventConnectionAuthParametersOutputReference(this as any, "auth_parameters", true);
     public get authParameters() {
-      return this.interpolationForAttribute('auth_parameters') as any;
+      return this.__authParametersOutput;
     }
-    public set authParameters(value: CloudwatchEventConnectionAuthParameters[]) {
+    public putAuthParameters(value: CloudwatchEventConnectionAuthParameters) {
       this._authParameters = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -1065,7 +1482,7 @@ export namespace CloudWatchEventBridge {
         authorization_type: cdktf.stringToTerraform(this._authorizationType),
         description: cdktf.stringToTerraform(this._description),
         name: cdktf.stringToTerraform(this._name),
-        auth_parameters: cdktf.listMapper(cloudwatchEventConnectionAuthParametersToTerraform)(this._authParameters),
+        auth_parameters: cloudwatchEventConnectionAuthParametersToTerraform(this._authParameters),
       };
     }
   }
@@ -1091,7 +1508,7 @@ export namespace CloudWatchEventBridge {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_permission.html#condition CloudwatchEventPermission#condition}
     */
-    readonly condition?: CloudwatchEventPermissionCondition[];
+    readonly condition?: CloudwatchEventPermissionCondition;
   }
   export interface CloudwatchEventPermissionCondition {
     /**
@@ -1108,8 +1525,11 @@ export namespace CloudWatchEventBridge {
     readonly value: string;
   }
 
-  function cloudwatchEventPermissionConditionToTerraform(struct?: CloudwatchEventPermissionCondition): any {
+  function cloudwatchEventPermissionConditionToTerraform(struct?: CloudwatchEventPermissionConditionOutputReference | CloudwatchEventPermissionCondition): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
       type: cdktf.stringToTerraform(struct!.type),
@@ -1117,6 +1537,55 @@ export namespace CloudWatchEventBridge {
     }
   }
 
+  export class CloudwatchEventPermissionConditionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // key - computed: false, optional: false, required: true
+    private _key?: string; 
+    public get key() {
+      return this.getStringAttribute('key');
+    }
+    public set key(value: string) {
+      this._key = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get keyInput() {
+      return this._key
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+
+    // value - computed: false, optional: false, required: true
+    private _value?: string; 
+    public get value() {
+      return this.getStringAttribute('value');
+    }
+    public set value(value: string) {
+      this._value = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get valueInput() {
+      return this._value
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_permission.html aws_cloudwatch_event_permission}
@@ -1162,11 +1631,11 @@ export namespace CloudWatchEventBridge {
     // ==========
 
     // action - computed: false, optional: true, required: false
-    private _action?: string;
+    private _action?: string | undefined; 
     public get action() {
       return this.getStringAttribute('action');
     }
-    public set action(value: string ) {
+    public set action(value: string | undefined) {
       this._action = value;
     }
     public resetAction() {
@@ -1178,11 +1647,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // event_bus_name - computed: false, optional: true, required: false
-    private _eventBusName?: string;
+    private _eventBusName?: string | undefined; 
     public get eventBusName() {
       return this.getStringAttribute('event_bus_name');
     }
-    public set eventBusName(value: string ) {
+    public set eventBusName(value: string | undefined) {
       this._eventBusName = value;
     }
     public resetEventBusName() {
@@ -1199,7 +1668,7 @@ export namespace CloudWatchEventBridge {
     }
 
     // principal - computed: false, optional: false, required: true
-    private _principal: string;
+    private _principal?: string; 
     public get principal() {
       return this.getStringAttribute('principal');
     }
@@ -1212,7 +1681,7 @@ export namespace CloudWatchEventBridge {
     }
 
     // statement_id - computed: false, optional: false, required: true
-    private _statementId: string;
+    private _statementId?: string; 
     public get statementId() {
       return this.getStringAttribute('statement_id');
     }
@@ -1225,11 +1694,12 @@ export namespace CloudWatchEventBridge {
     }
 
     // condition - computed: false, optional: true, required: false
-    private _condition?: CloudwatchEventPermissionCondition[];
+    private _condition?: CloudwatchEventPermissionCondition | undefined; 
+    private __conditionOutput = new CloudwatchEventPermissionConditionOutputReference(this as any, "condition", true);
     public get condition() {
-      return this.interpolationForAttribute('condition') as any;
+      return this.__conditionOutput;
     }
-    public set condition(value: CloudwatchEventPermissionCondition[] ) {
+    public putCondition(value: CloudwatchEventPermissionCondition | undefined) {
       this._condition = value;
     }
     public resetCondition() {
@@ -1250,7 +1720,7 @@ export namespace CloudWatchEventBridge {
         event_bus_name: cdktf.stringToTerraform(this._eventBusName),
         principal: cdktf.stringToTerraform(this._principal),
         statement_id: cdktf.stringToTerraform(this._statementId),
-        condition: cdktf.listMapper(cloudwatchEventPermissionConditionToTerraform)(this._condition),
+        condition: cloudwatchEventPermissionConditionToTerraform(this._condition),
       };
     }
   }
@@ -1351,11 +1821,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1367,11 +1837,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // event_bus_name - computed: false, optional: true, required: false
-    private _eventBusName?: string;
+    private _eventBusName?: string | undefined; 
     public get eventBusName() {
       return this.getStringAttribute('event_bus_name');
     }
-    public set eventBusName(value: string ) {
+    public set eventBusName(value: string | undefined) {
       this._eventBusName = value;
     }
     public resetEventBusName() {
@@ -1383,11 +1853,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // event_pattern - computed: false, optional: true, required: false
-    private _eventPattern?: string;
+    private _eventPattern?: string | undefined; 
     public get eventPattern() {
       return this.getStringAttribute('event_pattern');
     }
-    public set eventPattern(value: string ) {
+    public set eventPattern(value: string | undefined) {
       this._eventPattern = value;
     }
     public resetEventPattern() {
@@ -1404,11 +1874,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // is_enabled - computed: false, optional: true, required: false
-    private _isEnabled?: boolean | cdktf.IResolvable;
+    private _isEnabled?: boolean | cdktf.IResolvable | undefined; 
     public get isEnabled() {
-      return this.getBooleanAttribute('is_enabled');
+      return this.getBooleanAttribute('is_enabled') as any;
     }
-    public set isEnabled(value: boolean | cdktf.IResolvable ) {
+    public set isEnabled(value: boolean | cdktf.IResolvable | undefined) {
       this._isEnabled = value;
     }
     public resetIsEnabled() {
@@ -1420,11 +1890,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1436,11 +1906,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -1452,11 +1922,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // role_arn - computed: false, optional: true, required: false
-    private _roleArn?: string;
+    private _roleArn?: string | undefined; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
-    public set roleArn(value: string ) {
+    public set roleArn(value: string | undefined) {
       this._roleArn = value;
     }
     public resetRoleArn() {
@@ -1468,11 +1938,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // schedule_expression - computed: false, optional: true, required: false
-    private _scheduleExpression?: string;
+    private _scheduleExpression?: string | undefined; 
     public get scheduleExpression() {
       return this.getStringAttribute('schedule_expression');
     }
-    public set scheduleExpression(value: string ) {
+    public set scheduleExpression(value: string | undefined) {
       this._scheduleExpression = value;
     }
     public resetScheduleExpression() {
@@ -1484,11 +1954,12 @@ export namespace CloudWatchEventBridge {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1500,11 +1971,12 @@ export namespace CloudWatchEventBridge {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1568,49 +2040,49 @@ export namespace CloudWatchEventBridge {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#batch_target CloudwatchEventTarget#batch_target}
     */
-    readonly batchTarget?: CloudwatchEventTargetBatchTarget[];
+    readonly batchTarget?: CloudwatchEventTargetBatchTarget;
     /**
     * dead_letter_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#dead_letter_config CloudwatchEventTarget#dead_letter_config}
     */
-    readonly deadLetterConfig?: CloudwatchEventTargetDeadLetterConfig[];
+    readonly deadLetterConfig?: CloudwatchEventTargetDeadLetterConfig;
     /**
     * ecs_target block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#ecs_target CloudwatchEventTarget#ecs_target}
     */
-    readonly ecsTarget?: CloudwatchEventTargetEcsTarget[];
+    readonly ecsTarget?: CloudwatchEventTargetEcsTarget;
     /**
     * http_target block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#http_target CloudwatchEventTarget#http_target}
     */
-    readonly httpTarget?: CloudwatchEventTargetHttpTarget[];
+    readonly httpTarget?: CloudwatchEventTargetHttpTarget;
     /**
     * input_transformer block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#input_transformer CloudwatchEventTarget#input_transformer}
     */
-    readonly inputTransformer?: CloudwatchEventTargetInputTransformer[];
+    readonly inputTransformer?: CloudwatchEventTargetInputTransformer;
     /**
     * kinesis_target block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#kinesis_target CloudwatchEventTarget#kinesis_target}
     */
-    readonly kinesisTarget?: CloudwatchEventTargetKinesisTarget[];
+    readonly kinesisTarget?: CloudwatchEventTargetKinesisTarget;
     /**
     * redshift_target block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#redshift_target CloudwatchEventTarget#redshift_target}
     */
-    readonly redshiftTarget?: CloudwatchEventTargetRedshiftTarget[];
+    readonly redshiftTarget?: CloudwatchEventTargetRedshiftTarget;
     /**
     * retry_policy block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#retry_policy CloudwatchEventTarget#retry_policy}
     */
-    readonly retryPolicy?: CloudwatchEventTargetRetryPolicy[];
+    readonly retryPolicy?: CloudwatchEventTargetRetryPolicy;
     /**
     * run_command_targets block
     * 
@@ -1622,7 +2094,7 @@ export namespace CloudWatchEventBridge {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#sqs_target CloudwatchEventTarget#sqs_target}
     */
-    readonly sqsTarget?: CloudwatchEventTargetSqsTarget[];
+    readonly sqsTarget?: CloudwatchEventTargetSqsTarget;
   }
   export interface CloudwatchEventTargetBatchTarget {
     /**
@@ -1643,8 +2115,11 @@ export namespace CloudWatchEventBridge {
     readonly jobName: string;
   }
 
-  function cloudwatchEventTargetBatchTargetToTerraform(struct?: CloudwatchEventTargetBatchTarget): any {
+  function cloudwatchEventTargetBatchTargetToTerraform(struct?: CloudwatchEventTargetBatchTargetOutputReference | CloudwatchEventTargetBatchTarget): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       array_size: cdktf.numberToTerraform(struct!.arraySize),
       job_attempts: cdktf.numberToTerraform(struct!.jobAttempts),
@@ -1653,6 +2128,74 @@ export namespace CloudWatchEventBridge {
     }
   }
 
+  export class CloudwatchEventTargetBatchTargetOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // array_size - computed: false, optional: true, required: false
+    private _arraySize?: number | undefined; 
+    public get arraySize() {
+      return this.getNumberAttribute('array_size');
+    }
+    public set arraySize(value: number | undefined) {
+      this._arraySize = value;
+    }
+    public resetArraySize() {
+      this._arraySize = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get arraySizeInput() {
+      return this._arraySize
+    }
+
+    // job_attempts - computed: false, optional: true, required: false
+    private _jobAttempts?: number | undefined; 
+    public get jobAttempts() {
+      return this.getNumberAttribute('job_attempts');
+    }
+    public set jobAttempts(value: number | undefined) {
+      this._jobAttempts = value;
+    }
+    public resetJobAttempts() {
+      this._jobAttempts = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get jobAttemptsInput() {
+      return this._jobAttempts
+    }
+
+    // job_definition - computed: false, optional: false, required: true
+    private _jobDefinition?: string; 
+    public get jobDefinition() {
+      return this.getStringAttribute('job_definition');
+    }
+    public set jobDefinition(value: string) {
+      this._jobDefinition = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get jobDefinitionInput() {
+      return this._jobDefinition
+    }
+
+    // job_name - computed: false, optional: false, required: true
+    private _jobName?: string; 
+    public get jobName() {
+      return this.getStringAttribute('job_name');
+    }
+    public set jobName(value: string) {
+      this._jobName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get jobNameInput() {
+      return this._jobName
+    }
+  }
   export interface CloudwatchEventTargetDeadLetterConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#arn CloudwatchEventTarget#arn}
@@ -1660,13 +2203,42 @@ export namespace CloudWatchEventBridge {
     readonly arn?: string;
   }
 
-  function cloudwatchEventTargetDeadLetterConfigToTerraform(struct?: CloudwatchEventTargetDeadLetterConfig): any {
+  function cloudwatchEventTargetDeadLetterConfigToTerraform(struct?: CloudwatchEventTargetDeadLetterConfigOutputReference | CloudwatchEventTargetDeadLetterConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       arn: cdktf.stringToTerraform(struct!.arn),
     }
   }
 
+  export class CloudwatchEventTargetDeadLetterConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // arn - computed: false, optional: true, required: false
+    private _arn?: string | undefined; 
+    public get arn() {
+      return this.getStringAttribute('arn');
+    }
+    public set arn(value: string | undefined) {
+      this._arn = value;
+    }
+    public resetArn() {
+      this._arn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get arnInput() {
+      return this._arn
+    }
+  }
   export interface CloudwatchEventTargetEcsTargetNetworkConfiguration {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#assign_public_ip CloudwatchEventTarget#assign_public_ip}
@@ -1682,8 +2254,11 @@ export namespace CloudWatchEventBridge {
     readonly subnets: string[];
   }
 
-  function cloudwatchEventTargetEcsTargetNetworkConfigurationToTerraform(struct?: CloudwatchEventTargetEcsTargetNetworkConfiguration): any {
+  function cloudwatchEventTargetEcsTargetNetworkConfigurationToTerraform(struct?: CloudwatchEventTargetEcsTargetNetworkConfigurationOutputReference | CloudwatchEventTargetEcsTargetNetworkConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       assign_public_ip: cdktf.booleanToTerraform(struct!.assignPublicIp),
       security_groups: cdktf.listMapper(cdktf.stringToTerraform)(struct!.securityGroups),
@@ -1691,6 +2266,61 @@ export namespace CloudWatchEventBridge {
     }
   }
 
+  export class CloudwatchEventTargetEcsTargetNetworkConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // assign_public_ip - computed: false, optional: true, required: false
+    private _assignPublicIp?: boolean | cdktf.IResolvable | undefined; 
+    public get assignPublicIp() {
+      return this.getBooleanAttribute('assign_public_ip') as any;
+    }
+    public set assignPublicIp(value: boolean | cdktf.IResolvable | undefined) {
+      this._assignPublicIp = value;
+    }
+    public resetAssignPublicIp() {
+      this._assignPublicIp = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get assignPublicIpInput() {
+      return this._assignPublicIp
+    }
+
+    // security_groups - computed: false, optional: true, required: false
+    private _securityGroups?: string[] | undefined; 
+    public get securityGroups() {
+      return this.getListAttribute('security_groups');
+    }
+    public set securityGroups(value: string[] | undefined) {
+      this._securityGroups = value;
+    }
+    public resetSecurityGroups() {
+      this._securityGroups = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get securityGroupsInput() {
+      return this._securityGroups
+    }
+
+    // subnets - computed: false, optional: false, required: true
+    private _subnets?: string[]; 
+    public get subnets() {
+      return this.getListAttribute('subnets');
+    }
+    public set subnets(value: string[]) {
+      this._subnets = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get subnetsInput() {
+      return this._subnets
+    }
+  }
   export interface CloudwatchEventTargetEcsTargetPlacementConstraint {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#expression CloudwatchEventTarget#expression}
@@ -1704,6 +2334,9 @@ export namespace CloudWatchEventBridge {
 
   function cloudwatchEventTargetEcsTargetPlacementConstraintToTerraform(struct?: CloudwatchEventTargetEcsTargetPlacementConstraint): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       expression: cdktf.stringToTerraform(struct!.expression),
       type: cdktf.stringToTerraform(struct!.type),
@@ -1752,7 +2385,7 @@ export namespace CloudWatchEventBridge {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#network_configuration CloudwatchEventTarget#network_configuration}
     */
-    readonly networkConfiguration?: CloudwatchEventTargetEcsTargetNetworkConfiguration[];
+    readonly networkConfiguration?: CloudwatchEventTargetEcsTargetNetworkConfiguration;
     /**
     * placement_constraint block
     * 
@@ -1761,8 +2394,11 @@ export namespace CloudWatchEventBridge {
     readonly placementConstraint?: CloudwatchEventTargetEcsTargetPlacementConstraint[];
   }
 
-  function cloudwatchEventTargetEcsTargetToTerraform(struct?: CloudwatchEventTargetEcsTarget): any {
+  function cloudwatchEventTargetEcsTargetToTerraform(struct?: CloudwatchEventTargetEcsTargetOutputReference | CloudwatchEventTargetEcsTarget): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       enable_ecs_managed_tags: cdktf.booleanToTerraform(struct!.enableEcsManagedTags),
       enable_execute_command: cdktf.booleanToTerraform(struct!.enableExecuteCommand),
@@ -1773,11 +2409,197 @@ export namespace CloudWatchEventBridge {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.tags),
       task_count: cdktf.numberToTerraform(struct!.taskCount),
       task_definition_arn: cdktf.stringToTerraform(struct!.taskDefinitionArn),
-      network_configuration: cdktf.listMapper(cloudwatchEventTargetEcsTargetNetworkConfigurationToTerraform)(struct!.networkConfiguration),
+      network_configuration: cloudwatchEventTargetEcsTargetNetworkConfigurationToTerraform(struct!.networkConfiguration),
       placement_constraint: cdktf.listMapper(cloudwatchEventTargetEcsTargetPlacementConstraintToTerraform)(struct!.placementConstraint),
     }
   }
 
+  export class CloudwatchEventTargetEcsTargetOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // enable_ecs_managed_tags - computed: false, optional: true, required: false
+    private _enableEcsManagedTags?: boolean | cdktf.IResolvable | undefined; 
+    public get enableEcsManagedTags() {
+      return this.getBooleanAttribute('enable_ecs_managed_tags') as any;
+    }
+    public set enableEcsManagedTags(value: boolean | cdktf.IResolvable | undefined) {
+      this._enableEcsManagedTags = value;
+    }
+    public resetEnableEcsManagedTags() {
+      this._enableEcsManagedTags = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enableEcsManagedTagsInput() {
+      return this._enableEcsManagedTags
+    }
+
+    // enable_execute_command - computed: false, optional: true, required: false
+    private _enableExecuteCommand?: boolean | cdktf.IResolvable | undefined; 
+    public get enableExecuteCommand() {
+      return this.getBooleanAttribute('enable_execute_command') as any;
+    }
+    public set enableExecuteCommand(value: boolean | cdktf.IResolvable | undefined) {
+      this._enableExecuteCommand = value;
+    }
+    public resetEnableExecuteCommand() {
+      this._enableExecuteCommand = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enableExecuteCommandInput() {
+      return this._enableExecuteCommand
+    }
+
+    // group - computed: false, optional: true, required: false
+    private _group?: string | undefined; 
+    public get group() {
+      return this.getStringAttribute('group');
+    }
+    public set group(value: string | undefined) {
+      this._group = value;
+    }
+    public resetGroup() {
+      this._group = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get groupInput() {
+      return this._group
+    }
+
+    // launch_type - computed: false, optional: true, required: false
+    private _launchType?: string | undefined; 
+    public get launchType() {
+      return this.getStringAttribute('launch_type');
+    }
+    public set launchType(value: string | undefined) {
+      this._launchType = value;
+    }
+    public resetLaunchType() {
+      this._launchType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get launchTypeInput() {
+      return this._launchType
+    }
+
+    // platform_version - computed: false, optional: true, required: false
+    private _platformVersion?: string | undefined; 
+    public get platformVersion() {
+      return this.getStringAttribute('platform_version');
+    }
+    public set platformVersion(value: string | undefined) {
+      this._platformVersion = value;
+    }
+    public resetPlatformVersion() {
+      this._platformVersion = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get platformVersionInput() {
+      return this._platformVersion
+    }
+
+    // propagate_tags - computed: false, optional: true, required: false
+    private _propagateTags?: string | undefined; 
+    public get propagateTags() {
+      return this.getStringAttribute('propagate_tags');
+    }
+    public set propagateTags(value: string | undefined) {
+      this._propagateTags = value;
+    }
+    public resetPropagateTags() {
+      this._propagateTags = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get propagateTagsInput() {
+      return this._propagateTags
+    }
+
+    // tags - computed: false, optional: true, required: false
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
+    }
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._tags = value;
+    }
+    public resetTags() {
+      this._tags = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tagsInput() {
+      return this._tags
+    }
+
+    // task_count - computed: false, optional: true, required: false
+    private _taskCount?: number | undefined; 
+    public get taskCount() {
+      return this.getNumberAttribute('task_count');
+    }
+    public set taskCount(value: number | undefined) {
+      this._taskCount = value;
+    }
+    public resetTaskCount() {
+      this._taskCount = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get taskCountInput() {
+      return this._taskCount
+    }
+
+    // task_definition_arn - computed: false, optional: false, required: true
+    private _taskDefinitionArn?: string; 
+    public get taskDefinitionArn() {
+      return this.getStringAttribute('task_definition_arn');
+    }
+    public set taskDefinitionArn(value: string) {
+      this._taskDefinitionArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get taskDefinitionArnInput() {
+      return this._taskDefinitionArn
+    }
+
+    // network_configuration - computed: false, optional: true, required: false
+    private _networkConfiguration?: CloudwatchEventTargetEcsTargetNetworkConfiguration | undefined; 
+    private __networkConfigurationOutput = new CloudwatchEventTargetEcsTargetNetworkConfigurationOutputReference(this as any, "network_configuration", true);
+    public get networkConfiguration() {
+      return this.__networkConfigurationOutput;
+    }
+    public putNetworkConfiguration(value: CloudwatchEventTargetEcsTargetNetworkConfiguration | undefined) {
+      this._networkConfiguration = value;
+    }
+    public resetNetworkConfiguration() {
+      this._networkConfiguration = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get networkConfigurationInput() {
+      return this._networkConfiguration
+    }
+
+    // placement_constraint - computed: false, optional: true, required: false
+    private _placementConstraint?: CloudwatchEventTargetEcsTargetPlacementConstraint[] | undefined; 
+    public get placementConstraint() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('placement_constraint') as any;
+    }
+    public set placementConstraint(value: CloudwatchEventTargetEcsTargetPlacementConstraint[] | undefined) {
+      this._placementConstraint = value;
+    }
+    public resetPlacementConstraint() {
+      this._placementConstraint = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get placementConstraintInput() {
+      return this._placementConstraint
+    }
+  }
   export interface CloudwatchEventTargetHttpTarget {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#header_parameters CloudwatchEventTarget#header_parameters}
@@ -1793,8 +2615,11 @@ export namespace CloudWatchEventBridge {
     readonly queryStringParameters?: { [key: string]: string } | cdktf.IResolvable;
   }
 
-  function cloudwatchEventTargetHttpTargetToTerraform(struct?: CloudwatchEventTargetHttpTarget): any {
+  function cloudwatchEventTargetHttpTargetToTerraform(struct?: CloudwatchEventTargetHttpTargetOutputReference | CloudwatchEventTargetHttpTarget): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       header_parameters: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.headerParameters),
       path_parameter_values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.pathParameterValues),
@@ -1802,6 +2627,66 @@ export namespace CloudWatchEventBridge {
     }
   }
 
+  export class CloudwatchEventTargetHttpTargetOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // header_parameters - computed: false, optional: true, required: false
+    private _headerParameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get headerParameters() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('header_parameters') as any;
+    }
+    public set headerParameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._headerParameters = value;
+    }
+    public resetHeaderParameters() {
+      this._headerParameters = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get headerParametersInput() {
+      return this._headerParameters
+    }
+
+    // path_parameter_values - computed: false, optional: true, required: false
+    private _pathParameterValues?: string[] | undefined; 
+    public get pathParameterValues() {
+      return this.getListAttribute('path_parameter_values');
+    }
+    public set pathParameterValues(value: string[] | undefined) {
+      this._pathParameterValues = value;
+    }
+    public resetPathParameterValues() {
+      this._pathParameterValues = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get pathParameterValuesInput() {
+      return this._pathParameterValues
+    }
+
+    // query_string_parameters - computed: false, optional: true, required: false
+    private _queryStringParameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get queryStringParameters() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('query_string_parameters') as any;
+    }
+    public set queryStringParameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._queryStringParameters = value;
+    }
+    public resetQueryStringParameters() {
+      this._queryStringParameters = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get queryStringParametersInput() {
+      return this._queryStringParameters
+    }
+  }
   export interface CloudwatchEventTargetInputTransformer {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#input_paths CloudwatchEventTarget#input_paths}
@@ -1813,14 +2698,57 @@ export namespace CloudWatchEventBridge {
     readonly inputTemplate: string;
   }
 
-  function cloudwatchEventTargetInputTransformerToTerraform(struct?: CloudwatchEventTargetInputTransformer): any {
+  function cloudwatchEventTargetInputTransformerToTerraform(struct?: CloudwatchEventTargetInputTransformerOutputReference | CloudwatchEventTargetInputTransformer): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       input_paths: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.inputPaths),
       input_template: cdktf.stringToTerraform(struct!.inputTemplate),
     }
   }
 
+  export class CloudwatchEventTargetInputTransformerOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // input_paths - computed: false, optional: true, required: false
+    private _inputPaths?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get inputPaths() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('input_paths') as any;
+    }
+    public set inputPaths(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._inputPaths = value;
+    }
+    public resetInputPaths() {
+      this._inputPaths = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get inputPathsInput() {
+      return this._inputPaths
+    }
+
+    // input_template - computed: false, optional: false, required: true
+    private _inputTemplate?: string; 
+    public get inputTemplate() {
+      return this.getStringAttribute('input_template');
+    }
+    public set inputTemplate(value: string) {
+      this._inputTemplate = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get inputTemplateInput() {
+      return this._inputTemplate
+    }
+  }
   export interface CloudwatchEventTargetKinesisTarget {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#partition_key_path CloudwatchEventTarget#partition_key_path}
@@ -1828,13 +2756,42 @@ export namespace CloudWatchEventBridge {
     readonly partitionKeyPath?: string;
   }
 
-  function cloudwatchEventTargetKinesisTargetToTerraform(struct?: CloudwatchEventTargetKinesisTarget): any {
+  function cloudwatchEventTargetKinesisTargetToTerraform(struct?: CloudwatchEventTargetKinesisTargetOutputReference | CloudwatchEventTargetKinesisTarget): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       partition_key_path: cdktf.stringToTerraform(struct!.partitionKeyPath),
     }
   }
 
+  export class CloudwatchEventTargetKinesisTargetOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // partition_key_path - computed: false, optional: true, required: false
+    private _partitionKeyPath?: string | undefined; 
+    public get partitionKeyPath() {
+      return this.getStringAttribute('partition_key_path');
+    }
+    public set partitionKeyPath(value: string | undefined) {
+      this._partitionKeyPath = value;
+    }
+    public resetPartitionKeyPath() {
+      this._partitionKeyPath = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get partitionKeyPathInput() {
+      return this._partitionKeyPath
+    }
+  }
   export interface CloudwatchEventTargetRedshiftTarget {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#database CloudwatchEventTarget#database}
@@ -1862,8 +2819,11 @@ export namespace CloudWatchEventBridge {
     readonly withEvent?: boolean | cdktf.IResolvable;
   }
 
-  function cloudwatchEventTargetRedshiftTargetToTerraform(struct?: CloudwatchEventTargetRedshiftTarget): any {
+  function cloudwatchEventTargetRedshiftTargetToTerraform(struct?: CloudwatchEventTargetRedshiftTargetOutputReference | CloudwatchEventTargetRedshiftTarget): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       database: cdktf.stringToTerraform(struct!.database),
       db_user: cdktf.stringToTerraform(struct!.dbUser),
@@ -1874,6 +2834,109 @@ export namespace CloudWatchEventBridge {
     }
   }
 
+  export class CloudwatchEventTargetRedshiftTargetOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // database - computed: false, optional: false, required: true
+    private _database?: string; 
+    public get database() {
+      return this.getStringAttribute('database');
+    }
+    public set database(value: string) {
+      this._database = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get databaseInput() {
+      return this._database
+    }
+
+    // db_user - computed: false, optional: true, required: false
+    private _dbUser?: string | undefined; 
+    public get dbUser() {
+      return this.getStringAttribute('db_user');
+    }
+    public set dbUser(value: string | undefined) {
+      this._dbUser = value;
+    }
+    public resetDbUser() {
+      this._dbUser = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get dbUserInput() {
+      return this._dbUser
+    }
+
+    // secrets_manager_arn - computed: false, optional: true, required: false
+    private _secretsManagerArn?: string | undefined; 
+    public get secretsManagerArn() {
+      return this.getStringAttribute('secrets_manager_arn');
+    }
+    public set secretsManagerArn(value: string | undefined) {
+      this._secretsManagerArn = value;
+    }
+    public resetSecretsManagerArn() {
+      this._secretsManagerArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get secretsManagerArnInput() {
+      return this._secretsManagerArn
+    }
+
+    // sql - computed: false, optional: true, required: false
+    private _sql?: string | undefined; 
+    public get sql() {
+      return this.getStringAttribute('sql');
+    }
+    public set sql(value: string | undefined) {
+      this._sql = value;
+    }
+    public resetSql() {
+      this._sql = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sqlInput() {
+      return this._sql
+    }
+
+    // statement_name - computed: false, optional: true, required: false
+    private _statementName?: string | undefined; 
+    public get statementName() {
+      return this.getStringAttribute('statement_name');
+    }
+    public set statementName(value: string | undefined) {
+      this._statementName = value;
+    }
+    public resetStatementName() {
+      this._statementName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get statementNameInput() {
+      return this._statementName
+    }
+
+    // with_event - computed: false, optional: true, required: false
+    private _withEvent?: boolean | cdktf.IResolvable | undefined; 
+    public get withEvent() {
+      return this.getBooleanAttribute('with_event') as any;
+    }
+    public set withEvent(value: boolean | cdktf.IResolvable | undefined) {
+      this._withEvent = value;
+    }
+    public resetWithEvent() {
+      this._withEvent = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get withEventInput() {
+      return this._withEvent
+    }
+  }
   export interface CloudwatchEventTargetRetryPolicy {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#maximum_event_age_in_seconds CloudwatchEventTarget#maximum_event_age_in_seconds}
@@ -1885,14 +2948,59 @@ export namespace CloudWatchEventBridge {
     readonly maximumRetryAttempts?: number;
   }
 
-  function cloudwatchEventTargetRetryPolicyToTerraform(struct?: CloudwatchEventTargetRetryPolicy): any {
+  function cloudwatchEventTargetRetryPolicyToTerraform(struct?: CloudwatchEventTargetRetryPolicyOutputReference | CloudwatchEventTargetRetryPolicy): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       maximum_event_age_in_seconds: cdktf.numberToTerraform(struct!.maximumEventAgeInSeconds),
       maximum_retry_attempts: cdktf.numberToTerraform(struct!.maximumRetryAttempts),
     }
   }
 
+  export class CloudwatchEventTargetRetryPolicyOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // maximum_event_age_in_seconds - computed: false, optional: true, required: false
+    private _maximumEventAgeInSeconds?: number | undefined; 
+    public get maximumEventAgeInSeconds() {
+      return this.getNumberAttribute('maximum_event_age_in_seconds');
+    }
+    public set maximumEventAgeInSeconds(value: number | undefined) {
+      this._maximumEventAgeInSeconds = value;
+    }
+    public resetMaximumEventAgeInSeconds() {
+      this._maximumEventAgeInSeconds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maximumEventAgeInSecondsInput() {
+      return this._maximumEventAgeInSeconds
+    }
+
+    // maximum_retry_attempts - computed: false, optional: true, required: false
+    private _maximumRetryAttempts?: number | undefined; 
+    public get maximumRetryAttempts() {
+      return this.getNumberAttribute('maximum_retry_attempts');
+    }
+    public set maximumRetryAttempts(value: number | undefined) {
+      this._maximumRetryAttempts = value;
+    }
+    public resetMaximumRetryAttempts() {
+      this._maximumRetryAttempts = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maximumRetryAttemptsInput() {
+      return this._maximumRetryAttempts
+    }
+  }
   export interface CloudwatchEventTargetRunCommandTargets {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html#key CloudwatchEventTarget#key}
@@ -1906,6 +3014,9 @@ export namespace CloudWatchEventBridge {
 
   function cloudwatchEventTargetRunCommandTargetsToTerraform(struct?: CloudwatchEventTargetRunCommandTargets): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key: cdktf.stringToTerraform(struct!.key),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -1919,13 +3030,42 @@ export namespace CloudWatchEventBridge {
     readonly messageGroupId?: string;
   }
 
-  function cloudwatchEventTargetSqsTargetToTerraform(struct?: CloudwatchEventTargetSqsTarget): any {
+  function cloudwatchEventTargetSqsTargetToTerraform(struct?: CloudwatchEventTargetSqsTargetOutputReference | CloudwatchEventTargetSqsTarget): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       message_group_id: cdktf.stringToTerraform(struct!.messageGroupId),
     }
   }
 
+  export class CloudwatchEventTargetSqsTargetOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // message_group_id - computed: false, optional: true, required: false
+    private _messageGroupId?: string | undefined; 
+    public get messageGroupId() {
+      return this.getStringAttribute('message_group_id');
+    }
+    public set messageGroupId(value: string | undefined) {
+      this._messageGroupId = value;
+    }
+    public resetMessageGroupId() {
+      this._messageGroupId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get messageGroupIdInput() {
+      return this._messageGroupId
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/cloudwatch_event_target.html aws_cloudwatch_event_target}
@@ -1983,7 +3123,7 @@ export namespace CloudWatchEventBridge {
     // ==========
 
     // arn - computed: false, optional: false, required: true
-    private _arn: string;
+    private _arn?: string; 
     public get arn() {
       return this.getStringAttribute('arn');
     }
@@ -1996,11 +3136,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // event_bus_name - computed: false, optional: true, required: false
-    private _eventBusName?: string;
+    private _eventBusName?: string | undefined; 
     public get eventBusName() {
       return this.getStringAttribute('event_bus_name');
     }
-    public set eventBusName(value: string ) {
+    public set eventBusName(value: string | undefined) {
       this._eventBusName = value;
     }
     public resetEventBusName() {
@@ -2017,11 +3157,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // input - computed: false, optional: true, required: false
-    private _input?: string;
+    private _input?: string | undefined; 
     public get input() {
       return this.getStringAttribute('input');
     }
-    public set input(value: string ) {
+    public set input(value: string | undefined) {
       this._input = value;
     }
     public resetInput() {
@@ -2033,11 +3173,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // input_path - computed: false, optional: true, required: false
-    private _inputPath?: string;
+    private _inputPath?: string | undefined; 
     public get inputPath() {
       return this.getStringAttribute('input_path');
     }
-    public set inputPath(value: string ) {
+    public set inputPath(value: string | undefined) {
       this._inputPath = value;
     }
     public resetInputPath() {
@@ -2049,11 +3189,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // role_arn - computed: false, optional: true, required: false
-    private _roleArn?: string;
+    private _roleArn?: string | undefined; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
-    public set roleArn(value: string ) {
+    public set roleArn(value: string | undefined) {
       this._roleArn = value;
     }
     public resetRoleArn() {
@@ -2065,7 +3205,7 @@ export namespace CloudWatchEventBridge {
     }
 
     // rule - computed: false, optional: false, required: true
-    private _rule: string;
+    private _rule?: string; 
     public get rule() {
       return this.getStringAttribute('rule');
     }
@@ -2078,11 +3218,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // target_id - computed: true, optional: true, required: false
-    private _targetId?: string;
+    private _targetId?: string | undefined; 
     public get targetId() {
       return this.getStringAttribute('target_id');
     }
-    public set targetId(value: string) {
+    public set targetId(value: string | undefined) {
       this._targetId = value;
     }
     public resetTargetId() {
@@ -2094,11 +3234,12 @@ export namespace CloudWatchEventBridge {
     }
 
     // batch_target - computed: false, optional: true, required: false
-    private _batchTarget?: CloudwatchEventTargetBatchTarget[];
+    private _batchTarget?: CloudwatchEventTargetBatchTarget | undefined; 
+    private __batchTargetOutput = new CloudwatchEventTargetBatchTargetOutputReference(this as any, "batch_target", true);
     public get batchTarget() {
-      return this.interpolationForAttribute('batch_target') as any;
+      return this.__batchTargetOutput;
     }
-    public set batchTarget(value: CloudwatchEventTargetBatchTarget[] ) {
+    public putBatchTarget(value: CloudwatchEventTargetBatchTarget | undefined) {
       this._batchTarget = value;
     }
     public resetBatchTarget() {
@@ -2110,11 +3251,12 @@ export namespace CloudWatchEventBridge {
     }
 
     // dead_letter_config - computed: false, optional: true, required: false
-    private _deadLetterConfig?: CloudwatchEventTargetDeadLetterConfig[];
+    private _deadLetterConfig?: CloudwatchEventTargetDeadLetterConfig | undefined; 
+    private __deadLetterConfigOutput = new CloudwatchEventTargetDeadLetterConfigOutputReference(this as any, "dead_letter_config", true);
     public get deadLetterConfig() {
-      return this.interpolationForAttribute('dead_letter_config') as any;
+      return this.__deadLetterConfigOutput;
     }
-    public set deadLetterConfig(value: CloudwatchEventTargetDeadLetterConfig[] ) {
+    public putDeadLetterConfig(value: CloudwatchEventTargetDeadLetterConfig | undefined) {
       this._deadLetterConfig = value;
     }
     public resetDeadLetterConfig() {
@@ -2126,11 +3268,12 @@ export namespace CloudWatchEventBridge {
     }
 
     // ecs_target - computed: false, optional: true, required: false
-    private _ecsTarget?: CloudwatchEventTargetEcsTarget[];
+    private _ecsTarget?: CloudwatchEventTargetEcsTarget | undefined; 
+    private __ecsTargetOutput = new CloudwatchEventTargetEcsTargetOutputReference(this as any, "ecs_target", true);
     public get ecsTarget() {
-      return this.interpolationForAttribute('ecs_target') as any;
+      return this.__ecsTargetOutput;
     }
-    public set ecsTarget(value: CloudwatchEventTargetEcsTarget[] ) {
+    public putEcsTarget(value: CloudwatchEventTargetEcsTarget | undefined) {
       this._ecsTarget = value;
     }
     public resetEcsTarget() {
@@ -2142,11 +3285,12 @@ export namespace CloudWatchEventBridge {
     }
 
     // http_target - computed: false, optional: true, required: false
-    private _httpTarget?: CloudwatchEventTargetHttpTarget[];
+    private _httpTarget?: CloudwatchEventTargetHttpTarget | undefined; 
+    private __httpTargetOutput = new CloudwatchEventTargetHttpTargetOutputReference(this as any, "http_target", true);
     public get httpTarget() {
-      return this.interpolationForAttribute('http_target') as any;
+      return this.__httpTargetOutput;
     }
-    public set httpTarget(value: CloudwatchEventTargetHttpTarget[] ) {
+    public putHttpTarget(value: CloudwatchEventTargetHttpTarget | undefined) {
       this._httpTarget = value;
     }
     public resetHttpTarget() {
@@ -2158,11 +3302,12 @@ export namespace CloudWatchEventBridge {
     }
 
     // input_transformer - computed: false, optional: true, required: false
-    private _inputTransformer?: CloudwatchEventTargetInputTransformer[];
+    private _inputTransformer?: CloudwatchEventTargetInputTransformer | undefined; 
+    private __inputTransformerOutput = new CloudwatchEventTargetInputTransformerOutputReference(this as any, "input_transformer", true);
     public get inputTransformer() {
-      return this.interpolationForAttribute('input_transformer') as any;
+      return this.__inputTransformerOutput;
     }
-    public set inputTransformer(value: CloudwatchEventTargetInputTransformer[] ) {
+    public putInputTransformer(value: CloudwatchEventTargetInputTransformer | undefined) {
       this._inputTransformer = value;
     }
     public resetInputTransformer() {
@@ -2174,11 +3319,12 @@ export namespace CloudWatchEventBridge {
     }
 
     // kinesis_target - computed: false, optional: true, required: false
-    private _kinesisTarget?: CloudwatchEventTargetKinesisTarget[];
+    private _kinesisTarget?: CloudwatchEventTargetKinesisTarget | undefined; 
+    private __kinesisTargetOutput = new CloudwatchEventTargetKinesisTargetOutputReference(this as any, "kinesis_target", true);
     public get kinesisTarget() {
-      return this.interpolationForAttribute('kinesis_target') as any;
+      return this.__kinesisTargetOutput;
     }
-    public set kinesisTarget(value: CloudwatchEventTargetKinesisTarget[] ) {
+    public putKinesisTarget(value: CloudwatchEventTargetKinesisTarget | undefined) {
       this._kinesisTarget = value;
     }
     public resetKinesisTarget() {
@@ -2190,11 +3336,12 @@ export namespace CloudWatchEventBridge {
     }
 
     // redshift_target - computed: false, optional: true, required: false
-    private _redshiftTarget?: CloudwatchEventTargetRedshiftTarget[];
+    private _redshiftTarget?: CloudwatchEventTargetRedshiftTarget | undefined; 
+    private __redshiftTargetOutput = new CloudwatchEventTargetRedshiftTargetOutputReference(this as any, "redshift_target", true);
     public get redshiftTarget() {
-      return this.interpolationForAttribute('redshift_target') as any;
+      return this.__redshiftTargetOutput;
     }
-    public set redshiftTarget(value: CloudwatchEventTargetRedshiftTarget[] ) {
+    public putRedshiftTarget(value: CloudwatchEventTargetRedshiftTarget | undefined) {
       this._redshiftTarget = value;
     }
     public resetRedshiftTarget() {
@@ -2206,11 +3353,12 @@ export namespace CloudWatchEventBridge {
     }
 
     // retry_policy - computed: false, optional: true, required: false
-    private _retryPolicy?: CloudwatchEventTargetRetryPolicy[];
+    private _retryPolicy?: CloudwatchEventTargetRetryPolicy | undefined; 
+    private __retryPolicyOutput = new CloudwatchEventTargetRetryPolicyOutputReference(this as any, "retry_policy", true);
     public get retryPolicy() {
-      return this.interpolationForAttribute('retry_policy') as any;
+      return this.__retryPolicyOutput;
     }
-    public set retryPolicy(value: CloudwatchEventTargetRetryPolicy[] ) {
+    public putRetryPolicy(value: CloudwatchEventTargetRetryPolicy | undefined) {
       this._retryPolicy = value;
     }
     public resetRetryPolicy() {
@@ -2222,11 +3370,12 @@ export namespace CloudWatchEventBridge {
     }
 
     // run_command_targets - computed: false, optional: true, required: false
-    private _runCommandTargets?: CloudwatchEventTargetRunCommandTargets[];
+    private _runCommandTargets?: CloudwatchEventTargetRunCommandTargets[] | undefined; 
     public get runCommandTargets() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('run_command_targets') as any;
     }
-    public set runCommandTargets(value: CloudwatchEventTargetRunCommandTargets[] ) {
+    public set runCommandTargets(value: CloudwatchEventTargetRunCommandTargets[] | undefined) {
       this._runCommandTargets = value;
     }
     public resetRunCommandTargets() {
@@ -2238,11 +3387,12 @@ export namespace CloudWatchEventBridge {
     }
 
     // sqs_target - computed: false, optional: true, required: false
-    private _sqsTarget?: CloudwatchEventTargetSqsTarget[];
+    private _sqsTarget?: CloudwatchEventTargetSqsTarget | undefined; 
+    private __sqsTargetOutput = new CloudwatchEventTargetSqsTargetOutputReference(this as any, "sqs_target", true);
     public get sqsTarget() {
-      return this.interpolationForAttribute('sqs_target') as any;
+      return this.__sqsTargetOutput;
     }
-    public set sqsTarget(value: CloudwatchEventTargetSqsTarget[] ) {
+    public putSqsTarget(value: CloudwatchEventTargetSqsTarget | undefined) {
       this._sqsTarget = value;
     }
     public resetSqsTarget() {
@@ -2266,16 +3416,16 @@ export namespace CloudWatchEventBridge {
         role_arn: cdktf.stringToTerraform(this._roleArn),
         rule: cdktf.stringToTerraform(this._rule),
         target_id: cdktf.stringToTerraform(this._targetId),
-        batch_target: cdktf.listMapper(cloudwatchEventTargetBatchTargetToTerraform)(this._batchTarget),
-        dead_letter_config: cdktf.listMapper(cloudwatchEventTargetDeadLetterConfigToTerraform)(this._deadLetterConfig),
-        ecs_target: cdktf.listMapper(cloudwatchEventTargetEcsTargetToTerraform)(this._ecsTarget),
-        http_target: cdktf.listMapper(cloudwatchEventTargetHttpTargetToTerraform)(this._httpTarget),
-        input_transformer: cdktf.listMapper(cloudwatchEventTargetInputTransformerToTerraform)(this._inputTransformer),
-        kinesis_target: cdktf.listMapper(cloudwatchEventTargetKinesisTargetToTerraform)(this._kinesisTarget),
-        redshift_target: cdktf.listMapper(cloudwatchEventTargetRedshiftTargetToTerraform)(this._redshiftTarget),
-        retry_policy: cdktf.listMapper(cloudwatchEventTargetRetryPolicyToTerraform)(this._retryPolicy),
+        batch_target: cloudwatchEventTargetBatchTargetToTerraform(this._batchTarget),
+        dead_letter_config: cloudwatchEventTargetDeadLetterConfigToTerraform(this._deadLetterConfig),
+        ecs_target: cloudwatchEventTargetEcsTargetToTerraform(this._ecsTarget),
+        http_target: cloudwatchEventTargetHttpTargetToTerraform(this._httpTarget),
+        input_transformer: cloudwatchEventTargetInputTransformerToTerraform(this._inputTransformer),
+        kinesis_target: cloudwatchEventTargetKinesisTargetToTerraform(this._kinesisTarget),
+        redshift_target: cloudwatchEventTargetRedshiftTargetToTerraform(this._redshiftTarget),
+        retry_policy: cloudwatchEventTargetRetryPolicyToTerraform(this._retryPolicy),
         run_command_targets: cdktf.listMapper(cloudwatchEventTargetRunCommandTargetsToTerraform)(this._runCommandTargets),
-        sqs_target: cdktf.listMapper(cloudwatchEventTargetSqsTargetToTerraform)(this._sqsTarget),
+        sqs_target: cloudwatchEventTargetSqsTargetToTerraform(this._sqsTarget),
       };
     }
   }
@@ -2341,7 +3491,7 @@ export namespace CloudWatchEventBridge {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2435,11 +3585,11 @@ export namespace CloudWatchEventBridge {
     }
 
     // name_prefix - computed: false, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string ) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {

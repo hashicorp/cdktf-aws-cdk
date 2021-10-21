@@ -84,11 +84,11 @@ export namespace CodeStar {
     }
 
     // host_arn - computed: false, optional: true, required: false
-    private _hostArn?: string;
+    private _hostArn?: string | undefined; 
     public get hostArn() {
       return this.getStringAttribute('host_arn');
     }
-    public set hostArn(value: string ) {
+    public set hostArn(value: string | undefined) {
       this._hostArn = value;
     }
     public resetHostArn() {
@@ -105,7 +105,7 @@ export namespace CodeStar {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -118,11 +118,11 @@ export namespace CodeStar {
     }
 
     // provider_type - computed: true, optional: true, required: false
-    private _providerType?: string;
+    private _providerType?: string | undefined; 
     public get providerType() {
       return this.getStringAttribute('provider_type');
     }
-    public set providerType(value: string) {
+    public set providerType(value: string | undefined) {
       this._providerType = value;
     }
     public resetProviderType() {
@@ -134,11 +134,12 @@ export namespace CodeStar {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -150,11 +151,12 @@ export namespace CodeStar {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -197,7 +199,7 @@ export namespace CodeStar {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/codestarconnections_host.html#vpc_configuration CodestarconnectionsHost#vpc_configuration}
     */
-    readonly vpcConfiguration?: CodestarconnectionsHostVpcConfiguration[];
+    readonly vpcConfiguration?: CodestarconnectionsHostVpcConfiguration;
   }
   export interface CodestarconnectionsHostVpcConfiguration {
     /**
@@ -218,8 +220,11 @@ export namespace CodeStar {
     readonly vpcId: string;
   }
 
-  function codestarconnectionsHostVpcConfigurationToTerraform(struct?: CodestarconnectionsHostVpcConfiguration): any {
+  function codestarconnectionsHostVpcConfigurationToTerraform(struct?: CodestarconnectionsHostVpcConfigurationOutputReference | CodestarconnectionsHostVpcConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.securityGroupIds),
       subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.subnetIds),
@@ -228,6 +233,71 @@ export namespace CodeStar {
     }
   }
 
+  export class CodestarconnectionsHostVpcConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // security_group_ids - computed: false, optional: false, required: true
+    private _securityGroupIds?: string[]; 
+    public get securityGroupIds() {
+      return this.getListAttribute('security_group_ids');
+    }
+    public set securityGroupIds(value: string[]) {
+      this._securityGroupIds = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get securityGroupIdsInput() {
+      return this._securityGroupIds
+    }
+
+    // subnet_ids - computed: false, optional: false, required: true
+    private _subnetIds?: string[]; 
+    public get subnetIds() {
+      return this.getListAttribute('subnet_ids');
+    }
+    public set subnetIds(value: string[]) {
+      this._subnetIds = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get subnetIdsInput() {
+      return this._subnetIds
+    }
+
+    // tls_certificate - computed: false, optional: true, required: false
+    private _tlsCertificate?: string | undefined; 
+    public get tlsCertificate() {
+      return this.getStringAttribute('tls_certificate');
+    }
+    public set tlsCertificate(value: string | undefined) {
+      this._tlsCertificate = value;
+    }
+    public resetTlsCertificate() {
+      this._tlsCertificate = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tlsCertificateInput() {
+      return this._tlsCertificate
+    }
+
+    // vpc_id - computed: false, optional: false, required: true
+    private _vpcId?: string; 
+    public get vpcId() {
+      return this.getStringAttribute('vpc_id');
+    }
+    public set vpcId(value: string) {
+      this._vpcId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get vpcIdInput() {
+      return this._vpcId
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/codestarconnections_host.html aws_codestarconnections_host}
@@ -282,7 +352,7 @@ export namespace CodeStar {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -295,7 +365,7 @@ export namespace CodeStar {
     }
 
     // provider_endpoint - computed: false, optional: false, required: true
-    private _providerEndpoint: string;
+    private _providerEndpoint?: string; 
     public get providerEndpoint() {
       return this.getStringAttribute('provider_endpoint');
     }
@@ -308,7 +378,7 @@ export namespace CodeStar {
     }
 
     // provider_type - computed: false, optional: false, required: true
-    private _providerType: string;
+    private _providerType?: string; 
     public get providerType() {
       return this.getStringAttribute('provider_type');
     }
@@ -326,11 +396,12 @@ export namespace CodeStar {
     }
 
     // vpc_configuration - computed: false, optional: true, required: false
-    private _vpcConfiguration?: CodestarconnectionsHostVpcConfiguration[];
+    private _vpcConfiguration?: CodestarconnectionsHostVpcConfiguration | undefined; 
+    private __vpcConfigurationOutput = new CodestarconnectionsHostVpcConfigurationOutputReference(this as any, "vpc_configuration", true);
     public get vpcConfiguration() {
-      return this.interpolationForAttribute('vpc_configuration') as any;
+      return this.__vpcConfigurationOutput;
     }
-    public set vpcConfiguration(value: CodestarconnectionsHostVpcConfiguration[] ) {
+    public putVpcConfiguration(value: CodestarconnectionsHostVpcConfiguration | undefined) {
       this._vpcConfiguration = value;
     }
     public resetVpcConfiguration() {
@@ -350,7 +421,7 @@ export namespace CodeStar {
         name: cdktf.stringToTerraform(this._name),
         provider_endpoint: cdktf.stringToTerraform(this._providerEndpoint),
         provider_type: cdktf.stringToTerraform(this._providerType),
-        vpc_configuration: cdktf.listMapper(codestarconnectionsHostVpcConfigurationToTerraform)(this._vpcConfiguration),
+        vpc_configuration: codestarconnectionsHostVpcConfigurationToTerraform(this._vpcConfiguration),
       };
     }
   }
@@ -403,6 +474,9 @@ export namespace CodeStar {
 
   function codestarnotificationsNotificationRuleTargetToTerraform(struct?: CodestarnotificationsNotificationRuleTarget): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       address: cdktf.stringToTerraform(struct!.address),
       type: cdktf.stringToTerraform(struct!.type),
@@ -462,7 +536,7 @@ export namespace CodeStar {
     }
 
     // detail_type - computed: false, optional: false, required: true
-    private _detailType: string;
+    private _detailType?: string; 
     public get detailType() {
       return this.getStringAttribute('detail_type');
     }
@@ -475,7 +549,7 @@ export namespace CodeStar {
     }
 
     // event_type_ids - computed: false, optional: false, required: true
-    private _eventTypeIds: string[];
+    private _eventTypeIds?: string[]; 
     public get eventTypeIds() {
       return this.getListAttribute('event_type_ids');
     }
@@ -493,7 +567,7 @@ export namespace CodeStar {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -506,7 +580,7 @@ export namespace CodeStar {
     }
 
     // resource - computed: false, optional: false, required: true
-    private _resource: string;
+    private _resource?: string; 
     public get resource() {
       return this.getStringAttribute('resource');
     }
@@ -519,11 +593,11 @@ export namespace CodeStar {
     }
 
     // status - computed: false, optional: true, required: false
-    private _status?: string;
+    private _status?: string | undefined; 
     public get status() {
       return this.getStringAttribute('status');
     }
-    public set status(value: string ) {
+    public set status(value: string | undefined) {
       this._status = value;
     }
     public resetStatus() {
@@ -535,11 +609,12 @@ export namespace CodeStar {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -551,11 +626,12 @@ export namespace CodeStar {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -567,11 +643,12 @@ export namespace CodeStar {
     }
 
     // target - computed: false, optional: true, required: false
-    private _target?: CodestarnotificationsNotificationRuleTarget[];
+    private _target?: CodestarnotificationsNotificationRuleTarget[] | undefined; 
     public get target() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('target') as any;
     }
-    public set target(value: CodestarnotificationsNotificationRuleTarget[] ) {
+    public set target(value: CodestarnotificationsNotificationRuleTarget[] | undefined) {
       this._target = value;
     }
     public resetTarget() {
@@ -651,7 +728,7 @@ export namespace CodeStar {
     // ==========
 
     // arn - computed: false, optional: false, required: true
-    private _arn: string;
+    private _arn?: string; 
     public get arn() {
       return this.getStringAttribute('arn');
     }
@@ -689,11 +766,12 @@ export namespace CodeStar {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {

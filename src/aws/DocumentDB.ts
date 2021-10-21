@@ -130,8 +130,11 @@ export namespace DocumentDB {
     readonly update?: string;
   }
 
-  function docdbClusterTimeoutsToTerraform(struct?: DocdbClusterTimeouts): any {
+  function docdbClusterTimeoutsToTerraform(struct?: DocdbClusterTimeoutsOutputReference | DocdbClusterTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -139,6 +142,64 @@ export namespace DocumentDB {
     }
   }
 
+  export class DocdbClusterTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/docdb_cluster.html aws_docdb_cluster}
@@ -205,11 +266,11 @@ export namespace DocumentDB {
     // ==========
 
     // apply_immediately - computed: true, optional: true, required: false
-    private _applyImmediately?: boolean | cdktf.IResolvable;
+    private _applyImmediately?: boolean | cdktf.IResolvable | undefined; 
     public get applyImmediately() {
-      return this.getBooleanAttribute('apply_immediately');
+      return this.getBooleanAttribute('apply_immediately') as any;
     }
-    public set applyImmediately(value: boolean | cdktf.IResolvable) {
+    public set applyImmediately(value: boolean | cdktf.IResolvable | undefined) {
       this._applyImmediately = value;
     }
     public resetApplyImmediately() {
@@ -226,11 +287,11 @@ export namespace DocumentDB {
     }
 
     // availability_zones - computed: true, optional: true, required: false
-    private _availabilityZones?: string[];
+    private _availabilityZones?: string[] | undefined; 
     public get availabilityZones() {
       return this.getListAttribute('availability_zones');
     }
-    public set availabilityZones(value: string[]) {
+    public set availabilityZones(value: string[] | undefined) {
       this._availabilityZones = value;
     }
     public resetAvailabilityZones() {
@@ -242,11 +303,11 @@ export namespace DocumentDB {
     }
 
     // backup_retention_period - computed: false, optional: true, required: false
-    private _backupRetentionPeriod?: number;
+    private _backupRetentionPeriod?: number | undefined; 
     public get backupRetentionPeriod() {
       return this.getNumberAttribute('backup_retention_period');
     }
-    public set backupRetentionPeriod(value: number ) {
+    public set backupRetentionPeriod(value: number | undefined) {
       this._backupRetentionPeriod = value;
     }
     public resetBackupRetentionPeriod() {
@@ -258,11 +319,11 @@ export namespace DocumentDB {
     }
 
     // cluster_identifier - computed: true, optional: true, required: false
-    private _clusterIdentifier?: string;
+    private _clusterIdentifier?: string | undefined; 
     public get clusterIdentifier() {
       return this.getStringAttribute('cluster_identifier');
     }
-    public set clusterIdentifier(value: string) {
+    public set clusterIdentifier(value: string | undefined) {
       this._clusterIdentifier = value;
     }
     public resetClusterIdentifier() {
@@ -274,11 +335,11 @@ export namespace DocumentDB {
     }
 
     // cluster_identifier_prefix - computed: true, optional: true, required: false
-    private _clusterIdentifierPrefix?: string;
+    private _clusterIdentifierPrefix?: string | undefined; 
     public get clusterIdentifierPrefix() {
       return this.getStringAttribute('cluster_identifier_prefix');
     }
-    public set clusterIdentifierPrefix(value: string) {
+    public set clusterIdentifierPrefix(value: string | undefined) {
       this._clusterIdentifierPrefix = value;
     }
     public resetClusterIdentifierPrefix() {
@@ -290,11 +351,11 @@ export namespace DocumentDB {
     }
 
     // cluster_members - computed: true, optional: true, required: false
-    private _clusterMembers?: string[];
+    private _clusterMembers?: string[] | undefined; 
     public get clusterMembers() {
       return this.getListAttribute('cluster_members');
     }
-    public set clusterMembers(value: string[]) {
+    public set clusterMembers(value: string[] | undefined) {
       this._clusterMembers = value;
     }
     public resetClusterMembers() {
@@ -311,11 +372,11 @@ export namespace DocumentDB {
     }
 
     // db_cluster_parameter_group_name - computed: true, optional: true, required: false
-    private _dbClusterParameterGroupName?: string;
+    private _dbClusterParameterGroupName?: string | undefined; 
     public get dbClusterParameterGroupName() {
       return this.getStringAttribute('db_cluster_parameter_group_name');
     }
-    public set dbClusterParameterGroupName(value: string) {
+    public set dbClusterParameterGroupName(value: string | undefined) {
       this._dbClusterParameterGroupName = value;
     }
     public resetDbClusterParameterGroupName() {
@@ -327,11 +388,11 @@ export namespace DocumentDB {
     }
 
     // db_subnet_group_name - computed: true, optional: true, required: false
-    private _dbSubnetGroupName?: string;
+    private _dbSubnetGroupName?: string | undefined; 
     public get dbSubnetGroupName() {
       return this.getStringAttribute('db_subnet_group_name');
     }
-    public set dbSubnetGroupName(value: string) {
+    public set dbSubnetGroupName(value: string | undefined) {
       this._dbSubnetGroupName = value;
     }
     public resetDbSubnetGroupName() {
@@ -343,11 +404,11 @@ export namespace DocumentDB {
     }
 
     // deletion_protection - computed: false, optional: true, required: false
-    private _deletionProtection?: boolean | cdktf.IResolvable;
+    private _deletionProtection?: boolean | cdktf.IResolvable | undefined; 
     public get deletionProtection() {
-      return this.getBooleanAttribute('deletion_protection');
+      return this.getBooleanAttribute('deletion_protection') as any;
     }
-    public set deletionProtection(value: boolean | cdktf.IResolvable ) {
+    public set deletionProtection(value: boolean | cdktf.IResolvable | undefined) {
       this._deletionProtection = value;
     }
     public resetDeletionProtection() {
@@ -359,11 +420,11 @@ export namespace DocumentDB {
     }
 
     // enabled_cloudwatch_logs_exports - computed: false, optional: true, required: false
-    private _enabledCloudwatchLogsExports?: string[];
+    private _enabledCloudwatchLogsExports?: string[] | undefined; 
     public get enabledCloudwatchLogsExports() {
       return this.getListAttribute('enabled_cloudwatch_logs_exports');
     }
-    public set enabledCloudwatchLogsExports(value: string[] ) {
+    public set enabledCloudwatchLogsExports(value: string[] | undefined) {
       this._enabledCloudwatchLogsExports = value;
     }
     public resetEnabledCloudwatchLogsExports() {
@@ -380,11 +441,11 @@ export namespace DocumentDB {
     }
 
     // engine - computed: false, optional: true, required: false
-    private _engine?: string;
+    private _engine?: string | undefined; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
-    public set engine(value: string ) {
+    public set engine(value: string | undefined) {
       this._engine = value;
     }
     public resetEngine() {
@@ -396,11 +457,11 @@ export namespace DocumentDB {
     }
 
     // engine_version - computed: true, optional: true, required: false
-    private _engineVersion?: string;
+    private _engineVersion?: string | undefined; 
     public get engineVersion() {
       return this.getStringAttribute('engine_version');
     }
-    public set engineVersion(value: string) {
+    public set engineVersion(value: string | undefined) {
       this._engineVersion = value;
     }
     public resetEngineVersion() {
@@ -412,11 +473,11 @@ export namespace DocumentDB {
     }
 
     // final_snapshot_identifier - computed: false, optional: true, required: false
-    private _finalSnapshotIdentifier?: string;
+    private _finalSnapshotIdentifier?: string | undefined; 
     public get finalSnapshotIdentifier() {
       return this.getStringAttribute('final_snapshot_identifier');
     }
-    public set finalSnapshotIdentifier(value: string ) {
+    public set finalSnapshotIdentifier(value: string | undefined) {
       this._finalSnapshotIdentifier = value;
     }
     public resetFinalSnapshotIdentifier() {
@@ -438,11 +499,11 @@ export namespace DocumentDB {
     }
 
     // kms_key_id - computed: true, optional: true, required: false
-    private _kmsKeyId?: string;
+    private _kmsKeyId?: string | undefined; 
     public get kmsKeyId() {
       return this.getStringAttribute('kms_key_id');
     }
-    public set kmsKeyId(value: string) {
+    public set kmsKeyId(value: string | undefined) {
       this._kmsKeyId = value;
     }
     public resetKmsKeyId() {
@@ -454,11 +515,11 @@ export namespace DocumentDB {
     }
 
     // master_password - computed: false, optional: true, required: false
-    private _masterPassword?: string;
+    private _masterPassword?: string | undefined; 
     public get masterPassword() {
       return this.getStringAttribute('master_password');
     }
-    public set masterPassword(value: string ) {
+    public set masterPassword(value: string | undefined) {
       this._masterPassword = value;
     }
     public resetMasterPassword() {
@@ -470,11 +531,11 @@ export namespace DocumentDB {
     }
 
     // master_username - computed: true, optional: true, required: false
-    private _masterUsername?: string;
+    private _masterUsername?: string | undefined; 
     public get masterUsername() {
       return this.getStringAttribute('master_username');
     }
-    public set masterUsername(value: string) {
+    public set masterUsername(value: string | undefined) {
       this._masterUsername = value;
     }
     public resetMasterUsername() {
@@ -486,11 +547,11 @@ export namespace DocumentDB {
     }
 
     // port - computed: false, optional: true, required: false
-    private _port?: number;
+    private _port?: number | undefined; 
     public get port() {
       return this.getNumberAttribute('port');
     }
-    public set port(value: number ) {
+    public set port(value: number | undefined) {
       this._port = value;
     }
     public resetPort() {
@@ -502,11 +563,11 @@ export namespace DocumentDB {
     }
 
     // preferred_backup_window - computed: true, optional: true, required: false
-    private _preferredBackupWindow?: string;
+    private _preferredBackupWindow?: string | undefined; 
     public get preferredBackupWindow() {
       return this.getStringAttribute('preferred_backup_window');
     }
-    public set preferredBackupWindow(value: string) {
+    public set preferredBackupWindow(value: string | undefined) {
       this._preferredBackupWindow = value;
     }
     public resetPreferredBackupWindow() {
@@ -518,11 +579,11 @@ export namespace DocumentDB {
     }
 
     // preferred_maintenance_window - computed: true, optional: true, required: false
-    private _preferredMaintenanceWindow?: string;
+    private _preferredMaintenanceWindow?: string | undefined; 
     public get preferredMaintenanceWindow() {
       return this.getStringAttribute('preferred_maintenance_window');
     }
-    public set preferredMaintenanceWindow(value: string) {
+    public set preferredMaintenanceWindow(value: string | undefined) {
       this._preferredMaintenanceWindow = value;
     }
     public resetPreferredMaintenanceWindow() {
@@ -539,11 +600,11 @@ export namespace DocumentDB {
     }
 
     // skip_final_snapshot - computed: false, optional: true, required: false
-    private _skipFinalSnapshot?: boolean | cdktf.IResolvable;
+    private _skipFinalSnapshot?: boolean | cdktf.IResolvable | undefined; 
     public get skipFinalSnapshot() {
-      return this.getBooleanAttribute('skip_final_snapshot');
+      return this.getBooleanAttribute('skip_final_snapshot') as any;
     }
-    public set skipFinalSnapshot(value: boolean | cdktf.IResolvable ) {
+    public set skipFinalSnapshot(value: boolean | cdktf.IResolvable | undefined) {
       this._skipFinalSnapshot = value;
     }
     public resetSkipFinalSnapshot() {
@@ -555,11 +616,11 @@ export namespace DocumentDB {
     }
 
     // snapshot_identifier - computed: false, optional: true, required: false
-    private _snapshotIdentifier?: string;
+    private _snapshotIdentifier?: string | undefined; 
     public get snapshotIdentifier() {
       return this.getStringAttribute('snapshot_identifier');
     }
-    public set snapshotIdentifier(value: string ) {
+    public set snapshotIdentifier(value: string | undefined) {
       this._snapshotIdentifier = value;
     }
     public resetSnapshotIdentifier() {
@@ -571,11 +632,11 @@ export namespace DocumentDB {
     }
 
     // storage_encrypted - computed: false, optional: true, required: false
-    private _storageEncrypted?: boolean | cdktf.IResolvable;
+    private _storageEncrypted?: boolean | cdktf.IResolvable | undefined; 
     public get storageEncrypted() {
-      return this.getBooleanAttribute('storage_encrypted');
+      return this.getBooleanAttribute('storage_encrypted') as any;
     }
-    public set storageEncrypted(value: boolean | cdktf.IResolvable ) {
+    public set storageEncrypted(value: boolean | cdktf.IResolvable | undefined) {
       this._storageEncrypted = value;
     }
     public resetStorageEncrypted() {
@@ -587,11 +648,12 @@ export namespace DocumentDB {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -603,11 +665,12 @@ export namespace DocumentDB {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -619,11 +682,11 @@ export namespace DocumentDB {
     }
 
     // vpc_security_group_ids - computed: true, optional: true, required: false
-    private _vpcSecurityGroupIds?: string[];
+    private _vpcSecurityGroupIds?: string[] | undefined; 
     public get vpcSecurityGroupIds() {
       return this.getListAttribute('vpc_security_group_ids');
     }
-    public set vpcSecurityGroupIds(value: string[]) {
+    public set vpcSecurityGroupIds(value: string[] | undefined) {
       this._vpcSecurityGroupIds = value;
     }
     public resetVpcSecurityGroupIds() {
@@ -635,11 +698,12 @@ export namespace DocumentDB {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DocdbClusterTimeouts;
+    private _timeouts?: DocdbClusterTimeouts | undefined; 
+    private __timeoutsOutput = new DocdbClusterTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DocdbClusterTimeouts ) {
+    public putTimeouts(value: DocdbClusterTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -760,8 +824,11 @@ export namespace DocumentDB {
     readonly update?: string;
   }
 
-  function docdbClusterInstanceTimeoutsToTerraform(struct?: DocdbClusterInstanceTimeouts): any {
+  function docdbClusterInstanceTimeoutsToTerraform(struct?: DocdbClusterInstanceTimeoutsOutputReference | DocdbClusterInstanceTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -769,6 +836,64 @@ export namespace DocumentDB {
     }
   }
 
+  export class DocdbClusterInstanceTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/docdb_cluster_instance.html aws_docdb_cluster_instance}
@@ -823,11 +948,11 @@ export namespace DocumentDB {
     // ==========
 
     // apply_immediately - computed: true, optional: true, required: false
-    private _applyImmediately?: boolean | cdktf.IResolvable;
+    private _applyImmediately?: boolean | cdktf.IResolvable | undefined; 
     public get applyImmediately() {
-      return this.getBooleanAttribute('apply_immediately');
+      return this.getBooleanAttribute('apply_immediately') as any;
     }
-    public set applyImmediately(value: boolean | cdktf.IResolvable) {
+    public set applyImmediately(value: boolean | cdktf.IResolvable | undefined) {
       this._applyImmediately = value;
     }
     public resetApplyImmediately() {
@@ -844,11 +969,11 @@ export namespace DocumentDB {
     }
 
     // auto_minor_version_upgrade - computed: false, optional: true, required: false
-    private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable;
+    private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable | undefined; 
     public get autoMinorVersionUpgrade() {
-      return this.getBooleanAttribute('auto_minor_version_upgrade');
+      return this.getBooleanAttribute('auto_minor_version_upgrade') as any;
     }
-    public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable ) {
+    public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable | undefined) {
       this._autoMinorVersionUpgrade = value;
     }
     public resetAutoMinorVersionUpgrade() {
@@ -860,11 +985,11 @@ export namespace DocumentDB {
     }
 
     // availability_zone - computed: true, optional: true, required: false
-    private _availabilityZone?: string;
+    private _availabilityZone?: string | undefined; 
     public get availabilityZone() {
       return this.getStringAttribute('availability_zone');
     }
-    public set availabilityZone(value: string) {
+    public set availabilityZone(value: string | undefined) {
       this._availabilityZone = value;
     }
     public resetAvailabilityZone() {
@@ -876,11 +1001,11 @@ export namespace DocumentDB {
     }
 
     // ca_cert_identifier - computed: true, optional: true, required: false
-    private _caCertIdentifier?: string;
+    private _caCertIdentifier?: string | undefined; 
     public get caCertIdentifier() {
       return this.getStringAttribute('ca_cert_identifier');
     }
-    public set caCertIdentifier(value: string) {
+    public set caCertIdentifier(value: string | undefined) {
       this._caCertIdentifier = value;
     }
     public resetCaCertIdentifier() {
@@ -892,7 +1017,7 @@ export namespace DocumentDB {
     }
 
     // cluster_identifier - computed: false, optional: false, required: true
-    private _clusterIdentifier: string;
+    private _clusterIdentifier?: string; 
     public get clusterIdentifier() {
       return this.getStringAttribute('cluster_identifier');
     }
@@ -920,11 +1045,11 @@ export namespace DocumentDB {
     }
 
     // engine - computed: false, optional: true, required: false
-    private _engine?: string;
+    private _engine?: string | undefined; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
-    public set engine(value: string ) {
+    public set engine(value: string | undefined) {
       this._engine = value;
     }
     public resetEngine() {
@@ -946,11 +1071,11 @@ export namespace DocumentDB {
     }
 
     // identifier - computed: true, optional: true, required: false
-    private _identifier?: string;
+    private _identifier?: string | undefined; 
     public get identifier() {
       return this.getStringAttribute('identifier');
     }
-    public set identifier(value: string) {
+    public set identifier(value: string | undefined) {
       this._identifier = value;
     }
     public resetIdentifier() {
@@ -962,11 +1087,11 @@ export namespace DocumentDB {
     }
 
     // identifier_prefix - computed: true, optional: true, required: false
-    private _identifierPrefix?: string;
+    private _identifierPrefix?: string | undefined; 
     public get identifierPrefix() {
       return this.getStringAttribute('identifier_prefix');
     }
-    public set identifierPrefix(value: string) {
+    public set identifierPrefix(value: string | undefined) {
       this._identifierPrefix = value;
     }
     public resetIdentifierPrefix() {
@@ -978,7 +1103,7 @@ export namespace DocumentDB {
     }
 
     // instance_class - computed: false, optional: false, required: true
-    private _instanceClass: string;
+    private _instanceClass?: string; 
     public get instanceClass() {
       return this.getStringAttribute('instance_class');
     }
@@ -1006,11 +1131,11 @@ export namespace DocumentDB {
     }
 
     // preferred_maintenance_window - computed: true, optional: true, required: false
-    private _preferredMaintenanceWindow?: string;
+    private _preferredMaintenanceWindow?: string | undefined; 
     public get preferredMaintenanceWindow() {
       return this.getStringAttribute('preferred_maintenance_window');
     }
-    public set preferredMaintenanceWindow(value: string) {
+    public set preferredMaintenanceWindow(value: string | undefined) {
       this._preferredMaintenanceWindow = value;
     }
     public resetPreferredMaintenanceWindow() {
@@ -1022,11 +1147,11 @@ export namespace DocumentDB {
     }
 
     // promotion_tier - computed: false, optional: true, required: false
-    private _promotionTier?: number;
+    private _promotionTier?: number | undefined; 
     public get promotionTier() {
       return this.getNumberAttribute('promotion_tier');
     }
-    public set promotionTier(value: number ) {
+    public set promotionTier(value: number | undefined) {
       this._promotionTier = value;
     }
     public resetPromotionTier() {
@@ -1039,20 +1164,21 @@ export namespace DocumentDB {
 
     // publicly_accessible - computed: true, optional: false, required: false
     public get publiclyAccessible() {
-      return this.getBooleanAttribute('publicly_accessible');
+      return this.getBooleanAttribute('publicly_accessible') as any;
     }
 
     // storage_encrypted - computed: true, optional: false, required: false
     public get storageEncrypted() {
-      return this.getBooleanAttribute('storage_encrypted');
+      return this.getBooleanAttribute('storage_encrypted') as any;
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1064,11 +1190,12 @@ export namespace DocumentDB {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1081,15 +1208,16 @@ export namespace DocumentDB {
 
     // writer - computed: true, optional: false, required: false
     public get writer() {
-      return this.getBooleanAttribute('writer');
+      return this.getBooleanAttribute('writer') as any;
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DocdbClusterInstanceTimeouts;
+    private _timeouts?: DocdbClusterInstanceTimeouts | undefined; 
+    private __timeoutsOutput = new DocdbClusterInstanceTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DocdbClusterInstanceTimeouts ) {
+    public putTimeouts(value: DocdbClusterInstanceTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1172,6 +1300,9 @@ export namespace DocumentDB {
 
   function docdbClusterParameterGroupParameterToTerraform(struct?: DocdbClusterParameterGroupParameter): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       apply_method: cdktf.stringToTerraform(struct!.applyMethod),
       name: cdktf.stringToTerraform(struct!.name),
@@ -1231,11 +1362,11 @@ export namespace DocumentDB {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1247,7 +1378,7 @@ export namespace DocumentDB {
     }
 
     // family - computed: false, optional: false, required: true
-    private _family: string;
+    private _family?: string; 
     public get family() {
       return this.getStringAttribute('family');
     }
@@ -1265,11 +1396,11 @@ export namespace DocumentDB {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1281,11 +1412,11 @@ export namespace DocumentDB {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -1297,11 +1428,12 @@ export namespace DocumentDB {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1313,11 +1445,12 @@ export namespace DocumentDB {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1329,11 +1462,12 @@ export namespace DocumentDB {
     }
 
     // parameter - computed: false, optional: true, required: false
-    private _parameter?: DocdbClusterParameterGroupParameter[];
+    private _parameter?: DocdbClusterParameterGroupParameter[] | undefined; 
     public get parameter() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('parameter') as any;
     }
-    public set parameter(value: DocdbClusterParameterGroupParameter[] ) {
+    public set parameter(value: DocdbClusterParameterGroupParameter[] | undefined) {
       this._parameter = value;
     }
     public resetParameter() {
@@ -1383,13 +1517,42 @@ export namespace DocumentDB {
     readonly create?: string;
   }
 
-  function docdbClusterSnapshotTimeoutsToTerraform(struct?: DocdbClusterSnapshotTimeouts): any {
+  function docdbClusterSnapshotTimeoutsToTerraform(struct?: DocdbClusterSnapshotTimeoutsOutputReference | DocdbClusterSnapshotTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
     }
   }
 
+  export class DocdbClusterSnapshotTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/docdb_cluster_snapshot.html aws_docdb_cluster_snapshot}
@@ -1438,7 +1601,7 @@ export namespace DocumentDB {
     }
 
     // db_cluster_identifier - computed: false, optional: false, required: true
-    private _dbClusterIdentifier: string;
+    private _dbClusterIdentifier?: string; 
     public get dbClusterIdentifier() {
       return this.getStringAttribute('db_cluster_identifier');
     }
@@ -1456,7 +1619,7 @@ export namespace DocumentDB {
     }
 
     // db_cluster_snapshot_identifier - computed: false, optional: false, required: true
-    private _dbClusterSnapshotIdentifier: string;
+    private _dbClusterSnapshotIdentifier?: string; 
     public get dbClusterSnapshotIdentifier() {
       return this.getStringAttribute('db_cluster_snapshot_identifier');
     }
@@ -1510,7 +1673,7 @@ export namespace DocumentDB {
 
     // storage_encrypted - computed: true, optional: false, required: false
     public get storageEncrypted() {
-      return this.getBooleanAttribute('storage_encrypted');
+      return this.getBooleanAttribute('storage_encrypted') as any;
     }
 
     // vpc_id - computed: true, optional: false, required: false
@@ -1519,11 +1682,12 @@ export namespace DocumentDB {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: DocdbClusterSnapshotTimeouts;
+    private _timeouts?: DocdbClusterSnapshotTimeouts | undefined; 
+    private __timeoutsOutput = new DocdbClusterSnapshotTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: DocdbClusterSnapshotTimeouts ) {
+    public putTimeouts(value: DocdbClusterSnapshotTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1623,11 +1787,11 @@ export namespace DocumentDB {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1644,11 +1808,11 @@ export namespace DocumentDB {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1660,11 +1824,11 @@ export namespace DocumentDB {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -1676,7 +1840,7 @@ export namespace DocumentDB {
     }
 
     // subnet_ids - computed: false, optional: false, required: true
-    private _subnetIds: string[];
+    private _subnetIds?: string[]; 
     public get subnetIds() {
       return this.getListAttribute('subnet_ids');
     }
@@ -1689,11 +1853,12 @@ export namespace DocumentDB {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1705,11 +1870,12 @@ export namespace DocumentDB {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1797,11 +1963,11 @@ export namespace DocumentDB {
     // ==========
 
     // engine - computed: false, optional: true, required: false
-    private _engine?: string;
+    private _engine?: string | undefined; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
-    public set engine(value: string ) {
+    public set engine(value: string | undefined) {
       this._engine = value;
     }
     public resetEngine() {
@@ -1828,11 +1994,11 @@ export namespace DocumentDB {
     }
 
     // parameter_group_family - computed: true, optional: true, required: false
-    private _parameterGroupFamily?: string;
+    private _parameterGroupFamily?: string | undefined; 
     public get parameterGroupFamily() {
       return this.getStringAttribute('parameter_group_family');
     }
-    public set parameterGroupFamily(value: string) {
+    public set parameterGroupFamily(value: string | undefined) {
       this._parameterGroupFamily = value;
     }
     public resetParameterGroupFamily() {
@@ -1844,11 +2010,11 @@ export namespace DocumentDB {
     }
 
     // preferred_versions - computed: false, optional: true, required: false
-    private _preferredVersions?: string[];
+    private _preferredVersions?: string[] | undefined; 
     public get preferredVersions() {
       return this.getListAttribute('preferred_versions');
     }
-    public set preferredVersions(value: string[] ) {
+    public set preferredVersions(value: string[] | undefined) {
       this._preferredVersions = value;
     }
     public resetPreferredVersions() {
@@ -1861,7 +2027,7 @@ export namespace DocumentDB {
 
     // supports_log_exports_to_cloudwatch - computed: true, optional: false, required: false
     public get supportsLogExportsToCloudwatch() {
-      return this.getBooleanAttribute('supports_log_exports_to_cloudwatch');
+      return this.getBooleanAttribute('supports_log_exports_to_cloudwatch') as any;
     }
 
     // valid_upgrade_targets - computed: true, optional: false, required: false
@@ -1870,11 +2036,11 @@ export namespace DocumentDB {
     }
 
     // version - computed: true, optional: true, required: false
-    private _version?: string;
+    private _version?: string | undefined; 
     public get version() {
       return this.getStringAttribute('version');
     }
-    public set version(value: string) {
+    public set version(value: string | undefined) {
       this._version = value;
     }
     public resetVersion() {
@@ -1980,11 +2146,11 @@ export namespace DocumentDB {
     }
 
     // engine - computed: false, optional: true, required: false
-    private _engine?: string;
+    private _engine?: string | undefined; 
     public get engine() {
       return this.getStringAttribute('engine');
     }
-    public set engine(value: string ) {
+    public set engine(value: string | undefined) {
       this._engine = value;
     }
     public resetEngine() {
@@ -1996,11 +2162,11 @@ export namespace DocumentDB {
     }
 
     // engine_version - computed: true, optional: true, required: false
-    private _engineVersion?: string;
+    private _engineVersion?: string | undefined; 
     public get engineVersion() {
       return this.getStringAttribute('engine_version');
     }
-    public set engineVersion(value: string) {
+    public set engineVersion(value: string | undefined) {
       this._engineVersion = value;
     }
     public resetEngineVersion() {
@@ -2017,11 +2183,11 @@ export namespace DocumentDB {
     }
 
     // instance_class - computed: true, optional: true, required: false
-    private _instanceClass?: string;
+    private _instanceClass?: string | undefined; 
     public get instanceClass() {
       return this.getStringAttribute('instance_class');
     }
-    public set instanceClass(value: string) {
+    public set instanceClass(value: string | undefined) {
       this._instanceClass = value;
     }
     public resetInstanceClass() {
@@ -2033,11 +2199,11 @@ export namespace DocumentDB {
     }
 
     // license_model - computed: false, optional: true, required: false
-    private _licenseModel?: string;
+    private _licenseModel?: string | undefined; 
     public get licenseModel() {
       return this.getStringAttribute('license_model');
     }
-    public set licenseModel(value: string ) {
+    public set licenseModel(value: string | undefined) {
       this._licenseModel = value;
     }
     public resetLicenseModel() {
@@ -2049,11 +2215,11 @@ export namespace DocumentDB {
     }
 
     // preferred_instance_classes - computed: false, optional: true, required: false
-    private _preferredInstanceClasses?: string[];
+    private _preferredInstanceClasses?: string[] | undefined; 
     public get preferredInstanceClasses() {
       return this.getListAttribute('preferred_instance_classes');
     }
-    public set preferredInstanceClasses(value: string[] ) {
+    public set preferredInstanceClasses(value: string[] | undefined) {
       this._preferredInstanceClasses = value;
     }
     public resetPreferredInstanceClasses() {
@@ -2065,11 +2231,11 @@ export namespace DocumentDB {
     }
 
     // vpc - computed: true, optional: true, required: false
-    private _vpc?: boolean | cdktf.IResolvable;
+    private _vpc?: boolean | cdktf.IResolvable | undefined; 
     public get vpc() {
-      return this.getBooleanAttribute('vpc');
+      return this.getBooleanAttribute('vpc') as any;
     }
-    public set vpc(value: boolean | cdktf.IResolvable) {
+    public set vpc(value: boolean | cdktf.IResolvable | undefined) {
       this._vpc = value;
     }
     public resetVpc() {

@@ -64,7 +64,7 @@ export namespace DirectoryService {
     // ==========
 
     // directory_id - computed: false, optional: false, required: true
-    private _directoryId: string;
+    private _directoryId?: string; 
     public get directoryId() {
       return this.getStringAttribute('directory_id');
     }
@@ -77,7 +77,7 @@ export namespace DirectoryService {
     }
 
     // dns_ips - computed: false, optional: false, required: true
-    private _dnsIps: string[];
+    private _dnsIps?: string[]; 
     public get dnsIps() {
       return this.getListAttribute('dns_ips');
     }
@@ -95,7 +95,7 @@ export namespace DirectoryService {
     }
 
     // remote_domain_name - computed: false, optional: false, required: true
-    private _remoteDomainName: string;
+    private _remoteDomainName?: string; 
     public get remoteDomainName() {
       return this.getStringAttribute('remote_domain_name');
     }
@@ -169,13 +169,13 @@ export namespace DirectoryService {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/directory_service_directory.html#connect_settings DirectoryServiceDirectory#connect_settings}
     */
-    readonly connectSettings?: DirectoryServiceDirectoryConnectSettings[];
+    readonly connectSettings?: DirectoryServiceDirectoryConnectSettings;
     /**
     * vpc_settings block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/directory_service_directory.html#vpc_settings DirectoryServiceDirectory#vpc_settings}
     */
-    readonly vpcSettings?: DirectoryServiceDirectoryVpcSettings[];
+    readonly vpcSettings?: DirectoryServiceDirectoryVpcSettings;
   }
   export interface DirectoryServiceDirectoryConnectSettings {
     /**
@@ -196,8 +196,11 @@ export namespace DirectoryService {
     readonly vpcId: string;
   }
 
-  function directoryServiceDirectoryConnectSettingsToTerraform(struct?: DirectoryServiceDirectoryConnectSettings): any {
+  function directoryServiceDirectoryConnectSettingsToTerraform(struct?: DirectoryServiceDirectoryConnectSettingsOutputReference | DirectoryServiceDirectoryConnectSettings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       customer_dns_ips: cdktf.listMapper(cdktf.stringToTerraform)(struct!.customerDnsIps),
       customer_username: cdktf.stringToTerraform(struct!.customerUsername),
@@ -206,6 +209,68 @@ export namespace DirectoryService {
     }
   }
 
+  export class DirectoryServiceDirectoryConnectSettingsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // customer_dns_ips - computed: false, optional: false, required: true
+    private _customerDnsIps?: string[]; 
+    public get customerDnsIps() {
+      return this.getListAttribute('customer_dns_ips');
+    }
+    public set customerDnsIps(value: string[]) {
+      this._customerDnsIps = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get customerDnsIpsInput() {
+      return this._customerDnsIps
+    }
+
+    // customer_username - computed: false, optional: false, required: true
+    private _customerUsername?: string; 
+    public get customerUsername() {
+      return this.getStringAttribute('customer_username');
+    }
+    public set customerUsername(value: string) {
+      this._customerUsername = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get customerUsernameInput() {
+      return this._customerUsername
+    }
+
+    // subnet_ids - computed: false, optional: false, required: true
+    private _subnetIds?: string[]; 
+    public get subnetIds() {
+      return this.getListAttribute('subnet_ids');
+    }
+    public set subnetIds(value: string[]) {
+      this._subnetIds = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get subnetIdsInput() {
+      return this._subnetIds
+    }
+
+    // vpc_id - computed: false, optional: false, required: true
+    private _vpcId?: string; 
+    public get vpcId() {
+      return this.getStringAttribute('vpc_id');
+    }
+    public set vpcId(value: string) {
+      this._vpcId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get vpcIdInput() {
+      return this._vpcId
+    }
+  }
   export interface DirectoryServiceDirectoryVpcSettings {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/directory_service_directory.html#subnet_ids DirectoryServiceDirectory#subnet_ids}
@@ -217,14 +282,53 @@ export namespace DirectoryService {
     readonly vpcId: string;
   }
 
-  function directoryServiceDirectoryVpcSettingsToTerraform(struct?: DirectoryServiceDirectoryVpcSettings): any {
+  function directoryServiceDirectoryVpcSettingsToTerraform(struct?: DirectoryServiceDirectoryVpcSettingsOutputReference | DirectoryServiceDirectoryVpcSettings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.subnetIds),
       vpc_id: cdktf.stringToTerraform(struct!.vpcId),
     }
   }
 
+  export class DirectoryServiceDirectoryVpcSettingsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // subnet_ids - computed: false, optional: false, required: true
+    private _subnetIds?: string[]; 
+    public get subnetIds() {
+      return this.getListAttribute('subnet_ids');
+    }
+    public set subnetIds(value: string[]) {
+      this._subnetIds = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get subnetIdsInput() {
+      return this._subnetIds
+    }
+
+    // vpc_id - computed: false, optional: false, required: true
+    private _vpcId?: string; 
+    public get vpcId() {
+      return this.getStringAttribute('vpc_id');
+    }
+    public set vpcId(value: string) {
+      this._vpcId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get vpcIdInput() {
+      return this._vpcId
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/directory_service_directory.html aws_directory_service_directory}
@@ -283,11 +387,11 @@ export namespace DirectoryService {
     }
 
     // alias - computed: true, optional: true, required: false
-    private _alias?: string;
+    private _alias?: string | undefined; 
     public get alias() {
       return this.getStringAttribute('alias');
     }
-    public set alias(value: string) {
+    public set alias(value: string | undefined) {
       this._alias = value;
     }
     public resetAlias() {
@@ -299,11 +403,11 @@ export namespace DirectoryService {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -320,11 +424,11 @@ export namespace DirectoryService {
     }
 
     // edition - computed: true, optional: true, required: false
-    private _edition?: string;
+    private _edition?: string | undefined; 
     public get edition() {
       return this.getStringAttribute('edition');
     }
-    public set edition(value: string) {
+    public set edition(value: string | undefined) {
       this._edition = value;
     }
     public resetEdition() {
@@ -336,11 +440,11 @@ export namespace DirectoryService {
     }
 
     // enable_sso - computed: false, optional: true, required: false
-    private _enableSso?: boolean | cdktf.IResolvable;
+    private _enableSso?: boolean | cdktf.IResolvable | undefined; 
     public get enableSso() {
-      return this.getBooleanAttribute('enable_sso');
+      return this.getBooleanAttribute('enable_sso') as any;
     }
-    public set enableSso(value: boolean | cdktf.IResolvable ) {
+    public set enableSso(value: boolean | cdktf.IResolvable | undefined) {
       this._enableSso = value;
     }
     public resetEnableSso() {
@@ -357,7 +461,7 @@ export namespace DirectoryService {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -370,7 +474,7 @@ export namespace DirectoryService {
     }
 
     // password - computed: false, optional: false, required: true
-    private _password: string;
+    private _password?: string; 
     public get password() {
       return this.getStringAttribute('password');
     }
@@ -388,11 +492,11 @@ export namespace DirectoryService {
     }
 
     // short_name - computed: true, optional: true, required: false
-    private _shortName?: string;
+    private _shortName?: string | undefined; 
     public get shortName() {
       return this.getStringAttribute('short_name');
     }
-    public set shortName(value: string) {
+    public set shortName(value: string | undefined) {
       this._shortName = value;
     }
     public resetShortName() {
@@ -404,11 +508,11 @@ export namespace DirectoryService {
     }
 
     // size - computed: true, optional: true, required: false
-    private _size?: string;
+    private _size?: string | undefined; 
     public get size() {
       return this.getStringAttribute('size');
     }
-    public set size(value: string) {
+    public set size(value: string | undefined) {
       this._size = value;
     }
     public resetSize() {
@@ -420,11 +524,12 @@ export namespace DirectoryService {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -436,11 +541,12 @@ export namespace DirectoryService {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -452,11 +558,11 @@ export namespace DirectoryService {
     }
 
     // type - computed: false, optional: true, required: false
-    private _type?: string;
+    private _type?: string | undefined; 
     public get type() {
       return this.getStringAttribute('type');
     }
-    public set type(value: string ) {
+    public set type(value: string | undefined) {
       this._type = value;
     }
     public resetType() {
@@ -468,11 +574,12 @@ export namespace DirectoryService {
     }
 
     // connect_settings - computed: false, optional: true, required: false
-    private _connectSettings?: DirectoryServiceDirectoryConnectSettings[];
+    private _connectSettings?: DirectoryServiceDirectoryConnectSettings | undefined; 
+    private __connectSettingsOutput = new DirectoryServiceDirectoryConnectSettingsOutputReference(this as any, "connect_settings", true);
     public get connectSettings() {
-      return this.interpolationForAttribute('connect_settings') as any;
+      return this.__connectSettingsOutput;
     }
-    public set connectSettings(value: DirectoryServiceDirectoryConnectSettings[] ) {
+    public putConnectSettings(value: DirectoryServiceDirectoryConnectSettings | undefined) {
       this._connectSettings = value;
     }
     public resetConnectSettings() {
@@ -484,11 +591,12 @@ export namespace DirectoryService {
     }
 
     // vpc_settings - computed: false, optional: true, required: false
-    private _vpcSettings?: DirectoryServiceDirectoryVpcSettings[];
+    private _vpcSettings?: DirectoryServiceDirectoryVpcSettings | undefined; 
+    private __vpcSettingsOutput = new DirectoryServiceDirectoryVpcSettingsOutputReference(this as any, "vpc_settings", true);
     public get vpcSettings() {
-      return this.interpolationForAttribute('vpc_settings') as any;
+      return this.__vpcSettingsOutput;
     }
-    public set vpcSettings(value: DirectoryServiceDirectoryVpcSettings[] ) {
+    public putVpcSettings(value: DirectoryServiceDirectoryVpcSettings | undefined) {
       this._vpcSettings = value;
     }
     public resetVpcSettings() {
@@ -516,8 +624,8 @@ export namespace DirectoryService {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         type: cdktf.stringToTerraform(this._type),
-        connect_settings: cdktf.listMapper(directoryServiceDirectoryConnectSettingsToTerraform)(this._connectSettings),
-        vpc_settings: cdktf.listMapper(directoryServiceDirectoryVpcSettingsToTerraform)(this._vpcSettings),
+        connect_settings: directoryServiceDirectoryConnectSettingsToTerraform(this._connectSettings),
+        vpc_settings: directoryServiceDirectoryVpcSettingsToTerraform(this._vpcSettings),
       };
     }
   }
@@ -573,7 +681,7 @@ export namespace DirectoryService {
     // ==========
 
     // directory_id - computed: false, optional: false, required: true
-    private _directoryId: string;
+    private _directoryId?: string; 
     public get directoryId() {
       return this.getStringAttribute('directory_id');
     }
@@ -591,7 +699,7 @@ export namespace DirectoryService {
     }
 
     // log_group_name - computed: false, optional: false, required: true
-    private _logGroupName: string;
+    private _logGroupName?: string; 
     public get logGroupName() {
       return this.getStringAttribute('log_group_name');
     }
@@ -735,7 +843,7 @@ export namespace DirectoryService {
     }
 
     // directory_id - computed: false, optional: false, required: true
-    private _directoryId: string;
+    private _directoryId?: string; 
     public get directoryId() {
       return this.getStringAttribute('directory_id');
     }
@@ -759,7 +867,7 @@ export namespace DirectoryService {
 
     // enable_sso - computed: true, optional: false, required: false
     public get enableSso() {
-      return this.getBooleanAttribute('enable_sso');
+      return this.getBooleanAttribute('enable_sso') as any;
     }
 
     // id - computed: true, optional: true, required: false
@@ -788,11 +896,12 @@ export namespace DirectoryService {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {

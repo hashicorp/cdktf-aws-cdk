@@ -58,8 +58,11 @@ export namespace ServerlessApplicationRepository {
     readonly update?: string;
   }
 
-  function serverlessapplicationrepositoryCloudformationStackTimeoutsToTerraform(struct?: ServerlessapplicationrepositoryCloudformationStackTimeouts): any {
+  function serverlessapplicationrepositoryCloudformationStackTimeoutsToTerraform(struct?: ServerlessapplicationrepositoryCloudformationStackTimeoutsOutputReference | ServerlessapplicationrepositoryCloudformationStackTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -67,6 +70,64 @@ export namespace ServerlessApplicationRepository {
     }
   }
 
+  export class ServerlessapplicationrepositoryCloudformationStackTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/serverlessapplicationrepository_cloudformation_stack.html aws_serverlessapplicationrepository_cloudformation_stack}
@@ -115,7 +176,7 @@ export namespace ServerlessApplicationRepository {
     // ==========
 
     // application_id - computed: false, optional: false, required: true
-    private _applicationId: string;
+    private _applicationId?: string; 
     public get applicationId() {
       return this.getStringAttribute('application_id');
     }
@@ -128,7 +189,7 @@ export namespace ServerlessApplicationRepository {
     }
 
     // capabilities - computed: false, optional: false, required: true
-    private _capabilities: string[];
+    private _capabilities?: string[]; 
     public get capabilities() {
       return this.getListAttribute('capabilities');
     }
@@ -146,7 +207,7 @@ export namespace ServerlessApplicationRepository {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -164,11 +225,12 @@ export namespace ServerlessApplicationRepository {
     }
 
     // parameters - computed: true, optional: true, required: false
-    private _parameters?: { [key: string]: string } | cdktf.IResolvable
-    public get parameters(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('parameters') as any; // Getting the computed value is not yet implemented
+    private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get parameters() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('parameters') as any;
     }
-    public set parameters(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._parameters = value;
     }
     public resetParameters() {
@@ -180,11 +242,11 @@ export namespace ServerlessApplicationRepository {
     }
 
     // semantic_version - computed: true, optional: true, required: false
-    private _semanticVersion?: string;
+    private _semanticVersion?: string | undefined; 
     public get semanticVersion() {
       return this.getStringAttribute('semantic_version');
     }
-    public set semanticVersion(value: string) {
+    public set semanticVersion(value: string | undefined) {
       this._semanticVersion = value;
     }
     public resetSemanticVersion() {
@@ -196,11 +258,12 @@ export namespace ServerlessApplicationRepository {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -212,11 +275,12 @@ export namespace ServerlessApplicationRepository {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -228,11 +292,12 @@ export namespace ServerlessApplicationRepository {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: ServerlessapplicationrepositoryCloudformationStackTimeouts;
+    private _timeouts?: ServerlessapplicationrepositoryCloudformationStackTimeouts | undefined; 
+    private __timeoutsOutput = new ServerlessapplicationrepositoryCloudformationStackTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: ServerlessapplicationrepositoryCloudformationStackTimeouts ) {
+    public putTimeouts(value: ServerlessapplicationrepositoryCloudformationStackTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -312,7 +377,7 @@ export namespace ServerlessApplicationRepository {
     // ==========
 
     // application_id - computed: false, optional: false, required: true
-    private _applicationId: string;
+    private _applicationId?: string; 
     public get applicationId() {
       return this.getStringAttribute('application_id');
     }
@@ -340,11 +405,11 @@ export namespace ServerlessApplicationRepository {
     }
 
     // semantic_version - computed: true, optional: true, required: false
-    private _semanticVersion?: string;
+    private _semanticVersion?: string | undefined; 
     public get semanticVersion() {
       return this.getStringAttribute('semantic_version');
     }
-    public set semanticVersion(value: string) {
+    public set semanticVersion(value: string | undefined) {
       this._semanticVersion = value;
     }
     public resetSemanticVersion() {

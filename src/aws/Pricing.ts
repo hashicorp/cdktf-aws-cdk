@@ -32,6 +32,9 @@ export namespace Pricing {
 
   function dataAwsPricingProductFiltersToTerraform(struct?: DataAwsPricingProductFilters): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       field: cdktf.stringToTerraform(struct!.field),
       value: cdktf.stringToTerraform(struct!.value),
@@ -90,7 +93,7 @@ export namespace Pricing {
     }
 
     // service_code - computed: false, optional: false, required: true
-    private _serviceCode: string;
+    private _serviceCode?: string; 
     public get serviceCode() {
       return this.getStringAttribute('service_code');
     }
@@ -103,8 +106,9 @@ export namespace Pricing {
     }
 
     // filters - computed: false, optional: false, required: true
-    private _filters: DataAwsPricingProductFilters[];
+    private _filters?: DataAwsPricingProductFilters[]; 
     public get filters() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('filters') as any;
     }
     public set filters(value: DataAwsPricingProductFilters[]) {

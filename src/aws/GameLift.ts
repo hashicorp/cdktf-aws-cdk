@@ -29,7 +29,7 @@ export namespace GameLift {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/gamelift_alias.html#routing_strategy GameliftAlias#routing_strategy}
     */
-    readonly routingStrategy: GameliftAliasRoutingStrategy[];
+    readonly routingStrategy: GameliftAliasRoutingStrategy;
   }
   export interface GameliftAliasRoutingStrategy {
     /**
@@ -46,8 +46,11 @@ export namespace GameLift {
     readonly type: string;
   }
 
-  function gameliftAliasRoutingStrategyToTerraform(struct?: GameliftAliasRoutingStrategy): any {
+  function gameliftAliasRoutingStrategyToTerraform(struct?: GameliftAliasRoutingStrategyOutputReference | GameliftAliasRoutingStrategy): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       fleet_id: cdktf.stringToTerraform(struct!.fleetId),
       message: cdktf.stringToTerraform(struct!.message),
@@ -55,6 +58,61 @@ export namespace GameLift {
     }
   }
 
+  export class GameliftAliasRoutingStrategyOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // fleet_id - computed: false, optional: true, required: false
+    private _fleetId?: string | undefined; 
+    public get fleetId() {
+      return this.getStringAttribute('fleet_id');
+    }
+    public set fleetId(value: string | undefined) {
+      this._fleetId = value;
+    }
+    public resetFleetId() {
+      this._fleetId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get fleetIdInput() {
+      return this._fleetId
+    }
+
+    // message - computed: false, optional: true, required: false
+    private _message?: string | undefined; 
+    public get message() {
+      return this.getStringAttribute('message');
+    }
+    public set message(value: string | undefined) {
+      this._message = value;
+    }
+    public resetMessage() {
+      this._message = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get messageInput() {
+      return this._message
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/gamelift_alias.html aws_gamelift_alias}
@@ -105,11 +163,11 @@ export namespace GameLift {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -126,7 +184,7 @@ export namespace GameLift {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -139,11 +197,12 @@ export namespace GameLift {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -155,11 +214,12 @@ export namespace GameLift {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -171,11 +231,12 @@ export namespace GameLift {
     }
 
     // routing_strategy - computed: false, optional: false, required: true
-    private _routingStrategy: GameliftAliasRoutingStrategy[];
+    private _routingStrategy?: GameliftAliasRoutingStrategy; 
+    private __routingStrategyOutput = new GameliftAliasRoutingStrategyOutputReference(this as any, "routing_strategy", true);
     public get routingStrategy() {
-      return this.interpolationForAttribute('routing_strategy') as any;
+      return this.__routingStrategyOutput;
     }
-    public set routingStrategy(value: GameliftAliasRoutingStrategy[]) {
+    public putRoutingStrategy(value: GameliftAliasRoutingStrategy) {
       this._routingStrategy = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -193,7 +254,7 @@ export namespace GameLift {
         name: cdktf.stringToTerraform(this._name),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        routing_strategy: cdktf.listMapper(gameliftAliasRoutingStrategyToTerraform)(this._routingStrategy),
+        routing_strategy: gameliftAliasRoutingStrategyToTerraform(this._routingStrategy),
       };
     }
   }
@@ -223,7 +284,7 @@ export namespace GameLift {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/gamelift_build.html#storage_location GameliftBuild#storage_location}
     */
-    readonly storageLocation: GameliftBuildStorageLocation[];
+    readonly storageLocation: GameliftBuildStorageLocation;
   }
   export interface GameliftBuildStorageLocation {
     /**
@@ -240,8 +301,11 @@ export namespace GameLift {
     readonly roleArn: string;
   }
 
-  function gameliftBuildStorageLocationToTerraform(struct?: GameliftBuildStorageLocation): any {
+  function gameliftBuildStorageLocationToTerraform(struct?: GameliftBuildStorageLocationOutputReference | GameliftBuildStorageLocation): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bucket: cdktf.stringToTerraform(struct!.bucket),
       key: cdktf.stringToTerraform(struct!.key),
@@ -249,6 +313,55 @@ export namespace GameLift {
     }
   }
 
+  export class GameliftBuildStorageLocationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // bucket - computed: false, optional: false, required: true
+    private _bucket?: string; 
+    public get bucket() {
+      return this.getStringAttribute('bucket');
+    }
+    public set bucket(value: string) {
+      this._bucket = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bucketInput() {
+      return this._bucket
+    }
+
+    // key - computed: false, optional: false, required: true
+    private _key?: string; 
+    public get key() {
+      return this.getStringAttribute('key');
+    }
+    public set key(value: string) {
+      this._key = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get keyInput() {
+      return this._key
+    }
+
+    // role_arn - computed: false, optional: false, required: true
+    private _roleArn?: string; 
+    public get roleArn() {
+      return this.getStringAttribute('role_arn');
+    }
+    public set roleArn(value: string) {
+      this._roleArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get roleArnInput() {
+      return this._roleArn
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/gamelift_build.html aws_gamelift_build}
@@ -305,7 +418,7 @@ export namespace GameLift {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -318,7 +431,7 @@ export namespace GameLift {
     }
 
     // operating_system - computed: false, optional: false, required: true
-    private _operatingSystem: string;
+    private _operatingSystem?: string; 
     public get operatingSystem() {
       return this.getStringAttribute('operating_system');
     }
@@ -331,11 +444,12 @@ export namespace GameLift {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -347,11 +461,12 @@ export namespace GameLift {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -363,11 +478,11 @@ export namespace GameLift {
     }
 
     // version - computed: false, optional: true, required: false
-    private _version?: string;
+    private _version?: string | undefined; 
     public get version() {
       return this.getStringAttribute('version');
     }
-    public set version(value: string ) {
+    public set version(value: string | undefined) {
       this._version = value;
     }
     public resetVersion() {
@@ -379,11 +494,12 @@ export namespace GameLift {
     }
 
     // storage_location - computed: false, optional: false, required: true
-    private _storageLocation: GameliftBuildStorageLocation[];
+    private _storageLocation?: GameliftBuildStorageLocation; 
+    private __storageLocationOutput = new GameliftBuildStorageLocationOutputReference(this as any, "storage_location", true);
     public get storageLocation() {
-      return this.interpolationForAttribute('storage_location') as any;
+      return this.__storageLocationOutput;
     }
-    public set storageLocation(value: GameliftBuildStorageLocation[]) {
+    public putStorageLocation(value: GameliftBuildStorageLocation) {
       this._storageLocation = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -402,7 +518,7 @@ export namespace GameLift {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         version: cdktf.stringToTerraform(this._version),
-        storage_location: cdktf.listMapper(gameliftBuildStorageLocationToTerraform)(this._storageLocation),
+        storage_location: gameliftBuildStorageLocationToTerraform(this._storageLocation),
       };
     }
   }
@@ -458,13 +574,13 @@ export namespace GameLift {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/gamelift_fleet.html#resource_creation_limit_policy GameliftFleet#resource_creation_limit_policy}
     */
-    readonly resourceCreationLimitPolicy?: GameliftFleetResourceCreationLimitPolicy[];
+    readonly resourceCreationLimitPolicy?: GameliftFleetResourceCreationLimitPolicy;
     /**
     * runtime_configuration block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/gamelift_fleet.html#runtime_configuration GameliftFleet#runtime_configuration}
     */
-    readonly runtimeConfiguration?: GameliftFleetRuntimeConfiguration[];
+    readonly runtimeConfiguration?: GameliftFleetRuntimeConfiguration;
     /**
     * timeouts block
     * 
@@ -493,6 +609,9 @@ export namespace GameLift {
 
   function gameliftFleetEc2InboundPermissionToTerraform(struct?: GameliftFleetEc2InboundPermission): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       from_port: cdktf.numberToTerraform(struct!.fromPort),
       ip_range: cdktf.stringToTerraform(struct!.ipRange),
@@ -512,14 +631,59 @@ export namespace GameLift {
     readonly policyPeriodInMinutes?: number;
   }
 
-  function gameliftFleetResourceCreationLimitPolicyToTerraform(struct?: GameliftFleetResourceCreationLimitPolicy): any {
+  function gameliftFleetResourceCreationLimitPolicyToTerraform(struct?: GameliftFleetResourceCreationLimitPolicyOutputReference | GameliftFleetResourceCreationLimitPolicy): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       new_game_sessions_per_creator: cdktf.numberToTerraform(struct!.newGameSessionsPerCreator),
       policy_period_in_minutes: cdktf.numberToTerraform(struct!.policyPeriodInMinutes),
     }
   }
 
+  export class GameliftFleetResourceCreationLimitPolicyOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // new_game_sessions_per_creator - computed: false, optional: true, required: false
+    private _newGameSessionsPerCreator?: number | undefined; 
+    public get newGameSessionsPerCreator() {
+      return this.getNumberAttribute('new_game_sessions_per_creator');
+    }
+    public set newGameSessionsPerCreator(value: number | undefined) {
+      this._newGameSessionsPerCreator = value;
+    }
+    public resetNewGameSessionsPerCreator() {
+      this._newGameSessionsPerCreator = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get newGameSessionsPerCreatorInput() {
+      return this._newGameSessionsPerCreator
+    }
+
+    // policy_period_in_minutes - computed: false, optional: true, required: false
+    private _policyPeriodInMinutes?: number | undefined; 
+    public get policyPeriodInMinutes() {
+      return this.getNumberAttribute('policy_period_in_minutes');
+    }
+    public set policyPeriodInMinutes(value: number | undefined) {
+      this._policyPeriodInMinutes = value;
+    }
+    public resetPolicyPeriodInMinutes() {
+      this._policyPeriodInMinutes = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get policyPeriodInMinutesInput() {
+      return this._policyPeriodInMinutes
+    }
+  }
   export interface GameliftFleetRuntimeConfigurationServerProcess {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/gamelift_fleet.html#concurrent_executions GameliftFleet#concurrent_executions}
@@ -537,6 +701,9 @@ export namespace GameLift {
 
   function gameliftFleetRuntimeConfigurationServerProcessToTerraform(struct?: GameliftFleetRuntimeConfigurationServerProcess): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       concurrent_executions: cdktf.numberToTerraform(struct!.concurrentExecutions),
       launch_path: cdktf.stringToTerraform(struct!.launchPath),
@@ -561,8 +728,11 @@ export namespace GameLift {
     readonly serverProcess?: GameliftFleetRuntimeConfigurationServerProcess[];
   }
 
-  function gameliftFleetRuntimeConfigurationToTerraform(struct?: GameliftFleetRuntimeConfiguration): any {
+  function gameliftFleetRuntimeConfigurationToTerraform(struct?: GameliftFleetRuntimeConfigurationOutputReference | GameliftFleetRuntimeConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       game_session_activation_timeout_seconds: cdktf.numberToTerraform(struct!.gameSessionActivationTimeoutSeconds),
       max_concurrent_game_session_activations: cdktf.numberToTerraform(struct!.maxConcurrentGameSessionActivations),
@@ -570,6 +740,65 @@ export namespace GameLift {
     }
   }
 
+  export class GameliftFleetRuntimeConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // game_session_activation_timeout_seconds - computed: false, optional: true, required: false
+    private _gameSessionActivationTimeoutSeconds?: number | undefined; 
+    public get gameSessionActivationTimeoutSeconds() {
+      return this.getNumberAttribute('game_session_activation_timeout_seconds');
+    }
+    public set gameSessionActivationTimeoutSeconds(value: number | undefined) {
+      this._gameSessionActivationTimeoutSeconds = value;
+    }
+    public resetGameSessionActivationTimeoutSeconds() {
+      this._gameSessionActivationTimeoutSeconds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get gameSessionActivationTimeoutSecondsInput() {
+      return this._gameSessionActivationTimeoutSeconds
+    }
+
+    // max_concurrent_game_session_activations - computed: false, optional: true, required: false
+    private _maxConcurrentGameSessionActivations?: number | undefined; 
+    public get maxConcurrentGameSessionActivations() {
+      return this.getNumberAttribute('max_concurrent_game_session_activations');
+    }
+    public set maxConcurrentGameSessionActivations(value: number | undefined) {
+      this._maxConcurrentGameSessionActivations = value;
+    }
+    public resetMaxConcurrentGameSessionActivations() {
+      this._maxConcurrentGameSessionActivations = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maxConcurrentGameSessionActivationsInput() {
+      return this._maxConcurrentGameSessionActivations
+    }
+
+    // server_process - computed: false, optional: true, required: false
+    private _serverProcess?: GameliftFleetRuntimeConfigurationServerProcess[] | undefined; 
+    public get serverProcess() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('server_process') as any;
+    }
+    public set serverProcess(value: GameliftFleetRuntimeConfigurationServerProcess[] | undefined) {
+      this._serverProcess = value;
+    }
+    public resetServerProcess() {
+      this._serverProcess = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get serverProcessInput() {
+      return this._serverProcess
+    }
+  }
   export interface GameliftFleetTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/gamelift_fleet.html#create GameliftFleet#create}
@@ -581,14 +810,59 @@ export namespace GameLift {
     readonly delete?: string;
   }
 
-  function gameliftFleetTimeoutsToTerraform(struct?: GameliftFleetTimeouts): any {
+  function gameliftFleetTimeoutsToTerraform(struct?: GameliftFleetTimeoutsOutputReference | GameliftFleetTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class GameliftFleetTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/gamelift_fleet.html aws_gamelift_fleet}
@@ -648,7 +922,7 @@ export namespace GameLift {
     }
 
     // build_id - computed: false, optional: false, required: true
-    private _buildId: string;
+    private _buildId?: string; 
     public get buildId() {
       return this.getStringAttribute('build_id');
     }
@@ -661,11 +935,11 @@ export namespace GameLift {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -677,7 +951,7 @@ export namespace GameLift {
     }
 
     // ec2_instance_type - computed: false, optional: false, required: true
-    private _ec2InstanceType: string;
+    private _ec2InstanceType?: string; 
     public get ec2InstanceType() {
       return this.getStringAttribute('ec2_instance_type');
     }
@@ -690,11 +964,11 @@ export namespace GameLift {
     }
 
     // fleet_type - computed: false, optional: true, required: false
-    private _fleetType?: string;
+    private _fleetType?: string | undefined; 
     public get fleetType() {
       return this.getStringAttribute('fleet_type');
     }
-    public set fleetType(value: string ) {
+    public set fleetType(value: string | undefined) {
       this._fleetType = value;
     }
     public resetFleetType() {
@@ -711,11 +985,11 @@ export namespace GameLift {
     }
 
     // instance_role_arn - computed: false, optional: true, required: false
-    private _instanceRoleArn?: string;
+    private _instanceRoleArn?: string | undefined; 
     public get instanceRoleArn() {
       return this.getStringAttribute('instance_role_arn');
     }
-    public set instanceRoleArn(value: string ) {
+    public set instanceRoleArn(value: string | undefined) {
       this._instanceRoleArn = value;
     }
     public resetInstanceRoleArn() {
@@ -732,11 +1006,11 @@ export namespace GameLift {
     }
 
     // metric_groups - computed: true, optional: true, required: false
-    private _metricGroups?: string[];
+    private _metricGroups?: string[] | undefined; 
     public get metricGroups() {
       return this.getListAttribute('metric_groups');
     }
-    public set metricGroups(value: string[]) {
+    public set metricGroups(value: string[] | undefined) {
       this._metricGroups = value;
     }
     public resetMetricGroups() {
@@ -748,7 +1022,7 @@ export namespace GameLift {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -761,11 +1035,11 @@ export namespace GameLift {
     }
 
     // new_game_session_protection_policy - computed: false, optional: true, required: false
-    private _newGameSessionProtectionPolicy?: string;
+    private _newGameSessionProtectionPolicy?: string | undefined; 
     public get newGameSessionProtectionPolicy() {
       return this.getStringAttribute('new_game_session_protection_policy');
     }
-    public set newGameSessionProtectionPolicy(value: string ) {
+    public set newGameSessionProtectionPolicy(value: string | undefined) {
       this._newGameSessionProtectionPolicy = value;
     }
     public resetNewGameSessionProtectionPolicy() {
@@ -782,11 +1056,12 @@ export namespace GameLift {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -798,11 +1073,12 @@ export namespace GameLift {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -814,11 +1090,12 @@ export namespace GameLift {
     }
 
     // ec2_inbound_permission - computed: false, optional: true, required: false
-    private _ec2InboundPermission?: GameliftFleetEc2InboundPermission[];
+    private _ec2InboundPermission?: GameliftFleetEc2InboundPermission[] | undefined; 
     public get ec2InboundPermission() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('ec2_inbound_permission') as any;
     }
-    public set ec2InboundPermission(value: GameliftFleetEc2InboundPermission[] ) {
+    public set ec2InboundPermission(value: GameliftFleetEc2InboundPermission[] | undefined) {
       this._ec2InboundPermission = value;
     }
     public resetEc2InboundPermission() {
@@ -830,11 +1107,12 @@ export namespace GameLift {
     }
 
     // resource_creation_limit_policy - computed: false, optional: true, required: false
-    private _resourceCreationLimitPolicy?: GameliftFleetResourceCreationLimitPolicy[];
+    private _resourceCreationLimitPolicy?: GameliftFleetResourceCreationLimitPolicy | undefined; 
+    private __resourceCreationLimitPolicyOutput = new GameliftFleetResourceCreationLimitPolicyOutputReference(this as any, "resource_creation_limit_policy", true);
     public get resourceCreationLimitPolicy() {
-      return this.interpolationForAttribute('resource_creation_limit_policy') as any;
+      return this.__resourceCreationLimitPolicyOutput;
     }
-    public set resourceCreationLimitPolicy(value: GameliftFleetResourceCreationLimitPolicy[] ) {
+    public putResourceCreationLimitPolicy(value: GameliftFleetResourceCreationLimitPolicy | undefined) {
       this._resourceCreationLimitPolicy = value;
     }
     public resetResourceCreationLimitPolicy() {
@@ -846,11 +1124,12 @@ export namespace GameLift {
     }
 
     // runtime_configuration - computed: false, optional: true, required: false
-    private _runtimeConfiguration?: GameliftFleetRuntimeConfiguration[];
+    private _runtimeConfiguration?: GameliftFleetRuntimeConfiguration | undefined; 
+    private __runtimeConfigurationOutput = new GameliftFleetRuntimeConfigurationOutputReference(this as any, "runtime_configuration", true);
     public get runtimeConfiguration() {
-      return this.interpolationForAttribute('runtime_configuration') as any;
+      return this.__runtimeConfigurationOutput;
     }
-    public set runtimeConfiguration(value: GameliftFleetRuntimeConfiguration[] ) {
+    public putRuntimeConfiguration(value: GameliftFleetRuntimeConfiguration | undefined) {
       this._runtimeConfiguration = value;
     }
     public resetRuntimeConfiguration() {
@@ -862,11 +1141,12 @@ export namespace GameLift {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: GameliftFleetTimeouts;
+    private _timeouts?: GameliftFleetTimeouts | undefined; 
+    private __timeoutsOutput = new GameliftFleetTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: GameliftFleetTimeouts ) {
+    public putTimeouts(value: GameliftFleetTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -894,8 +1174,8 @@ export namespace GameLift {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         ec2_inbound_permission: cdktf.listMapper(gameliftFleetEc2InboundPermissionToTerraform)(this._ec2InboundPermission),
-        resource_creation_limit_policy: cdktf.listMapper(gameliftFleetResourceCreationLimitPolicyToTerraform)(this._resourceCreationLimitPolicy),
-        runtime_configuration: cdktf.listMapper(gameliftFleetRuntimeConfigurationToTerraform)(this._runtimeConfiguration),
+        resource_creation_limit_policy: gameliftFleetResourceCreationLimitPolicyToTerraform(this._resourceCreationLimitPolicy),
+        runtime_configuration: gameliftFleetRuntimeConfigurationToTerraform(this._runtimeConfiguration),
         timeouts: gameliftFleetTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -941,6 +1221,9 @@ export namespace GameLift {
 
   function gameliftGameSessionQueuePlayerLatencyPolicyToTerraform(struct?: GameliftGameSessionQueuePlayerLatencyPolicy): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       maximum_individual_player_latency_milliseconds: cdktf.numberToTerraform(struct!.maximumIndividualPlayerLatencyMilliseconds),
       policy_duration_seconds: cdktf.numberToTerraform(struct!.policyDurationSeconds),
@@ -998,11 +1281,11 @@ export namespace GameLift {
     }
 
     // destinations - computed: false, optional: true, required: false
-    private _destinations?: string[];
+    private _destinations?: string[] | undefined; 
     public get destinations() {
       return this.getListAttribute('destinations');
     }
-    public set destinations(value: string[] ) {
+    public set destinations(value: string[] | undefined) {
       this._destinations = value;
     }
     public resetDestinations() {
@@ -1019,7 +1302,7 @@ export namespace GameLift {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1032,11 +1315,12 @@ export namespace GameLift {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1048,11 +1332,12 @@ export namespace GameLift {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1064,11 +1349,11 @@ export namespace GameLift {
     }
 
     // timeout_in_seconds - computed: false, optional: true, required: false
-    private _timeoutInSeconds?: number;
+    private _timeoutInSeconds?: number | undefined; 
     public get timeoutInSeconds() {
       return this.getNumberAttribute('timeout_in_seconds');
     }
-    public set timeoutInSeconds(value: number ) {
+    public set timeoutInSeconds(value: number | undefined) {
       this._timeoutInSeconds = value;
     }
     public resetTimeoutInSeconds() {
@@ -1080,11 +1365,12 @@ export namespace GameLift {
     }
 
     // player_latency_policy - computed: false, optional: true, required: false
-    private _playerLatencyPolicy?: GameliftGameSessionQueuePlayerLatencyPolicy[];
+    private _playerLatencyPolicy?: GameliftGameSessionQueuePlayerLatencyPolicy[] | undefined; 
     public get playerLatencyPolicy() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('player_latency_policy') as any;
     }
-    public set playerLatencyPolicy(value: GameliftGameSessionQueuePlayerLatencyPolicy[] ) {
+    public set playerLatencyPolicy(value: GameliftGameSessionQueuePlayerLatencyPolicy[] | undefined) {
       this._playerLatencyPolicy = value;
     }
     public resetPlayerLatencyPolicy() {

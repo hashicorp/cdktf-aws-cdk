@@ -33,7 +33,7 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_catalog_database.html#target_database GlueCatalogDatabase#target_database}
     */
-    readonly targetDatabase?: GlueCatalogDatabaseTargetDatabase[];
+    readonly targetDatabase?: GlueCatalogDatabaseTargetDatabase;
   }
   export interface GlueCatalogDatabaseTargetDatabase {
     /**
@@ -46,14 +46,53 @@ export namespace Glue {
     readonly databaseName: string;
   }
 
-  function glueCatalogDatabaseTargetDatabaseToTerraform(struct?: GlueCatalogDatabaseTargetDatabase): any {
+  function glueCatalogDatabaseTargetDatabaseToTerraform(struct?: GlueCatalogDatabaseTargetDatabaseOutputReference | GlueCatalogDatabaseTargetDatabase): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       catalog_id: cdktf.stringToTerraform(struct!.catalogId),
       database_name: cdktf.stringToTerraform(struct!.databaseName),
     }
   }
 
+  export class GlueCatalogDatabaseTargetDatabaseOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // catalog_id - computed: false, optional: false, required: true
+    private _catalogId?: string; 
+    public get catalogId() {
+      return this.getStringAttribute('catalog_id');
+    }
+    public set catalogId(value: string) {
+      this._catalogId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get catalogIdInput() {
+      return this._catalogId
+    }
+
+    // database_name - computed: false, optional: false, required: true
+    private _databaseName?: string; 
+    public get databaseName() {
+      return this.getStringAttribute('database_name');
+    }
+    public set databaseName(value: string) {
+      this._databaseName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get databaseNameInput() {
+      return this._databaseName
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_catalog_database.html aws_glue_catalog_database}
@@ -105,11 +144,11 @@ export namespace Glue {
     }
 
     // catalog_id - computed: true, optional: true, required: false
-    private _catalogId?: string;
+    private _catalogId?: string | undefined; 
     public get catalogId() {
       return this.getStringAttribute('catalog_id');
     }
-    public set catalogId(value: string) {
+    public set catalogId(value: string | undefined) {
       this._catalogId = value;
     }
     public resetCatalogId() {
@@ -121,11 +160,11 @@ export namespace Glue {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -142,11 +181,11 @@ export namespace Glue {
     }
 
     // location_uri - computed: true, optional: true, required: false
-    private _locationUri?: string;
+    private _locationUri?: string | undefined; 
     public get locationUri() {
       return this.getStringAttribute('location_uri');
     }
-    public set locationUri(value: string) {
+    public set locationUri(value: string | undefined) {
       this._locationUri = value;
     }
     public resetLocationUri() {
@@ -158,7 +197,7 @@ export namespace Glue {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -171,11 +210,12 @@ export namespace Glue {
     }
 
     // parameters - computed: false, optional: true, required: false
-    private _parameters?: { [key: string]: string } | cdktf.IResolvable;
+    private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get parameters() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('parameters') as any;
     }
-    public set parameters(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._parameters = value;
     }
     public resetParameters() {
@@ -187,11 +227,12 @@ export namespace Glue {
     }
 
     // target_database - computed: false, optional: true, required: false
-    private _targetDatabase?: GlueCatalogDatabaseTargetDatabase[];
+    private _targetDatabase?: GlueCatalogDatabaseTargetDatabase | undefined; 
+    private __targetDatabaseOutput = new GlueCatalogDatabaseTargetDatabaseOutputReference(this as any, "target_database", true);
     public get targetDatabase() {
-      return this.interpolationForAttribute('target_database') as any;
+      return this.__targetDatabaseOutput;
     }
-    public set targetDatabase(value: GlueCatalogDatabaseTargetDatabase[] ) {
+    public putTargetDatabase(value: GlueCatalogDatabaseTargetDatabase | undefined) {
       this._targetDatabase = value;
     }
     public resetTargetDatabase() {
@@ -213,7 +254,7 @@ export namespace Glue {
         location_uri: cdktf.stringToTerraform(this._locationUri),
         name: cdktf.stringToTerraform(this._name),
         parameters: cdktf.hashMapper(cdktf.anyToTerraform)(this._parameters),
-        target_database: cdktf.listMapper(glueCatalogDatabaseTargetDatabaseToTerraform)(this._targetDatabase),
+        target_database: glueCatalogDatabaseTargetDatabaseToTerraform(this._targetDatabase),
       };
     }
   }
@@ -275,13 +316,13 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_catalog_table.html#storage_descriptor GlueCatalogTable#storage_descriptor}
     */
-    readonly storageDescriptor?: GlueCatalogTableStorageDescriptor[];
+    readonly storageDescriptor?: GlueCatalogTableStorageDescriptor;
     /**
     * target_table block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_catalog_table.html#target_table GlueCatalogTable#target_table}
     */
-    readonly targetTable?: GlueCatalogTableTargetTable[];
+    readonly targetTable?: GlueCatalogTableTargetTable;
   }
   export interface GlueCatalogTablePartitionIndex {
     /**
@@ -296,6 +337,9 @@ export namespace Glue {
 
   function glueCatalogTablePartitionIndexToTerraform(struct?: GlueCatalogTablePartitionIndex): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       index_name: cdktf.stringToTerraform(struct!.indexName),
       keys: cdktf.listMapper(cdktf.stringToTerraform)(struct!.keys),
@@ -319,6 +363,9 @@ export namespace Glue {
 
   function glueCatalogTablePartitionKeysToTerraform(struct?: GlueCatalogTablePartitionKeys): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comment: cdktf.stringToTerraform(struct!.comment),
       name: cdktf.stringToTerraform(struct!.name),
@@ -347,6 +394,9 @@ export namespace Glue {
 
   function glueCatalogTableStorageDescriptorColumnsToTerraform(struct?: GlueCatalogTableStorageDescriptorColumns): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comment: cdktf.stringToTerraform(struct!.comment),
       name: cdktf.stringToTerraform(struct!.name),
@@ -370,8 +420,11 @@ export namespace Glue {
     readonly schemaName?: string;
   }
 
-  function glueCatalogTableStorageDescriptorSchemaReferenceSchemaIdToTerraform(struct?: GlueCatalogTableStorageDescriptorSchemaReferenceSchemaId): any {
+  function glueCatalogTableStorageDescriptorSchemaReferenceSchemaIdToTerraform(struct?: GlueCatalogTableStorageDescriptorSchemaReferenceSchemaIdOutputReference | GlueCatalogTableStorageDescriptorSchemaReferenceSchemaId): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       registry_name: cdktf.stringToTerraform(struct!.registryName),
       schema_arn: cdktf.stringToTerraform(struct!.schemaArn),
@@ -379,6 +432,64 @@ export namespace Glue {
     }
   }
 
+  export class GlueCatalogTableStorageDescriptorSchemaReferenceSchemaIdOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // registry_name - computed: false, optional: true, required: false
+    private _registryName?: string | undefined; 
+    public get registryName() {
+      return this.getStringAttribute('registry_name');
+    }
+    public set registryName(value: string | undefined) {
+      this._registryName = value;
+    }
+    public resetRegistryName() {
+      this._registryName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get registryNameInput() {
+      return this._registryName
+    }
+
+    // schema_arn - computed: false, optional: true, required: false
+    private _schemaArn?: string | undefined; 
+    public get schemaArn() {
+      return this.getStringAttribute('schema_arn');
+    }
+    public set schemaArn(value: string | undefined) {
+      this._schemaArn = value;
+    }
+    public resetSchemaArn() {
+      this._schemaArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get schemaArnInput() {
+      return this._schemaArn
+    }
+
+    // schema_name - computed: false, optional: true, required: false
+    private _schemaName?: string | undefined; 
+    public get schemaName() {
+      return this.getStringAttribute('schema_name');
+    }
+    public set schemaName(value: string | undefined) {
+      this._schemaName = value;
+    }
+    public resetSchemaName() {
+      this._schemaName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get schemaNameInput() {
+      return this._schemaName
+    }
+  }
   export interface GlueCatalogTableStorageDescriptorSchemaReference {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_catalog_table.html#schema_version_id GlueCatalogTable#schema_version_id}
@@ -393,18 +504,77 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_catalog_table.html#schema_id GlueCatalogTable#schema_id}
     */
-    readonly schemaId?: GlueCatalogTableStorageDescriptorSchemaReferenceSchemaId[];
+    readonly schemaId?: GlueCatalogTableStorageDescriptorSchemaReferenceSchemaId;
   }
 
-  function glueCatalogTableStorageDescriptorSchemaReferenceToTerraform(struct?: GlueCatalogTableStorageDescriptorSchemaReference): any {
+  function glueCatalogTableStorageDescriptorSchemaReferenceToTerraform(struct?: GlueCatalogTableStorageDescriptorSchemaReferenceOutputReference | GlueCatalogTableStorageDescriptorSchemaReference): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       schema_version_id: cdktf.stringToTerraform(struct!.schemaVersionId),
       schema_version_number: cdktf.numberToTerraform(struct!.schemaVersionNumber),
-      schema_id: cdktf.listMapper(glueCatalogTableStorageDescriptorSchemaReferenceSchemaIdToTerraform)(struct!.schemaId),
+      schema_id: glueCatalogTableStorageDescriptorSchemaReferenceSchemaIdToTerraform(struct!.schemaId),
     }
   }
 
+  export class GlueCatalogTableStorageDescriptorSchemaReferenceOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // schema_version_id - computed: false, optional: true, required: false
+    private _schemaVersionId?: string | undefined; 
+    public get schemaVersionId() {
+      return this.getStringAttribute('schema_version_id');
+    }
+    public set schemaVersionId(value: string | undefined) {
+      this._schemaVersionId = value;
+    }
+    public resetSchemaVersionId() {
+      this._schemaVersionId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get schemaVersionIdInput() {
+      return this._schemaVersionId
+    }
+
+    // schema_version_number - computed: false, optional: false, required: true
+    private _schemaVersionNumber?: number; 
+    public get schemaVersionNumber() {
+      return this.getNumberAttribute('schema_version_number');
+    }
+    public set schemaVersionNumber(value: number) {
+      this._schemaVersionNumber = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get schemaVersionNumberInput() {
+      return this._schemaVersionNumber
+    }
+
+    // schema_id - computed: false, optional: true, required: false
+    private _schemaId?: GlueCatalogTableStorageDescriptorSchemaReferenceSchemaId | undefined; 
+    private __schemaIdOutput = new GlueCatalogTableStorageDescriptorSchemaReferenceSchemaIdOutputReference(this as any, "schema_id", true);
+    public get schemaId() {
+      return this.__schemaIdOutput;
+    }
+    public putSchemaId(value: GlueCatalogTableStorageDescriptorSchemaReferenceSchemaId | undefined) {
+      this._schemaId = value;
+    }
+    public resetSchemaId() {
+      this._schemaId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get schemaIdInput() {
+      return this._schemaId
+    }
+  }
   export interface GlueCatalogTableStorageDescriptorSerDeInfo {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_catalog_table.html#name GlueCatalogTable#name}
@@ -420,8 +590,11 @@ export namespace Glue {
     readonly serializationLibrary?: string;
   }
 
-  function glueCatalogTableStorageDescriptorSerDeInfoToTerraform(struct?: GlueCatalogTableStorageDescriptorSerDeInfo): any {
+  function glueCatalogTableStorageDescriptorSerDeInfoToTerraform(struct?: GlueCatalogTableStorageDescriptorSerDeInfoOutputReference | GlueCatalogTableStorageDescriptorSerDeInfo): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       parameters: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.parameters),
@@ -429,6 +602,65 @@ export namespace Glue {
     }
   }
 
+  export class GlueCatalogTableStorageDescriptorSerDeInfoOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // name - computed: false, optional: true, required: false
+    private _name?: string | undefined; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string | undefined) {
+      this._name = value;
+    }
+    public resetName() {
+      this._name = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+
+    // parameters - computed: false, optional: true, required: false
+    private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get parameters() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('parameters') as any;
+    }
+    public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._parameters = value;
+    }
+    public resetParameters() {
+      this._parameters = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get parametersInput() {
+      return this._parameters
+    }
+
+    // serialization_library - computed: false, optional: true, required: false
+    private _serializationLibrary?: string | undefined; 
+    public get serializationLibrary() {
+      return this.getStringAttribute('serialization_library');
+    }
+    public set serializationLibrary(value: string | undefined) {
+      this._serializationLibrary = value;
+    }
+    public resetSerializationLibrary() {
+      this._serializationLibrary = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get serializationLibraryInput() {
+      return this._serializationLibrary
+    }
+  }
   export interface GlueCatalogTableStorageDescriptorSkewedInfo {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_catalog_table.html#skewed_column_names GlueCatalogTable#skewed_column_names}
@@ -444,8 +676,11 @@ export namespace Glue {
     readonly skewedColumnValues?: string[];
   }
 
-  function glueCatalogTableStorageDescriptorSkewedInfoToTerraform(struct?: GlueCatalogTableStorageDescriptorSkewedInfo): any {
+  function glueCatalogTableStorageDescriptorSkewedInfoToTerraform(struct?: GlueCatalogTableStorageDescriptorSkewedInfoOutputReference | GlueCatalogTableStorageDescriptorSkewedInfo): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       skewed_column_names: cdktf.listMapper(cdktf.stringToTerraform)(struct!.skewedColumnNames),
       skewed_column_value_location_maps: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.skewedColumnValueLocationMaps),
@@ -453,6 +688,65 @@ export namespace Glue {
     }
   }
 
+  export class GlueCatalogTableStorageDescriptorSkewedInfoOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // skewed_column_names - computed: false, optional: true, required: false
+    private _skewedColumnNames?: string[] | undefined; 
+    public get skewedColumnNames() {
+      return this.getListAttribute('skewed_column_names');
+    }
+    public set skewedColumnNames(value: string[] | undefined) {
+      this._skewedColumnNames = value;
+    }
+    public resetSkewedColumnNames() {
+      this._skewedColumnNames = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get skewedColumnNamesInput() {
+      return this._skewedColumnNames
+    }
+
+    // skewed_column_value_location_maps - computed: false, optional: true, required: false
+    private _skewedColumnValueLocationMaps?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get skewedColumnValueLocationMaps() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('skewed_column_value_location_maps') as any;
+    }
+    public set skewedColumnValueLocationMaps(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._skewedColumnValueLocationMaps = value;
+    }
+    public resetSkewedColumnValueLocationMaps() {
+      this._skewedColumnValueLocationMaps = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get skewedColumnValueLocationMapsInput() {
+      return this._skewedColumnValueLocationMaps
+    }
+
+    // skewed_column_values - computed: false, optional: true, required: false
+    private _skewedColumnValues?: string[] | undefined; 
+    public get skewedColumnValues() {
+      return this.getListAttribute('skewed_column_values');
+    }
+    public set skewedColumnValues(value: string[] | undefined) {
+      this._skewedColumnValues = value;
+    }
+    public resetSkewedColumnValues() {
+      this._skewedColumnValues = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get skewedColumnValuesInput() {
+      return this._skewedColumnValues
+    }
+  }
   export interface GlueCatalogTableStorageDescriptorSortColumns {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_catalog_table.html#column GlueCatalogTable#column}
@@ -466,6 +760,9 @@ export namespace Glue {
 
   function glueCatalogTableStorageDescriptorSortColumnsToTerraform(struct?: GlueCatalogTableStorageDescriptorSortColumns): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       column: cdktf.stringToTerraform(struct!.column),
       sort_order: cdktf.numberToTerraform(struct!.sortOrder),
@@ -516,19 +813,19 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_catalog_table.html#schema_reference GlueCatalogTable#schema_reference}
     */
-    readonly schemaReference?: GlueCatalogTableStorageDescriptorSchemaReference[];
+    readonly schemaReference?: GlueCatalogTableStorageDescriptorSchemaReference;
     /**
     * ser_de_info block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_catalog_table.html#ser_de_info GlueCatalogTable#ser_de_info}
     */
-    readonly serDeInfo?: GlueCatalogTableStorageDescriptorSerDeInfo[];
+    readonly serDeInfo?: GlueCatalogTableStorageDescriptorSerDeInfo;
     /**
     * skewed_info block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_catalog_table.html#skewed_info GlueCatalogTable#skewed_info}
     */
-    readonly skewedInfo?: GlueCatalogTableStorageDescriptorSkewedInfo[];
+    readonly skewedInfo?: GlueCatalogTableStorageDescriptorSkewedInfo;
     /**
     * sort_columns block
     * 
@@ -537,8 +834,11 @@ export namespace Glue {
     readonly sortColumns?: GlueCatalogTableStorageDescriptorSortColumns[];
   }
 
-  function glueCatalogTableStorageDescriptorToTerraform(struct?: GlueCatalogTableStorageDescriptor): any {
+  function glueCatalogTableStorageDescriptorToTerraform(struct?: GlueCatalogTableStorageDescriptorOutputReference | GlueCatalogTableStorageDescriptor): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bucket_columns: cdktf.listMapper(cdktf.stringToTerraform)(struct!.bucketColumns),
       compressed: cdktf.booleanToTerraform(struct!.compressed),
@@ -549,13 +849,237 @@ export namespace Glue {
       parameters: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.parameters),
       stored_as_sub_directories: cdktf.booleanToTerraform(struct!.storedAsSubDirectories),
       columns: cdktf.listMapper(glueCatalogTableStorageDescriptorColumnsToTerraform)(struct!.columns),
-      schema_reference: cdktf.listMapper(glueCatalogTableStorageDescriptorSchemaReferenceToTerraform)(struct!.schemaReference),
-      ser_de_info: cdktf.listMapper(glueCatalogTableStorageDescriptorSerDeInfoToTerraform)(struct!.serDeInfo),
-      skewed_info: cdktf.listMapper(glueCatalogTableStorageDescriptorSkewedInfoToTerraform)(struct!.skewedInfo),
+      schema_reference: glueCatalogTableStorageDescriptorSchemaReferenceToTerraform(struct!.schemaReference),
+      ser_de_info: glueCatalogTableStorageDescriptorSerDeInfoToTerraform(struct!.serDeInfo),
+      skewed_info: glueCatalogTableStorageDescriptorSkewedInfoToTerraform(struct!.skewedInfo),
       sort_columns: cdktf.listMapper(glueCatalogTableStorageDescriptorSortColumnsToTerraform)(struct!.sortColumns),
     }
   }
 
+  export class GlueCatalogTableStorageDescriptorOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // bucket_columns - computed: false, optional: true, required: false
+    private _bucketColumns?: string[] | undefined; 
+    public get bucketColumns() {
+      return this.getListAttribute('bucket_columns');
+    }
+    public set bucketColumns(value: string[] | undefined) {
+      this._bucketColumns = value;
+    }
+    public resetBucketColumns() {
+      this._bucketColumns = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bucketColumnsInput() {
+      return this._bucketColumns
+    }
+
+    // compressed - computed: false, optional: true, required: false
+    private _compressed?: boolean | cdktf.IResolvable | undefined; 
+    public get compressed() {
+      return this.getBooleanAttribute('compressed') as any;
+    }
+    public set compressed(value: boolean | cdktf.IResolvable | undefined) {
+      this._compressed = value;
+    }
+    public resetCompressed() {
+      this._compressed = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get compressedInput() {
+      return this._compressed
+    }
+
+    // input_format - computed: false, optional: true, required: false
+    private _inputFormat?: string | undefined; 
+    public get inputFormat() {
+      return this.getStringAttribute('input_format');
+    }
+    public set inputFormat(value: string | undefined) {
+      this._inputFormat = value;
+    }
+    public resetInputFormat() {
+      this._inputFormat = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get inputFormatInput() {
+      return this._inputFormat
+    }
+
+    // location - computed: false, optional: true, required: false
+    private _location?: string | undefined; 
+    public get location() {
+      return this.getStringAttribute('location');
+    }
+    public set location(value: string | undefined) {
+      this._location = value;
+    }
+    public resetLocation() {
+      this._location = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get locationInput() {
+      return this._location
+    }
+
+    // number_of_buckets - computed: false, optional: true, required: false
+    private _numberOfBuckets?: number | undefined; 
+    public get numberOfBuckets() {
+      return this.getNumberAttribute('number_of_buckets');
+    }
+    public set numberOfBuckets(value: number | undefined) {
+      this._numberOfBuckets = value;
+    }
+    public resetNumberOfBuckets() {
+      this._numberOfBuckets = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get numberOfBucketsInput() {
+      return this._numberOfBuckets
+    }
+
+    // output_format - computed: false, optional: true, required: false
+    private _outputFormat?: string | undefined; 
+    public get outputFormat() {
+      return this.getStringAttribute('output_format');
+    }
+    public set outputFormat(value: string | undefined) {
+      this._outputFormat = value;
+    }
+    public resetOutputFormat() {
+      this._outputFormat = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get outputFormatInput() {
+      return this._outputFormat
+    }
+
+    // parameters - computed: false, optional: true, required: false
+    private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get parameters() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('parameters') as any;
+    }
+    public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._parameters = value;
+    }
+    public resetParameters() {
+      this._parameters = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get parametersInput() {
+      return this._parameters
+    }
+
+    // stored_as_sub_directories - computed: false, optional: true, required: false
+    private _storedAsSubDirectories?: boolean | cdktf.IResolvable | undefined; 
+    public get storedAsSubDirectories() {
+      return this.getBooleanAttribute('stored_as_sub_directories') as any;
+    }
+    public set storedAsSubDirectories(value: boolean | cdktf.IResolvable | undefined) {
+      this._storedAsSubDirectories = value;
+    }
+    public resetStoredAsSubDirectories() {
+      this._storedAsSubDirectories = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get storedAsSubDirectoriesInput() {
+      return this._storedAsSubDirectories
+    }
+
+    // columns - computed: false, optional: true, required: false
+    private _columns?: GlueCatalogTableStorageDescriptorColumns[] | undefined; 
+    public get columns() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('columns') as any;
+    }
+    public set columns(value: GlueCatalogTableStorageDescriptorColumns[] | undefined) {
+      this._columns = value;
+    }
+    public resetColumns() {
+      this._columns = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get columnsInput() {
+      return this._columns
+    }
+
+    // schema_reference - computed: false, optional: true, required: false
+    private _schemaReference?: GlueCatalogTableStorageDescriptorSchemaReference | undefined; 
+    private __schemaReferenceOutput = new GlueCatalogTableStorageDescriptorSchemaReferenceOutputReference(this as any, "schema_reference", true);
+    public get schemaReference() {
+      return this.__schemaReferenceOutput;
+    }
+    public putSchemaReference(value: GlueCatalogTableStorageDescriptorSchemaReference | undefined) {
+      this._schemaReference = value;
+    }
+    public resetSchemaReference() {
+      this._schemaReference = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get schemaReferenceInput() {
+      return this._schemaReference
+    }
+
+    // ser_de_info - computed: false, optional: true, required: false
+    private _serDeInfo?: GlueCatalogTableStorageDescriptorSerDeInfo | undefined; 
+    private __serDeInfoOutput = new GlueCatalogTableStorageDescriptorSerDeInfoOutputReference(this as any, "ser_de_info", true);
+    public get serDeInfo() {
+      return this.__serDeInfoOutput;
+    }
+    public putSerDeInfo(value: GlueCatalogTableStorageDescriptorSerDeInfo | undefined) {
+      this._serDeInfo = value;
+    }
+    public resetSerDeInfo() {
+      this._serDeInfo = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get serDeInfoInput() {
+      return this._serDeInfo
+    }
+
+    // skewed_info - computed: false, optional: true, required: false
+    private _skewedInfo?: GlueCatalogTableStorageDescriptorSkewedInfo | undefined; 
+    private __skewedInfoOutput = new GlueCatalogTableStorageDescriptorSkewedInfoOutputReference(this as any, "skewed_info", true);
+    public get skewedInfo() {
+      return this.__skewedInfoOutput;
+    }
+    public putSkewedInfo(value: GlueCatalogTableStorageDescriptorSkewedInfo | undefined) {
+      this._skewedInfo = value;
+    }
+    public resetSkewedInfo() {
+      this._skewedInfo = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get skewedInfoInput() {
+      return this._skewedInfo
+    }
+
+    // sort_columns - computed: false, optional: true, required: false
+    private _sortColumns?: GlueCatalogTableStorageDescriptorSortColumns[] | undefined; 
+    public get sortColumns() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('sort_columns') as any;
+    }
+    public set sortColumns(value: GlueCatalogTableStorageDescriptorSortColumns[] | undefined) {
+      this._sortColumns = value;
+    }
+    public resetSortColumns() {
+      this._sortColumns = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sortColumnsInput() {
+      return this._sortColumns
+    }
+  }
   export interface GlueCatalogTableTargetTable {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_catalog_table.html#catalog_id GlueCatalogTable#catalog_id}
@@ -571,8 +1095,11 @@ export namespace Glue {
     readonly name: string;
   }
 
-  function glueCatalogTableTargetTableToTerraform(struct?: GlueCatalogTableTargetTable): any {
+  function glueCatalogTableTargetTableToTerraform(struct?: GlueCatalogTableTargetTableOutputReference | GlueCatalogTableTargetTable): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       catalog_id: cdktf.stringToTerraform(struct!.catalogId),
       database_name: cdktf.stringToTerraform(struct!.databaseName),
@@ -580,6 +1107,55 @@ export namespace Glue {
     }
   }
 
+  export class GlueCatalogTableTargetTableOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // catalog_id - computed: false, optional: false, required: true
+    private _catalogId?: string; 
+    public get catalogId() {
+      return this.getStringAttribute('catalog_id');
+    }
+    public set catalogId(value: string) {
+      this._catalogId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get catalogIdInput() {
+      return this._catalogId
+    }
+
+    // database_name - computed: false, optional: false, required: true
+    private _databaseName?: string; 
+    public get databaseName() {
+      return this.getStringAttribute('database_name');
+    }
+    public set databaseName(value: string) {
+      this._databaseName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get databaseNameInput() {
+      return this._databaseName
+    }
+
+    // name - computed: false, optional: false, required: true
+    private _name?: string; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string) {
+      this._name = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_catalog_table.html aws_glue_catalog_table}
@@ -639,11 +1215,11 @@ export namespace Glue {
     }
 
     // catalog_id - computed: true, optional: true, required: false
-    private _catalogId?: string;
+    private _catalogId?: string | undefined; 
     public get catalogId() {
       return this.getStringAttribute('catalog_id');
     }
-    public set catalogId(value: string) {
+    public set catalogId(value: string | undefined) {
       this._catalogId = value;
     }
     public resetCatalogId() {
@@ -655,7 +1231,7 @@ export namespace Glue {
     }
 
     // database_name - computed: false, optional: false, required: true
-    private _databaseName: string;
+    private _databaseName?: string; 
     public get databaseName() {
       return this.getStringAttribute('database_name');
     }
@@ -668,11 +1244,11 @@ export namespace Glue {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -689,7 +1265,7 @@ export namespace Glue {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -702,11 +1278,11 @@ export namespace Glue {
     }
 
     // owner - computed: false, optional: true, required: false
-    private _owner?: string;
+    private _owner?: string | undefined; 
     public get owner() {
       return this.getStringAttribute('owner');
     }
-    public set owner(value: string ) {
+    public set owner(value: string | undefined) {
       this._owner = value;
     }
     public resetOwner() {
@@ -718,11 +1294,12 @@ export namespace Glue {
     }
 
     // parameters - computed: false, optional: true, required: false
-    private _parameters?: { [key: string]: string } | cdktf.IResolvable;
+    private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get parameters() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('parameters') as any;
     }
-    public set parameters(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._parameters = value;
     }
     public resetParameters() {
@@ -734,11 +1311,11 @@ export namespace Glue {
     }
 
     // retention - computed: false, optional: true, required: false
-    private _retention?: number;
+    private _retention?: number | undefined; 
     public get retention() {
       return this.getNumberAttribute('retention');
     }
-    public set retention(value: number ) {
+    public set retention(value: number | undefined) {
       this._retention = value;
     }
     public resetRetention() {
@@ -750,11 +1327,11 @@ export namespace Glue {
     }
 
     // table_type - computed: false, optional: true, required: false
-    private _tableType?: string;
+    private _tableType?: string | undefined; 
     public get tableType() {
       return this.getStringAttribute('table_type');
     }
-    public set tableType(value: string ) {
+    public set tableType(value: string | undefined) {
       this._tableType = value;
     }
     public resetTableType() {
@@ -766,11 +1343,11 @@ export namespace Glue {
     }
 
     // view_expanded_text - computed: false, optional: true, required: false
-    private _viewExpandedText?: string;
+    private _viewExpandedText?: string | undefined; 
     public get viewExpandedText() {
       return this.getStringAttribute('view_expanded_text');
     }
-    public set viewExpandedText(value: string ) {
+    public set viewExpandedText(value: string | undefined) {
       this._viewExpandedText = value;
     }
     public resetViewExpandedText() {
@@ -782,11 +1359,11 @@ export namespace Glue {
     }
 
     // view_original_text - computed: false, optional: true, required: false
-    private _viewOriginalText?: string;
+    private _viewOriginalText?: string | undefined; 
     public get viewOriginalText() {
       return this.getStringAttribute('view_original_text');
     }
-    public set viewOriginalText(value: string ) {
+    public set viewOriginalText(value: string | undefined) {
       this._viewOriginalText = value;
     }
     public resetViewOriginalText() {
@@ -798,11 +1375,12 @@ export namespace Glue {
     }
 
     // partition_index - computed: false, optional: true, required: false
-    private _partitionIndex?: GlueCatalogTablePartitionIndex[];
+    private _partitionIndex?: GlueCatalogTablePartitionIndex[] | undefined; 
     public get partitionIndex() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('partition_index') as any;
     }
-    public set partitionIndex(value: GlueCatalogTablePartitionIndex[] ) {
+    public set partitionIndex(value: GlueCatalogTablePartitionIndex[] | undefined) {
       this._partitionIndex = value;
     }
     public resetPartitionIndex() {
@@ -814,11 +1392,12 @@ export namespace Glue {
     }
 
     // partition_keys - computed: false, optional: true, required: false
-    private _partitionKeys?: GlueCatalogTablePartitionKeys[];
+    private _partitionKeys?: GlueCatalogTablePartitionKeys[] | undefined; 
     public get partitionKeys() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('partition_keys') as any;
     }
-    public set partitionKeys(value: GlueCatalogTablePartitionKeys[] ) {
+    public set partitionKeys(value: GlueCatalogTablePartitionKeys[] | undefined) {
       this._partitionKeys = value;
     }
     public resetPartitionKeys() {
@@ -830,11 +1409,12 @@ export namespace Glue {
     }
 
     // storage_descriptor - computed: false, optional: true, required: false
-    private _storageDescriptor?: GlueCatalogTableStorageDescriptor[];
+    private _storageDescriptor?: GlueCatalogTableStorageDescriptor | undefined; 
+    private __storageDescriptorOutput = new GlueCatalogTableStorageDescriptorOutputReference(this as any, "storage_descriptor", true);
     public get storageDescriptor() {
-      return this.interpolationForAttribute('storage_descriptor') as any;
+      return this.__storageDescriptorOutput;
     }
-    public set storageDescriptor(value: GlueCatalogTableStorageDescriptor[] ) {
+    public putStorageDescriptor(value: GlueCatalogTableStorageDescriptor | undefined) {
       this._storageDescriptor = value;
     }
     public resetStorageDescriptor() {
@@ -846,11 +1426,12 @@ export namespace Glue {
     }
 
     // target_table - computed: false, optional: true, required: false
-    private _targetTable?: GlueCatalogTableTargetTable[];
+    private _targetTable?: GlueCatalogTableTargetTable | undefined; 
+    private __targetTableOutput = new GlueCatalogTableTargetTableOutputReference(this as any, "target_table", true);
     public get targetTable() {
-      return this.interpolationForAttribute('target_table') as any;
+      return this.__targetTableOutput;
     }
-    public set targetTable(value: GlueCatalogTableTargetTable[] ) {
+    public putTargetTable(value: GlueCatalogTableTargetTable | undefined) {
       this._targetTable = value;
     }
     public resetTargetTable() {
@@ -879,8 +1460,8 @@ export namespace Glue {
         view_original_text: cdktf.stringToTerraform(this._viewOriginalText),
         partition_index: cdktf.listMapper(glueCatalogTablePartitionIndexToTerraform)(this._partitionIndex),
         partition_keys: cdktf.listMapper(glueCatalogTablePartitionKeysToTerraform)(this._partitionKeys),
-        storage_descriptor: cdktf.listMapper(glueCatalogTableStorageDescriptorToTerraform)(this._storageDescriptor),
-        target_table: cdktf.listMapper(glueCatalogTableTargetTableToTerraform)(this._targetTable),
+        storage_descriptor: glueCatalogTableStorageDescriptorToTerraform(this._storageDescriptor),
+        target_table: glueCatalogTableTargetTableToTerraform(this._targetTable),
       };
     }
   }
@@ -894,25 +1475,25 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_classifier.html#csv_classifier GlueClassifier#csv_classifier}
     */
-    readonly csvClassifier?: GlueClassifierCsvClassifier[];
+    readonly csvClassifier?: GlueClassifierCsvClassifier;
     /**
     * grok_classifier block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_classifier.html#grok_classifier GlueClassifier#grok_classifier}
     */
-    readonly grokClassifier?: GlueClassifierGrokClassifier[];
+    readonly grokClassifier?: GlueClassifierGrokClassifier;
     /**
     * json_classifier block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_classifier.html#json_classifier GlueClassifier#json_classifier}
     */
-    readonly jsonClassifier?: GlueClassifierJsonClassifier[];
+    readonly jsonClassifier?: GlueClassifierJsonClassifier;
     /**
     * xml_classifier block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_classifier.html#xml_classifier GlueClassifier#xml_classifier}
     */
-    readonly xmlClassifier?: GlueClassifierXmlClassifier[];
+    readonly xmlClassifier?: GlueClassifierXmlClassifier;
   }
   export interface GlueClassifierCsvClassifier {
     /**
@@ -941,8 +1522,11 @@ export namespace Glue {
     readonly quoteSymbol?: string;
   }
 
-  function glueClassifierCsvClassifierToTerraform(struct?: GlueClassifierCsvClassifier): any {
+  function glueClassifierCsvClassifierToTerraform(struct?: GlueClassifierCsvClassifierOutputReference | GlueClassifierCsvClassifier): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allow_single_column: cdktf.booleanToTerraform(struct!.allowSingleColumn),
       contains_header: cdktf.stringToTerraform(struct!.containsHeader),
@@ -953,6 +1537,112 @@ export namespace Glue {
     }
   }
 
+  export class GlueClassifierCsvClassifierOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // allow_single_column - computed: false, optional: true, required: false
+    private _allowSingleColumn?: boolean | cdktf.IResolvable | undefined; 
+    public get allowSingleColumn() {
+      return this.getBooleanAttribute('allow_single_column') as any;
+    }
+    public set allowSingleColumn(value: boolean | cdktf.IResolvable | undefined) {
+      this._allowSingleColumn = value;
+    }
+    public resetAllowSingleColumn() {
+      this._allowSingleColumn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allowSingleColumnInput() {
+      return this._allowSingleColumn
+    }
+
+    // contains_header - computed: false, optional: true, required: false
+    private _containsHeader?: string | undefined; 
+    public get containsHeader() {
+      return this.getStringAttribute('contains_header');
+    }
+    public set containsHeader(value: string | undefined) {
+      this._containsHeader = value;
+    }
+    public resetContainsHeader() {
+      this._containsHeader = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get containsHeaderInput() {
+      return this._containsHeader
+    }
+
+    // delimiter - computed: false, optional: true, required: false
+    private _delimiter?: string | undefined; 
+    public get delimiter() {
+      return this.getStringAttribute('delimiter');
+    }
+    public set delimiter(value: string | undefined) {
+      this._delimiter = value;
+    }
+    public resetDelimiter() {
+      this._delimiter = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get delimiterInput() {
+      return this._delimiter
+    }
+
+    // disable_value_trimming - computed: false, optional: true, required: false
+    private _disableValueTrimming?: boolean | cdktf.IResolvable | undefined; 
+    public get disableValueTrimming() {
+      return this.getBooleanAttribute('disable_value_trimming') as any;
+    }
+    public set disableValueTrimming(value: boolean | cdktf.IResolvable | undefined) {
+      this._disableValueTrimming = value;
+    }
+    public resetDisableValueTrimming() {
+      this._disableValueTrimming = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get disableValueTrimmingInput() {
+      return this._disableValueTrimming
+    }
+
+    // header - computed: false, optional: true, required: false
+    private _header?: string[] | undefined; 
+    public get header() {
+      return this.getListAttribute('header');
+    }
+    public set header(value: string[] | undefined) {
+      this._header = value;
+    }
+    public resetHeader() {
+      this._header = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get headerInput() {
+      return this._header
+    }
+
+    // quote_symbol - computed: false, optional: true, required: false
+    private _quoteSymbol?: string | undefined; 
+    public get quoteSymbol() {
+      return this.getStringAttribute('quote_symbol');
+    }
+    public set quoteSymbol(value: string | undefined) {
+      this._quoteSymbol = value;
+    }
+    public resetQuoteSymbol() {
+      this._quoteSymbol = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get quoteSymbolInput() {
+      return this._quoteSymbol
+    }
+  }
   export interface GlueClassifierGrokClassifier {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_classifier.html#classification GlueClassifier#classification}
@@ -968,8 +1658,11 @@ export namespace Glue {
     readonly grokPattern: string;
   }
 
-  function glueClassifierGrokClassifierToTerraform(struct?: GlueClassifierGrokClassifier): any {
+  function glueClassifierGrokClassifierToTerraform(struct?: GlueClassifierGrokClassifierOutputReference | GlueClassifierGrokClassifier): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       classification: cdktf.stringToTerraform(struct!.classification),
       custom_patterns: cdktf.stringToTerraform(struct!.customPatterns),
@@ -977,6 +1670,58 @@ export namespace Glue {
     }
   }
 
+  export class GlueClassifierGrokClassifierOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // classification - computed: false, optional: false, required: true
+    private _classification?: string; 
+    public get classification() {
+      return this.getStringAttribute('classification');
+    }
+    public set classification(value: string) {
+      this._classification = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get classificationInput() {
+      return this._classification
+    }
+
+    // custom_patterns - computed: false, optional: true, required: false
+    private _customPatterns?: string | undefined; 
+    public get customPatterns() {
+      return this.getStringAttribute('custom_patterns');
+    }
+    public set customPatterns(value: string | undefined) {
+      this._customPatterns = value;
+    }
+    public resetCustomPatterns() {
+      this._customPatterns = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get customPatternsInput() {
+      return this._customPatterns
+    }
+
+    // grok_pattern - computed: false, optional: false, required: true
+    private _grokPattern?: string; 
+    public get grokPattern() {
+      return this.getStringAttribute('grok_pattern');
+    }
+    public set grokPattern(value: string) {
+      this._grokPattern = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get grokPatternInput() {
+      return this._grokPattern
+    }
+  }
   export interface GlueClassifierJsonClassifier {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_classifier.html#json_path GlueClassifier#json_path}
@@ -984,13 +1729,39 @@ export namespace Glue {
     readonly jsonPath: string;
   }
 
-  function glueClassifierJsonClassifierToTerraform(struct?: GlueClassifierJsonClassifier): any {
+  function glueClassifierJsonClassifierToTerraform(struct?: GlueClassifierJsonClassifierOutputReference | GlueClassifierJsonClassifier): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       json_path: cdktf.stringToTerraform(struct!.jsonPath),
     }
   }
 
+  export class GlueClassifierJsonClassifierOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // json_path - computed: false, optional: false, required: true
+    private _jsonPath?: string; 
+    public get jsonPath() {
+      return this.getStringAttribute('json_path');
+    }
+    public set jsonPath(value: string) {
+      this._jsonPath = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get jsonPathInput() {
+      return this._jsonPath
+    }
+  }
   export interface GlueClassifierXmlClassifier {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_classifier.html#classification GlueClassifier#classification}
@@ -1002,14 +1773,53 @@ export namespace Glue {
     readonly rowTag: string;
   }
 
-  function glueClassifierXmlClassifierToTerraform(struct?: GlueClassifierXmlClassifier): any {
+  function glueClassifierXmlClassifierToTerraform(struct?: GlueClassifierXmlClassifierOutputReference | GlueClassifierXmlClassifier): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       classification: cdktf.stringToTerraform(struct!.classification),
       row_tag: cdktf.stringToTerraform(struct!.rowTag),
     }
   }
 
+  export class GlueClassifierXmlClassifierOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // classification - computed: false, optional: false, required: true
+    private _classification?: string; 
+    public get classification() {
+      return this.getStringAttribute('classification');
+    }
+    public set classification(value: string) {
+      this._classification = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get classificationInput() {
+      return this._classification
+    }
+
+    // row_tag - computed: false, optional: false, required: true
+    private _rowTag?: string; 
+    public get rowTag() {
+      return this.getStringAttribute('row_tag');
+    }
+    public set rowTag(value: string) {
+      this._rowTag = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get rowTagInput() {
+      return this._rowTag
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_classifier.html aws_glue_classifier}
@@ -1060,7 +1870,7 @@ export namespace Glue {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1073,11 +1883,12 @@ export namespace Glue {
     }
 
     // csv_classifier - computed: false, optional: true, required: false
-    private _csvClassifier?: GlueClassifierCsvClassifier[];
+    private _csvClassifier?: GlueClassifierCsvClassifier | undefined; 
+    private __csvClassifierOutput = new GlueClassifierCsvClassifierOutputReference(this as any, "csv_classifier", true);
     public get csvClassifier() {
-      return this.interpolationForAttribute('csv_classifier') as any;
+      return this.__csvClassifierOutput;
     }
-    public set csvClassifier(value: GlueClassifierCsvClassifier[] ) {
+    public putCsvClassifier(value: GlueClassifierCsvClassifier | undefined) {
       this._csvClassifier = value;
     }
     public resetCsvClassifier() {
@@ -1089,11 +1900,12 @@ export namespace Glue {
     }
 
     // grok_classifier - computed: false, optional: true, required: false
-    private _grokClassifier?: GlueClassifierGrokClassifier[];
+    private _grokClassifier?: GlueClassifierGrokClassifier | undefined; 
+    private __grokClassifierOutput = new GlueClassifierGrokClassifierOutputReference(this as any, "grok_classifier", true);
     public get grokClassifier() {
-      return this.interpolationForAttribute('grok_classifier') as any;
+      return this.__grokClassifierOutput;
     }
-    public set grokClassifier(value: GlueClassifierGrokClassifier[] ) {
+    public putGrokClassifier(value: GlueClassifierGrokClassifier | undefined) {
       this._grokClassifier = value;
     }
     public resetGrokClassifier() {
@@ -1105,11 +1917,12 @@ export namespace Glue {
     }
 
     // json_classifier - computed: false, optional: true, required: false
-    private _jsonClassifier?: GlueClassifierJsonClassifier[];
+    private _jsonClassifier?: GlueClassifierJsonClassifier | undefined; 
+    private __jsonClassifierOutput = new GlueClassifierJsonClassifierOutputReference(this as any, "json_classifier", true);
     public get jsonClassifier() {
-      return this.interpolationForAttribute('json_classifier') as any;
+      return this.__jsonClassifierOutput;
     }
-    public set jsonClassifier(value: GlueClassifierJsonClassifier[] ) {
+    public putJsonClassifier(value: GlueClassifierJsonClassifier | undefined) {
       this._jsonClassifier = value;
     }
     public resetJsonClassifier() {
@@ -1121,11 +1934,12 @@ export namespace Glue {
     }
 
     // xml_classifier - computed: false, optional: true, required: false
-    private _xmlClassifier?: GlueClassifierXmlClassifier[];
+    private _xmlClassifier?: GlueClassifierXmlClassifier | undefined; 
+    private __xmlClassifierOutput = new GlueClassifierXmlClassifierOutputReference(this as any, "xml_classifier", true);
     public get xmlClassifier() {
-      return this.interpolationForAttribute('xml_classifier') as any;
+      return this.__xmlClassifierOutput;
     }
-    public set xmlClassifier(value: GlueClassifierXmlClassifier[] ) {
+    public putXmlClassifier(value: GlueClassifierXmlClassifier | undefined) {
       this._xmlClassifier = value;
     }
     public resetXmlClassifier() {
@@ -1143,10 +1957,10 @@ export namespace Glue {
     protected synthesizeAttributes(): { [name: string]: any } {
       return {
         name: cdktf.stringToTerraform(this._name),
-        csv_classifier: cdktf.listMapper(glueClassifierCsvClassifierToTerraform)(this._csvClassifier),
-        grok_classifier: cdktf.listMapper(glueClassifierGrokClassifierToTerraform)(this._grokClassifier),
-        json_classifier: cdktf.listMapper(glueClassifierJsonClassifierToTerraform)(this._jsonClassifier),
-        xml_classifier: cdktf.listMapper(glueClassifierXmlClassifierToTerraform)(this._xmlClassifier),
+        csv_classifier: glueClassifierCsvClassifierToTerraform(this._csvClassifier),
+        grok_classifier: glueClassifierGrokClassifierToTerraform(this._grokClassifier),
+        json_classifier: glueClassifierJsonClassifierToTerraform(this._jsonClassifier),
+        xml_classifier: glueClassifierXmlClassifierToTerraform(this._xmlClassifier),
       };
     }
   }
@@ -1188,7 +2002,7 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_connection.html#physical_connection_requirements GlueConnection#physical_connection_requirements}
     */
-    readonly physicalConnectionRequirements?: GlueConnectionPhysicalConnectionRequirements[];
+    readonly physicalConnectionRequirements?: GlueConnectionPhysicalConnectionRequirements;
   }
   export interface GlueConnectionPhysicalConnectionRequirements {
     /**
@@ -1205,8 +2019,11 @@ export namespace Glue {
     readonly subnetId?: string;
   }
 
-  function glueConnectionPhysicalConnectionRequirementsToTerraform(struct?: GlueConnectionPhysicalConnectionRequirements): any {
+  function glueConnectionPhysicalConnectionRequirementsToTerraform(struct?: GlueConnectionPhysicalConnectionRequirementsOutputReference | GlueConnectionPhysicalConnectionRequirements): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       availability_zone: cdktf.stringToTerraform(struct!.availabilityZone),
       security_group_id_list: cdktf.listMapper(cdktf.stringToTerraform)(struct!.securityGroupIdList),
@@ -1214,6 +2031,64 @@ export namespace Glue {
     }
   }
 
+  export class GlueConnectionPhysicalConnectionRequirementsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // availability_zone - computed: false, optional: true, required: false
+    private _availabilityZone?: string | undefined; 
+    public get availabilityZone() {
+      return this.getStringAttribute('availability_zone');
+    }
+    public set availabilityZone(value: string | undefined) {
+      this._availabilityZone = value;
+    }
+    public resetAvailabilityZone() {
+      this._availabilityZone = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get availabilityZoneInput() {
+      return this._availabilityZone
+    }
+
+    // security_group_id_list - computed: false, optional: true, required: false
+    private _securityGroupIdList?: string[] | undefined; 
+    public get securityGroupIdList() {
+      return this.getListAttribute('security_group_id_list');
+    }
+    public set securityGroupIdList(value: string[] | undefined) {
+      this._securityGroupIdList = value;
+    }
+    public resetSecurityGroupIdList() {
+      this._securityGroupIdList = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get securityGroupIdListInput() {
+      return this._securityGroupIdList
+    }
+
+    // subnet_id - computed: false, optional: true, required: false
+    private _subnetId?: string | undefined; 
+    public get subnetId() {
+      return this.getStringAttribute('subnet_id');
+    }
+    public set subnetId(value: string | undefined) {
+      this._subnetId = value;
+    }
+    public resetSubnetId() {
+      this._subnetId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get subnetIdInput() {
+      return this._subnetId
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_connection.html aws_glue_connection}
@@ -1268,11 +2143,11 @@ export namespace Glue {
     }
 
     // catalog_id - computed: true, optional: true, required: false
-    private _catalogId?: string;
+    private _catalogId?: string | undefined; 
     public get catalogId() {
       return this.getStringAttribute('catalog_id');
     }
-    public set catalogId(value: string) {
+    public set catalogId(value: string | undefined) {
       this._catalogId = value;
     }
     public resetCatalogId() {
@@ -1284,11 +2159,12 @@ export namespace Glue {
     }
 
     // connection_properties - computed: false, optional: true, required: false
-    private _connectionProperties?: { [key: string]: string } | cdktf.IResolvable;
+    private _connectionProperties?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get connectionProperties() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('connection_properties') as any;
     }
-    public set connectionProperties(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set connectionProperties(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._connectionProperties = value;
     }
     public resetConnectionProperties() {
@@ -1300,11 +2176,11 @@ export namespace Glue {
     }
 
     // connection_type - computed: false, optional: true, required: false
-    private _connectionType?: string;
+    private _connectionType?: string | undefined; 
     public get connectionType() {
       return this.getStringAttribute('connection_type');
     }
-    public set connectionType(value: string ) {
+    public set connectionType(value: string | undefined) {
       this._connectionType = value;
     }
     public resetConnectionType() {
@@ -1316,11 +2192,11 @@ export namespace Glue {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1337,11 +2213,11 @@ export namespace Glue {
     }
 
     // match_criteria - computed: false, optional: true, required: false
-    private _matchCriteria?: string[];
+    private _matchCriteria?: string[] | undefined; 
     public get matchCriteria() {
       return this.getListAttribute('match_criteria');
     }
-    public set matchCriteria(value: string[] ) {
+    public set matchCriteria(value: string[] | undefined) {
       this._matchCriteria = value;
     }
     public resetMatchCriteria() {
@@ -1353,7 +2229,7 @@ export namespace Glue {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1366,11 +2242,12 @@ export namespace Glue {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1382,11 +2259,12 @@ export namespace Glue {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1398,11 +2276,12 @@ export namespace Glue {
     }
 
     // physical_connection_requirements - computed: false, optional: true, required: false
-    private _physicalConnectionRequirements?: GlueConnectionPhysicalConnectionRequirements[];
+    private _physicalConnectionRequirements?: GlueConnectionPhysicalConnectionRequirements | undefined; 
+    private __physicalConnectionRequirementsOutput = new GlueConnectionPhysicalConnectionRequirementsOutputReference(this as any, "physical_connection_requirements", true);
     public get physicalConnectionRequirements() {
-      return this.interpolationForAttribute('physical_connection_requirements') as any;
+      return this.__physicalConnectionRequirementsOutput;
     }
-    public set physicalConnectionRequirements(value: GlueConnectionPhysicalConnectionRequirements[] ) {
+    public putPhysicalConnectionRequirements(value: GlueConnectionPhysicalConnectionRequirements | undefined) {
       this._physicalConnectionRequirements = value;
     }
     public resetPhysicalConnectionRequirements() {
@@ -1427,7 +2306,7 @@ export namespace Glue {
         name: cdktf.stringToTerraform(this._name),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        physical_connection_requirements: cdktf.listMapper(glueConnectionPhysicalConnectionRequirementsToTerraform)(this._physicalConnectionRequirements),
+        physical_connection_requirements: glueConnectionPhysicalConnectionRequirementsToTerraform(this._physicalConnectionRequirements),
       };
     }
   }
@@ -1499,7 +2378,7 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#lineage_configuration GlueCrawler#lineage_configuration}
     */
-    readonly lineageConfiguration?: GlueCrawlerLineageConfiguration[];
+    readonly lineageConfiguration?: GlueCrawlerLineageConfiguration;
     /**
     * mongodb_target block
     * 
@@ -1511,7 +2390,7 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#recrawl_policy GlueCrawler#recrawl_policy}
     */
-    readonly recrawlPolicy?: GlueCrawlerRecrawlPolicy[];
+    readonly recrawlPolicy?: GlueCrawlerRecrawlPolicy;
     /**
     * s3_target block
     * 
@@ -1523,7 +2402,7 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#schema_change_policy GlueCrawler#schema_change_policy}
     */
-    readonly schemaChangePolicy?: GlueCrawlerSchemaChangePolicy[];
+    readonly schemaChangePolicy?: GlueCrawlerSchemaChangePolicy;
   }
   export interface GlueCrawlerCatalogTarget {
     /**
@@ -1538,6 +2417,9 @@ export namespace Glue {
 
   function glueCrawlerCatalogTargetToTerraform(struct?: GlueCrawlerCatalogTarget): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       database_name: cdktf.stringToTerraform(struct!.databaseName),
       tables: cdktf.listMapper(cdktf.stringToTerraform)(struct!.tables),
@@ -1561,6 +2443,9 @@ export namespace Glue {
 
   function glueCrawlerDynamodbTargetToTerraform(struct?: GlueCrawlerDynamodbTarget): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       path: cdktf.stringToTerraform(struct!.path),
       scan_all: cdktf.booleanToTerraform(struct!.scanAll),
@@ -1585,6 +2470,9 @@ export namespace Glue {
 
   function glueCrawlerJdbcTargetToTerraform(struct?: GlueCrawlerJdbcTarget): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       connection_name: cdktf.stringToTerraform(struct!.connectionName),
       exclusions: cdktf.listMapper(cdktf.stringToTerraform)(struct!.exclusions),
@@ -1599,13 +2487,42 @@ export namespace Glue {
     readonly crawlerLineageSettings?: string;
   }
 
-  function glueCrawlerLineageConfigurationToTerraform(struct?: GlueCrawlerLineageConfiguration): any {
+  function glueCrawlerLineageConfigurationToTerraform(struct?: GlueCrawlerLineageConfigurationOutputReference | GlueCrawlerLineageConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       crawler_lineage_settings: cdktf.stringToTerraform(struct!.crawlerLineageSettings),
     }
   }
 
+  export class GlueCrawlerLineageConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // crawler_lineage_settings - computed: false, optional: true, required: false
+    private _crawlerLineageSettings?: string | undefined; 
+    public get crawlerLineageSettings() {
+      return this.getStringAttribute('crawler_lineage_settings');
+    }
+    public set crawlerLineageSettings(value: string | undefined) {
+      this._crawlerLineageSettings = value;
+    }
+    public resetCrawlerLineageSettings() {
+      this._crawlerLineageSettings = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get crawlerLineageSettingsInput() {
+      return this._crawlerLineageSettings
+    }
+  }
   export interface GlueCrawlerMongodbTarget {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#connection_name GlueCrawler#connection_name}
@@ -1623,6 +2540,9 @@ export namespace Glue {
 
   function glueCrawlerMongodbTargetToTerraform(struct?: GlueCrawlerMongodbTarget): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       connection_name: cdktf.stringToTerraform(struct!.connectionName),
       path: cdktf.stringToTerraform(struct!.path),
@@ -1637,13 +2557,42 @@ export namespace Glue {
     readonly recrawlBehavior?: string;
   }
 
-  function glueCrawlerRecrawlPolicyToTerraform(struct?: GlueCrawlerRecrawlPolicy): any {
+  function glueCrawlerRecrawlPolicyToTerraform(struct?: GlueCrawlerRecrawlPolicyOutputReference | GlueCrawlerRecrawlPolicy): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       recrawl_behavior: cdktf.stringToTerraform(struct!.recrawlBehavior),
     }
   }
 
+  export class GlueCrawlerRecrawlPolicyOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // recrawl_behavior - computed: false, optional: true, required: false
+    private _recrawlBehavior?: string | undefined; 
+    public get recrawlBehavior() {
+      return this.getStringAttribute('recrawl_behavior');
+    }
+    public set recrawlBehavior(value: string | undefined) {
+      this._recrawlBehavior = value;
+    }
+    public resetRecrawlBehavior() {
+      this._recrawlBehavior = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get recrawlBehaviorInput() {
+      return this._recrawlBehavior
+    }
+  }
   export interface GlueCrawlerS3Target {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html#connection_name GlueCrawler#connection_name}
@@ -1665,6 +2614,9 @@ export namespace Glue {
 
   function glueCrawlerS3TargetToTerraform(struct?: GlueCrawlerS3Target): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       connection_name: cdktf.stringToTerraform(struct!.connectionName),
       exclusions: cdktf.listMapper(cdktf.stringToTerraform)(struct!.exclusions),
@@ -1684,14 +2636,59 @@ export namespace Glue {
     readonly updateBehavior?: string;
   }
 
-  function glueCrawlerSchemaChangePolicyToTerraform(struct?: GlueCrawlerSchemaChangePolicy): any {
+  function glueCrawlerSchemaChangePolicyToTerraform(struct?: GlueCrawlerSchemaChangePolicyOutputReference | GlueCrawlerSchemaChangePolicy): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete_behavior: cdktf.stringToTerraform(struct!.deleteBehavior),
       update_behavior: cdktf.stringToTerraform(struct!.updateBehavior),
     }
   }
 
+  export class GlueCrawlerSchemaChangePolicyOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // delete_behavior - computed: false, optional: true, required: false
+    private _deleteBehavior?: string | undefined; 
+    public get deleteBehavior() {
+      return this.getStringAttribute('delete_behavior');
+    }
+    public set deleteBehavior(value: string | undefined) {
+      this._deleteBehavior = value;
+    }
+    public resetDeleteBehavior() {
+      this._deleteBehavior = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteBehaviorInput() {
+      return this._deleteBehavior
+    }
+
+    // update_behavior - computed: false, optional: true, required: false
+    private _updateBehavior?: string | undefined; 
+    public get updateBehavior() {
+      return this.getStringAttribute('update_behavior');
+    }
+    public set updateBehavior(value: string | undefined) {
+      this._updateBehavior = value;
+    }
+    public resetUpdateBehavior() {
+      this._updateBehavior = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateBehaviorInput() {
+      return this._updateBehavior
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_crawler.html aws_glue_crawler}
@@ -1756,11 +2753,11 @@ export namespace Glue {
     }
 
     // classifiers - computed: false, optional: true, required: false
-    private _classifiers?: string[];
+    private _classifiers?: string[] | undefined; 
     public get classifiers() {
       return this.getListAttribute('classifiers');
     }
-    public set classifiers(value: string[] ) {
+    public set classifiers(value: string[] | undefined) {
       this._classifiers = value;
     }
     public resetClassifiers() {
@@ -1772,11 +2769,11 @@ export namespace Glue {
     }
 
     // configuration - computed: false, optional: true, required: false
-    private _configuration?: string;
+    private _configuration?: string | undefined; 
     public get configuration() {
       return this.getStringAttribute('configuration');
     }
-    public set configuration(value: string ) {
+    public set configuration(value: string | undefined) {
       this._configuration = value;
     }
     public resetConfiguration() {
@@ -1788,7 +2785,7 @@ export namespace Glue {
     }
 
     // database_name - computed: false, optional: false, required: true
-    private _databaseName: string;
+    private _databaseName?: string; 
     public get databaseName() {
       return this.getStringAttribute('database_name');
     }
@@ -1801,11 +2798,11 @@ export namespace Glue {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1822,7 +2819,7 @@ export namespace Glue {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1835,7 +2832,7 @@ export namespace Glue {
     }
 
     // role - computed: false, optional: false, required: true
-    private _role: string;
+    private _role?: string; 
     public get role() {
       return this.getStringAttribute('role');
     }
@@ -1848,11 +2845,11 @@ export namespace Glue {
     }
 
     // schedule - computed: false, optional: true, required: false
-    private _schedule?: string;
+    private _schedule?: string | undefined; 
     public get schedule() {
       return this.getStringAttribute('schedule');
     }
-    public set schedule(value: string ) {
+    public set schedule(value: string | undefined) {
       this._schedule = value;
     }
     public resetSchedule() {
@@ -1864,11 +2861,11 @@ export namespace Glue {
     }
 
     // security_configuration - computed: false, optional: true, required: false
-    private _securityConfiguration?: string;
+    private _securityConfiguration?: string | undefined; 
     public get securityConfiguration() {
       return this.getStringAttribute('security_configuration');
     }
-    public set securityConfiguration(value: string ) {
+    public set securityConfiguration(value: string | undefined) {
       this._securityConfiguration = value;
     }
     public resetSecurityConfiguration() {
@@ -1880,11 +2877,11 @@ export namespace Glue {
     }
 
     // table_prefix - computed: false, optional: true, required: false
-    private _tablePrefix?: string;
+    private _tablePrefix?: string | undefined; 
     public get tablePrefix() {
       return this.getStringAttribute('table_prefix');
     }
-    public set tablePrefix(value: string ) {
+    public set tablePrefix(value: string | undefined) {
       this._tablePrefix = value;
     }
     public resetTablePrefix() {
@@ -1896,11 +2893,12 @@ export namespace Glue {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1912,11 +2910,12 @@ export namespace Glue {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1928,11 +2927,12 @@ export namespace Glue {
     }
 
     // catalog_target - computed: false, optional: true, required: false
-    private _catalogTarget?: GlueCrawlerCatalogTarget[];
+    private _catalogTarget?: GlueCrawlerCatalogTarget[] | undefined; 
     public get catalogTarget() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('catalog_target') as any;
     }
-    public set catalogTarget(value: GlueCrawlerCatalogTarget[] ) {
+    public set catalogTarget(value: GlueCrawlerCatalogTarget[] | undefined) {
       this._catalogTarget = value;
     }
     public resetCatalogTarget() {
@@ -1944,11 +2944,12 @@ export namespace Glue {
     }
 
     // dynamodb_target - computed: false, optional: true, required: false
-    private _dynamodbTarget?: GlueCrawlerDynamodbTarget[];
+    private _dynamodbTarget?: GlueCrawlerDynamodbTarget[] | undefined; 
     public get dynamodbTarget() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('dynamodb_target') as any;
     }
-    public set dynamodbTarget(value: GlueCrawlerDynamodbTarget[] ) {
+    public set dynamodbTarget(value: GlueCrawlerDynamodbTarget[] | undefined) {
       this._dynamodbTarget = value;
     }
     public resetDynamodbTarget() {
@@ -1960,11 +2961,12 @@ export namespace Glue {
     }
 
     // jdbc_target - computed: false, optional: true, required: false
-    private _jdbcTarget?: GlueCrawlerJdbcTarget[];
+    private _jdbcTarget?: GlueCrawlerJdbcTarget[] | undefined; 
     public get jdbcTarget() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('jdbc_target') as any;
     }
-    public set jdbcTarget(value: GlueCrawlerJdbcTarget[] ) {
+    public set jdbcTarget(value: GlueCrawlerJdbcTarget[] | undefined) {
       this._jdbcTarget = value;
     }
     public resetJdbcTarget() {
@@ -1976,11 +2978,12 @@ export namespace Glue {
     }
 
     // lineage_configuration - computed: false, optional: true, required: false
-    private _lineageConfiguration?: GlueCrawlerLineageConfiguration[];
+    private _lineageConfiguration?: GlueCrawlerLineageConfiguration | undefined; 
+    private __lineageConfigurationOutput = new GlueCrawlerLineageConfigurationOutputReference(this as any, "lineage_configuration", true);
     public get lineageConfiguration() {
-      return this.interpolationForAttribute('lineage_configuration') as any;
+      return this.__lineageConfigurationOutput;
     }
-    public set lineageConfiguration(value: GlueCrawlerLineageConfiguration[] ) {
+    public putLineageConfiguration(value: GlueCrawlerLineageConfiguration | undefined) {
       this._lineageConfiguration = value;
     }
     public resetLineageConfiguration() {
@@ -1992,11 +2995,12 @@ export namespace Glue {
     }
 
     // mongodb_target - computed: false, optional: true, required: false
-    private _mongodbTarget?: GlueCrawlerMongodbTarget[];
+    private _mongodbTarget?: GlueCrawlerMongodbTarget[] | undefined; 
     public get mongodbTarget() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('mongodb_target') as any;
     }
-    public set mongodbTarget(value: GlueCrawlerMongodbTarget[] ) {
+    public set mongodbTarget(value: GlueCrawlerMongodbTarget[] | undefined) {
       this._mongodbTarget = value;
     }
     public resetMongodbTarget() {
@@ -2008,11 +3012,12 @@ export namespace Glue {
     }
 
     // recrawl_policy - computed: false, optional: true, required: false
-    private _recrawlPolicy?: GlueCrawlerRecrawlPolicy[];
+    private _recrawlPolicy?: GlueCrawlerRecrawlPolicy | undefined; 
+    private __recrawlPolicyOutput = new GlueCrawlerRecrawlPolicyOutputReference(this as any, "recrawl_policy", true);
     public get recrawlPolicy() {
-      return this.interpolationForAttribute('recrawl_policy') as any;
+      return this.__recrawlPolicyOutput;
     }
-    public set recrawlPolicy(value: GlueCrawlerRecrawlPolicy[] ) {
+    public putRecrawlPolicy(value: GlueCrawlerRecrawlPolicy | undefined) {
       this._recrawlPolicy = value;
     }
     public resetRecrawlPolicy() {
@@ -2024,11 +3029,12 @@ export namespace Glue {
     }
 
     // s3_target - computed: false, optional: true, required: false
-    private _s3Target?: GlueCrawlerS3Target[];
+    private _s3Target?: GlueCrawlerS3Target[] | undefined; 
     public get s3Target() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('s3_target') as any;
     }
-    public set s3Target(value: GlueCrawlerS3Target[] ) {
+    public set s3Target(value: GlueCrawlerS3Target[] | undefined) {
       this._s3Target = value;
     }
     public resetS3Target() {
@@ -2040,11 +3046,12 @@ export namespace Glue {
     }
 
     // schema_change_policy - computed: false, optional: true, required: false
-    private _schemaChangePolicy?: GlueCrawlerSchemaChangePolicy[];
+    private _schemaChangePolicy?: GlueCrawlerSchemaChangePolicy | undefined; 
+    private __schemaChangePolicyOutput = new GlueCrawlerSchemaChangePolicyOutputReference(this as any, "schema_change_policy", true);
     public get schemaChangePolicy() {
-      return this.interpolationForAttribute('schema_change_policy') as any;
+      return this.__schemaChangePolicyOutput;
     }
-    public set schemaChangePolicy(value: GlueCrawlerSchemaChangePolicy[] ) {
+    public putSchemaChangePolicy(value: GlueCrawlerSchemaChangePolicy | undefined) {
       this._schemaChangePolicy = value;
     }
     public resetSchemaChangePolicy() {
@@ -2075,11 +3082,11 @@ export namespace Glue {
         catalog_target: cdktf.listMapper(glueCrawlerCatalogTargetToTerraform)(this._catalogTarget),
         dynamodb_target: cdktf.listMapper(glueCrawlerDynamodbTargetToTerraform)(this._dynamodbTarget),
         jdbc_target: cdktf.listMapper(glueCrawlerJdbcTargetToTerraform)(this._jdbcTarget),
-        lineage_configuration: cdktf.listMapper(glueCrawlerLineageConfigurationToTerraform)(this._lineageConfiguration),
+        lineage_configuration: glueCrawlerLineageConfigurationToTerraform(this._lineageConfiguration),
         mongodb_target: cdktf.listMapper(glueCrawlerMongodbTargetToTerraform)(this._mongodbTarget),
-        recrawl_policy: cdktf.listMapper(glueCrawlerRecrawlPolicyToTerraform)(this._recrawlPolicy),
+        recrawl_policy: glueCrawlerRecrawlPolicyToTerraform(this._recrawlPolicy),
         s3_target: cdktf.listMapper(glueCrawlerS3TargetToTerraform)(this._s3Target),
-        schema_change_policy: cdktf.listMapper(glueCrawlerSchemaChangePolicyToTerraform)(this._schemaChangePolicy),
+        schema_change_policy: glueCrawlerSchemaChangePolicyToTerraform(this._schemaChangePolicy),
       };
     }
   }
@@ -2093,7 +3100,7 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_data_catalog_encryption_settings.html#data_catalog_encryption_settings GlueDataCatalogEncryptionSettings#data_catalog_encryption_settings}
     */
-    readonly dataCatalogEncryptionSettings: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettings[];
+    readonly dataCatalogEncryptionSettings: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettings;
   }
   export interface GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption {
     /**
@@ -2106,14 +3113,56 @@ export namespace Glue {
     readonly returnConnectionPasswordEncrypted: boolean | cdktf.IResolvable;
   }
 
-  function glueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryptionToTerraform(struct?: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption): any {
+  function glueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryptionToTerraform(struct?: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryptionOutputReference | GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       aws_kms_key_id: cdktf.stringToTerraform(struct!.awsKmsKeyId),
       return_connection_password_encrypted: cdktf.booleanToTerraform(struct!.returnConnectionPasswordEncrypted),
     }
   }
 
+  export class GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryptionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // aws_kms_key_id - computed: false, optional: true, required: false
+    private _awsKmsKeyId?: string | undefined; 
+    public get awsKmsKeyId() {
+      return this.getStringAttribute('aws_kms_key_id');
+    }
+    public set awsKmsKeyId(value: string | undefined) {
+      this._awsKmsKeyId = value;
+    }
+    public resetAwsKmsKeyId() {
+      this._awsKmsKeyId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get awsKmsKeyIdInput() {
+      return this._awsKmsKeyId
+    }
+
+    // return_connection_password_encrypted - computed: false, optional: false, required: true
+    private _returnConnectionPasswordEncrypted?: boolean | cdktf.IResolvable; 
+    public get returnConnectionPasswordEncrypted() {
+      return this.getBooleanAttribute('return_connection_password_encrypted') as any;
+    }
+    public set returnConnectionPasswordEncrypted(value: boolean | cdktf.IResolvable) {
+      this._returnConnectionPasswordEncrypted = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get returnConnectionPasswordEncryptedInput() {
+      return this._returnConnectionPasswordEncrypted
+    }
+  }
   export interface GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_data_catalog_encryption_settings.html#catalog_encryption_mode GlueDataCatalogEncryptionSettings#catalog_encryption_mode}
@@ -2125,37 +3174,120 @@ export namespace Glue {
     readonly sseAwsKmsKeyId?: string;
   }
 
-  function glueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRestToTerraform(struct?: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest): any {
+  function glueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRestToTerraform(struct?: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRestOutputReference | GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       catalog_encryption_mode: cdktf.stringToTerraform(struct!.catalogEncryptionMode),
       sse_aws_kms_key_id: cdktf.stringToTerraform(struct!.sseAwsKmsKeyId),
     }
   }
 
+  export class GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRestOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // catalog_encryption_mode - computed: false, optional: false, required: true
+    private _catalogEncryptionMode?: string; 
+    public get catalogEncryptionMode() {
+      return this.getStringAttribute('catalog_encryption_mode');
+    }
+    public set catalogEncryptionMode(value: string) {
+      this._catalogEncryptionMode = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get catalogEncryptionModeInput() {
+      return this._catalogEncryptionMode
+    }
+
+    // sse_aws_kms_key_id - computed: false, optional: true, required: false
+    private _sseAwsKmsKeyId?: string | undefined; 
+    public get sseAwsKmsKeyId() {
+      return this.getStringAttribute('sse_aws_kms_key_id');
+    }
+    public set sseAwsKmsKeyId(value: string | undefined) {
+      this._sseAwsKmsKeyId = value;
+    }
+    public resetSseAwsKmsKeyId() {
+      this._sseAwsKmsKeyId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sseAwsKmsKeyIdInput() {
+      return this._sseAwsKmsKeyId
+    }
+  }
   export interface GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettings {
     /**
     * connection_password_encryption block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_data_catalog_encryption_settings.html#connection_password_encryption GlueDataCatalogEncryptionSettings#connection_password_encryption}
     */
-    readonly connectionPasswordEncryption: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption[];
+    readonly connectionPasswordEncryption: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption;
     /**
     * encryption_at_rest block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_data_catalog_encryption_settings.html#encryption_at_rest GlueDataCatalogEncryptionSettings#encryption_at_rest}
     */
-    readonly encryptionAtRest: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest[];
+    readonly encryptionAtRest: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest;
   }
 
-  function glueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsToTerraform(struct?: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettings): any {
+  function glueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsToTerraform(struct?: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsOutputReference | GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettings): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      connection_password_encryption: cdktf.listMapper(glueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryptionToTerraform)(struct!.connectionPasswordEncryption),
-      encryption_at_rest: cdktf.listMapper(glueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRestToTerraform)(struct!.encryptionAtRest),
+      connection_password_encryption: glueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryptionToTerraform(struct!.connectionPasswordEncryption),
+      encryption_at_rest: glueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRestToTerraform(struct!.encryptionAtRest),
     }
   }
 
+  export class GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // connection_password_encryption - computed: false, optional: false, required: true
+    private _connectionPasswordEncryption?: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption; 
+    private __connectionPasswordEncryptionOutput = new GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryptionOutputReference(this as any, "connection_password_encryption", true);
+    public get connectionPasswordEncryption() {
+      return this.__connectionPasswordEncryptionOutput;
+    }
+    public putConnectionPasswordEncryption(value: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption) {
+      this._connectionPasswordEncryption = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get connectionPasswordEncryptionInput() {
+      return this._connectionPasswordEncryption
+    }
+
+    // encryption_at_rest - computed: false, optional: false, required: true
+    private _encryptionAtRest?: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest; 
+    private __encryptionAtRestOutput = new GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRestOutputReference(this as any, "encryption_at_rest", true);
+    public get encryptionAtRest() {
+      return this.__encryptionAtRestOutput;
+    }
+    public putEncryptionAtRest(value: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest) {
+      this._encryptionAtRest = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get encryptionAtRestInput() {
+      return this._encryptionAtRest
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_data_catalog_encryption_settings.html aws_glue_data_catalog_encryption_settings}
@@ -2198,11 +3330,11 @@ export namespace Glue {
     // ==========
 
     // catalog_id - computed: true, optional: true, required: false
-    private _catalogId?: string;
+    private _catalogId?: string | undefined; 
     public get catalogId() {
       return this.getStringAttribute('catalog_id');
     }
-    public set catalogId(value: string) {
+    public set catalogId(value: string | undefined) {
       this._catalogId = value;
     }
     public resetCatalogId() {
@@ -2219,11 +3351,12 @@ export namespace Glue {
     }
 
     // data_catalog_encryption_settings - computed: false, optional: false, required: true
-    private _dataCatalogEncryptionSettings: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettings[];
+    private _dataCatalogEncryptionSettings?: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettings; 
+    private __dataCatalogEncryptionSettingsOutput = new GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsOutputReference(this as any, "data_catalog_encryption_settings", true);
     public get dataCatalogEncryptionSettings() {
-      return this.interpolationForAttribute('data_catalog_encryption_settings') as any;
+      return this.__dataCatalogEncryptionSettingsOutput;
     }
-    public set dataCatalogEncryptionSettings(value: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettings[]) {
+    public putDataCatalogEncryptionSettings(value: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettings) {
       this._dataCatalogEncryptionSettings = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -2238,7 +3371,7 @@ export namespace Glue {
     protected synthesizeAttributes(): { [name: string]: any } {
       return {
         catalog_id: cdktf.stringToTerraform(this._catalogId),
-        data_catalog_encryption_settings: cdktf.listMapper(glueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsToTerraform)(this._dataCatalogEncryptionSettings),
+        data_catalog_encryption_settings: glueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsToTerraform(this._dataCatalogEncryptionSettings),
       };
     }
   }
@@ -2364,11 +3497,12 @@ export namespace Glue {
     // ==========
 
     // arguments - computed: false, optional: true, required: false
-    private _arguments?: { [key: string]: string } | cdktf.IResolvable;
+    private _arguments?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get arguments() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('arguments') as any;
     }
-    public set arguments(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set arguments(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._arguments = value;
     }
     public resetArguments() {
@@ -2390,11 +3524,11 @@ export namespace Glue {
     }
 
     // extra_jars_s3_path - computed: false, optional: true, required: false
-    private _extraJarsS3Path?: string;
+    private _extraJarsS3Path?: string | undefined; 
     public get extraJarsS3Path() {
       return this.getStringAttribute('extra_jars_s3_path');
     }
-    public set extraJarsS3Path(value: string ) {
+    public set extraJarsS3Path(value: string | undefined) {
       this._extraJarsS3Path = value;
     }
     public resetExtraJarsS3Path() {
@@ -2406,11 +3540,11 @@ export namespace Glue {
     }
 
     // extra_python_libs_s3_path - computed: false, optional: true, required: false
-    private _extraPythonLibsS3Path?: string;
+    private _extraPythonLibsS3Path?: string | undefined; 
     public get extraPythonLibsS3Path() {
       return this.getStringAttribute('extra_python_libs_s3_path');
     }
-    public set extraPythonLibsS3Path(value: string ) {
+    public set extraPythonLibsS3Path(value: string | undefined) {
       this._extraPythonLibsS3Path = value;
     }
     public resetExtraPythonLibsS3Path() {
@@ -2427,11 +3561,11 @@ export namespace Glue {
     }
 
     // glue_version - computed: false, optional: true, required: false
-    private _glueVersion?: string;
+    private _glueVersion?: string | undefined; 
     public get glueVersion() {
       return this.getStringAttribute('glue_version');
     }
-    public set glueVersion(value: string ) {
+    public set glueVersion(value: string | undefined) {
       this._glueVersion = value;
     }
     public resetGlueVersion() {
@@ -2448,7 +3582,7 @@ export namespace Glue {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2461,11 +3595,11 @@ export namespace Glue {
     }
 
     // number_of_nodes - computed: false, optional: true, required: false
-    private _numberOfNodes?: number;
+    private _numberOfNodes?: number | undefined; 
     public get numberOfNodes() {
       return this.getNumberAttribute('number_of_nodes');
     }
-    public set numberOfNodes(value: number ) {
+    public set numberOfNodes(value: number | undefined) {
       this._numberOfNodes = value;
     }
     public resetNumberOfNodes() {
@@ -2477,11 +3611,11 @@ export namespace Glue {
     }
 
     // number_of_workers - computed: false, optional: true, required: false
-    private _numberOfWorkers?: number;
+    private _numberOfWorkers?: number | undefined; 
     public get numberOfWorkers() {
       return this.getNumberAttribute('number_of_workers');
     }
-    public set numberOfWorkers(value: number ) {
+    public set numberOfWorkers(value: number | undefined) {
       this._numberOfWorkers = value;
     }
     public resetNumberOfWorkers() {
@@ -2503,11 +3637,11 @@ export namespace Glue {
     }
 
     // public_key - computed: false, optional: true, required: false
-    private _publicKey?: string;
+    private _publicKey?: string | undefined; 
     public get publicKey() {
       return this.getStringAttribute('public_key');
     }
-    public set publicKey(value: string ) {
+    public set publicKey(value: string | undefined) {
       this._publicKey = value;
     }
     public resetPublicKey() {
@@ -2519,11 +3653,11 @@ export namespace Glue {
     }
 
     // public_keys - computed: false, optional: true, required: false
-    private _publicKeys?: string[];
+    private _publicKeys?: string[] | undefined; 
     public get publicKeys() {
       return this.getListAttribute('public_keys');
     }
-    public set publicKeys(value: string[] ) {
+    public set publicKeys(value: string[] | undefined) {
       this._publicKeys = value;
     }
     public resetPublicKeys() {
@@ -2535,7 +3669,7 @@ export namespace Glue {
     }
 
     // role_arn - computed: false, optional: false, required: true
-    private _roleArn: string;
+    private _roleArn?: string; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
@@ -2548,11 +3682,11 @@ export namespace Glue {
     }
 
     // security_configuration - computed: false, optional: true, required: false
-    private _securityConfiguration?: string;
+    private _securityConfiguration?: string | undefined; 
     public get securityConfiguration() {
       return this.getStringAttribute('security_configuration');
     }
-    public set securityConfiguration(value: string ) {
+    public set securityConfiguration(value: string | undefined) {
       this._securityConfiguration = value;
     }
     public resetSecurityConfiguration() {
@@ -2564,11 +3698,11 @@ export namespace Glue {
     }
 
     // security_group_ids - computed: false, optional: true, required: false
-    private _securityGroupIds?: string[];
+    private _securityGroupIds?: string[] | undefined; 
     public get securityGroupIds() {
       return this.getListAttribute('security_group_ids');
     }
-    public set securityGroupIds(value: string[] ) {
+    public set securityGroupIds(value: string[] | undefined) {
       this._securityGroupIds = value;
     }
     public resetSecurityGroupIds() {
@@ -2585,11 +3719,11 @@ export namespace Glue {
     }
 
     // subnet_id - computed: false, optional: true, required: false
-    private _subnetId?: string;
+    private _subnetId?: string | undefined; 
     public get subnetId() {
       return this.getStringAttribute('subnet_id');
     }
-    public set subnetId(value: string ) {
+    public set subnetId(value: string | undefined) {
       this._subnetId = value;
     }
     public resetSubnetId() {
@@ -2601,11 +3735,12 @@ export namespace Glue {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2617,11 +3752,12 @@ export namespace Glue {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2638,11 +3774,11 @@ export namespace Glue {
     }
 
     // worker_type - computed: false, optional: true, required: false
-    private _workerType?: string;
+    private _workerType?: string | undefined; 
     public get workerType() {
       return this.getStringAttribute('worker_type');
     }
-    public set workerType(value: string ) {
+    public set workerType(value: string | undefined) {
       this._workerType = value;
     }
     public resetWorkerType() {
@@ -2754,19 +3890,19 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#command GlueJob#command}
     */
-    readonly command: GlueJobCommand[];
+    readonly command: GlueJobCommand;
     /**
     * execution_property block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#execution_property GlueJob#execution_property}
     */
-    readonly executionProperty?: GlueJobExecutionProperty[];
+    readonly executionProperty?: GlueJobExecutionProperty;
     /**
     * notification_property block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#notification_property GlueJob#notification_property}
     */
-    readonly notificationProperty?: GlueJobNotificationProperty[];
+    readonly notificationProperty?: GlueJobNotificationProperty;
   }
   export interface GlueJobCommand {
     /**
@@ -2783,8 +3919,11 @@ export namespace Glue {
     readonly scriptLocation: string;
   }
 
-  function glueJobCommandToTerraform(struct?: GlueJobCommand): any {
+  function glueJobCommandToTerraform(struct?: GlueJobCommandOutputReference | GlueJobCommand): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       python_version: cdktf.stringToTerraform(struct!.pythonVersion),
@@ -2792,6 +3931,61 @@ export namespace Glue {
     }
   }
 
+  export class GlueJobCommandOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // name - computed: false, optional: true, required: false
+    private _name?: string | undefined; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string | undefined) {
+      this._name = value;
+    }
+    public resetName() {
+      this._name = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+
+    // python_version - computed: true, optional: true, required: false
+    private _pythonVersion?: string | undefined; 
+    public get pythonVersion() {
+      return this.getStringAttribute('python_version');
+    }
+    public set pythonVersion(value: string | undefined) {
+      this._pythonVersion = value;
+    }
+    public resetPythonVersion() {
+      this._pythonVersion = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get pythonVersionInput() {
+      return this._pythonVersion
+    }
+
+    // script_location - computed: false, optional: false, required: true
+    private _scriptLocation?: string; 
+    public get scriptLocation() {
+      return this.getStringAttribute('script_location');
+    }
+    public set scriptLocation(value: string) {
+      this._scriptLocation = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get scriptLocationInput() {
+      return this._scriptLocation
+    }
+  }
   export interface GlueJobExecutionProperty {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#max_concurrent_runs GlueJob#max_concurrent_runs}
@@ -2799,13 +3993,42 @@ export namespace Glue {
     readonly maxConcurrentRuns?: number;
   }
 
-  function glueJobExecutionPropertyToTerraform(struct?: GlueJobExecutionProperty): any {
+  function glueJobExecutionPropertyToTerraform(struct?: GlueJobExecutionPropertyOutputReference | GlueJobExecutionProperty): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       max_concurrent_runs: cdktf.numberToTerraform(struct!.maxConcurrentRuns),
     }
   }
 
+  export class GlueJobExecutionPropertyOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // max_concurrent_runs - computed: false, optional: true, required: false
+    private _maxConcurrentRuns?: number | undefined; 
+    public get maxConcurrentRuns() {
+      return this.getNumberAttribute('max_concurrent_runs');
+    }
+    public set maxConcurrentRuns(value: number | undefined) {
+      this._maxConcurrentRuns = value;
+    }
+    public resetMaxConcurrentRuns() {
+      this._maxConcurrentRuns = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maxConcurrentRunsInput() {
+      return this._maxConcurrentRuns
+    }
+  }
   export interface GlueJobNotificationProperty {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html#notify_delay_after GlueJob#notify_delay_after}
@@ -2813,13 +4036,42 @@ export namespace Glue {
     readonly notifyDelayAfter?: number;
   }
 
-  function glueJobNotificationPropertyToTerraform(struct?: GlueJobNotificationProperty): any {
+  function glueJobNotificationPropertyToTerraform(struct?: GlueJobNotificationPropertyOutputReference | GlueJobNotificationProperty): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       notify_delay_after: cdktf.numberToTerraform(struct!.notifyDelayAfter),
     }
   }
 
+  export class GlueJobNotificationPropertyOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // notify_delay_after - computed: false, optional: true, required: false
+    private _notifyDelayAfter?: number | undefined; 
+    public get notifyDelayAfter() {
+      return this.getNumberAttribute('notify_delay_after');
+    }
+    public set notifyDelayAfter(value: number | undefined) {
+      this._notifyDelayAfter = value;
+    }
+    public resetNotifyDelayAfter() {
+      this._notifyDelayAfter = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get notifyDelayAfterInput() {
+      return this._notifyDelayAfter
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_job.html aws_glue_job}
@@ -2883,11 +4135,11 @@ export namespace Glue {
     }
 
     // connections - computed: false, optional: true, required: false
-    private _connections?: string[];
+    private _connections?: string[] | undefined; 
     public get connections() {
       return this.getListAttribute('connections');
     }
-    public set connections(value: string[] ) {
+    public set connections(value: string[] | undefined) {
       this._connections = value;
     }
     public resetConnections() {
@@ -2899,11 +4151,12 @@ export namespace Glue {
     }
 
     // default_arguments - computed: false, optional: true, required: false
-    private _defaultArguments?: { [key: string]: string } | cdktf.IResolvable;
+    private _defaultArguments?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get defaultArguments() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('default_arguments') as any;
     }
-    public set defaultArguments(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set defaultArguments(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._defaultArguments = value;
     }
     public resetDefaultArguments() {
@@ -2915,11 +4168,11 @@ export namespace Glue {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -2931,11 +4184,11 @@ export namespace Glue {
     }
 
     // glue_version - computed: true, optional: true, required: false
-    private _glueVersion?: string;
+    private _glueVersion?: string | undefined; 
     public get glueVersion() {
       return this.getStringAttribute('glue_version');
     }
-    public set glueVersion(value: string) {
+    public set glueVersion(value: string | undefined) {
       this._glueVersion = value;
     }
     public resetGlueVersion() {
@@ -2952,11 +4205,11 @@ export namespace Glue {
     }
 
     // max_capacity - computed: true, optional: true, required: false
-    private _maxCapacity?: number;
+    private _maxCapacity?: number | undefined; 
     public get maxCapacity() {
       return this.getNumberAttribute('max_capacity');
     }
-    public set maxCapacity(value: number) {
+    public set maxCapacity(value: number | undefined) {
       this._maxCapacity = value;
     }
     public resetMaxCapacity() {
@@ -2968,11 +4221,11 @@ export namespace Glue {
     }
 
     // max_retries - computed: false, optional: true, required: false
-    private _maxRetries?: number;
+    private _maxRetries?: number | undefined; 
     public get maxRetries() {
       return this.getNumberAttribute('max_retries');
     }
-    public set maxRetries(value: number ) {
+    public set maxRetries(value: number | undefined) {
       this._maxRetries = value;
     }
     public resetMaxRetries() {
@@ -2984,7 +4237,7 @@ export namespace Glue {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2997,11 +4250,12 @@ export namespace Glue {
     }
 
     // non_overridable_arguments - computed: false, optional: true, required: false
-    private _nonOverridableArguments?: { [key: string]: string } | cdktf.IResolvable;
+    private _nonOverridableArguments?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get nonOverridableArguments() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('non_overridable_arguments') as any;
     }
-    public set nonOverridableArguments(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set nonOverridableArguments(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._nonOverridableArguments = value;
     }
     public resetNonOverridableArguments() {
@@ -3013,11 +4267,11 @@ export namespace Glue {
     }
 
     // number_of_workers - computed: false, optional: true, required: false
-    private _numberOfWorkers?: number;
+    private _numberOfWorkers?: number | undefined; 
     public get numberOfWorkers() {
       return this.getNumberAttribute('number_of_workers');
     }
-    public set numberOfWorkers(value: number ) {
+    public set numberOfWorkers(value: number | undefined) {
       this._numberOfWorkers = value;
     }
     public resetNumberOfWorkers() {
@@ -3029,7 +4283,7 @@ export namespace Glue {
     }
 
     // role_arn - computed: false, optional: false, required: true
-    private _roleArn: string;
+    private _roleArn?: string; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
@@ -3042,11 +4296,11 @@ export namespace Glue {
     }
 
     // security_configuration - computed: false, optional: true, required: false
-    private _securityConfiguration?: string;
+    private _securityConfiguration?: string | undefined; 
     public get securityConfiguration() {
       return this.getStringAttribute('security_configuration');
     }
-    public set securityConfiguration(value: string ) {
+    public set securityConfiguration(value: string | undefined) {
       this._securityConfiguration = value;
     }
     public resetSecurityConfiguration() {
@@ -3058,11 +4312,12 @@ export namespace Glue {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3074,11 +4329,12 @@ export namespace Glue {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -3090,11 +4346,11 @@ export namespace Glue {
     }
 
     // timeout - computed: false, optional: true, required: false
-    private _timeout?: number;
+    private _timeout?: number | undefined; 
     public get timeout() {
       return this.getNumberAttribute('timeout');
     }
-    public set timeout(value: number ) {
+    public set timeout(value: number | undefined) {
       this._timeout = value;
     }
     public resetTimeout() {
@@ -3106,11 +4362,11 @@ export namespace Glue {
     }
 
     // worker_type - computed: false, optional: true, required: false
-    private _workerType?: string;
+    private _workerType?: string | undefined; 
     public get workerType() {
       return this.getStringAttribute('worker_type');
     }
-    public set workerType(value: string ) {
+    public set workerType(value: string | undefined) {
       this._workerType = value;
     }
     public resetWorkerType() {
@@ -3122,11 +4378,12 @@ export namespace Glue {
     }
 
     // command - computed: false, optional: false, required: true
-    private _command: GlueJobCommand[];
+    private _command?: GlueJobCommand; 
+    private __commandOutput = new GlueJobCommandOutputReference(this as any, "command", true);
     public get command() {
-      return this.interpolationForAttribute('command') as any;
+      return this.__commandOutput;
     }
-    public set command(value: GlueJobCommand[]) {
+    public putCommand(value: GlueJobCommand) {
       this._command = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -3135,11 +4392,12 @@ export namespace Glue {
     }
 
     // execution_property - computed: false, optional: true, required: false
-    private _executionProperty?: GlueJobExecutionProperty[];
+    private _executionProperty?: GlueJobExecutionProperty | undefined; 
+    private __executionPropertyOutput = new GlueJobExecutionPropertyOutputReference(this as any, "execution_property", true);
     public get executionProperty() {
-      return this.interpolationForAttribute('execution_property') as any;
+      return this.__executionPropertyOutput;
     }
-    public set executionProperty(value: GlueJobExecutionProperty[] ) {
+    public putExecutionProperty(value: GlueJobExecutionProperty | undefined) {
       this._executionProperty = value;
     }
     public resetExecutionProperty() {
@@ -3151,11 +4409,12 @@ export namespace Glue {
     }
 
     // notification_property - computed: false, optional: true, required: false
-    private _notificationProperty?: GlueJobNotificationProperty[];
+    private _notificationProperty?: GlueJobNotificationProperty | undefined; 
+    private __notificationPropertyOutput = new GlueJobNotificationPropertyOutputReference(this as any, "notification_property", true);
     public get notificationProperty() {
-      return this.interpolationForAttribute('notification_property') as any;
+      return this.__notificationPropertyOutput;
     }
-    public set notificationProperty(value: GlueJobNotificationProperty[] ) {
+    public putNotificationProperty(value: GlueJobNotificationProperty | undefined) {
       this._notificationProperty = value;
     }
     public resetNotificationProperty() {
@@ -3187,9 +4446,9 @@ export namespace Glue {
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         timeout: cdktf.numberToTerraform(this._timeout),
         worker_type: cdktf.stringToTerraform(this._workerType),
-        command: cdktf.listMapper(glueJobCommandToTerraform)(this._command),
-        execution_property: cdktf.listMapper(glueJobExecutionPropertyToTerraform)(this._executionProperty),
-        notification_property: cdktf.listMapper(glueJobNotificationPropertyToTerraform)(this._notificationProperty),
+        command: glueJobCommandToTerraform(this._command),
+        execution_property: glueJobExecutionPropertyToTerraform(this._executionProperty),
+        notification_property: glueJobNotificationPropertyToTerraform(this._notificationProperty),
       };
     }
   }
@@ -3249,7 +4508,7 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#parameters GlueMlTransform#parameters}
     */
-    readonly parameters: GlueMlTransformParameters[];
+    readonly parameters: GlueMlTransformParameters;
   }
   export class GlueMlTransformSchema extends cdktf.ComplexComputedList {
 
@@ -3284,6 +4543,9 @@ export namespace Glue {
 
   function glueMlTransformInputRecordTablesToTerraform(struct?: GlueMlTransformInputRecordTables): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       catalog_id: cdktf.stringToTerraform(struct!.catalogId),
       connection_name: cdktf.stringToTerraform(struct!.connectionName),
@@ -3311,8 +4573,11 @@ export namespace Glue {
     readonly primaryKeyColumnName?: string;
   }
 
-  function glueMlTransformParametersFindMatchesParametersToTerraform(struct?: GlueMlTransformParametersFindMatchesParameters): any {
+  function glueMlTransformParametersFindMatchesParametersToTerraform(struct?: GlueMlTransformParametersFindMatchesParametersOutputReference | GlueMlTransformParametersFindMatchesParameters): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       accuracy_cost_trade_off: cdktf.numberToTerraform(struct!.accuracyCostTradeOff),
       enforce_provided_labels: cdktf.booleanToTerraform(struct!.enforceProvidedLabels),
@@ -3321,6 +4586,80 @@ export namespace Glue {
     }
   }
 
+  export class GlueMlTransformParametersFindMatchesParametersOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // accuracy_cost_trade_off - computed: false, optional: true, required: false
+    private _accuracyCostTradeOff?: number | undefined; 
+    public get accuracyCostTradeOff() {
+      return this.getNumberAttribute('accuracy_cost_trade_off');
+    }
+    public set accuracyCostTradeOff(value: number | undefined) {
+      this._accuracyCostTradeOff = value;
+    }
+    public resetAccuracyCostTradeOff() {
+      this._accuracyCostTradeOff = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get accuracyCostTradeOffInput() {
+      return this._accuracyCostTradeOff
+    }
+
+    // enforce_provided_labels - computed: false, optional: true, required: false
+    private _enforceProvidedLabels?: boolean | cdktf.IResolvable | undefined; 
+    public get enforceProvidedLabels() {
+      return this.getBooleanAttribute('enforce_provided_labels') as any;
+    }
+    public set enforceProvidedLabels(value: boolean | cdktf.IResolvable | undefined) {
+      this._enforceProvidedLabels = value;
+    }
+    public resetEnforceProvidedLabels() {
+      this._enforceProvidedLabels = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enforceProvidedLabelsInput() {
+      return this._enforceProvidedLabels
+    }
+
+    // precision_recall_trade_off - computed: false, optional: true, required: false
+    private _precisionRecallTradeOff?: number | undefined; 
+    public get precisionRecallTradeOff() {
+      return this.getNumberAttribute('precision_recall_trade_off');
+    }
+    public set precisionRecallTradeOff(value: number | undefined) {
+      this._precisionRecallTradeOff = value;
+    }
+    public resetPrecisionRecallTradeOff() {
+      this._precisionRecallTradeOff = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get precisionRecallTradeOffInput() {
+      return this._precisionRecallTradeOff
+    }
+
+    // primary_key_column_name - computed: false, optional: true, required: false
+    private _primaryKeyColumnName?: string | undefined; 
+    public get primaryKeyColumnName() {
+      return this.getStringAttribute('primary_key_column_name');
+    }
+    public set primaryKeyColumnName(value: string | undefined) {
+      this._primaryKeyColumnName = value;
+    }
+    public resetPrimaryKeyColumnName() {
+      this._primaryKeyColumnName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get primaryKeyColumnNameInput() {
+      return this._primaryKeyColumnName
+    }
+  }
   export interface GlueMlTransformParameters {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#transform_type GlueMlTransform#transform_type}
@@ -3331,17 +4670,57 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html#find_matches_parameters GlueMlTransform#find_matches_parameters}
     */
-    readonly findMatchesParameters: GlueMlTransformParametersFindMatchesParameters[];
+    readonly findMatchesParameters: GlueMlTransformParametersFindMatchesParameters;
   }
 
-  function glueMlTransformParametersToTerraform(struct?: GlueMlTransformParameters): any {
+  function glueMlTransformParametersToTerraform(struct?: GlueMlTransformParametersOutputReference | GlueMlTransformParameters): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       transform_type: cdktf.stringToTerraform(struct!.transformType),
-      find_matches_parameters: cdktf.listMapper(glueMlTransformParametersFindMatchesParametersToTerraform)(struct!.findMatchesParameters),
+      find_matches_parameters: glueMlTransformParametersFindMatchesParametersToTerraform(struct!.findMatchesParameters),
     }
   }
 
+  export class GlueMlTransformParametersOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // transform_type - computed: false, optional: false, required: true
+    private _transformType?: string; 
+    public get transformType() {
+      return this.getStringAttribute('transform_type');
+    }
+    public set transformType(value: string) {
+      this._transformType = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get transformTypeInput() {
+      return this._transformType
+    }
+
+    // find_matches_parameters - computed: false, optional: false, required: true
+    private _findMatchesParameters?: GlueMlTransformParametersFindMatchesParameters; 
+    private __findMatchesParametersOutput = new GlueMlTransformParametersFindMatchesParametersOutputReference(this as any, "find_matches_parameters", true);
+    public get findMatchesParameters() {
+      return this.__findMatchesParametersOutput;
+    }
+    public putFindMatchesParameters(value: GlueMlTransformParametersFindMatchesParameters) {
+      this._findMatchesParameters = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get findMatchesParametersInput() {
+      return this._findMatchesParameters
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_ml_transform.html aws_glue_ml_transform}
@@ -3400,11 +4779,11 @@ export namespace Glue {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -3416,11 +4795,11 @@ export namespace Glue {
     }
 
     // glue_version - computed: true, optional: true, required: false
-    private _glueVersion?: string;
+    private _glueVersion?: string | undefined; 
     public get glueVersion() {
       return this.getStringAttribute('glue_version');
     }
-    public set glueVersion(value: string) {
+    public set glueVersion(value: string | undefined) {
       this._glueVersion = value;
     }
     public resetGlueVersion() {
@@ -3442,11 +4821,11 @@ export namespace Glue {
     }
 
     // max_capacity - computed: true, optional: true, required: false
-    private _maxCapacity?: number;
+    private _maxCapacity?: number | undefined; 
     public get maxCapacity() {
       return this.getNumberAttribute('max_capacity');
     }
-    public set maxCapacity(value: number) {
+    public set maxCapacity(value: number | undefined) {
       this._maxCapacity = value;
     }
     public resetMaxCapacity() {
@@ -3458,11 +4837,11 @@ export namespace Glue {
     }
 
     // max_retries - computed: false, optional: true, required: false
-    private _maxRetries?: number;
+    private _maxRetries?: number | undefined; 
     public get maxRetries() {
       return this.getNumberAttribute('max_retries');
     }
-    public set maxRetries(value: number ) {
+    public set maxRetries(value: number | undefined) {
       this._maxRetries = value;
     }
     public resetMaxRetries() {
@@ -3474,7 +4853,7 @@ export namespace Glue {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -3487,11 +4866,11 @@ export namespace Glue {
     }
 
     // number_of_workers - computed: false, optional: true, required: false
-    private _numberOfWorkers?: number;
+    private _numberOfWorkers?: number | undefined; 
     public get numberOfWorkers() {
       return this.getNumberAttribute('number_of_workers');
     }
-    public set numberOfWorkers(value: number ) {
+    public set numberOfWorkers(value: number | undefined) {
       this._numberOfWorkers = value;
     }
     public resetNumberOfWorkers() {
@@ -3503,7 +4882,7 @@ export namespace Glue {
     }
 
     // role_arn - computed: false, optional: false, required: true
-    private _roleArn: string;
+    private _roleArn?: string; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
@@ -3521,11 +4900,12 @@ export namespace Glue {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -3537,11 +4917,12 @@ export namespace Glue {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -3553,11 +4934,11 @@ export namespace Glue {
     }
 
     // timeout - computed: false, optional: true, required: false
-    private _timeout?: number;
+    private _timeout?: number | undefined; 
     public get timeout() {
       return this.getNumberAttribute('timeout');
     }
-    public set timeout(value: number ) {
+    public set timeout(value: number | undefined) {
       this._timeout = value;
     }
     public resetTimeout() {
@@ -3569,11 +4950,11 @@ export namespace Glue {
     }
 
     // worker_type - computed: false, optional: true, required: false
-    private _workerType?: string;
+    private _workerType?: string | undefined; 
     public get workerType() {
       return this.getStringAttribute('worker_type');
     }
-    public set workerType(value: string ) {
+    public set workerType(value: string | undefined) {
       this._workerType = value;
     }
     public resetWorkerType() {
@@ -3585,8 +4966,9 @@ export namespace Glue {
     }
 
     // input_record_tables - computed: false, optional: false, required: true
-    private _inputRecordTables: GlueMlTransformInputRecordTables[];
+    private _inputRecordTables?: GlueMlTransformInputRecordTables[]; 
     public get inputRecordTables() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('input_record_tables') as any;
     }
     public set inputRecordTables(value: GlueMlTransformInputRecordTables[]) {
@@ -3598,11 +4980,12 @@ export namespace Glue {
     }
 
     // parameters - computed: false, optional: false, required: true
-    private _parameters: GlueMlTransformParameters[];
+    private _parameters?: GlueMlTransformParameters; 
+    private __parametersOutput = new GlueMlTransformParametersOutputReference(this as any, "parameters", true);
     public get parameters() {
-      return this.interpolationForAttribute('parameters') as any;
+      return this.__parametersOutput;
     }
-    public set parameters(value: GlueMlTransformParameters[]) {
+    public putParameters(value: GlueMlTransformParameters) {
       this._parameters = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -3628,7 +5011,7 @@ export namespace Glue {
         timeout: cdktf.numberToTerraform(this._timeout),
         worker_type: cdktf.stringToTerraform(this._workerType),
         input_record_tables: cdktf.listMapper(glueMlTransformInputRecordTablesToTerraform)(this._inputRecordTables),
-        parameters: cdktf.listMapper(glueMlTransformParametersToTerraform)(this._parameters),
+        parameters: glueMlTransformParametersToTerraform(this._parameters),
       };
     }
   }
@@ -3658,7 +5041,7 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_partition.html#storage_descriptor GluePartition#storage_descriptor}
     */
-    readonly storageDescriptor?: GluePartitionStorageDescriptor[];
+    readonly storageDescriptor?: GluePartitionStorageDescriptor;
   }
   export interface GluePartitionStorageDescriptorColumns {
     /**
@@ -3677,6 +5060,9 @@ export namespace Glue {
 
   function gluePartitionStorageDescriptorColumnsToTerraform(struct?: GluePartitionStorageDescriptorColumns): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       comment: cdktf.stringToTerraform(struct!.comment),
       name: cdktf.stringToTerraform(struct!.name),
@@ -3699,8 +5085,11 @@ export namespace Glue {
     readonly serializationLibrary?: string;
   }
 
-  function gluePartitionStorageDescriptorSerDeInfoToTerraform(struct?: GluePartitionStorageDescriptorSerDeInfo): any {
+  function gluePartitionStorageDescriptorSerDeInfoToTerraform(struct?: GluePartitionStorageDescriptorSerDeInfoOutputReference | GluePartitionStorageDescriptorSerDeInfo): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       parameters: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.parameters),
@@ -3708,6 +5097,65 @@ export namespace Glue {
     }
   }
 
+  export class GluePartitionStorageDescriptorSerDeInfoOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // name - computed: false, optional: true, required: false
+    private _name?: string | undefined; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string | undefined) {
+      this._name = value;
+    }
+    public resetName() {
+      this._name = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+
+    // parameters - computed: false, optional: true, required: false
+    private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get parameters() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('parameters') as any;
+    }
+    public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._parameters = value;
+    }
+    public resetParameters() {
+      this._parameters = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get parametersInput() {
+      return this._parameters
+    }
+
+    // serialization_library - computed: false, optional: true, required: false
+    private _serializationLibrary?: string | undefined; 
+    public get serializationLibrary() {
+      return this.getStringAttribute('serialization_library');
+    }
+    public set serializationLibrary(value: string | undefined) {
+      this._serializationLibrary = value;
+    }
+    public resetSerializationLibrary() {
+      this._serializationLibrary = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get serializationLibraryInput() {
+      return this._serializationLibrary
+    }
+  }
   export interface GluePartitionStorageDescriptorSkewedInfo {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_partition.html#skewed_column_names GluePartition#skewed_column_names}
@@ -3723,8 +5171,11 @@ export namespace Glue {
     readonly skewedColumnValues?: string[];
   }
 
-  function gluePartitionStorageDescriptorSkewedInfoToTerraform(struct?: GluePartitionStorageDescriptorSkewedInfo): any {
+  function gluePartitionStorageDescriptorSkewedInfoToTerraform(struct?: GluePartitionStorageDescriptorSkewedInfoOutputReference | GluePartitionStorageDescriptorSkewedInfo): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       skewed_column_names: cdktf.listMapper(cdktf.stringToTerraform)(struct!.skewedColumnNames),
       skewed_column_value_location_maps: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.skewedColumnValueLocationMaps),
@@ -3732,6 +5183,65 @@ export namespace Glue {
     }
   }
 
+  export class GluePartitionStorageDescriptorSkewedInfoOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // skewed_column_names - computed: false, optional: true, required: false
+    private _skewedColumnNames?: string[] | undefined; 
+    public get skewedColumnNames() {
+      return this.getListAttribute('skewed_column_names');
+    }
+    public set skewedColumnNames(value: string[] | undefined) {
+      this._skewedColumnNames = value;
+    }
+    public resetSkewedColumnNames() {
+      this._skewedColumnNames = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get skewedColumnNamesInput() {
+      return this._skewedColumnNames
+    }
+
+    // skewed_column_value_location_maps - computed: false, optional: true, required: false
+    private _skewedColumnValueLocationMaps?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get skewedColumnValueLocationMaps() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('skewed_column_value_location_maps') as any;
+    }
+    public set skewedColumnValueLocationMaps(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._skewedColumnValueLocationMaps = value;
+    }
+    public resetSkewedColumnValueLocationMaps() {
+      this._skewedColumnValueLocationMaps = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get skewedColumnValueLocationMapsInput() {
+      return this._skewedColumnValueLocationMaps
+    }
+
+    // skewed_column_values - computed: false, optional: true, required: false
+    private _skewedColumnValues?: string[] | undefined; 
+    public get skewedColumnValues() {
+      return this.getListAttribute('skewed_column_values');
+    }
+    public set skewedColumnValues(value: string[] | undefined) {
+      this._skewedColumnValues = value;
+    }
+    public resetSkewedColumnValues() {
+      this._skewedColumnValues = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get skewedColumnValuesInput() {
+      return this._skewedColumnValues
+    }
+  }
   export interface GluePartitionStorageDescriptorSortColumns {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_partition.html#column GluePartition#column}
@@ -3745,6 +5255,9 @@ export namespace Glue {
 
   function gluePartitionStorageDescriptorSortColumnsToTerraform(struct?: GluePartitionStorageDescriptorSortColumns): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       column: cdktf.stringToTerraform(struct!.column),
       sort_order: cdktf.numberToTerraform(struct!.sortOrder),
@@ -3795,13 +5308,13 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_partition.html#ser_de_info GluePartition#ser_de_info}
     */
-    readonly serDeInfo?: GluePartitionStorageDescriptorSerDeInfo[];
+    readonly serDeInfo?: GluePartitionStorageDescriptorSerDeInfo;
     /**
     * skewed_info block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_partition.html#skewed_info GluePartition#skewed_info}
     */
-    readonly skewedInfo?: GluePartitionStorageDescriptorSkewedInfo[];
+    readonly skewedInfo?: GluePartitionStorageDescriptorSkewedInfo;
     /**
     * sort_columns block
     * 
@@ -3810,8 +5323,11 @@ export namespace Glue {
     readonly sortColumns?: GluePartitionStorageDescriptorSortColumns[];
   }
 
-  function gluePartitionStorageDescriptorToTerraform(struct?: GluePartitionStorageDescriptor): any {
+  function gluePartitionStorageDescriptorToTerraform(struct?: GluePartitionStorageDescriptorOutputReference | GluePartitionStorageDescriptor): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       bucket_columns: cdktf.listMapper(cdktf.stringToTerraform)(struct!.bucketColumns),
       compressed: cdktf.booleanToTerraform(struct!.compressed),
@@ -3822,12 +5338,219 @@ export namespace Glue {
       parameters: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.parameters),
       stored_as_sub_directories: cdktf.booleanToTerraform(struct!.storedAsSubDirectories),
       columns: cdktf.listMapper(gluePartitionStorageDescriptorColumnsToTerraform)(struct!.columns),
-      ser_de_info: cdktf.listMapper(gluePartitionStorageDescriptorSerDeInfoToTerraform)(struct!.serDeInfo),
-      skewed_info: cdktf.listMapper(gluePartitionStorageDescriptorSkewedInfoToTerraform)(struct!.skewedInfo),
+      ser_de_info: gluePartitionStorageDescriptorSerDeInfoToTerraform(struct!.serDeInfo),
+      skewed_info: gluePartitionStorageDescriptorSkewedInfoToTerraform(struct!.skewedInfo),
       sort_columns: cdktf.listMapper(gluePartitionStorageDescriptorSortColumnsToTerraform)(struct!.sortColumns),
     }
   }
 
+  export class GluePartitionStorageDescriptorOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // bucket_columns - computed: false, optional: true, required: false
+    private _bucketColumns?: string[] | undefined; 
+    public get bucketColumns() {
+      return this.getListAttribute('bucket_columns');
+    }
+    public set bucketColumns(value: string[] | undefined) {
+      this._bucketColumns = value;
+    }
+    public resetBucketColumns() {
+      this._bucketColumns = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bucketColumnsInput() {
+      return this._bucketColumns
+    }
+
+    // compressed - computed: false, optional: true, required: false
+    private _compressed?: boolean | cdktf.IResolvable | undefined; 
+    public get compressed() {
+      return this.getBooleanAttribute('compressed') as any;
+    }
+    public set compressed(value: boolean | cdktf.IResolvable | undefined) {
+      this._compressed = value;
+    }
+    public resetCompressed() {
+      this._compressed = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get compressedInput() {
+      return this._compressed
+    }
+
+    // input_format - computed: false, optional: true, required: false
+    private _inputFormat?: string | undefined; 
+    public get inputFormat() {
+      return this.getStringAttribute('input_format');
+    }
+    public set inputFormat(value: string | undefined) {
+      this._inputFormat = value;
+    }
+    public resetInputFormat() {
+      this._inputFormat = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get inputFormatInput() {
+      return this._inputFormat
+    }
+
+    // location - computed: false, optional: true, required: false
+    private _location?: string | undefined; 
+    public get location() {
+      return this.getStringAttribute('location');
+    }
+    public set location(value: string | undefined) {
+      this._location = value;
+    }
+    public resetLocation() {
+      this._location = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get locationInput() {
+      return this._location
+    }
+
+    // number_of_buckets - computed: false, optional: true, required: false
+    private _numberOfBuckets?: number | undefined; 
+    public get numberOfBuckets() {
+      return this.getNumberAttribute('number_of_buckets');
+    }
+    public set numberOfBuckets(value: number | undefined) {
+      this._numberOfBuckets = value;
+    }
+    public resetNumberOfBuckets() {
+      this._numberOfBuckets = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get numberOfBucketsInput() {
+      return this._numberOfBuckets
+    }
+
+    // output_format - computed: false, optional: true, required: false
+    private _outputFormat?: string | undefined; 
+    public get outputFormat() {
+      return this.getStringAttribute('output_format');
+    }
+    public set outputFormat(value: string | undefined) {
+      this._outputFormat = value;
+    }
+    public resetOutputFormat() {
+      this._outputFormat = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get outputFormatInput() {
+      return this._outputFormat
+    }
+
+    // parameters - computed: false, optional: true, required: false
+    private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get parameters() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('parameters') as any;
+    }
+    public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._parameters = value;
+    }
+    public resetParameters() {
+      this._parameters = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get parametersInput() {
+      return this._parameters
+    }
+
+    // stored_as_sub_directories - computed: false, optional: true, required: false
+    private _storedAsSubDirectories?: boolean | cdktf.IResolvable | undefined; 
+    public get storedAsSubDirectories() {
+      return this.getBooleanAttribute('stored_as_sub_directories') as any;
+    }
+    public set storedAsSubDirectories(value: boolean | cdktf.IResolvable | undefined) {
+      this._storedAsSubDirectories = value;
+    }
+    public resetStoredAsSubDirectories() {
+      this._storedAsSubDirectories = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get storedAsSubDirectoriesInput() {
+      return this._storedAsSubDirectories
+    }
+
+    // columns - computed: false, optional: true, required: false
+    private _columns?: GluePartitionStorageDescriptorColumns[] | undefined; 
+    public get columns() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('columns') as any;
+    }
+    public set columns(value: GluePartitionStorageDescriptorColumns[] | undefined) {
+      this._columns = value;
+    }
+    public resetColumns() {
+      this._columns = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get columnsInput() {
+      return this._columns
+    }
+
+    // ser_de_info - computed: false, optional: true, required: false
+    private _serDeInfo?: GluePartitionStorageDescriptorSerDeInfo | undefined; 
+    private __serDeInfoOutput = new GluePartitionStorageDescriptorSerDeInfoOutputReference(this as any, "ser_de_info", true);
+    public get serDeInfo() {
+      return this.__serDeInfoOutput;
+    }
+    public putSerDeInfo(value: GluePartitionStorageDescriptorSerDeInfo | undefined) {
+      this._serDeInfo = value;
+    }
+    public resetSerDeInfo() {
+      this._serDeInfo = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get serDeInfoInput() {
+      return this._serDeInfo
+    }
+
+    // skewed_info - computed: false, optional: true, required: false
+    private _skewedInfo?: GluePartitionStorageDescriptorSkewedInfo | undefined; 
+    private __skewedInfoOutput = new GluePartitionStorageDescriptorSkewedInfoOutputReference(this as any, "skewed_info", true);
+    public get skewedInfo() {
+      return this.__skewedInfoOutput;
+    }
+    public putSkewedInfo(value: GluePartitionStorageDescriptorSkewedInfo | undefined) {
+      this._skewedInfo = value;
+    }
+    public resetSkewedInfo() {
+      this._skewedInfo = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get skewedInfoInput() {
+      return this._skewedInfo
+    }
+
+    // sort_columns - computed: false, optional: true, required: false
+    private _sortColumns?: GluePartitionStorageDescriptorSortColumns[] | undefined; 
+    public get sortColumns() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('sort_columns') as any;
+    }
+    public set sortColumns(value: GluePartitionStorageDescriptorSortColumns[] | undefined) {
+      this._sortColumns = value;
+    }
+    public resetSortColumns() {
+      this._sortColumns = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sortColumnsInput() {
+      return this._sortColumns
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_partition.html aws_glue_partition}
@@ -3874,11 +5597,11 @@ export namespace Glue {
     // ==========
 
     // catalog_id - computed: true, optional: true, required: false
-    private _catalogId?: string;
+    private _catalogId?: string | undefined; 
     public get catalogId() {
       return this.getStringAttribute('catalog_id');
     }
-    public set catalogId(value: string) {
+    public set catalogId(value: string | undefined) {
       this._catalogId = value;
     }
     public resetCatalogId() {
@@ -3895,7 +5618,7 @@ export namespace Glue {
     }
 
     // database_name - computed: false, optional: false, required: true
-    private _databaseName: string;
+    private _databaseName?: string; 
     public get databaseName() {
       return this.getStringAttribute('database_name');
     }
@@ -3923,11 +5646,12 @@ export namespace Glue {
     }
 
     // parameters - computed: false, optional: true, required: false
-    private _parameters?: { [key: string]: string } | cdktf.IResolvable;
+    private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get parameters() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('parameters') as any;
     }
-    public set parameters(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._parameters = value;
     }
     public resetParameters() {
@@ -3939,7 +5663,7 @@ export namespace Glue {
     }
 
     // partition_values - computed: false, optional: false, required: true
-    private _partitionValues: string[];
+    private _partitionValues?: string[]; 
     public get partitionValues() {
       return this.getListAttribute('partition_values');
     }
@@ -3952,7 +5676,7 @@ export namespace Glue {
     }
 
     // table_name - computed: false, optional: false, required: true
-    private _tableName: string;
+    private _tableName?: string; 
     public get tableName() {
       return this.getStringAttribute('table_name');
     }
@@ -3965,11 +5689,12 @@ export namespace Glue {
     }
 
     // storage_descriptor - computed: false, optional: true, required: false
-    private _storageDescriptor?: GluePartitionStorageDescriptor[];
+    private _storageDescriptor?: GluePartitionStorageDescriptor | undefined; 
+    private __storageDescriptorOutput = new GluePartitionStorageDescriptorOutputReference(this as any, "storage_descriptor", true);
     public get storageDescriptor() {
-      return this.interpolationForAttribute('storage_descriptor') as any;
+      return this.__storageDescriptorOutput;
     }
-    public set storageDescriptor(value: GluePartitionStorageDescriptor[] ) {
+    public putStorageDescriptor(value: GluePartitionStorageDescriptor | undefined) {
       this._storageDescriptor = value;
     }
     public resetStorageDescriptor() {
@@ -3991,7 +5716,7 @@ export namespace Glue {
         parameters: cdktf.hashMapper(cdktf.anyToTerraform)(this._parameters),
         partition_values: cdktf.listMapper(cdktf.stringToTerraform)(this._partitionValues),
         table_name: cdktf.stringToTerraform(this._tableName),
-        storage_descriptor: cdktf.listMapper(gluePartitionStorageDescriptorToTerraform)(this._storageDescriptor),
+        storage_descriptor: gluePartitionStorageDescriptorToTerraform(this._storageDescriptor),
       };
     }
   }
@@ -4013,7 +5738,7 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_partition_index.html#partition_index GluePartitionIndex#partition_index}
     */
-    readonly partitionIndex: GluePartitionIndexPartitionIndex[];
+    readonly partitionIndex: GluePartitionIndexPartitionIndex;
   }
   export interface GluePartitionIndexPartitionIndex {
     /**
@@ -4026,14 +5751,59 @@ export namespace Glue {
     readonly keys?: string[];
   }
 
-  function gluePartitionIndexPartitionIndexToTerraform(struct?: GluePartitionIndexPartitionIndex): any {
+  function gluePartitionIndexPartitionIndexToTerraform(struct?: GluePartitionIndexPartitionIndexOutputReference | GluePartitionIndexPartitionIndex): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       index_name: cdktf.stringToTerraform(struct!.indexName),
       keys: cdktf.listMapper(cdktf.stringToTerraform)(struct!.keys),
     }
   }
 
+  export class GluePartitionIndexPartitionIndexOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // index_name - computed: false, optional: true, required: false
+    private _indexName?: string | undefined; 
+    public get indexName() {
+      return this.getStringAttribute('index_name');
+    }
+    public set indexName(value: string | undefined) {
+      this._indexName = value;
+    }
+    public resetIndexName() {
+      this._indexName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get indexNameInput() {
+      return this._indexName
+    }
+
+    // keys - computed: false, optional: true, required: false
+    private _keys?: string[] | undefined; 
+    public get keys() {
+      return this.getListAttribute('keys');
+    }
+    public set keys(value: string[] | undefined) {
+      this._keys = value;
+    }
+    public resetKeys() {
+      this._keys = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get keysInput() {
+      return this._keys
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_partition_index.html aws_glue_partition_index}
@@ -4078,11 +5848,11 @@ export namespace Glue {
     // ==========
 
     // catalog_id - computed: true, optional: true, required: false
-    private _catalogId?: string;
+    private _catalogId?: string | undefined; 
     public get catalogId() {
       return this.getStringAttribute('catalog_id');
     }
-    public set catalogId(value: string) {
+    public set catalogId(value: string | undefined) {
       this._catalogId = value;
     }
     public resetCatalogId() {
@@ -4094,7 +5864,7 @@ export namespace Glue {
     }
 
     // database_name - computed: false, optional: false, required: true
-    private _databaseName: string;
+    private _databaseName?: string; 
     public get databaseName() {
       return this.getStringAttribute('database_name');
     }
@@ -4112,7 +5882,7 @@ export namespace Glue {
     }
 
     // table_name - computed: false, optional: false, required: true
-    private _tableName: string;
+    private _tableName?: string; 
     public get tableName() {
       return this.getStringAttribute('table_name');
     }
@@ -4125,11 +5895,12 @@ export namespace Glue {
     }
 
     // partition_index - computed: false, optional: false, required: true
-    private _partitionIndex: GluePartitionIndexPartitionIndex[];
+    private _partitionIndex?: GluePartitionIndexPartitionIndex; 
+    private __partitionIndexOutput = new GluePartitionIndexPartitionIndexOutputReference(this as any, "partition_index", true);
     public get partitionIndex() {
-      return this.interpolationForAttribute('partition_index') as any;
+      return this.__partitionIndexOutput;
     }
-    public set partitionIndex(value: GluePartitionIndexPartitionIndex[]) {
+    public putPartitionIndex(value: GluePartitionIndexPartitionIndex) {
       this._partitionIndex = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -4146,7 +5917,7 @@ export namespace Glue {
         catalog_id: cdktf.stringToTerraform(this._catalogId),
         database_name: cdktf.stringToTerraform(this._databaseName),
         table_name: cdktf.stringToTerraform(this._tableName),
-        partition_index: cdktf.listMapper(gluePartitionIndexPartitionIndexToTerraform)(this._partitionIndex),
+        partition_index: gluePartitionIndexPartitionIndexToTerraform(this._partitionIndex),
       };
     }
   }
@@ -4217,11 +5988,11 @@ export namespace Glue {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -4238,7 +6009,7 @@ export namespace Glue {
     }
 
     // registry_name - computed: false, optional: false, required: true
-    private _registryName: string;
+    private _registryName?: string; 
     public get registryName() {
       return this.getStringAttribute('registry_name');
     }
@@ -4251,11 +6022,12 @@ export namespace Glue {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4267,11 +6039,12 @@ export namespace Glue {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -4347,11 +6120,11 @@ export namespace Glue {
     // ==========
 
     // enable_hybrid - computed: false, optional: true, required: false
-    private _enableHybrid?: string;
+    private _enableHybrid?: string | undefined; 
     public get enableHybrid() {
       return this.getStringAttribute('enable_hybrid');
     }
-    public set enableHybrid(value: string ) {
+    public set enableHybrid(value: string | undefined) {
       this._enableHybrid = value;
     }
     public resetEnableHybrid() {
@@ -4368,7 +6141,7 @@ export namespace Glue {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -4478,7 +6251,7 @@ export namespace Glue {
     }
 
     // compatibility - computed: false, optional: false, required: true
-    private _compatibility: string;
+    private _compatibility?: string; 
     public get compatibility() {
       return this.getStringAttribute('compatibility');
     }
@@ -4491,7 +6264,7 @@ export namespace Glue {
     }
 
     // data_format - computed: false, optional: false, required: true
-    private _dataFormat: string;
+    private _dataFormat?: string; 
     public get dataFormat() {
       return this.getStringAttribute('data_format');
     }
@@ -4504,11 +6277,11 @@ export namespace Glue {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -4535,11 +6308,11 @@ export namespace Glue {
     }
 
     // registry_arn - computed: true, optional: true, required: false
-    private _registryArn?: string;
+    private _registryArn?: string | undefined; 
     public get registryArn() {
       return this.getStringAttribute('registry_arn');
     }
-    public set registryArn(value: string) {
+    public set registryArn(value: string | undefined) {
       this._registryArn = value;
     }
     public resetRegistryArn() {
@@ -4561,7 +6334,7 @@ export namespace Glue {
     }
 
     // schema_definition - computed: false, optional: false, required: true
-    private _schemaDefinition: string;
+    private _schemaDefinition?: string; 
     public get schemaDefinition() {
       return this.getStringAttribute('schema_definition');
     }
@@ -4574,7 +6347,7 @@ export namespace Glue {
     }
 
     // schema_name - computed: false, optional: false, required: true
-    private _schemaName: string;
+    private _schemaName?: string; 
     public get schemaName() {
       return this.getStringAttribute('schema_name');
     }
@@ -4587,11 +6360,12 @@ export namespace Glue {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4603,11 +6377,12 @@ export namespace Glue {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -4645,7 +6420,7 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_security_configuration.html#encryption_configuration GlueSecurityConfiguration#encryption_configuration}
     */
-    readonly encryptionConfiguration: GlueSecurityConfigurationEncryptionConfiguration[];
+    readonly encryptionConfiguration: GlueSecurityConfigurationEncryptionConfiguration;
   }
   export interface GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryption {
     /**
@@ -4658,14 +6433,59 @@ export namespace Glue {
     readonly kmsKeyArn?: string;
   }
 
-  function glueSecurityConfigurationEncryptionConfigurationCloudwatchEncryptionToTerraform(struct?: GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryption): any {
+  function glueSecurityConfigurationEncryptionConfigurationCloudwatchEncryptionToTerraform(struct?: GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryptionOutputReference | GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryption): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       cloudwatch_encryption_mode: cdktf.stringToTerraform(struct!.cloudwatchEncryptionMode),
       kms_key_arn: cdktf.stringToTerraform(struct!.kmsKeyArn),
     }
   }
 
+  export class GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryptionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // cloudwatch_encryption_mode - computed: false, optional: true, required: false
+    private _cloudwatchEncryptionMode?: string | undefined; 
+    public get cloudwatchEncryptionMode() {
+      return this.getStringAttribute('cloudwatch_encryption_mode');
+    }
+    public set cloudwatchEncryptionMode(value: string | undefined) {
+      this._cloudwatchEncryptionMode = value;
+    }
+    public resetCloudwatchEncryptionMode() {
+      this._cloudwatchEncryptionMode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cloudwatchEncryptionModeInput() {
+      return this._cloudwatchEncryptionMode
+    }
+
+    // kms_key_arn - computed: false, optional: true, required: false
+    private _kmsKeyArn?: string | undefined; 
+    public get kmsKeyArn() {
+      return this.getStringAttribute('kms_key_arn');
+    }
+    public set kmsKeyArn(value: string | undefined) {
+      this._kmsKeyArn = value;
+    }
+    public resetKmsKeyArn() {
+      this._kmsKeyArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get kmsKeyArnInput() {
+      return this._kmsKeyArn
+    }
+  }
   export interface GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryption {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_security_configuration.html#job_bookmarks_encryption_mode GlueSecurityConfiguration#job_bookmarks_encryption_mode}
@@ -4677,14 +6497,59 @@ export namespace Glue {
     readonly kmsKeyArn?: string;
   }
 
-  function glueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionToTerraform(struct?: GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryption): any {
+  function glueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionToTerraform(struct?: GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionOutputReference | GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryption): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       job_bookmarks_encryption_mode: cdktf.stringToTerraform(struct!.jobBookmarksEncryptionMode),
       kms_key_arn: cdktf.stringToTerraform(struct!.kmsKeyArn),
     }
   }
 
+  export class GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // job_bookmarks_encryption_mode - computed: false, optional: true, required: false
+    private _jobBookmarksEncryptionMode?: string | undefined; 
+    public get jobBookmarksEncryptionMode() {
+      return this.getStringAttribute('job_bookmarks_encryption_mode');
+    }
+    public set jobBookmarksEncryptionMode(value: string | undefined) {
+      this._jobBookmarksEncryptionMode = value;
+    }
+    public resetJobBookmarksEncryptionMode() {
+      this._jobBookmarksEncryptionMode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get jobBookmarksEncryptionModeInput() {
+      return this._jobBookmarksEncryptionMode
+    }
+
+    // kms_key_arn - computed: false, optional: true, required: false
+    private _kmsKeyArn?: string | undefined; 
+    public get kmsKeyArn() {
+      return this.getStringAttribute('kms_key_arn');
+    }
+    public set kmsKeyArn(value: string | undefined) {
+      this._kmsKeyArn = value;
+    }
+    public resetKmsKeyArn() {
+      this._kmsKeyArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get kmsKeyArnInput() {
+      return this._kmsKeyArn
+    }
+  }
   export interface GlueSecurityConfigurationEncryptionConfigurationS3Encryption {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_security_configuration.html#kms_key_arn GlueSecurityConfiguration#kms_key_arn}
@@ -4696,44 +6561,144 @@ export namespace Glue {
     readonly s3EncryptionMode?: string;
   }
 
-  function glueSecurityConfigurationEncryptionConfigurationS3EncryptionToTerraform(struct?: GlueSecurityConfigurationEncryptionConfigurationS3Encryption): any {
+  function glueSecurityConfigurationEncryptionConfigurationS3EncryptionToTerraform(struct?: GlueSecurityConfigurationEncryptionConfigurationS3EncryptionOutputReference | GlueSecurityConfigurationEncryptionConfigurationS3Encryption): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       kms_key_arn: cdktf.stringToTerraform(struct!.kmsKeyArn),
       s3_encryption_mode: cdktf.stringToTerraform(struct!.s3EncryptionMode),
     }
   }
 
+  export class GlueSecurityConfigurationEncryptionConfigurationS3EncryptionOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // kms_key_arn - computed: false, optional: true, required: false
+    private _kmsKeyArn?: string | undefined; 
+    public get kmsKeyArn() {
+      return this.getStringAttribute('kms_key_arn');
+    }
+    public set kmsKeyArn(value: string | undefined) {
+      this._kmsKeyArn = value;
+    }
+    public resetKmsKeyArn() {
+      this._kmsKeyArn = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get kmsKeyArnInput() {
+      return this._kmsKeyArn
+    }
+
+    // s3_encryption_mode - computed: false, optional: true, required: false
+    private _s3EncryptionMode?: string | undefined; 
+    public get s3EncryptionMode() {
+      return this.getStringAttribute('s3_encryption_mode');
+    }
+    public set s3EncryptionMode(value: string | undefined) {
+      this._s3EncryptionMode = value;
+    }
+    public resetS3EncryptionMode() {
+      this._s3EncryptionMode = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get s3EncryptionModeInput() {
+      return this._s3EncryptionMode
+    }
+  }
   export interface GlueSecurityConfigurationEncryptionConfiguration {
     /**
     * cloudwatch_encryption block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_security_configuration.html#cloudwatch_encryption GlueSecurityConfiguration#cloudwatch_encryption}
     */
-    readonly cloudwatchEncryption: GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryption[];
+    readonly cloudwatchEncryption: GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryption;
     /**
     * job_bookmarks_encryption block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_security_configuration.html#job_bookmarks_encryption GlueSecurityConfiguration#job_bookmarks_encryption}
     */
-    readonly jobBookmarksEncryption: GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryption[];
+    readonly jobBookmarksEncryption: GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryption;
     /**
     * s3_encryption block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_security_configuration.html#s3_encryption GlueSecurityConfiguration#s3_encryption}
     */
-    readonly s3Encryption: GlueSecurityConfigurationEncryptionConfigurationS3Encryption[];
+    readonly s3Encryption: GlueSecurityConfigurationEncryptionConfigurationS3Encryption;
   }
 
-  function glueSecurityConfigurationEncryptionConfigurationToTerraform(struct?: GlueSecurityConfigurationEncryptionConfiguration): any {
+  function glueSecurityConfigurationEncryptionConfigurationToTerraform(struct?: GlueSecurityConfigurationEncryptionConfigurationOutputReference | GlueSecurityConfigurationEncryptionConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      cloudwatch_encryption: cdktf.listMapper(glueSecurityConfigurationEncryptionConfigurationCloudwatchEncryptionToTerraform)(struct!.cloudwatchEncryption),
-      job_bookmarks_encryption: cdktf.listMapper(glueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionToTerraform)(struct!.jobBookmarksEncryption),
-      s3_encryption: cdktf.listMapper(glueSecurityConfigurationEncryptionConfigurationS3EncryptionToTerraform)(struct!.s3Encryption),
+      cloudwatch_encryption: glueSecurityConfigurationEncryptionConfigurationCloudwatchEncryptionToTerraform(struct!.cloudwatchEncryption),
+      job_bookmarks_encryption: glueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionToTerraform(struct!.jobBookmarksEncryption),
+      s3_encryption: glueSecurityConfigurationEncryptionConfigurationS3EncryptionToTerraform(struct!.s3Encryption),
     }
   }
 
+  export class GlueSecurityConfigurationEncryptionConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // cloudwatch_encryption - computed: false, optional: false, required: true
+    private _cloudwatchEncryption?: GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryption; 
+    private __cloudwatchEncryptionOutput = new GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryptionOutputReference(this as any, "cloudwatch_encryption", true);
+    public get cloudwatchEncryption() {
+      return this.__cloudwatchEncryptionOutput;
+    }
+    public putCloudwatchEncryption(value: GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryption) {
+      this._cloudwatchEncryption = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get cloudwatchEncryptionInput() {
+      return this._cloudwatchEncryption
+    }
+
+    // job_bookmarks_encryption - computed: false, optional: false, required: true
+    private _jobBookmarksEncryption?: GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryption; 
+    private __jobBookmarksEncryptionOutput = new GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionOutputReference(this as any, "job_bookmarks_encryption", true);
+    public get jobBookmarksEncryption() {
+      return this.__jobBookmarksEncryptionOutput;
+    }
+    public putJobBookmarksEncryption(value: GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryption) {
+      this._jobBookmarksEncryption = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get jobBookmarksEncryptionInput() {
+      return this._jobBookmarksEncryption
+    }
+
+    // s3_encryption - computed: false, optional: false, required: true
+    private _s3Encryption?: GlueSecurityConfigurationEncryptionConfigurationS3Encryption; 
+    private __s3EncryptionOutput = new GlueSecurityConfigurationEncryptionConfigurationS3EncryptionOutputReference(this as any, "s3_encryption", true);
+    public get s3Encryption() {
+      return this.__s3EncryptionOutput;
+    }
+    public putS3Encryption(value: GlueSecurityConfigurationEncryptionConfigurationS3Encryption) {
+      this._s3Encryption = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get s3EncryptionInput() {
+      return this._s3Encryption
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_security_configuration.html aws_glue_security_configuration}
@@ -4781,7 +6746,7 @@ export namespace Glue {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -4794,11 +6759,12 @@ export namespace Glue {
     }
 
     // encryption_configuration - computed: false, optional: false, required: true
-    private _encryptionConfiguration: GlueSecurityConfigurationEncryptionConfiguration[];
+    private _encryptionConfiguration?: GlueSecurityConfigurationEncryptionConfiguration; 
+    private __encryptionConfigurationOutput = new GlueSecurityConfigurationEncryptionConfigurationOutputReference(this as any, "encryption_configuration", true);
     public get encryptionConfiguration() {
-      return this.interpolationForAttribute('encryption_configuration') as any;
+      return this.__encryptionConfigurationOutput;
     }
-    public set encryptionConfiguration(value: GlueSecurityConfigurationEncryptionConfiguration[]) {
+    public putEncryptionConfiguration(value: GlueSecurityConfigurationEncryptionConfiguration) {
       this._encryptionConfiguration = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -4813,7 +6779,7 @@ export namespace Glue {
     protected synthesizeAttributes(): { [name: string]: any } {
       return {
         name: cdktf.stringToTerraform(this._name),
-        encryption_configuration: cdktf.listMapper(glueSecurityConfigurationEncryptionConfigurationToTerraform)(this._encryptionConfiguration),
+        encryption_configuration: glueSecurityConfigurationEncryptionConfigurationToTerraform(this._encryptionConfiguration),
       };
     }
   }
@@ -4861,7 +6827,7 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_trigger.html#predicate GlueTrigger#predicate}
     */
-    readonly predicate?: GlueTriggerPredicate[];
+    readonly predicate?: GlueTriggerPredicate;
     /**
     * timeouts block
     * 
@@ -4876,13 +6842,42 @@ export namespace Glue {
     readonly notifyDelayAfter?: number;
   }
 
-  function glueTriggerActionsNotificationPropertyToTerraform(struct?: GlueTriggerActionsNotificationProperty): any {
+  function glueTriggerActionsNotificationPropertyToTerraform(struct?: GlueTriggerActionsNotificationPropertyOutputReference | GlueTriggerActionsNotificationProperty): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       notify_delay_after: cdktf.numberToTerraform(struct!.notifyDelayAfter),
     }
   }
 
+  export class GlueTriggerActionsNotificationPropertyOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // notify_delay_after - computed: false, optional: true, required: false
+    private _notifyDelayAfter?: number | undefined; 
+    public get notifyDelayAfter() {
+      return this.getNumberAttribute('notify_delay_after');
+    }
+    public set notifyDelayAfter(value: number | undefined) {
+      this._notifyDelayAfter = value;
+    }
+    public resetNotifyDelayAfter() {
+      this._notifyDelayAfter = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get notifyDelayAfterInput() {
+      return this._notifyDelayAfter
+    }
+  }
   export interface GlueTriggerActions {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_trigger.html#arguments GlueTrigger#arguments}
@@ -4909,18 +6904,21 @@ export namespace Glue {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_trigger.html#notification_property GlueTrigger#notification_property}
     */
-    readonly notificationProperty?: GlueTriggerActionsNotificationProperty[];
+    readonly notificationProperty?: GlueTriggerActionsNotificationProperty;
   }
 
   function glueTriggerActionsToTerraform(struct?: GlueTriggerActions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       arguments: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.arguments),
       crawler_name: cdktf.stringToTerraform(struct!.crawlerName),
       job_name: cdktf.stringToTerraform(struct!.jobName),
       security_configuration: cdktf.stringToTerraform(struct!.securityConfiguration),
       timeout: cdktf.numberToTerraform(struct!.timeout),
-      notification_property: cdktf.listMapper(glueTriggerActionsNotificationPropertyToTerraform)(struct!.notificationProperty),
+      notification_property: glueTriggerActionsNotificationPropertyToTerraform(struct!.notificationProperty),
     }
   }
 
@@ -4949,6 +6947,9 @@ export namespace Glue {
 
   function glueTriggerPredicateConditionsToTerraform(struct?: GlueTriggerPredicateConditions): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       crawl_state: cdktf.stringToTerraform(struct!.crawlState),
       crawler_name: cdktf.stringToTerraform(struct!.crawlerName),
@@ -4971,14 +6972,57 @@ export namespace Glue {
     readonly conditions: GlueTriggerPredicateConditions[];
   }
 
-  function glueTriggerPredicateToTerraform(struct?: GlueTriggerPredicate): any {
+  function glueTriggerPredicateToTerraform(struct?: GlueTriggerPredicateOutputReference | GlueTriggerPredicate): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       logical: cdktf.stringToTerraform(struct!.logical),
       conditions: cdktf.listMapper(glueTriggerPredicateConditionsToTerraform)(struct!.conditions),
     }
   }
 
+  export class GlueTriggerPredicateOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // logical - computed: false, optional: true, required: false
+    private _logical?: string | undefined; 
+    public get logical() {
+      return this.getStringAttribute('logical');
+    }
+    public set logical(value: string | undefined) {
+      this._logical = value;
+    }
+    public resetLogical() {
+      this._logical = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get logicalInput() {
+      return this._logical
+    }
+
+    // conditions - computed: false, optional: false, required: true
+    private _conditions?: GlueTriggerPredicateConditions[]; 
+    public get conditions() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('conditions') as any;
+    }
+    public set conditions(value: GlueTriggerPredicateConditions[]) {
+      this._conditions = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get conditionsInput() {
+      return this._conditions
+    }
+  }
   export interface GlueTriggerTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/glue_trigger.html#create GlueTrigger#create}
@@ -4990,14 +7034,59 @@ export namespace Glue {
     readonly delete?: string;
   }
 
-  function glueTriggerTimeoutsToTerraform(struct?: GlueTriggerTimeouts): any {
+  function glueTriggerTimeoutsToTerraform(struct?: GlueTriggerTimeoutsOutputReference | GlueTriggerTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class GlueTriggerTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/glue_trigger.html aws_glue_trigger}
@@ -5054,11 +7143,11 @@ export namespace Glue {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -5070,11 +7159,11 @@ export namespace Glue {
     }
 
     // enabled - computed: false, optional: true, required: false
-    private _enabled?: boolean | cdktf.IResolvable;
+    private _enabled?: boolean | cdktf.IResolvable | undefined; 
     public get enabled() {
-      return this.getBooleanAttribute('enabled');
+      return this.getBooleanAttribute('enabled') as any;
     }
-    public set enabled(value: boolean | cdktf.IResolvable ) {
+    public set enabled(value: boolean | cdktf.IResolvable | undefined) {
       this._enabled = value;
     }
     public resetEnabled() {
@@ -5091,7 +7180,7 @@ export namespace Glue {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -5104,11 +7193,11 @@ export namespace Glue {
     }
 
     // schedule - computed: false, optional: true, required: false
-    private _schedule?: string;
+    private _schedule?: string | undefined; 
     public get schedule() {
       return this.getStringAttribute('schedule');
     }
-    public set schedule(value: string ) {
+    public set schedule(value: string | undefined) {
       this._schedule = value;
     }
     public resetSchedule() {
@@ -5125,11 +7214,12 @@ export namespace Glue {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -5141,11 +7231,12 @@ export namespace Glue {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -5157,7 +7248,7 @@ export namespace Glue {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }
@@ -5170,11 +7261,11 @@ export namespace Glue {
     }
 
     // workflow_name - computed: false, optional: true, required: false
-    private _workflowName?: string;
+    private _workflowName?: string | undefined; 
     public get workflowName() {
       return this.getStringAttribute('workflow_name');
     }
-    public set workflowName(value: string ) {
+    public set workflowName(value: string | undefined) {
       this._workflowName = value;
     }
     public resetWorkflowName() {
@@ -5186,8 +7277,9 @@ export namespace Glue {
     }
 
     // actions - computed: false, optional: false, required: true
-    private _actions: GlueTriggerActions[];
+    private _actions?: GlueTriggerActions[]; 
     public get actions() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('actions') as any;
     }
     public set actions(value: GlueTriggerActions[]) {
@@ -5199,11 +7291,12 @@ export namespace Glue {
     }
 
     // predicate - computed: false, optional: true, required: false
-    private _predicate?: GlueTriggerPredicate[];
+    private _predicate?: GlueTriggerPredicate | undefined; 
+    private __predicateOutput = new GlueTriggerPredicateOutputReference(this as any, "predicate", true);
     public get predicate() {
-      return this.interpolationForAttribute('predicate') as any;
+      return this.__predicateOutput;
     }
-    public set predicate(value: GlueTriggerPredicate[] ) {
+    public putPredicate(value: GlueTriggerPredicate | undefined) {
       this._predicate = value;
     }
     public resetPredicate() {
@@ -5215,11 +7308,12 @@ export namespace Glue {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: GlueTriggerTimeouts;
+    private _timeouts?: GlueTriggerTimeouts | undefined; 
+    private __timeoutsOutput = new GlueTriggerTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: GlueTriggerTimeouts ) {
+    public putTimeouts(value: GlueTriggerTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -5245,7 +7339,7 @@ export namespace Glue {
         type: cdktf.stringToTerraform(this._type),
         workflow_name: cdktf.stringToTerraform(this._workflowName),
         actions: cdktf.listMapper(glueTriggerActionsToTerraform)(this._actions),
-        predicate: cdktf.listMapper(glueTriggerPredicateToTerraform)(this._predicate),
+        predicate: glueTriggerPredicateToTerraform(this._predicate),
         timeouts: glueTriggerTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -5295,6 +7389,9 @@ export namespace Glue {
 
   function glueUserDefinedFunctionResourceUrisToTerraform(struct?: GlueUserDefinedFunctionResourceUris): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       resource_type: cdktf.stringToTerraform(struct!.resourceType),
       uri: cdktf.stringToTerraform(struct!.uri),
@@ -5353,11 +7450,11 @@ export namespace Glue {
     }
 
     // catalog_id - computed: false, optional: true, required: false
-    private _catalogId?: string;
+    private _catalogId?: string | undefined; 
     public get catalogId() {
       return this.getStringAttribute('catalog_id');
     }
-    public set catalogId(value: string ) {
+    public set catalogId(value: string | undefined) {
       this._catalogId = value;
     }
     public resetCatalogId() {
@@ -5369,7 +7466,7 @@ export namespace Glue {
     }
 
     // class_name - computed: false, optional: false, required: true
-    private _className: string;
+    private _className?: string; 
     public get className() {
       return this.getStringAttribute('class_name');
     }
@@ -5387,7 +7484,7 @@ export namespace Glue {
     }
 
     // database_name - computed: false, optional: false, required: true
-    private _databaseName: string;
+    private _databaseName?: string; 
     public get databaseName() {
       return this.getStringAttribute('database_name');
     }
@@ -5405,7 +7502,7 @@ export namespace Glue {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -5418,7 +7515,7 @@ export namespace Glue {
     }
 
     // owner_name - computed: false, optional: false, required: true
-    private _ownerName: string;
+    private _ownerName?: string; 
     public get ownerName() {
       return this.getStringAttribute('owner_name');
     }
@@ -5431,7 +7528,7 @@ export namespace Glue {
     }
 
     // owner_type - computed: false, optional: false, required: true
-    private _ownerType: string;
+    private _ownerType?: string; 
     public get ownerType() {
       return this.getStringAttribute('owner_type');
     }
@@ -5444,11 +7541,12 @@ export namespace Glue {
     }
 
     // resource_uris - computed: false, optional: true, required: false
-    private _resourceUris?: GlueUserDefinedFunctionResourceUris[];
+    private _resourceUris?: GlueUserDefinedFunctionResourceUris[] | undefined; 
     public get resourceUris() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('resource_uris') as any;
     }
-    public set resourceUris(value: GlueUserDefinedFunctionResourceUris[] ) {
+    public set resourceUris(value: GlueUserDefinedFunctionResourceUris[] | undefined) {
       this._resourceUris = value;
     }
     public resetResourceUris() {
@@ -5552,11 +7650,12 @@ export namespace Glue {
     }
 
     // default_run_properties - computed: false, optional: true, required: false
-    private _defaultRunProperties?: { [key: string]: string } | cdktf.IResolvable;
+    private _defaultRunProperties?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get defaultRunProperties() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('default_run_properties') as any;
     }
-    public set defaultRunProperties(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set defaultRunProperties(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._defaultRunProperties = value;
     }
     public resetDefaultRunProperties() {
@@ -5568,11 +7667,11 @@ export namespace Glue {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -5589,11 +7688,11 @@ export namespace Glue {
     }
 
     // max_concurrent_runs - computed: false, optional: true, required: false
-    private _maxConcurrentRuns?: number;
+    private _maxConcurrentRuns?: number | undefined; 
     public get maxConcurrentRuns() {
       return this.getNumberAttribute('max_concurrent_runs');
     }
-    public set maxConcurrentRuns(value: number ) {
+    public set maxConcurrentRuns(value: number | undefined) {
       this._maxConcurrentRuns = value;
     }
     public resetMaxConcurrentRuns() {
@@ -5605,11 +7704,11 @@ export namespace Glue {
     }
 
     // name - computed: false, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string ) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -5621,11 +7720,12 @@ export namespace Glue {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -5637,11 +7737,12 @@ export namespace Glue {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -5761,7 +7862,7 @@ export namespace Glue {
     }
 
     // id - computed: false, optional: false, required: true
-    private _id: string;
+    private _id?: string; 
     public get id() {
       return this.getStringAttribute('id');
     }
@@ -5789,11 +7890,12 @@ export namespace Glue {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -5830,7 +7932,7 @@ export namespace Glue {
 
     // return_connection_password_encrypted - computed: true, optional: false, required: false
     public get returnConnectionPasswordEncrypted() {
-      return this.getBooleanAttribute('return_connection_password_encrypted');
+      return this.getBooleanAttribute('return_connection_password_encrypted') as any;
     }
   }
   export class DataAwsGlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest extends cdktf.ComplexComputedList {
@@ -5849,11 +7951,13 @@ export namespace Glue {
 
     // connection_password_encryption - computed: true, optional: false, required: false
     public get connectionPasswordEncryption() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('connection_password_encryption') as any;
     }
 
     // encryption_at_rest - computed: true, optional: false, required: false
     public get encryptionAtRest() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('encryption_at_rest') as any;
     }
   }
@@ -5898,7 +8002,7 @@ export namespace Glue {
     // ==========
 
     // catalog_id - computed: false, optional: false, required: true
-    private _catalogId: string;
+    private _catalogId?: string; 
     public get catalogId() {
       return this.getStringAttribute('catalog_id');
     }
@@ -5965,6 +8069,9 @@ export namespace Glue {
 
   function dataAwsGlueScriptDagEdgeToTerraform(struct?: DataAwsGlueScriptDagEdge): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       source: cdktf.stringToTerraform(struct!.source),
       target: cdktf.stringToTerraform(struct!.target),
@@ -5989,6 +8096,9 @@ export namespace Glue {
 
   function dataAwsGlueScriptDagNodeArgsToTerraform(struct?: DataAwsGlueScriptDagNodeArgs): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       param: cdktf.booleanToTerraform(struct!.param),
@@ -6019,6 +8129,9 @@ export namespace Glue {
 
   function dataAwsGlueScriptDagNodeToTerraform(struct?: DataAwsGlueScriptDagNode): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       id: cdktf.stringToTerraform(struct!.id),
       line_number: cdktf.numberToTerraform(struct!.lineNumber),
@@ -6075,11 +8188,11 @@ export namespace Glue {
     }
 
     // language - computed: false, optional: true, required: false
-    private _language?: string;
+    private _language?: string | undefined; 
     public get language() {
       return this.getStringAttribute('language');
     }
-    public set language(value: string ) {
+    public set language(value: string | undefined) {
       this._language = value;
     }
     public resetLanguage() {
@@ -6101,8 +8214,9 @@ export namespace Glue {
     }
 
     // dag_edge - computed: false, optional: false, required: true
-    private _dagEdge: DataAwsGlueScriptDagEdge[];
+    private _dagEdge?: DataAwsGlueScriptDagEdge[]; 
     public get dagEdge() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('dag_edge') as any;
     }
     public set dagEdge(value: DataAwsGlueScriptDagEdge[]) {
@@ -6114,8 +8228,9 @@ export namespace Glue {
     }
 
     // dag_node - computed: false, optional: false, required: true
-    private _dagNode: DataAwsGlueScriptDagNode[];
+    private _dagNode?: DataAwsGlueScriptDagNode[]; 
     public get dagNode() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('dag_node') as any;
     }
     public set dagNode(value: DataAwsGlueScriptDagNode[]) {

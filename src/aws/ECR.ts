@@ -64,7 +64,7 @@ export namespace ECR {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -82,7 +82,7 @@ export namespace ECR {
     }
 
     // repository - computed: false, optional: false, required: true
-    private _repository: string;
+    private _repository?: string; 
     public get repository() {
       return this.getStringAttribute('repository');
     }
@@ -157,7 +157,7 @@ export namespace ECR {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -190,7 +190,7 @@ export namespace ECR {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_replication_configuration.html#replication_configuration EcrReplicationConfiguration#replication_configuration}
     */
-    readonly replicationConfiguration?: EcrReplicationConfigurationReplicationConfiguration[];
+    readonly replicationConfiguration?: EcrReplicationConfigurationReplicationConfiguration;
   }
   export interface EcrReplicationConfigurationReplicationConfigurationRuleDestination {
     /**
@@ -205,6 +205,9 @@ export namespace ECR {
 
   function ecrReplicationConfigurationReplicationConfigurationRuleDestinationToTerraform(struct?: EcrReplicationConfigurationReplicationConfigurationRuleDestination): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       region: cdktf.stringToTerraform(struct!.region),
       registry_id: cdktf.stringToTerraform(struct!.registryId),
@@ -220,29 +223,83 @@ export namespace ECR {
     readonly destination: EcrReplicationConfigurationReplicationConfigurationRuleDestination[];
   }
 
-  function ecrReplicationConfigurationReplicationConfigurationRuleToTerraform(struct?: EcrReplicationConfigurationReplicationConfigurationRule): any {
+  function ecrReplicationConfigurationReplicationConfigurationRuleToTerraform(struct?: EcrReplicationConfigurationReplicationConfigurationRuleOutputReference | EcrReplicationConfigurationReplicationConfigurationRule): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       destination: cdktf.listMapper(ecrReplicationConfigurationReplicationConfigurationRuleDestinationToTerraform)(struct!.destination),
     }
   }
 
+  export class EcrReplicationConfigurationReplicationConfigurationRuleOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // destination - computed: false, optional: false, required: true
+    private _destination?: EcrReplicationConfigurationReplicationConfigurationRuleDestination[]; 
+    public get destination() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('destination') as any;
+    }
+    public set destination(value: EcrReplicationConfigurationReplicationConfigurationRuleDestination[]) {
+      this._destination = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get destinationInput() {
+      return this._destination
+    }
+  }
   export interface EcrReplicationConfigurationReplicationConfiguration {
     /**
     * rule block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_replication_configuration.html#rule EcrReplicationConfiguration#rule}
     */
-    readonly rule: EcrReplicationConfigurationReplicationConfigurationRule[];
+    readonly rule: EcrReplicationConfigurationReplicationConfigurationRule;
   }
 
-  function ecrReplicationConfigurationReplicationConfigurationToTerraform(struct?: EcrReplicationConfigurationReplicationConfiguration): any {
+  function ecrReplicationConfigurationReplicationConfigurationToTerraform(struct?: EcrReplicationConfigurationReplicationConfigurationOutputReference | EcrReplicationConfigurationReplicationConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      rule: cdktf.listMapper(ecrReplicationConfigurationReplicationConfigurationRuleToTerraform)(struct!.rule),
+      rule: ecrReplicationConfigurationReplicationConfigurationRuleToTerraform(struct!.rule),
     }
   }
 
+  export class EcrReplicationConfigurationReplicationConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // rule - computed: false, optional: false, required: true
+    private _rule?: EcrReplicationConfigurationReplicationConfigurationRule; 
+    private __ruleOutput = new EcrReplicationConfigurationReplicationConfigurationRuleOutputReference(this as any, "rule", true);
+    public get rule() {
+      return this.__ruleOutput;
+    }
+    public putRule(value: EcrReplicationConfigurationReplicationConfigurationRule) {
+      this._rule = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get ruleInput() {
+      return this._rule
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/ecr_replication_configuration.html aws_ecr_replication_configuration}
@@ -294,11 +351,12 @@ export namespace ECR {
     }
 
     // replication_configuration - computed: false, optional: true, required: false
-    private _replicationConfiguration?: EcrReplicationConfigurationReplicationConfiguration[];
+    private _replicationConfiguration?: EcrReplicationConfigurationReplicationConfiguration | undefined; 
+    private __replicationConfigurationOutput = new EcrReplicationConfigurationReplicationConfigurationOutputReference(this as any, "replication_configuration", true);
     public get replicationConfiguration() {
-      return this.interpolationForAttribute('replication_configuration') as any;
+      return this.__replicationConfigurationOutput;
     }
-    public set replicationConfiguration(value: EcrReplicationConfigurationReplicationConfiguration[] ) {
+    public putReplicationConfiguration(value: EcrReplicationConfigurationReplicationConfiguration | undefined) {
       this._replicationConfiguration = value;
     }
     public resetReplicationConfiguration() {
@@ -315,7 +373,7 @@ export namespace ECR {
 
     protected synthesizeAttributes(): { [name: string]: any } {
       return {
-        replication_configuration: cdktf.listMapper(ecrReplicationConfigurationReplicationConfigurationToTerraform)(this._replicationConfiguration),
+        replication_configuration: ecrReplicationConfigurationReplicationConfigurationToTerraform(this._replicationConfiguration),
       };
     }
   }
@@ -347,7 +405,7 @@ export namespace ECR {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_repository.html#image_scanning_configuration EcrRepository#image_scanning_configuration}
     */
-    readonly imageScanningConfiguration?: EcrRepositoryImageScanningConfiguration[];
+    readonly imageScanningConfiguration?: EcrRepositoryImageScanningConfiguration;
     /**
     * timeouts block
     * 
@@ -368,6 +426,9 @@ export namespace ECR {
 
   function ecrRepositoryEncryptionConfigurationToTerraform(struct?: EcrRepositoryEncryptionConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       encryption_type: cdktf.stringToTerraform(struct!.encryptionType),
       kms_key: cdktf.stringToTerraform(struct!.kmsKey),
@@ -381,13 +442,39 @@ export namespace ECR {
     readonly scanOnPush: boolean | cdktf.IResolvable;
   }
 
-  function ecrRepositoryImageScanningConfigurationToTerraform(struct?: EcrRepositoryImageScanningConfiguration): any {
+  function ecrRepositoryImageScanningConfigurationToTerraform(struct?: EcrRepositoryImageScanningConfigurationOutputReference | EcrRepositoryImageScanningConfiguration): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       scan_on_push: cdktf.booleanToTerraform(struct!.scanOnPush),
     }
   }
 
+  export class EcrRepositoryImageScanningConfigurationOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // scan_on_push - computed: false, optional: false, required: true
+    private _scanOnPush?: boolean | cdktf.IResolvable; 
+    public get scanOnPush() {
+      return this.getBooleanAttribute('scan_on_push') as any;
+    }
+    public set scanOnPush(value: boolean | cdktf.IResolvable) {
+      this._scanOnPush = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get scanOnPushInput() {
+      return this._scanOnPush
+    }
+  }
   export interface EcrRepositoryTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecr_repository.html#delete EcrRepository#delete}
@@ -395,13 +482,42 @@ export namespace ECR {
     readonly delete?: string;
   }
 
-  function ecrRepositoryTimeoutsToTerraform(struct?: EcrRepositoryTimeouts): any {
+  function ecrRepositoryTimeoutsToTerraform(struct?: EcrRepositoryTimeoutsOutputReference | EcrRepositoryTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class EcrRepositoryTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/ecr_repository.html aws_ecr_repository}
@@ -459,11 +575,11 @@ export namespace ECR {
     }
 
     // image_tag_mutability - computed: false, optional: true, required: false
-    private _imageTagMutability?: string;
+    private _imageTagMutability?: string | undefined; 
     public get imageTagMutability() {
       return this.getStringAttribute('image_tag_mutability');
     }
-    public set imageTagMutability(value: string ) {
+    public set imageTagMutability(value: string | undefined) {
       this._imageTagMutability = value;
     }
     public resetImageTagMutability() {
@@ -475,7 +591,7 @@ export namespace ECR {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -498,11 +614,12 @@ export namespace ECR {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -514,11 +631,12 @@ export namespace ECR {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -530,11 +648,12 @@ export namespace ECR {
     }
 
     // encryption_configuration - computed: false, optional: true, required: false
-    private _encryptionConfiguration?: EcrRepositoryEncryptionConfiguration[];
+    private _encryptionConfiguration?: EcrRepositoryEncryptionConfiguration[] | undefined; 
     public get encryptionConfiguration() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('encryption_configuration') as any;
     }
-    public set encryptionConfiguration(value: EcrRepositoryEncryptionConfiguration[] ) {
+    public set encryptionConfiguration(value: EcrRepositoryEncryptionConfiguration[] | undefined) {
       this._encryptionConfiguration = value;
     }
     public resetEncryptionConfiguration() {
@@ -546,11 +665,12 @@ export namespace ECR {
     }
 
     // image_scanning_configuration - computed: false, optional: true, required: false
-    private _imageScanningConfiguration?: EcrRepositoryImageScanningConfiguration[];
+    private _imageScanningConfiguration?: EcrRepositoryImageScanningConfiguration | undefined; 
+    private __imageScanningConfigurationOutput = new EcrRepositoryImageScanningConfigurationOutputReference(this as any, "image_scanning_configuration", true);
     public get imageScanningConfiguration() {
-      return this.interpolationForAttribute('image_scanning_configuration') as any;
+      return this.__imageScanningConfigurationOutput;
     }
-    public set imageScanningConfiguration(value: EcrRepositoryImageScanningConfiguration[] ) {
+    public putImageScanningConfiguration(value: EcrRepositoryImageScanningConfiguration | undefined) {
       this._imageScanningConfiguration = value;
     }
     public resetImageScanningConfiguration() {
@@ -562,11 +682,12 @@ export namespace ECR {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: EcrRepositoryTimeouts;
+    private _timeouts?: EcrRepositoryTimeouts | undefined; 
+    private __timeoutsOutput = new EcrRepositoryTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: EcrRepositoryTimeouts ) {
+    public putTimeouts(value: EcrRepositoryTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -588,7 +709,7 @@ export namespace ECR {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         encryption_configuration: cdktf.listMapper(ecrRepositoryEncryptionConfigurationToTerraform)(this._encryptionConfiguration),
-        image_scanning_configuration: cdktf.listMapper(ecrRepositoryImageScanningConfigurationToTerraform)(this._imageScanningConfiguration),
+        image_scanning_configuration: ecrRepositoryImageScanningConfigurationToTerraform(this._imageScanningConfiguration),
         timeouts: ecrRepositoryTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -650,7 +771,7 @@ export namespace ECR {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -668,7 +789,7 @@ export namespace ECR {
     }
 
     // repository - computed: false, optional: false, required: true
-    private _repository: string;
+    private _repository?: string; 
     public get repository() {
       return this.getStringAttribute('repository');
     }
@@ -705,7 +826,7 @@ export namespace ECR {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecrpublic_repository.html#catalog_data EcrpublicRepository#catalog_data}
     */
-    readonly catalogData?: EcrpublicRepositoryCatalogData[];
+    readonly catalogData?: EcrpublicRepositoryCatalogData;
     /**
     * timeouts block
     * 
@@ -740,8 +861,11 @@ export namespace ECR {
     readonly usageText?: string;
   }
 
-  function ecrpublicRepositoryCatalogDataToTerraform(struct?: EcrpublicRepositoryCatalogData): any {
+  function ecrpublicRepositoryCatalogDataToTerraform(struct?: EcrpublicRepositoryCatalogDataOutputReference | EcrpublicRepositoryCatalogData): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       about_text: cdktf.stringToTerraform(struct!.aboutText),
       architectures: cdktf.listMapper(cdktf.stringToTerraform)(struct!.architectures),
@@ -752,6 +876,112 @@ export namespace ECR {
     }
   }
 
+  export class EcrpublicRepositoryCatalogDataOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // about_text - computed: false, optional: true, required: false
+    private _aboutText?: string | undefined; 
+    public get aboutText() {
+      return this.getStringAttribute('about_text');
+    }
+    public set aboutText(value: string | undefined) {
+      this._aboutText = value;
+    }
+    public resetAboutText() {
+      this._aboutText = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get aboutTextInput() {
+      return this._aboutText
+    }
+
+    // architectures - computed: false, optional: true, required: false
+    private _architectures?: string[] | undefined; 
+    public get architectures() {
+      return this.getListAttribute('architectures');
+    }
+    public set architectures(value: string[] | undefined) {
+      this._architectures = value;
+    }
+    public resetArchitectures() {
+      this._architectures = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get architecturesInput() {
+      return this._architectures
+    }
+
+    // description - computed: false, optional: true, required: false
+    private _description?: string | undefined; 
+    public get description() {
+      return this.getStringAttribute('description');
+    }
+    public set description(value: string | undefined) {
+      this._description = value;
+    }
+    public resetDescription() {
+      this._description = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get descriptionInput() {
+      return this._description
+    }
+
+    // logo_image_blob - computed: true, optional: true, required: false
+    private _logoImageBlob?: string | undefined; 
+    public get logoImageBlob() {
+      return this.getStringAttribute('logo_image_blob');
+    }
+    public set logoImageBlob(value: string | undefined) {
+      this._logoImageBlob = value;
+    }
+    public resetLogoImageBlob() {
+      this._logoImageBlob = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get logoImageBlobInput() {
+      return this._logoImageBlob
+    }
+
+    // operating_systems - computed: false, optional: true, required: false
+    private _operatingSystems?: string[] | undefined; 
+    public get operatingSystems() {
+      return this.getListAttribute('operating_systems');
+    }
+    public set operatingSystems(value: string[] | undefined) {
+      this._operatingSystems = value;
+    }
+    public resetOperatingSystems() {
+      this._operatingSystems = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get operatingSystemsInput() {
+      return this._operatingSystems
+    }
+
+    // usage_text - computed: false, optional: true, required: false
+    private _usageText?: string | undefined; 
+    public get usageText() {
+      return this.getStringAttribute('usage_text');
+    }
+    public set usageText(value: string | undefined) {
+      this._usageText = value;
+    }
+    public resetUsageText() {
+      this._usageText = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get usageTextInput() {
+      return this._usageText
+    }
+  }
   export interface EcrpublicRepositoryTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/ecrpublic_repository.html#delete EcrpublicRepository#delete}
@@ -759,13 +989,42 @@ export namespace ECR {
     readonly delete?: string;
   }
 
-  function ecrpublicRepositoryTimeoutsToTerraform(struct?: EcrpublicRepositoryTimeouts): any {
+  function ecrpublicRepositoryTimeoutsToTerraform(struct?: EcrpublicRepositoryTimeoutsOutputReference | EcrpublicRepositoryTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class EcrpublicRepositoryTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/ecrpublic_repository.html aws_ecrpublic_repository}
@@ -815,11 +1074,11 @@ export namespace ECR {
     }
 
     // force_destroy - computed: false, optional: true, required: false
-    private _forceDestroy?: boolean | cdktf.IResolvable;
+    private _forceDestroy?: boolean | cdktf.IResolvable | undefined; 
     public get forceDestroy() {
-      return this.getBooleanAttribute('force_destroy');
+      return this.getBooleanAttribute('force_destroy') as any;
     }
-    public set forceDestroy(value: boolean | cdktf.IResolvable ) {
+    public set forceDestroy(value: boolean | cdktf.IResolvable | undefined) {
       this._forceDestroy = value;
     }
     public resetForceDestroy() {
@@ -841,7 +1100,7 @@ export namespace ECR {
     }
 
     // repository_name - computed: false, optional: false, required: true
-    private _repositoryName: string;
+    private _repositoryName?: string; 
     public get repositoryName() {
       return this.getStringAttribute('repository_name');
     }
@@ -859,11 +1118,12 @@ export namespace ECR {
     }
 
     // catalog_data - computed: false, optional: true, required: false
-    private _catalogData?: EcrpublicRepositoryCatalogData[];
+    private _catalogData?: EcrpublicRepositoryCatalogData | undefined; 
+    private __catalogDataOutput = new EcrpublicRepositoryCatalogDataOutputReference(this as any, "catalog_data", true);
     public get catalogData() {
-      return this.interpolationForAttribute('catalog_data') as any;
+      return this.__catalogDataOutput;
     }
-    public set catalogData(value: EcrpublicRepositoryCatalogData[] ) {
+    public putCatalogData(value: EcrpublicRepositoryCatalogData | undefined) {
       this._catalogData = value;
     }
     public resetCatalogData() {
@@ -875,11 +1135,12 @@ export namespace ECR {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: EcrpublicRepositoryTimeouts;
+    private _timeouts?: EcrpublicRepositoryTimeouts | undefined; 
+    private __timeoutsOutput = new EcrpublicRepositoryTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: EcrpublicRepositoryTimeouts ) {
+    public putTimeouts(value: EcrpublicRepositoryTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -898,7 +1159,7 @@ export namespace ECR {
       return {
         force_destroy: cdktf.booleanToTerraform(this._forceDestroy),
         repository_name: cdktf.stringToTerraform(this._repositoryName),
-        catalog_data: cdktf.listMapper(ecrpublicRepositoryCatalogDataToTerraform)(this._catalogData),
+        catalog_data: ecrpublicRepositoryCatalogDataToTerraform(this._catalogData),
         timeouts: ecrpublicRepositoryTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -975,11 +1236,11 @@ export namespace ECR {
     }
 
     // registry_id - computed: false, optional: true, required: false
-    private _registryId?: string;
+    private _registryId?: string | undefined; 
     public get registryId() {
       return this.getStringAttribute('registry_id');
     }
-    public set registryId(value: string ) {
+    public set registryId(value: string | undefined) {
       this._registryId = value;
     }
     public resetRegistryId() {
@@ -1072,11 +1333,11 @@ export namespace ECR {
     }
 
     // image_digest - computed: true, optional: true, required: false
-    private _imageDigest?: string;
+    private _imageDigest?: string | undefined; 
     public get imageDigest() {
       return this.getStringAttribute('image_digest');
     }
-    public set imageDigest(value: string) {
+    public set imageDigest(value: string | undefined) {
       this._imageDigest = value;
     }
     public resetImageDigest() {
@@ -1098,11 +1359,11 @@ export namespace ECR {
     }
 
     // image_tag - computed: false, optional: true, required: false
-    private _imageTag?: string;
+    private _imageTag?: string | undefined; 
     public get imageTag() {
       return this.getStringAttribute('image_tag');
     }
-    public set imageTag(value: string ) {
+    public set imageTag(value: string | undefined) {
       this._imageTag = value;
     }
     public resetImageTag() {
@@ -1119,11 +1380,11 @@ export namespace ECR {
     }
 
     // registry_id - computed: true, optional: true, required: false
-    private _registryId?: string;
+    private _registryId?: string | undefined; 
     public get registryId() {
       return this.getStringAttribute('registry_id');
     }
-    public set registryId(value: string) {
+    public set registryId(value: string | undefined) {
       this._registryId = value;
     }
     public resetRegistryId() {
@@ -1135,7 +1396,7 @@ export namespace ECR {
     }
 
     // repository_name - computed: false, optional: false, required: true
-    private _repositoryName: string;
+    private _repositoryName?: string; 
     public get repositoryName() {
       return this.getStringAttribute('repository_name');
     }
@@ -1190,7 +1451,7 @@ export namespace ECR {
 
     // scan_on_push - computed: true, optional: false, required: false
     public get scanOnPush() {
-      return this.getBooleanAttribute('scan_on_push');
+      return this.getBooleanAttribute('scan_on_push') as any;
     }
   }
 
@@ -1261,7 +1522,7 @@ export namespace ECR {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1274,11 +1535,11 @@ export namespace ECR {
     }
 
     // registry_id - computed: true, optional: true, required: false
-    private _registryId?: string;
+    private _registryId?: string | undefined; 
     public get registryId() {
       return this.getStringAttribute('registry_id');
     }
-    public set registryId(value: string) {
+    public set registryId(value: string | undefined) {
       this._registryId = value;
     }
     public resetRegistryId() {
@@ -1295,11 +1556,12 @@ export namespace ECR {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {

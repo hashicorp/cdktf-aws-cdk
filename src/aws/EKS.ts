@@ -84,7 +84,7 @@ export namespace EKS {
     // ==========
 
     // addon_name - computed: false, optional: false, required: true
-    private _addonName: string;
+    private _addonName?: string; 
     public get addonName() {
       return this.getStringAttribute('addon_name');
     }
@@ -97,11 +97,11 @@ export namespace EKS {
     }
 
     // addon_version - computed: true, optional: true, required: false
-    private _addonVersion?: string;
+    private _addonVersion?: string | undefined; 
     public get addonVersion() {
       return this.getStringAttribute('addon_version');
     }
-    public set addonVersion(value: string) {
+    public set addonVersion(value: string | undefined) {
       this._addonVersion = value;
     }
     public resetAddonVersion() {
@@ -118,7 +118,7 @@ export namespace EKS {
     }
 
     // cluster_name - computed: false, optional: false, required: true
-    private _clusterName: string;
+    private _clusterName?: string; 
     public get clusterName() {
       return this.getStringAttribute('cluster_name');
     }
@@ -146,11 +146,11 @@ export namespace EKS {
     }
 
     // resolve_conflicts - computed: false, optional: true, required: false
-    private _resolveConflicts?: string;
+    private _resolveConflicts?: string | undefined; 
     public get resolveConflicts() {
       return this.getStringAttribute('resolve_conflicts');
     }
-    public set resolveConflicts(value: string ) {
+    public set resolveConflicts(value: string | undefined) {
       this._resolveConflicts = value;
     }
     public resetResolveConflicts() {
@@ -162,11 +162,11 @@ export namespace EKS {
     }
 
     // service_account_role_arn - computed: false, optional: true, required: false
-    private _serviceAccountRoleArn?: string;
+    private _serviceAccountRoleArn?: string | undefined; 
     public get serviceAccountRoleArn() {
       return this.getStringAttribute('service_account_role_arn');
     }
-    public set serviceAccountRoleArn(value: string ) {
+    public set serviceAccountRoleArn(value: string | undefined) {
       this._serviceAccountRoleArn = value;
     }
     public resetServiceAccountRoleArn() {
@@ -178,11 +178,12 @@ export namespace EKS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -194,11 +195,12 @@ export namespace EKS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -255,13 +257,13 @@ export namespace EKS {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_cluster.html#encryption_config EksCluster#encryption_config}
     */
-    readonly encryptionConfig?: EksClusterEncryptionConfig[];
+    readonly encryptionConfig?: EksClusterEncryptionConfig;
     /**
     * kubernetes_network_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_cluster.html#kubernetes_network_config EksCluster#kubernetes_network_config}
     */
-    readonly kubernetesNetworkConfig?: EksClusterKubernetesNetworkConfig[];
+    readonly kubernetesNetworkConfig?: EksClusterKubernetesNetworkConfig;
     /**
     * timeouts block
     * 
@@ -273,7 +275,7 @@ export namespace EKS {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_cluster.html#vpc_config EksCluster#vpc_config}
     */
-    readonly vpcConfig: EksClusterVpcConfig[];
+    readonly vpcConfig: EksClusterVpcConfig;
   }
   export class EksClusterCertificateAuthority extends cdktf.ComplexComputedList {
 
@@ -293,6 +295,7 @@ export namespace EKS {
 
     // oidc - computed: true, optional: false, required: false
     public get oidc() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('oidc') as any;
     }
   }
@@ -303,13 +306,39 @@ export namespace EKS {
     readonly keyArn: string;
   }
 
-  function eksClusterEncryptionConfigProviderToTerraform(struct?: EksClusterEncryptionConfigProvider): any {
+  function eksClusterEncryptionConfigProviderToTerraform(struct?: EksClusterEncryptionConfigProviderOutputReference | EksClusterEncryptionConfigProvider): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       key_arn: cdktf.stringToTerraform(struct!.keyArn),
     }
   }
 
+  export class EksClusterEncryptionConfigProviderOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // key_arn - computed: false, optional: false, required: true
+    private _keyArn?: string; 
+    public get keyArn() {
+      return this.getStringAttribute('key_arn');
+    }
+    public set keyArn(value: string) {
+      this._keyArn = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get keyArnInput() {
+      return this._keyArn
+    }
+  }
   export interface EksClusterEncryptionConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_cluster.html#resources EksCluster#resources}
@@ -320,17 +349,57 @@ export namespace EKS {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_cluster.html#provider EksCluster#provider}
     */
-    readonly provider: EksClusterEncryptionConfigProvider[];
+    readonly provider: EksClusterEncryptionConfigProvider;
   }
 
-  function eksClusterEncryptionConfigToTerraform(struct?: EksClusterEncryptionConfig): any {
+  function eksClusterEncryptionConfigToTerraform(struct?: EksClusterEncryptionConfigOutputReference | EksClusterEncryptionConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       resources: cdktf.listMapper(cdktf.stringToTerraform)(struct!.resources),
-      provider: cdktf.listMapper(eksClusterEncryptionConfigProviderToTerraform)(struct!.provider),
+      provider: eksClusterEncryptionConfigProviderToTerraform(struct!.provider),
     }
   }
 
+  export class EksClusterEncryptionConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // resources - computed: false, optional: false, required: true
+    private _resources?: string[]; 
+    public get resources() {
+      return this.getListAttribute('resources');
+    }
+    public set resources(value: string[]) {
+      this._resources = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get resourcesInput() {
+      return this._resources
+    }
+
+    // provider - computed: false, optional: false, required: true
+    private _provider?: EksClusterEncryptionConfigProvider; 
+    private __providerOutput = new EksClusterEncryptionConfigProviderOutputReference(this as any, "provider", true);
+    public get provider() {
+      return this.__providerOutput;
+    }
+    public putProvider(value: EksClusterEncryptionConfigProvider) {
+      this._provider = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get providerInput() {
+      return this._provider
+    }
+  }
   export interface EksClusterKubernetesNetworkConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_cluster.html#service_ipv4_cidr EksCluster#service_ipv4_cidr}
@@ -338,13 +407,42 @@ export namespace EKS {
     readonly serviceIpv4Cidr?: string;
   }
 
-  function eksClusterKubernetesNetworkConfigToTerraform(struct?: EksClusterKubernetesNetworkConfig): any {
+  function eksClusterKubernetesNetworkConfigToTerraform(struct?: EksClusterKubernetesNetworkConfigOutputReference | EksClusterKubernetesNetworkConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       service_ipv4_cidr: cdktf.stringToTerraform(struct!.serviceIpv4Cidr),
     }
   }
 
+  export class EksClusterKubernetesNetworkConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // service_ipv4_cidr - computed: true, optional: true, required: false
+    private _serviceIpv4Cidr?: string | undefined; 
+    public get serviceIpv4Cidr() {
+      return this.getStringAttribute('service_ipv4_cidr');
+    }
+    public set serviceIpv4Cidr(value: string | undefined) {
+      this._serviceIpv4Cidr = value;
+    }
+    public resetServiceIpv4Cidr() {
+      this._serviceIpv4Cidr = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get serviceIpv4CidrInput() {
+      return this._serviceIpv4Cidr
+    }
+  }
   export interface EksClusterTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_cluster.html#create EksCluster#create}
@@ -360,8 +458,11 @@ export namespace EKS {
     readonly update?: string;
   }
 
-  function eksClusterTimeoutsToTerraform(struct?: EksClusterTimeouts): any {
+  function eksClusterTimeoutsToTerraform(struct?: EksClusterTimeoutsOutputReference | EksClusterTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -369,6 +470,64 @@ export namespace EKS {
     }
   }
 
+  export class EksClusterTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
   export interface EksClusterVpcConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_cluster.html#endpoint_private_access EksCluster#endpoint_private_access}
@@ -392,8 +551,11 @@ export namespace EKS {
     readonly subnetIds: string[];
   }
 
-  function eksClusterVpcConfigToTerraform(struct?: EksClusterVpcConfig): any {
+  function eksClusterVpcConfigToTerraform(struct?: EksClusterVpcConfigOutputReference | EksClusterVpcConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       endpoint_private_access: cdktf.booleanToTerraform(struct!.endpointPrivateAccess),
       endpoint_public_access: cdktf.booleanToTerraform(struct!.endpointPublicAccess),
@@ -403,6 +565,93 @@ export namespace EKS {
     }
   }
 
+  export class EksClusterVpcConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // endpoint_private_access - computed: false, optional: true, required: false
+    private _endpointPrivateAccess?: boolean | cdktf.IResolvable | undefined; 
+    public get endpointPrivateAccess() {
+      return this.getBooleanAttribute('endpoint_private_access') as any;
+    }
+    public set endpointPrivateAccess(value: boolean | cdktf.IResolvable | undefined) {
+      this._endpointPrivateAccess = value;
+    }
+    public resetEndpointPrivateAccess() {
+      this._endpointPrivateAccess = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get endpointPrivateAccessInput() {
+      return this._endpointPrivateAccess
+    }
+
+    // endpoint_public_access - computed: false, optional: true, required: false
+    private _endpointPublicAccess?: boolean | cdktf.IResolvable | undefined; 
+    public get endpointPublicAccess() {
+      return this.getBooleanAttribute('endpoint_public_access') as any;
+    }
+    public set endpointPublicAccess(value: boolean | cdktf.IResolvable | undefined) {
+      this._endpointPublicAccess = value;
+    }
+    public resetEndpointPublicAccess() {
+      this._endpointPublicAccess = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get endpointPublicAccessInput() {
+      return this._endpointPublicAccess
+    }
+
+    // public_access_cidrs - computed: true, optional: true, required: false
+    private _publicAccessCidrs?: string[] | undefined; 
+    public get publicAccessCidrs() {
+      return this.getListAttribute('public_access_cidrs');
+    }
+    public set publicAccessCidrs(value: string[] | undefined) {
+      this._publicAccessCidrs = value;
+    }
+    public resetPublicAccessCidrs() {
+      this._publicAccessCidrs = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get publicAccessCidrsInput() {
+      return this._publicAccessCidrs
+    }
+
+    // security_group_ids - computed: false, optional: true, required: false
+    private _securityGroupIds?: string[] | undefined; 
+    public get securityGroupIds() {
+      return this.getListAttribute('security_group_ids');
+    }
+    public set securityGroupIds(value: string[] | undefined) {
+      this._securityGroupIds = value;
+    }
+    public resetSecurityGroupIds() {
+      this._securityGroupIds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get securityGroupIdsInput() {
+      return this._securityGroupIds
+    }
+
+    // subnet_ids - computed: false, optional: false, required: true
+    private _subnetIds?: string[]; 
+    public get subnetIds() {
+      return this.getListAttribute('subnet_ids');
+    }
+    public set subnetIds(value: string[]) {
+      this._subnetIds = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get subnetIdsInput() {
+      return this._subnetIds
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/eks_cluster.html aws_eks_cluster}
@@ -468,11 +717,11 @@ export namespace EKS {
     }
 
     // enabled_cluster_log_types - computed: false, optional: true, required: false
-    private _enabledClusterLogTypes?: string[];
+    private _enabledClusterLogTypes?: string[] | undefined; 
     public get enabledClusterLogTypes() {
       return this.getListAttribute('enabled_cluster_log_types');
     }
-    public set enabledClusterLogTypes(value: string[] ) {
+    public set enabledClusterLogTypes(value: string[] | undefined) {
       this._enabledClusterLogTypes = value;
     }
     public resetEnabledClusterLogTypes() {
@@ -499,7 +748,7 @@ export namespace EKS {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -517,7 +766,7 @@ export namespace EKS {
     }
 
     // role_arn - computed: false, optional: false, required: true
-    private _roleArn: string;
+    private _roleArn?: string; 
     public get roleArn() {
       return this.getStringAttribute('role_arn');
     }
@@ -535,11 +784,12 @@ export namespace EKS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -551,11 +801,12 @@ export namespace EKS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -567,11 +818,11 @@ export namespace EKS {
     }
 
     // version - computed: true, optional: true, required: false
-    private _version?: string;
+    private _version?: string | undefined; 
     public get version() {
       return this.getStringAttribute('version');
     }
-    public set version(value: string) {
+    public set version(value: string | undefined) {
       this._version = value;
     }
     public resetVersion() {
@@ -583,11 +834,12 @@ export namespace EKS {
     }
 
     // encryption_config - computed: false, optional: true, required: false
-    private _encryptionConfig?: EksClusterEncryptionConfig[];
+    private _encryptionConfig?: EksClusterEncryptionConfig | undefined; 
+    private __encryptionConfigOutput = new EksClusterEncryptionConfigOutputReference(this as any, "encryption_config", true);
     public get encryptionConfig() {
-      return this.interpolationForAttribute('encryption_config') as any;
+      return this.__encryptionConfigOutput;
     }
-    public set encryptionConfig(value: EksClusterEncryptionConfig[] ) {
+    public putEncryptionConfig(value: EksClusterEncryptionConfig | undefined) {
       this._encryptionConfig = value;
     }
     public resetEncryptionConfig() {
@@ -599,11 +851,12 @@ export namespace EKS {
     }
 
     // kubernetes_network_config - computed: false, optional: true, required: false
-    private _kubernetesNetworkConfig?: EksClusterKubernetesNetworkConfig[];
+    private _kubernetesNetworkConfig?: EksClusterKubernetesNetworkConfig | undefined; 
+    private __kubernetesNetworkConfigOutput = new EksClusterKubernetesNetworkConfigOutputReference(this as any, "kubernetes_network_config", true);
     public get kubernetesNetworkConfig() {
-      return this.interpolationForAttribute('kubernetes_network_config') as any;
+      return this.__kubernetesNetworkConfigOutput;
     }
-    public set kubernetesNetworkConfig(value: EksClusterKubernetesNetworkConfig[] ) {
+    public putKubernetesNetworkConfig(value: EksClusterKubernetesNetworkConfig | undefined) {
       this._kubernetesNetworkConfig = value;
     }
     public resetKubernetesNetworkConfig() {
@@ -615,11 +868,12 @@ export namespace EKS {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: EksClusterTimeouts;
+    private _timeouts?: EksClusterTimeouts | undefined; 
+    private __timeoutsOutput = new EksClusterTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: EksClusterTimeouts ) {
+    public putTimeouts(value: EksClusterTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -631,11 +885,12 @@ export namespace EKS {
     }
 
     // vpc_config - computed: false, optional: false, required: true
-    private _vpcConfig: EksClusterVpcConfig[];
+    private _vpcConfig?: EksClusterVpcConfig; 
+    private __vpcConfigOutput = new EksClusterVpcConfigOutputReference(this as any, "vpc_config", true);
     public get vpcConfig() {
-      return this.interpolationForAttribute('vpc_config') as any;
+      return this.__vpcConfigOutput;
     }
-    public set vpcConfig(value: EksClusterVpcConfig[]) {
+    public putVpcConfig(value: EksClusterVpcConfig) {
       this._vpcConfig = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -655,10 +910,10 @@ export namespace EKS {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         version: cdktf.stringToTerraform(this._version),
-        encryption_config: cdktf.listMapper(eksClusterEncryptionConfigToTerraform)(this._encryptionConfig),
-        kubernetes_network_config: cdktf.listMapper(eksClusterKubernetesNetworkConfigToTerraform)(this._kubernetesNetworkConfig),
+        encryption_config: eksClusterEncryptionConfigToTerraform(this._encryptionConfig),
+        kubernetes_network_config: eksClusterKubernetesNetworkConfigToTerraform(this._kubernetesNetworkConfig),
         timeouts: eksClusterTimeoutsToTerraform(this._timeouts),
-        vpc_config: cdktf.listMapper(eksClusterVpcConfigToTerraform)(this._vpcConfig),
+        vpc_config: eksClusterVpcConfigToTerraform(this._vpcConfig),
       };
     }
   }
@@ -713,6 +968,9 @@ export namespace EKS {
 
   function eksFargateProfileSelectorToTerraform(struct?: EksFargateProfileSelector): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       labels: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.labels),
       namespace: cdktf.stringToTerraform(struct!.namespace),
@@ -730,14 +988,59 @@ export namespace EKS {
     readonly delete?: string;
   }
 
-  function eksFargateProfileTimeoutsToTerraform(struct?: EksFargateProfileTimeouts): any {
+  function eksFargateProfileTimeoutsToTerraform(struct?: EksFargateProfileTimeoutsOutputReference | EksFargateProfileTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class EksFargateProfileTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/eks_fargate_profile.html aws_eks_fargate_profile}
@@ -791,7 +1094,7 @@ export namespace EKS {
     }
 
     // cluster_name - computed: false, optional: false, required: true
-    private _clusterName: string;
+    private _clusterName?: string; 
     public get clusterName() {
       return this.getStringAttribute('cluster_name');
     }
@@ -804,7 +1107,7 @@ export namespace EKS {
     }
 
     // fargate_profile_name - computed: false, optional: false, required: true
-    private _fargateProfileName: string;
+    private _fargateProfileName?: string; 
     public get fargateProfileName() {
       return this.getStringAttribute('fargate_profile_name');
     }
@@ -822,7 +1125,7 @@ export namespace EKS {
     }
 
     // pod_execution_role_arn - computed: false, optional: false, required: true
-    private _podExecutionRoleArn: string;
+    private _podExecutionRoleArn?: string; 
     public get podExecutionRoleArn() {
       return this.getStringAttribute('pod_execution_role_arn');
     }
@@ -840,11 +1143,11 @@ export namespace EKS {
     }
 
     // subnet_ids - computed: false, optional: true, required: false
-    private _subnetIds?: string[];
+    private _subnetIds?: string[] | undefined; 
     public get subnetIds() {
       return this.getListAttribute('subnet_ids');
     }
-    public set subnetIds(value: string[] ) {
+    public set subnetIds(value: string[] | undefined) {
       this._subnetIds = value;
     }
     public resetSubnetIds() {
@@ -856,11 +1159,12 @@ export namespace EKS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -872,11 +1176,12 @@ export namespace EKS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -888,8 +1193,9 @@ export namespace EKS {
     }
 
     // selector - computed: false, optional: false, required: true
-    private _selector: EksFargateProfileSelector[];
+    private _selector?: EksFargateProfileSelector[]; 
     public get selector() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('selector') as any;
     }
     public set selector(value: EksFargateProfileSelector[]) {
@@ -901,11 +1207,12 @@ export namespace EKS {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: EksFargateProfileTimeouts;
+    private _timeouts?: EksFargateProfileTimeouts | undefined; 
+    private __timeoutsOutput = new EksFargateProfileTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: EksFargateProfileTimeouts ) {
+    public putTimeouts(value: EksFargateProfileTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -951,7 +1258,7 @@ export namespace EKS {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_identity_provider_config.html#oidc EksIdentityProviderConfig#oidc}
     */
-    readonly oidc: EksIdentityProviderConfigOidc[];
+    readonly oidc: EksIdentityProviderConfigOidc;
     /**
     * timeouts block
     * 
@@ -994,8 +1301,11 @@ export namespace EKS {
     readonly usernamePrefix?: string;
   }
 
-  function eksIdentityProviderConfigOidcToTerraform(struct?: EksIdentityProviderConfigOidc): any {
+  function eksIdentityProviderConfigOidcToTerraform(struct?: EksIdentityProviderConfigOidcOutputReference | EksIdentityProviderConfigOidc): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       client_id: cdktf.stringToTerraform(struct!.clientId),
       groups_claim: cdktf.stringToTerraform(struct!.groupsClaim),
@@ -1008,6 +1318,136 @@ export namespace EKS {
     }
   }
 
+  export class EksIdentityProviderConfigOidcOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // client_id - computed: false, optional: false, required: true
+    private _clientId?: string; 
+    public get clientId() {
+      return this.getStringAttribute('client_id');
+    }
+    public set clientId(value: string) {
+      this._clientId = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get clientIdInput() {
+      return this._clientId
+    }
+
+    // groups_claim - computed: false, optional: true, required: false
+    private _groupsClaim?: string | undefined; 
+    public get groupsClaim() {
+      return this.getStringAttribute('groups_claim');
+    }
+    public set groupsClaim(value: string | undefined) {
+      this._groupsClaim = value;
+    }
+    public resetGroupsClaim() {
+      this._groupsClaim = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get groupsClaimInput() {
+      return this._groupsClaim
+    }
+
+    // groups_prefix - computed: false, optional: true, required: false
+    private _groupsPrefix?: string | undefined; 
+    public get groupsPrefix() {
+      return this.getStringAttribute('groups_prefix');
+    }
+    public set groupsPrefix(value: string | undefined) {
+      this._groupsPrefix = value;
+    }
+    public resetGroupsPrefix() {
+      this._groupsPrefix = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get groupsPrefixInput() {
+      return this._groupsPrefix
+    }
+
+    // identity_provider_config_name - computed: false, optional: false, required: true
+    private _identityProviderConfigName?: string; 
+    public get identityProviderConfigName() {
+      return this.getStringAttribute('identity_provider_config_name');
+    }
+    public set identityProviderConfigName(value: string) {
+      this._identityProviderConfigName = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get identityProviderConfigNameInput() {
+      return this._identityProviderConfigName
+    }
+
+    // issuer_url - computed: false, optional: false, required: true
+    private _issuerUrl?: string; 
+    public get issuerUrl() {
+      return this.getStringAttribute('issuer_url');
+    }
+    public set issuerUrl(value: string) {
+      this._issuerUrl = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get issuerUrlInput() {
+      return this._issuerUrl
+    }
+
+    // required_claims - computed: false, optional: true, required: false
+    private _requiredClaims?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get requiredClaims() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('required_claims') as any;
+    }
+    public set requiredClaims(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._requiredClaims = value;
+    }
+    public resetRequiredClaims() {
+      this._requiredClaims = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get requiredClaimsInput() {
+      return this._requiredClaims
+    }
+
+    // username_claim - computed: false, optional: true, required: false
+    private _usernameClaim?: string | undefined; 
+    public get usernameClaim() {
+      return this.getStringAttribute('username_claim');
+    }
+    public set usernameClaim(value: string | undefined) {
+      this._usernameClaim = value;
+    }
+    public resetUsernameClaim() {
+      this._usernameClaim = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get usernameClaimInput() {
+      return this._usernameClaim
+    }
+
+    // username_prefix - computed: false, optional: true, required: false
+    private _usernamePrefix?: string | undefined; 
+    public get usernamePrefix() {
+      return this.getStringAttribute('username_prefix');
+    }
+    public set usernamePrefix(value: string | undefined) {
+      this._usernamePrefix = value;
+    }
+    public resetUsernamePrefix() {
+      this._usernamePrefix = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get usernamePrefixInput() {
+      return this._usernamePrefix
+    }
+  }
   export interface EksIdentityProviderConfigTimeouts {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_identity_provider_config.html#create EksIdentityProviderConfig#create}
@@ -1019,14 +1459,59 @@ export namespace EKS {
     readonly delete?: string;
   }
 
-  function eksIdentityProviderConfigTimeoutsToTerraform(struct?: EksIdentityProviderConfigTimeouts): any {
+  function eksIdentityProviderConfigTimeoutsToTerraform(struct?: EksIdentityProviderConfigTimeoutsOutputReference | EksIdentityProviderConfigTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
     }
   }
 
+  export class EksIdentityProviderConfigTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/eks_identity_provider_config.html aws_eks_identity_provider_config}
@@ -1077,7 +1562,7 @@ export namespace EKS {
     }
 
     // cluster_name - computed: false, optional: false, required: true
-    private _clusterName: string;
+    private _clusterName?: string; 
     public get clusterName() {
       return this.getStringAttribute('cluster_name');
     }
@@ -1100,11 +1585,12 @@ export namespace EKS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1116,11 +1602,12 @@ export namespace EKS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1132,11 +1619,12 @@ export namespace EKS {
     }
 
     // oidc - computed: false, optional: false, required: true
-    private _oidc: EksIdentityProviderConfigOidc[];
+    private _oidc?: EksIdentityProviderConfigOidc; 
+    private __oidcOutput = new EksIdentityProviderConfigOidcOutputReference(this as any, "oidc", true);
     public get oidc() {
-      return this.interpolationForAttribute('oidc') as any;
+      return this.__oidcOutput;
     }
-    public set oidc(value: EksIdentityProviderConfigOidc[]) {
+    public putOidc(value: EksIdentityProviderConfigOidc) {
       this._oidc = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -1145,11 +1633,12 @@ export namespace EKS {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: EksIdentityProviderConfigTimeouts;
+    private _timeouts?: EksIdentityProviderConfigTimeouts | undefined; 
+    private __timeoutsOutput = new EksIdentityProviderConfigTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: EksIdentityProviderConfigTimeouts ) {
+    public putTimeouts(value: EksIdentityProviderConfigTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1169,7 +1658,7 @@ export namespace EKS {
         cluster_name: cdktf.stringToTerraform(this._clusterName),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        oidc: cdktf.listMapper(eksIdentityProviderConfigOidcToTerraform)(this._oidc),
+        oidc: eksIdentityProviderConfigOidcToTerraform(this._oidc),
         timeouts: eksIdentityProviderConfigTimeoutsToTerraform(this._timeouts),
       };
     }
@@ -1240,19 +1729,19 @@ export namespace EKS {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_node_group.html#launch_template EksNodeGroup#launch_template}
     */
-    readonly launchTemplate?: EksNodeGroupLaunchTemplate[];
+    readonly launchTemplate?: EksNodeGroupLaunchTemplate;
     /**
     * remote_access block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_node_group.html#remote_access EksNodeGroup#remote_access}
     */
-    readonly remoteAccess?: EksNodeGroupRemoteAccess[];
+    readonly remoteAccess?: EksNodeGroupRemoteAccess;
     /**
     * scaling_config block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_node_group.html#scaling_config EksNodeGroup#scaling_config}
     */
-    readonly scalingConfig: EksNodeGroupScalingConfig[];
+    readonly scalingConfig: EksNodeGroupScalingConfig;
     /**
     * taint block
     * 
@@ -1270,7 +1759,7 @@ export namespace EKS {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_node_group.html#update_config EksNodeGroup#update_config}
     */
-    readonly updateConfig?: EksNodeGroupUpdateConfig[];
+    readonly updateConfig?: EksNodeGroupUpdateConfig;
   }
   export class EksNodeGroupResourcesAutoscalingGroups extends cdktf.ComplexComputedList {
 
@@ -1283,6 +1772,7 @@ export namespace EKS {
 
     // autoscaling_groups - computed: true, optional: false, required: false
     public get autoscalingGroups() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('autoscaling_groups') as any;
     }
 
@@ -1306,15 +1796,61 @@ export namespace EKS {
     readonly version: string;
   }
 
-  function eksNodeGroupLaunchTemplateToTerraform(struct?: EksNodeGroupLaunchTemplate): any {
+  function eksNodeGroupLaunchTemplateToTerraform(struct?: EksNodeGroupLaunchTemplateOutputReference | EksNodeGroupLaunchTemplate): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      id: cdktf.stringToTerraform(struct!.id),
       name: cdktf.stringToTerraform(struct!.name),
       version: cdktf.stringToTerraform(struct!.version),
     }
   }
 
+  export class EksNodeGroupLaunchTemplateOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // id - computed: true, optional: true, required: false
+    public get id() {
+      return this.getStringAttribute('id');
+    }
+
+    // name - computed: true, optional: true, required: false
+    private _name?: string | undefined; 
+    public get name() {
+      return this.getStringAttribute('name');
+    }
+    public set name(value: string | undefined) {
+      this._name = value;
+    }
+    public resetName() {
+      this._name = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get nameInput() {
+      return this._name
+    }
+
+    // version - computed: false, optional: false, required: true
+    private _version?: string; 
+    public get version() {
+      return this.getStringAttribute('version');
+    }
+    public set version(value: string) {
+      this._version = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get versionInput() {
+      return this._version
+    }
+  }
   export interface EksNodeGroupRemoteAccess {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_node_group.html#ec2_ssh_key EksNodeGroup#ec2_ssh_key}
@@ -1326,14 +1862,59 @@ export namespace EKS {
     readonly sourceSecurityGroupIds?: string[];
   }
 
-  function eksNodeGroupRemoteAccessToTerraform(struct?: EksNodeGroupRemoteAccess): any {
+  function eksNodeGroupRemoteAccessToTerraform(struct?: EksNodeGroupRemoteAccessOutputReference | EksNodeGroupRemoteAccess): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       ec2_ssh_key: cdktf.stringToTerraform(struct!.ec2SshKey),
       source_security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(struct!.sourceSecurityGroupIds),
     }
   }
 
+  export class EksNodeGroupRemoteAccessOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // ec2_ssh_key - computed: false, optional: true, required: false
+    private _ec2SshKey?: string | undefined; 
+    public get ec2SshKey() {
+      return this.getStringAttribute('ec2_ssh_key');
+    }
+    public set ec2SshKey(value: string | undefined) {
+      this._ec2SshKey = value;
+    }
+    public resetEc2SshKey() {
+      this._ec2SshKey = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get ec2SshKeyInput() {
+      return this._ec2SshKey
+    }
+
+    // source_security_group_ids - computed: false, optional: true, required: false
+    private _sourceSecurityGroupIds?: string[] | undefined; 
+    public get sourceSecurityGroupIds() {
+      return this.getListAttribute('source_security_group_ids');
+    }
+    public set sourceSecurityGroupIds(value: string[] | undefined) {
+      this._sourceSecurityGroupIds = value;
+    }
+    public resetSourceSecurityGroupIds() {
+      this._sourceSecurityGroupIds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get sourceSecurityGroupIdsInput() {
+      return this._sourceSecurityGroupIds
+    }
+  }
   export interface EksNodeGroupScalingConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_node_group.html#desired_size EksNodeGroup#desired_size}
@@ -1349,8 +1930,11 @@ export namespace EKS {
     readonly minSize: number;
   }
 
-  function eksNodeGroupScalingConfigToTerraform(struct?: EksNodeGroupScalingConfig): any {
+  function eksNodeGroupScalingConfigToTerraform(struct?: EksNodeGroupScalingConfigOutputReference | EksNodeGroupScalingConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       desired_size: cdktf.numberToTerraform(struct!.desiredSize),
       max_size: cdktf.numberToTerraform(struct!.maxSize),
@@ -1358,6 +1942,55 @@ export namespace EKS {
     }
   }
 
+  export class EksNodeGroupScalingConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // desired_size - computed: false, optional: false, required: true
+    private _desiredSize?: number; 
+    public get desiredSize() {
+      return this.getNumberAttribute('desired_size');
+    }
+    public set desiredSize(value: number) {
+      this._desiredSize = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get desiredSizeInput() {
+      return this._desiredSize
+    }
+
+    // max_size - computed: false, optional: false, required: true
+    private _maxSize?: number; 
+    public get maxSize() {
+      return this.getNumberAttribute('max_size');
+    }
+    public set maxSize(value: number) {
+      this._maxSize = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maxSizeInput() {
+      return this._maxSize
+    }
+
+    // min_size - computed: false, optional: false, required: true
+    private _minSize?: number; 
+    public get minSize() {
+      return this.getNumberAttribute('min_size');
+    }
+    public set minSize(value: number) {
+      this._minSize = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get minSizeInput() {
+      return this._minSize
+    }
+  }
   export interface EksNodeGroupTaint {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_node_group.html#effect EksNodeGroup#effect}
@@ -1375,6 +2008,9 @@ export namespace EKS {
 
   function eksNodeGroupTaintToTerraform(struct?: EksNodeGroupTaint): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       effect: cdktf.stringToTerraform(struct!.effect),
       key: cdktf.stringToTerraform(struct!.key),
@@ -1397,8 +2033,11 @@ export namespace EKS {
     readonly update?: string;
   }
 
-  function eksNodeGroupTimeoutsToTerraform(struct?: EksNodeGroupTimeouts): any {
+  function eksNodeGroupTimeoutsToTerraform(struct?: EksNodeGroupTimeoutsOutputReference | EksNodeGroupTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       delete: cdktf.stringToTerraform(struct!.delete),
@@ -1406,6 +2045,64 @@ export namespace EKS {
     }
   }
 
+  export class EksNodeGroupTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // delete - computed: false, optional: true, required: false
+    private _delete?: string | undefined; 
+    public get delete() {
+      return this.getStringAttribute('delete');
+    }
+    public set delete(value: string | undefined) {
+      this._delete = value;
+    }
+    public resetDelete() {
+      this._delete = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get deleteInput() {
+      return this._delete
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
   export interface EksNodeGroupUpdateConfig {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/eks_node_group.html#max_unavailable EksNodeGroup#max_unavailable}
@@ -1417,14 +2114,59 @@ export namespace EKS {
     readonly maxUnavailablePercentage?: number;
   }
 
-  function eksNodeGroupUpdateConfigToTerraform(struct?: EksNodeGroupUpdateConfig): any {
+  function eksNodeGroupUpdateConfigToTerraform(struct?: EksNodeGroupUpdateConfigOutputReference | EksNodeGroupUpdateConfig): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       max_unavailable: cdktf.numberToTerraform(struct!.maxUnavailable),
       max_unavailable_percentage: cdktf.numberToTerraform(struct!.maxUnavailablePercentage),
     }
   }
 
+  export class EksNodeGroupUpdateConfigOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // max_unavailable - computed: false, optional: true, required: false
+    private _maxUnavailable?: number | undefined; 
+    public get maxUnavailable() {
+      return this.getNumberAttribute('max_unavailable');
+    }
+    public set maxUnavailable(value: number | undefined) {
+      this._maxUnavailable = value;
+    }
+    public resetMaxUnavailable() {
+      this._maxUnavailable = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maxUnavailableInput() {
+      return this._maxUnavailable
+    }
+
+    // max_unavailable_percentage - computed: false, optional: true, required: false
+    private _maxUnavailablePercentage?: number | undefined; 
+    public get maxUnavailablePercentage() {
+      return this.getNumberAttribute('max_unavailable_percentage');
+    }
+    public set maxUnavailablePercentage(value: number | undefined) {
+      this._maxUnavailablePercentage = value;
+    }
+    public resetMaxUnavailablePercentage() {
+      this._maxUnavailablePercentage = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maxUnavailablePercentageInput() {
+      return this._maxUnavailablePercentage
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/eks_node_group.html aws_eks_node_group}
@@ -1486,11 +2228,11 @@ export namespace EKS {
     // ==========
 
     // ami_type - computed: true, optional: true, required: false
-    private _amiType?: string;
+    private _amiType?: string | undefined; 
     public get amiType() {
       return this.getStringAttribute('ami_type');
     }
-    public set amiType(value: string) {
+    public set amiType(value: string | undefined) {
       this._amiType = value;
     }
     public resetAmiType() {
@@ -1507,11 +2249,11 @@ export namespace EKS {
     }
 
     // capacity_type - computed: true, optional: true, required: false
-    private _capacityType?: string;
+    private _capacityType?: string | undefined; 
     public get capacityType() {
       return this.getStringAttribute('capacity_type');
     }
-    public set capacityType(value: string) {
+    public set capacityType(value: string | undefined) {
       this._capacityType = value;
     }
     public resetCapacityType() {
@@ -1523,7 +2265,7 @@ export namespace EKS {
     }
 
     // cluster_name - computed: false, optional: false, required: true
-    private _clusterName: string;
+    private _clusterName?: string; 
     public get clusterName() {
       return this.getStringAttribute('cluster_name');
     }
@@ -1536,11 +2278,11 @@ export namespace EKS {
     }
 
     // disk_size - computed: true, optional: true, required: false
-    private _diskSize?: number;
+    private _diskSize?: number | undefined; 
     public get diskSize() {
       return this.getNumberAttribute('disk_size');
     }
-    public set diskSize(value: number) {
+    public set diskSize(value: number | undefined) {
       this._diskSize = value;
     }
     public resetDiskSize() {
@@ -1552,11 +2294,11 @@ export namespace EKS {
     }
 
     // force_update_version - computed: false, optional: true, required: false
-    private _forceUpdateVersion?: boolean | cdktf.IResolvable;
+    private _forceUpdateVersion?: boolean | cdktf.IResolvable | undefined; 
     public get forceUpdateVersion() {
-      return this.getBooleanAttribute('force_update_version');
+      return this.getBooleanAttribute('force_update_version') as any;
     }
-    public set forceUpdateVersion(value: boolean | cdktf.IResolvable ) {
+    public set forceUpdateVersion(value: boolean | cdktf.IResolvable | undefined) {
       this._forceUpdateVersion = value;
     }
     public resetForceUpdateVersion() {
@@ -1573,11 +2315,11 @@ export namespace EKS {
     }
 
     // instance_types - computed: true, optional: true, required: false
-    private _instanceTypes?: string[];
+    private _instanceTypes?: string[] | undefined; 
     public get instanceTypes() {
       return this.getListAttribute('instance_types');
     }
-    public set instanceTypes(value: string[]) {
+    public set instanceTypes(value: string[] | undefined) {
       this._instanceTypes = value;
     }
     public resetInstanceTypes() {
@@ -1589,11 +2331,12 @@ export namespace EKS {
     }
 
     // labels - computed: false, optional: true, required: false
-    private _labels?: { [key: string]: string } | cdktf.IResolvable;
+    private _labels?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get labels() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('labels') as any;
     }
-    public set labels(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set labels(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._labels = value;
     }
     public resetLabels() {
@@ -1605,11 +2348,11 @@ export namespace EKS {
     }
 
     // node_group_name - computed: true, optional: true, required: false
-    private _nodeGroupName?: string;
+    private _nodeGroupName?: string | undefined; 
     public get nodeGroupName() {
       return this.getStringAttribute('node_group_name');
     }
-    public set nodeGroupName(value: string) {
+    public set nodeGroupName(value: string | undefined) {
       this._nodeGroupName = value;
     }
     public resetNodeGroupName() {
@@ -1621,11 +2364,11 @@ export namespace EKS {
     }
 
     // node_group_name_prefix - computed: true, optional: true, required: false
-    private _nodeGroupNamePrefix?: string;
+    private _nodeGroupNamePrefix?: string | undefined; 
     public get nodeGroupNamePrefix() {
       return this.getStringAttribute('node_group_name_prefix');
     }
-    public set nodeGroupNamePrefix(value: string) {
+    public set nodeGroupNamePrefix(value: string | undefined) {
       this._nodeGroupNamePrefix = value;
     }
     public resetNodeGroupNamePrefix() {
@@ -1637,7 +2380,7 @@ export namespace EKS {
     }
 
     // node_role_arn - computed: false, optional: false, required: true
-    private _nodeRoleArn: string;
+    private _nodeRoleArn?: string; 
     public get nodeRoleArn() {
       return this.getStringAttribute('node_role_arn');
     }
@@ -1650,11 +2393,11 @@ export namespace EKS {
     }
 
     // release_version - computed: true, optional: true, required: false
-    private _releaseVersion?: string;
+    private _releaseVersion?: string | undefined; 
     public get releaseVersion() {
       return this.getStringAttribute('release_version');
     }
-    public set releaseVersion(value: string) {
+    public set releaseVersion(value: string | undefined) {
       this._releaseVersion = value;
     }
     public resetReleaseVersion() {
@@ -1676,7 +2419,7 @@ export namespace EKS {
     }
 
     // subnet_ids - computed: false, optional: false, required: true
-    private _subnetIds: string[];
+    private _subnetIds?: string[]; 
     public get subnetIds() {
       return this.getListAttribute('subnet_ids');
     }
@@ -1689,11 +2432,12 @@ export namespace EKS {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1705,11 +2449,12 @@ export namespace EKS {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1721,11 +2466,11 @@ export namespace EKS {
     }
 
     // version - computed: true, optional: true, required: false
-    private _version?: string;
+    private _version?: string | undefined; 
     public get version() {
       return this.getStringAttribute('version');
     }
-    public set version(value: string) {
+    public set version(value: string | undefined) {
       this._version = value;
     }
     public resetVersion() {
@@ -1737,11 +2482,12 @@ export namespace EKS {
     }
 
     // launch_template - computed: false, optional: true, required: false
-    private _launchTemplate?: EksNodeGroupLaunchTemplate[];
+    private _launchTemplate?: EksNodeGroupLaunchTemplate | undefined; 
+    private __launchTemplateOutput = new EksNodeGroupLaunchTemplateOutputReference(this as any, "launch_template", true);
     public get launchTemplate() {
-      return this.interpolationForAttribute('launch_template') as any;
+      return this.__launchTemplateOutput;
     }
-    public set launchTemplate(value: EksNodeGroupLaunchTemplate[] ) {
+    public putLaunchTemplate(value: EksNodeGroupLaunchTemplate | undefined) {
       this._launchTemplate = value;
     }
     public resetLaunchTemplate() {
@@ -1753,11 +2499,12 @@ export namespace EKS {
     }
 
     // remote_access - computed: false, optional: true, required: false
-    private _remoteAccess?: EksNodeGroupRemoteAccess[];
+    private _remoteAccess?: EksNodeGroupRemoteAccess | undefined; 
+    private __remoteAccessOutput = new EksNodeGroupRemoteAccessOutputReference(this as any, "remote_access", true);
     public get remoteAccess() {
-      return this.interpolationForAttribute('remote_access') as any;
+      return this.__remoteAccessOutput;
     }
-    public set remoteAccess(value: EksNodeGroupRemoteAccess[] ) {
+    public putRemoteAccess(value: EksNodeGroupRemoteAccess | undefined) {
       this._remoteAccess = value;
     }
     public resetRemoteAccess() {
@@ -1769,11 +2516,12 @@ export namespace EKS {
     }
 
     // scaling_config - computed: false, optional: false, required: true
-    private _scalingConfig: EksNodeGroupScalingConfig[];
+    private _scalingConfig?: EksNodeGroupScalingConfig; 
+    private __scalingConfigOutput = new EksNodeGroupScalingConfigOutputReference(this as any, "scaling_config", true);
     public get scalingConfig() {
-      return this.interpolationForAttribute('scaling_config') as any;
+      return this.__scalingConfigOutput;
     }
-    public set scalingConfig(value: EksNodeGroupScalingConfig[]) {
+    public putScalingConfig(value: EksNodeGroupScalingConfig) {
       this._scalingConfig = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -1782,11 +2530,12 @@ export namespace EKS {
     }
 
     // taint - computed: false, optional: true, required: false
-    private _taint?: EksNodeGroupTaint[];
+    private _taint?: EksNodeGroupTaint[] | undefined; 
     public get taint() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('taint') as any;
     }
-    public set taint(value: EksNodeGroupTaint[] ) {
+    public set taint(value: EksNodeGroupTaint[] | undefined) {
       this._taint = value;
     }
     public resetTaint() {
@@ -1798,11 +2547,12 @@ export namespace EKS {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: EksNodeGroupTimeouts;
+    private _timeouts?: EksNodeGroupTimeouts | undefined; 
+    private __timeoutsOutput = new EksNodeGroupTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: EksNodeGroupTimeouts ) {
+    public putTimeouts(value: EksNodeGroupTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1814,11 +2564,12 @@ export namespace EKS {
     }
 
     // update_config - computed: false, optional: true, required: false
-    private _updateConfig?: EksNodeGroupUpdateConfig[];
+    private _updateConfig?: EksNodeGroupUpdateConfig | undefined; 
+    private __updateConfigOutput = new EksNodeGroupUpdateConfigOutputReference(this as any, "update_config", true);
     public get updateConfig() {
-      return this.interpolationForAttribute('update_config') as any;
+      return this.__updateConfigOutput;
     }
-    public set updateConfig(value: EksNodeGroupUpdateConfig[] ) {
+    public putUpdateConfig(value: EksNodeGroupUpdateConfig | undefined) {
       this._updateConfig = value;
     }
     public resetUpdateConfig() {
@@ -1850,12 +2601,12 @@ export namespace EKS {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         version: cdktf.stringToTerraform(this._version),
-        launch_template: cdktf.listMapper(eksNodeGroupLaunchTemplateToTerraform)(this._launchTemplate),
-        remote_access: cdktf.listMapper(eksNodeGroupRemoteAccessToTerraform)(this._remoteAccess),
-        scaling_config: cdktf.listMapper(eksNodeGroupScalingConfigToTerraform)(this._scalingConfig),
+        launch_template: eksNodeGroupLaunchTemplateToTerraform(this._launchTemplate),
+        remote_access: eksNodeGroupRemoteAccessToTerraform(this._remoteAccess),
+        scaling_config: eksNodeGroupScalingConfigToTerraform(this._scalingConfig),
         taint: cdktf.listMapper(eksNodeGroupTaintToTerraform)(this._taint),
         timeouts: eksNodeGroupTimeoutsToTerraform(this._timeouts),
-        update_config: cdktf.listMapper(eksNodeGroupUpdateConfigToTerraform)(this._updateConfig),
+        update_config: eksNodeGroupUpdateConfigToTerraform(this._updateConfig),
       };
     }
   }
@@ -1916,7 +2667,7 @@ export namespace EKS {
     // ==========
 
     // addon_name - computed: false, optional: false, required: true
-    private _addonName: string;
+    private _addonName?: string; 
     public get addonName() {
       return this.getStringAttribute('addon_name');
     }
@@ -1939,7 +2690,7 @@ export namespace EKS {
     }
 
     // cluster_name - computed: false, optional: false, required: true
-    private _clusterName: string;
+    private _clusterName?: string; 
     public get clusterName() {
       return this.getStringAttribute('cluster_name');
     }
@@ -1972,11 +2723,12 @@ export namespace EKS {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2027,6 +2779,7 @@ export namespace EKS {
 
     // oidc - computed: true, optional: false, required: false
     public get oidc() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('oidc') as any;
     }
   }
@@ -2046,12 +2799,12 @@ export namespace EKS {
 
     // endpoint_private_access - computed: true, optional: false, required: false
     public get endpointPrivateAccess() {
-      return this.getBooleanAttribute('endpoint_private_access');
+      return this.getBooleanAttribute('endpoint_private_access') as any;
     }
 
     // endpoint_public_access - computed: true, optional: false, required: false
     public get endpointPublicAccess() {
-      return this.getBooleanAttribute('endpoint_public_access');
+      return this.getBooleanAttribute('endpoint_public_access') as any;
     }
 
     // public_access_cidrs - computed: true, optional: false, required: false
@@ -2156,7 +2909,7 @@ export namespace EKS {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2184,11 +2937,12 @@ export namespace EKS {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2272,7 +3026,7 @@ export namespace EKS {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2396,6 +3150,7 @@ export namespace EKS {
 
     // autoscaling_groups - computed: true, optional: false, required: false
     public get autoscalingGroups() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('autoscaling_groups') as any;
     }
 
@@ -2474,7 +3229,7 @@ export namespace EKS {
     }
 
     // cluster_name - computed: false, optional: false, required: true
-    private _clusterName: string;
+    private _clusterName?: string; 
     public get clusterName() {
       return this.getStringAttribute('cluster_name');
     }
@@ -2507,7 +3262,7 @@ export namespace EKS {
     }
 
     // node_group_name - computed: false, optional: false, required: true
-    private _nodeGroupName: string;
+    private _nodeGroupName?: string; 
     public get nodeGroupName() {
       return this.getStringAttribute('node_group_name');
     }
@@ -2555,11 +3310,12 @@ export namespace EKS {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2634,7 +3390,7 @@ export namespace EKS {
     // ==========
 
     // cluster_name - computed: false, optional: false, required: true
-    private _clusterName: string;
+    private _clusterName?: string; 
     public get clusterName() {
       return this.getStringAttribute('cluster_name');
     }

@@ -89,11 +89,11 @@ export namespace CodeCommit {
     }
 
     // default_branch - computed: false, optional: true, required: false
-    private _defaultBranch?: string;
+    private _defaultBranch?: string | undefined; 
     public get defaultBranch() {
       return this.getStringAttribute('default_branch');
     }
-    public set defaultBranch(value: string ) {
+    public set defaultBranch(value: string | undefined) {
       this._defaultBranch = value;
     }
     public resetDefaultBranch() {
@@ -105,11 +105,11 @@ export namespace CodeCommit {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -131,7 +131,7 @@ export namespace CodeCommit {
     }
 
     // repository_name - computed: false, optional: false, required: true
-    private _repositoryName: string;
+    private _repositoryName?: string; 
     public get repositoryName() {
       return this.getStringAttribute('repository_name');
     }
@@ -144,11 +144,12 @@ export namespace CodeCommit {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -160,11 +161,12 @@ export namespace CodeCommit {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -226,6 +228,9 @@ export namespace CodeCommit {
 
   function codecommitTriggerTriggerToTerraform(struct?: CodecommitTriggerTrigger): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       branches: cdktf.listMapper(cdktf.stringToTerraform)(struct!.branches),
       custom_data: cdktf.stringToTerraform(struct!.customData),
@@ -287,7 +292,7 @@ export namespace CodeCommit {
     }
 
     // repository_name - computed: false, optional: false, required: true
-    private _repositoryName: string;
+    private _repositoryName?: string; 
     public get repositoryName() {
       return this.getStringAttribute('repository_name');
     }
@@ -300,8 +305,9 @@ export namespace CodeCommit {
     }
 
     // trigger - computed: false, optional: false, required: true
-    private _trigger: CodecommitTriggerTrigger[];
+    private _trigger?: CodecommitTriggerTrigger[]; 
     public get trigger() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('trigger') as any;
     }
     public set trigger(value: CodecommitTriggerTrigger[]) {
@@ -395,7 +401,7 @@ export namespace CodeCommit {
     }
 
     // repository_name - computed: false, optional: false, required: true
-    private _repositoryName: string;
+    private _repositoryName?: string; 
     public get repositoryName() {
       return this.getStringAttribute('repository_name');
     }

@@ -41,7 +41,7 @@ export namespace Batch {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment.html#compute_resources BatchComputeEnvironment#compute_resources}
     */
-    readonly computeResources?: BatchComputeEnvironmentComputeResources[];
+    readonly computeResources?: BatchComputeEnvironmentComputeResources;
   }
   export interface BatchComputeEnvironmentComputeResourcesLaunchTemplate {
     /**
@@ -58,8 +58,11 @@ export namespace Batch {
     readonly version?: string;
   }
 
-  function batchComputeEnvironmentComputeResourcesLaunchTemplateToTerraform(struct?: BatchComputeEnvironmentComputeResourcesLaunchTemplate): any {
+  function batchComputeEnvironmentComputeResourcesLaunchTemplateToTerraform(struct?: BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReference | BatchComputeEnvironmentComputeResourcesLaunchTemplate): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       launch_template_id: cdktf.stringToTerraform(struct!.launchTemplateId),
       launch_template_name: cdktf.stringToTerraform(struct!.launchTemplateName),
@@ -67,6 +70,64 @@ export namespace Batch {
     }
   }
 
+  export class BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // launch_template_id - computed: false, optional: true, required: false
+    private _launchTemplateId?: string | undefined; 
+    public get launchTemplateId() {
+      return this.getStringAttribute('launch_template_id');
+    }
+    public set launchTemplateId(value: string | undefined) {
+      this._launchTemplateId = value;
+    }
+    public resetLaunchTemplateId() {
+      this._launchTemplateId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get launchTemplateIdInput() {
+      return this._launchTemplateId
+    }
+
+    // launch_template_name - computed: false, optional: true, required: false
+    private _launchTemplateName?: string | undefined; 
+    public get launchTemplateName() {
+      return this.getStringAttribute('launch_template_name');
+    }
+    public set launchTemplateName(value: string | undefined) {
+      this._launchTemplateName = value;
+    }
+    public resetLaunchTemplateName() {
+      this._launchTemplateName = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get launchTemplateNameInput() {
+      return this._launchTemplateName
+    }
+
+    // version - computed: false, optional: true, required: false
+    private _version?: string | undefined; 
+    public get version() {
+      return this.getStringAttribute('version');
+    }
+    public set version(value: string | undefined) {
+      this._version = value;
+    }
+    public resetVersion() {
+      this._version = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get versionInput() {
+      return this._version
+    }
+  }
   export interface BatchComputeEnvironmentComputeResources {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment.html#allocation_strategy BatchComputeEnvironment#allocation_strategy}
@@ -129,11 +190,14 @@ export namespace Batch {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment.html#launch_template BatchComputeEnvironment#launch_template}
     */
-    readonly launchTemplate?: BatchComputeEnvironmentComputeResourcesLaunchTemplate[];
+    readonly launchTemplate?: BatchComputeEnvironmentComputeResourcesLaunchTemplate;
   }
 
-  function batchComputeEnvironmentComputeResourcesToTerraform(struct?: BatchComputeEnvironmentComputeResources): any {
+  function batchComputeEnvironmentComputeResourcesToTerraform(struct?: BatchComputeEnvironmentComputeResourcesOutputReference | BatchComputeEnvironmentComputeResources): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       allocation_strategy: cdktf.stringToTerraform(struct!.allocationStrategy),
       bid_percentage: cdktf.numberToTerraform(struct!.bidPercentage),
@@ -149,10 +213,250 @@ export namespace Batch {
       subnets: cdktf.listMapper(cdktf.stringToTerraform)(struct!.subnets),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(struct!.tags),
       type: cdktf.stringToTerraform(struct!.type),
-      launch_template: cdktf.listMapper(batchComputeEnvironmentComputeResourcesLaunchTemplateToTerraform)(struct!.launchTemplate),
+      launch_template: batchComputeEnvironmentComputeResourcesLaunchTemplateToTerraform(struct!.launchTemplate),
     }
   }
 
+  export class BatchComputeEnvironmentComputeResourcesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // allocation_strategy - computed: false, optional: true, required: false
+    private _allocationStrategy?: string | undefined; 
+    public get allocationStrategy() {
+      return this.getStringAttribute('allocation_strategy');
+    }
+    public set allocationStrategy(value: string | undefined) {
+      this._allocationStrategy = value;
+    }
+    public resetAllocationStrategy() {
+      this._allocationStrategy = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get allocationStrategyInput() {
+      return this._allocationStrategy
+    }
+
+    // bid_percentage - computed: false, optional: true, required: false
+    private _bidPercentage?: number | undefined; 
+    public get bidPercentage() {
+      return this.getNumberAttribute('bid_percentage');
+    }
+    public set bidPercentage(value: number | undefined) {
+      this._bidPercentage = value;
+    }
+    public resetBidPercentage() {
+      this._bidPercentage = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get bidPercentageInput() {
+      return this._bidPercentage
+    }
+
+    // desired_vcpus - computed: true, optional: true, required: false
+    private _desiredVcpus?: number | undefined; 
+    public get desiredVcpus() {
+      return this.getNumberAttribute('desired_vcpus');
+    }
+    public set desiredVcpus(value: number | undefined) {
+      this._desiredVcpus = value;
+    }
+    public resetDesiredVcpus() {
+      this._desiredVcpus = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get desiredVcpusInput() {
+      return this._desiredVcpus
+    }
+
+    // ec2_key_pair - computed: false, optional: true, required: false
+    private _ec2KeyPair?: string | undefined; 
+    public get ec2KeyPair() {
+      return this.getStringAttribute('ec2_key_pair');
+    }
+    public set ec2KeyPair(value: string | undefined) {
+      this._ec2KeyPair = value;
+    }
+    public resetEc2KeyPair() {
+      this._ec2KeyPair = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get ec2KeyPairInput() {
+      return this._ec2KeyPair
+    }
+
+    // image_id - computed: false, optional: true, required: false
+    private _imageId?: string | undefined; 
+    public get imageId() {
+      return this.getStringAttribute('image_id');
+    }
+    public set imageId(value: string | undefined) {
+      this._imageId = value;
+    }
+    public resetImageId() {
+      this._imageId = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get imageIdInput() {
+      return this._imageId
+    }
+
+    // instance_role - computed: false, optional: true, required: false
+    private _instanceRole?: string | undefined; 
+    public get instanceRole() {
+      return this.getStringAttribute('instance_role');
+    }
+    public set instanceRole(value: string | undefined) {
+      this._instanceRole = value;
+    }
+    public resetInstanceRole() {
+      this._instanceRole = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get instanceRoleInput() {
+      return this._instanceRole
+    }
+
+    // instance_type - computed: false, optional: true, required: false
+    private _instanceType?: string[] | undefined; 
+    public get instanceType() {
+      return this.getListAttribute('instance_type');
+    }
+    public set instanceType(value: string[] | undefined) {
+      this._instanceType = value;
+    }
+    public resetInstanceType() {
+      this._instanceType = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get instanceTypeInput() {
+      return this._instanceType
+    }
+
+    // max_vcpus - computed: false, optional: false, required: true
+    private _maxVcpus?: number; 
+    public get maxVcpus() {
+      return this.getNumberAttribute('max_vcpus');
+    }
+    public set maxVcpus(value: number) {
+      this._maxVcpus = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get maxVcpusInput() {
+      return this._maxVcpus
+    }
+
+    // min_vcpus - computed: false, optional: true, required: false
+    private _minVcpus?: number | undefined; 
+    public get minVcpus() {
+      return this.getNumberAttribute('min_vcpus');
+    }
+    public set minVcpus(value: number | undefined) {
+      this._minVcpus = value;
+    }
+    public resetMinVcpus() {
+      this._minVcpus = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get minVcpusInput() {
+      return this._minVcpus
+    }
+
+    // security_group_ids - computed: false, optional: false, required: true
+    private _securityGroupIds?: string[]; 
+    public get securityGroupIds() {
+      return this.getListAttribute('security_group_ids');
+    }
+    public set securityGroupIds(value: string[]) {
+      this._securityGroupIds = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get securityGroupIdsInput() {
+      return this._securityGroupIds
+    }
+
+    // spot_iam_fleet_role - computed: false, optional: true, required: false
+    private _spotIamFleetRole?: string | undefined; 
+    public get spotIamFleetRole() {
+      return this.getStringAttribute('spot_iam_fleet_role');
+    }
+    public set spotIamFleetRole(value: string | undefined) {
+      this._spotIamFleetRole = value;
+    }
+    public resetSpotIamFleetRole() {
+      this._spotIamFleetRole = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get spotIamFleetRoleInput() {
+      return this._spotIamFleetRole
+    }
+
+    // subnets - computed: false, optional: false, required: true
+    private _subnets?: string[]; 
+    public get subnets() {
+      return this.getListAttribute('subnets');
+    }
+    public set subnets(value: string[]) {
+      this._subnets = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get subnetsInput() {
+      return this._subnets
+    }
+
+    // tags - computed: false, optional: true, required: false
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
+    }
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+      this._tags = value;
+    }
+    public resetTags() {
+      this._tags = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get tagsInput() {
+      return this._tags
+    }
+
+    // type - computed: false, optional: false, required: true
+    private _type?: string; 
+    public get type() {
+      return this.getStringAttribute('type');
+    }
+    public set type(value: string) {
+      this._type = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get typeInput() {
+      return this._type
+    }
+
+    // launch_template - computed: false, optional: true, required: false
+    private _launchTemplate?: BatchComputeEnvironmentComputeResourcesLaunchTemplate | undefined; 
+    private __launchTemplateOutput = new BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReference(this as any, "launch_template", true);
+    public get launchTemplate() {
+      return this.__launchTemplateOutput;
+    }
+    public putLaunchTemplate(value: BatchComputeEnvironmentComputeResourcesLaunchTemplate | undefined) {
+      this._launchTemplate = value;
+    }
+    public resetLaunchTemplate() {
+      this._launchTemplate = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get launchTemplateInput() {
+      return this._launchTemplate
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/batch_compute_environment.html aws_batch_compute_environment}
@@ -206,11 +510,11 @@ export namespace Batch {
     }
 
     // compute_environment_name - computed: true, optional: true, required: false
-    private _computeEnvironmentName?: string;
+    private _computeEnvironmentName?: string | undefined; 
     public get computeEnvironmentName() {
       return this.getStringAttribute('compute_environment_name');
     }
-    public set computeEnvironmentName(value: string) {
+    public set computeEnvironmentName(value: string | undefined) {
       this._computeEnvironmentName = value;
     }
     public resetComputeEnvironmentName() {
@@ -222,11 +526,11 @@ export namespace Batch {
     }
 
     // compute_environment_name_prefix - computed: true, optional: true, required: false
-    private _computeEnvironmentNamePrefix?: string;
+    private _computeEnvironmentNamePrefix?: string | undefined; 
     public get computeEnvironmentNamePrefix() {
       return this.getStringAttribute('compute_environment_name_prefix');
     }
-    public set computeEnvironmentNamePrefix(value: string) {
+    public set computeEnvironmentNamePrefix(value: string | undefined) {
       this._computeEnvironmentNamePrefix = value;
     }
     public resetComputeEnvironmentNamePrefix() {
@@ -248,11 +552,11 @@ export namespace Batch {
     }
 
     // service_role - computed: true, optional: true, required: false
-    private _serviceRole?: string;
+    private _serviceRole?: string | undefined; 
     public get serviceRole() {
       return this.getStringAttribute('service_role');
     }
-    public set serviceRole(value: string) {
+    public set serviceRole(value: string | undefined) {
       this._serviceRole = value;
     }
     public resetServiceRole() {
@@ -264,11 +568,11 @@ export namespace Batch {
     }
 
     // state - computed: false, optional: true, required: false
-    private _state?: string;
+    private _state?: string | undefined; 
     public get state() {
       return this.getStringAttribute('state');
     }
-    public set state(value: string ) {
+    public set state(value: string | undefined) {
       this._state = value;
     }
     public resetState() {
@@ -290,11 +594,12 @@ export namespace Batch {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -306,11 +611,12 @@ export namespace Batch {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -322,7 +628,7 @@ export namespace Batch {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }
@@ -335,11 +641,12 @@ export namespace Batch {
     }
 
     // compute_resources - computed: false, optional: true, required: false
-    private _computeResources?: BatchComputeEnvironmentComputeResources[];
+    private _computeResources?: BatchComputeEnvironmentComputeResources | undefined; 
+    private __computeResourcesOutput = new BatchComputeEnvironmentComputeResourcesOutputReference(this as any, "compute_resources", true);
     public get computeResources() {
-      return this.interpolationForAttribute('compute_resources') as any;
+      return this.__computeResourcesOutput;
     }
-    public set computeResources(value: BatchComputeEnvironmentComputeResources[] ) {
+    public putComputeResources(value: BatchComputeEnvironmentComputeResources | undefined) {
       this._computeResources = value;
     }
     public resetComputeResources() {
@@ -363,7 +670,7 @@ export namespace Batch {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         type: cdktf.stringToTerraform(this._type),
-        compute_resources: cdktf.listMapper(batchComputeEnvironmentComputeResourcesToTerraform)(this._computeResources),
+        compute_resources: batchComputeEnvironmentComputeResourcesToTerraform(this._computeResources),
       };
     }
   }
@@ -405,13 +712,13 @@ export namespace Batch {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_job_definition.html#retry_strategy BatchJobDefinition#retry_strategy}
     */
-    readonly retryStrategy?: BatchJobDefinitionRetryStrategy[];
+    readonly retryStrategy?: BatchJobDefinitionRetryStrategy;
     /**
     * timeout block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_job_definition.html#timeout BatchJobDefinition#timeout}
     */
-    readonly timeout?: BatchJobDefinitionTimeout[];
+    readonly timeout?: BatchJobDefinitionTimeout;
   }
   export interface BatchJobDefinitionRetryStrategyEvaluateOnExit {
     /**
@@ -434,6 +741,9 @@ export namespace Batch {
 
   function batchJobDefinitionRetryStrategyEvaluateOnExitToTerraform(struct?: BatchJobDefinitionRetryStrategyEvaluateOnExit): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       action: cdktf.stringToTerraform(struct!.action),
       on_exit_code: cdktf.stringToTerraform(struct!.onExitCode),
@@ -455,14 +765,60 @@ export namespace Batch {
     readonly evaluateOnExit?: BatchJobDefinitionRetryStrategyEvaluateOnExit[];
   }
 
-  function batchJobDefinitionRetryStrategyToTerraform(struct?: BatchJobDefinitionRetryStrategy): any {
+  function batchJobDefinitionRetryStrategyToTerraform(struct?: BatchJobDefinitionRetryStrategyOutputReference | BatchJobDefinitionRetryStrategy): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       attempts: cdktf.numberToTerraform(struct!.attempts),
       evaluate_on_exit: cdktf.listMapper(batchJobDefinitionRetryStrategyEvaluateOnExitToTerraform)(struct!.evaluateOnExit),
     }
   }
 
+  export class BatchJobDefinitionRetryStrategyOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // attempts - computed: false, optional: true, required: false
+    private _attempts?: number | undefined; 
+    public get attempts() {
+      return this.getNumberAttribute('attempts');
+    }
+    public set attempts(value: number | undefined) {
+      this._attempts = value;
+    }
+    public resetAttempts() {
+      this._attempts = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get attemptsInput() {
+      return this._attempts
+    }
+
+    // evaluate_on_exit - computed: false, optional: true, required: false
+    private _evaluateOnExit?: BatchJobDefinitionRetryStrategyEvaluateOnExit[] | undefined; 
+    public get evaluateOnExit() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('evaluate_on_exit') as any;
+    }
+    public set evaluateOnExit(value: BatchJobDefinitionRetryStrategyEvaluateOnExit[] | undefined) {
+      this._evaluateOnExit = value;
+    }
+    public resetEvaluateOnExit() {
+      this._evaluateOnExit = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get evaluateOnExitInput() {
+      return this._evaluateOnExit
+    }
+  }
   export interface BatchJobDefinitionTimeout {
     /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/batch_job_definition.html#attempt_duration_seconds BatchJobDefinition#attempt_duration_seconds}
@@ -470,13 +826,42 @@ export namespace Batch {
     readonly attemptDurationSeconds?: number;
   }
 
-  function batchJobDefinitionTimeoutToTerraform(struct?: BatchJobDefinitionTimeout): any {
+  function batchJobDefinitionTimeoutToTerraform(struct?: BatchJobDefinitionTimeoutOutputReference | BatchJobDefinitionTimeout): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       attempt_duration_seconds: cdktf.numberToTerraform(struct!.attemptDurationSeconds),
     }
   }
 
+  export class BatchJobDefinitionTimeoutOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // attempt_duration_seconds - computed: false, optional: true, required: false
+    private _attemptDurationSeconds?: number | undefined; 
+    public get attemptDurationSeconds() {
+      return this.getNumberAttribute('attempt_duration_seconds');
+    }
+    public set attemptDurationSeconds(value: number | undefined) {
+      this._attemptDurationSeconds = value;
+    }
+    public resetAttemptDurationSeconds() {
+      this._attemptDurationSeconds = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get attemptDurationSecondsInput() {
+      return this._attemptDurationSeconds
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/batch_job_definition.html aws_batch_job_definition}
@@ -532,11 +917,11 @@ export namespace Batch {
     }
 
     // container_properties - computed: false, optional: true, required: false
-    private _containerProperties?: string;
+    private _containerProperties?: string | undefined; 
     public get containerProperties() {
       return this.getStringAttribute('container_properties');
     }
-    public set containerProperties(value: string ) {
+    public set containerProperties(value: string | undefined) {
       this._containerProperties = value;
     }
     public resetContainerProperties() {
@@ -553,7 +938,7 @@ export namespace Batch {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -566,11 +951,12 @@ export namespace Batch {
     }
 
     // parameters - computed: false, optional: true, required: false
-    private _parameters?: { [key: string]: string } | cdktf.IResolvable;
+    private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get parameters() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('parameters') as any;
     }
-    public set parameters(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._parameters = value;
     }
     public resetParameters() {
@@ -582,11 +968,11 @@ export namespace Batch {
     }
 
     // platform_capabilities - computed: false, optional: true, required: false
-    private _platformCapabilities?: string[];
+    private _platformCapabilities?: string[] | undefined; 
     public get platformCapabilities() {
       return this.getListAttribute('platform_capabilities');
     }
-    public set platformCapabilities(value: string[] ) {
+    public set platformCapabilities(value: string[] | undefined) {
       this._platformCapabilities = value;
     }
     public resetPlatformCapabilities() {
@@ -598,11 +984,11 @@ export namespace Batch {
     }
 
     // propagate_tags - computed: false, optional: true, required: false
-    private _propagateTags?: boolean | cdktf.IResolvable;
+    private _propagateTags?: boolean | cdktf.IResolvable | undefined; 
     public get propagateTags() {
-      return this.getBooleanAttribute('propagate_tags');
+      return this.getBooleanAttribute('propagate_tags') as any;
     }
-    public set propagateTags(value: boolean | cdktf.IResolvable ) {
+    public set propagateTags(value: boolean | cdktf.IResolvable | undefined) {
       this._propagateTags = value;
     }
     public resetPropagateTags() {
@@ -619,11 +1005,12 @@ export namespace Batch {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -635,11 +1022,12 @@ export namespace Batch {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -651,7 +1039,7 @@ export namespace Batch {
     }
 
     // type - computed: false, optional: false, required: true
-    private _type: string;
+    private _type?: string; 
     public get type() {
       return this.getStringAttribute('type');
     }
@@ -664,11 +1052,12 @@ export namespace Batch {
     }
 
     // retry_strategy - computed: false, optional: true, required: false
-    private _retryStrategy?: BatchJobDefinitionRetryStrategy[];
+    private _retryStrategy?: BatchJobDefinitionRetryStrategy | undefined; 
+    private __retryStrategyOutput = new BatchJobDefinitionRetryStrategyOutputReference(this as any, "retry_strategy", true);
     public get retryStrategy() {
-      return this.interpolationForAttribute('retry_strategy') as any;
+      return this.__retryStrategyOutput;
     }
-    public set retryStrategy(value: BatchJobDefinitionRetryStrategy[] ) {
+    public putRetryStrategy(value: BatchJobDefinitionRetryStrategy | undefined) {
       this._retryStrategy = value;
     }
     public resetRetryStrategy() {
@@ -680,11 +1069,12 @@ export namespace Batch {
     }
 
     // timeout - computed: false, optional: true, required: false
-    private _timeout?: BatchJobDefinitionTimeout[];
+    private _timeout?: BatchJobDefinitionTimeout | undefined; 
+    private __timeoutOutput = new BatchJobDefinitionTimeoutOutputReference(this as any, "timeout", true);
     public get timeout() {
-      return this.interpolationForAttribute('timeout') as any;
+      return this.__timeoutOutput;
     }
-    public set timeout(value: BatchJobDefinitionTimeout[] ) {
+    public putTimeout(value: BatchJobDefinitionTimeout | undefined) {
       this._timeout = value;
     }
     public resetTimeout() {
@@ -709,8 +1099,8 @@ export namespace Batch {
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
         type: cdktf.stringToTerraform(this._type),
-        retry_strategy: cdktf.listMapper(batchJobDefinitionRetryStrategyToTerraform)(this._retryStrategy),
-        timeout: cdktf.listMapper(batchJobDefinitionTimeoutToTerraform)(this._timeout),
+        retry_strategy: batchJobDefinitionRetryStrategyToTerraform(this._retryStrategy),
+        timeout: batchJobDefinitionTimeoutToTerraform(this._timeout),
       };
     }
   }
@@ -791,7 +1181,7 @@ export namespace Batch {
     }
 
     // compute_environments - computed: false, optional: false, required: true
-    private _computeEnvironments: string[];
+    private _computeEnvironments?: string[]; 
     public get computeEnvironments() {
       return this.getListAttribute('compute_environments');
     }
@@ -809,7 +1199,7 @@ export namespace Batch {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -822,7 +1212,7 @@ export namespace Batch {
     }
 
     // priority - computed: false, optional: false, required: true
-    private _priority: number;
+    private _priority?: number; 
     public get priority() {
       return this.getNumberAttribute('priority');
     }
@@ -835,7 +1225,7 @@ export namespace Batch {
     }
 
     // state - computed: false, optional: false, required: true
-    private _state: string;
+    private _state?: string; 
     public get state() {
       return this.getStringAttribute('state');
     }
@@ -848,11 +1238,12 @@ export namespace Batch {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -864,11 +1255,12 @@ export namespace Batch {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -951,7 +1343,7 @@ export namespace Batch {
     }
 
     // compute_environment_name - computed: false, optional: false, required: true
-    private _computeEnvironmentName: string;
+    private _computeEnvironmentName?: string; 
     public get computeEnvironmentName() {
       return this.getStringAttribute('compute_environment_name');
     }
@@ -994,11 +1386,12 @@ export namespace Batch {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1104,7 +1497,7 @@ export namespace Batch {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1137,11 +1530,12 @@ export namespace Batch {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {

@@ -29,7 +29,7 @@ export namespace GuardDuty {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/guardduty_detector.html#datasources GuarddutyDetector#datasources}
     */
-    readonly datasources?: GuarddutyDetectorDatasources[];
+    readonly datasources?: GuarddutyDetectorDatasources;
   }
   export interface GuarddutyDetectorDatasourcesS3Logs {
     /**
@@ -38,29 +38,85 @@ export namespace GuardDuty {
     readonly enable: boolean | cdktf.IResolvable;
   }
 
-  function guarddutyDetectorDatasourcesS3LogsToTerraform(struct?: GuarddutyDetectorDatasourcesS3Logs): any {
+  function guarddutyDetectorDatasourcesS3LogsToTerraform(struct?: GuarddutyDetectorDatasourcesS3LogsOutputReference | GuarddutyDetectorDatasourcesS3Logs): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       enable: cdktf.booleanToTerraform(struct!.enable),
     }
   }
 
+  export class GuarddutyDetectorDatasourcesS3LogsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // enable - computed: false, optional: false, required: true
+    private _enable?: boolean | cdktf.IResolvable; 
+    public get enable() {
+      return this.getBooleanAttribute('enable') as any;
+    }
+    public set enable(value: boolean | cdktf.IResolvable) {
+      this._enable = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get enableInput() {
+      return this._enable
+    }
+  }
   export interface GuarddutyDetectorDatasources {
     /**
     * s3_logs block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/guardduty_detector.html#s3_logs GuarddutyDetector#s3_logs}
     */
-    readonly s3Logs?: GuarddutyDetectorDatasourcesS3Logs[];
+    readonly s3Logs?: GuarddutyDetectorDatasourcesS3Logs;
   }
 
-  function guarddutyDetectorDatasourcesToTerraform(struct?: GuarddutyDetectorDatasources): any {
+  function guarddutyDetectorDatasourcesToTerraform(struct?: GuarddutyDetectorDatasourcesOutputReference | GuarddutyDetectorDatasources): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      s3_logs: cdktf.listMapper(guarddutyDetectorDatasourcesS3LogsToTerraform)(struct!.s3Logs),
+      s3_logs: guarddutyDetectorDatasourcesS3LogsToTerraform(struct!.s3Logs),
     }
   }
 
+  export class GuarddutyDetectorDatasourcesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // s3_logs - computed: false, optional: true, required: false
+    private _s3Logs?: GuarddutyDetectorDatasourcesS3Logs | undefined; 
+    private __s3LogsOutput = new GuarddutyDetectorDatasourcesS3LogsOutputReference(this as any, "s3_logs", true);
+    public get s3Logs() {
+      return this.__s3LogsOutput;
+    }
+    public putS3Logs(value: GuarddutyDetectorDatasourcesS3Logs | undefined) {
+      this._s3Logs = value;
+    }
+    public resetS3Logs() {
+      this._s3Logs = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get s3LogsInput() {
+      return this._s3Logs
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/guardduty_detector.html aws_guardduty_detector}
@@ -116,11 +172,11 @@ export namespace GuardDuty {
     }
 
     // enable - computed: false, optional: true, required: false
-    private _enable?: boolean | cdktf.IResolvable;
+    private _enable?: boolean | cdktf.IResolvable | undefined; 
     public get enable() {
-      return this.getBooleanAttribute('enable');
+      return this.getBooleanAttribute('enable') as any;
     }
-    public set enable(value: boolean | cdktf.IResolvable ) {
+    public set enable(value: boolean | cdktf.IResolvable | undefined) {
       this._enable = value;
     }
     public resetEnable() {
@@ -132,11 +188,11 @@ export namespace GuardDuty {
     }
 
     // finding_publishing_frequency - computed: true, optional: true, required: false
-    private _findingPublishingFrequency?: string;
+    private _findingPublishingFrequency?: string | undefined; 
     public get findingPublishingFrequency() {
       return this.getStringAttribute('finding_publishing_frequency');
     }
-    public set findingPublishingFrequency(value: string) {
+    public set findingPublishingFrequency(value: string | undefined) {
       this._findingPublishingFrequency = value;
     }
     public resetFindingPublishingFrequency() {
@@ -153,11 +209,12 @@ export namespace GuardDuty {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -169,11 +226,12 @@ export namespace GuardDuty {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -185,11 +243,12 @@ export namespace GuardDuty {
     }
 
     // datasources - computed: false, optional: true, required: false
-    private _datasources?: GuarddutyDetectorDatasources[];
+    private _datasources?: GuarddutyDetectorDatasources | undefined; 
+    private __datasourcesOutput = new GuarddutyDetectorDatasourcesOutputReference(this as any, "datasources", true);
     public get datasources() {
-      return this.interpolationForAttribute('datasources') as any;
+      return this.__datasourcesOutput;
     }
-    public set datasources(value: GuarddutyDetectorDatasources[] ) {
+    public putDatasources(value: GuarddutyDetectorDatasources | undefined) {
       this._datasources = value;
     }
     public resetDatasources() {
@@ -210,7 +269,7 @@ export namespace GuardDuty {
         finding_publishing_frequency: cdktf.stringToTerraform(this._findingPublishingFrequency),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        datasources: cdktf.listMapper(guarddutyDetectorDatasourcesToTerraform)(this._datasources),
+        datasources: guarddutyDetectorDatasourcesToTerraform(this._datasources),
       };
     }
   }
@@ -248,7 +307,7 @@ export namespace GuardDuty {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/guardduty_filter.html#finding_criteria GuarddutyFilter#finding_criteria}
     */
-    readonly findingCriteria: GuarddutyFilterFindingCriteria[];
+    readonly findingCriteria: GuarddutyFilterFindingCriteria;
   }
   export interface GuarddutyFilterFindingCriteriaCriterion {
     /**
@@ -283,6 +342,9 @@ export namespace GuardDuty {
 
   function guarddutyFilterFindingCriteriaCriterionToTerraform(struct?: GuarddutyFilterFindingCriteriaCriterion): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       equals: cdktf.listMapper(cdktf.stringToTerraform)(struct!.equalTo),
       field: cdktf.stringToTerraform(struct!.field),
@@ -303,13 +365,40 @@ export namespace GuardDuty {
     readonly criterion: GuarddutyFilterFindingCriteriaCriterion[];
   }
 
-  function guarddutyFilterFindingCriteriaToTerraform(struct?: GuarddutyFilterFindingCriteria): any {
+  function guarddutyFilterFindingCriteriaToTerraform(struct?: GuarddutyFilterFindingCriteriaOutputReference | GuarddutyFilterFindingCriteria): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       criterion: cdktf.listMapper(guarddutyFilterFindingCriteriaCriterionToTerraform)(struct!.criterion),
     }
   }
 
+  export class GuarddutyFilterFindingCriteriaOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // criterion - computed: false, optional: false, required: true
+    private _criterion?: GuarddutyFilterFindingCriteriaCriterion[]; 
+    public get criterion() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('criterion') as any;
+    }
+    public set criterion(value: GuarddutyFilterFindingCriteriaCriterion[]) {
+      this._criterion = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get criterionInput() {
+      return this._criterion
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/guardduty_filter.html aws_guardduty_filter}
@@ -358,7 +447,7 @@ export namespace GuardDuty {
     // ==========
 
     // action - computed: false, optional: false, required: true
-    private _action: string;
+    private _action?: string; 
     public get action() {
       return this.getStringAttribute('action');
     }
@@ -376,11 +465,11 @@ export namespace GuardDuty {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -392,7 +481,7 @@ export namespace GuardDuty {
     }
 
     // detector_id - computed: false, optional: false, required: true
-    private _detectorId: string;
+    private _detectorId?: string; 
     public get detectorId() {
       return this.getStringAttribute('detector_id');
     }
@@ -410,7 +499,7 @@ export namespace GuardDuty {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -423,7 +512,7 @@ export namespace GuardDuty {
     }
 
     // rank - computed: false, optional: false, required: true
-    private _rank: number;
+    private _rank?: number; 
     public get rank() {
       return this.getNumberAttribute('rank');
     }
@@ -436,11 +525,12 @@ export namespace GuardDuty {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -452,11 +542,12 @@ export namespace GuardDuty {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -468,11 +559,12 @@ export namespace GuardDuty {
     }
 
     // finding_criteria - computed: false, optional: false, required: true
-    private _findingCriteria: GuarddutyFilterFindingCriteria[];
+    private _findingCriteria?: GuarddutyFilterFindingCriteria; 
+    private __findingCriteriaOutput = new GuarddutyFilterFindingCriteriaOutputReference(this as any, "finding_criteria", true);
     public get findingCriteria() {
-      return this.interpolationForAttribute('finding_criteria') as any;
+      return this.__findingCriteriaOutput;
     }
-    public set findingCriteria(value: GuarddutyFilterFindingCriteria[]) {
+    public putFindingCriteria(value: GuarddutyFilterFindingCriteria) {
       this._findingCriteria = value;
     }
     // Temporarily expose input value. Use with caution.
@@ -493,7 +585,7 @@ export namespace GuardDuty {
         rank: cdktf.numberToTerraform(this._rank),
         tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
         tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-        finding_criteria: cdktf.listMapper(guarddutyFilterFindingCriteriaToTerraform)(this._findingCriteria),
+        finding_criteria: guarddutyFilterFindingCriteriaToTerraform(this._findingCriteria),
       };
     }
   }
@@ -520,13 +612,42 @@ export namespace GuardDuty {
     readonly create?: string;
   }
 
-  function guarddutyInviteAccepterTimeoutsToTerraform(struct?: GuarddutyInviteAccepterTimeouts): any {
+  function guarddutyInviteAccepterTimeoutsToTerraform(struct?: GuarddutyInviteAccepterTimeoutsOutputReference | GuarddutyInviteAccepterTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
     }
   }
 
+  export class GuarddutyInviteAccepterTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/guardduty_invite_accepter.html aws_guardduty_invite_accepter}
@@ -570,7 +691,7 @@ export namespace GuardDuty {
     // ==========
 
     // detector_id - computed: false, optional: false, required: true
-    private _detectorId: string;
+    private _detectorId?: string; 
     public get detectorId() {
       return this.getStringAttribute('detector_id');
     }
@@ -588,7 +709,7 @@ export namespace GuardDuty {
     }
 
     // master_account_id - computed: false, optional: false, required: true
-    private _masterAccountId: string;
+    private _masterAccountId?: string; 
     public get masterAccountId() {
       return this.getStringAttribute('master_account_id');
     }
@@ -601,11 +722,12 @@ export namespace GuardDuty {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: GuarddutyInviteAccepterTimeouts;
+    private _timeouts?: GuarddutyInviteAccepterTimeouts | undefined; 
+    private __timeoutsOutput = new GuarddutyInviteAccepterTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: GuarddutyInviteAccepterTimeouts ) {
+    public putTimeouts(value: GuarddutyInviteAccepterTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -705,9 +827,9 @@ export namespace GuardDuty {
     // ==========
 
     // activate - computed: false, optional: false, required: true
-    private _activate: boolean | cdktf.IResolvable;
+    private _activate?: boolean | cdktf.IResolvable; 
     public get activate() {
-      return this.getBooleanAttribute('activate');
+      return this.getBooleanAttribute('activate') as any;
     }
     public set activate(value: boolean | cdktf.IResolvable) {
       this._activate = value;
@@ -723,7 +845,7 @@ export namespace GuardDuty {
     }
 
     // detector_id - computed: false, optional: false, required: true
-    private _detectorId: string;
+    private _detectorId?: string; 
     public get detectorId() {
       return this.getStringAttribute('detector_id');
     }
@@ -736,7 +858,7 @@ export namespace GuardDuty {
     }
 
     // format - computed: false, optional: false, required: true
-    private _format: string;
+    private _format?: string; 
     public get format() {
       return this.getStringAttribute('format');
     }
@@ -754,7 +876,7 @@ export namespace GuardDuty {
     }
 
     // location - computed: false, optional: false, required: true
-    private _location: string;
+    private _location?: string; 
     public get location() {
       return this.getStringAttribute('location');
     }
@@ -767,7 +889,7 @@ export namespace GuardDuty {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -780,11 +902,12 @@ export namespace GuardDuty {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -796,11 +919,12 @@ export namespace GuardDuty {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -870,14 +994,59 @@ export namespace GuardDuty {
     readonly update?: string;
   }
 
-  function guarddutyMemberTimeoutsToTerraform(struct?: GuarddutyMemberTimeouts): any {
+  function guarddutyMemberTimeoutsToTerraform(struct?: GuarddutyMemberTimeoutsOutputReference | GuarddutyMemberTimeouts): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       create: cdktf.stringToTerraform(struct!.create),
       update: cdktf.stringToTerraform(struct!.update),
     }
   }
 
+  export class GuarddutyMemberTimeoutsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // create - computed: false, optional: true, required: false
+    private _create?: string | undefined; 
+    public get create() {
+      return this.getStringAttribute('create');
+    }
+    public set create(value: string | undefined) {
+      this._create = value;
+    }
+    public resetCreate() {
+      this._create = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get createInput() {
+      return this._create
+    }
+
+    // update - computed: false, optional: true, required: false
+    private _update?: string | undefined; 
+    public get update() {
+      return this.getStringAttribute('update');
+    }
+    public set update(value: string | undefined) {
+      this._update = value;
+    }
+    public resetUpdate() {
+      this._update = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get updateInput() {
+      return this._update
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/guardduty_member.html aws_guardduty_member}
@@ -925,7 +1094,7 @@ export namespace GuardDuty {
     // ==========
 
     // account_id - computed: false, optional: false, required: true
-    private _accountId: string;
+    private _accountId?: string; 
     public get accountId() {
       return this.getStringAttribute('account_id');
     }
@@ -938,7 +1107,7 @@ export namespace GuardDuty {
     }
 
     // detector_id - computed: false, optional: false, required: true
-    private _detectorId: string;
+    private _detectorId?: string; 
     public get detectorId() {
       return this.getStringAttribute('detector_id');
     }
@@ -951,11 +1120,11 @@ export namespace GuardDuty {
     }
 
     // disable_email_notification - computed: false, optional: true, required: false
-    private _disableEmailNotification?: boolean | cdktf.IResolvable;
+    private _disableEmailNotification?: boolean | cdktf.IResolvable | undefined; 
     public get disableEmailNotification() {
-      return this.getBooleanAttribute('disable_email_notification');
+      return this.getBooleanAttribute('disable_email_notification') as any;
     }
-    public set disableEmailNotification(value: boolean | cdktf.IResolvable ) {
+    public set disableEmailNotification(value: boolean | cdktf.IResolvable | undefined) {
       this._disableEmailNotification = value;
     }
     public resetDisableEmailNotification() {
@@ -967,7 +1136,7 @@ export namespace GuardDuty {
     }
 
     // email - computed: false, optional: false, required: true
-    private _email: string;
+    private _email?: string; 
     public get email() {
       return this.getStringAttribute('email');
     }
@@ -985,11 +1154,11 @@ export namespace GuardDuty {
     }
 
     // invitation_message - computed: false, optional: true, required: false
-    private _invitationMessage?: string;
+    private _invitationMessage?: string | undefined; 
     public get invitationMessage() {
       return this.getStringAttribute('invitation_message');
     }
-    public set invitationMessage(value: string ) {
+    public set invitationMessage(value: string | undefined) {
       this._invitationMessage = value;
     }
     public resetInvitationMessage() {
@@ -1001,11 +1170,11 @@ export namespace GuardDuty {
     }
 
     // invite - computed: false, optional: true, required: false
-    private _invite?: boolean | cdktf.IResolvable;
+    private _invite?: boolean | cdktf.IResolvable | undefined; 
     public get invite() {
-      return this.getBooleanAttribute('invite');
+      return this.getBooleanAttribute('invite') as any;
     }
-    public set invite(value: boolean | cdktf.IResolvable ) {
+    public set invite(value: boolean | cdktf.IResolvable | undefined) {
       this._invite = value;
     }
     public resetInvite() {
@@ -1022,11 +1191,12 @@ export namespace GuardDuty {
     }
 
     // timeouts - computed: false, optional: true, required: false
-    private _timeouts?: GuarddutyMemberTimeouts;
+    private _timeouts?: GuarddutyMemberTimeouts | undefined; 
+    private __timeoutsOutput = new GuarddutyMemberTimeoutsOutputReference(this as any, "timeouts", true);
     public get timeouts() {
-      return this.interpolationForAttribute('timeouts') as any;
+      return this.__timeoutsOutput;
     }
-    public set timeouts(value: GuarddutyMemberTimeouts ) {
+    public putTimeouts(value: GuarddutyMemberTimeouts | undefined) {
       this._timeouts = value;
     }
     public resetTimeouts() {
@@ -1100,7 +1270,7 @@ export namespace GuardDuty {
     // ==========
 
     // admin_account_id - computed: false, optional: false, required: true
-    private _adminAccountId: string;
+    private _adminAccountId?: string; 
     public get adminAccountId() {
       return this.getStringAttribute('admin_account_id');
     }
@@ -1141,7 +1311,7 @@ export namespace GuardDuty {
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/guardduty_organization_configuration.html#datasources GuarddutyOrganizationConfiguration#datasources}
     */
-    readonly datasources?: GuarddutyOrganizationConfigurationDatasources[];
+    readonly datasources?: GuarddutyOrganizationConfigurationDatasources;
   }
   export interface GuarddutyOrganizationConfigurationDatasourcesS3Logs {
     /**
@@ -1150,29 +1320,85 @@ export namespace GuardDuty {
     readonly autoEnable: boolean | cdktf.IResolvable;
   }
 
-  function guarddutyOrganizationConfigurationDatasourcesS3LogsToTerraform(struct?: GuarddutyOrganizationConfigurationDatasourcesS3Logs): any {
+  function guarddutyOrganizationConfigurationDatasourcesS3LogsToTerraform(struct?: GuarddutyOrganizationConfigurationDatasourcesS3LogsOutputReference | GuarddutyOrganizationConfigurationDatasourcesS3Logs): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       auto_enable: cdktf.booleanToTerraform(struct!.autoEnable),
     }
   }
 
+  export class GuarddutyOrganizationConfigurationDatasourcesS3LogsOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // auto_enable - computed: false, optional: false, required: true
+    private _autoEnable?: boolean | cdktf.IResolvable; 
+    public get autoEnable() {
+      return this.getBooleanAttribute('auto_enable') as any;
+    }
+    public set autoEnable(value: boolean | cdktf.IResolvable) {
+      this._autoEnable = value;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get autoEnableInput() {
+      return this._autoEnable
+    }
+  }
   export interface GuarddutyOrganizationConfigurationDatasources {
     /**
     * s3_logs block
     * 
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/guardduty_organization_configuration.html#s3_logs GuarddutyOrganizationConfiguration#s3_logs}
     */
-    readonly s3Logs?: GuarddutyOrganizationConfigurationDatasourcesS3Logs[];
+    readonly s3Logs?: GuarddutyOrganizationConfigurationDatasourcesS3Logs;
   }
 
-  function guarddutyOrganizationConfigurationDatasourcesToTerraform(struct?: GuarddutyOrganizationConfigurationDatasources): any {
+  function guarddutyOrganizationConfigurationDatasourcesToTerraform(struct?: GuarddutyOrganizationConfigurationDatasourcesOutputReference | GuarddutyOrganizationConfigurationDatasources): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
-      s3_logs: cdktf.listMapper(guarddutyOrganizationConfigurationDatasourcesS3LogsToTerraform)(struct!.s3Logs),
+      s3_logs: guarddutyOrganizationConfigurationDatasourcesS3LogsToTerraform(struct!.s3Logs),
     }
   }
 
+  export class GuarddutyOrganizationConfigurationDatasourcesOutputReference extends cdktf.ComplexObject {
+    /**
+    * @param terraformResource The parent resource
+    * @param terraformAttribute The attribute on the parent resource this class is referencing
+    * @param isSingleItem True if this is a block, false if it's a list
+    */
+    public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+      super(terraformResource, terraformAttribute, isSingleItem);
+    }
+
+    // s3_logs - computed: false, optional: true, required: false
+    private _s3Logs?: GuarddutyOrganizationConfigurationDatasourcesS3Logs | undefined; 
+    private __s3LogsOutput = new GuarddutyOrganizationConfigurationDatasourcesS3LogsOutputReference(this as any, "s3_logs", true);
+    public get s3Logs() {
+      return this.__s3LogsOutput;
+    }
+    public putS3Logs(value: GuarddutyOrganizationConfigurationDatasourcesS3Logs | undefined) {
+      this._s3Logs = value;
+    }
+    public resetS3Logs() {
+      this._s3Logs = undefined;
+    }
+    // Temporarily expose input value. Use with caution.
+    public get s3LogsInput() {
+      return this._s3Logs
+    }
+  }
 
   /**
   * Represents a {@link https://www.terraform.io/docs/providers/aws/r/guardduty_organization_configuration.html aws_guardduty_organization_configuration}
@@ -1216,9 +1442,9 @@ export namespace GuardDuty {
     // ==========
 
     // auto_enable - computed: false, optional: false, required: true
-    private _autoEnable: boolean | cdktf.IResolvable;
+    private _autoEnable?: boolean | cdktf.IResolvable; 
     public get autoEnable() {
-      return this.getBooleanAttribute('auto_enable');
+      return this.getBooleanAttribute('auto_enable') as any;
     }
     public set autoEnable(value: boolean | cdktf.IResolvable) {
       this._autoEnable = value;
@@ -1229,7 +1455,7 @@ export namespace GuardDuty {
     }
 
     // detector_id - computed: false, optional: false, required: true
-    private _detectorId: string;
+    private _detectorId?: string; 
     public get detectorId() {
       return this.getStringAttribute('detector_id');
     }
@@ -1247,11 +1473,12 @@ export namespace GuardDuty {
     }
 
     // datasources - computed: false, optional: true, required: false
-    private _datasources?: GuarddutyOrganizationConfigurationDatasources[];
+    private _datasources?: GuarddutyOrganizationConfigurationDatasources | undefined; 
+    private __datasourcesOutput = new GuarddutyOrganizationConfigurationDatasourcesOutputReference(this as any, "datasources", true);
     public get datasources() {
-      return this.interpolationForAttribute('datasources') as any;
+      return this.__datasourcesOutput;
     }
-    public set datasources(value: GuarddutyOrganizationConfigurationDatasources[] ) {
+    public putDatasources(value: GuarddutyOrganizationConfigurationDatasources | undefined) {
       this._datasources = value;
     }
     public resetDatasources() {
@@ -1270,7 +1497,7 @@ export namespace GuardDuty {
       return {
         auto_enable: cdktf.booleanToTerraform(this._autoEnable),
         detector_id: cdktf.stringToTerraform(this._detectorId),
-        datasources: cdktf.listMapper(guarddutyOrganizationConfigurationDatasourcesToTerraform)(this._datasources),
+        datasources: guarddutyOrganizationConfigurationDatasourcesToTerraform(this._datasources),
       };
     }
   }
@@ -1336,7 +1563,7 @@ export namespace GuardDuty {
     // ==========
 
     // destination_arn - computed: false, optional: false, required: true
-    private _destinationArn: string;
+    private _destinationArn?: string; 
     public get destinationArn() {
       return this.getStringAttribute('destination_arn');
     }
@@ -1349,11 +1576,11 @@ export namespace GuardDuty {
     }
 
     // destination_type - computed: false, optional: true, required: false
-    private _destinationType?: string;
+    private _destinationType?: string | undefined; 
     public get destinationType() {
       return this.getStringAttribute('destination_type');
     }
-    public set destinationType(value: string ) {
+    public set destinationType(value: string | undefined) {
       this._destinationType = value;
     }
     public resetDestinationType() {
@@ -1365,7 +1592,7 @@ export namespace GuardDuty {
     }
 
     // detector_id - computed: false, optional: false, required: true
-    private _detectorId: string;
+    private _detectorId?: string; 
     public get detectorId() {
       return this.getStringAttribute('detector_id');
     }
@@ -1383,7 +1610,7 @@ export namespace GuardDuty {
     }
 
     // kms_key_arn - computed: false, optional: false, required: true
-    private _kmsKeyArn: string;
+    private _kmsKeyArn?: string; 
     public get kmsKeyArn() {
       return this.getStringAttribute('kms_key_arn');
     }
@@ -1485,9 +1712,9 @@ export namespace GuardDuty {
     // ==========
 
     // activate - computed: false, optional: false, required: true
-    private _activate: boolean | cdktf.IResolvable;
+    private _activate?: boolean | cdktf.IResolvable; 
     public get activate() {
-      return this.getBooleanAttribute('activate');
+      return this.getBooleanAttribute('activate') as any;
     }
     public set activate(value: boolean | cdktf.IResolvable) {
       this._activate = value;
@@ -1503,7 +1730,7 @@ export namespace GuardDuty {
     }
 
     // detector_id - computed: false, optional: false, required: true
-    private _detectorId: string;
+    private _detectorId?: string; 
     public get detectorId() {
       return this.getStringAttribute('detector_id');
     }
@@ -1516,7 +1743,7 @@ export namespace GuardDuty {
     }
 
     // format - computed: false, optional: false, required: true
-    private _format: string;
+    private _format?: string; 
     public get format() {
       return this.getStringAttribute('format');
     }
@@ -1534,7 +1761,7 @@ export namespace GuardDuty {
     }
 
     // location - computed: false, optional: false, required: true
-    private _location: string;
+    private _location?: string; 
     public get location() {
       return this.getStringAttribute('location');
     }
@@ -1547,7 +1774,7 @@ export namespace GuardDuty {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1560,11 +1787,12 @@ export namespace GuardDuty {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1576,11 +1804,12 @@ export namespace GuardDuty {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {

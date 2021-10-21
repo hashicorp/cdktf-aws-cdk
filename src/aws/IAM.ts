@@ -89,11 +89,11 @@ export namespace IAM {
     }
 
     // pgp_key - computed: false, optional: true, required: false
-    private _pgpKey?: string;
+    private _pgpKey?: string | undefined; 
     public get pgpKey() {
       return this.getStringAttribute('pgp_key');
     }
-    public set pgpKey(value: string ) {
+    public set pgpKey(value: string | undefined) {
       this._pgpKey = value;
     }
     public resetPgpKey() {
@@ -115,11 +115,11 @@ export namespace IAM {
     }
 
     // status - computed: false, optional: true, required: false
-    private _status?: string;
+    private _status?: string | undefined; 
     public get status() {
       return this.getStringAttribute('status');
     }
-    public set status(value: string ) {
+    public set status(value: string | undefined) {
       this._status = value;
     }
     public resetStatus() {
@@ -131,7 +131,7 @@ export namespace IAM {
     }
 
     // user - computed: false, optional: false, required: true
-    private _user: string;
+    private _user?: string; 
     public get user() {
       return this.getStringAttribute('user');
     }
@@ -202,7 +202,7 @@ export namespace IAM {
     // ==========
 
     // account_alias - computed: false, optional: false, required: true
-    private _accountAlias: string;
+    private _accountAlias?: string; 
     public get accountAlias() {
       return this.getStringAttribute('account_alias');
     }
@@ -316,11 +316,11 @@ export namespace IAM {
     // ==========
 
     // allow_users_to_change_password - computed: false, optional: true, required: false
-    private _allowUsersToChangePassword?: boolean | cdktf.IResolvable;
+    private _allowUsersToChangePassword?: boolean | cdktf.IResolvable | undefined; 
     public get allowUsersToChangePassword() {
-      return this.getBooleanAttribute('allow_users_to_change_password');
+      return this.getBooleanAttribute('allow_users_to_change_password') as any;
     }
-    public set allowUsersToChangePassword(value: boolean | cdktf.IResolvable ) {
+    public set allowUsersToChangePassword(value: boolean | cdktf.IResolvable | undefined) {
       this._allowUsersToChangePassword = value;
     }
     public resetAllowUsersToChangePassword() {
@@ -333,15 +333,15 @@ export namespace IAM {
 
     // expire_passwords - computed: true, optional: false, required: false
     public get expirePasswords() {
-      return this.getBooleanAttribute('expire_passwords');
+      return this.getBooleanAttribute('expire_passwords') as any;
     }
 
     // hard_expiry - computed: true, optional: true, required: false
-    private _hardExpiry?: boolean | cdktf.IResolvable;
+    private _hardExpiry?: boolean | cdktf.IResolvable | undefined; 
     public get hardExpiry() {
-      return this.getBooleanAttribute('hard_expiry');
+      return this.getBooleanAttribute('hard_expiry') as any;
     }
-    public set hardExpiry(value: boolean | cdktf.IResolvable) {
+    public set hardExpiry(value: boolean | cdktf.IResolvable | undefined) {
       this._hardExpiry = value;
     }
     public resetHardExpiry() {
@@ -358,11 +358,11 @@ export namespace IAM {
     }
 
     // max_password_age - computed: true, optional: true, required: false
-    private _maxPasswordAge?: number;
+    private _maxPasswordAge?: number | undefined; 
     public get maxPasswordAge() {
       return this.getNumberAttribute('max_password_age');
     }
-    public set maxPasswordAge(value: number) {
+    public set maxPasswordAge(value: number | undefined) {
       this._maxPasswordAge = value;
     }
     public resetMaxPasswordAge() {
@@ -374,11 +374,11 @@ export namespace IAM {
     }
 
     // minimum_password_length - computed: false, optional: true, required: false
-    private _minimumPasswordLength?: number;
+    private _minimumPasswordLength?: number | undefined; 
     public get minimumPasswordLength() {
       return this.getNumberAttribute('minimum_password_length');
     }
-    public set minimumPasswordLength(value: number ) {
+    public set minimumPasswordLength(value: number | undefined) {
       this._minimumPasswordLength = value;
     }
     public resetMinimumPasswordLength() {
@@ -390,11 +390,11 @@ export namespace IAM {
     }
 
     // password_reuse_prevention - computed: true, optional: true, required: false
-    private _passwordReusePrevention?: number;
+    private _passwordReusePrevention?: number | undefined; 
     public get passwordReusePrevention() {
       return this.getNumberAttribute('password_reuse_prevention');
     }
-    public set passwordReusePrevention(value: number) {
+    public set passwordReusePrevention(value: number | undefined) {
       this._passwordReusePrevention = value;
     }
     public resetPasswordReusePrevention() {
@@ -406,11 +406,11 @@ export namespace IAM {
     }
 
     // require_lowercase_characters - computed: true, optional: true, required: false
-    private _requireLowercaseCharacters?: boolean | cdktf.IResolvable;
+    private _requireLowercaseCharacters?: boolean | cdktf.IResolvable | undefined; 
     public get requireLowercaseCharacters() {
-      return this.getBooleanAttribute('require_lowercase_characters');
+      return this.getBooleanAttribute('require_lowercase_characters') as any;
     }
-    public set requireLowercaseCharacters(value: boolean | cdktf.IResolvable) {
+    public set requireLowercaseCharacters(value: boolean | cdktf.IResolvable | undefined) {
       this._requireLowercaseCharacters = value;
     }
     public resetRequireLowercaseCharacters() {
@@ -422,11 +422,11 @@ export namespace IAM {
     }
 
     // require_numbers - computed: true, optional: true, required: false
-    private _requireNumbers?: boolean | cdktf.IResolvable;
+    private _requireNumbers?: boolean | cdktf.IResolvable | undefined; 
     public get requireNumbers() {
-      return this.getBooleanAttribute('require_numbers');
+      return this.getBooleanAttribute('require_numbers') as any;
     }
-    public set requireNumbers(value: boolean | cdktf.IResolvable) {
+    public set requireNumbers(value: boolean | cdktf.IResolvable | undefined) {
       this._requireNumbers = value;
     }
     public resetRequireNumbers() {
@@ -438,11 +438,11 @@ export namespace IAM {
     }
 
     // require_symbols - computed: true, optional: true, required: false
-    private _requireSymbols?: boolean | cdktf.IResolvable;
+    private _requireSymbols?: boolean | cdktf.IResolvable | undefined; 
     public get requireSymbols() {
-      return this.getBooleanAttribute('require_symbols');
+      return this.getBooleanAttribute('require_symbols') as any;
     }
-    public set requireSymbols(value: boolean | cdktf.IResolvable) {
+    public set requireSymbols(value: boolean | cdktf.IResolvable | undefined) {
       this._requireSymbols = value;
     }
     public resetRequireSymbols() {
@@ -454,11 +454,11 @@ export namespace IAM {
     }
 
     // require_uppercase_characters - computed: true, optional: true, required: false
-    private _requireUppercaseCharacters?: boolean | cdktf.IResolvable;
+    private _requireUppercaseCharacters?: boolean | cdktf.IResolvable | undefined; 
     public get requireUppercaseCharacters() {
-      return this.getBooleanAttribute('require_uppercase_characters');
+      return this.getBooleanAttribute('require_uppercase_characters') as any;
     }
-    public set requireUppercaseCharacters(value: boolean | cdktf.IResolvable) {
+    public set requireUppercaseCharacters(value: boolean | cdktf.IResolvable | undefined) {
       this._requireUppercaseCharacters = value;
     }
     public resetRequireUppercaseCharacters() {
@@ -549,7 +549,7 @@ export namespace IAM {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -562,11 +562,11 @@ export namespace IAM {
     }
 
     // path - computed: false, optional: true, required: false
-    private _path?: string;
+    private _path?: string | undefined; 
     public get path() {
       return this.getStringAttribute('path');
     }
-    public set path(value: string ) {
+    public set path(value: string | undefined) {
       this._path = value;
     }
     public resetPath() {
@@ -650,7 +650,7 @@ export namespace IAM {
     // ==========
 
     // group - computed: false, optional: false, required: true
-    private _group: string;
+    private _group?: string; 
     public get group() {
       return this.getStringAttribute('group');
     }
@@ -668,7 +668,7 @@ export namespace IAM {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -681,7 +681,7 @@ export namespace IAM {
     }
 
     // users - computed: false, optional: false, required: true
-    private _users: string[];
+    private _users?: string[]; 
     public get users() {
       return this.getListAttribute('users');
     }
@@ -767,7 +767,7 @@ export namespace IAM {
     // ==========
 
     // group - computed: false, optional: false, required: true
-    private _group: string;
+    private _group?: string; 
     public get group() {
       return this.getStringAttribute('group');
     }
@@ -785,11 +785,11 @@ export namespace IAM {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -801,11 +801,11 @@ export namespace IAM {
     }
 
     // name_prefix - computed: false, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string ) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -817,7 +817,7 @@ export namespace IAM {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -894,7 +894,7 @@ export namespace IAM {
     // ==========
 
     // group - computed: false, optional: false, required: true
-    private _group: string;
+    private _group?: string; 
     public get group() {
       return this.getStringAttribute('group');
     }
@@ -912,7 +912,7 @@ export namespace IAM {
     }
 
     // policy_arn - computed: false, optional: false, required: true
-    private _policyArn: string;
+    private _policyArn?: string; 
     public get policyArn() {
       return this.getStringAttribute('policy_arn');
     }
@@ -1022,11 +1022,11 @@ export namespace IAM {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1038,11 +1038,11 @@ export namespace IAM {
     }
 
     // name_prefix - computed: false, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string ) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -1054,11 +1054,11 @@ export namespace IAM {
     }
 
     // path - computed: false, optional: true, required: false
-    private _path?: string;
+    private _path?: string | undefined; 
     public get path() {
       return this.getStringAttribute('path');
     }
-    public set path(value: string ) {
+    public set path(value: string | undefined) {
       this._path = value;
     }
     public resetPath() {
@@ -1070,11 +1070,11 @@ export namespace IAM {
     }
 
     // role - computed: false, optional: true, required: false
-    private _role?: string;
+    private _role?: string | undefined; 
     public get role() {
       return this.getStringAttribute('role');
     }
-    public set role(value: string ) {
+    public set role(value: string | undefined) {
       this._role = value;
     }
     public resetRole() {
@@ -1086,11 +1086,12 @@ export namespace IAM {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1102,11 +1103,12 @@ export namespace IAM {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1209,7 +1211,7 @@ export namespace IAM {
     }
 
     // client_id_list - computed: false, optional: false, required: true
-    private _clientIdList: string[];
+    private _clientIdList?: string[]; 
     public get clientIdList() {
       return this.getListAttribute('client_id_list');
     }
@@ -1227,11 +1229,12 @@ export namespace IAM {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1243,11 +1246,12 @@ export namespace IAM {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1259,7 +1263,7 @@ export namespace IAM {
     }
 
     // thumbprint_list - computed: false, optional: false, required: true
-    private _thumbprintList: string[];
+    private _thumbprintList?: string[]; 
     public get thumbprintList() {
       return this.getListAttribute('thumbprint_list');
     }
@@ -1272,7 +1276,7 @@ export namespace IAM {
     }
 
     // url - computed: false, optional: false, required: true
-    private _url: string;
+    private _url?: string; 
     public get url() {
       return this.getStringAttribute('url');
     }
@@ -1380,11 +1384,11 @@ export namespace IAM {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1401,11 +1405,11 @@ export namespace IAM {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1417,11 +1421,11 @@ export namespace IAM {
     }
 
     // name_prefix - computed: false, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string ) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -1433,11 +1437,11 @@ export namespace IAM {
     }
 
     // path - computed: false, optional: true, required: false
-    private _path?: string;
+    private _path?: string | undefined; 
     public get path() {
       return this.getStringAttribute('path');
     }
-    public set path(value: string ) {
+    public set path(value: string | undefined) {
       this._path = value;
     }
     public resetPath() {
@@ -1449,7 +1453,7 @@ export namespace IAM {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -1467,11 +1471,12 @@ export namespace IAM {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1483,11 +1488,12 @@ export namespace IAM {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1581,11 +1587,11 @@ export namespace IAM {
     // ==========
 
     // groups - computed: false, optional: true, required: false
-    private _groups?: string[];
+    private _groups?: string[] | undefined; 
     public get groups() {
       return this.getListAttribute('groups');
     }
-    public set groups(value: string[] ) {
+    public set groups(value: string[] | undefined) {
       this._groups = value;
     }
     public resetGroups() {
@@ -1602,7 +1608,7 @@ export namespace IAM {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -1615,7 +1621,7 @@ export namespace IAM {
     }
 
     // policy_arn - computed: false, optional: false, required: true
-    private _policyArn: string;
+    private _policyArn?: string; 
     public get policyArn() {
       return this.getStringAttribute('policy_arn');
     }
@@ -1628,11 +1634,11 @@ export namespace IAM {
     }
 
     // roles - computed: false, optional: true, required: false
-    private _roles?: string[];
+    private _roles?: string[] | undefined; 
     public get roles() {
       return this.getListAttribute('roles');
     }
-    public set roles(value: string[] ) {
+    public set roles(value: string[] | undefined) {
       this._roles = value;
     }
     public resetRoles() {
@@ -1644,11 +1650,11 @@ export namespace IAM {
     }
 
     // users - computed: false, optional: true, required: false
-    private _users?: string[];
+    private _users?: string[] | undefined; 
     public get users() {
       return this.getListAttribute('users');
     }
-    public set users(value: string[] ) {
+    public set users(value: string[] | undefined) {
       this._users = value;
     }
     public resetUsers() {
@@ -1738,6 +1744,9 @@ export namespace IAM {
 
   function iamRoleInlinePolicyToTerraform(struct?: IamRoleInlinePolicy): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       name: cdktf.stringToTerraform(struct!.name),
       policy: cdktf.stringToTerraform(struct!.policy),
@@ -1801,7 +1810,7 @@ export namespace IAM {
     }
 
     // assume_role_policy - computed: false, optional: false, required: true
-    private _assumeRolePolicy: string;
+    private _assumeRolePolicy?: string; 
     public get assumeRolePolicy() {
       return this.getStringAttribute('assume_role_policy');
     }
@@ -1819,11 +1828,11 @@ export namespace IAM {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -1835,11 +1844,11 @@ export namespace IAM {
     }
 
     // force_detach_policies - computed: false, optional: true, required: false
-    private _forceDetachPolicies?: boolean | cdktf.IResolvable;
+    private _forceDetachPolicies?: boolean | cdktf.IResolvable | undefined; 
     public get forceDetachPolicies() {
-      return this.getBooleanAttribute('force_detach_policies');
+      return this.getBooleanAttribute('force_detach_policies') as any;
     }
-    public set forceDetachPolicies(value: boolean | cdktf.IResolvable ) {
+    public set forceDetachPolicies(value: boolean | cdktf.IResolvable | undefined) {
       this._forceDetachPolicies = value;
     }
     public resetForceDetachPolicies() {
@@ -1856,11 +1865,11 @@ export namespace IAM {
     }
 
     // managed_policy_arns - computed: true, optional: true, required: false
-    private _managedPolicyArns?: string[];
+    private _managedPolicyArns?: string[] | undefined; 
     public get managedPolicyArns() {
       return this.getListAttribute('managed_policy_arns');
     }
-    public set managedPolicyArns(value: string[]) {
+    public set managedPolicyArns(value: string[] | undefined) {
       this._managedPolicyArns = value;
     }
     public resetManagedPolicyArns() {
@@ -1872,11 +1881,11 @@ export namespace IAM {
     }
 
     // max_session_duration - computed: false, optional: true, required: false
-    private _maxSessionDuration?: number;
+    private _maxSessionDuration?: number | undefined; 
     public get maxSessionDuration() {
       return this.getNumberAttribute('max_session_duration');
     }
-    public set maxSessionDuration(value: number ) {
+    public set maxSessionDuration(value: number | undefined) {
       this._maxSessionDuration = value;
     }
     public resetMaxSessionDuration() {
@@ -1888,11 +1897,11 @@ export namespace IAM {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -1904,11 +1913,11 @@ export namespace IAM {
     }
 
     // name_prefix - computed: true, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -1920,11 +1929,11 @@ export namespace IAM {
     }
 
     // path - computed: false, optional: true, required: false
-    private _path?: string;
+    private _path?: string | undefined; 
     public get path() {
       return this.getStringAttribute('path');
     }
-    public set path(value: string ) {
+    public set path(value: string | undefined) {
       this._path = value;
     }
     public resetPath() {
@@ -1936,11 +1945,11 @@ export namespace IAM {
     }
 
     // permissions_boundary - computed: false, optional: true, required: false
-    private _permissionsBoundary?: string;
+    private _permissionsBoundary?: string | undefined; 
     public get permissionsBoundary() {
       return this.getStringAttribute('permissions_boundary');
     }
-    public set permissionsBoundary(value: string ) {
+    public set permissionsBoundary(value: string | undefined) {
       this._permissionsBoundary = value;
     }
     public resetPermissionsBoundary() {
@@ -1952,11 +1961,12 @@ export namespace IAM {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -1968,11 +1978,12 @@ export namespace IAM {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -1989,11 +2000,12 @@ export namespace IAM {
     }
 
     // inline_policy - computed: false, optional: true, required: false
-    private _inlinePolicy?: IamRoleInlinePolicy[];
+    private _inlinePolicy?: IamRoleInlinePolicy[] | undefined; 
     public get inlinePolicy() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('inline_policy') as any;
     }
-    public set inlinePolicy(value: IamRoleInlinePolicy[] ) {
+    public set inlinePolicy(value: IamRoleInlinePolicy[] | undefined) {
       this._inlinePolicy = value;
     }
     public resetInlinePolicy() {
@@ -2092,11 +2104,11 @@ export namespace IAM {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -2108,11 +2120,11 @@ export namespace IAM {
     }
 
     // name_prefix - computed: false, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string ) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -2124,7 +2136,7 @@ export namespace IAM {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -2137,7 +2149,7 @@ export namespace IAM {
     }
 
     // role - computed: false, optional: false, required: true
-    private _role: string;
+    private _role?: string; 
     public get role() {
       return this.getStringAttribute('role');
     }
@@ -2219,7 +2231,7 @@ export namespace IAM {
     }
 
     // policy_arn - computed: false, optional: false, required: true
-    private _policyArn: string;
+    private _policyArn?: string; 
     public get policyArn() {
       return this.getStringAttribute('policy_arn');
     }
@@ -2232,7 +2244,7 @@ export namespace IAM {
     }
 
     // role - computed: false, optional: false, required: true
-    private _role: string;
+    private _role?: string; 
     public get role() {
       return this.getStringAttribute('role');
     }
@@ -2327,7 +2339,7 @@ export namespace IAM {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2340,7 +2352,7 @@ export namespace IAM {
     }
 
     // saml_metadata_document - computed: false, optional: false, required: true
-    private _samlMetadataDocument: string;
+    private _samlMetadataDocument?: string; 
     public get samlMetadataDocument() {
       return this.getStringAttribute('saml_metadata_document');
     }
@@ -2353,11 +2365,12 @@ export namespace IAM {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2369,11 +2382,12 @@ export namespace IAM {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2489,7 +2503,7 @@ export namespace IAM {
     }
 
     // certificate_body - computed: false, optional: false, required: true
-    private _certificateBody: string;
+    private _certificateBody?: string; 
     public get certificateBody() {
       return this.getStringAttribute('certificate_body');
     }
@@ -2502,11 +2516,11 @@ export namespace IAM {
     }
 
     // certificate_chain - computed: false, optional: true, required: false
-    private _certificateChain?: string;
+    private _certificateChain?: string | undefined; 
     public get certificateChain() {
       return this.getStringAttribute('certificate_chain');
     }
-    public set certificateChain(value: string ) {
+    public set certificateChain(value: string | undefined) {
       this._certificateChain = value;
     }
     public resetCertificateChain() {
@@ -2528,11 +2542,11 @@ export namespace IAM {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -2544,11 +2558,11 @@ export namespace IAM {
     }
 
     // name_prefix - computed: false, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string ) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -2560,11 +2574,11 @@ export namespace IAM {
     }
 
     // path - computed: false, optional: true, required: false
-    private _path?: string;
+    private _path?: string | undefined; 
     public get path() {
       return this.getStringAttribute('path');
     }
-    public set path(value: string ) {
+    public set path(value: string | undefined) {
       this._path = value;
     }
     public resetPath() {
@@ -2576,7 +2590,7 @@ export namespace IAM {
     }
 
     // private_key - computed: false, optional: false, required: true
-    private _privateKey: string;
+    private _privateKey?: string; 
     public get privateKey() {
       return this.getStringAttribute('private_key');
     }
@@ -2589,11 +2603,12 @@ export namespace IAM {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2605,11 +2620,12 @@ export namespace IAM {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -2704,7 +2720,7 @@ export namespace IAM {
     }
 
     // aws_service_name - computed: false, optional: false, required: true
-    private _awsServiceName: string;
+    private _awsServiceName?: string; 
     public get awsServiceName() {
       return this.getStringAttribute('aws_service_name');
     }
@@ -2722,11 +2738,11 @@ export namespace IAM {
     }
 
     // custom_suffix - computed: false, optional: true, required: false
-    private _customSuffix?: string;
+    private _customSuffix?: string | undefined; 
     public get customSuffix() {
       return this.getStringAttribute('custom_suffix');
     }
-    public set customSuffix(value: string ) {
+    public set customSuffix(value: string | undefined) {
       this._customSuffix = value;
     }
     public resetCustomSuffix() {
@@ -2738,11 +2754,11 @@ export namespace IAM {
     }
 
     // description - computed: false, optional: true, required: false
-    private _description?: string;
+    private _description?: string | undefined; 
     public get description() {
       return this.getStringAttribute('description');
     }
-    public set description(value: string ) {
+    public set description(value: string | undefined) {
       this._description = value;
     }
     public resetDescription() {
@@ -2864,11 +2880,11 @@ export namespace IAM {
     }
 
     // force_destroy - computed: false, optional: true, required: false
-    private _forceDestroy?: boolean | cdktf.IResolvable;
+    private _forceDestroy?: boolean | cdktf.IResolvable | undefined; 
     public get forceDestroy() {
-      return this.getBooleanAttribute('force_destroy');
+      return this.getBooleanAttribute('force_destroy') as any;
     }
-    public set forceDestroy(value: boolean | cdktf.IResolvable ) {
+    public set forceDestroy(value: boolean | cdktf.IResolvable | undefined) {
       this._forceDestroy = value;
     }
     public resetForceDestroy() {
@@ -2885,7 +2901,7 @@ export namespace IAM {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -2898,11 +2914,11 @@ export namespace IAM {
     }
 
     // path - computed: false, optional: true, required: false
-    private _path?: string;
+    private _path?: string | undefined; 
     public get path() {
       return this.getStringAttribute('path');
     }
-    public set path(value: string ) {
+    public set path(value: string | undefined) {
       this._path = value;
     }
     public resetPath() {
@@ -2914,11 +2930,11 @@ export namespace IAM {
     }
 
     // permissions_boundary - computed: false, optional: true, required: false
-    private _permissionsBoundary?: string;
+    private _permissionsBoundary?: string | undefined; 
     public get permissionsBoundary() {
       return this.getStringAttribute('permissions_boundary');
     }
-    public set permissionsBoundary(value: string ) {
+    public set permissionsBoundary(value: string | undefined) {
       this._permissionsBoundary = value;
     }
     public resetPermissionsBoundary() {
@@ -2930,11 +2946,12 @@ export namespace IAM {
     }
 
     // tags - computed: false, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable;
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
     public get tags() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable ) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -2946,11 +2963,12 @@ export namespace IAM {
     }
 
     // tags_all - computed: true, optional: true, required: false
-    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable
-    public get tagsAll(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags_all') as any; // Getting the computed value is not yet implemented
+    private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tagsAll() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags_all') as any;
     }
-    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tagsAll = value;
     }
     public resetTagsAll() {
@@ -3033,7 +3051,7 @@ export namespace IAM {
     // ==========
 
     // groups - computed: false, optional: false, required: true
-    private _groups: string[];
+    private _groups?: string[]; 
     public get groups() {
       return this.getListAttribute('groups');
     }
@@ -3051,7 +3069,7 @@ export namespace IAM {
     }
 
     // user - computed: false, optional: false, required: true
-    private _user: string;
+    private _user?: string; 
     public get user() {
       return this.getStringAttribute('user');
     }
@@ -3151,11 +3169,11 @@ export namespace IAM {
     }
 
     // password_length - computed: false, optional: true, required: false
-    private _passwordLength?: number;
+    private _passwordLength?: number | undefined; 
     public get passwordLength() {
       return this.getNumberAttribute('password_length');
     }
-    public set passwordLength(value: number ) {
+    public set passwordLength(value: number | undefined) {
       this._passwordLength = value;
     }
     public resetPasswordLength() {
@@ -3167,11 +3185,11 @@ export namespace IAM {
     }
 
     // password_reset_required - computed: false, optional: true, required: false
-    private _passwordResetRequired?: boolean | cdktf.IResolvable;
+    private _passwordResetRequired?: boolean | cdktf.IResolvable | undefined; 
     public get passwordResetRequired() {
-      return this.getBooleanAttribute('password_reset_required');
+      return this.getBooleanAttribute('password_reset_required') as any;
     }
-    public set passwordResetRequired(value: boolean | cdktf.IResolvable ) {
+    public set passwordResetRequired(value: boolean | cdktf.IResolvable | undefined) {
       this._passwordResetRequired = value;
     }
     public resetPasswordResetRequired() {
@@ -3183,7 +3201,7 @@ export namespace IAM {
     }
 
     // pgp_key - computed: false, optional: false, required: true
-    private _pgpKey: string;
+    private _pgpKey?: string; 
     public get pgpKey() {
       return this.getStringAttribute('pgp_key');
     }
@@ -3196,7 +3214,7 @@ export namespace IAM {
     }
 
     // user - computed: false, optional: false, required: true
-    private _user: string;
+    private _user?: string; 
     public get user() {
       return this.getStringAttribute('user');
     }
@@ -3288,11 +3306,11 @@ export namespace IAM {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -3304,11 +3322,11 @@ export namespace IAM {
     }
 
     // name_prefix - computed: false, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string ) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -3320,7 +3338,7 @@ export namespace IAM {
     }
 
     // policy - computed: false, optional: false, required: true
-    private _policy: string;
+    private _policy?: string; 
     public get policy() {
       return this.getStringAttribute('policy');
     }
@@ -3333,7 +3351,7 @@ export namespace IAM {
     }
 
     // user - computed: false, optional: false, required: true
-    private _user: string;
+    private _user?: string; 
     public get user() {
       return this.getStringAttribute('user');
     }
@@ -3415,7 +3433,7 @@ export namespace IAM {
     }
 
     // policy_arn - computed: false, optional: false, required: true
-    private _policyArn: string;
+    private _policyArn?: string; 
     public get policyArn() {
       return this.getStringAttribute('policy_arn');
     }
@@ -3428,7 +3446,7 @@ export namespace IAM {
     }
 
     // user - computed: false, optional: false, required: true
-    private _user: string;
+    private _user?: string; 
     public get user() {
       return this.getStringAttribute('user');
     }
@@ -3513,7 +3531,7 @@ export namespace IAM {
     // ==========
 
     // encoding - computed: false, optional: false, required: true
-    private _encoding: string;
+    private _encoding?: string; 
     public get encoding() {
       return this.getStringAttribute('encoding');
     }
@@ -3536,7 +3554,7 @@ export namespace IAM {
     }
 
     // public_key - computed: false, optional: false, required: true
-    private _publicKey: string;
+    private _publicKey?: string; 
     public get publicKey() {
       return this.getStringAttribute('public_key');
     }
@@ -3554,11 +3572,11 @@ export namespace IAM {
     }
 
     // status - computed: true, optional: true, required: false
-    private _status?: string;
+    private _status?: string | undefined; 
     public get status() {
       return this.getStringAttribute('status');
     }
-    public set status(value: string) {
+    public set status(value: string | undefined) {
       this._status = value;
     }
     public resetStatus() {
@@ -3570,7 +3588,7 @@ export namespace IAM {
     }
 
     // username - computed: false, optional: false, required: true
-    private _username: string;
+    private _username?: string; 
     public get username() {
       return this.getStringAttribute('username');
     }
@@ -3734,7 +3752,7 @@ export namespace IAM {
     }
 
     // group_name - computed: false, optional: false, required: true
-    private _groupName: string;
+    private _groupName?: string; 
     public get groupName() {
       return this.getStringAttribute('group_name');
     }
@@ -3833,7 +3851,7 @@ export namespace IAM {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -3947,11 +3965,11 @@ export namespace IAM {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -3968,11 +3986,11 @@ export namespace IAM {
     }
 
     // path_prefix - computed: false, optional: true, required: false
-    private _pathPrefix?: string;
+    private _pathPrefix?: string | undefined; 
     public get pathPrefix() {
       return this.getStringAttribute('path_prefix');
     }
-    public set pathPrefix(value: string ) {
+    public set pathPrefix(value: string | undefined) {
       this._pathPrefix = value;
     }
     public resetPathPrefix() {
@@ -3994,11 +4012,12 @@ export namespace IAM {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4070,6 +4089,9 @@ export namespace IAM {
 
   function dataAwsIamPolicyDocumentStatementConditionToTerraform(struct?: DataAwsIamPolicyDocumentStatementCondition): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       test: cdktf.stringToTerraform(struct!.test),
       values: cdktf.listMapper(cdktf.stringToTerraform)(struct!.values),
@@ -4090,6 +4112,9 @@ export namespace IAM {
 
   function dataAwsIamPolicyDocumentStatementNotPrincipalsToTerraform(struct?: DataAwsIamPolicyDocumentStatementNotPrincipals): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       identifiers: cdktf.listMapper(cdktf.stringToTerraform)(struct!.identifiers),
       type: cdktf.stringToTerraform(struct!.type),
@@ -4109,6 +4134,9 @@ export namespace IAM {
 
   function dataAwsIamPolicyDocumentStatementPrincipalsToTerraform(struct?: DataAwsIamPolicyDocumentStatementPrincipals): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       identifiers: cdktf.listMapper(cdktf.stringToTerraform)(struct!.identifiers),
       type: cdktf.stringToTerraform(struct!.type),
@@ -4162,6 +4190,9 @@ export namespace IAM {
 
   function dataAwsIamPolicyDocumentStatementToTerraform(struct?: DataAwsIamPolicyDocumentStatement): any {
     if (!cdktf.canInspect(struct)) { return struct; }
+    if (cdktf.isComplexElement(struct)) {
+      throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+    }
     return {
       actions: cdktf.listMapper(cdktf.stringToTerraform)(struct!.actions),
       effect: cdktf.stringToTerraform(struct!.effect),
@@ -4232,11 +4263,11 @@ export namespace IAM {
     }
 
     // override_json - computed: false, optional: true, required: false
-    private _overrideJson?: string;
+    private _overrideJson?: string | undefined; 
     public get overrideJson() {
       return this.getStringAttribute('override_json');
     }
-    public set overrideJson(value: string ) {
+    public set overrideJson(value: string | undefined) {
       this._overrideJson = value;
     }
     public resetOverrideJson() {
@@ -4248,11 +4279,11 @@ export namespace IAM {
     }
 
     // override_policy_documents - computed: false, optional: true, required: false
-    private _overridePolicyDocuments?: string[];
+    private _overridePolicyDocuments?: string[] | undefined; 
     public get overridePolicyDocuments() {
       return this.getListAttribute('override_policy_documents');
     }
-    public set overridePolicyDocuments(value: string[] ) {
+    public set overridePolicyDocuments(value: string[] | undefined) {
       this._overridePolicyDocuments = value;
     }
     public resetOverridePolicyDocuments() {
@@ -4264,11 +4295,11 @@ export namespace IAM {
     }
 
     // policy_id - computed: false, optional: true, required: false
-    private _policyId?: string;
+    private _policyId?: string | undefined; 
     public get policyId() {
       return this.getStringAttribute('policy_id');
     }
-    public set policyId(value: string ) {
+    public set policyId(value: string | undefined) {
       this._policyId = value;
     }
     public resetPolicyId() {
@@ -4280,11 +4311,11 @@ export namespace IAM {
     }
 
     // source_json - computed: false, optional: true, required: false
-    private _sourceJson?: string;
+    private _sourceJson?: string | undefined; 
     public get sourceJson() {
       return this.getStringAttribute('source_json');
     }
-    public set sourceJson(value: string ) {
+    public set sourceJson(value: string | undefined) {
       this._sourceJson = value;
     }
     public resetSourceJson() {
@@ -4296,11 +4327,11 @@ export namespace IAM {
     }
 
     // source_policy_documents - computed: false, optional: true, required: false
-    private _sourcePolicyDocuments?: string[];
+    private _sourcePolicyDocuments?: string[] | undefined; 
     public get sourcePolicyDocuments() {
       return this.getListAttribute('source_policy_documents');
     }
-    public set sourcePolicyDocuments(value: string[] ) {
+    public set sourcePolicyDocuments(value: string[] | undefined) {
       this._sourcePolicyDocuments = value;
     }
     public resetSourcePolicyDocuments() {
@@ -4312,11 +4343,11 @@ export namespace IAM {
     }
 
     // version - computed: false, optional: true, required: false
-    private _version?: string;
+    private _version?: string | undefined; 
     public get version() {
       return this.getStringAttribute('version');
     }
-    public set version(value: string ) {
+    public set version(value: string | undefined) {
       this._version = value;
     }
     public resetVersion() {
@@ -4328,11 +4359,12 @@ export namespace IAM {
     }
 
     // statement - computed: false, optional: true, required: false
-    private _statement?: DataAwsIamPolicyDocumentStatement[];
+    private _statement?: DataAwsIamPolicyDocumentStatement[] | undefined; 
     public get statement() {
+      // Getting the computed value is not yet implemented
       return this.interpolationForAttribute('statement') as any;
     }
-    public set statement(value: DataAwsIamPolicyDocumentStatement[] ) {
+    public set statement(value: DataAwsIamPolicyDocumentStatement[] | undefined) {
       this._statement = value;
     }
     public resetStatement() {
@@ -4441,7 +4473,7 @@ export namespace IAM {
     }
 
     // name - computed: false, optional: false, required: true
-    private _name: string;
+    private _name?: string; 
     public get name() {
       return this.getStringAttribute('name');
     }
@@ -4464,11 +4496,12 @@ export namespace IAM {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4557,11 +4590,11 @@ export namespace IAM {
     }
 
     // name_regex - computed: false, optional: true, required: false
-    private _nameRegex?: string;
+    private _nameRegex?: string | undefined; 
     public get nameRegex() {
       return this.getStringAttribute('name_regex');
     }
-    public set nameRegex(value: string ) {
+    public set nameRegex(value: string | undefined) {
       this._nameRegex = value;
     }
     public resetNameRegex() {
@@ -4578,11 +4611,11 @@ export namespace IAM {
     }
 
     // path_prefix - computed: false, optional: true, required: false
-    private _pathPrefix?: string;
+    private _pathPrefix?: string | undefined; 
     public get pathPrefix() {
       return this.getStringAttribute('path_prefix');
     }
-    public set pathPrefix(value: string ) {
+    public set pathPrefix(value: string | undefined) {
       this._pathPrefix = value;
     }
     public resetPathPrefix() {
@@ -4691,11 +4724,11 @@ export namespace IAM {
     }
 
     // latest - computed: false, optional: true, required: false
-    private _latest?: boolean | cdktf.IResolvable;
+    private _latest?: boolean | cdktf.IResolvable | undefined; 
     public get latest() {
-      return this.getBooleanAttribute('latest');
+      return this.getBooleanAttribute('latest') as any;
     }
-    public set latest(value: boolean | cdktf.IResolvable ) {
+    public set latest(value: boolean | cdktf.IResolvable | undefined) {
       this._latest = value;
     }
     public resetLatest() {
@@ -4707,11 +4740,11 @@ export namespace IAM {
     }
 
     // name - computed: true, optional: true, required: false
-    private _name?: string;
+    private _name?: string | undefined; 
     public get name() {
       return this.getStringAttribute('name');
     }
-    public set name(value: string) {
+    public set name(value: string | undefined) {
       this._name = value;
     }
     public resetName() {
@@ -4723,11 +4756,11 @@ export namespace IAM {
     }
 
     // name_prefix - computed: false, optional: true, required: false
-    private _namePrefix?: string;
+    private _namePrefix?: string | undefined; 
     public get namePrefix() {
       return this.getStringAttribute('name_prefix');
     }
-    public set namePrefix(value: string ) {
+    public set namePrefix(value: string | undefined) {
       this._namePrefix = value;
     }
     public resetNamePrefix() {
@@ -4744,11 +4777,11 @@ export namespace IAM {
     }
 
     // path_prefix - computed: false, optional: true, required: false
-    private _pathPrefix?: string;
+    private _pathPrefix?: string | undefined; 
     public get pathPrefix() {
       return this.getStringAttribute('path_prefix');
     }
-    public set pathPrefix(value: string ) {
+    public set pathPrefix(value: string | undefined) {
       this._pathPrefix = value;
     }
     public resetPathPrefix() {
@@ -4824,7 +4857,7 @@ export namespace IAM {
     // ==========
 
     // arn - computed: false, optional: false, required: true
-    private _arn: string;
+    private _arn?: string; 
     public get arn() {
       return this.getStringAttribute('arn');
     }
@@ -4943,11 +4976,12 @@ export namespace IAM {
     }
 
     // tags - computed: true, optional: true, required: false
-    private _tags?: { [key: string]: string } | cdktf.IResolvable
-    public get tags(): { [key: string]: string } | cdktf.IResolvable {
-      return this.interpolationForAttribute('tags') as any; // Getting the computed value is not yet implemented
+    private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+    public get tags() {
+      // Getting the computed value is not yet implemented
+      return this.interpolationForAttribute('tags') as any;
     }
-    public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
+    public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
       this._tags = value;
     }
     public resetTags() {
@@ -4964,7 +4998,7 @@ export namespace IAM {
     }
 
     // user_name - computed: false, optional: false, required: true
-    private _userName: string;
+    private _userName?: string; 
     public get userName() {
       return this.getStringAttribute('user_name');
     }
@@ -5049,11 +5083,11 @@ export namespace IAM {
     }
 
     // name_regex - computed: false, optional: true, required: false
-    private _nameRegex?: string;
+    private _nameRegex?: string | undefined; 
     public get nameRegex() {
       return this.getStringAttribute('name_regex');
     }
-    public set nameRegex(value: string ) {
+    public set nameRegex(value: string | undefined) {
       this._nameRegex = value;
     }
     public resetNameRegex() {
@@ -5070,11 +5104,11 @@ export namespace IAM {
     }
 
     // path_prefix - computed: false, optional: true, required: false
-    private _pathPrefix?: string;
+    private _pathPrefix?: string | undefined; 
     public get pathPrefix() {
       return this.getStringAttribute('path_prefix');
     }
-    public set pathPrefix(value: string ) {
+    public set pathPrefix(value: string | undefined) {
       this._pathPrefix = value;
     }
     public resetPathPrefix() {
