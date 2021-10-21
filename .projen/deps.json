@@ -93,11 +93,6 @@
       "type": "build"
     },
     {
-      "name": "cdktf-cli",
-      "version": "0.7.0-pre.382",
-      "type": "bundled"
-    },
-    {
       "name": "change-case",
       "version": "^4.1.1",
       "type": "bundled"
