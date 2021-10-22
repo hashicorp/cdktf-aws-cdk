@@ -14,15 +14,15 @@
   "devDependencies": {
     "@types/jest": "27.0.1",
     "@types/node": "^14.0.26",
-    "cdktf-cli": "0.7",
+    "cdktf-cli": "0.7.0-pre.382",
     "jest": "27.1.0",
     "ts-jest": "^27.0.5",
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "cdktf": "0.7",
+    "cdktf": "0.7.0-pre.382",
     "constructs": "^10.0.5",
-    "@cdktf/aws-cdk": "0.0.5",
+    "@cdktf/aws-cdk": "0.0.8",
     "aws-cdk-lib": "2.0.0-rc.17"
   }
 }
