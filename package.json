@@ -8,7 +8,6 @@
   "scripts": {
     "clobber": "npx projen clobber",
     "compile": "NODE_OPTIONS=\"--max-old-space-size=7516\" jsii --silence-warnings=reserved-word",
-    "test:compile": "npx projen test:compile",
     "test": "jest",
     "build": "npx projen build",
     "test:watch": "npx projen test:watch",
@@ -16,8 +15,6 @@
     "bump": "npx projen bump",
     "unbump": "npx projen unbump",
     "publish:github": "npx projen publish:github",
-    "upgrade": "npx projen upgrade",
-    "upgrade-projen": "npx projen upgrade-projen",
     "watch": "npx projen watch",
     "package": "npx projen package",
     "compat": "npx projen compat",
@@ -26,6 +23,8 @@
     "default": "npx projen default",
     "examples:test": "npx projen examples:test",
     "release": "npx projen release",
+    "upgrade": "npx projen upgrade",
+    "upgrade-projen": "npx projen upgrade-projen",
     "projen": "npx projen",
     "fetch:types": "mkdir -p src/awscc && rm -rf ./src/awscc/* && node ./scripts/update-supported-types.js",
     "fetch": "mkdir -p src/aws && rm -rf ./src/aws/* && cdktf get && cp -R .gen/providers/aws/* ./src/aws/ && mkdir -p src/time && rm -rf ./src/time/* && cp -R .gen/providers/time/* ./src/time/",
@@ -55,7 +54,7 @@
     "jsii-docgen": "^1.8.110",
     "jsii-pacmak": "^1.34.0",
     "npm-check-updates": "^11",
-    "projen": "^0.28.28",
+    "projen": "^0.31.7",
     "standard-version": "^9",
     "ts-jest": "^27.0.5",
     "ts-node": "^9",
@@ -136,7 +135,7 @@
     "preset": "ts-jest",
     "globals": {
       "ts-jest": {
-        "tsconfig": "tsconfig.jest.json"
+        "tsconfig": "tsconfig.dev.json"
       }
     }
   },

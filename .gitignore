@@ -36,13 +36,12 @@ junit.xml
 !/.github/workflows/build.yml
 /dist/changelog.md
 /dist/version.txt
-!/.github/workflows/upgrade.yml
 !/.github/pull_request_template.md
 !/test/
+!/tsconfig.dev.json
 !/src/
 /lib
 /dist/
-!/tsconfig.jest.json
 .jsii
 tsconfig.json
 !/API.md
@@ -57,3 +56,4 @@ package-lock.json
 !/.github/workflows/provider-upgrade.yml
 !/.github/workflows/automerge.yml
 !/.github/workflows/release.yml
+!/.github/workflows/upgrade-main.yml
