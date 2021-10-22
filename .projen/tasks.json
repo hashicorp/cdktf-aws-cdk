@@ -89,6 +89,9 @@
         },
         {
           "spawn": "package"
+        },
+        {
+          "spawn": "examples:test"
         }
       ]
     },
@@ -280,6 +283,15 @@
           "exec": "ts-node --skip-project --compiler-options '{\"target\":\"es6\"}' .projenrc.ts"
         }
       ]
+    },
+    "examples:test": {
+      "name": "examples:test",
+      "steps": [
+        {
+          "exec": "yarn test:local"
+        }
+      ],
+      "cwd": "examples/typescript-cron-lambda"
     },
     "release": {
       "name": "release",
