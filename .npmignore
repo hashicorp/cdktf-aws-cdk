@@ -6,6 +6,7 @@ junit.xml
 /dist/changelog.md
 /dist/version.txt
 /test/
+/tsconfig.dev.json
 /src/
 !/lib/
 !/lib/**/*.js
@@ -17,7 +18,6 @@ dist
 /.idea/
 /.projenrc.js
 tsconfig.tsbuildinfo
-/tsconfig.jest.json
 !.jsii
 scripts
 examples

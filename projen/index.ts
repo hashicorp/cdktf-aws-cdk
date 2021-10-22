@@ -56,10 +56,10 @@ export class CdktfAwsCdkProject extends JsiiProject {
           //   "^.+\\.tsx?$": "ts-jest",
           // },
         },
-        typescriptConfig: {
-          compilerOptions: {},
-          exclude: ["/node_modules/", "<rootDir>/examples", ".yalc"],
-        },
+      },
+      tsconfigDev: {
+        compilerOptions: {},
+        exclude: ["/node_modules/", "<rootDir>/examples", ".yalc"],
       },
       authorAddress,
       author,
