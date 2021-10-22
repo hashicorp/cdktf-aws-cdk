@@ -79,6 +79,14 @@ export class CdktfAwsCdkProject extends JsiiProject {
       peerDependencyOptions: {
         pinnedDevDependency: false,
       },
+      depsUpgradeOptions: {
+        workflowOptions: {
+          gitIdentity: {
+            name: "team-tf-cdk",
+            email: "github-team-tf-cdk@hashicorp.com",
+          },
+        },
+      },
     });
 
     // fix as we use es6 in this class
