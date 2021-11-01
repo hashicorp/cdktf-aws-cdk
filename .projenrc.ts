@@ -4,7 +4,7 @@ const project = new CdktfAwsCdkProject({
   terraformProvider: "aws@~> 3.0",
   cdktfVersion: '0.7.0-pre.382',
   constructsVersion: "^10.0.0",
-  minNodeVersion: "12.19.0",
+  minNodeVersion: "14.15.0",
   projenrcTs: true
 });
 
