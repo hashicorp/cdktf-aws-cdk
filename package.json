@@ -42,7 +42,7 @@
     "@aws-sdk/client-cloudformation": "^3.36.0",
     "@types/debug": "^4.1.7",
     "@types/jest": "^27.0.2",
-    "@types/node": "^12.19.0",
+    "@types/node": "^14.15.0",
     "aws-cdk-lib": "2.0.0-rc.17",
     "cdktf": "0.7.0-pre.382",
     "cdktf-cli": "0.7.0-pre.382",
@@ -83,7 +83,7 @@
     "terraform"
   ],
   "engines": {
-    "node": ">= 12.19.0"
+    "node": ">= 14.15.0"
   },
   "main": "lib/index.js",
   "license": "MPL-2.0",
