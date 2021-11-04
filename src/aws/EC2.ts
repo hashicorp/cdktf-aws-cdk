@@ -13035,6 +13035,10 @@ export namespace EC2 {
     */
     readonly ipv6Addresses?: string[];
     /**
+    * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#network_card_index LaunchTemplate#network_card_index}
+    */
+    readonly networkCardIndex?: number;
+    /**
     * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/launch_template.html#network_interface_id LaunchTemplate#network_interface_id}
     */
     readonly networkInterfaceId?: string;
@@ -13068,6 +13072,7 @@ export namespace EC2 {
       ipv4_addresses: cdktf.listMapper(cdktf.stringToTerraform)(struct!.ipv4Addresses),
       ipv6_address_count: cdktf.numberToTerraform(struct!.ipv6AddressCount),
       ipv6_addresses: cdktf.listMapper(cdktf.stringToTerraform)(struct!.ipv6Addresses),
+      network_card_index: cdktf.numberToTerraform(struct!.networkCardIndex),
       network_interface_id: cdktf.stringToTerraform(struct!.networkInterfaceId),
       private_ip_address: cdktf.stringToTerraform(struct!.privateIpAddress),
       security_groups: cdktf.listMapper(cdktf.stringToTerraform)(struct!.securityGroups),
@@ -14069,7 +14074,7 @@ export namespace EC2 {
       return this._name
     }
 
-    // partition_count - computed: false, optional: true, required: false
+    // partition_count - computed: true, optional: true, required: false
     private _partitionCount?: number | undefined; 
     public get partitionCount() {
       return this.getNumberAttribute('partition_count');
@@ -24106,6 +24111,11 @@ export namespace EC2 {
     // ipv6_addresses - computed: true, optional: false, required: false
     public get ipv6Addresses() {
       return this.getListAttribute('ipv6_addresses');
+    }
+
+    // network_card_index - computed: true, optional: false, required: false
+    public get networkCardIndex() {
+      return this.getNumberAttribute('network_card_index');
     }
 
     // network_interface_id - computed: true, optional: false, required: false
