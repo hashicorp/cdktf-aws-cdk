@@ -69,17 +69,17 @@ describe("AwsTerraformAdapter", () => {
       });
 
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
-"{
-  \\"resource\\": {
-    \\"test\\": {
-      \\"adapter_another_C86ABFE2\\": {},
-      \\"adapter_subject_24E89D84\\": {
-        \\"value\\": \\"\${join(\\\\\\",\\\\\\", [\\\\\\"one\\\\\\", \\\\\\"two\\\\\\", test.adapter_another_C86ABFE2.string])}\\"
-      }
-    }
-  }
-}"
-`);
+        "{
+          \\"resource\\": {
+            \\"test\\": {
+              \\"adapter_another_C86ABFE2\\": {},
+              \\"adapter_subject_24E89D84\\": {
+                \\"value\\": \\"\${join(\\\\\\",\\\\\\", [\\\\\\"one\\\\\\", \\\\\\"two\\\\\\", test.adapter_another_C86ABFE2.string])}\\"
+              }
+            }
+          }
+        }"
+      `);
     });
 
     it("should resolve Fn::Select", () => {
@@ -101,17 +101,17 @@ describe("AwsTerraformAdapter", () => {
       });
 
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
-"{
-  \\"resource\\": {
-    \\"test\\": {
-      \\"adapter_another_C86ABFE2\\": {},
-      \\"adapter_subject_24E89D84\\": {
-        \\"value\\": \\"\${element(test.adapter_another_C86ABFE2.list, 1)}\\"
-      }
-    }
-  }
-}"
-`);
+        "{
+          \\"resource\\": {
+            \\"test\\": {
+              \\"adapter_another_C86ABFE2\\": {},
+              \\"adapter_subject_24E89D84\\": {
+                \\"value\\": \\"\${element(test.adapter_another_C86ABFE2.list, 1)}\\"
+              }
+            }
+          }
+        }"
+      `);
     });
 
     it("should resolve Fn::GetAZs", () => {
@@ -131,41 +131,41 @@ describe("AwsTerraformAdapter", () => {
         },
       });
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
-"{
-  \\"data\\": {
-    \\"aws_availability_zones\\": {
-      \\"adapter_aws_azs_default_region_9CD033CD\\": {},
-      \\"adapter_aws_azs_eu_central_1_B40FEB09\\": {
-        \\"provider\\": \\"aws.eu_central_1\\"
-      }
-    }
-  },
-  \\"provider\\": {
-    \\"aws\\": [
-      {
-        \\"alias\\": \\"eu_central_1\\",
-        \\"region\\": \\"eu-central-1\\"
-      }
-    ]
-  },
-  \\"resource\\": {
-    \\"test\\": {
-      \\"adapter_subject_24E89D84\\": {
-        \\"value\\": \\"\${data.aws_availability_zones.adapter_aws_azs_default_region_9CD033CD.names}\\",
-        \\"value2\\": \\"\${data.aws_availability_zones.adapter_aws_azs_eu_central_1_B40FEB09.names}\\"
-      }
-    }
-  },
-  \\"terraform\\": {
-    \\"required_providers\\": {
-      \\"aws\\": {
-        \\"source\\": \\"aws\\",
-        \\"version\\": \\"~> 3.0\\"
-      }
-    }
-  }
-}"
-`);
+        "{
+          \\"data\\": {
+            \\"aws_availability_zones\\": {
+              \\"adapter_aws_azs_default_region_9CD033CD\\": {},
+              \\"adapter_aws_azs_eu_central_1_B40FEB09\\": {
+                \\"provider\\": \\"aws.eu_central_1\\"
+              }
+            }
+          },
+          \\"provider\\": {
+            \\"aws\\": [
+              {
+                \\"alias\\": \\"eu_central_1\\",
+                \\"region\\": \\"eu-central-1\\"
+              }
+            ]
+          },
+          \\"resource\\": {
+            \\"test\\": {
+              \\"adapter_subject_24E89D84\\": {
+                \\"value\\": \\"\${data.aws_availability_zones.adapter_aws_azs_default_region_9CD033CD.names}\\",
+                \\"value2\\": \\"\${data.aws_availability_zones.adapter_aws_azs_eu_central_1_B40FEB09.names}\\"
+              }
+            }
+          },
+          \\"terraform\\": {
+            \\"required_providers\\": {
+              \\"aws\\": {
+                \\"source\\": \\"aws\\",
+                \\"version\\": \\"~> 3.0\\"
+              }
+            }
+          }
+        }"
+      `);
     });
 
     it("should resolve Fn::Base64", () => {
@@ -186,17 +186,17 @@ describe("AwsTerraformAdapter", () => {
         },
       });
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
-"{
-  \\"resource\\": {
-    \\"test\\": {
-      \\"adapter_another_C86ABFE2\\": {},
-      \\"adapter_subject_24E89D84\\": {
-        \\"value\\": \\"\${base64encode(test.adapter_another_C86ABFE2.string)}\\"
-      }
-    }
-  }
-}"
-`);
+        "{
+          \\"resource\\": {
+            \\"test\\": {
+              \\"adapter_another_C86ABFE2\\": {},
+              \\"adapter_subject_24E89D84\\": {
+                \\"value\\": \\"\${base64encode(test.adapter_another_C86ABFE2.string)}\\"
+              }
+            }
+          }
+        }"
+      `);
     });
 
     it("should resolve Fn::Cidr", () => {
@@ -216,17 +216,17 @@ describe("AwsTerraformAdapter", () => {
         },
       });
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
-"{
-  \\"resource\\": {
-    \\"test\\": {
-      \\"adapter_subject_24E89D84\\": {
-        \\"value\\": \\"\${cidrsubnets(\\\\\\"192.168.0.0/24\\\\\\", \\\\\\"5\\\\\\", \\\\\\"5\\\\\\", \\\\\\"5\\\\\\", \\\\\\"5\\\\\\", \\\\\\"5\\\\\\", \\\\\\"5\\\\\\")}\\",
-        \\"value2\\": \\"\${cidrsubnets(\\\\\\"192.168.0.0/24\\\\\\", \\\\\\"8\\\\\\")}\\"
-      }
-    }
-  }
-}"
-`);
+        "{
+          \\"resource\\": {
+            \\"test\\": {
+              \\"adapter_subject_24E89D84\\": {
+                \\"value\\": \\"\${cidrsubnets(\\\\\\"192.168.0.0/24\\\\\\", \\\\\\"5\\\\\\", \\\\\\"5\\\\\\", \\\\\\"5\\\\\\", \\\\\\"5\\\\\\", \\\\\\"5\\\\\\", \\\\\\"5\\\\\\")}\\",
+                \\"value2\\": \\"\${cidrsubnets(\\\\\\"192.168.0.0/24\\\\\\", \\\\\\"8\\\\\\")}\\"
+              }
+            }
+          }
+        }"
+      `);
     });
 
     it("should resolve Fn::FindInMap", () => {
@@ -251,17 +251,17 @@ describe("AwsTerraformAdapter", () => {
         },
       });
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
-"{
-  \\"resource\\": {
-    \\"test\\": {
-      \\"adapter_another_C86ABFE2\\": {},
-      \\"adapter_subject_24E89D84\\": {
-        \\"value\\": \\"\${test.adapter_another_C86ABFE2.map[\\\\\\"keyA\\\\\\"][test.adapter_another_C86ABFE2.string]}\\"
-      }
-    }
-  }
-}"
-`);
+        "{
+          \\"resource\\": {
+            \\"test\\": {
+              \\"adapter_another_C86ABFE2\\": {},
+              \\"adapter_subject_24E89D84\\": {
+                \\"value\\": \\"\${test.adapter_another_C86ABFE2.map[\\\\\\"keyA\\\\\\"][test.adapter_another_C86ABFE2.string]}\\"
+              }
+            }
+          }
+        }"
+      `);
     });
 
     it("should resolve Fn::Sub", () => {
@@ -285,17 +285,17 @@ describe("AwsTerraformAdapter", () => {
         },
       });
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
-"{
-  \\"resource\\": {
-    \\"test\\": {
-      \\"adapter_another_C86ABFE2\\": {},
-      \\"adapter_subject_24E89D84\\": {
-        \\"value\\": \\"\${replace(replace(\\\\\\"this is the $\${TEMPLATE} string. This will not be $\${!REPLACED} but end up without the exclamation mark\\\\\\", \\\\\\"$\${TEMPLATE}\\\\\\", test.adapter_another_C86ABFE2.string), \\\\\\"/\\\\\\\\\\\\\\\\$\\\\\\\\\\\\\\\\{!(\\\\\\\\\\\\\\\\w+)\\\\\\\\\\\\\\\\}/\\\\\\", \\\\\\"$\${$1}\\\\\\")}\\"
-      }
-    }
-  }
-}"
-`);
+        "{
+          \\"resource\\": {
+            \\"test\\": {
+              \\"adapter_another_C86ABFE2\\": {},
+              \\"adapter_subject_24E89D84\\": {
+                \\"value\\": \\"\${replace(replace(\\\\\\"this is the $\${TEMPLATE} string. This will not be $\${!REPLACED} but end up without the exclamation mark\\\\\\", \\\\\\"$\${TEMPLATE}\\\\\\", test.adapter_another_C86ABFE2.string), \\\\\\"/\\\\\\\\\\\\\\\\$\\\\\\\\\\\\\\\\{!(\\\\\\\\\\\\\\\\w+)\\\\\\\\\\\\\\\\}/\\\\\\", \\\\\\"$\${$1}\\\\\\")}\\"
+              }
+            }
+          }
+        }"
+      `);
     });
 
     it("should resolve Fn::Split", () => {
@@ -316,17 +316,17 @@ describe("AwsTerraformAdapter", () => {
         },
       });
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
-"{
-  \\"resource\\": {
-    \\"test\\": {
-      \\"adapter_another_C86ABFE2\\": {},
-      \\"adapter_subject_24E89D84\\": {
-        \\"value\\": \\"\${split(\\\\\\",\\\\\\", test.adapter_another_C86ABFE2.string)}\\"
-      }
-    }
-  }
-}"
-`);
+        "{
+          \\"resource\\": {
+            \\"test\\": {
+              \\"adapter_another_C86ABFE2\\": {},
+              \\"adapter_subject_24E89D84\\": {
+                \\"value\\": \\"\${split(\\\\\\",\\\\\\", test.adapter_another_C86ABFE2.string)}\\"
+              }
+            }
+          }
+        }"
+      `);
     });
   });
 
@@ -345,16 +345,16 @@ describe("AwsTerraformAdapter", () => {
       // TODO: check how (if at all) literal true and false can be passed
       // TODO: check why "false" ends up as undefined
       expect(Testing.synth(stack)).toMatchInlineSnapshot(`
-"{
-  \\"locals\\": {
-    \\"adapter_condition_And_696B6B21\\": \\"\${((local.adapter_condition_IsProd_8FB293B1 && true) && true)}\\",
-    \\"adapter_condition_If_4412FEF9\\": \\"\${local.adapter_condition_IsProd_8FB293B1 ? 1 : 0}\\",
-    \\"adapter_condition_IsDev_FDA8D7BD\\": \\"\${!local.adapter_condition_IsProd_8FB293B1}\\",
-    \\"adapter_condition_IsProd_8FB293B1\\": \\"\${(\\\\\\"A\\\\\\" == \\\\\\"A\\\\\\")}\\",
-    \\"adapter_condition_Or_83D17798\\": \\"\${((local.adapter_condition_IsProd_8FB293B1 || true) || true)}\\"
-  }
-}"
-`);
+        "{
+          \\"locals\\": {
+            \\"adapter_condition_And_696B6B21\\": \\"\${((local.adapter_condition_IsProd_8FB293B1 && true) && true)}\\",
+            \\"adapter_condition_If_4412FEF9\\": \\"\${local.adapter_condition_IsProd_8FB293B1 ? 1 : 0}\\",
+            \\"adapter_condition_IsDev_FDA8D7BD\\": \\"\${!local.adapter_condition_IsProd_8FB293B1}\\",
+            \\"adapter_condition_IsProd_8FB293B1\\": \\"\${(\\\\\\"A\\\\\\" == \\\\\\"A\\\\\\")}\\",
+            \\"adapter_condition_Or_83D17798\\": \\"\${((local.adapter_condition_IsProd_8FB293B1 || true) || true)}\\"
+          }
+        }"
+      `);
     });
   });
 });
