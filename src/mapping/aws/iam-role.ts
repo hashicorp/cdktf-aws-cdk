@@ -1,7 +1,7 @@
 import { registerMapping } from "../index";
 import { IAM } from "../../aws/IAM";
 import { createGuessingResourceMapper } from "../helper";
-import { Aspects } from "cdktf";
+import { Aspects, Fn } from "cdktf";
 import { EventualConsistencyWorkaroundAspect } from "../EventualConsistencyWorkaroundAspect";
 
 registerMapping("AWS::IAM::Role", {
@@ -9,7 +9,7 @@ registerMapping("AWS::IAM::Role", {
     const resource = createGuessingResourceMapper(IAM.IamRole, {
       AssumeRolePolicyDocument: (doc) => ({
         tfAttributeName: "assumeRolePolicy",
-        value: JSON.stringify(doc),
+        value: Fn.jsonencode(doc),
       }),
     })(scope, id, props);
 

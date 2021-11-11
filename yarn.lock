@@ -959,16 +959,16 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cdktf/hcl2cdk@0.7.0-pre.382":
-  version "0.7.0-pre.382"
-  resolved "https://registry.yarnpkg.com/@cdktf/hcl2cdk/-/hcl2cdk-0.7.0-pre.382.tgz#f36237518bda1b296882de8ad04cfad876be15bb"
-  integrity sha512-v9/xzVMFK6XZKfjTEDqtsV6N/PZ9wguc8wm85tIFuJjWviURD9US3CpfL8StQxMv90Ambk3IzuBVkQvw/DAaUw==
+"@cdktf/hcl2cdk@0.8.0-pre.2":
+  version "0.8.0-pre.2"
+  resolved "https://registry.yarnpkg.com/@cdktf/hcl2cdk/-/hcl2cdk-0.8.0-pre.2.tgz#b0783c4d71ebab4b9bd2e485adb55d0be147bb59"
+  integrity sha512-YlFZwfBY6LcpEPDDxwwuh7iF7qSRWZACDxWwduxXaofiIQne+LtIa3l0dmoZCfJ/+BWjuyGkYnw4cp1namWDQA==
   dependencies:
     "@babel/generator" "^7.14.5"
     "@babel/template" "^7.14.5"
     "@babel/types" "^7.14.5"
-    "@cdktf/hcl2json" "0.7.0-pre.382"
-    "@cdktf/provider-generator" "0.7.0-pre.382"
+    "@cdktf/hcl2json" "0.8.0-pre.2"
+    "@cdktf/provider-generator" "0.8.0-pre.2"
     camelcase "^6.2.0"
     glob "7.1.7"
     graphology "^0.20.0"
@@ -978,21 +978,21 @@
     reserved-words "^0.1.2"
     zod "^1.11.7"
 
-"@cdktf/hcl2json@0.7.0-pre.382":
-  version "0.7.0-pre.382"
-  resolved "https://registry.yarnpkg.com/@cdktf/hcl2json/-/hcl2json-0.7.0-pre.382.tgz#6a7e6a874d9f16a2dc8be4ff5c6150a69ff666db"
-  integrity sha512-ElxFrIksKUMicyJ9RbRghxbW2gxkA7myhldEi6lOPC7bRMzcu6UxEdCzf7CSqp2515CVVkNNqhp35Zae2W4Zaw==
+"@cdktf/hcl2json@0.8.0-pre.2":
+  version "0.8.0-pre.2"
+  resolved "https://registry.yarnpkg.com/@cdktf/hcl2json/-/hcl2json-0.8.0-pre.2.tgz#e1417c43f53aff132a3522efa21af397f1a19661"
+  integrity sha512-2mMxrqGvPoV/nSS2wgA6bKFxptH+8FzOGbpmBb4rFLQ+HacB2OhG/QHPyjPu7oTo7AjGVe9VWPDckWSwf6n59Q==
   dependencies:
     "@types/node-fetch" "^2.5.8"
     node-fetch "^2.6.1"
 
-"@cdktf/provider-generator@0.7.0-pre.382":
-  version "0.7.0-pre.382"
-  resolved "https://registry.yarnpkg.com/@cdktf/provider-generator/-/provider-generator-0.7.0-pre.382.tgz#c3c65fe162c0ef93bf5d333012bb75427be66e67"
-  integrity sha512-As84tGAaZH23oYjIsJObWuK/chkHOSPEOOf18oJmKoaRHM+b+YeEtgGivtUPMzLQ1i1a89RnCKTqRudKbkUMLA==
+"@cdktf/provider-generator@0.8.0-pre.2":
+  version "0.8.0-pre.2"
+  resolved "https://registry.yarnpkg.com/@cdktf/provider-generator/-/provider-generator-0.8.0-pre.2.tgz#1fa469d849b9a92b330795a44b6910c6ba18176e"
+  integrity sha512-JnG5vdX+VGPHXcjFUpzUwLrKtZtQrWOoPO7eg9mTJoiAJva/huDpEFKqeA8F3vuJlVp2Fa04/QSpfo2gp5QD9A==
   dependencies:
     "@skorfmann/jsii-srcmak" "^0.1.272"
-    cdktf "0.7.0-pre.382"
+    cdktf "0.8.0-pre.2"
     codemaker "^0.22.0"
     fs-extra "^8.1.0"
     is-valid-domain "^0.1.2"
@@ -2544,15 +2544,15 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
-cdktf-cli@0.7.0-pre.382:
-  version "0.7.0-pre.382"
-  resolved "https://registry.yarnpkg.com/cdktf-cli/-/cdktf-cli-0.7.0-pre.382.tgz#bc9bf7b1f3915bd50d66c23d9ad395cf5afa1225"
-  integrity sha512-5HO4T8FWSD4b1NVbp68Q+EUIW195Eni9va4hmo6uXMF8tWUuObIGprJep3mfThJTJCiAPyFA2S2JghAHrRhhTw==
+cdktf-cli@0.8.0-pre.2:
+  version "0.8.0-pre.2"
+  resolved "https://registry.yarnpkg.com/cdktf-cli/-/cdktf-cli-0.8.0-pre.2.tgz#67170f0cfe9ee66f9cdcb9bebf71073ded419280"
+  integrity sha512-RSj3e44KCKTrpGV9Uj+v6CLOLw8240bRVQYfieMlvwuv5X/z/SzoiN5ani2hly8OzNwRMTjNbSsR1wA1c2uGwQ==
   dependencies:
     "@apollo/client" "^3.3.21"
-    "@cdktf/hcl2cdk" "0.7.0-pre.382"
-    "@cdktf/hcl2json" "0.7.0-pre.382"
-    "@cdktf/provider-generator" "0.7.0-pre.382"
+    "@cdktf/hcl2cdk" "0.8.0-pre.2"
+    "@cdktf/hcl2json" "0.8.0-pre.2"
+    "@cdktf/provider-generator" "0.8.0-pre.2"
     "@graphql-tools/graphql-file-loader" "^6.2.7"
     "@graphql-tools/load" "^6.2.8"
     "@npmcli/ci-detect" "^1.3.0"
@@ -2563,7 +2563,7 @@ cdktf-cli@0.7.0-pre.382:
     apollo-server-core "^3.0.2"
     apollo-server-express "^3.0.2"
     archiver "^5.1.0"
-    cdktf "0.7.0-pre.382"
+    cdktf "0.8.0-pre.2"
     chalk "^4.1.0"
     chokidar "^3.5.2"
     cli-spinners "2.6.0"
@@ -2588,7 +2588,7 @@ cdktf-cli@0.7.0-pre.382:
     log4js "^6.3.0"
     open "^7.0.4"
     parse-gitignore "^1.0.1"
-    react "<17.0.0"
+    react "^17.0.2"
     semver "^7.3.5"
     sscaff "^1.2.0"
     stream-buffers "^3.0.2"
@@ -2600,10 +2600,10 @@ cdktf-cli@0.7.0-pre.382:
     yargs "^17.0"
     zod "^1.11.7"
 
-cdktf@0.7.0-pre.382:
-  version "0.7.0-pre.382"
-  resolved "https://registry.yarnpkg.com/cdktf/-/cdktf-0.7.0-pre.382.tgz#2ed6bfa6492eedd26f9eea90ea0df0d62caf8273"
-  integrity sha512-wh7WcbkwzXoUOlSV+rlfhKOfvrn5tR8XVJdNpqgu1R1ASe4/LtOviwl17+5LOI9O2IxHa5Ekseng+SYvXeFtSw==
+cdktf@0.8.0-pre.2:
+  version "0.8.0-pre.2"
+  resolved "https://registry.yarnpkg.com/cdktf/-/cdktf-0.8.0-pre.2.tgz#5885f47a9cbbe42b82ba939e866ccbf87af4fd27"
+  integrity sha512-tHC5NWMA6edtPSJjp4c0QtaYeDIHC2URUwQFolhQNApOfqMu/XY3H0882lkwoj2AciFq5YOy5ZYjgtdBkVjASw==
   dependencies:
     archiver "5.3.0"
 
@@ -6838,7 +6838,7 @@ prompts@^2.0.1, prompts@^2.4.1:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.5.10, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -6967,14 +6967,13 @@ react-reconciler@^0.26.2:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
-react@<17.0.0:
-  version "16.14.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
-  integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
+react@^17.0.2:
+  version "17.0.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
+  integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
-    prop-types "^15.6.2"
 
 read-package-json-fast@^2.0.1:
   version "2.0.3"
