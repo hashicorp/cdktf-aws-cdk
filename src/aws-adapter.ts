@@ -10,6 +10,7 @@ import {
   Fn,
   TerraformLocal,
   TerraformOutput,
+  Token,
 } from "cdktf";
 import {
   conditional,
@@ -236,6 +237,12 @@ class TerraformHost extends Construct {
   }
 
   private processIntrinsics(obj: any): any {
+    if (typeof obj === "string" && !Token.isUnresolved(obj)) {
+      // we wrap strings as they might contain stringified json (e.g. for step functions)
+      // which contains quotes (") which need to be escaped
+      return Fn.rawString(obj); 
+    }
+
     if (typeof obj !== "object") {
       return obj;
     }
