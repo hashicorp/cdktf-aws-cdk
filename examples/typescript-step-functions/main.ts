@@ -1,5 +1,5 @@
 import { Construct } from "constructs";
-import { App, TerraformStack } from "cdktf";
+import { App, Fn, TerraformOutput, TerraformStack } from "cdktf";
 import {
   Duration,
   aws_lambda,
