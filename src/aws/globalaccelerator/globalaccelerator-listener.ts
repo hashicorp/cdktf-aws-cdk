@@ -1,0 +1,277 @@
+// generated from terraform resource schema
+
+import { Construct } from 'constructs';
+import * as cdktf from 'cdktf';
+
+/**
+* AWS Global Accelerator
+*/
+export interface GlobalacceleratorListenerConfig extends cdktf.TerraformMetaArguments {
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/globalaccelerator_listener.html#accelerator_arn GlobalacceleratorListener#accelerator_arn}
+  */
+  readonly acceleratorArn: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/globalaccelerator_listener.html#client_affinity GlobalacceleratorListener#client_affinity}
+  */
+  readonly clientAffinity?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/globalaccelerator_listener.html#protocol GlobalacceleratorListener#protocol}
+  */
+  readonly protocol: string;
+  /**
+  * port_range block
+  * 
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/globalaccelerator_listener.html#port_range GlobalacceleratorListener#port_range}
+  */
+  readonly portRange: GlobalacceleratorListenerPortRange[];
+  /**
+  * timeouts block
+  * 
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/globalaccelerator_listener.html#timeouts GlobalacceleratorListener#timeouts}
+  */
+  readonly timeouts?: GlobalacceleratorListenerTimeouts;
+}
+export interface GlobalacceleratorListenerPortRange {
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/globalaccelerator_listener.html#from_port GlobalacceleratorListener#from_port}
+  */
+  readonly fromPort?: number;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/globalaccelerator_listener.html#to_port GlobalacceleratorListener#to_port}
+  */
+  readonly toPort?: number;
+}
+
+export function globalacceleratorListenerPortRangeToTerraform(struct?: GlobalacceleratorListenerPortRange): any {
+  if (!cdktf.canInspect(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  return {
+    from_port: cdktf.numberToTerraform(struct!.fromPort),
+    to_port: cdktf.numberToTerraform(struct!.toPort),
+  }
+}
+
+export interface GlobalacceleratorListenerTimeouts {
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/globalaccelerator_listener.html#create GlobalacceleratorListener#create}
+  */
+  readonly create?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/globalaccelerator_listener.html#delete GlobalacceleratorListener#delete}
+  */
+  readonly delete?: string;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/globalaccelerator_listener.html#update GlobalacceleratorListener#update}
+  */
+  readonly update?: string;
+}
+
+export function globalacceleratorListenerTimeoutsToTerraform(struct?: GlobalacceleratorListenerTimeoutsOutputReference | GlobalacceleratorListenerTimeouts): any {
+  if (!cdktf.canInspect(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  return {
+    create: cdktf.stringToTerraform(struct!.create),
+    delete: cdktf.stringToTerraform(struct!.delete),
+    update: cdktf.stringToTerraform(struct!.update),
+  }
+}
+
+export class GlobalacceleratorListenerTimeoutsOutputReference extends cdktf.ComplexObject {
+  /**
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  * @param isSingleItem True if this is a block, false if it's a list
+  */
+  public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
+    super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  // create - computed: false, optional: true, required: false
+  private _create?: string | undefined; 
+  public get create() {
+    return this.getStringAttribute('create');
+  }
+  public set create(value: string | undefined) {
+    this._create = value;
+  }
+  public resetCreate() {
+    this._create = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get createInput() {
+    return this._create
+  }
+
+  // delete - computed: false, optional: true, required: false
+  private _delete?: string | undefined; 
+  public get delete() {
+    return this.getStringAttribute('delete');
+  }
+  public set delete(value: string | undefined) {
+    this._delete = value;
+  }
+  public resetDelete() {
+    this._delete = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get deleteInput() {
+    return this._delete
+  }
+
+  // update - computed: false, optional: true, required: false
+  private _update?: string | undefined; 
+  public get update() {
+    return this.getStringAttribute('update');
+  }
+  public set update(value: string | undefined) {
+    this._update = value;
+  }
+  public resetUpdate() {
+    this._update = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get updateInput() {
+    return this._update
+  }
+}
+
+/**
+* Represents a {@link https://www.terraform.io/docs/providers/aws/r/globalaccelerator_listener.html aws_globalaccelerator_listener}
+*/
+export class GlobalacceleratorListener extends cdktf.TerraformResource {
+
+  // =================
+  // STATIC PROPERTIES
+  // =================
+  public static readonly tfResourceType: string = "aws_globalaccelerator_listener";
+
+  // ===========
+  // INITIALIZER
+  // ===========
+
+  /**
+  * Create a new {@link https://www.terraform.io/docs/providers/aws/r/globalaccelerator_listener.html aws_globalaccelerator_listener} Resource
+  *
+  * @param scope The scope in which to define this construct
+  * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
+  * @param options GlobalacceleratorListenerConfig
+  */
+  public constructor(scope: Construct, id: string, config: GlobalacceleratorListenerConfig) {
+    super(scope, id, {
+      terraformResourceType: 'aws_globalaccelerator_listener',
+      terraformGeneratorMetadata: {
+        providerName: 'aws'
+      },
+      provider: config.provider,
+      dependsOn: config.dependsOn,
+      count: config.count,
+      lifecycle: config.lifecycle
+    });
+    this._acceleratorArn = config.acceleratorArn;
+    this._clientAffinity = config.clientAffinity;
+    this._protocol = config.protocol;
+    this._portRange = config.portRange;
+    this._timeouts = config.timeouts;
+  }
+
+  // ==========
+  // ATTRIBUTES
+  // ==========
+
+  // accelerator_arn - computed: false, optional: false, required: true
+  private _acceleratorArn?: string; 
+  public get acceleratorArn() {
+    return this.getStringAttribute('accelerator_arn');
+  }
+  public set acceleratorArn(value: string) {
+    this._acceleratorArn = value;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get acceleratorArnInput() {
+    return this._acceleratorArn
+  }
+
+  // client_affinity - computed: false, optional: true, required: false
+  private _clientAffinity?: string | undefined; 
+  public get clientAffinity() {
+    return this.getStringAttribute('client_affinity');
+  }
+  public set clientAffinity(value: string | undefined) {
+    this._clientAffinity = value;
+  }
+  public resetClientAffinity() {
+    this._clientAffinity = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get clientAffinityInput() {
+    return this._clientAffinity
+  }
+
+  // id - computed: true, optional: true, required: false
+  public get id() {
+    return this.getStringAttribute('id');
+  }
+
+  // protocol - computed: false, optional: false, required: true
+  private _protocol?: string; 
+  public get protocol() {
+    return this.getStringAttribute('protocol');
+  }
+  public set protocol(value: string) {
+    this._protocol = value;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get protocolInput() {
+    return this._protocol
+  }
+
+  // port_range - computed: false, optional: false, required: true
+  private _portRange?: GlobalacceleratorListenerPortRange[]; 
+  public get portRange() {
+    // Getting the computed value is not yet implemented
+    return this.interpolationForAttribute('port_range') as any;
+  }
+  public set portRange(value: GlobalacceleratorListenerPortRange[]) {
+    this._portRange = value;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get portRangeInput() {
+    return this._portRange
+  }
+
+  // timeouts - computed: false, optional: true, required: false
+  private _timeouts?: GlobalacceleratorListenerTimeouts | undefined; 
+  private __timeoutsOutput = new GlobalacceleratorListenerTimeoutsOutputReference(this as any, "timeouts", true);
+  public get timeouts() {
+    return this.__timeoutsOutput;
+  }
+  public putTimeouts(value: GlobalacceleratorListenerTimeouts | undefined) {
+    this._timeouts = value;
+  }
+  public resetTimeouts() {
+    this._timeouts = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get timeoutsInput() {
+    return this._timeouts
+  }
+
+  // =========
+  // SYNTHESIS
+  // =========
+
+  protected synthesizeAttributes(): { [name: string]: any } {
+    return {
+      accelerator_arn: cdktf.stringToTerraform(this._acceleratorArn),
+      client_affinity: cdktf.stringToTerraform(this._clientAffinity),
+      protocol: cdktf.stringToTerraform(this._protocol),
+      port_range: cdktf.listMapper(globalacceleratorListenerPortRangeToTerraform)(this._portRange),
+      timeouts: globalacceleratorListenerTimeoutsToTerraform(this._timeouts),
+    };
+  }
+}

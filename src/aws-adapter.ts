@@ -23,8 +23,7 @@ import {
 import { CloudFormationResource, CloudFormationTemplate } from "./cfn";
 import { findMapping, Mapping } from "./mapping";
 
-import { DataSources } from "./aws/DataSources";
-import { AwsProvider } from "./aws";
+import { datasources, AwsProvider } from "./aws";
 
 function toTerraformIdentifier(identifier: string) {
   return toSnakeCase(identifier).replace(/-/g, "_");
@@ -52,11 +51,11 @@ export class AwsTerraformAdapter extends Stack {
 }
 
 class TerraformHost extends Construct {
-  private awsPartition?: DataSources.DataAwsPartition;
-  private awsRegion?: DataSources.DataAwsRegion;
-  private awsCallerIdentity?: DataSources.DataAwsCallerIdentity;
+  private awsPartition?: datasources.DataAwsPartition;
+  private awsRegion?: datasources.DataAwsRegion;
+  private awsCallerIdentity?: datasources.DataAwsCallerIdentity;
   private awsAvailabilityZones: {
-    [region: string]: DataSources.DataAwsAvailabilityZones;
+    [region: string]: datasources.DataAwsAvailabilityZones;
   } = {};
   private regionalAwsProviders: { [region: string]: AwsProvider } = {};
 
@@ -113,7 +112,7 @@ class TerraformHost extends Construct {
 
   private getAvailabilityZones(
     region?: string
-  ): DataSources.DataAwsAvailabilityZones {
+  ): datasources.DataAwsAvailabilityZones {
     const DEFAULT_REGION_KEY = "default_region";
     if (!region) {
       region = DEFAULT_REGION_KEY;
@@ -121,7 +120,7 @@ class TerraformHost extends Construct {
 
     if (!this.awsAvailabilityZones[region]) {
       this.awsAvailabilityZones[region] =
-        new DataSources.DataAwsAvailabilityZones(
+        new datasources.DataAwsAvailabilityZones(
           this,
           `aws_azs_${toTerraformIdentifier(region)}`,
           {
@@ -305,20 +304,20 @@ class TerraformHost extends Construct {
       case "AWS::Partition": {
         this.awsPartition =
           this.awsPartition ??
-          new DataSources.DataAwsPartition(this, "aws-partition");
+          new datasources.DataAwsPartition(this, "aws-partition");
         return this.awsPartition.partition;
       }
 
       case "AWS::Region": {
         this.awsRegion =
-          this.awsRegion ?? new DataSources.DataAwsRegion(this, "aws-region");
+          this.awsRegion ?? new datasources.DataAwsRegion(this, "aws-region");
         return this.awsRegion.name;
       }
 
       case "AWS::AccountId": {
         this.awsCallerIdentity =
           this.awsCallerIdentity ??
-          new DataSources.DataAwsCallerIdentity(this, "aws-caller-identity");
+          new datasources.DataAwsCallerIdentity(this, "aws-caller-identity");
         return this.awsCallerIdentity.accountId;
       }
 

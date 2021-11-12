@@ -196,7 +196,7 @@ export interface AwsProviderAssumeRole {
   readonly transitiveTagKeys?: string[];
 }
 
-function awsProviderAssumeRoleToTerraform(struct?: AwsProviderAssumeRoleOutputReference | AwsProviderAssumeRole): any {
+export function awsProviderAssumeRoleToTerraform(struct?: AwsProviderAssumeRoleOutputReference | AwsProviderAssumeRole): any {
   if (!cdktf.canInspect(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
@@ -360,7 +360,7 @@ export interface AwsProviderDefaultTags {
   readonly tags?: { [key: string]: string } | cdktf.IResolvable;
 }
 
-function awsProviderDefaultTagsToTerraform(struct?: AwsProviderDefaultTagsOutputReference | AwsProviderDefaultTags): any {
+export function awsProviderDefaultTagsToTerraform(struct?: AwsProviderDefaultTagsOutputReference | AwsProviderDefaultTags): any {
   if (!cdktf.canInspect(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
@@ -2193,7 +2193,7 @@ export interface AwsProviderEndpoints {
   readonly xray?: string;
 }
 
-function awsProviderEndpointsToTerraform(struct?: AwsProviderEndpoints): any {
+export function awsProviderEndpointsToTerraform(struct?: AwsProviderEndpoints): any {
   if (!cdktf.canInspect(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
@@ -2516,7 +2516,7 @@ export interface AwsProviderIgnoreTags {
   readonly keys?: string[];
 }
 
-function awsProviderIgnoreTagsToTerraform(struct?: AwsProviderIgnoreTagsOutputReference | AwsProviderIgnoreTags): any {
+export function awsProviderIgnoreTagsToTerraform(struct?: AwsProviderIgnoreTagsOutputReference | AwsProviderIgnoreTags): any {
   if (!cdktf.canInspect(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
     throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
