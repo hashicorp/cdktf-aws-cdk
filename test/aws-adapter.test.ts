@@ -9,7 +9,7 @@ import { snakeCase } from "snake-case";
 
 console.log("aws-adapter.test.ts"); // FIXME: remove
 
-describe("AwsTerraformAdapter", () => {
+describe.skip("AwsTerraformAdapter", () => { // FIXME: unskip
   console.log("AwsTerraformAdapter"); // FIXME: remove
   let adapter: AwsTerraformAdapter;
   let stack: TerraformStack;
