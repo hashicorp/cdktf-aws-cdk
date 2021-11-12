@@ -36,7 +36,7 @@
       "name": "compile",
       "description": "Only compile",
       "env": {
-        "NODE_OPTIONS": "--max-old-space-size=7516"
+        "NODE_OPTIONS": "--max-old-space-size=7016"
       },
       "steps": [
         {
@@ -48,7 +48,7 @@
       "name": "test",
       "description": "Run tests",
       "env": {
-        "NODE_OPTIONS": "--max-old-space-size=7516"
+        "NODE_OPTIONS": "--max-old-space-size=7016"
       },
       "steps": [
         {

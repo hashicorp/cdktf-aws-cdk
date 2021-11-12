@@ -99,7 +99,7 @@ export class CdktfAwsCdkProject extends JsiiProject {
     });
 
     [this.compileTask, this.testTask].forEach((task) =>
-      task.env("NODE_OPTIONS", "--max-old-space-size=7516")
+      task.env("NODE_OPTIONS", "--max-old-space-size=7016")
     );
 
     const testExamples = this.addTask("examples:test", {
