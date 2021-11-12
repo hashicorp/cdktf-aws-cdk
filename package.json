@@ -47,7 +47,7 @@
     "cdktf": "0.8.0-pre.2",
     "cdktf-cli": "0.8.0-pre.2",
     "constructs": "^10.0.0",
-    "jest": "^27.3.1",
+    "jest": "27.0.1",
     "jest-junit": "^12",
     "jsii": "^1.43.0",
     "jsii-diff": "^1.43.0",
@@ -56,7 +56,6 @@
     "npm-check-updates": "^11",
     "projen": "^0.31.7",
     "standard-version": "^9",
-    "ts-jest": "^27.0.7",
     "ts-node": "^9",
     "typescript": "^3.9.10"
   },
@@ -106,14 +105,11 @@
       "<rootDir>/examples",
       ".yalc",
       ".+\\.d\\.ts",
-      "src/aws",
-      "src/time"
+      "lib/aws",
+      "lib/time"
     ],
-    "verbose": true,
-    "maxConcurrency": 1,
     "testMatch": [
-      "**/__tests__/**/*.ts?(x)",
-      "**/?(*.)+(spec|test).ts?(x)"
+      "**/lib/tests/**/?(*.)+(spec|test).js?(x)"
     ],
     "clearMocks": true,
     "collectCoverage": true,
@@ -125,7 +121,8 @@
     ],
     "coverageDirectory": "coverage",
     "watchPathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "/src/"
     ],
     "reporters": [
       "default",
@@ -136,12 +133,7 @@
         }
       ]
     ],
-    "preset": "ts-jest",
-    "globals": {
-      "ts-jest": {
-        "tsconfig": "tsconfig.dev.json"
-      }
-    }
+    "snapshotResolver": "./.projen/jest-snapshot-resolver.js"
   },
   "types": "lib/index.d.ts",
   "stability": "stable",

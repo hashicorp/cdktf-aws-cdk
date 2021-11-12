@@ -1,9 +1,9 @@
-import { AwsTerraformAdapter } from "../src/aws-adapter";
+import { AwsTerraformAdapter } from "../aws-adapter";
 import { TerraformResource, TerraformStack, Testing } from "cdktf";
 import { CfnElement } from "aws-cdk-lib";
-import { CloudFormationTemplate } from "../src/cfn";
+import { CloudFormationTemplate } from "../cfn";
 import { Construct } from "constructs";
-import { registerMapping } from "../src/mapping";
+import { registerMapping } from "../mapping";
 import { camelCase } from "camel-case";
 import { snakeCase } from "snake-case";
 

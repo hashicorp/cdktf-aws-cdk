@@ -36,7 +36,7 @@
       "name": "compile",
       "description": "Only compile",
       "env": {
-        "NODE_OPTIONS": "--max-old-space-size=7516"
+        "NODE_OPTIONS": "--max-old-space-size=6144"
       },
       "steps": [
         {
@@ -48,12 +48,10 @@
       "name": "test",
       "description": "Run tests",
       "env": {
-        "NODE_OPTIONS": "--max-old-space-size=7516"
+        "NODE_OPTIONS": "--max-old-space-size=6144",
+        "DEBUG": "jest"
       },
       "steps": [
-        {
-          "exec": "rm -fr lib/"
-        },
         {
           "exec": "jest --passWithNoTests --all --updateSnapshot --coverageProvider=v8"
         }
@@ -67,10 +65,10 @@
           "exec": "npx projen"
         },
         {
-          "spawn": "test"
+          "spawn": "compile"
         },
         {
-          "spawn": "compile"
+          "spawn": "test"
         },
         {
           "spawn": "package"
@@ -210,7 +208,15 @@
       "name": "examples:test",
       "steps": [
         {
-          "exec": "yarn test:local"
+          "exec": "yarn test:ci"
+        },
+        {
+          "exec": "yarn test:ci",
+          "cwd": "examples/typescript-manual-mapping"
+        },
+        {
+          "exec": "yarn test:ci",
+          "cwd": "examples/typescript-step-functions"
         }
       ],
       "cwd": "examples/typescript-cron-lambda"
@@ -265,7 +271,7 @@
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @aws-sdk/client-cloudformation @types/debug @types/jest @types/node aws-cdk-lib cdktf-cli cdktf constructs jest jest-junit jsii jsii-diff jsii-docgen jsii-pacmak npm-check-updates standard-version ts-jest ts-node typescript change-case codemaker debug aws-cdk-lib cdktf constructs"
+          "exec": "yarn upgrade @aws-sdk/client-cloudformation @types/debug @types/jest @types/node aws-cdk-lib cdktf-cli cdktf constructs jest jest-junit jsii jsii-diff jsii-docgen jsii-pacmak npm-check-updates standard-version ts-node typescript change-case codemaker debug aws-cdk-lib cdktf constructs"
         },
         {
           "exec": "npx projen"

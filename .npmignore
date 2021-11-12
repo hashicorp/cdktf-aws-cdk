@@ -5,7 +5,7 @@ junit.xml
 /coverage/
 /dist/changelog.md
 /dist/version.txt
-/test/
+/src/tests/
 /tsconfig.dev.json
 /src/
 !/lib/
@@ -18,6 +18,7 @@ dist
 /.idea/
 /.projenrc.js
 tsconfig.tsbuildinfo
+/lib/tests/
 !.jsii
 scripts
 examples

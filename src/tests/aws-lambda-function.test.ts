@@ -1,7 +1,7 @@
 import { aws_lambda, Duration } from "aws-cdk-lib";
 import { Testing } from "cdktf";
 import "cdktf/lib/testing/adapters/jest";
-import { AwsTerraformAdapter } from "../src/aws-adapter";
+import { AwsTerraformAdapter } from "../aws-adapter";
 
 describe("lambda function", () => {
   it("should synthesize", () => {

@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { pascalCase } from "change-case";
-import { JsiiProject, JsiiProjectOptions, TypeScriptProject } from "projen";
+import {
+  JsiiProject,
+  JsiiProjectOptions,
+  TypeScriptProject,
+} from "projen";
 import { AutoMerge } from "./auto-merge";
 import { CdktfConfig } from "./cdktf-config";
 import { ProviderUpgrade } from "./provider-upgrade";
@@ -43,6 +47,7 @@ export class CdktfAwsCdkProject extends JsiiProject {
       keywords: ["cdktf", "terraform", "cdk", "aws-cdk", "aws"],
       sampleCode: false,
       jest: true,
+      testdir: "src/tests",
       jestOptions: {
         jestConfig: {
           setupFilesAfterEnv: ["./setupJest.js"],
@@ -61,11 +66,9 @@ export class CdktfAwsCdkProject extends JsiiProject {
             ".yalc",
             ".+\\.d\\.ts",
             // generated provider bindings
-            "src/aws",
-            "src/time",
+            "lib/aws",
+            "lib/time",
           ],
-          verbose: true,
-          maxConcurrency: 1,
         },
       },
       tsconfigDev: {
@@ -107,13 +110,16 @@ export class CdktfAwsCdkProject extends JsiiProject {
     });
 
     [this.compileTask, this.testTask].forEach((task) =>
-      task.env("NODE_OPTIONS", "--max-old-space-size=7516")
+      task.env("NODE_OPTIONS", "--max-old-space-size=6144")
     );
+    this.testTask.env("DEBUG", "jest");
 
     const testExamples = this.addTask("examples:test", {
       cwd: "examples/typescript-cron-lambda",
-      exec: "yarn test:local",
+      exec: "yarn test:ci",
     });
+    testExamples.exec('yarn test:ci', { cwd: 'examples/typescript-manual-mapping'});
+    testExamples.exec('yarn test:ci', { cwd: 'examples/typescript-step-functions'});
 
     this.buildTask.spawn(testExamples);
 
