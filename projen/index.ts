@@ -55,6 +55,15 @@ export class CdktfAwsCdkProject extends JsiiProject {
           // transform: {
           //   "^.+\\.tsx?$": "ts-jest",
           // },
+          coveragePathIgnorePatterns: [
+            "/node_modules/",
+            "<rootDir>/examples",
+            ".yalc",
+            ".+\\.d\\.ts",
+            // generated provider bindings
+            "src/aws",
+            "src/time",
+          ],
         },
       },
       tsconfigDev: {

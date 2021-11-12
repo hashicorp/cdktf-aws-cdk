@@ -101,6 +101,14 @@
       ".yalc",
       ".+\\.d\\.ts"
     ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/examples",
+      ".yalc",
+      ".+\\.d\\.ts",
+      "src/aws",
+      "src/time"
+    ],
     "testMatch": [
       "**/__tests__/**/*.ts?(x)",
       "**/?(*.)+(spec|test).ts?(x)"
@@ -114,12 +122,6 @@
       "text"
     ],
     "coverageDirectory": "coverage",
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "<rootDir>/examples",
-      ".yalc",
-      ".+\\.d\\.ts"
-    ],
     "watchPathIgnorePatterns": [
       "/node_modules/"
     ],
