@@ -64,6 +64,8 @@ export class CdktfAwsCdkProject extends JsiiProject {
             "src/aws",
             "src/time",
           ],
+          verbose: true,
+          maxConcurrency: 1,
         },
       },
       tsconfigDev: {
