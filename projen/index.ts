@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { pascalCase } from "change-case";
-import { JsiiProject, JsiiProjectOptions, TypeScriptProject } from "projen";
+import { JsiiProject, JsiiProjectOptions, LogLevel, TypeScriptProject } from "projen";
 import { AutoMerge } from "./auto-merge";
 import { CdktfConfig } from "./cdktf-config";
 import { ProviderUpgrade } from "./provider-upgrade";
@@ -42,6 +42,7 @@ export class CdktfAwsCdkProject extends JsiiProject {
       description: `Adapter for using AWS CDK constructs in Terraform CDK (cdktf) projects`,
       keywords: ["cdktf", "terraform", "cdk", "aws-cdk", "aws"],
       sampleCode: false,
+      logging: { level: LogLevel.VERBOSE }, // FIXME: remove
       jest: true,
       jestOptions: {
         jestConfig: {
