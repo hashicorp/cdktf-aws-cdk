@@ -55,6 +55,8 @@ export class CdktfAwsCdkProject extends JsiiProject {
           // transform: {
           //   "^.+\\.tsx?$": "ts-jest",
           // },
+          verbose: true,
+          maxConcurrency: 1,
         },
       },
       tsconfigDev: {
