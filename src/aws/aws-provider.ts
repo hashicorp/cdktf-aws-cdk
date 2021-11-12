@@ -424,6 +424,12 @@ export interface AwsProviderEndpoints {
   /**
   * Use this to override the default service endpoint URL
   * 
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws#amp AwsProvider#amp}
+  */
+  readonly amp?: string;
+  /**
+  * Use this to override the default service endpoint URL
+  * 
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws#amplify AwsProvider#amplify}
   */
   readonly amplify?: string;
@@ -1027,6 +1033,18 @@ export interface AwsProviderEndpoints {
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws#es AwsProvider#es}
   */
   readonly es?: string;
+  /**
+  * Use this to override the default service endpoint URL
+  * 
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws#eventbridge AwsProvider#eventbridge}
+  */
+  readonly eventbridge?: string;
+  /**
+  * Use this to override the default service endpoint URL
+  * 
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws#events AwsProvider#events}
+  */
+  readonly events?: string;
   /**
   * Use this to override the default service endpoint URL
   * 
@@ -2185,6 +2203,7 @@ function awsProviderEndpointsToTerraform(struct?: AwsProviderEndpoints): any {
     acm: cdktf.stringToTerraform(struct!.acm),
     acmpca: cdktf.stringToTerraform(struct!.acmpca),
     alexaforbusiness: cdktf.stringToTerraform(struct!.alexaforbusiness),
+    amp: cdktf.stringToTerraform(struct!.amp),
     amplify: cdktf.stringToTerraform(struct!.amplify),
     amplifybackend: cdktf.stringToTerraform(struct!.amplifybackend),
     apigateway: cdktf.stringToTerraform(struct!.apigateway),
@@ -2286,6 +2305,8 @@ function awsProviderEndpointsToTerraform(struct?: AwsProviderEndpoints): any {
     emr: cdktf.stringToTerraform(struct!.emr),
     emrcontainers: cdktf.stringToTerraform(struct!.emrcontainers),
     es: cdktf.stringToTerraform(struct!.es),
+    eventbridge: cdktf.stringToTerraform(struct!.eventbridge),
+    events: cdktf.stringToTerraform(struct!.events),
     finspace: cdktf.stringToTerraform(struct!.finspace),
     finspacedata: cdktf.stringToTerraform(struct!.finspacedata),
     firehose: cdktf.stringToTerraform(struct!.firehose),
