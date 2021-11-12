@@ -3,8 +3,12 @@ import { Testing } from "cdktf";
 import "cdktf/lib/testing/adapters/jest";
 import { AwsTerraformAdapter } from "../src/aws-adapter";
 
+console.log("aws-lambda-function.test.ts"); // FIXME: remove
+
 describe("lambda function", () => {
+  console.log("lambda function"); // FIXME: remove
   it("should synthesize", () => {
+    console.log("> should synth"); // FIXME: remove
     const res = Testing.synthScope((scope) => {
       const awsAdapter = new AwsTerraformAdapter(scope, "adapter");
 
@@ -17,6 +21,7 @@ describe("lambda function", () => {
         runtime: aws_lambda.Runtime.PYTHON_3_6,
       });
     });
+    console.log("after synth"); // FIXME: remove
 
     expect(res).toMatchInlineSnapshot(`
       "{

@@ -7,7 +7,10 @@ import { registerMapping } from "../src/mapping";
 import { camelCase } from "camel-case";
 import { snakeCase } from "snake-case";
 
+console.log("aws-adapter.test.ts"); // FIXME: remove
+
 describe("AwsTerraformAdapter", () => {
+  console.log("AwsTerraformAdapter"); // FIXME: remove
   let adapter: AwsTerraformAdapter;
   let stack: TerraformStack;
   beforeEach(() => {

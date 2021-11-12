@@ -7,6 +7,8 @@ import { Testing } from "cdktf";
 import "cdktf/lib/testing/adapters/jest";
 import { AwsTerraformAdapter } from "../src/aws-adapter";
 
+console.log("aws-ecs.test.ts"); // FIXME: remove
+
 // mappings are not yet finished, so testing them makes no sense.
 describe.skip("ecs cluster", () => {
   it("should synthesize", () => {
