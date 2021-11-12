@@ -77,9 +77,6 @@
         },
         {
           "spawn": "docgen"
-        },
-        {
-          "spawn": "examples:test"
         }
       ]
     },

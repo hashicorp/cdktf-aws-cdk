@@ -106,7 +106,7 @@ export class CdktfAwsCdkProject extends JsiiProject {
       exec: "yarn test:local",
     });
 
-    this.buildTask.spawn(testExamples);
+    // this.buildTask.spawn(testExamples); FIXME: readd
 
     // for local developing (e.g. linking local changes to cdktf)
     this.addGitIgnore(".yalc");
