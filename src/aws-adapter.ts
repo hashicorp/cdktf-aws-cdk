@@ -10,6 +10,7 @@ import {
   Fn,
   TerraformLocal,
   TerraformOutput,
+  Token,
 } from "cdktf";
 import {
   conditional,
@@ -22,8 +23,7 @@ import {
 import { CloudFormationResource, CloudFormationTemplate } from "./cfn";
 import { findMapping, Mapping } from "./mapping";
 
-import { DataSources } from "./aws/DataSources";
-import { AwsProvider } from "./aws";
+import { datasources, AwsProvider } from "./aws";
 
 function toTerraformIdentifier(identifier: string) {
   return toSnakeCase(identifier).replace(/-/g, "_");
@@ -51,11 +51,11 @@ export class AwsTerraformAdapter extends Stack {
 }
 
 class TerraformHost extends Construct {
-  private awsPartition?: DataSources.DataAwsPartition;
-  private awsRegion?: DataSources.DataAwsRegion;
-  private awsCallerIdentity?: DataSources.DataAwsCallerIdentity;
+  private awsPartition?: datasources.DataAwsPartition;
+  private awsRegion?: datasources.DataAwsRegion;
+  private awsCallerIdentity?: datasources.DataAwsCallerIdentity;
   private awsAvailabilityZones: {
-    [region: string]: DataSources.DataAwsAvailabilityZones;
+    [region: string]: datasources.DataAwsAvailabilityZones;
   } = {};
   private regionalAwsProviders: { [region: string]: AwsProvider } = {};
 
@@ -110,23 +110,26 @@ class TerraformHost extends Construct {
     return this.regionalAwsProviders[region];
   }
 
-  private getAvailabilityZones(region?: string): DataSources.DataAwsAvailabilityZones {
+  private getAvailabilityZones(
+    region?: string
+  ): datasources.DataAwsAvailabilityZones {
     const DEFAULT_REGION_KEY = "default_region";
     if (!region) {
       region = DEFAULT_REGION_KEY;
     }
 
     if (!this.awsAvailabilityZones[region]) {
-      this.awsAvailabilityZones[region] = new DataSources.DataAwsAvailabilityZones(
-        this,
-        `aws_azs_${toTerraformIdentifier(region)}`,
-        {
-          provider:
-            region === DEFAULT_REGION_KEY
-              ? undefined
-              : this.getRegionalAwsProvider(region),
-        }
-      );
+      this.awsAvailabilityZones[region] =
+        new datasources.DataAwsAvailabilityZones(
+          this,
+          `aws_azs_${toTerraformIdentifier(region)}`,
+          {
+            provider:
+              region === DEFAULT_REGION_KEY
+                ? undefined
+                : this.getRegionalAwsProvider(region),
+          }
+        );
     }
     return this.awsAvailabilityZones[region];
   }
@@ -236,6 +239,14 @@ class TerraformHost extends Construct {
   }
 
   private processIntrinsics(obj: any): any {
+    if (typeof obj === "string" && !Token.isUnresolved(obj)) {
+      // we wrap strings if they contain stringified json (e.g. for step functions)
+      // (which contains quotes (") which need to be escaped)
+      // or if they contain `${` which needs to be escaped for Terraform strings as well
+      if (obj.includes('"') || obj.includes("${")) return Fn.rawString(obj);
+      else return obj;
+    }
+
     if (typeof obj !== "object") {
       return obj;
     }
@@ -292,20 +303,21 @@ class TerraformHost extends Construct {
     switch (ref) {
       case "AWS::Partition": {
         this.awsPartition =
-          this.awsPartition ?? new DataSources.DataAwsPartition(this, "aws-partition");
+          this.awsPartition ??
+          new datasources.DataAwsPartition(this, "aws-partition");
         return this.awsPartition.partition;
       }
 
       case "AWS::Region": {
         this.awsRegion =
-          this.awsRegion ?? new DataSources.DataAwsRegion(this, "aws-region");
+          this.awsRegion ?? new datasources.DataAwsRegion(this, "aws-region");
         return this.awsRegion.name;
       }
 
       case "AWS::AccountId": {
         this.awsCallerIdentity =
           this.awsCallerIdentity ??
-          new DataSources.DataAwsCallerIdentity(this, "aws-caller-identity");
+          new datasources.DataAwsCallerIdentity(this, "aws-caller-identity");
         return this.awsCallerIdentity.accountId;
       }
 
@@ -389,10 +401,7 @@ class TerraformHost extends Construct {
       case "Fn::Sub": {
         const [rawString, replacementMap]: [string, object] = params;
 
-        let resultString: string | IResolvable = rawString.replace(
-          /\${/g,
-          "$$$${"
-        ); // escape ${} as $${} so Terraform does not interpolate it ($$ is needed to escape a single $)
+        let resultString: string | IResolvable = rawString;
 
         // replacementMap is an object
         Object.entries(replacementMap).map(([rawVarName, rawVarValue]) => {
@@ -407,7 +416,7 @@ class TerraformHost extends Construct {
 
           resultString = Fn.replace(
             resultString,
-            "$${" + varName + "}",
+            Fn.rawString("${" + varName + "}"),
             varValue
           );
         });
@@ -416,8 +425,8 @@ class TerraformHost extends Construct {
         // see: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-sub.html
         resultString = Fn.replace(
           resultString,
-          "/\\\\$\\\\{!(\\\\w+)\\\\}/",
-          "$${$1}"
+          Fn.rawString("/\\\\$\\\\{!(\\\\w+)\\\\}/"),
+          Fn.rawString("${$1}")
         );
         // in HCL: replace(local.template, "/\\$\\{!(\\w+)\\}/", "$${$1}")
 

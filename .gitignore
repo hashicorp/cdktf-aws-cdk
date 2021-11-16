@@ -37,11 +37,12 @@ junit.xml
 /dist/changelog.md
 /dist/version.txt
 !/.github/pull_request_template.md
-!/test/
+!/src/tests/
 !/tsconfig.dev.json
 !/src/
 /lib
 /dist/
+!/.projen/jest-snapshot-resolver.js
 .jsii
 tsconfig.json
 !/API.md

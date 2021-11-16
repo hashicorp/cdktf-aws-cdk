@@ -27,12 +27,12 @@
     },
     {
       "name": "cdktf-cli",
-      "version": "0.7.0-pre.382",
+      "version": "0.8.0-pre.2",
       "type": "build"
     },
     {
       "name": "cdktf",
-      "version": "0.7.0-pre.382",
+      "version": "0.8.0-pre.2",
       "type": "build"
     },
     {
@@ -80,10 +80,6 @@
       "type": "build"
     },
     {
-      "name": "ts-jest",
-      "type": "build"
-    },
-    {
       "name": "ts-node",
       "version": "^9",
       "type": "build"
@@ -114,7 +110,7 @@
     },
     {
       "name": "cdktf",
-      "version": "^0.7.0-pre.382",
+      "version": "^0.8.0-pre.2",
       "type": "peer"
     },
     {

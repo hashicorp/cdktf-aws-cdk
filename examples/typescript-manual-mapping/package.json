@@ -8,18 +8,20 @@
     "compile": "tsc --pretty",
     "synth": "cdktf synth",
     "pretest": "yarn run build",
-    "test": "jest"
+    "test": "jest",
+    "pretest:ci": "yarn install",
+    "test:ci": "npm install --no-save \"../../dist/js/aws-cdk@$(node -e \"console.log(require('../../package.json').version)\").jsii.tgz\" && yarn test"
   },
   "devDependencies": {
     "@types/jest": "27.0.1",
     "@types/node": "^14.0.26",
-    "cdktf-cli": "0.7.0-pre.382",
+    "cdktf-cli": "0.8.0-pre.2",
     "jest": "27.1.0",
     "ts-jest": "^27.0.5",
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "cdktf": "0.7.0-pre.382",
+    "cdktf": "0.8.0-pre.2",
     "constructs": "^10.0.5",
     "@cdktf/aws-cdk": "0.0.8"
   }

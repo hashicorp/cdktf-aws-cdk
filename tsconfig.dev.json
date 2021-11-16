@@ -27,7 +27,7 @@
   "include": [
     ".projenrc.js",
     "src/**/*.ts",
-    "test/**/*.ts",
+    "src/tests/**/*.ts",
     ".projenrc.ts",
     "projenrc/**/*.ts"
   ],

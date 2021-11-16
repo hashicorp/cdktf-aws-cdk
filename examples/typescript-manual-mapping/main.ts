@@ -2,7 +2,7 @@ import { Construct } from "constructs";
 import { App, TerraformStack } from "cdktf";
 import { aws_dynamodb, CfnOutput } from "aws-cdk-lib";
 
-import { AwsTerraformAdapter, AwsProvider, DynamoDB } from "@cdktf/aws-cdk";
+import { AwsTerraformAdapter, AwsProvider, dynamodb } from "@cdktf/aws-cdk";
 import { registerMapping } from "@cdktf/aws-cdk/lib/mapping";
 
 registerMapping("AWS::DynamoDB::Table", {
@@ -14,7 +14,7 @@ registerMapping("AWS::DynamoDB::Table", {
     //   AttributeDefinitions: [ { AttributeName: 'key', AttributeType: 'S' } ],
     //   ProvisionedThroughput: { ReadCapacityUnits: 5, WriteCapacityUnits: 5 },
     // }
-    const mappedProps: DynamoDB.DynamodbTableConfig = {
+    const mappedProps: dynamodb.DynamodbTableConfig = {
       name: props.TableName,
       attribute: props.AttributeDefinitions.map((att: any) => ({
         name: att.AttributeName,
@@ -31,10 +31,10 @@ registerMapping("AWS::DynamoDB::Table", {
     delete props.AttributeDefinitions;
     delete props.ProvisionedThroughput;
 
-    return new DynamoDB.DynamodbTable(scope, id, mappedProps);
+    return new dynamodb.DynamodbTable(scope, id, mappedProps);
   },
   attributes: {
-    Arn: (table: DynamoDB.DynamodbTable) => table.arn,
+    Arn: (table: dynamodb.DynamodbTable) => table.arn,
   },
 });
 

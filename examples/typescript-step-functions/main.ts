@@ -1,5 +1,5 @@
 import { Construct } from "constructs";
-import { App, TerraformStack, TerraformVariable } from "cdktf";
+import { App, Fn, TerraformOutput, TerraformStack } from "cdktf";
 import {
   Duration,
   aws_lambda,
@@ -65,8 +65,6 @@ export class StepFunctionsStack extends TerraformStack {
       definition,
       timeout: Duration.minutes(5),
     });
-
-    new TerraformVariable(this, "variable", {});
   }
 }
 

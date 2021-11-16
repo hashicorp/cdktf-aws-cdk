@@ -1,16 +1,17 @@
 import { registerMapping } from "../index";
-import { IAM } from "../../aws";
+import { iam } from "../../aws";
 import { createGuessingResourceMapper } from "../helper";
+import { Fn } from "cdktf";
 
 registerMapping("AWS::IAM::Policy", {
-  resource: createGuessingResourceMapper(IAM.IamPolicy, {
+  resource: createGuessingResourceMapper(iam.IamPolicy, {
     PolicyDocument: (doc) => ({
       tfAttributeName: "policy",
-      value: JSON.stringify(doc),
+      value: Fn.jsonencode(doc),
     }),
   }),
   attributes: {
-    Arn: (policy: IAM.IamPolicy) => policy.arn,
-    Ref: (policy: IAM.IamPolicy) => policy.id,
+    Arn: (policy: iam.IamPolicy) => policy.arn,
+    Ref: (policy: iam.IamPolicy) => policy.id,
   },
 });
