@@ -26,7 +26,6 @@ function createNamePropertyMapping(
   tfAttributeName: string
 ): PropertyMappingFunc {
   return (value) => {
-    // TODO: this is somewhat duplicated code – check with awscc stuff, we're doing similar things there..
     if (isObject(value)) {
       value = autoMapObjectPropertyKeys(value);
     } else if (isArrayOfObjects(value)) {
@@ -53,6 +52,7 @@ type PropertyMappingFunc = (value: any) => {
   value: any;
 };
 type PropertyMapping =
+  | null // ignores the property, dropping it
   | string // just maps onto the attribute name passed as string without adjusting the value
   | PropertyMappingFunc; // dynamically maps to one (or more) attributes, can adjust the value
 type PropertyMappings = { [cfnProperty: string]: PropertyMapping };
@@ -74,6 +74,14 @@ export function createGuessingResourceMapper<T extends TerraformResource>(
     // TODO: extract this prop mapping code to be able to reuse it when writing custom mappers?
     // loop over all CloudFormation properties and convert them one by one
     Object.entries(props).forEach(([cfnPropertyName, cfnValue]) => {
+      // Ignore this prop?
+      if (propMappings[cfnPropertyName] === null) {
+        // delete to mark this as done
+        // (the adapter will cautiously error for values left in props after mapping)
+        delete props[cfnPropertyName];
+        return;
+      }
+
       // Determine how to map this prop?
       let mapping: PropertyMappingFunc;
       switch (typeof propMappings[cfnPropertyName]) {
