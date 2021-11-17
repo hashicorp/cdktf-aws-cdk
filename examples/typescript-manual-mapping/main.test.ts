@@ -2,7 +2,7 @@ import { Testing } from "cdktf";
 import "cdktf/lib/testing/adapters/jest";
 import { MyStack } from "./main";
 
-describe("typescript-cron-lambda", () => {
+describe("typescript-manual-mapping", () => {
   it("should synthesize", () => {
     const stack = new MyStack(Testing.app(), "test");
 
