@@ -49,6 +49,10 @@ function createGenericCCApiMapping(
   };
 }
 
+export function hasCustomMapping(resourceType: string): boolean {
+  return !!mapping[resourceType];
+}
+
 export function findMapping(resourceType: string): Mapping<TerraformResource> {
   if (mapping[resourceType]) {
     return mapping[resourceType];
