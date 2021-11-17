@@ -25,6 +25,7 @@ export default new Set([
   "AWS::AppFlow::Flow",
   "AWS::AppIntegrations::EventIntegration",
   "AWS::AppRunner::Service",
+  "AWS::AppStream::Application",
   "AWS::ApplicationInsights::Application",
   "AWS::Athena::DataCatalog",
   "AWS::Athena::NamedQuery",
