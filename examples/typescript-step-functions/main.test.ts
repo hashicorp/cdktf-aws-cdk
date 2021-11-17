@@ -71,6 +71,12 @@ describe("typescript-state-machine", () => {
               \\"assume_role_policy\\": \\"\${jsonencode({Statement = [{Action = \\\\\\"sts:AssumeRole\\\\\\", Effect = \\\\\\"Allow\\\\\\", Principal = {Service = join(\\\\\\"\\\\\\", [\\\\\\"states.\\\\\\", data.aws_region.adapter_aws-region_F8878EF0.name, \\\\\\".amazonaws.com\\\\\\"])}}], Version = \\\\\\"2012-10-17\\\\\\"})}\\"
             }
           },
+          \\"aws_iam_role_policy_attachment\\": {
+            \\"adapter_StateMachineRoleDefaultPolicyDF1E6607_role0_4C4F3BCD\\": {
+              \\"policy_arn\\": \\"\${aws_iam_policy.adapter_StateMachineRoleDefaultPolicyDF1E6607_28877BB8.arn}\\",
+              \\"role\\": \\"\${aws_iam_role.adapter_StateMachineRoleB840431D_34E24F0D.id}\\"
+            }
+          },
           \\"time_sleep\\": {
             \\"adapter_GenerateIDServiceRoleF74DC5CE_sleep_GenerateIDServiceRoleF74DC5CE_5B8F208D\\": {
               \\"create_duration\\": \\"20s\\",
