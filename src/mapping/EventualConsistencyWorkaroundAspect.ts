@@ -24,6 +24,8 @@ interface EventualConsistencyWorkaroundAspectOptions {
  *   20 seconds after the `eventualConsistentTarget` was created until it marks itself as done
  * - The dependend resources will then have their dependency on `time_sleep` fullfilled and will start
  *   to deploy
+ * 
+ * A (former) example usage can be seen here: https://github.com/hashicorp/cdktf-aws-cdk/blob/d656a519e6125b07555089266c4e7618d6963d3f/src/mapping/aws/iam-role.ts#L18
  */
 export class EventualConsistencyWorkaroundAspect implements IAspect {
   private sleepResource?: Sleep;

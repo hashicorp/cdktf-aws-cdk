@@ -3,23 +3,6 @@ import { vpc, ec2, elb } from "../../aws";
 import { createGuessingResourceMapper } from "../helper";
 import { Aspects } from "cdktf";
 
-registerMapping("AWS::EC2::VPC", {
-  resource: createGuessingResourceMapper(vpc.Vpc),
-  attributes: {
-    // TODO: make attributes optional!
-    Arn: (vpc: vpc.Vpc) => vpc.arn,
-    Ref: (vpc: vpc.Vpc) => vpc.id,
-  },
-});
-
-registerMapping("AWS::EC2::Subnet", {
-  resource: createGuessingResourceMapper(vpc.Subnet),
-  attributes: {
-    Arn: (subnet: vpc.Subnet) => subnet.arn,
-    Ref: (subnet: vpc.Subnet) => subnet.id,
-  },
-});
-
 registerMapping("AWS::EC2::Route", {
   resource: createGuessingResourceMapper(vpc.Route),
   attributes: {
@@ -27,14 +10,6 @@ registerMapping("AWS::EC2::Route", {
       throw new Error("Route resource does not have an arn");
     },
     Ref: (route: vpc.Route) => route.id,
-  },
-});
-
-registerMapping("AWS::EC2::RouteTable", {
-  resource: createGuessingResourceMapper(vpc.RouteTable),
-  attributes: {
-    Arn: (table: vpc.RouteTable) => table.arn,
-    Ref: (table: vpc.RouteTable) => table.id,
   },
 });
 
@@ -66,14 +41,6 @@ registerMapping("AWS::EC2::NatGateway", {
       throw new Error("NatGateway resource does not have an arn");
     },
     Ref: (gateway: vpc.NatGateway) => gateway.id,
-  },
-});
-
-registerMapping("AWS::EC2::InternetGateway", {
-  resource: createGuessingResourceMapper(vpc.InternetGateway),
-  attributes: {
-    Arn: (gateway: vpc.InternetGateway) => gateway.arn,
-    Ref: (gateway: vpc.InternetGateway) => gateway.id,
   },
 });
 
