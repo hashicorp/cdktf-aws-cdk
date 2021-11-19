@@ -4,4 +4,5 @@ export * from './emr-instance-fleet';
 export * from './emr-instance-group';
 export * from './emr-managed-scaling-policy';
 export * from './emr-security-configuration';
+export * from './data-aws-emr-release-labels';
 

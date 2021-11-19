@@ -5,6 +5,8 @@ export * from './iot-policy';
 export * from './iot-policy-attachment';
 export * from './iot-role-alias';
 export * from './iot-thing';
+export * from './iot-thing-group';
+export * from './iot-thing-group-membership';
 export * from './iot-thing-principal-attachment';
 export * from './iot-thing-type';
 export * from './iot-topic-rule';
