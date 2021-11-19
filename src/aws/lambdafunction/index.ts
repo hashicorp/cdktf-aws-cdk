@@ -5,6 +5,7 @@ export * from './lambda-event-source-mapping';
 export * from './lambda-function';
 export * from './lambda-function-event-invoke-config';
 export * from './lambda-layer-version';
+export * from './lambda-layer-version-permission';
 export * from './lambda-permission';
 export * from './lambda-provisioned-concurrency-config';
 export * from './data-aws-lambda-alias';

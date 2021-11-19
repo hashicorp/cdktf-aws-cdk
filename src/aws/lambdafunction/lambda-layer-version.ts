@@ -44,6 +44,10 @@ export interface LambdaLayerVersionConfig extends cdktf.TerraformMetaArguments {
   */
   readonly s3ObjectVersion?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_layer_version.html#skip_destroy LambdaLayerVersion#skip_destroy}
+  */
+  readonly skipDestroy?: boolean | cdktf.IResolvable;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lambda_layer_version.html#source_code_hash LambdaLayerVersion#source_code_hash}
   */
   readonly sourceCodeHash?: string;
@@ -90,6 +94,7 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
     this._s3Bucket = config.s3Bucket;
     this._s3Key = config.s3Key;
     this._s3ObjectVersion = config.s3ObjectVersion;
+    this._skipDestroy = config.skipDestroy;
     this._sourceCodeHash = config.sourceCodeHash;
   }
 
@@ -268,6 +273,22 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
     return this.getStringAttribute('signing_profile_version_arn');
   }
 
+  // skip_destroy - computed: false, optional: true, required: false
+  private _skipDestroy?: boolean | cdktf.IResolvable | undefined; 
+  public get skipDestroy() {
+    return this.getBooleanAttribute('skip_destroy') as any;
+  }
+  public set skipDestroy(value: boolean | cdktf.IResolvable | undefined) {
+    this._skipDestroy = value;
+  }
+  public resetSkipDestroy() {
+    this._skipDestroy = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get skipDestroyInput() {
+    return this._skipDestroy
+  }
+
   // source_code_hash - computed: true, optional: true, required: false
   private _sourceCodeHash?: string | undefined; 
   public get sourceCodeHash() {
@@ -309,6 +330,7 @@ export class LambdaLayerVersion extends cdktf.TerraformResource {
       s3_bucket: cdktf.stringToTerraform(this._s3Bucket),
       s3_key: cdktf.stringToTerraform(this._s3Key),
       s3_object_version: cdktf.stringToTerraform(this._s3ObjectVersion),
+      skip_destroy: cdktf.booleanToTerraform(this._skipDestroy),
       source_code_hash: cdktf.stringToTerraform(this._sourceCodeHash),
     };
   }

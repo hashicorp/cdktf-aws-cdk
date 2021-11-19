@@ -81,7 +81,7 @@ export class DataAwsCloudfrontResponseHeadersPolicyCorsConfig extends cdktf.Comp
     return this.getBooleanAttribute('origin_override') as any;
   }
 }
-export class DataAwsCloudfrontResponseHeadersPolicyCustomHeadersConfig extends cdktf.ComplexComputedList {
+export class DataAwsCloudfrontResponseHeadersPolicyCustomHeadersConfigItems extends cdktf.ComplexComputedList {
 
   // header - computed: true, optional: false, required: false
   public get header() {
@@ -96,6 +96,14 @@ export class DataAwsCloudfrontResponseHeadersPolicyCustomHeadersConfig extends c
   // value - computed: true, optional: false, required: false
   public get value() {
     return this.getStringAttribute('value');
+  }
+}
+export class DataAwsCloudfrontResponseHeadersPolicyCustomHeadersConfig extends cdktf.ComplexComputedList {
+
+  // items - computed: true, optional: false, required: false
+  public get items() {
+    // Getting the computed value is not yet implemented
+    return this.interpolationForAttribute('items') as any;
   }
 }
 export class DataAwsCloudfrontResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy extends cdktf.ComplexComputedList {

@@ -243,6 +243,11 @@ export class S3AccessPoint extends cdktf.TerraformResource {
     return this._accountId
   }
 
+  // alias - computed: true, optional: false, required: false
+  public get alias() {
+    return this.getStringAttribute('alias');
+  }
+
   // arn - computed: true, optional: false, required: false
   public get arn() {
     return this.getStringAttribute('arn');
@@ -264,6 +269,11 @@ export class S3AccessPoint extends cdktf.TerraformResource {
   // domain_name - computed: true, optional: false, required: false
   public get domainName() {
     return this.getStringAttribute('domain_name');
+  }
+
+  // endpoints - computed: true, optional: false, required: false
+  public endpoints(key: string): string {
+    return new cdktf.StringMap(this, 'endpoints').lookup(key);
   }
 
   // has_public_access_policy - computed: true, optional: false, required: false

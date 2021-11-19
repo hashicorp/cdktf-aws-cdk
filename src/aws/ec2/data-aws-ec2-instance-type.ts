@@ -280,6 +280,11 @@ export class DataAwsEc2InstanceType extends cdktf.TerraformDataSource {
     return this.getStringAttribute('ena_support');
   }
 
+  // encryption_in_transit_supported - computed: true, optional: false, required: false
+  public get encryptionInTransitSupported() {
+    return this.getBooleanAttribute('encryption_in_transit_supported') as any;
+  }
+
   // free_tier_eligible - computed: true, optional: false, required: false
   public get freeTierEligible() {
     return this.getBooleanAttribute('free_tier_eligible') as any;

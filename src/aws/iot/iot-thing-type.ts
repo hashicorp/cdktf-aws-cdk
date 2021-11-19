@@ -16,6 +16,14 @@ export interface IotThingTypeConfig extends cdktf.TerraformMetaArguments {
   */
   readonly name: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_thing_type.html#tags IotThingType#tags}
+  */
+  readonly tags?: { [key: string]: string } | cdktf.IResolvable;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_thing_type.html#tags_all IotThingType#tags_all}
+  */
+  readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  /**
   * properties block
   * 
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/iot_thing_type.html#properties IotThingType#properties}
@@ -121,6 +129,8 @@ export class IotThingType extends cdktf.TerraformResource {
     });
     this._deprecated = config.deprecated;
     this._name = config.name;
+    this._tags = config.tags;
+    this._tagsAll = config.tagsAll;
     this._properties = config.properties;
   }
 
@@ -167,6 +177,40 @@ export class IotThingType extends cdktf.TerraformResource {
     return this._name
   }
 
+  // tags - computed: false, optional: true, required: false
+  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  public get tags() {
+    // Getting the computed value is not yet implemented
+    return this.interpolationForAttribute('tags') as any;
+  }
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+    this._tags = value;
+  }
+  public resetTags() {
+    this._tags = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get tagsInput() {
+    return this._tags
+  }
+
+  // tags_all - computed: true, optional: true, required: false
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  public get tagsAll() {
+    // Getting the computed value is not yet implemented
+    return this.interpolationForAttribute('tags_all') as any;
+  }
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+    this._tagsAll = value;
+  }
+  public resetTagsAll() {
+    this._tagsAll = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get tagsAllInput() {
+    return this._tagsAll
+  }
+
   // properties - computed: false, optional: true, required: false
   private _properties?: IotThingTypeProperties | undefined; 
   private __propertiesOutput = new IotThingTypePropertiesOutputReference(this as any, "properties", true);
@@ -192,6 +236,8 @@ export class IotThingType extends cdktf.TerraformResource {
     return {
       deprecated: cdktf.booleanToTerraform(this._deprecated),
       name: cdktf.stringToTerraform(this._name),
+      tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
+      tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       properties: iotThingTypePropertiesToTerraform(this._properties),
     };
   }
