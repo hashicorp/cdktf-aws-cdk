@@ -121,6 +121,11 @@ export class DataAwsLb extends cdktf.TerraformDataSource {
     return this.getStringAttribute('customer_owned_ipv4_pool');
   }
 
+  // desync_mitigation_mode - computed: true, optional: false, required: false
+  public get desyncMitigationMode() {
+    return this.getStringAttribute('desync_mitigation_mode');
+  }
+
   // dns_name - computed: true, optional: false, required: false
   public get dnsName() {
     return this.getStringAttribute('dns_name');
@@ -139,6 +144,11 @@ export class DataAwsLb extends cdktf.TerraformDataSource {
   // enable_http2 - computed: true, optional: false, required: false
   public get enableHttp2() {
     return this.getBooleanAttribute('enable_http2') as any;
+  }
+
+  // enable_waf_fail_open - computed: true, optional: false, required: false
+  public get enableWafFailOpen() {
+    return this.getBooleanAttribute('enable_waf_fail_open') as any;
   }
 
   // id - computed: true, optional: true, required: false

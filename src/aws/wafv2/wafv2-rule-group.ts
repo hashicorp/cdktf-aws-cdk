@@ -1,8 +1,10 @@
 // generated from terraform resource schema
 
-import { Wafv2RuleGroupRule, 
+import { Wafv2RuleGroupCustomResponseBody, 
+Wafv2RuleGroupRule, 
 Wafv2RuleGroupVisibilityConfig} from './wafv2-rule-group-structs'
-import { wafv2RuleGroupRuleToTerraform, 
+import { wafv2RuleGroupCustomResponseBodyToTerraform, 
+wafv2RuleGroupRuleToTerraform, 
 wafv2RuleGroupVisibilityConfigToTerraform} from './wafv2-rule-group-structs'
 import { Wafv2RuleGroupVisibilityConfigOutputReference } from './wafv2-rule-group-structs'
 import { Construct } from 'constructs';
@@ -36,6 +38,12 @@ export interface Wafv2RuleGroupConfig extends cdktf.TerraformMetaArguments {
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafv2_rule_group.html#tags_all Wafv2RuleGroup#tags_all}
   */
   readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  /**
+  * custom_response_body block
+  * 
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafv2_rule_group.html#custom_response_body Wafv2RuleGroup#custom_response_body}
+  */
+  readonly customResponseBody?: Wafv2RuleGroupCustomResponseBody[];
   /**
   * rule block
   * 
@@ -88,6 +96,7 @@ export class Wafv2RuleGroup extends cdktf.TerraformResource {
     this._scope = config.scope;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
+    this._customResponseBody = config.customResponseBody;
     this._rule = config.rule;
     this._visibilityConfig = config.visibilityConfig;
   }
@@ -200,6 +209,23 @@ export class Wafv2RuleGroup extends cdktf.TerraformResource {
     return this._tagsAll
   }
 
+  // custom_response_body - computed: false, optional: true, required: false
+  private _customResponseBody?: Wafv2RuleGroupCustomResponseBody[] | undefined; 
+  public get customResponseBody() {
+    // Getting the computed value is not yet implemented
+    return this.interpolationForAttribute('custom_response_body') as any;
+  }
+  public set customResponseBody(value: Wafv2RuleGroupCustomResponseBody[] | undefined) {
+    this._customResponseBody = value;
+  }
+  public resetCustomResponseBody() {
+    this._customResponseBody = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get customResponseBodyInput() {
+    return this._customResponseBody
+  }
+
   // rule - computed: false, optional: true, required: false
   private _rule?: Wafv2RuleGroupRule[] | undefined; 
   public get rule() {
@@ -243,6 +269,7 @@ export class Wafv2RuleGroup extends cdktf.TerraformResource {
       scope: cdktf.stringToTerraform(this._scope),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      custom_response_body: cdktf.listMapper(wafv2RuleGroupCustomResponseBodyToTerraform)(this._customResponseBody),
       rule: cdktf.listMapper(wafv2RuleGroupRuleToTerraform)(this._rule),
       visibility_config: wafv2RuleGroupVisibilityConfigToTerraform(this._visibilityConfig),
     };

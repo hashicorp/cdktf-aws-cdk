@@ -1,9 +1,11 @@
 // generated from terraform resource schema
 
-import { Wafv2WebAclDefaultAction, 
+import { Wafv2WebAclCustomResponseBody, 
+Wafv2WebAclDefaultAction, 
 Wafv2WebAclRule, 
 Wafv2WebAclVisibilityConfig} from './wafv2-web-acl-structs'
-import { wafv2WebAclDefaultActionToTerraform, 
+import { wafv2WebAclCustomResponseBodyToTerraform, 
+wafv2WebAclDefaultActionToTerraform, 
 wafv2WebAclRuleToTerraform, 
 wafv2WebAclVisibilityConfigToTerraform} from './wafv2-web-acl-structs'
 import { Wafv2WebAclDefaultActionOutputReference,
@@ -35,6 +37,12 @@ export interface Wafv2WebAclConfig extends cdktf.TerraformMetaArguments {
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafv2_web_acl.html#tags_all Wafv2WebAcl#tags_all}
   */
   readonly tagsAll?: { [key: string]: string } | cdktf.IResolvable;
+  /**
+  * custom_response_body block
+  * 
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/wafv2_web_acl.html#custom_response_body Wafv2WebAcl#custom_response_body}
+  */
+  readonly customResponseBody?: Wafv2WebAclCustomResponseBody[];
   /**
   * default_action block
   * 
@@ -92,6 +100,7 @@ export class Wafv2WebAcl extends cdktf.TerraformResource {
     this._scope = config.scope;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
+    this._customResponseBody = config.customResponseBody;
     this._defaultAction = config.defaultAction;
     this._rule = config.rule;
     this._visibilityConfig = config.visibilityConfig;
@@ -197,6 +206,23 @@ export class Wafv2WebAcl extends cdktf.TerraformResource {
     return this._tagsAll
   }
 
+  // custom_response_body - computed: false, optional: true, required: false
+  private _customResponseBody?: Wafv2WebAclCustomResponseBody[] | undefined; 
+  public get customResponseBody() {
+    // Getting the computed value is not yet implemented
+    return this.interpolationForAttribute('custom_response_body') as any;
+  }
+  public set customResponseBody(value: Wafv2WebAclCustomResponseBody[] | undefined) {
+    this._customResponseBody = value;
+  }
+  public resetCustomResponseBody() {
+    this._customResponseBody = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get customResponseBodyInput() {
+    return this._customResponseBody
+  }
+
   // default_action - computed: false, optional: false, required: true
   private _defaultAction?: Wafv2WebAclDefaultAction; 
   private __defaultActionOutput = new Wafv2WebAclDefaultActionOutputReference(this as any, "default_action", true);
@@ -253,6 +279,7 @@ export class Wafv2WebAcl extends cdktf.TerraformResource {
       scope: cdktf.stringToTerraform(this._scope),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
+      custom_response_body: cdktf.listMapper(wafv2WebAclCustomResponseBodyToTerraform)(this._customResponseBody),
       default_action: wafv2WebAclDefaultActionToTerraform(this._defaultAction),
       rule: cdktf.listMapper(wafv2WebAclRuleToTerraform)(this._rule),
       visibility_config: wafv2WebAclVisibilityConfigToTerraform(this._visibilityConfig),

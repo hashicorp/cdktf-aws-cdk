@@ -12,6 +12,10 @@ export interface LbConfig extends cdktf.TerraformMetaArguments {
   */
   readonly customerOwnedIpv4Pool?: string;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb.html#desync_mitigation_mode Lb#desync_mitigation_mode}
+  */
+  readonly desyncMitigationMode?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb.html#drop_invalid_header_fields Lb#drop_invalid_header_fields}
   */
   readonly dropInvalidHeaderFields?: boolean | cdktf.IResolvable;
@@ -27,6 +31,10 @@ export interface LbConfig extends cdktf.TerraformMetaArguments {
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb.html#enable_http2 Lb#enable_http2}
   */
   readonly enableHttp2?: boolean | cdktf.IResolvable;
+  /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb.html#enable_waf_fail_open Lb#enable_waf_fail_open}
+  */
+  readonly enableWafFailOpen?: boolean | cdktf.IResolvable;
   /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/lb.html#idle_timeout Lb#idle_timeout}
   */
@@ -319,10 +327,12 @@ export class Lb extends cdktf.TerraformResource {
       lifecycle: config.lifecycle
     });
     this._customerOwnedIpv4Pool = config.customerOwnedIpv4Pool;
+    this._desyncMitigationMode = config.desyncMitigationMode;
     this._dropInvalidHeaderFields = config.dropInvalidHeaderFields;
     this._enableCrossZoneLoadBalancing = config.enableCrossZoneLoadBalancing;
     this._enableDeletionProtection = config.enableDeletionProtection;
     this._enableHttp2 = config.enableHttp2;
+    this._enableWafFailOpen = config.enableWafFailOpen;
     this._idleTimeout = config.idleTimeout;
     this._internal = config.internal;
     this._ipAddressType = config.ipAddressType;
@@ -366,6 +376,22 @@ export class Lb extends cdktf.TerraformResource {
   // Temporarily expose input value. Use with caution.
   public get customerOwnedIpv4PoolInput() {
     return this._customerOwnedIpv4Pool
+  }
+
+  // desync_mitigation_mode - computed: false, optional: true, required: false
+  private _desyncMitigationMode?: string | undefined; 
+  public get desyncMitigationMode() {
+    return this.getStringAttribute('desync_mitigation_mode');
+  }
+  public set desyncMitigationMode(value: string | undefined) {
+    this._desyncMitigationMode = value;
+  }
+  public resetDesyncMitigationMode() {
+    this._desyncMitigationMode = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get desyncMitigationModeInput() {
+    return this._desyncMitigationMode
   }
 
   // dns_name - computed: true, optional: false, required: false
@@ -435,6 +461,22 @@ export class Lb extends cdktf.TerraformResource {
   // Temporarily expose input value. Use with caution.
   public get enableHttp2Input() {
     return this._enableHttp2
+  }
+
+  // enable_waf_fail_open - computed: false, optional: true, required: false
+  private _enableWafFailOpen?: boolean | cdktf.IResolvable | undefined; 
+  public get enableWafFailOpen() {
+    return this.getBooleanAttribute('enable_waf_fail_open') as any;
+  }
+  public set enableWafFailOpen(value: boolean | cdktf.IResolvable | undefined) {
+    this._enableWafFailOpen = value;
+  }
+  public resetEnableWafFailOpen() {
+    this._enableWafFailOpen = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get enableWafFailOpenInput() {
+    return this._enableWafFailOpen
   }
 
   // id - computed: true, optional: true, required: false
@@ -672,10 +714,12 @@ export class Lb extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       customer_owned_ipv4_pool: cdktf.stringToTerraform(this._customerOwnedIpv4Pool),
+      desync_mitigation_mode: cdktf.stringToTerraform(this._desyncMitigationMode),
       drop_invalid_header_fields: cdktf.booleanToTerraform(this._dropInvalidHeaderFields),
       enable_cross_zone_load_balancing: cdktf.booleanToTerraform(this._enableCrossZoneLoadBalancing),
       enable_deletion_protection: cdktf.booleanToTerraform(this._enableDeletionProtection),
       enable_http2: cdktf.booleanToTerraform(this._enableHttp2),
+      enable_waf_fail_open: cdktf.booleanToTerraform(this._enableWafFailOpen),
       idle_timeout: cdktf.numberToTerraform(this._idleTimeout),
       internal: cdktf.booleanToTerraform(this._internal),
       ip_address_type: cdktf.stringToTerraform(this._ipAddressType),

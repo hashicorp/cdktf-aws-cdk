@@ -406,6 +406,12 @@ export interface AwsProviderEndpoints {
   /**
   * Use this to override the default service endpoint URL
   * 
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws#account AwsProvider#account}
+  */
+  readonly account?: string;
+  /**
+  * Use this to override the default service endpoint URL
+  * 
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws#acm AwsProvider#acm}
   */
   readonly acm?: string;
@@ -2200,6 +2206,7 @@ export function awsProviderEndpointsToTerraform(struct?: AwsProviderEndpoints): 
   }
   return {
     accessanalyzer: cdktf.stringToTerraform(struct!.accessanalyzer),
+    account: cdktf.stringToTerraform(struct!.account),
     acm: cdktf.stringToTerraform(struct!.acm),
     acmpca: cdktf.stringToTerraform(struct!.acmpca),
     alexaforbusiness: cdktf.stringToTerraform(struct!.alexaforbusiness),
