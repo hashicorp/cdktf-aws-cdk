@@ -24,6 +24,10 @@ export interface ElbConfig extends cdktf.TerraformMetaArguments {
   */
   readonly crossZoneLoadBalancing?: boolean | cdktf.IResolvable;
   /**
+  * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elb.html#desync_mitigation_mode Elb#desync_mitigation_mode}
+  */
+  readonly desyncMitigationMode?: string;
+  /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/elb.html#idle_timeout Elb#idle_timeout}
   */
   readonly idleTimeout?: number;
@@ -371,6 +375,7 @@ export class Elb extends cdktf.TerraformResource {
     this._connectionDraining = config.connectionDraining;
     this._connectionDrainingTimeout = config.connectionDrainingTimeout;
     this._crossZoneLoadBalancing = config.crossZoneLoadBalancing;
+    this._desyncMitigationMode = config.desyncMitigationMode;
     this._idleTimeout = config.idleTimeout;
     this._instances = config.instances;
     this._internal = config.internal;
@@ -457,6 +462,22 @@ export class Elb extends cdktf.TerraformResource {
   // Temporarily expose input value. Use with caution.
   public get crossZoneLoadBalancingInput() {
     return this._crossZoneLoadBalancing
+  }
+
+  // desync_mitigation_mode - computed: false, optional: true, required: false
+  private _desyncMitigationMode?: string | undefined; 
+  public get desyncMitigationMode() {
+    return this.getStringAttribute('desync_mitigation_mode');
+  }
+  public set desyncMitigationMode(value: string | undefined) {
+    this._desyncMitigationMode = value;
+  }
+  public resetDesyncMitigationMode() {
+    this._desyncMitigationMode = undefined;
+  }
+  // Temporarily expose input value. Use with caution.
+  public get desyncMitigationModeInput() {
+    return this._desyncMitigationMode
   }
 
   // dns_name - computed: true, optional: false, required: false
@@ -699,6 +720,7 @@ export class Elb extends cdktf.TerraformResource {
       connection_draining: cdktf.booleanToTerraform(this._connectionDraining),
       connection_draining_timeout: cdktf.numberToTerraform(this._connectionDrainingTimeout),
       cross_zone_load_balancing: cdktf.booleanToTerraform(this._crossZoneLoadBalancing),
+      desync_mitigation_mode: cdktf.stringToTerraform(this._desyncMitigationMode),
       idle_timeout: cdktf.numberToTerraform(this._idleTimeout),
       instances: cdktf.listMapper(cdktf.stringToTerraform)(this._instances),
       internal: cdktf.booleanToTerraform(this._internal),

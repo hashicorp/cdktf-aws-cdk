@@ -163,6 +163,11 @@ export class DataAwsElb extends cdktf.TerraformDataSource {
     return this.getBooleanAttribute('cross_zone_load_balancing') as any;
   }
 
+  // desync_mitigation_mode - computed: true, optional: false, required: false
+  public get desyncMitigationMode() {
+    return this.getStringAttribute('desync_mitigation_mode');
+  }
+
   // dns_name - computed: true, optional: false, required: false
   public get dnsName() {
     return this.getStringAttribute('dns_name');

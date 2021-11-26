@@ -2,5 +2,7 @@
 export * from './fsx-backup';
 export * from './fsx-lustre-file-system';
 export * from './fsx-ontap-file-system';
+export * from './fsx-ontap-storage-virtual-machine';
+export * from './fsx-ontap-volume';
 export * from './fsx-windows-file-system';
 

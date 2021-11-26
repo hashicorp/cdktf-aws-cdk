@@ -171,6 +171,11 @@ export class DataAwsLambdaFunction extends cdktf.TerraformDataSource {
     return this.getStringAttribute('id');
   }
 
+  // image_uri - computed: true, optional: false, required: false
+  public get imageUri() {
+    return this.getStringAttribute('image_uri');
+  }
+
   // invoke_arn - computed: true, optional: false, required: false
   public get invokeArn() {
     return this.getStringAttribute('invoke_arn');

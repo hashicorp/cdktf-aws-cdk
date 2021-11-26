@@ -62,6 +62,7 @@ export * from './data-aws-ec2-host';
 export * from './data-aws-ec2-instance-type';
 export * from './data-aws-ec2-instance-type-offering';
 export * from './data-aws-ec2-instance-type-offerings';
+export * from './data-aws-ec2-instance-types';
 export * from './data-aws-ec2-local-gateway';
 export * from './data-aws-ec2-local-gateway-route-table';
 export * from './data-aws-ec2-local-gateway-route-tables';

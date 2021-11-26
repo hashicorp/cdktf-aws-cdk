@@ -244,7 +244,7 @@ export interface ApprunnerServiceInstanceConfiguration {
   /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apprunner_service.html#instance_role_arn ApprunnerService#instance_role_arn}
   */
-  readonly instanceRoleArn: string;
+  readonly instanceRoleArn?: string;
   /**
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/apprunner_service.html#memory ApprunnerService#memory}
   */
@@ -289,13 +289,16 @@ export class ApprunnerServiceInstanceConfigurationOutputReference extends cdktf.
     return this._cpu
   }
 
-  // instance_role_arn - computed: false, optional: false, required: true
-  private _instanceRoleArn?: string; 
+  // instance_role_arn - computed: false, optional: true, required: false
+  private _instanceRoleArn?: string | undefined; 
   public get instanceRoleArn() {
     return this.getStringAttribute('instance_role_arn');
   }
-  public set instanceRoleArn(value: string) {
+  public set instanceRoleArn(value: string | undefined) {
     this._instanceRoleArn = value;
+  }
+  public resetInstanceRoleArn() {
+    this._instanceRoleArn = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get instanceRoleArnInput() {
