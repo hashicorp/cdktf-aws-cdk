@@ -3494,9 +3494,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.896:
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.2.tgz#b81583847c25377027cca7d5a4e94ac23bdce2f4"
-  integrity sha512-SxHMmlSvpT83M/MLxTXQBqfqo3bK+UOk6Uup6w1paX86l+af1xwwTMLlyK3xJwE3Kq8/QnecuFKmnmRlAUJCXw==
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.4.tgz#57311918524c1a26878c330537f967804d43788a"
+  integrity sha512-teHtgwcmVcL46jlFvAaqjyiTLWuMrUQO1JqV303JKB4ysXG6m8fXSFhbjal9st0r9mNskI22AraJZorb1VcLVg==
 
 emittery@^0.8.1:
   version "0.8.1"
@@ -7543,9 +7543,9 @@ sprintf-js@~1.0.2:
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
 sscaff@^1.2.0:
-  version "1.2.137"
-  resolved "https://registry.yarnpkg.com/sscaff/-/sscaff-1.2.137.tgz#a0eeb42b7824e2a8bbe3526df6861ca68de7e308"
-  integrity sha512-2idrr9XG8Xs0r683k1gXiUcbuAuG7ep5dYTtE95lNyXMtOBGWF7DCErUEnErA617HXwoHRc2M2AgjvTJ1tvphQ==
+  version "1.2.138"
+  resolved "https://registry.yarnpkg.com/sscaff/-/sscaff-1.2.138.tgz#00e9ae0e7a2fca2e18cac27f08d85368d2e76be3"
+  integrity sha512-EaiWFpkSocWogZzsD2q7T4tCQfM3roLyCHPqaCKxxYsLrlSLplRWdtq6HUQoucG90pzud9P2lfX0fvQkkz0A3A==
 
 sshpk@^1.7.0:
   version "1.16.1"
