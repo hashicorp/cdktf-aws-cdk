@@ -3269,9 +3269,9 @@ debug@2.6.9, debug@^2.6.0:
     ms "2.0.0"
 
 debug@4, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
-  integrity sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.3.tgz#04266e0b70a98d4462e6e288e38259213332b664"
+  integrity sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==
   dependencies:
     ms "2.1.2"
 
@@ -7543,9 +7543,9 @@ sprintf-js@~1.0.2:
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
 sscaff@^1.2.0:
-  version "1.2.138"
-  resolved "https://registry.yarnpkg.com/sscaff/-/sscaff-1.2.138.tgz#00e9ae0e7a2fca2e18cac27f08d85368d2e76be3"
-  integrity sha512-EaiWFpkSocWogZzsD2q7T4tCQfM3roLyCHPqaCKxxYsLrlSLplRWdtq6HUQoucG90pzud9P2lfX0fvQkkz0A3A==
+  version "1.2.139"
+  resolved "https://registry.yarnpkg.com/sscaff/-/sscaff-1.2.139.tgz#f1264d9c825f31e1714221edda59fa2411bb34ca"
+  integrity sha512-MlhVyWRaqNqsltDYQBI26z3AbRRvUqGb/3vdfbzYz+MPjzC/nFMVvhU40laBhRqqeDWkZ+dow/oB4qyV0Hh5/w==
 
 sshpk@^1.7.0:
   version "1.16.1"
