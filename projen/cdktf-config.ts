@@ -19,12 +19,12 @@ export class CdktfConfig {
 
     project.addPeerDeps(`cdktf@^${cdktfVersion}`);
     project.addPeerDeps(`constructs@${constructsVersion}`);
-    project.addPeerDeps(`aws-cdk-lib@^2.0.0-rc.17`);
+    project.addPeerDeps(`aws-cdk-lib@^2.0.0`);
 
     project.addDevDeps(`cdktf@${cdktfVersion}`);
     project.addDevDeps(`cdktf-cli@${cdktfVersion}`);
     project.addDevDeps(`constructs@${constructsVersion}`);
-    project.addDevDeps(`aws-cdk-lib@2.0.0-rc.17`);
+    project.addDevDeps(`aws-cdk-lib@2.0.0`);
 
     project.addBundledDeps(`change-case@^4.1.1`);
     project.addBundledDeps(`codemaker@^1.34.0`);
