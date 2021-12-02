@@ -131,7 +131,7 @@ export class DataAwsEksNodeGroup extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterNameInput() {
-    return this._clusterName
+    return this._clusterName;
   }
 
   // disk_size - computed: true, optional: false, required: false
@@ -164,7 +164,7 @@ export class DataAwsEksNodeGroup extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nodeGroupNameInput() {
-    return this._nodeGroupName
+    return this._nodeGroupName;
   }
 
   // node_role_arn - computed: true, optional: false, required: false
@@ -203,12 +203,12 @@ export class DataAwsEksNodeGroup extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -216,7 +216,7 @@ export class DataAwsEksNodeGroup extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // version - computed: true, optional: false, required: false

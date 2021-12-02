@@ -82,15 +82,15 @@ export class BackupVaultLockConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get backupVaultNameInput() {
-    return this._backupVaultName
+    return this._backupVaultName;
   }
 
   // changeable_for_days - computed: false, optional: true, required: false
-  private _changeableForDays?: number | undefined; 
+  private _changeableForDays?: number; 
   public get changeableForDays() {
     return this.getNumberAttribute('changeable_for_days');
   }
-  public set changeableForDays(value: number | undefined) {
+  public set changeableForDays(value: number) {
     this._changeableForDays = value;
   }
   public resetChangeableForDays() {
@@ -98,7 +98,7 @@ export class BackupVaultLockConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get changeableForDaysInput() {
-    return this._changeableForDays
+    return this._changeableForDays;
   }
 
   // id - computed: true, optional: true, required: false
@@ -107,11 +107,11 @@ export class BackupVaultLockConfiguration extends cdktf.TerraformResource {
   }
 
   // max_retention_days - computed: false, optional: true, required: false
-  private _maxRetentionDays?: number | undefined; 
+  private _maxRetentionDays?: number; 
   public get maxRetentionDays() {
     return this.getNumberAttribute('max_retention_days');
   }
-  public set maxRetentionDays(value: number | undefined) {
+  public set maxRetentionDays(value: number) {
     this._maxRetentionDays = value;
   }
   public resetMaxRetentionDays() {
@@ -119,15 +119,15 @@ export class BackupVaultLockConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maxRetentionDaysInput() {
-    return this._maxRetentionDays
+    return this._maxRetentionDays;
   }
 
   // min_retention_days - computed: false, optional: true, required: false
-  private _minRetentionDays?: number | undefined; 
+  private _minRetentionDays?: number; 
   public get minRetentionDays() {
     return this.getNumberAttribute('min_retention_days');
   }
-  public set minRetentionDays(value: number | undefined) {
+  public set minRetentionDays(value: number) {
     this._minRetentionDays = value;
   }
   public resetMinRetentionDays() {
@@ -135,7 +135,7 @@ export class BackupVaultLockConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get minRetentionDaysInput() {
-    return this._minRetentionDays
+    return this._minRetentionDays;
   }
 
   // =========

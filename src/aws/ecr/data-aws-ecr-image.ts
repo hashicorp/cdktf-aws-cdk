@@ -73,11 +73,11 @@ export class DataAwsEcrImage extends cdktf.TerraformDataSource {
   }
 
   // image_digest - computed: true, optional: true, required: false
-  private _imageDigest?: string | undefined; 
+  private _imageDigest?: string; 
   public get imageDigest() {
     return this.getStringAttribute('image_digest');
   }
-  public set imageDigest(value: string | undefined) {
+  public set imageDigest(value: string) {
     this._imageDigest = value;
   }
   public resetImageDigest() {
@@ -85,7 +85,7 @@ export class DataAwsEcrImage extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get imageDigestInput() {
-    return this._imageDigest
+    return this._imageDigest;
   }
 
   // image_pushed_at - computed: true, optional: false, required: false
@@ -99,11 +99,11 @@ export class DataAwsEcrImage extends cdktf.TerraformDataSource {
   }
 
   // image_tag - computed: false, optional: true, required: false
-  private _imageTag?: string | undefined; 
+  private _imageTag?: string; 
   public get imageTag() {
     return this.getStringAttribute('image_tag');
   }
-  public set imageTag(value: string | undefined) {
+  public set imageTag(value: string) {
     this._imageTag = value;
   }
   public resetImageTag() {
@@ -111,7 +111,7 @@ export class DataAwsEcrImage extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get imageTagInput() {
-    return this._imageTag
+    return this._imageTag;
   }
 
   // image_tags - computed: true, optional: false, required: false
@@ -120,11 +120,11 @@ export class DataAwsEcrImage extends cdktf.TerraformDataSource {
   }
 
   // registry_id - computed: true, optional: true, required: false
-  private _registryId?: string | undefined; 
+  private _registryId?: string; 
   public get registryId() {
     return this.getStringAttribute('registry_id');
   }
-  public set registryId(value: string | undefined) {
+  public set registryId(value: string) {
     this._registryId = value;
   }
   public resetRegistryId() {
@@ -132,7 +132,7 @@ export class DataAwsEcrImage extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get registryIdInput() {
-    return this._registryId
+    return this._registryId;
   }
 
   // repository_name - computed: false, optional: false, required: true
@@ -145,7 +145,7 @@ export class DataAwsEcrImage extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get repositoryNameInput() {
-    return this._repositoryName
+    return this._repositoryName;
   }
 
   // =========

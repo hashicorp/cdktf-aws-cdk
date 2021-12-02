@@ -79,7 +79,7 @@ export class DataAwsEcsCluster extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterNameInput() {
-    return this._clusterName
+    return this._clusterName;
   }
 
   // id - computed: true, optional: true, required: false

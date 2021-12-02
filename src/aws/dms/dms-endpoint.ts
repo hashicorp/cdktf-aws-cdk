@@ -140,6 +140,43 @@ export class DmsEndpointElasticsearchSettingsOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DmsEndpointElasticsearchSettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._endpointUri) {
+      hasAnyValues = true;
+      internalValueResult.endpointUri = this._endpointUri;
+    }
+    if (this._errorRetryDuration) {
+      hasAnyValues = true;
+      internalValueResult.errorRetryDuration = this._errorRetryDuration;
+    }
+    if (this._fullLoadErrorPercentage) {
+      hasAnyValues = true;
+      internalValueResult.fullLoadErrorPercentage = this._fullLoadErrorPercentage;
+    }
+    if (this._serviceAccessRoleArn) {
+      hasAnyValues = true;
+      internalValueResult.serviceAccessRoleArn = this._serviceAccessRoleArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DmsEndpointElasticsearchSettings | undefined) {
+    if (value === undefined) {
+      this._endpointUri = undefined;
+      this._errorRetryDuration = undefined;
+      this._fullLoadErrorPercentage = undefined;
+      this._serviceAccessRoleArn = undefined;
+    }
+    else {
+      this._endpointUri = value.endpointUri;
+      this._errorRetryDuration = value.errorRetryDuration;
+      this._fullLoadErrorPercentage = value.fullLoadErrorPercentage;
+      this._serviceAccessRoleArn = value.serviceAccessRoleArn;
+    }
+  }
+
   // endpoint_uri - computed: false, optional: false, required: true
   private _endpointUri?: string; 
   public get endpointUri() {
@@ -150,15 +187,15 @@ export class DmsEndpointElasticsearchSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get endpointUriInput() {
-    return this._endpointUri
+    return this._endpointUri;
   }
 
   // error_retry_duration - computed: false, optional: true, required: false
-  private _errorRetryDuration?: number | undefined; 
+  private _errorRetryDuration?: number; 
   public get errorRetryDuration() {
     return this.getNumberAttribute('error_retry_duration');
   }
-  public set errorRetryDuration(value: number | undefined) {
+  public set errorRetryDuration(value: number) {
     this._errorRetryDuration = value;
   }
   public resetErrorRetryDuration() {
@@ -166,15 +203,15 @@ export class DmsEndpointElasticsearchSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get errorRetryDurationInput() {
-    return this._errorRetryDuration
+    return this._errorRetryDuration;
   }
 
   // full_load_error_percentage - computed: false, optional: true, required: false
-  private _fullLoadErrorPercentage?: number | undefined; 
+  private _fullLoadErrorPercentage?: number; 
   public get fullLoadErrorPercentage() {
     return this.getNumberAttribute('full_load_error_percentage');
   }
-  public set fullLoadErrorPercentage(value: number | undefined) {
+  public set fullLoadErrorPercentage(value: number) {
     this._fullLoadErrorPercentage = value;
   }
   public resetFullLoadErrorPercentage() {
@@ -182,7 +219,7 @@ export class DmsEndpointElasticsearchSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get fullLoadErrorPercentageInput() {
-    return this._fullLoadErrorPercentage
+    return this._fullLoadErrorPercentage;
   }
 
   // service_access_role_arn - computed: false, optional: false, required: true
@@ -195,7 +232,7 @@ export class DmsEndpointElasticsearchSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get serviceAccessRoleArnInput() {
-    return this._serviceAccessRoleArn
+    return this._serviceAccessRoleArn;
   }
 }
 export interface DmsEndpointKafkaSettings {
@@ -310,6 +347,127 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DmsEndpointKafkaSettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._broker) {
+      hasAnyValues = true;
+      internalValueResult.broker = this._broker;
+    }
+    if (this._includeControlDetails) {
+      hasAnyValues = true;
+      internalValueResult.includeControlDetails = this._includeControlDetails;
+    }
+    if (this._includeNullAndEmpty) {
+      hasAnyValues = true;
+      internalValueResult.includeNullAndEmpty = this._includeNullAndEmpty;
+    }
+    if (this._includePartitionValue) {
+      hasAnyValues = true;
+      internalValueResult.includePartitionValue = this._includePartitionValue;
+    }
+    if (this._includeTableAlterOperations) {
+      hasAnyValues = true;
+      internalValueResult.includeTableAlterOperations = this._includeTableAlterOperations;
+    }
+    if (this._includeTransactionDetails) {
+      hasAnyValues = true;
+      internalValueResult.includeTransactionDetails = this._includeTransactionDetails;
+    }
+    if (this._messageFormat) {
+      hasAnyValues = true;
+      internalValueResult.messageFormat = this._messageFormat;
+    }
+    if (this._messageMaxBytes) {
+      hasAnyValues = true;
+      internalValueResult.messageMaxBytes = this._messageMaxBytes;
+    }
+    if (this._noHexPrefix) {
+      hasAnyValues = true;
+      internalValueResult.noHexPrefix = this._noHexPrefix;
+    }
+    if (this._partitionIncludeSchemaTable) {
+      hasAnyValues = true;
+      internalValueResult.partitionIncludeSchemaTable = this._partitionIncludeSchemaTable;
+    }
+    if (this._saslPassword) {
+      hasAnyValues = true;
+      internalValueResult.saslPassword = this._saslPassword;
+    }
+    if (this._saslUsername) {
+      hasAnyValues = true;
+      internalValueResult.saslUsername = this._saslUsername;
+    }
+    if (this._securityProtocol) {
+      hasAnyValues = true;
+      internalValueResult.securityProtocol = this._securityProtocol;
+    }
+    if (this._sslCaCertificateArn) {
+      hasAnyValues = true;
+      internalValueResult.sslCaCertificateArn = this._sslCaCertificateArn;
+    }
+    if (this._sslClientCertificateArn) {
+      hasAnyValues = true;
+      internalValueResult.sslClientCertificateArn = this._sslClientCertificateArn;
+    }
+    if (this._sslClientKeyArn) {
+      hasAnyValues = true;
+      internalValueResult.sslClientKeyArn = this._sslClientKeyArn;
+    }
+    if (this._sslClientKeyPassword) {
+      hasAnyValues = true;
+      internalValueResult.sslClientKeyPassword = this._sslClientKeyPassword;
+    }
+    if (this._topic) {
+      hasAnyValues = true;
+      internalValueResult.topic = this._topic;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DmsEndpointKafkaSettings | undefined) {
+    if (value === undefined) {
+      this._broker = undefined;
+      this._includeControlDetails = undefined;
+      this._includeNullAndEmpty = undefined;
+      this._includePartitionValue = undefined;
+      this._includeTableAlterOperations = undefined;
+      this._includeTransactionDetails = undefined;
+      this._messageFormat = undefined;
+      this._messageMaxBytes = undefined;
+      this._noHexPrefix = undefined;
+      this._partitionIncludeSchemaTable = undefined;
+      this._saslPassword = undefined;
+      this._saslUsername = undefined;
+      this._securityProtocol = undefined;
+      this._sslCaCertificateArn = undefined;
+      this._sslClientCertificateArn = undefined;
+      this._sslClientKeyArn = undefined;
+      this._sslClientKeyPassword = undefined;
+      this._topic = undefined;
+    }
+    else {
+      this._broker = value.broker;
+      this._includeControlDetails = value.includeControlDetails;
+      this._includeNullAndEmpty = value.includeNullAndEmpty;
+      this._includePartitionValue = value.includePartitionValue;
+      this._includeTableAlterOperations = value.includeTableAlterOperations;
+      this._includeTransactionDetails = value.includeTransactionDetails;
+      this._messageFormat = value.messageFormat;
+      this._messageMaxBytes = value.messageMaxBytes;
+      this._noHexPrefix = value.noHexPrefix;
+      this._partitionIncludeSchemaTable = value.partitionIncludeSchemaTable;
+      this._saslPassword = value.saslPassword;
+      this._saslUsername = value.saslUsername;
+      this._securityProtocol = value.securityProtocol;
+      this._sslCaCertificateArn = value.sslCaCertificateArn;
+      this._sslClientCertificateArn = value.sslClientCertificateArn;
+      this._sslClientKeyArn = value.sslClientKeyArn;
+      this._sslClientKeyPassword = value.sslClientKeyPassword;
+      this._topic = value.topic;
+    }
+  }
+
   // broker - computed: false, optional: false, required: true
   private _broker?: string; 
   public get broker() {
@@ -320,15 +478,15 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get brokerInput() {
-    return this._broker
+    return this._broker;
   }
 
   // include_control_details - computed: false, optional: true, required: false
-  private _includeControlDetails?: boolean | cdktf.IResolvable | undefined; 
+  private _includeControlDetails?: boolean | cdktf.IResolvable; 
   public get includeControlDetails() {
     return this.getBooleanAttribute('include_control_details') as any;
   }
-  public set includeControlDetails(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeControlDetails(value: boolean | cdktf.IResolvable) {
     this._includeControlDetails = value;
   }
   public resetIncludeControlDetails() {
@@ -336,15 +494,15 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get includeControlDetailsInput() {
-    return this._includeControlDetails
+    return this._includeControlDetails;
   }
 
   // include_null_and_empty - computed: false, optional: true, required: false
-  private _includeNullAndEmpty?: boolean | cdktf.IResolvable | undefined; 
+  private _includeNullAndEmpty?: boolean | cdktf.IResolvable; 
   public get includeNullAndEmpty() {
     return this.getBooleanAttribute('include_null_and_empty') as any;
   }
-  public set includeNullAndEmpty(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeNullAndEmpty(value: boolean | cdktf.IResolvable) {
     this._includeNullAndEmpty = value;
   }
   public resetIncludeNullAndEmpty() {
@@ -352,15 +510,15 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get includeNullAndEmptyInput() {
-    return this._includeNullAndEmpty
+    return this._includeNullAndEmpty;
   }
 
   // include_partition_value - computed: false, optional: true, required: false
-  private _includePartitionValue?: boolean | cdktf.IResolvable | undefined; 
+  private _includePartitionValue?: boolean | cdktf.IResolvable; 
   public get includePartitionValue() {
     return this.getBooleanAttribute('include_partition_value') as any;
   }
-  public set includePartitionValue(value: boolean | cdktf.IResolvable | undefined) {
+  public set includePartitionValue(value: boolean | cdktf.IResolvable) {
     this._includePartitionValue = value;
   }
   public resetIncludePartitionValue() {
@@ -368,15 +526,15 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get includePartitionValueInput() {
-    return this._includePartitionValue
+    return this._includePartitionValue;
   }
 
   // include_table_alter_operations - computed: false, optional: true, required: false
-  private _includeTableAlterOperations?: boolean | cdktf.IResolvable | undefined; 
+  private _includeTableAlterOperations?: boolean | cdktf.IResolvable; 
   public get includeTableAlterOperations() {
     return this.getBooleanAttribute('include_table_alter_operations') as any;
   }
-  public set includeTableAlterOperations(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeTableAlterOperations(value: boolean | cdktf.IResolvable) {
     this._includeTableAlterOperations = value;
   }
   public resetIncludeTableAlterOperations() {
@@ -384,15 +542,15 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get includeTableAlterOperationsInput() {
-    return this._includeTableAlterOperations
+    return this._includeTableAlterOperations;
   }
 
   // include_transaction_details - computed: false, optional: true, required: false
-  private _includeTransactionDetails?: boolean | cdktf.IResolvable | undefined; 
+  private _includeTransactionDetails?: boolean | cdktf.IResolvable; 
   public get includeTransactionDetails() {
     return this.getBooleanAttribute('include_transaction_details') as any;
   }
-  public set includeTransactionDetails(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeTransactionDetails(value: boolean | cdktf.IResolvable) {
     this._includeTransactionDetails = value;
   }
   public resetIncludeTransactionDetails() {
@@ -400,15 +558,15 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get includeTransactionDetailsInput() {
-    return this._includeTransactionDetails
+    return this._includeTransactionDetails;
   }
 
   // message_format - computed: false, optional: true, required: false
-  private _messageFormat?: string | undefined; 
+  private _messageFormat?: string; 
   public get messageFormat() {
     return this.getStringAttribute('message_format');
   }
-  public set messageFormat(value: string | undefined) {
+  public set messageFormat(value: string) {
     this._messageFormat = value;
   }
   public resetMessageFormat() {
@@ -416,15 +574,15 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get messageFormatInput() {
-    return this._messageFormat
+    return this._messageFormat;
   }
 
   // message_max_bytes - computed: false, optional: true, required: false
-  private _messageMaxBytes?: number | undefined; 
+  private _messageMaxBytes?: number; 
   public get messageMaxBytes() {
     return this.getNumberAttribute('message_max_bytes');
   }
-  public set messageMaxBytes(value: number | undefined) {
+  public set messageMaxBytes(value: number) {
     this._messageMaxBytes = value;
   }
   public resetMessageMaxBytes() {
@@ -432,15 +590,15 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get messageMaxBytesInput() {
-    return this._messageMaxBytes
+    return this._messageMaxBytes;
   }
 
   // no_hex_prefix - computed: false, optional: true, required: false
-  private _noHexPrefix?: boolean | cdktf.IResolvable | undefined; 
+  private _noHexPrefix?: boolean | cdktf.IResolvable; 
   public get noHexPrefix() {
     return this.getBooleanAttribute('no_hex_prefix') as any;
   }
-  public set noHexPrefix(value: boolean | cdktf.IResolvable | undefined) {
+  public set noHexPrefix(value: boolean | cdktf.IResolvable) {
     this._noHexPrefix = value;
   }
   public resetNoHexPrefix() {
@@ -448,15 +606,15 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get noHexPrefixInput() {
-    return this._noHexPrefix
+    return this._noHexPrefix;
   }
 
   // partition_include_schema_table - computed: false, optional: true, required: false
-  private _partitionIncludeSchemaTable?: boolean | cdktf.IResolvable | undefined; 
+  private _partitionIncludeSchemaTable?: boolean | cdktf.IResolvable; 
   public get partitionIncludeSchemaTable() {
     return this.getBooleanAttribute('partition_include_schema_table') as any;
   }
-  public set partitionIncludeSchemaTable(value: boolean | cdktf.IResolvable | undefined) {
+  public set partitionIncludeSchemaTable(value: boolean | cdktf.IResolvable) {
     this._partitionIncludeSchemaTable = value;
   }
   public resetPartitionIncludeSchemaTable() {
@@ -464,15 +622,15 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get partitionIncludeSchemaTableInput() {
-    return this._partitionIncludeSchemaTable
+    return this._partitionIncludeSchemaTable;
   }
 
   // sasl_password - computed: false, optional: true, required: false
-  private _saslPassword?: string | undefined; 
+  private _saslPassword?: string; 
   public get saslPassword() {
     return this.getStringAttribute('sasl_password');
   }
-  public set saslPassword(value: string | undefined) {
+  public set saslPassword(value: string) {
     this._saslPassword = value;
   }
   public resetSaslPassword() {
@@ -480,15 +638,15 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get saslPasswordInput() {
-    return this._saslPassword
+    return this._saslPassword;
   }
 
   // sasl_username - computed: false, optional: true, required: false
-  private _saslUsername?: string | undefined; 
+  private _saslUsername?: string; 
   public get saslUsername() {
     return this.getStringAttribute('sasl_username');
   }
-  public set saslUsername(value: string | undefined) {
+  public set saslUsername(value: string) {
     this._saslUsername = value;
   }
   public resetSaslUsername() {
@@ -496,15 +654,15 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get saslUsernameInput() {
-    return this._saslUsername
+    return this._saslUsername;
   }
 
   // security_protocol - computed: false, optional: true, required: false
-  private _securityProtocol?: string | undefined; 
+  private _securityProtocol?: string; 
   public get securityProtocol() {
     return this.getStringAttribute('security_protocol');
   }
-  public set securityProtocol(value: string | undefined) {
+  public set securityProtocol(value: string) {
     this._securityProtocol = value;
   }
   public resetSecurityProtocol() {
@@ -512,15 +670,15 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get securityProtocolInput() {
-    return this._securityProtocol
+    return this._securityProtocol;
   }
 
   // ssl_ca_certificate_arn - computed: false, optional: true, required: false
-  private _sslCaCertificateArn?: string | undefined; 
+  private _sslCaCertificateArn?: string; 
   public get sslCaCertificateArn() {
     return this.getStringAttribute('ssl_ca_certificate_arn');
   }
-  public set sslCaCertificateArn(value: string | undefined) {
+  public set sslCaCertificateArn(value: string) {
     this._sslCaCertificateArn = value;
   }
   public resetSslCaCertificateArn() {
@@ -528,15 +686,15 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get sslCaCertificateArnInput() {
-    return this._sslCaCertificateArn
+    return this._sslCaCertificateArn;
   }
 
   // ssl_client_certificate_arn - computed: false, optional: true, required: false
-  private _sslClientCertificateArn?: string | undefined; 
+  private _sslClientCertificateArn?: string; 
   public get sslClientCertificateArn() {
     return this.getStringAttribute('ssl_client_certificate_arn');
   }
-  public set sslClientCertificateArn(value: string | undefined) {
+  public set sslClientCertificateArn(value: string) {
     this._sslClientCertificateArn = value;
   }
   public resetSslClientCertificateArn() {
@@ -544,15 +702,15 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get sslClientCertificateArnInput() {
-    return this._sslClientCertificateArn
+    return this._sslClientCertificateArn;
   }
 
   // ssl_client_key_arn - computed: false, optional: true, required: false
-  private _sslClientKeyArn?: string | undefined; 
+  private _sslClientKeyArn?: string; 
   public get sslClientKeyArn() {
     return this.getStringAttribute('ssl_client_key_arn');
   }
-  public set sslClientKeyArn(value: string | undefined) {
+  public set sslClientKeyArn(value: string) {
     this._sslClientKeyArn = value;
   }
   public resetSslClientKeyArn() {
@@ -560,15 +718,15 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get sslClientKeyArnInput() {
-    return this._sslClientKeyArn
+    return this._sslClientKeyArn;
   }
 
   // ssl_client_key_password - computed: false, optional: true, required: false
-  private _sslClientKeyPassword?: string | undefined; 
+  private _sslClientKeyPassword?: string; 
   public get sslClientKeyPassword() {
     return this.getStringAttribute('ssl_client_key_password');
   }
-  public set sslClientKeyPassword(value: string | undefined) {
+  public set sslClientKeyPassword(value: string) {
     this._sslClientKeyPassword = value;
   }
   public resetSslClientKeyPassword() {
@@ -576,15 +734,15 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get sslClientKeyPasswordInput() {
-    return this._sslClientKeyPassword
+    return this._sslClientKeyPassword;
   }
 
   // topic - computed: false, optional: true, required: false
-  private _topic?: string | undefined; 
+  private _topic?: string; 
   public get topic() {
     return this.getStringAttribute('topic');
   }
-  public set topic(value: string | undefined) {
+  public set topic(value: string) {
     this._topic = value;
   }
   public resetTopic() {
@@ -592,7 +750,7 @@ export class DmsEndpointKafkaSettingsOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get topicInput() {
-    return this._topic
+    return this._topic;
   }
 }
 export interface DmsEndpointKinesisSettings {
@@ -662,12 +820,79 @@ export class DmsEndpointKinesisSettingsOutputReference extends cdktf.ComplexObje
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DmsEndpointKinesisSettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._includeControlDetails) {
+      hasAnyValues = true;
+      internalValueResult.includeControlDetails = this._includeControlDetails;
+    }
+    if (this._includeNullAndEmpty) {
+      hasAnyValues = true;
+      internalValueResult.includeNullAndEmpty = this._includeNullAndEmpty;
+    }
+    if (this._includePartitionValue) {
+      hasAnyValues = true;
+      internalValueResult.includePartitionValue = this._includePartitionValue;
+    }
+    if (this._includeTableAlterOperations) {
+      hasAnyValues = true;
+      internalValueResult.includeTableAlterOperations = this._includeTableAlterOperations;
+    }
+    if (this._includeTransactionDetails) {
+      hasAnyValues = true;
+      internalValueResult.includeTransactionDetails = this._includeTransactionDetails;
+    }
+    if (this._messageFormat) {
+      hasAnyValues = true;
+      internalValueResult.messageFormat = this._messageFormat;
+    }
+    if (this._partitionIncludeSchemaTable) {
+      hasAnyValues = true;
+      internalValueResult.partitionIncludeSchemaTable = this._partitionIncludeSchemaTable;
+    }
+    if (this._serviceAccessRoleArn) {
+      hasAnyValues = true;
+      internalValueResult.serviceAccessRoleArn = this._serviceAccessRoleArn;
+    }
+    if (this._streamArn) {
+      hasAnyValues = true;
+      internalValueResult.streamArn = this._streamArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DmsEndpointKinesisSettings | undefined) {
+    if (value === undefined) {
+      this._includeControlDetails = undefined;
+      this._includeNullAndEmpty = undefined;
+      this._includePartitionValue = undefined;
+      this._includeTableAlterOperations = undefined;
+      this._includeTransactionDetails = undefined;
+      this._messageFormat = undefined;
+      this._partitionIncludeSchemaTable = undefined;
+      this._serviceAccessRoleArn = undefined;
+      this._streamArn = undefined;
+    }
+    else {
+      this._includeControlDetails = value.includeControlDetails;
+      this._includeNullAndEmpty = value.includeNullAndEmpty;
+      this._includePartitionValue = value.includePartitionValue;
+      this._includeTableAlterOperations = value.includeTableAlterOperations;
+      this._includeTransactionDetails = value.includeTransactionDetails;
+      this._messageFormat = value.messageFormat;
+      this._partitionIncludeSchemaTable = value.partitionIncludeSchemaTable;
+      this._serviceAccessRoleArn = value.serviceAccessRoleArn;
+      this._streamArn = value.streamArn;
+    }
+  }
+
   // include_control_details - computed: false, optional: true, required: false
-  private _includeControlDetails?: boolean | cdktf.IResolvable | undefined; 
+  private _includeControlDetails?: boolean | cdktf.IResolvable; 
   public get includeControlDetails() {
     return this.getBooleanAttribute('include_control_details') as any;
   }
-  public set includeControlDetails(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeControlDetails(value: boolean | cdktf.IResolvable) {
     this._includeControlDetails = value;
   }
   public resetIncludeControlDetails() {
@@ -675,15 +900,15 @@ export class DmsEndpointKinesisSettingsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get includeControlDetailsInput() {
-    return this._includeControlDetails
+    return this._includeControlDetails;
   }
 
   // include_null_and_empty - computed: false, optional: true, required: false
-  private _includeNullAndEmpty?: boolean | cdktf.IResolvable | undefined; 
+  private _includeNullAndEmpty?: boolean | cdktf.IResolvable; 
   public get includeNullAndEmpty() {
     return this.getBooleanAttribute('include_null_and_empty') as any;
   }
-  public set includeNullAndEmpty(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeNullAndEmpty(value: boolean | cdktf.IResolvable) {
     this._includeNullAndEmpty = value;
   }
   public resetIncludeNullAndEmpty() {
@@ -691,15 +916,15 @@ export class DmsEndpointKinesisSettingsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get includeNullAndEmptyInput() {
-    return this._includeNullAndEmpty
+    return this._includeNullAndEmpty;
   }
 
   // include_partition_value - computed: false, optional: true, required: false
-  private _includePartitionValue?: boolean | cdktf.IResolvable | undefined; 
+  private _includePartitionValue?: boolean | cdktf.IResolvable; 
   public get includePartitionValue() {
     return this.getBooleanAttribute('include_partition_value') as any;
   }
-  public set includePartitionValue(value: boolean | cdktf.IResolvable | undefined) {
+  public set includePartitionValue(value: boolean | cdktf.IResolvable) {
     this._includePartitionValue = value;
   }
   public resetIncludePartitionValue() {
@@ -707,15 +932,15 @@ export class DmsEndpointKinesisSettingsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get includePartitionValueInput() {
-    return this._includePartitionValue
+    return this._includePartitionValue;
   }
 
   // include_table_alter_operations - computed: false, optional: true, required: false
-  private _includeTableAlterOperations?: boolean | cdktf.IResolvable | undefined; 
+  private _includeTableAlterOperations?: boolean | cdktf.IResolvable; 
   public get includeTableAlterOperations() {
     return this.getBooleanAttribute('include_table_alter_operations') as any;
   }
-  public set includeTableAlterOperations(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeTableAlterOperations(value: boolean | cdktf.IResolvable) {
     this._includeTableAlterOperations = value;
   }
   public resetIncludeTableAlterOperations() {
@@ -723,15 +948,15 @@ export class DmsEndpointKinesisSettingsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get includeTableAlterOperationsInput() {
-    return this._includeTableAlterOperations
+    return this._includeTableAlterOperations;
   }
 
   // include_transaction_details - computed: false, optional: true, required: false
-  private _includeTransactionDetails?: boolean | cdktf.IResolvable | undefined; 
+  private _includeTransactionDetails?: boolean | cdktf.IResolvable; 
   public get includeTransactionDetails() {
     return this.getBooleanAttribute('include_transaction_details') as any;
   }
-  public set includeTransactionDetails(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeTransactionDetails(value: boolean | cdktf.IResolvable) {
     this._includeTransactionDetails = value;
   }
   public resetIncludeTransactionDetails() {
@@ -739,15 +964,15 @@ export class DmsEndpointKinesisSettingsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get includeTransactionDetailsInput() {
-    return this._includeTransactionDetails
+    return this._includeTransactionDetails;
   }
 
   // message_format - computed: false, optional: true, required: false
-  private _messageFormat?: string | undefined; 
+  private _messageFormat?: string; 
   public get messageFormat() {
     return this.getStringAttribute('message_format');
   }
-  public set messageFormat(value: string | undefined) {
+  public set messageFormat(value: string) {
     this._messageFormat = value;
   }
   public resetMessageFormat() {
@@ -755,15 +980,15 @@ export class DmsEndpointKinesisSettingsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get messageFormatInput() {
-    return this._messageFormat
+    return this._messageFormat;
   }
 
   // partition_include_schema_table - computed: false, optional: true, required: false
-  private _partitionIncludeSchemaTable?: boolean | cdktf.IResolvable | undefined; 
+  private _partitionIncludeSchemaTable?: boolean | cdktf.IResolvable; 
   public get partitionIncludeSchemaTable() {
     return this.getBooleanAttribute('partition_include_schema_table') as any;
   }
-  public set partitionIncludeSchemaTable(value: boolean | cdktf.IResolvable | undefined) {
+  public set partitionIncludeSchemaTable(value: boolean | cdktf.IResolvable) {
     this._partitionIncludeSchemaTable = value;
   }
   public resetPartitionIncludeSchemaTable() {
@@ -771,15 +996,15 @@ export class DmsEndpointKinesisSettingsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get partitionIncludeSchemaTableInput() {
-    return this._partitionIncludeSchemaTable
+    return this._partitionIncludeSchemaTable;
   }
 
   // service_access_role_arn - computed: false, optional: true, required: false
-  private _serviceAccessRoleArn?: string | undefined; 
+  private _serviceAccessRoleArn?: string; 
   public get serviceAccessRoleArn() {
     return this.getStringAttribute('service_access_role_arn');
   }
-  public set serviceAccessRoleArn(value: string | undefined) {
+  public set serviceAccessRoleArn(value: string) {
     this._serviceAccessRoleArn = value;
   }
   public resetServiceAccessRoleArn() {
@@ -787,15 +1012,15 @@ export class DmsEndpointKinesisSettingsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get serviceAccessRoleArnInput() {
-    return this._serviceAccessRoleArn
+    return this._serviceAccessRoleArn;
   }
 
   // stream_arn - computed: false, optional: true, required: false
-  private _streamArn?: string | undefined; 
+  private _streamArn?: string; 
   public get streamArn() {
     return this.getStringAttribute('stream_arn');
   }
-  public set streamArn(value: string | undefined) {
+  public set streamArn(value: string) {
     this._streamArn = value;
   }
   public resetStreamArn() {
@@ -803,7 +1028,7 @@ export class DmsEndpointKinesisSettingsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get streamArnInput() {
-    return this._streamArn
+    return this._streamArn;
   }
 }
 export interface DmsEndpointMongodbSettings {
@@ -858,12 +1083,61 @@ export class DmsEndpointMongodbSettingsOutputReference extends cdktf.ComplexObje
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DmsEndpointMongodbSettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._authMechanism) {
+      hasAnyValues = true;
+      internalValueResult.authMechanism = this._authMechanism;
+    }
+    if (this._authSource) {
+      hasAnyValues = true;
+      internalValueResult.authSource = this._authSource;
+    }
+    if (this._authType) {
+      hasAnyValues = true;
+      internalValueResult.authType = this._authType;
+    }
+    if (this._docsToInvestigate) {
+      hasAnyValues = true;
+      internalValueResult.docsToInvestigate = this._docsToInvestigate;
+    }
+    if (this._extractDocId) {
+      hasAnyValues = true;
+      internalValueResult.extractDocId = this._extractDocId;
+    }
+    if (this._nestingLevel) {
+      hasAnyValues = true;
+      internalValueResult.nestingLevel = this._nestingLevel;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DmsEndpointMongodbSettings | undefined) {
+    if (value === undefined) {
+      this._authMechanism = undefined;
+      this._authSource = undefined;
+      this._authType = undefined;
+      this._docsToInvestigate = undefined;
+      this._extractDocId = undefined;
+      this._nestingLevel = undefined;
+    }
+    else {
+      this._authMechanism = value.authMechanism;
+      this._authSource = value.authSource;
+      this._authType = value.authType;
+      this._docsToInvestigate = value.docsToInvestigate;
+      this._extractDocId = value.extractDocId;
+      this._nestingLevel = value.nestingLevel;
+    }
+  }
+
   // auth_mechanism - computed: false, optional: true, required: false
-  private _authMechanism?: string | undefined; 
+  private _authMechanism?: string; 
   public get authMechanism() {
     return this.getStringAttribute('auth_mechanism');
   }
-  public set authMechanism(value: string | undefined) {
+  public set authMechanism(value: string) {
     this._authMechanism = value;
   }
   public resetAuthMechanism() {
@@ -871,15 +1145,15 @@ export class DmsEndpointMongodbSettingsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get authMechanismInput() {
-    return this._authMechanism
+    return this._authMechanism;
   }
 
   // auth_source - computed: false, optional: true, required: false
-  private _authSource?: string | undefined; 
+  private _authSource?: string; 
   public get authSource() {
     return this.getStringAttribute('auth_source');
   }
-  public set authSource(value: string | undefined) {
+  public set authSource(value: string) {
     this._authSource = value;
   }
   public resetAuthSource() {
@@ -887,15 +1161,15 @@ export class DmsEndpointMongodbSettingsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get authSourceInput() {
-    return this._authSource
+    return this._authSource;
   }
 
   // auth_type - computed: false, optional: true, required: false
-  private _authType?: string | undefined; 
+  private _authType?: string; 
   public get authType() {
     return this.getStringAttribute('auth_type');
   }
-  public set authType(value: string | undefined) {
+  public set authType(value: string) {
     this._authType = value;
   }
   public resetAuthType() {
@@ -903,15 +1177,15 @@ export class DmsEndpointMongodbSettingsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get authTypeInput() {
-    return this._authType
+    return this._authType;
   }
 
   // docs_to_investigate - computed: false, optional: true, required: false
-  private _docsToInvestigate?: string | undefined; 
+  private _docsToInvestigate?: string; 
   public get docsToInvestigate() {
     return this.getStringAttribute('docs_to_investigate');
   }
-  public set docsToInvestigate(value: string | undefined) {
+  public set docsToInvestigate(value: string) {
     this._docsToInvestigate = value;
   }
   public resetDocsToInvestigate() {
@@ -919,15 +1193,15 @@ export class DmsEndpointMongodbSettingsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get docsToInvestigateInput() {
-    return this._docsToInvestigate
+    return this._docsToInvestigate;
   }
 
   // extract_doc_id - computed: false, optional: true, required: false
-  private _extractDocId?: string | undefined; 
+  private _extractDocId?: string; 
   public get extractDocId() {
     return this.getStringAttribute('extract_doc_id');
   }
-  public set extractDocId(value: string | undefined) {
+  public set extractDocId(value: string) {
     this._extractDocId = value;
   }
   public resetExtractDocId() {
@@ -935,15 +1209,15 @@ export class DmsEndpointMongodbSettingsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get extractDocIdInput() {
-    return this._extractDocId
+    return this._extractDocId;
   }
 
   // nesting_level - computed: false, optional: true, required: false
-  private _nestingLevel?: string | undefined; 
+  private _nestingLevel?: string; 
   public get nestingLevel() {
     return this.getStringAttribute('nesting_level');
   }
-  public set nestingLevel(value: string | undefined) {
+  public set nestingLevel(value: string) {
     this._nestingLevel = value;
   }
   public resetNestingLevel() {
@@ -951,7 +1225,7 @@ export class DmsEndpointMongodbSettingsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get nestingLevelInput() {
-    return this._nestingLevel
+    return this._nestingLevel;
   }
 }
 export interface DmsEndpointS3Settings {
@@ -1041,12 +1315,103 @@ export class DmsEndpointS3SettingsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DmsEndpointS3Settings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucketFolder) {
+      hasAnyValues = true;
+      internalValueResult.bucketFolder = this._bucketFolder;
+    }
+    if (this._bucketName) {
+      hasAnyValues = true;
+      internalValueResult.bucketName = this._bucketName;
+    }
+    if (this._compressionType) {
+      hasAnyValues = true;
+      internalValueResult.compressionType = this._compressionType;
+    }
+    if (this._csvDelimiter) {
+      hasAnyValues = true;
+      internalValueResult.csvDelimiter = this._csvDelimiter;
+    }
+    if (this._csvRowDelimiter) {
+      hasAnyValues = true;
+      internalValueResult.csvRowDelimiter = this._csvRowDelimiter;
+    }
+    if (this._dataFormat) {
+      hasAnyValues = true;
+      internalValueResult.dataFormat = this._dataFormat;
+    }
+    if (this._datePartitionEnabled) {
+      hasAnyValues = true;
+      internalValueResult.datePartitionEnabled = this._datePartitionEnabled;
+    }
+    if (this._encryptionMode) {
+      hasAnyValues = true;
+      internalValueResult.encryptionMode = this._encryptionMode;
+    }
+    if (this._externalTableDefinition) {
+      hasAnyValues = true;
+      internalValueResult.externalTableDefinition = this._externalTableDefinition;
+    }
+    if (this._parquetTimestampInMillisecond) {
+      hasAnyValues = true;
+      internalValueResult.parquetTimestampInMillisecond = this._parquetTimestampInMillisecond;
+    }
+    if (this._parquetVersion) {
+      hasAnyValues = true;
+      internalValueResult.parquetVersion = this._parquetVersion;
+    }
+    if (this._serverSideEncryptionKmsKeyId) {
+      hasAnyValues = true;
+      internalValueResult.serverSideEncryptionKmsKeyId = this._serverSideEncryptionKmsKeyId;
+    }
+    if (this._serviceAccessRoleArn) {
+      hasAnyValues = true;
+      internalValueResult.serviceAccessRoleArn = this._serviceAccessRoleArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DmsEndpointS3Settings | undefined) {
+    if (value === undefined) {
+      this._bucketFolder = undefined;
+      this._bucketName = undefined;
+      this._compressionType = undefined;
+      this._csvDelimiter = undefined;
+      this._csvRowDelimiter = undefined;
+      this._dataFormat = undefined;
+      this._datePartitionEnabled = undefined;
+      this._encryptionMode = undefined;
+      this._externalTableDefinition = undefined;
+      this._parquetTimestampInMillisecond = undefined;
+      this._parquetVersion = undefined;
+      this._serverSideEncryptionKmsKeyId = undefined;
+      this._serviceAccessRoleArn = undefined;
+    }
+    else {
+      this._bucketFolder = value.bucketFolder;
+      this._bucketName = value.bucketName;
+      this._compressionType = value.compressionType;
+      this._csvDelimiter = value.csvDelimiter;
+      this._csvRowDelimiter = value.csvRowDelimiter;
+      this._dataFormat = value.dataFormat;
+      this._datePartitionEnabled = value.datePartitionEnabled;
+      this._encryptionMode = value.encryptionMode;
+      this._externalTableDefinition = value.externalTableDefinition;
+      this._parquetTimestampInMillisecond = value.parquetTimestampInMillisecond;
+      this._parquetVersion = value.parquetVersion;
+      this._serverSideEncryptionKmsKeyId = value.serverSideEncryptionKmsKeyId;
+      this._serviceAccessRoleArn = value.serviceAccessRoleArn;
+    }
+  }
+
   // bucket_folder - computed: false, optional: true, required: false
-  private _bucketFolder?: string | undefined; 
+  private _bucketFolder?: string; 
   public get bucketFolder() {
     return this.getStringAttribute('bucket_folder');
   }
-  public set bucketFolder(value: string | undefined) {
+  public set bucketFolder(value: string) {
     this._bucketFolder = value;
   }
   public resetBucketFolder() {
@@ -1054,15 +1419,15 @@ export class DmsEndpointS3SettingsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketFolderInput() {
-    return this._bucketFolder
+    return this._bucketFolder;
   }
 
   // bucket_name - computed: false, optional: true, required: false
-  private _bucketName?: string | undefined; 
+  private _bucketName?: string; 
   public get bucketName() {
     return this.getStringAttribute('bucket_name');
   }
-  public set bucketName(value: string | undefined) {
+  public set bucketName(value: string) {
     this._bucketName = value;
   }
   public resetBucketName() {
@@ -1070,15 +1435,15 @@ export class DmsEndpointS3SettingsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketNameInput() {
-    return this._bucketName
+    return this._bucketName;
   }
 
   // compression_type - computed: false, optional: true, required: false
-  private _compressionType?: string | undefined; 
+  private _compressionType?: string; 
   public get compressionType() {
     return this.getStringAttribute('compression_type');
   }
-  public set compressionType(value: string | undefined) {
+  public set compressionType(value: string) {
     this._compressionType = value;
   }
   public resetCompressionType() {
@@ -1086,15 +1451,15 @@ export class DmsEndpointS3SettingsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get compressionTypeInput() {
-    return this._compressionType
+    return this._compressionType;
   }
 
   // csv_delimiter - computed: false, optional: true, required: false
-  private _csvDelimiter?: string | undefined; 
+  private _csvDelimiter?: string; 
   public get csvDelimiter() {
     return this.getStringAttribute('csv_delimiter');
   }
-  public set csvDelimiter(value: string | undefined) {
+  public set csvDelimiter(value: string) {
     this._csvDelimiter = value;
   }
   public resetCsvDelimiter() {
@@ -1102,15 +1467,15 @@ export class DmsEndpointS3SettingsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get csvDelimiterInput() {
-    return this._csvDelimiter
+    return this._csvDelimiter;
   }
 
   // csv_row_delimiter - computed: false, optional: true, required: false
-  private _csvRowDelimiter?: string | undefined; 
+  private _csvRowDelimiter?: string; 
   public get csvRowDelimiter() {
     return this.getStringAttribute('csv_row_delimiter');
   }
-  public set csvRowDelimiter(value: string | undefined) {
+  public set csvRowDelimiter(value: string) {
     this._csvRowDelimiter = value;
   }
   public resetCsvRowDelimiter() {
@@ -1118,15 +1483,15 @@ export class DmsEndpointS3SettingsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get csvRowDelimiterInput() {
-    return this._csvRowDelimiter
+    return this._csvRowDelimiter;
   }
 
   // data_format - computed: false, optional: true, required: false
-  private _dataFormat?: string | undefined; 
+  private _dataFormat?: string; 
   public get dataFormat() {
     return this.getStringAttribute('data_format');
   }
-  public set dataFormat(value: string | undefined) {
+  public set dataFormat(value: string) {
     this._dataFormat = value;
   }
   public resetDataFormat() {
@@ -1134,15 +1499,15 @@ export class DmsEndpointS3SettingsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get dataFormatInput() {
-    return this._dataFormat
+    return this._dataFormat;
   }
 
   // date_partition_enabled - computed: false, optional: true, required: false
-  private _datePartitionEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _datePartitionEnabled?: boolean | cdktf.IResolvable; 
   public get datePartitionEnabled() {
     return this.getBooleanAttribute('date_partition_enabled') as any;
   }
-  public set datePartitionEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set datePartitionEnabled(value: boolean | cdktf.IResolvable) {
     this._datePartitionEnabled = value;
   }
   public resetDatePartitionEnabled() {
@@ -1150,15 +1515,15 @@ export class DmsEndpointS3SettingsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get datePartitionEnabledInput() {
-    return this._datePartitionEnabled
+    return this._datePartitionEnabled;
   }
 
   // encryption_mode - computed: false, optional: true, required: false
-  private _encryptionMode?: string | undefined; 
+  private _encryptionMode?: string; 
   public get encryptionMode() {
     return this.getStringAttribute('encryption_mode');
   }
-  public set encryptionMode(value: string | undefined) {
+  public set encryptionMode(value: string) {
     this._encryptionMode = value;
   }
   public resetEncryptionMode() {
@@ -1166,15 +1531,15 @@ export class DmsEndpointS3SettingsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionModeInput() {
-    return this._encryptionMode
+    return this._encryptionMode;
   }
 
   // external_table_definition - computed: false, optional: true, required: false
-  private _externalTableDefinition?: string | undefined; 
+  private _externalTableDefinition?: string; 
   public get externalTableDefinition() {
     return this.getStringAttribute('external_table_definition');
   }
-  public set externalTableDefinition(value: string | undefined) {
+  public set externalTableDefinition(value: string) {
     this._externalTableDefinition = value;
   }
   public resetExternalTableDefinition() {
@@ -1182,15 +1547,15 @@ export class DmsEndpointS3SettingsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get externalTableDefinitionInput() {
-    return this._externalTableDefinition
+    return this._externalTableDefinition;
   }
 
   // parquet_timestamp_in_millisecond - computed: false, optional: true, required: false
-  private _parquetTimestampInMillisecond?: boolean | cdktf.IResolvable | undefined; 
+  private _parquetTimestampInMillisecond?: boolean | cdktf.IResolvable; 
   public get parquetTimestampInMillisecond() {
     return this.getBooleanAttribute('parquet_timestamp_in_millisecond') as any;
   }
-  public set parquetTimestampInMillisecond(value: boolean | cdktf.IResolvable | undefined) {
+  public set parquetTimestampInMillisecond(value: boolean | cdktf.IResolvable) {
     this._parquetTimestampInMillisecond = value;
   }
   public resetParquetTimestampInMillisecond() {
@@ -1198,15 +1563,15 @@ export class DmsEndpointS3SettingsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get parquetTimestampInMillisecondInput() {
-    return this._parquetTimestampInMillisecond
+    return this._parquetTimestampInMillisecond;
   }
 
   // parquet_version - computed: false, optional: true, required: false
-  private _parquetVersion?: string | undefined; 
+  private _parquetVersion?: string; 
   public get parquetVersion() {
     return this.getStringAttribute('parquet_version');
   }
-  public set parquetVersion(value: string | undefined) {
+  public set parquetVersion(value: string) {
     this._parquetVersion = value;
   }
   public resetParquetVersion() {
@@ -1214,15 +1579,15 @@ export class DmsEndpointS3SettingsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get parquetVersionInput() {
-    return this._parquetVersion
+    return this._parquetVersion;
   }
 
   // server_side_encryption_kms_key_id - computed: false, optional: true, required: false
-  private _serverSideEncryptionKmsKeyId?: string | undefined; 
+  private _serverSideEncryptionKmsKeyId?: string; 
   public get serverSideEncryptionKmsKeyId() {
     return this.getStringAttribute('server_side_encryption_kms_key_id');
   }
-  public set serverSideEncryptionKmsKeyId(value: string | undefined) {
+  public set serverSideEncryptionKmsKeyId(value: string) {
     this._serverSideEncryptionKmsKeyId = value;
   }
   public resetServerSideEncryptionKmsKeyId() {
@@ -1230,15 +1595,15 @@ export class DmsEndpointS3SettingsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get serverSideEncryptionKmsKeyIdInput() {
-    return this._serverSideEncryptionKmsKeyId
+    return this._serverSideEncryptionKmsKeyId;
   }
 
   // service_access_role_arn - computed: false, optional: true, required: false
-  private _serviceAccessRoleArn?: string | undefined; 
+  private _serviceAccessRoleArn?: string; 
   public get serviceAccessRoleArn() {
     return this.getStringAttribute('service_access_role_arn');
   }
-  public set serviceAccessRoleArn(value: string | undefined) {
+  public set serviceAccessRoleArn(value: string) {
     this._serviceAccessRoleArn = value;
   }
   public resetServiceAccessRoleArn() {
@@ -1246,7 +1611,7 @@ export class DmsEndpointS3SettingsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceAccessRoleArnInput() {
-    return this._serviceAccessRoleArn
+    return this._serviceAccessRoleArn;
   }
 }
 
@@ -1297,11 +1662,11 @@ export class DmsEndpoint extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._username = config.username;
-    this._elasticsearchSettings = config.elasticsearchSettings;
-    this._kafkaSettings = config.kafkaSettings;
-    this._kinesisSettings = config.kinesisSettings;
-    this._mongodbSettings = config.mongodbSettings;
-    this._s3Settings = config.s3Settings;
+    this._elasticsearchSettings.internalValue = config.elasticsearchSettings;
+    this._kafkaSettings.internalValue = config.kafkaSettings;
+    this._kinesisSettings.internalValue = config.kinesisSettings;
+    this._mongodbSettings.internalValue = config.mongodbSettings;
+    this._s3Settings.internalValue = config.s3Settings;
   }
 
   // ==========
@@ -1309,11 +1674,11 @@ export class DmsEndpoint extends cdktf.TerraformResource {
   // ==========
 
   // certificate_arn - computed: true, optional: true, required: false
-  private _certificateArn?: string | undefined; 
+  private _certificateArn?: string; 
   public get certificateArn() {
     return this.getStringAttribute('certificate_arn');
   }
-  public set certificateArn(value: string | undefined) {
+  public set certificateArn(value: string) {
     this._certificateArn = value;
   }
   public resetCertificateArn() {
@@ -1321,15 +1686,15 @@ export class DmsEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get certificateArnInput() {
-    return this._certificateArn
+    return this._certificateArn;
   }
 
   // database_name - computed: false, optional: true, required: false
-  private _databaseName?: string | undefined; 
+  private _databaseName?: string; 
   public get databaseName() {
     return this.getStringAttribute('database_name');
   }
-  public set databaseName(value: string | undefined) {
+  public set databaseName(value: string) {
     this._databaseName = value;
   }
   public resetDatabaseName() {
@@ -1337,7 +1702,7 @@ export class DmsEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get databaseNameInput() {
-    return this._databaseName
+    return this._databaseName;
   }
 
   // endpoint_arn - computed: true, optional: false, required: false
@@ -1355,7 +1720,7 @@ export class DmsEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get endpointIdInput() {
-    return this._endpointId
+    return this._endpointId;
   }
 
   // endpoint_type - computed: false, optional: false, required: true
@@ -1368,7 +1733,7 @@ export class DmsEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get endpointTypeInput() {
-    return this._endpointType
+    return this._endpointType;
   }
 
   // engine_name - computed: false, optional: false, required: true
@@ -1381,15 +1746,15 @@ export class DmsEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get engineNameInput() {
-    return this._engineName
+    return this._engineName;
   }
 
   // extra_connection_attributes - computed: true, optional: true, required: false
-  private _extraConnectionAttributes?: string | undefined; 
+  private _extraConnectionAttributes?: string; 
   public get extraConnectionAttributes() {
     return this.getStringAttribute('extra_connection_attributes');
   }
-  public set extraConnectionAttributes(value: string | undefined) {
+  public set extraConnectionAttributes(value: string) {
     this._extraConnectionAttributes = value;
   }
   public resetExtraConnectionAttributes() {
@@ -1397,7 +1762,7 @@ export class DmsEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get extraConnectionAttributesInput() {
-    return this._extraConnectionAttributes
+    return this._extraConnectionAttributes;
   }
 
   // id - computed: true, optional: true, required: false
@@ -1406,11 +1771,11 @@ export class DmsEndpoint extends cdktf.TerraformResource {
   }
 
   // kms_key_arn - computed: true, optional: true, required: false
-  private _kmsKeyArn?: string | undefined; 
+  private _kmsKeyArn?: string; 
   public get kmsKeyArn() {
     return this.getStringAttribute('kms_key_arn');
   }
-  public set kmsKeyArn(value: string | undefined) {
+  public set kmsKeyArn(value: string) {
     this._kmsKeyArn = value;
   }
   public resetKmsKeyArn() {
@@ -1418,15 +1783,15 @@ export class DmsEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyArnInput() {
-    return this._kmsKeyArn
+    return this._kmsKeyArn;
   }
 
   // password - computed: false, optional: true, required: false
-  private _password?: string | undefined; 
+  private _password?: string; 
   public get password() {
     return this.getStringAttribute('password');
   }
-  public set password(value: string | undefined) {
+  public set password(value: string) {
     this._password = value;
   }
   public resetPassword() {
@@ -1434,15 +1799,15 @@ export class DmsEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get passwordInput() {
-    return this._password
+    return this._password;
   }
 
   // port - computed: false, optional: true, required: false
-  private _port?: number | undefined; 
+  private _port?: number; 
   public get port() {
     return this.getNumberAttribute('port');
   }
-  public set port(value: number | undefined) {
+  public set port(value: number) {
     this._port = value;
   }
   public resetPort() {
@@ -1450,15 +1815,15 @@ export class DmsEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 
   // server_name - computed: false, optional: true, required: false
-  private _serverName?: string | undefined; 
+  private _serverName?: string; 
   public get serverName() {
     return this.getStringAttribute('server_name');
   }
-  public set serverName(value: string | undefined) {
+  public set serverName(value: string) {
     this._serverName = value;
   }
   public resetServerName() {
@@ -1466,15 +1831,15 @@ export class DmsEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serverNameInput() {
-    return this._serverName
+    return this._serverName;
   }
 
   // service_access_role - computed: false, optional: true, required: false
-  private _serviceAccessRole?: string | undefined; 
+  private _serviceAccessRole?: string; 
   public get serviceAccessRole() {
     return this.getStringAttribute('service_access_role');
   }
-  public set serviceAccessRole(value: string | undefined) {
+  public set serviceAccessRole(value: string) {
     this._serviceAccessRole = value;
   }
   public resetServiceAccessRole() {
@@ -1482,15 +1847,15 @@ export class DmsEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceAccessRoleInput() {
-    return this._serviceAccessRole
+    return this._serviceAccessRole;
   }
 
   // ssl_mode - computed: true, optional: true, required: false
-  private _sslMode?: string | undefined; 
+  private _sslMode?: string; 
   public get sslMode() {
     return this.getStringAttribute('ssl_mode');
   }
-  public set sslMode(value: string | undefined) {
+  public set sslMode(value: string) {
     this._sslMode = value;
   }
   public resetSslMode() {
@@ -1498,16 +1863,16 @@ export class DmsEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sslModeInput() {
-    return this._sslMode
+    return this._sslMode;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -1515,16 +1880,16 @@ export class DmsEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -1532,15 +1897,15 @@ export class DmsEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // username - computed: false, optional: true, required: false
-  private _username?: string | undefined; 
+  private _username?: string; 
   public get username() {
     return this.getStringAttribute('username');
   }
-  public set username(value: string | undefined) {
+  public set username(value: string) {
     this._username = value;
   }
   public resetUsername() {
@@ -1548,92 +1913,87 @@ export class DmsEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get usernameInput() {
-    return this._username
+    return this._username;
   }
 
   // elasticsearch_settings - computed: false, optional: true, required: false
-  private _elasticsearchSettings?: DmsEndpointElasticsearchSettings | undefined; 
-  private __elasticsearchSettingsOutput = new DmsEndpointElasticsearchSettingsOutputReference(this as any, "elasticsearch_settings", true);
+  private _elasticsearchSettings = new DmsEndpointElasticsearchSettingsOutputReference(this as any, "elasticsearch_settings", true);
   public get elasticsearchSettings() {
-    return this.__elasticsearchSettingsOutput;
+    return this._elasticsearchSettings;
   }
-  public putElasticsearchSettings(value: DmsEndpointElasticsearchSettings | undefined) {
-    this._elasticsearchSettings = value;
+  public putElasticsearchSettings(value: DmsEndpointElasticsearchSettings) {
+    this._elasticsearchSettings.internalValue = value;
   }
   public resetElasticsearchSettings() {
-    this._elasticsearchSettings = undefined;
+    this._elasticsearchSettings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get elasticsearchSettingsInput() {
-    return this._elasticsearchSettings
+    return this._elasticsearchSettings.internalValue;
   }
 
   // kafka_settings - computed: false, optional: true, required: false
-  private _kafkaSettings?: DmsEndpointKafkaSettings | undefined; 
-  private __kafkaSettingsOutput = new DmsEndpointKafkaSettingsOutputReference(this as any, "kafka_settings", true);
+  private _kafkaSettings = new DmsEndpointKafkaSettingsOutputReference(this as any, "kafka_settings", true);
   public get kafkaSettings() {
-    return this.__kafkaSettingsOutput;
+    return this._kafkaSettings;
   }
-  public putKafkaSettings(value: DmsEndpointKafkaSettings | undefined) {
-    this._kafkaSettings = value;
+  public putKafkaSettings(value: DmsEndpointKafkaSettings) {
+    this._kafkaSettings.internalValue = value;
   }
   public resetKafkaSettings() {
-    this._kafkaSettings = undefined;
+    this._kafkaSettings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get kafkaSettingsInput() {
-    return this._kafkaSettings
+    return this._kafkaSettings.internalValue;
   }
 
   // kinesis_settings - computed: false, optional: true, required: false
-  private _kinesisSettings?: DmsEndpointKinesisSettings | undefined; 
-  private __kinesisSettingsOutput = new DmsEndpointKinesisSettingsOutputReference(this as any, "kinesis_settings", true);
+  private _kinesisSettings = new DmsEndpointKinesisSettingsOutputReference(this as any, "kinesis_settings", true);
   public get kinesisSettings() {
-    return this.__kinesisSettingsOutput;
+    return this._kinesisSettings;
   }
-  public putKinesisSettings(value: DmsEndpointKinesisSettings | undefined) {
-    this._kinesisSettings = value;
+  public putKinesisSettings(value: DmsEndpointKinesisSettings) {
+    this._kinesisSettings.internalValue = value;
   }
   public resetKinesisSettings() {
-    this._kinesisSettings = undefined;
+    this._kinesisSettings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get kinesisSettingsInput() {
-    return this._kinesisSettings
+    return this._kinesisSettings.internalValue;
   }
 
   // mongodb_settings - computed: false, optional: true, required: false
-  private _mongodbSettings?: DmsEndpointMongodbSettings | undefined; 
-  private __mongodbSettingsOutput = new DmsEndpointMongodbSettingsOutputReference(this as any, "mongodb_settings", true);
+  private _mongodbSettings = new DmsEndpointMongodbSettingsOutputReference(this as any, "mongodb_settings", true);
   public get mongodbSettings() {
-    return this.__mongodbSettingsOutput;
+    return this._mongodbSettings;
   }
-  public putMongodbSettings(value: DmsEndpointMongodbSettings | undefined) {
-    this._mongodbSettings = value;
+  public putMongodbSettings(value: DmsEndpointMongodbSettings) {
+    this._mongodbSettings.internalValue = value;
   }
   public resetMongodbSettings() {
-    this._mongodbSettings = undefined;
+    this._mongodbSettings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get mongodbSettingsInput() {
-    return this._mongodbSettings
+    return this._mongodbSettings.internalValue;
   }
 
   // s3_settings - computed: false, optional: true, required: false
-  private _s3Settings?: DmsEndpointS3Settings | undefined; 
-  private __s3SettingsOutput = new DmsEndpointS3SettingsOutputReference(this as any, "s3_settings", true);
+  private _s3Settings = new DmsEndpointS3SettingsOutputReference(this as any, "s3_settings", true);
   public get s3Settings() {
-    return this.__s3SettingsOutput;
+    return this._s3Settings;
   }
-  public putS3Settings(value: DmsEndpointS3Settings | undefined) {
-    this._s3Settings = value;
+  public putS3Settings(value: DmsEndpointS3Settings) {
+    this._s3Settings.internalValue = value;
   }
   public resetS3Settings() {
-    this._s3Settings = undefined;
+    this._s3Settings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get s3SettingsInput() {
-    return this._s3Settings
+    return this._s3Settings.internalValue;
   }
 
   // =========
@@ -1657,11 +2017,11 @@ export class DmsEndpoint extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       username: cdktf.stringToTerraform(this._username),
-      elasticsearch_settings: dmsEndpointElasticsearchSettingsToTerraform(this._elasticsearchSettings),
-      kafka_settings: dmsEndpointKafkaSettingsToTerraform(this._kafkaSettings),
-      kinesis_settings: dmsEndpointKinesisSettingsToTerraform(this._kinesisSettings),
-      mongodb_settings: dmsEndpointMongodbSettingsToTerraform(this._mongodbSettings),
-      s3_settings: dmsEndpointS3SettingsToTerraform(this._s3Settings),
+      elasticsearch_settings: dmsEndpointElasticsearchSettingsToTerraform(this._elasticsearchSettings.internalValue),
+      kafka_settings: dmsEndpointKafkaSettingsToTerraform(this._kafkaSettings.internalValue),
+      kinesis_settings: dmsEndpointKinesisSettingsToTerraform(this._kinesisSettings.internalValue),
+      mongodb_settings: dmsEndpointMongodbSettingsToTerraform(this._mongodbSettings.internalValue),
+      s3_settings: dmsEndpointS3SettingsToTerraform(this._s3Settings.internalValue),
     };
   }
 }

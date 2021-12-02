@@ -66,6 +66,31 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateF
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._certificateChain) {
+      hasAnyValues = true;
+      internalValueResult.certificateChain = this._certificateChain;
+    }
+    if (this._privateKey) {
+      hasAnyValues = true;
+      internalValueResult.privateKey = this._privateKey;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile | undefined) {
+    if (value === undefined) {
+      this._certificateChain = undefined;
+      this._privateKey = undefined;
+    }
+    else {
+      this._certificateChain = value.certificateChain;
+      this._privateKey = value.privateKey;
+    }
+  }
+
   // certificate_chain - computed: false, optional: false, required: true
   private _certificateChain?: string; 
   public get certificateChain() {
@@ -76,7 +101,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateF
   }
   // Temporarily expose input value. Use with caution.
   public get certificateChainInput() {
-    return this._certificateChain
+    return this._certificateChain;
   }
 
   // private_key - computed: false, optional: false, required: true
@@ -89,7 +114,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateF
   }
   // Temporarily expose input value. Use with caution.
   public get privateKeyInput() {
-    return this._privateKey
+    return this._privateKey;
   }
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds {
@@ -119,6 +144,25 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateS
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._secretName) {
+      hasAnyValues = true;
+      internalValueResult.secretName = this._secretName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds | undefined) {
+    if (value === undefined) {
+      this._secretName = undefined;
+    }
+    else {
+      this._secretName = value.secretName;
+    }
+  }
+
   // secret_name - computed: false, optional: false, required: true
   private _secretName?: string; 
   public get secretName() {
@@ -129,7 +173,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateS
   }
   // Temporarily expose input value. Use with caution.
   public get secretNameInput() {
-    return this._secretName
+    return this._secretName;
   }
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate {
@@ -168,38 +212,61 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // file - computed: false, optional: true, required: false
-  private _file?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile | undefined; 
-  private __fileOutput = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFileOutputReference(this as any, "file", true);
-  public get file() {
-    return this.__fileOutput;
+  public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._file) {
+      hasAnyValues = true;
+      internalValueResult.file = this._file?.internalValue;
+    }
+    if (this._sds) {
+      hasAnyValues = true;
+      internalValueResult.sds = this._sds?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putFile(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile | undefined) {
-    this._file = value;
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate | undefined) {
+    if (value === undefined) {
+      this._file.internalValue = undefined;
+      this._sds.internalValue = undefined;
+    }
+    else {
+      this._file.internalValue = value.file;
+      this._sds.internalValue = value.sds;
+    }
+  }
+
+  // file - computed: false, optional: true, required: false
+  private _file = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFileOutputReference(this as any, "file", true);
+  public get file() {
+    return this._file;
+  }
+  public putFile(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile) {
+    this._file.internalValue = value;
   }
   public resetFile() {
-    this._file = undefined;
+    this._file.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fileInput() {
-    return this._file
+    return this._file.internalValue;
   }
 
   // sds - computed: false, optional: true, required: false
-  private _sds?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds | undefined; 
-  private __sdsOutput = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSdsOutputReference(this as any, "sds", true);
+  private _sds = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSdsOutputReference(this as any, "sds", true);
   public get sds() {
-    return this.__sdsOutput;
+    return this._sds;
   }
-  public putSds(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds | undefined) {
-    this._sds = value;
+  public putSds(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds) {
+    this._sds.internalValue = value;
   }
   public resetSds() {
-    this._sds = undefined;
+    this._sds.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get sdsInput() {
-    return this._sds
+    return this._sds.internalValue;
   }
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch {
@@ -229,6 +296,25 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSu
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._exact) {
+      hasAnyValues = true;
+      internalValueResult.exact = this._exact;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch | undefined) {
+    if (value === undefined) {
+      this._exact = undefined;
+    }
+    else {
+      this._exact = value.exact;
+    }
+  }
+
   // exact - computed: false, optional: false, required: true
   private _exact?: string[]; 
   public get exact() {
@@ -239,7 +325,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSu
   }
   // Temporarily expose input value. Use with caution.
   public get exactInput() {
-    return this._exact
+    return this._exact;
   }
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames {
@@ -271,18 +357,36 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSu
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._match) {
+      hasAnyValues = true;
+      internalValueResult.match = this._match?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames | undefined) {
+    if (value === undefined) {
+      this._match.internalValue = undefined;
+    }
+    else {
+      this._match.internalValue = value.match;
+    }
+  }
+
   // match - computed: false, optional: false, required: true
-  private _match?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch; 
-  private __matchOutput = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatchOutputReference(this as any, "match", true);
+  private _match = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatchOutputReference(this as any, "match", true);
   public get match() {
-    return this.__matchOutput;
+    return this._match;
   }
   public putMatch(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch) {
-    this._match = value;
+    this._match.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get matchInput() {
-    return this._match
+    return this._match.internalValue;
   }
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm {
@@ -312,6 +416,25 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._certificateAuthorityArns) {
+      hasAnyValues = true;
+      internalValueResult.certificateAuthorityArns = this._certificateAuthorityArns;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm | undefined) {
+    if (value === undefined) {
+      this._certificateAuthorityArns = undefined;
+    }
+    else {
+      this._certificateAuthorityArns = value.certificateAuthorityArns;
+    }
+  }
+
   // certificate_authority_arns - computed: false, optional: false, required: true
   private _certificateAuthorityArns?: string[]; 
   public get certificateAuthorityArns() {
@@ -322,7 +445,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
   }
   // Temporarily expose input value. Use with caution.
   public get certificateAuthorityArnsInput() {
-    return this._certificateAuthorityArns
+    return this._certificateAuthorityArns;
   }
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFile {
@@ -352,6 +475,25 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFile | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._certificateChain) {
+      hasAnyValues = true;
+      internalValueResult.certificateChain = this._certificateChain;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFile | undefined) {
+    if (value === undefined) {
+      this._certificateChain = undefined;
+    }
+    else {
+      this._certificateChain = value.certificateChain;
+    }
+  }
+
   // certificate_chain - computed: false, optional: false, required: true
   private _certificateChain?: string; 
   public get certificateChain() {
@@ -362,7 +504,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
   }
   // Temporarily expose input value. Use with caution.
   public get certificateChainInput() {
-    return this._certificateChain
+    return this._certificateChain;
   }
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds {
@@ -392,6 +534,25 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._secretName) {
+      hasAnyValues = true;
+      internalValueResult.secretName = this._secretName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds | undefined) {
+    if (value === undefined) {
+      this._secretName = undefined;
+    }
+    else {
+      this._secretName = value.secretName;
+    }
+  }
+
   // secret_name - computed: false, optional: false, required: true
   private _secretName?: string; 
   public get secretName() {
@@ -402,7 +563,7 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
   }
   // Temporarily expose input value. Use with caution.
   public get secretNameInput() {
-    return this._secretName
+    return this._secretName;
   }
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust {
@@ -448,55 +609,83 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // acm - computed: false, optional: true, required: false
-  private _acm?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm | undefined; 
-  private __acmOutput = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmOutputReference(this as any, "acm", true);
-  public get acm() {
-    return this.__acmOutput;
+  public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._acm) {
+      hasAnyValues = true;
+      internalValueResult.acm = this._acm?.internalValue;
+    }
+    if (this._file) {
+      hasAnyValues = true;
+      internalValueResult.file = this._file?.internalValue;
+    }
+    if (this._sds) {
+      hasAnyValues = true;
+      internalValueResult.sds = this._sds?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAcm(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm | undefined) {
-    this._acm = value;
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust | undefined) {
+    if (value === undefined) {
+      this._acm.internalValue = undefined;
+      this._file.internalValue = undefined;
+      this._sds.internalValue = undefined;
+    }
+    else {
+      this._acm.internalValue = value.acm;
+      this._file.internalValue = value.file;
+      this._sds.internalValue = value.sds;
+    }
+  }
+
+  // acm - computed: false, optional: true, required: false
+  private _acm = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcmOutputReference(this as any, "acm", true);
+  public get acm() {
+    return this._acm;
+  }
+  public putAcm(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm) {
+    this._acm.internalValue = value;
   }
   public resetAcm() {
-    this._acm = undefined;
+    this._acm.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get acmInput() {
-    return this._acm
+    return this._acm.internalValue;
   }
 
   // file - computed: false, optional: true, required: false
-  private _file?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFile | undefined; 
-  private __fileOutput = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFileOutputReference(this as any, "file", true);
+  private _file = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFileOutputReference(this as any, "file", true);
   public get file() {
-    return this.__fileOutput;
+    return this._file;
   }
-  public putFile(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFile | undefined) {
-    this._file = value;
+  public putFile(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustFile) {
+    this._file.internalValue = value;
   }
   public resetFile() {
-    this._file = undefined;
+    this._file.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fileInput() {
-    return this._file
+    return this._file.internalValue;
   }
 
   // sds - computed: false, optional: true, required: false
-  private _sds?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds | undefined; 
-  private __sdsOutput = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSdsOutputReference(this as any, "sds", true);
+  private _sds = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSdsOutputReference(this as any, "sds", true);
   public get sds() {
-    return this.__sdsOutput;
+    return this._sds;
   }
-  public putSds(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds | undefined) {
-    this._sds = value;
+  public putSds(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds) {
+    this._sds.internalValue = value;
   }
   public resetSds() {
-    this._sds = undefined;
+    this._sds.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get sdsInput() {
-    return this._sds
+    return this._sds.internalValue;
   }
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation {
@@ -535,35 +724,58 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationOu
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // subject_alternative_names - computed: false, optional: true, required: false
-  private _subjectAlternativeNames?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames | undefined; 
-  private __subjectAlternativeNamesOutput = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesOutputReference(this as any, "subject_alternative_names", true);
-  public get subjectAlternativeNames() {
-    return this.__subjectAlternativeNamesOutput;
+  public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._subjectAlternativeNames) {
+      hasAnyValues = true;
+      internalValueResult.subjectAlternativeNames = this._subjectAlternativeNames?.internalValue;
+    }
+    if (this._trust) {
+      hasAnyValues = true;
+      internalValueResult.trust = this._trust?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putSubjectAlternativeNames(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames | undefined) {
-    this._subjectAlternativeNames = value;
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation | undefined) {
+    if (value === undefined) {
+      this._subjectAlternativeNames.internalValue = undefined;
+      this._trust.internalValue = undefined;
+    }
+    else {
+      this._subjectAlternativeNames.internalValue = value.subjectAlternativeNames;
+      this._trust.internalValue = value.trust;
+    }
+  }
+
+  // subject_alternative_names - computed: false, optional: true, required: false
+  private _subjectAlternativeNames = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesOutputReference(this as any, "subject_alternative_names", true);
+  public get subjectAlternativeNames() {
+    return this._subjectAlternativeNames;
+  }
+  public putSubjectAlternativeNames(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames) {
+    this._subjectAlternativeNames.internalValue = value;
   }
   public resetSubjectAlternativeNames() {
-    this._subjectAlternativeNames = undefined;
+    this._subjectAlternativeNames.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get subjectAlternativeNamesInput() {
-    return this._subjectAlternativeNames
+    return this._subjectAlternativeNames.internalValue;
   }
 
   // trust - computed: false, optional: false, required: true
-  private _trust?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust; 
-  private __trustOutput = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustOutputReference(this as any, "trust", true);
+  private _trust = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustOutputReference(this as any, "trust", true);
   public get trust() {
-    return this.__trustOutput;
+    return this._trust;
   }
   public putTrust(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrust) {
-    this._trust = value;
+    this._trust.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get trustInput() {
-    return this._trust
+    return this._trust.internalValue;
   }
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTls {
@@ -612,12 +824,49 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsOutputRefere
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTls | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enforce) {
+      hasAnyValues = true;
+      internalValueResult.enforce = this._enforce;
+    }
+    if (this._ports) {
+      hasAnyValues = true;
+      internalValueResult.ports = this._ports;
+    }
+    if (this._certificate) {
+      hasAnyValues = true;
+      internalValueResult.certificate = this._certificate?.internalValue;
+    }
+    if (this._validation) {
+      hasAnyValues = true;
+      internalValueResult.validation = this._validation?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTls | undefined) {
+    if (value === undefined) {
+      this._enforce = undefined;
+      this._ports = undefined;
+      this._certificate.internalValue = undefined;
+      this._validation.internalValue = undefined;
+    }
+    else {
+      this._enforce = value.enforce;
+      this._ports = value.ports;
+      this._certificate.internalValue = value.certificate;
+      this._validation.internalValue = value.validation;
+    }
+  }
+
   // enforce - computed: false, optional: true, required: false
-  private _enforce?: boolean | cdktf.IResolvable | undefined; 
+  private _enforce?: boolean | cdktf.IResolvable; 
   public get enforce() {
     return this.getBooleanAttribute('enforce') as any;
   }
-  public set enforce(value: boolean | cdktf.IResolvable | undefined) {
+  public set enforce(value: boolean | cdktf.IResolvable) {
     this._enforce = value;
   }
   public resetEnforce() {
@@ -625,16 +874,16 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get enforceInput() {
-    return this._enforce
+    return this._enforce;
   }
 
   // ports - computed: false, optional: true, required: false
-  private _ports?: number[] | undefined; 
+  private _ports?: number[]; 
   public get ports() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ports') as any;
   }
-  public set ports(value: number[] | undefined) {
+  public set ports(value: number[]) {
     this._ports = value;
   }
   public resetPorts() {
@@ -642,38 +891,36 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get portsInput() {
-    return this._ports
+    return this._ports;
   }
 
   // certificate - computed: false, optional: true, required: false
-  private _certificate?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate | undefined; 
-  private __certificateOutput = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateOutputReference(this as any, "certificate", true);
+  private _certificate = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateOutputReference(this as any, "certificate", true);
   public get certificate() {
-    return this.__certificateOutput;
+    return this._certificate;
   }
-  public putCertificate(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate | undefined) {
-    this._certificate = value;
+  public putCertificate(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate) {
+    this._certificate.internalValue = value;
   }
   public resetCertificate() {
-    this._certificate = undefined;
+    this._certificate.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get certificateInput() {
-    return this._certificate
+    return this._certificate.internalValue;
   }
 
   // validation - computed: false, optional: false, required: true
-  private _validation?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation; 
-  private __validationOutput = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationOutputReference(this as any, "validation", true);
+  private _validation = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationOutputReference(this as any, "validation", true);
   public get validation() {
-    return this.__validationOutput;
+    return this._validation;
   }
   public putValidation(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation) {
-    this._validation = value;
+    this._validation.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get validationInput() {
-    return this._validation
+    return this._validation.internalValue;
   }
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaultsClientPolicy {
@@ -705,21 +952,39 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyOutputReference
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // tls - computed: false, optional: true, required: false
-  private _tls?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTls | undefined; 
-  private __tlsOutput = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsOutputReference(this as any, "tls", true);
-  public get tls() {
-    return this.__tlsOutput;
+  public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaultsClientPolicy | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._tls) {
+      hasAnyValues = true;
+      internalValueResult.tls = this._tls?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putTls(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTls | undefined) {
-    this._tls = value;
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicy | undefined) {
+    if (value === undefined) {
+      this._tls.internalValue = undefined;
+    }
+    else {
+      this._tls.internalValue = value.tls;
+    }
+  }
+
+  // tls - computed: false, optional: true, required: false
+  private _tls = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTlsOutputReference(this as any, "tls", true);
+  public get tls() {
+    return this._tls;
+  }
+  public putTls(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyTls) {
+    this._tls.internalValue = value;
   }
   public resetTls() {
-    this._tls = undefined;
+    this._tls.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get tlsInput() {
-    return this._tls
+    return this._tls.internalValue;
   }
 }
 export interface AppmeshVirtualGatewaySpecBackendDefaults {
@@ -751,21 +1016,39 @@ export class AppmeshVirtualGatewaySpecBackendDefaultsOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // client_policy - computed: false, optional: true, required: false
-  private _clientPolicy?: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicy | undefined; 
-  private __clientPolicyOutput = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyOutputReference(this as any, "client_policy", true);
-  public get clientPolicy() {
-    return this.__clientPolicyOutput;
+  public get internalValue(): AppmeshVirtualGatewaySpecBackendDefaults | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._clientPolicy) {
+      hasAnyValues = true;
+      internalValueResult.clientPolicy = this._clientPolicy?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putClientPolicy(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicy | undefined) {
-    this._clientPolicy = value;
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecBackendDefaults | undefined) {
+    if (value === undefined) {
+      this._clientPolicy.internalValue = undefined;
+    }
+    else {
+      this._clientPolicy.internalValue = value.clientPolicy;
+    }
+  }
+
+  // client_policy - computed: false, optional: true, required: false
+  private _clientPolicy = new AppmeshVirtualGatewaySpecBackendDefaultsClientPolicyOutputReference(this as any, "client_policy", true);
+  public get clientPolicy() {
+    return this._clientPolicy;
+  }
+  public putClientPolicy(value: AppmeshVirtualGatewaySpecBackendDefaultsClientPolicy) {
+    this._clientPolicy.internalValue = value;
   }
   public resetClientPolicy() {
-    this._clientPolicy = undefined;
+    this._clientPolicy.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get clientPolicyInput() {
-    return this._clientPolicy
+    return this._clientPolicy.internalValue;
   }
 }
 export interface AppmeshVirtualGatewaySpecListenerConnectionPoolGrpc {
@@ -795,6 +1078,25 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolGrpcOutputReference 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecListenerConnectionPoolGrpc | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._maxRequests) {
+      hasAnyValues = true;
+      internalValueResult.maxRequests = this._maxRequests;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecListenerConnectionPoolGrpc | undefined) {
+    if (value === undefined) {
+      this._maxRequests = undefined;
+    }
+    else {
+      this._maxRequests = value.maxRequests;
+    }
+  }
+
   // max_requests - computed: false, optional: false, required: true
   private _maxRequests?: number; 
   public get maxRequests() {
@@ -805,7 +1107,7 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolGrpcOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get maxRequestsInput() {
-    return this._maxRequests
+    return this._maxRequests;
   }
 }
 export interface AppmeshVirtualGatewaySpecListenerConnectionPoolHttp {
@@ -840,6 +1142,31 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolHttpOutputReference 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecListenerConnectionPoolHttp | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._maxConnections) {
+      hasAnyValues = true;
+      internalValueResult.maxConnections = this._maxConnections;
+    }
+    if (this._maxPendingRequests) {
+      hasAnyValues = true;
+      internalValueResult.maxPendingRequests = this._maxPendingRequests;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecListenerConnectionPoolHttp | undefined) {
+    if (value === undefined) {
+      this._maxConnections = undefined;
+      this._maxPendingRequests = undefined;
+    }
+    else {
+      this._maxConnections = value.maxConnections;
+      this._maxPendingRequests = value.maxPendingRequests;
+    }
+  }
+
   // max_connections - computed: false, optional: false, required: true
   private _maxConnections?: number; 
   public get maxConnections() {
@@ -850,15 +1177,15 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolHttpOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get maxConnectionsInput() {
-    return this._maxConnections
+    return this._maxConnections;
   }
 
   // max_pending_requests - computed: false, optional: true, required: false
-  private _maxPendingRequests?: number | undefined; 
+  private _maxPendingRequests?: number; 
   public get maxPendingRequests() {
     return this.getNumberAttribute('max_pending_requests');
   }
-  public set maxPendingRequests(value: number | undefined) {
+  public set maxPendingRequests(value: number) {
     this._maxPendingRequests = value;
   }
   public resetMaxPendingRequests() {
@@ -866,7 +1193,7 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolHttpOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get maxPendingRequestsInput() {
-    return this._maxPendingRequests
+    return this._maxPendingRequests;
   }
 }
 export interface AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2 {
@@ -896,6 +1223,25 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2OutputReference
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2 | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._maxRequests) {
+      hasAnyValues = true;
+      internalValueResult.maxRequests = this._maxRequests;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2 | undefined) {
+    if (value === undefined) {
+      this._maxRequests = undefined;
+    }
+    else {
+      this._maxRequests = value.maxRequests;
+    }
+  }
+
   // max_requests - computed: false, optional: false, required: true
   private _maxRequests?: number; 
   public get maxRequests() {
@@ -906,7 +1252,7 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2OutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get maxRequestsInput() {
-    return this._maxRequests
+    return this._maxRequests;
   }
 }
 export interface AppmeshVirtualGatewaySpecListenerConnectionPool {
@@ -952,55 +1298,83 @@ export class AppmeshVirtualGatewaySpecListenerConnectionPoolOutputReference exte
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // grpc - computed: false, optional: true, required: false
-  private _grpc?: AppmeshVirtualGatewaySpecListenerConnectionPoolGrpc | undefined; 
-  private __grpcOutput = new AppmeshVirtualGatewaySpecListenerConnectionPoolGrpcOutputReference(this as any, "grpc", true);
-  public get grpc() {
-    return this.__grpcOutput;
+  public get internalValue(): AppmeshVirtualGatewaySpecListenerConnectionPool | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._grpc) {
+      hasAnyValues = true;
+      internalValueResult.grpc = this._grpc?.internalValue;
+    }
+    if (this._http) {
+      hasAnyValues = true;
+      internalValueResult.http = this._http?.internalValue;
+    }
+    if (this._http2) {
+      hasAnyValues = true;
+      internalValueResult.http2 = this._http2?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putGrpc(value: AppmeshVirtualGatewaySpecListenerConnectionPoolGrpc | undefined) {
-    this._grpc = value;
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecListenerConnectionPool | undefined) {
+    if (value === undefined) {
+      this._grpc.internalValue = undefined;
+      this._http.internalValue = undefined;
+      this._http2.internalValue = undefined;
+    }
+    else {
+      this._grpc.internalValue = value.grpc;
+      this._http.internalValue = value.http;
+      this._http2.internalValue = value.http2;
+    }
+  }
+
+  // grpc - computed: false, optional: true, required: false
+  private _grpc = new AppmeshVirtualGatewaySpecListenerConnectionPoolGrpcOutputReference(this as any, "grpc", true);
+  public get grpc() {
+    return this._grpc;
+  }
+  public putGrpc(value: AppmeshVirtualGatewaySpecListenerConnectionPoolGrpc) {
+    this._grpc.internalValue = value;
   }
   public resetGrpc() {
-    this._grpc = undefined;
+    this._grpc.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get grpcInput() {
-    return this._grpc
+    return this._grpc.internalValue;
   }
 
   // http - computed: false, optional: true, required: false
-  private _http?: AppmeshVirtualGatewaySpecListenerConnectionPoolHttp | undefined; 
-  private __httpOutput = new AppmeshVirtualGatewaySpecListenerConnectionPoolHttpOutputReference(this as any, "http", true);
+  private _http = new AppmeshVirtualGatewaySpecListenerConnectionPoolHttpOutputReference(this as any, "http", true);
   public get http() {
-    return this.__httpOutput;
+    return this._http;
   }
-  public putHttp(value: AppmeshVirtualGatewaySpecListenerConnectionPoolHttp | undefined) {
-    this._http = value;
+  public putHttp(value: AppmeshVirtualGatewaySpecListenerConnectionPoolHttp) {
+    this._http.internalValue = value;
   }
   public resetHttp() {
-    this._http = undefined;
+    this._http.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get httpInput() {
-    return this._http
+    return this._http.internalValue;
   }
 
   // http2 - computed: false, optional: true, required: false
-  private _http2?: AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2 | undefined; 
-  private __http2Output = new AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2OutputReference(this as any, "http2", true);
+  private _http2 = new AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2OutputReference(this as any, "http2", true);
   public get http2() {
-    return this.__http2Output;
+    return this._http2;
   }
-  public putHttp2(value: AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2 | undefined) {
-    this._http2 = value;
+  public putHttp2(value: AppmeshVirtualGatewaySpecListenerConnectionPoolHttp2) {
+    this._http2.internalValue = value;
   }
   public resetHttp2() {
-    this._http2 = undefined;
+    this._http2.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get http2Input() {
-    return this._http2
+    return this._http2.internalValue;
   }
 }
 export interface AppmeshVirtualGatewaySpecListenerHealthCheck {
@@ -1060,6 +1434,61 @@ export class AppmeshVirtualGatewaySpecListenerHealthCheckOutputReference extends
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecListenerHealthCheck | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._healthyThreshold) {
+      hasAnyValues = true;
+      internalValueResult.healthyThreshold = this._healthyThreshold;
+    }
+    if (this._intervalMillis) {
+      hasAnyValues = true;
+      internalValueResult.intervalMillis = this._intervalMillis;
+    }
+    if (this._path) {
+      hasAnyValues = true;
+      internalValueResult.path = this._path;
+    }
+    if (this._port) {
+      hasAnyValues = true;
+      internalValueResult.port = this._port;
+    }
+    if (this._protocol) {
+      hasAnyValues = true;
+      internalValueResult.protocol = this._protocol;
+    }
+    if (this._timeoutMillis) {
+      hasAnyValues = true;
+      internalValueResult.timeoutMillis = this._timeoutMillis;
+    }
+    if (this._unhealthyThreshold) {
+      hasAnyValues = true;
+      internalValueResult.unhealthyThreshold = this._unhealthyThreshold;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecListenerHealthCheck | undefined) {
+    if (value === undefined) {
+      this._healthyThreshold = undefined;
+      this._intervalMillis = undefined;
+      this._path = undefined;
+      this._port = undefined;
+      this._protocol = undefined;
+      this._timeoutMillis = undefined;
+      this._unhealthyThreshold = undefined;
+    }
+    else {
+      this._healthyThreshold = value.healthyThreshold;
+      this._intervalMillis = value.intervalMillis;
+      this._path = value.path;
+      this._port = value.port;
+      this._protocol = value.protocol;
+      this._timeoutMillis = value.timeoutMillis;
+      this._unhealthyThreshold = value.unhealthyThreshold;
+    }
+  }
+
   // healthy_threshold - computed: false, optional: false, required: true
   private _healthyThreshold?: number; 
   public get healthyThreshold() {
@@ -1070,7 +1499,7 @@ export class AppmeshVirtualGatewaySpecListenerHealthCheckOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get healthyThresholdInput() {
-    return this._healthyThreshold
+    return this._healthyThreshold;
   }
 
   // interval_millis - computed: false, optional: false, required: true
@@ -1083,15 +1512,15 @@ export class AppmeshVirtualGatewaySpecListenerHealthCheckOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get intervalMillisInput() {
-    return this._intervalMillis
+    return this._intervalMillis;
   }
 
   // path - computed: false, optional: true, required: false
-  private _path?: string | undefined; 
+  private _path?: string; 
   public get path() {
     return this.getStringAttribute('path');
   }
-  public set path(value: string | undefined) {
+  public set path(value: string) {
     this._path = value;
   }
   public resetPath() {
@@ -1099,15 +1528,15 @@ export class AppmeshVirtualGatewaySpecListenerHealthCheckOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get pathInput() {
-    return this._path
+    return this._path;
   }
 
   // port - computed: true, optional: true, required: false
-  private _port?: number | undefined; 
+  private _port?: number; 
   public get port() {
     return this.getNumberAttribute('port');
   }
-  public set port(value: number | undefined) {
+  public set port(value: number) {
     this._port = value;
   }
   public resetPort() {
@@ -1115,7 +1544,7 @@ export class AppmeshVirtualGatewaySpecListenerHealthCheckOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 
   // protocol - computed: false, optional: false, required: true
@@ -1128,7 +1557,7 @@ export class AppmeshVirtualGatewaySpecListenerHealthCheckOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get protocolInput() {
-    return this._protocol
+    return this._protocol;
   }
 
   // timeout_millis - computed: false, optional: false, required: true
@@ -1141,7 +1570,7 @@ export class AppmeshVirtualGatewaySpecListenerHealthCheckOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutMillisInput() {
-    return this._timeoutMillis
+    return this._timeoutMillis;
   }
 
   // unhealthy_threshold - computed: false, optional: false, required: true
@@ -1154,7 +1583,7 @@ export class AppmeshVirtualGatewaySpecListenerHealthCheckOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get unhealthyThresholdInput() {
-    return this._unhealthyThreshold
+    return this._unhealthyThreshold;
   }
 }
 export interface AppmeshVirtualGatewaySpecListenerPortMapping {
@@ -1189,6 +1618,31 @@ export class AppmeshVirtualGatewaySpecListenerPortMappingOutputReference extends
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecListenerPortMapping | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._port) {
+      hasAnyValues = true;
+      internalValueResult.port = this._port;
+    }
+    if (this._protocol) {
+      hasAnyValues = true;
+      internalValueResult.protocol = this._protocol;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecListenerPortMapping | undefined) {
+    if (value === undefined) {
+      this._port = undefined;
+      this._protocol = undefined;
+    }
+    else {
+      this._port = value.port;
+      this._protocol = value.protocol;
+    }
+  }
+
   // port - computed: false, optional: false, required: true
   private _port?: number; 
   public get port() {
@@ -1199,7 +1653,7 @@ export class AppmeshVirtualGatewaySpecListenerPortMappingOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 
   // protocol - computed: false, optional: false, required: true
@@ -1212,7 +1666,7 @@ export class AppmeshVirtualGatewaySpecListenerPortMappingOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get protocolInput() {
-    return this._protocol
+    return this._protocol;
   }
 }
 export interface AppmeshVirtualGatewaySpecListenerTlsCertificateAcm {
@@ -1242,6 +1696,25 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateAcmOutputReference e
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsCertificateAcm | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._certificateArn) {
+      hasAnyValues = true;
+      internalValueResult.certificateArn = this._certificateArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsCertificateAcm | undefined) {
+    if (value === undefined) {
+      this._certificateArn = undefined;
+    }
+    else {
+      this._certificateArn = value.certificateArn;
+    }
+  }
+
   // certificate_arn - computed: false, optional: false, required: true
   private _certificateArn?: string; 
   public get certificateArn() {
@@ -1252,7 +1725,7 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateAcmOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get certificateArnInput() {
-    return this._certificateArn
+    return this._certificateArn;
   }
 }
 export interface AppmeshVirtualGatewaySpecListenerTlsCertificateFile {
@@ -1287,6 +1760,31 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateFileOutputReference 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsCertificateFile | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._certificateChain) {
+      hasAnyValues = true;
+      internalValueResult.certificateChain = this._certificateChain;
+    }
+    if (this._privateKey) {
+      hasAnyValues = true;
+      internalValueResult.privateKey = this._privateKey;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsCertificateFile | undefined) {
+    if (value === undefined) {
+      this._certificateChain = undefined;
+      this._privateKey = undefined;
+    }
+    else {
+      this._certificateChain = value.certificateChain;
+      this._privateKey = value.privateKey;
+    }
+  }
+
   // certificate_chain - computed: false, optional: false, required: true
   private _certificateChain?: string; 
   public get certificateChain() {
@@ -1297,7 +1795,7 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateFileOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get certificateChainInput() {
-    return this._certificateChain
+    return this._certificateChain;
   }
 
   // private_key - computed: false, optional: false, required: true
@@ -1310,7 +1808,7 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateFileOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get privateKeyInput() {
-    return this._privateKey
+    return this._privateKey;
   }
 }
 export interface AppmeshVirtualGatewaySpecListenerTlsCertificateSds {
@@ -1340,6 +1838,25 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateSdsOutputReference e
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsCertificateSds | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._secretName) {
+      hasAnyValues = true;
+      internalValueResult.secretName = this._secretName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsCertificateSds | undefined) {
+    if (value === undefined) {
+      this._secretName = undefined;
+    }
+    else {
+      this._secretName = value.secretName;
+    }
+  }
+
   // secret_name - computed: false, optional: false, required: true
   private _secretName?: string; 
   public get secretName() {
@@ -1350,7 +1867,7 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateSdsOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get secretNameInput() {
-    return this._secretName
+    return this._secretName;
   }
 }
 export interface AppmeshVirtualGatewaySpecListenerTlsCertificate {
@@ -1396,55 +1913,83 @@ export class AppmeshVirtualGatewaySpecListenerTlsCertificateOutputReference exte
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // acm - computed: false, optional: true, required: false
-  private _acm?: AppmeshVirtualGatewaySpecListenerTlsCertificateAcm | undefined; 
-  private __acmOutput = new AppmeshVirtualGatewaySpecListenerTlsCertificateAcmOutputReference(this as any, "acm", true);
-  public get acm() {
-    return this.__acmOutput;
+  public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsCertificate | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._acm) {
+      hasAnyValues = true;
+      internalValueResult.acm = this._acm?.internalValue;
+    }
+    if (this._file) {
+      hasAnyValues = true;
+      internalValueResult.file = this._file?.internalValue;
+    }
+    if (this._sds) {
+      hasAnyValues = true;
+      internalValueResult.sds = this._sds?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAcm(value: AppmeshVirtualGatewaySpecListenerTlsCertificateAcm | undefined) {
-    this._acm = value;
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsCertificate | undefined) {
+    if (value === undefined) {
+      this._acm.internalValue = undefined;
+      this._file.internalValue = undefined;
+      this._sds.internalValue = undefined;
+    }
+    else {
+      this._acm.internalValue = value.acm;
+      this._file.internalValue = value.file;
+      this._sds.internalValue = value.sds;
+    }
+  }
+
+  // acm - computed: false, optional: true, required: false
+  private _acm = new AppmeshVirtualGatewaySpecListenerTlsCertificateAcmOutputReference(this as any, "acm", true);
+  public get acm() {
+    return this._acm;
+  }
+  public putAcm(value: AppmeshVirtualGatewaySpecListenerTlsCertificateAcm) {
+    this._acm.internalValue = value;
   }
   public resetAcm() {
-    this._acm = undefined;
+    this._acm.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get acmInput() {
-    return this._acm
+    return this._acm.internalValue;
   }
 
   // file - computed: false, optional: true, required: false
-  private _file?: AppmeshVirtualGatewaySpecListenerTlsCertificateFile | undefined; 
-  private __fileOutput = new AppmeshVirtualGatewaySpecListenerTlsCertificateFileOutputReference(this as any, "file", true);
+  private _file = new AppmeshVirtualGatewaySpecListenerTlsCertificateFileOutputReference(this as any, "file", true);
   public get file() {
-    return this.__fileOutput;
+    return this._file;
   }
-  public putFile(value: AppmeshVirtualGatewaySpecListenerTlsCertificateFile | undefined) {
-    this._file = value;
+  public putFile(value: AppmeshVirtualGatewaySpecListenerTlsCertificateFile) {
+    this._file.internalValue = value;
   }
   public resetFile() {
-    this._file = undefined;
+    this._file.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fileInput() {
-    return this._file
+    return this._file.internalValue;
   }
 
   // sds - computed: false, optional: true, required: false
-  private _sds?: AppmeshVirtualGatewaySpecListenerTlsCertificateSds | undefined; 
-  private __sdsOutput = new AppmeshVirtualGatewaySpecListenerTlsCertificateSdsOutputReference(this as any, "sds", true);
+  private _sds = new AppmeshVirtualGatewaySpecListenerTlsCertificateSdsOutputReference(this as any, "sds", true);
   public get sds() {
-    return this.__sdsOutput;
+    return this._sds;
   }
-  public putSds(value: AppmeshVirtualGatewaySpecListenerTlsCertificateSds | undefined) {
-    this._sds = value;
+  public putSds(value: AppmeshVirtualGatewaySpecListenerTlsCertificateSds) {
+    this._sds.internalValue = value;
   }
   public resetSds() {
-    this._sds = undefined;
+    this._sds.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get sdsInput() {
-    return this._sds
+    return this._sds.internalValue;
   }
 }
 export interface AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch {
@@ -1474,6 +2019,25 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNam
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._exact) {
+      hasAnyValues = true;
+      internalValueResult.exact = this._exact;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch | undefined) {
+    if (value === undefined) {
+      this._exact = undefined;
+    }
+    else {
+      this._exact = value.exact;
+    }
+  }
+
   // exact - computed: false, optional: false, required: true
   private _exact?: string[]; 
   public get exact() {
@@ -1484,7 +2048,7 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNam
   }
   // Temporarily expose input value. Use with caution.
   public get exactInput() {
-    return this._exact
+    return this._exact;
   }
 }
 export interface AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames {
@@ -1516,18 +2080,36 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNam
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._match) {
+      hasAnyValues = true;
+      internalValueResult.match = this._match?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames | undefined) {
+    if (value === undefined) {
+      this._match.internalValue = undefined;
+    }
+    else {
+      this._match.internalValue = value.match;
+    }
+  }
+
   // match - computed: false, optional: false, required: true
-  private _match?: AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch; 
-  private __matchOutput = new AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatchOutputReference(this as any, "match", true);
+  private _match = new AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatchOutputReference(this as any, "match", true);
   public get match() {
-    return this.__matchOutput;
+    return this._match;
   }
   public putMatch(value: AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch) {
-    this._match = value;
+    this._match.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get matchInput() {
-    return this._match
+    return this._match.internalValue;
   }
 }
 export interface AppmeshVirtualGatewaySpecListenerTlsValidationTrustFile {
@@ -1557,6 +2139,25 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationTrustFileOutputRefere
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsValidationTrustFile | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._certificateChain) {
+      hasAnyValues = true;
+      internalValueResult.certificateChain = this._certificateChain;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsValidationTrustFile | undefined) {
+    if (value === undefined) {
+      this._certificateChain = undefined;
+    }
+    else {
+      this._certificateChain = value.certificateChain;
+    }
+  }
+
   // certificate_chain - computed: false, optional: false, required: true
   private _certificateChain?: string; 
   public get certificateChain() {
@@ -1567,7 +2168,7 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationTrustFileOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get certificateChainInput() {
-    return this._certificateChain
+    return this._certificateChain;
   }
 }
 export interface AppmeshVirtualGatewaySpecListenerTlsValidationTrustSds {
@@ -1597,6 +2198,25 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationTrustSdsOutputReferen
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsValidationTrustSds | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._secretName) {
+      hasAnyValues = true;
+      internalValueResult.secretName = this._secretName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsValidationTrustSds | undefined) {
+    if (value === undefined) {
+      this._secretName = undefined;
+    }
+    else {
+      this._secretName = value.secretName;
+    }
+  }
+
   // secret_name - computed: false, optional: false, required: true
   private _secretName?: string; 
   public get secretName() {
@@ -1607,7 +2227,7 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationTrustSdsOutputReferen
   }
   // Temporarily expose input value. Use with caution.
   public get secretNameInput() {
-    return this._secretName
+    return this._secretName;
   }
 }
 export interface AppmeshVirtualGatewaySpecListenerTlsValidationTrust {
@@ -1646,38 +2266,61 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationTrustOutputReference 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // file - computed: false, optional: true, required: false
-  private _file?: AppmeshVirtualGatewaySpecListenerTlsValidationTrustFile | undefined; 
-  private __fileOutput = new AppmeshVirtualGatewaySpecListenerTlsValidationTrustFileOutputReference(this as any, "file", true);
-  public get file() {
-    return this.__fileOutput;
+  public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsValidationTrust | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._file) {
+      hasAnyValues = true;
+      internalValueResult.file = this._file?.internalValue;
+    }
+    if (this._sds) {
+      hasAnyValues = true;
+      internalValueResult.sds = this._sds?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putFile(value: AppmeshVirtualGatewaySpecListenerTlsValidationTrustFile | undefined) {
-    this._file = value;
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsValidationTrust | undefined) {
+    if (value === undefined) {
+      this._file.internalValue = undefined;
+      this._sds.internalValue = undefined;
+    }
+    else {
+      this._file.internalValue = value.file;
+      this._sds.internalValue = value.sds;
+    }
+  }
+
+  // file - computed: false, optional: true, required: false
+  private _file = new AppmeshVirtualGatewaySpecListenerTlsValidationTrustFileOutputReference(this as any, "file", true);
+  public get file() {
+    return this._file;
+  }
+  public putFile(value: AppmeshVirtualGatewaySpecListenerTlsValidationTrustFile) {
+    this._file.internalValue = value;
   }
   public resetFile() {
-    this._file = undefined;
+    this._file.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fileInput() {
-    return this._file
+    return this._file.internalValue;
   }
 
   // sds - computed: false, optional: true, required: false
-  private _sds?: AppmeshVirtualGatewaySpecListenerTlsValidationTrustSds | undefined; 
-  private __sdsOutput = new AppmeshVirtualGatewaySpecListenerTlsValidationTrustSdsOutputReference(this as any, "sds", true);
+  private _sds = new AppmeshVirtualGatewaySpecListenerTlsValidationTrustSdsOutputReference(this as any, "sds", true);
   public get sds() {
-    return this.__sdsOutput;
+    return this._sds;
   }
-  public putSds(value: AppmeshVirtualGatewaySpecListenerTlsValidationTrustSds | undefined) {
-    this._sds = value;
+  public putSds(value: AppmeshVirtualGatewaySpecListenerTlsValidationTrustSds) {
+    this._sds.internalValue = value;
   }
   public resetSds() {
-    this._sds = undefined;
+    this._sds.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get sdsInput() {
-    return this._sds
+    return this._sds.internalValue;
   }
 }
 export interface AppmeshVirtualGatewaySpecListenerTlsValidation {
@@ -1716,35 +2359,58 @@ export class AppmeshVirtualGatewaySpecListenerTlsValidationOutputReference exten
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // subject_alternative_names - computed: false, optional: true, required: false
-  private _subjectAlternativeNames?: AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames | undefined; 
-  private __subjectAlternativeNamesOutput = new AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesOutputReference(this as any, "subject_alternative_names", true);
-  public get subjectAlternativeNames() {
-    return this.__subjectAlternativeNamesOutput;
+  public get internalValue(): AppmeshVirtualGatewaySpecListenerTlsValidation | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._subjectAlternativeNames) {
+      hasAnyValues = true;
+      internalValueResult.subjectAlternativeNames = this._subjectAlternativeNames?.internalValue;
+    }
+    if (this._trust) {
+      hasAnyValues = true;
+      internalValueResult.trust = this._trust?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putSubjectAlternativeNames(value: AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames | undefined) {
-    this._subjectAlternativeNames = value;
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecListenerTlsValidation | undefined) {
+    if (value === undefined) {
+      this._subjectAlternativeNames.internalValue = undefined;
+      this._trust.internalValue = undefined;
+    }
+    else {
+      this._subjectAlternativeNames.internalValue = value.subjectAlternativeNames;
+      this._trust.internalValue = value.trust;
+    }
+  }
+
+  // subject_alternative_names - computed: false, optional: true, required: false
+  private _subjectAlternativeNames = new AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesOutputReference(this as any, "subject_alternative_names", true);
+  public get subjectAlternativeNames() {
+    return this._subjectAlternativeNames;
+  }
+  public putSubjectAlternativeNames(value: AppmeshVirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames) {
+    this._subjectAlternativeNames.internalValue = value;
   }
   public resetSubjectAlternativeNames() {
-    this._subjectAlternativeNames = undefined;
+    this._subjectAlternativeNames.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get subjectAlternativeNamesInput() {
-    return this._subjectAlternativeNames
+    return this._subjectAlternativeNames.internalValue;
   }
 
   // trust - computed: false, optional: false, required: true
-  private _trust?: AppmeshVirtualGatewaySpecListenerTlsValidationTrust; 
-  private __trustOutput = new AppmeshVirtualGatewaySpecListenerTlsValidationTrustOutputReference(this as any, "trust", true);
+  private _trust = new AppmeshVirtualGatewaySpecListenerTlsValidationTrustOutputReference(this as any, "trust", true);
   public get trust() {
-    return this.__trustOutput;
+    return this._trust;
   }
   public putTrust(value: AppmeshVirtualGatewaySpecListenerTlsValidationTrust) {
-    this._trust = value;
+    this._trust.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get trustInput() {
-    return this._trust
+    return this._trust.internalValue;
   }
 }
 export interface AppmeshVirtualGatewaySpecListenerTls {
@@ -1788,6 +2454,37 @@ export class AppmeshVirtualGatewaySpecListenerTlsOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecListenerTls | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._mode) {
+      hasAnyValues = true;
+      internalValueResult.mode = this._mode;
+    }
+    if (this._certificate) {
+      hasAnyValues = true;
+      internalValueResult.certificate = this._certificate?.internalValue;
+    }
+    if (this._validation) {
+      hasAnyValues = true;
+      internalValueResult.validation = this._validation?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecListenerTls | undefined) {
+    if (value === undefined) {
+      this._mode = undefined;
+      this._certificate.internalValue = undefined;
+      this._validation.internalValue = undefined;
+    }
+    else {
+      this._mode = value.mode;
+      this._certificate.internalValue = value.certificate;
+      this._validation.internalValue = value.validation;
+    }
+  }
+
   // mode - computed: false, optional: false, required: true
   private _mode?: string; 
   public get mode() {
@@ -1798,38 +2495,36 @@ export class AppmeshVirtualGatewaySpecListenerTlsOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get modeInput() {
-    return this._mode
+    return this._mode;
   }
 
   // certificate - computed: false, optional: false, required: true
-  private _certificate?: AppmeshVirtualGatewaySpecListenerTlsCertificate; 
-  private __certificateOutput = new AppmeshVirtualGatewaySpecListenerTlsCertificateOutputReference(this as any, "certificate", true);
+  private _certificate = new AppmeshVirtualGatewaySpecListenerTlsCertificateOutputReference(this as any, "certificate", true);
   public get certificate() {
-    return this.__certificateOutput;
+    return this._certificate;
   }
   public putCertificate(value: AppmeshVirtualGatewaySpecListenerTlsCertificate) {
-    this._certificate = value;
+    this._certificate.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get certificateInput() {
-    return this._certificate
+    return this._certificate.internalValue;
   }
 
   // validation - computed: false, optional: true, required: false
-  private _validation?: AppmeshVirtualGatewaySpecListenerTlsValidation | undefined; 
-  private __validationOutput = new AppmeshVirtualGatewaySpecListenerTlsValidationOutputReference(this as any, "validation", true);
+  private _validation = new AppmeshVirtualGatewaySpecListenerTlsValidationOutputReference(this as any, "validation", true);
   public get validation() {
-    return this.__validationOutput;
+    return this._validation;
   }
-  public putValidation(value: AppmeshVirtualGatewaySpecListenerTlsValidation | undefined) {
-    this._validation = value;
+  public putValidation(value: AppmeshVirtualGatewaySpecListenerTlsValidation) {
+    this._validation.internalValue = value;
   }
   public resetValidation() {
-    this._validation = undefined;
+    this._validation.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get validationInput() {
-    return this._validation
+    return this._validation.internalValue;
   }
 }
 export interface AppmeshVirtualGatewaySpecListener {
@@ -1882,69 +2577,102 @@ export class AppmeshVirtualGatewaySpecListenerOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // connection_pool - computed: false, optional: true, required: false
-  private _connectionPool?: AppmeshVirtualGatewaySpecListenerConnectionPool | undefined; 
-  private __connectionPoolOutput = new AppmeshVirtualGatewaySpecListenerConnectionPoolOutputReference(this as any, "connection_pool", true);
-  public get connectionPool() {
-    return this.__connectionPoolOutput;
+  public get internalValue(): AppmeshVirtualGatewaySpecListener | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._connectionPool) {
+      hasAnyValues = true;
+      internalValueResult.connectionPool = this._connectionPool?.internalValue;
+    }
+    if (this._healthCheck) {
+      hasAnyValues = true;
+      internalValueResult.healthCheck = this._healthCheck?.internalValue;
+    }
+    if (this._portMapping) {
+      hasAnyValues = true;
+      internalValueResult.portMapping = this._portMapping?.internalValue;
+    }
+    if (this._tls) {
+      hasAnyValues = true;
+      internalValueResult.tls = this._tls?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putConnectionPool(value: AppmeshVirtualGatewaySpecListenerConnectionPool | undefined) {
-    this._connectionPool = value;
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecListener | undefined) {
+    if (value === undefined) {
+      this._connectionPool.internalValue = undefined;
+      this._healthCheck.internalValue = undefined;
+      this._portMapping.internalValue = undefined;
+      this._tls.internalValue = undefined;
+    }
+    else {
+      this._connectionPool.internalValue = value.connectionPool;
+      this._healthCheck.internalValue = value.healthCheck;
+      this._portMapping.internalValue = value.portMapping;
+      this._tls.internalValue = value.tls;
+    }
+  }
+
+  // connection_pool - computed: false, optional: true, required: false
+  private _connectionPool = new AppmeshVirtualGatewaySpecListenerConnectionPoolOutputReference(this as any, "connection_pool", true);
+  public get connectionPool() {
+    return this._connectionPool;
+  }
+  public putConnectionPool(value: AppmeshVirtualGatewaySpecListenerConnectionPool) {
+    this._connectionPool.internalValue = value;
   }
   public resetConnectionPool() {
-    this._connectionPool = undefined;
+    this._connectionPool.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get connectionPoolInput() {
-    return this._connectionPool
+    return this._connectionPool.internalValue;
   }
 
   // health_check - computed: false, optional: true, required: false
-  private _healthCheck?: AppmeshVirtualGatewaySpecListenerHealthCheck | undefined; 
-  private __healthCheckOutput = new AppmeshVirtualGatewaySpecListenerHealthCheckOutputReference(this as any, "health_check", true);
+  private _healthCheck = new AppmeshVirtualGatewaySpecListenerHealthCheckOutputReference(this as any, "health_check", true);
   public get healthCheck() {
-    return this.__healthCheckOutput;
+    return this._healthCheck;
   }
-  public putHealthCheck(value: AppmeshVirtualGatewaySpecListenerHealthCheck | undefined) {
-    this._healthCheck = value;
+  public putHealthCheck(value: AppmeshVirtualGatewaySpecListenerHealthCheck) {
+    this._healthCheck.internalValue = value;
   }
   public resetHealthCheck() {
-    this._healthCheck = undefined;
+    this._healthCheck.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get healthCheckInput() {
-    return this._healthCheck
+    return this._healthCheck.internalValue;
   }
 
   // port_mapping - computed: false, optional: false, required: true
-  private _portMapping?: AppmeshVirtualGatewaySpecListenerPortMapping; 
-  private __portMappingOutput = new AppmeshVirtualGatewaySpecListenerPortMappingOutputReference(this as any, "port_mapping", true);
+  private _portMapping = new AppmeshVirtualGatewaySpecListenerPortMappingOutputReference(this as any, "port_mapping", true);
   public get portMapping() {
-    return this.__portMappingOutput;
+    return this._portMapping;
   }
   public putPortMapping(value: AppmeshVirtualGatewaySpecListenerPortMapping) {
-    this._portMapping = value;
+    this._portMapping.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get portMappingInput() {
-    return this._portMapping
+    return this._portMapping.internalValue;
   }
 
   // tls - computed: false, optional: true, required: false
-  private _tls?: AppmeshVirtualGatewaySpecListenerTls | undefined; 
-  private __tlsOutput = new AppmeshVirtualGatewaySpecListenerTlsOutputReference(this as any, "tls", true);
+  private _tls = new AppmeshVirtualGatewaySpecListenerTlsOutputReference(this as any, "tls", true);
   public get tls() {
-    return this.__tlsOutput;
+    return this._tls;
   }
-  public putTls(value: AppmeshVirtualGatewaySpecListenerTls | undefined) {
-    this._tls = value;
+  public putTls(value: AppmeshVirtualGatewaySpecListenerTls) {
+    this._tls.internalValue = value;
   }
   public resetTls() {
-    this._tls = undefined;
+    this._tls.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get tlsInput() {
-    return this._tls
+    return this._tls.internalValue;
   }
 }
 export interface AppmeshVirtualGatewaySpecLoggingAccessLogFile {
@@ -1974,6 +2702,25 @@ export class AppmeshVirtualGatewaySpecLoggingAccessLogFileOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualGatewaySpecLoggingAccessLogFile | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._path) {
+      hasAnyValues = true;
+      internalValueResult.path = this._path;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecLoggingAccessLogFile | undefined) {
+    if (value === undefined) {
+      this._path = undefined;
+    }
+    else {
+      this._path = value.path;
+    }
+  }
+
   // path - computed: false, optional: false, required: true
   private _path?: string; 
   public get path() {
@@ -1984,7 +2731,7 @@ export class AppmeshVirtualGatewaySpecLoggingAccessLogFileOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get pathInput() {
-    return this._path
+    return this._path;
   }
 }
 export interface AppmeshVirtualGatewaySpecLoggingAccessLog {
@@ -2016,21 +2763,39 @@ export class AppmeshVirtualGatewaySpecLoggingAccessLogOutputReference extends cd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // file - computed: false, optional: true, required: false
-  private _file?: AppmeshVirtualGatewaySpecLoggingAccessLogFile | undefined; 
-  private __fileOutput = new AppmeshVirtualGatewaySpecLoggingAccessLogFileOutputReference(this as any, "file", true);
-  public get file() {
-    return this.__fileOutput;
+  public get internalValue(): AppmeshVirtualGatewaySpecLoggingAccessLog | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._file) {
+      hasAnyValues = true;
+      internalValueResult.file = this._file?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putFile(value: AppmeshVirtualGatewaySpecLoggingAccessLogFile | undefined) {
-    this._file = value;
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecLoggingAccessLog | undefined) {
+    if (value === undefined) {
+      this._file.internalValue = undefined;
+    }
+    else {
+      this._file.internalValue = value.file;
+    }
+  }
+
+  // file - computed: false, optional: true, required: false
+  private _file = new AppmeshVirtualGatewaySpecLoggingAccessLogFileOutputReference(this as any, "file", true);
+  public get file() {
+    return this._file;
+  }
+  public putFile(value: AppmeshVirtualGatewaySpecLoggingAccessLogFile) {
+    this._file.internalValue = value;
   }
   public resetFile() {
-    this._file = undefined;
+    this._file.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fileInput() {
-    return this._file
+    return this._file.internalValue;
   }
 }
 export interface AppmeshVirtualGatewaySpecLogging {
@@ -2062,21 +2827,39 @@ export class AppmeshVirtualGatewaySpecLoggingOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // access_log - computed: false, optional: true, required: false
-  private _accessLog?: AppmeshVirtualGatewaySpecLoggingAccessLog | undefined; 
-  private __accessLogOutput = new AppmeshVirtualGatewaySpecLoggingAccessLogOutputReference(this as any, "access_log", true);
-  public get accessLog() {
-    return this.__accessLogOutput;
+  public get internalValue(): AppmeshVirtualGatewaySpecLogging | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._accessLog) {
+      hasAnyValues = true;
+      internalValueResult.accessLog = this._accessLog?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAccessLog(value: AppmeshVirtualGatewaySpecLoggingAccessLog | undefined) {
-    this._accessLog = value;
+
+  public set internalValue(value: AppmeshVirtualGatewaySpecLogging | undefined) {
+    if (value === undefined) {
+      this._accessLog.internalValue = undefined;
+    }
+    else {
+      this._accessLog.internalValue = value.accessLog;
+    }
+  }
+
+  // access_log - computed: false, optional: true, required: false
+  private _accessLog = new AppmeshVirtualGatewaySpecLoggingAccessLogOutputReference(this as any, "access_log", true);
+  public get accessLog() {
+    return this._accessLog;
+  }
+  public putAccessLog(value: AppmeshVirtualGatewaySpecLoggingAccessLog) {
+    this._accessLog.internalValue = value;
   }
   public resetAccessLog() {
-    this._accessLog = undefined;
+    this._accessLog.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get accessLogInput() {
-    return this._accessLog
+    return this._accessLog.internalValue;
   }
 }
 export interface AppmeshVirtualGatewaySpec {
@@ -2122,52 +2905,80 @@ export class AppmeshVirtualGatewaySpecOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // backend_defaults - computed: false, optional: true, required: false
-  private _backendDefaults?: AppmeshVirtualGatewaySpecBackendDefaults | undefined; 
-  private __backendDefaultsOutput = new AppmeshVirtualGatewaySpecBackendDefaultsOutputReference(this as any, "backend_defaults", true);
-  public get backendDefaults() {
-    return this.__backendDefaultsOutput;
+  public get internalValue(): AppmeshVirtualGatewaySpec | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._backendDefaults) {
+      hasAnyValues = true;
+      internalValueResult.backendDefaults = this._backendDefaults?.internalValue;
+    }
+    if (this._listener) {
+      hasAnyValues = true;
+      internalValueResult.listener = this._listener?.internalValue;
+    }
+    if (this._logging) {
+      hasAnyValues = true;
+      internalValueResult.logging = this._logging?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putBackendDefaults(value: AppmeshVirtualGatewaySpecBackendDefaults | undefined) {
-    this._backendDefaults = value;
+
+  public set internalValue(value: AppmeshVirtualGatewaySpec | undefined) {
+    if (value === undefined) {
+      this._backendDefaults.internalValue = undefined;
+      this._listener.internalValue = undefined;
+      this._logging.internalValue = undefined;
+    }
+    else {
+      this._backendDefaults.internalValue = value.backendDefaults;
+      this._listener.internalValue = value.listener;
+      this._logging.internalValue = value.logging;
+    }
+  }
+
+  // backend_defaults - computed: false, optional: true, required: false
+  private _backendDefaults = new AppmeshVirtualGatewaySpecBackendDefaultsOutputReference(this as any, "backend_defaults", true);
+  public get backendDefaults() {
+    return this._backendDefaults;
+  }
+  public putBackendDefaults(value: AppmeshVirtualGatewaySpecBackendDefaults) {
+    this._backendDefaults.internalValue = value;
   }
   public resetBackendDefaults() {
-    this._backendDefaults = undefined;
+    this._backendDefaults.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get backendDefaultsInput() {
-    return this._backendDefaults
+    return this._backendDefaults.internalValue;
   }
 
   // listener - computed: false, optional: false, required: true
-  private _listener?: AppmeshVirtualGatewaySpecListener; 
-  private __listenerOutput = new AppmeshVirtualGatewaySpecListenerOutputReference(this as any, "listener", true);
+  private _listener = new AppmeshVirtualGatewaySpecListenerOutputReference(this as any, "listener", true);
   public get listener() {
-    return this.__listenerOutput;
+    return this._listener;
   }
   public putListener(value: AppmeshVirtualGatewaySpecListener) {
-    this._listener = value;
+    this._listener.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get listenerInput() {
-    return this._listener
+    return this._listener.internalValue;
   }
 
   // logging - computed: false, optional: true, required: false
-  private _logging?: AppmeshVirtualGatewaySpecLogging | undefined; 
-  private __loggingOutput = new AppmeshVirtualGatewaySpecLoggingOutputReference(this as any, "logging", true);
+  private _logging = new AppmeshVirtualGatewaySpecLoggingOutputReference(this as any, "logging", true);
   public get logging() {
-    return this.__loggingOutput;
+    return this._logging;
   }
-  public putLogging(value: AppmeshVirtualGatewaySpecLogging | undefined) {
-    this._logging = value;
+  public putLogging(value: AppmeshVirtualGatewaySpecLogging) {
+    this._logging.internalValue = value;
   }
   public resetLogging() {
-    this._logging = undefined;
+    this._logging.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get loggingInput() {
-    return this._logging
+    return this._logging.internalValue;
   }
 }
 
@@ -2208,7 +3019,7 @@ export class AppmeshVirtualGateway extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._spec = config.spec;
+    this._spec.internalValue = config.spec;
   }
 
   // ==========
@@ -2245,15 +3056,15 @@ export class AppmeshVirtualGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get meshNameInput() {
-    return this._meshName
+    return this._meshName;
   }
 
   // mesh_owner - computed: true, optional: true, required: false
-  private _meshOwner?: string | undefined; 
+  private _meshOwner?: string; 
   public get meshOwner() {
     return this.getStringAttribute('mesh_owner');
   }
-  public set meshOwner(value: string | undefined) {
+  public set meshOwner(value: string) {
     this._meshOwner = value;
   }
   public resetMeshOwner() {
@@ -2261,7 +3072,7 @@ export class AppmeshVirtualGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get meshOwnerInput() {
-    return this._meshOwner
+    return this._meshOwner;
   }
 
   // name - computed: false, optional: false, required: true
@@ -2274,7 +3085,7 @@ export class AppmeshVirtualGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // resource_owner - computed: true, optional: false, required: false
@@ -2283,12 +3094,12 @@ export class AppmeshVirtualGateway extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -2296,16 +3107,16 @@ export class AppmeshVirtualGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -2313,21 +3124,20 @@ export class AppmeshVirtualGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // spec - computed: false, optional: false, required: true
-  private _spec?: AppmeshVirtualGatewaySpec; 
-  private __specOutput = new AppmeshVirtualGatewaySpecOutputReference(this as any, "spec", true);
+  private _spec = new AppmeshVirtualGatewaySpecOutputReference(this as any, "spec", true);
   public get spec() {
-    return this.__specOutput;
+    return this._spec;
   }
   public putSpec(value: AppmeshVirtualGatewaySpec) {
-    this._spec = value;
+    this._spec.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get specInput() {
-    return this._spec
+    return this._spec.internalValue;
   }
 
   // =========
@@ -2341,7 +3151,7 @@ export class AppmeshVirtualGateway extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      spec: appmeshVirtualGatewaySpecToTerraform(this._spec),
+      spec: appmeshVirtualGatewaySpecToTerraform(this._spec.internalValue),
     };
   }
 }

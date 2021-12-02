@@ -136,12 +136,37 @@ export class GameliftFleetResourceCreationLimitPolicyOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GameliftFleetResourceCreationLimitPolicy | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._newGameSessionsPerCreator) {
+      hasAnyValues = true;
+      internalValueResult.newGameSessionsPerCreator = this._newGameSessionsPerCreator;
+    }
+    if (this._policyPeriodInMinutes) {
+      hasAnyValues = true;
+      internalValueResult.policyPeriodInMinutes = this._policyPeriodInMinutes;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GameliftFleetResourceCreationLimitPolicy | undefined) {
+    if (value === undefined) {
+      this._newGameSessionsPerCreator = undefined;
+      this._policyPeriodInMinutes = undefined;
+    }
+    else {
+      this._newGameSessionsPerCreator = value.newGameSessionsPerCreator;
+      this._policyPeriodInMinutes = value.policyPeriodInMinutes;
+    }
+  }
+
   // new_game_sessions_per_creator - computed: false, optional: true, required: false
-  private _newGameSessionsPerCreator?: number | undefined; 
+  private _newGameSessionsPerCreator?: number; 
   public get newGameSessionsPerCreator() {
     return this.getNumberAttribute('new_game_sessions_per_creator');
   }
-  public set newGameSessionsPerCreator(value: number | undefined) {
+  public set newGameSessionsPerCreator(value: number) {
     this._newGameSessionsPerCreator = value;
   }
   public resetNewGameSessionsPerCreator() {
@@ -149,15 +174,15 @@ export class GameliftFleetResourceCreationLimitPolicyOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get newGameSessionsPerCreatorInput() {
-    return this._newGameSessionsPerCreator
+    return this._newGameSessionsPerCreator;
   }
 
   // policy_period_in_minutes - computed: false, optional: true, required: false
-  private _policyPeriodInMinutes?: number | undefined; 
+  private _policyPeriodInMinutes?: number; 
   public get policyPeriodInMinutes() {
     return this.getNumberAttribute('policy_period_in_minutes');
   }
-  public set policyPeriodInMinutes(value: number | undefined) {
+  public set policyPeriodInMinutes(value: number) {
     this._policyPeriodInMinutes = value;
   }
   public resetPolicyPeriodInMinutes() {
@@ -165,7 +190,7 @@ export class GameliftFleetResourceCreationLimitPolicyOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get policyPeriodInMinutesInput() {
-    return this._policyPeriodInMinutes
+    return this._policyPeriodInMinutes;
   }
 }
 export interface GameliftFleetRuntimeConfigurationServerProcess {
@@ -234,12 +259,43 @@ export class GameliftFleetRuntimeConfigurationOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GameliftFleetRuntimeConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._gameSessionActivationTimeoutSeconds) {
+      hasAnyValues = true;
+      internalValueResult.gameSessionActivationTimeoutSeconds = this._gameSessionActivationTimeoutSeconds;
+    }
+    if (this._maxConcurrentGameSessionActivations) {
+      hasAnyValues = true;
+      internalValueResult.maxConcurrentGameSessionActivations = this._maxConcurrentGameSessionActivations;
+    }
+    if (this._serverProcess) {
+      hasAnyValues = true;
+      internalValueResult.serverProcess = this._serverProcess;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GameliftFleetRuntimeConfiguration | undefined) {
+    if (value === undefined) {
+      this._gameSessionActivationTimeoutSeconds = undefined;
+      this._maxConcurrentGameSessionActivations = undefined;
+      this._serverProcess = undefined;
+    }
+    else {
+      this._gameSessionActivationTimeoutSeconds = value.gameSessionActivationTimeoutSeconds;
+      this._maxConcurrentGameSessionActivations = value.maxConcurrentGameSessionActivations;
+      this._serverProcess = value.serverProcess;
+    }
+  }
+
   // game_session_activation_timeout_seconds - computed: false, optional: true, required: false
-  private _gameSessionActivationTimeoutSeconds?: number | undefined; 
+  private _gameSessionActivationTimeoutSeconds?: number; 
   public get gameSessionActivationTimeoutSeconds() {
     return this.getNumberAttribute('game_session_activation_timeout_seconds');
   }
-  public set gameSessionActivationTimeoutSeconds(value: number | undefined) {
+  public set gameSessionActivationTimeoutSeconds(value: number) {
     this._gameSessionActivationTimeoutSeconds = value;
   }
   public resetGameSessionActivationTimeoutSeconds() {
@@ -247,15 +303,15 @@ export class GameliftFleetRuntimeConfigurationOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get gameSessionActivationTimeoutSecondsInput() {
-    return this._gameSessionActivationTimeoutSeconds
+    return this._gameSessionActivationTimeoutSeconds;
   }
 
   // max_concurrent_game_session_activations - computed: false, optional: true, required: false
-  private _maxConcurrentGameSessionActivations?: number | undefined; 
+  private _maxConcurrentGameSessionActivations?: number; 
   public get maxConcurrentGameSessionActivations() {
     return this.getNumberAttribute('max_concurrent_game_session_activations');
   }
-  public set maxConcurrentGameSessionActivations(value: number | undefined) {
+  public set maxConcurrentGameSessionActivations(value: number) {
     this._maxConcurrentGameSessionActivations = value;
   }
   public resetMaxConcurrentGameSessionActivations() {
@@ -263,16 +319,16 @@ export class GameliftFleetRuntimeConfigurationOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get maxConcurrentGameSessionActivationsInput() {
-    return this._maxConcurrentGameSessionActivations
+    return this._maxConcurrentGameSessionActivations;
   }
 
   // server_process - computed: false, optional: true, required: false
-  private _serverProcess?: GameliftFleetRuntimeConfigurationServerProcess[] | undefined; 
+  private _serverProcess?: GameliftFleetRuntimeConfigurationServerProcess[]; 
   public get serverProcess() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('server_process') as any;
   }
-  public set serverProcess(value: GameliftFleetRuntimeConfigurationServerProcess[] | undefined) {
+  public set serverProcess(value: GameliftFleetRuntimeConfigurationServerProcess[]) {
     this._serverProcess = value;
   }
   public resetServerProcess() {
@@ -280,7 +336,7 @@ export class GameliftFleetRuntimeConfigurationOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get serverProcessInput() {
-    return this._serverProcess
+    return this._serverProcess;
   }
 }
 export interface GameliftFleetTimeouts {
@@ -315,12 +371,37 @@ export class GameliftFleetTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GameliftFleetTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GameliftFleetTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -328,15 +409,15 @@ export class GameliftFleetTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -344,7 +425,7 @@ export class GameliftFleetTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -391,9 +472,9 @@ export class GameliftFleet extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._ec2InboundPermission = config.ec2InboundPermission;
-    this._resourceCreationLimitPolicy = config.resourceCreationLimitPolicy;
-    this._runtimeConfiguration = config.runtimeConfiguration;
-    this._timeouts = config.timeouts;
+    this._resourceCreationLimitPolicy.internalValue = config.resourceCreationLimitPolicy;
+    this._runtimeConfiguration.internalValue = config.runtimeConfiguration;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -415,15 +496,15 @@ export class GameliftFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get buildIdInput() {
-    return this._buildId
+    return this._buildId;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -431,7 +512,7 @@ export class GameliftFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // ec2_instance_type - computed: false, optional: false, required: true
@@ -444,15 +525,15 @@ export class GameliftFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ec2InstanceTypeInput() {
-    return this._ec2InstanceType
+    return this._ec2InstanceType;
   }
 
   // fleet_type - computed: false, optional: true, required: false
-  private _fleetType?: string | undefined; 
+  private _fleetType?: string; 
   public get fleetType() {
     return this.getStringAttribute('fleet_type');
   }
-  public set fleetType(value: string | undefined) {
+  public set fleetType(value: string) {
     this._fleetType = value;
   }
   public resetFleetType() {
@@ -460,7 +541,7 @@ export class GameliftFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fleetTypeInput() {
-    return this._fleetType
+    return this._fleetType;
   }
 
   // id - computed: true, optional: true, required: false
@@ -469,11 +550,11 @@ export class GameliftFleet extends cdktf.TerraformResource {
   }
 
   // instance_role_arn - computed: false, optional: true, required: false
-  private _instanceRoleArn?: string | undefined; 
+  private _instanceRoleArn?: string; 
   public get instanceRoleArn() {
     return this.getStringAttribute('instance_role_arn');
   }
-  public set instanceRoleArn(value: string | undefined) {
+  public set instanceRoleArn(value: string) {
     this._instanceRoleArn = value;
   }
   public resetInstanceRoleArn() {
@@ -481,7 +562,7 @@ export class GameliftFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceRoleArnInput() {
-    return this._instanceRoleArn
+    return this._instanceRoleArn;
   }
 
   // log_paths - computed: true, optional: false, required: false
@@ -490,11 +571,11 @@ export class GameliftFleet extends cdktf.TerraformResource {
   }
 
   // metric_groups - computed: true, optional: true, required: false
-  private _metricGroups?: string[] | undefined; 
+  private _metricGroups?: string[]; 
   public get metricGroups() {
     return this.getListAttribute('metric_groups');
   }
-  public set metricGroups(value: string[] | undefined) {
+  public set metricGroups(value: string[]) {
     this._metricGroups = value;
   }
   public resetMetricGroups() {
@@ -502,7 +583,7 @@ export class GameliftFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get metricGroupsInput() {
-    return this._metricGroups
+    return this._metricGroups;
   }
 
   // name - computed: false, optional: false, required: true
@@ -515,15 +596,15 @@ export class GameliftFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // new_game_session_protection_policy - computed: false, optional: true, required: false
-  private _newGameSessionProtectionPolicy?: string | undefined; 
+  private _newGameSessionProtectionPolicy?: string; 
   public get newGameSessionProtectionPolicy() {
     return this.getStringAttribute('new_game_session_protection_policy');
   }
-  public set newGameSessionProtectionPolicy(value: string | undefined) {
+  public set newGameSessionProtectionPolicy(value: string) {
     this._newGameSessionProtectionPolicy = value;
   }
   public resetNewGameSessionProtectionPolicy() {
@@ -531,7 +612,7 @@ export class GameliftFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get newGameSessionProtectionPolicyInput() {
-    return this._newGameSessionProtectionPolicy
+    return this._newGameSessionProtectionPolicy;
   }
 
   // operating_system - computed: true, optional: false, required: false
@@ -540,12 +621,12 @@ export class GameliftFleet extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -553,16 +634,16 @@ export class GameliftFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -570,16 +651,16 @@ export class GameliftFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // ec2_inbound_permission - computed: false, optional: true, required: false
-  private _ec2InboundPermission?: GameliftFleetEc2InboundPermission[] | undefined; 
+  private _ec2InboundPermission?: GameliftFleetEc2InboundPermission[]; 
   public get ec2InboundPermission() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ec2_inbound_permission') as any;
   }
-  public set ec2InboundPermission(value: GameliftFleetEc2InboundPermission[] | undefined) {
+  public set ec2InboundPermission(value: GameliftFleetEc2InboundPermission[]) {
     this._ec2InboundPermission = value;
   }
   public resetEc2InboundPermission() {
@@ -587,58 +668,55 @@ export class GameliftFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ec2InboundPermissionInput() {
-    return this._ec2InboundPermission
+    return this._ec2InboundPermission;
   }
 
   // resource_creation_limit_policy - computed: false, optional: true, required: false
-  private _resourceCreationLimitPolicy?: GameliftFleetResourceCreationLimitPolicy | undefined; 
-  private __resourceCreationLimitPolicyOutput = new GameliftFleetResourceCreationLimitPolicyOutputReference(this as any, "resource_creation_limit_policy", true);
+  private _resourceCreationLimitPolicy = new GameliftFleetResourceCreationLimitPolicyOutputReference(this as any, "resource_creation_limit_policy", true);
   public get resourceCreationLimitPolicy() {
-    return this.__resourceCreationLimitPolicyOutput;
+    return this._resourceCreationLimitPolicy;
   }
-  public putResourceCreationLimitPolicy(value: GameliftFleetResourceCreationLimitPolicy | undefined) {
-    this._resourceCreationLimitPolicy = value;
+  public putResourceCreationLimitPolicy(value: GameliftFleetResourceCreationLimitPolicy) {
+    this._resourceCreationLimitPolicy.internalValue = value;
   }
   public resetResourceCreationLimitPolicy() {
-    this._resourceCreationLimitPolicy = undefined;
+    this._resourceCreationLimitPolicy.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get resourceCreationLimitPolicyInput() {
-    return this._resourceCreationLimitPolicy
+    return this._resourceCreationLimitPolicy.internalValue;
   }
 
   // runtime_configuration - computed: false, optional: true, required: false
-  private _runtimeConfiguration?: GameliftFleetRuntimeConfiguration | undefined; 
-  private __runtimeConfigurationOutput = new GameliftFleetRuntimeConfigurationOutputReference(this as any, "runtime_configuration", true);
+  private _runtimeConfiguration = new GameliftFleetRuntimeConfigurationOutputReference(this as any, "runtime_configuration", true);
   public get runtimeConfiguration() {
-    return this.__runtimeConfigurationOutput;
+    return this._runtimeConfiguration;
   }
-  public putRuntimeConfiguration(value: GameliftFleetRuntimeConfiguration | undefined) {
-    this._runtimeConfiguration = value;
+  public putRuntimeConfiguration(value: GameliftFleetRuntimeConfiguration) {
+    this._runtimeConfiguration.internalValue = value;
   }
   public resetRuntimeConfiguration() {
-    this._runtimeConfiguration = undefined;
+    this._runtimeConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get runtimeConfigurationInput() {
-    return this._runtimeConfiguration
+    return this._runtimeConfiguration.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: GameliftFleetTimeouts | undefined; 
-  private __timeoutsOutput = new GameliftFleetTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new GameliftFleetTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: GameliftFleetTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: GameliftFleetTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -658,9 +736,9 @@ export class GameliftFleet extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       ec2_inbound_permission: cdktf.listMapper(gameliftFleetEc2InboundPermissionToTerraform)(this._ec2InboundPermission),
-      resource_creation_limit_policy: gameliftFleetResourceCreationLimitPolicyToTerraform(this._resourceCreationLimitPolicy),
-      runtime_configuration: gameliftFleetRuntimeConfigurationToTerraform(this._runtimeConfiguration),
-      timeouts: gameliftFleetTimeoutsToTerraform(this._timeouts),
+      resource_creation_limit_policy: gameliftFleetResourceCreationLimitPolicyToTerraform(this._resourceCreationLimitPolicy.internalValue),
+      runtime_configuration: gameliftFleetRuntimeConfigurationToTerraform(this._runtimeConfiguration.internalValue),
+      timeouts: gameliftFleetTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

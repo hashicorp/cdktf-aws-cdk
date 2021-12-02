@@ -82,7 +82,7 @@ export class AppconfigHostedConfigurationVersion extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get applicationIdInput() {
-    return this._applicationId
+    return this._applicationId;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -100,7 +100,7 @@ export class AppconfigHostedConfigurationVersion extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get configurationProfileIdInput() {
-    return this._configurationProfileId
+    return this._configurationProfileId;
   }
 
   // content - computed: false, optional: false, required: true
@@ -113,7 +113,7 @@ export class AppconfigHostedConfigurationVersion extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get contentInput() {
-    return this._content
+    return this._content;
   }
 
   // content_type - computed: false, optional: false, required: true
@@ -126,15 +126,15 @@ export class AppconfigHostedConfigurationVersion extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get contentTypeInput() {
-    return this._contentType
+    return this._contentType;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -142,7 +142,7 @@ export class AppconfigHostedConfigurationVersion extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false

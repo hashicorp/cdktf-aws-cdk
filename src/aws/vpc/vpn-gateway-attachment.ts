@@ -72,7 +72,7 @@ export class VpnGatewayAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 
   // vpn_gateway_id - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class VpnGatewayAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpnGatewayIdInput() {
-    return this._vpnGatewayId
+    return this._vpnGatewayId;
   }
 
   // =========

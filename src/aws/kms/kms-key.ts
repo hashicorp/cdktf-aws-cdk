@@ -108,11 +108,11 @@ export class KmsKey extends cdktf.TerraformResource {
   }
 
   // bypass_policy_lockout_safety_check - computed: false, optional: true, required: false
-  private _bypassPolicyLockoutSafetyCheck?: boolean | cdktf.IResolvable | undefined; 
+  private _bypassPolicyLockoutSafetyCheck?: boolean | cdktf.IResolvable; 
   public get bypassPolicyLockoutSafetyCheck() {
     return this.getBooleanAttribute('bypass_policy_lockout_safety_check') as any;
   }
-  public set bypassPolicyLockoutSafetyCheck(value: boolean | cdktf.IResolvable | undefined) {
+  public set bypassPolicyLockoutSafetyCheck(value: boolean | cdktf.IResolvable) {
     this._bypassPolicyLockoutSafetyCheck = value;
   }
   public resetBypassPolicyLockoutSafetyCheck() {
@@ -120,15 +120,15 @@ export class KmsKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bypassPolicyLockoutSafetyCheckInput() {
-    return this._bypassPolicyLockoutSafetyCheck
+    return this._bypassPolicyLockoutSafetyCheck;
   }
 
   // customer_master_key_spec - computed: false, optional: true, required: false
-  private _customerMasterKeySpec?: string | undefined; 
+  private _customerMasterKeySpec?: string; 
   public get customerMasterKeySpec() {
     return this.getStringAttribute('customer_master_key_spec');
   }
-  public set customerMasterKeySpec(value: string | undefined) {
+  public set customerMasterKeySpec(value: string) {
     this._customerMasterKeySpec = value;
   }
   public resetCustomerMasterKeySpec() {
@@ -136,15 +136,15 @@ export class KmsKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customerMasterKeySpecInput() {
-    return this._customerMasterKeySpec
+    return this._customerMasterKeySpec;
   }
 
   // deletion_window_in_days - computed: false, optional: true, required: false
-  private _deletionWindowInDays?: number | undefined; 
+  private _deletionWindowInDays?: number; 
   public get deletionWindowInDays() {
     return this.getNumberAttribute('deletion_window_in_days');
   }
-  public set deletionWindowInDays(value: number | undefined) {
+  public set deletionWindowInDays(value: number) {
     this._deletionWindowInDays = value;
   }
   public resetDeletionWindowInDays() {
@@ -152,15 +152,15 @@ export class KmsKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deletionWindowInDaysInput() {
-    return this._deletionWindowInDays
+    return this._deletionWindowInDays;
   }
 
   // description - computed: true, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -168,15 +168,15 @@ export class KmsKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // enable_key_rotation - computed: false, optional: true, required: false
-  private _enableKeyRotation?: boolean | cdktf.IResolvable | undefined; 
+  private _enableKeyRotation?: boolean | cdktf.IResolvable; 
   public get enableKeyRotation() {
     return this.getBooleanAttribute('enable_key_rotation') as any;
   }
-  public set enableKeyRotation(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableKeyRotation(value: boolean | cdktf.IResolvable) {
     this._enableKeyRotation = value;
   }
   public resetEnableKeyRotation() {
@@ -184,7 +184,7 @@ export class KmsKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableKeyRotationInput() {
-    return this._enableKeyRotation
+    return this._enableKeyRotation;
   }
 
   // id - computed: true, optional: true, required: false
@@ -193,11 +193,11 @@ export class KmsKey extends cdktf.TerraformResource {
   }
 
   // is_enabled - computed: false, optional: true, required: false
-  private _isEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _isEnabled?: boolean | cdktf.IResolvable; 
   public get isEnabled() {
     return this.getBooleanAttribute('is_enabled') as any;
   }
-  public set isEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set isEnabled(value: boolean | cdktf.IResolvable) {
     this._isEnabled = value;
   }
   public resetIsEnabled() {
@@ -205,7 +205,7 @@ export class KmsKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get isEnabledInput() {
-    return this._isEnabled
+    return this._isEnabled;
   }
 
   // key_id - computed: true, optional: false, required: false
@@ -214,11 +214,11 @@ export class KmsKey extends cdktf.TerraformResource {
   }
 
   // key_usage - computed: false, optional: true, required: false
-  private _keyUsage?: string | undefined; 
+  private _keyUsage?: string; 
   public get keyUsage() {
     return this.getStringAttribute('key_usage');
   }
-  public set keyUsage(value: string | undefined) {
+  public set keyUsage(value: string) {
     this._keyUsage = value;
   }
   public resetKeyUsage() {
@@ -226,15 +226,15 @@ export class KmsKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyUsageInput() {
-    return this._keyUsage
+    return this._keyUsage;
   }
 
   // multi_region - computed: true, optional: true, required: false
-  private _multiRegion?: boolean | cdktf.IResolvable | undefined; 
+  private _multiRegion?: boolean | cdktf.IResolvable; 
   public get multiRegion() {
     return this.getBooleanAttribute('multi_region') as any;
   }
-  public set multiRegion(value: boolean | cdktf.IResolvable | undefined) {
+  public set multiRegion(value: boolean | cdktf.IResolvable) {
     this._multiRegion = value;
   }
   public resetMultiRegion() {
@@ -242,15 +242,15 @@ export class KmsKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get multiRegionInput() {
-    return this._multiRegion
+    return this._multiRegion;
   }
 
   // policy - computed: true, optional: true, required: false
-  private _policy?: string | undefined; 
+  private _policy?: string; 
   public get policy() {
     return this.getStringAttribute('policy');
   }
-  public set policy(value: string | undefined) {
+  public set policy(value: string) {
     this._policy = value;
   }
   public resetPolicy() {
@@ -258,16 +258,16 @@ export class KmsKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -275,16 +275,16 @@ export class KmsKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -292,7 +292,7 @@ export class KmsKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

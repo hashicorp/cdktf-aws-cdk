@@ -72,7 +72,7 @@ export class CloudwatchLogResourcePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyDocumentInput() {
-    return this._policyDocument
+    return this._policyDocument;
   }
 
   // policy_name - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class CloudwatchLogResourcePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyNameInput() {
-    return this._policyName
+    return this._policyName;
   }
 
   // =========

@@ -229,11 +229,11 @@ export class SsmPatchBaseline extends cdktf.TerraformResource {
   // ==========
 
   // approved_patches - computed: false, optional: true, required: false
-  private _approvedPatches?: string[] | undefined; 
+  private _approvedPatches?: string[]; 
   public get approvedPatches() {
     return this.getListAttribute('approved_patches');
   }
-  public set approvedPatches(value: string[] | undefined) {
+  public set approvedPatches(value: string[]) {
     this._approvedPatches = value;
   }
   public resetApprovedPatches() {
@@ -241,15 +241,15 @@ export class SsmPatchBaseline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get approvedPatchesInput() {
-    return this._approvedPatches
+    return this._approvedPatches;
   }
 
   // approved_patches_compliance_level - computed: false, optional: true, required: false
-  private _approvedPatchesComplianceLevel?: string | undefined; 
+  private _approvedPatchesComplianceLevel?: string; 
   public get approvedPatchesComplianceLevel() {
     return this.getStringAttribute('approved_patches_compliance_level');
   }
-  public set approvedPatchesComplianceLevel(value: string | undefined) {
+  public set approvedPatchesComplianceLevel(value: string) {
     this._approvedPatchesComplianceLevel = value;
   }
   public resetApprovedPatchesComplianceLevel() {
@@ -257,15 +257,15 @@ export class SsmPatchBaseline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get approvedPatchesComplianceLevelInput() {
-    return this._approvedPatchesComplianceLevel
+    return this._approvedPatchesComplianceLevel;
   }
 
   // approved_patches_enable_non_security - computed: false, optional: true, required: false
-  private _approvedPatchesEnableNonSecurity?: boolean | cdktf.IResolvable | undefined; 
+  private _approvedPatchesEnableNonSecurity?: boolean | cdktf.IResolvable; 
   public get approvedPatchesEnableNonSecurity() {
     return this.getBooleanAttribute('approved_patches_enable_non_security') as any;
   }
-  public set approvedPatchesEnableNonSecurity(value: boolean | cdktf.IResolvable | undefined) {
+  public set approvedPatchesEnableNonSecurity(value: boolean | cdktf.IResolvable) {
     this._approvedPatchesEnableNonSecurity = value;
   }
   public resetApprovedPatchesEnableNonSecurity() {
@@ -273,7 +273,7 @@ export class SsmPatchBaseline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get approvedPatchesEnableNonSecurityInput() {
-    return this._approvedPatchesEnableNonSecurity
+    return this._approvedPatchesEnableNonSecurity;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -282,11 +282,11 @@ export class SsmPatchBaseline extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -294,7 +294,7 @@ export class SsmPatchBaseline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -312,15 +312,15 @@ export class SsmPatchBaseline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // operating_system - computed: false, optional: true, required: false
-  private _operatingSystem?: string | undefined; 
+  private _operatingSystem?: string; 
   public get operatingSystem() {
     return this.getStringAttribute('operating_system');
   }
-  public set operatingSystem(value: string | undefined) {
+  public set operatingSystem(value: string) {
     this._operatingSystem = value;
   }
   public resetOperatingSystem() {
@@ -328,15 +328,15 @@ export class SsmPatchBaseline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get operatingSystemInput() {
-    return this._operatingSystem
+    return this._operatingSystem;
   }
 
   // rejected_patches - computed: false, optional: true, required: false
-  private _rejectedPatches?: string[] | undefined; 
+  private _rejectedPatches?: string[]; 
   public get rejectedPatches() {
     return this.getListAttribute('rejected_patches');
   }
-  public set rejectedPatches(value: string[] | undefined) {
+  public set rejectedPatches(value: string[]) {
     this._rejectedPatches = value;
   }
   public resetRejectedPatches() {
@@ -344,15 +344,15 @@ export class SsmPatchBaseline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rejectedPatchesInput() {
-    return this._rejectedPatches
+    return this._rejectedPatches;
   }
 
   // rejected_patches_action - computed: true, optional: true, required: false
-  private _rejectedPatchesAction?: string | undefined; 
+  private _rejectedPatchesAction?: string; 
   public get rejectedPatchesAction() {
     return this.getStringAttribute('rejected_patches_action');
   }
-  public set rejectedPatchesAction(value: string | undefined) {
+  public set rejectedPatchesAction(value: string) {
     this._rejectedPatchesAction = value;
   }
   public resetRejectedPatchesAction() {
@@ -360,16 +360,16 @@ export class SsmPatchBaseline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rejectedPatchesActionInput() {
-    return this._rejectedPatchesAction
+    return this._rejectedPatchesAction;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -377,16 +377,16 @@ export class SsmPatchBaseline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -394,16 +394,16 @@ export class SsmPatchBaseline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // approval_rule - computed: false, optional: true, required: false
-  private _approvalRule?: SsmPatchBaselineApprovalRule[] | undefined; 
+  private _approvalRule?: SsmPatchBaselineApprovalRule[]; 
   public get approvalRule() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('approval_rule') as any;
   }
-  public set approvalRule(value: SsmPatchBaselineApprovalRule[] | undefined) {
+  public set approvalRule(value: SsmPatchBaselineApprovalRule[]) {
     this._approvalRule = value;
   }
   public resetApprovalRule() {
@@ -411,16 +411,16 @@ export class SsmPatchBaseline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get approvalRuleInput() {
-    return this._approvalRule
+    return this._approvalRule;
   }
 
   // global_filter - computed: false, optional: true, required: false
-  private _globalFilter?: SsmPatchBaselineGlobalFilter[] | undefined; 
+  private _globalFilter?: SsmPatchBaselineGlobalFilter[]; 
   public get globalFilter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('global_filter') as any;
   }
-  public set globalFilter(value: SsmPatchBaselineGlobalFilter[] | undefined) {
+  public set globalFilter(value: SsmPatchBaselineGlobalFilter[]) {
     this._globalFilter = value;
   }
   public resetGlobalFilter() {
@@ -428,16 +428,16 @@ export class SsmPatchBaseline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get globalFilterInput() {
-    return this._globalFilter
+    return this._globalFilter;
   }
 
   // source - computed: false, optional: true, required: false
-  private _source?: SsmPatchBaselineSource[] | undefined; 
+  private _source?: SsmPatchBaselineSource[]; 
   public get source() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('source') as any;
   }
-  public set source(value: SsmPatchBaselineSource[] | undefined) {
+  public set source(value: SsmPatchBaselineSource[]) {
     this._source = value;
   }
   public resetSource() {
@@ -445,7 +445,7 @@ export class SsmPatchBaseline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceInput() {
-    return this._source
+    return this._source;
   }
 
   // =========

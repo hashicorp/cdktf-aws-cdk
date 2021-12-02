@@ -105,6 +105,25 @@ export class EksClusterEncryptionConfigProviderOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EksClusterEncryptionConfigProvider | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._keyArn) {
+      hasAnyValues = true;
+      internalValueResult.keyArn = this._keyArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EksClusterEncryptionConfigProvider | undefined) {
+    if (value === undefined) {
+      this._keyArn = undefined;
+    }
+    else {
+      this._keyArn = value.keyArn;
+    }
+  }
+
   // key_arn - computed: false, optional: false, required: true
   private _keyArn?: string; 
   public get keyArn() {
@@ -115,7 +134,7 @@ export class EksClusterEncryptionConfigProviderOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get keyArnInput() {
-    return this._keyArn
+    return this._keyArn;
   }
 }
 export interface EksClusterEncryptionConfig {
@@ -152,6 +171,31 @@ export class EksClusterEncryptionConfigOutputReference extends cdktf.ComplexObje
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EksClusterEncryptionConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._resources) {
+      hasAnyValues = true;
+      internalValueResult.resources = this._resources;
+    }
+    if (this._provider) {
+      hasAnyValues = true;
+      internalValueResult.provider = this._provider?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EksClusterEncryptionConfig | undefined) {
+    if (value === undefined) {
+      this._resources = undefined;
+      this._provider.internalValue = undefined;
+    }
+    else {
+      this._resources = value.resources;
+      this._provider.internalValue = value.provider;
+    }
+  }
+
   // resources - computed: false, optional: false, required: true
   private _resources?: string[]; 
   public get resources() {
@@ -162,21 +206,20 @@ export class EksClusterEncryptionConfigOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get resourcesInput() {
-    return this._resources
+    return this._resources;
   }
 
   // provider - computed: false, optional: false, required: true
-  private _provider?: EksClusterEncryptionConfigProvider; 
-  private __providerOutput = new EksClusterEncryptionConfigProviderOutputReference(this as any, "provider", true);
+  private _provider = new EksClusterEncryptionConfigProviderOutputReference(this as any, "provider", true);
   public get provider() {
-    return this.__providerOutput;
+    return this._provider;
   }
   public putProvider(value: EksClusterEncryptionConfigProvider) {
-    this._provider = value;
+    this._provider.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get providerInput() {
-    return this._provider
+    return this._provider.internalValue;
   }
 }
 export interface EksClusterKubernetesNetworkConfig {
@@ -206,12 +249,31 @@ export class EksClusterKubernetesNetworkConfigOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EksClusterKubernetesNetworkConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._serviceIpv4Cidr) {
+      hasAnyValues = true;
+      internalValueResult.serviceIpv4Cidr = this._serviceIpv4Cidr;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EksClusterKubernetesNetworkConfig | undefined) {
+    if (value === undefined) {
+      this._serviceIpv4Cidr = undefined;
+    }
+    else {
+      this._serviceIpv4Cidr = value.serviceIpv4Cidr;
+    }
+  }
+
   // service_ipv4_cidr - computed: true, optional: true, required: false
-  private _serviceIpv4Cidr?: string | undefined; 
+  private _serviceIpv4Cidr?: string; 
   public get serviceIpv4Cidr() {
     return this.getStringAttribute('service_ipv4_cidr');
   }
-  public set serviceIpv4Cidr(value: string | undefined) {
+  public set serviceIpv4Cidr(value: string) {
     this._serviceIpv4Cidr = value;
   }
   public resetServiceIpv4Cidr() {
@@ -219,7 +281,7 @@ export class EksClusterKubernetesNetworkConfigOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get serviceIpv4CidrInput() {
-    return this._serviceIpv4Cidr
+    return this._serviceIpv4Cidr;
   }
 }
 export interface EksClusterTimeouts {
@@ -259,12 +321,43 @@ export class EksClusterTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EksClusterTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EksClusterTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -272,15 +365,15 @@ export class EksClusterTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -288,15 +381,15 @@ export class EksClusterTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -304,7 +397,7 @@ export class EksClusterTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 export interface EksClusterVpcConfig {
@@ -354,12 +447,55 @@ export class EksClusterVpcConfigOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EksClusterVpcConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._endpointPrivateAccess) {
+      hasAnyValues = true;
+      internalValueResult.endpointPrivateAccess = this._endpointPrivateAccess;
+    }
+    if (this._endpointPublicAccess) {
+      hasAnyValues = true;
+      internalValueResult.endpointPublicAccess = this._endpointPublicAccess;
+    }
+    if (this._publicAccessCidrs) {
+      hasAnyValues = true;
+      internalValueResult.publicAccessCidrs = this._publicAccessCidrs;
+    }
+    if (this._securityGroupIds) {
+      hasAnyValues = true;
+      internalValueResult.securityGroupIds = this._securityGroupIds;
+    }
+    if (this._subnetIds) {
+      hasAnyValues = true;
+      internalValueResult.subnetIds = this._subnetIds;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EksClusterVpcConfig | undefined) {
+    if (value === undefined) {
+      this._endpointPrivateAccess = undefined;
+      this._endpointPublicAccess = undefined;
+      this._publicAccessCidrs = undefined;
+      this._securityGroupIds = undefined;
+      this._subnetIds = undefined;
+    }
+    else {
+      this._endpointPrivateAccess = value.endpointPrivateAccess;
+      this._endpointPublicAccess = value.endpointPublicAccess;
+      this._publicAccessCidrs = value.publicAccessCidrs;
+      this._securityGroupIds = value.securityGroupIds;
+      this._subnetIds = value.subnetIds;
+    }
+  }
+
   // endpoint_private_access - computed: false, optional: true, required: false
-  private _endpointPrivateAccess?: boolean | cdktf.IResolvable | undefined; 
+  private _endpointPrivateAccess?: boolean | cdktf.IResolvable; 
   public get endpointPrivateAccess() {
     return this.getBooleanAttribute('endpoint_private_access') as any;
   }
-  public set endpointPrivateAccess(value: boolean | cdktf.IResolvable | undefined) {
+  public set endpointPrivateAccess(value: boolean | cdktf.IResolvable) {
     this._endpointPrivateAccess = value;
   }
   public resetEndpointPrivateAccess() {
@@ -367,15 +503,15 @@ export class EksClusterVpcConfigOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get endpointPrivateAccessInput() {
-    return this._endpointPrivateAccess
+    return this._endpointPrivateAccess;
   }
 
   // endpoint_public_access - computed: false, optional: true, required: false
-  private _endpointPublicAccess?: boolean | cdktf.IResolvable | undefined; 
+  private _endpointPublicAccess?: boolean | cdktf.IResolvable; 
   public get endpointPublicAccess() {
     return this.getBooleanAttribute('endpoint_public_access') as any;
   }
-  public set endpointPublicAccess(value: boolean | cdktf.IResolvable | undefined) {
+  public set endpointPublicAccess(value: boolean | cdktf.IResolvable) {
     this._endpointPublicAccess = value;
   }
   public resetEndpointPublicAccess() {
@@ -383,15 +519,15 @@ export class EksClusterVpcConfigOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get endpointPublicAccessInput() {
-    return this._endpointPublicAccess
+    return this._endpointPublicAccess;
   }
 
   // public_access_cidrs - computed: true, optional: true, required: false
-  private _publicAccessCidrs?: string[] | undefined; 
+  private _publicAccessCidrs?: string[]; 
   public get publicAccessCidrs() {
     return this.getListAttribute('public_access_cidrs');
   }
-  public set publicAccessCidrs(value: string[] | undefined) {
+  public set publicAccessCidrs(value: string[]) {
     this._publicAccessCidrs = value;
   }
   public resetPublicAccessCidrs() {
@@ -399,15 +535,15 @@ export class EksClusterVpcConfigOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get publicAccessCidrsInput() {
-    return this._publicAccessCidrs
+    return this._publicAccessCidrs;
   }
 
   // security_group_ids - computed: false, optional: true, required: false
-  private _securityGroupIds?: string[] | undefined; 
+  private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
     return this.getListAttribute('security_group_ids');
   }
-  public set securityGroupIds(value: string[] | undefined) {
+  public set securityGroupIds(value: string[]) {
     this._securityGroupIds = value;
   }
   public resetSecurityGroupIds() {
@@ -415,7 +551,7 @@ export class EksClusterVpcConfigOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // subnet_ids - computed: false, optional: false, required: true
@@ -428,7 +564,7 @@ export class EksClusterVpcConfigOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 }
 
@@ -470,10 +606,10 @@ export class EksCluster extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._version = config.version;
-    this._encryptionConfig = config.encryptionConfig;
-    this._kubernetesNetworkConfig = config.kubernetesNetworkConfig;
-    this._timeouts = config.timeouts;
-    this._vpcConfig = config.vpcConfig;
+    this._encryptionConfig.internalValue = config.encryptionConfig;
+    this._kubernetesNetworkConfig.internalValue = config.kubernetesNetworkConfig;
+    this._timeouts.internalValue = config.timeouts;
+    this._vpcConfig.internalValue = config.vpcConfig;
   }
 
   // ==========
@@ -496,11 +632,11 @@ export class EksCluster extends cdktf.TerraformResource {
   }
 
   // enabled_cluster_log_types - computed: false, optional: true, required: false
-  private _enabledClusterLogTypes?: string[] | undefined; 
+  private _enabledClusterLogTypes?: string[]; 
   public get enabledClusterLogTypes() {
     return this.getListAttribute('enabled_cluster_log_types');
   }
-  public set enabledClusterLogTypes(value: string[] | undefined) {
+  public set enabledClusterLogTypes(value: string[]) {
     this._enabledClusterLogTypes = value;
   }
   public resetEnabledClusterLogTypes() {
@@ -508,7 +644,7 @@ export class EksCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledClusterLogTypesInput() {
-    return this._enabledClusterLogTypes
+    return this._enabledClusterLogTypes;
   }
 
   // endpoint - computed: true, optional: false, required: false
@@ -536,7 +672,7 @@ export class EksCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // platform_version - computed: true, optional: false, required: false
@@ -554,7 +690,7 @@ export class EksCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // status - computed: true, optional: false, required: false
@@ -563,12 +699,12 @@ export class EksCluster extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -576,16 +712,16 @@ export class EksCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -593,15 +729,15 @@ export class EksCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // version - computed: true, optional: true, required: false
-  private _version?: string | undefined; 
+  private _version?: string; 
   public get version() {
     return this.getStringAttribute('version');
   }
-  public set version(value: string | undefined) {
+  public set version(value: string) {
     this._version = value;
   }
   public resetVersion() {
@@ -609,72 +745,68 @@ export class EksCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get versionInput() {
-    return this._version
+    return this._version;
   }
 
   // encryption_config - computed: false, optional: true, required: false
-  private _encryptionConfig?: EksClusterEncryptionConfig | undefined; 
-  private __encryptionConfigOutput = new EksClusterEncryptionConfigOutputReference(this as any, "encryption_config", true);
+  private _encryptionConfig = new EksClusterEncryptionConfigOutputReference(this as any, "encryption_config", true);
   public get encryptionConfig() {
-    return this.__encryptionConfigOutput;
+    return this._encryptionConfig;
   }
-  public putEncryptionConfig(value: EksClusterEncryptionConfig | undefined) {
-    this._encryptionConfig = value;
+  public putEncryptionConfig(value: EksClusterEncryptionConfig) {
+    this._encryptionConfig.internalValue = value;
   }
   public resetEncryptionConfig() {
-    this._encryptionConfig = undefined;
+    this._encryptionConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionConfigInput() {
-    return this._encryptionConfig
+    return this._encryptionConfig.internalValue;
   }
 
   // kubernetes_network_config - computed: false, optional: true, required: false
-  private _kubernetesNetworkConfig?: EksClusterKubernetesNetworkConfig | undefined; 
-  private __kubernetesNetworkConfigOutput = new EksClusterKubernetesNetworkConfigOutputReference(this as any, "kubernetes_network_config", true);
+  private _kubernetesNetworkConfig = new EksClusterKubernetesNetworkConfigOutputReference(this as any, "kubernetes_network_config", true);
   public get kubernetesNetworkConfig() {
-    return this.__kubernetesNetworkConfigOutput;
+    return this._kubernetesNetworkConfig;
   }
-  public putKubernetesNetworkConfig(value: EksClusterKubernetesNetworkConfig | undefined) {
-    this._kubernetesNetworkConfig = value;
+  public putKubernetesNetworkConfig(value: EksClusterKubernetesNetworkConfig) {
+    this._kubernetesNetworkConfig.internalValue = value;
   }
   public resetKubernetesNetworkConfig() {
-    this._kubernetesNetworkConfig = undefined;
+    this._kubernetesNetworkConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get kubernetesNetworkConfigInput() {
-    return this._kubernetesNetworkConfig
+    return this._kubernetesNetworkConfig.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: EksClusterTimeouts | undefined; 
-  private __timeoutsOutput = new EksClusterTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new EksClusterTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: EksClusterTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: EksClusterTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // vpc_config - computed: false, optional: false, required: true
-  private _vpcConfig?: EksClusterVpcConfig; 
-  private __vpcConfigOutput = new EksClusterVpcConfigOutputReference(this as any, "vpc_config", true);
+  private _vpcConfig = new EksClusterVpcConfigOutputReference(this as any, "vpc_config", true);
   public get vpcConfig() {
-    return this.__vpcConfigOutput;
+    return this._vpcConfig;
   }
   public putVpcConfig(value: EksClusterVpcConfig) {
-    this._vpcConfig = value;
+    this._vpcConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get vpcConfigInput() {
-    return this._vpcConfig
+    return this._vpcConfig.internalValue;
   }
 
   // =========
@@ -689,10 +821,10 @@ export class EksCluster extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       version: cdktf.stringToTerraform(this._version),
-      encryption_config: eksClusterEncryptionConfigToTerraform(this._encryptionConfig),
-      kubernetes_network_config: eksClusterKubernetesNetworkConfigToTerraform(this._kubernetesNetworkConfig),
-      timeouts: eksClusterTimeoutsToTerraform(this._timeouts),
-      vpc_config: eksClusterVpcConfigToTerraform(this._vpcConfig),
+      encryption_config: eksClusterEncryptionConfigToTerraform(this._encryptionConfig.internalValue),
+      kubernetes_network_config: eksClusterKubernetesNetworkConfigToTerraform(this._kubernetesNetworkConfig.internalValue),
+      timeouts: eksClusterTimeoutsToTerraform(this._timeouts.internalValue),
+      vpc_config: eksClusterVpcConfigToTerraform(this._vpcConfig.internalValue),
     };
   }
 }

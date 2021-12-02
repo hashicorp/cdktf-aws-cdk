@@ -87,7 +87,7 @@ export class DataAwsCodecommitRepository extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get repositoryNameInput() {
-    return this._repositoryName
+    return this._repositoryName;
   }
 
   // =========

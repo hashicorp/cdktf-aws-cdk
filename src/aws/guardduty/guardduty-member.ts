@@ -70,12 +70,37 @@ export class GuarddutyMemberTimeoutsOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GuarddutyMemberTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GuarddutyMemberTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -83,15 +108,15 @@ export class GuarddutyMemberTimeoutsOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -99,7 +124,7 @@ export class GuarddutyMemberTimeoutsOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -141,7 +166,7 @@ export class GuarddutyMember extends cdktf.TerraformResource {
     this._email = config.email;
     this._invitationMessage = config.invitationMessage;
     this._invite = config.invite;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -158,7 +183,7 @@ export class GuarddutyMember extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accountIdInput() {
-    return this._accountId
+    return this._accountId;
   }
 
   // detector_id - computed: false, optional: false, required: true
@@ -171,15 +196,15 @@ export class GuarddutyMember extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get detectorIdInput() {
-    return this._detectorId
+    return this._detectorId;
   }
 
   // disable_email_notification - computed: false, optional: true, required: false
-  private _disableEmailNotification?: boolean | cdktf.IResolvable | undefined; 
+  private _disableEmailNotification?: boolean | cdktf.IResolvable; 
   public get disableEmailNotification() {
     return this.getBooleanAttribute('disable_email_notification') as any;
   }
-  public set disableEmailNotification(value: boolean | cdktf.IResolvable | undefined) {
+  public set disableEmailNotification(value: boolean | cdktf.IResolvable) {
     this._disableEmailNotification = value;
   }
   public resetDisableEmailNotification() {
@@ -187,7 +212,7 @@ export class GuarddutyMember extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get disableEmailNotificationInput() {
-    return this._disableEmailNotification
+    return this._disableEmailNotification;
   }
 
   // email - computed: false, optional: false, required: true
@@ -200,7 +225,7 @@ export class GuarddutyMember extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get emailInput() {
-    return this._email
+    return this._email;
   }
 
   // id - computed: true, optional: true, required: false
@@ -209,11 +234,11 @@ export class GuarddutyMember extends cdktf.TerraformResource {
   }
 
   // invitation_message - computed: false, optional: true, required: false
-  private _invitationMessage?: string | undefined; 
+  private _invitationMessage?: string; 
   public get invitationMessage() {
     return this.getStringAttribute('invitation_message');
   }
-  public set invitationMessage(value: string | undefined) {
+  public set invitationMessage(value: string) {
     this._invitationMessage = value;
   }
   public resetInvitationMessage() {
@@ -221,15 +246,15 @@ export class GuarddutyMember extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get invitationMessageInput() {
-    return this._invitationMessage
+    return this._invitationMessage;
   }
 
   // invite - computed: false, optional: true, required: false
-  private _invite?: boolean | cdktf.IResolvable | undefined; 
+  private _invite?: boolean | cdktf.IResolvable; 
   public get invite() {
     return this.getBooleanAttribute('invite') as any;
   }
-  public set invite(value: boolean | cdktf.IResolvable | undefined) {
+  public set invite(value: boolean | cdktf.IResolvable) {
     this._invite = value;
   }
   public resetInvite() {
@@ -237,7 +262,7 @@ export class GuarddutyMember extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get inviteInput() {
-    return this._invite
+    return this._invite;
   }
 
   // relationship_status - computed: true, optional: false, required: false
@@ -246,20 +271,19 @@ export class GuarddutyMember extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: GuarddutyMemberTimeouts | undefined; 
-  private __timeoutsOutput = new GuarddutyMemberTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new GuarddutyMemberTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: GuarddutyMemberTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: GuarddutyMemberTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -274,7 +298,7 @@ export class GuarddutyMember extends cdktf.TerraformResource {
       email: cdktf.stringToTerraform(this._email),
       invitation_message: cdktf.stringToTerraform(this._invitationMessage),
       invite: cdktf.booleanToTerraform(this._invite),
-      timeouts: guarddutyMemberTimeoutsToTerraform(this._timeouts),
+      timeouts: guarddutyMemberTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

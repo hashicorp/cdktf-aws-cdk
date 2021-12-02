@@ -53,11 +53,11 @@ export class FmsAdminAccount extends cdktf.TerraformResource {
   // ==========
 
   // account_id - computed: true, optional: true, required: false
-  private _accountId?: string | undefined; 
+  private _accountId?: string; 
   public get accountId() {
     return this.getStringAttribute('account_id');
   }
-  public set accountId(value: string | undefined) {
+  public set accountId(value: string) {
     this._accountId = value;
   }
   public resetAccountId() {
@@ -65,7 +65,7 @@ export class FmsAdminAccount extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accountIdInput() {
-    return this._accountId
+    return this._accountId;
   }
 
   // id - computed: true, optional: true, required: false

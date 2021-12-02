@@ -73,11 +73,11 @@ export class CognitoUserGroup extends cdktf.TerraformResource {
   // ==========
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -85,7 +85,7 @@ export class CognitoUserGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -103,15 +103,15 @@ export class CognitoUserGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // precedence - computed: false, optional: true, required: false
-  private _precedence?: number | undefined; 
+  private _precedence?: number; 
   public get precedence() {
     return this.getNumberAttribute('precedence');
   }
-  public set precedence(value: number | undefined) {
+  public set precedence(value: number) {
     this._precedence = value;
   }
   public resetPrecedence() {
@@ -119,15 +119,15 @@ export class CognitoUserGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get precedenceInput() {
-    return this._precedence
+    return this._precedence;
   }
 
   // role_arn - computed: false, optional: true, required: false
-  private _roleArn?: string | undefined; 
+  private _roleArn?: string; 
   public get roleArn() {
     return this.getStringAttribute('role_arn');
   }
-  public set roleArn(value: string | undefined) {
+  public set roleArn(value: string) {
     this._roleArn = value;
   }
   public resetRoleArn() {
@@ -135,7 +135,7 @@ export class CognitoUserGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // user_pool_id - computed: false, optional: false, required: true
@@ -148,7 +148,7 @@ export class CognitoUserGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userPoolIdInput() {
-    return this._userPoolId
+    return this._userPoolId;
   }
 
   // =========

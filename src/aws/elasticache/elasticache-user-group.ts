@@ -87,7 +87,7 @@ export class ElasticacheUserGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get engineInput() {
-    return this._engine
+    return this._engine;
   }
 
   // id - computed: true, optional: true, required: false
@@ -96,12 +96,12 @@ export class ElasticacheUserGroup extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -109,16 +109,16 @@ export class ElasticacheUserGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -126,7 +126,7 @@ export class ElasticacheUserGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // user_group_id - computed: false, optional: false, required: true
@@ -139,15 +139,15 @@ export class ElasticacheUserGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userGroupIdInput() {
-    return this._userGroupId
+    return this._userGroupId;
   }
 
   // user_ids - computed: false, optional: true, required: false
-  private _userIds?: string[] | undefined; 
+  private _userIds?: string[]; 
   public get userIds() {
     return this.getListAttribute('user_ids');
   }
-  public set userIds(value: string[] | undefined) {
+  public set userIds(value: string[]) {
     this._userIds = value;
   }
   public resetUserIds() {
@@ -155,7 +155,7 @@ export class ElasticacheUserGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userIdsInput() {
-    return this._userIds
+    return this._userIds;
   }
 
   // =========

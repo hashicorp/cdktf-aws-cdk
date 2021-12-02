@@ -87,7 +87,7 @@ export class SignerSigningProfilePermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get actionInput() {
-    return this._action
+    return this._action;
   }
 
   // id - computed: true, optional: true, required: false
@@ -105,7 +105,7 @@ export class SignerSigningProfilePermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get principalInput() {
-    return this._principal
+    return this._principal;
   }
 
   // profile_name - computed: false, optional: false, required: true
@@ -118,15 +118,15 @@ export class SignerSigningProfilePermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get profileNameInput() {
-    return this._profileName
+    return this._profileName;
   }
 
   // profile_version - computed: true, optional: true, required: false
-  private _profileVersion?: string | undefined; 
+  private _profileVersion?: string; 
   public get profileVersion() {
     return this.getStringAttribute('profile_version');
   }
-  public set profileVersion(value: string | undefined) {
+  public set profileVersion(value: string) {
     this._profileVersion = value;
   }
   public resetProfileVersion() {
@@ -134,15 +134,15 @@ export class SignerSigningProfilePermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get profileVersionInput() {
-    return this._profileVersion
+    return this._profileVersion;
   }
 
   // statement_id - computed: true, optional: true, required: false
-  private _statementId?: string | undefined; 
+  private _statementId?: string; 
   public get statementId() {
     return this.getStringAttribute('statement_id');
   }
-  public set statementId(value: string | undefined) {
+  public set statementId(value: string) {
     this._statementId = value;
   }
   public resetStatementId() {
@@ -150,15 +150,15 @@ export class SignerSigningProfilePermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get statementIdInput() {
-    return this._statementId
+    return this._statementId;
   }
 
   // statement_id_prefix - computed: false, optional: true, required: false
-  private _statementIdPrefix?: string | undefined; 
+  private _statementIdPrefix?: string; 
   public get statementIdPrefix() {
     return this.getStringAttribute('statement_id_prefix');
   }
-  public set statementIdPrefix(value: string | undefined) {
+  public set statementIdPrefix(value: string) {
     this._statementIdPrefix = value;
   }
   public resetStatementIdPrefix() {
@@ -166,7 +166,7 @@ export class SignerSigningProfilePermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get statementIdPrefixInput() {
-    return this._statementIdPrefix
+    return this._statementIdPrefix;
   }
 
   // =========

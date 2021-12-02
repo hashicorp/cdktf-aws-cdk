@@ -78,11 +78,11 @@ export class DataAwsConnectContactFlow extends cdktf.TerraformDataSource {
   }
 
   // contact_flow_id - computed: true, optional: true, required: false
-  private _contactFlowId?: string | undefined; 
+  private _contactFlowId?: string; 
   public get contactFlowId() {
     return this.getStringAttribute('contact_flow_id');
   }
-  public set contactFlowId(value: string | undefined) {
+  public set contactFlowId(value: string) {
     this._contactFlowId = value;
   }
   public resetContactFlowId() {
@@ -90,7 +90,7 @@ export class DataAwsConnectContactFlow extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get contactFlowIdInput() {
-    return this._contactFlowId
+    return this._contactFlowId;
   }
 
   // content - computed: true, optional: false, required: false
@@ -118,15 +118,15 @@ export class DataAwsConnectContactFlow extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceIdInput() {
-    return this._instanceId
+    return this._instanceId;
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -134,16 +134,16 @@ export class DataAwsConnectContactFlow extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -151,15 +151,15 @@ export class DataAwsConnectContactFlow extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // type - computed: false, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -167,7 +167,7 @@ export class DataAwsConnectContactFlow extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // =========

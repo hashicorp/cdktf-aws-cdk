@@ -77,7 +77,7 @@ export class DataAwsQldbLedger extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // permissions_mode - computed: true, optional: false, required: false

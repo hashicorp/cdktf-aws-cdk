@@ -99,12 +99,43 @@ export class FlowLogDestinationOptionsOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): FlowLogDestinationOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fileFormat) {
+      hasAnyValues = true;
+      internalValueResult.fileFormat = this._fileFormat;
+    }
+    if (this._hiveCompatiblePartitions) {
+      hasAnyValues = true;
+      internalValueResult.hiveCompatiblePartitions = this._hiveCompatiblePartitions;
+    }
+    if (this._perHourPartition) {
+      hasAnyValues = true;
+      internalValueResult.perHourPartition = this._perHourPartition;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: FlowLogDestinationOptions | undefined) {
+    if (value === undefined) {
+      this._fileFormat = undefined;
+      this._hiveCompatiblePartitions = undefined;
+      this._perHourPartition = undefined;
+    }
+    else {
+      this._fileFormat = value.fileFormat;
+      this._hiveCompatiblePartitions = value.hiveCompatiblePartitions;
+      this._perHourPartition = value.perHourPartition;
+    }
+  }
+
   // file_format - computed: false, optional: true, required: false
-  private _fileFormat?: string | undefined; 
+  private _fileFormat?: string; 
   public get fileFormat() {
     return this.getStringAttribute('file_format');
   }
-  public set fileFormat(value: string | undefined) {
+  public set fileFormat(value: string) {
     this._fileFormat = value;
   }
   public resetFileFormat() {
@@ -112,15 +143,15 @@ export class FlowLogDestinationOptionsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get fileFormatInput() {
-    return this._fileFormat
+    return this._fileFormat;
   }
 
   // hive_compatible_partitions - computed: false, optional: true, required: false
-  private _hiveCompatiblePartitions?: boolean | cdktf.IResolvable | undefined; 
+  private _hiveCompatiblePartitions?: boolean | cdktf.IResolvable; 
   public get hiveCompatiblePartitions() {
     return this.getBooleanAttribute('hive_compatible_partitions') as any;
   }
-  public set hiveCompatiblePartitions(value: boolean | cdktf.IResolvable | undefined) {
+  public set hiveCompatiblePartitions(value: boolean | cdktf.IResolvable) {
     this._hiveCompatiblePartitions = value;
   }
   public resetHiveCompatiblePartitions() {
@@ -128,15 +159,15 @@ export class FlowLogDestinationOptionsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get hiveCompatiblePartitionsInput() {
-    return this._hiveCompatiblePartitions
+    return this._hiveCompatiblePartitions;
   }
 
   // per_hour_partition - computed: false, optional: true, required: false
-  private _perHourPartition?: boolean | cdktf.IResolvable | undefined; 
+  private _perHourPartition?: boolean | cdktf.IResolvable; 
   public get perHourPartition() {
     return this.getBooleanAttribute('per_hour_partition') as any;
   }
-  public set perHourPartition(value: boolean | cdktf.IResolvable | undefined) {
+  public set perHourPartition(value: boolean | cdktf.IResolvable) {
     this._perHourPartition = value;
   }
   public resetPerHourPartition() {
@@ -144,7 +175,7 @@ export class FlowLogDestinationOptionsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get perHourPartitionInput() {
-    return this._perHourPartition
+    return this._perHourPartition;
   }
 }
 
@@ -192,7 +223,7 @@ export class FlowLog extends cdktf.TerraformResource {
     this._tagsAll = config.tagsAll;
     this._trafficType = config.trafficType;
     this._vpcId = config.vpcId;
-    this._destinationOptions = config.destinationOptions;
+    this._destinationOptions.internalValue = config.destinationOptions;
   }
 
   // ==========
@@ -205,11 +236,11 @@ export class FlowLog extends cdktf.TerraformResource {
   }
 
   // eni_id - computed: false, optional: true, required: false
-  private _eniId?: string | undefined; 
+  private _eniId?: string; 
   public get eniId() {
     return this.getStringAttribute('eni_id');
   }
-  public set eniId(value: string | undefined) {
+  public set eniId(value: string) {
     this._eniId = value;
   }
   public resetEniId() {
@@ -217,15 +248,15 @@ export class FlowLog extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get eniIdInput() {
-    return this._eniId
+    return this._eniId;
   }
 
   // iam_role_arn - computed: false, optional: true, required: false
-  private _iamRoleArn?: string | undefined; 
+  private _iamRoleArn?: string; 
   public get iamRoleArn() {
     return this.getStringAttribute('iam_role_arn');
   }
-  public set iamRoleArn(value: string | undefined) {
+  public set iamRoleArn(value: string) {
     this._iamRoleArn = value;
   }
   public resetIamRoleArn() {
@@ -233,7 +264,7 @@ export class FlowLog extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iamRoleArnInput() {
-    return this._iamRoleArn
+    return this._iamRoleArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -242,11 +273,11 @@ export class FlowLog extends cdktf.TerraformResource {
   }
 
   // log_destination - computed: true, optional: true, required: false
-  private _logDestination?: string | undefined; 
+  private _logDestination?: string; 
   public get logDestination() {
     return this.getStringAttribute('log_destination');
   }
-  public set logDestination(value: string | undefined) {
+  public set logDestination(value: string) {
     this._logDestination = value;
   }
   public resetLogDestination() {
@@ -254,15 +285,15 @@ export class FlowLog extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get logDestinationInput() {
-    return this._logDestination
+    return this._logDestination;
   }
 
   // log_destination_type - computed: false, optional: true, required: false
-  private _logDestinationType?: string | undefined; 
+  private _logDestinationType?: string; 
   public get logDestinationType() {
     return this.getStringAttribute('log_destination_type');
   }
-  public set logDestinationType(value: string | undefined) {
+  public set logDestinationType(value: string) {
     this._logDestinationType = value;
   }
   public resetLogDestinationType() {
@@ -270,15 +301,15 @@ export class FlowLog extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get logDestinationTypeInput() {
-    return this._logDestinationType
+    return this._logDestinationType;
   }
 
   // log_format - computed: true, optional: true, required: false
-  private _logFormat?: string | undefined; 
+  private _logFormat?: string; 
   public get logFormat() {
     return this.getStringAttribute('log_format');
   }
-  public set logFormat(value: string | undefined) {
+  public set logFormat(value: string) {
     this._logFormat = value;
   }
   public resetLogFormat() {
@@ -286,15 +317,15 @@ export class FlowLog extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get logFormatInput() {
-    return this._logFormat
+    return this._logFormat;
   }
 
   // log_group_name - computed: true, optional: true, required: false
-  private _logGroupName?: string | undefined; 
+  private _logGroupName?: string; 
   public get logGroupName() {
     return this.getStringAttribute('log_group_name');
   }
-  public set logGroupName(value: string | undefined) {
+  public set logGroupName(value: string) {
     this._logGroupName = value;
   }
   public resetLogGroupName() {
@@ -302,15 +333,15 @@ export class FlowLog extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get logGroupNameInput() {
-    return this._logGroupName
+    return this._logGroupName;
   }
 
   // max_aggregation_interval - computed: false, optional: true, required: false
-  private _maxAggregationInterval?: number | undefined; 
+  private _maxAggregationInterval?: number; 
   public get maxAggregationInterval() {
     return this.getNumberAttribute('max_aggregation_interval');
   }
-  public set maxAggregationInterval(value: number | undefined) {
+  public set maxAggregationInterval(value: number) {
     this._maxAggregationInterval = value;
   }
   public resetMaxAggregationInterval() {
@@ -318,15 +349,15 @@ export class FlowLog extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maxAggregationIntervalInput() {
-    return this._maxAggregationInterval
+    return this._maxAggregationInterval;
   }
 
   // subnet_id - computed: false, optional: true, required: false
-  private _subnetId?: string | undefined; 
+  private _subnetId?: string; 
   public get subnetId() {
     return this.getStringAttribute('subnet_id');
   }
-  public set subnetId(value: string | undefined) {
+  public set subnetId(value: string) {
     this._subnetId = value;
   }
   public resetSubnetId() {
@@ -334,16 +365,16 @@ export class FlowLog extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdInput() {
-    return this._subnetId
+    return this._subnetId;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -351,16 +382,16 @@ export class FlowLog extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -368,7 +399,7 @@ export class FlowLog extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // traffic_type - computed: false, optional: false, required: true
@@ -381,15 +412,15 @@ export class FlowLog extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get trafficTypeInput() {
-    return this._trafficType
+    return this._trafficType;
   }
 
   // vpc_id - computed: false, optional: true, required: false
-  private _vpcId?: string | undefined; 
+  private _vpcId?: string; 
   public get vpcId() {
     return this.getStringAttribute('vpc_id');
   }
-  public set vpcId(value: string | undefined) {
+  public set vpcId(value: string) {
     this._vpcId = value;
   }
   public resetVpcId() {
@@ -397,24 +428,23 @@ export class FlowLog extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 
   // destination_options - computed: false, optional: true, required: false
-  private _destinationOptions?: FlowLogDestinationOptions | undefined; 
-  private __destinationOptionsOutput = new FlowLogDestinationOptionsOutputReference(this as any, "destination_options", true);
+  private _destinationOptions = new FlowLogDestinationOptionsOutputReference(this as any, "destination_options", true);
   public get destinationOptions() {
-    return this.__destinationOptionsOutput;
+    return this._destinationOptions;
   }
-  public putDestinationOptions(value: FlowLogDestinationOptions | undefined) {
-    this._destinationOptions = value;
+  public putDestinationOptions(value: FlowLogDestinationOptions) {
+    this._destinationOptions.internalValue = value;
   }
   public resetDestinationOptions() {
-    this._destinationOptions = undefined;
+    this._destinationOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get destinationOptionsInput() {
-    return this._destinationOptions
+    return this._destinationOptions.internalValue;
   }
 
   // =========
@@ -435,7 +465,7 @@ export class FlowLog extends cdktf.TerraformResource {
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       traffic_type: cdktf.stringToTerraform(this._trafficType),
       vpc_id: cdktf.stringToTerraform(this._vpcId),
-      destination_options: flowLogDestinationOptionsToTerraform(this._destinationOptions),
+      destination_options: flowLogDestinationOptionsToTerraform(this._destinationOptions.internalValue),
     };
   }
 }

@@ -137,11 +137,11 @@ export class DataAwsVpcEndpointService extends cdktf.TerraformDataSource {
   }
 
   // service - computed: false, optional: true, required: false
-  private _service?: string | undefined; 
+  private _service?: string; 
   public get service() {
     return this.getStringAttribute('service');
   }
-  public set service(value: string | undefined) {
+  public set service(value: string) {
     this._service = value;
   }
   public resetService() {
@@ -149,7 +149,7 @@ export class DataAwsVpcEndpointService extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceInput() {
-    return this._service
+    return this._service;
   }
 
   // service_id - computed: true, optional: false, required: false
@@ -158,11 +158,11 @@ export class DataAwsVpcEndpointService extends cdktf.TerraformDataSource {
   }
 
   // service_name - computed: true, optional: true, required: false
-  private _serviceName?: string | undefined; 
+  private _serviceName?: string; 
   public get serviceName() {
     return this.getStringAttribute('service_name');
   }
-  public set serviceName(value: string | undefined) {
+  public set serviceName(value: string) {
     this._serviceName = value;
   }
   public resetServiceName() {
@@ -170,15 +170,15 @@ export class DataAwsVpcEndpointService extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceNameInput() {
-    return this._serviceName
+    return this._serviceName;
   }
 
   // service_type - computed: true, optional: true, required: false
-  private _serviceType?: string | undefined; 
+  private _serviceType?: string; 
   public get serviceType() {
     return this.getStringAttribute('service_type');
   }
-  public set serviceType(value: string | undefined) {
+  public set serviceType(value: string) {
     this._serviceType = value;
   }
   public resetServiceType() {
@@ -186,16 +186,16 @@ export class DataAwsVpcEndpointService extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceTypeInput() {
-    return this._serviceType
+    return this._serviceType;
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -203,7 +203,7 @@ export class DataAwsVpcEndpointService extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // vpc_endpoint_policy_supported - computed: true, optional: false, required: false
@@ -212,12 +212,12 @@ export class DataAwsVpcEndpointService extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsVpcEndpointServiceFilter[] | undefined; 
+  private _filter?: DataAwsVpcEndpointServiceFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsVpcEndpointServiceFilter[] | undefined) {
+  public set filter(value: DataAwsVpcEndpointServiceFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -225,7 +225,7 @@ export class DataAwsVpcEndpointService extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

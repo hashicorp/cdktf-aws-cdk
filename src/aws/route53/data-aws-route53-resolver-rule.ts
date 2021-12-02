@@ -83,11 +83,11 @@ export class DataAwsRoute53ResolverRule extends cdktf.TerraformDataSource {
   }
 
   // domain_name - computed: true, optional: true, required: false
-  private _domainName?: string | undefined; 
+  private _domainName?: string; 
   public get domainName() {
     return this.getStringAttribute('domain_name');
   }
-  public set domainName(value: string | undefined) {
+  public set domainName(value: string) {
     this._domainName = value;
   }
   public resetDomainName() {
@@ -95,7 +95,7 @@ export class DataAwsRoute53ResolverRule extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainNameInput() {
-    return this._domainName
+    return this._domainName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -104,11 +104,11 @@ export class DataAwsRoute53ResolverRule extends cdktf.TerraformDataSource {
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -116,7 +116,7 @@ export class DataAwsRoute53ResolverRule extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // owner_id - computed: true, optional: false, required: false
@@ -125,11 +125,11 @@ export class DataAwsRoute53ResolverRule extends cdktf.TerraformDataSource {
   }
 
   // resolver_endpoint_id - computed: true, optional: true, required: false
-  private _resolverEndpointId?: string | undefined; 
+  private _resolverEndpointId?: string; 
   public get resolverEndpointId() {
     return this.getStringAttribute('resolver_endpoint_id');
   }
-  public set resolverEndpointId(value: string | undefined) {
+  public set resolverEndpointId(value: string) {
     this._resolverEndpointId = value;
   }
   public resetResolverEndpointId() {
@@ -137,15 +137,15 @@ export class DataAwsRoute53ResolverRule extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get resolverEndpointIdInput() {
-    return this._resolverEndpointId
+    return this._resolverEndpointId;
   }
 
   // resolver_rule_id - computed: true, optional: true, required: false
-  private _resolverRuleId?: string | undefined; 
+  private _resolverRuleId?: string; 
   public get resolverRuleId() {
     return this.getStringAttribute('resolver_rule_id');
   }
-  public set resolverRuleId(value: string | undefined) {
+  public set resolverRuleId(value: string) {
     this._resolverRuleId = value;
   }
   public resetResolverRuleId() {
@@ -153,15 +153,15 @@ export class DataAwsRoute53ResolverRule extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get resolverRuleIdInput() {
-    return this._resolverRuleId
+    return this._resolverRuleId;
   }
 
   // rule_type - computed: true, optional: true, required: false
-  private _ruleType?: string | undefined; 
+  private _ruleType?: string; 
   public get ruleType() {
     return this.getStringAttribute('rule_type');
   }
-  public set ruleType(value: string | undefined) {
+  public set ruleType(value: string) {
     this._ruleType = value;
   }
   public resetRuleType() {
@@ -169,7 +169,7 @@ export class DataAwsRoute53ResolverRule extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get ruleTypeInput() {
-    return this._ruleType
+    return this._ruleType;
   }
 
   // share_status - computed: true, optional: false, required: false
@@ -178,12 +178,12 @@ export class DataAwsRoute53ResolverRule extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -191,7 +191,7 @@ export class DataAwsRoute53ResolverRule extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // =========

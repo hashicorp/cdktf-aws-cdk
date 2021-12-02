@@ -67,7 +67,7 @@ export class MskScramSecretAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterArnInput() {
-    return this._clusterArn
+    return this._clusterArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -85,7 +85,7 @@ export class MskScramSecretAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get secretArnListInput() {
-    return this._secretArnList
+    return this._secretArnList;
   }
 
   // =========

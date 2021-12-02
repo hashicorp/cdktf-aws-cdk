@@ -87,7 +87,7 @@ export class DataAwsEcsTaskDefinition extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get taskDefinitionInput() {
-    return this._taskDefinition
+    return this._taskDefinition;
   }
 
   // task_role_arn - computed: true, optional: false, required: false

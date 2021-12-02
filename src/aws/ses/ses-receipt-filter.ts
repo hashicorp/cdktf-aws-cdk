@@ -77,7 +77,7 @@ export class SesReceiptFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cidrInput() {
-    return this._cidr
+    return this._cidr;
   }
 
   // id - computed: true, optional: true, required: false
@@ -95,7 +95,7 @@ export class SesReceiptFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // policy - computed: false, optional: false, required: true
@@ -108,7 +108,7 @@ export class SesReceiptFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // =========

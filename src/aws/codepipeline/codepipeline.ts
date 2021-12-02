@@ -68,6 +68,31 @@ export class CodepipelineArtifactStoreEncryptionKeyOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodepipelineArtifactStoreEncryptionKey | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._id) {
+      hasAnyValues = true;
+      internalValueResult.id = this._id;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodepipelineArtifactStoreEncryptionKey | undefined) {
+    if (value === undefined) {
+      this._id = undefined;
+      this._type = undefined;
+    }
+    else {
+      this._id = value.id;
+      this._type = value.type;
+    }
+  }
+
   // id - computed: false, optional: false, required: true
   private _id?: string; 
   public get id() {
@@ -78,7 +103,7 @@ export class CodepipelineArtifactStoreEncryptionKeyOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get idInput() {
-    return this._id
+    return this._id;
   }
 
   // type - computed: false, optional: false, required: true
@@ -91,7 +116,7 @@ export class CodepipelineArtifactStoreEncryptionKeyOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 export interface CodepipelineArtifactStore {
@@ -289,7 +314,7 @@ export class Codepipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -302,16 +327,16 @@ export class Codepipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -319,16 +344,16 @@ export class Codepipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -336,7 +361,7 @@ export class Codepipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // artifact_store - computed: false, optional: false, required: true
@@ -350,7 +375,7 @@ export class Codepipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get artifactStoreInput() {
-    return this._artifactStore
+    return this._artifactStore;
   }
 
   // stage - computed: false, optional: false, required: true
@@ -364,7 +389,7 @@ export class Codepipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stageInput() {
-    return this._stage
+    return this._stage;
   }
 
   // =========

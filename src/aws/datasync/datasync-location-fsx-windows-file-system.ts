@@ -98,11 +98,11 @@ export class DatasyncLocationFsxWindowsFileSystem extends cdktf.TerraformResourc
   }
 
   // domain - computed: false, optional: true, required: false
-  private _domain?: string | undefined; 
+  private _domain?: string; 
   public get domain() {
     return this.getStringAttribute('domain');
   }
-  public set domain(value: string | undefined) {
+  public set domain(value: string) {
     this._domain = value;
   }
   public resetDomain() {
@@ -110,7 +110,7 @@ export class DatasyncLocationFsxWindowsFileSystem extends cdktf.TerraformResourc
   }
   // Temporarily expose input value. Use with caution.
   public get domainInput() {
-    return this._domain
+    return this._domain;
   }
 
   // fsx_filesystem_arn - computed: false, optional: false, required: true
@@ -123,7 +123,7 @@ export class DatasyncLocationFsxWindowsFileSystem extends cdktf.TerraformResourc
   }
   // Temporarily expose input value. Use with caution.
   public get fsxFilesystemArnInput() {
-    return this._fsxFilesystemArn
+    return this._fsxFilesystemArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -141,7 +141,7 @@ export class DatasyncLocationFsxWindowsFileSystem extends cdktf.TerraformResourc
   }
   // Temporarily expose input value. Use with caution.
   public get passwordInput() {
-    return this._password
+    return this._password;
   }
 
   // security_group_arns - computed: false, optional: false, required: true
@@ -154,15 +154,15 @@ export class DatasyncLocationFsxWindowsFileSystem extends cdktf.TerraformResourc
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupArnsInput() {
-    return this._securityGroupArns
+    return this._securityGroupArns;
   }
 
   // subdirectory - computed: true, optional: true, required: false
-  private _subdirectory?: string | undefined; 
+  private _subdirectory?: string; 
   public get subdirectory() {
     return this.getStringAttribute('subdirectory');
   }
-  public set subdirectory(value: string | undefined) {
+  public set subdirectory(value: string) {
     this._subdirectory = value;
   }
   public resetSubdirectory() {
@@ -170,16 +170,16 @@ export class DatasyncLocationFsxWindowsFileSystem extends cdktf.TerraformResourc
   }
   // Temporarily expose input value. Use with caution.
   public get subdirectoryInput() {
-    return this._subdirectory
+    return this._subdirectory;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -187,16 +187,16 @@ export class DatasyncLocationFsxWindowsFileSystem extends cdktf.TerraformResourc
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -204,7 +204,7 @@ export class DatasyncLocationFsxWindowsFileSystem extends cdktf.TerraformResourc
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // uri - computed: true, optional: false, required: false
@@ -222,7 +222,7 @@ export class DatasyncLocationFsxWindowsFileSystem extends cdktf.TerraformResourc
   }
   // Temporarily expose input value. Use with caution.
   public get userInput() {
-    return this._user
+    return this._user;
   }
 
   // =========

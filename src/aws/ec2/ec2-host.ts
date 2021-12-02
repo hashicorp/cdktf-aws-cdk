@@ -88,11 +88,11 @@ export class Ec2Host extends cdktf.TerraformResource {
   }
 
   // auto_placement - computed: false, optional: true, required: false
-  private _autoPlacement?: string | undefined; 
+  private _autoPlacement?: string; 
   public get autoPlacement() {
     return this.getStringAttribute('auto_placement');
   }
-  public set autoPlacement(value: string | undefined) {
+  public set autoPlacement(value: string) {
     this._autoPlacement = value;
   }
   public resetAutoPlacement() {
@@ -100,7 +100,7 @@ export class Ec2Host extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoPlacementInput() {
-    return this._autoPlacement
+    return this._autoPlacement;
   }
 
   // availability_zone - computed: false, optional: false, required: true
@@ -113,15 +113,15 @@ export class Ec2Host extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneInput() {
-    return this._availabilityZone
+    return this._availabilityZone;
   }
 
   // host_recovery - computed: false, optional: true, required: false
-  private _hostRecovery?: string | undefined; 
+  private _hostRecovery?: string; 
   public get hostRecovery() {
     return this.getStringAttribute('host_recovery');
   }
-  public set hostRecovery(value: string | undefined) {
+  public set hostRecovery(value: string) {
     this._hostRecovery = value;
   }
   public resetHostRecovery() {
@@ -129,7 +129,7 @@ export class Ec2Host extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get hostRecoveryInput() {
-    return this._hostRecovery
+    return this._hostRecovery;
   }
 
   // id - computed: true, optional: true, required: false
@@ -138,11 +138,11 @@ export class Ec2Host extends cdktf.TerraformResource {
   }
 
   // instance_family - computed: false, optional: true, required: false
-  private _instanceFamily?: string | undefined; 
+  private _instanceFamily?: string; 
   public get instanceFamily() {
     return this.getStringAttribute('instance_family');
   }
-  public set instanceFamily(value: string | undefined) {
+  public set instanceFamily(value: string) {
     this._instanceFamily = value;
   }
   public resetInstanceFamily() {
@@ -150,15 +150,15 @@ export class Ec2Host extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceFamilyInput() {
-    return this._instanceFamily
+    return this._instanceFamily;
   }
 
   // instance_type - computed: false, optional: true, required: false
-  private _instanceType?: string | undefined; 
+  private _instanceType?: string; 
   public get instanceType() {
     return this.getStringAttribute('instance_type');
   }
-  public set instanceType(value: string | undefined) {
+  public set instanceType(value: string) {
     this._instanceType = value;
   }
   public resetInstanceType() {
@@ -166,7 +166,7 @@ export class Ec2Host extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // owner_id - computed: true, optional: false, required: false
@@ -175,12 +175,12 @@ export class Ec2Host extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -188,16 +188,16 @@ export class Ec2Host extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -205,7 +205,7 @@ export class Ec2Host extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

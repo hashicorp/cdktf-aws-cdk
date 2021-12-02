@@ -67,7 +67,7 @@ export class DxConnectionAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get connectionIdInput() {
-    return this._connectionId
+    return this._connectionId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -85,7 +85,7 @@ export class DxConnectionAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get lagIdInput() {
-    return this._lagId
+    return this._lagId;
   }
 
   // =========

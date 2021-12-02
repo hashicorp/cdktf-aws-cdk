@@ -67,7 +67,7 @@ export class MediaStoreContainerPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get containerNameInput() {
-    return this._containerName
+    return this._containerName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -85,7 +85,7 @@ export class MediaStoreContainerPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // =========

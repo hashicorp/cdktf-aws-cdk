@@ -113,6 +113,25 @@ export class AppstreamFleetComputeCapacityOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppstreamFleetComputeCapacity | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._desiredInstances) {
+      hasAnyValues = true;
+      internalValueResult.desiredInstances = this._desiredInstances;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppstreamFleetComputeCapacity | undefined) {
+    if (value === undefined) {
+      this._desiredInstances = undefined;
+    }
+    else {
+      this._desiredInstances = value.desiredInstances;
+    }
+  }
+
   // desired_instances - computed: false, optional: false, required: true
   private _desiredInstances?: number; 
   public get desiredInstances() {
@@ -123,7 +142,7 @@ export class AppstreamFleetComputeCapacityOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get desiredInstancesInput() {
-    return this._desiredInstances
+    return this._desiredInstances;
   }
 }
 export interface AppstreamFleetDomainJoinInfo {
@@ -158,12 +177,37 @@ export class AppstreamFleetDomainJoinInfoOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppstreamFleetDomainJoinInfo | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._directoryName) {
+      hasAnyValues = true;
+      internalValueResult.directoryName = this._directoryName;
+    }
+    if (this._organizationalUnitDistinguishedName) {
+      hasAnyValues = true;
+      internalValueResult.organizationalUnitDistinguishedName = this._organizationalUnitDistinguishedName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppstreamFleetDomainJoinInfo | undefined) {
+    if (value === undefined) {
+      this._directoryName = undefined;
+      this._organizationalUnitDistinguishedName = undefined;
+    }
+    else {
+      this._directoryName = value.directoryName;
+      this._organizationalUnitDistinguishedName = value.organizationalUnitDistinguishedName;
+    }
+  }
+
   // directory_name - computed: false, optional: true, required: false
-  private _directoryName?: string | undefined; 
+  private _directoryName?: string; 
   public get directoryName() {
     return this.getStringAttribute('directory_name');
   }
-  public set directoryName(value: string | undefined) {
+  public set directoryName(value: string) {
     this._directoryName = value;
   }
   public resetDirectoryName() {
@@ -171,15 +215,15 @@ export class AppstreamFleetDomainJoinInfoOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get directoryNameInput() {
-    return this._directoryName
+    return this._directoryName;
   }
 
   // organizational_unit_distinguished_name - computed: false, optional: true, required: false
-  private _organizationalUnitDistinguishedName?: string | undefined; 
+  private _organizationalUnitDistinguishedName?: string; 
   public get organizationalUnitDistinguishedName() {
     return this.getStringAttribute('organizational_unit_distinguished_name');
   }
-  public set organizationalUnitDistinguishedName(value: string | undefined) {
+  public set organizationalUnitDistinguishedName(value: string) {
     this._organizationalUnitDistinguishedName = value;
   }
   public resetOrganizationalUnitDistinguishedName() {
@@ -187,7 +231,7 @@ export class AppstreamFleetDomainJoinInfoOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get organizationalUnitDistinguishedNameInput() {
-    return this._organizationalUnitDistinguishedName
+    return this._organizationalUnitDistinguishedName;
   }
 }
 export interface AppstreamFleetVpcConfig {
@@ -222,12 +266,37 @@ export class AppstreamFleetVpcConfigOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppstreamFleetVpcConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._securityGroupIds) {
+      hasAnyValues = true;
+      internalValueResult.securityGroupIds = this._securityGroupIds;
+    }
+    if (this._subnetIds) {
+      hasAnyValues = true;
+      internalValueResult.subnetIds = this._subnetIds;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppstreamFleetVpcConfig | undefined) {
+    if (value === undefined) {
+      this._securityGroupIds = undefined;
+      this._subnetIds = undefined;
+    }
+    else {
+      this._securityGroupIds = value.securityGroupIds;
+      this._subnetIds = value.subnetIds;
+    }
+  }
+
   // security_group_ids - computed: true, optional: true, required: false
-  private _securityGroupIds?: string[] | undefined; 
+  private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
     return this.getListAttribute('security_group_ids');
   }
-  public set securityGroupIds(value: string[] | undefined) {
+  public set securityGroupIds(value: string[]) {
     this._securityGroupIds = value;
   }
   public resetSecurityGroupIds() {
@@ -235,15 +304,15 @@ export class AppstreamFleetVpcConfigOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // subnet_ids - computed: true, optional: true, required: false
-  private _subnetIds?: string[] | undefined; 
+  private _subnetIds?: string[]; 
   public get subnetIds() {
     return this.getListAttribute('subnet_ids');
   }
-  public set subnetIds(value: string[] | undefined) {
+  public set subnetIds(value: string[]) {
     this._subnetIds = value;
   }
   public resetSubnetIds() {
@@ -251,7 +320,7 @@ export class AppstreamFleetVpcConfigOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 }
 
@@ -302,9 +371,9 @@ export class AppstreamFleet extends cdktf.TerraformResource {
     this._streamView = config.streamView;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._computeCapacity = config.computeCapacity;
-    this._domainJoinInfo = config.domainJoinInfo;
-    this._vpcConfig = config.vpcConfig;
+    this._computeCapacity.internalValue = config.computeCapacity;
+    this._domainJoinInfo.internalValue = config.domainJoinInfo;
+    this._vpcConfig.internalValue = config.vpcConfig;
   }
 
   // ==========
@@ -322,11 +391,11 @@ export class AppstreamFleet extends cdktf.TerraformResource {
   }
 
   // description - computed: true, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -334,15 +403,15 @@ export class AppstreamFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // disconnect_timeout_in_seconds - computed: true, optional: true, required: false
-  private _disconnectTimeoutInSeconds?: number | undefined; 
+  private _disconnectTimeoutInSeconds?: number; 
   public get disconnectTimeoutInSeconds() {
     return this.getNumberAttribute('disconnect_timeout_in_seconds');
   }
-  public set disconnectTimeoutInSeconds(value: number | undefined) {
+  public set disconnectTimeoutInSeconds(value: number) {
     this._disconnectTimeoutInSeconds = value;
   }
   public resetDisconnectTimeoutInSeconds() {
@@ -350,15 +419,15 @@ export class AppstreamFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get disconnectTimeoutInSecondsInput() {
-    return this._disconnectTimeoutInSeconds
+    return this._disconnectTimeoutInSeconds;
   }
 
   // display_name - computed: true, optional: true, required: false
-  private _displayName?: string | undefined; 
+  private _displayName?: string; 
   public get displayName() {
     return this.getStringAttribute('display_name');
   }
-  public set displayName(value: string | undefined) {
+  public set displayName(value: string) {
     this._displayName = value;
   }
   public resetDisplayName() {
@@ -366,15 +435,15 @@ export class AppstreamFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get displayNameInput() {
-    return this._displayName
+    return this._displayName;
   }
 
   // enable_default_internet_access - computed: true, optional: true, required: false
-  private _enableDefaultInternetAccess?: boolean | cdktf.IResolvable | undefined; 
+  private _enableDefaultInternetAccess?: boolean | cdktf.IResolvable; 
   public get enableDefaultInternetAccess() {
     return this.getBooleanAttribute('enable_default_internet_access') as any;
   }
-  public set enableDefaultInternetAccess(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableDefaultInternetAccess(value: boolean | cdktf.IResolvable) {
     this._enableDefaultInternetAccess = value;
   }
   public resetEnableDefaultInternetAccess() {
@@ -382,15 +451,15 @@ export class AppstreamFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableDefaultInternetAccessInput() {
-    return this._enableDefaultInternetAccess
+    return this._enableDefaultInternetAccess;
   }
 
   // fleet_type - computed: true, optional: true, required: false
-  private _fleetType?: string | undefined; 
+  private _fleetType?: string; 
   public get fleetType() {
     return this.getStringAttribute('fleet_type');
   }
-  public set fleetType(value: string | undefined) {
+  public set fleetType(value: string) {
     this._fleetType = value;
   }
   public resetFleetType() {
@@ -398,15 +467,15 @@ export class AppstreamFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fleetTypeInput() {
-    return this._fleetType
+    return this._fleetType;
   }
 
   // iam_role_arn - computed: true, optional: true, required: false
-  private _iamRoleArn?: string | undefined; 
+  private _iamRoleArn?: string; 
   public get iamRoleArn() {
     return this.getStringAttribute('iam_role_arn');
   }
-  public set iamRoleArn(value: string | undefined) {
+  public set iamRoleArn(value: string) {
     this._iamRoleArn = value;
   }
   public resetIamRoleArn() {
@@ -414,7 +483,7 @@ export class AppstreamFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iamRoleArnInput() {
-    return this._iamRoleArn
+    return this._iamRoleArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -423,11 +492,11 @@ export class AppstreamFleet extends cdktf.TerraformResource {
   }
 
   // idle_disconnect_timeout_in_seconds - computed: false, optional: true, required: false
-  private _idleDisconnectTimeoutInSeconds?: number | undefined; 
+  private _idleDisconnectTimeoutInSeconds?: number; 
   public get idleDisconnectTimeoutInSeconds() {
     return this.getNumberAttribute('idle_disconnect_timeout_in_seconds');
   }
-  public set idleDisconnectTimeoutInSeconds(value: number | undefined) {
+  public set idleDisconnectTimeoutInSeconds(value: number) {
     this._idleDisconnectTimeoutInSeconds = value;
   }
   public resetIdleDisconnectTimeoutInSeconds() {
@@ -435,15 +504,15 @@ export class AppstreamFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get idleDisconnectTimeoutInSecondsInput() {
-    return this._idleDisconnectTimeoutInSeconds
+    return this._idleDisconnectTimeoutInSeconds;
   }
 
   // image_arn - computed: true, optional: true, required: false
-  private _imageArn?: string | undefined; 
+  private _imageArn?: string; 
   public get imageArn() {
     return this.getStringAttribute('image_arn');
   }
-  public set imageArn(value: string | undefined) {
+  public set imageArn(value: string) {
     this._imageArn = value;
   }
   public resetImageArn() {
@@ -451,15 +520,15 @@ export class AppstreamFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get imageArnInput() {
-    return this._imageArn
+    return this._imageArn;
   }
 
   // image_name - computed: true, optional: true, required: false
-  private _imageName?: string | undefined; 
+  private _imageName?: string; 
   public get imageName() {
     return this.getStringAttribute('image_name');
   }
-  public set imageName(value: string | undefined) {
+  public set imageName(value: string) {
     this._imageName = value;
   }
   public resetImageName() {
@@ -467,7 +536,7 @@ export class AppstreamFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get imageNameInput() {
-    return this._imageName
+    return this._imageName;
   }
 
   // instance_type - computed: false, optional: false, required: true
@@ -480,15 +549,15 @@ export class AppstreamFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // max_user_duration_in_seconds - computed: true, optional: true, required: false
-  private _maxUserDurationInSeconds?: number | undefined; 
+  private _maxUserDurationInSeconds?: number; 
   public get maxUserDurationInSeconds() {
     return this.getNumberAttribute('max_user_duration_in_seconds');
   }
-  public set maxUserDurationInSeconds(value: number | undefined) {
+  public set maxUserDurationInSeconds(value: number) {
     this._maxUserDurationInSeconds = value;
   }
   public resetMaxUserDurationInSeconds() {
@@ -496,7 +565,7 @@ export class AppstreamFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maxUserDurationInSecondsInput() {
-    return this._maxUserDurationInSeconds
+    return this._maxUserDurationInSeconds;
   }
 
   // name - computed: false, optional: false, required: true
@@ -509,7 +578,7 @@ export class AppstreamFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // state - computed: true, optional: false, required: false
@@ -518,11 +587,11 @@ export class AppstreamFleet extends cdktf.TerraformResource {
   }
 
   // stream_view - computed: true, optional: true, required: false
-  private _streamView?: string | undefined; 
+  private _streamView?: string; 
   public get streamView() {
     return this.getStringAttribute('stream_view');
   }
-  public set streamView(value: string | undefined) {
+  public set streamView(value: string) {
     this._streamView = value;
   }
   public resetStreamView() {
@@ -530,16 +599,16 @@ export class AppstreamFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get streamViewInput() {
-    return this._streamView
+    return this._streamView;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -547,16 +616,16 @@ export class AppstreamFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -564,55 +633,52 @@ export class AppstreamFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // compute_capacity - computed: false, optional: false, required: true
-  private _computeCapacity?: AppstreamFleetComputeCapacity; 
-  private __computeCapacityOutput = new AppstreamFleetComputeCapacityOutputReference(this as any, "compute_capacity", true);
+  private _computeCapacity = new AppstreamFleetComputeCapacityOutputReference(this as any, "compute_capacity", true);
   public get computeCapacity() {
-    return this.__computeCapacityOutput;
+    return this._computeCapacity;
   }
   public putComputeCapacity(value: AppstreamFleetComputeCapacity) {
-    this._computeCapacity = value;
+    this._computeCapacity.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get computeCapacityInput() {
-    return this._computeCapacity
+    return this._computeCapacity.internalValue;
   }
 
   // domain_join_info - computed: false, optional: true, required: false
-  private _domainJoinInfo?: AppstreamFleetDomainJoinInfo | undefined; 
-  private __domainJoinInfoOutput = new AppstreamFleetDomainJoinInfoOutputReference(this as any, "domain_join_info", true);
+  private _domainJoinInfo = new AppstreamFleetDomainJoinInfoOutputReference(this as any, "domain_join_info", true);
   public get domainJoinInfo() {
-    return this.__domainJoinInfoOutput;
+    return this._domainJoinInfo;
   }
-  public putDomainJoinInfo(value: AppstreamFleetDomainJoinInfo | undefined) {
-    this._domainJoinInfo = value;
+  public putDomainJoinInfo(value: AppstreamFleetDomainJoinInfo) {
+    this._domainJoinInfo.internalValue = value;
   }
   public resetDomainJoinInfo() {
-    this._domainJoinInfo = undefined;
+    this._domainJoinInfo.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get domainJoinInfoInput() {
-    return this._domainJoinInfo
+    return this._domainJoinInfo.internalValue;
   }
 
   // vpc_config - computed: false, optional: true, required: false
-  private _vpcConfig?: AppstreamFleetVpcConfig | undefined; 
-  private __vpcConfigOutput = new AppstreamFleetVpcConfigOutputReference(this as any, "vpc_config", true);
+  private _vpcConfig = new AppstreamFleetVpcConfigOutputReference(this as any, "vpc_config", true);
   public get vpcConfig() {
-    return this.__vpcConfigOutput;
+    return this._vpcConfig;
   }
-  public putVpcConfig(value: AppstreamFleetVpcConfig | undefined) {
-    this._vpcConfig = value;
+  public putVpcConfig(value: AppstreamFleetVpcConfig) {
+    this._vpcConfig.internalValue = value;
   }
   public resetVpcConfig() {
-    this._vpcConfig = undefined;
+    this._vpcConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get vpcConfigInput() {
-    return this._vpcConfig
+    return this._vpcConfig.internalValue;
   }
 
   // =========
@@ -636,9 +702,9 @@ export class AppstreamFleet extends cdktf.TerraformResource {
       stream_view: cdktf.stringToTerraform(this._streamView),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      compute_capacity: appstreamFleetComputeCapacityToTerraform(this._computeCapacity),
-      domain_join_info: appstreamFleetDomainJoinInfoToTerraform(this._domainJoinInfo),
-      vpc_config: appstreamFleetVpcConfigToTerraform(this._vpcConfig),
+      compute_capacity: appstreamFleetComputeCapacityToTerraform(this._computeCapacity.internalValue),
+      domain_join_info: appstreamFleetDomainJoinInfoToTerraform(this._domainJoinInfo.internalValue),
+      vpc_config: appstreamFleetVpcConfigToTerraform(this._vpcConfig.internalValue),
     };
   }
 }

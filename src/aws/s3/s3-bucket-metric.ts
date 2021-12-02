@@ -54,12 +54,37 @@ export class S3BucketMetricFilterOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketMetricFilter | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    if (this._tags) {
+      hasAnyValues = true;
+      internalValueResult.tags = this._tags;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketMetricFilter | undefined) {
+    if (value === undefined) {
+      this._prefix = undefined;
+      this._tags = undefined;
+    }
+    else {
+      this._prefix = value.prefix;
+      this._tags = value.tags;
+    }
+  }
+
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -67,16 +92,16 @@ export class S3BucketMetricFilterOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -84,7 +109,7 @@ export class S3BucketMetricFilterOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 }
 
@@ -122,7 +147,7 @@ export class S3BucketMetric extends cdktf.TerraformResource {
     });
     this._bucket = config.bucket;
     this._name = config.name;
-    this._filter = config.filter;
+    this._filter.internalValue = config.filter;
   }
 
   // ==========
@@ -139,7 +164,7 @@ export class S3BucketMetric extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // id - computed: true, optional: true, required: false
@@ -157,24 +182,23 @@ export class S3BucketMetric extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: S3BucketMetricFilter | undefined; 
-  private __filterOutput = new S3BucketMetricFilterOutputReference(this as any, "filter", true);
+  private _filter = new S3BucketMetricFilterOutputReference(this as any, "filter", true);
   public get filter() {
-    return this.__filterOutput;
+    return this._filter;
   }
-  public putFilter(value: S3BucketMetricFilter | undefined) {
-    this._filter = value;
+  public putFilter(value: S3BucketMetricFilter) {
+    this._filter.internalValue = value;
   }
   public resetFilter() {
-    this._filter = undefined;
+    this._filter.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter.internalValue;
   }
 
   // =========
@@ -185,7 +209,7 @@ export class S3BucketMetric extends cdktf.TerraformResource {
     return {
       bucket: cdktf.stringToTerraform(this._bucket),
       name: cdktf.stringToTerraform(this._name),
-      filter: s3BucketMetricFilterToTerraform(this._filter),
+      filter: s3BucketMetricFilterToTerraform(this._filter.internalValue),
     };
   }
 }

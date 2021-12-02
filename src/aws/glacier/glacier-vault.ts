@@ -62,6 +62,31 @@ export class GlacierVaultNotificationOutputReference extends cdktf.ComplexObject
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlacierVaultNotification | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._events) {
+      hasAnyValues = true;
+      internalValueResult.events = this._events;
+    }
+    if (this._snsTopic) {
+      hasAnyValues = true;
+      internalValueResult.snsTopic = this._snsTopic;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlacierVaultNotification | undefined) {
+    if (value === undefined) {
+      this._events = undefined;
+      this._snsTopic = undefined;
+    }
+    else {
+      this._events = value.events;
+      this._snsTopic = value.snsTopic;
+    }
+  }
+
   // events - computed: false, optional: false, required: true
   private _events?: string[]; 
   public get events() {
@@ -72,7 +97,7 @@ export class GlacierVaultNotificationOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get eventsInput() {
-    return this._events
+    return this._events;
   }
 
   // sns_topic - computed: false, optional: false, required: true
@@ -85,7 +110,7 @@ export class GlacierVaultNotificationOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get snsTopicInput() {
-    return this._snsTopic
+    return this._snsTopic;
   }
 }
 
@@ -125,7 +150,7 @@ export class GlacierVault extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._notification = config.notification;
+    this._notification.internalValue = config.notification;
   }
 
   // ==========
@@ -133,11 +158,11 @@ export class GlacierVault extends cdktf.TerraformResource {
   // ==========
 
   // access_policy - computed: false, optional: true, required: false
-  private _accessPolicy?: string | undefined; 
+  private _accessPolicy?: string; 
   public get accessPolicy() {
     return this.getStringAttribute('access_policy');
   }
-  public set accessPolicy(value: string | undefined) {
+  public set accessPolicy(value: string) {
     this._accessPolicy = value;
   }
   public resetAccessPolicy() {
@@ -145,7 +170,7 @@ export class GlacierVault extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accessPolicyInput() {
-    return this._accessPolicy
+    return this._accessPolicy;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -173,16 +198,16 @@ export class GlacierVault extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -190,16 +215,16 @@ export class GlacierVault extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -207,24 +232,23 @@ export class GlacierVault extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // notification - computed: false, optional: true, required: false
-  private _notification?: GlacierVaultNotification | undefined; 
-  private __notificationOutput = new GlacierVaultNotificationOutputReference(this as any, "notification", true);
+  private _notification = new GlacierVaultNotificationOutputReference(this as any, "notification", true);
   public get notification() {
-    return this.__notificationOutput;
+    return this._notification;
   }
-  public putNotification(value: GlacierVaultNotification | undefined) {
-    this._notification = value;
+  public putNotification(value: GlacierVaultNotification) {
+    this._notification.internalValue = value;
   }
   public resetNotification() {
-    this._notification = undefined;
+    this._notification.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get notificationInput() {
-    return this._notification
+    return this._notification.internalValue;
   }
 
   // =========
@@ -237,7 +261,7 @@ export class GlacierVault extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      notification: glacierVaultNotificationToTerraform(this._notification),
+      notification: glacierVaultNotificationToTerraform(this._notification.internalValue),
     };
   }
 }

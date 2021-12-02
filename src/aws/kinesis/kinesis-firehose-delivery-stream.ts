@@ -117,12 +117,43 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._logGroupName) {
+      hasAnyValues = true;
+      internalValueResult.logGroupName = this._logGroupName;
+    }
+    if (this._logStreamName) {
+      hasAnyValues = true;
+      internalValueResult.logStreamName = this._logStreamName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._logGroupName = undefined;
+      this._logStreamName = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._logGroupName = value.logGroupName;
+      this._logStreamName = value.logStreamName;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -130,15 +161,15 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLo
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // log_group_name - computed: false, optional: true, required: false
-  private _logGroupName?: string | undefined; 
+  private _logGroupName?: string; 
   public get logGroupName() {
     return this.getStringAttribute('log_group_name');
   }
-  public set logGroupName(value: string | undefined) {
+  public set logGroupName(value: string) {
     this._logGroupName = value;
   }
   public resetLogGroupName() {
@@ -146,15 +177,15 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLo
   }
   // Temporarily expose input value. Use with caution.
   public get logGroupNameInput() {
-    return this._logGroupName
+    return this._logGroupName;
   }
 
   // log_stream_name - computed: false, optional: true, required: false
-  private _logStreamName?: string | undefined; 
+  private _logStreamName?: string; 
   public get logStreamName() {
     return this.getStringAttribute('log_stream_name');
   }
-  public set logStreamName(value: string | undefined) {
+  public set logStreamName(value: string) {
     this._logStreamName = value;
   }
   public resetLogStreamName() {
@@ -162,7 +193,7 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLo
   }
   // Temporarily expose input value. Use with caution.
   public get logStreamNameInput() {
-    return this._logStreamName
+    return this._logStreamName;
   }
 }
 export interface KinesisFirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessorsParameters {
@@ -245,12 +276,37 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationProcessingCo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._processors) {
+      hasAnyValues = true;
+      internalValueResult.processors = this._processors;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._processors = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._processors = value.processors;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -258,16 +314,16 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationProcessingCo
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // processors - computed: false, optional: true, required: false
-  private _processors?: KinesisFirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessors[] | undefined; 
+  private _processors?: KinesisFirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessors[]; 
   public get processors() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('processors') as any;
   }
-  public set processors(value: KinesisFirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessors[] | undefined) {
+  public set processors(value: KinesisFirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationProcessors[]) {
     this._processors = value;
   }
   public resetProcessors() {
@@ -275,7 +331,7 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationProcessingCo
   }
   // Temporarily expose input value. Use with caution.
   public get processorsInput() {
-    return this._processors
+    return this._processors;
   }
 }
 export interface KinesisFirehoseDeliveryStreamElasticsearchConfigurationVpcConfig {
@@ -315,6 +371,37 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationVpcConfigOut
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamElasticsearchConfigurationVpcConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._securityGroupIds) {
+      hasAnyValues = true;
+      internalValueResult.securityGroupIds = this._securityGroupIds;
+    }
+    if (this._subnetIds) {
+      hasAnyValues = true;
+      internalValueResult.subnetIds = this._subnetIds;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamElasticsearchConfigurationVpcConfig | undefined) {
+    if (value === undefined) {
+      this._roleArn = undefined;
+      this._securityGroupIds = undefined;
+      this._subnetIds = undefined;
+    }
+    else {
+      this._roleArn = value.roleArn;
+      this._securityGroupIds = value.securityGroupIds;
+      this._subnetIds = value.subnetIds;
+    }
+  }
+
   // role_arn - computed: false, optional: false, required: true
   private _roleArn?: string; 
   public get roleArn() {
@@ -325,7 +412,7 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationVpcConfigOut
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // security_group_ids - computed: false, optional: false, required: true
@@ -338,7 +425,7 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationVpcConfigOut
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // subnet_ids - computed: false, optional: false, required: true
@@ -351,7 +438,7 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationVpcConfigOut
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 }
 export interface KinesisFirehoseDeliveryStreamElasticsearchConfiguration {
@@ -447,12 +534,103 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationOutputRefere
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamElasticsearchConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bufferingInterval) {
+      hasAnyValues = true;
+      internalValueResult.bufferingInterval = this._bufferingInterval;
+    }
+    if (this._bufferingSize) {
+      hasAnyValues = true;
+      internalValueResult.bufferingSize = this._bufferingSize;
+    }
+    if (this._clusterEndpoint) {
+      hasAnyValues = true;
+      internalValueResult.clusterEndpoint = this._clusterEndpoint;
+    }
+    if (this._domainArn) {
+      hasAnyValues = true;
+      internalValueResult.domainArn = this._domainArn;
+    }
+    if (this._indexName) {
+      hasAnyValues = true;
+      internalValueResult.indexName = this._indexName;
+    }
+    if (this._indexRotationPeriod) {
+      hasAnyValues = true;
+      internalValueResult.indexRotationPeriod = this._indexRotationPeriod;
+    }
+    if (this._retryDuration) {
+      hasAnyValues = true;
+      internalValueResult.retryDuration = this._retryDuration;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._s3BackupMode) {
+      hasAnyValues = true;
+      internalValueResult.s3BackupMode = this._s3BackupMode;
+    }
+    if (this._typeName) {
+      hasAnyValues = true;
+      internalValueResult.typeName = this._typeName;
+    }
+    if (this._cloudwatchLoggingOptions) {
+      hasAnyValues = true;
+      internalValueResult.cloudwatchLoggingOptions = this._cloudwatchLoggingOptions?.internalValue;
+    }
+    if (this._processingConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.processingConfiguration = this._processingConfiguration?.internalValue;
+    }
+    if (this._vpcConfig) {
+      hasAnyValues = true;
+      internalValueResult.vpcConfig = this._vpcConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamElasticsearchConfiguration | undefined) {
+    if (value === undefined) {
+      this._bufferingInterval = undefined;
+      this._bufferingSize = undefined;
+      this._clusterEndpoint = undefined;
+      this._domainArn = undefined;
+      this._indexName = undefined;
+      this._indexRotationPeriod = undefined;
+      this._retryDuration = undefined;
+      this._roleArn = undefined;
+      this._s3BackupMode = undefined;
+      this._typeName = undefined;
+      this._cloudwatchLoggingOptions.internalValue = undefined;
+      this._processingConfiguration.internalValue = undefined;
+      this._vpcConfig.internalValue = undefined;
+    }
+    else {
+      this._bufferingInterval = value.bufferingInterval;
+      this._bufferingSize = value.bufferingSize;
+      this._clusterEndpoint = value.clusterEndpoint;
+      this._domainArn = value.domainArn;
+      this._indexName = value.indexName;
+      this._indexRotationPeriod = value.indexRotationPeriod;
+      this._retryDuration = value.retryDuration;
+      this._roleArn = value.roleArn;
+      this._s3BackupMode = value.s3BackupMode;
+      this._typeName = value.typeName;
+      this._cloudwatchLoggingOptions.internalValue = value.cloudwatchLoggingOptions;
+      this._processingConfiguration.internalValue = value.processingConfiguration;
+      this._vpcConfig.internalValue = value.vpcConfig;
+    }
+  }
+
   // buffering_interval - computed: false, optional: true, required: false
-  private _bufferingInterval?: number | undefined; 
+  private _bufferingInterval?: number; 
   public get bufferingInterval() {
     return this.getNumberAttribute('buffering_interval');
   }
-  public set bufferingInterval(value: number | undefined) {
+  public set bufferingInterval(value: number) {
     this._bufferingInterval = value;
   }
   public resetBufferingInterval() {
@@ -460,15 +638,15 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get bufferingIntervalInput() {
-    return this._bufferingInterval
+    return this._bufferingInterval;
   }
 
   // buffering_size - computed: false, optional: true, required: false
-  private _bufferingSize?: number | undefined; 
+  private _bufferingSize?: number; 
   public get bufferingSize() {
     return this.getNumberAttribute('buffering_size');
   }
-  public set bufferingSize(value: number | undefined) {
+  public set bufferingSize(value: number) {
     this._bufferingSize = value;
   }
   public resetBufferingSize() {
@@ -476,15 +654,15 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get bufferingSizeInput() {
-    return this._bufferingSize
+    return this._bufferingSize;
   }
 
   // cluster_endpoint - computed: false, optional: true, required: false
-  private _clusterEndpoint?: string | undefined; 
+  private _clusterEndpoint?: string; 
   public get clusterEndpoint() {
     return this.getStringAttribute('cluster_endpoint');
   }
-  public set clusterEndpoint(value: string | undefined) {
+  public set clusterEndpoint(value: string) {
     this._clusterEndpoint = value;
   }
   public resetClusterEndpoint() {
@@ -492,15 +670,15 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get clusterEndpointInput() {
-    return this._clusterEndpoint
+    return this._clusterEndpoint;
   }
 
   // domain_arn - computed: false, optional: true, required: false
-  private _domainArn?: string | undefined; 
+  private _domainArn?: string; 
   public get domainArn() {
     return this.getStringAttribute('domain_arn');
   }
-  public set domainArn(value: string | undefined) {
+  public set domainArn(value: string) {
     this._domainArn = value;
   }
   public resetDomainArn() {
@@ -508,7 +686,7 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get domainArnInput() {
-    return this._domainArn
+    return this._domainArn;
   }
 
   // index_name - computed: false, optional: false, required: true
@@ -521,15 +699,15 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get indexNameInput() {
-    return this._indexName
+    return this._indexName;
   }
 
   // index_rotation_period - computed: false, optional: true, required: false
-  private _indexRotationPeriod?: string | undefined; 
+  private _indexRotationPeriod?: string; 
   public get indexRotationPeriod() {
     return this.getStringAttribute('index_rotation_period');
   }
-  public set indexRotationPeriod(value: string | undefined) {
+  public set indexRotationPeriod(value: string) {
     this._indexRotationPeriod = value;
   }
   public resetIndexRotationPeriod() {
@@ -537,15 +715,15 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get indexRotationPeriodInput() {
-    return this._indexRotationPeriod
+    return this._indexRotationPeriod;
   }
 
   // retry_duration - computed: false, optional: true, required: false
-  private _retryDuration?: number | undefined; 
+  private _retryDuration?: number; 
   public get retryDuration() {
     return this.getNumberAttribute('retry_duration');
   }
-  public set retryDuration(value: number | undefined) {
+  public set retryDuration(value: number) {
     this._retryDuration = value;
   }
   public resetRetryDuration() {
@@ -553,7 +731,7 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get retryDurationInput() {
-    return this._retryDuration
+    return this._retryDuration;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -566,15 +744,15 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // s3_backup_mode - computed: false, optional: true, required: false
-  private _s3BackupMode?: string | undefined; 
+  private _s3BackupMode?: string; 
   public get s3BackupMode() {
     return this.getStringAttribute('s3_backup_mode');
   }
-  public set s3BackupMode(value: string | undefined) {
+  public set s3BackupMode(value: string) {
     this._s3BackupMode = value;
   }
   public resetS3BackupMode() {
@@ -582,15 +760,15 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get s3BackupModeInput() {
-    return this._s3BackupMode
+    return this._s3BackupMode;
   }
 
   // type_name - computed: false, optional: true, required: false
-  private _typeName?: string | undefined; 
+  private _typeName?: string; 
   public get typeName() {
     return this.getStringAttribute('type_name');
   }
-  public set typeName(value: string | undefined) {
+  public set typeName(value: string) {
     this._typeName = value;
   }
   public resetTypeName() {
@@ -598,58 +776,55 @@ export class KinesisFirehoseDeliveryStreamElasticsearchConfigurationOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get typeNameInput() {
-    return this._typeName
+    return this._typeName;
   }
 
   // cloudwatch_logging_options - computed: false, optional: true, required: false
-  private _cloudwatchLoggingOptions?: KinesisFirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions | undefined; 
-  private __cloudwatchLoggingOptionsOutput = new KinesisFirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsOutputReference(this as any, "cloudwatch_logging_options", true);
+  private _cloudwatchLoggingOptions = new KinesisFirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptionsOutputReference(this as any, "cloudwatch_logging_options", true);
   public get cloudwatchLoggingOptions() {
-    return this.__cloudwatchLoggingOptionsOutput;
+    return this._cloudwatchLoggingOptions;
   }
-  public putCloudwatchLoggingOptions(value: KinesisFirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions | undefined) {
-    this._cloudwatchLoggingOptions = value;
+  public putCloudwatchLoggingOptions(value: KinesisFirehoseDeliveryStreamElasticsearchConfigurationCloudwatchLoggingOptions) {
+    this._cloudwatchLoggingOptions.internalValue = value;
   }
   public resetCloudwatchLoggingOptions() {
-    this._cloudwatchLoggingOptions = undefined;
+    this._cloudwatchLoggingOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchLoggingOptionsInput() {
-    return this._cloudwatchLoggingOptions
+    return this._cloudwatchLoggingOptions.internalValue;
   }
 
   // processing_configuration - computed: false, optional: true, required: false
-  private _processingConfiguration?: KinesisFirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration | undefined; 
-  private __processingConfigurationOutput = new KinesisFirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationOutputReference(this as any, "processing_configuration", true);
+  private _processingConfiguration = new KinesisFirehoseDeliveryStreamElasticsearchConfigurationProcessingConfigurationOutputReference(this as any, "processing_configuration", true);
   public get processingConfiguration() {
-    return this.__processingConfigurationOutput;
+    return this._processingConfiguration;
   }
-  public putProcessingConfiguration(value: KinesisFirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration | undefined) {
-    this._processingConfiguration = value;
+  public putProcessingConfiguration(value: KinesisFirehoseDeliveryStreamElasticsearchConfigurationProcessingConfiguration) {
+    this._processingConfiguration.internalValue = value;
   }
   public resetProcessingConfiguration() {
-    this._processingConfiguration = undefined;
+    this._processingConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get processingConfigurationInput() {
-    return this._processingConfiguration
+    return this._processingConfiguration.internalValue;
   }
 
   // vpc_config - computed: false, optional: true, required: false
-  private _vpcConfig?: KinesisFirehoseDeliveryStreamElasticsearchConfigurationVpcConfig | undefined; 
-  private __vpcConfigOutput = new KinesisFirehoseDeliveryStreamElasticsearchConfigurationVpcConfigOutputReference(this as any, "vpc_config", true);
+  private _vpcConfig = new KinesisFirehoseDeliveryStreamElasticsearchConfigurationVpcConfigOutputReference(this as any, "vpc_config", true);
   public get vpcConfig() {
-    return this.__vpcConfigOutput;
+    return this._vpcConfig;
   }
-  public putVpcConfig(value: KinesisFirehoseDeliveryStreamElasticsearchConfigurationVpcConfig | undefined) {
-    this._vpcConfig = value;
+  public putVpcConfig(value: KinesisFirehoseDeliveryStreamElasticsearchConfigurationVpcConfig) {
+    this._vpcConfig.internalValue = value;
   }
   public resetVpcConfig() {
-    this._vpcConfig = undefined;
+    this._vpcConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get vpcConfigInput() {
-    return this._vpcConfig
+    return this._vpcConfig.internalValue;
   }
 }
 export interface KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptions {
@@ -689,12 +864,43 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggi
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._logGroupName) {
+      hasAnyValues = true;
+      internalValueResult.logGroupName = this._logGroupName;
+    }
+    if (this._logStreamName) {
+      hasAnyValues = true;
+      internalValueResult.logStreamName = this._logStreamName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptions | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._logGroupName = undefined;
+      this._logStreamName = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._logGroupName = value.logGroupName;
+      this._logStreamName = value.logStreamName;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -702,15 +908,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggi
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // log_group_name - computed: false, optional: true, required: false
-  private _logGroupName?: string | undefined; 
+  private _logGroupName?: string; 
   public get logGroupName() {
     return this.getStringAttribute('log_group_name');
   }
-  public set logGroupName(value: string | undefined) {
+  public set logGroupName(value: string) {
     this._logGroupName = value;
   }
   public resetLogGroupName() {
@@ -718,15 +924,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggi
   }
   // Temporarily expose input value. Use with caution.
   public get logGroupNameInput() {
-    return this._logGroupName
+    return this._logGroupName;
   }
 
   // log_stream_name - computed: false, optional: true, required: false
-  private _logStreamName?: string | undefined; 
+  private _logStreamName?: string; 
   public get logStreamName() {
     return this.getStringAttribute('log_stream_name');
   }
-  public set logStreamName(value: string | undefined) {
+  public set logStreamName(value: string) {
     this._logStreamName = value;
   }
   public resetLogStreamName() {
@@ -734,7 +940,7 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggi
   }
   // Temporarily expose input value. Use with caution.
   public get logStreamNameInput() {
-    return this._logStreamName
+    return this._logStreamName;
   }
 }
 export interface KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe {
@@ -764,12 +970,31 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._timestampFormats) {
+      hasAnyValues = true;
+      internalValueResult.timestampFormats = this._timestampFormats;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe | undefined) {
+    if (value === undefined) {
+      this._timestampFormats = undefined;
+    }
+    else {
+      this._timestampFormats = value.timestampFormats;
+    }
+  }
+
   // timestamp_formats - computed: false, optional: true, required: false
-  private _timestampFormats?: string[] | undefined; 
+  private _timestampFormats?: string[]; 
   public get timestampFormats() {
     return this.getListAttribute('timestamp_formats');
   }
-  public set timestampFormats(value: string[] | undefined) {
+  public set timestampFormats(value: string[]) {
     this._timestampFormats = value;
   }
   public resetTimestampFormats() {
@@ -777,7 +1002,7 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get timestampFormatsInput() {
-    return this._timestampFormats
+    return this._timestampFormats;
   }
 }
 export interface KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDe {
@@ -817,12 +1042,43 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDe | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._caseInsensitive) {
+      hasAnyValues = true;
+      internalValueResult.caseInsensitive = this._caseInsensitive;
+    }
+    if (this._columnToJsonKeyMappings) {
+      hasAnyValues = true;
+      internalValueResult.columnToJsonKeyMappings = this._columnToJsonKeyMappings;
+    }
+    if (this._convertDotsInJsonKeysToUnderscores) {
+      hasAnyValues = true;
+      internalValueResult.convertDotsInJsonKeysToUnderscores = this._convertDotsInJsonKeysToUnderscores;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDe | undefined) {
+    if (value === undefined) {
+      this._caseInsensitive = undefined;
+      this._columnToJsonKeyMappings = undefined;
+      this._convertDotsInJsonKeysToUnderscores = undefined;
+    }
+    else {
+      this._caseInsensitive = value.caseInsensitive;
+      this._columnToJsonKeyMappings = value.columnToJsonKeyMappings;
+      this._convertDotsInJsonKeysToUnderscores = value.convertDotsInJsonKeysToUnderscores;
+    }
+  }
+
   // case_insensitive - computed: false, optional: true, required: false
-  private _caseInsensitive?: boolean | cdktf.IResolvable | undefined; 
+  private _caseInsensitive?: boolean | cdktf.IResolvable; 
   public get caseInsensitive() {
     return this.getBooleanAttribute('case_insensitive') as any;
   }
-  public set caseInsensitive(value: boolean | cdktf.IResolvable | undefined) {
+  public set caseInsensitive(value: boolean | cdktf.IResolvable) {
     this._caseInsensitive = value;
   }
   public resetCaseInsensitive() {
@@ -830,16 +1086,16 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get caseInsensitiveInput() {
-    return this._caseInsensitive
+    return this._caseInsensitive;
   }
 
   // column_to_json_key_mappings - computed: false, optional: true, required: false
-  private _columnToJsonKeyMappings?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _columnToJsonKeyMappings?: { [key: string]: string } | cdktf.IResolvable; 
   public get columnToJsonKeyMappings() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('column_to_json_key_mappings') as any;
   }
-  public set columnToJsonKeyMappings(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set columnToJsonKeyMappings(value: { [key: string]: string } | cdktf.IResolvable) {
     this._columnToJsonKeyMappings = value;
   }
   public resetColumnToJsonKeyMappings() {
@@ -847,15 +1103,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get columnToJsonKeyMappingsInput() {
-    return this._columnToJsonKeyMappings
+    return this._columnToJsonKeyMappings;
   }
 
   // convert_dots_in_json_keys_to_underscores - computed: false, optional: true, required: false
-  private _convertDotsInJsonKeysToUnderscores?: boolean | cdktf.IResolvable | undefined; 
+  private _convertDotsInJsonKeysToUnderscores?: boolean | cdktf.IResolvable; 
   public get convertDotsInJsonKeysToUnderscores() {
     return this.getBooleanAttribute('convert_dots_in_json_keys_to_underscores') as any;
   }
-  public set convertDotsInJsonKeysToUnderscores(value: boolean | cdktf.IResolvable | undefined) {
+  public set convertDotsInJsonKeysToUnderscores(value: boolean | cdktf.IResolvable) {
     this._convertDotsInJsonKeysToUnderscores = value;
   }
   public resetConvertDotsInJsonKeysToUnderscores() {
@@ -863,7 +1119,7 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get convertDotsInJsonKeysToUnderscoresInput() {
-    return this._convertDotsInJsonKeysToUnderscores
+    return this._convertDotsInJsonKeysToUnderscores;
   }
 }
 export interface KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer {
@@ -902,38 +1158,61 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // hive_json_ser_de - computed: false, optional: true, required: false
-  private _hiveJsonSerDe?: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe | undefined; 
-  private __hiveJsonSerDeOutput = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeOutputReference(this as any, "hive_json_ser_de", true);
-  public get hiveJsonSerDe() {
-    return this.__hiveJsonSerDeOutput;
+  public get internalValue(): KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._hiveJsonSerDe) {
+      hasAnyValues = true;
+      internalValueResult.hiveJsonSerDe = this._hiveJsonSerDe?.internalValue;
+    }
+    if (this._openXJsonSerDe) {
+      hasAnyValues = true;
+      internalValueResult.openXJsonSerDe = this._openXJsonSerDe?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putHiveJsonSerDe(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe | undefined) {
-    this._hiveJsonSerDe = value;
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer | undefined) {
+    if (value === undefined) {
+      this._hiveJsonSerDe.internalValue = undefined;
+      this._openXJsonSerDe.internalValue = undefined;
+    }
+    else {
+      this._hiveJsonSerDe.internalValue = value.hiveJsonSerDe;
+      this._openXJsonSerDe.internalValue = value.openXJsonSerDe;
+    }
+  }
+
+  // hive_json_ser_de - computed: false, optional: true, required: false
+  private _hiveJsonSerDe = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeOutputReference(this as any, "hive_json_ser_de", true);
+  public get hiveJsonSerDe() {
+    return this._hiveJsonSerDe;
+  }
+  public putHiveJsonSerDe(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe) {
+    this._hiveJsonSerDe.internalValue = value;
   }
   public resetHiveJsonSerDe() {
-    this._hiveJsonSerDe = undefined;
+    this._hiveJsonSerDe.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get hiveJsonSerDeInput() {
-    return this._hiveJsonSerDe
+    return this._hiveJsonSerDe.internalValue;
   }
 
   // open_x_json_ser_de - computed: false, optional: true, required: false
-  private _openXJsonSerDe?: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDe | undefined; 
-  private __openXJsonSerDeOutput = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeOutputReference(this as any, "open_x_json_ser_de", true);
+  private _openXJsonSerDe = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeOutputReference(this as any, "open_x_json_ser_de", true);
   public get openXJsonSerDe() {
-    return this.__openXJsonSerDeOutput;
+    return this._openXJsonSerDe;
   }
-  public putOpenXJsonSerDe(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDe | undefined) {
-    this._openXJsonSerDe = value;
+  public putOpenXJsonSerDe(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDe) {
+    this._openXJsonSerDe.internalValue = value;
   }
   public resetOpenXJsonSerDe() {
-    this._openXJsonSerDe = undefined;
+    this._openXJsonSerDe.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get openXJsonSerDeInput() {
-    return this._openXJsonSerDe
+    return this._openXJsonSerDe.internalValue;
   }
 }
 export interface KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration {
@@ -965,18 +1244,36 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._deserializer) {
+      hasAnyValues = true;
+      internalValueResult.deserializer = this._deserializer?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration | undefined) {
+    if (value === undefined) {
+      this._deserializer.internalValue = undefined;
+    }
+    else {
+      this._deserializer.internalValue = value.deserializer;
+    }
+  }
+
   // deserializer - computed: false, optional: false, required: true
-  private _deserializer?: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer; 
-  private __deserializerOutput = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOutputReference(this as any, "deserializer", true);
+  private _deserializer = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOutputReference(this as any, "deserializer", true);
   public get deserializer() {
-    return this.__deserializerOutput;
+    return this._deserializer;
   }
   public putDeserializer(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer) {
-    this._deserializer = value;
+    this._deserializer.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get deserializerInput() {
-    return this._deserializer
+    return this._deserializer.internalValue;
   }
 }
 export interface KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe {
@@ -1051,12 +1348,85 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._blockSizeBytes) {
+      hasAnyValues = true;
+      internalValueResult.blockSizeBytes = this._blockSizeBytes;
+    }
+    if (this._bloomFilterColumns) {
+      hasAnyValues = true;
+      internalValueResult.bloomFilterColumns = this._bloomFilterColumns;
+    }
+    if (this._bloomFilterFalsePositiveProbability) {
+      hasAnyValues = true;
+      internalValueResult.bloomFilterFalsePositiveProbability = this._bloomFilterFalsePositiveProbability;
+    }
+    if (this._compression) {
+      hasAnyValues = true;
+      internalValueResult.compression = this._compression;
+    }
+    if (this._dictionaryKeyThreshold) {
+      hasAnyValues = true;
+      internalValueResult.dictionaryKeyThreshold = this._dictionaryKeyThreshold;
+    }
+    if (this._enablePadding) {
+      hasAnyValues = true;
+      internalValueResult.enablePadding = this._enablePadding;
+    }
+    if (this._formatVersion) {
+      hasAnyValues = true;
+      internalValueResult.formatVersion = this._formatVersion;
+    }
+    if (this._paddingTolerance) {
+      hasAnyValues = true;
+      internalValueResult.paddingTolerance = this._paddingTolerance;
+    }
+    if (this._rowIndexStride) {
+      hasAnyValues = true;
+      internalValueResult.rowIndexStride = this._rowIndexStride;
+    }
+    if (this._stripeSizeBytes) {
+      hasAnyValues = true;
+      internalValueResult.stripeSizeBytes = this._stripeSizeBytes;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe | undefined) {
+    if (value === undefined) {
+      this._blockSizeBytes = undefined;
+      this._bloomFilterColumns = undefined;
+      this._bloomFilterFalsePositiveProbability = undefined;
+      this._compression = undefined;
+      this._dictionaryKeyThreshold = undefined;
+      this._enablePadding = undefined;
+      this._formatVersion = undefined;
+      this._paddingTolerance = undefined;
+      this._rowIndexStride = undefined;
+      this._stripeSizeBytes = undefined;
+    }
+    else {
+      this._blockSizeBytes = value.blockSizeBytes;
+      this._bloomFilterColumns = value.bloomFilterColumns;
+      this._bloomFilterFalsePositiveProbability = value.bloomFilterFalsePositiveProbability;
+      this._compression = value.compression;
+      this._dictionaryKeyThreshold = value.dictionaryKeyThreshold;
+      this._enablePadding = value.enablePadding;
+      this._formatVersion = value.formatVersion;
+      this._paddingTolerance = value.paddingTolerance;
+      this._rowIndexStride = value.rowIndexStride;
+      this._stripeSizeBytes = value.stripeSizeBytes;
+    }
+  }
+
   // block_size_bytes - computed: false, optional: true, required: false
-  private _blockSizeBytes?: number | undefined; 
+  private _blockSizeBytes?: number; 
   public get blockSizeBytes() {
     return this.getNumberAttribute('block_size_bytes');
   }
-  public set blockSizeBytes(value: number | undefined) {
+  public set blockSizeBytes(value: number) {
     this._blockSizeBytes = value;
   }
   public resetBlockSizeBytes() {
@@ -1064,15 +1434,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get blockSizeBytesInput() {
-    return this._blockSizeBytes
+    return this._blockSizeBytes;
   }
 
   // bloom_filter_columns - computed: false, optional: true, required: false
-  private _bloomFilterColumns?: string[] | undefined; 
+  private _bloomFilterColumns?: string[]; 
   public get bloomFilterColumns() {
     return this.getListAttribute('bloom_filter_columns');
   }
-  public set bloomFilterColumns(value: string[] | undefined) {
+  public set bloomFilterColumns(value: string[]) {
     this._bloomFilterColumns = value;
   }
   public resetBloomFilterColumns() {
@@ -1080,15 +1450,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get bloomFilterColumnsInput() {
-    return this._bloomFilterColumns
+    return this._bloomFilterColumns;
   }
 
   // bloom_filter_false_positive_probability - computed: false, optional: true, required: false
-  private _bloomFilterFalsePositiveProbability?: number | undefined; 
+  private _bloomFilterFalsePositiveProbability?: number; 
   public get bloomFilterFalsePositiveProbability() {
     return this.getNumberAttribute('bloom_filter_false_positive_probability');
   }
-  public set bloomFilterFalsePositiveProbability(value: number | undefined) {
+  public set bloomFilterFalsePositiveProbability(value: number) {
     this._bloomFilterFalsePositiveProbability = value;
   }
   public resetBloomFilterFalsePositiveProbability() {
@@ -1096,15 +1466,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get bloomFilterFalsePositiveProbabilityInput() {
-    return this._bloomFilterFalsePositiveProbability
+    return this._bloomFilterFalsePositiveProbability;
   }
 
   // compression - computed: false, optional: true, required: false
-  private _compression?: string | undefined; 
+  private _compression?: string; 
   public get compression() {
     return this.getStringAttribute('compression');
   }
-  public set compression(value: string | undefined) {
+  public set compression(value: string) {
     this._compression = value;
   }
   public resetCompression() {
@@ -1112,15 +1482,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get compressionInput() {
-    return this._compression
+    return this._compression;
   }
 
   // dictionary_key_threshold - computed: false, optional: true, required: false
-  private _dictionaryKeyThreshold?: number | undefined; 
+  private _dictionaryKeyThreshold?: number; 
   public get dictionaryKeyThreshold() {
     return this.getNumberAttribute('dictionary_key_threshold');
   }
-  public set dictionaryKeyThreshold(value: number | undefined) {
+  public set dictionaryKeyThreshold(value: number) {
     this._dictionaryKeyThreshold = value;
   }
   public resetDictionaryKeyThreshold() {
@@ -1128,15 +1498,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get dictionaryKeyThresholdInput() {
-    return this._dictionaryKeyThreshold
+    return this._dictionaryKeyThreshold;
   }
 
   // enable_padding - computed: false, optional: true, required: false
-  private _enablePadding?: boolean | cdktf.IResolvable | undefined; 
+  private _enablePadding?: boolean | cdktf.IResolvable; 
   public get enablePadding() {
     return this.getBooleanAttribute('enable_padding') as any;
   }
-  public set enablePadding(value: boolean | cdktf.IResolvable | undefined) {
+  public set enablePadding(value: boolean | cdktf.IResolvable) {
     this._enablePadding = value;
   }
   public resetEnablePadding() {
@@ -1144,15 +1514,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get enablePaddingInput() {
-    return this._enablePadding
+    return this._enablePadding;
   }
 
   // format_version - computed: false, optional: true, required: false
-  private _formatVersion?: string | undefined; 
+  private _formatVersion?: string; 
   public get formatVersion() {
     return this.getStringAttribute('format_version');
   }
-  public set formatVersion(value: string | undefined) {
+  public set formatVersion(value: string) {
     this._formatVersion = value;
   }
   public resetFormatVersion() {
@@ -1160,15 +1530,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get formatVersionInput() {
-    return this._formatVersion
+    return this._formatVersion;
   }
 
   // padding_tolerance - computed: false, optional: true, required: false
-  private _paddingTolerance?: number | undefined; 
+  private _paddingTolerance?: number; 
   public get paddingTolerance() {
     return this.getNumberAttribute('padding_tolerance');
   }
-  public set paddingTolerance(value: number | undefined) {
+  public set paddingTolerance(value: number) {
     this._paddingTolerance = value;
   }
   public resetPaddingTolerance() {
@@ -1176,15 +1546,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get paddingToleranceInput() {
-    return this._paddingTolerance
+    return this._paddingTolerance;
   }
 
   // row_index_stride - computed: false, optional: true, required: false
-  private _rowIndexStride?: number | undefined; 
+  private _rowIndexStride?: number; 
   public get rowIndexStride() {
     return this.getNumberAttribute('row_index_stride');
   }
-  public set rowIndexStride(value: number | undefined) {
+  public set rowIndexStride(value: number) {
     this._rowIndexStride = value;
   }
   public resetRowIndexStride() {
@@ -1192,15 +1562,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get rowIndexStrideInput() {
-    return this._rowIndexStride
+    return this._rowIndexStride;
   }
 
   // stripe_size_bytes - computed: false, optional: true, required: false
-  private _stripeSizeBytes?: number | undefined; 
+  private _stripeSizeBytes?: number; 
   public get stripeSizeBytes() {
     return this.getNumberAttribute('stripe_size_bytes');
   }
-  public set stripeSizeBytes(value: number | undefined) {
+  public set stripeSizeBytes(value: number) {
     this._stripeSizeBytes = value;
   }
   public resetStripeSizeBytes() {
@@ -1208,7 +1578,7 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get stripeSizeBytesInput() {
-    return this._stripeSizeBytes
+    return this._stripeSizeBytes;
   }
 }
 export interface KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe {
@@ -1263,12 +1633,61 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._blockSizeBytes) {
+      hasAnyValues = true;
+      internalValueResult.blockSizeBytes = this._blockSizeBytes;
+    }
+    if (this._compression) {
+      hasAnyValues = true;
+      internalValueResult.compression = this._compression;
+    }
+    if (this._enableDictionaryCompression) {
+      hasAnyValues = true;
+      internalValueResult.enableDictionaryCompression = this._enableDictionaryCompression;
+    }
+    if (this._maxPaddingBytes) {
+      hasAnyValues = true;
+      internalValueResult.maxPaddingBytes = this._maxPaddingBytes;
+    }
+    if (this._pageSizeBytes) {
+      hasAnyValues = true;
+      internalValueResult.pageSizeBytes = this._pageSizeBytes;
+    }
+    if (this._writerVersion) {
+      hasAnyValues = true;
+      internalValueResult.writerVersion = this._writerVersion;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe | undefined) {
+    if (value === undefined) {
+      this._blockSizeBytes = undefined;
+      this._compression = undefined;
+      this._enableDictionaryCompression = undefined;
+      this._maxPaddingBytes = undefined;
+      this._pageSizeBytes = undefined;
+      this._writerVersion = undefined;
+    }
+    else {
+      this._blockSizeBytes = value.blockSizeBytes;
+      this._compression = value.compression;
+      this._enableDictionaryCompression = value.enableDictionaryCompression;
+      this._maxPaddingBytes = value.maxPaddingBytes;
+      this._pageSizeBytes = value.pageSizeBytes;
+      this._writerVersion = value.writerVersion;
+    }
+  }
+
   // block_size_bytes - computed: false, optional: true, required: false
-  private _blockSizeBytes?: number | undefined; 
+  private _blockSizeBytes?: number; 
   public get blockSizeBytes() {
     return this.getNumberAttribute('block_size_bytes');
   }
-  public set blockSizeBytes(value: number | undefined) {
+  public set blockSizeBytes(value: number) {
     this._blockSizeBytes = value;
   }
   public resetBlockSizeBytes() {
@@ -1276,15 +1695,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get blockSizeBytesInput() {
-    return this._blockSizeBytes
+    return this._blockSizeBytes;
   }
 
   // compression - computed: false, optional: true, required: false
-  private _compression?: string | undefined; 
+  private _compression?: string; 
   public get compression() {
     return this.getStringAttribute('compression');
   }
-  public set compression(value: string | undefined) {
+  public set compression(value: string) {
     this._compression = value;
   }
   public resetCompression() {
@@ -1292,15 +1711,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get compressionInput() {
-    return this._compression
+    return this._compression;
   }
 
   // enable_dictionary_compression - computed: false, optional: true, required: false
-  private _enableDictionaryCompression?: boolean | cdktf.IResolvable | undefined; 
+  private _enableDictionaryCompression?: boolean | cdktf.IResolvable; 
   public get enableDictionaryCompression() {
     return this.getBooleanAttribute('enable_dictionary_compression') as any;
   }
-  public set enableDictionaryCompression(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableDictionaryCompression(value: boolean | cdktf.IResolvable) {
     this._enableDictionaryCompression = value;
   }
   public resetEnableDictionaryCompression() {
@@ -1308,15 +1727,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get enableDictionaryCompressionInput() {
-    return this._enableDictionaryCompression
+    return this._enableDictionaryCompression;
   }
 
   // max_padding_bytes - computed: false, optional: true, required: false
-  private _maxPaddingBytes?: number | undefined; 
+  private _maxPaddingBytes?: number; 
   public get maxPaddingBytes() {
     return this.getNumberAttribute('max_padding_bytes');
   }
-  public set maxPaddingBytes(value: number | undefined) {
+  public set maxPaddingBytes(value: number) {
     this._maxPaddingBytes = value;
   }
   public resetMaxPaddingBytes() {
@@ -1324,15 +1743,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get maxPaddingBytesInput() {
-    return this._maxPaddingBytes
+    return this._maxPaddingBytes;
   }
 
   // page_size_bytes - computed: false, optional: true, required: false
-  private _pageSizeBytes?: number | undefined; 
+  private _pageSizeBytes?: number; 
   public get pageSizeBytes() {
     return this.getNumberAttribute('page_size_bytes');
   }
-  public set pageSizeBytes(value: number | undefined) {
+  public set pageSizeBytes(value: number) {
     this._pageSizeBytes = value;
   }
   public resetPageSizeBytes() {
@@ -1340,15 +1759,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get pageSizeBytesInput() {
-    return this._pageSizeBytes
+    return this._pageSizeBytes;
   }
 
   // writer_version - computed: false, optional: true, required: false
-  private _writerVersion?: string | undefined; 
+  private _writerVersion?: string; 
   public get writerVersion() {
     return this.getStringAttribute('writer_version');
   }
-  public set writerVersion(value: string | undefined) {
+  public set writerVersion(value: string) {
     this._writerVersion = value;
   }
   public resetWriterVersion() {
@@ -1356,7 +1775,7 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get writerVersionInput() {
-    return this._writerVersion
+    return this._writerVersion;
   }
 }
 export interface KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer {
@@ -1395,38 +1814,61 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // orc_ser_de - computed: false, optional: true, required: false
-  private _orcSerDe?: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe | undefined; 
-  private __orcSerDeOutput = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeOutputReference(this as any, "orc_ser_de", true);
-  public get orcSerDe() {
-    return this.__orcSerDeOutput;
+  public get internalValue(): KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._orcSerDe) {
+      hasAnyValues = true;
+      internalValueResult.orcSerDe = this._orcSerDe?.internalValue;
+    }
+    if (this._parquetSerDe) {
+      hasAnyValues = true;
+      internalValueResult.parquetSerDe = this._parquetSerDe?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putOrcSerDe(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe | undefined) {
-    this._orcSerDe = value;
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer | undefined) {
+    if (value === undefined) {
+      this._orcSerDe.internalValue = undefined;
+      this._parquetSerDe.internalValue = undefined;
+    }
+    else {
+      this._orcSerDe.internalValue = value.orcSerDe;
+      this._parquetSerDe.internalValue = value.parquetSerDe;
+    }
+  }
+
+  // orc_ser_de - computed: false, optional: true, required: false
+  private _orcSerDe = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeOutputReference(this as any, "orc_ser_de", true);
+  public get orcSerDe() {
+    return this._orcSerDe;
+  }
+  public putOrcSerDe(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe) {
+    this._orcSerDe.internalValue = value;
   }
   public resetOrcSerDe() {
-    this._orcSerDe = undefined;
+    this._orcSerDe.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get orcSerDeInput() {
-    return this._orcSerDe
+    return this._orcSerDe.internalValue;
   }
 
   // parquet_ser_de - computed: false, optional: true, required: false
-  private _parquetSerDe?: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe | undefined; 
-  private __parquetSerDeOutput = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeOutputReference(this as any, "parquet_ser_de", true);
+  private _parquetSerDe = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeOutputReference(this as any, "parquet_ser_de", true);
   public get parquetSerDe() {
-    return this.__parquetSerDeOutput;
+    return this._parquetSerDe;
   }
-  public putParquetSerDe(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe | undefined) {
-    this._parquetSerDe = value;
+  public putParquetSerDe(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe) {
+    this._parquetSerDe.internalValue = value;
   }
   public resetParquetSerDe() {
-    this._parquetSerDe = undefined;
+    this._parquetSerDe.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get parquetSerDeInput() {
-    return this._parquetSerDe
+    return this._parquetSerDe.internalValue;
   }
 }
 export interface KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration {
@@ -1458,18 +1900,36 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._serializer) {
+      hasAnyValues = true;
+      internalValueResult.serializer = this._serializer?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration | undefined) {
+    if (value === undefined) {
+      this._serializer.internalValue = undefined;
+    }
+    else {
+      this._serializer.internalValue = value.serializer;
+    }
+  }
+
   // serializer - computed: false, optional: false, required: true
-  private _serializer?: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer; 
-  private __serializerOutput = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOutputReference(this as any, "serializer", true);
+  private _serializer = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOutputReference(this as any, "serializer", true);
   public get serializer() {
-    return this.__serializerOutput;
+    return this._serializer;
   }
   public putSerializer(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer) {
-    this._serializer = value;
+    this._serializer.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get serializerInput() {
-    return this._serializer
+    return this._serializer.internalValue;
   }
 }
 export interface KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration {
@@ -1524,12 +1984,61 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._catalogId) {
+      hasAnyValues = true;
+      internalValueResult.catalogId = this._catalogId;
+    }
+    if (this._databaseName) {
+      hasAnyValues = true;
+      internalValueResult.databaseName = this._databaseName;
+    }
+    if (this._region) {
+      hasAnyValues = true;
+      internalValueResult.region = this._region;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._tableName) {
+      hasAnyValues = true;
+      internalValueResult.tableName = this._tableName;
+    }
+    if (this._versionId) {
+      hasAnyValues = true;
+      internalValueResult.versionId = this._versionId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration | undefined) {
+    if (value === undefined) {
+      this._catalogId = undefined;
+      this._databaseName = undefined;
+      this._region = undefined;
+      this._roleArn = undefined;
+      this._tableName = undefined;
+      this._versionId = undefined;
+    }
+    else {
+      this._catalogId = value.catalogId;
+      this._databaseName = value.databaseName;
+      this._region = value.region;
+      this._roleArn = value.roleArn;
+      this._tableName = value.tableName;
+      this._versionId = value.versionId;
+    }
+  }
+
   // catalog_id - computed: true, optional: true, required: false
-  private _catalogId?: string | undefined; 
+  private _catalogId?: string; 
   public get catalogId() {
     return this.getStringAttribute('catalog_id');
   }
-  public set catalogId(value: string | undefined) {
+  public set catalogId(value: string) {
     this._catalogId = value;
   }
   public resetCatalogId() {
@@ -1537,7 +2046,7 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get catalogIdInput() {
-    return this._catalogId
+    return this._catalogId;
   }
 
   // database_name - computed: false, optional: false, required: true
@@ -1550,15 +2059,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get databaseNameInput() {
-    return this._databaseName
+    return this._databaseName;
   }
 
   // region - computed: true, optional: true, required: false
-  private _region?: string | undefined; 
+  private _region?: string; 
   public get region() {
     return this.getStringAttribute('region');
   }
-  public set region(value: string | undefined) {
+  public set region(value: string) {
     this._region = value;
   }
   public resetRegion() {
@@ -1566,7 +2075,7 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get regionInput() {
-    return this._region
+    return this._region;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -1579,7 +2088,7 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // table_name - computed: false, optional: false, required: true
@@ -1592,15 +2101,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get tableNameInput() {
-    return this._tableName
+    return this._tableName;
   }
 
   // version_id - computed: false, optional: true, required: false
-  private _versionId?: string | undefined; 
+  private _versionId?: string; 
   public get versionId() {
     return this.getStringAttribute('version_id');
   }
-  public set versionId(value: string | undefined) {
+  public set versionId(value: string) {
     this._versionId = value;
   }
   public resetVersionId() {
@@ -1608,7 +2117,7 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get versionIdInput() {
-    return this._versionId
+    return this._versionId;
   }
 }
 export interface KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration {
@@ -1659,12 +2168,49 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._inputFormatConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.inputFormatConfiguration = this._inputFormatConfiguration?.internalValue;
+    }
+    if (this._outputFormatConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.outputFormatConfiguration = this._outputFormatConfiguration?.internalValue;
+    }
+    if (this._schemaConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.schemaConfiguration = this._schemaConfiguration?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._inputFormatConfiguration.internalValue = undefined;
+      this._outputFormatConfiguration.internalValue = undefined;
+      this._schemaConfiguration.internalValue = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._inputFormatConfiguration.internalValue = value.inputFormatConfiguration;
+      this._outputFormatConfiguration.internalValue = value.outputFormatConfiguration;
+      this._schemaConfiguration.internalValue = value.schemaConfiguration;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -1672,49 +2218,46 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConve
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // input_format_configuration - computed: false, optional: false, required: true
-  private _inputFormatConfiguration?: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration; 
-  private __inputFormatConfigurationOutput = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationOutputReference(this as any, "input_format_configuration", true);
+  private _inputFormatConfiguration = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationOutputReference(this as any, "input_format_configuration", true);
   public get inputFormatConfiguration() {
-    return this.__inputFormatConfigurationOutput;
+    return this._inputFormatConfiguration;
   }
   public putInputFormatConfiguration(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration) {
-    this._inputFormatConfiguration = value;
+    this._inputFormatConfiguration.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get inputFormatConfigurationInput() {
-    return this._inputFormatConfiguration
+    return this._inputFormatConfiguration.internalValue;
   }
 
   // output_format_configuration - computed: false, optional: false, required: true
-  private _outputFormatConfiguration?: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration; 
-  private __outputFormatConfigurationOutput = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationOutputReference(this as any, "output_format_configuration", true);
+  private _outputFormatConfiguration = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationOutputReference(this as any, "output_format_configuration", true);
   public get outputFormatConfiguration() {
-    return this.__outputFormatConfigurationOutput;
+    return this._outputFormatConfiguration;
   }
   public putOutputFormatConfiguration(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration) {
-    this._outputFormatConfiguration = value;
+    this._outputFormatConfiguration.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get outputFormatConfigurationInput() {
-    return this._outputFormatConfiguration
+    return this._outputFormatConfiguration.internalValue;
   }
 
   // schema_configuration - computed: false, optional: false, required: true
-  private _schemaConfiguration?: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration; 
-  private __schemaConfigurationOutput = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationOutputReference(this as any, "schema_configuration", true);
+  private _schemaConfiguration = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationOutputReference(this as any, "schema_configuration", true);
   public get schemaConfiguration() {
-    return this.__schemaConfigurationOutput;
+    return this._schemaConfiguration;
   }
   public putSchemaConfiguration(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration) {
-    this._schemaConfiguration = value;
+    this._schemaConfiguration.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get schemaConfigurationInput() {
-    return this._schemaConfiguration
+    return this._schemaConfiguration.internalValue;
   }
 }
 export interface KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfiguration {
@@ -1749,12 +2292,37 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitio
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._retryDuration) {
+      hasAnyValues = true;
+      internalValueResult.retryDuration = this._retryDuration;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfiguration | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._retryDuration = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._retryDuration = value.retryDuration;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -1762,15 +2330,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitio
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // retry_duration - computed: false, optional: true, required: false
-  private _retryDuration?: number | undefined; 
+  private _retryDuration?: number; 
   public get retryDuration() {
     return this.getNumberAttribute('retry_duration');
   }
-  public set retryDuration(value: number | undefined) {
+  public set retryDuration(value: number) {
     this._retryDuration = value;
   }
   public resetRetryDuration() {
@@ -1778,7 +2346,7 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitio
   }
   // Temporarily expose input value. Use with caution.
   public get retryDurationInput() {
-    return this._retryDuration
+    return this._retryDuration;
   }
 }
 export interface KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParameters {
@@ -1861,12 +2429,37 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfi
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._processors) {
+      hasAnyValues = true;
+      internalValueResult.processors = this._processors;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._processors = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._processors = value.processors;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -1874,16 +2467,16 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfi
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // processors - computed: false, optional: true, required: false
-  private _processors?: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessors[] | undefined; 
+  private _processors?: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessors[]; 
   public get processors() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('processors') as any;
   }
-  public set processors(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessors[] | undefined) {
+  public set processors(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessors[]) {
     this._processors = value;
   }
   public resetProcessors() {
@@ -1891,7 +2484,7 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfi
   }
   // Temporarily expose input value. Use with caution.
   public get processorsInput() {
-    return this._processors
+    return this._processors;
   }
 }
 export interface KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions {
@@ -1931,12 +2524,43 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigu
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._logGroupName) {
+      hasAnyValues = true;
+      internalValueResult.logGroupName = this._logGroupName;
+    }
+    if (this._logStreamName) {
+      hasAnyValues = true;
+      internalValueResult.logStreamName = this._logStreamName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._logGroupName = undefined;
+      this._logStreamName = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._logGroupName = value.logGroupName;
+      this._logStreamName = value.logStreamName;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -1944,15 +2568,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigu
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // log_group_name - computed: false, optional: true, required: false
-  private _logGroupName?: string | undefined; 
+  private _logGroupName?: string; 
   public get logGroupName() {
     return this.getStringAttribute('log_group_name');
   }
-  public set logGroupName(value: string | undefined) {
+  public set logGroupName(value: string) {
     this._logGroupName = value;
   }
   public resetLogGroupName() {
@@ -1960,15 +2584,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigu
   }
   // Temporarily expose input value. Use with caution.
   public get logGroupNameInput() {
-    return this._logGroupName
+    return this._logGroupName;
   }
 
   // log_stream_name - computed: false, optional: true, required: false
-  private _logStreamName?: string | undefined; 
+  private _logStreamName?: string; 
   public get logStreamName() {
     return this.getStringAttribute('log_stream_name');
   }
-  public set logStreamName(value: string | undefined) {
+  public set logStreamName(value: string) {
     this._logStreamName = value;
   }
   public resetLogStreamName() {
@@ -1976,7 +2600,7 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigu
   }
   // Temporarily expose input value. Use with caution.
   public get logStreamNameInput() {
-    return this._logStreamName
+    return this._logStreamName;
   }
 }
 export interface KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration {
@@ -2043,6 +2667,67 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigu
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucketArn) {
+      hasAnyValues = true;
+      internalValueResult.bucketArn = this._bucketArn;
+    }
+    if (this._bufferInterval) {
+      hasAnyValues = true;
+      internalValueResult.bufferInterval = this._bufferInterval;
+    }
+    if (this._bufferSize) {
+      hasAnyValues = true;
+      internalValueResult.bufferSize = this._bufferSize;
+    }
+    if (this._compressionFormat) {
+      hasAnyValues = true;
+      internalValueResult.compressionFormat = this._compressionFormat;
+    }
+    if (this._kmsKeyArn) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyArn = this._kmsKeyArn;
+    }
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._cloudwatchLoggingOptions) {
+      hasAnyValues = true;
+      internalValueResult.cloudwatchLoggingOptions = this._cloudwatchLoggingOptions?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration | undefined) {
+    if (value === undefined) {
+      this._bucketArn = undefined;
+      this._bufferInterval = undefined;
+      this._bufferSize = undefined;
+      this._compressionFormat = undefined;
+      this._kmsKeyArn = undefined;
+      this._prefix = undefined;
+      this._roleArn = undefined;
+      this._cloudwatchLoggingOptions.internalValue = undefined;
+    }
+    else {
+      this._bucketArn = value.bucketArn;
+      this._bufferInterval = value.bufferInterval;
+      this._bufferSize = value.bufferSize;
+      this._compressionFormat = value.compressionFormat;
+      this._kmsKeyArn = value.kmsKeyArn;
+      this._prefix = value.prefix;
+      this._roleArn = value.roleArn;
+      this._cloudwatchLoggingOptions.internalValue = value.cloudwatchLoggingOptions;
+    }
+  }
+
   // bucket_arn - computed: false, optional: false, required: true
   private _bucketArn?: string; 
   public get bucketArn() {
@@ -2053,15 +2738,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigu
   }
   // Temporarily expose input value. Use with caution.
   public get bucketArnInput() {
-    return this._bucketArn
+    return this._bucketArn;
   }
 
   // buffer_interval - computed: false, optional: true, required: false
-  private _bufferInterval?: number | undefined; 
+  private _bufferInterval?: number; 
   public get bufferInterval() {
     return this.getNumberAttribute('buffer_interval');
   }
-  public set bufferInterval(value: number | undefined) {
+  public set bufferInterval(value: number) {
     this._bufferInterval = value;
   }
   public resetBufferInterval() {
@@ -2069,15 +2754,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigu
   }
   // Temporarily expose input value. Use with caution.
   public get bufferIntervalInput() {
-    return this._bufferInterval
+    return this._bufferInterval;
   }
 
   // buffer_size - computed: false, optional: true, required: false
-  private _bufferSize?: number | undefined; 
+  private _bufferSize?: number; 
   public get bufferSize() {
     return this.getNumberAttribute('buffer_size');
   }
-  public set bufferSize(value: number | undefined) {
+  public set bufferSize(value: number) {
     this._bufferSize = value;
   }
   public resetBufferSize() {
@@ -2085,15 +2770,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigu
   }
   // Temporarily expose input value. Use with caution.
   public get bufferSizeInput() {
-    return this._bufferSize
+    return this._bufferSize;
   }
 
   // compression_format - computed: false, optional: true, required: false
-  private _compressionFormat?: string | undefined; 
+  private _compressionFormat?: string; 
   public get compressionFormat() {
     return this.getStringAttribute('compression_format');
   }
-  public set compressionFormat(value: string | undefined) {
+  public set compressionFormat(value: string) {
     this._compressionFormat = value;
   }
   public resetCompressionFormat() {
@@ -2101,15 +2786,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigu
   }
   // Temporarily expose input value. Use with caution.
   public get compressionFormatInput() {
-    return this._compressionFormat
+    return this._compressionFormat;
   }
 
   // kms_key_arn - computed: false, optional: true, required: false
-  private _kmsKeyArn?: string | undefined; 
+  private _kmsKeyArn?: string; 
   public get kmsKeyArn() {
     return this.getStringAttribute('kms_key_arn');
   }
-  public set kmsKeyArn(value: string | undefined) {
+  public set kmsKeyArn(value: string) {
     this._kmsKeyArn = value;
   }
   public resetKmsKeyArn() {
@@ -2117,15 +2802,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigu
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyArnInput() {
-    return this._kmsKeyArn
+    return this._kmsKeyArn;
   }
 
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -2133,7 +2818,7 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigu
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -2146,24 +2831,23 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigu
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // cloudwatch_logging_options - computed: false, optional: true, required: false
-  private _cloudwatchLoggingOptions?: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions | undefined; 
-  private __cloudwatchLoggingOptionsOutput = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsOutputReference(this as any, "cloudwatch_logging_options", true);
+  private _cloudwatchLoggingOptions = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsOutputReference(this as any, "cloudwatch_logging_options", true);
   public get cloudwatchLoggingOptions() {
-    return this.__cloudwatchLoggingOptionsOutput;
+    return this._cloudwatchLoggingOptions;
   }
-  public putCloudwatchLoggingOptions(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions | undefined) {
-    this._cloudwatchLoggingOptions = value;
+  public putCloudwatchLoggingOptions(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions) {
+    this._cloudwatchLoggingOptions.internalValue = value;
   }
   public resetCloudwatchLoggingOptions() {
-    this._cloudwatchLoggingOptions = undefined;
+    this._cloudwatchLoggingOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchLoggingOptionsInput() {
-    return this._cloudwatchLoggingOptions
+    return this._cloudwatchLoggingOptions.internalValue;
   }
 }
 export interface KinesisFirehoseDeliveryStreamExtendedS3Configuration {
@@ -2268,6 +2952,103 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationOutputReference
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamExtendedS3Configuration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucketArn) {
+      hasAnyValues = true;
+      internalValueResult.bucketArn = this._bucketArn;
+    }
+    if (this._bufferInterval) {
+      hasAnyValues = true;
+      internalValueResult.bufferInterval = this._bufferInterval;
+    }
+    if (this._bufferSize) {
+      hasAnyValues = true;
+      internalValueResult.bufferSize = this._bufferSize;
+    }
+    if (this._compressionFormat) {
+      hasAnyValues = true;
+      internalValueResult.compressionFormat = this._compressionFormat;
+    }
+    if (this._errorOutputPrefix) {
+      hasAnyValues = true;
+      internalValueResult.errorOutputPrefix = this._errorOutputPrefix;
+    }
+    if (this._kmsKeyArn) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyArn = this._kmsKeyArn;
+    }
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._s3BackupMode) {
+      hasAnyValues = true;
+      internalValueResult.s3BackupMode = this._s3BackupMode;
+    }
+    if (this._cloudwatchLoggingOptions) {
+      hasAnyValues = true;
+      internalValueResult.cloudwatchLoggingOptions = this._cloudwatchLoggingOptions?.internalValue;
+    }
+    if (this._dataFormatConversionConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.dataFormatConversionConfiguration = this._dataFormatConversionConfiguration?.internalValue;
+    }
+    if (this._dynamicPartitioningConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.dynamicPartitioningConfiguration = this._dynamicPartitioningConfiguration?.internalValue;
+    }
+    if (this._processingConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.processingConfiguration = this._processingConfiguration?.internalValue;
+    }
+    if (this._s3BackupConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.s3BackupConfiguration = this._s3BackupConfiguration?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamExtendedS3Configuration | undefined) {
+    if (value === undefined) {
+      this._bucketArn = undefined;
+      this._bufferInterval = undefined;
+      this._bufferSize = undefined;
+      this._compressionFormat = undefined;
+      this._errorOutputPrefix = undefined;
+      this._kmsKeyArn = undefined;
+      this._prefix = undefined;
+      this._roleArn = undefined;
+      this._s3BackupMode = undefined;
+      this._cloudwatchLoggingOptions.internalValue = undefined;
+      this._dataFormatConversionConfiguration.internalValue = undefined;
+      this._dynamicPartitioningConfiguration.internalValue = undefined;
+      this._processingConfiguration.internalValue = undefined;
+      this._s3BackupConfiguration.internalValue = undefined;
+    }
+    else {
+      this._bucketArn = value.bucketArn;
+      this._bufferInterval = value.bufferInterval;
+      this._bufferSize = value.bufferSize;
+      this._compressionFormat = value.compressionFormat;
+      this._errorOutputPrefix = value.errorOutputPrefix;
+      this._kmsKeyArn = value.kmsKeyArn;
+      this._prefix = value.prefix;
+      this._roleArn = value.roleArn;
+      this._s3BackupMode = value.s3BackupMode;
+      this._cloudwatchLoggingOptions.internalValue = value.cloudwatchLoggingOptions;
+      this._dataFormatConversionConfiguration.internalValue = value.dataFormatConversionConfiguration;
+      this._dynamicPartitioningConfiguration.internalValue = value.dynamicPartitioningConfiguration;
+      this._processingConfiguration.internalValue = value.processingConfiguration;
+      this._s3BackupConfiguration.internalValue = value.s3BackupConfiguration;
+    }
+  }
+
   // bucket_arn - computed: false, optional: false, required: true
   private _bucketArn?: string; 
   public get bucketArn() {
@@ -2278,15 +3059,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationOutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get bucketArnInput() {
-    return this._bucketArn
+    return this._bucketArn;
   }
 
   // buffer_interval - computed: false, optional: true, required: false
-  private _bufferInterval?: number | undefined; 
+  private _bufferInterval?: number; 
   public get bufferInterval() {
     return this.getNumberAttribute('buffer_interval');
   }
-  public set bufferInterval(value: number | undefined) {
+  public set bufferInterval(value: number) {
     this._bufferInterval = value;
   }
   public resetBufferInterval() {
@@ -2294,15 +3075,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationOutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get bufferIntervalInput() {
-    return this._bufferInterval
+    return this._bufferInterval;
   }
 
   // buffer_size - computed: false, optional: true, required: false
-  private _bufferSize?: number | undefined; 
+  private _bufferSize?: number; 
   public get bufferSize() {
     return this.getNumberAttribute('buffer_size');
   }
-  public set bufferSize(value: number | undefined) {
+  public set bufferSize(value: number) {
     this._bufferSize = value;
   }
   public resetBufferSize() {
@@ -2310,15 +3091,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationOutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get bufferSizeInput() {
-    return this._bufferSize
+    return this._bufferSize;
   }
 
   // compression_format - computed: false, optional: true, required: false
-  private _compressionFormat?: string | undefined; 
+  private _compressionFormat?: string; 
   public get compressionFormat() {
     return this.getStringAttribute('compression_format');
   }
-  public set compressionFormat(value: string | undefined) {
+  public set compressionFormat(value: string) {
     this._compressionFormat = value;
   }
   public resetCompressionFormat() {
@@ -2326,15 +3107,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationOutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get compressionFormatInput() {
-    return this._compressionFormat
+    return this._compressionFormat;
   }
 
   // error_output_prefix - computed: false, optional: true, required: false
-  private _errorOutputPrefix?: string | undefined; 
+  private _errorOutputPrefix?: string; 
   public get errorOutputPrefix() {
     return this.getStringAttribute('error_output_prefix');
   }
-  public set errorOutputPrefix(value: string | undefined) {
+  public set errorOutputPrefix(value: string) {
     this._errorOutputPrefix = value;
   }
   public resetErrorOutputPrefix() {
@@ -2342,15 +3123,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationOutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get errorOutputPrefixInput() {
-    return this._errorOutputPrefix
+    return this._errorOutputPrefix;
   }
 
   // kms_key_arn - computed: false, optional: true, required: false
-  private _kmsKeyArn?: string | undefined; 
+  private _kmsKeyArn?: string; 
   public get kmsKeyArn() {
     return this.getStringAttribute('kms_key_arn');
   }
-  public set kmsKeyArn(value: string | undefined) {
+  public set kmsKeyArn(value: string) {
     this._kmsKeyArn = value;
   }
   public resetKmsKeyArn() {
@@ -2358,15 +3139,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationOutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyArnInput() {
-    return this._kmsKeyArn
+    return this._kmsKeyArn;
   }
 
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -2374,7 +3155,7 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationOutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -2387,15 +3168,15 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationOutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // s3_backup_mode - computed: false, optional: true, required: false
-  private _s3BackupMode?: string | undefined; 
+  private _s3BackupMode?: string; 
   public get s3BackupMode() {
     return this.getStringAttribute('s3_backup_mode');
   }
-  public set s3BackupMode(value: string | undefined) {
+  public set s3BackupMode(value: string) {
     this._s3BackupMode = value;
   }
   public resetS3BackupMode() {
@@ -2403,92 +3184,87 @@ export class KinesisFirehoseDeliveryStreamExtendedS3ConfigurationOutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get s3BackupModeInput() {
-    return this._s3BackupMode
+    return this._s3BackupMode;
   }
 
   // cloudwatch_logging_options - computed: false, optional: true, required: false
-  private _cloudwatchLoggingOptions?: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptions | undefined; 
-  private __cloudwatchLoggingOptionsOutput = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsOutputReference(this as any, "cloudwatch_logging_options", true);
+  private _cloudwatchLoggingOptions = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsOutputReference(this as any, "cloudwatch_logging_options", true);
   public get cloudwatchLoggingOptions() {
-    return this.__cloudwatchLoggingOptionsOutput;
+    return this._cloudwatchLoggingOptions;
   }
-  public putCloudwatchLoggingOptions(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptions | undefined) {
-    this._cloudwatchLoggingOptions = value;
+  public putCloudwatchLoggingOptions(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptions) {
+    this._cloudwatchLoggingOptions.internalValue = value;
   }
   public resetCloudwatchLoggingOptions() {
-    this._cloudwatchLoggingOptions = undefined;
+    this._cloudwatchLoggingOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchLoggingOptionsInput() {
-    return this._cloudwatchLoggingOptions
+    return this._cloudwatchLoggingOptions.internalValue;
   }
 
   // data_format_conversion_configuration - computed: false, optional: true, required: false
-  private _dataFormatConversionConfiguration?: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration | undefined; 
-  private __dataFormatConversionConfigurationOutput = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputReference(this as any, "data_format_conversion_configuration", true);
+  private _dataFormatConversionConfiguration = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputReference(this as any, "data_format_conversion_configuration", true);
   public get dataFormatConversionConfiguration() {
-    return this.__dataFormatConversionConfigurationOutput;
+    return this._dataFormatConversionConfiguration;
   }
-  public putDataFormatConversionConfiguration(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration | undefined) {
-    this._dataFormatConversionConfiguration = value;
+  public putDataFormatConversionConfiguration(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration) {
+    this._dataFormatConversionConfiguration.internalValue = value;
   }
   public resetDataFormatConversionConfiguration() {
-    this._dataFormatConversionConfiguration = undefined;
+    this._dataFormatConversionConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get dataFormatConversionConfigurationInput() {
-    return this._dataFormatConversionConfiguration
+    return this._dataFormatConversionConfiguration.internalValue;
   }
 
   // dynamic_partitioning_configuration - computed: false, optional: true, required: false
-  private _dynamicPartitioningConfiguration?: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfiguration | undefined; 
-  private __dynamicPartitioningConfigurationOutput = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfigurationOutputReference(this as any, "dynamic_partitioning_configuration", true);
+  private _dynamicPartitioningConfiguration = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfigurationOutputReference(this as any, "dynamic_partitioning_configuration", true);
   public get dynamicPartitioningConfiguration() {
-    return this.__dynamicPartitioningConfigurationOutput;
+    return this._dynamicPartitioningConfiguration;
   }
-  public putDynamicPartitioningConfiguration(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfiguration | undefined) {
-    this._dynamicPartitioningConfiguration = value;
+  public putDynamicPartitioningConfiguration(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfiguration) {
+    this._dynamicPartitioningConfiguration.internalValue = value;
   }
   public resetDynamicPartitioningConfiguration() {
-    this._dynamicPartitioningConfiguration = undefined;
+    this._dynamicPartitioningConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get dynamicPartitioningConfigurationInput() {
-    return this._dynamicPartitioningConfiguration
+    return this._dynamicPartitioningConfiguration.internalValue;
   }
 
   // processing_configuration - computed: false, optional: true, required: false
-  private _processingConfiguration?: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration | undefined; 
-  private __processingConfigurationOutput = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationOutputReference(this as any, "processing_configuration", true);
+  private _processingConfiguration = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationOutputReference(this as any, "processing_configuration", true);
   public get processingConfiguration() {
-    return this.__processingConfigurationOutput;
+    return this._processingConfiguration;
   }
-  public putProcessingConfiguration(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration | undefined) {
-    this._processingConfiguration = value;
+  public putProcessingConfiguration(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration) {
+    this._processingConfiguration.internalValue = value;
   }
   public resetProcessingConfiguration() {
-    this._processingConfiguration = undefined;
+    this._processingConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get processingConfigurationInput() {
-    return this._processingConfiguration
+    return this._processingConfiguration.internalValue;
   }
 
   // s3_backup_configuration - computed: false, optional: true, required: false
-  private _s3BackupConfiguration?: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration | undefined; 
-  private __s3BackupConfigurationOutput = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationOutputReference(this as any, "s3_backup_configuration", true);
+  private _s3BackupConfiguration = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationOutputReference(this as any, "s3_backup_configuration", true);
   public get s3BackupConfiguration() {
-    return this.__s3BackupConfigurationOutput;
+    return this._s3BackupConfiguration;
   }
-  public putS3BackupConfiguration(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration | undefined) {
-    this._s3BackupConfiguration = value;
+  public putS3BackupConfiguration(value: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration) {
+    this._s3BackupConfiguration.internalValue = value;
   }
   public resetS3BackupConfiguration() {
-    this._s3BackupConfiguration = undefined;
+    this._s3BackupConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get s3BackupConfigurationInput() {
-    return this._s3BackupConfiguration
+    return this._s3BackupConfiguration.internalValue;
   }
 }
 export interface KinesisFirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptions {
@@ -2528,12 +3304,43 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLog
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._logGroupName) {
+      hasAnyValues = true;
+      internalValueResult.logGroupName = this._logGroupName;
+    }
+    if (this._logStreamName) {
+      hasAnyValues = true;
+      internalValueResult.logStreamName = this._logStreamName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptions | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._logGroupName = undefined;
+      this._logStreamName = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._logGroupName = value.logGroupName;
+      this._logStreamName = value.logStreamName;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -2541,15 +3348,15 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLog
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // log_group_name - computed: false, optional: true, required: false
-  private _logGroupName?: string | undefined; 
+  private _logGroupName?: string; 
   public get logGroupName() {
     return this.getStringAttribute('log_group_name');
   }
-  public set logGroupName(value: string | undefined) {
+  public set logGroupName(value: string) {
     this._logGroupName = value;
   }
   public resetLogGroupName() {
@@ -2557,15 +3364,15 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLog
   }
   // Temporarily expose input value. Use with caution.
   public get logGroupNameInput() {
-    return this._logGroupName
+    return this._logGroupName;
   }
 
   // log_stream_name - computed: false, optional: true, required: false
-  private _logStreamName?: string | undefined; 
+  private _logStreamName?: string; 
   public get logStreamName() {
     return this.getStringAttribute('log_stream_name');
   }
-  public set logStreamName(value: string | undefined) {
+  public set logStreamName(value: string) {
     this._logStreamName = value;
   }
   public resetLogStreamName() {
@@ -2573,7 +3380,7 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLog
   }
   // Temporarily expose input value. Use with caution.
   public get logStreamNameInput() {
-    return this._logStreamName
+    return this._logStreamName;
   }
 }
 export interface KinesisFirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessorsParameters {
@@ -2656,12 +3463,37 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationProcessingCon
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._processors) {
+      hasAnyValues = true;
+      internalValueResult.processors = this._processors;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfiguration | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._processors = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._processors = value.processors;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -2669,16 +3501,16 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationProcessingCon
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // processors - computed: false, optional: true, required: false
-  private _processors?: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessors[] | undefined; 
+  private _processors?: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessors[]; 
   public get processors() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('processors') as any;
   }
-  public set processors(value: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessors[] | undefined) {
+  public set processors(value: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessors[]) {
     this._processors = value;
   }
   public resetProcessors() {
@@ -2686,7 +3518,7 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationProcessingCon
   }
   // Temporarily expose input value. Use with caution.
   public get processorsInput() {
-    return this._processors
+    return this._processors;
   }
 }
 export interface KinesisFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttributes {
@@ -2745,12 +3577,37 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfig
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._contentEncoding) {
+      hasAnyValues = true;
+      internalValueResult.contentEncoding = this._contentEncoding;
+    }
+    if (this._commonAttributes) {
+      hasAnyValues = true;
+      internalValueResult.commonAttributes = this._commonAttributes;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration | undefined) {
+    if (value === undefined) {
+      this._contentEncoding = undefined;
+      this._commonAttributes = undefined;
+    }
+    else {
+      this._contentEncoding = value.contentEncoding;
+      this._commonAttributes = value.commonAttributes;
+    }
+  }
+
   // content_encoding - computed: false, optional: true, required: false
-  private _contentEncoding?: string | undefined; 
+  private _contentEncoding?: string; 
   public get contentEncoding() {
     return this.getStringAttribute('content_encoding');
   }
-  public set contentEncoding(value: string | undefined) {
+  public set contentEncoding(value: string) {
     this._contentEncoding = value;
   }
   public resetContentEncoding() {
@@ -2758,16 +3615,16 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfig
   }
   // Temporarily expose input value. Use with caution.
   public get contentEncodingInput() {
-    return this._contentEncoding
+    return this._contentEncoding;
   }
 
   // common_attributes - computed: false, optional: true, required: false
-  private _commonAttributes?: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttributes[] | undefined; 
+  private _commonAttributes?: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttributes[]; 
   public get commonAttributes() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('common_attributes') as any;
   }
-  public set commonAttributes(value: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttributes[] | undefined) {
+  public set commonAttributes(value: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttributes[]) {
     this._commonAttributes = value;
   }
   public resetCommonAttributes() {
@@ -2775,7 +3632,7 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfig
   }
   // Temporarily expose input value. Use with caution.
   public get commonAttributesInput() {
-    return this._commonAttributes
+    return this._commonAttributes;
   }
 }
 export interface KinesisFirehoseDeliveryStreamHttpEndpointConfiguration {
@@ -2861,12 +3718,91 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationOutputReferen
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamHttpEndpointConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._accessKey) {
+      hasAnyValues = true;
+      internalValueResult.accessKey = this._accessKey;
+    }
+    if (this._bufferingInterval) {
+      hasAnyValues = true;
+      internalValueResult.bufferingInterval = this._bufferingInterval;
+    }
+    if (this._bufferingSize) {
+      hasAnyValues = true;
+      internalValueResult.bufferingSize = this._bufferingSize;
+    }
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._retryDuration) {
+      hasAnyValues = true;
+      internalValueResult.retryDuration = this._retryDuration;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._s3BackupMode) {
+      hasAnyValues = true;
+      internalValueResult.s3BackupMode = this._s3BackupMode;
+    }
+    if (this._url) {
+      hasAnyValues = true;
+      internalValueResult.url = this._url;
+    }
+    if (this._cloudwatchLoggingOptions) {
+      hasAnyValues = true;
+      internalValueResult.cloudwatchLoggingOptions = this._cloudwatchLoggingOptions?.internalValue;
+    }
+    if (this._processingConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.processingConfiguration = this._processingConfiguration?.internalValue;
+    }
+    if (this._requestConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.requestConfiguration = this._requestConfiguration?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamHttpEndpointConfiguration | undefined) {
+    if (value === undefined) {
+      this._accessKey = undefined;
+      this._bufferingInterval = undefined;
+      this._bufferingSize = undefined;
+      this._name = undefined;
+      this._retryDuration = undefined;
+      this._roleArn = undefined;
+      this._s3BackupMode = undefined;
+      this._url = undefined;
+      this._cloudwatchLoggingOptions.internalValue = undefined;
+      this._processingConfiguration.internalValue = undefined;
+      this._requestConfiguration.internalValue = undefined;
+    }
+    else {
+      this._accessKey = value.accessKey;
+      this._bufferingInterval = value.bufferingInterval;
+      this._bufferingSize = value.bufferingSize;
+      this._name = value.name;
+      this._retryDuration = value.retryDuration;
+      this._roleArn = value.roleArn;
+      this._s3BackupMode = value.s3BackupMode;
+      this._url = value.url;
+      this._cloudwatchLoggingOptions.internalValue = value.cloudwatchLoggingOptions;
+      this._processingConfiguration.internalValue = value.processingConfiguration;
+      this._requestConfiguration.internalValue = value.requestConfiguration;
+    }
+  }
+
   // access_key - computed: false, optional: true, required: false
-  private _accessKey?: string | undefined; 
+  private _accessKey?: string; 
   public get accessKey() {
     return this.getStringAttribute('access_key');
   }
-  public set accessKey(value: string | undefined) {
+  public set accessKey(value: string) {
     this._accessKey = value;
   }
   public resetAccessKey() {
@@ -2874,15 +3810,15 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationOutputReferen
   }
   // Temporarily expose input value. Use with caution.
   public get accessKeyInput() {
-    return this._accessKey
+    return this._accessKey;
   }
 
   // buffering_interval - computed: false, optional: true, required: false
-  private _bufferingInterval?: number | undefined; 
+  private _bufferingInterval?: number; 
   public get bufferingInterval() {
     return this.getNumberAttribute('buffering_interval');
   }
-  public set bufferingInterval(value: number | undefined) {
+  public set bufferingInterval(value: number) {
     this._bufferingInterval = value;
   }
   public resetBufferingInterval() {
@@ -2890,15 +3826,15 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationOutputReferen
   }
   // Temporarily expose input value. Use with caution.
   public get bufferingIntervalInput() {
-    return this._bufferingInterval
+    return this._bufferingInterval;
   }
 
   // buffering_size - computed: false, optional: true, required: false
-  private _bufferingSize?: number | undefined; 
+  private _bufferingSize?: number; 
   public get bufferingSize() {
     return this.getNumberAttribute('buffering_size');
   }
-  public set bufferingSize(value: number | undefined) {
+  public set bufferingSize(value: number) {
     this._bufferingSize = value;
   }
   public resetBufferingSize() {
@@ -2906,15 +3842,15 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationOutputReferen
   }
   // Temporarily expose input value. Use with caution.
   public get bufferingSizeInput() {
-    return this._bufferingSize
+    return this._bufferingSize;
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -2922,15 +3858,15 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationOutputReferen
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // retry_duration - computed: false, optional: true, required: false
-  private _retryDuration?: number | undefined; 
+  private _retryDuration?: number; 
   public get retryDuration() {
     return this.getNumberAttribute('retry_duration');
   }
-  public set retryDuration(value: number | undefined) {
+  public set retryDuration(value: number) {
     this._retryDuration = value;
   }
   public resetRetryDuration() {
@@ -2938,15 +3874,15 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationOutputReferen
   }
   // Temporarily expose input value. Use with caution.
   public get retryDurationInput() {
-    return this._retryDuration
+    return this._retryDuration;
   }
 
   // role_arn - computed: false, optional: true, required: false
-  private _roleArn?: string | undefined; 
+  private _roleArn?: string; 
   public get roleArn() {
     return this.getStringAttribute('role_arn');
   }
-  public set roleArn(value: string | undefined) {
+  public set roleArn(value: string) {
     this._roleArn = value;
   }
   public resetRoleArn() {
@@ -2954,15 +3890,15 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationOutputReferen
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // s3_backup_mode - computed: false, optional: true, required: false
-  private _s3BackupMode?: string | undefined; 
+  private _s3BackupMode?: string; 
   public get s3BackupMode() {
     return this.getStringAttribute('s3_backup_mode');
   }
-  public set s3BackupMode(value: string | undefined) {
+  public set s3BackupMode(value: string) {
     this._s3BackupMode = value;
   }
   public resetS3BackupMode() {
@@ -2970,7 +3906,7 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationOutputReferen
   }
   // Temporarily expose input value. Use with caution.
   public get s3BackupModeInput() {
-    return this._s3BackupMode
+    return this._s3BackupMode;
   }
 
   // url - computed: false, optional: false, required: true
@@ -2983,58 +3919,55 @@ export class KinesisFirehoseDeliveryStreamHttpEndpointConfigurationOutputReferen
   }
   // Temporarily expose input value. Use with caution.
   public get urlInput() {
-    return this._url
+    return this._url;
   }
 
   // cloudwatch_logging_options - computed: false, optional: true, required: false
-  private _cloudwatchLoggingOptions?: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptions | undefined; 
-  private __cloudwatchLoggingOptionsOutput = new KinesisFirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsOutputReference(this as any, "cloudwatch_logging_options", true);
+  private _cloudwatchLoggingOptions = new KinesisFirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptionsOutputReference(this as any, "cloudwatch_logging_options", true);
   public get cloudwatchLoggingOptions() {
-    return this.__cloudwatchLoggingOptionsOutput;
+    return this._cloudwatchLoggingOptions;
   }
-  public putCloudwatchLoggingOptions(value: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptions | undefined) {
-    this._cloudwatchLoggingOptions = value;
+  public putCloudwatchLoggingOptions(value: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptions) {
+    this._cloudwatchLoggingOptions.internalValue = value;
   }
   public resetCloudwatchLoggingOptions() {
-    this._cloudwatchLoggingOptions = undefined;
+    this._cloudwatchLoggingOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchLoggingOptionsInput() {
-    return this._cloudwatchLoggingOptions
+    return this._cloudwatchLoggingOptions.internalValue;
   }
 
   // processing_configuration - computed: false, optional: true, required: false
-  private _processingConfiguration?: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfiguration | undefined; 
-  private __processingConfigurationOutput = new KinesisFirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationOutputReference(this as any, "processing_configuration", true);
+  private _processingConfiguration = new KinesisFirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationOutputReference(this as any, "processing_configuration", true);
   public get processingConfiguration() {
-    return this.__processingConfigurationOutput;
+    return this._processingConfiguration;
   }
-  public putProcessingConfiguration(value: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfiguration | undefined) {
-    this._processingConfiguration = value;
+  public putProcessingConfiguration(value: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfiguration) {
+    this._processingConfiguration.internalValue = value;
   }
   public resetProcessingConfiguration() {
-    this._processingConfiguration = undefined;
+    this._processingConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get processingConfigurationInput() {
-    return this._processingConfiguration
+    return this._processingConfiguration.internalValue;
   }
 
   // request_configuration - computed: false, optional: true, required: false
-  private _requestConfiguration?: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration | undefined; 
-  private __requestConfigurationOutput = new KinesisFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationOutputReference(this as any, "request_configuration", true);
+  private _requestConfiguration = new KinesisFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationOutputReference(this as any, "request_configuration", true);
   public get requestConfiguration() {
-    return this.__requestConfigurationOutput;
+    return this._requestConfiguration;
   }
-  public putRequestConfiguration(value: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration | undefined) {
-    this._requestConfiguration = value;
+  public putRequestConfiguration(value: KinesisFirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration) {
+    this._requestConfiguration.internalValue = value;
   }
   public resetRequestConfiguration() {
-    this._requestConfiguration = undefined;
+    this._requestConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get requestConfigurationInput() {
-    return this._requestConfiguration
+    return this._requestConfiguration.internalValue;
   }
 }
 export interface KinesisFirehoseDeliveryStreamKinesisSourceConfiguration {
@@ -3069,6 +4002,31 @@ export class KinesisFirehoseDeliveryStreamKinesisSourceConfigurationOutputRefere
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamKinesisSourceConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._kinesisStreamArn) {
+      hasAnyValues = true;
+      internalValueResult.kinesisStreamArn = this._kinesisStreamArn;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamKinesisSourceConfiguration | undefined) {
+    if (value === undefined) {
+      this._kinesisStreamArn = undefined;
+      this._roleArn = undefined;
+    }
+    else {
+      this._kinesisStreamArn = value.kinesisStreamArn;
+      this._roleArn = value.roleArn;
+    }
+  }
+
   // kinesis_stream_arn - computed: false, optional: false, required: true
   private _kinesisStreamArn?: string; 
   public get kinesisStreamArn() {
@@ -3079,7 +4037,7 @@ export class KinesisFirehoseDeliveryStreamKinesisSourceConfigurationOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get kinesisStreamArnInput() {
-    return this._kinesisStreamArn
+    return this._kinesisStreamArn;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -3092,7 +4050,7 @@ export class KinesisFirehoseDeliveryStreamKinesisSourceConfigurationOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 }
 export interface KinesisFirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptions {
@@ -3132,12 +4090,43 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationCloudwatchLogging
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._logGroupName) {
+      hasAnyValues = true;
+      internalValueResult.logGroupName = this._logGroupName;
+    }
+    if (this._logStreamName) {
+      hasAnyValues = true;
+      internalValueResult.logStreamName = this._logStreamName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptions | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._logGroupName = undefined;
+      this._logStreamName = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._logGroupName = value.logGroupName;
+      this._logStreamName = value.logStreamName;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -3145,15 +4134,15 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationCloudwatchLogging
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // log_group_name - computed: false, optional: true, required: false
-  private _logGroupName?: string | undefined; 
+  private _logGroupName?: string; 
   public get logGroupName() {
     return this.getStringAttribute('log_group_name');
   }
-  public set logGroupName(value: string | undefined) {
+  public set logGroupName(value: string) {
     this._logGroupName = value;
   }
   public resetLogGroupName() {
@@ -3161,15 +4150,15 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationCloudwatchLogging
   }
   // Temporarily expose input value. Use with caution.
   public get logGroupNameInput() {
-    return this._logGroupName
+    return this._logGroupName;
   }
 
   // log_stream_name - computed: false, optional: true, required: false
-  private _logStreamName?: string | undefined; 
+  private _logStreamName?: string; 
   public get logStreamName() {
     return this.getStringAttribute('log_stream_name');
   }
-  public set logStreamName(value: string | undefined) {
+  public set logStreamName(value: string) {
     this._logStreamName = value;
   }
   public resetLogStreamName() {
@@ -3177,7 +4166,7 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationCloudwatchLogging
   }
   // Temporarily expose input value. Use with caution.
   public get logStreamNameInput() {
-    return this._logStreamName
+    return this._logStreamName;
   }
 }
 export interface KinesisFirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessorsParameters {
@@ -3260,12 +4249,37 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationProcessingConfigu
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamRedshiftConfigurationProcessingConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._processors) {
+      hasAnyValues = true;
+      internalValueResult.processors = this._processors;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamRedshiftConfigurationProcessingConfiguration | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._processors = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._processors = value.processors;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -3273,16 +4287,16 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationProcessingConfigu
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // processors - computed: false, optional: true, required: false
-  private _processors?: KinesisFirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessors[] | undefined; 
+  private _processors?: KinesisFirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessors[]; 
   public get processors() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('processors') as any;
   }
-  public set processors(value: KinesisFirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessors[] | undefined) {
+  public set processors(value: KinesisFirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessors[]) {
     this._processors = value;
   }
   public resetProcessors() {
@@ -3290,7 +4304,7 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationProcessingConfigu
   }
   // Temporarily expose input value. Use with caution.
   public get processorsInput() {
-    return this._processors
+    return this._processors;
   }
 }
 export interface KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptions {
@@ -3330,12 +4344,43 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigura
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._logGroupName) {
+      hasAnyValues = true;
+      internalValueResult.logGroupName = this._logGroupName;
+    }
+    if (this._logStreamName) {
+      hasAnyValues = true;
+      internalValueResult.logStreamName = this._logStreamName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptions | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._logGroupName = undefined;
+      this._logStreamName = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._logGroupName = value.logGroupName;
+      this._logStreamName = value.logStreamName;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -3343,15 +4388,15 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigura
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // log_group_name - computed: false, optional: true, required: false
-  private _logGroupName?: string | undefined; 
+  private _logGroupName?: string; 
   public get logGroupName() {
     return this.getStringAttribute('log_group_name');
   }
-  public set logGroupName(value: string | undefined) {
+  public set logGroupName(value: string) {
     this._logGroupName = value;
   }
   public resetLogGroupName() {
@@ -3359,15 +4404,15 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigura
   }
   // Temporarily expose input value. Use with caution.
   public get logGroupNameInput() {
-    return this._logGroupName
+    return this._logGroupName;
   }
 
   // log_stream_name - computed: false, optional: true, required: false
-  private _logStreamName?: string | undefined; 
+  private _logStreamName?: string; 
   public get logStreamName() {
     return this.getStringAttribute('log_stream_name');
   }
-  public set logStreamName(value: string | undefined) {
+  public set logStreamName(value: string) {
     this._logStreamName = value;
   }
   public resetLogStreamName() {
@@ -3375,7 +4420,7 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigura
   }
   // Temporarily expose input value. Use with caution.
   public get logStreamNameInput() {
-    return this._logStreamName
+    return this._logStreamName;
   }
 }
 export interface KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfiguration {
@@ -3442,6 +4487,67 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigura
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucketArn) {
+      hasAnyValues = true;
+      internalValueResult.bucketArn = this._bucketArn;
+    }
+    if (this._bufferInterval) {
+      hasAnyValues = true;
+      internalValueResult.bufferInterval = this._bufferInterval;
+    }
+    if (this._bufferSize) {
+      hasAnyValues = true;
+      internalValueResult.bufferSize = this._bufferSize;
+    }
+    if (this._compressionFormat) {
+      hasAnyValues = true;
+      internalValueResult.compressionFormat = this._compressionFormat;
+    }
+    if (this._kmsKeyArn) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyArn = this._kmsKeyArn;
+    }
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._cloudwatchLoggingOptions) {
+      hasAnyValues = true;
+      internalValueResult.cloudwatchLoggingOptions = this._cloudwatchLoggingOptions?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfiguration | undefined) {
+    if (value === undefined) {
+      this._bucketArn = undefined;
+      this._bufferInterval = undefined;
+      this._bufferSize = undefined;
+      this._compressionFormat = undefined;
+      this._kmsKeyArn = undefined;
+      this._prefix = undefined;
+      this._roleArn = undefined;
+      this._cloudwatchLoggingOptions.internalValue = undefined;
+    }
+    else {
+      this._bucketArn = value.bucketArn;
+      this._bufferInterval = value.bufferInterval;
+      this._bufferSize = value.bufferSize;
+      this._compressionFormat = value.compressionFormat;
+      this._kmsKeyArn = value.kmsKeyArn;
+      this._prefix = value.prefix;
+      this._roleArn = value.roleArn;
+      this._cloudwatchLoggingOptions.internalValue = value.cloudwatchLoggingOptions;
+    }
+  }
+
   // bucket_arn - computed: false, optional: false, required: true
   private _bucketArn?: string; 
   public get bucketArn() {
@@ -3452,15 +4558,15 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigura
   }
   // Temporarily expose input value. Use with caution.
   public get bucketArnInput() {
-    return this._bucketArn
+    return this._bucketArn;
   }
 
   // buffer_interval - computed: false, optional: true, required: false
-  private _bufferInterval?: number | undefined; 
+  private _bufferInterval?: number; 
   public get bufferInterval() {
     return this.getNumberAttribute('buffer_interval');
   }
-  public set bufferInterval(value: number | undefined) {
+  public set bufferInterval(value: number) {
     this._bufferInterval = value;
   }
   public resetBufferInterval() {
@@ -3468,15 +4574,15 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigura
   }
   // Temporarily expose input value. Use with caution.
   public get bufferIntervalInput() {
-    return this._bufferInterval
+    return this._bufferInterval;
   }
 
   // buffer_size - computed: false, optional: true, required: false
-  private _bufferSize?: number | undefined; 
+  private _bufferSize?: number; 
   public get bufferSize() {
     return this.getNumberAttribute('buffer_size');
   }
-  public set bufferSize(value: number | undefined) {
+  public set bufferSize(value: number) {
     this._bufferSize = value;
   }
   public resetBufferSize() {
@@ -3484,15 +4590,15 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigura
   }
   // Temporarily expose input value. Use with caution.
   public get bufferSizeInput() {
-    return this._bufferSize
+    return this._bufferSize;
   }
 
   // compression_format - computed: false, optional: true, required: false
-  private _compressionFormat?: string | undefined; 
+  private _compressionFormat?: string; 
   public get compressionFormat() {
     return this.getStringAttribute('compression_format');
   }
-  public set compressionFormat(value: string | undefined) {
+  public set compressionFormat(value: string) {
     this._compressionFormat = value;
   }
   public resetCompressionFormat() {
@@ -3500,15 +4606,15 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigura
   }
   // Temporarily expose input value. Use with caution.
   public get compressionFormatInput() {
-    return this._compressionFormat
+    return this._compressionFormat;
   }
 
   // kms_key_arn - computed: false, optional: true, required: false
-  private _kmsKeyArn?: string | undefined; 
+  private _kmsKeyArn?: string; 
   public get kmsKeyArn() {
     return this.getStringAttribute('kms_key_arn');
   }
-  public set kmsKeyArn(value: string | undefined) {
+  public set kmsKeyArn(value: string) {
     this._kmsKeyArn = value;
   }
   public resetKmsKeyArn() {
@@ -3516,15 +4622,15 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigura
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyArnInput() {
-    return this._kmsKeyArn
+    return this._kmsKeyArn;
   }
 
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -3532,7 +4638,7 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigura
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -3545,24 +4651,23 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigura
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // cloudwatch_logging_options - computed: false, optional: true, required: false
-  private _cloudwatchLoggingOptions?: KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptions | undefined; 
-  private __cloudwatchLoggingOptionsOutput = new KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsOutputReference(this as any, "cloudwatch_logging_options", true);
+  private _cloudwatchLoggingOptions = new KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptionsOutputReference(this as any, "cloudwatch_logging_options", true);
   public get cloudwatchLoggingOptions() {
-    return this.__cloudwatchLoggingOptionsOutput;
+    return this._cloudwatchLoggingOptions;
   }
-  public putCloudwatchLoggingOptions(value: KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptions | undefined) {
-    this._cloudwatchLoggingOptions = value;
+  public putCloudwatchLoggingOptions(value: KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationCloudwatchLoggingOptions) {
+    this._cloudwatchLoggingOptions.internalValue = value;
   }
   public resetCloudwatchLoggingOptions() {
-    this._cloudwatchLoggingOptions = undefined;
+    this._cloudwatchLoggingOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchLoggingOptionsInput() {
-    return this._cloudwatchLoggingOptions
+    return this._cloudwatchLoggingOptions.internalValue;
   }
 }
 export interface KinesisFirehoseDeliveryStreamRedshiftConfiguration {
@@ -3653,6 +4758,91 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationOutputReference e
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamRedshiftConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._clusterJdbcurl) {
+      hasAnyValues = true;
+      internalValueResult.clusterJdbcurl = this._clusterJdbcurl;
+    }
+    if (this._copyOptions) {
+      hasAnyValues = true;
+      internalValueResult.copyOptions = this._copyOptions;
+    }
+    if (this._dataTableColumns) {
+      hasAnyValues = true;
+      internalValueResult.dataTableColumns = this._dataTableColumns;
+    }
+    if (this._dataTableName) {
+      hasAnyValues = true;
+      internalValueResult.dataTableName = this._dataTableName;
+    }
+    if (this._password) {
+      hasAnyValues = true;
+      internalValueResult.password = this._password;
+    }
+    if (this._retryDuration) {
+      hasAnyValues = true;
+      internalValueResult.retryDuration = this._retryDuration;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._s3BackupMode) {
+      hasAnyValues = true;
+      internalValueResult.s3BackupMode = this._s3BackupMode;
+    }
+    if (this._username) {
+      hasAnyValues = true;
+      internalValueResult.username = this._username;
+    }
+    if (this._cloudwatchLoggingOptions) {
+      hasAnyValues = true;
+      internalValueResult.cloudwatchLoggingOptions = this._cloudwatchLoggingOptions?.internalValue;
+    }
+    if (this._processingConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.processingConfiguration = this._processingConfiguration?.internalValue;
+    }
+    if (this._s3BackupConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.s3BackupConfiguration = this._s3BackupConfiguration?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamRedshiftConfiguration | undefined) {
+    if (value === undefined) {
+      this._clusterJdbcurl = undefined;
+      this._copyOptions = undefined;
+      this._dataTableColumns = undefined;
+      this._dataTableName = undefined;
+      this._password = undefined;
+      this._retryDuration = undefined;
+      this._roleArn = undefined;
+      this._s3BackupMode = undefined;
+      this._username = undefined;
+      this._cloudwatchLoggingOptions.internalValue = undefined;
+      this._processingConfiguration.internalValue = undefined;
+      this._s3BackupConfiguration.internalValue = undefined;
+    }
+    else {
+      this._clusterJdbcurl = value.clusterJdbcurl;
+      this._copyOptions = value.copyOptions;
+      this._dataTableColumns = value.dataTableColumns;
+      this._dataTableName = value.dataTableName;
+      this._password = value.password;
+      this._retryDuration = value.retryDuration;
+      this._roleArn = value.roleArn;
+      this._s3BackupMode = value.s3BackupMode;
+      this._username = value.username;
+      this._cloudwatchLoggingOptions.internalValue = value.cloudwatchLoggingOptions;
+      this._processingConfiguration.internalValue = value.processingConfiguration;
+      this._s3BackupConfiguration.internalValue = value.s3BackupConfiguration;
+    }
+  }
+
   // cluster_jdbcurl - computed: false, optional: false, required: true
   private _clusterJdbcurl?: string; 
   public get clusterJdbcurl() {
@@ -3663,15 +4853,15 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get clusterJdbcurlInput() {
-    return this._clusterJdbcurl
+    return this._clusterJdbcurl;
   }
 
   // copy_options - computed: false, optional: true, required: false
-  private _copyOptions?: string | undefined; 
+  private _copyOptions?: string; 
   public get copyOptions() {
     return this.getStringAttribute('copy_options');
   }
-  public set copyOptions(value: string | undefined) {
+  public set copyOptions(value: string) {
     this._copyOptions = value;
   }
   public resetCopyOptions() {
@@ -3679,15 +4869,15 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get copyOptionsInput() {
-    return this._copyOptions
+    return this._copyOptions;
   }
 
   // data_table_columns - computed: false, optional: true, required: false
-  private _dataTableColumns?: string | undefined; 
+  private _dataTableColumns?: string; 
   public get dataTableColumns() {
     return this.getStringAttribute('data_table_columns');
   }
-  public set dataTableColumns(value: string | undefined) {
+  public set dataTableColumns(value: string) {
     this._dataTableColumns = value;
   }
   public resetDataTableColumns() {
@@ -3695,7 +4885,7 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get dataTableColumnsInput() {
-    return this._dataTableColumns
+    return this._dataTableColumns;
   }
 
   // data_table_name - computed: false, optional: false, required: true
@@ -3708,7 +4898,7 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get dataTableNameInput() {
-    return this._dataTableName
+    return this._dataTableName;
   }
 
   // password - computed: false, optional: false, required: true
@@ -3721,15 +4911,15 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get passwordInput() {
-    return this._password
+    return this._password;
   }
 
   // retry_duration - computed: false, optional: true, required: false
-  private _retryDuration?: number | undefined; 
+  private _retryDuration?: number; 
   public get retryDuration() {
     return this.getNumberAttribute('retry_duration');
   }
-  public set retryDuration(value: number | undefined) {
+  public set retryDuration(value: number) {
     this._retryDuration = value;
   }
   public resetRetryDuration() {
@@ -3737,7 +4927,7 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get retryDurationInput() {
-    return this._retryDuration
+    return this._retryDuration;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -3750,15 +4940,15 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // s3_backup_mode - computed: false, optional: true, required: false
-  private _s3BackupMode?: string | undefined; 
+  private _s3BackupMode?: string; 
   public get s3BackupMode() {
     return this.getStringAttribute('s3_backup_mode');
   }
-  public set s3BackupMode(value: string | undefined) {
+  public set s3BackupMode(value: string) {
     this._s3BackupMode = value;
   }
   public resetS3BackupMode() {
@@ -3766,7 +4956,7 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get s3BackupModeInput() {
-    return this._s3BackupMode
+    return this._s3BackupMode;
   }
 
   // username - computed: false, optional: false, required: true
@@ -3779,58 +4969,55 @@ export class KinesisFirehoseDeliveryStreamRedshiftConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get usernameInput() {
-    return this._username
+    return this._username;
   }
 
   // cloudwatch_logging_options - computed: false, optional: true, required: false
-  private _cloudwatchLoggingOptions?: KinesisFirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptions | undefined; 
-  private __cloudwatchLoggingOptionsOutput = new KinesisFirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsOutputReference(this as any, "cloudwatch_logging_options", true);
+  private _cloudwatchLoggingOptions = new KinesisFirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptionsOutputReference(this as any, "cloudwatch_logging_options", true);
   public get cloudwatchLoggingOptions() {
-    return this.__cloudwatchLoggingOptionsOutput;
+    return this._cloudwatchLoggingOptions;
   }
-  public putCloudwatchLoggingOptions(value: KinesisFirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptions | undefined) {
-    this._cloudwatchLoggingOptions = value;
+  public putCloudwatchLoggingOptions(value: KinesisFirehoseDeliveryStreamRedshiftConfigurationCloudwatchLoggingOptions) {
+    this._cloudwatchLoggingOptions.internalValue = value;
   }
   public resetCloudwatchLoggingOptions() {
-    this._cloudwatchLoggingOptions = undefined;
+    this._cloudwatchLoggingOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchLoggingOptionsInput() {
-    return this._cloudwatchLoggingOptions
+    return this._cloudwatchLoggingOptions.internalValue;
   }
 
   // processing_configuration - computed: false, optional: true, required: false
-  private _processingConfiguration?: KinesisFirehoseDeliveryStreamRedshiftConfigurationProcessingConfiguration | undefined; 
-  private __processingConfigurationOutput = new KinesisFirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationOutputReference(this as any, "processing_configuration", true);
+  private _processingConfiguration = new KinesisFirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationOutputReference(this as any, "processing_configuration", true);
   public get processingConfiguration() {
-    return this.__processingConfigurationOutput;
+    return this._processingConfiguration;
   }
-  public putProcessingConfiguration(value: KinesisFirehoseDeliveryStreamRedshiftConfigurationProcessingConfiguration | undefined) {
-    this._processingConfiguration = value;
+  public putProcessingConfiguration(value: KinesisFirehoseDeliveryStreamRedshiftConfigurationProcessingConfiguration) {
+    this._processingConfiguration.internalValue = value;
   }
   public resetProcessingConfiguration() {
-    this._processingConfiguration = undefined;
+    this._processingConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get processingConfigurationInput() {
-    return this._processingConfiguration
+    return this._processingConfiguration.internalValue;
   }
 
   // s3_backup_configuration - computed: false, optional: true, required: false
-  private _s3BackupConfiguration?: KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfiguration | undefined; 
-  private __s3BackupConfigurationOutput = new KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationOutputReference(this as any, "s3_backup_configuration", true);
+  private _s3BackupConfiguration = new KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfigurationOutputReference(this as any, "s3_backup_configuration", true);
   public get s3BackupConfiguration() {
-    return this.__s3BackupConfigurationOutput;
+    return this._s3BackupConfiguration;
   }
-  public putS3BackupConfiguration(value: KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfiguration | undefined) {
-    this._s3BackupConfiguration = value;
+  public putS3BackupConfiguration(value: KinesisFirehoseDeliveryStreamRedshiftConfigurationS3BackupConfiguration) {
+    this._s3BackupConfiguration.internalValue = value;
   }
   public resetS3BackupConfiguration() {
-    this._s3BackupConfiguration = undefined;
+    this._s3BackupConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get s3BackupConfigurationInput() {
-    return this._s3BackupConfiguration
+    return this._s3BackupConfiguration.internalValue;
   }
 }
 export interface KinesisFirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptions {
@@ -3870,12 +5057,43 @@ export class KinesisFirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOption
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._logGroupName) {
+      hasAnyValues = true;
+      internalValueResult.logGroupName = this._logGroupName;
+    }
+    if (this._logStreamName) {
+      hasAnyValues = true;
+      internalValueResult.logStreamName = this._logStreamName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptions | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._logGroupName = undefined;
+      this._logStreamName = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._logGroupName = value.logGroupName;
+      this._logStreamName = value.logStreamName;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -3883,15 +5101,15 @@ export class KinesisFirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOption
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // log_group_name - computed: false, optional: true, required: false
-  private _logGroupName?: string | undefined; 
+  private _logGroupName?: string; 
   public get logGroupName() {
     return this.getStringAttribute('log_group_name');
   }
-  public set logGroupName(value: string | undefined) {
+  public set logGroupName(value: string) {
     this._logGroupName = value;
   }
   public resetLogGroupName() {
@@ -3899,15 +5117,15 @@ export class KinesisFirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOption
   }
   // Temporarily expose input value. Use with caution.
   public get logGroupNameInput() {
-    return this._logGroupName
+    return this._logGroupName;
   }
 
   // log_stream_name - computed: false, optional: true, required: false
-  private _logStreamName?: string | undefined; 
+  private _logStreamName?: string; 
   public get logStreamName() {
     return this.getStringAttribute('log_stream_name');
   }
-  public set logStreamName(value: string | undefined) {
+  public set logStreamName(value: string) {
     this._logStreamName = value;
   }
   public resetLogStreamName() {
@@ -3915,7 +5133,7 @@ export class KinesisFirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOption
   }
   // Temporarily expose input value. Use with caution.
   public get logStreamNameInput() {
-    return this._logStreamName
+    return this._logStreamName;
   }
 }
 export interface KinesisFirehoseDeliveryStreamS3Configuration {
@@ -3982,6 +5200,67 @@ export class KinesisFirehoseDeliveryStreamS3ConfigurationOutputReference extends
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamS3Configuration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucketArn) {
+      hasAnyValues = true;
+      internalValueResult.bucketArn = this._bucketArn;
+    }
+    if (this._bufferInterval) {
+      hasAnyValues = true;
+      internalValueResult.bufferInterval = this._bufferInterval;
+    }
+    if (this._bufferSize) {
+      hasAnyValues = true;
+      internalValueResult.bufferSize = this._bufferSize;
+    }
+    if (this._compressionFormat) {
+      hasAnyValues = true;
+      internalValueResult.compressionFormat = this._compressionFormat;
+    }
+    if (this._kmsKeyArn) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyArn = this._kmsKeyArn;
+    }
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._cloudwatchLoggingOptions) {
+      hasAnyValues = true;
+      internalValueResult.cloudwatchLoggingOptions = this._cloudwatchLoggingOptions?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamS3Configuration | undefined) {
+    if (value === undefined) {
+      this._bucketArn = undefined;
+      this._bufferInterval = undefined;
+      this._bufferSize = undefined;
+      this._compressionFormat = undefined;
+      this._kmsKeyArn = undefined;
+      this._prefix = undefined;
+      this._roleArn = undefined;
+      this._cloudwatchLoggingOptions.internalValue = undefined;
+    }
+    else {
+      this._bucketArn = value.bucketArn;
+      this._bufferInterval = value.bufferInterval;
+      this._bufferSize = value.bufferSize;
+      this._compressionFormat = value.compressionFormat;
+      this._kmsKeyArn = value.kmsKeyArn;
+      this._prefix = value.prefix;
+      this._roleArn = value.roleArn;
+      this._cloudwatchLoggingOptions.internalValue = value.cloudwatchLoggingOptions;
+    }
+  }
+
   // bucket_arn - computed: false, optional: false, required: true
   private _bucketArn?: string; 
   public get bucketArn() {
@@ -3992,15 +5271,15 @@ export class KinesisFirehoseDeliveryStreamS3ConfigurationOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get bucketArnInput() {
-    return this._bucketArn
+    return this._bucketArn;
   }
 
   // buffer_interval - computed: false, optional: true, required: false
-  private _bufferInterval?: number | undefined; 
+  private _bufferInterval?: number; 
   public get bufferInterval() {
     return this.getNumberAttribute('buffer_interval');
   }
-  public set bufferInterval(value: number | undefined) {
+  public set bufferInterval(value: number) {
     this._bufferInterval = value;
   }
   public resetBufferInterval() {
@@ -4008,15 +5287,15 @@ export class KinesisFirehoseDeliveryStreamS3ConfigurationOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get bufferIntervalInput() {
-    return this._bufferInterval
+    return this._bufferInterval;
   }
 
   // buffer_size - computed: false, optional: true, required: false
-  private _bufferSize?: number | undefined; 
+  private _bufferSize?: number; 
   public get bufferSize() {
     return this.getNumberAttribute('buffer_size');
   }
-  public set bufferSize(value: number | undefined) {
+  public set bufferSize(value: number) {
     this._bufferSize = value;
   }
   public resetBufferSize() {
@@ -4024,15 +5303,15 @@ export class KinesisFirehoseDeliveryStreamS3ConfigurationOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get bufferSizeInput() {
-    return this._bufferSize
+    return this._bufferSize;
   }
 
   // compression_format - computed: false, optional: true, required: false
-  private _compressionFormat?: string | undefined; 
+  private _compressionFormat?: string; 
   public get compressionFormat() {
     return this.getStringAttribute('compression_format');
   }
-  public set compressionFormat(value: string | undefined) {
+  public set compressionFormat(value: string) {
     this._compressionFormat = value;
   }
   public resetCompressionFormat() {
@@ -4040,15 +5319,15 @@ export class KinesisFirehoseDeliveryStreamS3ConfigurationOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get compressionFormatInput() {
-    return this._compressionFormat
+    return this._compressionFormat;
   }
 
   // kms_key_arn - computed: false, optional: true, required: false
-  private _kmsKeyArn?: string | undefined; 
+  private _kmsKeyArn?: string; 
   public get kmsKeyArn() {
     return this.getStringAttribute('kms_key_arn');
   }
-  public set kmsKeyArn(value: string | undefined) {
+  public set kmsKeyArn(value: string) {
     this._kmsKeyArn = value;
   }
   public resetKmsKeyArn() {
@@ -4056,15 +5335,15 @@ export class KinesisFirehoseDeliveryStreamS3ConfigurationOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyArnInput() {
-    return this._kmsKeyArn
+    return this._kmsKeyArn;
   }
 
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -4072,7 +5351,7 @@ export class KinesisFirehoseDeliveryStreamS3ConfigurationOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -4085,24 +5364,23 @@ export class KinesisFirehoseDeliveryStreamS3ConfigurationOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // cloudwatch_logging_options - computed: false, optional: true, required: false
-  private _cloudwatchLoggingOptions?: KinesisFirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptions | undefined; 
-  private __cloudwatchLoggingOptionsOutput = new KinesisFirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsOutputReference(this as any, "cloudwatch_logging_options", true);
+  private _cloudwatchLoggingOptions = new KinesisFirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptionsOutputReference(this as any, "cloudwatch_logging_options", true);
   public get cloudwatchLoggingOptions() {
-    return this.__cloudwatchLoggingOptionsOutput;
+    return this._cloudwatchLoggingOptions;
   }
-  public putCloudwatchLoggingOptions(value: KinesisFirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptions | undefined) {
-    this._cloudwatchLoggingOptions = value;
+  public putCloudwatchLoggingOptions(value: KinesisFirehoseDeliveryStreamS3ConfigurationCloudwatchLoggingOptions) {
+    this._cloudwatchLoggingOptions.internalValue = value;
   }
   public resetCloudwatchLoggingOptions() {
-    this._cloudwatchLoggingOptions = undefined;
+    this._cloudwatchLoggingOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchLoggingOptionsInput() {
-    return this._cloudwatchLoggingOptions
+    return this._cloudwatchLoggingOptions.internalValue;
   }
 }
 export interface KinesisFirehoseDeliveryStreamServerSideEncryption {
@@ -4142,12 +5420,43 @@ export class KinesisFirehoseDeliveryStreamServerSideEncryptionOutputReference ex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamServerSideEncryption | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._keyArn) {
+      hasAnyValues = true;
+      internalValueResult.keyArn = this._keyArn;
+    }
+    if (this._keyType) {
+      hasAnyValues = true;
+      internalValueResult.keyType = this._keyType;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamServerSideEncryption | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._keyArn = undefined;
+      this._keyType = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._keyArn = value.keyArn;
+      this._keyType = value.keyType;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -4155,15 +5464,15 @@ export class KinesisFirehoseDeliveryStreamServerSideEncryptionOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // key_arn - computed: false, optional: true, required: false
-  private _keyArn?: string | undefined; 
+  private _keyArn?: string; 
   public get keyArn() {
     return this.getStringAttribute('key_arn');
   }
-  public set keyArn(value: string | undefined) {
+  public set keyArn(value: string) {
     this._keyArn = value;
   }
   public resetKeyArn() {
@@ -4171,15 +5480,15 @@ export class KinesisFirehoseDeliveryStreamServerSideEncryptionOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get keyArnInput() {
-    return this._keyArn
+    return this._keyArn;
   }
 
   // key_type - computed: false, optional: true, required: false
-  private _keyType?: string | undefined; 
+  private _keyType?: string; 
   public get keyType() {
     return this.getStringAttribute('key_type');
   }
-  public set keyType(value: string | undefined) {
+  public set keyType(value: string) {
     this._keyType = value;
   }
   public resetKeyType() {
@@ -4187,7 +5496,7 @@ export class KinesisFirehoseDeliveryStreamServerSideEncryptionOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get keyTypeInput() {
-    return this._keyType
+    return this._keyType;
   }
 }
 export interface KinesisFirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptions {
@@ -4227,12 +5536,43 @@ export class KinesisFirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._logGroupName) {
+      hasAnyValues = true;
+      internalValueResult.logGroupName = this._logGroupName;
+    }
+    if (this._logStreamName) {
+      hasAnyValues = true;
+      internalValueResult.logStreamName = this._logStreamName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptions | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._logGroupName = undefined;
+      this._logStreamName = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._logGroupName = value.logGroupName;
+      this._logStreamName = value.logStreamName;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -4240,15 +5580,15 @@ export class KinesisFirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOp
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // log_group_name - computed: false, optional: true, required: false
-  private _logGroupName?: string | undefined; 
+  private _logGroupName?: string; 
   public get logGroupName() {
     return this.getStringAttribute('log_group_name');
   }
-  public set logGroupName(value: string | undefined) {
+  public set logGroupName(value: string) {
     this._logGroupName = value;
   }
   public resetLogGroupName() {
@@ -4256,15 +5596,15 @@ export class KinesisFirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOp
   }
   // Temporarily expose input value. Use with caution.
   public get logGroupNameInput() {
-    return this._logGroupName
+    return this._logGroupName;
   }
 
   // log_stream_name - computed: false, optional: true, required: false
-  private _logStreamName?: string | undefined; 
+  private _logStreamName?: string; 
   public get logStreamName() {
     return this.getStringAttribute('log_stream_name');
   }
-  public set logStreamName(value: string | undefined) {
+  public set logStreamName(value: string) {
     this._logStreamName = value;
   }
   public resetLogStreamName() {
@@ -4272,7 +5612,7 @@ export class KinesisFirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOp
   }
   // Temporarily expose input value. Use with caution.
   public get logStreamNameInput() {
-    return this._logStreamName
+    return this._logStreamName;
   }
 }
 export interface KinesisFirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessorsParameters {
@@ -4355,12 +5695,37 @@ export class KinesisFirehoseDeliveryStreamSplunkConfigurationProcessingConfigura
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._processors) {
+      hasAnyValues = true;
+      internalValueResult.processors = this._processors;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._processors = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._processors = value.processors;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -4368,16 +5733,16 @@ export class KinesisFirehoseDeliveryStreamSplunkConfigurationProcessingConfigura
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // processors - computed: false, optional: true, required: false
-  private _processors?: KinesisFirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessors[] | undefined; 
+  private _processors?: KinesisFirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessors[]; 
   public get processors() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('processors') as any;
   }
-  public set processors(value: KinesisFirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessors[] | undefined) {
+  public set processors(value: KinesisFirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationProcessors[]) {
     this._processors = value;
   }
   public resetProcessors() {
@@ -4385,7 +5750,7 @@ export class KinesisFirehoseDeliveryStreamSplunkConfigurationProcessingConfigura
   }
   // Temporarily expose input value. Use with caution.
   public get processorsInput() {
-    return this._processors
+    return this._processors;
   }
 }
 export interface KinesisFirehoseDeliveryStreamSplunkConfiguration {
@@ -4454,12 +5819,73 @@ export class KinesisFirehoseDeliveryStreamSplunkConfigurationOutputReference ext
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): KinesisFirehoseDeliveryStreamSplunkConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._hecAcknowledgmentTimeout) {
+      hasAnyValues = true;
+      internalValueResult.hecAcknowledgmentTimeout = this._hecAcknowledgmentTimeout;
+    }
+    if (this._hecEndpoint) {
+      hasAnyValues = true;
+      internalValueResult.hecEndpoint = this._hecEndpoint;
+    }
+    if (this._hecEndpointType) {
+      hasAnyValues = true;
+      internalValueResult.hecEndpointType = this._hecEndpointType;
+    }
+    if (this._hecToken) {
+      hasAnyValues = true;
+      internalValueResult.hecToken = this._hecToken;
+    }
+    if (this._retryDuration) {
+      hasAnyValues = true;
+      internalValueResult.retryDuration = this._retryDuration;
+    }
+    if (this._s3BackupMode) {
+      hasAnyValues = true;
+      internalValueResult.s3BackupMode = this._s3BackupMode;
+    }
+    if (this._cloudwatchLoggingOptions) {
+      hasAnyValues = true;
+      internalValueResult.cloudwatchLoggingOptions = this._cloudwatchLoggingOptions?.internalValue;
+    }
+    if (this._processingConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.processingConfiguration = this._processingConfiguration?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: KinesisFirehoseDeliveryStreamSplunkConfiguration | undefined) {
+    if (value === undefined) {
+      this._hecAcknowledgmentTimeout = undefined;
+      this._hecEndpoint = undefined;
+      this._hecEndpointType = undefined;
+      this._hecToken = undefined;
+      this._retryDuration = undefined;
+      this._s3BackupMode = undefined;
+      this._cloudwatchLoggingOptions.internalValue = undefined;
+      this._processingConfiguration.internalValue = undefined;
+    }
+    else {
+      this._hecAcknowledgmentTimeout = value.hecAcknowledgmentTimeout;
+      this._hecEndpoint = value.hecEndpoint;
+      this._hecEndpointType = value.hecEndpointType;
+      this._hecToken = value.hecToken;
+      this._retryDuration = value.retryDuration;
+      this._s3BackupMode = value.s3BackupMode;
+      this._cloudwatchLoggingOptions.internalValue = value.cloudwatchLoggingOptions;
+      this._processingConfiguration.internalValue = value.processingConfiguration;
+    }
+  }
+
   // hec_acknowledgment_timeout - computed: false, optional: true, required: false
-  private _hecAcknowledgmentTimeout?: number | undefined; 
+  private _hecAcknowledgmentTimeout?: number; 
   public get hecAcknowledgmentTimeout() {
     return this.getNumberAttribute('hec_acknowledgment_timeout');
   }
-  public set hecAcknowledgmentTimeout(value: number | undefined) {
+  public set hecAcknowledgmentTimeout(value: number) {
     this._hecAcknowledgmentTimeout = value;
   }
   public resetHecAcknowledgmentTimeout() {
@@ -4467,7 +5893,7 @@ export class KinesisFirehoseDeliveryStreamSplunkConfigurationOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get hecAcknowledgmentTimeoutInput() {
-    return this._hecAcknowledgmentTimeout
+    return this._hecAcknowledgmentTimeout;
   }
 
   // hec_endpoint - computed: false, optional: false, required: true
@@ -4480,15 +5906,15 @@ export class KinesisFirehoseDeliveryStreamSplunkConfigurationOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get hecEndpointInput() {
-    return this._hecEndpoint
+    return this._hecEndpoint;
   }
 
   // hec_endpoint_type - computed: false, optional: true, required: false
-  private _hecEndpointType?: string | undefined; 
+  private _hecEndpointType?: string; 
   public get hecEndpointType() {
     return this.getStringAttribute('hec_endpoint_type');
   }
-  public set hecEndpointType(value: string | undefined) {
+  public set hecEndpointType(value: string) {
     this._hecEndpointType = value;
   }
   public resetHecEndpointType() {
@@ -4496,7 +5922,7 @@ export class KinesisFirehoseDeliveryStreamSplunkConfigurationOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get hecEndpointTypeInput() {
-    return this._hecEndpointType
+    return this._hecEndpointType;
   }
 
   // hec_token - computed: false, optional: false, required: true
@@ -4509,15 +5935,15 @@ export class KinesisFirehoseDeliveryStreamSplunkConfigurationOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get hecTokenInput() {
-    return this._hecToken
+    return this._hecToken;
   }
 
   // retry_duration - computed: false, optional: true, required: false
-  private _retryDuration?: number | undefined; 
+  private _retryDuration?: number; 
   public get retryDuration() {
     return this.getNumberAttribute('retry_duration');
   }
-  public set retryDuration(value: number | undefined) {
+  public set retryDuration(value: number) {
     this._retryDuration = value;
   }
   public resetRetryDuration() {
@@ -4525,15 +5951,15 @@ export class KinesisFirehoseDeliveryStreamSplunkConfigurationOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get retryDurationInput() {
-    return this._retryDuration
+    return this._retryDuration;
   }
 
   // s3_backup_mode - computed: false, optional: true, required: false
-  private _s3BackupMode?: string | undefined; 
+  private _s3BackupMode?: string; 
   public get s3BackupMode() {
     return this.getStringAttribute('s3_backup_mode');
   }
-  public set s3BackupMode(value: string | undefined) {
+  public set s3BackupMode(value: string) {
     this._s3BackupMode = value;
   }
   public resetS3BackupMode() {
@@ -4541,41 +5967,39 @@ export class KinesisFirehoseDeliveryStreamSplunkConfigurationOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get s3BackupModeInput() {
-    return this._s3BackupMode
+    return this._s3BackupMode;
   }
 
   // cloudwatch_logging_options - computed: false, optional: true, required: false
-  private _cloudwatchLoggingOptions?: KinesisFirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptions | undefined; 
-  private __cloudwatchLoggingOptionsOutput = new KinesisFirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsOutputReference(this as any, "cloudwatch_logging_options", true);
+  private _cloudwatchLoggingOptions = new KinesisFirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptionsOutputReference(this as any, "cloudwatch_logging_options", true);
   public get cloudwatchLoggingOptions() {
-    return this.__cloudwatchLoggingOptionsOutput;
+    return this._cloudwatchLoggingOptions;
   }
-  public putCloudwatchLoggingOptions(value: KinesisFirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptions | undefined) {
-    this._cloudwatchLoggingOptions = value;
+  public putCloudwatchLoggingOptions(value: KinesisFirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptions) {
+    this._cloudwatchLoggingOptions.internalValue = value;
   }
   public resetCloudwatchLoggingOptions() {
-    this._cloudwatchLoggingOptions = undefined;
+    this._cloudwatchLoggingOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchLoggingOptionsInput() {
-    return this._cloudwatchLoggingOptions
+    return this._cloudwatchLoggingOptions.internalValue;
   }
 
   // processing_configuration - computed: false, optional: true, required: false
-  private _processingConfiguration?: KinesisFirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration | undefined; 
-  private __processingConfigurationOutput = new KinesisFirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationOutputReference(this as any, "processing_configuration", true);
+  private _processingConfiguration = new KinesisFirehoseDeliveryStreamSplunkConfigurationProcessingConfigurationOutputReference(this as any, "processing_configuration", true);
   public get processingConfiguration() {
-    return this.__processingConfigurationOutput;
+    return this._processingConfiguration;
   }
-  public putProcessingConfiguration(value: KinesisFirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration | undefined) {
-    this._processingConfiguration = value;
+  public putProcessingConfiguration(value: KinesisFirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration) {
+    this._processingConfiguration.internalValue = value;
   }
   public resetProcessingConfiguration() {
-    this._processingConfiguration = undefined;
+    this._processingConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get processingConfigurationInput() {
-    return this._processingConfiguration
+    return this._processingConfiguration.internalValue;
   }
 }
 
@@ -4617,14 +6041,14 @@ export class KinesisFirehoseDeliveryStream extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._versionId = config.versionId;
-    this._elasticsearchConfiguration = config.elasticsearchConfiguration;
-    this._extendedS3Configuration = config.extendedS3Configuration;
-    this._httpEndpointConfiguration = config.httpEndpointConfiguration;
-    this._kinesisSourceConfiguration = config.kinesisSourceConfiguration;
-    this._redshiftConfiguration = config.redshiftConfiguration;
-    this._s3Configuration = config.s3Configuration;
-    this._serverSideEncryption = config.serverSideEncryption;
-    this._splunkConfiguration = config.splunkConfiguration;
+    this._elasticsearchConfiguration.internalValue = config.elasticsearchConfiguration;
+    this._extendedS3Configuration.internalValue = config.extendedS3Configuration;
+    this._httpEndpointConfiguration.internalValue = config.httpEndpointConfiguration;
+    this._kinesisSourceConfiguration.internalValue = config.kinesisSourceConfiguration;
+    this._redshiftConfiguration.internalValue = config.redshiftConfiguration;
+    this._s3Configuration.internalValue = config.s3Configuration;
+    this._serverSideEncryption.internalValue = config.serverSideEncryption;
+    this._splunkConfiguration.internalValue = config.splunkConfiguration;
   }
 
   // ==========
@@ -4646,15 +6070,15 @@ export class KinesisFirehoseDeliveryStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get destinationInput() {
-    return this._destination
+    return this._destination;
   }
 
   // destination_id - computed: true, optional: true, required: false
-  private _destinationId?: string | undefined; 
+  private _destinationId?: string; 
   public get destinationId() {
     return this.getStringAttribute('destination_id');
   }
-  public set destinationId(value: string | undefined) {
+  public set destinationId(value: string) {
     this._destinationId = value;
   }
   public resetDestinationId() {
@@ -4662,7 +6086,7 @@ export class KinesisFirehoseDeliveryStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get destinationIdInput() {
-    return this._destinationId
+    return this._destinationId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -4680,16 +6104,16 @@ export class KinesisFirehoseDeliveryStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -4697,16 +6121,16 @@ export class KinesisFirehoseDeliveryStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -4714,15 +6138,15 @@ export class KinesisFirehoseDeliveryStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // version_id - computed: true, optional: true, required: false
-  private _versionId?: string | undefined; 
+  private _versionId?: string; 
   public get versionId() {
     return this.getStringAttribute('version_id');
   }
-  public set versionId(value: string | undefined) {
+  public set versionId(value: string) {
     this._versionId = value;
   }
   public resetVersionId() {
@@ -4730,143 +6154,135 @@ export class KinesisFirehoseDeliveryStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get versionIdInput() {
-    return this._versionId
+    return this._versionId;
   }
 
   // elasticsearch_configuration - computed: false, optional: true, required: false
-  private _elasticsearchConfiguration?: KinesisFirehoseDeliveryStreamElasticsearchConfiguration | undefined; 
-  private __elasticsearchConfigurationOutput = new KinesisFirehoseDeliveryStreamElasticsearchConfigurationOutputReference(this as any, "elasticsearch_configuration", true);
+  private _elasticsearchConfiguration = new KinesisFirehoseDeliveryStreamElasticsearchConfigurationOutputReference(this as any, "elasticsearch_configuration", true);
   public get elasticsearchConfiguration() {
-    return this.__elasticsearchConfigurationOutput;
+    return this._elasticsearchConfiguration;
   }
-  public putElasticsearchConfiguration(value: KinesisFirehoseDeliveryStreamElasticsearchConfiguration | undefined) {
-    this._elasticsearchConfiguration = value;
+  public putElasticsearchConfiguration(value: KinesisFirehoseDeliveryStreamElasticsearchConfiguration) {
+    this._elasticsearchConfiguration.internalValue = value;
   }
   public resetElasticsearchConfiguration() {
-    this._elasticsearchConfiguration = undefined;
+    this._elasticsearchConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get elasticsearchConfigurationInput() {
-    return this._elasticsearchConfiguration
+    return this._elasticsearchConfiguration.internalValue;
   }
 
   // extended_s3_configuration - computed: false, optional: true, required: false
-  private _extendedS3Configuration?: KinesisFirehoseDeliveryStreamExtendedS3Configuration | undefined; 
-  private __extendedS3ConfigurationOutput = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationOutputReference(this as any, "extended_s3_configuration", true);
+  private _extendedS3Configuration = new KinesisFirehoseDeliveryStreamExtendedS3ConfigurationOutputReference(this as any, "extended_s3_configuration", true);
   public get extendedS3Configuration() {
-    return this.__extendedS3ConfigurationOutput;
+    return this._extendedS3Configuration;
   }
-  public putExtendedS3Configuration(value: KinesisFirehoseDeliveryStreamExtendedS3Configuration | undefined) {
-    this._extendedS3Configuration = value;
+  public putExtendedS3Configuration(value: KinesisFirehoseDeliveryStreamExtendedS3Configuration) {
+    this._extendedS3Configuration.internalValue = value;
   }
   public resetExtendedS3Configuration() {
-    this._extendedS3Configuration = undefined;
+    this._extendedS3Configuration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get extendedS3ConfigurationInput() {
-    return this._extendedS3Configuration
+    return this._extendedS3Configuration.internalValue;
   }
 
   // http_endpoint_configuration - computed: false, optional: true, required: false
-  private _httpEndpointConfiguration?: KinesisFirehoseDeliveryStreamHttpEndpointConfiguration | undefined; 
-  private __httpEndpointConfigurationOutput = new KinesisFirehoseDeliveryStreamHttpEndpointConfigurationOutputReference(this as any, "http_endpoint_configuration", true);
+  private _httpEndpointConfiguration = new KinesisFirehoseDeliveryStreamHttpEndpointConfigurationOutputReference(this as any, "http_endpoint_configuration", true);
   public get httpEndpointConfiguration() {
-    return this.__httpEndpointConfigurationOutput;
+    return this._httpEndpointConfiguration;
   }
-  public putHttpEndpointConfiguration(value: KinesisFirehoseDeliveryStreamHttpEndpointConfiguration | undefined) {
-    this._httpEndpointConfiguration = value;
+  public putHttpEndpointConfiguration(value: KinesisFirehoseDeliveryStreamHttpEndpointConfiguration) {
+    this._httpEndpointConfiguration.internalValue = value;
   }
   public resetHttpEndpointConfiguration() {
-    this._httpEndpointConfiguration = undefined;
+    this._httpEndpointConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get httpEndpointConfigurationInput() {
-    return this._httpEndpointConfiguration
+    return this._httpEndpointConfiguration.internalValue;
   }
 
   // kinesis_source_configuration - computed: false, optional: true, required: false
-  private _kinesisSourceConfiguration?: KinesisFirehoseDeliveryStreamKinesisSourceConfiguration | undefined; 
-  private __kinesisSourceConfigurationOutput = new KinesisFirehoseDeliveryStreamKinesisSourceConfigurationOutputReference(this as any, "kinesis_source_configuration", true);
+  private _kinesisSourceConfiguration = new KinesisFirehoseDeliveryStreamKinesisSourceConfigurationOutputReference(this as any, "kinesis_source_configuration", true);
   public get kinesisSourceConfiguration() {
-    return this.__kinesisSourceConfigurationOutput;
+    return this._kinesisSourceConfiguration;
   }
-  public putKinesisSourceConfiguration(value: KinesisFirehoseDeliveryStreamKinesisSourceConfiguration | undefined) {
-    this._kinesisSourceConfiguration = value;
+  public putKinesisSourceConfiguration(value: KinesisFirehoseDeliveryStreamKinesisSourceConfiguration) {
+    this._kinesisSourceConfiguration.internalValue = value;
   }
   public resetKinesisSourceConfiguration() {
-    this._kinesisSourceConfiguration = undefined;
+    this._kinesisSourceConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get kinesisSourceConfigurationInput() {
-    return this._kinesisSourceConfiguration
+    return this._kinesisSourceConfiguration.internalValue;
   }
 
   // redshift_configuration - computed: false, optional: true, required: false
-  private _redshiftConfiguration?: KinesisFirehoseDeliveryStreamRedshiftConfiguration | undefined; 
-  private __redshiftConfigurationOutput = new KinesisFirehoseDeliveryStreamRedshiftConfigurationOutputReference(this as any, "redshift_configuration", true);
+  private _redshiftConfiguration = new KinesisFirehoseDeliveryStreamRedshiftConfigurationOutputReference(this as any, "redshift_configuration", true);
   public get redshiftConfiguration() {
-    return this.__redshiftConfigurationOutput;
+    return this._redshiftConfiguration;
   }
-  public putRedshiftConfiguration(value: KinesisFirehoseDeliveryStreamRedshiftConfiguration | undefined) {
-    this._redshiftConfiguration = value;
+  public putRedshiftConfiguration(value: KinesisFirehoseDeliveryStreamRedshiftConfiguration) {
+    this._redshiftConfiguration.internalValue = value;
   }
   public resetRedshiftConfiguration() {
-    this._redshiftConfiguration = undefined;
+    this._redshiftConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get redshiftConfigurationInput() {
-    return this._redshiftConfiguration
+    return this._redshiftConfiguration.internalValue;
   }
 
   // s3_configuration - computed: false, optional: true, required: false
-  private _s3Configuration?: KinesisFirehoseDeliveryStreamS3Configuration | undefined; 
-  private __s3ConfigurationOutput = new KinesisFirehoseDeliveryStreamS3ConfigurationOutputReference(this as any, "s3_configuration", true);
+  private _s3Configuration = new KinesisFirehoseDeliveryStreamS3ConfigurationOutputReference(this as any, "s3_configuration", true);
   public get s3Configuration() {
-    return this.__s3ConfigurationOutput;
+    return this._s3Configuration;
   }
-  public putS3Configuration(value: KinesisFirehoseDeliveryStreamS3Configuration | undefined) {
-    this._s3Configuration = value;
+  public putS3Configuration(value: KinesisFirehoseDeliveryStreamS3Configuration) {
+    this._s3Configuration.internalValue = value;
   }
   public resetS3Configuration() {
-    this._s3Configuration = undefined;
+    this._s3Configuration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get s3ConfigurationInput() {
-    return this._s3Configuration
+    return this._s3Configuration.internalValue;
   }
 
   // server_side_encryption - computed: false, optional: true, required: false
-  private _serverSideEncryption?: KinesisFirehoseDeliveryStreamServerSideEncryption | undefined; 
-  private __serverSideEncryptionOutput = new KinesisFirehoseDeliveryStreamServerSideEncryptionOutputReference(this as any, "server_side_encryption", true);
+  private _serverSideEncryption = new KinesisFirehoseDeliveryStreamServerSideEncryptionOutputReference(this as any, "server_side_encryption", true);
   public get serverSideEncryption() {
-    return this.__serverSideEncryptionOutput;
+    return this._serverSideEncryption;
   }
-  public putServerSideEncryption(value: KinesisFirehoseDeliveryStreamServerSideEncryption | undefined) {
-    this._serverSideEncryption = value;
+  public putServerSideEncryption(value: KinesisFirehoseDeliveryStreamServerSideEncryption) {
+    this._serverSideEncryption.internalValue = value;
   }
   public resetServerSideEncryption() {
-    this._serverSideEncryption = undefined;
+    this._serverSideEncryption.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get serverSideEncryptionInput() {
-    return this._serverSideEncryption
+    return this._serverSideEncryption.internalValue;
   }
 
   // splunk_configuration - computed: false, optional: true, required: false
-  private _splunkConfiguration?: KinesisFirehoseDeliveryStreamSplunkConfiguration | undefined; 
-  private __splunkConfigurationOutput = new KinesisFirehoseDeliveryStreamSplunkConfigurationOutputReference(this as any, "splunk_configuration", true);
+  private _splunkConfiguration = new KinesisFirehoseDeliveryStreamSplunkConfigurationOutputReference(this as any, "splunk_configuration", true);
   public get splunkConfiguration() {
-    return this.__splunkConfigurationOutput;
+    return this._splunkConfiguration;
   }
-  public putSplunkConfiguration(value: KinesisFirehoseDeliveryStreamSplunkConfiguration | undefined) {
-    this._splunkConfiguration = value;
+  public putSplunkConfiguration(value: KinesisFirehoseDeliveryStreamSplunkConfiguration) {
+    this._splunkConfiguration.internalValue = value;
   }
   public resetSplunkConfiguration() {
-    this._splunkConfiguration = undefined;
+    this._splunkConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get splunkConfigurationInput() {
-    return this._splunkConfiguration
+    return this._splunkConfiguration.internalValue;
   }
 
   // =========
@@ -4881,14 +6297,14 @@ export class KinesisFirehoseDeliveryStream extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       version_id: cdktf.stringToTerraform(this._versionId),
-      elasticsearch_configuration: kinesisFirehoseDeliveryStreamElasticsearchConfigurationToTerraform(this._elasticsearchConfiguration),
-      extended_s3_configuration: kinesisFirehoseDeliveryStreamExtendedS3ConfigurationToTerraform(this._extendedS3Configuration),
-      http_endpoint_configuration: kinesisFirehoseDeliveryStreamHttpEndpointConfigurationToTerraform(this._httpEndpointConfiguration),
-      kinesis_source_configuration: kinesisFirehoseDeliveryStreamKinesisSourceConfigurationToTerraform(this._kinesisSourceConfiguration),
-      redshift_configuration: kinesisFirehoseDeliveryStreamRedshiftConfigurationToTerraform(this._redshiftConfiguration),
-      s3_configuration: kinesisFirehoseDeliveryStreamS3ConfigurationToTerraform(this._s3Configuration),
-      server_side_encryption: kinesisFirehoseDeliveryStreamServerSideEncryptionToTerraform(this._serverSideEncryption),
-      splunk_configuration: kinesisFirehoseDeliveryStreamSplunkConfigurationToTerraform(this._splunkConfiguration),
+      elasticsearch_configuration: kinesisFirehoseDeliveryStreamElasticsearchConfigurationToTerraform(this._elasticsearchConfiguration.internalValue),
+      extended_s3_configuration: kinesisFirehoseDeliveryStreamExtendedS3ConfigurationToTerraform(this._extendedS3Configuration.internalValue),
+      http_endpoint_configuration: kinesisFirehoseDeliveryStreamHttpEndpointConfigurationToTerraform(this._httpEndpointConfiguration.internalValue),
+      kinesis_source_configuration: kinesisFirehoseDeliveryStreamKinesisSourceConfigurationToTerraform(this._kinesisSourceConfiguration.internalValue),
+      redshift_configuration: kinesisFirehoseDeliveryStreamRedshiftConfigurationToTerraform(this._redshiftConfiguration.internalValue),
+      s3_configuration: kinesisFirehoseDeliveryStreamS3ConfigurationToTerraform(this._s3Configuration.internalValue),
+      server_side_encryption: kinesisFirehoseDeliveryStreamServerSideEncryptionToTerraform(this._serverSideEncryption.internalValue),
+      splunk_configuration: kinesisFirehoseDeliveryStreamSplunkConfigurationToTerraform(this._splunkConfiguration.internalValue),
     };
   }
 }

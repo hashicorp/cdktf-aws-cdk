@@ -165,6 +165,25 @@ export class LambdaFunctionDeadLetterConfigOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LambdaFunctionDeadLetterConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._targetArn) {
+      hasAnyValues = true;
+      internalValueResult.targetArn = this._targetArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LambdaFunctionDeadLetterConfig | undefined) {
+    if (value === undefined) {
+      this._targetArn = undefined;
+    }
+    else {
+      this._targetArn = value.targetArn;
+    }
+  }
+
   // target_arn - computed: false, optional: false, required: true
   private _targetArn?: string; 
   public get targetArn() {
@@ -175,7 +194,7 @@ export class LambdaFunctionDeadLetterConfigOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get targetArnInput() {
-    return this._targetArn
+    return this._targetArn;
   }
 }
 export interface LambdaFunctionEnvironment {
@@ -205,13 +224,32 @@ export class LambdaFunctionEnvironmentOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LambdaFunctionEnvironment | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._variables) {
+      hasAnyValues = true;
+      internalValueResult.variables = this._variables;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LambdaFunctionEnvironment | undefined) {
+    if (value === undefined) {
+      this._variables = undefined;
+    }
+    else {
+      this._variables = value.variables;
+    }
+  }
+
   // variables - computed: false, optional: true, required: false
-  private _variables?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _variables?: { [key: string]: string } | cdktf.IResolvable; 
   public get variables() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('variables') as any;
   }
-  public set variables(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set variables(value: { [key: string]: string } | cdktf.IResolvable) {
     this._variables = value;
   }
   public resetVariables() {
@@ -219,7 +257,7 @@ export class LambdaFunctionEnvironmentOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get variablesInput() {
-    return this._variables
+    return this._variables;
   }
 }
 export interface LambdaFunctionFileSystemConfig {
@@ -254,6 +292,31 @@ export class LambdaFunctionFileSystemConfigOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LambdaFunctionFileSystemConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    if (this._localMountPath) {
+      hasAnyValues = true;
+      internalValueResult.localMountPath = this._localMountPath;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LambdaFunctionFileSystemConfig | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+      this._localMountPath = undefined;
+    }
+    else {
+      this._arn = value.arn;
+      this._localMountPath = value.localMountPath;
+    }
+  }
+
   // arn - computed: false, optional: false, required: true
   private _arn?: string; 
   public get arn() {
@@ -264,7 +327,7 @@ export class LambdaFunctionFileSystemConfigOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // local_mount_path - computed: false, optional: false, required: true
@@ -277,7 +340,7 @@ export class LambdaFunctionFileSystemConfigOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get localMountPathInput() {
-    return this._localMountPath
+    return this._localMountPath;
   }
 }
 export interface LambdaFunctionImageConfig {
@@ -317,12 +380,43 @@ export class LambdaFunctionImageConfigOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LambdaFunctionImageConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._command) {
+      hasAnyValues = true;
+      internalValueResult.command = this._command;
+    }
+    if (this._entryPoint) {
+      hasAnyValues = true;
+      internalValueResult.entryPoint = this._entryPoint;
+    }
+    if (this._workingDirectory) {
+      hasAnyValues = true;
+      internalValueResult.workingDirectory = this._workingDirectory;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LambdaFunctionImageConfig | undefined) {
+    if (value === undefined) {
+      this._command = undefined;
+      this._entryPoint = undefined;
+      this._workingDirectory = undefined;
+    }
+    else {
+      this._command = value.command;
+      this._entryPoint = value.entryPoint;
+      this._workingDirectory = value.workingDirectory;
+    }
+  }
+
   // command - computed: false, optional: true, required: false
-  private _command?: string[] | undefined; 
+  private _command?: string[]; 
   public get command() {
     return this.getListAttribute('command');
   }
-  public set command(value: string[] | undefined) {
+  public set command(value: string[]) {
     this._command = value;
   }
   public resetCommand() {
@@ -330,15 +424,15 @@ export class LambdaFunctionImageConfigOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get commandInput() {
-    return this._command
+    return this._command;
   }
 
   // entry_point - computed: false, optional: true, required: false
-  private _entryPoint?: string[] | undefined; 
+  private _entryPoint?: string[]; 
   public get entryPoint() {
     return this.getListAttribute('entry_point');
   }
-  public set entryPoint(value: string[] | undefined) {
+  public set entryPoint(value: string[]) {
     this._entryPoint = value;
   }
   public resetEntryPoint() {
@@ -346,15 +440,15 @@ export class LambdaFunctionImageConfigOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get entryPointInput() {
-    return this._entryPoint
+    return this._entryPoint;
   }
 
   // working_directory - computed: false, optional: true, required: false
-  private _workingDirectory?: string | undefined; 
+  private _workingDirectory?: string; 
   public get workingDirectory() {
     return this.getStringAttribute('working_directory');
   }
-  public set workingDirectory(value: string | undefined) {
+  public set workingDirectory(value: string) {
     this._workingDirectory = value;
   }
   public resetWorkingDirectory() {
@@ -362,7 +456,7 @@ export class LambdaFunctionImageConfigOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get workingDirectoryInput() {
-    return this._workingDirectory
+    return this._workingDirectory;
   }
 }
 export interface LambdaFunctionTimeouts {
@@ -392,12 +486,31 @@ export class LambdaFunctionTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LambdaFunctionTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LambdaFunctionTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+    }
+    else {
+      this._create = value.create;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -405,7 +518,7 @@ export class LambdaFunctionTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 }
 export interface LambdaFunctionTracingConfig {
@@ -435,6 +548,25 @@ export class LambdaFunctionTracingConfigOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LambdaFunctionTracingConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._mode) {
+      hasAnyValues = true;
+      internalValueResult.mode = this._mode;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LambdaFunctionTracingConfig | undefined) {
+    if (value === undefined) {
+      this._mode = undefined;
+    }
+    else {
+      this._mode = value.mode;
+    }
+  }
+
   // mode - computed: false, optional: false, required: true
   private _mode?: string; 
   public get mode() {
@@ -445,7 +577,7 @@ export class LambdaFunctionTracingConfigOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get modeInput() {
-    return this._mode
+    return this._mode;
   }
 }
 export interface LambdaFunctionVpcConfig {
@@ -480,6 +612,31 @@ export class LambdaFunctionVpcConfigOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LambdaFunctionVpcConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._securityGroupIds) {
+      hasAnyValues = true;
+      internalValueResult.securityGroupIds = this._securityGroupIds;
+    }
+    if (this._subnetIds) {
+      hasAnyValues = true;
+      internalValueResult.subnetIds = this._subnetIds;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LambdaFunctionVpcConfig | undefined) {
+    if (value === undefined) {
+      this._securityGroupIds = undefined;
+      this._subnetIds = undefined;
+    }
+    else {
+      this._securityGroupIds = value.securityGroupIds;
+      this._subnetIds = value.subnetIds;
+    }
+  }
+
   // security_group_ids - computed: false, optional: false, required: true
   private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
@@ -490,7 +647,7 @@ export class LambdaFunctionVpcConfigOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // subnet_ids - computed: false, optional: false, required: true
@@ -503,7 +660,7 @@ export class LambdaFunctionVpcConfigOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 }
 
@@ -561,13 +718,13 @@ export class LambdaFunction extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._timeout = config.timeout;
-    this._deadLetterConfig = config.deadLetterConfig;
-    this._environment = config.environment;
-    this._fileSystemConfig = config.fileSystemConfig;
-    this._imageConfig = config.imageConfig;
-    this._timeouts = config.timeouts;
-    this._tracingConfig = config.tracingConfig;
-    this._vpcConfig = config.vpcConfig;
+    this._deadLetterConfig.internalValue = config.deadLetterConfig;
+    this._environment.internalValue = config.environment;
+    this._fileSystemConfig.internalValue = config.fileSystemConfig;
+    this._imageConfig.internalValue = config.imageConfig;
+    this._timeouts.internalValue = config.timeouts;
+    this._tracingConfig.internalValue = config.tracingConfig;
+    this._vpcConfig.internalValue = config.vpcConfig;
   }
 
   // ==========
@@ -575,11 +732,11 @@ export class LambdaFunction extends cdktf.TerraformResource {
   // ==========
 
   // architectures - computed: true, optional: true, required: false
-  private _architectures?: string[] | undefined; 
+  private _architectures?: string[]; 
   public get architectures() {
     return this.getListAttribute('architectures');
   }
-  public set architectures(value: string[] | undefined) {
+  public set architectures(value: string[]) {
     this._architectures = value;
   }
   public resetArchitectures() {
@@ -587,7 +744,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get architecturesInput() {
-    return this._architectures
+    return this._architectures;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -596,11 +753,11 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
 
   // code_signing_config_arn - computed: false, optional: true, required: false
-  private _codeSigningConfigArn?: string | undefined; 
+  private _codeSigningConfigArn?: string; 
   public get codeSigningConfigArn() {
     return this.getStringAttribute('code_signing_config_arn');
   }
-  public set codeSigningConfigArn(value: string | undefined) {
+  public set codeSigningConfigArn(value: string) {
     this._codeSigningConfigArn = value;
   }
   public resetCodeSigningConfigArn() {
@@ -608,15 +765,15 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get codeSigningConfigArnInput() {
-    return this._codeSigningConfigArn
+    return this._codeSigningConfigArn;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -624,15 +781,15 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // filename - computed: false, optional: true, required: false
-  private _filename?: string | undefined; 
+  private _filename?: string; 
   public get filename() {
     return this.getStringAttribute('filename');
   }
-  public set filename(value: string | undefined) {
+  public set filename(value: string) {
     this._filename = value;
   }
   public resetFilename() {
@@ -640,7 +797,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get filenameInput() {
-    return this._filename
+    return this._filename;
   }
 
   // function_name - computed: false, optional: false, required: true
@@ -653,15 +810,15 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get functionNameInput() {
-    return this._functionName
+    return this._functionName;
   }
 
   // handler - computed: false, optional: true, required: false
-  private _handler?: string | undefined; 
+  private _handler?: string; 
   public get handler() {
     return this.getStringAttribute('handler');
   }
-  public set handler(value: string | undefined) {
+  public set handler(value: string) {
     this._handler = value;
   }
   public resetHandler() {
@@ -669,7 +826,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get handlerInput() {
-    return this._handler
+    return this._handler;
   }
 
   // id - computed: true, optional: true, required: false
@@ -678,11 +835,11 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
 
   // image_uri - computed: false, optional: true, required: false
-  private _imageUri?: string | undefined; 
+  private _imageUri?: string; 
   public get imageUri() {
     return this.getStringAttribute('image_uri');
   }
-  public set imageUri(value: string | undefined) {
+  public set imageUri(value: string) {
     this._imageUri = value;
   }
   public resetImageUri() {
@@ -690,7 +847,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get imageUriInput() {
-    return this._imageUri
+    return this._imageUri;
   }
 
   // invoke_arn - computed: true, optional: false, required: false
@@ -699,11 +856,11 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
 
   // kms_key_arn - computed: false, optional: true, required: false
-  private _kmsKeyArn?: string | undefined; 
+  private _kmsKeyArn?: string; 
   public get kmsKeyArn() {
     return this.getStringAttribute('kms_key_arn');
   }
-  public set kmsKeyArn(value: string | undefined) {
+  public set kmsKeyArn(value: string) {
     this._kmsKeyArn = value;
   }
   public resetKmsKeyArn() {
@@ -711,7 +868,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyArnInput() {
-    return this._kmsKeyArn
+    return this._kmsKeyArn;
   }
 
   // last_modified - computed: true, optional: false, required: false
@@ -720,11 +877,11 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
 
   // layers - computed: false, optional: true, required: false
-  private _layers?: string[] | undefined; 
+  private _layers?: string[]; 
   public get layers() {
     return this.getListAttribute('layers');
   }
-  public set layers(value: string[] | undefined) {
+  public set layers(value: string[]) {
     this._layers = value;
   }
   public resetLayers() {
@@ -732,15 +889,15 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get layersInput() {
-    return this._layers
+    return this._layers;
   }
 
   // memory_size - computed: false, optional: true, required: false
-  private _memorySize?: number | undefined; 
+  private _memorySize?: number; 
   public get memorySize() {
     return this.getNumberAttribute('memory_size');
   }
-  public set memorySize(value: number | undefined) {
+  public set memorySize(value: number) {
     this._memorySize = value;
   }
   public resetMemorySize() {
@@ -748,15 +905,15 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get memorySizeInput() {
-    return this._memorySize
+    return this._memorySize;
   }
 
   // package_type - computed: false, optional: true, required: false
-  private _packageType?: string | undefined; 
+  private _packageType?: string; 
   public get packageType() {
     return this.getStringAttribute('package_type');
   }
-  public set packageType(value: string | undefined) {
+  public set packageType(value: string) {
     this._packageType = value;
   }
   public resetPackageType() {
@@ -764,15 +921,15 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get packageTypeInput() {
-    return this._packageType
+    return this._packageType;
   }
 
   // publish - computed: false, optional: true, required: false
-  private _publish?: boolean | cdktf.IResolvable | undefined; 
+  private _publish?: boolean | cdktf.IResolvable; 
   public get publish() {
     return this.getBooleanAttribute('publish') as any;
   }
-  public set publish(value: boolean | cdktf.IResolvable | undefined) {
+  public set publish(value: boolean | cdktf.IResolvable) {
     this._publish = value;
   }
   public resetPublish() {
@@ -780,7 +937,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get publishInput() {
-    return this._publish
+    return this._publish;
   }
 
   // qualified_arn - computed: true, optional: false, required: false
@@ -789,11 +946,11 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
 
   // reserved_concurrent_executions - computed: false, optional: true, required: false
-  private _reservedConcurrentExecutions?: number | undefined; 
+  private _reservedConcurrentExecutions?: number; 
   public get reservedConcurrentExecutions() {
     return this.getNumberAttribute('reserved_concurrent_executions');
   }
-  public set reservedConcurrentExecutions(value: number | undefined) {
+  public set reservedConcurrentExecutions(value: number) {
     this._reservedConcurrentExecutions = value;
   }
   public resetReservedConcurrentExecutions() {
@@ -801,7 +958,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get reservedConcurrentExecutionsInput() {
-    return this._reservedConcurrentExecutions
+    return this._reservedConcurrentExecutions;
   }
 
   // role - computed: false, optional: false, required: true
@@ -814,15 +971,15 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleInput() {
-    return this._role
+    return this._role;
   }
 
   // runtime - computed: false, optional: true, required: false
-  private _runtime?: string | undefined; 
+  private _runtime?: string; 
   public get runtime() {
     return this.getStringAttribute('runtime');
   }
-  public set runtime(value: string | undefined) {
+  public set runtime(value: string) {
     this._runtime = value;
   }
   public resetRuntime() {
@@ -830,15 +987,15 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get runtimeInput() {
-    return this._runtime
+    return this._runtime;
   }
 
   // s3_bucket - computed: false, optional: true, required: false
-  private _s3Bucket?: string | undefined; 
+  private _s3Bucket?: string; 
   public get s3Bucket() {
     return this.getStringAttribute('s3_bucket');
   }
-  public set s3Bucket(value: string | undefined) {
+  public set s3Bucket(value: string) {
     this._s3Bucket = value;
   }
   public resetS3Bucket() {
@@ -846,15 +1003,15 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3BucketInput() {
-    return this._s3Bucket
+    return this._s3Bucket;
   }
 
   // s3_key - computed: false, optional: true, required: false
-  private _s3Key?: string | undefined; 
+  private _s3Key?: string; 
   public get s3Key() {
     return this.getStringAttribute('s3_key');
   }
-  public set s3Key(value: string | undefined) {
+  public set s3Key(value: string) {
     this._s3Key = value;
   }
   public resetS3Key() {
@@ -862,15 +1019,15 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3KeyInput() {
-    return this._s3Key
+    return this._s3Key;
   }
 
   // s3_object_version - computed: false, optional: true, required: false
-  private _s3ObjectVersion?: string | undefined; 
+  private _s3ObjectVersion?: string; 
   public get s3ObjectVersion() {
     return this.getStringAttribute('s3_object_version');
   }
-  public set s3ObjectVersion(value: string | undefined) {
+  public set s3ObjectVersion(value: string) {
     this._s3ObjectVersion = value;
   }
   public resetS3ObjectVersion() {
@@ -878,7 +1035,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3ObjectVersionInput() {
-    return this._s3ObjectVersion
+    return this._s3ObjectVersion;
   }
 
   // signing_job_arn - computed: true, optional: false, required: false
@@ -892,11 +1049,11 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
 
   // source_code_hash - computed: true, optional: true, required: false
-  private _sourceCodeHash?: string | undefined; 
+  private _sourceCodeHash?: string; 
   public get sourceCodeHash() {
     return this.getStringAttribute('source_code_hash');
   }
-  public set sourceCodeHash(value: string | undefined) {
+  public set sourceCodeHash(value: string) {
     this._sourceCodeHash = value;
   }
   public resetSourceCodeHash() {
@@ -904,7 +1061,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceCodeHashInput() {
-    return this._sourceCodeHash
+    return this._sourceCodeHash;
   }
 
   // source_code_size - computed: true, optional: false, required: false
@@ -913,12 +1070,12 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -926,16 +1083,16 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -943,15 +1100,15 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // timeout - computed: false, optional: true, required: false
-  private _timeout?: number | undefined; 
+  private _timeout?: number; 
   public get timeout() {
     return this.getNumberAttribute('timeout');
   }
-  public set timeout(value: number | undefined) {
+  public set timeout(value: number) {
     this._timeout = value;
   }
   public resetTimeout() {
@@ -959,7 +1116,7 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutInput() {
-    return this._timeout
+    return this._timeout;
   }
 
   // version - computed: true, optional: false, required: false
@@ -968,122 +1125,115 @@ export class LambdaFunction extends cdktf.TerraformResource {
   }
 
   // dead_letter_config - computed: false, optional: true, required: false
-  private _deadLetterConfig?: LambdaFunctionDeadLetterConfig | undefined; 
-  private __deadLetterConfigOutput = new LambdaFunctionDeadLetterConfigOutputReference(this as any, "dead_letter_config", true);
+  private _deadLetterConfig = new LambdaFunctionDeadLetterConfigOutputReference(this as any, "dead_letter_config", true);
   public get deadLetterConfig() {
-    return this.__deadLetterConfigOutput;
+    return this._deadLetterConfig;
   }
-  public putDeadLetterConfig(value: LambdaFunctionDeadLetterConfig | undefined) {
-    this._deadLetterConfig = value;
+  public putDeadLetterConfig(value: LambdaFunctionDeadLetterConfig) {
+    this._deadLetterConfig.internalValue = value;
   }
   public resetDeadLetterConfig() {
-    this._deadLetterConfig = undefined;
+    this._deadLetterConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get deadLetterConfigInput() {
-    return this._deadLetterConfig
+    return this._deadLetterConfig.internalValue;
   }
 
   // environment - computed: false, optional: true, required: false
-  private _environment?: LambdaFunctionEnvironment | undefined; 
-  private __environmentOutput = new LambdaFunctionEnvironmentOutputReference(this as any, "environment", true);
+  private _environment = new LambdaFunctionEnvironmentOutputReference(this as any, "environment", true);
   public get environment() {
-    return this.__environmentOutput;
+    return this._environment;
   }
-  public putEnvironment(value: LambdaFunctionEnvironment | undefined) {
-    this._environment = value;
+  public putEnvironment(value: LambdaFunctionEnvironment) {
+    this._environment.internalValue = value;
   }
   public resetEnvironment() {
-    this._environment = undefined;
+    this._environment.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get environmentInput() {
-    return this._environment
+    return this._environment.internalValue;
   }
 
   // file_system_config - computed: false, optional: true, required: false
-  private _fileSystemConfig?: LambdaFunctionFileSystemConfig | undefined; 
-  private __fileSystemConfigOutput = new LambdaFunctionFileSystemConfigOutputReference(this as any, "file_system_config", true);
+  private _fileSystemConfig = new LambdaFunctionFileSystemConfigOutputReference(this as any, "file_system_config", true);
   public get fileSystemConfig() {
-    return this.__fileSystemConfigOutput;
+    return this._fileSystemConfig;
   }
-  public putFileSystemConfig(value: LambdaFunctionFileSystemConfig | undefined) {
-    this._fileSystemConfig = value;
+  public putFileSystemConfig(value: LambdaFunctionFileSystemConfig) {
+    this._fileSystemConfig.internalValue = value;
   }
   public resetFileSystemConfig() {
-    this._fileSystemConfig = undefined;
+    this._fileSystemConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fileSystemConfigInput() {
-    return this._fileSystemConfig
+    return this._fileSystemConfig.internalValue;
   }
 
   // image_config - computed: false, optional: true, required: false
-  private _imageConfig?: LambdaFunctionImageConfig | undefined; 
-  private __imageConfigOutput = new LambdaFunctionImageConfigOutputReference(this as any, "image_config", true);
+  private _imageConfig = new LambdaFunctionImageConfigOutputReference(this as any, "image_config", true);
   public get imageConfig() {
-    return this.__imageConfigOutput;
+    return this._imageConfig;
   }
-  public putImageConfig(value: LambdaFunctionImageConfig | undefined) {
-    this._imageConfig = value;
+  public putImageConfig(value: LambdaFunctionImageConfig) {
+    this._imageConfig.internalValue = value;
   }
   public resetImageConfig() {
-    this._imageConfig = undefined;
+    this._imageConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get imageConfigInput() {
-    return this._imageConfig
+    return this._imageConfig.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: LambdaFunctionTimeouts | undefined; 
-  private __timeoutsOutput = new LambdaFunctionTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new LambdaFunctionTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: LambdaFunctionTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: LambdaFunctionTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // tracing_config - computed: false, optional: true, required: false
-  private _tracingConfig?: LambdaFunctionTracingConfig | undefined; 
-  private __tracingConfigOutput = new LambdaFunctionTracingConfigOutputReference(this as any, "tracing_config", true);
+  private _tracingConfig = new LambdaFunctionTracingConfigOutputReference(this as any, "tracing_config", true);
   public get tracingConfig() {
-    return this.__tracingConfigOutput;
+    return this._tracingConfig;
   }
-  public putTracingConfig(value: LambdaFunctionTracingConfig | undefined) {
-    this._tracingConfig = value;
+  public putTracingConfig(value: LambdaFunctionTracingConfig) {
+    this._tracingConfig.internalValue = value;
   }
   public resetTracingConfig() {
-    this._tracingConfig = undefined;
+    this._tracingConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get tracingConfigInput() {
-    return this._tracingConfig
+    return this._tracingConfig.internalValue;
   }
 
   // vpc_config - computed: false, optional: true, required: false
-  private _vpcConfig?: LambdaFunctionVpcConfig | undefined; 
-  private __vpcConfigOutput = new LambdaFunctionVpcConfigOutputReference(this as any, "vpc_config", true);
+  private _vpcConfig = new LambdaFunctionVpcConfigOutputReference(this as any, "vpc_config", true);
   public get vpcConfig() {
-    return this.__vpcConfigOutput;
+    return this._vpcConfig;
   }
-  public putVpcConfig(value: LambdaFunctionVpcConfig | undefined) {
-    this._vpcConfig = value;
+  public putVpcConfig(value: LambdaFunctionVpcConfig) {
+    this._vpcConfig.internalValue = value;
   }
   public resetVpcConfig() {
-    this._vpcConfig = undefined;
+    this._vpcConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get vpcConfigInput() {
-    return this._vpcConfig
+    return this._vpcConfig.internalValue;
   }
 
   // =========
@@ -1114,13 +1264,13 @@ export class LambdaFunction extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       timeout: cdktf.numberToTerraform(this._timeout),
-      dead_letter_config: lambdaFunctionDeadLetterConfigToTerraform(this._deadLetterConfig),
-      environment: lambdaFunctionEnvironmentToTerraform(this._environment),
-      file_system_config: lambdaFunctionFileSystemConfigToTerraform(this._fileSystemConfig),
-      image_config: lambdaFunctionImageConfigToTerraform(this._imageConfig),
-      timeouts: lambdaFunctionTimeoutsToTerraform(this._timeouts),
-      tracing_config: lambdaFunctionTracingConfigToTerraform(this._tracingConfig),
-      vpc_config: lambdaFunctionVpcConfigToTerraform(this._vpcConfig),
+      dead_letter_config: lambdaFunctionDeadLetterConfigToTerraform(this._deadLetterConfig.internalValue),
+      environment: lambdaFunctionEnvironmentToTerraform(this._environment.internalValue),
+      file_system_config: lambdaFunctionFileSystemConfigToTerraform(this._fileSystemConfig.internalValue),
+      image_config: lambdaFunctionImageConfigToTerraform(this._imageConfig.internalValue),
+      timeouts: lambdaFunctionTimeoutsToTerraform(this._timeouts.internalValue),
+      tracing_config: lambdaFunctionTracingConfigToTerraform(this._tracingConfig.internalValue),
+      vpc_config: lambdaFunctionVpcConfigToTerraform(this._vpcConfig.internalValue),
     };
   }
 }

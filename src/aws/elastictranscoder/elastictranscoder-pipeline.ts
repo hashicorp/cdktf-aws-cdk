@@ -90,12 +90,37 @@ export class ElastictranscoderPipelineContentConfigOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElastictranscoderPipelineContentConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucket) {
+      hasAnyValues = true;
+      internalValueResult.bucket = this._bucket;
+    }
+    if (this._storageClass) {
+      hasAnyValues = true;
+      internalValueResult.storageClass = this._storageClass;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElastictranscoderPipelineContentConfig | undefined) {
+    if (value === undefined) {
+      this._bucket = undefined;
+      this._storageClass = undefined;
+    }
+    else {
+      this._bucket = value.bucket;
+      this._storageClass = value.storageClass;
+    }
+  }
+
   // bucket - computed: true, optional: true, required: false
-  private _bucket?: string | undefined; 
+  private _bucket?: string; 
   public get bucket() {
     return this.getStringAttribute('bucket');
   }
-  public set bucket(value: string | undefined) {
+  public set bucket(value: string) {
     this._bucket = value;
   }
   public resetBucket() {
@@ -103,15 +128,15 @@ export class ElastictranscoderPipelineContentConfigOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // storage_class - computed: false, optional: true, required: false
-  private _storageClass?: string | undefined; 
+  private _storageClass?: string; 
   public get storageClass() {
     return this.getStringAttribute('storage_class');
   }
-  public set storageClass(value: string | undefined) {
+  public set storageClass(value: string) {
     this._storageClass = value;
   }
   public resetStorageClass() {
@@ -119,7 +144,7 @@ export class ElastictranscoderPipelineContentConfigOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get storageClassInput() {
-    return this._storageClass
+    return this._storageClass;
   }
 }
 export interface ElastictranscoderPipelineContentConfigPermissions {
@@ -191,12 +216,49 @@ export class ElastictranscoderPipelineNotificationsOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElastictranscoderPipelineNotifications | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._completed) {
+      hasAnyValues = true;
+      internalValueResult.completed = this._completed;
+    }
+    if (this._error) {
+      hasAnyValues = true;
+      internalValueResult.error = this._error;
+    }
+    if (this._progressing) {
+      hasAnyValues = true;
+      internalValueResult.progressing = this._progressing;
+    }
+    if (this._warning) {
+      hasAnyValues = true;
+      internalValueResult.warning = this._warning;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElastictranscoderPipelineNotifications | undefined) {
+    if (value === undefined) {
+      this._completed = undefined;
+      this._error = undefined;
+      this._progressing = undefined;
+      this._warning = undefined;
+    }
+    else {
+      this._completed = value.completed;
+      this._error = value.error;
+      this._progressing = value.progressing;
+      this._warning = value.warning;
+    }
+  }
+
   // completed - computed: false, optional: true, required: false
-  private _completed?: string | undefined; 
+  private _completed?: string; 
   public get completed() {
     return this.getStringAttribute('completed');
   }
-  public set completed(value: string | undefined) {
+  public set completed(value: string) {
     this._completed = value;
   }
   public resetCompleted() {
@@ -204,15 +266,15 @@ export class ElastictranscoderPipelineNotificationsOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get completedInput() {
-    return this._completed
+    return this._completed;
   }
 
   // error - computed: false, optional: true, required: false
-  private _error?: string | undefined; 
+  private _error?: string; 
   public get error() {
     return this.getStringAttribute('error');
   }
-  public set error(value: string | undefined) {
+  public set error(value: string) {
     this._error = value;
   }
   public resetError() {
@@ -220,15 +282,15 @@ export class ElastictranscoderPipelineNotificationsOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get errorInput() {
-    return this._error
+    return this._error;
   }
 
   // progressing - computed: false, optional: true, required: false
-  private _progressing?: string | undefined; 
+  private _progressing?: string; 
   public get progressing() {
     return this.getStringAttribute('progressing');
   }
-  public set progressing(value: string | undefined) {
+  public set progressing(value: string) {
     this._progressing = value;
   }
   public resetProgressing() {
@@ -236,15 +298,15 @@ export class ElastictranscoderPipelineNotificationsOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get progressingInput() {
-    return this._progressing
+    return this._progressing;
   }
 
   // warning - computed: false, optional: true, required: false
-  private _warning?: string | undefined; 
+  private _warning?: string; 
   public get warning() {
     return this.getStringAttribute('warning');
   }
-  public set warning(value: string | undefined) {
+  public set warning(value: string) {
     this._warning = value;
   }
   public resetWarning() {
@@ -252,7 +314,7 @@ export class ElastictranscoderPipelineNotificationsOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get warningInput() {
-    return this._warning
+    return this._warning;
   }
 }
 export interface ElastictranscoderPipelineThumbnailConfig {
@@ -287,12 +349,37 @@ export class ElastictranscoderPipelineThumbnailConfigOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElastictranscoderPipelineThumbnailConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucket) {
+      hasAnyValues = true;
+      internalValueResult.bucket = this._bucket;
+    }
+    if (this._storageClass) {
+      hasAnyValues = true;
+      internalValueResult.storageClass = this._storageClass;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElastictranscoderPipelineThumbnailConfig | undefined) {
+    if (value === undefined) {
+      this._bucket = undefined;
+      this._storageClass = undefined;
+    }
+    else {
+      this._bucket = value.bucket;
+      this._storageClass = value.storageClass;
+    }
+  }
+
   // bucket - computed: true, optional: true, required: false
-  private _bucket?: string | undefined; 
+  private _bucket?: string; 
   public get bucket() {
     return this.getStringAttribute('bucket');
   }
-  public set bucket(value: string | undefined) {
+  public set bucket(value: string) {
     this._bucket = value;
   }
   public resetBucket() {
@@ -300,15 +387,15 @@ export class ElastictranscoderPipelineThumbnailConfigOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // storage_class - computed: false, optional: true, required: false
-  private _storageClass?: string | undefined; 
+  private _storageClass?: string; 
   public get storageClass() {
     return this.getStringAttribute('storage_class');
   }
-  public set storageClass(value: string | undefined) {
+  public set storageClass(value: string) {
     this._storageClass = value;
   }
   public resetStorageClass() {
@@ -316,7 +403,7 @@ export class ElastictranscoderPipelineThumbnailConfigOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get storageClassInput() {
-    return this._storageClass
+    return this._storageClass;
   }
 }
 export interface ElastictranscoderPipelineThumbnailConfigPermissions {
@@ -384,10 +471,10 @@ export class ElastictranscoderPipeline extends cdktf.TerraformResource {
     this._name = config.name;
     this._outputBucket = config.outputBucket;
     this._role = config.role;
-    this._contentConfig = config.contentConfig;
+    this._contentConfig.internalValue = config.contentConfig;
     this._contentConfigPermissions = config.contentConfigPermissions;
-    this._notifications = config.notifications;
-    this._thumbnailConfig = config.thumbnailConfig;
+    this._notifications.internalValue = config.notifications;
+    this._thumbnailConfig.internalValue = config.thumbnailConfig;
     this._thumbnailConfigPermissions = config.thumbnailConfigPermissions;
   }
 
@@ -401,11 +488,11 @@ export class ElastictranscoderPipeline extends cdktf.TerraformResource {
   }
 
   // aws_kms_key_arn - computed: false, optional: true, required: false
-  private _awsKmsKeyArn?: string | undefined; 
+  private _awsKmsKeyArn?: string; 
   public get awsKmsKeyArn() {
     return this.getStringAttribute('aws_kms_key_arn');
   }
-  public set awsKmsKeyArn(value: string | undefined) {
+  public set awsKmsKeyArn(value: string) {
     this._awsKmsKeyArn = value;
   }
   public resetAwsKmsKeyArn() {
@@ -413,7 +500,7 @@ export class ElastictranscoderPipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get awsKmsKeyArnInput() {
-    return this._awsKmsKeyArn
+    return this._awsKmsKeyArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -431,15 +518,15 @@ export class ElastictranscoderPipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get inputBucketInput() {
-    return this._inputBucket
+    return this._inputBucket;
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -447,15 +534,15 @@ export class ElastictranscoderPipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // output_bucket - computed: true, optional: true, required: false
-  private _outputBucket?: string | undefined; 
+  private _outputBucket?: string; 
   public get outputBucket() {
     return this.getStringAttribute('output_bucket');
   }
-  public set outputBucket(value: string | undefined) {
+  public set outputBucket(value: string) {
     this._outputBucket = value;
   }
   public resetOutputBucket() {
@@ -463,7 +550,7 @@ export class ElastictranscoderPipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get outputBucketInput() {
-    return this._outputBucket
+    return this._outputBucket;
   }
 
   // role - computed: false, optional: false, required: true
@@ -476,33 +563,32 @@ export class ElastictranscoderPipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleInput() {
-    return this._role
+    return this._role;
   }
 
   // content_config - computed: false, optional: true, required: false
-  private _contentConfig?: ElastictranscoderPipelineContentConfig | undefined; 
-  private __contentConfigOutput = new ElastictranscoderPipelineContentConfigOutputReference(this as any, "content_config", true);
+  private _contentConfig = new ElastictranscoderPipelineContentConfigOutputReference(this as any, "content_config", true);
   public get contentConfig() {
-    return this.__contentConfigOutput;
+    return this._contentConfig;
   }
-  public putContentConfig(value: ElastictranscoderPipelineContentConfig | undefined) {
-    this._contentConfig = value;
+  public putContentConfig(value: ElastictranscoderPipelineContentConfig) {
+    this._contentConfig.internalValue = value;
   }
   public resetContentConfig() {
-    this._contentConfig = undefined;
+    this._contentConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get contentConfigInput() {
-    return this._contentConfig
+    return this._contentConfig.internalValue;
   }
 
   // content_config_permissions - computed: false, optional: true, required: false
-  private _contentConfigPermissions?: ElastictranscoderPipelineContentConfigPermissions[] | undefined; 
+  private _contentConfigPermissions?: ElastictranscoderPipelineContentConfigPermissions[]; 
   public get contentConfigPermissions() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('content_config_permissions') as any;
   }
-  public set contentConfigPermissions(value: ElastictranscoderPipelineContentConfigPermissions[] | undefined) {
+  public set contentConfigPermissions(value: ElastictranscoderPipelineContentConfigPermissions[]) {
     this._contentConfigPermissions = value;
   }
   public resetContentConfigPermissions() {
@@ -510,50 +596,48 @@ export class ElastictranscoderPipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get contentConfigPermissionsInput() {
-    return this._contentConfigPermissions
+    return this._contentConfigPermissions;
   }
 
   // notifications - computed: false, optional: true, required: false
-  private _notifications?: ElastictranscoderPipelineNotifications | undefined; 
-  private __notificationsOutput = new ElastictranscoderPipelineNotificationsOutputReference(this as any, "notifications", true);
+  private _notifications = new ElastictranscoderPipelineNotificationsOutputReference(this as any, "notifications", true);
   public get notifications() {
-    return this.__notificationsOutput;
+    return this._notifications;
   }
-  public putNotifications(value: ElastictranscoderPipelineNotifications | undefined) {
-    this._notifications = value;
+  public putNotifications(value: ElastictranscoderPipelineNotifications) {
+    this._notifications.internalValue = value;
   }
   public resetNotifications() {
-    this._notifications = undefined;
+    this._notifications.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get notificationsInput() {
-    return this._notifications
+    return this._notifications.internalValue;
   }
 
   // thumbnail_config - computed: false, optional: true, required: false
-  private _thumbnailConfig?: ElastictranscoderPipelineThumbnailConfig | undefined; 
-  private __thumbnailConfigOutput = new ElastictranscoderPipelineThumbnailConfigOutputReference(this as any, "thumbnail_config", true);
+  private _thumbnailConfig = new ElastictranscoderPipelineThumbnailConfigOutputReference(this as any, "thumbnail_config", true);
   public get thumbnailConfig() {
-    return this.__thumbnailConfigOutput;
+    return this._thumbnailConfig;
   }
-  public putThumbnailConfig(value: ElastictranscoderPipelineThumbnailConfig | undefined) {
-    this._thumbnailConfig = value;
+  public putThumbnailConfig(value: ElastictranscoderPipelineThumbnailConfig) {
+    this._thumbnailConfig.internalValue = value;
   }
   public resetThumbnailConfig() {
-    this._thumbnailConfig = undefined;
+    this._thumbnailConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get thumbnailConfigInput() {
-    return this._thumbnailConfig
+    return this._thumbnailConfig.internalValue;
   }
 
   // thumbnail_config_permissions - computed: false, optional: true, required: false
-  private _thumbnailConfigPermissions?: ElastictranscoderPipelineThumbnailConfigPermissions[] | undefined; 
+  private _thumbnailConfigPermissions?: ElastictranscoderPipelineThumbnailConfigPermissions[]; 
   public get thumbnailConfigPermissions() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('thumbnail_config_permissions') as any;
   }
-  public set thumbnailConfigPermissions(value: ElastictranscoderPipelineThumbnailConfigPermissions[] | undefined) {
+  public set thumbnailConfigPermissions(value: ElastictranscoderPipelineThumbnailConfigPermissions[]) {
     this._thumbnailConfigPermissions = value;
   }
   public resetThumbnailConfigPermissions() {
@@ -561,7 +645,7 @@ export class ElastictranscoderPipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get thumbnailConfigPermissionsInput() {
-    return this._thumbnailConfigPermissions
+    return this._thumbnailConfigPermissions;
   }
 
   // =========
@@ -575,10 +659,10 @@ export class ElastictranscoderPipeline extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       output_bucket: cdktf.stringToTerraform(this._outputBucket),
       role: cdktf.stringToTerraform(this._role),
-      content_config: elastictranscoderPipelineContentConfigToTerraform(this._contentConfig),
+      content_config: elastictranscoderPipelineContentConfigToTerraform(this._contentConfig.internalValue),
       content_config_permissions: cdktf.listMapper(elastictranscoderPipelineContentConfigPermissionsToTerraform)(this._contentConfigPermissions),
-      notifications: elastictranscoderPipelineNotificationsToTerraform(this._notifications),
-      thumbnail_config: elastictranscoderPipelineThumbnailConfigToTerraform(this._thumbnailConfig),
+      notifications: elastictranscoderPipelineNotificationsToTerraform(this._notifications.internalValue),
+      thumbnail_config: elastictranscoderPipelineThumbnailConfigToTerraform(this._thumbnailConfig.internalValue),
       thumbnail_config_permissions: cdktf.listMapper(elastictranscoderPipelineThumbnailConfigPermissionsToTerraform)(this._thumbnailConfigPermissions),
     };
   }

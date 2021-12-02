@@ -76,12 +76,37 @@ export class CodepipelineWebhookAuthenticationConfigurationOutputReference exten
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodepipelineWebhookAuthenticationConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allowedIpRange) {
+      hasAnyValues = true;
+      internalValueResult.allowedIpRange = this._allowedIpRange;
+    }
+    if (this._secretToken) {
+      hasAnyValues = true;
+      internalValueResult.secretToken = this._secretToken;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodepipelineWebhookAuthenticationConfiguration | undefined) {
+    if (value === undefined) {
+      this._allowedIpRange = undefined;
+      this._secretToken = undefined;
+    }
+    else {
+      this._allowedIpRange = value.allowedIpRange;
+      this._secretToken = value.secretToken;
+    }
+  }
+
   // allowed_ip_range - computed: false, optional: true, required: false
-  private _allowedIpRange?: string | undefined; 
+  private _allowedIpRange?: string; 
   public get allowedIpRange() {
     return this.getStringAttribute('allowed_ip_range');
   }
-  public set allowedIpRange(value: string | undefined) {
+  public set allowedIpRange(value: string) {
     this._allowedIpRange = value;
   }
   public resetAllowedIpRange() {
@@ -89,15 +114,15 @@ export class CodepipelineWebhookAuthenticationConfigurationOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get allowedIpRangeInput() {
-    return this._allowedIpRange
+    return this._allowedIpRange;
   }
 
   // secret_token - computed: false, optional: true, required: false
-  private _secretToken?: string | undefined; 
+  private _secretToken?: string; 
   public get secretToken() {
     return this.getStringAttribute('secret_token');
   }
-  public set secretToken(value: string | undefined) {
+  public set secretToken(value: string) {
     this._secretToken = value;
   }
   public resetSecretToken() {
@@ -105,7 +130,7 @@ export class CodepipelineWebhookAuthenticationConfigurationOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get secretTokenInput() {
-    return this._secretToken
+    return this._secretToken;
   }
 }
 export interface CodepipelineWebhookFilter {
@@ -169,7 +194,7 @@ export class CodepipelineWebhook extends cdktf.TerraformResource {
     this._tagsAll = config.tagsAll;
     this._targetAction = config.targetAction;
     this._targetPipeline = config.targetPipeline;
-    this._authenticationConfiguration = config.authenticationConfiguration;
+    this._authenticationConfiguration.internalValue = config.authenticationConfiguration;
     this._filter = config.filter;
   }
 
@@ -187,7 +212,7 @@ export class CodepipelineWebhook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authenticationInput() {
-    return this._authentication
+    return this._authentication;
   }
 
   // id - computed: true, optional: true, required: false
@@ -205,16 +230,16 @@ export class CodepipelineWebhook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -222,16 +247,16 @@ export class CodepipelineWebhook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -239,7 +264,7 @@ export class CodepipelineWebhook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // target_action - computed: false, optional: false, required: true
@@ -252,7 +277,7 @@ export class CodepipelineWebhook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetActionInput() {
-    return this._targetAction
+    return this._targetAction;
   }
 
   // target_pipeline - computed: false, optional: false, required: true
@@ -265,7 +290,7 @@ export class CodepipelineWebhook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetPipelineInput() {
-    return this._targetPipeline
+    return this._targetPipeline;
   }
 
   // url - computed: true, optional: false, required: false
@@ -274,20 +299,19 @@ export class CodepipelineWebhook extends cdktf.TerraformResource {
   }
 
   // authentication_configuration - computed: false, optional: true, required: false
-  private _authenticationConfiguration?: CodepipelineWebhookAuthenticationConfiguration | undefined; 
-  private __authenticationConfigurationOutput = new CodepipelineWebhookAuthenticationConfigurationOutputReference(this as any, "authentication_configuration", true);
+  private _authenticationConfiguration = new CodepipelineWebhookAuthenticationConfigurationOutputReference(this as any, "authentication_configuration", true);
   public get authenticationConfiguration() {
-    return this.__authenticationConfigurationOutput;
+    return this._authenticationConfiguration;
   }
-  public putAuthenticationConfiguration(value: CodepipelineWebhookAuthenticationConfiguration | undefined) {
-    this._authenticationConfiguration = value;
+  public putAuthenticationConfiguration(value: CodepipelineWebhookAuthenticationConfiguration) {
+    this._authenticationConfiguration.internalValue = value;
   }
   public resetAuthenticationConfiguration() {
-    this._authenticationConfiguration = undefined;
+    this._authenticationConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get authenticationConfigurationInput() {
-    return this._authenticationConfiguration
+    return this._authenticationConfiguration.internalValue;
   }
 
   // filter - computed: false, optional: false, required: true
@@ -301,7 +325,7 @@ export class CodepipelineWebhook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========
@@ -316,7 +340,7 @@ export class CodepipelineWebhook extends cdktf.TerraformResource {
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       target_action: cdktf.stringToTerraform(this._targetAction),
       target_pipeline: cdktf.stringToTerraform(this._targetPipeline),
-      authentication_configuration: codepipelineWebhookAuthenticationConfigurationToTerraform(this._authenticationConfiguration),
+      authentication_configuration: codepipelineWebhookAuthenticationConfigurationToTerraform(this._authenticationConfiguration.internalValue),
       filter: cdktf.listMapper(codepipelineWebhookFilterToTerraform)(this._filter),
     };
   }

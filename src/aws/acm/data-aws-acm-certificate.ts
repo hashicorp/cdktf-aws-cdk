@@ -92,7 +92,7 @@ export class DataAwsAcmCertificate extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainInput() {
-    return this._domain
+    return this._domain;
   }
 
   // id - computed: true, optional: true, required: false
@@ -101,11 +101,11 @@ export class DataAwsAcmCertificate extends cdktf.TerraformDataSource {
   }
 
   // key_types - computed: false, optional: true, required: false
-  private _keyTypes?: string[] | undefined; 
+  private _keyTypes?: string[]; 
   public get keyTypes() {
     return this.getListAttribute('key_types');
   }
-  public set keyTypes(value: string[] | undefined) {
+  public set keyTypes(value: string[]) {
     this._keyTypes = value;
   }
   public resetKeyTypes() {
@@ -113,15 +113,15 @@ export class DataAwsAcmCertificate extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyTypesInput() {
-    return this._keyTypes
+    return this._keyTypes;
   }
 
   // most_recent - computed: false, optional: true, required: false
-  private _mostRecent?: boolean | cdktf.IResolvable | undefined; 
+  private _mostRecent?: boolean | cdktf.IResolvable; 
   public get mostRecent() {
     return this.getBooleanAttribute('most_recent') as any;
   }
-  public set mostRecent(value: boolean | cdktf.IResolvable | undefined) {
+  public set mostRecent(value: boolean | cdktf.IResolvable) {
     this._mostRecent = value;
   }
   public resetMostRecent() {
@@ -129,7 +129,7 @@ export class DataAwsAcmCertificate extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get mostRecentInput() {
-    return this._mostRecent
+    return this._mostRecent;
   }
 
   // status - computed: true, optional: false, required: false
@@ -138,11 +138,11 @@ export class DataAwsAcmCertificate extends cdktf.TerraformDataSource {
   }
 
   // statuses - computed: false, optional: true, required: false
-  private _statuses?: string[] | undefined; 
+  private _statuses?: string[]; 
   public get statuses() {
     return this.getListAttribute('statuses');
   }
-  public set statuses(value: string[] | undefined) {
+  public set statuses(value: string[]) {
     this._statuses = value;
   }
   public resetStatuses() {
@@ -150,16 +150,16 @@ export class DataAwsAcmCertificate extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get statusesInput() {
-    return this._statuses
+    return this._statuses;
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -167,15 +167,15 @@ export class DataAwsAcmCertificate extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // types - computed: false, optional: true, required: false
-  private _types?: string[] | undefined; 
+  private _types?: string[]; 
   public get types() {
     return this.getListAttribute('types');
   }
-  public set types(value: string[] | undefined) {
+  public set types(value: string[]) {
     this._types = value;
   }
   public resetTypes() {
@@ -183,7 +183,7 @@ export class DataAwsAcmCertificate extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get typesInput() {
-    return this._types
+    return this._types;
   }
 
   // =========

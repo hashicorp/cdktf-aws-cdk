@@ -82,12 +82,37 @@ export class ConnectContactFlowTimeoutsOutputReference extends cdktf.ComplexObje
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ConnectContactFlowTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ConnectContactFlowTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -95,15 +120,15 @@ export class ConnectContactFlowTimeoutsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -111,7 +136,7 @@ export class ConnectContactFlowTimeoutsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -156,7 +181,7 @@ export class ConnectContactFlow extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._type = config.type;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -174,11 +199,11 @@ export class ConnectContactFlow extends cdktf.TerraformResource {
   }
 
   // content - computed: true, optional: true, required: false
-  private _content?: string | undefined; 
+  private _content?: string; 
   public get content() {
     return this.getStringAttribute('content');
   }
-  public set content(value: string | undefined) {
+  public set content(value: string) {
     this._content = value;
   }
   public resetContent() {
@@ -186,15 +211,15 @@ export class ConnectContactFlow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get contentInput() {
-    return this._content
+    return this._content;
   }
 
   // content_hash - computed: false, optional: true, required: false
-  private _contentHash?: string | undefined; 
+  private _contentHash?: string; 
   public get contentHash() {
     return this.getStringAttribute('content_hash');
   }
-  public set contentHash(value: string | undefined) {
+  public set contentHash(value: string) {
     this._contentHash = value;
   }
   public resetContentHash() {
@@ -202,15 +227,15 @@ export class ConnectContactFlow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get contentHashInput() {
-    return this._contentHash
+    return this._contentHash;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -218,15 +243,15 @@ export class ConnectContactFlow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // filename - computed: false, optional: true, required: false
-  private _filename?: string | undefined; 
+  private _filename?: string; 
   public get filename() {
     return this.getStringAttribute('filename');
   }
-  public set filename(value: string | undefined) {
+  public set filename(value: string) {
     this._filename = value;
   }
   public resetFilename() {
@@ -234,7 +259,7 @@ export class ConnectContactFlow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get filenameInput() {
-    return this._filename
+    return this._filename;
   }
 
   // id - computed: true, optional: true, required: false
@@ -252,7 +277,7 @@ export class ConnectContactFlow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceIdInput() {
-    return this._instanceId
+    return this._instanceId;
   }
 
   // name - computed: false, optional: false, required: true
@@ -265,16 +290,16 @@ export class ConnectContactFlow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -282,16 +307,16 @@ export class ConnectContactFlow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -299,15 +324,15 @@ export class ConnectContactFlow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // type - computed: false, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -315,24 +340,23 @@ export class ConnectContactFlow extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: ConnectContactFlowTimeouts | undefined; 
-  private __timeoutsOutput = new ConnectContactFlowTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new ConnectContactFlowTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: ConnectContactFlowTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: ConnectContactFlowTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -350,7 +374,7 @@ export class ConnectContactFlow extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       type: cdktf.stringToTerraform(this._type),
-      timeouts: connectContactFlowTimeoutsToTerraform(this._timeouts),
+      timeouts: connectContactFlowTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

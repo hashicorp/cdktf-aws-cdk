@@ -67,7 +67,7 @@ export class DataAwsServerlessapplicationrepositoryApplication extends cdktf.Ter
   }
   // Temporarily expose input value. Use with caution.
   public get applicationIdInput() {
-    return this._applicationId
+    return this._applicationId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -86,11 +86,11 @@ export class DataAwsServerlessapplicationrepositoryApplication extends cdktf.Ter
   }
 
   // semantic_version - computed: true, optional: true, required: false
-  private _semanticVersion?: string | undefined; 
+  private _semanticVersion?: string; 
   public get semanticVersion() {
     return this.getStringAttribute('semantic_version');
   }
-  public set semanticVersion(value: string | undefined) {
+  public set semanticVersion(value: string) {
     this._semanticVersion = value;
   }
   public resetSemanticVersion() {
@@ -98,7 +98,7 @@ export class DataAwsServerlessapplicationrepositoryApplication extends cdktf.Ter
   }
   // Temporarily expose input value. Use with caution.
   public get semanticVersionInput() {
-    return this._semanticVersion
+    return this._semanticVersion;
   }
 
   // source_code_url - computed: true, optional: false, required: false

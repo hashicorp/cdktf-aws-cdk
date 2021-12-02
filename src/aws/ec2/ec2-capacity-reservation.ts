@@ -127,15 +127,15 @@ export class Ec2CapacityReservation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneInput() {
-    return this._availabilityZone
+    return this._availabilityZone;
   }
 
   // ebs_optimized - computed: false, optional: true, required: false
-  private _ebsOptimized?: boolean | cdktf.IResolvable | undefined; 
+  private _ebsOptimized?: boolean | cdktf.IResolvable; 
   public get ebsOptimized() {
     return this.getBooleanAttribute('ebs_optimized') as any;
   }
-  public set ebsOptimized(value: boolean | cdktf.IResolvable | undefined) {
+  public set ebsOptimized(value: boolean | cdktf.IResolvable) {
     this._ebsOptimized = value;
   }
   public resetEbsOptimized() {
@@ -143,15 +143,15 @@ export class Ec2CapacityReservation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ebsOptimizedInput() {
-    return this._ebsOptimized
+    return this._ebsOptimized;
   }
 
   // end_date - computed: false, optional: true, required: false
-  private _endDate?: string | undefined; 
+  private _endDate?: string; 
   public get endDate() {
     return this.getStringAttribute('end_date');
   }
-  public set endDate(value: string | undefined) {
+  public set endDate(value: string) {
     this._endDate = value;
   }
   public resetEndDate() {
@@ -159,15 +159,15 @@ export class Ec2CapacityReservation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get endDateInput() {
-    return this._endDate
+    return this._endDate;
   }
 
   // end_date_type - computed: false, optional: true, required: false
-  private _endDateType?: string | undefined; 
+  private _endDateType?: string; 
   public get endDateType() {
     return this.getStringAttribute('end_date_type');
   }
-  public set endDateType(value: string | undefined) {
+  public set endDateType(value: string) {
     this._endDateType = value;
   }
   public resetEndDateType() {
@@ -175,15 +175,15 @@ export class Ec2CapacityReservation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get endDateTypeInput() {
-    return this._endDateType
+    return this._endDateType;
   }
 
   // ephemeral_storage - computed: false, optional: true, required: false
-  private _ephemeralStorage?: boolean | cdktf.IResolvable | undefined; 
+  private _ephemeralStorage?: boolean | cdktf.IResolvable; 
   public get ephemeralStorage() {
     return this.getBooleanAttribute('ephemeral_storage') as any;
   }
-  public set ephemeralStorage(value: boolean | cdktf.IResolvable | undefined) {
+  public set ephemeralStorage(value: boolean | cdktf.IResolvable) {
     this._ephemeralStorage = value;
   }
   public resetEphemeralStorage() {
@@ -191,7 +191,7 @@ export class Ec2CapacityReservation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ephemeralStorageInput() {
-    return this._ephemeralStorage
+    return this._ephemeralStorage;
   }
 
   // id - computed: true, optional: true, required: false
@@ -209,15 +209,15 @@ export class Ec2CapacityReservation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceCountInput() {
-    return this._instanceCount
+    return this._instanceCount;
   }
 
   // instance_match_criteria - computed: false, optional: true, required: false
-  private _instanceMatchCriteria?: string | undefined; 
+  private _instanceMatchCriteria?: string; 
   public get instanceMatchCriteria() {
     return this.getStringAttribute('instance_match_criteria');
   }
-  public set instanceMatchCriteria(value: string | undefined) {
+  public set instanceMatchCriteria(value: string) {
     this._instanceMatchCriteria = value;
   }
   public resetInstanceMatchCriteria() {
@@ -225,7 +225,7 @@ export class Ec2CapacityReservation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceMatchCriteriaInput() {
-    return this._instanceMatchCriteria
+    return this._instanceMatchCriteria;
   }
 
   // instance_platform - computed: false, optional: false, required: true
@@ -238,7 +238,7 @@ export class Ec2CapacityReservation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instancePlatformInput() {
-    return this._instancePlatform
+    return this._instancePlatform;
   }
 
   // instance_type - computed: false, optional: false, required: true
@@ -251,15 +251,15 @@ export class Ec2CapacityReservation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // outpost_arn - computed: false, optional: true, required: false
-  private _outpostArn?: string | undefined; 
+  private _outpostArn?: string; 
   public get outpostArn() {
     return this.getStringAttribute('outpost_arn');
   }
-  public set outpostArn(value: string | undefined) {
+  public set outpostArn(value: string) {
     this._outpostArn = value;
   }
   public resetOutpostArn() {
@@ -267,7 +267,7 @@ export class Ec2CapacityReservation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get outpostArnInput() {
-    return this._outpostArn
+    return this._outpostArn;
   }
 
   // owner_id - computed: true, optional: false, required: false
@@ -276,12 +276,12 @@ export class Ec2CapacityReservation extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -289,16 +289,16 @@ export class Ec2CapacityReservation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -306,15 +306,15 @@ export class Ec2CapacityReservation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // tenancy - computed: false, optional: true, required: false
-  private _tenancy?: string | undefined; 
+  private _tenancy?: string; 
   public get tenancy() {
     return this.getStringAttribute('tenancy');
   }
-  public set tenancy(value: string | undefined) {
+  public set tenancy(value: string) {
     this._tenancy = value;
   }
   public resetTenancy() {
@@ -322,7 +322,7 @@ export class Ec2CapacityReservation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tenancyInput() {
-    return this._tenancy
+    return this._tenancy;
   }
 
   // =========

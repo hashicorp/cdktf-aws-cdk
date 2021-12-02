@@ -72,6 +72,31 @@ export class WorklinkFleetIdentityProviderOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): WorklinkFleetIdentityProvider | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._samlMetadata) {
+      hasAnyValues = true;
+      internalValueResult.samlMetadata = this._samlMetadata;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: WorklinkFleetIdentityProvider | undefined) {
+    if (value === undefined) {
+      this._samlMetadata = undefined;
+      this._type = undefined;
+    }
+    else {
+      this._samlMetadata = value.samlMetadata;
+      this._type = value.type;
+    }
+  }
+
   // saml_metadata - computed: false, optional: false, required: true
   private _samlMetadata?: string; 
   public get samlMetadata() {
@@ -82,7 +107,7 @@ export class WorklinkFleetIdentityProviderOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get samlMetadataInput() {
-    return this._samlMetadata
+    return this._samlMetadata;
   }
 
   // type - computed: false, optional: false, required: true
@@ -95,7 +120,7 @@ export class WorklinkFleetIdentityProviderOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 export interface WorklinkFleetNetwork {
@@ -135,6 +160,37 @@ export class WorklinkFleetNetworkOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): WorklinkFleetNetwork | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._securityGroupIds) {
+      hasAnyValues = true;
+      internalValueResult.securityGroupIds = this._securityGroupIds;
+    }
+    if (this._subnetIds) {
+      hasAnyValues = true;
+      internalValueResult.subnetIds = this._subnetIds;
+    }
+    if (this._vpcId) {
+      hasAnyValues = true;
+      internalValueResult.vpcId = this._vpcId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: WorklinkFleetNetwork | undefined) {
+    if (value === undefined) {
+      this._securityGroupIds = undefined;
+      this._subnetIds = undefined;
+      this._vpcId = undefined;
+    }
+    else {
+      this._securityGroupIds = value.securityGroupIds;
+      this._subnetIds = value.subnetIds;
+      this._vpcId = value.vpcId;
+    }
+  }
+
   // security_group_ids - computed: false, optional: false, required: true
   private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
@@ -145,7 +201,7 @@ export class WorklinkFleetNetworkOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // subnet_ids - computed: false, optional: false, required: true
@@ -158,7 +214,7 @@ export class WorklinkFleetNetworkOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 
   // vpc_id - computed: false, optional: false, required: true
@@ -171,7 +227,7 @@ export class WorklinkFleetNetworkOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 }
 
@@ -212,8 +268,8 @@ export class WorklinkFleet extends cdktf.TerraformResource {
     this._displayName = config.displayName;
     this._name = config.name;
     this._optimizeForEndUserLocation = config.optimizeForEndUserLocation;
-    this._identityProvider = config.identityProvider;
-    this._network = config.network;
+    this._identityProvider.internalValue = config.identityProvider;
+    this._network.internalValue = config.network;
   }
 
   // ==========
@@ -226,11 +282,11 @@ export class WorklinkFleet extends cdktf.TerraformResource {
   }
 
   // audit_stream_arn - computed: false, optional: true, required: false
-  private _auditStreamArn?: string | undefined; 
+  private _auditStreamArn?: string; 
   public get auditStreamArn() {
     return this.getStringAttribute('audit_stream_arn');
   }
-  public set auditStreamArn(value: string | undefined) {
+  public set auditStreamArn(value: string) {
     this._auditStreamArn = value;
   }
   public resetAuditStreamArn() {
@@ -238,7 +294,7 @@ export class WorklinkFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get auditStreamArnInput() {
-    return this._auditStreamArn
+    return this._auditStreamArn;
   }
 
   // company_code - computed: true, optional: false, required: false
@@ -252,11 +308,11 @@ export class WorklinkFleet extends cdktf.TerraformResource {
   }
 
   // device_ca_certificate - computed: false, optional: true, required: false
-  private _deviceCaCertificate?: string | undefined; 
+  private _deviceCaCertificate?: string; 
   public get deviceCaCertificate() {
     return this.getStringAttribute('device_ca_certificate');
   }
-  public set deviceCaCertificate(value: string | undefined) {
+  public set deviceCaCertificate(value: string) {
     this._deviceCaCertificate = value;
   }
   public resetDeviceCaCertificate() {
@@ -264,15 +320,15 @@ export class WorklinkFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deviceCaCertificateInput() {
-    return this._deviceCaCertificate
+    return this._deviceCaCertificate;
   }
 
   // display_name - computed: false, optional: true, required: false
-  private _displayName?: string | undefined; 
+  private _displayName?: string; 
   public get displayName() {
     return this.getStringAttribute('display_name');
   }
-  public set displayName(value: string | undefined) {
+  public set displayName(value: string) {
     this._displayName = value;
   }
   public resetDisplayName() {
@@ -280,7 +336,7 @@ export class WorklinkFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get displayNameInput() {
-    return this._displayName
+    return this._displayName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -303,15 +359,15 @@ export class WorklinkFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // optimize_for_end_user_location - computed: false, optional: true, required: false
-  private _optimizeForEndUserLocation?: boolean | cdktf.IResolvable | undefined; 
+  private _optimizeForEndUserLocation?: boolean | cdktf.IResolvable; 
   public get optimizeForEndUserLocation() {
     return this.getBooleanAttribute('optimize_for_end_user_location') as any;
   }
-  public set optimizeForEndUserLocation(value: boolean | cdktf.IResolvable | undefined) {
+  public set optimizeForEndUserLocation(value: boolean | cdktf.IResolvable) {
     this._optimizeForEndUserLocation = value;
   }
   public resetOptimizeForEndUserLocation() {
@@ -319,41 +375,39 @@ export class WorklinkFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get optimizeForEndUserLocationInput() {
-    return this._optimizeForEndUserLocation
+    return this._optimizeForEndUserLocation;
   }
 
   // identity_provider - computed: false, optional: true, required: false
-  private _identityProvider?: WorklinkFleetIdentityProvider | undefined; 
-  private __identityProviderOutput = new WorklinkFleetIdentityProviderOutputReference(this as any, "identity_provider", true);
+  private _identityProvider = new WorklinkFleetIdentityProviderOutputReference(this as any, "identity_provider", true);
   public get identityProvider() {
-    return this.__identityProviderOutput;
+    return this._identityProvider;
   }
-  public putIdentityProvider(value: WorklinkFleetIdentityProvider | undefined) {
-    this._identityProvider = value;
+  public putIdentityProvider(value: WorklinkFleetIdentityProvider) {
+    this._identityProvider.internalValue = value;
   }
   public resetIdentityProvider() {
-    this._identityProvider = undefined;
+    this._identityProvider.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get identityProviderInput() {
-    return this._identityProvider
+    return this._identityProvider.internalValue;
   }
 
   // network - computed: false, optional: true, required: false
-  private _network?: WorklinkFleetNetwork | undefined; 
-  private __networkOutput = new WorklinkFleetNetworkOutputReference(this as any, "network", true);
+  private _network = new WorklinkFleetNetworkOutputReference(this as any, "network", true);
   public get network() {
-    return this.__networkOutput;
+    return this._network;
   }
-  public putNetwork(value: WorklinkFleetNetwork | undefined) {
-    this._network = value;
+  public putNetwork(value: WorklinkFleetNetwork) {
+    this._network.internalValue = value;
   }
   public resetNetwork() {
-    this._network = undefined;
+    this._network.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get networkInput() {
-    return this._network
+    return this._network.internalValue;
   }
 
   // =========
@@ -367,8 +421,8 @@ export class WorklinkFleet extends cdktf.TerraformResource {
       display_name: cdktf.stringToTerraform(this._displayName),
       name: cdktf.stringToTerraform(this._name),
       optimize_for_end_user_location: cdktf.booleanToTerraform(this._optimizeForEndUserLocation),
-      identity_provider: worklinkFleetIdentityProviderToTerraform(this._identityProvider),
-      network: worklinkFleetNetworkToTerraform(this._network),
+      identity_provider: worklinkFleetIdentityProviderToTerraform(this._identityProvider.internalValue),
+      network: worklinkFleetNetworkToTerraform(this._network.internalValue),
     };
   }
 }

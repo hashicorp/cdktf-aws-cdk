@@ -75,6 +75,37 @@ export class Apigatewayv2DomainNameDomainNameConfigurationOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Apigatewayv2DomainNameDomainNameConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._certificateArn) {
+      hasAnyValues = true;
+      internalValueResult.certificateArn = this._certificateArn;
+    }
+    if (this._endpointType) {
+      hasAnyValues = true;
+      internalValueResult.endpointType = this._endpointType;
+    }
+    if (this._securityPolicy) {
+      hasAnyValues = true;
+      internalValueResult.securityPolicy = this._securityPolicy;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Apigatewayv2DomainNameDomainNameConfiguration | undefined) {
+    if (value === undefined) {
+      this._certificateArn = undefined;
+      this._endpointType = undefined;
+      this._securityPolicy = undefined;
+    }
+    else {
+      this._certificateArn = value.certificateArn;
+      this._endpointType = value.endpointType;
+      this._securityPolicy = value.securityPolicy;
+    }
+  }
+
   // certificate_arn - computed: false, optional: false, required: true
   private _certificateArn?: string; 
   public get certificateArn() {
@@ -85,7 +116,7 @@ export class Apigatewayv2DomainNameDomainNameConfigurationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get certificateArnInput() {
-    return this._certificateArn
+    return this._certificateArn;
   }
 
   // endpoint_type - computed: false, optional: false, required: true
@@ -98,7 +129,7 @@ export class Apigatewayv2DomainNameDomainNameConfigurationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get endpointTypeInput() {
-    return this._endpointType
+    return this._endpointType;
   }
 
   // security_policy - computed: false, optional: false, required: true
@@ -111,7 +142,7 @@ export class Apigatewayv2DomainNameDomainNameConfigurationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get securityPolicyInput() {
-    return this._securityPolicy
+    return this._securityPolicy;
   }
 }
 export interface Apigatewayv2DomainNameMutualTlsAuthentication {
@@ -146,6 +177,31 @@ export class Apigatewayv2DomainNameMutualTlsAuthenticationOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Apigatewayv2DomainNameMutualTlsAuthentication | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._truststoreUri) {
+      hasAnyValues = true;
+      internalValueResult.truststoreUri = this._truststoreUri;
+    }
+    if (this._truststoreVersion) {
+      hasAnyValues = true;
+      internalValueResult.truststoreVersion = this._truststoreVersion;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Apigatewayv2DomainNameMutualTlsAuthentication | undefined) {
+    if (value === undefined) {
+      this._truststoreUri = undefined;
+      this._truststoreVersion = undefined;
+    }
+    else {
+      this._truststoreUri = value.truststoreUri;
+      this._truststoreVersion = value.truststoreVersion;
+    }
+  }
+
   // truststore_uri - computed: false, optional: false, required: true
   private _truststoreUri?: string; 
   public get truststoreUri() {
@@ -156,15 +212,15 @@ export class Apigatewayv2DomainNameMutualTlsAuthenticationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get truststoreUriInput() {
-    return this._truststoreUri
+    return this._truststoreUri;
   }
 
   // truststore_version - computed: false, optional: true, required: false
-  private _truststoreVersion?: string | undefined; 
+  private _truststoreVersion?: string; 
   public get truststoreVersion() {
     return this.getStringAttribute('truststore_version');
   }
-  public set truststoreVersion(value: string | undefined) {
+  public set truststoreVersion(value: string) {
     this._truststoreVersion = value;
   }
   public resetTruststoreVersion() {
@@ -172,7 +228,7 @@ export class Apigatewayv2DomainNameMutualTlsAuthenticationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get truststoreVersionInput() {
-    return this._truststoreVersion
+    return this._truststoreVersion;
   }
 }
 export interface Apigatewayv2DomainNameTimeouts {
@@ -207,12 +263,37 @@ export class Apigatewayv2DomainNameTimeoutsOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Apigatewayv2DomainNameTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Apigatewayv2DomainNameTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -220,15 +301,15 @@ export class Apigatewayv2DomainNameTimeoutsOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -236,7 +317,7 @@ export class Apigatewayv2DomainNameTimeoutsOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -275,9 +356,9 @@ export class Apigatewayv2DomainName extends cdktf.TerraformResource {
     this._domainName = config.domainName;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._domainNameConfiguration = config.domainNameConfiguration;
-    this._mutualTlsAuthentication = config.mutualTlsAuthentication;
-    this._timeouts = config.timeouts;
+    this._domainNameConfiguration.internalValue = config.domainNameConfiguration;
+    this._mutualTlsAuthentication.internalValue = config.mutualTlsAuthentication;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -304,7 +385,7 @@ export class Apigatewayv2DomainName extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainNameInput() {
-    return this._domainName
+    return this._domainName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -313,12 +394,12 @@ export class Apigatewayv2DomainName extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -326,16 +407,16 @@ export class Apigatewayv2DomainName extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -343,55 +424,52 @@ export class Apigatewayv2DomainName extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // domain_name_configuration - computed: false, optional: false, required: true
-  private _domainNameConfiguration?: Apigatewayv2DomainNameDomainNameConfiguration; 
-  private __domainNameConfigurationOutput = new Apigatewayv2DomainNameDomainNameConfigurationOutputReference(this as any, "domain_name_configuration", true);
+  private _domainNameConfiguration = new Apigatewayv2DomainNameDomainNameConfigurationOutputReference(this as any, "domain_name_configuration", true);
   public get domainNameConfiguration() {
-    return this.__domainNameConfigurationOutput;
+    return this._domainNameConfiguration;
   }
   public putDomainNameConfiguration(value: Apigatewayv2DomainNameDomainNameConfiguration) {
-    this._domainNameConfiguration = value;
+    this._domainNameConfiguration.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get domainNameConfigurationInput() {
-    return this._domainNameConfiguration
+    return this._domainNameConfiguration.internalValue;
   }
 
   // mutual_tls_authentication - computed: false, optional: true, required: false
-  private _mutualTlsAuthentication?: Apigatewayv2DomainNameMutualTlsAuthentication | undefined; 
-  private __mutualTlsAuthenticationOutput = new Apigatewayv2DomainNameMutualTlsAuthenticationOutputReference(this as any, "mutual_tls_authentication", true);
+  private _mutualTlsAuthentication = new Apigatewayv2DomainNameMutualTlsAuthenticationOutputReference(this as any, "mutual_tls_authentication", true);
   public get mutualTlsAuthentication() {
-    return this.__mutualTlsAuthenticationOutput;
+    return this._mutualTlsAuthentication;
   }
-  public putMutualTlsAuthentication(value: Apigatewayv2DomainNameMutualTlsAuthentication | undefined) {
-    this._mutualTlsAuthentication = value;
+  public putMutualTlsAuthentication(value: Apigatewayv2DomainNameMutualTlsAuthentication) {
+    this._mutualTlsAuthentication.internalValue = value;
   }
   public resetMutualTlsAuthentication() {
-    this._mutualTlsAuthentication = undefined;
+    this._mutualTlsAuthentication.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get mutualTlsAuthenticationInput() {
-    return this._mutualTlsAuthentication
+    return this._mutualTlsAuthentication.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: Apigatewayv2DomainNameTimeouts | undefined; 
-  private __timeoutsOutput = new Apigatewayv2DomainNameTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new Apigatewayv2DomainNameTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: Apigatewayv2DomainNameTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: Apigatewayv2DomainNameTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -403,9 +481,9 @@ export class Apigatewayv2DomainName extends cdktf.TerraformResource {
       domain_name: cdktf.stringToTerraform(this._domainName),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      domain_name_configuration: apigatewayv2DomainNameDomainNameConfigurationToTerraform(this._domainNameConfiguration),
-      mutual_tls_authentication: apigatewayv2DomainNameMutualTlsAuthenticationToTerraform(this._mutualTlsAuthentication),
-      timeouts: apigatewayv2DomainNameTimeoutsToTerraform(this._timeouts),
+      domain_name_configuration: apigatewayv2DomainNameDomainNameConfigurationToTerraform(this._domainNameConfiguration.internalValue),
+      mutual_tls_authentication: apigatewayv2DomainNameMutualTlsAuthenticationToTerraform(this._mutualTlsAuthentication.internalValue),
+      timeouts: apigatewayv2DomainNameTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

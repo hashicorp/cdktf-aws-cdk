@@ -72,7 +72,7 @@ export class IotRoleAlias extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get aliasInput() {
-    return this._alias
+    return this._alias;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -81,11 +81,11 @@ export class IotRoleAlias extends cdktf.TerraformResource {
   }
 
   // credential_duration - computed: false, optional: true, required: false
-  private _credentialDuration?: number | undefined; 
+  private _credentialDuration?: number; 
   public get credentialDuration() {
     return this.getNumberAttribute('credential_duration');
   }
-  public set credentialDuration(value: number | undefined) {
+  public set credentialDuration(value: number) {
     this._credentialDuration = value;
   }
   public resetCredentialDuration() {
@@ -93,7 +93,7 @@ export class IotRoleAlias extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get credentialDurationInput() {
-    return this._credentialDuration
+    return this._credentialDuration;
   }
 
   // id - computed: true, optional: true, required: false
@@ -111,7 +111,7 @@ export class IotRoleAlias extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // =========

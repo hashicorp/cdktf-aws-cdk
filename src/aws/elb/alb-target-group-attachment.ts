@@ -68,11 +68,11 @@ export class AlbTargetGroupAttachment extends cdktf.TerraformResource {
   // ==========
 
   // availability_zone - computed: false, optional: true, required: false
-  private _availabilityZone?: string | undefined; 
+  private _availabilityZone?: string; 
   public get availabilityZone() {
     return this.getStringAttribute('availability_zone');
   }
-  public set availabilityZone(value: string | undefined) {
+  public set availabilityZone(value: string) {
     this._availabilityZone = value;
   }
   public resetAvailabilityZone() {
@@ -80,7 +80,7 @@ export class AlbTargetGroupAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneInput() {
-    return this._availabilityZone
+    return this._availabilityZone;
   }
 
   // id - computed: true, optional: true, required: false
@@ -89,11 +89,11 @@ export class AlbTargetGroupAttachment extends cdktf.TerraformResource {
   }
 
   // port - computed: false, optional: true, required: false
-  private _port?: number | undefined; 
+  private _port?: number; 
   public get port() {
     return this.getNumberAttribute('port');
   }
-  public set port(value: number | undefined) {
+  public set port(value: number) {
     this._port = value;
   }
   public resetPort() {
@@ -101,7 +101,7 @@ export class AlbTargetGroupAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 
   // target_group_arn - computed: false, optional: false, required: true
@@ -114,7 +114,7 @@ export class AlbTargetGroupAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetGroupArnInput() {
-    return this._targetGroupArn
+    return this._targetGroupArn;
   }
 
   // target_id - computed: false, optional: false, required: true
@@ -127,7 +127,7 @@ export class AlbTargetGroupAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetIdInput() {
-    return this._targetId
+    return this._targetId;
   }
 
   // =========

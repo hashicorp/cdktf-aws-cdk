@@ -77,7 +77,7 @@ export class AmplifyBackendEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get appIdInput() {
-    return this._appId
+    return this._appId;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -86,11 +86,11 @@ export class AmplifyBackendEnvironment extends cdktf.TerraformResource {
   }
 
   // deployment_artifacts - computed: true, optional: true, required: false
-  private _deploymentArtifacts?: string | undefined; 
+  private _deploymentArtifacts?: string; 
   public get deploymentArtifacts() {
     return this.getStringAttribute('deployment_artifacts');
   }
-  public set deploymentArtifacts(value: string | undefined) {
+  public set deploymentArtifacts(value: string) {
     this._deploymentArtifacts = value;
   }
   public resetDeploymentArtifacts() {
@@ -98,7 +98,7 @@ export class AmplifyBackendEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentArtifactsInput() {
-    return this._deploymentArtifacts
+    return this._deploymentArtifacts;
   }
 
   // environment_name - computed: false, optional: false, required: true
@@ -111,7 +111,7 @@ export class AmplifyBackendEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get environmentNameInput() {
-    return this._environmentName
+    return this._environmentName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -120,11 +120,11 @@ export class AmplifyBackendEnvironment extends cdktf.TerraformResource {
   }
 
   // stack_name - computed: true, optional: true, required: false
-  private _stackName?: string | undefined; 
+  private _stackName?: string; 
   public get stackName() {
     return this.getStringAttribute('stack_name');
   }
-  public set stackName(value: string | undefined) {
+  public set stackName(value: string) {
     this._stackName = value;
   }
   public resetStackName() {
@@ -132,7 +132,7 @@ export class AmplifyBackendEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stackNameInput() {
-    return this._stackName
+    return this._stackName;
   }
 
   // =========

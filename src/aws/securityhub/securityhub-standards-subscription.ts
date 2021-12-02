@@ -67,7 +67,7 @@ export class SecurityhubStandardsSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get standardsArnInput() {
-    return this._standardsArn
+    return this._standardsArn;
   }
 
   // =========

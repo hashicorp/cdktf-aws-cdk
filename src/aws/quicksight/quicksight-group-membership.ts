@@ -73,11 +73,11 @@ export class QuicksightGroupMembership extends cdktf.TerraformResource {
   }
 
   // aws_account_id - computed: true, optional: true, required: false
-  private _awsAccountId?: string | undefined; 
+  private _awsAccountId?: string; 
   public get awsAccountId() {
     return this.getStringAttribute('aws_account_id');
   }
-  public set awsAccountId(value: string | undefined) {
+  public set awsAccountId(value: string) {
     this._awsAccountId = value;
   }
   public resetAwsAccountId() {
@@ -85,7 +85,7 @@ export class QuicksightGroupMembership extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get awsAccountIdInput() {
-    return this._awsAccountId
+    return this._awsAccountId;
   }
 
   // group_name - computed: false, optional: false, required: true
@@ -98,7 +98,7 @@ export class QuicksightGroupMembership extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get groupNameInput() {
-    return this._groupName
+    return this._groupName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -116,15 +116,15 @@ export class QuicksightGroupMembership extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get memberNameInput() {
-    return this._memberName
+    return this._memberName;
   }
 
   // namespace - computed: false, optional: true, required: false
-  private _namespace?: string | undefined; 
+  private _namespace?: string; 
   public get namespace() {
     return this.getStringAttribute('namespace');
   }
-  public set namespace(value: string | undefined) {
+  public set namespace(value: string) {
     this._namespace = value;
   }
   public resetNamespace() {
@@ -132,7 +132,7 @@ export class QuicksightGroupMembership extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get namespaceInput() {
-    return this._namespace
+    return this._namespace;
   }
 
   // =========

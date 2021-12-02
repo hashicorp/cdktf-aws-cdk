@@ -68,11 +68,11 @@ export class DataAwsSagemakerPrebuiltEcrImage extends cdktf.TerraformDataSource 
   // ==========
 
   // dns_suffix - computed: false, optional: true, required: false
-  private _dnsSuffix?: string | undefined; 
+  private _dnsSuffix?: string; 
   public get dnsSuffix() {
     return this.getStringAttribute('dns_suffix');
   }
-  public set dnsSuffix(value: string | undefined) {
+  public set dnsSuffix(value: string) {
     this._dnsSuffix = value;
   }
   public resetDnsSuffix() {
@@ -80,7 +80,7 @@ export class DataAwsSagemakerPrebuiltEcrImage extends cdktf.TerraformDataSource 
   }
   // Temporarily expose input value. Use with caution.
   public get dnsSuffixInput() {
-    return this._dnsSuffix
+    return this._dnsSuffix;
   }
 
   // id - computed: true, optional: true, required: false
@@ -89,11 +89,11 @@ export class DataAwsSagemakerPrebuiltEcrImage extends cdktf.TerraformDataSource 
   }
 
   // image_tag - computed: false, optional: true, required: false
-  private _imageTag?: string | undefined; 
+  private _imageTag?: string; 
   public get imageTag() {
     return this.getStringAttribute('image_tag');
   }
-  public set imageTag(value: string | undefined) {
+  public set imageTag(value: string) {
     this._imageTag = value;
   }
   public resetImageTag() {
@@ -101,15 +101,15 @@ export class DataAwsSagemakerPrebuiltEcrImage extends cdktf.TerraformDataSource 
   }
   // Temporarily expose input value. Use with caution.
   public get imageTagInput() {
-    return this._imageTag
+    return this._imageTag;
   }
 
   // region - computed: false, optional: true, required: false
-  private _region?: string | undefined; 
+  private _region?: string; 
   public get region() {
     return this.getStringAttribute('region');
   }
-  public set region(value: string | undefined) {
+  public set region(value: string) {
     this._region = value;
   }
   public resetRegion() {
@@ -117,7 +117,7 @@ export class DataAwsSagemakerPrebuiltEcrImage extends cdktf.TerraformDataSource 
   }
   // Temporarily expose input value. Use with caution.
   public get regionInput() {
-    return this._region
+    return this._region;
   }
 
   // registry_id - computed: true, optional: false, required: false
@@ -140,7 +140,7 @@ export class DataAwsSagemakerPrebuiltEcrImage extends cdktf.TerraformDataSource 
   }
   // Temporarily expose input value. Use with caution.
   public get repositoryNameInput() {
-    return this._repositoryName
+    return this._repositoryName;
   }
 
   // =========

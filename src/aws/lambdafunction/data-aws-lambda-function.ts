@@ -158,7 +158,7 @@ export class DataAwsLambdaFunction extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get functionNameInput() {
-    return this._functionName
+    return this._functionName;
   }
 
   // handler - computed: true, optional: false, required: false
@@ -207,11 +207,11 @@ export class DataAwsLambdaFunction extends cdktf.TerraformDataSource {
   }
 
   // qualifier - computed: false, optional: true, required: false
-  private _qualifier?: string | undefined; 
+  private _qualifier?: string; 
   public get qualifier() {
     return this.getStringAttribute('qualifier');
   }
-  public set qualifier(value: string | undefined) {
+  public set qualifier(value: string) {
     this._qualifier = value;
   }
   public resetQualifier() {
@@ -219,7 +219,7 @@ export class DataAwsLambdaFunction extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get qualifierInput() {
-    return this._qualifier
+    return this._qualifier;
   }
 
   // reserved_concurrent_executions - computed: true, optional: false, required: false
@@ -258,12 +258,12 @@ export class DataAwsLambdaFunction extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -271,7 +271,7 @@ export class DataAwsLambdaFunction extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // timeout - computed: true, optional: false, required: false

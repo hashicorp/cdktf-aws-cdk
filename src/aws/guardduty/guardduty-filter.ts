@@ -118,6 +118,25 @@ export class GuarddutyFilterFindingCriteriaOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GuarddutyFilterFindingCriteria | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._criterion) {
+      hasAnyValues = true;
+      internalValueResult.criterion = this._criterion;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GuarddutyFilterFindingCriteria | undefined) {
+    if (value === undefined) {
+      this._criterion = undefined;
+    }
+    else {
+      this._criterion = value.criterion;
+    }
+  }
+
   // criterion - computed: false, optional: false, required: true
   private _criterion?: GuarddutyFilterFindingCriteriaCriterion[]; 
   public get criterion() {
@@ -129,7 +148,7 @@ export class GuarddutyFilterFindingCriteriaOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get criterionInput() {
-    return this._criterion
+    return this._criterion;
   }
 }
 
@@ -172,7 +191,7 @@ export class GuarddutyFilter extends cdktf.TerraformResource {
     this._rank = config.rank;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._findingCriteria = config.findingCriteria;
+    this._findingCriteria.internalValue = config.findingCriteria;
   }
 
   // ==========
@@ -189,7 +208,7 @@ export class GuarddutyFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get actionInput() {
-    return this._action
+    return this._action;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -198,11 +217,11 @@ export class GuarddutyFilter extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -210,7 +229,7 @@ export class GuarddutyFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // detector_id - computed: false, optional: false, required: true
@@ -223,7 +242,7 @@ export class GuarddutyFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get detectorIdInput() {
-    return this._detectorId
+    return this._detectorId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -241,7 +260,7 @@ export class GuarddutyFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // rank - computed: false, optional: false, required: true
@@ -254,16 +273,16 @@ export class GuarddutyFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rankInput() {
-    return this._rank
+    return this._rank;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -271,16 +290,16 @@ export class GuarddutyFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -288,21 +307,20 @@ export class GuarddutyFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // finding_criteria - computed: false, optional: false, required: true
-  private _findingCriteria?: GuarddutyFilterFindingCriteria; 
-  private __findingCriteriaOutput = new GuarddutyFilterFindingCriteriaOutputReference(this as any, "finding_criteria", true);
+  private _findingCriteria = new GuarddutyFilterFindingCriteriaOutputReference(this as any, "finding_criteria", true);
   public get findingCriteria() {
-    return this.__findingCriteriaOutput;
+    return this._findingCriteria;
   }
   public putFindingCriteria(value: GuarddutyFilterFindingCriteria) {
-    this._findingCriteria = value;
+    this._findingCriteria.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get findingCriteriaInput() {
-    return this._findingCriteria
+    return this._findingCriteria.internalValue;
   }
 
   // =========
@@ -318,7 +336,7 @@ export class GuarddutyFilter extends cdktf.TerraformResource {
       rank: cdktf.numberToTerraform(this._rank),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      finding_criteria: guarddutyFilterFindingCriteriaToTerraform(this._findingCriteria),
+      finding_criteria: guarddutyFilterFindingCriteriaToTerraform(this._findingCriteria.internalValue),
     };
   }
 }

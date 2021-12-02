@@ -63,11 +63,11 @@ export class DataAwsDbEventCategories extends cdktf.TerraformDataSource {
   }
 
   // source_type - computed: false, optional: true, required: false
-  private _sourceType?: string | undefined; 
+  private _sourceType?: string; 
   public get sourceType() {
     return this.getStringAttribute('source_type');
   }
-  public set sourceType(value: string | undefined) {
+  public set sourceType(value: string) {
     this._sourceType = value;
   }
   public resetSourceType() {
@@ -75,7 +75,7 @@ export class DataAwsDbEventCategories extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceTypeInput() {
-    return this._sourceType
+    return this._sourceType;
   }
 
   // =========

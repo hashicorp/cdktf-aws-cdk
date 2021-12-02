@@ -69,6 +69,25 @@ export class NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSetsIpSetOutputRefe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSetsIpSet | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._definition) {
+      hasAnyValues = true;
+      internalValueResult.definition = this._definition;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSetsIpSet | undefined) {
+    if (value === undefined) {
+      this._definition = undefined;
+    }
+    else {
+      this._definition = value.definition;
+    }
+  }
+
   // definition - computed: false, optional: false, required: true
   private _definition?: string[]; 
   public get definition() {
@@ -79,7 +98,7 @@ export class NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSetsIpSetOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get definitionInput() {
-    return this._definition
+    return this._definition;
   }
 }
 export interface NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSets {
@@ -133,6 +152,25 @@ export class NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSetsPortSetOutput
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSetsPortSet | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._definition) {
+      hasAnyValues = true;
+      internalValueResult.definition = this._definition;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSetsPortSet | undefined) {
+    if (value === undefined) {
+      this._definition = undefined;
+    }
+    else {
+      this._definition = value.definition;
+    }
+  }
+
   // definition - computed: false, optional: false, required: true
   private _definition?: string[]; 
   public get definition() {
@@ -143,7 +181,7 @@ export class NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSetsPortSetOutput
   }
   // Temporarily expose input value. Use with caution.
   public get definitionInput() {
-    return this._definition
+    return this._definition;
   }
 }
 export interface NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSets {
@@ -206,13 +244,38 @@ export class NetworkfirewallRuleGroupRuleGroupRuleVariablesOutputReference exten
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): NetworkfirewallRuleGroupRuleGroupRuleVariables | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._ipSets) {
+      hasAnyValues = true;
+      internalValueResult.ipSets = this._ipSets;
+    }
+    if (this._portSets) {
+      hasAnyValues = true;
+      internalValueResult.portSets = this._portSets;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: NetworkfirewallRuleGroupRuleGroupRuleVariables | undefined) {
+    if (value === undefined) {
+      this._ipSets = undefined;
+      this._portSets = undefined;
+    }
+    else {
+      this._ipSets = value.ipSets;
+      this._portSets = value.portSets;
+    }
+  }
+
   // ip_sets - computed: false, optional: true, required: false
-  private _ipSets?: NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSets[] | undefined; 
+  private _ipSets?: NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSets[]; 
   public get ipSets() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ip_sets') as any;
   }
-  public set ipSets(value: NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSets[] | undefined) {
+  public set ipSets(value: NetworkfirewallRuleGroupRuleGroupRuleVariablesIpSets[]) {
     this._ipSets = value;
   }
   public resetIpSets() {
@@ -220,16 +283,16 @@ export class NetworkfirewallRuleGroupRuleGroupRuleVariablesOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get ipSetsInput() {
-    return this._ipSets
+    return this._ipSets;
   }
 
   // port_sets - computed: false, optional: true, required: false
-  private _portSets?: NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSets[] | undefined; 
+  private _portSets?: NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSets[]; 
   public get portSets() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('port_sets') as any;
   }
-  public set portSets(value: NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSets[] | undefined) {
+  public set portSets(value: NetworkfirewallRuleGroupRuleGroupRuleVariablesPortSets[]) {
     this._portSets = value;
   }
   public resetPortSets() {
@@ -237,7 +300,7 @@ export class NetworkfirewallRuleGroupRuleGroupRuleVariablesOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get portSetsInput() {
-    return this._portSets
+    return this._portSets;
   }
 }
 export interface NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceList {
@@ -277,6 +340,37 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceListOutputRe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceList | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._generatedRulesType) {
+      hasAnyValues = true;
+      internalValueResult.generatedRulesType = this._generatedRulesType;
+    }
+    if (this._targetTypes) {
+      hasAnyValues = true;
+      internalValueResult.targetTypes = this._targetTypes;
+    }
+    if (this._targets) {
+      hasAnyValues = true;
+      internalValueResult.targets = this._targets;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceList | undefined) {
+    if (value === undefined) {
+      this._generatedRulesType = undefined;
+      this._targetTypes = undefined;
+      this._targets = undefined;
+    }
+    else {
+      this._generatedRulesType = value.generatedRulesType;
+      this._targetTypes = value.targetTypes;
+      this._targets = value.targets;
+    }
+  }
+
   // generated_rules_type - computed: false, optional: false, required: true
   private _generatedRulesType?: string; 
   public get generatedRulesType() {
@@ -287,7 +381,7 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceListOutputRe
   }
   // Temporarily expose input value. Use with caution.
   public get generatedRulesTypeInput() {
-    return this._generatedRulesType
+    return this._generatedRulesType;
   }
 
   // target_types - computed: false, optional: false, required: true
@@ -300,7 +394,7 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceListOutputRe
   }
   // Temporarily expose input value. Use with caution.
   public get targetTypesInput() {
-    return this._targetTypes
+    return this._targetTypes;
   }
 
   // targets - computed: false, optional: false, required: true
@@ -313,7 +407,7 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceListOutputRe
   }
   // Temporarily expose input value. Use with caution.
   public get targetsInput() {
-    return this._targets
+    return this._targets;
   }
 }
 export interface NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeader {
@@ -368,6 +462,55 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeaderOutpu
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._destination) {
+      hasAnyValues = true;
+      internalValueResult.destination = this._destination;
+    }
+    if (this._destinationPort) {
+      hasAnyValues = true;
+      internalValueResult.destinationPort = this._destinationPort;
+    }
+    if (this._direction) {
+      hasAnyValues = true;
+      internalValueResult.direction = this._direction;
+    }
+    if (this._protocol) {
+      hasAnyValues = true;
+      internalValueResult.protocol = this._protocol;
+    }
+    if (this._source) {
+      hasAnyValues = true;
+      internalValueResult.source = this._source;
+    }
+    if (this._sourcePort) {
+      hasAnyValues = true;
+      internalValueResult.sourcePort = this._sourcePort;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeader | undefined) {
+    if (value === undefined) {
+      this._destination = undefined;
+      this._destinationPort = undefined;
+      this._direction = undefined;
+      this._protocol = undefined;
+      this._source = undefined;
+      this._sourcePort = undefined;
+    }
+    else {
+      this._destination = value.destination;
+      this._destinationPort = value.destinationPort;
+      this._direction = value.direction;
+      this._protocol = value.protocol;
+      this._source = value.source;
+      this._sourcePort = value.sourcePort;
+    }
+  }
+
   // destination - computed: false, optional: false, required: true
   private _destination?: string; 
   public get destination() {
@@ -378,7 +521,7 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeaderOutpu
   }
   // Temporarily expose input value. Use with caution.
   public get destinationInput() {
-    return this._destination
+    return this._destination;
   }
 
   // destination_port - computed: false, optional: false, required: true
@@ -391,7 +534,7 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeaderOutpu
   }
   // Temporarily expose input value. Use with caution.
   public get destinationPortInput() {
-    return this._destinationPort
+    return this._destinationPort;
   }
 
   // direction - computed: false, optional: false, required: true
@@ -404,7 +547,7 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeaderOutpu
   }
   // Temporarily expose input value. Use with caution.
   public get directionInput() {
-    return this._direction
+    return this._direction;
   }
 
   // protocol - computed: false, optional: false, required: true
@@ -417,7 +560,7 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeaderOutpu
   }
   // Temporarily expose input value. Use with caution.
   public get protocolInput() {
-    return this._protocol
+    return this._protocol;
   }
 
   // source - computed: false, optional: false, required: true
@@ -430,7 +573,7 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeaderOutpu
   }
   // Temporarily expose input value. Use with caution.
   public get sourceInput() {
-    return this._source
+    return this._source;
   }
 
   // source_port - computed: false, optional: false, required: true
@@ -443,7 +586,7 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleHeaderOutpu
   }
   // Temporarily expose input value. Use with caution.
   public get sourcePortInput() {
-    return this._sourcePort
+    return this._sourcePort;
   }
 }
 export interface NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRuleRuleOption {
@@ -545,6 +688,25 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustom
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricAction | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._dimension) {
+      hasAnyValues = true;
+      internalValueResult.dimension = this._dimension;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricAction | undefined) {
+    if (value === undefined) {
+      this._dimension = undefined;
+    }
+    else {
+      this._dimension = value.dimension;
+    }
+  }
+
   // dimension - computed: false, optional: false, required: true
   private _dimension?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionDimension[]; 
   public get dimension() {
@@ -556,7 +718,7 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustom
   }
   // Temporarily expose input value. Use with caution.
   public get dimensionInput() {
-    return this._dimension
+    return this._dimension;
   }
 }
 export interface NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition {
@@ -588,18 +750,36 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustom
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._publishMetricAction) {
+      hasAnyValues = true;
+      internalValueResult.publishMetricAction = this._publishMetricAction?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinition | undefined) {
+    if (value === undefined) {
+      this._publishMetricAction.internalValue = undefined;
+    }
+    else {
+      this._publishMetricAction.internalValue = value.publishMetricAction;
+    }
+  }
+
   // publish_metric_action - computed: false, optional: false, required: true
-  private _publishMetricAction?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricAction; 
-  private __publishMetricActionOutput = new NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionOutputReference(this as any, "publish_metric_action", true);
+  private _publishMetricAction = new NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricActionOutputReference(this as any, "publish_metric_action", true);
   public get publishMetricAction() {
-    return this.__publishMetricActionOutput;
+    return this._publishMetricAction;
   }
   public putPublishMetricAction(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricAction) {
-    this._publishMetricAction = value;
+    this._publishMetricAction.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get publishMetricActionInput() {
-    return this._publishMetricAction
+    return this._publishMetricAction.internalValue;
   }
 }
 export interface NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction {
@@ -788,13 +968,62 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustom
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._protocols) {
+      hasAnyValues = true;
+      internalValueResult.protocols = this._protocols;
+    }
+    if (this._destination) {
+      hasAnyValues = true;
+      internalValueResult.destination = this._destination;
+    }
+    if (this._destinationPort) {
+      hasAnyValues = true;
+      internalValueResult.destinationPort = this._destinationPort;
+    }
+    if (this._source) {
+      hasAnyValues = true;
+      internalValueResult.source = this._source;
+    }
+    if (this._sourcePort) {
+      hasAnyValues = true;
+      internalValueResult.sourcePort = this._sourcePort;
+    }
+    if (this._tcpFlag) {
+      hasAnyValues = true;
+      internalValueResult.tcpFlag = this._tcpFlag;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes | undefined) {
+    if (value === undefined) {
+      this._protocols = undefined;
+      this._destination = undefined;
+      this._destinationPort = undefined;
+      this._source = undefined;
+      this._sourcePort = undefined;
+      this._tcpFlag = undefined;
+    }
+    else {
+      this._protocols = value.protocols;
+      this._destination = value.destination;
+      this._destinationPort = value.destinationPort;
+      this._source = value.source;
+      this._sourcePort = value.sourcePort;
+      this._tcpFlag = value.tcpFlag;
+    }
+  }
+
   // protocols - computed: false, optional: true, required: false
-  private _protocols?: number[] | undefined; 
+  private _protocols?: number[]; 
   public get protocols() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('protocols') as any;
   }
-  public set protocols(value: number[] | undefined) {
+  public set protocols(value: number[]) {
     this._protocols = value;
   }
   public resetProtocols() {
@@ -802,16 +1031,16 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustom
   }
   // Temporarily expose input value. Use with caution.
   public get protocolsInput() {
-    return this._protocols
+    return this._protocols;
   }
 
   // destination - computed: false, optional: true, required: false
-  private _destination?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestination[] | undefined; 
+  private _destination?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestination[]; 
   public get destination() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('destination') as any;
   }
-  public set destination(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestination[] | undefined) {
+  public set destination(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestination[]) {
     this._destination = value;
   }
   public resetDestination() {
@@ -819,16 +1048,16 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustom
   }
   // Temporarily expose input value. Use with caution.
   public get destinationInput() {
-    return this._destination
+    return this._destination;
   }
 
   // destination_port - computed: false, optional: true, required: false
-  private _destinationPort?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort[] | undefined; 
+  private _destinationPort?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort[]; 
   public get destinationPort() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('destination_port') as any;
   }
-  public set destinationPort(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort[] | undefined) {
+  public set destinationPort(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort[]) {
     this._destinationPort = value;
   }
   public resetDestinationPort() {
@@ -836,16 +1065,16 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustom
   }
   // Temporarily expose input value. Use with caution.
   public get destinationPortInput() {
-    return this._destinationPort
+    return this._destinationPort;
   }
 
   // source - computed: false, optional: true, required: false
-  private _source?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource[] | undefined; 
+  private _source?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource[]; 
   public get source() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('source') as any;
   }
-  public set source(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource[] | undefined) {
+  public set source(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSource[]) {
     this._source = value;
   }
   public resetSource() {
@@ -853,16 +1082,16 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustom
   }
   // Temporarily expose input value. Use with caution.
   public get sourceInput() {
-    return this._source
+    return this._source;
   }
 
   // source_port - computed: false, optional: true, required: false
-  private _sourcePort?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort[] | undefined; 
+  private _sourcePort?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort[]; 
   public get sourcePort() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('source_port') as any;
   }
-  public set sourcePort(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort[] | undefined) {
+  public set sourcePort(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesSourcePort[]) {
     this._sourcePort = value;
   }
   public resetSourcePort() {
@@ -870,16 +1099,16 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustom
   }
   // Temporarily expose input value. Use with caution.
   public get sourcePortInput() {
-    return this._sourcePort
+    return this._sourcePort;
   }
 
   // tcp_flag - computed: false, optional: true, required: false
-  private _tcpFlag?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag[] | undefined; 
+  private _tcpFlag?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag[]; 
   public get tcpFlag() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tcp_flag') as any;
   }
-  public set tcpFlag(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag[] | undefined) {
+  public set tcpFlag(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag[]) {
     this._tcpFlag = value;
   }
   public resetTcpFlag() {
@@ -887,7 +1116,7 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustom
   }
   // Temporarily expose input value. Use with caution.
   public get tcpFlagInput() {
-    return this._tcpFlag
+    return this._tcpFlag;
   }
 }
 export interface NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinition {
@@ -924,6 +1153,31 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustom
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinition | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._actions) {
+      hasAnyValues = true;
+      internalValueResult.actions = this._actions;
+    }
+    if (this._matchAttributes) {
+      hasAnyValues = true;
+      internalValueResult.matchAttributes = this._matchAttributes?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinition | undefined) {
+    if (value === undefined) {
+      this._actions = undefined;
+      this._matchAttributes.internalValue = undefined;
+    }
+    else {
+      this._actions = value.actions;
+      this._matchAttributes.internalValue = value.matchAttributes;
+    }
+  }
+
   // actions - computed: false, optional: false, required: true
   private _actions?: string[]; 
   public get actions() {
@@ -934,21 +1188,20 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustom
   }
   // Temporarily expose input value. Use with caution.
   public get actionsInput() {
-    return this._actions
+    return this._actions;
   }
 
   // match_attributes - computed: false, optional: false, required: true
-  private _matchAttributes?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes; 
-  private __matchAttributesOutput = new NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesOutputReference(this as any, "match_attributes", true);
+  private _matchAttributes = new NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesOutputReference(this as any, "match_attributes", true);
   public get matchAttributes() {
-    return this.__matchAttributesOutput;
+    return this._matchAttributes;
   }
   public putMatchAttributes(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes) {
-    this._matchAttributes = value;
+    this._matchAttributes.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get matchAttributesInput() {
-    return this._matchAttributes
+    return this._matchAttributes.internalValue;
   }
 }
 export interface NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule {
@@ -1011,13 +1264,38 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustom
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._customAction) {
+      hasAnyValues = true;
+      internalValueResult.customAction = this._customAction;
+    }
+    if (this._statelessRule) {
+      hasAnyValues = true;
+      internalValueResult.statelessRule = this._statelessRule;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions | undefined) {
+    if (value === undefined) {
+      this._customAction = undefined;
+      this._statelessRule = undefined;
+    }
+    else {
+      this._customAction = value.customAction;
+      this._statelessRule = value.statelessRule;
+    }
+  }
+
   // custom_action - computed: false, optional: true, required: false
-  private _customAction?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction[] | undefined; 
+  private _customAction?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction[]; 
   public get customAction() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('custom_action') as any;
   }
-  public set customAction(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction[] | undefined) {
+  public set customAction(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction[]) {
     this._customAction = value;
   }
   public resetCustomAction() {
@@ -1025,7 +1303,7 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustom
   }
   // Temporarily expose input value. Use with caution.
   public get customActionInput() {
-    return this._customAction
+    return this._customAction;
   }
 
   // stateless_rule - computed: false, optional: false, required: true
@@ -1039,7 +1317,7 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustom
   }
   // Temporarily expose input value. Use with caution.
   public get statelessRuleInput() {
-    return this._statelessRule
+    return this._statelessRule;
   }
 }
 export interface NetworkfirewallRuleGroupRuleGroupRulesSource {
@@ -1090,12 +1368,49 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceOutputReference extends
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): NetworkfirewallRuleGroupRuleGroupRulesSource | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._rulesString) {
+      hasAnyValues = true;
+      internalValueResult.rulesString = this._rulesString;
+    }
+    if (this._rulesSourceList) {
+      hasAnyValues = true;
+      internalValueResult.rulesSourceList = this._rulesSourceList?.internalValue;
+    }
+    if (this._statefulRule) {
+      hasAnyValues = true;
+      internalValueResult.statefulRule = this._statefulRule;
+    }
+    if (this._statelessRulesAndCustomActions) {
+      hasAnyValues = true;
+      internalValueResult.statelessRulesAndCustomActions = this._statelessRulesAndCustomActions?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: NetworkfirewallRuleGroupRuleGroupRulesSource | undefined) {
+    if (value === undefined) {
+      this._rulesString = undefined;
+      this._rulesSourceList.internalValue = undefined;
+      this._statefulRule = undefined;
+      this._statelessRulesAndCustomActions.internalValue = undefined;
+    }
+    else {
+      this._rulesString = value.rulesString;
+      this._rulesSourceList.internalValue = value.rulesSourceList;
+      this._statefulRule = value.statefulRule;
+      this._statelessRulesAndCustomActions.internalValue = value.statelessRulesAndCustomActions;
+    }
+  }
+
   // rules_string - computed: false, optional: true, required: false
-  private _rulesString?: string | undefined; 
+  private _rulesString?: string; 
   public get rulesString() {
     return this.getStringAttribute('rules_string');
   }
-  public set rulesString(value: string | undefined) {
+  public set rulesString(value: string) {
     this._rulesString = value;
   }
   public resetRulesString() {
@@ -1103,33 +1418,32 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get rulesStringInput() {
-    return this._rulesString
+    return this._rulesString;
   }
 
   // rules_source_list - computed: false, optional: true, required: false
-  private _rulesSourceList?: NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceList | undefined; 
-  private __rulesSourceListOutput = new NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceListOutputReference(this as any, "rules_source_list", true);
+  private _rulesSourceList = new NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceListOutputReference(this as any, "rules_source_list", true);
   public get rulesSourceList() {
-    return this.__rulesSourceListOutput;
+    return this._rulesSourceList;
   }
-  public putRulesSourceList(value: NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceList | undefined) {
-    this._rulesSourceList = value;
+  public putRulesSourceList(value: NetworkfirewallRuleGroupRuleGroupRulesSourceRulesSourceList) {
+    this._rulesSourceList.internalValue = value;
   }
   public resetRulesSourceList() {
-    this._rulesSourceList = undefined;
+    this._rulesSourceList.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get rulesSourceListInput() {
-    return this._rulesSourceList
+    return this._rulesSourceList.internalValue;
   }
 
   // stateful_rule - computed: false, optional: true, required: false
-  private _statefulRule?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRule[] | undefined; 
+  private _statefulRule?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRule[]; 
   public get statefulRule() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('stateful_rule') as any;
   }
-  public set statefulRule(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRule[] | undefined) {
+  public set statefulRule(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatefulRule[]) {
     this._statefulRule = value;
   }
   public resetStatefulRule() {
@@ -1137,24 +1451,23 @@ export class NetworkfirewallRuleGroupRuleGroupRulesSourceOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get statefulRuleInput() {
-    return this._statefulRule
+    return this._statefulRule;
   }
 
   // stateless_rules_and_custom_actions - computed: false, optional: true, required: false
-  private _statelessRulesAndCustomActions?: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions | undefined; 
-  private __statelessRulesAndCustomActionsOutput = new NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsOutputReference(this as any, "stateless_rules_and_custom_actions", true);
+  private _statelessRulesAndCustomActions = new NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsOutputReference(this as any, "stateless_rules_and_custom_actions", true);
   public get statelessRulesAndCustomActions() {
-    return this.__statelessRulesAndCustomActionsOutput;
+    return this._statelessRulesAndCustomActions;
   }
-  public putStatelessRulesAndCustomActions(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions | undefined) {
-    this._statelessRulesAndCustomActions = value;
+  public putStatelessRulesAndCustomActions(value: NetworkfirewallRuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions) {
+    this._statelessRulesAndCustomActions.internalValue = value;
   }
   public resetStatelessRulesAndCustomActions() {
-    this._statelessRulesAndCustomActions = undefined;
+    this._statelessRulesAndCustomActions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get statelessRulesAndCustomActionsInput() {
-    return this._statelessRulesAndCustomActions
+    return this._statelessRulesAndCustomActions.internalValue;
   }
 }
 export interface NetworkfirewallRuleGroupRuleGroup {
@@ -1193,35 +1506,58 @@ export class NetworkfirewallRuleGroupRuleGroupOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // rule_variables - computed: false, optional: true, required: false
-  private _ruleVariables?: NetworkfirewallRuleGroupRuleGroupRuleVariables | undefined; 
-  private __ruleVariablesOutput = new NetworkfirewallRuleGroupRuleGroupRuleVariablesOutputReference(this as any, "rule_variables", true);
-  public get ruleVariables() {
-    return this.__ruleVariablesOutput;
+  public get internalValue(): NetworkfirewallRuleGroupRuleGroup | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._ruleVariables) {
+      hasAnyValues = true;
+      internalValueResult.ruleVariables = this._ruleVariables?.internalValue;
+    }
+    if (this._rulesSource) {
+      hasAnyValues = true;
+      internalValueResult.rulesSource = this._rulesSource?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putRuleVariables(value: NetworkfirewallRuleGroupRuleGroupRuleVariables | undefined) {
-    this._ruleVariables = value;
+
+  public set internalValue(value: NetworkfirewallRuleGroupRuleGroup | undefined) {
+    if (value === undefined) {
+      this._ruleVariables.internalValue = undefined;
+      this._rulesSource.internalValue = undefined;
+    }
+    else {
+      this._ruleVariables.internalValue = value.ruleVariables;
+      this._rulesSource.internalValue = value.rulesSource;
+    }
+  }
+
+  // rule_variables - computed: false, optional: true, required: false
+  private _ruleVariables = new NetworkfirewallRuleGroupRuleGroupRuleVariablesOutputReference(this as any, "rule_variables", true);
+  public get ruleVariables() {
+    return this._ruleVariables;
+  }
+  public putRuleVariables(value: NetworkfirewallRuleGroupRuleGroupRuleVariables) {
+    this._ruleVariables.internalValue = value;
   }
   public resetRuleVariables() {
-    this._ruleVariables = undefined;
+    this._ruleVariables.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ruleVariablesInput() {
-    return this._ruleVariables
+    return this._ruleVariables.internalValue;
   }
 
   // rules_source - computed: false, optional: false, required: true
-  private _rulesSource?: NetworkfirewallRuleGroupRuleGroupRulesSource; 
-  private __rulesSourceOutput = new NetworkfirewallRuleGroupRuleGroupRulesSourceOutputReference(this as any, "rules_source", true);
+  private _rulesSource = new NetworkfirewallRuleGroupRuleGroupRulesSourceOutputReference(this as any, "rules_source", true);
   public get rulesSource() {
-    return this.__rulesSourceOutput;
+    return this._rulesSource;
   }
   public putRulesSource(value: NetworkfirewallRuleGroupRuleGroupRulesSource) {
-    this._rulesSource = value;
+    this._rulesSource.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get rulesSourceInput() {
-    return this._rulesSource
+    return this._rulesSource.internalValue;
   }
 }
 
@@ -1264,7 +1600,7 @@ export class NetworkfirewallRuleGroup extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._type = config.type;
-    this._ruleGroup = config.ruleGroup;
+    this._ruleGroup.internalValue = config.ruleGroup;
   }
 
   // ==========
@@ -1286,15 +1622,15 @@ export class NetworkfirewallRuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get capacityInput() {
-    return this._capacity
+    return this._capacity;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -1302,7 +1638,7 @@ export class NetworkfirewallRuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -1320,15 +1656,15 @@ export class NetworkfirewallRuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // rules - computed: false, optional: true, required: false
-  private _rules?: string | undefined; 
+  private _rules?: string; 
   public get rules() {
     return this.getStringAttribute('rules');
   }
-  public set rules(value: string | undefined) {
+  public set rules(value: string) {
     this._rules = value;
   }
   public resetRules() {
@@ -1336,16 +1672,16 @@ export class NetworkfirewallRuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rulesInput() {
-    return this._rules
+    return this._rules;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -1353,16 +1689,16 @@ export class NetworkfirewallRuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -1370,7 +1706,7 @@ export class NetworkfirewallRuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // type - computed: false, optional: false, required: true
@@ -1383,7 +1719,7 @@ export class NetworkfirewallRuleGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // update_token - computed: true, optional: false, required: false
@@ -1392,20 +1728,19 @@ export class NetworkfirewallRuleGroup extends cdktf.TerraformResource {
   }
 
   // rule_group - computed: false, optional: true, required: false
-  private _ruleGroup?: NetworkfirewallRuleGroupRuleGroup | undefined; 
-  private __ruleGroupOutput = new NetworkfirewallRuleGroupRuleGroupOutputReference(this as any, "rule_group", true);
+  private _ruleGroup = new NetworkfirewallRuleGroupRuleGroupOutputReference(this as any, "rule_group", true);
   public get ruleGroup() {
-    return this.__ruleGroupOutput;
+    return this._ruleGroup;
   }
-  public putRuleGroup(value: NetworkfirewallRuleGroupRuleGroup | undefined) {
-    this._ruleGroup = value;
+  public putRuleGroup(value: NetworkfirewallRuleGroupRuleGroup) {
+    this._ruleGroup.internalValue = value;
   }
   public resetRuleGroup() {
-    this._ruleGroup = undefined;
+    this._ruleGroup.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ruleGroupInput() {
-    return this._ruleGroup
+    return this._ruleGroup.internalValue;
   }
 
   // =========
@@ -1421,7 +1756,7 @@ export class NetworkfirewallRuleGroup extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       type: cdktf.stringToTerraform(this._type),
-      rule_group: networkfirewallRuleGroupRuleGroupToTerraform(this._ruleGroup),
+      rule_group: networkfirewallRuleGroupRuleGroupToTerraform(this._ruleGroup.internalValue),
     };
   }
 }

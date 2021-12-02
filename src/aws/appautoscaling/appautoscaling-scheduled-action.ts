@@ -78,12 +78,37 @@ export class AppautoscalingScheduledActionScalableTargetActionOutputReference ex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppautoscalingScheduledActionScalableTargetAction | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._maxCapacity) {
+      hasAnyValues = true;
+      internalValueResult.maxCapacity = this._maxCapacity;
+    }
+    if (this._minCapacity) {
+      hasAnyValues = true;
+      internalValueResult.minCapacity = this._minCapacity;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppautoscalingScheduledActionScalableTargetAction | undefined) {
+    if (value === undefined) {
+      this._maxCapacity = undefined;
+      this._minCapacity = undefined;
+    }
+    else {
+      this._maxCapacity = value.maxCapacity;
+      this._minCapacity = value.minCapacity;
+    }
+  }
+
   // max_capacity - computed: false, optional: true, required: false
-  private _maxCapacity?: string | undefined; 
+  private _maxCapacity?: string; 
   public get maxCapacity() {
     return this.getStringAttribute('max_capacity');
   }
-  public set maxCapacity(value: string | undefined) {
+  public set maxCapacity(value: string) {
     this._maxCapacity = value;
   }
   public resetMaxCapacity() {
@@ -91,15 +116,15 @@ export class AppautoscalingScheduledActionScalableTargetActionOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get maxCapacityInput() {
-    return this._maxCapacity
+    return this._maxCapacity;
   }
 
   // min_capacity - computed: false, optional: true, required: false
-  private _minCapacity?: string | undefined; 
+  private _minCapacity?: string; 
   public get minCapacity() {
     return this.getStringAttribute('min_capacity');
   }
-  public set minCapacity(value: string | undefined) {
+  public set minCapacity(value: string) {
     this._minCapacity = value;
   }
   public resetMinCapacity() {
@@ -107,7 +132,7 @@ export class AppautoscalingScheduledActionScalableTargetActionOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get minCapacityInput() {
-    return this._minCapacity
+    return this._minCapacity;
   }
 }
 
@@ -151,7 +176,7 @@ export class AppautoscalingScheduledAction extends cdktf.TerraformResource {
     this._serviceNamespace = config.serviceNamespace;
     this._startTime = config.startTime;
     this._timezone = config.timezone;
-    this._scalableTargetAction = config.scalableTargetAction;
+    this._scalableTargetAction.internalValue = config.scalableTargetAction;
   }
 
   // ==========
@@ -164,11 +189,11 @@ export class AppautoscalingScheduledAction extends cdktf.TerraformResource {
   }
 
   // end_time - computed: false, optional: true, required: false
-  private _endTime?: string | undefined; 
+  private _endTime?: string; 
   public get endTime() {
     return this.getStringAttribute('end_time');
   }
-  public set endTime(value: string | undefined) {
+  public set endTime(value: string) {
     this._endTime = value;
   }
   public resetEndTime() {
@@ -176,7 +201,7 @@ export class AppautoscalingScheduledAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get endTimeInput() {
-    return this._endTime
+    return this._endTime;
   }
 
   // id - computed: true, optional: true, required: false
@@ -194,7 +219,7 @@ export class AppautoscalingScheduledAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // resource_id - computed: false, optional: false, required: true
@@ -207,7 +232,7 @@ export class AppautoscalingScheduledAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceIdInput() {
-    return this._resourceId
+    return this._resourceId;
   }
 
   // scalable_dimension - computed: false, optional: false, required: true
@@ -220,7 +245,7 @@ export class AppautoscalingScheduledAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scalableDimensionInput() {
-    return this._scalableDimension
+    return this._scalableDimension;
   }
 
   // schedule - computed: false, optional: false, required: true
@@ -233,7 +258,7 @@ export class AppautoscalingScheduledAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scheduleInput() {
-    return this._schedule
+    return this._schedule;
   }
 
   // service_namespace - computed: false, optional: false, required: true
@@ -246,15 +271,15 @@ export class AppautoscalingScheduledAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceNamespaceInput() {
-    return this._serviceNamespace
+    return this._serviceNamespace;
   }
 
   // start_time - computed: false, optional: true, required: false
-  private _startTime?: string | undefined; 
+  private _startTime?: string; 
   public get startTime() {
     return this.getStringAttribute('start_time');
   }
-  public set startTime(value: string | undefined) {
+  public set startTime(value: string) {
     this._startTime = value;
   }
   public resetStartTime() {
@@ -262,15 +287,15 @@ export class AppautoscalingScheduledAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get startTimeInput() {
-    return this._startTime
+    return this._startTime;
   }
 
   // timezone - computed: false, optional: true, required: false
-  private _timezone?: string | undefined; 
+  private _timezone?: string; 
   public get timezone() {
     return this.getStringAttribute('timezone');
   }
-  public set timezone(value: string | undefined) {
+  public set timezone(value: string) {
     this._timezone = value;
   }
   public resetTimezone() {
@@ -278,21 +303,20 @@ export class AppautoscalingScheduledAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get timezoneInput() {
-    return this._timezone
+    return this._timezone;
   }
 
   // scalable_target_action - computed: false, optional: false, required: true
-  private _scalableTargetAction?: AppautoscalingScheduledActionScalableTargetAction; 
-  private __scalableTargetActionOutput = new AppautoscalingScheduledActionScalableTargetActionOutputReference(this as any, "scalable_target_action", true);
+  private _scalableTargetAction = new AppautoscalingScheduledActionScalableTargetActionOutputReference(this as any, "scalable_target_action", true);
   public get scalableTargetAction() {
-    return this.__scalableTargetActionOutput;
+    return this._scalableTargetAction;
   }
   public putScalableTargetAction(value: AppautoscalingScheduledActionScalableTargetAction) {
-    this._scalableTargetAction = value;
+    this._scalableTargetAction.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get scalableTargetActionInput() {
-    return this._scalableTargetAction
+    return this._scalableTargetAction.internalValue;
   }
 
   // =========
@@ -309,7 +333,7 @@ export class AppautoscalingScheduledAction extends cdktf.TerraformResource {
       service_namespace: cdktf.stringToTerraform(this._serviceNamespace),
       start_time: cdktf.stringToTerraform(this._startTime),
       timezone: cdktf.stringToTerraform(this._timezone),
-      scalable_target_action: appautoscalingScheduledActionScalableTargetActionToTerraform(this._scalableTargetAction),
+      scalable_target_action: appautoscalingScheduledActionScalableTargetActionToTerraform(this._scalableTargetAction.internalValue),
     };
   }
 }

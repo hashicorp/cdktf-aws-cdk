@@ -67,7 +67,7 @@ export class IamGroupPolicyAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get groupInput() {
-    return this._group
+    return this._group;
   }
 
   // id - computed: true, optional: true, required: false
@@ -85,7 +85,7 @@ export class IamGroupPolicyAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyArnInput() {
-    return this._policyArn
+    return this._policyArn;
   }
 
   // =========

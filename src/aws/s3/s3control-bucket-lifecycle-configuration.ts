@@ -45,6 +45,25 @@ export class S3ControlBucketLifecycleConfigurationRuleAbortIncompleteMultipartUp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3ControlBucketLifecycleConfigurationRuleAbortIncompleteMultipartUpload | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._daysAfterInitiation) {
+      hasAnyValues = true;
+      internalValueResult.daysAfterInitiation = this._daysAfterInitiation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3ControlBucketLifecycleConfigurationRuleAbortIncompleteMultipartUpload | undefined) {
+    if (value === undefined) {
+      this._daysAfterInitiation = undefined;
+    }
+    else {
+      this._daysAfterInitiation = value.daysAfterInitiation;
+    }
+  }
+
   // days_after_initiation - computed: false, optional: false, required: true
   private _daysAfterInitiation?: number; 
   public get daysAfterInitiation() {
@@ -55,7 +74,7 @@ export class S3ControlBucketLifecycleConfigurationRuleAbortIncompleteMultipartUp
   }
   // Temporarily expose input value. Use with caution.
   public get daysAfterInitiationInput() {
-    return this._daysAfterInitiation
+    return this._daysAfterInitiation;
   }
 }
 export interface S3ControlBucketLifecycleConfigurationRuleExpiration {
@@ -95,12 +114,43 @@ export class S3ControlBucketLifecycleConfigurationRuleExpirationOutputReference 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3ControlBucketLifecycleConfigurationRuleExpiration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._date) {
+      hasAnyValues = true;
+      internalValueResult.date = this._date;
+    }
+    if (this._days) {
+      hasAnyValues = true;
+      internalValueResult.days = this._days;
+    }
+    if (this._expiredObjectDeleteMarker) {
+      hasAnyValues = true;
+      internalValueResult.expiredObjectDeleteMarker = this._expiredObjectDeleteMarker;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3ControlBucketLifecycleConfigurationRuleExpiration | undefined) {
+    if (value === undefined) {
+      this._date = undefined;
+      this._days = undefined;
+      this._expiredObjectDeleteMarker = undefined;
+    }
+    else {
+      this._date = value.date;
+      this._days = value.days;
+      this._expiredObjectDeleteMarker = value.expiredObjectDeleteMarker;
+    }
+  }
+
   // date - computed: false, optional: true, required: false
-  private _date?: string | undefined; 
+  private _date?: string; 
   public get date() {
     return this.getStringAttribute('date');
   }
-  public set date(value: string | undefined) {
+  public set date(value: string) {
     this._date = value;
   }
   public resetDate() {
@@ -108,15 +158,15 @@ export class S3ControlBucketLifecycleConfigurationRuleExpirationOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get dateInput() {
-    return this._date
+    return this._date;
   }
 
   // days - computed: false, optional: true, required: false
-  private _days?: number | undefined; 
+  private _days?: number; 
   public get days() {
     return this.getNumberAttribute('days');
   }
-  public set days(value: number | undefined) {
+  public set days(value: number) {
     this._days = value;
   }
   public resetDays() {
@@ -124,15 +174,15 @@ export class S3ControlBucketLifecycleConfigurationRuleExpirationOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get daysInput() {
-    return this._days
+    return this._days;
   }
 
   // expired_object_delete_marker - computed: false, optional: true, required: false
-  private _expiredObjectDeleteMarker?: boolean | cdktf.IResolvable | undefined; 
+  private _expiredObjectDeleteMarker?: boolean | cdktf.IResolvable; 
   public get expiredObjectDeleteMarker() {
     return this.getBooleanAttribute('expired_object_delete_marker') as any;
   }
-  public set expiredObjectDeleteMarker(value: boolean | cdktf.IResolvable | undefined) {
+  public set expiredObjectDeleteMarker(value: boolean | cdktf.IResolvable) {
     this._expiredObjectDeleteMarker = value;
   }
   public resetExpiredObjectDeleteMarker() {
@@ -140,7 +190,7 @@ export class S3ControlBucketLifecycleConfigurationRuleExpirationOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get expiredObjectDeleteMarkerInput() {
-    return this._expiredObjectDeleteMarker
+    return this._expiredObjectDeleteMarker;
   }
 }
 export interface S3ControlBucketLifecycleConfigurationRuleFilter {
@@ -175,12 +225,37 @@ export class S3ControlBucketLifecycleConfigurationRuleFilterOutputReference exte
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3ControlBucketLifecycleConfigurationRuleFilter | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    if (this._tags) {
+      hasAnyValues = true;
+      internalValueResult.tags = this._tags;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3ControlBucketLifecycleConfigurationRuleFilter | undefined) {
+    if (value === undefined) {
+      this._prefix = undefined;
+      this._tags = undefined;
+    }
+    else {
+      this._prefix = value.prefix;
+      this._tags = value.tags;
+    }
+  }
+
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -188,16 +263,16 @@ export class S3ControlBucketLifecycleConfigurationRuleFilterOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -205,7 +280,7 @@ export class S3ControlBucketLifecycleConfigurationRuleFilterOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 }
 export interface S3ControlBucketLifecycleConfigurationRule {
@@ -302,7 +377,7 @@ export class S3ControlBucketLifecycleConfiguration extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // id - computed: true, optional: true, required: false
@@ -321,7 +396,7 @@ export class S3ControlBucketLifecycleConfiguration extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get ruleInput() {
-    return this._rule
+    return this._rule;
   }
 
   // =========

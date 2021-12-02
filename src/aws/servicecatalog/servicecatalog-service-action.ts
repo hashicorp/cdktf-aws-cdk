@@ -73,12 +73,55 @@ export class ServicecatalogServiceActionDefinitionOutputReference extends cdktf.
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ServicecatalogServiceActionDefinition | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._assumeRole) {
+      hasAnyValues = true;
+      internalValueResult.assumeRole = this._assumeRole;
+    }
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._parameters) {
+      hasAnyValues = true;
+      internalValueResult.parameters = this._parameters;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    if (this._version) {
+      hasAnyValues = true;
+      internalValueResult.version = this._version;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ServicecatalogServiceActionDefinition | undefined) {
+    if (value === undefined) {
+      this._assumeRole = undefined;
+      this._name = undefined;
+      this._parameters = undefined;
+      this._type = undefined;
+      this._version = undefined;
+    }
+    else {
+      this._assumeRole = value.assumeRole;
+      this._name = value.name;
+      this._parameters = value.parameters;
+      this._type = value.type;
+      this._version = value.version;
+    }
+  }
+
   // assume_role - computed: false, optional: true, required: false
-  private _assumeRole?: string | undefined; 
+  private _assumeRole?: string; 
   public get assumeRole() {
     return this.getStringAttribute('assume_role');
   }
-  public set assumeRole(value: string | undefined) {
+  public set assumeRole(value: string) {
     this._assumeRole = value;
   }
   public resetAssumeRole() {
@@ -86,7 +129,7 @@ export class ServicecatalogServiceActionDefinitionOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get assumeRoleInput() {
-    return this._assumeRole
+    return this._assumeRole;
   }
 
   // name - computed: false, optional: false, required: true
@@ -99,15 +142,15 @@ export class ServicecatalogServiceActionDefinitionOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // parameters - computed: false, optional: true, required: false
-  private _parameters?: string | undefined; 
+  private _parameters?: string; 
   public get parameters() {
     return this.getStringAttribute('parameters');
   }
-  public set parameters(value: string | undefined) {
+  public set parameters(value: string) {
     this._parameters = value;
   }
   public resetParameters() {
@@ -115,15 +158,15 @@ export class ServicecatalogServiceActionDefinitionOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get parametersInput() {
-    return this._parameters
+    return this._parameters;
   }
 
   // type - computed: false, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -131,7 +174,7 @@ export class ServicecatalogServiceActionDefinitionOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // version - computed: false, optional: false, required: true
@@ -144,7 +187,7 @@ export class ServicecatalogServiceActionDefinitionOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get versionInput() {
-    return this._version
+    return this._version;
   }
 }
 
@@ -183,7 +226,7 @@ export class ServicecatalogServiceAction extends cdktf.TerraformResource {
     this._acceptLanguage = config.acceptLanguage;
     this._description = config.description;
     this._name = config.name;
-    this._definition = config.definition;
+    this._definition.internalValue = config.definition;
   }
 
   // ==========
@@ -191,11 +234,11 @@ export class ServicecatalogServiceAction extends cdktf.TerraformResource {
   // ==========
 
   // accept_language - computed: false, optional: true, required: false
-  private _acceptLanguage?: string | undefined; 
+  private _acceptLanguage?: string; 
   public get acceptLanguage() {
     return this.getStringAttribute('accept_language');
   }
-  public set acceptLanguage(value: string | undefined) {
+  public set acceptLanguage(value: string) {
     this._acceptLanguage = value;
   }
   public resetAcceptLanguage() {
@@ -203,15 +246,15 @@ export class ServicecatalogServiceAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get acceptLanguageInput() {
-    return this._acceptLanguage
+    return this._acceptLanguage;
   }
 
   // description - computed: true, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -219,7 +262,7 @@ export class ServicecatalogServiceAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -237,21 +280,20 @@ export class ServicecatalogServiceAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // definition - computed: false, optional: false, required: true
-  private _definition?: ServicecatalogServiceActionDefinition; 
-  private __definitionOutput = new ServicecatalogServiceActionDefinitionOutputReference(this as any, "definition", true);
+  private _definition = new ServicecatalogServiceActionDefinitionOutputReference(this as any, "definition", true);
   public get definition() {
-    return this.__definitionOutput;
+    return this._definition;
   }
   public putDefinition(value: ServicecatalogServiceActionDefinition) {
-    this._definition = value;
+    this._definition.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get definitionInput() {
-    return this._definition
+    return this._definition.internalValue;
   }
 
   // =========
@@ -263,7 +305,7 @@ export class ServicecatalogServiceAction extends cdktf.TerraformResource {
       accept_language: cdktf.stringToTerraform(this._acceptLanguage),
       description: cdktf.stringToTerraform(this._description),
       name: cdktf.stringToTerraform(this._name),
-      definition: servicecatalogServiceActionDefinitionToTerraform(this._definition),
+      definition: servicecatalogServiceActionDefinitionToTerraform(this._definition.internalValue),
     };
   }
 }

@@ -57,13 +57,32 @@ export class LambdaAliasRoutingConfigOutputReference extends cdktf.ComplexObject
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LambdaAliasRoutingConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._additionalVersionWeights) {
+      hasAnyValues = true;
+      internalValueResult.additionalVersionWeights = this._additionalVersionWeights;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LambdaAliasRoutingConfig | undefined) {
+    if (value === undefined) {
+      this._additionalVersionWeights = undefined;
+    }
+    else {
+      this._additionalVersionWeights = value.additionalVersionWeights;
+    }
+  }
+
   // additional_version_weights - computed: false, optional: true, required: false
-  private _additionalVersionWeights?: { [key: string]: number } | cdktf.IResolvable | undefined; 
+  private _additionalVersionWeights?: { [key: string]: number } | cdktf.IResolvable; 
   public get additionalVersionWeights() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('additional_version_weights') as any;
   }
-  public set additionalVersionWeights(value: { [key: string]: number } | cdktf.IResolvable | undefined) {
+  public set additionalVersionWeights(value: { [key: string]: number } | cdktf.IResolvable) {
     this._additionalVersionWeights = value;
   }
   public resetAdditionalVersionWeights() {
@@ -71,7 +90,7 @@ export class LambdaAliasRoutingConfigOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get additionalVersionWeightsInput() {
-    return this._additionalVersionWeights
+    return this._additionalVersionWeights;
   }
 }
 
@@ -111,7 +130,7 @@ export class LambdaAlias extends cdktf.TerraformResource {
     this._functionName = config.functionName;
     this._functionVersion = config.functionVersion;
     this._name = config.name;
-    this._routingConfig = config.routingConfig;
+    this._routingConfig.internalValue = config.routingConfig;
   }
 
   // ==========
@@ -124,11 +143,11 @@ export class LambdaAlias extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -136,7 +155,7 @@ export class LambdaAlias extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // function_name - computed: false, optional: false, required: true
@@ -149,7 +168,7 @@ export class LambdaAlias extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get functionNameInput() {
-    return this._functionName
+    return this._functionName;
   }
 
   // function_version - computed: false, optional: false, required: true
@@ -162,7 +181,7 @@ export class LambdaAlias extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get functionVersionInput() {
-    return this._functionVersion
+    return this._functionVersion;
   }
 
   // id - computed: true, optional: true, required: false
@@ -185,24 +204,23 @@ export class LambdaAlias extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // routing_config - computed: false, optional: true, required: false
-  private _routingConfig?: LambdaAliasRoutingConfig | undefined; 
-  private __routingConfigOutput = new LambdaAliasRoutingConfigOutputReference(this as any, "routing_config", true);
+  private _routingConfig = new LambdaAliasRoutingConfigOutputReference(this as any, "routing_config", true);
   public get routingConfig() {
-    return this.__routingConfigOutput;
+    return this._routingConfig;
   }
-  public putRoutingConfig(value: LambdaAliasRoutingConfig | undefined) {
-    this._routingConfig = value;
+  public putRoutingConfig(value: LambdaAliasRoutingConfig) {
+    this._routingConfig.internalValue = value;
   }
   public resetRoutingConfig() {
-    this._routingConfig = undefined;
+    this._routingConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get routingConfigInput() {
-    return this._routingConfig
+    return this._routingConfig.internalValue;
   }
 
   // =========
@@ -215,7 +233,7 @@ export class LambdaAlias extends cdktf.TerraformResource {
       function_name: cdktf.stringToTerraform(this._functionName),
       function_version: cdktf.stringToTerraform(this._functionVersion),
       name: cdktf.stringToTerraform(this._name),
-      routing_config: lambdaAliasRoutingConfigToTerraform(this._routingConfig),
+      routing_config: lambdaAliasRoutingConfigToTerraform(this._routingConfig.internalValue),
     };
   }
 }

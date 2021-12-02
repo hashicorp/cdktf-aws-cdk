@@ -73,11 +73,11 @@ export class KmsAlias extends cdktf.TerraformResource {
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -85,15 +85,15 @@ export class KmsAlias extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_prefix - computed: true, optional: true, required: false
-  private _namePrefix?: string | undefined; 
+  private _namePrefix?: string; 
   public get namePrefix() {
     return this.getStringAttribute('name_prefix');
   }
-  public set namePrefix(value: string | undefined) {
+  public set namePrefix(value: string) {
     this._namePrefix = value;
   }
   public resetNamePrefix() {
@@ -101,7 +101,7 @@ export class KmsAlias extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // target_key_arn - computed: true, optional: false, required: false
@@ -119,7 +119,7 @@ export class KmsAlias extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetKeyIdInput() {
-    return this._targetKeyId
+    return this._targetKeyId;
   }
 
   // =========

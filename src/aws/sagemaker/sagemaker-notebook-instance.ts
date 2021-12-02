@@ -123,11 +123,11 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   // ==========
 
   // additional_code_repositories - computed: false, optional: true, required: false
-  private _additionalCodeRepositories?: string[] | undefined; 
+  private _additionalCodeRepositories?: string[]; 
   public get additionalCodeRepositories() {
     return this.getListAttribute('additional_code_repositories');
   }
-  public set additionalCodeRepositories(value: string[] | undefined) {
+  public set additionalCodeRepositories(value: string[]) {
     this._additionalCodeRepositories = value;
   }
   public resetAdditionalCodeRepositories() {
@@ -135,7 +135,7 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get additionalCodeRepositoriesInput() {
-    return this._additionalCodeRepositories
+    return this._additionalCodeRepositories;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -144,11 +144,11 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
 
   // default_code_repository - computed: false, optional: true, required: false
-  private _defaultCodeRepository?: string | undefined; 
+  private _defaultCodeRepository?: string; 
   public get defaultCodeRepository() {
     return this.getStringAttribute('default_code_repository');
   }
-  public set defaultCodeRepository(value: string | undefined) {
+  public set defaultCodeRepository(value: string) {
     this._defaultCodeRepository = value;
   }
   public resetDefaultCodeRepository() {
@@ -156,15 +156,15 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultCodeRepositoryInput() {
-    return this._defaultCodeRepository
+    return this._defaultCodeRepository;
   }
 
   // direct_internet_access - computed: false, optional: true, required: false
-  private _directInternetAccess?: string | undefined; 
+  private _directInternetAccess?: string; 
   public get directInternetAccess() {
     return this.getStringAttribute('direct_internet_access');
   }
-  public set directInternetAccess(value: string | undefined) {
+  public set directInternetAccess(value: string) {
     this._directInternetAccess = value;
   }
   public resetDirectInternetAccess() {
@@ -172,7 +172,7 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get directInternetAccessInput() {
-    return this._directInternetAccess
+    return this._directInternetAccess;
   }
 
   // id - computed: true, optional: true, required: false
@@ -190,15 +190,15 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // kms_key_id - computed: false, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -206,15 +206,15 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // lifecycle_config_name - computed: false, optional: true, required: false
-  private _lifecycleConfigName?: string | undefined; 
+  private _lifecycleConfigName?: string; 
   public get lifecycleConfigName() {
     return this.getStringAttribute('lifecycle_config_name');
   }
-  public set lifecycleConfigName(value: string | undefined) {
+  public set lifecycleConfigName(value: string) {
     this._lifecycleConfigName = value;
   }
   public resetLifecycleConfigName() {
@@ -222,7 +222,7 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get lifecycleConfigNameInput() {
-    return this._lifecycleConfigName
+    return this._lifecycleConfigName;
   }
 
   // name - computed: false, optional: false, required: true
@@ -235,7 +235,7 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // network_interface_id - computed: true, optional: false, required: false
@@ -244,11 +244,11 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
 
   // platform_identifier - computed: true, optional: true, required: false
-  private _platformIdentifier?: string | undefined; 
+  private _platformIdentifier?: string; 
   public get platformIdentifier() {
     return this.getStringAttribute('platform_identifier');
   }
-  public set platformIdentifier(value: string | undefined) {
+  public set platformIdentifier(value: string) {
     this._platformIdentifier = value;
   }
   public resetPlatformIdentifier() {
@@ -256,7 +256,7 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get platformIdentifierInput() {
-    return this._platformIdentifier
+    return this._platformIdentifier;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -269,15 +269,15 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // root_access - computed: false, optional: true, required: false
-  private _rootAccess?: string | undefined; 
+  private _rootAccess?: string; 
   public get rootAccess() {
     return this.getStringAttribute('root_access');
   }
-  public set rootAccess(value: string | undefined) {
+  public set rootAccess(value: string) {
     this._rootAccess = value;
   }
   public resetRootAccess() {
@@ -285,15 +285,15 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rootAccessInput() {
-    return this._rootAccess
+    return this._rootAccess;
   }
 
   // security_groups - computed: true, optional: true, required: false
-  private _securityGroups?: string[] | undefined; 
+  private _securityGroups?: string[]; 
   public get securityGroups() {
     return this.getListAttribute('security_groups');
   }
-  public set securityGroups(value: string[] | undefined) {
+  public set securityGroups(value: string[]) {
     this._securityGroups = value;
   }
   public resetSecurityGroups() {
@@ -301,15 +301,15 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupsInput() {
-    return this._securityGroups
+    return this._securityGroups;
   }
 
   // subnet_id - computed: false, optional: true, required: false
-  private _subnetId?: string | undefined; 
+  private _subnetId?: string; 
   public get subnetId() {
     return this.getStringAttribute('subnet_id');
   }
-  public set subnetId(value: string | undefined) {
+  public set subnetId(value: string) {
     this._subnetId = value;
   }
   public resetSubnetId() {
@@ -317,16 +317,16 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdInput() {
-    return this._subnetId
+    return this._subnetId;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -334,16 +334,16 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -351,7 +351,7 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // url - computed: true, optional: false, required: false
@@ -360,11 +360,11 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
 
   // volume_size - computed: false, optional: true, required: false
-  private _volumeSize?: number | undefined; 
+  private _volumeSize?: number; 
   public get volumeSize() {
     return this.getNumberAttribute('volume_size');
   }
-  public set volumeSize(value: number | undefined) {
+  public set volumeSize(value: number) {
     this._volumeSize = value;
   }
   public resetVolumeSize() {
@@ -372,7 +372,7 @@ export class SagemakerNotebookInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get volumeSizeInput() {
-    return this._volumeSize
+    return this._volumeSize;
   }
 
   // =========

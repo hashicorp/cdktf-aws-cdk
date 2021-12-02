@@ -87,15 +87,15 @@ export class CloudfrontFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get codeInput() {
-    return this._code
+    return this._code;
   }
 
   // comment - computed: false, optional: true, required: false
-  private _comment?: string | undefined; 
+  private _comment?: string; 
   public get comment() {
     return this.getStringAttribute('comment');
   }
-  public set comment(value: string | undefined) {
+  public set comment(value: string) {
     this._comment = value;
   }
   public resetComment() {
@@ -103,7 +103,7 @@ export class CloudfrontFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get commentInput() {
-    return this._comment
+    return this._comment;
   }
 
   // etag - computed: true, optional: false, required: false
@@ -131,15 +131,15 @@ export class CloudfrontFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // publish - computed: false, optional: true, required: false
-  private _publish?: boolean | cdktf.IResolvable | undefined; 
+  private _publish?: boolean | cdktf.IResolvable; 
   public get publish() {
     return this.getBooleanAttribute('publish') as any;
   }
-  public set publish(value: boolean | cdktf.IResolvable | undefined) {
+  public set publish(value: boolean | cdktf.IResolvable) {
     this._publish = value;
   }
   public resetPublish() {
@@ -147,7 +147,7 @@ export class CloudfrontFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get publishInput() {
-    return this._publish
+    return this._publish;
   }
 
   // runtime - computed: false, optional: false, required: true
@@ -160,7 +160,7 @@ export class CloudfrontFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get runtimeInput() {
-    return this._runtime
+    return this._runtime;
   }
 
   // status - computed: true, optional: false, required: false

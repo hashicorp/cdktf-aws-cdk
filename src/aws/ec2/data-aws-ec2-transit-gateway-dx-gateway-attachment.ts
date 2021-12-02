@@ -92,11 +92,11 @@ export class DataAwsEc2TransitGatewayDxGatewayAttachment extends cdktf.Terraform
   // ==========
 
   // dx_gateway_id - computed: false, optional: true, required: false
-  private _dxGatewayId?: string | undefined; 
+  private _dxGatewayId?: string; 
   public get dxGatewayId() {
     return this.getStringAttribute('dx_gateway_id');
   }
-  public set dxGatewayId(value: string | undefined) {
+  public set dxGatewayId(value: string) {
     this._dxGatewayId = value;
   }
   public resetDxGatewayId() {
@@ -104,7 +104,7 @@ export class DataAwsEc2TransitGatewayDxGatewayAttachment extends cdktf.Terraform
   }
   // Temporarily expose input value. Use with caution.
   public get dxGatewayIdInput() {
-    return this._dxGatewayId
+    return this._dxGatewayId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -113,12 +113,12 @@ export class DataAwsEc2TransitGatewayDxGatewayAttachment extends cdktf.Terraform
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -126,15 +126,15 @@ export class DataAwsEc2TransitGatewayDxGatewayAttachment extends cdktf.Terraform
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // transit_gateway_id - computed: false, optional: true, required: false
-  private _transitGatewayId?: string | undefined; 
+  private _transitGatewayId?: string; 
   public get transitGatewayId() {
     return this.getStringAttribute('transit_gateway_id');
   }
-  public set transitGatewayId(value: string | undefined) {
+  public set transitGatewayId(value: string) {
     this._transitGatewayId = value;
   }
   public resetTransitGatewayId() {
@@ -142,16 +142,16 @@ export class DataAwsEc2TransitGatewayDxGatewayAttachment extends cdktf.Terraform
   }
   // Temporarily expose input value. Use with caution.
   public get transitGatewayIdInput() {
-    return this._transitGatewayId
+    return this._transitGatewayId;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsEc2TransitGatewayDxGatewayAttachmentFilter[] | undefined; 
+  private _filter?: DataAwsEc2TransitGatewayDxGatewayAttachmentFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsEc2TransitGatewayDxGatewayAttachmentFilter[] | undefined) {
+  public set filter(value: DataAwsEc2TransitGatewayDxGatewayAttachmentFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -159,7 +159,7 @@ export class DataAwsEc2TransitGatewayDxGatewayAttachment extends cdktf.Terraform
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

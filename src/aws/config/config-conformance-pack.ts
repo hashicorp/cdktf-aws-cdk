@@ -107,11 +107,11 @@ export class ConfigConformancePack extends cdktf.TerraformResource {
   }
 
   // delivery_s3_bucket - computed: false, optional: true, required: false
-  private _deliveryS3Bucket?: string | undefined; 
+  private _deliveryS3Bucket?: string; 
   public get deliveryS3Bucket() {
     return this.getStringAttribute('delivery_s3_bucket');
   }
-  public set deliveryS3Bucket(value: string | undefined) {
+  public set deliveryS3Bucket(value: string) {
     this._deliveryS3Bucket = value;
   }
   public resetDeliveryS3Bucket() {
@@ -119,15 +119,15 @@ export class ConfigConformancePack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deliveryS3BucketInput() {
-    return this._deliveryS3Bucket
+    return this._deliveryS3Bucket;
   }
 
   // delivery_s3_key_prefix - computed: false, optional: true, required: false
-  private _deliveryS3KeyPrefix?: string | undefined; 
+  private _deliveryS3KeyPrefix?: string; 
   public get deliveryS3KeyPrefix() {
     return this.getStringAttribute('delivery_s3_key_prefix');
   }
-  public set deliveryS3KeyPrefix(value: string | undefined) {
+  public set deliveryS3KeyPrefix(value: string) {
     this._deliveryS3KeyPrefix = value;
   }
   public resetDeliveryS3KeyPrefix() {
@@ -135,7 +135,7 @@ export class ConfigConformancePack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deliveryS3KeyPrefixInput() {
-    return this._deliveryS3KeyPrefix
+    return this._deliveryS3KeyPrefix;
   }
 
   // id - computed: true, optional: true, required: false
@@ -153,15 +153,15 @@ export class ConfigConformancePack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // template_body - computed: false, optional: true, required: false
-  private _templateBody?: string | undefined; 
+  private _templateBody?: string; 
   public get templateBody() {
     return this.getStringAttribute('template_body');
   }
-  public set templateBody(value: string | undefined) {
+  public set templateBody(value: string) {
     this._templateBody = value;
   }
   public resetTemplateBody() {
@@ -169,15 +169,15 @@ export class ConfigConformancePack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get templateBodyInput() {
-    return this._templateBody
+    return this._templateBody;
   }
 
   // template_s3_uri - computed: false, optional: true, required: false
-  private _templateS3Uri?: string | undefined; 
+  private _templateS3Uri?: string; 
   public get templateS3Uri() {
     return this.getStringAttribute('template_s3_uri');
   }
-  public set templateS3Uri(value: string | undefined) {
+  public set templateS3Uri(value: string) {
     this._templateS3Uri = value;
   }
   public resetTemplateS3Uri() {
@@ -185,16 +185,16 @@ export class ConfigConformancePack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get templateS3UriInput() {
-    return this._templateS3Uri
+    return this._templateS3Uri;
   }
 
   // input_parameter - computed: false, optional: true, required: false
-  private _inputParameter?: ConfigConformancePackInputParameter[] | undefined; 
+  private _inputParameter?: ConfigConformancePackInputParameter[]; 
   public get inputParameter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('input_parameter') as any;
   }
-  public set inputParameter(value: ConfigConformancePackInputParameter[] | undefined) {
+  public set inputParameter(value: ConfigConformancePackInputParameter[]) {
     this._inputParameter = value;
   }
   public resetInputParameter() {
@@ -202,7 +202,7 @@ export class ConfigConformancePack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get inputParameterInput() {
-    return this._inputParameter
+    return this._inputParameter;
   }
 
   // =========

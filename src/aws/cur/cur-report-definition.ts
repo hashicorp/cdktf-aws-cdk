@@ -103,11 +103,11 @@ export class CurReportDefinition extends cdktf.TerraformResource {
   // ==========
 
   // additional_artifacts - computed: false, optional: true, required: false
-  private _additionalArtifacts?: string[] | undefined; 
+  private _additionalArtifacts?: string[]; 
   public get additionalArtifacts() {
     return this.getListAttribute('additional_artifacts');
   }
-  public set additionalArtifacts(value: string[] | undefined) {
+  public set additionalArtifacts(value: string[]) {
     this._additionalArtifacts = value;
   }
   public resetAdditionalArtifacts() {
@@ -115,7 +115,7 @@ export class CurReportDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get additionalArtifactsInput() {
-    return this._additionalArtifacts
+    return this._additionalArtifacts;
   }
 
   // additional_schema_elements - computed: false, optional: false, required: true
@@ -128,7 +128,7 @@ export class CurReportDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get additionalSchemaElementsInput() {
-    return this._additionalSchemaElements
+    return this._additionalSchemaElements;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -146,7 +146,7 @@ export class CurReportDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get compressionInput() {
-    return this._compression
+    return this._compression;
   }
 
   // format - computed: false, optional: false, required: true
@@ -159,7 +159,7 @@ export class CurReportDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get formatInput() {
-    return this._format
+    return this._format;
   }
 
   // id - computed: true, optional: true, required: false
@@ -168,11 +168,11 @@ export class CurReportDefinition extends cdktf.TerraformResource {
   }
 
   // refresh_closed_reports - computed: false, optional: true, required: false
-  private _refreshClosedReports?: boolean | cdktf.IResolvable | undefined; 
+  private _refreshClosedReports?: boolean | cdktf.IResolvable; 
   public get refreshClosedReports() {
     return this.getBooleanAttribute('refresh_closed_reports') as any;
   }
-  public set refreshClosedReports(value: boolean | cdktf.IResolvable | undefined) {
+  public set refreshClosedReports(value: boolean | cdktf.IResolvable) {
     this._refreshClosedReports = value;
   }
   public resetRefreshClosedReports() {
@@ -180,7 +180,7 @@ export class CurReportDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get refreshClosedReportsInput() {
-    return this._refreshClosedReports
+    return this._refreshClosedReports;
   }
 
   // report_name - computed: false, optional: false, required: true
@@ -193,15 +193,15 @@ export class CurReportDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get reportNameInput() {
-    return this._reportName
+    return this._reportName;
   }
 
   // report_versioning - computed: false, optional: true, required: false
-  private _reportVersioning?: string | undefined; 
+  private _reportVersioning?: string; 
   public get reportVersioning() {
     return this.getStringAttribute('report_versioning');
   }
-  public set reportVersioning(value: string | undefined) {
+  public set reportVersioning(value: string) {
     this._reportVersioning = value;
   }
   public resetReportVersioning() {
@@ -209,7 +209,7 @@ export class CurReportDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get reportVersioningInput() {
-    return this._reportVersioning
+    return this._reportVersioning;
   }
 
   // s3_bucket - computed: false, optional: false, required: true
@@ -222,15 +222,15 @@ export class CurReportDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3BucketInput() {
-    return this._s3Bucket
+    return this._s3Bucket;
   }
 
   // s3_prefix - computed: false, optional: true, required: false
-  private _s3Prefix?: string | undefined; 
+  private _s3Prefix?: string; 
   public get s3Prefix() {
     return this.getStringAttribute('s3_prefix');
   }
-  public set s3Prefix(value: string | undefined) {
+  public set s3Prefix(value: string) {
     this._s3Prefix = value;
   }
   public resetS3Prefix() {
@@ -238,7 +238,7 @@ export class CurReportDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3PrefixInput() {
-    return this._s3Prefix
+    return this._s3Prefix;
   }
 
   // s3_region - computed: false, optional: false, required: true
@@ -251,7 +251,7 @@ export class CurReportDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3RegionInput() {
-    return this._s3Region
+    return this._s3Region;
   }
 
   // time_unit - computed: false, optional: false, required: true
@@ -264,7 +264,7 @@ export class CurReportDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get timeUnitInput() {
-    return this._timeUnit
+    return this._timeUnit;
   }
 
   // =========

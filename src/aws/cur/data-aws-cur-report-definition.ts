@@ -92,7 +92,7 @@ export class DataAwsCurReportDefinition extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get reportNameInput() {
-    return this._reportName
+    return this._reportName;
   }
 
   // report_versioning - computed: true, optional: false, required: false

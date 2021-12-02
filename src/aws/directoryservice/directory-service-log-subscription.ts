@@ -67,7 +67,7 @@ export class DirectoryServiceLogSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get directoryIdInput() {
-    return this._directoryId
+    return this._directoryId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -85,7 +85,7 @@ export class DirectoryServiceLogSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get logGroupNameInput() {
-    return this._logGroupName
+    return this._logGroupName;
   }
 
   // =========

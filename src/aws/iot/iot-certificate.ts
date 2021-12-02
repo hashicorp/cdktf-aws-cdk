@@ -67,7 +67,7 @@ export class IotCertificate extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get activeInput() {
-    return this._active
+    return this._active;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -81,11 +81,11 @@ export class IotCertificate extends cdktf.TerraformResource {
   }
 
   // csr - computed: false, optional: true, required: false
-  private _csr?: string | undefined; 
+  private _csr?: string; 
   public get csr() {
     return this.getStringAttribute('csr');
   }
-  public set csr(value: string | undefined) {
+  public set csr(value: string) {
     this._csr = value;
   }
   public resetCsr() {
@@ -93,7 +93,7 @@ export class IotCertificate extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get csrInput() {
-    return this._csr
+    return this._csr;
   }
 
   // id - computed: true, optional: true, required: false

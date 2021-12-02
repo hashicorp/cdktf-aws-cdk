@@ -101,16 +101,16 @@ export class WafregionalIpset extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // ip_set_descriptor - computed: false, optional: true, required: false
-  private _ipSetDescriptor?: WafregionalIpsetIpSetDescriptor[] | undefined; 
+  private _ipSetDescriptor?: WafregionalIpsetIpSetDescriptor[]; 
   public get ipSetDescriptor() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ip_set_descriptor') as any;
   }
-  public set ipSetDescriptor(value: WafregionalIpsetIpSetDescriptor[] | undefined) {
+  public set ipSetDescriptor(value: WafregionalIpsetIpSetDescriptor[]) {
     this._ipSetDescriptor = value;
   }
   public resetIpSetDescriptor() {
@@ -118,7 +118,7 @@ export class WafregionalIpset extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ipSetDescriptorInput() {
-    return this._ipSetDescriptor
+    return this._ipSetDescriptor;
   }
 
   // =========

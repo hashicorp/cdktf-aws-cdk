@@ -103,11 +103,11 @@ export class CloudwatchEventRule extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -115,15 +115,15 @@ export class CloudwatchEventRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // event_bus_name - computed: false, optional: true, required: false
-  private _eventBusName?: string | undefined; 
+  private _eventBusName?: string; 
   public get eventBusName() {
     return this.getStringAttribute('event_bus_name');
   }
-  public set eventBusName(value: string | undefined) {
+  public set eventBusName(value: string) {
     this._eventBusName = value;
   }
   public resetEventBusName() {
@@ -131,15 +131,15 @@ export class CloudwatchEventRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get eventBusNameInput() {
-    return this._eventBusName
+    return this._eventBusName;
   }
 
   // event_pattern - computed: false, optional: true, required: false
-  private _eventPattern?: string | undefined; 
+  private _eventPattern?: string; 
   public get eventPattern() {
     return this.getStringAttribute('event_pattern');
   }
-  public set eventPattern(value: string | undefined) {
+  public set eventPattern(value: string) {
     this._eventPattern = value;
   }
   public resetEventPattern() {
@@ -147,7 +147,7 @@ export class CloudwatchEventRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get eventPatternInput() {
-    return this._eventPattern
+    return this._eventPattern;
   }
 
   // id - computed: true, optional: true, required: false
@@ -156,11 +156,11 @@ export class CloudwatchEventRule extends cdktf.TerraformResource {
   }
 
   // is_enabled - computed: false, optional: true, required: false
-  private _isEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _isEnabled?: boolean | cdktf.IResolvable; 
   public get isEnabled() {
     return this.getBooleanAttribute('is_enabled') as any;
   }
-  public set isEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set isEnabled(value: boolean | cdktf.IResolvable) {
     this._isEnabled = value;
   }
   public resetIsEnabled() {
@@ -168,15 +168,15 @@ export class CloudwatchEventRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get isEnabledInput() {
-    return this._isEnabled
+    return this._isEnabled;
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -184,15 +184,15 @@ export class CloudwatchEventRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_prefix - computed: true, optional: true, required: false
-  private _namePrefix?: string | undefined; 
+  private _namePrefix?: string; 
   public get namePrefix() {
     return this.getStringAttribute('name_prefix');
   }
-  public set namePrefix(value: string | undefined) {
+  public set namePrefix(value: string) {
     this._namePrefix = value;
   }
   public resetNamePrefix() {
@@ -200,15 +200,15 @@ export class CloudwatchEventRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // role_arn - computed: false, optional: true, required: false
-  private _roleArn?: string | undefined; 
+  private _roleArn?: string; 
   public get roleArn() {
     return this.getStringAttribute('role_arn');
   }
-  public set roleArn(value: string | undefined) {
+  public set roleArn(value: string) {
     this._roleArn = value;
   }
   public resetRoleArn() {
@@ -216,15 +216,15 @@ export class CloudwatchEventRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // schedule_expression - computed: false, optional: true, required: false
-  private _scheduleExpression?: string | undefined; 
+  private _scheduleExpression?: string; 
   public get scheduleExpression() {
     return this.getStringAttribute('schedule_expression');
   }
-  public set scheduleExpression(value: string | undefined) {
+  public set scheduleExpression(value: string) {
     this._scheduleExpression = value;
   }
   public resetScheduleExpression() {
@@ -232,16 +232,16 @@ export class CloudwatchEventRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scheduleExpressionInput() {
-    return this._scheduleExpression
+    return this._scheduleExpression;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -249,16 +249,16 @@ export class CloudwatchEventRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -266,7 +266,7 @@ export class CloudwatchEventRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

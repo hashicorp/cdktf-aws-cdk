@@ -100,7 +100,7 @@ export class DataAwsGlueDataCatalogEncryptionSettings extends cdktf.TerraformDat
   }
   // Temporarily expose input value. Use with caution.
   public get catalogIdInput() {
-    return this._catalogId
+    return this._catalogId;
   }
 
   // data_catalog_encryption_settings - computed: true, optional: false, required: false

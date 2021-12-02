@@ -120,12 +120,37 @@ export class CloudwatchMetricStreamTimeoutsOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudwatchMetricStreamTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudwatchMetricStreamTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -133,15 +158,15 @@ export class CloudwatchMetricStreamTimeoutsOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -149,7 +174,7 @@ export class CloudwatchMetricStreamTimeoutsOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -194,7 +219,7 @@ export class CloudwatchMetricStream extends cdktf.TerraformResource {
     this._tagsAll = config.tagsAll;
     this._excludeFilter = config.excludeFilter;
     this._includeFilter = config.includeFilter;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -221,7 +246,7 @@ export class CloudwatchMetricStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get firehoseArnInput() {
-    return this._firehoseArn
+    return this._firehoseArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -235,11 +260,11 @@ export class CloudwatchMetricStream extends cdktf.TerraformResource {
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -247,15 +272,15 @@ export class CloudwatchMetricStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_prefix - computed: true, optional: true, required: false
-  private _namePrefix?: string | undefined; 
+  private _namePrefix?: string; 
   public get namePrefix() {
     return this.getStringAttribute('name_prefix');
   }
-  public set namePrefix(value: string | undefined) {
+  public set namePrefix(value: string) {
     this._namePrefix = value;
   }
   public resetNamePrefix() {
@@ -263,7 +288,7 @@ export class CloudwatchMetricStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // output_format - computed: false, optional: false, required: true
@@ -276,7 +301,7 @@ export class CloudwatchMetricStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get outputFormatInput() {
-    return this._outputFormat
+    return this._outputFormat;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -289,7 +314,7 @@ export class CloudwatchMetricStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // state - computed: true, optional: false, required: false
@@ -298,12 +323,12 @@ export class CloudwatchMetricStream extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -311,16 +336,16 @@ export class CloudwatchMetricStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -328,16 +353,16 @@ export class CloudwatchMetricStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // exclude_filter - computed: false, optional: true, required: false
-  private _excludeFilter?: CloudwatchMetricStreamExcludeFilter[] | undefined; 
+  private _excludeFilter?: CloudwatchMetricStreamExcludeFilter[]; 
   public get excludeFilter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('exclude_filter') as any;
   }
-  public set excludeFilter(value: CloudwatchMetricStreamExcludeFilter[] | undefined) {
+  public set excludeFilter(value: CloudwatchMetricStreamExcludeFilter[]) {
     this._excludeFilter = value;
   }
   public resetExcludeFilter() {
@@ -345,16 +370,16 @@ export class CloudwatchMetricStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get excludeFilterInput() {
-    return this._excludeFilter
+    return this._excludeFilter;
   }
 
   // include_filter - computed: false, optional: true, required: false
-  private _includeFilter?: CloudwatchMetricStreamIncludeFilter[] | undefined; 
+  private _includeFilter?: CloudwatchMetricStreamIncludeFilter[]; 
   public get includeFilter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('include_filter') as any;
   }
-  public set includeFilter(value: CloudwatchMetricStreamIncludeFilter[] | undefined) {
+  public set includeFilter(value: CloudwatchMetricStreamIncludeFilter[]) {
     this._includeFilter = value;
   }
   public resetIncludeFilter() {
@@ -362,24 +387,23 @@ export class CloudwatchMetricStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get includeFilterInput() {
-    return this._includeFilter
+    return this._includeFilter;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: CloudwatchMetricStreamTimeouts | undefined; 
-  private __timeoutsOutput = new CloudwatchMetricStreamTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new CloudwatchMetricStreamTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: CloudwatchMetricStreamTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: CloudwatchMetricStreamTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -397,7 +421,7 @@ export class CloudwatchMetricStream extends cdktf.TerraformResource {
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       exclude_filter: cdktf.listMapper(cloudwatchMetricStreamExcludeFilterToTerraform)(this._excludeFilter),
       include_filter: cdktf.listMapper(cloudwatchMetricStreamIncludeFilterToTerraform)(this._includeFilter),
-      timeouts: cloudwatchMetricStreamTimeoutsToTerraform(this._timeouts),
+      timeouts: cloudwatchMetricStreamTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

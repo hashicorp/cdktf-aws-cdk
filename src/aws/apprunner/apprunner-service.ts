@@ -75,6 +75,25 @@ export class ApprunnerServiceEncryptionConfigurationOutputReference extends cdkt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApprunnerServiceEncryptionConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._kmsKey) {
+      hasAnyValues = true;
+      internalValueResult.kmsKey = this._kmsKey;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApprunnerServiceEncryptionConfiguration | undefined) {
+    if (value === undefined) {
+      this._kmsKey = undefined;
+    }
+    else {
+      this._kmsKey = value.kmsKey;
+    }
+  }
+
   // kms_key - computed: false, optional: false, required: true
   private _kmsKey?: string; 
   public get kmsKey() {
@@ -85,7 +104,7 @@ export class ApprunnerServiceEncryptionConfigurationOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyInput() {
-    return this._kmsKey
+    return this._kmsKey;
   }
 }
 export interface ApprunnerServiceHealthCheckConfiguration {
@@ -140,12 +159,61 @@ export class ApprunnerServiceHealthCheckConfigurationOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApprunnerServiceHealthCheckConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._healthyThreshold) {
+      hasAnyValues = true;
+      internalValueResult.healthyThreshold = this._healthyThreshold;
+    }
+    if (this._interval) {
+      hasAnyValues = true;
+      internalValueResult.interval = this._interval;
+    }
+    if (this._path) {
+      hasAnyValues = true;
+      internalValueResult.path = this._path;
+    }
+    if (this._protocol) {
+      hasAnyValues = true;
+      internalValueResult.protocol = this._protocol;
+    }
+    if (this._timeout) {
+      hasAnyValues = true;
+      internalValueResult.timeout = this._timeout;
+    }
+    if (this._unhealthyThreshold) {
+      hasAnyValues = true;
+      internalValueResult.unhealthyThreshold = this._unhealthyThreshold;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApprunnerServiceHealthCheckConfiguration | undefined) {
+    if (value === undefined) {
+      this._healthyThreshold = undefined;
+      this._interval = undefined;
+      this._path = undefined;
+      this._protocol = undefined;
+      this._timeout = undefined;
+      this._unhealthyThreshold = undefined;
+    }
+    else {
+      this._healthyThreshold = value.healthyThreshold;
+      this._interval = value.interval;
+      this._path = value.path;
+      this._protocol = value.protocol;
+      this._timeout = value.timeout;
+      this._unhealthyThreshold = value.unhealthyThreshold;
+    }
+  }
+
   // healthy_threshold - computed: false, optional: true, required: false
-  private _healthyThreshold?: number | undefined; 
+  private _healthyThreshold?: number; 
   public get healthyThreshold() {
     return this.getNumberAttribute('healthy_threshold');
   }
-  public set healthyThreshold(value: number | undefined) {
+  public set healthyThreshold(value: number) {
     this._healthyThreshold = value;
   }
   public resetHealthyThreshold() {
@@ -153,15 +221,15 @@ export class ApprunnerServiceHealthCheckConfigurationOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get healthyThresholdInput() {
-    return this._healthyThreshold
+    return this._healthyThreshold;
   }
 
   // interval - computed: false, optional: true, required: false
-  private _interval?: number | undefined; 
+  private _interval?: number; 
   public get interval() {
     return this.getNumberAttribute('interval');
   }
-  public set interval(value: number | undefined) {
+  public set interval(value: number) {
     this._interval = value;
   }
   public resetInterval() {
@@ -169,15 +237,15 @@ export class ApprunnerServiceHealthCheckConfigurationOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get intervalInput() {
-    return this._interval
+    return this._interval;
   }
 
   // path - computed: false, optional: true, required: false
-  private _path?: string | undefined; 
+  private _path?: string; 
   public get path() {
     return this.getStringAttribute('path');
   }
-  public set path(value: string | undefined) {
+  public set path(value: string) {
     this._path = value;
   }
   public resetPath() {
@@ -185,15 +253,15 @@ export class ApprunnerServiceHealthCheckConfigurationOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get pathInput() {
-    return this._path
+    return this._path;
   }
 
   // protocol - computed: false, optional: true, required: false
-  private _protocol?: string | undefined; 
+  private _protocol?: string; 
   public get protocol() {
     return this.getStringAttribute('protocol');
   }
-  public set protocol(value: string | undefined) {
+  public set protocol(value: string) {
     this._protocol = value;
   }
   public resetProtocol() {
@@ -201,15 +269,15 @@ export class ApprunnerServiceHealthCheckConfigurationOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get protocolInput() {
-    return this._protocol
+    return this._protocol;
   }
 
   // timeout - computed: false, optional: true, required: false
-  private _timeout?: number | undefined; 
+  private _timeout?: number; 
   public get timeout() {
     return this.getNumberAttribute('timeout');
   }
-  public set timeout(value: number | undefined) {
+  public set timeout(value: number) {
     this._timeout = value;
   }
   public resetTimeout() {
@@ -217,15 +285,15 @@ export class ApprunnerServiceHealthCheckConfigurationOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutInput() {
-    return this._timeout
+    return this._timeout;
   }
 
   // unhealthy_threshold - computed: false, optional: true, required: false
-  private _unhealthyThreshold?: number | undefined; 
+  private _unhealthyThreshold?: number; 
   public get unhealthyThreshold() {
     return this.getNumberAttribute('unhealthy_threshold');
   }
-  public set unhealthyThreshold(value: number | undefined) {
+  public set unhealthyThreshold(value: number) {
     this._unhealthyThreshold = value;
   }
   public resetUnhealthyThreshold() {
@@ -233,7 +301,7 @@ export class ApprunnerServiceHealthCheckConfigurationOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get unhealthyThresholdInput() {
-    return this._unhealthyThreshold
+    return this._unhealthyThreshold;
   }
 }
 export interface ApprunnerServiceInstanceConfiguration {
@@ -273,12 +341,43 @@ export class ApprunnerServiceInstanceConfigurationOutputReference extends cdktf.
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApprunnerServiceInstanceConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cpu) {
+      hasAnyValues = true;
+      internalValueResult.cpu = this._cpu;
+    }
+    if (this._instanceRoleArn) {
+      hasAnyValues = true;
+      internalValueResult.instanceRoleArn = this._instanceRoleArn;
+    }
+    if (this._memory) {
+      hasAnyValues = true;
+      internalValueResult.memory = this._memory;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApprunnerServiceInstanceConfiguration | undefined) {
+    if (value === undefined) {
+      this._cpu = undefined;
+      this._instanceRoleArn = undefined;
+      this._memory = undefined;
+    }
+    else {
+      this._cpu = value.cpu;
+      this._instanceRoleArn = value.instanceRoleArn;
+      this._memory = value.memory;
+    }
+  }
+
   // cpu - computed: false, optional: true, required: false
-  private _cpu?: string | undefined; 
+  private _cpu?: string; 
   public get cpu() {
     return this.getStringAttribute('cpu');
   }
-  public set cpu(value: string | undefined) {
+  public set cpu(value: string) {
     this._cpu = value;
   }
   public resetCpu() {
@@ -286,15 +385,15 @@ export class ApprunnerServiceInstanceConfigurationOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get cpuInput() {
-    return this._cpu
+    return this._cpu;
   }
 
   // instance_role_arn - computed: false, optional: true, required: false
-  private _instanceRoleArn?: string | undefined; 
+  private _instanceRoleArn?: string; 
   public get instanceRoleArn() {
     return this.getStringAttribute('instance_role_arn');
   }
-  public set instanceRoleArn(value: string | undefined) {
+  public set instanceRoleArn(value: string) {
     this._instanceRoleArn = value;
   }
   public resetInstanceRoleArn() {
@@ -302,15 +401,15 @@ export class ApprunnerServiceInstanceConfigurationOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get instanceRoleArnInput() {
-    return this._instanceRoleArn
+    return this._instanceRoleArn;
   }
 
   // memory - computed: false, optional: true, required: false
-  private _memory?: string | undefined; 
+  private _memory?: string; 
   public get memory() {
     return this.getStringAttribute('memory');
   }
-  public set memory(value: string | undefined) {
+  public set memory(value: string) {
     this._memory = value;
   }
   public resetMemory() {
@@ -318,7 +417,7 @@ export class ApprunnerServiceInstanceConfigurationOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get memoryInput() {
-    return this._memory
+    return this._memory;
   }
 }
 export interface ApprunnerServiceSourceConfigurationAuthenticationConfiguration {
@@ -353,12 +452,37 @@ export class ApprunnerServiceSourceConfigurationAuthenticationConfigurationOutpu
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApprunnerServiceSourceConfigurationAuthenticationConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._accessRoleArn) {
+      hasAnyValues = true;
+      internalValueResult.accessRoleArn = this._accessRoleArn;
+    }
+    if (this._connectionArn) {
+      hasAnyValues = true;
+      internalValueResult.connectionArn = this._connectionArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApprunnerServiceSourceConfigurationAuthenticationConfiguration | undefined) {
+    if (value === undefined) {
+      this._accessRoleArn = undefined;
+      this._connectionArn = undefined;
+    }
+    else {
+      this._accessRoleArn = value.accessRoleArn;
+      this._connectionArn = value.connectionArn;
+    }
+  }
+
   // access_role_arn - computed: false, optional: true, required: false
-  private _accessRoleArn?: string | undefined; 
+  private _accessRoleArn?: string; 
   public get accessRoleArn() {
     return this.getStringAttribute('access_role_arn');
   }
-  public set accessRoleArn(value: string | undefined) {
+  public set accessRoleArn(value: string) {
     this._accessRoleArn = value;
   }
   public resetAccessRoleArn() {
@@ -366,15 +490,15 @@ export class ApprunnerServiceSourceConfigurationAuthenticationConfigurationOutpu
   }
   // Temporarily expose input value. Use with caution.
   public get accessRoleArnInput() {
-    return this._accessRoleArn
+    return this._accessRoleArn;
   }
 
   // connection_arn - computed: false, optional: true, required: false
-  private _connectionArn?: string | undefined; 
+  private _connectionArn?: string; 
   public get connectionArn() {
     return this.getStringAttribute('connection_arn');
   }
-  public set connectionArn(value: string | undefined) {
+  public set connectionArn(value: string) {
     this._connectionArn = value;
   }
   public resetConnectionArn() {
@@ -382,7 +506,7 @@ export class ApprunnerServiceSourceConfigurationAuthenticationConfigurationOutpu
   }
   // Temporarily expose input value. Use with caution.
   public get connectionArnInput() {
-    return this._connectionArn
+    return this._connectionArn;
   }
 }
 export interface ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValues {
@@ -432,12 +556,55 @@ export class ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationC
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValues | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._buildCommand) {
+      hasAnyValues = true;
+      internalValueResult.buildCommand = this._buildCommand;
+    }
+    if (this._port) {
+      hasAnyValues = true;
+      internalValueResult.port = this._port;
+    }
+    if (this._runtime) {
+      hasAnyValues = true;
+      internalValueResult.runtime = this._runtime;
+    }
+    if (this._runtimeEnvironmentVariables) {
+      hasAnyValues = true;
+      internalValueResult.runtimeEnvironmentVariables = this._runtimeEnvironmentVariables;
+    }
+    if (this._startCommand) {
+      hasAnyValues = true;
+      internalValueResult.startCommand = this._startCommand;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValues | undefined) {
+    if (value === undefined) {
+      this._buildCommand = undefined;
+      this._port = undefined;
+      this._runtime = undefined;
+      this._runtimeEnvironmentVariables = undefined;
+      this._startCommand = undefined;
+    }
+    else {
+      this._buildCommand = value.buildCommand;
+      this._port = value.port;
+      this._runtime = value.runtime;
+      this._runtimeEnvironmentVariables = value.runtimeEnvironmentVariables;
+      this._startCommand = value.startCommand;
+    }
+  }
+
   // build_command - computed: false, optional: true, required: false
-  private _buildCommand?: string | undefined; 
+  private _buildCommand?: string; 
   public get buildCommand() {
     return this.getStringAttribute('build_command');
   }
-  public set buildCommand(value: string | undefined) {
+  public set buildCommand(value: string) {
     this._buildCommand = value;
   }
   public resetBuildCommand() {
@@ -445,15 +612,15 @@ export class ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationC
   }
   // Temporarily expose input value. Use with caution.
   public get buildCommandInput() {
-    return this._buildCommand
+    return this._buildCommand;
   }
 
   // port - computed: false, optional: true, required: false
-  private _port?: string | undefined; 
+  private _port?: string; 
   public get port() {
     return this.getStringAttribute('port');
   }
-  public set port(value: string | undefined) {
+  public set port(value: string) {
     this._port = value;
   }
   public resetPort() {
@@ -461,7 +628,7 @@ export class ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationC
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 
   // runtime - computed: false, optional: false, required: true
@@ -474,16 +641,16 @@ export class ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationC
   }
   // Temporarily expose input value. Use with caution.
   public get runtimeInput() {
-    return this._runtime
+    return this._runtime;
   }
 
   // runtime_environment_variables - computed: false, optional: true, required: false
-  private _runtimeEnvironmentVariables?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _runtimeEnvironmentVariables?: { [key: string]: string } | cdktf.IResolvable; 
   public get runtimeEnvironmentVariables() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('runtime_environment_variables') as any;
   }
-  public set runtimeEnvironmentVariables(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set runtimeEnvironmentVariables(value: { [key: string]: string } | cdktf.IResolvable) {
     this._runtimeEnvironmentVariables = value;
   }
   public resetRuntimeEnvironmentVariables() {
@@ -491,15 +658,15 @@ export class ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationC
   }
   // Temporarily expose input value. Use with caution.
   public get runtimeEnvironmentVariablesInput() {
-    return this._runtimeEnvironmentVariables
+    return this._runtimeEnvironmentVariables;
   }
 
   // start_command - computed: false, optional: true, required: false
-  private _startCommand?: string | undefined; 
+  private _startCommand?: string; 
   public get startCommand() {
     return this.getStringAttribute('start_command');
   }
-  public set startCommand(value: string | undefined) {
+  public set startCommand(value: string) {
     this._startCommand = value;
   }
   public resetStartCommand() {
@@ -507,7 +674,7 @@ export class ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationC
   }
   // Temporarily expose input value. Use with caution.
   public get startCommandInput() {
-    return this._startCommand
+    return this._startCommand;
   }
 }
 export interface ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfiguration {
@@ -544,6 +711,31 @@ export class ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._configurationSource) {
+      hasAnyValues = true;
+      internalValueResult.configurationSource = this._configurationSource;
+    }
+    if (this._codeConfigurationValues) {
+      hasAnyValues = true;
+      internalValueResult.codeConfigurationValues = this._codeConfigurationValues?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfiguration | undefined) {
+    if (value === undefined) {
+      this._configurationSource = undefined;
+      this._codeConfigurationValues.internalValue = undefined;
+    }
+    else {
+      this._configurationSource = value.configurationSource;
+      this._codeConfigurationValues.internalValue = value.codeConfigurationValues;
+    }
+  }
+
   // configuration_source - computed: false, optional: false, required: true
   private _configurationSource?: string; 
   public get configurationSource() {
@@ -554,24 +746,23 @@ export class ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationO
   }
   // Temporarily expose input value. Use with caution.
   public get configurationSourceInput() {
-    return this._configurationSource
+    return this._configurationSource;
   }
 
   // code_configuration_values - computed: false, optional: true, required: false
-  private _codeConfigurationValues?: ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValues | undefined; 
-  private __codeConfigurationValuesOutput = new ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValuesOutputReference(this as any, "code_configuration_values", true);
+  private _codeConfigurationValues = new ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValuesOutputReference(this as any, "code_configuration_values", true);
   public get codeConfigurationValues() {
-    return this.__codeConfigurationValuesOutput;
+    return this._codeConfigurationValues;
   }
-  public putCodeConfigurationValues(value: ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValues | undefined) {
-    this._codeConfigurationValues = value;
+  public putCodeConfigurationValues(value: ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValues) {
+    this._codeConfigurationValues.internalValue = value;
   }
   public resetCodeConfigurationValues() {
-    this._codeConfigurationValues = undefined;
+    this._codeConfigurationValues.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get codeConfigurationValuesInput() {
-    return this._codeConfigurationValues
+    return this._codeConfigurationValues.internalValue;
   }
 }
 export interface ApprunnerServiceSourceConfigurationCodeRepositorySourceCodeVersion {
@@ -606,6 +797,31 @@ export class ApprunnerServiceSourceConfigurationCodeRepositorySourceCodeVersionO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApprunnerServiceSourceConfigurationCodeRepositorySourceCodeVersion | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApprunnerServiceSourceConfigurationCodeRepositorySourceCodeVersion | undefined) {
+    if (value === undefined) {
+      this._type = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._type = value.type;
+      this._value = value.value;
+    }
+  }
+
   // type - computed: false, optional: false, required: true
   private _type?: string; 
   public get type() {
@@ -616,7 +832,7 @@ export class ApprunnerServiceSourceConfigurationCodeRepositorySourceCodeVersionO
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // value - computed: false, optional: false, required: true
@@ -629,7 +845,7 @@ export class ApprunnerServiceSourceConfigurationCodeRepositorySourceCodeVersionO
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface ApprunnerServiceSourceConfigurationCodeRepository {
@@ -673,6 +889,37 @@ export class ApprunnerServiceSourceConfigurationCodeRepositoryOutputReference ex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApprunnerServiceSourceConfigurationCodeRepository | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._repositoryUrl) {
+      hasAnyValues = true;
+      internalValueResult.repositoryUrl = this._repositoryUrl;
+    }
+    if (this._codeConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.codeConfiguration = this._codeConfiguration?.internalValue;
+    }
+    if (this._sourceCodeVersion) {
+      hasAnyValues = true;
+      internalValueResult.sourceCodeVersion = this._sourceCodeVersion?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApprunnerServiceSourceConfigurationCodeRepository | undefined) {
+    if (value === undefined) {
+      this._repositoryUrl = undefined;
+      this._codeConfiguration.internalValue = undefined;
+      this._sourceCodeVersion.internalValue = undefined;
+    }
+    else {
+      this._repositoryUrl = value.repositoryUrl;
+      this._codeConfiguration.internalValue = value.codeConfiguration;
+      this._sourceCodeVersion.internalValue = value.sourceCodeVersion;
+    }
+  }
+
   // repository_url - computed: false, optional: false, required: true
   private _repositoryUrl?: string; 
   public get repositoryUrl() {
@@ -683,38 +930,36 @@ export class ApprunnerServiceSourceConfigurationCodeRepositoryOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get repositoryUrlInput() {
-    return this._repositoryUrl
+    return this._repositoryUrl;
   }
 
   // code_configuration - computed: false, optional: true, required: false
-  private _codeConfiguration?: ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfiguration | undefined; 
-  private __codeConfigurationOutput = new ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationOutputReference(this as any, "code_configuration", true);
+  private _codeConfiguration = new ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfigurationOutputReference(this as any, "code_configuration", true);
   public get codeConfiguration() {
-    return this.__codeConfigurationOutput;
+    return this._codeConfiguration;
   }
-  public putCodeConfiguration(value: ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfiguration | undefined) {
-    this._codeConfiguration = value;
+  public putCodeConfiguration(value: ApprunnerServiceSourceConfigurationCodeRepositoryCodeConfiguration) {
+    this._codeConfiguration.internalValue = value;
   }
   public resetCodeConfiguration() {
-    this._codeConfiguration = undefined;
+    this._codeConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get codeConfigurationInput() {
-    return this._codeConfiguration
+    return this._codeConfiguration.internalValue;
   }
 
   // source_code_version - computed: false, optional: false, required: true
-  private _sourceCodeVersion?: ApprunnerServiceSourceConfigurationCodeRepositorySourceCodeVersion; 
-  private __sourceCodeVersionOutput = new ApprunnerServiceSourceConfigurationCodeRepositorySourceCodeVersionOutputReference(this as any, "source_code_version", true);
+  private _sourceCodeVersion = new ApprunnerServiceSourceConfigurationCodeRepositorySourceCodeVersionOutputReference(this as any, "source_code_version", true);
   public get sourceCodeVersion() {
-    return this.__sourceCodeVersionOutput;
+    return this._sourceCodeVersion;
   }
   public putSourceCodeVersion(value: ApprunnerServiceSourceConfigurationCodeRepositorySourceCodeVersion) {
-    this._sourceCodeVersion = value;
+    this._sourceCodeVersion.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get sourceCodeVersionInput() {
-    return this._sourceCodeVersion
+    return this._sourceCodeVersion.internalValue;
   }
 }
 export interface ApprunnerServiceSourceConfigurationImageRepositoryImageConfiguration {
@@ -754,12 +999,43 @@ export class ApprunnerServiceSourceConfigurationImageRepositoryImageConfiguratio
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApprunnerServiceSourceConfigurationImageRepositoryImageConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._port) {
+      hasAnyValues = true;
+      internalValueResult.port = this._port;
+    }
+    if (this._runtimeEnvironmentVariables) {
+      hasAnyValues = true;
+      internalValueResult.runtimeEnvironmentVariables = this._runtimeEnvironmentVariables;
+    }
+    if (this._startCommand) {
+      hasAnyValues = true;
+      internalValueResult.startCommand = this._startCommand;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApprunnerServiceSourceConfigurationImageRepositoryImageConfiguration | undefined) {
+    if (value === undefined) {
+      this._port = undefined;
+      this._runtimeEnvironmentVariables = undefined;
+      this._startCommand = undefined;
+    }
+    else {
+      this._port = value.port;
+      this._runtimeEnvironmentVariables = value.runtimeEnvironmentVariables;
+      this._startCommand = value.startCommand;
+    }
+  }
+
   // port - computed: false, optional: true, required: false
-  private _port?: string | undefined; 
+  private _port?: string; 
   public get port() {
     return this.getStringAttribute('port');
   }
-  public set port(value: string | undefined) {
+  public set port(value: string) {
     this._port = value;
   }
   public resetPort() {
@@ -767,16 +1043,16 @@ export class ApprunnerServiceSourceConfigurationImageRepositoryImageConfiguratio
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 
   // runtime_environment_variables - computed: false, optional: true, required: false
-  private _runtimeEnvironmentVariables?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _runtimeEnvironmentVariables?: { [key: string]: string } | cdktf.IResolvable; 
   public get runtimeEnvironmentVariables() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('runtime_environment_variables') as any;
   }
-  public set runtimeEnvironmentVariables(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set runtimeEnvironmentVariables(value: { [key: string]: string } | cdktf.IResolvable) {
     this._runtimeEnvironmentVariables = value;
   }
   public resetRuntimeEnvironmentVariables() {
@@ -784,15 +1060,15 @@ export class ApprunnerServiceSourceConfigurationImageRepositoryImageConfiguratio
   }
   // Temporarily expose input value. Use with caution.
   public get runtimeEnvironmentVariablesInput() {
-    return this._runtimeEnvironmentVariables
+    return this._runtimeEnvironmentVariables;
   }
 
   // start_command - computed: false, optional: true, required: false
-  private _startCommand?: string | undefined; 
+  private _startCommand?: string; 
   public get startCommand() {
     return this.getStringAttribute('start_command');
   }
-  public set startCommand(value: string | undefined) {
+  public set startCommand(value: string) {
     this._startCommand = value;
   }
   public resetStartCommand() {
@@ -800,7 +1076,7 @@ export class ApprunnerServiceSourceConfigurationImageRepositoryImageConfiguratio
   }
   // Temporarily expose input value. Use with caution.
   public get startCommandInput() {
-    return this._startCommand
+    return this._startCommand;
   }
 }
 export interface ApprunnerServiceSourceConfigurationImageRepository {
@@ -842,6 +1118,37 @@ export class ApprunnerServiceSourceConfigurationImageRepositoryOutputReference e
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApprunnerServiceSourceConfigurationImageRepository | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._imageIdentifier) {
+      hasAnyValues = true;
+      internalValueResult.imageIdentifier = this._imageIdentifier;
+    }
+    if (this._imageRepositoryType) {
+      hasAnyValues = true;
+      internalValueResult.imageRepositoryType = this._imageRepositoryType;
+    }
+    if (this._imageConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.imageConfiguration = this._imageConfiguration?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApprunnerServiceSourceConfigurationImageRepository | undefined) {
+    if (value === undefined) {
+      this._imageIdentifier = undefined;
+      this._imageRepositoryType = undefined;
+      this._imageConfiguration.internalValue = undefined;
+    }
+    else {
+      this._imageIdentifier = value.imageIdentifier;
+      this._imageRepositoryType = value.imageRepositoryType;
+      this._imageConfiguration.internalValue = value.imageConfiguration;
+    }
+  }
+
   // image_identifier - computed: false, optional: false, required: true
   private _imageIdentifier?: string; 
   public get imageIdentifier() {
@@ -852,7 +1159,7 @@ export class ApprunnerServiceSourceConfigurationImageRepositoryOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get imageIdentifierInput() {
-    return this._imageIdentifier
+    return this._imageIdentifier;
   }
 
   // image_repository_type - computed: false, optional: false, required: true
@@ -865,24 +1172,23 @@ export class ApprunnerServiceSourceConfigurationImageRepositoryOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get imageRepositoryTypeInput() {
-    return this._imageRepositoryType
+    return this._imageRepositoryType;
   }
 
   // image_configuration - computed: false, optional: true, required: false
-  private _imageConfiguration?: ApprunnerServiceSourceConfigurationImageRepositoryImageConfiguration | undefined; 
-  private __imageConfigurationOutput = new ApprunnerServiceSourceConfigurationImageRepositoryImageConfigurationOutputReference(this as any, "image_configuration", true);
+  private _imageConfiguration = new ApprunnerServiceSourceConfigurationImageRepositoryImageConfigurationOutputReference(this as any, "image_configuration", true);
   public get imageConfiguration() {
-    return this.__imageConfigurationOutput;
+    return this._imageConfiguration;
   }
-  public putImageConfiguration(value: ApprunnerServiceSourceConfigurationImageRepositoryImageConfiguration | undefined) {
-    this._imageConfiguration = value;
+  public putImageConfiguration(value: ApprunnerServiceSourceConfigurationImageRepositoryImageConfiguration) {
+    this._imageConfiguration.internalValue = value;
   }
   public resetImageConfiguration() {
-    this._imageConfiguration = undefined;
+    this._imageConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get imageConfigurationInput() {
-    return this._imageConfiguration
+    return this._imageConfiguration.internalValue;
   }
 }
 export interface ApprunnerServiceSourceConfiguration {
@@ -933,12 +1239,49 @@ export class ApprunnerServiceSourceConfigurationOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApprunnerServiceSourceConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._autoDeploymentsEnabled) {
+      hasAnyValues = true;
+      internalValueResult.autoDeploymentsEnabled = this._autoDeploymentsEnabled;
+    }
+    if (this._authenticationConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.authenticationConfiguration = this._authenticationConfiguration?.internalValue;
+    }
+    if (this._codeRepository) {
+      hasAnyValues = true;
+      internalValueResult.codeRepository = this._codeRepository?.internalValue;
+    }
+    if (this._imageRepository) {
+      hasAnyValues = true;
+      internalValueResult.imageRepository = this._imageRepository?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApprunnerServiceSourceConfiguration | undefined) {
+    if (value === undefined) {
+      this._autoDeploymentsEnabled = undefined;
+      this._authenticationConfiguration.internalValue = undefined;
+      this._codeRepository.internalValue = undefined;
+      this._imageRepository.internalValue = undefined;
+    }
+    else {
+      this._autoDeploymentsEnabled = value.autoDeploymentsEnabled;
+      this._authenticationConfiguration.internalValue = value.authenticationConfiguration;
+      this._codeRepository.internalValue = value.codeRepository;
+      this._imageRepository.internalValue = value.imageRepository;
+    }
+  }
+
   // auto_deployments_enabled - computed: false, optional: true, required: false
-  private _autoDeploymentsEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _autoDeploymentsEnabled?: boolean | cdktf.IResolvable; 
   public get autoDeploymentsEnabled() {
     return this.getBooleanAttribute('auto_deployments_enabled') as any;
   }
-  public set autoDeploymentsEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set autoDeploymentsEnabled(value: boolean | cdktf.IResolvable) {
     this._autoDeploymentsEnabled = value;
   }
   public resetAutoDeploymentsEnabled() {
@@ -946,58 +1289,55 @@ export class ApprunnerServiceSourceConfigurationOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get autoDeploymentsEnabledInput() {
-    return this._autoDeploymentsEnabled
+    return this._autoDeploymentsEnabled;
   }
 
   // authentication_configuration - computed: false, optional: true, required: false
-  private _authenticationConfiguration?: ApprunnerServiceSourceConfigurationAuthenticationConfiguration | undefined; 
-  private __authenticationConfigurationOutput = new ApprunnerServiceSourceConfigurationAuthenticationConfigurationOutputReference(this as any, "authentication_configuration", true);
+  private _authenticationConfiguration = new ApprunnerServiceSourceConfigurationAuthenticationConfigurationOutputReference(this as any, "authentication_configuration", true);
   public get authenticationConfiguration() {
-    return this.__authenticationConfigurationOutput;
+    return this._authenticationConfiguration;
   }
-  public putAuthenticationConfiguration(value: ApprunnerServiceSourceConfigurationAuthenticationConfiguration | undefined) {
-    this._authenticationConfiguration = value;
+  public putAuthenticationConfiguration(value: ApprunnerServiceSourceConfigurationAuthenticationConfiguration) {
+    this._authenticationConfiguration.internalValue = value;
   }
   public resetAuthenticationConfiguration() {
-    this._authenticationConfiguration = undefined;
+    this._authenticationConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get authenticationConfigurationInput() {
-    return this._authenticationConfiguration
+    return this._authenticationConfiguration.internalValue;
   }
 
   // code_repository - computed: false, optional: true, required: false
-  private _codeRepository?: ApprunnerServiceSourceConfigurationCodeRepository | undefined; 
-  private __codeRepositoryOutput = new ApprunnerServiceSourceConfigurationCodeRepositoryOutputReference(this as any, "code_repository", true);
+  private _codeRepository = new ApprunnerServiceSourceConfigurationCodeRepositoryOutputReference(this as any, "code_repository", true);
   public get codeRepository() {
-    return this.__codeRepositoryOutput;
+    return this._codeRepository;
   }
-  public putCodeRepository(value: ApprunnerServiceSourceConfigurationCodeRepository | undefined) {
-    this._codeRepository = value;
+  public putCodeRepository(value: ApprunnerServiceSourceConfigurationCodeRepository) {
+    this._codeRepository.internalValue = value;
   }
   public resetCodeRepository() {
-    this._codeRepository = undefined;
+    this._codeRepository.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get codeRepositoryInput() {
-    return this._codeRepository
+    return this._codeRepository.internalValue;
   }
 
   // image_repository - computed: false, optional: true, required: false
-  private _imageRepository?: ApprunnerServiceSourceConfigurationImageRepository | undefined; 
-  private __imageRepositoryOutput = new ApprunnerServiceSourceConfigurationImageRepositoryOutputReference(this as any, "image_repository", true);
+  private _imageRepository = new ApprunnerServiceSourceConfigurationImageRepositoryOutputReference(this as any, "image_repository", true);
   public get imageRepository() {
-    return this.__imageRepositoryOutput;
+    return this._imageRepository;
   }
-  public putImageRepository(value: ApprunnerServiceSourceConfigurationImageRepository | undefined) {
-    this._imageRepository = value;
+  public putImageRepository(value: ApprunnerServiceSourceConfigurationImageRepository) {
+    this._imageRepository.internalValue = value;
   }
   public resetImageRepository() {
-    this._imageRepository = undefined;
+    this._imageRepository.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get imageRepositoryInput() {
-    return this._imageRepository
+    return this._imageRepository.internalValue;
   }
 }
 
@@ -1037,10 +1377,10 @@ export class ApprunnerService extends cdktf.TerraformResource {
     this._serviceName = config.serviceName;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._encryptionConfiguration = config.encryptionConfiguration;
-    this._healthCheckConfiguration = config.healthCheckConfiguration;
-    this._instanceConfiguration = config.instanceConfiguration;
-    this._sourceConfiguration = config.sourceConfiguration;
+    this._encryptionConfiguration.internalValue = config.encryptionConfiguration;
+    this._healthCheckConfiguration.internalValue = config.healthCheckConfiguration;
+    this._instanceConfiguration.internalValue = config.instanceConfiguration;
+    this._sourceConfiguration.internalValue = config.sourceConfiguration;
   }
 
   // ==========
@@ -1053,11 +1393,11 @@ export class ApprunnerService extends cdktf.TerraformResource {
   }
 
   // auto_scaling_configuration_arn - computed: true, optional: true, required: false
-  private _autoScalingConfigurationArn?: string | undefined; 
+  private _autoScalingConfigurationArn?: string; 
   public get autoScalingConfigurationArn() {
     return this.getStringAttribute('auto_scaling_configuration_arn');
   }
-  public set autoScalingConfigurationArn(value: string | undefined) {
+  public set autoScalingConfigurationArn(value: string) {
     this._autoScalingConfigurationArn = value;
   }
   public resetAutoScalingConfigurationArn() {
@@ -1065,7 +1405,7 @@ export class ApprunnerService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoScalingConfigurationArnInput() {
-    return this._autoScalingConfigurationArn
+    return this._autoScalingConfigurationArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -1088,7 +1428,7 @@ export class ApprunnerService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceNameInput() {
-    return this._serviceName
+    return this._serviceName;
   }
 
   // service_url - computed: true, optional: false, required: false
@@ -1102,12 +1442,12 @@ export class ApprunnerService extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -1115,16 +1455,16 @@ export class ApprunnerService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -1132,72 +1472,68 @@ export class ApprunnerService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // encryption_configuration - computed: false, optional: true, required: false
-  private _encryptionConfiguration?: ApprunnerServiceEncryptionConfiguration | undefined; 
-  private __encryptionConfigurationOutput = new ApprunnerServiceEncryptionConfigurationOutputReference(this as any, "encryption_configuration", true);
+  private _encryptionConfiguration = new ApprunnerServiceEncryptionConfigurationOutputReference(this as any, "encryption_configuration", true);
   public get encryptionConfiguration() {
-    return this.__encryptionConfigurationOutput;
+    return this._encryptionConfiguration;
   }
-  public putEncryptionConfiguration(value: ApprunnerServiceEncryptionConfiguration | undefined) {
-    this._encryptionConfiguration = value;
+  public putEncryptionConfiguration(value: ApprunnerServiceEncryptionConfiguration) {
+    this._encryptionConfiguration.internalValue = value;
   }
   public resetEncryptionConfiguration() {
-    this._encryptionConfiguration = undefined;
+    this._encryptionConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionConfigurationInput() {
-    return this._encryptionConfiguration
+    return this._encryptionConfiguration.internalValue;
   }
 
   // health_check_configuration - computed: false, optional: true, required: false
-  private _healthCheckConfiguration?: ApprunnerServiceHealthCheckConfiguration | undefined; 
-  private __healthCheckConfigurationOutput = new ApprunnerServiceHealthCheckConfigurationOutputReference(this as any, "health_check_configuration", true);
+  private _healthCheckConfiguration = new ApprunnerServiceHealthCheckConfigurationOutputReference(this as any, "health_check_configuration", true);
   public get healthCheckConfiguration() {
-    return this.__healthCheckConfigurationOutput;
+    return this._healthCheckConfiguration;
   }
-  public putHealthCheckConfiguration(value: ApprunnerServiceHealthCheckConfiguration | undefined) {
-    this._healthCheckConfiguration = value;
+  public putHealthCheckConfiguration(value: ApprunnerServiceHealthCheckConfiguration) {
+    this._healthCheckConfiguration.internalValue = value;
   }
   public resetHealthCheckConfiguration() {
-    this._healthCheckConfiguration = undefined;
+    this._healthCheckConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get healthCheckConfigurationInput() {
-    return this._healthCheckConfiguration
+    return this._healthCheckConfiguration.internalValue;
   }
 
   // instance_configuration - computed: false, optional: true, required: false
-  private _instanceConfiguration?: ApprunnerServiceInstanceConfiguration | undefined; 
-  private __instanceConfigurationOutput = new ApprunnerServiceInstanceConfigurationOutputReference(this as any, "instance_configuration", true);
+  private _instanceConfiguration = new ApprunnerServiceInstanceConfigurationOutputReference(this as any, "instance_configuration", true);
   public get instanceConfiguration() {
-    return this.__instanceConfigurationOutput;
+    return this._instanceConfiguration;
   }
-  public putInstanceConfiguration(value: ApprunnerServiceInstanceConfiguration | undefined) {
-    this._instanceConfiguration = value;
+  public putInstanceConfiguration(value: ApprunnerServiceInstanceConfiguration) {
+    this._instanceConfiguration.internalValue = value;
   }
   public resetInstanceConfiguration() {
-    this._instanceConfiguration = undefined;
+    this._instanceConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get instanceConfigurationInput() {
-    return this._instanceConfiguration
+    return this._instanceConfiguration.internalValue;
   }
 
   // source_configuration - computed: false, optional: false, required: true
-  private _sourceConfiguration?: ApprunnerServiceSourceConfiguration; 
-  private __sourceConfigurationOutput = new ApprunnerServiceSourceConfigurationOutputReference(this as any, "source_configuration", true);
+  private _sourceConfiguration = new ApprunnerServiceSourceConfigurationOutputReference(this as any, "source_configuration", true);
   public get sourceConfiguration() {
-    return this.__sourceConfigurationOutput;
+    return this._sourceConfiguration;
   }
   public putSourceConfiguration(value: ApprunnerServiceSourceConfiguration) {
-    this._sourceConfiguration = value;
+    this._sourceConfiguration.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get sourceConfigurationInput() {
-    return this._sourceConfiguration
+    return this._sourceConfiguration.internalValue;
   }
 
   // =========
@@ -1210,10 +1546,10 @@ export class ApprunnerService extends cdktf.TerraformResource {
       service_name: cdktf.stringToTerraform(this._serviceName),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      encryption_configuration: apprunnerServiceEncryptionConfigurationToTerraform(this._encryptionConfiguration),
-      health_check_configuration: apprunnerServiceHealthCheckConfigurationToTerraform(this._healthCheckConfiguration),
-      instance_configuration: apprunnerServiceInstanceConfigurationToTerraform(this._instanceConfiguration),
-      source_configuration: apprunnerServiceSourceConfigurationToTerraform(this._sourceConfiguration),
+      encryption_configuration: apprunnerServiceEncryptionConfigurationToTerraform(this._encryptionConfiguration.internalValue),
+      health_check_configuration: apprunnerServiceHealthCheckConfigurationToTerraform(this._healthCheckConfiguration.internalValue),
+      instance_configuration: apprunnerServiceInstanceConfigurationToTerraform(this._instanceConfiguration.internalValue),
+      source_configuration: apprunnerServiceSourceConfigurationToTerraform(this._sourceConfiguration.internalValue),
     };
   }
 }

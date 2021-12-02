@@ -72,7 +72,7 @@ export class PinpointGcmChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get apiKeyInput() {
-    return this._apiKey
+    return this._apiKey;
   }
 
   // application_id - computed: false, optional: false, required: true
@@ -85,15 +85,15 @@ export class PinpointGcmChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get applicationIdInput() {
-    return this._applicationId
+    return this._applicationId;
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -101,7 +101,7 @@ export class PinpointGcmChannel extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // id - computed: true, optional: true, required: false

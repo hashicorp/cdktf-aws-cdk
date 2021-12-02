@@ -112,11 +112,11 @@ export class KmsGrant extends cdktf.TerraformResource {
   // ==========
 
   // grant_creation_tokens - computed: false, optional: true, required: false
-  private _grantCreationTokens?: string[] | undefined; 
+  private _grantCreationTokens?: string[]; 
   public get grantCreationTokens() {
     return this.getListAttribute('grant_creation_tokens');
   }
-  public set grantCreationTokens(value: string[] | undefined) {
+  public set grantCreationTokens(value: string[]) {
     this._grantCreationTokens = value;
   }
   public resetGrantCreationTokens() {
@@ -124,7 +124,7 @@ export class KmsGrant extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get grantCreationTokensInput() {
-    return this._grantCreationTokens
+    return this._grantCreationTokens;
   }
 
   // grant_id - computed: true, optional: false, required: false
@@ -147,7 +147,7 @@ export class KmsGrant extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get granteePrincipalInput() {
-    return this._granteePrincipal
+    return this._granteePrincipal;
   }
 
   // id - computed: true, optional: true, required: false
@@ -165,15 +165,15 @@ export class KmsGrant extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyIdInput() {
-    return this._keyId
+    return this._keyId;
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -181,7 +181,7 @@ export class KmsGrant extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // operations - computed: false, optional: false, required: true
@@ -194,15 +194,15 @@ export class KmsGrant extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get operationsInput() {
-    return this._operations
+    return this._operations;
   }
 
   // retire_on_delete - computed: false, optional: true, required: false
-  private _retireOnDelete?: boolean | cdktf.IResolvable | undefined; 
+  private _retireOnDelete?: boolean | cdktf.IResolvable; 
   public get retireOnDelete() {
     return this.getBooleanAttribute('retire_on_delete') as any;
   }
-  public set retireOnDelete(value: boolean | cdktf.IResolvable | undefined) {
+  public set retireOnDelete(value: boolean | cdktf.IResolvable) {
     this._retireOnDelete = value;
   }
   public resetRetireOnDelete() {
@@ -210,15 +210,15 @@ export class KmsGrant extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get retireOnDeleteInput() {
-    return this._retireOnDelete
+    return this._retireOnDelete;
   }
 
   // retiring_principal - computed: false, optional: true, required: false
-  private _retiringPrincipal?: string | undefined; 
+  private _retiringPrincipal?: string; 
   public get retiringPrincipal() {
     return this.getStringAttribute('retiring_principal');
   }
-  public set retiringPrincipal(value: string | undefined) {
+  public set retiringPrincipal(value: string) {
     this._retiringPrincipal = value;
   }
   public resetRetiringPrincipal() {
@@ -226,16 +226,16 @@ export class KmsGrant extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get retiringPrincipalInput() {
-    return this._retiringPrincipal
+    return this._retiringPrincipal;
   }
 
   // constraints - computed: false, optional: true, required: false
-  private _constraints?: KmsGrantConstraints[] | undefined; 
+  private _constraints?: KmsGrantConstraints[]; 
   public get constraints() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('constraints') as any;
   }
-  public set constraints(value: KmsGrantConstraints[] | undefined) {
+  public set constraints(value: KmsGrantConstraints[]) {
     this._constraints = value;
   }
   public resetConstraints() {
@@ -243,7 +243,7 @@ export class KmsGrant extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get constraintsInput() {
-    return this._constraints
+    return this._constraints;
   }
 
   // =========

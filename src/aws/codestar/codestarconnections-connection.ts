@@ -83,11 +83,11 @@ export class CodestarconnectionsConnection extends cdktf.TerraformResource {
   }
 
   // host_arn - computed: false, optional: true, required: false
-  private _hostArn?: string | undefined; 
+  private _hostArn?: string; 
   public get hostArn() {
     return this.getStringAttribute('host_arn');
   }
-  public set hostArn(value: string | undefined) {
+  public set hostArn(value: string) {
     this._hostArn = value;
   }
   public resetHostArn() {
@@ -95,7 +95,7 @@ export class CodestarconnectionsConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get hostArnInput() {
-    return this._hostArn
+    return this._hostArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -113,15 +113,15 @@ export class CodestarconnectionsConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // provider_type - computed: true, optional: true, required: false
-  private _providerType?: string | undefined; 
+  private _providerType?: string; 
   public get providerType() {
     return this.getStringAttribute('provider_type');
   }
-  public set providerType(value: string | undefined) {
+  public set providerType(value: string) {
     this._providerType = value;
   }
   public resetProviderType() {
@@ -129,16 +129,16 @@ export class CodestarconnectionsConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get providerTypeInput() {
-    return this._providerType
+    return this._providerType;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -146,16 +146,16 @@ export class CodestarconnectionsConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -163,7 +163,7 @@ export class CodestarconnectionsConnection extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

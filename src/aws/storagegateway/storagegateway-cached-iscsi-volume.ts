@@ -117,7 +117,7 @@ export class StoragegatewayCachedIscsiVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get gatewayArnInput() {
-    return this._gatewayArn
+    return this._gatewayArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -126,11 +126,11 @@ export class StoragegatewayCachedIscsiVolume extends cdktf.TerraformResource {
   }
 
   // kms_encrypted - computed: false, optional: true, required: false
-  private _kmsEncrypted?: boolean | cdktf.IResolvable | undefined; 
+  private _kmsEncrypted?: boolean | cdktf.IResolvable; 
   public get kmsEncrypted() {
     return this.getBooleanAttribute('kms_encrypted') as any;
   }
-  public set kmsEncrypted(value: boolean | cdktf.IResolvable | undefined) {
+  public set kmsEncrypted(value: boolean | cdktf.IResolvable) {
     this._kmsEncrypted = value;
   }
   public resetKmsEncrypted() {
@@ -138,15 +138,15 @@ export class StoragegatewayCachedIscsiVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsEncryptedInput() {
-    return this._kmsEncrypted
+    return this._kmsEncrypted;
   }
 
   // kms_key - computed: false, optional: true, required: false
-  private _kmsKey?: string | undefined; 
+  private _kmsKey?: string; 
   public get kmsKey() {
     return this.getStringAttribute('kms_key');
   }
-  public set kmsKey(value: string | undefined) {
+  public set kmsKey(value: string) {
     this._kmsKey = value;
   }
   public resetKmsKey() {
@@ -154,7 +154,7 @@ export class StoragegatewayCachedIscsiVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyInput() {
-    return this._kmsKey
+    return this._kmsKey;
   }
 
   // lun_number - computed: true, optional: false, required: false
@@ -172,7 +172,7 @@ export class StoragegatewayCachedIscsiVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get networkInterfaceIdInput() {
-    return this._networkInterfaceId
+    return this._networkInterfaceId;
   }
 
   // network_interface_port - computed: true, optional: false, required: false
@@ -181,11 +181,11 @@ export class StoragegatewayCachedIscsiVolume extends cdktf.TerraformResource {
   }
 
   // snapshot_id - computed: false, optional: true, required: false
-  private _snapshotId?: string | undefined; 
+  private _snapshotId?: string; 
   public get snapshotId() {
     return this.getStringAttribute('snapshot_id');
   }
-  public set snapshotId(value: string | undefined) {
+  public set snapshotId(value: string) {
     this._snapshotId = value;
   }
   public resetSnapshotId() {
@@ -193,15 +193,15 @@ export class StoragegatewayCachedIscsiVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotIdInput() {
-    return this._snapshotId
+    return this._snapshotId;
   }
 
   // source_volume_arn - computed: false, optional: true, required: false
-  private _sourceVolumeArn?: string | undefined; 
+  private _sourceVolumeArn?: string; 
   public get sourceVolumeArn() {
     return this.getStringAttribute('source_volume_arn');
   }
-  public set sourceVolumeArn(value: string | undefined) {
+  public set sourceVolumeArn(value: string) {
     this._sourceVolumeArn = value;
   }
   public resetSourceVolumeArn() {
@@ -209,16 +209,16 @@ export class StoragegatewayCachedIscsiVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceVolumeArnInput() {
-    return this._sourceVolumeArn
+    return this._sourceVolumeArn;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -226,16 +226,16 @@ export class StoragegatewayCachedIscsiVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -243,7 +243,7 @@ export class StoragegatewayCachedIscsiVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // target_arn - computed: true, optional: false, required: false
@@ -261,7 +261,7 @@ export class StoragegatewayCachedIscsiVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetNameInput() {
-    return this._targetName
+    return this._targetName;
   }
 
   // volume_arn - computed: true, optional: false, required: false
@@ -284,7 +284,7 @@ export class StoragegatewayCachedIscsiVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get volumeSizeInBytesInput() {
-    return this._volumeSizeInBytes
+    return this._volumeSizeInBytes;
   }
 
   // =========

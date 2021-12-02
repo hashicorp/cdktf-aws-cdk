@@ -91,12 +91,43 @@ export class DocdbGlobalClusterTimeoutsOutputReference extends cdktf.ComplexObje
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DocdbGlobalClusterTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DocdbGlobalClusterTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -104,15 +135,15 @@ export class DocdbGlobalClusterTimeoutsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -120,15 +151,15 @@ export class DocdbGlobalClusterTimeoutsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -136,7 +167,7 @@ export class DocdbGlobalClusterTimeoutsOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -179,7 +210,7 @@ export class DocdbGlobalCluster extends cdktf.TerraformResource {
     this._globalClusterIdentifier = config.globalClusterIdentifier;
     this._sourceDbClusterIdentifier = config.sourceDbClusterIdentifier;
     this._storageEncrypted = config.storageEncrypted;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -192,11 +223,11 @@ export class DocdbGlobalCluster extends cdktf.TerraformResource {
   }
 
   // database_name - computed: false, optional: true, required: false
-  private _databaseName?: string | undefined; 
+  private _databaseName?: string; 
   public get databaseName() {
     return this.getStringAttribute('database_name');
   }
-  public set databaseName(value: string | undefined) {
+  public set databaseName(value: string) {
     this._databaseName = value;
   }
   public resetDatabaseName() {
@@ -204,15 +235,15 @@ export class DocdbGlobalCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get databaseNameInput() {
-    return this._databaseName
+    return this._databaseName;
   }
 
   // deletion_protection - computed: false, optional: true, required: false
-  private _deletionProtection?: boolean | cdktf.IResolvable | undefined; 
+  private _deletionProtection?: boolean | cdktf.IResolvable; 
   public get deletionProtection() {
     return this.getBooleanAttribute('deletion_protection') as any;
   }
-  public set deletionProtection(value: boolean | cdktf.IResolvable | undefined) {
+  public set deletionProtection(value: boolean | cdktf.IResolvable) {
     this._deletionProtection = value;
   }
   public resetDeletionProtection() {
@@ -220,15 +251,15 @@ export class DocdbGlobalCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deletionProtectionInput() {
-    return this._deletionProtection
+    return this._deletionProtection;
   }
 
   // engine - computed: true, optional: true, required: false
-  private _engine?: string | undefined; 
+  private _engine?: string; 
   public get engine() {
     return this.getStringAttribute('engine');
   }
-  public set engine(value: string | undefined) {
+  public set engine(value: string) {
     this._engine = value;
   }
   public resetEngine() {
@@ -236,15 +267,15 @@ export class DocdbGlobalCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get engineInput() {
-    return this._engine
+    return this._engine;
   }
 
   // engine_version - computed: true, optional: true, required: false
-  private _engineVersion?: string | undefined; 
+  private _engineVersion?: string; 
   public get engineVersion() {
     return this.getStringAttribute('engine_version');
   }
-  public set engineVersion(value: string | undefined) {
+  public set engineVersion(value: string) {
     this._engineVersion = value;
   }
   public resetEngineVersion() {
@@ -252,7 +283,7 @@ export class DocdbGlobalCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get engineVersionInput() {
-    return this._engineVersion
+    return this._engineVersion;
   }
 
   // global_cluster_identifier - computed: false, optional: false, required: true
@@ -265,7 +296,7 @@ export class DocdbGlobalCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get globalClusterIdentifierInput() {
-    return this._globalClusterIdentifier
+    return this._globalClusterIdentifier;
   }
 
   // global_cluster_members - computed: true, optional: false, required: false
@@ -284,11 +315,11 @@ export class DocdbGlobalCluster extends cdktf.TerraformResource {
   }
 
   // source_db_cluster_identifier - computed: true, optional: true, required: false
-  private _sourceDbClusterIdentifier?: string | undefined; 
+  private _sourceDbClusterIdentifier?: string; 
   public get sourceDbClusterIdentifier() {
     return this.getStringAttribute('source_db_cluster_identifier');
   }
-  public set sourceDbClusterIdentifier(value: string | undefined) {
+  public set sourceDbClusterIdentifier(value: string) {
     this._sourceDbClusterIdentifier = value;
   }
   public resetSourceDbClusterIdentifier() {
@@ -296,7 +327,7 @@ export class DocdbGlobalCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceDbClusterIdentifierInput() {
-    return this._sourceDbClusterIdentifier
+    return this._sourceDbClusterIdentifier;
   }
 
   // status - computed: true, optional: false, required: false
@@ -305,11 +336,11 @@ export class DocdbGlobalCluster extends cdktf.TerraformResource {
   }
 
   // storage_encrypted - computed: true, optional: true, required: false
-  private _storageEncrypted?: boolean | cdktf.IResolvable | undefined; 
+  private _storageEncrypted?: boolean | cdktf.IResolvable; 
   public get storageEncrypted() {
     return this.getBooleanAttribute('storage_encrypted') as any;
   }
-  public set storageEncrypted(value: boolean | cdktf.IResolvable | undefined) {
+  public set storageEncrypted(value: boolean | cdktf.IResolvable) {
     this._storageEncrypted = value;
   }
   public resetStorageEncrypted() {
@@ -317,24 +348,23 @@ export class DocdbGlobalCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get storageEncryptedInput() {
-    return this._storageEncrypted
+    return this._storageEncrypted;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DocdbGlobalClusterTimeouts | undefined; 
-  private __timeoutsOutput = new DocdbGlobalClusterTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DocdbGlobalClusterTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DocdbGlobalClusterTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DocdbGlobalClusterTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -350,7 +380,7 @@ export class DocdbGlobalCluster extends cdktf.TerraformResource {
       global_cluster_identifier: cdktf.stringToTerraform(this._globalClusterIdentifier),
       source_db_cluster_identifier: cdktf.stringToTerraform(this._sourceDbClusterIdentifier),
       storage_encrypted: cdktf.booleanToTerraform(this._storageEncrypted),
-      timeouts: docdbGlobalClusterTimeoutsToTerraform(this._timeouts),
+      timeouts: docdbGlobalClusterTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

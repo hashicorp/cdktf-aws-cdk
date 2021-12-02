@@ -97,15 +97,15 @@ export class AutoscalingLifecycleHook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoscalingGroupNameInput() {
-    return this._autoscalingGroupName
+    return this._autoscalingGroupName;
   }
 
   // default_result - computed: true, optional: true, required: false
-  private _defaultResult?: string | undefined; 
+  private _defaultResult?: string; 
   public get defaultResult() {
     return this.getStringAttribute('default_result');
   }
-  public set defaultResult(value: string | undefined) {
+  public set defaultResult(value: string) {
     this._defaultResult = value;
   }
   public resetDefaultResult() {
@@ -113,15 +113,15 @@ export class AutoscalingLifecycleHook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultResultInput() {
-    return this._defaultResult
+    return this._defaultResult;
   }
 
   // heartbeat_timeout - computed: false, optional: true, required: false
-  private _heartbeatTimeout?: number | undefined; 
+  private _heartbeatTimeout?: number; 
   public get heartbeatTimeout() {
     return this.getNumberAttribute('heartbeat_timeout');
   }
-  public set heartbeatTimeout(value: number | undefined) {
+  public set heartbeatTimeout(value: number) {
     this._heartbeatTimeout = value;
   }
   public resetHeartbeatTimeout() {
@@ -129,7 +129,7 @@ export class AutoscalingLifecycleHook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get heartbeatTimeoutInput() {
-    return this._heartbeatTimeout
+    return this._heartbeatTimeout;
   }
 
   // id - computed: true, optional: true, required: false
@@ -147,7 +147,7 @@ export class AutoscalingLifecycleHook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get lifecycleTransitionInput() {
-    return this._lifecycleTransition
+    return this._lifecycleTransition;
   }
 
   // name - computed: false, optional: false, required: true
@@ -160,15 +160,15 @@ export class AutoscalingLifecycleHook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // notification_metadata - computed: false, optional: true, required: false
-  private _notificationMetadata?: string | undefined; 
+  private _notificationMetadata?: string; 
   public get notificationMetadata() {
     return this.getStringAttribute('notification_metadata');
   }
-  public set notificationMetadata(value: string | undefined) {
+  public set notificationMetadata(value: string) {
     this._notificationMetadata = value;
   }
   public resetNotificationMetadata() {
@@ -176,15 +176,15 @@ export class AutoscalingLifecycleHook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get notificationMetadataInput() {
-    return this._notificationMetadata
+    return this._notificationMetadata;
   }
 
   // notification_target_arn - computed: false, optional: true, required: false
-  private _notificationTargetArn?: string | undefined; 
+  private _notificationTargetArn?: string; 
   public get notificationTargetArn() {
     return this.getStringAttribute('notification_target_arn');
   }
-  public set notificationTargetArn(value: string | undefined) {
+  public set notificationTargetArn(value: string) {
     this._notificationTargetArn = value;
   }
   public resetNotificationTargetArn() {
@@ -192,15 +192,15 @@ export class AutoscalingLifecycleHook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get notificationTargetArnInput() {
-    return this._notificationTargetArn
+    return this._notificationTargetArn;
   }
 
   // role_arn - computed: false, optional: true, required: false
-  private _roleArn?: string | undefined; 
+  private _roleArn?: string; 
   public get roleArn() {
     return this.getStringAttribute('role_arn');
   }
-  public set roleArn(value: string | undefined) {
+  public set roleArn(value: string) {
     this._roleArn = value;
   }
   public resetRoleArn() {
@@ -208,7 +208,7 @@ export class AutoscalingLifecycleHook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // =========

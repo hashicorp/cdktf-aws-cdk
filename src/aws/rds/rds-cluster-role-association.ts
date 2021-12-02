@@ -72,7 +72,7 @@ export class RdsClusterRoleAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dbClusterIdentifierInput() {
-    return this._dbClusterIdentifier
+    return this._dbClusterIdentifier;
   }
 
   // feature_name - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class RdsClusterRoleAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get featureNameInput() {
-    return this._featureName
+    return this._featureName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -103,7 +103,7 @@ export class RdsClusterRoleAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // =========

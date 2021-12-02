@@ -63,11 +63,11 @@ export class EfsFileSystemPolicy extends cdktf.TerraformResource {
   // ==========
 
   // bypass_policy_lockout_safety_check - computed: false, optional: true, required: false
-  private _bypassPolicyLockoutSafetyCheck?: boolean | cdktf.IResolvable | undefined; 
+  private _bypassPolicyLockoutSafetyCheck?: boolean | cdktf.IResolvable; 
   public get bypassPolicyLockoutSafetyCheck() {
     return this.getBooleanAttribute('bypass_policy_lockout_safety_check') as any;
   }
-  public set bypassPolicyLockoutSafetyCheck(value: boolean | cdktf.IResolvable | undefined) {
+  public set bypassPolicyLockoutSafetyCheck(value: boolean | cdktf.IResolvable) {
     this._bypassPolicyLockoutSafetyCheck = value;
   }
   public resetBypassPolicyLockoutSafetyCheck() {
@@ -75,7 +75,7 @@ export class EfsFileSystemPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bypassPolicyLockoutSafetyCheckInput() {
-    return this._bypassPolicyLockoutSafetyCheck
+    return this._bypassPolicyLockoutSafetyCheck;
   }
 
   // file_system_id - computed: false, optional: false, required: true
@@ -88,7 +88,7 @@ export class EfsFileSystemPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fileSystemIdInput() {
-    return this._fileSystemId
+    return this._fileSystemId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -106,7 +106,7 @@ export class EfsFileSystemPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // =========

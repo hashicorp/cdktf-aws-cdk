@@ -94,6 +94,31 @@ export class ImagebuilderInfrastructureConfigurationLoggingS3LogsOutputReference
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ImagebuilderInfrastructureConfigurationLoggingS3Logs | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._s3BucketName) {
+      hasAnyValues = true;
+      internalValueResult.s3BucketName = this._s3BucketName;
+    }
+    if (this._s3KeyPrefix) {
+      hasAnyValues = true;
+      internalValueResult.s3KeyPrefix = this._s3KeyPrefix;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ImagebuilderInfrastructureConfigurationLoggingS3Logs | undefined) {
+    if (value === undefined) {
+      this._s3BucketName = undefined;
+      this._s3KeyPrefix = undefined;
+    }
+    else {
+      this._s3BucketName = value.s3BucketName;
+      this._s3KeyPrefix = value.s3KeyPrefix;
+    }
+  }
+
   // s3_bucket_name - computed: false, optional: false, required: true
   private _s3BucketName?: string; 
   public get s3BucketName() {
@@ -104,15 +129,15 @@ export class ImagebuilderInfrastructureConfigurationLoggingS3LogsOutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get s3BucketNameInput() {
-    return this._s3BucketName
+    return this._s3BucketName;
   }
 
   // s3_key_prefix - computed: false, optional: true, required: false
-  private _s3KeyPrefix?: string | undefined; 
+  private _s3KeyPrefix?: string; 
   public get s3KeyPrefix() {
     return this.getStringAttribute('s3_key_prefix');
   }
-  public set s3KeyPrefix(value: string | undefined) {
+  public set s3KeyPrefix(value: string) {
     this._s3KeyPrefix = value;
   }
   public resetS3KeyPrefix() {
@@ -120,7 +145,7 @@ export class ImagebuilderInfrastructureConfigurationLoggingS3LogsOutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get s3KeyPrefixInput() {
-    return this._s3KeyPrefix
+    return this._s3KeyPrefix;
   }
 }
 export interface ImagebuilderInfrastructureConfigurationLogging {
@@ -152,18 +177,36 @@ export class ImagebuilderInfrastructureConfigurationLoggingOutputReference exten
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ImagebuilderInfrastructureConfigurationLogging | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._s3Logs) {
+      hasAnyValues = true;
+      internalValueResult.s3Logs = this._s3Logs?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ImagebuilderInfrastructureConfigurationLogging | undefined) {
+    if (value === undefined) {
+      this._s3Logs.internalValue = undefined;
+    }
+    else {
+      this._s3Logs.internalValue = value.s3Logs;
+    }
+  }
+
   // s3_logs - computed: false, optional: false, required: true
-  private _s3Logs?: ImagebuilderInfrastructureConfigurationLoggingS3Logs; 
-  private __s3LogsOutput = new ImagebuilderInfrastructureConfigurationLoggingS3LogsOutputReference(this as any, "s3_logs", true);
+  private _s3Logs = new ImagebuilderInfrastructureConfigurationLoggingS3LogsOutputReference(this as any, "s3_logs", true);
   public get s3Logs() {
-    return this.__s3LogsOutput;
+    return this._s3Logs;
   }
   public putS3Logs(value: ImagebuilderInfrastructureConfigurationLoggingS3Logs) {
-    this._s3Logs = value;
+    this._s3Logs.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get s3LogsInput() {
-    return this._s3Logs
+    return this._s3Logs.internalValue;
   }
 }
 
@@ -211,7 +254,7 @@ export class ImagebuilderInfrastructureConfiguration extends cdktf.TerraformReso
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._terminateInstanceOnFailure = config.terminateInstanceOnFailure;
-    this._logging = config.logging;
+    this._logging.internalValue = config.logging;
   }
 
   // ==========
@@ -234,11 +277,11 @@ export class ImagebuilderInfrastructureConfiguration extends cdktf.TerraformReso
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -246,7 +289,7 @@ export class ImagebuilderInfrastructureConfiguration extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -264,15 +307,15 @@ export class ImagebuilderInfrastructureConfiguration extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get instanceProfileNameInput() {
-    return this._instanceProfileName
+    return this._instanceProfileName;
   }
 
   // instance_types - computed: false, optional: true, required: false
-  private _instanceTypes?: string[] | undefined; 
+  private _instanceTypes?: string[]; 
   public get instanceTypes() {
     return this.getListAttribute('instance_types');
   }
-  public set instanceTypes(value: string[] | undefined) {
+  public set instanceTypes(value: string[]) {
     this._instanceTypes = value;
   }
   public resetInstanceTypes() {
@@ -280,15 +323,15 @@ export class ImagebuilderInfrastructureConfiguration extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypesInput() {
-    return this._instanceTypes
+    return this._instanceTypes;
   }
 
   // key_pair - computed: false, optional: true, required: false
-  private _keyPair?: string | undefined; 
+  private _keyPair?: string; 
   public get keyPair() {
     return this.getStringAttribute('key_pair');
   }
-  public set keyPair(value: string | undefined) {
+  public set keyPair(value: string) {
     this._keyPair = value;
   }
   public resetKeyPair() {
@@ -296,7 +339,7 @@ export class ImagebuilderInfrastructureConfiguration extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get keyPairInput() {
-    return this._keyPair
+    return this._keyPair;
   }
 
   // name - computed: false, optional: false, required: true
@@ -309,16 +352,16 @@ export class ImagebuilderInfrastructureConfiguration extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // resource_tags - computed: false, optional: true, required: false
-  private _resourceTags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _resourceTags?: { [key: string]: string } | cdktf.IResolvable; 
   public get resourceTags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_tags') as any;
   }
-  public set resourceTags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set resourceTags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._resourceTags = value;
   }
   public resetResourceTags() {
@@ -326,15 +369,15 @@ export class ImagebuilderInfrastructureConfiguration extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get resourceTagsInput() {
-    return this._resourceTags
+    return this._resourceTags;
   }
 
   // security_group_ids - computed: false, optional: true, required: false
-  private _securityGroupIds?: string[] | undefined; 
+  private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
     return this.getListAttribute('security_group_ids');
   }
-  public set securityGroupIds(value: string[] | undefined) {
+  public set securityGroupIds(value: string[]) {
     this._securityGroupIds = value;
   }
   public resetSecurityGroupIds() {
@@ -342,15 +385,15 @@ export class ImagebuilderInfrastructureConfiguration extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // sns_topic_arn - computed: false, optional: true, required: false
-  private _snsTopicArn?: string | undefined; 
+  private _snsTopicArn?: string; 
   public get snsTopicArn() {
     return this.getStringAttribute('sns_topic_arn');
   }
-  public set snsTopicArn(value: string | undefined) {
+  public set snsTopicArn(value: string) {
     this._snsTopicArn = value;
   }
   public resetSnsTopicArn() {
@@ -358,15 +401,15 @@ export class ImagebuilderInfrastructureConfiguration extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get snsTopicArnInput() {
-    return this._snsTopicArn
+    return this._snsTopicArn;
   }
 
   // subnet_id - computed: false, optional: true, required: false
-  private _subnetId?: string | undefined; 
+  private _subnetId?: string; 
   public get subnetId() {
     return this.getStringAttribute('subnet_id');
   }
-  public set subnetId(value: string | undefined) {
+  public set subnetId(value: string) {
     this._subnetId = value;
   }
   public resetSubnetId() {
@@ -374,16 +417,16 @@ export class ImagebuilderInfrastructureConfiguration extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdInput() {
-    return this._subnetId
+    return this._subnetId;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -391,16 +434,16 @@ export class ImagebuilderInfrastructureConfiguration extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -408,15 +451,15 @@ export class ImagebuilderInfrastructureConfiguration extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // terminate_instance_on_failure - computed: false, optional: true, required: false
-  private _terminateInstanceOnFailure?: boolean | cdktf.IResolvable | undefined; 
+  private _terminateInstanceOnFailure?: boolean | cdktf.IResolvable; 
   public get terminateInstanceOnFailure() {
     return this.getBooleanAttribute('terminate_instance_on_failure') as any;
   }
-  public set terminateInstanceOnFailure(value: boolean | cdktf.IResolvable | undefined) {
+  public set terminateInstanceOnFailure(value: boolean | cdktf.IResolvable) {
     this._terminateInstanceOnFailure = value;
   }
   public resetTerminateInstanceOnFailure() {
@@ -424,24 +467,23 @@ export class ImagebuilderInfrastructureConfiguration extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get terminateInstanceOnFailureInput() {
-    return this._terminateInstanceOnFailure
+    return this._terminateInstanceOnFailure;
   }
 
   // logging - computed: false, optional: true, required: false
-  private _logging?: ImagebuilderInfrastructureConfigurationLogging | undefined; 
-  private __loggingOutput = new ImagebuilderInfrastructureConfigurationLoggingOutputReference(this as any, "logging", true);
+  private _logging = new ImagebuilderInfrastructureConfigurationLoggingOutputReference(this as any, "logging", true);
   public get logging() {
-    return this.__loggingOutput;
+    return this._logging;
   }
-  public putLogging(value: ImagebuilderInfrastructureConfigurationLogging | undefined) {
-    this._logging = value;
+  public putLogging(value: ImagebuilderInfrastructureConfigurationLogging) {
+    this._logging.internalValue = value;
   }
   public resetLogging() {
-    this._logging = undefined;
+    this._logging.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get loggingInput() {
-    return this._logging
+    return this._logging.internalValue;
   }
 
   // =========
@@ -462,7 +504,7 @@ export class ImagebuilderInfrastructureConfiguration extends cdktf.TerraformReso
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       terminate_instance_on_failure: cdktf.booleanToTerraform(this._terminateInstanceOnFailure),
-      logging: imagebuilderInfrastructureConfigurationLoggingToTerraform(this._logging),
+      logging: imagebuilderInfrastructureConfigurationLoggingToTerraform(this._logging.internalValue),
     };
   }
 }

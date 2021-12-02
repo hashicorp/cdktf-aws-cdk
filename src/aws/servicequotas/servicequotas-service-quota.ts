@@ -92,7 +92,7 @@ export class ServicequotasServiceQuota extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get quotaCodeInput() {
-    return this._quotaCode
+    return this._quotaCode;
   }
 
   // quota_name - computed: true, optional: false, required: false
@@ -120,7 +120,7 @@ export class ServicequotasServiceQuota extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceCodeInput() {
-    return this._serviceCode
+    return this._serviceCode;
   }
 
   // service_name - computed: true, optional: false, required: false
@@ -138,7 +138,7 @@ export class ServicequotasServiceQuota extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 
   // =========

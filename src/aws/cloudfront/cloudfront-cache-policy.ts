@@ -61,12 +61,31 @@ export class CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginCookie
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._items) {
+      hasAnyValues = true;
+      internalValueResult.items = this._items;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies | undefined) {
+    if (value === undefined) {
+      this._items = undefined;
+    }
+    else {
+      this._items = value.items;
+    }
+  }
+
   // items - computed: false, optional: true, required: false
-  private _items?: string[] | undefined; 
+  private _items?: string[]; 
   public get items() {
     return this.getListAttribute('items');
   }
-  public set items(value: string[] | undefined) {
+  public set items(value: string[]) {
     this._items = value;
   }
   public resetItems() {
@@ -74,7 +93,7 @@ export class CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginCookie
   }
   // Temporarily expose input value. Use with caution.
   public get itemsInput() {
-    return this._items
+    return this._items;
   }
 }
 export interface CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig {
@@ -111,6 +130,31 @@ export class CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginCookie
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cookieBehavior) {
+      hasAnyValues = true;
+      internalValueResult.cookieBehavior = this._cookieBehavior;
+    }
+    if (this._cookies) {
+      hasAnyValues = true;
+      internalValueResult.cookies = this._cookies?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig | undefined) {
+    if (value === undefined) {
+      this._cookieBehavior = undefined;
+      this._cookies.internalValue = undefined;
+    }
+    else {
+      this._cookieBehavior = value.cookieBehavior;
+      this._cookies.internalValue = value.cookies;
+    }
+  }
+
   // cookie_behavior - computed: false, optional: false, required: true
   private _cookieBehavior?: string; 
   public get cookieBehavior() {
@@ -121,24 +165,23 @@ export class CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginCookie
   }
   // Temporarily expose input value. Use with caution.
   public get cookieBehaviorInput() {
-    return this._cookieBehavior
+    return this._cookieBehavior;
   }
 
   // cookies - computed: false, optional: true, required: false
-  private _cookies?: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies | undefined; 
-  private __cookiesOutput = new CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookiesOutputReference(this as any, "cookies", true);
+  private _cookies = new CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookiesOutputReference(this as any, "cookies", true);
   public get cookies() {
-    return this.__cookiesOutput;
+    return this._cookies;
   }
-  public putCookies(value: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies | undefined) {
-    this._cookies = value;
+  public putCookies(value: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies) {
+    this._cookies.internalValue = value;
   }
   public resetCookies() {
-    this._cookies = undefined;
+    this._cookies.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cookiesInput() {
-    return this._cookies
+    return this._cookies.internalValue;
   }
 }
 export interface CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders {
@@ -168,12 +211,31 @@ export class CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeader
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._items) {
+      hasAnyValues = true;
+      internalValueResult.items = this._items;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders | undefined) {
+    if (value === undefined) {
+      this._items = undefined;
+    }
+    else {
+      this._items = value.items;
+    }
+  }
+
   // items - computed: false, optional: true, required: false
-  private _items?: string[] | undefined; 
+  private _items?: string[]; 
   public get items() {
     return this.getListAttribute('items');
   }
-  public set items(value: string[] | undefined) {
+  public set items(value: string[]) {
     this._items = value;
   }
   public resetItems() {
@@ -181,7 +243,7 @@ export class CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeader
   }
   // Temporarily expose input value. Use with caution.
   public get itemsInput() {
-    return this._items
+    return this._items;
   }
 }
 export interface CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig {
@@ -218,12 +280,37 @@ export class CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeader
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._headerBehavior) {
+      hasAnyValues = true;
+      internalValueResult.headerBehavior = this._headerBehavior;
+    }
+    if (this._headers) {
+      hasAnyValues = true;
+      internalValueResult.headers = this._headers?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig | undefined) {
+    if (value === undefined) {
+      this._headerBehavior = undefined;
+      this._headers.internalValue = undefined;
+    }
+    else {
+      this._headerBehavior = value.headerBehavior;
+      this._headers.internalValue = value.headers;
+    }
+  }
+
   // header_behavior - computed: false, optional: true, required: false
-  private _headerBehavior?: string | undefined; 
+  private _headerBehavior?: string; 
   public get headerBehavior() {
     return this.getStringAttribute('header_behavior');
   }
-  public set headerBehavior(value: string | undefined) {
+  public set headerBehavior(value: string) {
     this._headerBehavior = value;
   }
   public resetHeaderBehavior() {
@@ -231,24 +318,23 @@ export class CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeader
   }
   // Temporarily expose input value. Use with caution.
   public get headerBehaviorInput() {
-    return this._headerBehavior
+    return this._headerBehavior;
   }
 
   // headers - computed: false, optional: true, required: false
-  private _headers?: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders | undefined; 
-  private __headersOutput = new CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeadersOutputReference(this as any, "headers", true);
+  private _headers = new CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeadersOutputReference(this as any, "headers", true);
   public get headers() {
-    return this.__headersOutput;
+    return this._headers;
   }
-  public putHeaders(value: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders | undefined) {
-    this._headers = value;
+  public putHeaders(value: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders) {
+    this._headers.internalValue = value;
   }
   public resetHeaders() {
-    this._headers = undefined;
+    this._headers.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get headersInput() {
-    return this._headers
+    return this._headers.internalValue;
   }
 }
 export interface CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryStrings {
@@ -278,12 +364,31 @@ export class CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryS
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryStrings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._items) {
+      hasAnyValues = true;
+      internalValueResult.items = this._items;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryStrings | undefined) {
+    if (value === undefined) {
+      this._items = undefined;
+    }
+    else {
+      this._items = value.items;
+    }
+  }
+
   // items - computed: false, optional: true, required: false
-  private _items?: string[] | undefined; 
+  private _items?: string[]; 
   public get items() {
     return this.getListAttribute('items');
   }
-  public set items(value: string[] | undefined) {
+  public set items(value: string[]) {
     this._items = value;
   }
   public resetItems() {
@@ -291,7 +396,7 @@ export class CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryS
   }
   // Temporarily expose input value. Use with caution.
   public get itemsInput() {
-    return this._items
+    return this._items;
   }
 }
 export interface CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig {
@@ -328,6 +433,31 @@ export class CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryS
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._queryStringBehavior) {
+      hasAnyValues = true;
+      internalValueResult.queryStringBehavior = this._queryStringBehavior;
+    }
+    if (this._queryStrings) {
+      hasAnyValues = true;
+      internalValueResult.queryStrings = this._queryStrings?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig | undefined) {
+    if (value === undefined) {
+      this._queryStringBehavior = undefined;
+      this._queryStrings.internalValue = undefined;
+    }
+    else {
+      this._queryStringBehavior = value.queryStringBehavior;
+      this._queryStrings.internalValue = value.queryStrings;
+    }
+  }
+
   // query_string_behavior - computed: false, optional: false, required: true
   private _queryStringBehavior?: string; 
   public get queryStringBehavior() {
@@ -338,24 +468,23 @@ export class CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryS
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringBehaviorInput() {
-    return this._queryStringBehavior
+    return this._queryStringBehavior;
   }
 
   // query_strings - computed: false, optional: true, required: false
-  private _queryStrings?: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryStrings | undefined; 
-  private __queryStringsOutput = new CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryStringsOutputReference(this as any, "query_strings", true);
+  private _queryStrings = new CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryStringsOutputReference(this as any, "query_strings", true);
   public get queryStrings() {
-    return this.__queryStringsOutput;
+    return this._queryStrings;
   }
-  public putQueryStrings(value: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryStrings | undefined) {
-    this._queryStrings = value;
+  public putQueryStrings(value: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryStrings) {
+    this._queryStrings.internalValue = value;
   }
   public resetQueryStrings() {
-    this._queryStrings = undefined;
+    this._queryStrings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringsInput() {
-    return this._queryStrings
+    return this._queryStrings.internalValue;
   }
 }
 export interface CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOrigin {
@@ -411,12 +540,55 @@ export class CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginOutput
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOrigin | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enableAcceptEncodingBrotli) {
+      hasAnyValues = true;
+      internalValueResult.enableAcceptEncodingBrotli = this._enableAcceptEncodingBrotli;
+    }
+    if (this._enableAcceptEncodingGzip) {
+      hasAnyValues = true;
+      internalValueResult.enableAcceptEncodingGzip = this._enableAcceptEncodingGzip;
+    }
+    if (this._cookiesConfig) {
+      hasAnyValues = true;
+      internalValueResult.cookiesConfig = this._cookiesConfig?.internalValue;
+    }
+    if (this._headersConfig) {
+      hasAnyValues = true;
+      internalValueResult.headersConfig = this._headersConfig?.internalValue;
+    }
+    if (this._queryStringsConfig) {
+      hasAnyValues = true;
+      internalValueResult.queryStringsConfig = this._queryStringsConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOrigin | undefined) {
+    if (value === undefined) {
+      this._enableAcceptEncodingBrotli = undefined;
+      this._enableAcceptEncodingGzip = undefined;
+      this._cookiesConfig.internalValue = undefined;
+      this._headersConfig.internalValue = undefined;
+      this._queryStringsConfig.internalValue = undefined;
+    }
+    else {
+      this._enableAcceptEncodingBrotli = value.enableAcceptEncodingBrotli;
+      this._enableAcceptEncodingGzip = value.enableAcceptEncodingGzip;
+      this._cookiesConfig.internalValue = value.cookiesConfig;
+      this._headersConfig.internalValue = value.headersConfig;
+      this._queryStringsConfig.internalValue = value.queryStringsConfig;
+    }
+  }
+
   // enable_accept_encoding_brotli - computed: false, optional: true, required: false
-  private _enableAcceptEncodingBrotli?: boolean | cdktf.IResolvable | undefined; 
+  private _enableAcceptEncodingBrotli?: boolean | cdktf.IResolvable; 
   public get enableAcceptEncodingBrotli() {
     return this.getBooleanAttribute('enable_accept_encoding_brotli') as any;
   }
-  public set enableAcceptEncodingBrotli(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableAcceptEncodingBrotli(value: boolean | cdktf.IResolvable) {
     this._enableAcceptEncodingBrotli = value;
   }
   public resetEnableAcceptEncodingBrotli() {
@@ -424,15 +596,15 @@ export class CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginOutput
   }
   // Temporarily expose input value. Use with caution.
   public get enableAcceptEncodingBrotliInput() {
-    return this._enableAcceptEncodingBrotli
+    return this._enableAcceptEncodingBrotli;
   }
 
   // enable_accept_encoding_gzip - computed: false, optional: true, required: false
-  private _enableAcceptEncodingGzip?: boolean | cdktf.IResolvable | undefined; 
+  private _enableAcceptEncodingGzip?: boolean | cdktf.IResolvable; 
   public get enableAcceptEncodingGzip() {
     return this.getBooleanAttribute('enable_accept_encoding_gzip') as any;
   }
-  public set enableAcceptEncodingGzip(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableAcceptEncodingGzip(value: boolean | cdktf.IResolvable) {
     this._enableAcceptEncodingGzip = value;
   }
   public resetEnableAcceptEncodingGzip() {
@@ -440,49 +612,46 @@ export class CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginOutput
   }
   // Temporarily expose input value. Use with caution.
   public get enableAcceptEncodingGzipInput() {
-    return this._enableAcceptEncodingGzip
+    return this._enableAcceptEncodingGzip;
   }
 
   // cookies_config - computed: false, optional: false, required: true
-  private _cookiesConfig?: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig; 
-  private __cookiesConfigOutput = new CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigOutputReference(this as any, "cookies_config", true);
+  private _cookiesConfig = new CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigOutputReference(this as any, "cookies_config", true);
   public get cookiesConfig() {
-    return this.__cookiesConfigOutput;
+    return this._cookiesConfig;
   }
   public putCookiesConfig(value: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig) {
-    this._cookiesConfig = value;
+    this._cookiesConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get cookiesConfigInput() {
-    return this._cookiesConfig
+    return this._cookiesConfig.internalValue;
   }
 
   // headers_config - computed: false, optional: false, required: true
-  private _headersConfig?: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig; 
-  private __headersConfigOutput = new CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigOutputReference(this as any, "headers_config", true);
+  private _headersConfig = new CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigOutputReference(this as any, "headers_config", true);
   public get headersConfig() {
-    return this.__headersConfigOutput;
+    return this._headersConfig;
   }
   public putHeadersConfig(value: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig) {
-    this._headersConfig = value;
+    this._headersConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get headersConfigInput() {
-    return this._headersConfig
+    return this._headersConfig.internalValue;
   }
 
   // query_strings_config - computed: false, optional: false, required: true
-  private _queryStringsConfig?: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig; 
-  private __queryStringsConfigOutput = new CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigOutputReference(this as any, "query_strings_config", true);
+  private _queryStringsConfig = new CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigOutputReference(this as any, "query_strings_config", true);
   public get queryStringsConfig() {
-    return this.__queryStringsConfigOutput;
+    return this._queryStringsConfig;
   }
   public putQueryStringsConfig(value: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig) {
-    this._queryStringsConfig = value;
+    this._queryStringsConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringsConfigInput() {
-    return this._queryStringsConfig
+    return this._queryStringsConfig.internalValue;
   }
 }
 
@@ -523,7 +692,7 @@ export class CloudfrontCachePolicy extends cdktf.TerraformResource {
     this._maxTtl = config.maxTtl;
     this._minTtl = config.minTtl;
     this._name = config.name;
-    this._parametersInCacheKeyAndForwardedToOrigin = config.parametersInCacheKeyAndForwardedToOrigin;
+    this._parametersInCacheKeyAndForwardedToOrigin.internalValue = config.parametersInCacheKeyAndForwardedToOrigin;
   }
 
   // ==========
@@ -531,11 +700,11 @@ export class CloudfrontCachePolicy extends cdktf.TerraformResource {
   // ==========
 
   // comment - computed: false, optional: true, required: false
-  private _comment?: string | undefined; 
+  private _comment?: string; 
   public get comment() {
     return this.getStringAttribute('comment');
   }
-  public set comment(value: string | undefined) {
+  public set comment(value: string) {
     this._comment = value;
   }
   public resetComment() {
@@ -543,15 +712,15 @@ export class CloudfrontCachePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get commentInput() {
-    return this._comment
+    return this._comment;
   }
 
   // default_ttl - computed: false, optional: true, required: false
-  private _defaultTtl?: number | undefined; 
+  private _defaultTtl?: number; 
   public get defaultTtl() {
     return this.getNumberAttribute('default_ttl');
   }
-  public set defaultTtl(value: number | undefined) {
+  public set defaultTtl(value: number) {
     this._defaultTtl = value;
   }
   public resetDefaultTtl() {
@@ -559,7 +728,7 @@ export class CloudfrontCachePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultTtlInput() {
-    return this._defaultTtl
+    return this._defaultTtl;
   }
 
   // etag - computed: true, optional: false, required: false
@@ -573,11 +742,11 @@ export class CloudfrontCachePolicy extends cdktf.TerraformResource {
   }
 
   // max_ttl - computed: false, optional: true, required: false
-  private _maxTtl?: number | undefined; 
+  private _maxTtl?: number; 
   public get maxTtl() {
     return this.getNumberAttribute('max_ttl');
   }
-  public set maxTtl(value: number | undefined) {
+  public set maxTtl(value: number) {
     this._maxTtl = value;
   }
   public resetMaxTtl() {
@@ -585,15 +754,15 @@ export class CloudfrontCachePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maxTtlInput() {
-    return this._maxTtl
+    return this._maxTtl;
   }
 
   // min_ttl - computed: false, optional: true, required: false
-  private _minTtl?: number | undefined; 
+  private _minTtl?: number; 
   public get minTtl() {
     return this.getNumberAttribute('min_ttl');
   }
-  public set minTtl(value: number | undefined) {
+  public set minTtl(value: number) {
     this._minTtl = value;
   }
   public resetMinTtl() {
@@ -601,7 +770,7 @@ export class CloudfrontCachePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get minTtlInput() {
-    return this._minTtl
+    return this._minTtl;
   }
 
   // name - computed: false, optional: false, required: true
@@ -614,21 +783,20 @@ export class CloudfrontCachePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // parameters_in_cache_key_and_forwarded_to_origin - computed: false, optional: false, required: true
-  private _parametersInCacheKeyAndForwardedToOrigin?: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOrigin; 
-  private __parametersInCacheKeyAndForwardedToOriginOutput = new CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginOutputReference(this as any, "parameters_in_cache_key_and_forwarded_to_origin", true);
+  private _parametersInCacheKeyAndForwardedToOrigin = new CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginOutputReference(this as any, "parameters_in_cache_key_and_forwarded_to_origin", true);
   public get parametersInCacheKeyAndForwardedToOrigin() {
-    return this.__parametersInCacheKeyAndForwardedToOriginOutput;
+    return this._parametersInCacheKeyAndForwardedToOrigin;
   }
   public putParametersInCacheKeyAndForwardedToOrigin(value: CloudfrontCachePolicyParametersInCacheKeyAndForwardedToOrigin) {
-    this._parametersInCacheKeyAndForwardedToOrigin = value;
+    this._parametersInCacheKeyAndForwardedToOrigin.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get parametersInCacheKeyAndForwardedToOriginInput() {
-    return this._parametersInCacheKeyAndForwardedToOrigin
+    return this._parametersInCacheKeyAndForwardedToOrigin.internalValue;
   }
 
   // =========
@@ -642,7 +810,7 @@ export class CloudfrontCachePolicy extends cdktf.TerraformResource {
       max_ttl: cdktf.numberToTerraform(this._maxTtl),
       min_ttl: cdktf.numberToTerraform(this._minTtl),
       name: cdktf.stringToTerraform(this._name),
-      parameters_in_cache_key_and_forwarded_to_origin: cloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginToTerraform(this._parametersInCacheKeyAndForwardedToOrigin),
+      parameters_in_cache_key_and_forwarded_to_origin: cloudfrontCachePolicyParametersInCacheKeyAndForwardedToOriginToTerraform(this._parametersInCacheKeyAndForwardedToOrigin.internalValue),
     };
   }
 }

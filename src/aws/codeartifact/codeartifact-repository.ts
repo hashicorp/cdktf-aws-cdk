@@ -71,6 +71,25 @@ export class CodeartifactRepositoryExternalConnectionsOutputReference extends cd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodeartifactRepositoryExternalConnections | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._externalConnectionName) {
+      hasAnyValues = true;
+      internalValueResult.externalConnectionName = this._externalConnectionName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodeartifactRepositoryExternalConnections | undefined) {
+    if (value === undefined) {
+      this._externalConnectionName = undefined;
+    }
+    else {
+      this._externalConnectionName = value.externalConnectionName;
+    }
+  }
+
   // external_connection_name - computed: false, optional: false, required: true
   private _externalConnectionName?: string; 
   public get externalConnectionName() {
@@ -81,7 +100,7 @@ export class CodeartifactRepositoryExternalConnectionsOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get externalConnectionNameInput() {
-    return this._externalConnectionName
+    return this._externalConnectionName;
   }
 }
 export interface CodeartifactRepositoryUpstream {
@@ -140,7 +159,7 @@ export class CodeartifactRepository extends cdktf.TerraformResource {
     this._repository = config.repository;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._externalConnections = config.externalConnections;
+    this._externalConnections.internalValue = config.externalConnections;
     this._upstream = config.upstream;
   }
 
@@ -159,11 +178,11 @@ export class CodeartifactRepository extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -171,7 +190,7 @@ export class CodeartifactRepository extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // domain - computed: false, optional: false, required: true
@@ -184,15 +203,15 @@ export class CodeartifactRepository extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainInput() {
-    return this._domain
+    return this._domain;
   }
 
   // domain_owner - computed: true, optional: true, required: false
-  private _domainOwner?: string | undefined; 
+  private _domainOwner?: string; 
   public get domainOwner() {
     return this.getStringAttribute('domain_owner');
   }
-  public set domainOwner(value: string | undefined) {
+  public set domainOwner(value: string) {
     this._domainOwner = value;
   }
   public resetDomainOwner() {
@@ -200,7 +219,7 @@ export class CodeartifactRepository extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainOwnerInput() {
-    return this._domainOwner
+    return this._domainOwner;
   }
 
   // id - computed: true, optional: true, required: false
@@ -218,16 +237,16 @@ export class CodeartifactRepository extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get repositoryInput() {
-    return this._repository
+    return this._repository;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -235,16 +254,16 @@ export class CodeartifactRepository extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -252,33 +271,32 @@ export class CodeartifactRepository extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // external_connections - computed: false, optional: true, required: false
-  private _externalConnections?: CodeartifactRepositoryExternalConnections | undefined; 
-  private __externalConnectionsOutput = new CodeartifactRepositoryExternalConnectionsOutputReference(this as any, "external_connections", true);
+  private _externalConnections = new CodeartifactRepositoryExternalConnectionsOutputReference(this as any, "external_connections", true);
   public get externalConnections() {
-    return this.__externalConnectionsOutput;
+    return this._externalConnections;
   }
-  public putExternalConnections(value: CodeartifactRepositoryExternalConnections | undefined) {
-    this._externalConnections = value;
+  public putExternalConnections(value: CodeartifactRepositoryExternalConnections) {
+    this._externalConnections.internalValue = value;
   }
   public resetExternalConnections() {
-    this._externalConnections = undefined;
+    this._externalConnections.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get externalConnectionsInput() {
-    return this._externalConnections
+    return this._externalConnections.internalValue;
   }
 
   // upstream - computed: false, optional: true, required: false
-  private _upstream?: CodeartifactRepositoryUpstream[] | undefined; 
+  private _upstream?: CodeartifactRepositoryUpstream[]; 
   public get upstream() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('upstream') as any;
   }
-  public set upstream(value: CodeartifactRepositoryUpstream[] | undefined) {
+  public set upstream(value: CodeartifactRepositoryUpstream[]) {
     this._upstream = value;
   }
   public resetUpstream() {
@@ -286,7 +304,7 @@ export class CodeartifactRepository extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get upstreamInput() {
-    return this._upstream
+    return this._upstream;
   }
 
   // =========
@@ -301,7 +319,7 @@ export class CodeartifactRepository extends cdktf.TerraformResource {
       repository: cdktf.stringToTerraform(this._repository),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      external_connections: codeartifactRepositoryExternalConnectionsToTerraform(this._externalConnections),
+      external_connections: codeartifactRepositoryExternalConnectionsToTerraform(this._externalConnections.internalValue),
       upstream: cdktf.listMapper(codeartifactRepositoryUpstreamToTerraform)(this._upstream),
     };
   }

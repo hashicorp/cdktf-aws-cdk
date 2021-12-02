@@ -77,7 +77,7 @@ export class EcsTag extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // resource_arn - computed: false, optional: false, required: true
@@ -90,7 +90,7 @@ export class EcsTag extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceArnInput() {
-    return this._resourceArn
+    return this._resourceArn;
   }
 
   // value - computed: false, optional: false, required: true
@@ -103,7 +103,7 @@ export class EcsTag extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 
   // =========

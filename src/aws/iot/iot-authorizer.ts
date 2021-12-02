@@ -92,7 +92,7 @@ export class IotAuthorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authorizerFunctionArnInput() {
-    return this._authorizerFunctionArn
+    return this._authorizerFunctionArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -110,15 +110,15 @@ export class IotAuthorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // signing_disabled - computed: false, optional: true, required: false
-  private _signingDisabled?: boolean | cdktf.IResolvable | undefined; 
+  private _signingDisabled?: boolean | cdktf.IResolvable; 
   public get signingDisabled() {
     return this.getBooleanAttribute('signing_disabled') as any;
   }
-  public set signingDisabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set signingDisabled(value: boolean | cdktf.IResolvable) {
     this._signingDisabled = value;
   }
   public resetSigningDisabled() {
@@ -126,15 +126,15 @@ export class IotAuthorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get signingDisabledInput() {
-    return this._signingDisabled
+    return this._signingDisabled;
   }
 
   // status - computed: false, optional: true, required: false
-  private _status?: string | undefined; 
+  private _status?: string; 
   public get status() {
     return this.getStringAttribute('status');
   }
-  public set status(value: string | undefined) {
+  public set status(value: string) {
     this._status = value;
   }
   public resetStatus() {
@@ -142,15 +142,15 @@ export class IotAuthorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 
   // token_key_name - computed: false, optional: true, required: false
-  private _tokenKeyName?: string | undefined; 
+  private _tokenKeyName?: string; 
   public get tokenKeyName() {
     return this.getStringAttribute('token_key_name');
   }
-  public set tokenKeyName(value: string | undefined) {
+  public set tokenKeyName(value: string) {
     this._tokenKeyName = value;
   }
   public resetTokenKeyName() {
@@ -158,16 +158,16 @@ export class IotAuthorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tokenKeyNameInput() {
-    return this._tokenKeyName
+    return this._tokenKeyName;
   }
 
   // token_signing_public_keys - computed: false, optional: true, required: false
-  private _tokenSigningPublicKeys?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tokenSigningPublicKeys?: { [key: string]: string } | cdktf.IResolvable; 
   public get tokenSigningPublicKeys() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('token_signing_public_keys') as any;
   }
-  public set tokenSigningPublicKeys(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tokenSigningPublicKeys(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tokenSigningPublicKeys = value;
   }
   public resetTokenSigningPublicKeys() {
@@ -175,7 +175,7 @@ export class IotAuthorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tokenSigningPublicKeysInput() {
-    return this._tokenSigningPublicKeys
+    return this._tokenSigningPublicKeys;
   }
 
   // =========

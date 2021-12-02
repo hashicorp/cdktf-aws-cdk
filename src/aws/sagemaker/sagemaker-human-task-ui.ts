@@ -53,12 +53,31 @@ export class SagemakerHumanTaskUiUiTemplateOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerHumanTaskUiUiTemplate | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._content) {
+      hasAnyValues = true;
+      internalValueResult.content = this._content;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerHumanTaskUiUiTemplate | undefined) {
+    if (value === undefined) {
+      this._content = undefined;
+    }
+    else {
+      this._content = value.content;
+    }
+  }
+
   // content - computed: false, optional: true, required: false
-  private _content?: string | undefined; 
+  private _content?: string; 
   public get content() {
     return this.getStringAttribute('content');
   }
-  public set content(value: string | undefined) {
+  public set content(value: string) {
     this._content = value;
   }
   public resetContent() {
@@ -66,7 +85,7 @@ export class SagemakerHumanTaskUiUiTemplateOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get contentInput() {
-    return this._content
+    return this._content;
   }
 }
 
@@ -105,7 +124,7 @@ export class SagemakerHumanTaskUi extends cdktf.TerraformResource {
     this._humanTaskUiName = config.humanTaskUiName;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._uiTemplate = config.uiTemplate;
+    this._uiTemplate.internalValue = config.uiTemplate;
   }
 
   // ==========
@@ -127,7 +146,7 @@ export class SagemakerHumanTaskUi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get humanTaskUiNameInput() {
-    return this._humanTaskUiName
+    return this._humanTaskUiName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -136,12 +155,12 @@ export class SagemakerHumanTaskUi extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -149,16 +168,16 @@ export class SagemakerHumanTaskUi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -166,21 +185,20 @@ export class SagemakerHumanTaskUi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // ui_template - computed: false, optional: false, required: true
-  private _uiTemplate?: SagemakerHumanTaskUiUiTemplate; 
-  private __uiTemplateOutput = new SagemakerHumanTaskUiUiTemplateOutputReference(this as any, "ui_template", true);
+  private _uiTemplate = new SagemakerHumanTaskUiUiTemplateOutputReference(this as any, "ui_template", true);
   public get uiTemplate() {
-    return this.__uiTemplateOutput;
+    return this._uiTemplate;
   }
   public putUiTemplate(value: SagemakerHumanTaskUiUiTemplate) {
-    this._uiTemplate = value;
+    this._uiTemplate.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get uiTemplateInput() {
-    return this._uiTemplate
+    return this._uiTemplate.internalValue;
   }
 
   // =========
@@ -192,7 +210,7 @@ export class SagemakerHumanTaskUi extends cdktf.TerraformResource {
       human_task_ui_name: cdktf.stringToTerraform(this._humanTaskUiName),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      ui_template: sagemakerHumanTaskUiUiTemplateToTerraform(this._uiTemplate),
+      ui_template: sagemakerHumanTaskUiUiTemplateToTerraform(this._uiTemplate.internalValue),
     };
   }
 }

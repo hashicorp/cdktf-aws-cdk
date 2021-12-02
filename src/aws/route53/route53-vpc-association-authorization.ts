@@ -77,15 +77,15 @@ export class Route53VpcAssociationAuthorization extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 
   // vpc_region - computed: true, optional: true, required: false
-  private _vpcRegion?: string | undefined; 
+  private _vpcRegion?: string; 
   public get vpcRegion() {
     return this.getStringAttribute('vpc_region');
   }
-  public set vpcRegion(value: string | undefined) {
+  public set vpcRegion(value: string) {
     this._vpcRegion = value;
   }
   public resetVpcRegion() {
@@ -93,7 +93,7 @@ export class Route53VpcAssociationAuthorization extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get vpcRegionInput() {
-    return this._vpcRegion
+    return this._vpcRegion;
   }
 
   // zone_id - computed: false, optional: false, required: true
@@ -106,7 +106,7 @@ export class Route53VpcAssociationAuthorization extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get zoneIdInput() {
-    return this._zoneId
+    return this._zoneId;
   }
 
   // =========

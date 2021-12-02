@@ -92,7 +92,7 @@ export class ShieldProtectionGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get aggregationInput() {
-    return this._aggregation
+    return this._aggregation;
   }
 
   // id - computed: true, optional: true, required: false
@@ -101,11 +101,11 @@ export class ShieldProtectionGroup extends cdktf.TerraformResource {
   }
 
   // members - computed: false, optional: true, required: false
-  private _members?: string[] | undefined; 
+  private _members?: string[]; 
   public get members() {
     return this.getListAttribute('members');
   }
-  public set members(value: string[] | undefined) {
+  public set members(value: string[]) {
     this._members = value;
   }
   public resetMembers() {
@@ -113,7 +113,7 @@ export class ShieldProtectionGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get membersInput() {
-    return this._members
+    return this._members;
   }
 
   // pattern - computed: false, optional: false, required: true
@@ -126,7 +126,7 @@ export class ShieldProtectionGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get patternInput() {
-    return this._pattern
+    return this._pattern;
   }
 
   // protection_group_arn - computed: true, optional: false, required: false
@@ -144,15 +144,15 @@ export class ShieldProtectionGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get protectionGroupIdInput() {
-    return this._protectionGroupId
+    return this._protectionGroupId;
   }
 
   // resource_type - computed: false, optional: true, required: false
-  private _resourceType?: string | undefined; 
+  private _resourceType?: string; 
   public get resourceType() {
     return this.getStringAttribute('resource_type');
   }
-  public set resourceType(value: string | undefined) {
+  public set resourceType(value: string) {
     this._resourceType = value;
   }
   public resetResourceType() {
@@ -160,16 +160,16 @@ export class ShieldProtectionGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceTypeInput() {
-    return this._resourceType
+    return this._resourceType;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -177,16 +177,16 @@ export class ShieldProtectionGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -194,7 +194,7 @@ export class ShieldProtectionGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

@@ -123,13 +123,32 @@ export class Macie2FindingsFilterFindingCriteriaOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Macie2FindingsFilterFindingCriteria | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._criterion) {
+      hasAnyValues = true;
+      internalValueResult.criterion = this._criterion;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Macie2FindingsFilterFindingCriteria | undefined) {
+    if (value === undefined) {
+      this._criterion = undefined;
+    }
+    else {
+      this._criterion = value.criterion;
+    }
+  }
+
   // criterion - computed: false, optional: true, required: false
-  private _criterion?: Macie2FindingsFilterFindingCriteriaCriterion[] | undefined; 
+  private _criterion?: Macie2FindingsFilterFindingCriteriaCriterion[]; 
   public get criterion() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('criterion') as any;
   }
-  public set criterion(value: Macie2FindingsFilterFindingCriteriaCriterion[] | undefined) {
+  public set criterion(value: Macie2FindingsFilterFindingCriteriaCriterion[]) {
     this._criterion = value;
   }
   public resetCriterion() {
@@ -137,7 +156,7 @@ export class Macie2FindingsFilterFindingCriteriaOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get criterionInput() {
-    return this._criterion
+    return this._criterion;
   }
 }
 
@@ -180,7 +199,7 @@ export class Macie2FindingsFilter extends cdktf.TerraformResource {
     this._position = config.position;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._findingCriteria = config.findingCriteria;
+    this._findingCriteria.internalValue = config.findingCriteria;
   }
 
   // ==========
@@ -197,7 +216,7 @@ export class Macie2FindingsFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get actionInput() {
-    return this._action
+    return this._action;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -206,11 +225,11 @@ export class Macie2FindingsFilter extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -218,7 +237,7 @@ export class Macie2FindingsFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -227,11 +246,11 @@ export class Macie2FindingsFilter extends cdktf.TerraformResource {
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -239,15 +258,15 @@ export class Macie2FindingsFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_prefix - computed: true, optional: true, required: false
-  private _namePrefix?: string | undefined; 
+  private _namePrefix?: string; 
   public get namePrefix() {
     return this.getStringAttribute('name_prefix');
   }
-  public set namePrefix(value: string | undefined) {
+  public set namePrefix(value: string) {
     this._namePrefix = value;
   }
   public resetNamePrefix() {
@@ -255,15 +274,15 @@ export class Macie2FindingsFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // position - computed: true, optional: true, required: false
-  private _position?: number | undefined; 
+  private _position?: number; 
   public get position() {
     return this.getNumberAttribute('position');
   }
-  public set position(value: number | undefined) {
+  public set position(value: number) {
     this._position = value;
   }
   public resetPosition() {
@@ -271,16 +290,16 @@ export class Macie2FindingsFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get positionInput() {
-    return this._position
+    return this._position;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -288,16 +307,16 @@ export class Macie2FindingsFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -305,21 +324,20 @@ export class Macie2FindingsFilter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // finding_criteria - computed: false, optional: false, required: true
-  private _findingCriteria?: Macie2FindingsFilterFindingCriteria; 
-  private __findingCriteriaOutput = new Macie2FindingsFilterFindingCriteriaOutputReference(this as any, "finding_criteria", true);
+  private _findingCriteria = new Macie2FindingsFilterFindingCriteriaOutputReference(this as any, "finding_criteria", true);
   public get findingCriteria() {
-    return this.__findingCriteriaOutput;
+    return this._findingCriteria;
   }
   public putFindingCriteria(value: Macie2FindingsFilterFindingCriteria) {
-    this._findingCriteria = value;
+    this._findingCriteria.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get findingCriteriaInput() {
-    return this._findingCriteria
+    return this._findingCriteria.internalValue;
   }
 
   // =========
@@ -335,7 +353,7 @@ export class Macie2FindingsFilter extends cdktf.TerraformResource {
       position: cdktf.numberToTerraform(this._position),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      finding_criteria: macie2FindingsFilterFindingCriteriaToTerraform(this._findingCriteria),
+      finding_criteria: macie2FindingsFilterFindingCriteriaToTerraform(this._findingCriteria.internalValue),
     };
   }
 }

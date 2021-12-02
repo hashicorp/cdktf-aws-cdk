@@ -62,12 +62,37 @@ export class ImagebuilderDistributionConfigurationDistributionAmiDistributionCon
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._userGroups) {
+      hasAnyValues = true;
+      internalValueResult.userGroups = this._userGroups;
+    }
+    if (this._userIds) {
+      hasAnyValues = true;
+      internalValueResult.userIds = this._userIds;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission | undefined) {
+    if (value === undefined) {
+      this._userGroups = undefined;
+      this._userIds = undefined;
+    }
+    else {
+      this._userGroups = value.userGroups;
+      this._userIds = value.userIds;
+    }
+  }
+
   // user_groups - computed: false, optional: true, required: false
-  private _userGroups?: string[] | undefined; 
+  private _userGroups?: string[]; 
   public get userGroups() {
     return this.getListAttribute('user_groups');
   }
-  public set userGroups(value: string[] | undefined) {
+  public set userGroups(value: string[]) {
     this._userGroups = value;
   }
   public resetUserGroups() {
@@ -75,15 +100,15 @@ export class ImagebuilderDistributionConfigurationDistributionAmiDistributionCon
   }
   // Temporarily expose input value. Use with caution.
   public get userGroupsInput() {
-    return this._userGroups
+    return this._userGroups;
   }
 
   // user_ids - computed: false, optional: true, required: false
-  private _userIds?: string[] | undefined; 
+  private _userIds?: string[]; 
   public get userIds() {
     return this.getListAttribute('user_ids');
   }
-  public set userIds(value: string[] | undefined) {
+  public set userIds(value: string[]) {
     this._userIds = value;
   }
   public resetUserIds() {
@@ -91,7 +116,7 @@ export class ImagebuilderDistributionConfigurationDistributionAmiDistributionCon
   }
   // Temporarily expose input value. Use with caution.
   public get userIdsInput() {
-    return this._userIds
+    return this._userIds;
   }
 }
 export interface ImagebuilderDistributionConfigurationDistributionAmiDistributionConfiguration {
@@ -148,13 +173,62 @@ export class ImagebuilderDistributionConfigurationDistributionAmiDistributionCon
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ImagebuilderDistributionConfigurationDistributionAmiDistributionConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._amiTags) {
+      hasAnyValues = true;
+      internalValueResult.amiTags = this._amiTags;
+    }
+    if (this._description) {
+      hasAnyValues = true;
+      internalValueResult.description = this._description;
+    }
+    if (this._kmsKeyId) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyId = this._kmsKeyId;
+    }
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._targetAccountIds) {
+      hasAnyValues = true;
+      internalValueResult.targetAccountIds = this._targetAccountIds;
+    }
+    if (this._launchPermission) {
+      hasAnyValues = true;
+      internalValueResult.launchPermission = this._launchPermission?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ImagebuilderDistributionConfigurationDistributionAmiDistributionConfiguration | undefined) {
+    if (value === undefined) {
+      this._amiTags = undefined;
+      this._description = undefined;
+      this._kmsKeyId = undefined;
+      this._name = undefined;
+      this._targetAccountIds = undefined;
+      this._launchPermission.internalValue = undefined;
+    }
+    else {
+      this._amiTags = value.amiTags;
+      this._description = value.description;
+      this._kmsKeyId = value.kmsKeyId;
+      this._name = value.name;
+      this._targetAccountIds = value.targetAccountIds;
+      this._launchPermission.internalValue = value.launchPermission;
+    }
+  }
+
   // ami_tags - computed: false, optional: true, required: false
-  private _amiTags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _amiTags?: { [key: string]: string } | cdktf.IResolvable; 
   public get amiTags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ami_tags') as any;
   }
-  public set amiTags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set amiTags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._amiTags = value;
   }
   public resetAmiTags() {
@@ -162,15 +236,15 @@ export class ImagebuilderDistributionConfigurationDistributionAmiDistributionCon
   }
   // Temporarily expose input value. Use with caution.
   public get amiTagsInput() {
-    return this._amiTags
+    return this._amiTags;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -178,15 +252,15 @@ export class ImagebuilderDistributionConfigurationDistributionAmiDistributionCon
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // kms_key_id - computed: false, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -194,15 +268,15 @@ export class ImagebuilderDistributionConfigurationDistributionAmiDistributionCon
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -210,15 +284,15 @@ export class ImagebuilderDistributionConfigurationDistributionAmiDistributionCon
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // target_account_ids - computed: false, optional: true, required: false
-  private _targetAccountIds?: string[] | undefined; 
+  private _targetAccountIds?: string[]; 
   public get targetAccountIds() {
     return this.getListAttribute('target_account_ids');
   }
-  public set targetAccountIds(value: string[] | undefined) {
+  public set targetAccountIds(value: string[]) {
     this._targetAccountIds = value;
   }
   public resetTargetAccountIds() {
@@ -226,24 +300,23 @@ export class ImagebuilderDistributionConfigurationDistributionAmiDistributionCon
   }
   // Temporarily expose input value. Use with caution.
   public get targetAccountIdsInput() {
-    return this._targetAccountIds
+    return this._targetAccountIds;
   }
 
   // launch_permission - computed: false, optional: true, required: false
-  private _launchPermission?: ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission | undefined; 
-  private __launchPermissionOutput = new ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionOutputReference(this as any, "launch_permission", true);
+  private _launchPermission = new ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermissionOutputReference(this as any, "launch_permission", true);
   public get launchPermission() {
-    return this.__launchPermissionOutput;
+    return this._launchPermission;
   }
-  public putLaunchPermission(value: ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission | undefined) {
-    this._launchPermission = value;
+  public putLaunchPermission(value: ImagebuilderDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission) {
+    this._launchPermission.internalValue = value;
   }
   public resetLaunchPermission() {
-    this._launchPermission = undefined;
+    this._launchPermission.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get launchPermissionInput() {
-    return this._launchPermission
+    return this._launchPermission.internalValue;
   }
 }
 export interface ImagebuilderDistributionConfigurationDistribution {
@@ -335,11 +408,11 @@ export class ImagebuilderDistributionConfiguration extends cdktf.TerraformResour
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -347,7 +420,7 @@ export class ImagebuilderDistributionConfiguration extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -365,16 +438,16 @@ export class ImagebuilderDistributionConfiguration extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -382,16 +455,16 @@ export class ImagebuilderDistributionConfiguration extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -399,7 +472,7 @@ export class ImagebuilderDistributionConfiguration extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // distribution - computed: false, optional: false, required: true
@@ -413,7 +486,7 @@ export class ImagebuilderDistributionConfiguration extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get distributionInput() {
-    return this._distribution
+    return this._distribution;
   }
 
   // =========

@@ -97,6 +97,31 @@ export class SignerSigningJobDestinationS3OutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SignerSigningJobDestinationS3 | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucket) {
+      hasAnyValues = true;
+      internalValueResult.bucket = this._bucket;
+    }
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SignerSigningJobDestinationS3 | undefined) {
+    if (value === undefined) {
+      this._bucket = undefined;
+      this._prefix = undefined;
+    }
+    else {
+      this._bucket = value.bucket;
+      this._prefix = value.prefix;
+    }
+  }
+
   // bucket - computed: false, optional: false, required: true
   private _bucket?: string; 
   public get bucket() {
@@ -107,15 +132,15 @@ export class SignerSigningJobDestinationS3OutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -123,7 +148,7 @@ export class SignerSigningJobDestinationS3OutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 }
 export interface SignerSigningJobDestination {
@@ -155,18 +180,36 @@ export class SignerSigningJobDestinationOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SignerSigningJobDestination | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._s3) {
+      hasAnyValues = true;
+      internalValueResult.s3 = this._s3?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SignerSigningJobDestination | undefined) {
+    if (value === undefined) {
+      this._s3.internalValue = undefined;
+    }
+    else {
+      this._s3.internalValue = value.s3;
+    }
+  }
+
   // s3 - computed: false, optional: false, required: true
-  private _s3?: SignerSigningJobDestinationS3; 
-  private __s3Output = new SignerSigningJobDestinationS3OutputReference(this as any, "s3", true);
+  private _s3 = new SignerSigningJobDestinationS3OutputReference(this as any, "s3", true);
   public get s3() {
-    return this.__s3Output;
+    return this._s3;
   }
   public putS3(value: SignerSigningJobDestinationS3) {
-    this._s3 = value;
+    this._s3.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get s3Input() {
-    return this._s3
+    return this._s3.internalValue;
   }
 }
 export interface SignerSigningJobSourceS3 {
@@ -206,6 +249,37 @@ export class SignerSigningJobSourceS3OutputReference extends cdktf.ComplexObject
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SignerSigningJobSourceS3 | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucket) {
+      hasAnyValues = true;
+      internalValueResult.bucket = this._bucket;
+    }
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    if (this._version) {
+      hasAnyValues = true;
+      internalValueResult.version = this._version;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SignerSigningJobSourceS3 | undefined) {
+    if (value === undefined) {
+      this._bucket = undefined;
+      this._key = undefined;
+      this._version = undefined;
+    }
+    else {
+      this._bucket = value.bucket;
+      this._key = value.key;
+      this._version = value.version;
+    }
+  }
+
   // bucket - computed: false, optional: false, required: true
   private _bucket?: string; 
   public get bucket() {
@@ -216,7 +290,7 @@ export class SignerSigningJobSourceS3OutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // key - computed: false, optional: false, required: true
@@ -229,7 +303,7 @@ export class SignerSigningJobSourceS3OutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // version - computed: false, optional: false, required: true
@@ -242,7 +316,7 @@ export class SignerSigningJobSourceS3OutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get versionInput() {
-    return this._version
+    return this._version;
   }
 }
 export interface SignerSigningJobSource {
@@ -274,18 +348,36 @@ export class SignerSigningJobSourceOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SignerSigningJobSource | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._s3) {
+      hasAnyValues = true;
+      internalValueResult.s3 = this._s3?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SignerSigningJobSource | undefined) {
+    if (value === undefined) {
+      this._s3.internalValue = undefined;
+    }
+    else {
+      this._s3.internalValue = value.s3;
+    }
+  }
+
   // s3 - computed: false, optional: false, required: true
-  private _s3?: SignerSigningJobSourceS3; 
-  private __s3Output = new SignerSigningJobSourceS3OutputReference(this as any, "s3", true);
+  private _s3 = new SignerSigningJobSourceS3OutputReference(this as any, "s3", true);
   public get s3() {
-    return this.__s3Output;
+    return this._s3;
   }
   public putS3(value: SignerSigningJobSourceS3) {
-    this._s3 = value;
+    this._s3.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get s3Input() {
-    return this._s3
+    return this._s3.internalValue;
   }
 }
 
@@ -323,8 +415,8 @@ export class SignerSigningJob extends cdktf.TerraformResource {
     });
     this._ignoreSigningJobFailure = config.ignoreSigningJobFailure;
     this._profileName = config.profileName;
-    this._destination = config.destination;
-    this._source = config.source;
+    this._destination.internalValue = config.destination;
+    this._source.internalValue = config.source;
   }
 
   // ==========
@@ -347,11 +439,11 @@ export class SignerSigningJob extends cdktf.TerraformResource {
   }
 
   // ignore_signing_job_failure - computed: false, optional: true, required: false
-  private _ignoreSigningJobFailure?: boolean | cdktf.IResolvable | undefined; 
+  private _ignoreSigningJobFailure?: boolean | cdktf.IResolvable; 
   public get ignoreSigningJobFailure() {
     return this.getBooleanAttribute('ignore_signing_job_failure') as any;
   }
-  public set ignoreSigningJobFailure(value: boolean | cdktf.IResolvable | undefined) {
+  public set ignoreSigningJobFailure(value: boolean | cdktf.IResolvable) {
     this._ignoreSigningJobFailure = value;
   }
   public resetIgnoreSigningJobFailure() {
@@ -359,7 +451,7 @@ export class SignerSigningJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ignoreSigningJobFailureInput() {
-    return this._ignoreSigningJobFailure
+    return this._ignoreSigningJobFailure;
   }
 
   // job_id - computed: true, optional: false, required: false
@@ -397,7 +489,7 @@ export class SignerSigningJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get profileNameInput() {
-    return this._profileName
+    return this._profileName;
   }
 
   // profile_version - computed: true, optional: false, required: false
@@ -436,31 +528,29 @@ export class SignerSigningJob extends cdktf.TerraformResource {
   }
 
   // destination - computed: false, optional: false, required: true
-  private _destination?: SignerSigningJobDestination; 
-  private __destinationOutput = new SignerSigningJobDestinationOutputReference(this as any, "destination", true);
+  private _destination = new SignerSigningJobDestinationOutputReference(this as any, "destination", true);
   public get destination() {
-    return this.__destinationOutput;
+    return this._destination;
   }
   public putDestination(value: SignerSigningJobDestination) {
-    this._destination = value;
+    this._destination.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get destinationInput() {
-    return this._destination
+    return this._destination.internalValue;
   }
 
   // source - computed: false, optional: false, required: true
-  private _source?: SignerSigningJobSource; 
-  private __sourceOutput = new SignerSigningJobSourceOutputReference(this as any, "source", true);
+  private _source = new SignerSigningJobSourceOutputReference(this as any, "source", true);
   public get source() {
-    return this.__sourceOutput;
+    return this._source;
   }
   public putSource(value: SignerSigningJobSource) {
-    this._source = value;
+    this._source.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get sourceInput() {
-    return this._source
+    return this._source.internalValue;
   }
 
   // =========
@@ -471,8 +561,8 @@ export class SignerSigningJob extends cdktf.TerraformResource {
     return {
       ignore_signing_job_failure: cdktf.booleanToTerraform(this._ignoreSigningJobFailure),
       profile_name: cdktf.stringToTerraform(this._profileName),
-      destination: signerSigningJobDestinationToTerraform(this._destination),
-      source: signerSigningJobSourceToTerraform(this._source),
+      destination: signerSigningJobDestinationToTerraform(this._destination.internalValue),
+      source: signerSigningJobSourceToTerraform(this._source.internalValue),
     };
   }
 }

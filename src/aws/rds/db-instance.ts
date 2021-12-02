@@ -284,12 +284,49 @@ export class DbInstanceRestoreToPointInTimeOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DbInstanceRestoreToPointInTime | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._restoreTime) {
+      hasAnyValues = true;
+      internalValueResult.restoreTime = this._restoreTime;
+    }
+    if (this._sourceDbInstanceIdentifier) {
+      hasAnyValues = true;
+      internalValueResult.sourceDbInstanceIdentifier = this._sourceDbInstanceIdentifier;
+    }
+    if (this._sourceDbiResourceId) {
+      hasAnyValues = true;
+      internalValueResult.sourceDbiResourceId = this._sourceDbiResourceId;
+    }
+    if (this._useLatestRestorableTime) {
+      hasAnyValues = true;
+      internalValueResult.useLatestRestorableTime = this._useLatestRestorableTime;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DbInstanceRestoreToPointInTime | undefined) {
+    if (value === undefined) {
+      this._restoreTime = undefined;
+      this._sourceDbInstanceIdentifier = undefined;
+      this._sourceDbiResourceId = undefined;
+      this._useLatestRestorableTime = undefined;
+    }
+    else {
+      this._restoreTime = value.restoreTime;
+      this._sourceDbInstanceIdentifier = value.sourceDbInstanceIdentifier;
+      this._sourceDbiResourceId = value.sourceDbiResourceId;
+      this._useLatestRestorableTime = value.useLatestRestorableTime;
+    }
+  }
+
   // restore_time - computed: false, optional: true, required: false
-  private _restoreTime?: string | undefined; 
+  private _restoreTime?: string; 
   public get restoreTime() {
     return this.getStringAttribute('restore_time');
   }
-  public set restoreTime(value: string | undefined) {
+  public set restoreTime(value: string) {
     this._restoreTime = value;
   }
   public resetRestoreTime() {
@@ -297,15 +334,15 @@ export class DbInstanceRestoreToPointInTimeOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get restoreTimeInput() {
-    return this._restoreTime
+    return this._restoreTime;
   }
 
   // source_db_instance_identifier - computed: false, optional: true, required: false
-  private _sourceDbInstanceIdentifier?: string | undefined; 
+  private _sourceDbInstanceIdentifier?: string; 
   public get sourceDbInstanceIdentifier() {
     return this.getStringAttribute('source_db_instance_identifier');
   }
-  public set sourceDbInstanceIdentifier(value: string | undefined) {
+  public set sourceDbInstanceIdentifier(value: string) {
     this._sourceDbInstanceIdentifier = value;
   }
   public resetSourceDbInstanceIdentifier() {
@@ -313,15 +350,15 @@ export class DbInstanceRestoreToPointInTimeOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get sourceDbInstanceIdentifierInput() {
-    return this._sourceDbInstanceIdentifier
+    return this._sourceDbInstanceIdentifier;
   }
 
   // source_dbi_resource_id - computed: false, optional: true, required: false
-  private _sourceDbiResourceId?: string | undefined; 
+  private _sourceDbiResourceId?: string; 
   public get sourceDbiResourceId() {
     return this.getStringAttribute('source_dbi_resource_id');
   }
-  public set sourceDbiResourceId(value: string | undefined) {
+  public set sourceDbiResourceId(value: string) {
     this._sourceDbiResourceId = value;
   }
   public resetSourceDbiResourceId() {
@@ -329,15 +366,15 @@ export class DbInstanceRestoreToPointInTimeOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get sourceDbiResourceIdInput() {
-    return this._sourceDbiResourceId
+    return this._sourceDbiResourceId;
   }
 
   // use_latest_restorable_time - computed: false, optional: true, required: false
-  private _useLatestRestorableTime?: boolean | cdktf.IResolvable | undefined; 
+  private _useLatestRestorableTime?: boolean | cdktf.IResolvable; 
   public get useLatestRestorableTime() {
     return this.getBooleanAttribute('use_latest_restorable_time') as any;
   }
-  public set useLatestRestorableTime(value: boolean | cdktf.IResolvable | undefined) {
+  public set useLatestRestorableTime(value: boolean | cdktf.IResolvable) {
     this._useLatestRestorableTime = value;
   }
   public resetUseLatestRestorableTime() {
@@ -345,7 +382,7 @@ export class DbInstanceRestoreToPointInTimeOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get useLatestRestorableTimeInput() {
-    return this._useLatestRestorableTime
+    return this._useLatestRestorableTime;
   }
 }
 export interface DbInstanceS3Import {
@@ -395,6 +432,49 @@ export class DbInstanceS3ImportOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DbInstanceS3Import | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucketName) {
+      hasAnyValues = true;
+      internalValueResult.bucketName = this._bucketName;
+    }
+    if (this._bucketPrefix) {
+      hasAnyValues = true;
+      internalValueResult.bucketPrefix = this._bucketPrefix;
+    }
+    if (this._ingestionRole) {
+      hasAnyValues = true;
+      internalValueResult.ingestionRole = this._ingestionRole;
+    }
+    if (this._sourceEngine) {
+      hasAnyValues = true;
+      internalValueResult.sourceEngine = this._sourceEngine;
+    }
+    if (this._sourceEngineVersion) {
+      hasAnyValues = true;
+      internalValueResult.sourceEngineVersion = this._sourceEngineVersion;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DbInstanceS3Import | undefined) {
+    if (value === undefined) {
+      this._bucketName = undefined;
+      this._bucketPrefix = undefined;
+      this._ingestionRole = undefined;
+      this._sourceEngine = undefined;
+      this._sourceEngineVersion = undefined;
+    }
+    else {
+      this._bucketName = value.bucketName;
+      this._bucketPrefix = value.bucketPrefix;
+      this._ingestionRole = value.ingestionRole;
+      this._sourceEngine = value.sourceEngine;
+      this._sourceEngineVersion = value.sourceEngineVersion;
+    }
+  }
+
   // bucket_name - computed: false, optional: false, required: true
   private _bucketName?: string; 
   public get bucketName() {
@@ -405,15 +485,15 @@ export class DbInstanceS3ImportOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketNameInput() {
-    return this._bucketName
+    return this._bucketName;
   }
 
   // bucket_prefix - computed: false, optional: true, required: false
-  private _bucketPrefix?: string | undefined; 
+  private _bucketPrefix?: string; 
   public get bucketPrefix() {
     return this.getStringAttribute('bucket_prefix');
   }
-  public set bucketPrefix(value: string | undefined) {
+  public set bucketPrefix(value: string) {
     this._bucketPrefix = value;
   }
   public resetBucketPrefix() {
@@ -421,7 +501,7 @@ export class DbInstanceS3ImportOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketPrefixInput() {
-    return this._bucketPrefix
+    return this._bucketPrefix;
   }
 
   // ingestion_role - computed: false, optional: false, required: true
@@ -434,7 +514,7 @@ export class DbInstanceS3ImportOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get ingestionRoleInput() {
-    return this._ingestionRole
+    return this._ingestionRole;
   }
 
   // source_engine - computed: false, optional: false, required: true
@@ -447,7 +527,7 @@ export class DbInstanceS3ImportOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceEngineInput() {
-    return this._sourceEngine
+    return this._sourceEngine;
   }
 
   // source_engine_version - computed: false, optional: false, required: true
@@ -460,7 +540,7 @@ export class DbInstanceS3ImportOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceEngineVersionInput() {
-    return this._sourceEngineVersion
+    return this._sourceEngineVersion;
   }
 }
 export interface DbInstanceTimeouts {
@@ -500,12 +580,43 @@ export class DbInstanceTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DbInstanceTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DbInstanceTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -513,15 +624,15 @@ export class DbInstanceTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -529,15 +640,15 @@ export class DbInstanceTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -545,7 +656,7 @@ export class DbInstanceTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -635,9 +746,9 @@ export class DbInstance extends cdktf.TerraformResource {
     this._timezone = config.timezone;
     this._username = config.username;
     this._vpcSecurityGroupIds = config.vpcSecurityGroupIds;
-    this._restoreToPointInTime = config.restoreToPointInTime;
-    this._s3Import = config.s3Import;
-    this._timeouts = config.timeouts;
+    this._restoreToPointInTime.internalValue = config.restoreToPointInTime;
+    this._s3Import.internalValue = config.s3Import;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -650,11 +761,11 @@ export class DbInstance extends cdktf.TerraformResource {
   }
 
   // allocated_storage - computed: true, optional: true, required: false
-  private _allocatedStorage?: number | undefined; 
+  private _allocatedStorage?: number; 
   public get allocatedStorage() {
     return this.getNumberAttribute('allocated_storage');
   }
-  public set allocatedStorage(value: number | undefined) {
+  public set allocatedStorage(value: number) {
     this._allocatedStorage = value;
   }
   public resetAllocatedStorage() {
@@ -662,15 +773,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allocatedStorageInput() {
-    return this._allocatedStorage
+    return this._allocatedStorage;
   }
 
   // allow_major_version_upgrade - computed: false, optional: true, required: false
-  private _allowMajorVersionUpgrade?: boolean | cdktf.IResolvable | undefined; 
+  private _allowMajorVersionUpgrade?: boolean | cdktf.IResolvable; 
   public get allowMajorVersionUpgrade() {
     return this.getBooleanAttribute('allow_major_version_upgrade') as any;
   }
-  public set allowMajorVersionUpgrade(value: boolean | cdktf.IResolvable | undefined) {
+  public set allowMajorVersionUpgrade(value: boolean | cdktf.IResolvable) {
     this._allowMajorVersionUpgrade = value;
   }
   public resetAllowMajorVersionUpgrade() {
@@ -678,15 +789,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allowMajorVersionUpgradeInput() {
-    return this._allowMajorVersionUpgrade
+    return this._allowMajorVersionUpgrade;
   }
 
   // apply_immediately - computed: true, optional: true, required: false
-  private _applyImmediately?: boolean | cdktf.IResolvable | undefined; 
+  private _applyImmediately?: boolean | cdktf.IResolvable; 
   public get applyImmediately() {
     return this.getBooleanAttribute('apply_immediately') as any;
   }
-  public set applyImmediately(value: boolean | cdktf.IResolvable | undefined) {
+  public set applyImmediately(value: boolean | cdktf.IResolvable) {
     this._applyImmediately = value;
   }
   public resetApplyImmediately() {
@@ -694,7 +805,7 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get applyImmediatelyInput() {
-    return this._applyImmediately
+    return this._applyImmediately;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -703,11 +814,11 @@ export class DbInstance extends cdktf.TerraformResource {
   }
 
   // auto_minor_version_upgrade - computed: false, optional: true, required: false
-  private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable | undefined; 
+  private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable; 
   public get autoMinorVersionUpgrade() {
     return this.getBooleanAttribute('auto_minor_version_upgrade') as any;
   }
-  public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable | undefined) {
+  public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable) {
     this._autoMinorVersionUpgrade = value;
   }
   public resetAutoMinorVersionUpgrade() {
@@ -715,15 +826,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoMinorVersionUpgradeInput() {
-    return this._autoMinorVersionUpgrade
+    return this._autoMinorVersionUpgrade;
   }
 
   // availability_zone - computed: true, optional: true, required: false
-  private _availabilityZone?: string | undefined; 
+  private _availabilityZone?: string; 
   public get availabilityZone() {
     return this.getStringAttribute('availability_zone');
   }
-  public set availabilityZone(value: string | undefined) {
+  public set availabilityZone(value: string) {
     this._availabilityZone = value;
   }
   public resetAvailabilityZone() {
@@ -731,15 +842,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneInput() {
-    return this._availabilityZone
+    return this._availabilityZone;
   }
 
   // backup_retention_period - computed: true, optional: true, required: false
-  private _backupRetentionPeriod?: number | undefined; 
+  private _backupRetentionPeriod?: number; 
   public get backupRetentionPeriod() {
     return this.getNumberAttribute('backup_retention_period');
   }
-  public set backupRetentionPeriod(value: number | undefined) {
+  public set backupRetentionPeriod(value: number) {
     this._backupRetentionPeriod = value;
   }
   public resetBackupRetentionPeriod() {
@@ -747,15 +858,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get backupRetentionPeriodInput() {
-    return this._backupRetentionPeriod
+    return this._backupRetentionPeriod;
   }
 
   // backup_window - computed: true, optional: true, required: false
-  private _backupWindow?: string | undefined; 
+  private _backupWindow?: string; 
   public get backupWindow() {
     return this.getStringAttribute('backup_window');
   }
-  public set backupWindow(value: string | undefined) {
+  public set backupWindow(value: string) {
     this._backupWindow = value;
   }
   public resetBackupWindow() {
@@ -763,15 +874,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get backupWindowInput() {
-    return this._backupWindow
+    return this._backupWindow;
   }
 
   // ca_cert_identifier - computed: true, optional: true, required: false
-  private _caCertIdentifier?: string | undefined; 
+  private _caCertIdentifier?: string; 
   public get caCertIdentifier() {
     return this.getStringAttribute('ca_cert_identifier');
   }
-  public set caCertIdentifier(value: string | undefined) {
+  public set caCertIdentifier(value: string) {
     this._caCertIdentifier = value;
   }
   public resetCaCertIdentifier() {
@@ -779,15 +890,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get caCertIdentifierInput() {
-    return this._caCertIdentifier
+    return this._caCertIdentifier;
   }
 
   // character_set_name - computed: true, optional: true, required: false
-  private _characterSetName?: string | undefined; 
+  private _characterSetName?: string; 
   public get characterSetName() {
     return this.getStringAttribute('character_set_name');
   }
-  public set characterSetName(value: string | undefined) {
+  public set characterSetName(value: string) {
     this._characterSetName = value;
   }
   public resetCharacterSetName() {
@@ -795,15 +906,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get characterSetNameInput() {
-    return this._characterSetName
+    return this._characterSetName;
   }
 
   // copy_tags_to_snapshot - computed: false, optional: true, required: false
-  private _copyTagsToSnapshot?: boolean | cdktf.IResolvable | undefined; 
+  private _copyTagsToSnapshot?: boolean | cdktf.IResolvable; 
   public get copyTagsToSnapshot() {
     return this.getBooleanAttribute('copy_tags_to_snapshot') as any;
   }
-  public set copyTagsToSnapshot(value: boolean | cdktf.IResolvable | undefined) {
+  public set copyTagsToSnapshot(value: boolean | cdktf.IResolvable) {
     this._copyTagsToSnapshot = value;
   }
   public resetCopyTagsToSnapshot() {
@@ -811,15 +922,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get copyTagsToSnapshotInput() {
-    return this._copyTagsToSnapshot
+    return this._copyTagsToSnapshot;
   }
 
   // customer_owned_ip_enabled - computed: false, optional: true, required: false
-  private _customerOwnedIpEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _customerOwnedIpEnabled?: boolean | cdktf.IResolvable; 
   public get customerOwnedIpEnabled() {
     return this.getBooleanAttribute('customer_owned_ip_enabled') as any;
   }
-  public set customerOwnedIpEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set customerOwnedIpEnabled(value: boolean | cdktf.IResolvable) {
     this._customerOwnedIpEnabled = value;
   }
   public resetCustomerOwnedIpEnabled() {
@@ -827,15 +938,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customerOwnedIpEnabledInput() {
-    return this._customerOwnedIpEnabled
+    return this._customerOwnedIpEnabled;
   }
 
   // db_subnet_group_name - computed: true, optional: true, required: false
-  private _dbSubnetGroupName?: string | undefined; 
+  private _dbSubnetGroupName?: string; 
   public get dbSubnetGroupName() {
     return this.getStringAttribute('db_subnet_group_name');
   }
-  public set dbSubnetGroupName(value: string | undefined) {
+  public set dbSubnetGroupName(value: string) {
     this._dbSubnetGroupName = value;
   }
   public resetDbSubnetGroupName() {
@@ -843,15 +954,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dbSubnetGroupNameInput() {
-    return this._dbSubnetGroupName
+    return this._dbSubnetGroupName;
   }
 
   // delete_automated_backups - computed: false, optional: true, required: false
-  private _deleteAutomatedBackups?: boolean | cdktf.IResolvable | undefined; 
+  private _deleteAutomatedBackups?: boolean | cdktf.IResolvable; 
   public get deleteAutomatedBackups() {
     return this.getBooleanAttribute('delete_automated_backups') as any;
   }
-  public set deleteAutomatedBackups(value: boolean | cdktf.IResolvable | undefined) {
+  public set deleteAutomatedBackups(value: boolean | cdktf.IResolvable) {
     this._deleteAutomatedBackups = value;
   }
   public resetDeleteAutomatedBackups() {
@@ -859,15 +970,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteAutomatedBackupsInput() {
-    return this._deleteAutomatedBackups
+    return this._deleteAutomatedBackups;
   }
 
   // deletion_protection - computed: false, optional: true, required: false
-  private _deletionProtection?: boolean | cdktf.IResolvable | undefined; 
+  private _deletionProtection?: boolean | cdktf.IResolvable; 
   public get deletionProtection() {
     return this.getBooleanAttribute('deletion_protection') as any;
   }
-  public set deletionProtection(value: boolean | cdktf.IResolvable | undefined) {
+  public set deletionProtection(value: boolean | cdktf.IResolvable) {
     this._deletionProtection = value;
   }
   public resetDeletionProtection() {
@@ -875,15 +986,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deletionProtectionInput() {
-    return this._deletionProtection
+    return this._deletionProtection;
   }
 
   // domain - computed: false, optional: true, required: false
-  private _domain?: string | undefined; 
+  private _domain?: string; 
   public get domain() {
     return this.getStringAttribute('domain');
   }
-  public set domain(value: string | undefined) {
+  public set domain(value: string) {
     this._domain = value;
   }
   public resetDomain() {
@@ -891,15 +1002,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainInput() {
-    return this._domain
+    return this._domain;
   }
 
   // domain_iam_role_name - computed: false, optional: true, required: false
-  private _domainIamRoleName?: string | undefined; 
+  private _domainIamRoleName?: string; 
   public get domainIamRoleName() {
     return this.getStringAttribute('domain_iam_role_name');
   }
-  public set domainIamRoleName(value: string | undefined) {
+  public set domainIamRoleName(value: string) {
     this._domainIamRoleName = value;
   }
   public resetDomainIamRoleName() {
@@ -907,15 +1018,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainIamRoleNameInput() {
-    return this._domainIamRoleName
+    return this._domainIamRoleName;
   }
 
   // enabled_cloudwatch_logs_exports - computed: false, optional: true, required: false
-  private _enabledCloudwatchLogsExports?: string[] | undefined; 
+  private _enabledCloudwatchLogsExports?: string[]; 
   public get enabledCloudwatchLogsExports() {
     return this.getListAttribute('enabled_cloudwatch_logs_exports');
   }
-  public set enabledCloudwatchLogsExports(value: string[] | undefined) {
+  public set enabledCloudwatchLogsExports(value: string[]) {
     this._enabledCloudwatchLogsExports = value;
   }
   public resetEnabledCloudwatchLogsExports() {
@@ -923,7 +1034,7 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledCloudwatchLogsExportsInput() {
-    return this._enabledCloudwatchLogsExports
+    return this._enabledCloudwatchLogsExports;
   }
 
   // endpoint - computed: true, optional: false, required: false
@@ -932,11 +1043,11 @@ export class DbInstance extends cdktf.TerraformResource {
   }
 
   // engine - computed: true, optional: true, required: false
-  private _engine?: string | undefined; 
+  private _engine?: string; 
   public get engine() {
     return this.getStringAttribute('engine');
   }
-  public set engine(value: string | undefined) {
+  public set engine(value: string) {
     this._engine = value;
   }
   public resetEngine() {
@@ -944,15 +1055,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get engineInput() {
-    return this._engine
+    return this._engine;
   }
 
   // engine_version - computed: true, optional: true, required: false
-  private _engineVersion?: string | undefined; 
+  private _engineVersion?: string; 
   public get engineVersion() {
     return this.getStringAttribute('engine_version');
   }
-  public set engineVersion(value: string | undefined) {
+  public set engineVersion(value: string) {
     this._engineVersion = value;
   }
   public resetEngineVersion() {
@@ -960,7 +1071,7 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get engineVersionInput() {
-    return this._engineVersion
+    return this._engineVersion;
   }
 
   // engine_version_actual - computed: true, optional: false, required: false
@@ -969,11 +1080,11 @@ export class DbInstance extends cdktf.TerraformResource {
   }
 
   // final_snapshot_identifier - computed: false, optional: true, required: false
-  private _finalSnapshotIdentifier?: string | undefined; 
+  private _finalSnapshotIdentifier?: string; 
   public get finalSnapshotIdentifier() {
     return this.getStringAttribute('final_snapshot_identifier');
   }
-  public set finalSnapshotIdentifier(value: string | undefined) {
+  public set finalSnapshotIdentifier(value: string) {
     this._finalSnapshotIdentifier = value;
   }
   public resetFinalSnapshotIdentifier() {
@@ -981,7 +1092,7 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get finalSnapshotIdentifierInput() {
-    return this._finalSnapshotIdentifier
+    return this._finalSnapshotIdentifier;
   }
 
   // hosted_zone_id - computed: true, optional: false, required: false
@@ -990,11 +1101,11 @@ export class DbInstance extends cdktf.TerraformResource {
   }
 
   // iam_database_authentication_enabled - computed: false, optional: true, required: false
-  private _iamDatabaseAuthenticationEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _iamDatabaseAuthenticationEnabled?: boolean | cdktf.IResolvable; 
   public get iamDatabaseAuthenticationEnabled() {
     return this.getBooleanAttribute('iam_database_authentication_enabled') as any;
   }
-  public set iamDatabaseAuthenticationEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set iamDatabaseAuthenticationEnabled(value: boolean | cdktf.IResolvable) {
     this._iamDatabaseAuthenticationEnabled = value;
   }
   public resetIamDatabaseAuthenticationEnabled() {
@@ -1002,7 +1113,7 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iamDatabaseAuthenticationEnabledInput() {
-    return this._iamDatabaseAuthenticationEnabled
+    return this._iamDatabaseAuthenticationEnabled;
   }
 
   // id - computed: true, optional: true, required: false
@@ -1011,11 +1122,11 @@ export class DbInstance extends cdktf.TerraformResource {
   }
 
   // identifier - computed: true, optional: true, required: false
-  private _identifier?: string | undefined; 
+  private _identifier?: string; 
   public get identifier() {
     return this.getStringAttribute('identifier');
   }
-  public set identifier(value: string | undefined) {
+  public set identifier(value: string) {
     this._identifier = value;
   }
   public resetIdentifier() {
@@ -1023,15 +1134,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get identifierInput() {
-    return this._identifier
+    return this._identifier;
   }
 
   // identifier_prefix - computed: true, optional: true, required: false
-  private _identifierPrefix?: string | undefined; 
+  private _identifierPrefix?: string; 
   public get identifierPrefix() {
     return this.getStringAttribute('identifier_prefix');
   }
-  public set identifierPrefix(value: string | undefined) {
+  public set identifierPrefix(value: string) {
     this._identifierPrefix = value;
   }
   public resetIdentifierPrefix() {
@@ -1039,7 +1150,7 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get identifierPrefixInput() {
-    return this._identifierPrefix
+    return this._identifierPrefix;
   }
 
   // instance_class - computed: false, optional: false, required: true
@@ -1052,15 +1163,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceClassInput() {
-    return this._instanceClass
+    return this._instanceClass;
   }
 
   // iops - computed: false, optional: true, required: false
-  private _iops?: number | undefined; 
+  private _iops?: number; 
   public get iops() {
     return this.getNumberAttribute('iops');
   }
-  public set iops(value: number | undefined) {
+  public set iops(value: number) {
     this._iops = value;
   }
   public resetIops() {
@@ -1068,15 +1179,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iopsInput() {
-    return this._iops
+    return this._iops;
   }
 
   // kms_key_id - computed: true, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -1084,7 +1195,7 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // latest_restorable_time - computed: true, optional: false, required: false
@@ -1093,11 +1204,11 @@ export class DbInstance extends cdktf.TerraformResource {
   }
 
   // license_model - computed: true, optional: true, required: false
-  private _licenseModel?: string | undefined; 
+  private _licenseModel?: string; 
   public get licenseModel() {
     return this.getStringAttribute('license_model');
   }
-  public set licenseModel(value: string | undefined) {
+  public set licenseModel(value: string) {
     this._licenseModel = value;
   }
   public resetLicenseModel() {
@@ -1105,15 +1216,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get licenseModelInput() {
-    return this._licenseModel
+    return this._licenseModel;
   }
 
   // maintenance_window - computed: true, optional: true, required: false
-  private _maintenanceWindow?: string | undefined; 
+  private _maintenanceWindow?: string; 
   public get maintenanceWindow() {
     return this.getStringAttribute('maintenance_window');
   }
-  public set maintenanceWindow(value: string | undefined) {
+  public set maintenanceWindow(value: string) {
     this._maintenanceWindow = value;
   }
   public resetMaintenanceWindow() {
@@ -1121,15 +1232,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maintenanceWindowInput() {
-    return this._maintenanceWindow
+    return this._maintenanceWindow;
   }
 
   // max_allocated_storage - computed: false, optional: true, required: false
-  private _maxAllocatedStorage?: number | undefined; 
+  private _maxAllocatedStorage?: number; 
   public get maxAllocatedStorage() {
     return this.getNumberAttribute('max_allocated_storage');
   }
-  public set maxAllocatedStorage(value: number | undefined) {
+  public set maxAllocatedStorage(value: number) {
     this._maxAllocatedStorage = value;
   }
   public resetMaxAllocatedStorage() {
@@ -1137,15 +1248,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maxAllocatedStorageInput() {
-    return this._maxAllocatedStorage
+    return this._maxAllocatedStorage;
   }
 
   // monitoring_interval - computed: false, optional: true, required: false
-  private _monitoringInterval?: number | undefined; 
+  private _monitoringInterval?: number; 
   public get monitoringInterval() {
     return this.getNumberAttribute('monitoring_interval');
   }
-  public set monitoringInterval(value: number | undefined) {
+  public set monitoringInterval(value: number) {
     this._monitoringInterval = value;
   }
   public resetMonitoringInterval() {
@@ -1153,15 +1264,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get monitoringIntervalInput() {
-    return this._monitoringInterval
+    return this._monitoringInterval;
   }
 
   // monitoring_role_arn - computed: true, optional: true, required: false
-  private _monitoringRoleArn?: string | undefined; 
+  private _monitoringRoleArn?: string; 
   public get monitoringRoleArn() {
     return this.getStringAttribute('monitoring_role_arn');
   }
-  public set monitoringRoleArn(value: string | undefined) {
+  public set monitoringRoleArn(value: string) {
     this._monitoringRoleArn = value;
   }
   public resetMonitoringRoleArn() {
@@ -1169,15 +1280,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get monitoringRoleArnInput() {
-    return this._monitoringRoleArn
+    return this._monitoringRoleArn;
   }
 
   // multi_az - computed: true, optional: true, required: false
-  private _multiAz?: boolean | cdktf.IResolvable | undefined; 
+  private _multiAz?: boolean | cdktf.IResolvable; 
   public get multiAz() {
     return this.getBooleanAttribute('multi_az') as any;
   }
-  public set multiAz(value: boolean | cdktf.IResolvable | undefined) {
+  public set multiAz(value: boolean | cdktf.IResolvable) {
     this._multiAz = value;
   }
   public resetMultiAz() {
@@ -1185,15 +1296,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get multiAzInput() {
-    return this._multiAz
+    return this._multiAz;
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -1201,15 +1312,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // nchar_character_set_name - computed: true, optional: true, required: false
-  private _ncharCharacterSetName?: string | undefined; 
+  private _ncharCharacterSetName?: string; 
   public get ncharCharacterSetName() {
     return this.getStringAttribute('nchar_character_set_name');
   }
-  public set ncharCharacterSetName(value: string | undefined) {
+  public set ncharCharacterSetName(value: string) {
     this._ncharCharacterSetName = value;
   }
   public resetNcharCharacterSetName() {
@@ -1217,15 +1328,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ncharCharacterSetNameInput() {
-    return this._ncharCharacterSetName
+    return this._ncharCharacterSetName;
   }
 
   // option_group_name - computed: true, optional: true, required: false
-  private _optionGroupName?: string | undefined; 
+  private _optionGroupName?: string; 
   public get optionGroupName() {
     return this.getStringAttribute('option_group_name');
   }
-  public set optionGroupName(value: string | undefined) {
+  public set optionGroupName(value: string) {
     this._optionGroupName = value;
   }
   public resetOptionGroupName() {
@@ -1233,15 +1344,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get optionGroupNameInput() {
-    return this._optionGroupName
+    return this._optionGroupName;
   }
 
   // parameter_group_name - computed: true, optional: true, required: false
-  private _parameterGroupName?: string | undefined; 
+  private _parameterGroupName?: string; 
   public get parameterGroupName() {
     return this.getStringAttribute('parameter_group_name');
   }
-  public set parameterGroupName(value: string | undefined) {
+  public set parameterGroupName(value: string) {
     this._parameterGroupName = value;
   }
   public resetParameterGroupName() {
@@ -1249,15 +1360,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parameterGroupNameInput() {
-    return this._parameterGroupName
+    return this._parameterGroupName;
   }
 
   // password - computed: false, optional: true, required: false
-  private _password?: string | undefined; 
+  private _password?: string; 
   public get password() {
     return this.getStringAttribute('password');
   }
-  public set password(value: string | undefined) {
+  public set password(value: string) {
     this._password = value;
   }
   public resetPassword() {
@@ -1265,15 +1376,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get passwordInput() {
-    return this._password
+    return this._password;
   }
 
   // performance_insights_enabled - computed: false, optional: true, required: false
-  private _performanceInsightsEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _performanceInsightsEnabled?: boolean | cdktf.IResolvable; 
   public get performanceInsightsEnabled() {
     return this.getBooleanAttribute('performance_insights_enabled') as any;
   }
-  public set performanceInsightsEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set performanceInsightsEnabled(value: boolean | cdktf.IResolvable) {
     this._performanceInsightsEnabled = value;
   }
   public resetPerformanceInsightsEnabled() {
@@ -1281,15 +1392,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get performanceInsightsEnabledInput() {
-    return this._performanceInsightsEnabled
+    return this._performanceInsightsEnabled;
   }
 
   // performance_insights_kms_key_id - computed: true, optional: true, required: false
-  private _performanceInsightsKmsKeyId?: string | undefined; 
+  private _performanceInsightsKmsKeyId?: string; 
   public get performanceInsightsKmsKeyId() {
     return this.getStringAttribute('performance_insights_kms_key_id');
   }
-  public set performanceInsightsKmsKeyId(value: string | undefined) {
+  public set performanceInsightsKmsKeyId(value: string) {
     this._performanceInsightsKmsKeyId = value;
   }
   public resetPerformanceInsightsKmsKeyId() {
@@ -1297,15 +1408,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get performanceInsightsKmsKeyIdInput() {
-    return this._performanceInsightsKmsKeyId
+    return this._performanceInsightsKmsKeyId;
   }
 
   // performance_insights_retention_period - computed: true, optional: true, required: false
-  private _performanceInsightsRetentionPeriod?: number | undefined; 
+  private _performanceInsightsRetentionPeriod?: number; 
   public get performanceInsightsRetentionPeriod() {
     return this.getNumberAttribute('performance_insights_retention_period');
   }
-  public set performanceInsightsRetentionPeriod(value: number | undefined) {
+  public set performanceInsightsRetentionPeriod(value: number) {
     this._performanceInsightsRetentionPeriod = value;
   }
   public resetPerformanceInsightsRetentionPeriod() {
@@ -1313,15 +1424,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get performanceInsightsRetentionPeriodInput() {
-    return this._performanceInsightsRetentionPeriod
+    return this._performanceInsightsRetentionPeriod;
   }
 
   // port - computed: true, optional: true, required: false
-  private _port?: number | undefined; 
+  private _port?: number; 
   public get port() {
     return this.getNumberAttribute('port');
   }
-  public set port(value: number | undefined) {
+  public set port(value: number) {
     this._port = value;
   }
   public resetPort() {
@@ -1329,15 +1440,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 
   // publicly_accessible - computed: false, optional: true, required: false
-  private _publiclyAccessible?: boolean | cdktf.IResolvable | undefined; 
+  private _publiclyAccessible?: boolean | cdktf.IResolvable; 
   public get publiclyAccessible() {
     return this.getBooleanAttribute('publicly_accessible') as any;
   }
-  public set publiclyAccessible(value: boolean | cdktf.IResolvable | undefined) {
+  public set publiclyAccessible(value: boolean | cdktf.IResolvable) {
     this._publiclyAccessible = value;
   }
   public resetPubliclyAccessible() {
@@ -1345,15 +1456,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get publiclyAccessibleInput() {
-    return this._publiclyAccessible
+    return this._publiclyAccessible;
   }
 
   // replica_mode - computed: false, optional: true, required: false
-  private _replicaMode?: string | undefined; 
+  private _replicaMode?: string; 
   public get replicaMode() {
     return this.getStringAttribute('replica_mode');
   }
-  public set replicaMode(value: string | undefined) {
+  public set replicaMode(value: string) {
     this._replicaMode = value;
   }
   public resetReplicaMode() {
@@ -1361,7 +1472,7 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get replicaModeInput() {
-    return this._replicaMode
+    return this._replicaMode;
   }
 
   // replicas - computed: true, optional: false, required: false
@@ -1370,11 +1481,11 @@ export class DbInstance extends cdktf.TerraformResource {
   }
 
   // replicate_source_db - computed: false, optional: true, required: false
-  private _replicateSourceDb?: string | undefined; 
+  private _replicateSourceDb?: string; 
   public get replicateSourceDb() {
     return this.getStringAttribute('replicate_source_db');
   }
-  public set replicateSourceDb(value: string | undefined) {
+  public set replicateSourceDb(value: string) {
     this._replicateSourceDb = value;
   }
   public resetReplicateSourceDb() {
@@ -1382,7 +1493,7 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get replicateSourceDbInput() {
-    return this._replicateSourceDb
+    return this._replicateSourceDb;
   }
 
   // resource_id - computed: true, optional: false, required: false
@@ -1391,11 +1502,11 @@ export class DbInstance extends cdktf.TerraformResource {
   }
 
   // security_group_names - computed: false, optional: true, required: false
-  private _securityGroupNames?: string[] | undefined; 
+  private _securityGroupNames?: string[]; 
   public get securityGroupNames() {
     return this.getListAttribute('security_group_names');
   }
-  public set securityGroupNames(value: string[] | undefined) {
+  public set securityGroupNames(value: string[]) {
     this._securityGroupNames = value;
   }
   public resetSecurityGroupNames() {
@@ -1403,15 +1514,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupNamesInput() {
-    return this._securityGroupNames
+    return this._securityGroupNames;
   }
 
   // skip_final_snapshot - computed: false, optional: true, required: false
-  private _skipFinalSnapshot?: boolean | cdktf.IResolvable | undefined; 
+  private _skipFinalSnapshot?: boolean | cdktf.IResolvable; 
   public get skipFinalSnapshot() {
     return this.getBooleanAttribute('skip_final_snapshot') as any;
   }
-  public set skipFinalSnapshot(value: boolean | cdktf.IResolvable | undefined) {
+  public set skipFinalSnapshot(value: boolean | cdktf.IResolvable) {
     this._skipFinalSnapshot = value;
   }
   public resetSkipFinalSnapshot() {
@@ -1419,15 +1530,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get skipFinalSnapshotInput() {
-    return this._skipFinalSnapshot
+    return this._skipFinalSnapshot;
   }
 
   // snapshot_identifier - computed: true, optional: true, required: false
-  private _snapshotIdentifier?: string | undefined; 
+  private _snapshotIdentifier?: string; 
   public get snapshotIdentifier() {
     return this.getStringAttribute('snapshot_identifier');
   }
-  public set snapshotIdentifier(value: string | undefined) {
+  public set snapshotIdentifier(value: string) {
     this._snapshotIdentifier = value;
   }
   public resetSnapshotIdentifier() {
@@ -1435,7 +1546,7 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotIdentifierInput() {
-    return this._snapshotIdentifier
+    return this._snapshotIdentifier;
   }
 
   // status - computed: true, optional: false, required: false
@@ -1444,11 +1555,11 @@ export class DbInstance extends cdktf.TerraformResource {
   }
 
   // storage_encrypted - computed: false, optional: true, required: false
-  private _storageEncrypted?: boolean | cdktf.IResolvable | undefined; 
+  private _storageEncrypted?: boolean | cdktf.IResolvable; 
   public get storageEncrypted() {
     return this.getBooleanAttribute('storage_encrypted') as any;
   }
-  public set storageEncrypted(value: boolean | cdktf.IResolvable | undefined) {
+  public set storageEncrypted(value: boolean | cdktf.IResolvable) {
     this._storageEncrypted = value;
   }
   public resetStorageEncrypted() {
@@ -1456,15 +1567,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get storageEncryptedInput() {
-    return this._storageEncrypted
+    return this._storageEncrypted;
   }
 
   // storage_type - computed: true, optional: true, required: false
-  private _storageType?: string | undefined; 
+  private _storageType?: string; 
   public get storageType() {
     return this.getStringAttribute('storage_type');
   }
-  public set storageType(value: string | undefined) {
+  public set storageType(value: string) {
     this._storageType = value;
   }
   public resetStorageType() {
@@ -1472,16 +1583,16 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get storageTypeInput() {
-    return this._storageType
+    return this._storageType;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -1489,16 +1600,16 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -1506,15 +1617,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // timezone - computed: true, optional: true, required: false
-  private _timezone?: string | undefined; 
+  private _timezone?: string; 
   public get timezone() {
     return this.getStringAttribute('timezone');
   }
-  public set timezone(value: string | undefined) {
+  public set timezone(value: string) {
     this._timezone = value;
   }
   public resetTimezone() {
@@ -1522,15 +1633,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get timezoneInput() {
-    return this._timezone
+    return this._timezone;
   }
 
   // username - computed: true, optional: true, required: false
-  private _username?: string | undefined; 
+  private _username?: string; 
   public get username() {
     return this.getStringAttribute('username');
   }
-  public set username(value: string | undefined) {
+  public set username(value: string) {
     this._username = value;
   }
   public resetUsername() {
@@ -1538,15 +1649,15 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get usernameInput() {
-    return this._username
+    return this._username;
   }
 
   // vpc_security_group_ids - computed: true, optional: true, required: false
-  private _vpcSecurityGroupIds?: string[] | undefined; 
+  private _vpcSecurityGroupIds?: string[]; 
   public get vpcSecurityGroupIds() {
     return this.getListAttribute('vpc_security_group_ids');
   }
-  public set vpcSecurityGroupIds(value: string[] | undefined) {
+  public set vpcSecurityGroupIds(value: string[]) {
     this._vpcSecurityGroupIds = value;
   }
   public resetVpcSecurityGroupIds() {
@@ -1554,58 +1665,55 @@ export class DbInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcSecurityGroupIdsInput() {
-    return this._vpcSecurityGroupIds
+    return this._vpcSecurityGroupIds;
   }
 
   // restore_to_point_in_time - computed: false, optional: true, required: false
-  private _restoreToPointInTime?: DbInstanceRestoreToPointInTime | undefined; 
-  private __restoreToPointInTimeOutput = new DbInstanceRestoreToPointInTimeOutputReference(this as any, "restore_to_point_in_time", true);
+  private _restoreToPointInTime = new DbInstanceRestoreToPointInTimeOutputReference(this as any, "restore_to_point_in_time", true);
   public get restoreToPointInTime() {
-    return this.__restoreToPointInTimeOutput;
+    return this._restoreToPointInTime;
   }
-  public putRestoreToPointInTime(value: DbInstanceRestoreToPointInTime | undefined) {
-    this._restoreToPointInTime = value;
+  public putRestoreToPointInTime(value: DbInstanceRestoreToPointInTime) {
+    this._restoreToPointInTime.internalValue = value;
   }
   public resetRestoreToPointInTime() {
-    this._restoreToPointInTime = undefined;
+    this._restoreToPointInTime.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get restoreToPointInTimeInput() {
-    return this._restoreToPointInTime
+    return this._restoreToPointInTime.internalValue;
   }
 
   // s3_import - computed: false, optional: true, required: false
-  private _s3Import?: DbInstanceS3Import | undefined; 
-  private __s3ImportOutput = new DbInstanceS3ImportOutputReference(this as any, "s3_import", true);
+  private _s3Import = new DbInstanceS3ImportOutputReference(this as any, "s3_import", true);
   public get s3Import() {
-    return this.__s3ImportOutput;
+    return this._s3Import;
   }
-  public putS3Import(value: DbInstanceS3Import | undefined) {
-    this._s3Import = value;
+  public putS3Import(value: DbInstanceS3Import) {
+    this._s3Import.internalValue = value;
   }
   public resetS3Import() {
-    this._s3Import = undefined;
+    this._s3Import.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get s3ImportInput() {
-    return this._s3Import
+    return this._s3Import.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DbInstanceTimeouts | undefined; 
-  private __timeoutsOutput = new DbInstanceTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DbInstanceTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DbInstanceTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DbInstanceTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -1668,9 +1776,9 @@ export class DbInstance extends cdktf.TerraformResource {
       timezone: cdktf.stringToTerraform(this._timezone),
       username: cdktf.stringToTerraform(this._username),
       vpc_security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._vpcSecurityGroupIds),
-      restore_to_point_in_time: dbInstanceRestoreToPointInTimeToTerraform(this._restoreToPointInTime),
-      s3_import: dbInstanceS3ImportToTerraform(this._s3Import),
-      timeouts: dbInstanceTimeoutsToTerraform(this._timeouts),
+      restore_to_point_in_time: dbInstanceRestoreToPointInTimeToTerraform(this._restoreToPointInTime.internalValue),
+      s3_import: dbInstanceS3ImportToTerraform(this._s3Import.internalValue),
+      timeouts: dbInstanceTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

@@ -62,6 +62,31 @@ export class DatasyncLocationEfsEc2ConfigOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DatasyncLocationEfsEc2Config | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._securityGroupArns) {
+      hasAnyValues = true;
+      internalValueResult.securityGroupArns = this._securityGroupArns;
+    }
+    if (this._subnetArn) {
+      hasAnyValues = true;
+      internalValueResult.subnetArn = this._subnetArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DatasyncLocationEfsEc2Config | undefined) {
+    if (value === undefined) {
+      this._securityGroupArns = undefined;
+      this._subnetArn = undefined;
+    }
+    else {
+      this._securityGroupArns = value.securityGroupArns;
+      this._subnetArn = value.subnetArn;
+    }
+  }
+
   // security_group_arns - computed: false, optional: false, required: true
   private _securityGroupArns?: string[]; 
   public get securityGroupArns() {
@@ -72,7 +97,7 @@ export class DatasyncLocationEfsEc2ConfigOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupArnsInput() {
-    return this._securityGroupArns
+    return this._securityGroupArns;
   }
 
   // subnet_arn - computed: false, optional: false, required: true
@@ -85,7 +110,7 @@ export class DatasyncLocationEfsEc2ConfigOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get subnetArnInput() {
-    return this._subnetArn
+    return this._subnetArn;
   }
 }
 
@@ -125,7 +150,7 @@ export class DatasyncLocationEfs extends cdktf.TerraformResource {
     this._subdirectory = config.subdirectory;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._ec2Config = config.ec2Config;
+    this._ec2Config.internalValue = config.ec2Config;
   }
 
   // ==========
@@ -147,7 +172,7 @@ export class DatasyncLocationEfs extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get efsFileSystemArnInput() {
-    return this._efsFileSystemArn
+    return this._efsFileSystemArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -156,11 +181,11 @@ export class DatasyncLocationEfs extends cdktf.TerraformResource {
   }
 
   // subdirectory - computed: false, optional: true, required: false
-  private _subdirectory?: string | undefined; 
+  private _subdirectory?: string; 
   public get subdirectory() {
     return this.getStringAttribute('subdirectory');
   }
-  public set subdirectory(value: string | undefined) {
+  public set subdirectory(value: string) {
     this._subdirectory = value;
   }
   public resetSubdirectory() {
@@ -168,16 +193,16 @@ export class DatasyncLocationEfs extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subdirectoryInput() {
-    return this._subdirectory
+    return this._subdirectory;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -185,16 +210,16 @@ export class DatasyncLocationEfs extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -202,7 +227,7 @@ export class DatasyncLocationEfs extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // uri - computed: true, optional: false, required: false
@@ -211,17 +236,16 @@ export class DatasyncLocationEfs extends cdktf.TerraformResource {
   }
 
   // ec2_config - computed: false, optional: false, required: true
-  private _ec2Config?: DatasyncLocationEfsEc2Config; 
-  private __ec2ConfigOutput = new DatasyncLocationEfsEc2ConfigOutputReference(this as any, "ec2_config", true);
+  private _ec2Config = new DatasyncLocationEfsEc2ConfigOutputReference(this as any, "ec2_config", true);
   public get ec2Config() {
-    return this.__ec2ConfigOutput;
+    return this._ec2Config;
   }
   public putEc2Config(value: DatasyncLocationEfsEc2Config) {
-    this._ec2Config = value;
+    this._ec2Config.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get ec2ConfigInput() {
-    return this._ec2Config
+    return this._ec2Config.internalValue;
   }
 
   // =========
@@ -234,7 +258,7 @@ export class DatasyncLocationEfs extends cdktf.TerraformResource {
       subdirectory: cdktf.stringToTerraform(this._subdirectory),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      ec2_config: datasyncLocationEfsEc2ConfigToTerraform(this._ec2Config),
+      ec2_config: datasyncLocationEfsEc2ConfigToTerraform(this._ec2Config.internalValue),
     };
   }
 }

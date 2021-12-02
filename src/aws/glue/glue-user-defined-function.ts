@@ -112,11 +112,11 @@ export class GlueUserDefinedFunction extends cdktf.TerraformResource {
   }
 
   // catalog_id - computed: false, optional: true, required: false
-  private _catalogId?: string | undefined; 
+  private _catalogId?: string; 
   public get catalogId() {
     return this.getStringAttribute('catalog_id');
   }
-  public set catalogId(value: string | undefined) {
+  public set catalogId(value: string) {
     this._catalogId = value;
   }
   public resetCatalogId() {
@@ -124,7 +124,7 @@ export class GlueUserDefinedFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get catalogIdInput() {
-    return this._catalogId
+    return this._catalogId;
   }
 
   // class_name - computed: false, optional: false, required: true
@@ -137,7 +137,7 @@ export class GlueUserDefinedFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get classNameInput() {
-    return this._className
+    return this._className;
   }
 
   // create_time - computed: true, optional: false, required: false
@@ -155,7 +155,7 @@ export class GlueUserDefinedFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get databaseNameInput() {
-    return this._databaseName
+    return this._databaseName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -173,7 +173,7 @@ export class GlueUserDefinedFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // owner_name - computed: false, optional: false, required: true
@@ -186,7 +186,7 @@ export class GlueUserDefinedFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownerNameInput() {
-    return this._ownerName
+    return this._ownerName;
   }
 
   // owner_type - computed: false, optional: false, required: true
@@ -199,16 +199,16 @@ export class GlueUserDefinedFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownerTypeInput() {
-    return this._ownerType
+    return this._ownerType;
   }
 
   // resource_uris - computed: false, optional: true, required: false
-  private _resourceUris?: GlueUserDefinedFunctionResourceUris[] | undefined; 
+  private _resourceUris?: GlueUserDefinedFunctionResourceUris[]; 
   public get resourceUris() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_uris') as any;
   }
-  public set resourceUris(value: GlueUserDefinedFunctionResourceUris[] | undefined) {
+  public set resourceUris(value: GlueUserDefinedFunctionResourceUris[]) {
     this._resourceUris = value;
   }
   public resetResourceUris() {
@@ -216,7 +216,7 @@ export class GlueUserDefinedFunction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceUrisInput() {
-    return this._resourceUris
+    return this._resourceUris;
   }
 
   // =========

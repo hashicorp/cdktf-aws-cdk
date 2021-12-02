@@ -133,12 +133,43 @@ export class CodedeployDeploymentGroupAlarmConfigurationOutputReference extends 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodedeployDeploymentGroupAlarmConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._alarms) {
+      hasAnyValues = true;
+      internalValueResult.alarms = this._alarms;
+    }
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._ignorePollAlarmFailure) {
+      hasAnyValues = true;
+      internalValueResult.ignorePollAlarmFailure = this._ignorePollAlarmFailure;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodedeployDeploymentGroupAlarmConfiguration | undefined) {
+    if (value === undefined) {
+      this._alarms = undefined;
+      this._enabled = undefined;
+      this._ignorePollAlarmFailure = undefined;
+    }
+    else {
+      this._alarms = value.alarms;
+      this._enabled = value.enabled;
+      this._ignorePollAlarmFailure = value.ignorePollAlarmFailure;
+    }
+  }
+
   // alarms - computed: false, optional: true, required: false
-  private _alarms?: string[] | undefined; 
+  private _alarms?: string[]; 
   public get alarms() {
     return this.getListAttribute('alarms');
   }
-  public set alarms(value: string[] | undefined) {
+  public set alarms(value: string[]) {
     this._alarms = value;
   }
   public resetAlarms() {
@@ -146,15 +177,15 @@ export class CodedeployDeploymentGroupAlarmConfigurationOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get alarmsInput() {
-    return this._alarms
+    return this._alarms;
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -162,15 +193,15 @@ export class CodedeployDeploymentGroupAlarmConfigurationOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // ignore_poll_alarm_failure - computed: false, optional: true, required: false
-  private _ignorePollAlarmFailure?: boolean | cdktf.IResolvable | undefined; 
+  private _ignorePollAlarmFailure?: boolean | cdktf.IResolvable; 
   public get ignorePollAlarmFailure() {
     return this.getBooleanAttribute('ignore_poll_alarm_failure') as any;
   }
-  public set ignorePollAlarmFailure(value: boolean | cdktf.IResolvable | undefined) {
+  public set ignorePollAlarmFailure(value: boolean | cdktf.IResolvable) {
     this._ignorePollAlarmFailure = value;
   }
   public resetIgnorePollAlarmFailure() {
@@ -178,7 +209,7 @@ export class CodedeployDeploymentGroupAlarmConfigurationOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get ignorePollAlarmFailureInput() {
-    return this._ignorePollAlarmFailure
+    return this._ignorePollAlarmFailure;
   }
 }
 export interface CodedeployDeploymentGroupAutoRollbackConfiguration {
@@ -213,12 +244,37 @@ export class CodedeployDeploymentGroupAutoRollbackConfigurationOutputReference e
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodedeployDeploymentGroupAutoRollbackConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._events) {
+      hasAnyValues = true;
+      internalValueResult.events = this._events;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodedeployDeploymentGroupAutoRollbackConfiguration | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._events = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._events = value.events;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -226,15 +282,15 @@ export class CodedeployDeploymentGroupAutoRollbackConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // events - computed: false, optional: true, required: false
-  private _events?: string[] | undefined; 
+  private _events?: string[]; 
   public get events() {
     return this.getListAttribute('events');
   }
-  public set events(value: string[] | undefined) {
+  public set events(value: string[]) {
     this._events = value;
   }
   public resetEvents() {
@@ -242,7 +298,7 @@ export class CodedeployDeploymentGroupAutoRollbackConfigurationOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get eventsInput() {
-    return this._events
+    return this._events;
   }
 }
 export interface CodedeployDeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption {
@@ -277,12 +333,37 @@ export class CodedeployDeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodedeployDeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._actionOnTimeout) {
+      hasAnyValues = true;
+      internalValueResult.actionOnTimeout = this._actionOnTimeout;
+    }
+    if (this._waitTimeInMinutes) {
+      hasAnyValues = true;
+      internalValueResult.waitTimeInMinutes = this._waitTimeInMinutes;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodedeployDeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption | undefined) {
+    if (value === undefined) {
+      this._actionOnTimeout = undefined;
+      this._waitTimeInMinutes = undefined;
+    }
+    else {
+      this._actionOnTimeout = value.actionOnTimeout;
+      this._waitTimeInMinutes = value.waitTimeInMinutes;
+    }
+  }
+
   // action_on_timeout - computed: false, optional: true, required: false
-  private _actionOnTimeout?: string | undefined; 
+  private _actionOnTimeout?: string; 
   public get actionOnTimeout() {
     return this.getStringAttribute('action_on_timeout');
   }
-  public set actionOnTimeout(value: string | undefined) {
+  public set actionOnTimeout(value: string) {
     this._actionOnTimeout = value;
   }
   public resetActionOnTimeout() {
@@ -290,15 +371,15 @@ export class CodedeployDeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOp
   }
   // Temporarily expose input value. Use with caution.
   public get actionOnTimeoutInput() {
-    return this._actionOnTimeout
+    return this._actionOnTimeout;
   }
 
   // wait_time_in_minutes - computed: false, optional: true, required: false
-  private _waitTimeInMinutes?: number | undefined; 
+  private _waitTimeInMinutes?: number; 
   public get waitTimeInMinutes() {
     return this.getNumberAttribute('wait_time_in_minutes');
   }
-  public set waitTimeInMinutes(value: number | undefined) {
+  public set waitTimeInMinutes(value: number) {
     this._waitTimeInMinutes = value;
   }
   public resetWaitTimeInMinutes() {
@@ -306,7 +387,7 @@ export class CodedeployDeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOp
   }
   // Temporarily expose input value. Use with caution.
   public get waitTimeInMinutesInput() {
-    return this._waitTimeInMinutes
+    return this._waitTimeInMinutes;
   }
 }
 export interface CodedeployDeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption {
@@ -336,12 +417,31 @@ export class CodedeployDeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisi
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodedeployDeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._action) {
+      hasAnyValues = true;
+      internalValueResult.action = this._action;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodedeployDeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption | undefined) {
+    if (value === undefined) {
+      this._action = undefined;
+    }
+    else {
+      this._action = value.action;
+    }
+  }
+
   // action - computed: false, optional: true, required: false
-  private _action?: string | undefined; 
+  private _action?: string; 
   public get action() {
     return this.getStringAttribute('action');
   }
-  public set action(value: string | undefined) {
+  public set action(value: string) {
     this._action = value;
   }
   public resetAction() {
@@ -349,7 +449,7 @@ export class CodedeployDeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisi
   }
   // Temporarily expose input value. Use with caution.
   public get actionInput() {
-    return this._action
+    return this._action;
   }
 }
 export interface CodedeployDeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess {
@@ -384,12 +484,37 @@ export class CodedeployDeploymentGroupBlueGreenDeploymentConfigTerminateBlueInst
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodedeployDeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._action) {
+      hasAnyValues = true;
+      internalValueResult.action = this._action;
+    }
+    if (this._terminationWaitTimeInMinutes) {
+      hasAnyValues = true;
+      internalValueResult.terminationWaitTimeInMinutes = this._terminationWaitTimeInMinutes;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodedeployDeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess | undefined) {
+    if (value === undefined) {
+      this._action = undefined;
+      this._terminationWaitTimeInMinutes = undefined;
+    }
+    else {
+      this._action = value.action;
+      this._terminationWaitTimeInMinutes = value.terminationWaitTimeInMinutes;
+    }
+  }
+
   // action - computed: false, optional: true, required: false
-  private _action?: string | undefined; 
+  private _action?: string; 
   public get action() {
     return this.getStringAttribute('action');
   }
-  public set action(value: string | undefined) {
+  public set action(value: string) {
     this._action = value;
   }
   public resetAction() {
@@ -397,15 +522,15 @@ export class CodedeployDeploymentGroupBlueGreenDeploymentConfigTerminateBlueInst
   }
   // Temporarily expose input value. Use with caution.
   public get actionInput() {
-    return this._action
+    return this._action;
   }
 
   // termination_wait_time_in_minutes - computed: false, optional: true, required: false
-  private _terminationWaitTimeInMinutes?: number | undefined; 
+  private _terminationWaitTimeInMinutes?: number; 
   public get terminationWaitTimeInMinutes() {
     return this.getNumberAttribute('termination_wait_time_in_minutes');
   }
-  public set terminationWaitTimeInMinutes(value: number | undefined) {
+  public set terminationWaitTimeInMinutes(value: number) {
     this._terminationWaitTimeInMinutes = value;
   }
   public resetTerminationWaitTimeInMinutes() {
@@ -413,7 +538,7 @@ export class CodedeployDeploymentGroupBlueGreenDeploymentConfigTerminateBlueInst
   }
   // Temporarily expose input value. Use with caution.
   public get terminationWaitTimeInMinutesInput() {
-    return this._terminationWaitTimeInMinutes
+    return this._terminationWaitTimeInMinutes;
   }
 }
 export interface CodedeployDeploymentGroupBlueGreenDeploymentConfig {
@@ -459,55 +584,83 @@ export class CodedeployDeploymentGroupBlueGreenDeploymentConfigOutputReference e
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // deployment_ready_option - computed: false, optional: true, required: false
-  private _deploymentReadyOption?: CodedeployDeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption | undefined; 
-  private __deploymentReadyOptionOutput = new CodedeployDeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionOutputReference(this as any, "deployment_ready_option", true);
-  public get deploymentReadyOption() {
-    return this.__deploymentReadyOptionOutput;
+  public get internalValue(): CodedeployDeploymentGroupBlueGreenDeploymentConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._deploymentReadyOption) {
+      hasAnyValues = true;
+      internalValueResult.deploymentReadyOption = this._deploymentReadyOption?.internalValue;
+    }
+    if (this._greenFleetProvisioningOption) {
+      hasAnyValues = true;
+      internalValueResult.greenFleetProvisioningOption = this._greenFleetProvisioningOption?.internalValue;
+    }
+    if (this._terminateBlueInstancesOnDeploymentSuccess) {
+      hasAnyValues = true;
+      internalValueResult.terminateBlueInstancesOnDeploymentSuccess = this._terminateBlueInstancesOnDeploymentSuccess?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putDeploymentReadyOption(value: CodedeployDeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption | undefined) {
-    this._deploymentReadyOption = value;
+
+  public set internalValue(value: CodedeployDeploymentGroupBlueGreenDeploymentConfig | undefined) {
+    if (value === undefined) {
+      this._deploymentReadyOption.internalValue = undefined;
+      this._greenFleetProvisioningOption.internalValue = undefined;
+      this._terminateBlueInstancesOnDeploymentSuccess.internalValue = undefined;
+    }
+    else {
+      this._deploymentReadyOption.internalValue = value.deploymentReadyOption;
+      this._greenFleetProvisioningOption.internalValue = value.greenFleetProvisioningOption;
+      this._terminateBlueInstancesOnDeploymentSuccess.internalValue = value.terminateBlueInstancesOnDeploymentSuccess;
+    }
+  }
+
+  // deployment_ready_option - computed: false, optional: true, required: false
+  private _deploymentReadyOption = new CodedeployDeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOptionOutputReference(this as any, "deployment_ready_option", true);
+  public get deploymentReadyOption() {
+    return this._deploymentReadyOption;
+  }
+  public putDeploymentReadyOption(value: CodedeployDeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption) {
+    this._deploymentReadyOption.internalValue = value;
   }
   public resetDeploymentReadyOption() {
-    this._deploymentReadyOption = undefined;
+    this._deploymentReadyOption.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentReadyOptionInput() {
-    return this._deploymentReadyOption
+    return this._deploymentReadyOption.internalValue;
   }
 
   // green_fleet_provisioning_option - computed: false, optional: true, required: false
-  private _greenFleetProvisioningOption?: CodedeployDeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption | undefined; 
-  private __greenFleetProvisioningOptionOutput = new CodedeployDeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionOutputReference(this as any, "green_fleet_provisioning_option", true);
+  private _greenFleetProvisioningOption = new CodedeployDeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOptionOutputReference(this as any, "green_fleet_provisioning_option", true);
   public get greenFleetProvisioningOption() {
-    return this.__greenFleetProvisioningOptionOutput;
+    return this._greenFleetProvisioningOption;
   }
-  public putGreenFleetProvisioningOption(value: CodedeployDeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption | undefined) {
-    this._greenFleetProvisioningOption = value;
+  public putGreenFleetProvisioningOption(value: CodedeployDeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption) {
+    this._greenFleetProvisioningOption.internalValue = value;
   }
   public resetGreenFleetProvisioningOption() {
-    this._greenFleetProvisioningOption = undefined;
+    this._greenFleetProvisioningOption.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get greenFleetProvisioningOptionInput() {
-    return this._greenFleetProvisioningOption
+    return this._greenFleetProvisioningOption.internalValue;
   }
 
   // terminate_blue_instances_on_deployment_success - computed: false, optional: true, required: false
-  private _terminateBlueInstancesOnDeploymentSuccess?: CodedeployDeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess | undefined; 
-  private __terminateBlueInstancesOnDeploymentSuccessOutput = new CodedeployDeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessOutputReference(this as any, "terminate_blue_instances_on_deployment_success", true);
+  private _terminateBlueInstancesOnDeploymentSuccess = new CodedeployDeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccessOutputReference(this as any, "terminate_blue_instances_on_deployment_success", true);
   public get terminateBlueInstancesOnDeploymentSuccess() {
-    return this.__terminateBlueInstancesOnDeploymentSuccessOutput;
+    return this._terminateBlueInstancesOnDeploymentSuccess;
   }
-  public putTerminateBlueInstancesOnDeploymentSuccess(value: CodedeployDeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess | undefined) {
-    this._terminateBlueInstancesOnDeploymentSuccess = value;
+  public putTerminateBlueInstancesOnDeploymentSuccess(value: CodedeployDeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess) {
+    this._terminateBlueInstancesOnDeploymentSuccess.internalValue = value;
   }
   public resetTerminateBlueInstancesOnDeploymentSuccess() {
-    this._terminateBlueInstancesOnDeploymentSuccess = undefined;
+    this._terminateBlueInstancesOnDeploymentSuccess.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get terminateBlueInstancesOnDeploymentSuccessInput() {
-    return this._terminateBlueInstancesOnDeploymentSuccess
+    return this._terminateBlueInstancesOnDeploymentSuccess.internalValue;
   }
 }
 export interface CodedeployDeploymentGroupDeploymentStyle {
@@ -542,12 +695,37 @@ export class CodedeployDeploymentGroupDeploymentStyleOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodedeployDeploymentGroupDeploymentStyle | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._deploymentOption) {
+      hasAnyValues = true;
+      internalValueResult.deploymentOption = this._deploymentOption;
+    }
+    if (this._deploymentType) {
+      hasAnyValues = true;
+      internalValueResult.deploymentType = this._deploymentType;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodedeployDeploymentGroupDeploymentStyle | undefined) {
+    if (value === undefined) {
+      this._deploymentOption = undefined;
+      this._deploymentType = undefined;
+    }
+    else {
+      this._deploymentOption = value.deploymentOption;
+      this._deploymentType = value.deploymentType;
+    }
+  }
+
   // deployment_option - computed: false, optional: true, required: false
-  private _deploymentOption?: string | undefined; 
+  private _deploymentOption?: string; 
   public get deploymentOption() {
     return this.getStringAttribute('deployment_option');
   }
-  public set deploymentOption(value: string | undefined) {
+  public set deploymentOption(value: string) {
     this._deploymentOption = value;
   }
   public resetDeploymentOption() {
@@ -555,15 +733,15 @@ export class CodedeployDeploymentGroupDeploymentStyleOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentOptionInput() {
-    return this._deploymentOption
+    return this._deploymentOption;
   }
 
   // deployment_type - computed: false, optional: true, required: false
-  private _deploymentType?: string | undefined; 
+  private _deploymentType?: string; 
   public get deploymentType() {
     return this.getStringAttribute('deployment_type');
   }
-  public set deploymentType(value: string | undefined) {
+  public set deploymentType(value: string) {
     this._deploymentType = value;
   }
   public resetDeploymentType() {
@@ -571,7 +749,7 @@ export class CodedeployDeploymentGroupDeploymentStyleOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentTypeInput() {
-    return this._deploymentType
+    return this._deploymentType;
   }
 }
 export interface CodedeployDeploymentGroupEc2TagFilter {
@@ -679,6 +857,31 @@ export class CodedeployDeploymentGroupEcsServiceOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodedeployDeploymentGroupEcsService | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._clusterName) {
+      hasAnyValues = true;
+      internalValueResult.clusterName = this._clusterName;
+    }
+    if (this._serviceName) {
+      hasAnyValues = true;
+      internalValueResult.serviceName = this._serviceName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodedeployDeploymentGroupEcsService | undefined) {
+    if (value === undefined) {
+      this._clusterName = undefined;
+      this._serviceName = undefined;
+    }
+    else {
+      this._clusterName = value.clusterName;
+      this._serviceName = value.serviceName;
+    }
+  }
+
   // cluster_name - computed: false, optional: false, required: true
   private _clusterName?: string; 
   public get clusterName() {
@@ -689,7 +892,7 @@ export class CodedeployDeploymentGroupEcsServiceOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get clusterNameInput() {
-    return this._clusterName
+    return this._clusterName;
   }
 
   // service_name - computed: false, optional: false, required: true
@@ -702,7 +905,7 @@ export class CodedeployDeploymentGroupEcsServiceOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get serviceNameInput() {
-    return this._serviceName
+    return this._serviceName;
   }
 }
 export interface CodedeployDeploymentGroupLoadBalancerInfoElbInfo {
@@ -766,6 +969,25 @@ export class CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTra
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._listenerArns) {
+      hasAnyValues = true;
+      internalValueResult.listenerArns = this._listenerArns;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute | undefined) {
+    if (value === undefined) {
+      this._listenerArns = undefined;
+    }
+    else {
+      this._listenerArns = value.listenerArns;
+    }
+  }
+
   // listener_arns - computed: false, optional: false, required: true
   private _listenerArns?: string[]; 
   public get listenerArns() {
@@ -776,7 +998,7 @@ export class CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTra
   }
   // Temporarily expose input value. Use with caution.
   public get listenerArnsInput() {
-    return this._listenerArns
+    return this._listenerArns;
   }
 }
 export interface CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup {
@@ -823,6 +1045,25 @@ export class CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTra
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._listenerArns) {
+      hasAnyValues = true;
+      internalValueResult.listenerArns = this._listenerArns;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute | undefined) {
+    if (value === undefined) {
+      this._listenerArns = undefined;
+    }
+    else {
+      this._listenerArns = value.listenerArns;
+    }
+  }
+
   // listener_arns - computed: false, optional: false, required: true
   private _listenerArns?: string[]; 
   public get listenerArns() {
@@ -833,7 +1074,7 @@ export class CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTra
   }
   // Temporarily expose input value. Use with caution.
   public get listenerArnsInput() {
-    return this._listenerArns
+    return this._listenerArns;
   }
 }
 export interface CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfo {
@@ -879,18 +1120,48 @@ export class CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoOutputR
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfo | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._prodTrafficRoute) {
+      hasAnyValues = true;
+      internalValueResult.prodTrafficRoute = this._prodTrafficRoute?.internalValue;
+    }
+    if (this._targetGroup) {
+      hasAnyValues = true;
+      internalValueResult.targetGroup = this._targetGroup;
+    }
+    if (this._testTrafficRoute) {
+      hasAnyValues = true;
+      internalValueResult.testTrafficRoute = this._testTrafficRoute?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfo | undefined) {
+    if (value === undefined) {
+      this._prodTrafficRoute.internalValue = undefined;
+      this._targetGroup = undefined;
+      this._testTrafficRoute.internalValue = undefined;
+    }
+    else {
+      this._prodTrafficRoute.internalValue = value.prodTrafficRoute;
+      this._targetGroup = value.targetGroup;
+      this._testTrafficRoute.internalValue = value.testTrafficRoute;
+    }
+  }
+
   // prod_traffic_route - computed: false, optional: false, required: true
-  private _prodTrafficRoute?: CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute; 
-  private __prodTrafficRouteOutput = new CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRouteOutputReference(this as any, "prod_traffic_route", true);
+  private _prodTrafficRoute = new CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRouteOutputReference(this as any, "prod_traffic_route", true);
   public get prodTrafficRoute() {
-    return this.__prodTrafficRouteOutput;
+    return this._prodTrafficRoute;
   }
   public putProdTrafficRoute(value: CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute) {
-    this._prodTrafficRoute = value;
+    this._prodTrafficRoute.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get prodTrafficRouteInput() {
-    return this._prodTrafficRoute
+    return this._prodTrafficRoute.internalValue;
   }
 
   // target_group - computed: false, optional: false, required: true
@@ -904,24 +1175,23 @@ export class CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoOutputR
   }
   // Temporarily expose input value. Use with caution.
   public get targetGroupInput() {
-    return this._targetGroup
+    return this._targetGroup;
   }
 
   // test_traffic_route - computed: false, optional: true, required: false
-  private _testTrafficRoute?: CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute | undefined; 
-  private __testTrafficRouteOutput = new CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRouteOutputReference(this as any, "test_traffic_route", true);
+  private _testTrafficRoute = new CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRouteOutputReference(this as any, "test_traffic_route", true);
   public get testTrafficRoute() {
-    return this.__testTrafficRouteOutput;
+    return this._testTrafficRoute;
   }
-  public putTestTrafficRoute(value: CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute | undefined) {
-    this._testTrafficRoute = value;
+  public putTestTrafficRoute(value: CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute) {
+    this._testTrafficRoute.internalValue = value;
   }
   public resetTestTrafficRoute() {
-    this._testTrafficRoute = undefined;
+    this._testTrafficRoute.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get testTrafficRouteInput() {
-    return this._testTrafficRoute
+    return this._testTrafficRoute.internalValue;
   }
 }
 export interface CodedeployDeploymentGroupLoadBalancerInfo {
@@ -967,13 +1237,44 @@ export class CodedeployDeploymentGroupLoadBalancerInfoOutputReference extends cd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CodedeployDeploymentGroupLoadBalancerInfo | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._elbInfo) {
+      hasAnyValues = true;
+      internalValueResult.elbInfo = this._elbInfo;
+    }
+    if (this._targetGroupInfo) {
+      hasAnyValues = true;
+      internalValueResult.targetGroupInfo = this._targetGroupInfo;
+    }
+    if (this._targetGroupPairInfo) {
+      hasAnyValues = true;
+      internalValueResult.targetGroupPairInfo = this._targetGroupPairInfo?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CodedeployDeploymentGroupLoadBalancerInfo | undefined) {
+    if (value === undefined) {
+      this._elbInfo = undefined;
+      this._targetGroupInfo = undefined;
+      this._targetGroupPairInfo.internalValue = undefined;
+    }
+    else {
+      this._elbInfo = value.elbInfo;
+      this._targetGroupInfo = value.targetGroupInfo;
+      this._targetGroupPairInfo.internalValue = value.targetGroupPairInfo;
+    }
+  }
+
   // elb_info - computed: false, optional: true, required: false
-  private _elbInfo?: CodedeployDeploymentGroupLoadBalancerInfoElbInfo[] | undefined; 
+  private _elbInfo?: CodedeployDeploymentGroupLoadBalancerInfoElbInfo[]; 
   public get elbInfo() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('elb_info') as any;
   }
-  public set elbInfo(value: CodedeployDeploymentGroupLoadBalancerInfoElbInfo[] | undefined) {
+  public set elbInfo(value: CodedeployDeploymentGroupLoadBalancerInfoElbInfo[]) {
     this._elbInfo = value;
   }
   public resetElbInfo() {
@@ -981,16 +1282,16 @@ export class CodedeployDeploymentGroupLoadBalancerInfoOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get elbInfoInput() {
-    return this._elbInfo
+    return this._elbInfo;
   }
 
   // target_group_info - computed: false, optional: true, required: false
-  private _targetGroupInfo?: CodedeployDeploymentGroupLoadBalancerInfoTargetGroupInfo[] | undefined; 
+  private _targetGroupInfo?: CodedeployDeploymentGroupLoadBalancerInfoTargetGroupInfo[]; 
   public get targetGroupInfo() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('target_group_info') as any;
   }
-  public set targetGroupInfo(value: CodedeployDeploymentGroupLoadBalancerInfoTargetGroupInfo[] | undefined) {
+  public set targetGroupInfo(value: CodedeployDeploymentGroupLoadBalancerInfoTargetGroupInfo[]) {
     this._targetGroupInfo = value;
   }
   public resetTargetGroupInfo() {
@@ -998,24 +1299,23 @@ export class CodedeployDeploymentGroupLoadBalancerInfoOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get targetGroupInfoInput() {
-    return this._targetGroupInfo
+    return this._targetGroupInfo;
   }
 
   // target_group_pair_info - computed: false, optional: true, required: false
-  private _targetGroupPairInfo?: CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfo | undefined; 
-  private __targetGroupPairInfoOutput = new CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoOutputReference(this as any, "target_group_pair_info", true);
+  private _targetGroupPairInfo = new CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfoOutputReference(this as any, "target_group_pair_info", true);
   public get targetGroupPairInfo() {
-    return this.__targetGroupPairInfoOutput;
+    return this._targetGroupPairInfo;
   }
-  public putTargetGroupPairInfo(value: CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfo | undefined) {
-    this._targetGroupPairInfo = value;
+  public putTargetGroupPairInfo(value: CodedeployDeploymentGroupLoadBalancerInfoTargetGroupPairInfo) {
+    this._targetGroupPairInfo.internalValue = value;
   }
   public resetTargetGroupPairInfo() {
-    this._targetGroupPairInfo = undefined;
+    this._targetGroupPairInfo.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get targetGroupPairInfoInput() {
-    return this._targetGroupPairInfo
+    return this._targetGroupPairInfo.internalValue;
   }
 }
 export interface CodedeployDeploymentGroupOnPremisesInstanceTagFilter {
@@ -1112,14 +1412,14 @@ export class CodedeployDeploymentGroup extends cdktf.TerraformResource {
     this._serviceRoleArn = config.serviceRoleArn;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._alarmConfiguration = config.alarmConfiguration;
-    this._autoRollbackConfiguration = config.autoRollbackConfiguration;
-    this._blueGreenDeploymentConfig = config.blueGreenDeploymentConfig;
-    this._deploymentStyle = config.deploymentStyle;
+    this._alarmConfiguration.internalValue = config.alarmConfiguration;
+    this._autoRollbackConfiguration.internalValue = config.autoRollbackConfiguration;
+    this._blueGreenDeploymentConfig.internalValue = config.blueGreenDeploymentConfig;
+    this._deploymentStyle.internalValue = config.deploymentStyle;
     this._ec2TagFilter = config.ec2TagFilter;
     this._ec2TagSet = config.ec2TagSet;
-    this._ecsService = config.ecsService;
-    this._loadBalancerInfo = config.loadBalancerInfo;
+    this._ecsService.internalValue = config.ecsService;
+    this._loadBalancerInfo.internalValue = config.loadBalancerInfo;
     this._onPremisesInstanceTagFilter = config.onPremisesInstanceTagFilter;
     this._triggerConfiguration = config.triggerConfiguration;
   }
@@ -1138,7 +1438,7 @@ export class CodedeployDeploymentGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get appNameInput() {
-    return this._appName
+    return this._appName;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -1147,11 +1447,11 @@ export class CodedeployDeploymentGroup extends cdktf.TerraformResource {
   }
 
   // autoscaling_groups - computed: false, optional: true, required: false
-  private _autoscalingGroups?: string[] | undefined; 
+  private _autoscalingGroups?: string[]; 
   public get autoscalingGroups() {
     return this.getListAttribute('autoscaling_groups');
   }
-  public set autoscalingGroups(value: string[] | undefined) {
+  public set autoscalingGroups(value: string[]) {
     this._autoscalingGroups = value;
   }
   public resetAutoscalingGroups() {
@@ -1159,7 +1459,7 @@ export class CodedeployDeploymentGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoscalingGroupsInput() {
-    return this._autoscalingGroups
+    return this._autoscalingGroups;
   }
 
   // compute_platform - computed: true, optional: false, required: false
@@ -1168,11 +1468,11 @@ export class CodedeployDeploymentGroup extends cdktf.TerraformResource {
   }
 
   // deployment_config_name - computed: false, optional: true, required: false
-  private _deploymentConfigName?: string | undefined; 
+  private _deploymentConfigName?: string; 
   public get deploymentConfigName() {
     return this.getStringAttribute('deployment_config_name');
   }
-  public set deploymentConfigName(value: string | undefined) {
+  public set deploymentConfigName(value: string) {
     this._deploymentConfigName = value;
   }
   public resetDeploymentConfigName() {
@@ -1180,7 +1480,7 @@ export class CodedeployDeploymentGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentConfigNameInput() {
-    return this._deploymentConfigName
+    return this._deploymentConfigName;
   }
 
   // deployment_group_id - computed: true, optional: false, required: false
@@ -1198,7 +1498,7 @@ export class CodedeployDeploymentGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentGroupNameInput() {
-    return this._deploymentGroupName
+    return this._deploymentGroupName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -1216,16 +1516,16 @@ export class CodedeployDeploymentGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceRoleArnInput() {
-    return this._serviceRoleArn
+    return this._serviceRoleArn;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -1233,16 +1533,16 @@ export class CodedeployDeploymentGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -1250,84 +1550,80 @@ export class CodedeployDeploymentGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // alarm_configuration - computed: false, optional: true, required: false
-  private _alarmConfiguration?: CodedeployDeploymentGroupAlarmConfiguration | undefined; 
-  private __alarmConfigurationOutput = new CodedeployDeploymentGroupAlarmConfigurationOutputReference(this as any, "alarm_configuration", true);
+  private _alarmConfiguration = new CodedeployDeploymentGroupAlarmConfigurationOutputReference(this as any, "alarm_configuration", true);
   public get alarmConfiguration() {
-    return this.__alarmConfigurationOutput;
+    return this._alarmConfiguration;
   }
-  public putAlarmConfiguration(value: CodedeployDeploymentGroupAlarmConfiguration | undefined) {
-    this._alarmConfiguration = value;
+  public putAlarmConfiguration(value: CodedeployDeploymentGroupAlarmConfiguration) {
+    this._alarmConfiguration.internalValue = value;
   }
   public resetAlarmConfiguration() {
-    this._alarmConfiguration = undefined;
+    this._alarmConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get alarmConfigurationInput() {
-    return this._alarmConfiguration
+    return this._alarmConfiguration.internalValue;
   }
 
   // auto_rollback_configuration - computed: false, optional: true, required: false
-  private _autoRollbackConfiguration?: CodedeployDeploymentGroupAutoRollbackConfiguration | undefined; 
-  private __autoRollbackConfigurationOutput = new CodedeployDeploymentGroupAutoRollbackConfigurationOutputReference(this as any, "auto_rollback_configuration", true);
+  private _autoRollbackConfiguration = new CodedeployDeploymentGroupAutoRollbackConfigurationOutputReference(this as any, "auto_rollback_configuration", true);
   public get autoRollbackConfiguration() {
-    return this.__autoRollbackConfigurationOutput;
+    return this._autoRollbackConfiguration;
   }
-  public putAutoRollbackConfiguration(value: CodedeployDeploymentGroupAutoRollbackConfiguration | undefined) {
-    this._autoRollbackConfiguration = value;
+  public putAutoRollbackConfiguration(value: CodedeployDeploymentGroupAutoRollbackConfiguration) {
+    this._autoRollbackConfiguration.internalValue = value;
   }
   public resetAutoRollbackConfiguration() {
-    this._autoRollbackConfiguration = undefined;
+    this._autoRollbackConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get autoRollbackConfigurationInput() {
-    return this._autoRollbackConfiguration
+    return this._autoRollbackConfiguration.internalValue;
   }
 
   // blue_green_deployment_config - computed: false, optional: true, required: false
-  private _blueGreenDeploymentConfig?: CodedeployDeploymentGroupBlueGreenDeploymentConfig | undefined; 
-  private __blueGreenDeploymentConfigOutput = new CodedeployDeploymentGroupBlueGreenDeploymentConfigOutputReference(this as any, "blue_green_deployment_config", true);
+  private _blueGreenDeploymentConfig = new CodedeployDeploymentGroupBlueGreenDeploymentConfigOutputReference(this as any, "blue_green_deployment_config", true);
   public get blueGreenDeploymentConfig() {
-    return this.__blueGreenDeploymentConfigOutput;
+    return this._blueGreenDeploymentConfig;
   }
-  public putBlueGreenDeploymentConfig(value: CodedeployDeploymentGroupBlueGreenDeploymentConfig | undefined) {
-    this._blueGreenDeploymentConfig = value;
+  public putBlueGreenDeploymentConfig(value: CodedeployDeploymentGroupBlueGreenDeploymentConfig) {
+    this._blueGreenDeploymentConfig.internalValue = value;
   }
   public resetBlueGreenDeploymentConfig() {
-    this._blueGreenDeploymentConfig = undefined;
+    this._blueGreenDeploymentConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get blueGreenDeploymentConfigInput() {
-    return this._blueGreenDeploymentConfig
+    return this._blueGreenDeploymentConfig.internalValue;
   }
 
   // deployment_style - computed: false, optional: true, required: false
-  private _deploymentStyle?: CodedeployDeploymentGroupDeploymentStyle | undefined; 
-  private __deploymentStyleOutput = new CodedeployDeploymentGroupDeploymentStyleOutputReference(this as any, "deployment_style", true);
+  private _deploymentStyle = new CodedeployDeploymentGroupDeploymentStyleOutputReference(this as any, "deployment_style", true);
   public get deploymentStyle() {
-    return this.__deploymentStyleOutput;
+    return this._deploymentStyle;
   }
-  public putDeploymentStyle(value: CodedeployDeploymentGroupDeploymentStyle | undefined) {
-    this._deploymentStyle = value;
+  public putDeploymentStyle(value: CodedeployDeploymentGroupDeploymentStyle) {
+    this._deploymentStyle.internalValue = value;
   }
   public resetDeploymentStyle() {
-    this._deploymentStyle = undefined;
+    this._deploymentStyle.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentStyleInput() {
-    return this._deploymentStyle
+    return this._deploymentStyle.internalValue;
   }
 
   // ec2_tag_filter - computed: false, optional: true, required: false
-  private _ec2TagFilter?: CodedeployDeploymentGroupEc2TagFilter[] | undefined; 
+  private _ec2TagFilter?: CodedeployDeploymentGroupEc2TagFilter[]; 
   public get ec2TagFilter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ec2_tag_filter') as any;
   }
-  public set ec2TagFilter(value: CodedeployDeploymentGroupEc2TagFilter[] | undefined) {
+  public set ec2TagFilter(value: CodedeployDeploymentGroupEc2TagFilter[]) {
     this._ec2TagFilter = value;
   }
   public resetEc2TagFilter() {
@@ -1335,16 +1631,16 @@ export class CodedeployDeploymentGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ec2TagFilterInput() {
-    return this._ec2TagFilter
+    return this._ec2TagFilter;
   }
 
   // ec2_tag_set - computed: false, optional: true, required: false
-  private _ec2TagSet?: CodedeployDeploymentGroupEc2TagSet[] | undefined; 
+  private _ec2TagSet?: CodedeployDeploymentGroupEc2TagSet[]; 
   public get ec2TagSet() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ec2_tag_set') as any;
   }
-  public set ec2TagSet(value: CodedeployDeploymentGroupEc2TagSet[] | undefined) {
+  public set ec2TagSet(value: CodedeployDeploymentGroupEc2TagSet[]) {
     this._ec2TagSet = value;
   }
   public resetEc2TagSet() {
@@ -1352,50 +1648,48 @@ export class CodedeployDeploymentGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ec2TagSetInput() {
-    return this._ec2TagSet
+    return this._ec2TagSet;
   }
 
   // ecs_service - computed: false, optional: true, required: false
-  private _ecsService?: CodedeployDeploymentGroupEcsService | undefined; 
-  private __ecsServiceOutput = new CodedeployDeploymentGroupEcsServiceOutputReference(this as any, "ecs_service", true);
+  private _ecsService = new CodedeployDeploymentGroupEcsServiceOutputReference(this as any, "ecs_service", true);
   public get ecsService() {
-    return this.__ecsServiceOutput;
+    return this._ecsService;
   }
-  public putEcsService(value: CodedeployDeploymentGroupEcsService | undefined) {
-    this._ecsService = value;
+  public putEcsService(value: CodedeployDeploymentGroupEcsService) {
+    this._ecsService.internalValue = value;
   }
   public resetEcsService() {
-    this._ecsService = undefined;
+    this._ecsService.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ecsServiceInput() {
-    return this._ecsService
+    return this._ecsService.internalValue;
   }
 
   // load_balancer_info - computed: false, optional: true, required: false
-  private _loadBalancerInfo?: CodedeployDeploymentGroupLoadBalancerInfo | undefined; 
-  private __loadBalancerInfoOutput = new CodedeployDeploymentGroupLoadBalancerInfoOutputReference(this as any, "load_balancer_info", true);
+  private _loadBalancerInfo = new CodedeployDeploymentGroupLoadBalancerInfoOutputReference(this as any, "load_balancer_info", true);
   public get loadBalancerInfo() {
-    return this.__loadBalancerInfoOutput;
+    return this._loadBalancerInfo;
   }
-  public putLoadBalancerInfo(value: CodedeployDeploymentGroupLoadBalancerInfo | undefined) {
-    this._loadBalancerInfo = value;
+  public putLoadBalancerInfo(value: CodedeployDeploymentGroupLoadBalancerInfo) {
+    this._loadBalancerInfo.internalValue = value;
   }
   public resetLoadBalancerInfo() {
-    this._loadBalancerInfo = undefined;
+    this._loadBalancerInfo.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get loadBalancerInfoInput() {
-    return this._loadBalancerInfo
+    return this._loadBalancerInfo.internalValue;
   }
 
   // on_premises_instance_tag_filter - computed: false, optional: true, required: false
-  private _onPremisesInstanceTagFilter?: CodedeployDeploymentGroupOnPremisesInstanceTagFilter[] | undefined; 
+  private _onPremisesInstanceTagFilter?: CodedeployDeploymentGroupOnPremisesInstanceTagFilter[]; 
   public get onPremisesInstanceTagFilter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('on_premises_instance_tag_filter') as any;
   }
-  public set onPremisesInstanceTagFilter(value: CodedeployDeploymentGroupOnPremisesInstanceTagFilter[] | undefined) {
+  public set onPremisesInstanceTagFilter(value: CodedeployDeploymentGroupOnPremisesInstanceTagFilter[]) {
     this._onPremisesInstanceTagFilter = value;
   }
   public resetOnPremisesInstanceTagFilter() {
@@ -1403,16 +1697,16 @@ export class CodedeployDeploymentGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get onPremisesInstanceTagFilterInput() {
-    return this._onPremisesInstanceTagFilter
+    return this._onPremisesInstanceTagFilter;
   }
 
   // trigger_configuration - computed: false, optional: true, required: false
-  private _triggerConfiguration?: CodedeployDeploymentGroupTriggerConfiguration[] | undefined; 
+  private _triggerConfiguration?: CodedeployDeploymentGroupTriggerConfiguration[]; 
   public get triggerConfiguration() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('trigger_configuration') as any;
   }
-  public set triggerConfiguration(value: CodedeployDeploymentGroupTriggerConfiguration[] | undefined) {
+  public set triggerConfiguration(value: CodedeployDeploymentGroupTriggerConfiguration[]) {
     this._triggerConfiguration = value;
   }
   public resetTriggerConfiguration() {
@@ -1420,7 +1714,7 @@ export class CodedeployDeploymentGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get triggerConfigurationInput() {
-    return this._triggerConfiguration
+    return this._triggerConfiguration;
   }
 
   // =========
@@ -1436,14 +1730,14 @@ export class CodedeployDeploymentGroup extends cdktf.TerraformResource {
       service_role_arn: cdktf.stringToTerraform(this._serviceRoleArn),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      alarm_configuration: codedeployDeploymentGroupAlarmConfigurationToTerraform(this._alarmConfiguration),
-      auto_rollback_configuration: codedeployDeploymentGroupAutoRollbackConfigurationToTerraform(this._autoRollbackConfiguration),
-      blue_green_deployment_config: codedeployDeploymentGroupBlueGreenDeploymentConfigToTerraform(this._blueGreenDeploymentConfig),
-      deployment_style: codedeployDeploymentGroupDeploymentStyleToTerraform(this._deploymentStyle),
+      alarm_configuration: codedeployDeploymentGroupAlarmConfigurationToTerraform(this._alarmConfiguration.internalValue),
+      auto_rollback_configuration: codedeployDeploymentGroupAutoRollbackConfigurationToTerraform(this._autoRollbackConfiguration.internalValue),
+      blue_green_deployment_config: codedeployDeploymentGroupBlueGreenDeploymentConfigToTerraform(this._blueGreenDeploymentConfig.internalValue),
+      deployment_style: codedeployDeploymentGroupDeploymentStyleToTerraform(this._deploymentStyle.internalValue),
       ec2_tag_filter: cdktf.listMapper(codedeployDeploymentGroupEc2TagFilterToTerraform)(this._ec2TagFilter),
       ec2_tag_set: cdktf.listMapper(codedeployDeploymentGroupEc2TagSetToTerraform)(this._ec2TagSet),
-      ecs_service: codedeployDeploymentGroupEcsServiceToTerraform(this._ecsService),
-      load_balancer_info: codedeployDeploymentGroupLoadBalancerInfoToTerraform(this._loadBalancerInfo),
+      ecs_service: codedeployDeploymentGroupEcsServiceToTerraform(this._ecsService.internalValue),
+      load_balancer_info: codedeployDeploymentGroupLoadBalancerInfoToTerraform(this._loadBalancerInfo.internalValue),
       on_premises_instance_tag_filter: cdktf.listMapper(codedeployDeploymentGroupOnPremisesInstanceTagFilterToTerraform)(this._onPremisesInstanceTagFilter),
       trigger_configuration: cdktf.listMapper(codedeployDeploymentGroupTriggerConfigurationToTerraform)(this._triggerConfiguration),
     };

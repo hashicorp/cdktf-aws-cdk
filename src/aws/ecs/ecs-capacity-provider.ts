@@ -73,12 +73,55 @@ export class EcsCapacityProviderAutoScalingGroupProviderManagedScalingOutputRefe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcsCapacityProviderAutoScalingGroupProviderManagedScaling | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._instanceWarmupPeriod) {
+      hasAnyValues = true;
+      internalValueResult.instanceWarmupPeriod = this._instanceWarmupPeriod;
+    }
+    if (this._maximumScalingStepSize) {
+      hasAnyValues = true;
+      internalValueResult.maximumScalingStepSize = this._maximumScalingStepSize;
+    }
+    if (this._minimumScalingStepSize) {
+      hasAnyValues = true;
+      internalValueResult.minimumScalingStepSize = this._minimumScalingStepSize;
+    }
+    if (this._status) {
+      hasAnyValues = true;
+      internalValueResult.status = this._status;
+    }
+    if (this._targetCapacity) {
+      hasAnyValues = true;
+      internalValueResult.targetCapacity = this._targetCapacity;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcsCapacityProviderAutoScalingGroupProviderManagedScaling | undefined) {
+    if (value === undefined) {
+      this._instanceWarmupPeriod = undefined;
+      this._maximumScalingStepSize = undefined;
+      this._minimumScalingStepSize = undefined;
+      this._status = undefined;
+      this._targetCapacity = undefined;
+    }
+    else {
+      this._instanceWarmupPeriod = value.instanceWarmupPeriod;
+      this._maximumScalingStepSize = value.maximumScalingStepSize;
+      this._minimumScalingStepSize = value.minimumScalingStepSize;
+      this._status = value.status;
+      this._targetCapacity = value.targetCapacity;
+    }
+  }
+
   // instance_warmup_period - computed: true, optional: true, required: false
-  private _instanceWarmupPeriod?: number | undefined; 
+  private _instanceWarmupPeriod?: number; 
   public get instanceWarmupPeriod() {
     return this.getNumberAttribute('instance_warmup_period');
   }
-  public set instanceWarmupPeriod(value: number | undefined) {
+  public set instanceWarmupPeriod(value: number) {
     this._instanceWarmupPeriod = value;
   }
   public resetInstanceWarmupPeriod() {
@@ -86,15 +129,15 @@ export class EcsCapacityProviderAutoScalingGroupProviderManagedScalingOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get instanceWarmupPeriodInput() {
-    return this._instanceWarmupPeriod
+    return this._instanceWarmupPeriod;
   }
 
   // maximum_scaling_step_size - computed: true, optional: true, required: false
-  private _maximumScalingStepSize?: number | undefined; 
+  private _maximumScalingStepSize?: number; 
   public get maximumScalingStepSize() {
     return this.getNumberAttribute('maximum_scaling_step_size');
   }
-  public set maximumScalingStepSize(value: number | undefined) {
+  public set maximumScalingStepSize(value: number) {
     this._maximumScalingStepSize = value;
   }
   public resetMaximumScalingStepSize() {
@@ -102,15 +145,15 @@ export class EcsCapacityProviderAutoScalingGroupProviderManagedScalingOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get maximumScalingStepSizeInput() {
-    return this._maximumScalingStepSize
+    return this._maximumScalingStepSize;
   }
 
   // minimum_scaling_step_size - computed: true, optional: true, required: false
-  private _minimumScalingStepSize?: number | undefined; 
+  private _minimumScalingStepSize?: number; 
   public get minimumScalingStepSize() {
     return this.getNumberAttribute('minimum_scaling_step_size');
   }
-  public set minimumScalingStepSize(value: number | undefined) {
+  public set minimumScalingStepSize(value: number) {
     this._minimumScalingStepSize = value;
   }
   public resetMinimumScalingStepSize() {
@@ -118,15 +161,15 @@ export class EcsCapacityProviderAutoScalingGroupProviderManagedScalingOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get minimumScalingStepSizeInput() {
-    return this._minimumScalingStepSize
+    return this._minimumScalingStepSize;
   }
 
   // status - computed: true, optional: true, required: false
-  private _status?: string | undefined; 
+  private _status?: string; 
   public get status() {
     return this.getStringAttribute('status');
   }
-  public set status(value: string | undefined) {
+  public set status(value: string) {
     this._status = value;
   }
   public resetStatus() {
@@ -134,15 +177,15 @@ export class EcsCapacityProviderAutoScalingGroupProviderManagedScalingOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 
   // target_capacity - computed: true, optional: true, required: false
-  private _targetCapacity?: number | undefined; 
+  private _targetCapacity?: number; 
   public get targetCapacity() {
     return this.getNumberAttribute('target_capacity');
   }
-  public set targetCapacity(value: number | undefined) {
+  public set targetCapacity(value: number) {
     this._targetCapacity = value;
   }
   public resetTargetCapacity() {
@@ -150,7 +193,7 @@ export class EcsCapacityProviderAutoScalingGroupProviderManagedScalingOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get targetCapacityInput() {
-    return this._targetCapacity
+    return this._targetCapacity;
   }
 }
 export interface EcsCapacityProviderAutoScalingGroupProvider {
@@ -192,6 +235,37 @@ export class EcsCapacityProviderAutoScalingGroupProviderOutputReference extends 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcsCapacityProviderAutoScalingGroupProvider | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._autoScalingGroupArn) {
+      hasAnyValues = true;
+      internalValueResult.autoScalingGroupArn = this._autoScalingGroupArn;
+    }
+    if (this._managedTerminationProtection) {
+      hasAnyValues = true;
+      internalValueResult.managedTerminationProtection = this._managedTerminationProtection;
+    }
+    if (this._managedScaling) {
+      hasAnyValues = true;
+      internalValueResult.managedScaling = this._managedScaling?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcsCapacityProviderAutoScalingGroupProvider | undefined) {
+    if (value === undefined) {
+      this._autoScalingGroupArn = undefined;
+      this._managedTerminationProtection = undefined;
+      this._managedScaling.internalValue = undefined;
+    }
+    else {
+      this._autoScalingGroupArn = value.autoScalingGroupArn;
+      this._managedTerminationProtection = value.managedTerminationProtection;
+      this._managedScaling.internalValue = value.managedScaling;
+    }
+  }
+
   // auto_scaling_group_arn - computed: false, optional: false, required: true
   private _autoScalingGroupArn?: string; 
   public get autoScalingGroupArn() {
@@ -202,15 +276,15 @@ export class EcsCapacityProviderAutoScalingGroupProviderOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get autoScalingGroupArnInput() {
-    return this._autoScalingGroupArn
+    return this._autoScalingGroupArn;
   }
 
   // managed_termination_protection - computed: true, optional: true, required: false
-  private _managedTerminationProtection?: string | undefined; 
+  private _managedTerminationProtection?: string; 
   public get managedTerminationProtection() {
     return this.getStringAttribute('managed_termination_protection');
   }
-  public set managedTerminationProtection(value: string | undefined) {
+  public set managedTerminationProtection(value: string) {
     this._managedTerminationProtection = value;
   }
   public resetManagedTerminationProtection() {
@@ -218,24 +292,23 @@ export class EcsCapacityProviderAutoScalingGroupProviderOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get managedTerminationProtectionInput() {
-    return this._managedTerminationProtection
+    return this._managedTerminationProtection;
   }
 
   // managed_scaling - computed: false, optional: true, required: false
-  private _managedScaling?: EcsCapacityProviderAutoScalingGroupProviderManagedScaling | undefined; 
-  private __managedScalingOutput = new EcsCapacityProviderAutoScalingGroupProviderManagedScalingOutputReference(this as any, "managed_scaling", true);
+  private _managedScaling = new EcsCapacityProviderAutoScalingGroupProviderManagedScalingOutputReference(this as any, "managed_scaling", true);
   public get managedScaling() {
-    return this.__managedScalingOutput;
+    return this._managedScaling;
   }
-  public putManagedScaling(value: EcsCapacityProviderAutoScalingGroupProviderManagedScaling | undefined) {
-    this._managedScaling = value;
+  public putManagedScaling(value: EcsCapacityProviderAutoScalingGroupProviderManagedScaling) {
+    this._managedScaling.internalValue = value;
   }
   public resetManagedScaling() {
-    this._managedScaling = undefined;
+    this._managedScaling.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get managedScalingInput() {
-    return this._managedScaling
+    return this._managedScaling.internalValue;
   }
 }
 
@@ -274,7 +347,7 @@ export class EcsCapacityProvider extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._autoScalingGroupProvider = config.autoScalingGroupProvider;
+    this._autoScalingGroupProvider.internalValue = config.autoScalingGroupProvider;
   }
 
   // ==========
@@ -301,16 +374,16 @@ export class EcsCapacityProvider extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -318,16 +391,16 @@ export class EcsCapacityProvider extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -335,21 +408,20 @@ export class EcsCapacityProvider extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // auto_scaling_group_provider - computed: false, optional: false, required: true
-  private _autoScalingGroupProvider?: EcsCapacityProviderAutoScalingGroupProvider; 
-  private __autoScalingGroupProviderOutput = new EcsCapacityProviderAutoScalingGroupProviderOutputReference(this as any, "auto_scaling_group_provider", true);
+  private _autoScalingGroupProvider = new EcsCapacityProviderAutoScalingGroupProviderOutputReference(this as any, "auto_scaling_group_provider", true);
   public get autoScalingGroupProvider() {
-    return this.__autoScalingGroupProviderOutput;
+    return this._autoScalingGroupProvider;
   }
   public putAutoScalingGroupProvider(value: EcsCapacityProviderAutoScalingGroupProvider) {
-    this._autoScalingGroupProvider = value;
+    this._autoScalingGroupProvider.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get autoScalingGroupProviderInput() {
-    return this._autoScalingGroupProvider
+    return this._autoScalingGroupProvider.internalValue;
   }
 
   // =========
@@ -361,7 +433,7 @@ export class EcsCapacityProvider extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      auto_scaling_group_provider: ecsCapacityProviderAutoScalingGroupProviderToTerraform(this._autoScalingGroupProvider),
+      auto_scaling_group_provider: ecsCapacityProviderAutoScalingGroupProviderToTerraform(this._autoScalingGroupProvider.internalValue),
     };
   }
 }

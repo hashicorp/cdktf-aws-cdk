@@ -72,7 +72,7 @@ export class SagemakerImageVersion extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get baseImageInput() {
-    return this._baseImage
+    return this._baseImage;
   }
 
   // container_image - computed: true, optional: false, required: false
@@ -100,7 +100,7 @@ export class SagemakerImageVersion extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get imageNameInput() {
-    return this._imageName
+    return this._imageName;
   }
 
   // version - computed: true, optional: false, required: false

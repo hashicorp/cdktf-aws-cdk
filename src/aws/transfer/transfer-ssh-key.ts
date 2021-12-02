@@ -72,7 +72,7 @@ export class TransferSshKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body;
   }
 
   // id - computed: true, optional: true, required: false
@@ -90,7 +90,7 @@ export class TransferSshKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serverIdInput() {
-    return this._serverId
+    return this._serverId;
   }
 
   // user_name - computed: false, optional: false, required: true
@@ -103,7 +103,7 @@ export class TransferSshKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userNameInput() {
-    return this._userName
+    return this._userName;
   }
 
   // =========

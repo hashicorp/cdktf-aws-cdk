@@ -82,11 +82,11 @@ export class DataAwsRegions extends cdktf.TerraformDataSource {
   // ==========
 
   // all_regions - computed: false, optional: true, required: false
-  private _allRegions?: boolean | cdktf.IResolvable | undefined; 
+  private _allRegions?: boolean | cdktf.IResolvable; 
   public get allRegions() {
     return this.getBooleanAttribute('all_regions') as any;
   }
-  public set allRegions(value: boolean | cdktf.IResolvable | undefined) {
+  public set allRegions(value: boolean | cdktf.IResolvable) {
     this._allRegions = value;
   }
   public resetAllRegions() {
@@ -94,7 +94,7 @@ export class DataAwsRegions extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get allRegionsInput() {
-    return this._allRegions
+    return this._allRegions;
   }
 
   // id - computed: true, optional: true, required: false
@@ -108,12 +108,12 @@ export class DataAwsRegions extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsRegionsFilter[] | undefined; 
+  private _filter?: DataAwsRegionsFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsRegionsFilter[] | undefined) {
+  public set filter(value: DataAwsRegionsFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -121,7 +121,7 @@ export class DataAwsRegions extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

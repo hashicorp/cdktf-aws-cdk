@@ -65,6 +65,25 @@ export class DatasyncLocationS3S3ConfigOutputReference extends cdktf.ComplexObje
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DatasyncLocationS3S3Config | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucketAccessRoleArn) {
+      hasAnyValues = true;
+      internalValueResult.bucketAccessRoleArn = this._bucketAccessRoleArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DatasyncLocationS3S3Config | undefined) {
+    if (value === undefined) {
+      this._bucketAccessRoleArn = undefined;
+    }
+    else {
+      this._bucketAccessRoleArn = value.bucketAccessRoleArn;
+    }
+  }
+
   // bucket_access_role_arn - computed: false, optional: false, required: true
   private _bucketAccessRoleArn?: string; 
   public get bucketAccessRoleArn() {
@@ -75,7 +94,7 @@ export class DatasyncLocationS3S3ConfigOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get bucketAccessRoleArnInput() {
-    return this._bucketAccessRoleArn
+    return this._bucketAccessRoleArn;
   }
 }
 
@@ -117,7 +136,7 @@ export class DatasyncLocationS3 extends cdktf.TerraformResource {
     this._subdirectory = config.subdirectory;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._s3Config = config.s3Config;
+    this._s3Config.internalValue = config.s3Config;
   }
 
   // ==========
@@ -125,11 +144,11 @@ export class DatasyncLocationS3 extends cdktf.TerraformResource {
   // ==========
 
   // agent_arns - computed: false, optional: true, required: false
-  private _agentArns?: string[] | undefined; 
+  private _agentArns?: string[]; 
   public get agentArns() {
     return this.getListAttribute('agent_arns');
   }
-  public set agentArns(value: string[] | undefined) {
+  public set agentArns(value: string[]) {
     this._agentArns = value;
   }
   public resetAgentArns() {
@@ -137,7 +156,7 @@ export class DatasyncLocationS3 extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get agentArnsInput() {
-    return this._agentArns
+    return this._agentArns;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -160,15 +179,15 @@ export class DatasyncLocationS3 extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3BucketArnInput() {
-    return this._s3BucketArn
+    return this._s3BucketArn;
   }
 
   // s3_storage_class - computed: true, optional: true, required: false
-  private _s3StorageClass?: string | undefined; 
+  private _s3StorageClass?: string; 
   public get s3StorageClass() {
     return this.getStringAttribute('s3_storage_class');
   }
-  public set s3StorageClass(value: string | undefined) {
+  public set s3StorageClass(value: string) {
     this._s3StorageClass = value;
   }
   public resetS3StorageClass() {
@@ -176,7 +195,7 @@ export class DatasyncLocationS3 extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3StorageClassInput() {
-    return this._s3StorageClass
+    return this._s3StorageClass;
   }
 
   // subdirectory - computed: false, optional: false, required: true
@@ -189,16 +208,16 @@ export class DatasyncLocationS3 extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subdirectoryInput() {
-    return this._subdirectory
+    return this._subdirectory;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -206,16 +225,16 @@ export class DatasyncLocationS3 extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -223,7 +242,7 @@ export class DatasyncLocationS3 extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // uri - computed: true, optional: false, required: false
@@ -232,17 +251,16 @@ export class DatasyncLocationS3 extends cdktf.TerraformResource {
   }
 
   // s3_config - computed: false, optional: false, required: true
-  private _s3Config?: DatasyncLocationS3S3Config; 
-  private __s3ConfigOutput = new DatasyncLocationS3S3ConfigOutputReference(this as any, "s3_config", true);
+  private _s3Config = new DatasyncLocationS3S3ConfigOutputReference(this as any, "s3_config", true);
   public get s3Config() {
-    return this.__s3ConfigOutput;
+    return this._s3Config;
   }
   public putS3Config(value: DatasyncLocationS3S3Config) {
-    this._s3Config = value;
+    this._s3Config.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get s3ConfigInput() {
-    return this._s3Config
+    return this._s3Config.internalValue;
   }
 
   // =========
@@ -257,7 +275,7 @@ export class DatasyncLocationS3 extends cdktf.TerraformResource {
       subdirectory: cdktf.stringToTerraform(this._subdirectory),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      s3_config: datasyncLocationS3S3ConfigToTerraform(this._s3Config),
+      s3_config: datasyncLocationS3S3ConfigToTerraform(this._s3Config.internalValue),
     };
   }
 }

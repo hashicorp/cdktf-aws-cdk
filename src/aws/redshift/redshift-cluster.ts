@@ -212,12 +212,43 @@ export class RedshiftClusterLoggingOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): RedshiftClusterLogging | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucketName) {
+      hasAnyValues = true;
+      internalValueResult.bucketName = this._bucketName;
+    }
+    if (this._enable) {
+      hasAnyValues = true;
+      internalValueResult.enable = this._enable;
+    }
+    if (this._s3KeyPrefix) {
+      hasAnyValues = true;
+      internalValueResult.s3KeyPrefix = this._s3KeyPrefix;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: RedshiftClusterLogging | undefined) {
+    if (value === undefined) {
+      this._bucketName = undefined;
+      this._enable = undefined;
+      this._s3KeyPrefix = undefined;
+    }
+    else {
+      this._bucketName = value.bucketName;
+      this._enable = value.enable;
+      this._s3KeyPrefix = value.s3KeyPrefix;
+    }
+  }
+
   // bucket_name - computed: true, optional: true, required: false
-  private _bucketName?: string | undefined; 
+  private _bucketName?: string; 
   public get bucketName() {
     return this.getStringAttribute('bucket_name');
   }
-  public set bucketName(value: string | undefined) {
+  public set bucketName(value: string) {
     this._bucketName = value;
   }
   public resetBucketName() {
@@ -225,7 +256,7 @@ export class RedshiftClusterLoggingOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketNameInput() {
-    return this._bucketName
+    return this._bucketName;
   }
 
   // enable - computed: false, optional: false, required: true
@@ -238,15 +269,15 @@ export class RedshiftClusterLoggingOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get enableInput() {
-    return this._enable
+    return this._enable;
   }
 
   // s3_key_prefix - computed: true, optional: true, required: false
-  private _s3KeyPrefix?: string | undefined; 
+  private _s3KeyPrefix?: string; 
   public get s3KeyPrefix() {
     return this.getStringAttribute('s3_key_prefix');
   }
-  public set s3KeyPrefix(value: string | undefined) {
+  public set s3KeyPrefix(value: string) {
     this._s3KeyPrefix = value;
   }
   public resetS3KeyPrefix() {
@@ -254,7 +285,7 @@ export class RedshiftClusterLoggingOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get s3KeyPrefixInput() {
-    return this._s3KeyPrefix
+    return this._s3KeyPrefix;
   }
 }
 export interface RedshiftClusterSnapshotCopy {
@@ -294,6 +325,37 @@ export class RedshiftClusterSnapshotCopyOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): RedshiftClusterSnapshotCopy | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._destinationRegion) {
+      hasAnyValues = true;
+      internalValueResult.destinationRegion = this._destinationRegion;
+    }
+    if (this._grantName) {
+      hasAnyValues = true;
+      internalValueResult.grantName = this._grantName;
+    }
+    if (this._retentionPeriod) {
+      hasAnyValues = true;
+      internalValueResult.retentionPeriod = this._retentionPeriod;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: RedshiftClusterSnapshotCopy | undefined) {
+    if (value === undefined) {
+      this._destinationRegion = undefined;
+      this._grantName = undefined;
+      this._retentionPeriod = undefined;
+    }
+    else {
+      this._destinationRegion = value.destinationRegion;
+      this._grantName = value.grantName;
+      this._retentionPeriod = value.retentionPeriod;
+    }
+  }
+
   // destination_region - computed: false, optional: false, required: true
   private _destinationRegion?: string; 
   public get destinationRegion() {
@@ -304,15 +366,15 @@ export class RedshiftClusterSnapshotCopyOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get destinationRegionInput() {
-    return this._destinationRegion
+    return this._destinationRegion;
   }
 
   // grant_name - computed: false, optional: true, required: false
-  private _grantName?: string | undefined; 
+  private _grantName?: string; 
   public get grantName() {
     return this.getStringAttribute('grant_name');
   }
-  public set grantName(value: string | undefined) {
+  public set grantName(value: string) {
     this._grantName = value;
   }
   public resetGrantName() {
@@ -320,15 +382,15 @@ export class RedshiftClusterSnapshotCopyOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get grantNameInput() {
-    return this._grantName
+    return this._grantName;
   }
 
   // retention_period - computed: false, optional: true, required: false
-  private _retentionPeriod?: number | undefined; 
+  private _retentionPeriod?: number; 
   public get retentionPeriod() {
     return this.getNumberAttribute('retention_period');
   }
-  public set retentionPeriod(value: number | undefined) {
+  public set retentionPeriod(value: number) {
     this._retentionPeriod = value;
   }
   public resetRetentionPeriod() {
@@ -336,7 +398,7 @@ export class RedshiftClusterSnapshotCopyOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get retentionPeriodInput() {
-    return this._retentionPeriod
+    return this._retentionPeriod;
   }
 }
 export interface RedshiftClusterTimeouts {
@@ -376,12 +438,43 @@ export class RedshiftClusterTimeoutsOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): RedshiftClusterTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: RedshiftClusterTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -389,15 +482,15 @@ export class RedshiftClusterTimeoutsOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -405,15 +498,15 @@ export class RedshiftClusterTimeoutsOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -421,7 +514,7 @@ export class RedshiftClusterTimeoutsOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -490,9 +583,9 @@ export class RedshiftCluster extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._vpcSecurityGroupIds = config.vpcSecurityGroupIds;
-    this._logging = config.logging;
-    this._snapshotCopy = config.snapshotCopy;
-    this._timeouts = config.timeouts;
+    this._logging.internalValue = config.logging;
+    this._snapshotCopy.internalValue = config.snapshotCopy;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -500,11 +593,11 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   // ==========
 
   // allow_version_upgrade - computed: false, optional: true, required: false
-  private _allowVersionUpgrade?: boolean | cdktf.IResolvable | undefined; 
+  private _allowVersionUpgrade?: boolean | cdktf.IResolvable; 
   public get allowVersionUpgrade() {
     return this.getBooleanAttribute('allow_version_upgrade') as any;
   }
-  public set allowVersionUpgrade(value: boolean | cdktf.IResolvable | undefined) {
+  public set allowVersionUpgrade(value: boolean | cdktf.IResolvable) {
     this._allowVersionUpgrade = value;
   }
   public resetAllowVersionUpgrade() {
@@ -512,7 +605,7 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allowVersionUpgradeInput() {
-    return this._allowVersionUpgrade
+    return this._allowVersionUpgrade;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -521,11 +614,11 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
 
   // automated_snapshot_retention_period - computed: false, optional: true, required: false
-  private _automatedSnapshotRetentionPeriod?: number | undefined; 
+  private _automatedSnapshotRetentionPeriod?: number; 
   public get automatedSnapshotRetentionPeriod() {
     return this.getNumberAttribute('automated_snapshot_retention_period');
   }
-  public set automatedSnapshotRetentionPeriod(value: number | undefined) {
+  public set automatedSnapshotRetentionPeriod(value: number) {
     this._automatedSnapshotRetentionPeriod = value;
   }
   public resetAutomatedSnapshotRetentionPeriod() {
@@ -533,15 +626,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get automatedSnapshotRetentionPeriodInput() {
-    return this._automatedSnapshotRetentionPeriod
+    return this._automatedSnapshotRetentionPeriod;
   }
 
   // availability_zone - computed: true, optional: true, required: false
-  private _availabilityZone?: string | undefined; 
+  private _availabilityZone?: string; 
   public get availabilityZone() {
     return this.getStringAttribute('availability_zone');
   }
-  public set availabilityZone(value: string | undefined) {
+  public set availabilityZone(value: string) {
     this._availabilityZone = value;
   }
   public resetAvailabilityZone() {
@@ -549,7 +642,7 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneInput() {
-    return this._availabilityZone
+    return this._availabilityZone;
   }
 
   // cluster_identifier - computed: false, optional: false, required: true
@@ -562,7 +655,7 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterIdentifierInput() {
-    return this._clusterIdentifier
+    return this._clusterIdentifier;
   }
 
   // cluster_nodes - computed: true, optional: false, required: false
@@ -571,11 +664,11 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
 
   // cluster_parameter_group_name - computed: true, optional: true, required: false
-  private _clusterParameterGroupName?: string | undefined; 
+  private _clusterParameterGroupName?: string; 
   public get clusterParameterGroupName() {
     return this.getStringAttribute('cluster_parameter_group_name');
   }
-  public set clusterParameterGroupName(value: string | undefined) {
+  public set clusterParameterGroupName(value: string) {
     this._clusterParameterGroupName = value;
   }
   public resetClusterParameterGroupName() {
@@ -583,15 +676,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterParameterGroupNameInput() {
-    return this._clusterParameterGroupName
+    return this._clusterParameterGroupName;
   }
 
   // cluster_public_key - computed: true, optional: true, required: false
-  private _clusterPublicKey?: string | undefined; 
+  private _clusterPublicKey?: string; 
   public get clusterPublicKey() {
     return this.getStringAttribute('cluster_public_key');
   }
-  public set clusterPublicKey(value: string | undefined) {
+  public set clusterPublicKey(value: string) {
     this._clusterPublicKey = value;
   }
   public resetClusterPublicKey() {
@@ -599,15 +692,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterPublicKeyInput() {
-    return this._clusterPublicKey
+    return this._clusterPublicKey;
   }
 
   // cluster_revision_number - computed: true, optional: true, required: false
-  private _clusterRevisionNumber?: string | undefined; 
+  private _clusterRevisionNumber?: string; 
   public get clusterRevisionNumber() {
     return this.getStringAttribute('cluster_revision_number');
   }
-  public set clusterRevisionNumber(value: string | undefined) {
+  public set clusterRevisionNumber(value: string) {
     this._clusterRevisionNumber = value;
   }
   public resetClusterRevisionNumber() {
@@ -615,15 +708,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterRevisionNumberInput() {
-    return this._clusterRevisionNumber
+    return this._clusterRevisionNumber;
   }
 
   // cluster_security_groups - computed: true, optional: true, required: false
-  private _clusterSecurityGroups?: string[] | undefined; 
+  private _clusterSecurityGroups?: string[]; 
   public get clusterSecurityGroups() {
     return this.getListAttribute('cluster_security_groups');
   }
-  public set clusterSecurityGroups(value: string[] | undefined) {
+  public set clusterSecurityGroups(value: string[]) {
     this._clusterSecurityGroups = value;
   }
   public resetClusterSecurityGroups() {
@@ -631,15 +724,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterSecurityGroupsInput() {
-    return this._clusterSecurityGroups
+    return this._clusterSecurityGroups;
   }
 
   // cluster_subnet_group_name - computed: true, optional: true, required: false
-  private _clusterSubnetGroupName?: string | undefined; 
+  private _clusterSubnetGroupName?: string; 
   public get clusterSubnetGroupName() {
     return this.getStringAttribute('cluster_subnet_group_name');
   }
-  public set clusterSubnetGroupName(value: string | undefined) {
+  public set clusterSubnetGroupName(value: string) {
     this._clusterSubnetGroupName = value;
   }
   public resetClusterSubnetGroupName() {
@@ -647,15 +740,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterSubnetGroupNameInput() {
-    return this._clusterSubnetGroupName
+    return this._clusterSubnetGroupName;
   }
 
   // cluster_type - computed: true, optional: true, required: false
-  private _clusterType?: string | undefined; 
+  private _clusterType?: string; 
   public get clusterType() {
     return this.getStringAttribute('cluster_type');
   }
-  public set clusterType(value: string | undefined) {
+  public set clusterType(value: string) {
     this._clusterType = value;
   }
   public resetClusterType() {
@@ -663,15 +756,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterTypeInput() {
-    return this._clusterType
+    return this._clusterType;
   }
 
   // cluster_version - computed: false, optional: true, required: false
-  private _clusterVersion?: string | undefined; 
+  private _clusterVersion?: string; 
   public get clusterVersion() {
     return this.getStringAttribute('cluster_version');
   }
-  public set clusterVersion(value: string | undefined) {
+  public set clusterVersion(value: string) {
     this._clusterVersion = value;
   }
   public resetClusterVersion() {
@@ -679,15 +772,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterVersionInput() {
-    return this._clusterVersion
+    return this._clusterVersion;
   }
 
   // database_name - computed: true, optional: true, required: false
-  private _databaseName?: string | undefined; 
+  private _databaseName?: string; 
   public get databaseName() {
     return this.getStringAttribute('database_name');
   }
-  public set databaseName(value: string | undefined) {
+  public set databaseName(value: string) {
     this._databaseName = value;
   }
   public resetDatabaseName() {
@@ -695,7 +788,7 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get databaseNameInput() {
-    return this._databaseName
+    return this._databaseName;
   }
 
   // dns_name - computed: true, optional: false, required: false
@@ -704,11 +797,11 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
 
   // elastic_ip - computed: false, optional: true, required: false
-  private _elasticIp?: string | undefined; 
+  private _elasticIp?: string; 
   public get elasticIp() {
     return this.getStringAttribute('elastic_ip');
   }
-  public set elasticIp(value: string | undefined) {
+  public set elasticIp(value: string) {
     this._elasticIp = value;
   }
   public resetElasticIp() {
@@ -716,15 +809,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get elasticIpInput() {
-    return this._elasticIp
+    return this._elasticIp;
   }
 
   // encrypted - computed: false, optional: true, required: false
-  private _encrypted?: boolean | cdktf.IResolvable | undefined; 
+  private _encrypted?: boolean | cdktf.IResolvable; 
   public get encrypted() {
     return this.getBooleanAttribute('encrypted') as any;
   }
-  public set encrypted(value: boolean | cdktf.IResolvable | undefined) {
+  public set encrypted(value: boolean | cdktf.IResolvable) {
     this._encrypted = value;
   }
   public resetEncrypted() {
@@ -732,15 +825,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get encryptedInput() {
-    return this._encrypted
+    return this._encrypted;
   }
 
   // endpoint - computed: true, optional: true, required: false
-  private _endpoint?: string | undefined; 
+  private _endpoint?: string; 
   public get endpoint() {
     return this.getStringAttribute('endpoint');
   }
-  public set endpoint(value: string | undefined) {
+  public set endpoint(value: string) {
     this._endpoint = value;
   }
   public resetEndpoint() {
@@ -748,15 +841,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get endpointInput() {
-    return this._endpoint
+    return this._endpoint;
   }
 
   // enhanced_vpc_routing - computed: true, optional: true, required: false
-  private _enhancedVpcRouting?: boolean | cdktf.IResolvable | undefined; 
+  private _enhancedVpcRouting?: boolean | cdktf.IResolvable; 
   public get enhancedVpcRouting() {
     return this.getBooleanAttribute('enhanced_vpc_routing') as any;
   }
-  public set enhancedVpcRouting(value: boolean | cdktf.IResolvable | undefined) {
+  public set enhancedVpcRouting(value: boolean | cdktf.IResolvable) {
     this._enhancedVpcRouting = value;
   }
   public resetEnhancedVpcRouting() {
@@ -764,15 +857,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enhancedVpcRoutingInput() {
-    return this._enhancedVpcRouting
+    return this._enhancedVpcRouting;
   }
 
   // final_snapshot_identifier - computed: false, optional: true, required: false
-  private _finalSnapshotIdentifier?: string | undefined; 
+  private _finalSnapshotIdentifier?: string; 
   public get finalSnapshotIdentifier() {
     return this.getStringAttribute('final_snapshot_identifier');
   }
-  public set finalSnapshotIdentifier(value: string | undefined) {
+  public set finalSnapshotIdentifier(value: string) {
     this._finalSnapshotIdentifier = value;
   }
   public resetFinalSnapshotIdentifier() {
@@ -780,15 +873,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get finalSnapshotIdentifierInput() {
-    return this._finalSnapshotIdentifier
+    return this._finalSnapshotIdentifier;
   }
 
   // iam_roles - computed: true, optional: true, required: false
-  private _iamRoles?: string[] | undefined; 
+  private _iamRoles?: string[]; 
   public get iamRoles() {
     return this.getListAttribute('iam_roles');
   }
-  public set iamRoles(value: string[] | undefined) {
+  public set iamRoles(value: string[]) {
     this._iamRoles = value;
   }
   public resetIamRoles() {
@@ -796,7 +889,7 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iamRolesInput() {
-    return this._iamRoles
+    return this._iamRoles;
   }
 
   // id - computed: true, optional: true, required: false
@@ -805,11 +898,11 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
 
   // kms_key_id - computed: true, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -817,15 +910,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // master_password - computed: false, optional: true, required: false
-  private _masterPassword?: string | undefined; 
+  private _masterPassword?: string; 
   public get masterPassword() {
     return this.getStringAttribute('master_password');
   }
-  public set masterPassword(value: string | undefined) {
+  public set masterPassword(value: string) {
     this._masterPassword = value;
   }
   public resetMasterPassword() {
@@ -833,15 +926,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get masterPasswordInput() {
-    return this._masterPassword
+    return this._masterPassword;
   }
 
   // master_username - computed: false, optional: true, required: false
-  private _masterUsername?: string | undefined; 
+  private _masterUsername?: string; 
   public get masterUsername() {
     return this.getStringAttribute('master_username');
   }
-  public set masterUsername(value: string | undefined) {
+  public set masterUsername(value: string) {
     this._masterUsername = value;
   }
   public resetMasterUsername() {
@@ -849,7 +942,7 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get masterUsernameInput() {
-    return this._masterUsername
+    return this._masterUsername;
   }
 
   // node_type - computed: false, optional: false, required: true
@@ -862,15 +955,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nodeTypeInput() {
-    return this._nodeType
+    return this._nodeType;
   }
 
   // number_of_nodes - computed: false, optional: true, required: false
-  private _numberOfNodes?: number | undefined; 
+  private _numberOfNodes?: number; 
   public get numberOfNodes() {
     return this.getNumberAttribute('number_of_nodes');
   }
-  public set numberOfNodes(value: number | undefined) {
+  public set numberOfNodes(value: number) {
     this._numberOfNodes = value;
   }
   public resetNumberOfNodes() {
@@ -878,15 +971,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get numberOfNodesInput() {
-    return this._numberOfNodes
+    return this._numberOfNodes;
   }
 
   // owner_account - computed: false, optional: true, required: false
-  private _ownerAccount?: string | undefined; 
+  private _ownerAccount?: string; 
   public get ownerAccount() {
     return this.getStringAttribute('owner_account');
   }
-  public set ownerAccount(value: string | undefined) {
+  public set ownerAccount(value: string) {
     this._ownerAccount = value;
   }
   public resetOwnerAccount() {
@@ -894,15 +987,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownerAccountInput() {
-    return this._ownerAccount
+    return this._ownerAccount;
   }
 
   // port - computed: false, optional: true, required: false
-  private _port?: number | undefined; 
+  private _port?: number; 
   public get port() {
     return this.getNumberAttribute('port');
   }
-  public set port(value: number | undefined) {
+  public set port(value: number) {
     this._port = value;
   }
   public resetPort() {
@@ -910,15 +1003,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 
   // preferred_maintenance_window - computed: true, optional: true, required: false
-  private _preferredMaintenanceWindow?: string | undefined; 
+  private _preferredMaintenanceWindow?: string; 
   public get preferredMaintenanceWindow() {
     return this.getStringAttribute('preferred_maintenance_window');
   }
-  public set preferredMaintenanceWindow(value: string | undefined) {
+  public set preferredMaintenanceWindow(value: string) {
     this._preferredMaintenanceWindow = value;
   }
   public resetPreferredMaintenanceWindow() {
@@ -926,15 +1019,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get preferredMaintenanceWindowInput() {
-    return this._preferredMaintenanceWindow
+    return this._preferredMaintenanceWindow;
   }
 
   // publicly_accessible - computed: false, optional: true, required: false
-  private _publiclyAccessible?: boolean | cdktf.IResolvable | undefined; 
+  private _publiclyAccessible?: boolean | cdktf.IResolvable; 
   public get publiclyAccessible() {
     return this.getBooleanAttribute('publicly_accessible') as any;
   }
-  public set publiclyAccessible(value: boolean | cdktf.IResolvable | undefined) {
+  public set publiclyAccessible(value: boolean | cdktf.IResolvable) {
     this._publiclyAccessible = value;
   }
   public resetPubliclyAccessible() {
@@ -942,15 +1035,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get publiclyAccessibleInput() {
-    return this._publiclyAccessible
+    return this._publiclyAccessible;
   }
 
   // skip_final_snapshot - computed: false, optional: true, required: false
-  private _skipFinalSnapshot?: boolean | cdktf.IResolvable | undefined; 
+  private _skipFinalSnapshot?: boolean | cdktf.IResolvable; 
   public get skipFinalSnapshot() {
     return this.getBooleanAttribute('skip_final_snapshot') as any;
   }
-  public set skipFinalSnapshot(value: boolean | cdktf.IResolvable | undefined) {
+  public set skipFinalSnapshot(value: boolean | cdktf.IResolvable) {
     this._skipFinalSnapshot = value;
   }
   public resetSkipFinalSnapshot() {
@@ -958,15 +1051,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get skipFinalSnapshotInput() {
-    return this._skipFinalSnapshot
+    return this._skipFinalSnapshot;
   }
 
   // snapshot_cluster_identifier - computed: false, optional: true, required: false
-  private _snapshotClusterIdentifier?: string | undefined; 
+  private _snapshotClusterIdentifier?: string; 
   public get snapshotClusterIdentifier() {
     return this.getStringAttribute('snapshot_cluster_identifier');
   }
-  public set snapshotClusterIdentifier(value: string | undefined) {
+  public set snapshotClusterIdentifier(value: string) {
     this._snapshotClusterIdentifier = value;
   }
   public resetSnapshotClusterIdentifier() {
@@ -974,15 +1067,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotClusterIdentifierInput() {
-    return this._snapshotClusterIdentifier
+    return this._snapshotClusterIdentifier;
   }
 
   // snapshot_identifier - computed: false, optional: true, required: false
-  private _snapshotIdentifier?: string | undefined; 
+  private _snapshotIdentifier?: string; 
   public get snapshotIdentifier() {
     return this.getStringAttribute('snapshot_identifier');
   }
-  public set snapshotIdentifier(value: string | undefined) {
+  public set snapshotIdentifier(value: string) {
     this._snapshotIdentifier = value;
   }
   public resetSnapshotIdentifier() {
@@ -990,16 +1083,16 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotIdentifierInput() {
-    return this._snapshotIdentifier
+    return this._snapshotIdentifier;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -1007,16 +1100,16 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -1024,15 +1117,15 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // vpc_security_group_ids - computed: true, optional: true, required: false
-  private _vpcSecurityGroupIds?: string[] | undefined; 
+  private _vpcSecurityGroupIds?: string[]; 
   public get vpcSecurityGroupIds() {
     return this.getListAttribute('vpc_security_group_ids');
   }
-  public set vpcSecurityGroupIds(value: string[] | undefined) {
+  public set vpcSecurityGroupIds(value: string[]) {
     this._vpcSecurityGroupIds = value;
   }
   public resetVpcSecurityGroupIds() {
@@ -1040,58 +1133,55 @@ export class RedshiftCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcSecurityGroupIdsInput() {
-    return this._vpcSecurityGroupIds
+    return this._vpcSecurityGroupIds;
   }
 
   // logging - computed: false, optional: true, required: false
-  private _logging?: RedshiftClusterLogging | undefined; 
-  private __loggingOutput = new RedshiftClusterLoggingOutputReference(this as any, "logging", true);
+  private _logging = new RedshiftClusterLoggingOutputReference(this as any, "logging", true);
   public get logging() {
-    return this.__loggingOutput;
+    return this._logging;
   }
-  public putLogging(value: RedshiftClusterLogging | undefined) {
-    this._logging = value;
+  public putLogging(value: RedshiftClusterLogging) {
+    this._logging.internalValue = value;
   }
   public resetLogging() {
-    this._logging = undefined;
+    this._logging.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get loggingInput() {
-    return this._logging
+    return this._logging.internalValue;
   }
 
   // snapshot_copy - computed: false, optional: true, required: false
-  private _snapshotCopy?: RedshiftClusterSnapshotCopy | undefined; 
-  private __snapshotCopyOutput = new RedshiftClusterSnapshotCopyOutputReference(this as any, "snapshot_copy", true);
+  private _snapshotCopy = new RedshiftClusterSnapshotCopyOutputReference(this as any, "snapshot_copy", true);
   public get snapshotCopy() {
-    return this.__snapshotCopyOutput;
+    return this._snapshotCopy;
   }
-  public putSnapshotCopy(value: RedshiftClusterSnapshotCopy | undefined) {
-    this._snapshotCopy = value;
+  public putSnapshotCopy(value: RedshiftClusterSnapshotCopy) {
+    this._snapshotCopy.internalValue = value;
   }
   public resetSnapshotCopy() {
-    this._snapshotCopy = undefined;
+    this._snapshotCopy.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotCopyInput() {
-    return this._snapshotCopy
+    return this._snapshotCopy.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: RedshiftClusterTimeouts | undefined; 
-  private __timeoutsOutput = new RedshiftClusterTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new RedshiftClusterTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: RedshiftClusterTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: RedshiftClusterTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -1133,9 +1223,9 @@ export class RedshiftCluster extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       vpc_security_group_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._vpcSecurityGroupIds),
-      logging: redshiftClusterLoggingToTerraform(this._logging),
-      snapshot_copy: redshiftClusterSnapshotCopyToTerraform(this._snapshotCopy),
-      timeouts: redshiftClusterTimeoutsToTerraform(this._timeouts),
+      logging: redshiftClusterLoggingToTerraform(this._logging.internalValue),
+      snapshot_copy: redshiftClusterSnapshotCopyToTerraform(this._snapshotCopy.internalValue),
+      timeouts: redshiftClusterTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

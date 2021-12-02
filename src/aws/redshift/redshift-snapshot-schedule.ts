@@ -97,15 +97,15 @@ export class RedshiftSnapshotSchedule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get definitionsInput() {
-    return this._definitions
+    return this._definitions;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -113,15 +113,15 @@ export class RedshiftSnapshotSchedule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // force_destroy - computed: false, optional: true, required: false
-  private _forceDestroy?: boolean | cdktf.IResolvable | undefined; 
+  private _forceDestroy?: boolean | cdktf.IResolvable; 
   public get forceDestroy() {
     return this.getBooleanAttribute('force_destroy') as any;
   }
-  public set forceDestroy(value: boolean | cdktf.IResolvable | undefined) {
+  public set forceDestroy(value: boolean | cdktf.IResolvable) {
     this._forceDestroy = value;
   }
   public resetForceDestroy() {
@@ -129,7 +129,7 @@ export class RedshiftSnapshotSchedule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get forceDestroyInput() {
-    return this._forceDestroy
+    return this._forceDestroy;
   }
 
   // id - computed: true, optional: true, required: false
@@ -138,11 +138,11 @@ export class RedshiftSnapshotSchedule extends cdktf.TerraformResource {
   }
 
   // identifier - computed: true, optional: true, required: false
-  private _identifier?: string | undefined; 
+  private _identifier?: string; 
   public get identifier() {
     return this.getStringAttribute('identifier');
   }
-  public set identifier(value: string | undefined) {
+  public set identifier(value: string) {
     this._identifier = value;
   }
   public resetIdentifier() {
@@ -150,15 +150,15 @@ export class RedshiftSnapshotSchedule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get identifierInput() {
-    return this._identifier
+    return this._identifier;
   }
 
   // identifier_prefix - computed: true, optional: true, required: false
-  private _identifierPrefix?: string | undefined; 
+  private _identifierPrefix?: string; 
   public get identifierPrefix() {
     return this.getStringAttribute('identifier_prefix');
   }
-  public set identifierPrefix(value: string | undefined) {
+  public set identifierPrefix(value: string) {
     this._identifierPrefix = value;
   }
   public resetIdentifierPrefix() {
@@ -166,16 +166,16 @@ export class RedshiftSnapshotSchedule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get identifierPrefixInput() {
-    return this._identifierPrefix
+    return this._identifierPrefix;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -183,16 +183,16 @@ export class RedshiftSnapshotSchedule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -200,7 +200,7 @@ export class RedshiftSnapshotSchedule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

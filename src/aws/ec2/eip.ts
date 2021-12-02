@@ -91,12 +91,43 @@ export class EipTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EipTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._read) {
+      hasAnyValues = true;
+      internalValueResult.read = this._read;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EipTimeouts | undefined) {
+    if (value === undefined) {
+      this._delete = undefined;
+      this._read = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._delete = value.delete;
+      this._read = value.read;
+      this._update = value.update;
+    }
+  }
+
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -104,15 +135,15 @@ export class EipTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // read - computed: false, optional: true, required: false
-  private _read?: string | undefined; 
+  private _read?: string; 
   public get read() {
     return this.getStringAttribute('read');
   }
-  public set read(value: string | undefined) {
+  public set read(value: string) {
     this._read = value;
   }
   public resetRead() {
@@ -120,15 +151,15 @@ export class EipTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get readInput() {
-    return this._read
+    return this._read;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -136,7 +167,7 @@ export class EipTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -182,7 +213,7 @@ export class Eip extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._vpc = config.vpc;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -190,11 +221,11 @@ export class Eip extends cdktf.TerraformResource {
   // ==========
 
   // address - computed: false, optional: true, required: false
-  private _address?: string | undefined; 
+  private _address?: string; 
   public get address() {
     return this.getStringAttribute('address');
   }
-  public set address(value: string | undefined) {
+  public set address(value: string) {
     this._address = value;
   }
   public resetAddress() {
@@ -202,7 +233,7 @@ export class Eip extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get addressInput() {
-    return this._address
+    return this._address;
   }
 
   // allocation_id - computed: true, optional: false, required: false
@@ -211,11 +242,11 @@ export class Eip extends cdktf.TerraformResource {
   }
 
   // associate_with_private_ip - computed: false, optional: true, required: false
-  private _associateWithPrivateIp?: string | undefined; 
+  private _associateWithPrivateIp?: string; 
   public get associateWithPrivateIp() {
     return this.getStringAttribute('associate_with_private_ip');
   }
-  public set associateWithPrivateIp(value: string | undefined) {
+  public set associateWithPrivateIp(value: string) {
     this._associateWithPrivateIp = value;
   }
   public resetAssociateWithPrivateIp() {
@@ -223,7 +254,7 @@ export class Eip extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get associateWithPrivateIpInput() {
-    return this._associateWithPrivateIp
+    return this._associateWithPrivateIp;
   }
 
   // association_id - computed: true, optional: false, required: false
@@ -242,11 +273,11 @@ export class Eip extends cdktf.TerraformResource {
   }
 
   // customer_owned_ipv4_pool - computed: false, optional: true, required: false
-  private _customerOwnedIpv4Pool?: string | undefined; 
+  private _customerOwnedIpv4Pool?: string; 
   public get customerOwnedIpv4Pool() {
     return this.getStringAttribute('customer_owned_ipv4_pool');
   }
-  public set customerOwnedIpv4Pool(value: string | undefined) {
+  public set customerOwnedIpv4Pool(value: string) {
     this._customerOwnedIpv4Pool = value;
   }
   public resetCustomerOwnedIpv4Pool() {
@@ -254,7 +285,7 @@ export class Eip extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customerOwnedIpv4PoolInput() {
-    return this._customerOwnedIpv4Pool
+    return this._customerOwnedIpv4Pool;
   }
 
   // domain - computed: true, optional: false, required: false
@@ -268,11 +299,11 @@ export class Eip extends cdktf.TerraformResource {
   }
 
   // instance - computed: true, optional: true, required: false
-  private _instance?: string | undefined; 
+  private _instance?: string; 
   public get instance() {
     return this.getStringAttribute('instance');
   }
-  public set instance(value: string | undefined) {
+  public set instance(value: string) {
     this._instance = value;
   }
   public resetInstance() {
@@ -280,15 +311,15 @@ export class Eip extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceInput() {
-    return this._instance
+    return this._instance;
   }
 
   // network_border_group - computed: true, optional: true, required: false
-  private _networkBorderGroup?: string | undefined; 
+  private _networkBorderGroup?: string; 
   public get networkBorderGroup() {
     return this.getStringAttribute('network_border_group');
   }
-  public set networkBorderGroup(value: string | undefined) {
+  public set networkBorderGroup(value: string) {
     this._networkBorderGroup = value;
   }
   public resetNetworkBorderGroup() {
@@ -296,15 +327,15 @@ export class Eip extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get networkBorderGroupInput() {
-    return this._networkBorderGroup
+    return this._networkBorderGroup;
   }
 
   // network_interface - computed: true, optional: true, required: false
-  private _networkInterface?: string | undefined; 
+  private _networkInterface?: string; 
   public get networkInterface() {
     return this.getStringAttribute('network_interface');
   }
-  public set networkInterface(value: string | undefined) {
+  public set networkInterface(value: string) {
     this._networkInterface = value;
   }
   public resetNetworkInterface() {
@@ -312,7 +343,7 @@ export class Eip extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get networkInterfaceInput() {
-    return this._networkInterface
+    return this._networkInterface;
   }
 
   // private_dns - computed: true, optional: false, required: false
@@ -336,11 +367,11 @@ export class Eip extends cdktf.TerraformResource {
   }
 
   // public_ipv4_pool - computed: true, optional: true, required: false
-  private _publicIpv4Pool?: string | undefined; 
+  private _publicIpv4Pool?: string; 
   public get publicIpv4Pool() {
     return this.getStringAttribute('public_ipv4_pool');
   }
-  public set publicIpv4Pool(value: string | undefined) {
+  public set publicIpv4Pool(value: string) {
     this._publicIpv4Pool = value;
   }
   public resetPublicIpv4Pool() {
@@ -348,16 +379,16 @@ export class Eip extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get publicIpv4PoolInput() {
-    return this._publicIpv4Pool
+    return this._publicIpv4Pool;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -365,16 +396,16 @@ export class Eip extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -382,15 +413,15 @@ export class Eip extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // vpc - computed: true, optional: true, required: false
-  private _vpc?: boolean | cdktf.IResolvable | undefined; 
+  private _vpc?: boolean | cdktf.IResolvable; 
   public get vpc() {
     return this.getBooleanAttribute('vpc') as any;
   }
-  public set vpc(value: boolean | cdktf.IResolvable | undefined) {
+  public set vpc(value: boolean | cdktf.IResolvable) {
     this._vpc = value;
   }
   public resetVpc() {
@@ -398,24 +429,23 @@ export class Eip extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcInput() {
-    return this._vpc
+    return this._vpc;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: EipTimeouts | undefined; 
-  private __timeoutsOutput = new EipTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new EipTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: EipTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: EipTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -434,7 +464,7 @@ export class Eip extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       vpc: cdktf.booleanToTerraform(this._vpc),
-      timeouts: eipTimeoutsToTerraform(this._timeouts),
+      timeouts: eipTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

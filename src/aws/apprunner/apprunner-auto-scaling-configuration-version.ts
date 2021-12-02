@@ -92,7 +92,7 @@ export class ApprunnerAutoScalingConfigurationVersion extends cdktf.TerraformRes
   }
   // Temporarily expose input value. Use with caution.
   public get autoScalingConfigurationNameInput() {
-    return this._autoScalingConfigurationName
+    return this._autoScalingConfigurationName;
   }
 
   // auto_scaling_configuration_revision - computed: true, optional: false, required: false
@@ -111,11 +111,11 @@ export class ApprunnerAutoScalingConfigurationVersion extends cdktf.TerraformRes
   }
 
   // max_concurrency - computed: false, optional: true, required: false
-  private _maxConcurrency?: number | undefined; 
+  private _maxConcurrency?: number; 
   public get maxConcurrency() {
     return this.getNumberAttribute('max_concurrency');
   }
-  public set maxConcurrency(value: number | undefined) {
+  public set maxConcurrency(value: number) {
     this._maxConcurrency = value;
   }
   public resetMaxConcurrency() {
@@ -123,15 +123,15 @@ export class ApprunnerAutoScalingConfigurationVersion extends cdktf.TerraformRes
   }
   // Temporarily expose input value. Use with caution.
   public get maxConcurrencyInput() {
-    return this._maxConcurrency
+    return this._maxConcurrency;
   }
 
   // max_size - computed: false, optional: true, required: false
-  private _maxSize?: number | undefined; 
+  private _maxSize?: number; 
   public get maxSize() {
     return this.getNumberAttribute('max_size');
   }
-  public set maxSize(value: number | undefined) {
+  public set maxSize(value: number) {
     this._maxSize = value;
   }
   public resetMaxSize() {
@@ -139,15 +139,15 @@ export class ApprunnerAutoScalingConfigurationVersion extends cdktf.TerraformRes
   }
   // Temporarily expose input value. Use with caution.
   public get maxSizeInput() {
-    return this._maxSize
+    return this._maxSize;
   }
 
   // min_size - computed: false, optional: true, required: false
-  private _minSize?: number | undefined; 
+  private _minSize?: number; 
   public get minSize() {
     return this.getNumberAttribute('min_size');
   }
-  public set minSize(value: number | undefined) {
+  public set minSize(value: number) {
     this._minSize = value;
   }
   public resetMinSize() {
@@ -155,7 +155,7 @@ export class ApprunnerAutoScalingConfigurationVersion extends cdktf.TerraformRes
   }
   // Temporarily expose input value. Use with caution.
   public get minSizeInput() {
-    return this._minSize
+    return this._minSize;
   }
 
   // status - computed: true, optional: false, required: false
@@ -164,12 +164,12 @@ export class ApprunnerAutoScalingConfigurationVersion extends cdktf.TerraformRes
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -177,16 +177,16 @@ export class ApprunnerAutoScalingConfigurationVersion extends cdktf.TerraformRes
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -194,7 +194,7 @@ export class ApprunnerAutoScalingConfigurationVersion extends cdktf.TerraformRes
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

@@ -82,7 +82,7 @@ export class DataAwsBackupSelection extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get planIdInput() {
-    return this._planId
+    return this._planId;
   }
 
   // resources - computed: true, optional: false, required: false
@@ -100,7 +100,7 @@ export class DataAwsBackupSelection extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get selectionIdInput() {
-    return this._selectionId
+    return this._selectionId;
   }
 
   // =========

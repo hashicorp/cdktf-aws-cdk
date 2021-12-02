@@ -104,7 +104,7 @@ export class DataAwsElasticBeanstalkApplication extends cdktf.TerraformDataSourc
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // =========

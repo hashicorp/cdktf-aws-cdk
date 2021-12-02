@@ -97,11 +97,11 @@ export class DataAwsAmiIds extends cdktf.TerraformDataSource {
   // ==========
 
   // executable_users - computed: false, optional: true, required: false
-  private _executableUsers?: string[] | undefined; 
+  private _executableUsers?: string[]; 
   public get executableUsers() {
     return this.getListAttribute('executable_users');
   }
-  public set executableUsers(value: string[] | undefined) {
+  public set executableUsers(value: string[]) {
     this._executableUsers = value;
   }
   public resetExecutableUsers() {
@@ -109,7 +109,7 @@ export class DataAwsAmiIds extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get executableUsersInput() {
-    return this._executableUsers
+    return this._executableUsers;
   }
 
   // id - computed: true, optional: true, required: false
@@ -123,11 +123,11 @@ export class DataAwsAmiIds extends cdktf.TerraformDataSource {
   }
 
   // name_regex - computed: false, optional: true, required: false
-  private _nameRegex?: string | undefined; 
+  private _nameRegex?: string; 
   public get nameRegex() {
     return this.getStringAttribute('name_regex');
   }
-  public set nameRegex(value: string | undefined) {
+  public set nameRegex(value: string) {
     this._nameRegex = value;
   }
   public resetNameRegex() {
@@ -135,7 +135,7 @@ export class DataAwsAmiIds extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameRegexInput() {
-    return this._nameRegex
+    return this._nameRegex;
   }
 
   // owners - computed: false, optional: false, required: true
@@ -148,15 +148,15 @@ export class DataAwsAmiIds extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownersInput() {
-    return this._owners
+    return this._owners;
   }
 
   // sort_ascending - computed: false, optional: true, required: false
-  private _sortAscending?: boolean | cdktf.IResolvable | undefined; 
+  private _sortAscending?: boolean | cdktf.IResolvable; 
   public get sortAscending() {
     return this.getBooleanAttribute('sort_ascending') as any;
   }
-  public set sortAscending(value: boolean | cdktf.IResolvable | undefined) {
+  public set sortAscending(value: boolean | cdktf.IResolvable) {
     this._sortAscending = value;
   }
   public resetSortAscending() {
@@ -164,16 +164,16 @@ export class DataAwsAmiIds extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get sortAscendingInput() {
-    return this._sortAscending
+    return this._sortAscending;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsAmiIdsFilter[] | undefined; 
+  private _filter?: DataAwsAmiIdsFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsAmiIdsFilter[] | undefined) {
+  public set filter(value: DataAwsAmiIdsFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -181,7 +181,7 @@ export class DataAwsAmiIds extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

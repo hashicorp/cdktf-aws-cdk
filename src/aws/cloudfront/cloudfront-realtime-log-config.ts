@@ -58,6 +58,31 @@ export class CloudfrontRealtimeLogConfigEndpointKinesisStreamConfigOutputReferen
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontRealtimeLogConfigEndpointKinesisStreamConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._streamArn) {
+      hasAnyValues = true;
+      internalValueResult.streamArn = this._streamArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontRealtimeLogConfigEndpointKinesisStreamConfig | undefined) {
+    if (value === undefined) {
+      this._roleArn = undefined;
+      this._streamArn = undefined;
+    }
+    else {
+      this._roleArn = value.roleArn;
+      this._streamArn = value.streamArn;
+    }
+  }
+
   // role_arn - computed: false, optional: false, required: true
   private _roleArn?: string; 
   public get roleArn() {
@@ -68,7 +93,7 @@ export class CloudfrontRealtimeLogConfigEndpointKinesisStreamConfigOutputReferen
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // stream_arn - computed: false, optional: false, required: true
@@ -81,7 +106,7 @@ export class CloudfrontRealtimeLogConfigEndpointKinesisStreamConfigOutputReferen
   }
   // Temporarily expose input value. Use with caution.
   public get streamArnInput() {
-    return this._streamArn
+    return this._streamArn;
   }
 }
 export interface CloudfrontRealtimeLogConfigEndpoint {
@@ -118,6 +143,31 @@ export class CloudfrontRealtimeLogConfigEndpointOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontRealtimeLogConfigEndpoint | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._streamType) {
+      hasAnyValues = true;
+      internalValueResult.streamType = this._streamType;
+    }
+    if (this._kinesisStreamConfig) {
+      hasAnyValues = true;
+      internalValueResult.kinesisStreamConfig = this._kinesisStreamConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontRealtimeLogConfigEndpoint | undefined) {
+    if (value === undefined) {
+      this._streamType = undefined;
+      this._kinesisStreamConfig.internalValue = undefined;
+    }
+    else {
+      this._streamType = value.streamType;
+      this._kinesisStreamConfig.internalValue = value.kinesisStreamConfig;
+    }
+  }
+
   // stream_type - computed: false, optional: false, required: true
   private _streamType?: string; 
   public get streamType() {
@@ -128,21 +178,20 @@ export class CloudfrontRealtimeLogConfigEndpointOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get streamTypeInput() {
-    return this._streamType
+    return this._streamType;
   }
 
   // kinesis_stream_config - computed: false, optional: false, required: true
-  private _kinesisStreamConfig?: CloudfrontRealtimeLogConfigEndpointKinesisStreamConfig; 
-  private __kinesisStreamConfigOutput = new CloudfrontRealtimeLogConfigEndpointKinesisStreamConfigOutputReference(this as any, "kinesis_stream_config", true);
+  private _kinesisStreamConfig = new CloudfrontRealtimeLogConfigEndpointKinesisStreamConfigOutputReference(this as any, "kinesis_stream_config", true);
   public get kinesisStreamConfig() {
-    return this.__kinesisStreamConfigOutput;
+    return this._kinesisStreamConfig;
   }
   public putKinesisStreamConfig(value: CloudfrontRealtimeLogConfigEndpointKinesisStreamConfig) {
-    this._kinesisStreamConfig = value;
+    this._kinesisStreamConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get kinesisStreamConfigInput() {
-    return this._kinesisStreamConfig
+    return this._kinesisStreamConfig.internalValue;
   }
 }
 
@@ -181,7 +230,7 @@ export class CloudfrontRealtimeLogConfig extends cdktf.TerraformResource {
     this._fields = config.fields;
     this._name = config.name;
     this._samplingRate = config.samplingRate;
-    this._endpoint = config.endpoint;
+    this._endpoint.internalValue = config.endpoint;
   }
 
   // ==========
@@ -203,7 +252,7 @@ export class CloudfrontRealtimeLogConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fieldsInput() {
-    return this._fields
+    return this._fields;
   }
 
   // id - computed: true, optional: true, required: false
@@ -221,7 +270,7 @@ export class CloudfrontRealtimeLogConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // sampling_rate - computed: false, optional: false, required: true
@@ -234,21 +283,20 @@ export class CloudfrontRealtimeLogConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get samplingRateInput() {
-    return this._samplingRate
+    return this._samplingRate;
   }
 
   // endpoint - computed: false, optional: false, required: true
-  private _endpoint?: CloudfrontRealtimeLogConfigEndpoint; 
-  private __endpointOutput = new CloudfrontRealtimeLogConfigEndpointOutputReference(this as any, "endpoint", true);
+  private _endpoint = new CloudfrontRealtimeLogConfigEndpointOutputReference(this as any, "endpoint", true);
   public get endpoint() {
-    return this.__endpointOutput;
+    return this._endpoint;
   }
   public putEndpoint(value: CloudfrontRealtimeLogConfigEndpoint) {
-    this._endpoint = value;
+    this._endpoint.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get endpointInput() {
-    return this._endpoint
+    return this._endpoint.internalValue;
   }
 
   // =========
@@ -260,7 +308,7 @@ export class CloudfrontRealtimeLogConfig extends cdktf.TerraformResource {
       fields: cdktf.listMapper(cdktf.stringToTerraform)(this._fields),
       name: cdktf.stringToTerraform(this._name),
       sampling_rate: cdktf.numberToTerraform(this._samplingRate),
-      endpoint: cloudfrontRealtimeLogConfigEndpointToTerraform(this._endpoint),
+      endpoint: cloudfrontRealtimeLogConfigEndpointToTerraform(this._endpoint.internalValue),
     };
   }
 }

@@ -67,12 +67,31 @@ export class CloudformationStackSetInstanceDeploymentTargetsOutputReference exte
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudformationStackSetInstanceDeploymentTargets | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._organizationalUnitIds) {
+      hasAnyValues = true;
+      internalValueResult.organizationalUnitIds = this._organizationalUnitIds;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudformationStackSetInstanceDeploymentTargets | undefined) {
+    if (value === undefined) {
+      this._organizationalUnitIds = undefined;
+    }
+    else {
+      this._organizationalUnitIds = value.organizationalUnitIds;
+    }
+  }
+
   // organizational_unit_ids - computed: false, optional: true, required: false
-  private _organizationalUnitIds?: string[] | undefined; 
+  private _organizationalUnitIds?: string[]; 
   public get organizationalUnitIds() {
     return this.getListAttribute('organizational_unit_ids');
   }
-  public set organizationalUnitIds(value: string[] | undefined) {
+  public set organizationalUnitIds(value: string[]) {
     this._organizationalUnitIds = value;
   }
   public resetOrganizationalUnitIds() {
@@ -80,7 +99,7 @@ export class CloudformationStackSetInstanceDeploymentTargetsOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get organizationalUnitIdsInput() {
-    return this._organizationalUnitIds
+    return this._organizationalUnitIds;
   }
 }
 export interface CloudformationStackSetInstanceTimeouts {
@@ -120,12 +139,43 @@ export class CloudformationStackSetInstanceTimeoutsOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudformationStackSetInstanceTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudformationStackSetInstanceTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -133,15 +183,15 @@ export class CloudformationStackSetInstanceTimeoutsOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -149,15 +199,15 @@ export class CloudformationStackSetInstanceTimeoutsOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -165,7 +215,7 @@ export class CloudformationStackSetInstanceTimeoutsOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -206,8 +256,8 @@ export class CloudformationStackSetInstance extends cdktf.TerraformResource {
     this._region = config.region;
     this._retainStack = config.retainStack;
     this._stackSetName = config.stackSetName;
-    this._deploymentTargets = config.deploymentTargets;
-    this._timeouts = config.timeouts;
+    this._deploymentTargets.internalValue = config.deploymentTargets;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -215,11 +265,11 @@ export class CloudformationStackSetInstance extends cdktf.TerraformResource {
   // ==========
 
   // account_id - computed: true, optional: true, required: false
-  private _accountId?: string | undefined; 
+  private _accountId?: string; 
   public get accountId() {
     return this.getStringAttribute('account_id');
   }
-  public set accountId(value: string | undefined) {
+  public set accountId(value: string) {
     this._accountId = value;
   }
   public resetAccountId() {
@@ -227,7 +277,7 @@ export class CloudformationStackSetInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accountIdInput() {
-    return this._accountId
+    return this._accountId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -241,12 +291,12 @@ export class CloudformationStackSetInstance extends cdktf.TerraformResource {
   }
 
   // parameter_overrides - computed: false, optional: true, required: false
-  private _parameterOverrides?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _parameterOverrides?: { [key: string]: string } | cdktf.IResolvable; 
   public get parameterOverrides() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('parameter_overrides') as any;
   }
-  public set parameterOverrides(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set parameterOverrides(value: { [key: string]: string } | cdktf.IResolvable) {
     this._parameterOverrides = value;
   }
   public resetParameterOverrides() {
@@ -254,15 +304,15 @@ export class CloudformationStackSetInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parameterOverridesInput() {
-    return this._parameterOverrides
+    return this._parameterOverrides;
   }
 
   // region - computed: true, optional: true, required: false
-  private _region?: string | undefined; 
+  private _region?: string; 
   public get region() {
     return this.getStringAttribute('region');
   }
-  public set region(value: string | undefined) {
+  public set region(value: string) {
     this._region = value;
   }
   public resetRegion() {
@@ -270,15 +320,15 @@ export class CloudformationStackSetInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get regionInput() {
-    return this._region
+    return this._region;
   }
 
   // retain_stack - computed: false, optional: true, required: false
-  private _retainStack?: boolean | cdktf.IResolvable | undefined; 
+  private _retainStack?: boolean | cdktf.IResolvable; 
   public get retainStack() {
     return this.getBooleanAttribute('retain_stack') as any;
   }
-  public set retainStack(value: boolean | cdktf.IResolvable | undefined) {
+  public set retainStack(value: boolean | cdktf.IResolvable) {
     this._retainStack = value;
   }
   public resetRetainStack() {
@@ -286,7 +336,7 @@ export class CloudformationStackSetInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get retainStackInput() {
-    return this._retainStack
+    return this._retainStack;
   }
 
   // stack_id - computed: true, optional: false, required: false
@@ -304,41 +354,39 @@ export class CloudformationStackSetInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stackSetNameInput() {
-    return this._stackSetName
+    return this._stackSetName;
   }
 
   // deployment_targets - computed: false, optional: true, required: false
-  private _deploymentTargets?: CloudformationStackSetInstanceDeploymentTargets | undefined; 
-  private __deploymentTargetsOutput = new CloudformationStackSetInstanceDeploymentTargetsOutputReference(this as any, "deployment_targets", true);
+  private _deploymentTargets = new CloudformationStackSetInstanceDeploymentTargetsOutputReference(this as any, "deployment_targets", true);
   public get deploymentTargets() {
-    return this.__deploymentTargetsOutput;
+    return this._deploymentTargets;
   }
-  public putDeploymentTargets(value: CloudformationStackSetInstanceDeploymentTargets | undefined) {
-    this._deploymentTargets = value;
+  public putDeploymentTargets(value: CloudformationStackSetInstanceDeploymentTargets) {
+    this._deploymentTargets.internalValue = value;
   }
   public resetDeploymentTargets() {
-    this._deploymentTargets = undefined;
+    this._deploymentTargets.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentTargetsInput() {
-    return this._deploymentTargets
+    return this._deploymentTargets.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: CloudformationStackSetInstanceTimeouts | undefined; 
-  private __timeoutsOutput = new CloudformationStackSetInstanceTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new CloudformationStackSetInstanceTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: CloudformationStackSetInstanceTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: CloudformationStackSetInstanceTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -352,8 +400,8 @@ export class CloudformationStackSetInstance extends cdktf.TerraformResource {
       region: cdktf.stringToTerraform(this._region),
       retain_stack: cdktf.booleanToTerraform(this._retainStack),
       stack_set_name: cdktf.stringToTerraform(this._stackSetName),
-      deployment_targets: cloudformationStackSetInstanceDeploymentTargetsToTerraform(this._deploymentTargets),
-      timeouts: cloudformationStackSetInstanceTimeoutsToTerraform(this._timeouts),
+      deployment_targets: cloudformationStackSetInstanceDeploymentTargetsToTerraform(this._deploymentTargets.internalValue),
+      timeouts: cloudformationStackSetInstanceTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

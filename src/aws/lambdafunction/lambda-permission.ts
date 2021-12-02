@@ -102,15 +102,15 @@ export class LambdaPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get actionInput() {
-    return this._action
+    return this._action;
   }
 
   // event_source_token - computed: false, optional: true, required: false
-  private _eventSourceToken?: string | undefined; 
+  private _eventSourceToken?: string; 
   public get eventSourceToken() {
     return this.getStringAttribute('event_source_token');
   }
-  public set eventSourceToken(value: string | undefined) {
+  public set eventSourceToken(value: string) {
     this._eventSourceToken = value;
   }
   public resetEventSourceToken() {
@@ -118,7 +118,7 @@ export class LambdaPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get eventSourceTokenInput() {
-    return this._eventSourceToken
+    return this._eventSourceToken;
   }
 
   // function_name - computed: false, optional: false, required: true
@@ -131,7 +131,7 @@ export class LambdaPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get functionNameInput() {
-    return this._functionName
+    return this._functionName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -149,15 +149,15 @@ export class LambdaPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get principalInput() {
-    return this._principal
+    return this._principal;
   }
 
   // qualifier - computed: false, optional: true, required: false
-  private _qualifier?: string | undefined; 
+  private _qualifier?: string; 
   public get qualifier() {
     return this.getStringAttribute('qualifier');
   }
-  public set qualifier(value: string | undefined) {
+  public set qualifier(value: string) {
     this._qualifier = value;
   }
   public resetQualifier() {
@@ -165,15 +165,15 @@ export class LambdaPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get qualifierInput() {
-    return this._qualifier
+    return this._qualifier;
   }
 
   // source_account - computed: false, optional: true, required: false
-  private _sourceAccount?: string | undefined; 
+  private _sourceAccount?: string; 
   public get sourceAccount() {
     return this.getStringAttribute('source_account');
   }
-  public set sourceAccount(value: string | undefined) {
+  public set sourceAccount(value: string) {
     this._sourceAccount = value;
   }
   public resetSourceAccount() {
@@ -181,15 +181,15 @@ export class LambdaPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceAccountInput() {
-    return this._sourceAccount
+    return this._sourceAccount;
   }
 
   // source_arn - computed: false, optional: true, required: false
-  private _sourceArn?: string | undefined; 
+  private _sourceArn?: string; 
   public get sourceArn() {
     return this.getStringAttribute('source_arn');
   }
-  public set sourceArn(value: string | undefined) {
+  public set sourceArn(value: string) {
     this._sourceArn = value;
   }
   public resetSourceArn() {
@@ -197,15 +197,15 @@ export class LambdaPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceArnInput() {
-    return this._sourceArn
+    return this._sourceArn;
   }
 
   // statement_id - computed: true, optional: true, required: false
-  private _statementId?: string | undefined; 
+  private _statementId?: string; 
   public get statementId() {
     return this.getStringAttribute('statement_id');
   }
-  public set statementId(value: string | undefined) {
+  public set statementId(value: string) {
     this._statementId = value;
   }
   public resetStatementId() {
@@ -213,15 +213,15 @@ export class LambdaPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get statementIdInput() {
-    return this._statementId
+    return this._statementId;
   }
 
   // statement_id_prefix - computed: false, optional: true, required: false
-  private _statementIdPrefix?: string | undefined; 
+  private _statementIdPrefix?: string; 
   public get statementIdPrefix() {
     return this.getStringAttribute('statement_id_prefix');
   }
-  public set statementIdPrefix(value: string | undefined) {
+  public set statementIdPrefix(value: string) {
     this._statementIdPrefix = value;
   }
   public resetStatementIdPrefix() {
@@ -229,7 +229,7 @@ export class LambdaPermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get statementIdPrefixInput() {
-    return this._statementIdPrefix
+    return this._statementIdPrefix;
   }
 
   // =========

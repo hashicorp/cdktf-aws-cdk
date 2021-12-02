@@ -105,11 +105,11 @@ export class DataAwsWorkspacesWorkspace extends cdktf.TerraformDataSource {
   }
 
   // directory_id - computed: true, optional: true, required: false
-  private _directoryId?: string | undefined; 
+  private _directoryId?: string; 
   public get directoryId() {
     return this.getStringAttribute('directory_id');
   }
-  public set directoryId(value: string | undefined) {
+  public set directoryId(value: string) {
     this._directoryId = value;
   }
   public resetDirectoryId() {
@@ -117,7 +117,7 @@ export class DataAwsWorkspacesWorkspace extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get directoryIdInput() {
-    return this._directoryId
+    return this._directoryId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -141,12 +141,12 @@ export class DataAwsWorkspacesWorkspace extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -154,15 +154,15 @@ export class DataAwsWorkspacesWorkspace extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // user_name - computed: true, optional: true, required: false
-  private _userName?: string | undefined; 
+  private _userName?: string; 
   public get userName() {
     return this.getStringAttribute('user_name');
   }
-  public set userName(value: string | undefined) {
+  public set userName(value: string) {
     this._userName = value;
   }
   public resetUserName() {
@@ -170,7 +170,7 @@ export class DataAwsWorkspacesWorkspace extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get userNameInput() {
-    return this._userName
+    return this._userName;
   }
 
   // user_volume_encryption_enabled - computed: true, optional: false, required: false
@@ -184,11 +184,11 @@ export class DataAwsWorkspacesWorkspace extends cdktf.TerraformDataSource {
   }
 
   // workspace_id - computed: true, optional: true, required: false
-  private _workspaceId?: string | undefined; 
+  private _workspaceId?: string; 
   public get workspaceId() {
     return this.getStringAttribute('workspace_id');
   }
-  public set workspaceId(value: string | undefined) {
+  public set workspaceId(value: string) {
     this._workspaceId = value;
   }
   public resetWorkspaceId() {
@@ -196,7 +196,7 @@ export class DataAwsWorkspacesWorkspace extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get workspaceIdInput() {
-    return this._workspaceId
+    return this._workspaceId;
   }
 
   // workspace_properties - computed: true, optional: false, required: false

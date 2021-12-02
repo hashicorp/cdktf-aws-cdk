@@ -72,7 +72,7 @@ export class EcrRepositoryPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // registry_id - computed: true, optional: false, required: false
@@ -90,7 +90,7 @@ export class EcrRepositoryPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get repositoryInput() {
-    return this._repository
+    return this._repository;
   }
 
   // =========

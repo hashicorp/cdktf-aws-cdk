@@ -137,12 +137,37 @@ export class LexIntentConclusionStatementOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LexIntentConclusionStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._responseCard) {
+      hasAnyValues = true;
+      internalValueResult.responseCard = this._responseCard;
+    }
+    if (this._message) {
+      hasAnyValues = true;
+      internalValueResult.message = this._message;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LexIntentConclusionStatement | undefined) {
+    if (value === undefined) {
+      this._responseCard = undefined;
+      this._message = undefined;
+    }
+    else {
+      this._responseCard = value.responseCard;
+      this._message = value.message;
+    }
+  }
+
   // response_card - computed: false, optional: true, required: false
-  private _responseCard?: string | undefined; 
+  private _responseCard?: string; 
   public get responseCard() {
     return this.getStringAttribute('response_card');
   }
-  public set responseCard(value: string | undefined) {
+  public set responseCard(value: string) {
     this._responseCard = value;
   }
   public resetResponseCard() {
@@ -150,7 +175,7 @@ export class LexIntentConclusionStatementOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get responseCardInput() {
-    return this._responseCard
+    return this._responseCard;
   }
 
   // message - computed: false, optional: false, required: true
@@ -164,7 +189,7 @@ export class LexIntentConclusionStatementOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get messageInput() {
-    return this._message
+    return this._message;
   }
 }
 export interface LexIntentConfirmationPromptMessage {
@@ -233,6 +258,37 @@ export class LexIntentConfirmationPromptOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LexIntentConfirmationPrompt | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._maxAttempts) {
+      hasAnyValues = true;
+      internalValueResult.maxAttempts = this._maxAttempts;
+    }
+    if (this._responseCard) {
+      hasAnyValues = true;
+      internalValueResult.responseCard = this._responseCard;
+    }
+    if (this._message) {
+      hasAnyValues = true;
+      internalValueResult.message = this._message;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LexIntentConfirmationPrompt | undefined) {
+    if (value === undefined) {
+      this._maxAttempts = undefined;
+      this._responseCard = undefined;
+      this._message = undefined;
+    }
+    else {
+      this._maxAttempts = value.maxAttempts;
+      this._responseCard = value.responseCard;
+      this._message = value.message;
+    }
+  }
+
   // max_attempts - computed: false, optional: false, required: true
   private _maxAttempts?: number; 
   public get maxAttempts() {
@@ -243,15 +299,15 @@ export class LexIntentConfirmationPromptOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get maxAttemptsInput() {
-    return this._maxAttempts
+    return this._maxAttempts;
   }
 
   // response_card - computed: false, optional: true, required: false
-  private _responseCard?: string | undefined; 
+  private _responseCard?: string; 
   public get responseCard() {
     return this.getStringAttribute('response_card');
   }
-  public set responseCard(value: string | undefined) {
+  public set responseCard(value: string) {
     this._responseCard = value;
   }
   public resetResponseCard() {
@@ -259,7 +315,7 @@ export class LexIntentConfirmationPromptOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get responseCardInput() {
-    return this._responseCard
+    return this._responseCard;
   }
 
   // message - computed: false, optional: false, required: true
@@ -273,7 +329,7 @@ export class LexIntentConfirmationPromptOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get messageInput() {
-    return this._message
+    return this._message;
   }
 }
 export interface LexIntentDialogCodeHook {
@@ -308,6 +364,31 @@ export class LexIntentDialogCodeHookOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LexIntentDialogCodeHook | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._messageVersion) {
+      hasAnyValues = true;
+      internalValueResult.messageVersion = this._messageVersion;
+    }
+    if (this._uri) {
+      hasAnyValues = true;
+      internalValueResult.uri = this._uri;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LexIntentDialogCodeHook | undefined) {
+    if (value === undefined) {
+      this._messageVersion = undefined;
+      this._uri = undefined;
+    }
+    else {
+      this._messageVersion = value.messageVersion;
+      this._uri = value.uri;
+    }
+  }
+
   // message_version - computed: false, optional: false, required: true
   private _messageVersion?: string; 
   public get messageVersion() {
@@ -318,7 +399,7 @@ export class LexIntentDialogCodeHookOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get messageVersionInput() {
-    return this._messageVersion
+    return this._messageVersion;
   }
 
   // uri - computed: false, optional: false, required: true
@@ -331,7 +412,7 @@ export class LexIntentDialogCodeHookOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get uriInput() {
-    return this._uri
+    return this._uri;
   }
 }
 export interface LexIntentFollowUpPromptPromptMessage {
@@ -400,6 +481,37 @@ export class LexIntentFollowUpPromptPromptOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LexIntentFollowUpPromptPrompt | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._maxAttempts) {
+      hasAnyValues = true;
+      internalValueResult.maxAttempts = this._maxAttempts;
+    }
+    if (this._responseCard) {
+      hasAnyValues = true;
+      internalValueResult.responseCard = this._responseCard;
+    }
+    if (this._message) {
+      hasAnyValues = true;
+      internalValueResult.message = this._message;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LexIntentFollowUpPromptPrompt | undefined) {
+    if (value === undefined) {
+      this._maxAttempts = undefined;
+      this._responseCard = undefined;
+      this._message = undefined;
+    }
+    else {
+      this._maxAttempts = value.maxAttempts;
+      this._responseCard = value.responseCard;
+      this._message = value.message;
+    }
+  }
+
   // max_attempts - computed: false, optional: false, required: true
   private _maxAttempts?: number; 
   public get maxAttempts() {
@@ -410,15 +522,15 @@ export class LexIntentFollowUpPromptPromptOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get maxAttemptsInput() {
-    return this._maxAttempts
+    return this._maxAttempts;
   }
 
   // response_card - computed: false, optional: true, required: false
-  private _responseCard?: string | undefined; 
+  private _responseCard?: string; 
   public get responseCard() {
     return this.getStringAttribute('response_card');
   }
-  public set responseCard(value: string | undefined) {
+  public set responseCard(value: string) {
     this._responseCard = value;
   }
   public resetResponseCard() {
@@ -426,7 +538,7 @@ export class LexIntentFollowUpPromptPromptOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get responseCardInput() {
-    return this._responseCard
+    return this._responseCard;
   }
 
   // message - computed: false, optional: false, required: true
@@ -440,7 +552,7 @@ export class LexIntentFollowUpPromptPromptOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get messageInput() {
-    return this._message
+    return this._message;
   }
 }
 export interface LexIntentFollowUpPromptRejectionStatementMessage {
@@ -504,12 +616,37 @@ export class LexIntentFollowUpPromptRejectionStatementOutputReference extends cd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LexIntentFollowUpPromptRejectionStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._responseCard) {
+      hasAnyValues = true;
+      internalValueResult.responseCard = this._responseCard;
+    }
+    if (this._message) {
+      hasAnyValues = true;
+      internalValueResult.message = this._message;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LexIntentFollowUpPromptRejectionStatement | undefined) {
+    if (value === undefined) {
+      this._responseCard = undefined;
+      this._message = undefined;
+    }
+    else {
+      this._responseCard = value.responseCard;
+      this._message = value.message;
+    }
+  }
+
   // response_card - computed: false, optional: true, required: false
-  private _responseCard?: string | undefined; 
+  private _responseCard?: string; 
   public get responseCard() {
     return this.getStringAttribute('response_card');
   }
-  public set responseCard(value: string | undefined) {
+  public set responseCard(value: string) {
     this._responseCard = value;
   }
   public resetResponseCard() {
@@ -517,7 +654,7 @@ export class LexIntentFollowUpPromptRejectionStatementOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get responseCardInput() {
-    return this._responseCard
+    return this._responseCard;
   }
 
   // message - computed: false, optional: false, required: true
@@ -531,7 +668,7 @@ export class LexIntentFollowUpPromptRejectionStatementOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get messageInput() {
-    return this._message
+    return this._message;
   }
 }
 export interface LexIntentFollowUpPrompt {
@@ -570,32 +707,55 @@ export class LexIntentFollowUpPromptOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LexIntentFollowUpPrompt | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._prompt) {
+      hasAnyValues = true;
+      internalValueResult.prompt = this._prompt?.internalValue;
+    }
+    if (this._rejectionStatement) {
+      hasAnyValues = true;
+      internalValueResult.rejectionStatement = this._rejectionStatement?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LexIntentFollowUpPrompt | undefined) {
+    if (value === undefined) {
+      this._prompt.internalValue = undefined;
+      this._rejectionStatement.internalValue = undefined;
+    }
+    else {
+      this._prompt.internalValue = value.prompt;
+      this._rejectionStatement.internalValue = value.rejectionStatement;
+    }
+  }
+
   // prompt - computed: false, optional: false, required: true
-  private _prompt?: LexIntentFollowUpPromptPrompt; 
-  private __promptOutput = new LexIntentFollowUpPromptPromptOutputReference(this as any, "prompt", true);
+  private _prompt = new LexIntentFollowUpPromptPromptOutputReference(this as any, "prompt", true);
   public get prompt() {
-    return this.__promptOutput;
+    return this._prompt;
   }
   public putPrompt(value: LexIntentFollowUpPromptPrompt) {
-    this._prompt = value;
+    this._prompt.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get promptInput() {
-    return this._prompt
+    return this._prompt.internalValue;
   }
 
   // rejection_statement - computed: false, optional: false, required: true
-  private _rejectionStatement?: LexIntentFollowUpPromptRejectionStatement; 
-  private __rejectionStatementOutput = new LexIntentFollowUpPromptRejectionStatementOutputReference(this as any, "rejection_statement", true);
+  private _rejectionStatement = new LexIntentFollowUpPromptRejectionStatementOutputReference(this as any, "rejection_statement", true);
   public get rejectionStatement() {
-    return this.__rejectionStatementOutput;
+    return this._rejectionStatement;
   }
   public putRejectionStatement(value: LexIntentFollowUpPromptRejectionStatement) {
-    this._rejectionStatement = value;
+    this._rejectionStatement.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get rejectionStatementInput() {
-    return this._rejectionStatement
+    return this._rejectionStatement.internalValue;
   }
 }
 export interface LexIntentFulfillmentActivityCodeHook {
@@ -630,6 +790,31 @@ export class LexIntentFulfillmentActivityCodeHookOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LexIntentFulfillmentActivityCodeHook | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._messageVersion) {
+      hasAnyValues = true;
+      internalValueResult.messageVersion = this._messageVersion;
+    }
+    if (this._uri) {
+      hasAnyValues = true;
+      internalValueResult.uri = this._uri;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LexIntentFulfillmentActivityCodeHook | undefined) {
+    if (value === undefined) {
+      this._messageVersion = undefined;
+      this._uri = undefined;
+    }
+    else {
+      this._messageVersion = value.messageVersion;
+      this._uri = value.uri;
+    }
+  }
+
   // message_version - computed: false, optional: false, required: true
   private _messageVersion?: string; 
   public get messageVersion() {
@@ -640,7 +825,7 @@ export class LexIntentFulfillmentActivityCodeHookOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get messageVersionInput() {
-    return this._messageVersion
+    return this._messageVersion;
   }
 
   // uri - computed: false, optional: false, required: true
@@ -653,7 +838,7 @@ export class LexIntentFulfillmentActivityCodeHookOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get uriInput() {
-    return this._uri
+    return this._uri;
   }
 }
 export interface LexIntentFulfillmentActivity {
@@ -690,6 +875,31 @@ export class LexIntentFulfillmentActivityOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LexIntentFulfillmentActivity | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    if (this._codeHook) {
+      hasAnyValues = true;
+      internalValueResult.codeHook = this._codeHook?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LexIntentFulfillmentActivity | undefined) {
+    if (value === undefined) {
+      this._type = undefined;
+      this._codeHook.internalValue = undefined;
+    }
+    else {
+      this._type = value.type;
+      this._codeHook.internalValue = value.codeHook;
+    }
+  }
+
   // type - computed: false, optional: false, required: true
   private _type?: string; 
   public get type() {
@@ -700,24 +910,23 @@ export class LexIntentFulfillmentActivityOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // code_hook - computed: false, optional: true, required: false
-  private _codeHook?: LexIntentFulfillmentActivityCodeHook | undefined; 
-  private __codeHookOutput = new LexIntentFulfillmentActivityCodeHookOutputReference(this as any, "code_hook", true);
+  private _codeHook = new LexIntentFulfillmentActivityCodeHookOutputReference(this as any, "code_hook", true);
   public get codeHook() {
-    return this.__codeHookOutput;
+    return this._codeHook;
   }
-  public putCodeHook(value: LexIntentFulfillmentActivityCodeHook | undefined) {
-    this._codeHook = value;
+  public putCodeHook(value: LexIntentFulfillmentActivityCodeHook) {
+    this._codeHook.internalValue = value;
   }
   public resetCodeHook() {
-    this._codeHook = undefined;
+    this._codeHook.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get codeHookInput() {
-    return this._codeHook
+    return this._codeHook.internalValue;
   }
 }
 export interface LexIntentRejectionStatementMessage {
@@ -781,12 +990,37 @@ export class LexIntentRejectionStatementOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LexIntentRejectionStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._responseCard) {
+      hasAnyValues = true;
+      internalValueResult.responseCard = this._responseCard;
+    }
+    if (this._message) {
+      hasAnyValues = true;
+      internalValueResult.message = this._message;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LexIntentRejectionStatement | undefined) {
+    if (value === undefined) {
+      this._responseCard = undefined;
+      this._message = undefined;
+    }
+    else {
+      this._responseCard = value.responseCard;
+      this._message = value.message;
+    }
+  }
+
   // response_card - computed: false, optional: true, required: false
-  private _responseCard?: string | undefined; 
+  private _responseCard?: string; 
   public get responseCard() {
     return this.getStringAttribute('response_card');
   }
-  public set responseCard(value: string | undefined) {
+  public set responseCard(value: string) {
     this._responseCard = value;
   }
   public resetResponseCard() {
@@ -794,7 +1028,7 @@ export class LexIntentRejectionStatementOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get responseCardInput() {
-    return this._responseCard
+    return this._responseCard;
   }
 
   // message - computed: false, optional: false, required: true
@@ -808,7 +1042,7 @@ export class LexIntentRejectionStatementOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get messageInput() {
-    return this._message
+    return this._message;
   }
 }
 export interface LexIntentSlotValueElicitationPromptMessage {
@@ -877,6 +1111,37 @@ export class LexIntentSlotValueElicitationPromptOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LexIntentSlotValueElicitationPrompt | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._maxAttempts) {
+      hasAnyValues = true;
+      internalValueResult.maxAttempts = this._maxAttempts;
+    }
+    if (this._responseCard) {
+      hasAnyValues = true;
+      internalValueResult.responseCard = this._responseCard;
+    }
+    if (this._message) {
+      hasAnyValues = true;
+      internalValueResult.message = this._message;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LexIntentSlotValueElicitationPrompt | undefined) {
+    if (value === undefined) {
+      this._maxAttempts = undefined;
+      this._responseCard = undefined;
+      this._message = undefined;
+    }
+    else {
+      this._maxAttempts = value.maxAttempts;
+      this._responseCard = value.responseCard;
+      this._message = value.message;
+    }
+  }
+
   // max_attempts - computed: false, optional: false, required: true
   private _maxAttempts?: number; 
   public get maxAttempts() {
@@ -887,15 +1152,15 @@ export class LexIntentSlotValueElicitationPromptOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get maxAttemptsInput() {
-    return this._maxAttempts
+    return this._maxAttempts;
   }
 
   // response_card - computed: false, optional: true, required: false
-  private _responseCard?: string | undefined; 
+  private _responseCard?: string; 
   public get responseCard() {
     return this.getStringAttribute('response_card');
   }
-  public set responseCard(value: string | undefined) {
+  public set responseCard(value: string) {
     this._responseCard = value;
   }
   public resetResponseCard() {
@@ -903,7 +1168,7 @@ export class LexIntentSlotValueElicitationPromptOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get responseCardInput() {
-    return this._responseCard
+    return this._responseCard;
   }
 
   // message - computed: false, optional: false, required: true
@@ -917,7 +1182,7 @@ export class LexIntentSlotValueElicitationPromptOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get messageInput() {
-    return this._message
+    return this._message;
   }
 }
 export interface LexIntentSlot {
@@ -1016,12 +1281,43 @@ export class LexIntentTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LexIntentTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LexIntentTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -1029,15 +1325,15 @@ export class LexIntentTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -1045,15 +1341,15 @@ export class LexIntentTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -1061,7 +1357,7 @@ export class LexIntentTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -1102,14 +1398,14 @@ export class LexIntent extends cdktf.TerraformResource {
     this._name = config.name;
     this._parentIntentSignature = config.parentIntentSignature;
     this._sampleUtterances = config.sampleUtterances;
-    this._conclusionStatement = config.conclusionStatement;
-    this._confirmationPrompt = config.confirmationPrompt;
-    this._dialogCodeHook = config.dialogCodeHook;
-    this._followUpPrompt = config.followUpPrompt;
-    this._fulfillmentActivity = config.fulfillmentActivity;
-    this._rejectionStatement = config.rejectionStatement;
+    this._conclusionStatement.internalValue = config.conclusionStatement;
+    this._confirmationPrompt.internalValue = config.confirmationPrompt;
+    this._dialogCodeHook.internalValue = config.dialogCodeHook;
+    this._followUpPrompt.internalValue = config.followUpPrompt;
+    this._fulfillmentActivity.internalValue = config.fulfillmentActivity;
+    this._rejectionStatement.internalValue = config.rejectionStatement;
     this._slot = config.slot;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -1127,11 +1423,11 @@ export class LexIntent extends cdktf.TerraformResource {
   }
 
   // create_version - computed: false, optional: true, required: false
-  private _createVersion?: boolean | cdktf.IResolvable | undefined; 
+  private _createVersion?: boolean | cdktf.IResolvable; 
   public get createVersion() {
     return this.getBooleanAttribute('create_version') as any;
   }
-  public set createVersion(value: boolean | cdktf.IResolvable | undefined) {
+  public set createVersion(value: boolean | cdktf.IResolvable) {
     this._createVersion = value;
   }
   public resetCreateVersion() {
@@ -1139,7 +1435,7 @@ export class LexIntent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get createVersionInput() {
-    return this._createVersion
+    return this._createVersion;
   }
 
   // created_date - computed: true, optional: false, required: false
@@ -1148,11 +1444,11 @@ export class LexIntent extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -1160,7 +1456,7 @@ export class LexIntent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -1183,15 +1479,15 @@ export class LexIntent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // parent_intent_signature - computed: false, optional: true, required: false
-  private _parentIntentSignature?: string | undefined; 
+  private _parentIntentSignature?: string; 
   public get parentIntentSignature() {
     return this.getStringAttribute('parent_intent_signature');
   }
-  public set parentIntentSignature(value: string | undefined) {
+  public set parentIntentSignature(value: string) {
     this._parentIntentSignature = value;
   }
   public resetParentIntentSignature() {
@@ -1199,15 +1495,15 @@ export class LexIntent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parentIntentSignatureInput() {
-    return this._parentIntentSignature
+    return this._parentIntentSignature;
   }
 
   // sample_utterances - computed: false, optional: true, required: false
-  private _sampleUtterances?: string[] | undefined; 
+  private _sampleUtterances?: string[]; 
   public get sampleUtterances() {
     return this.getListAttribute('sample_utterances');
   }
-  public set sampleUtterances(value: string[] | undefined) {
+  public set sampleUtterances(value: string[]) {
     this._sampleUtterances = value;
   }
   public resetSampleUtterances() {
@@ -1215,7 +1511,7 @@ export class LexIntent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sampleUtterancesInput() {
-    return this._sampleUtterances
+    return this._sampleUtterances;
   }
 
   // version - computed: true, optional: false, required: false
@@ -1224,111 +1520,105 @@ export class LexIntent extends cdktf.TerraformResource {
   }
 
   // conclusion_statement - computed: false, optional: true, required: false
-  private _conclusionStatement?: LexIntentConclusionStatement | undefined; 
-  private __conclusionStatementOutput = new LexIntentConclusionStatementOutputReference(this as any, "conclusion_statement", true);
+  private _conclusionStatement = new LexIntentConclusionStatementOutputReference(this as any, "conclusion_statement", true);
   public get conclusionStatement() {
-    return this.__conclusionStatementOutput;
+    return this._conclusionStatement;
   }
-  public putConclusionStatement(value: LexIntentConclusionStatement | undefined) {
-    this._conclusionStatement = value;
+  public putConclusionStatement(value: LexIntentConclusionStatement) {
+    this._conclusionStatement.internalValue = value;
   }
   public resetConclusionStatement() {
-    this._conclusionStatement = undefined;
+    this._conclusionStatement.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get conclusionStatementInput() {
-    return this._conclusionStatement
+    return this._conclusionStatement.internalValue;
   }
 
   // confirmation_prompt - computed: false, optional: true, required: false
-  private _confirmationPrompt?: LexIntentConfirmationPrompt | undefined; 
-  private __confirmationPromptOutput = new LexIntentConfirmationPromptOutputReference(this as any, "confirmation_prompt", true);
+  private _confirmationPrompt = new LexIntentConfirmationPromptOutputReference(this as any, "confirmation_prompt", true);
   public get confirmationPrompt() {
-    return this.__confirmationPromptOutput;
+    return this._confirmationPrompt;
   }
-  public putConfirmationPrompt(value: LexIntentConfirmationPrompt | undefined) {
-    this._confirmationPrompt = value;
+  public putConfirmationPrompt(value: LexIntentConfirmationPrompt) {
+    this._confirmationPrompt.internalValue = value;
   }
   public resetConfirmationPrompt() {
-    this._confirmationPrompt = undefined;
+    this._confirmationPrompt.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get confirmationPromptInput() {
-    return this._confirmationPrompt
+    return this._confirmationPrompt.internalValue;
   }
 
   // dialog_code_hook - computed: false, optional: true, required: false
-  private _dialogCodeHook?: LexIntentDialogCodeHook | undefined; 
-  private __dialogCodeHookOutput = new LexIntentDialogCodeHookOutputReference(this as any, "dialog_code_hook", true);
+  private _dialogCodeHook = new LexIntentDialogCodeHookOutputReference(this as any, "dialog_code_hook", true);
   public get dialogCodeHook() {
-    return this.__dialogCodeHookOutput;
+    return this._dialogCodeHook;
   }
-  public putDialogCodeHook(value: LexIntentDialogCodeHook | undefined) {
-    this._dialogCodeHook = value;
+  public putDialogCodeHook(value: LexIntentDialogCodeHook) {
+    this._dialogCodeHook.internalValue = value;
   }
   public resetDialogCodeHook() {
-    this._dialogCodeHook = undefined;
+    this._dialogCodeHook.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get dialogCodeHookInput() {
-    return this._dialogCodeHook
+    return this._dialogCodeHook.internalValue;
   }
 
   // follow_up_prompt - computed: false, optional: true, required: false
-  private _followUpPrompt?: LexIntentFollowUpPrompt | undefined; 
-  private __followUpPromptOutput = new LexIntentFollowUpPromptOutputReference(this as any, "follow_up_prompt", true);
+  private _followUpPrompt = new LexIntentFollowUpPromptOutputReference(this as any, "follow_up_prompt", true);
   public get followUpPrompt() {
-    return this.__followUpPromptOutput;
+    return this._followUpPrompt;
   }
-  public putFollowUpPrompt(value: LexIntentFollowUpPrompt | undefined) {
-    this._followUpPrompt = value;
+  public putFollowUpPrompt(value: LexIntentFollowUpPrompt) {
+    this._followUpPrompt.internalValue = value;
   }
   public resetFollowUpPrompt() {
-    this._followUpPrompt = undefined;
+    this._followUpPrompt.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get followUpPromptInput() {
-    return this._followUpPrompt
+    return this._followUpPrompt.internalValue;
   }
 
   // fulfillment_activity - computed: false, optional: false, required: true
-  private _fulfillmentActivity?: LexIntentFulfillmentActivity; 
-  private __fulfillmentActivityOutput = new LexIntentFulfillmentActivityOutputReference(this as any, "fulfillment_activity", true);
+  private _fulfillmentActivity = new LexIntentFulfillmentActivityOutputReference(this as any, "fulfillment_activity", true);
   public get fulfillmentActivity() {
-    return this.__fulfillmentActivityOutput;
+    return this._fulfillmentActivity;
   }
   public putFulfillmentActivity(value: LexIntentFulfillmentActivity) {
-    this._fulfillmentActivity = value;
+    this._fulfillmentActivity.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get fulfillmentActivityInput() {
-    return this._fulfillmentActivity
+    return this._fulfillmentActivity.internalValue;
   }
 
   // rejection_statement - computed: false, optional: true, required: false
-  private _rejectionStatement?: LexIntentRejectionStatement | undefined; 
-  private __rejectionStatementOutput = new LexIntentRejectionStatementOutputReference(this as any, "rejection_statement", true);
+  private _rejectionStatement = new LexIntentRejectionStatementOutputReference(this as any, "rejection_statement", true);
   public get rejectionStatement() {
-    return this.__rejectionStatementOutput;
+    return this._rejectionStatement;
   }
-  public putRejectionStatement(value: LexIntentRejectionStatement | undefined) {
-    this._rejectionStatement = value;
+  public putRejectionStatement(value: LexIntentRejectionStatement) {
+    this._rejectionStatement.internalValue = value;
   }
   public resetRejectionStatement() {
-    this._rejectionStatement = undefined;
+    this._rejectionStatement.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get rejectionStatementInput() {
-    return this._rejectionStatement
+    return this._rejectionStatement.internalValue;
   }
 
   // slot - computed: false, optional: true, required: false
-  private _slot?: LexIntentSlot[] | undefined; 
+  private _slot?: LexIntentSlot[]; 
   public get slot() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('slot') as any;
   }
-  public set slot(value: LexIntentSlot[] | undefined) {
+  public set slot(value: LexIntentSlot[]) {
     this._slot = value;
   }
   public resetSlot() {
@@ -1336,24 +1626,23 @@ export class LexIntent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get slotInput() {
-    return this._slot
+    return this._slot;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: LexIntentTimeouts | undefined; 
-  private __timeoutsOutput = new LexIntentTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new LexIntentTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: LexIntentTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: LexIntentTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -1367,14 +1656,14 @@ export class LexIntent extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       parent_intent_signature: cdktf.stringToTerraform(this._parentIntentSignature),
       sample_utterances: cdktf.listMapper(cdktf.stringToTerraform)(this._sampleUtterances),
-      conclusion_statement: lexIntentConclusionStatementToTerraform(this._conclusionStatement),
-      confirmation_prompt: lexIntentConfirmationPromptToTerraform(this._confirmationPrompt),
-      dialog_code_hook: lexIntentDialogCodeHookToTerraform(this._dialogCodeHook),
-      follow_up_prompt: lexIntentFollowUpPromptToTerraform(this._followUpPrompt),
-      fulfillment_activity: lexIntentFulfillmentActivityToTerraform(this._fulfillmentActivity),
-      rejection_statement: lexIntentRejectionStatementToTerraform(this._rejectionStatement),
+      conclusion_statement: lexIntentConclusionStatementToTerraform(this._conclusionStatement.internalValue),
+      confirmation_prompt: lexIntentConfirmationPromptToTerraform(this._confirmationPrompt.internalValue),
+      dialog_code_hook: lexIntentDialogCodeHookToTerraform(this._dialogCodeHook.internalValue),
+      follow_up_prompt: lexIntentFollowUpPromptToTerraform(this._followUpPrompt.internalValue),
+      fulfillment_activity: lexIntentFulfillmentActivityToTerraform(this._fulfillmentActivity.internalValue),
+      rejection_statement: lexIntentRejectionStatementToTerraform(this._rejectionStatement.internalValue),
       slot: cdktf.listMapper(lexIntentSlotToTerraform)(this._slot),
-      timeouts: lexIntentTimeoutsToTerraform(this._timeouts),
+      timeouts: lexIntentTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

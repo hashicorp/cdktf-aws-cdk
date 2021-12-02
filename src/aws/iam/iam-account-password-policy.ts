@@ -93,11 +93,11 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
   // ==========
 
   // allow_users_to_change_password - computed: false, optional: true, required: false
-  private _allowUsersToChangePassword?: boolean | cdktf.IResolvable | undefined; 
+  private _allowUsersToChangePassword?: boolean | cdktf.IResolvable; 
   public get allowUsersToChangePassword() {
     return this.getBooleanAttribute('allow_users_to_change_password') as any;
   }
-  public set allowUsersToChangePassword(value: boolean | cdktf.IResolvable | undefined) {
+  public set allowUsersToChangePassword(value: boolean | cdktf.IResolvable) {
     this._allowUsersToChangePassword = value;
   }
   public resetAllowUsersToChangePassword() {
@@ -105,7 +105,7 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allowUsersToChangePasswordInput() {
-    return this._allowUsersToChangePassword
+    return this._allowUsersToChangePassword;
   }
 
   // expire_passwords - computed: true, optional: false, required: false
@@ -114,11 +114,11 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
   }
 
   // hard_expiry - computed: true, optional: true, required: false
-  private _hardExpiry?: boolean | cdktf.IResolvable | undefined; 
+  private _hardExpiry?: boolean | cdktf.IResolvable; 
   public get hardExpiry() {
     return this.getBooleanAttribute('hard_expiry') as any;
   }
-  public set hardExpiry(value: boolean | cdktf.IResolvable | undefined) {
+  public set hardExpiry(value: boolean | cdktf.IResolvable) {
     this._hardExpiry = value;
   }
   public resetHardExpiry() {
@@ -126,7 +126,7 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get hardExpiryInput() {
-    return this._hardExpiry
+    return this._hardExpiry;
   }
 
   // id - computed: true, optional: true, required: false
@@ -135,11 +135,11 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
   }
 
   // max_password_age - computed: true, optional: true, required: false
-  private _maxPasswordAge?: number | undefined; 
+  private _maxPasswordAge?: number; 
   public get maxPasswordAge() {
     return this.getNumberAttribute('max_password_age');
   }
-  public set maxPasswordAge(value: number | undefined) {
+  public set maxPasswordAge(value: number) {
     this._maxPasswordAge = value;
   }
   public resetMaxPasswordAge() {
@@ -147,15 +147,15 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maxPasswordAgeInput() {
-    return this._maxPasswordAge
+    return this._maxPasswordAge;
   }
 
   // minimum_password_length - computed: false, optional: true, required: false
-  private _minimumPasswordLength?: number | undefined; 
+  private _minimumPasswordLength?: number; 
   public get minimumPasswordLength() {
     return this.getNumberAttribute('minimum_password_length');
   }
-  public set minimumPasswordLength(value: number | undefined) {
+  public set minimumPasswordLength(value: number) {
     this._minimumPasswordLength = value;
   }
   public resetMinimumPasswordLength() {
@@ -163,15 +163,15 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get minimumPasswordLengthInput() {
-    return this._minimumPasswordLength
+    return this._minimumPasswordLength;
   }
 
   // password_reuse_prevention - computed: true, optional: true, required: false
-  private _passwordReusePrevention?: number | undefined; 
+  private _passwordReusePrevention?: number; 
   public get passwordReusePrevention() {
     return this.getNumberAttribute('password_reuse_prevention');
   }
-  public set passwordReusePrevention(value: number | undefined) {
+  public set passwordReusePrevention(value: number) {
     this._passwordReusePrevention = value;
   }
   public resetPasswordReusePrevention() {
@@ -179,15 +179,15 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get passwordReusePreventionInput() {
-    return this._passwordReusePrevention
+    return this._passwordReusePrevention;
   }
 
   // require_lowercase_characters - computed: true, optional: true, required: false
-  private _requireLowercaseCharacters?: boolean | cdktf.IResolvable | undefined; 
+  private _requireLowercaseCharacters?: boolean | cdktf.IResolvable; 
   public get requireLowercaseCharacters() {
     return this.getBooleanAttribute('require_lowercase_characters') as any;
   }
-  public set requireLowercaseCharacters(value: boolean | cdktf.IResolvable | undefined) {
+  public set requireLowercaseCharacters(value: boolean | cdktf.IResolvable) {
     this._requireLowercaseCharacters = value;
   }
   public resetRequireLowercaseCharacters() {
@@ -195,15 +195,15 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requireLowercaseCharactersInput() {
-    return this._requireLowercaseCharacters
+    return this._requireLowercaseCharacters;
   }
 
   // require_numbers - computed: true, optional: true, required: false
-  private _requireNumbers?: boolean | cdktf.IResolvable | undefined; 
+  private _requireNumbers?: boolean | cdktf.IResolvable; 
   public get requireNumbers() {
     return this.getBooleanAttribute('require_numbers') as any;
   }
-  public set requireNumbers(value: boolean | cdktf.IResolvable | undefined) {
+  public set requireNumbers(value: boolean | cdktf.IResolvable) {
     this._requireNumbers = value;
   }
   public resetRequireNumbers() {
@@ -211,15 +211,15 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requireNumbersInput() {
-    return this._requireNumbers
+    return this._requireNumbers;
   }
 
   // require_symbols - computed: true, optional: true, required: false
-  private _requireSymbols?: boolean | cdktf.IResolvable | undefined; 
+  private _requireSymbols?: boolean | cdktf.IResolvable; 
   public get requireSymbols() {
     return this.getBooleanAttribute('require_symbols') as any;
   }
-  public set requireSymbols(value: boolean | cdktf.IResolvable | undefined) {
+  public set requireSymbols(value: boolean | cdktf.IResolvable) {
     this._requireSymbols = value;
   }
   public resetRequireSymbols() {
@@ -227,15 +227,15 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requireSymbolsInput() {
-    return this._requireSymbols
+    return this._requireSymbols;
   }
 
   // require_uppercase_characters - computed: true, optional: true, required: false
-  private _requireUppercaseCharacters?: boolean | cdktf.IResolvable | undefined; 
+  private _requireUppercaseCharacters?: boolean | cdktf.IResolvable; 
   public get requireUppercaseCharacters() {
     return this.getBooleanAttribute('require_uppercase_characters') as any;
   }
-  public set requireUppercaseCharacters(value: boolean | cdktf.IResolvable | undefined) {
+  public set requireUppercaseCharacters(value: boolean | cdktf.IResolvable) {
     this._requireUppercaseCharacters = value;
   }
   public resetRequireUppercaseCharacters() {
@@ -243,7 +243,7 @@ export class IamAccountPasswordPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requireUppercaseCharactersInput() {
-    return this._requireUppercaseCharacters
+    return this._requireUppercaseCharacters;
   }
 
   // =========

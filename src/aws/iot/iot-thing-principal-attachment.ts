@@ -72,7 +72,7 @@ export class IotThingPrincipalAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get principalInput() {
-    return this._principal
+    return this._principal;
   }
 
   // thing - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class IotThingPrincipalAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get thingInput() {
-    return this._thing
+    return this._thing;
   }
 
   // =========

@@ -67,7 +67,7 @@ export class EbsDefaultKmsKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyArnInput() {
-    return this._keyArn
+    return this._keyArn;
   }
 
   // =========

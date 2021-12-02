@@ -98,12 +98,12 @@ export class Ec2TransitGatewayVpcAttachmentAccepter extends cdktf.TerraformResou
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -111,16 +111,16 @@ export class Ec2TransitGatewayVpcAttachmentAccepter extends cdktf.TerraformResou
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -128,7 +128,7 @@ export class Ec2TransitGatewayVpcAttachmentAccepter extends cdktf.TerraformResou
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // transit_gateway_attachment_id - computed: false, optional: false, required: true
@@ -141,15 +141,15 @@ export class Ec2TransitGatewayVpcAttachmentAccepter extends cdktf.TerraformResou
   }
   // Temporarily expose input value. Use with caution.
   public get transitGatewayAttachmentIdInput() {
-    return this._transitGatewayAttachmentId
+    return this._transitGatewayAttachmentId;
   }
 
   // transit_gateway_default_route_table_association - computed: false, optional: true, required: false
-  private _transitGatewayDefaultRouteTableAssociation?: boolean | cdktf.IResolvable | undefined; 
+  private _transitGatewayDefaultRouteTableAssociation?: boolean | cdktf.IResolvable; 
   public get transitGatewayDefaultRouteTableAssociation() {
     return this.getBooleanAttribute('transit_gateway_default_route_table_association') as any;
   }
-  public set transitGatewayDefaultRouteTableAssociation(value: boolean | cdktf.IResolvable | undefined) {
+  public set transitGatewayDefaultRouteTableAssociation(value: boolean | cdktf.IResolvable) {
     this._transitGatewayDefaultRouteTableAssociation = value;
   }
   public resetTransitGatewayDefaultRouteTableAssociation() {
@@ -157,15 +157,15 @@ export class Ec2TransitGatewayVpcAttachmentAccepter extends cdktf.TerraformResou
   }
   // Temporarily expose input value. Use with caution.
   public get transitGatewayDefaultRouteTableAssociationInput() {
-    return this._transitGatewayDefaultRouteTableAssociation
+    return this._transitGatewayDefaultRouteTableAssociation;
   }
 
   // transit_gateway_default_route_table_propagation - computed: false, optional: true, required: false
-  private _transitGatewayDefaultRouteTablePropagation?: boolean | cdktf.IResolvable | undefined; 
+  private _transitGatewayDefaultRouteTablePropagation?: boolean | cdktf.IResolvable; 
   public get transitGatewayDefaultRouteTablePropagation() {
     return this.getBooleanAttribute('transit_gateway_default_route_table_propagation') as any;
   }
-  public set transitGatewayDefaultRouteTablePropagation(value: boolean | cdktf.IResolvable | undefined) {
+  public set transitGatewayDefaultRouteTablePropagation(value: boolean | cdktf.IResolvable) {
     this._transitGatewayDefaultRouteTablePropagation = value;
   }
   public resetTransitGatewayDefaultRouteTablePropagation() {
@@ -173,7 +173,7 @@ export class Ec2TransitGatewayVpcAttachmentAccepter extends cdktf.TerraformResou
   }
   // Temporarily expose input value. Use with caution.
   public get transitGatewayDefaultRouteTablePropagationInput() {
-    return this._transitGatewayDefaultRouteTablePropagation
+    return this._transitGatewayDefaultRouteTablePropagation;
   }
 
   // transit_gateway_id - computed: true, optional: false, required: false

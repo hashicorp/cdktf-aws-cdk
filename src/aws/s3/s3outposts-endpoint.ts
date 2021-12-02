@@ -104,7 +104,7 @@ export class S3OutpostsEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get outpostIdInput() {
-    return this._outpostId
+    return this._outpostId;
   }
 
   // security_group_id - computed: false, optional: false, required: true
@@ -117,7 +117,7 @@ export class S3OutpostsEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdInput() {
-    return this._securityGroupId
+    return this._securityGroupId;
   }
 
   // subnet_id - computed: false, optional: false, required: true
@@ -130,7 +130,7 @@ export class S3OutpostsEndpoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdInput() {
-    return this._subnetId
+    return this._subnetId;
   }
 
   // =========

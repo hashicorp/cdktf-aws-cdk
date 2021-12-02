@@ -167,11 +167,11 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
   }
 
   // executable_users - computed: false, optional: true, required: false
-  private _executableUsers?: string[] | undefined; 
+  private _executableUsers?: string[]; 
   public get executableUsers() {
     return this.getListAttribute('executable_users');
   }
-  public set executableUsers(value: string[] | undefined) {
+  public set executableUsers(value: string[]) {
     this._executableUsers = value;
   }
   public resetExecutableUsers() {
@@ -179,7 +179,7 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get executableUsersInput() {
-    return this._executableUsers
+    return this._executableUsers;
   }
 
   // hypervisor - computed: true, optional: false, required: false
@@ -218,11 +218,11 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
   }
 
   // most_recent - computed: false, optional: true, required: false
-  private _mostRecent?: boolean | cdktf.IResolvable | undefined; 
+  private _mostRecent?: boolean | cdktf.IResolvable; 
   public get mostRecent() {
     return this.getBooleanAttribute('most_recent') as any;
   }
-  public set mostRecent(value: boolean | cdktf.IResolvable | undefined) {
+  public set mostRecent(value: boolean | cdktf.IResolvable) {
     this._mostRecent = value;
   }
   public resetMostRecent() {
@@ -230,7 +230,7 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get mostRecentInput() {
-    return this._mostRecent
+    return this._mostRecent;
   }
 
   // name - computed: true, optional: false, required: false
@@ -239,11 +239,11 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
   }
 
   // name_regex - computed: false, optional: true, required: false
-  private _nameRegex?: string | undefined; 
+  private _nameRegex?: string; 
   public get nameRegex() {
     return this.getStringAttribute('name_regex');
   }
-  public set nameRegex(value: string | undefined) {
+  public set nameRegex(value: string) {
     this._nameRegex = value;
   }
   public resetNameRegex() {
@@ -251,7 +251,7 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameRegexInput() {
-    return this._nameRegex
+    return this._nameRegex;
   }
 
   // owner_id - computed: true, optional: false, required: false
@@ -269,7 +269,7 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownersInput() {
-    return this._owners
+    return this._owners;
   }
 
   // platform - computed: true, optional: false, required: false
@@ -328,12 +328,12 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -341,7 +341,7 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // usage_operation - computed: true, optional: false, required: false
@@ -355,12 +355,12 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsAmiFilter[] | undefined; 
+  private _filter?: DataAwsAmiFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsAmiFilter[] | undefined) {
+  public set filter(value: DataAwsAmiFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -368,7 +368,7 @@ export class DataAwsAmi extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

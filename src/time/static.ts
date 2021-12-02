@@ -83,11 +83,11 @@ export class Static extends cdktf.TerraformResource {
   }
 
   // rfc3339 - computed: true, optional: true, required: false
-  private _rfc3339?: string | undefined; 
+  private _rfc3339?: string; 
   public get rfc3339() {
     return this.getStringAttribute('rfc3339');
   }
-  public set rfc3339(value: string | undefined) {
+  public set rfc3339(value: string) {
     this._rfc3339 = value;
   }
   public resetRfc3339() {
@@ -95,7 +95,7 @@ export class Static extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rfc3339Input() {
-    return this._rfc3339
+    return this._rfc3339;
   }
 
   // second - computed: true, optional: false, required: false
@@ -104,12 +104,12 @@ export class Static extends cdktf.TerraformResource {
   }
 
   // triggers - computed: false, optional: true, required: false
-  private _triggers?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _triggers?: { [key: string]: string } | cdktf.IResolvable; 
   public get triggers() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('triggers') as any;
   }
-  public set triggers(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set triggers(value: { [key: string]: string } | cdktf.IResolvable) {
     this._triggers = value;
   }
   public resetTriggers() {
@@ -117,7 +117,7 @@ export class Static extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get triggersInput() {
-    return this._triggers
+    return this._triggers;
   }
 
   // unix - computed: true, optional: false, required: false

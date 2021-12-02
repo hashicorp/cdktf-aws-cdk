@@ -146,7 +146,7 @@ export class IamRole extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get assumeRolePolicyInput() {
-    return this._assumeRolePolicy
+    return this._assumeRolePolicy;
   }
 
   // create_date - computed: true, optional: false, required: false
@@ -155,11 +155,11 @@ export class IamRole extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -167,15 +167,15 @@ export class IamRole extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // force_detach_policies - computed: false, optional: true, required: false
-  private _forceDetachPolicies?: boolean | cdktf.IResolvable | undefined; 
+  private _forceDetachPolicies?: boolean | cdktf.IResolvable; 
   public get forceDetachPolicies() {
     return this.getBooleanAttribute('force_detach_policies') as any;
   }
-  public set forceDetachPolicies(value: boolean | cdktf.IResolvable | undefined) {
+  public set forceDetachPolicies(value: boolean | cdktf.IResolvable) {
     this._forceDetachPolicies = value;
   }
   public resetForceDetachPolicies() {
@@ -183,7 +183,7 @@ export class IamRole extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get forceDetachPoliciesInput() {
-    return this._forceDetachPolicies
+    return this._forceDetachPolicies;
   }
 
   // id - computed: true, optional: true, required: false
@@ -192,11 +192,11 @@ export class IamRole extends cdktf.TerraformResource {
   }
 
   // managed_policy_arns - computed: true, optional: true, required: false
-  private _managedPolicyArns?: string[] | undefined; 
+  private _managedPolicyArns?: string[]; 
   public get managedPolicyArns() {
     return this.getListAttribute('managed_policy_arns');
   }
-  public set managedPolicyArns(value: string[] | undefined) {
+  public set managedPolicyArns(value: string[]) {
     this._managedPolicyArns = value;
   }
   public resetManagedPolicyArns() {
@@ -204,15 +204,15 @@ export class IamRole extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get managedPolicyArnsInput() {
-    return this._managedPolicyArns
+    return this._managedPolicyArns;
   }
 
   // max_session_duration - computed: false, optional: true, required: false
-  private _maxSessionDuration?: number | undefined; 
+  private _maxSessionDuration?: number; 
   public get maxSessionDuration() {
     return this.getNumberAttribute('max_session_duration');
   }
-  public set maxSessionDuration(value: number | undefined) {
+  public set maxSessionDuration(value: number) {
     this._maxSessionDuration = value;
   }
   public resetMaxSessionDuration() {
@@ -220,15 +220,15 @@ export class IamRole extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maxSessionDurationInput() {
-    return this._maxSessionDuration
+    return this._maxSessionDuration;
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -236,15 +236,15 @@ export class IamRole extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_prefix - computed: true, optional: true, required: false
-  private _namePrefix?: string | undefined; 
+  private _namePrefix?: string; 
   public get namePrefix() {
     return this.getStringAttribute('name_prefix');
   }
-  public set namePrefix(value: string | undefined) {
+  public set namePrefix(value: string) {
     this._namePrefix = value;
   }
   public resetNamePrefix() {
@@ -252,15 +252,15 @@ export class IamRole extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // path - computed: false, optional: true, required: false
-  private _path?: string | undefined; 
+  private _path?: string; 
   public get path() {
     return this.getStringAttribute('path');
   }
-  public set path(value: string | undefined) {
+  public set path(value: string) {
     this._path = value;
   }
   public resetPath() {
@@ -268,15 +268,15 @@ export class IamRole extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get pathInput() {
-    return this._path
+    return this._path;
   }
 
   // permissions_boundary - computed: false, optional: true, required: false
-  private _permissionsBoundary?: string | undefined; 
+  private _permissionsBoundary?: string; 
   public get permissionsBoundary() {
     return this.getStringAttribute('permissions_boundary');
   }
-  public set permissionsBoundary(value: string | undefined) {
+  public set permissionsBoundary(value: string) {
     this._permissionsBoundary = value;
   }
   public resetPermissionsBoundary() {
@@ -284,16 +284,16 @@ export class IamRole extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get permissionsBoundaryInput() {
-    return this._permissionsBoundary
+    return this._permissionsBoundary;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -301,16 +301,16 @@ export class IamRole extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -318,7 +318,7 @@ export class IamRole extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // unique_id - computed: true, optional: false, required: false
@@ -327,12 +327,12 @@ export class IamRole extends cdktf.TerraformResource {
   }
 
   // inline_policy - computed: false, optional: true, required: false
-  private _inlinePolicy?: IamRoleInlinePolicy[] | undefined; 
+  private _inlinePolicy?: IamRoleInlinePolicy[]; 
   public get inlinePolicy() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('inline_policy') as any;
   }
-  public set inlinePolicy(value: IamRoleInlinePolicy[] | undefined) {
+  public set inlinePolicy(value: IamRoleInlinePolicy[]) {
     this._inlinePolicy = value;
   }
   public resetInlinePolicy() {
@@ -340,7 +340,7 @@ export class IamRole extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get inlinePolicyInput() {
-    return this._inlinePolicy
+    return this._inlinePolicy;
   }
 
   // =========

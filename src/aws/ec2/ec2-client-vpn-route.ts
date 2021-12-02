@@ -77,15 +77,15 @@ export class Ec2ClientVpnRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clientVpnEndpointIdInput() {
-    return this._clientVpnEndpointId
+    return this._clientVpnEndpointId;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -93,7 +93,7 @@ export class Ec2ClientVpnRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // destination_cidr_block - computed: false, optional: false, required: true
@@ -106,7 +106,7 @@ export class Ec2ClientVpnRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get destinationCidrBlockInput() {
-    return this._destinationCidrBlock
+    return this._destinationCidrBlock;
   }
 
   // id - computed: true, optional: true, required: false
@@ -129,7 +129,7 @@ export class Ec2ClientVpnRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetVpcSubnetIdInput() {
-    return this._targetVpcSubnetId
+    return this._targetVpcSubnetId;
   }
 
   // type - computed: true, optional: false, required: false

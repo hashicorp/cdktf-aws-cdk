@@ -67,7 +67,7 @@ export class LbListenerCertificate extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get certificateArnInput() {
-    return this._certificateArn
+    return this._certificateArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -85,7 +85,7 @@ export class LbListenerCertificate extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get listenerArnInput() {
-    return this._listenerArn
+    return this._listenerArn;
   }
 
   // =========

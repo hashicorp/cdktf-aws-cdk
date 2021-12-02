@@ -78,11 +78,11 @@ export class DataAwsElasticacheUser extends cdktf.TerraformDataSource {
   // ==========
 
   // access_string - computed: false, optional: true, required: false
-  private _accessString?: string | undefined; 
+  private _accessString?: string; 
   public get accessString() {
     return this.getStringAttribute('access_string');
   }
-  public set accessString(value: string | undefined) {
+  public set accessString(value: string) {
     this._accessString = value;
   }
   public resetAccessString() {
@@ -90,15 +90,15 @@ export class DataAwsElasticacheUser extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get accessStringInput() {
-    return this._accessString
+    return this._accessString;
   }
 
   // engine - computed: false, optional: true, required: false
-  private _engine?: string | undefined; 
+  private _engine?: string; 
   public get engine() {
     return this.getStringAttribute('engine');
   }
-  public set engine(value: string | undefined) {
+  public set engine(value: string) {
     this._engine = value;
   }
   public resetEngine() {
@@ -106,7 +106,7 @@ export class DataAwsElasticacheUser extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get engineInput() {
-    return this._engine
+    return this._engine;
   }
 
   // id - computed: true, optional: true, required: false
@@ -115,11 +115,11 @@ export class DataAwsElasticacheUser extends cdktf.TerraformDataSource {
   }
 
   // no_password_required - computed: false, optional: true, required: false
-  private _noPasswordRequired?: boolean | cdktf.IResolvable | undefined; 
+  private _noPasswordRequired?: boolean | cdktf.IResolvable; 
   public get noPasswordRequired() {
     return this.getBooleanAttribute('no_password_required') as any;
   }
-  public set noPasswordRequired(value: boolean | cdktf.IResolvable | undefined) {
+  public set noPasswordRequired(value: boolean | cdktf.IResolvable) {
     this._noPasswordRequired = value;
   }
   public resetNoPasswordRequired() {
@@ -127,15 +127,15 @@ export class DataAwsElasticacheUser extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get noPasswordRequiredInput() {
-    return this._noPasswordRequired
+    return this._noPasswordRequired;
   }
 
   // passwords - computed: false, optional: true, required: false
-  private _passwords?: string[] | undefined; 
+  private _passwords?: string[]; 
   public get passwords() {
     return this.getListAttribute('passwords');
   }
-  public set passwords(value: string[] | undefined) {
+  public set passwords(value: string[]) {
     this._passwords = value;
   }
   public resetPasswords() {
@@ -143,7 +143,7 @@ export class DataAwsElasticacheUser extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get passwordsInput() {
-    return this._passwords
+    return this._passwords;
   }
 
   // user_id - computed: false, optional: false, required: true
@@ -156,15 +156,15 @@ export class DataAwsElasticacheUser extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get userIdInput() {
-    return this._userId
+    return this._userId;
   }
 
   // user_name - computed: false, optional: true, required: false
-  private _userName?: string | undefined; 
+  private _userName?: string; 
   public get userName() {
     return this.getStringAttribute('user_name');
   }
-  public set userName(value: string | undefined) {
+  public set userName(value: string) {
     this._userName = value;
   }
   public resetUserName() {
@@ -172,7 +172,7 @@ export class DataAwsElasticacheUser extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get userNameInput() {
-    return this._userName
+    return this._userName;
   }
 
   // =========

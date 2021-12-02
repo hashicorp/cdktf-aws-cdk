@@ -82,12 +82,37 @@ export class Apigatewayv2AuthorizerJwtConfigurationOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Apigatewayv2AuthorizerJwtConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._audience) {
+      hasAnyValues = true;
+      internalValueResult.audience = this._audience;
+    }
+    if (this._issuer) {
+      hasAnyValues = true;
+      internalValueResult.issuer = this._issuer;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Apigatewayv2AuthorizerJwtConfiguration | undefined) {
+    if (value === undefined) {
+      this._audience = undefined;
+      this._issuer = undefined;
+    }
+    else {
+      this._audience = value.audience;
+      this._issuer = value.issuer;
+    }
+  }
+
   // audience - computed: false, optional: true, required: false
-  private _audience?: string[] | undefined; 
+  private _audience?: string[]; 
   public get audience() {
     return this.getListAttribute('audience');
   }
-  public set audience(value: string[] | undefined) {
+  public set audience(value: string[]) {
     this._audience = value;
   }
   public resetAudience() {
@@ -95,15 +120,15 @@ export class Apigatewayv2AuthorizerJwtConfigurationOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get audienceInput() {
-    return this._audience
+    return this._audience;
   }
 
   // issuer - computed: false, optional: true, required: false
-  private _issuer?: string | undefined; 
+  private _issuer?: string; 
   public get issuer() {
     return this.getStringAttribute('issuer');
   }
-  public set issuer(value: string | undefined) {
+  public set issuer(value: string) {
     this._issuer = value;
   }
   public resetIssuer() {
@@ -111,7 +136,7 @@ export class Apigatewayv2AuthorizerJwtConfigurationOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get issuerInput() {
-    return this._issuer
+    return this._issuer;
   }
 }
 
@@ -156,7 +181,7 @@ export class Apigatewayv2Authorizer extends cdktf.TerraformResource {
     this._enableSimpleResponses = config.enableSimpleResponses;
     this._identitySources = config.identitySources;
     this._name = config.name;
-    this._jwtConfiguration = config.jwtConfiguration;
+    this._jwtConfiguration.internalValue = config.jwtConfiguration;
   }
 
   // ==========
@@ -173,15 +198,15 @@ export class Apigatewayv2Authorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get apiIdInput() {
-    return this._apiId
+    return this._apiId;
   }
 
   // authorizer_credentials_arn - computed: false, optional: true, required: false
-  private _authorizerCredentialsArn?: string | undefined; 
+  private _authorizerCredentialsArn?: string; 
   public get authorizerCredentialsArn() {
     return this.getStringAttribute('authorizer_credentials_arn');
   }
-  public set authorizerCredentialsArn(value: string | undefined) {
+  public set authorizerCredentialsArn(value: string) {
     this._authorizerCredentialsArn = value;
   }
   public resetAuthorizerCredentialsArn() {
@@ -189,15 +214,15 @@ export class Apigatewayv2Authorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authorizerCredentialsArnInput() {
-    return this._authorizerCredentialsArn
+    return this._authorizerCredentialsArn;
   }
 
   // authorizer_payload_format_version - computed: false, optional: true, required: false
-  private _authorizerPayloadFormatVersion?: string | undefined; 
+  private _authorizerPayloadFormatVersion?: string; 
   public get authorizerPayloadFormatVersion() {
     return this.getStringAttribute('authorizer_payload_format_version');
   }
-  public set authorizerPayloadFormatVersion(value: string | undefined) {
+  public set authorizerPayloadFormatVersion(value: string) {
     this._authorizerPayloadFormatVersion = value;
   }
   public resetAuthorizerPayloadFormatVersion() {
@@ -205,15 +230,15 @@ export class Apigatewayv2Authorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authorizerPayloadFormatVersionInput() {
-    return this._authorizerPayloadFormatVersion
+    return this._authorizerPayloadFormatVersion;
   }
 
   // authorizer_result_ttl_in_seconds - computed: true, optional: true, required: false
-  private _authorizerResultTtlInSeconds?: number | undefined; 
+  private _authorizerResultTtlInSeconds?: number; 
   public get authorizerResultTtlInSeconds() {
     return this.getNumberAttribute('authorizer_result_ttl_in_seconds');
   }
-  public set authorizerResultTtlInSeconds(value: number | undefined) {
+  public set authorizerResultTtlInSeconds(value: number) {
     this._authorizerResultTtlInSeconds = value;
   }
   public resetAuthorizerResultTtlInSeconds() {
@@ -221,7 +246,7 @@ export class Apigatewayv2Authorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authorizerResultTtlInSecondsInput() {
-    return this._authorizerResultTtlInSeconds
+    return this._authorizerResultTtlInSeconds;
   }
 
   // authorizer_type - computed: false, optional: false, required: true
@@ -234,15 +259,15 @@ export class Apigatewayv2Authorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authorizerTypeInput() {
-    return this._authorizerType
+    return this._authorizerType;
   }
 
   // authorizer_uri - computed: false, optional: true, required: false
-  private _authorizerUri?: string | undefined; 
+  private _authorizerUri?: string; 
   public get authorizerUri() {
     return this.getStringAttribute('authorizer_uri');
   }
-  public set authorizerUri(value: string | undefined) {
+  public set authorizerUri(value: string) {
     this._authorizerUri = value;
   }
   public resetAuthorizerUri() {
@@ -250,15 +275,15 @@ export class Apigatewayv2Authorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authorizerUriInput() {
-    return this._authorizerUri
+    return this._authorizerUri;
   }
 
   // enable_simple_responses - computed: false, optional: true, required: false
-  private _enableSimpleResponses?: boolean | cdktf.IResolvable | undefined; 
+  private _enableSimpleResponses?: boolean | cdktf.IResolvable; 
   public get enableSimpleResponses() {
     return this.getBooleanAttribute('enable_simple_responses') as any;
   }
-  public set enableSimpleResponses(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableSimpleResponses(value: boolean | cdktf.IResolvable) {
     this._enableSimpleResponses = value;
   }
   public resetEnableSimpleResponses() {
@@ -266,7 +291,7 @@ export class Apigatewayv2Authorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableSimpleResponsesInput() {
-    return this._enableSimpleResponses
+    return this._enableSimpleResponses;
   }
 
   // id - computed: true, optional: true, required: false
@@ -275,11 +300,11 @@ export class Apigatewayv2Authorizer extends cdktf.TerraformResource {
   }
 
   // identity_sources - computed: false, optional: true, required: false
-  private _identitySources?: string[] | undefined; 
+  private _identitySources?: string[]; 
   public get identitySources() {
     return this.getListAttribute('identity_sources');
   }
-  public set identitySources(value: string[] | undefined) {
+  public set identitySources(value: string[]) {
     this._identitySources = value;
   }
   public resetIdentitySources() {
@@ -287,7 +312,7 @@ export class Apigatewayv2Authorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get identitySourcesInput() {
-    return this._identitySources
+    return this._identitySources;
   }
 
   // name - computed: false, optional: false, required: true
@@ -300,24 +325,23 @@ export class Apigatewayv2Authorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // jwt_configuration - computed: false, optional: true, required: false
-  private _jwtConfiguration?: Apigatewayv2AuthorizerJwtConfiguration | undefined; 
-  private __jwtConfigurationOutput = new Apigatewayv2AuthorizerJwtConfigurationOutputReference(this as any, "jwt_configuration", true);
+  private _jwtConfiguration = new Apigatewayv2AuthorizerJwtConfigurationOutputReference(this as any, "jwt_configuration", true);
   public get jwtConfiguration() {
-    return this.__jwtConfigurationOutput;
+    return this._jwtConfiguration;
   }
-  public putJwtConfiguration(value: Apigatewayv2AuthorizerJwtConfiguration | undefined) {
-    this._jwtConfiguration = value;
+  public putJwtConfiguration(value: Apigatewayv2AuthorizerJwtConfiguration) {
+    this._jwtConfiguration.internalValue = value;
   }
   public resetJwtConfiguration() {
-    this._jwtConfiguration = undefined;
+    this._jwtConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get jwtConfigurationInput() {
-    return this._jwtConfiguration
+    return this._jwtConfiguration.internalValue;
   }
 
   // =========
@@ -335,7 +359,7 @@ export class Apigatewayv2Authorizer extends cdktf.TerraformResource {
       enable_simple_responses: cdktf.booleanToTerraform(this._enableSimpleResponses),
       identity_sources: cdktf.listMapper(cdktf.stringToTerraform)(this._identitySources),
       name: cdktf.stringToTerraform(this._name),
-      jwt_configuration: apigatewayv2AuthorizerJwtConfigurationToTerraform(this._jwtConfiguration),
+      jwt_configuration: apigatewayv2AuthorizerJwtConfigurationToTerraform(this._jwtConfiguration.internalValue),
     };
   }
 }

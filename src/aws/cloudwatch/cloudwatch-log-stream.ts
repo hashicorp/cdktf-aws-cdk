@@ -77,7 +77,7 @@ export class CloudwatchLogStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get logGroupNameInput() {
-    return this._logGroupName
+    return this._logGroupName;
   }
 
   // name - computed: false, optional: false, required: true
@@ -90,7 +90,7 @@ export class CloudwatchLogStream extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // =========

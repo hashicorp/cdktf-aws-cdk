@@ -72,7 +72,7 @@ export class DataAwsLambdaInvocation extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get functionNameInput() {
-    return this._functionName
+    return this._functionName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -90,15 +90,15 @@ export class DataAwsLambdaInvocation extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get inputInput() {
-    return this._input
+    return this._input;
   }
 
   // qualifier - computed: false, optional: true, required: false
-  private _qualifier?: string | undefined; 
+  private _qualifier?: string; 
   public get qualifier() {
     return this.getStringAttribute('qualifier');
   }
-  public set qualifier(value: string | undefined) {
+  public set qualifier(value: string) {
     this._qualifier = value;
   }
   public resetQualifier() {
@@ -106,7 +106,7 @@ export class DataAwsLambdaInvocation extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get qualifierInput() {
-    return this._qualifier
+    return this._qualifier;
   }
 
   // result - computed: true, optional: false, required: false

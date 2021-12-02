@@ -78,11 +78,11 @@ export class Ec2TrafficMirrorTarget extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -90,7 +90,7 @@ export class Ec2TrafficMirrorTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -99,11 +99,11 @@ export class Ec2TrafficMirrorTarget extends cdktf.TerraformResource {
   }
 
   // network_interface_id - computed: false, optional: true, required: false
-  private _networkInterfaceId?: string | undefined; 
+  private _networkInterfaceId?: string; 
   public get networkInterfaceId() {
     return this.getStringAttribute('network_interface_id');
   }
-  public set networkInterfaceId(value: string | undefined) {
+  public set networkInterfaceId(value: string) {
     this._networkInterfaceId = value;
   }
   public resetNetworkInterfaceId() {
@@ -111,15 +111,15 @@ export class Ec2TrafficMirrorTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get networkInterfaceIdInput() {
-    return this._networkInterfaceId
+    return this._networkInterfaceId;
   }
 
   // network_load_balancer_arn - computed: false, optional: true, required: false
-  private _networkLoadBalancerArn?: string | undefined; 
+  private _networkLoadBalancerArn?: string; 
   public get networkLoadBalancerArn() {
     return this.getStringAttribute('network_load_balancer_arn');
   }
-  public set networkLoadBalancerArn(value: string | undefined) {
+  public set networkLoadBalancerArn(value: string) {
     this._networkLoadBalancerArn = value;
   }
   public resetNetworkLoadBalancerArn() {
@@ -127,7 +127,7 @@ export class Ec2TrafficMirrorTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get networkLoadBalancerArnInput() {
-    return this._networkLoadBalancerArn
+    return this._networkLoadBalancerArn;
   }
 
   // owner_id - computed: true, optional: false, required: false
@@ -136,12 +136,12 @@ export class Ec2TrafficMirrorTarget extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -149,16 +149,16 @@ export class Ec2TrafficMirrorTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -166,7 +166,7 @@ export class Ec2TrafficMirrorTarget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

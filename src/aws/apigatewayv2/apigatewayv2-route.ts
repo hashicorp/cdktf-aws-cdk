@@ -141,15 +141,15 @@ export class Apigatewayv2Route extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get apiIdInput() {
-    return this._apiId
+    return this._apiId;
   }
 
   // api_key_required - computed: false, optional: true, required: false
-  private _apiKeyRequired?: boolean | cdktf.IResolvable | undefined; 
+  private _apiKeyRequired?: boolean | cdktf.IResolvable; 
   public get apiKeyRequired() {
     return this.getBooleanAttribute('api_key_required') as any;
   }
-  public set apiKeyRequired(value: boolean | cdktf.IResolvable | undefined) {
+  public set apiKeyRequired(value: boolean | cdktf.IResolvable) {
     this._apiKeyRequired = value;
   }
   public resetApiKeyRequired() {
@@ -157,15 +157,15 @@ export class Apigatewayv2Route extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get apiKeyRequiredInput() {
-    return this._apiKeyRequired
+    return this._apiKeyRequired;
   }
 
   // authorization_scopes - computed: false, optional: true, required: false
-  private _authorizationScopes?: string[] | undefined; 
+  private _authorizationScopes?: string[]; 
   public get authorizationScopes() {
     return this.getListAttribute('authorization_scopes');
   }
-  public set authorizationScopes(value: string[] | undefined) {
+  public set authorizationScopes(value: string[]) {
     this._authorizationScopes = value;
   }
   public resetAuthorizationScopes() {
@@ -173,15 +173,15 @@ export class Apigatewayv2Route extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authorizationScopesInput() {
-    return this._authorizationScopes
+    return this._authorizationScopes;
   }
 
   // authorization_type - computed: false, optional: true, required: false
-  private _authorizationType?: string | undefined; 
+  private _authorizationType?: string; 
   public get authorizationType() {
     return this.getStringAttribute('authorization_type');
   }
-  public set authorizationType(value: string | undefined) {
+  public set authorizationType(value: string) {
     this._authorizationType = value;
   }
   public resetAuthorizationType() {
@@ -189,15 +189,15 @@ export class Apigatewayv2Route extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authorizationTypeInput() {
-    return this._authorizationType
+    return this._authorizationType;
   }
 
   // authorizer_id - computed: false, optional: true, required: false
-  private _authorizerId?: string | undefined; 
+  private _authorizerId?: string; 
   public get authorizerId() {
     return this.getStringAttribute('authorizer_id');
   }
-  public set authorizerId(value: string | undefined) {
+  public set authorizerId(value: string) {
     this._authorizerId = value;
   }
   public resetAuthorizerId() {
@@ -205,7 +205,7 @@ export class Apigatewayv2Route extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authorizerIdInput() {
-    return this._authorizerId
+    return this._authorizerId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -214,11 +214,11 @@ export class Apigatewayv2Route extends cdktf.TerraformResource {
   }
 
   // model_selection_expression - computed: false, optional: true, required: false
-  private _modelSelectionExpression?: string | undefined; 
+  private _modelSelectionExpression?: string; 
   public get modelSelectionExpression() {
     return this.getStringAttribute('model_selection_expression');
   }
-  public set modelSelectionExpression(value: string | undefined) {
+  public set modelSelectionExpression(value: string) {
     this._modelSelectionExpression = value;
   }
   public resetModelSelectionExpression() {
@@ -226,15 +226,15 @@ export class Apigatewayv2Route extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get modelSelectionExpressionInput() {
-    return this._modelSelectionExpression
+    return this._modelSelectionExpression;
   }
 
   // operation_name - computed: false, optional: true, required: false
-  private _operationName?: string | undefined; 
+  private _operationName?: string; 
   public get operationName() {
     return this.getStringAttribute('operation_name');
   }
-  public set operationName(value: string | undefined) {
+  public set operationName(value: string) {
     this._operationName = value;
   }
   public resetOperationName() {
@@ -242,16 +242,16 @@ export class Apigatewayv2Route extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get operationNameInput() {
-    return this._operationName
+    return this._operationName;
   }
 
   // request_models - computed: false, optional: true, required: false
-  private _requestModels?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _requestModels?: { [key: string]: string } | cdktf.IResolvable; 
   public get requestModels() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('request_models') as any;
   }
-  public set requestModels(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set requestModels(value: { [key: string]: string } | cdktf.IResolvable) {
     this._requestModels = value;
   }
   public resetRequestModels() {
@@ -259,7 +259,7 @@ export class Apigatewayv2Route extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requestModelsInput() {
-    return this._requestModels
+    return this._requestModels;
   }
 
   // route_key - computed: false, optional: false, required: true
@@ -272,15 +272,15 @@ export class Apigatewayv2Route extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get routeKeyInput() {
-    return this._routeKey
+    return this._routeKey;
   }
 
   // route_response_selection_expression - computed: false, optional: true, required: false
-  private _routeResponseSelectionExpression?: string | undefined; 
+  private _routeResponseSelectionExpression?: string; 
   public get routeResponseSelectionExpression() {
     return this.getStringAttribute('route_response_selection_expression');
   }
-  public set routeResponseSelectionExpression(value: string | undefined) {
+  public set routeResponseSelectionExpression(value: string) {
     this._routeResponseSelectionExpression = value;
   }
   public resetRouteResponseSelectionExpression() {
@@ -288,15 +288,15 @@ export class Apigatewayv2Route extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get routeResponseSelectionExpressionInput() {
-    return this._routeResponseSelectionExpression
+    return this._routeResponseSelectionExpression;
   }
 
   // target - computed: false, optional: true, required: false
-  private _target?: string | undefined; 
+  private _target?: string; 
   public get target() {
     return this.getStringAttribute('target');
   }
-  public set target(value: string | undefined) {
+  public set target(value: string) {
     this._target = value;
   }
   public resetTarget() {
@@ -304,16 +304,16 @@ export class Apigatewayv2Route extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetInput() {
-    return this._target
+    return this._target;
   }
 
   // request_parameter - computed: false, optional: true, required: false
-  private _requestParameter?: Apigatewayv2RouteRequestParameter[] | undefined; 
+  private _requestParameter?: Apigatewayv2RouteRequestParameter[]; 
   public get requestParameter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('request_parameter') as any;
   }
-  public set requestParameter(value: Apigatewayv2RouteRequestParameter[] | undefined) {
+  public set requestParameter(value: Apigatewayv2RouteRequestParameter[]) {
     this._requestParameter = value;
   }
   public resetRequestParameter() {
@@ -321,7 +321,7 @@ export class Apigatewayv2Route extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requestParameterInput() {
-    return this._requestParameter
+    return this._requestParameter;
   }
 
   // =========

@@ -93,11 +93,11 @@ export class ApiGatewayAuthorizer extends cdktf.TerraformResource {
   // ==========
 
   // authorizer_credentials - computed: false, optional: true, required: false
-  private _authorizerCredentials?: string | undefined; 
+  private _authorizerCredentials?: string; 
   public get authorizerCredentials() {
     return this.getStringAttribute('authorizer_credentials');
   }
-  public set authorizerCredentials(value: string | undefined) {
+  public set authorizerCredentials(value: string) {
     this._authorizerCredentials = value;
   }
   public resetAuthorizerCredentials() {
@@ -105,15 +105,15 @@ export class ApiGatewayAuthorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authorizerCredentialsInput() {
-    return this._authorizerCredentials
+    return this._authorizerCredentials;
   }
 
   // authorizer_result_ttl_in_seconds - computed: false, optional: true, required: false
-  private _authorizerResultTtlInSeconds?: number | undefined; 
+  private _authorizerResultTtlInSeconds?: number; 
   public get authorizerResultTtlInSeconds() {
     return this.getNumberAttribute('authorizer_result_ttl_in_seconds');
   }
-  public set authorizerResultTtlInSeconds(value: number | undefined) {
+  public set authorizerResultTtlInSeconds(value: number) {
     this._authorizerResultTtlInSeconds = value;
   }
   public resetAuthorizerResultTtlInSeconds() {
@@ -121,15 +121,15 @@ export class ApiGatewayAuthorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authorizerResultTtlInSecondsInput() {
-    return this._authorizerResultTtlInSeconds
+    return this._authorizerResultTtlInSeconds;
   }
 
   // authorizer_uri - computed: false, optional: true, required: false
-  private _authorizerUri?: string | undefined; 
+  private _authorizerUri?: string; 
   public get authorizerUri() {
     return this.getStringAttribute('authorizer_uri');
   }
-  public set authorizerUri(value: string | undefined) {
+  public set authorizerUri(value: string) {
     this._authorizerUri = value;
   }
   public resetAuthorizerUri() {
@@ -137,7 +137,7 @@ export class ApiGatewayAuthorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authorizerUriInput() {
-    return this._authorizerUri
+    return this._authorizerUri;
   }
 
   // id - computed: true, optional: true, required: false
@@ -146,11 +146,11 @@ export class ApiGatewayAuthorizer extends cdktf.TerraformResource {
   }
 
   // identity_source - computed: false, optional: true, required: false
-  private _identitySource?: string | undefined; 
+  private _identitySource?: string; 
   public get identitySource() {
     return this.getStringAttribute('identity_source');
   }
-  public set identitySource(value: string | undefined) {
+  public set identitySource(value: string) {
     this._identitySource = value;
   }
   public resetIdentitySource() {
@@ -158,15 +158,15 @@ export class ApiGatewayAuthorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get identitySourceInput() {
-    return this._identitySource
+    return this._identitySource;
   }
 
   // identity_validation_expression - computed: false, optional: true, required: false
-  private _identityValidationExpression?: string | undefined; 
+  private _identityValidationExpression?: string; 
   public get identityValidationExpression() {
     return this.getStringAttribute('identity_validation_expression');
   }
-  public set identityValidationExpression(value: string | undefined) {
+  public set identityValidationExpression(value: string) {
     this._identityValidationExpression = value;
   }
   public resetIdentityValidationExpression() {
@@ -174,7 +174,7 @@ export class ApiGatewayAuthorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get identityValidationExpressionInput() {
-    return this._identityValidationExpression
+    return this._identityValidationExpression;
   }
 
   // name - computed: false, optional: false, required: true
@@ -187,15 +187,15 @@ export class ApiGatewayAuthorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // provider_arns - computed: false, optional: true, required: false
-  private _providerArns?: string[] | undefined; 
+  private _providerArns?: string[]; 
   public get providerArns() {
     return this.getListAttribute('provider_arns');
   }
-  public set providerArns(value: string[] | undefined) {
+  public set providerArns(value: string[]) {
     this._providerArns = value;
   }
   public resetProviderArns() {
@@ -203,7 +203,7 @@ export class ApiGatewayAuthorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get providerArnsInput() {
-    return this._providerArns
+    return this._providerArns;
   }
 
   // rest_api_id - computed: false, optional: false, required: true
@@ -216,15 +216,15 @@ export class ApiGatewayAuthorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get restApiIdInput() {
-    return this._restApiId
+    return this._restApiId;
   }
 
   // type - computed: false, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -232,7 +232,7 @@ export class ApiGatewayAuthorizer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // =========

@@ -84,11 +84,11 @@ export class DataAwsWorkspacesBundle extends cdktf.TerraformDataSource {
   // ==========
 
   // bundle_id - computed: false, optional: true, required: false
-  private _bundleId?: string | undefined; 
+  private _bundleId?: string; 
   public get bundleId() {
     return this.getStringAttribute('bundle_id');
   }
-  public set bundleId(value: string | undefined) {
+  public set bundleId(value: string) {
     this._bundleId = value;
   }
   public resetBundleId() {
@@ -96,7 +96,7 @@ export class DataAwsWorkspacesBundle extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get bundleIdInput() {
-    return this._bundleId
+    return this._bundleId;
   }
 
   // compute_type - computed: true, optional: false, required: false
@@ -115,11 +115,11 @@ export class DataAwsWorkspacesBundle extends cdktf.TerraformDataSource {
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -127,15 +127,15 @@ export class DataAwsWorkspacesBundle extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // owner - computed: false, optional: true, required: false
-  private _owner?: string | undefined; 
+  private _owner?: string; 
   public get owner() {
     return this.getStringAttribute('owner');
   }
-  public set owner(value: string | undefined) {
+  public set owner(value: string) {
     this._owner = value;
   }
   public resetOwner() {
@@ -143,7 +143,7 @@ export class DataAwsWorkspacesBundle extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownerInput() {
-    return this._owner
+    return this._owner;
   }
 
   // root_storage - computed: true, optional: false, required: false

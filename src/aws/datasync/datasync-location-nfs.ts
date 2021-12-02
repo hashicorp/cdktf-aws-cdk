@@ -63,12 +63,31 @@ export class DatasyncLocationNfsMountOptionsOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DatasyncLocationNfsMountOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._version) {
+      hasAnyValues = true;
+      internalValueResult.version = this._version;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DatasyncLocationNfsMountOptions | undefined) {
+    if (value === undefined) {
+      this._version = undefined;
+    }
+    else {
+      this._version = value.version;
+    }
+  }
+
   // version - computed: false, optional: true, required: false
-  private _version?: string | undefined; 
+  private _version?: string; 
   public get version() {
     return this.getStringAttribute('version');
   }
-  public set version(value: string | undefined) {
+  public set version(value: string) {
     this._version = value;
   }
   public resetVersion() {
@@ -76,7 +95,7 @@ export class DatasyncLocationNfsMountOptionsOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get versionInput() {
-    return this._version
+    return this._version;
   }
 }
 export interface DatasyncLocationNfsOnPremConfig {
@@ -106,6 +125,25 @@ export class DatasyncLocationNfsOnPremConfigOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DatasyncLocationNfsOnPremConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._agentArns) {
+      hasAnyValues = true;
+      internalValueResult.agentArns = this._agentArns;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DatasyncLocationNfsOnPremConfig | undefined) {
+    if (value === undefined) {
+      this._agentArns = undefined;
+    }
+    else {
+      this._agentArns = value.agentArns;
+    }
+  }
+
   // agent_arns - computed: false, optional: false, required: true
   private _agentArns?: string[]; 
   public get agentArns() {
@@ -116,7 +154,7 @@ export class DatasyncLocationNfsOnPremConfigOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get agentArnsInput() {
-    return this._agentArns
+    return this._agentArns;
   }
 }
 
@@ -156,8 +194,8 @@ export class DatasyncLocationNfs extends cdktf.TerraformResource {
     this._subdirectory = config.subdirectory;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._mountOptions = config.mountOptions;
-    this._onPremConfig = config.onPremConfig;
+    this._mountOptions.internalValue = config.mountOptions;
+    this._onPremConfig.internalValue = config.onPremConfig;
   }
 
   // ==========
@@ -184,7 +222,7 @@ export class DatasyncLocationNfs extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serverHostnameInput() {
-    return this._serverHostname
+    return this._serverHostname;
   }
 
   // subdirectory - computed: false, optional: false, required: true
@@ -197,16 +235,16 @@ export class DatasyncLocationNfs extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subdirectoryInput() {
-    return this._subdirectory
+    return this._subdirectory;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -214,16 +252,16 @@ export class DatasyncLocationNfs extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -231,7 +269,7 @@ export class DatasyncLocationNfs extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // uri - computed: true, optional: false, required: false
@@ -240,34 +278,32 @@ export class DatasyncLocationNfs extends cdktf.TerraformResource {
   }
 
   // mount_options - computed: false, optional: true, required: false
-  private _mountOptions?: DatasyncLocationNfsMountOptions | undefined; 
-  private __mountOptionsOutput = new DatasyncLocationNfsMountOptionsOutputReference(this as any, "mount_options", true);
+  private _mountOptions = new DatasyncLocationNfsMountOptionsOutputReference(this as any, "mount_options", true);
   public get mountOptions() {
-    return this.__mountOptionsOutput;
+    return this._mountOptions;
   }
-  public putMountOptions(value: DatasyncLocationNfsMountOptions | undefined) {
-    this._mountOptions = value;
+  public putMountOptions(value: DatasyncLocationNfsMountOptions) {
+    this._mountOptions.internalValue = value;
   }
   public resetMountOptions() {
-    this._mountOptions = undefined;
+    this._mountOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get mountOptionsInput() {
-    return this._mountOptions
+    return this._mountOptions.internalValue;
   }
 
   // on_prem_config - computed: false, optional: false, required: true
-  private _onPremConfig?: DatasyncLocationNfsOnPremConfig; 
-  private __onPremConfigOutput = new DatasyncLocationNfsOnPremConfigOutputReference(this as any, "on_prem_config", true);
+  private _onPremConfig = new DatasyncLocationNfsOnPremConfigOutputReference(this as any, "on_prem_config", true);
   public get onPremConfig() {
-    return this.__onPremConfigOutput;
+    return this._onPremConfig;
   }
   public putOnPremConfig(value: DatasyncLocationNfsOnPremConfig) {
-    this._onPremConfig = value;
+    this._onPremConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get onPremConfigInput() {
-    return this._onPremConfig
+    return this._onPremConfig.internalValue;
   }
 
   // =========
@@ -280,8 +316,8 @@ export class DatasyncLocationNfs extends cdktf.TerraformResource {
       subdirectory: cdktf.stringToTerraform(this._subdirectory),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      mount_options: datasyncLocationNfsMountOptionsToTerraform(this._mountOptions),
-      on_prem_config: datasyncLocationNfsOnPremConfigToTerraform(this._onPremConfig),
+      mount_options: datasyncLocationNfsMountOptionsToTerraform(this._mountOptions.internalValue),
+      on_prem_config: datasyncLocationNfsOnPremConfigToTerraform(this._onPremConfig.internalValue),
     };
   }
 }

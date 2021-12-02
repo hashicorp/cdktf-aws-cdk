@@ -72,7 +72,7 @@ export class Route53RecoverycontrolconfigControlPanel extends cdktf.TerraformRes
   }
   // Temporarily expose input value. Use with caution.
   public get clusterArnInput() {
-    return this._clusterArn
+    return this._clusterArn;
   }
 
   // default_control_panel - computed: true, optional: false, required: false
@@ -95,7 +95,7 @@ export class Route53RecoverycontrolconfigControlPanel extends cdktf.TerraformRes
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // routing_control_count - computed: true, optional: false, required: false

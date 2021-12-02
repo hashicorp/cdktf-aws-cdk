@@ -323,11 +323,11 @@ export class DataAwsAlbListener extends cdktf.TerraformDataSource {
   }
 
   // load_balancer_arn - computed: true, optional: true, required: false
-  private _loadBalancerArn?: string | undefined; 
+  private _loadBalancerArn?: string; 
   public get loadBalancerArn() {
     return this.getStringAttribute('load_balancer_arn');
   }
-  public set loadBalancerArn(value: string | undefined) {
+  public set loadBalancerArn(value: string) {
     this._loadBalancerArn = value;
   }
   public resetLoadBalancerArn() {
@@ -335,15 +335,15 @@ export class DataAwsAlbListener extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get loadBalancerArnInput() {
-    return this._loadBalancerArn
+    return this._loadBalancerArn;
   }
 
   // port - computed: true, optional: true, required: false
-  private _port?: number | undefined; 
+  private _port?: number; 
   public get port() {
     return this.getNumberAttribute('port');
   }
-  public set port(value: number | undefined) {
+  public set port(value: number) {
     this._port = value;
   }
   public resetPort() {
@@ -351,7 +351,7 @@ export class DataAwsAlbListener extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get portInput() {
-    return this._port
+    return this._port;
   }
 
   // protocol - computed: true, optional: false, required: false
@@ -365,12 +365,12 @@ export class DataAwsAlbListener extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -378,7 +378,7 @@ export class DataAwsAlbListener extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // =========

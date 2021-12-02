@@ -148,17 +148,36 @@ export class MqBrokerConfigurationOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MqBrokerConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._revision) {
+      hasAnyValues = true;
+      internalValueResult.revision = this._revision;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MqBrokerConfiguration | undefined) {
+    if (value === undefined) {
+      this._revision = undefined;
+    }
+    else {
+      this._revision = value.revision;
+    }
+  }
+
   // id - computed: true, optional: true, required: false
   public get id() {
     return this.getStringAttribute('id');
   }
 
   // revision - computed: true, optional: true, required: false
-  private _revision?: number | undefined; 
+  private _revision?: number; 
   public get revision() {
     return this.getNumberAttribute('revision');
   }
-  public set revision(value: number | undefined) {
+  public set revision(value: number) {
     this._revision = value;
   }
   public resetRevision() {
@@ -166,7 +185,7 @@ export class MqBrokerConfigurationOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get revisionInput() {
-    return this._revision
+    return this._revision;
   }
 }
 export interface MqBrokerEncryptionOptions {
@@ -201,12 +220,37 @@ export class MqBrokerEncryptionOptionsOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MqBrokerEncryptionOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._kmsKeyId) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyId = this._kmsKeyId;
+    }
+    if (this._useAwsOwnedKey) {
+      hasAnyValues = true;
+      internalValueResult.useAwsOwnedKey = this._useAwsOwnedKey;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MqBrokerEncryptionOptions | undefined) {
+    if (value === undefined) {
+      this._kmsKeyId = undefined;
+      this._useAwsOwnedKey = undefined;
+    }
+    else {
+      this._kmsKeyId = value.kmsKeyId;
+      this._useAwsOwnedKey = value.useAwsOwnedKey;
+    }
+  }
+
   // kms_key_id - computed: true, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -214,15 +258,15 @@ export class MqBrokerEncryptionOptionsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // use_aws_owned_key - computed: false, optional: true, required: false
-  private _useAwsOwnedKey?: boolean | cdktf.IResolvable | undefined; 
+  private _useAwsOwnedKey?: boolean | cdktf.IResolvable; 
   public get useAwsOwnedKey() {
     return this.getBooleanAttribute('use_aws_owned_key') as any;
   }
-  public set useAwsOwnedKey(value: boolean | cdktf.IResolvable | undefined) {
+  public set useAwsOwnedKey(value: boolean | cdktf.IResolvable) {
     this._useAwsOwnedKey = value;
   }
   public resetUseAwsOwnedKey() {
@@ -230,7 +274,7 @@ export class MqBrokerEncryptionOptionsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get useAwsOwnedKeyInput() {
-    return this._useAwsOwnedKey
+    return this._useAwsOwnedKey;
   }
 }
 export interface MqBrokerLdapServerMetadata {
@@ -310,12 +354,91 @@ export class MqBrokerLdapServerMetadataOutputReference extends cdktf.ComplexObje
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MqBrokerLdapServerMetadata | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._hosts) {
+      hasAnyValues = true;
+      internalValueResult.hosts = this._hosts;
+    }
+    if (this._roleBase) {
+      hasAnyValues = true;
+      internalValueResult.roleBase = this._roleBase;
+    }
+    if (this._roleName) {
+      hasAnyValues = true;
+      internalValueResult.roleName = this._roleName;
+    }
+    if (this._roleSearchMatching) {
+      hasAnyValues = true;
+      internalValueResult.roleSearchMatching = this._roleSearchMatching;
+    }
+    if (this._roleSearchSubtree) {
+      hasAnyValues = true;
+      internalValueResult.roleSearchSubtree = this._roleSearchSubtree;
+    }
+    if (this._serviceAccountPassword) {
+      hasAnyValues = true;
+      internalValueResult.serviceAccountPassword = this._serviceAccountPassword;
+    }
+    if (this._serviceAccountUsername) {
+      hasAnyValues = true;
+      internalValueResult.serviceAccountUsername = this._serviceAccountUsername;
+    }
+    if (this._userBase) {
+      hasAnyValues = true;
+      internalValueResult.userBase = this._userBase;
+    }
+    if (this._userRoleName) {
+      hasAnyValues = true;
+      internalValueResult.userRoleName = this._userRoleName;
+    }
+    if (this._userSearchMatching) {
+      hasAnyValues = true;
+      internalValueResult.userSearchMatching = this._userSearchMatching;
+    }
+    if (this._userSearchSubtree) {
+      hasAnyValues = true;
+      internalValueResult.userSearchSubtree = this._userSearchSubtree;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MqBrokerLdapServerMetadata | undefined) {
+    if (value === undefined) {
+      this._hosts = undefined;
+      this._roleBase = undefined;
+      this._roleName = undefined;
+      this._roleSearchMatching = undefined;
+      this._roleSearchSubtree = undefined;
+      this._serviceAccountPassword = undefined;
+      this._serviceAccountUsername = undefined;
+      this._userBase = undefined;
+      this._userRoleName = undefined;
+      this._userSearchMatching = undefined;
+      this._userSearchSubtree = undefined;
+    }
+    else {
+      this._hosts = value.hosts;
+      this._roleBase = value.roleBase;
+      this._roleName = value.roleName;
+      this._roleSearchMatching = value.roleSearchMatching;
+      this._roleSearchSubtree = value.roleSearchSubtree;
+      this._serviceAccountPassword = value.serviceAccountPassword;
+      this._serviceAccountUsername = value.serviceAccountUsername;
+      this._userBase = value.userBase;
+      this._userRoleName = value.userRoleName;
+      this._userSearchMatching = value.userSearchMatching;
+      this._userSearchSubtree = value.userSearchSubtree;
+    }
+  }
+
   // hosts - computed: false, optional: true, required: false
-  private _hosts?: string[] | undefined; 
+  private _hosts?: string[]; 
   public get hosts() {
     return this.getListAttribute('hosts');
   }
-  public set hosts(value: string[] | undefined) {
+  public set hosts(value: string[]) {
     this._hosts = value;
   }
   public resetHosts() {
@@ -323,15 +446,15 @@ export class MqBrokerLdapServerMetadataOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get hostsInput() {
-    return this._hosts
+    return this._hosts;
   }
 
   // role_base - computed: false, optional: true, required: false
-  private _roleBase?: string | undefined; 
+  private _roleBase?: string; 
   public get roleBase() {
     return this.getStringAttribute('role_base');
   }
-  public set roleBase(value: string | undefined) {
+  public set roleBase(value: string) {
     this._roleBase = value;
   }
   public resetRoleBase() {
@@ -339,15 +462,15 @@ export class MqBrokerLdapServerMetadataOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get roleBaseInput() {
-    return this._roleBase
+    return this._roleBase;
   }
 
   // role_name - computed: false, optional: true, required: false
-  private _roleName?: string | undefined; 
+  private _roleName?: string; 
   public get roleName() {
     return this.getStringAttribute('role_name');
   }
-  public set roleName(value: string | undefined) {
+  public set roleName(value: string) {
     this._roleName = value;
   }
   public resetRoleName() {
@@ -355,15 +478,15 @@ export class MqBrokerLdapServerMetadataOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get roleNameInput() {
-    return this._roleName
+    return this._roleName;
   }
 
   // role_search_matching - computed: false, optional: true, required: false
-  private _roleSearchMatching?: string | undefined; 
+  private _roleSearchMatching?: string; 
   public get roleSearchMatching() {
     return this.getStringAttribute('role_search_matching');
   }
-  public set roleSearchMatching(value: string | undefined) {
+  public set roleSearchMatching(value: string) {
     this._roleSearchMatching = value;
   }
   public resetRoleSearchMatching() {
@@ -371,15 +494,15 @@ export class MqBrokerLdapServerMetadataOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get roleSearchMatchingInput() {
-    return this._roleSearchMatching
+    return this._roleSearchMatching;
   }
 
   // role_search_subtree - computed: false, optional: true, required: false
-  private _roleSearchSubtree?: boolean | cdktf.IResolvable | undefined; 
+  private _roleSearchSubtree?: boolean | cdktf.IResolvable; 
   public get roleSearchSubtree() {
     return this.getBooleanAttribute('role_search_subtree') as any;
   }
-  public set roleSearchSubtree(value: boolean | cdktf.IResolvable | undefined) {
+  public set roleSearchSubtree(value: boolean | cdktf.IResolvable) {
     this._roleSearchSubtree = value;
   }
   public resetRoleSearchSubtree() {
@@ -387,15 +510,15 @@ export class MqBrokerLdapServerMetadataOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get roleSearchSubtreeInput() {
-    return this._roleSearchSubtree
+    return this._roleSearchSubtree;
   }
 
   // service_account_password - computed: false, optional: true, required: false
-  private _serviceAccountPassword?: string | undefined; 
+  private _serviceAccountPassword?: string; 
   public get serviceAccountPassword() {
     return this.getStringAttribute('service_account_password');
   }
-  public set serviceAccountPassword(value: string | undefined) {
+  public set serviceAccountPassword(value: string) {
     this._serviceAccountPassword = value;
   }
   public resetServiceAccountPassword() {
@@ -403,15 +526,15 @@ export class MqBrokerLdapServerMetadataOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get serviceAccountPasswordInput() {
-    return this._serviceAccountPassword
+    return this._serviceAccountPassword;
   }
 
   // service_account_username - computed: false, optional: true, required: false
-  private _serviceAccountUsername?: string | undefined; 
+  private _serviceAccountUsername?: string; 
   public get serviceAccountUsername() {
     return this.getStringAttribute('service_account_username');
   }
-  public set serviceAccountUsername(value: string | undefined) {
+  public set serviceAccountUsername(value: string) {
     this._serviceAccountUsername = value;
   }
   public resetServiceAccountUsername() {
@@ -419,15 +542,15 @@ export class MqBrokerLdapServerMetadataOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get serviceAccountUsernameInput() {
-    return this._serviceAccountUsername
+    return this._serviceAccountUsername;
   }
 
   // user_base - computed: false, optional: true, required: false
-  private _userBase?: string | undefined; 
+  private _userBase?: string; 
   public get userBase() {
     return this.getStringAttribute('user_base');
   }
-  public set userBase(value: string | undefined) {
+  public set userBase(value: string) {
     this._userBase = value;
   }
   public resetUserBase() {
@@ -435,15 +558,15 @@ export class MqBrokerLdapServerMetadataOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get userBaseInput() {
-    return this._userBase
+    return this._userBase;
   }
 
   // user_role_name - computed: false, optional: true, required: false
-  private _userRoleName?: string | undefined; 
+  private _userRoleName?: string; 
   public get userRoleName() {
     return this.getStringAttribute('user_role_name');
   }
-  public set userRoleName(value: string | undefined) {
+  public set userRoleName(value: string) {
     this._userRoleName = value;
   }
   public resetUserRoleName() {
@@ -451,15 +574,15 @@ export class MqBrokerLdapServerMetadataOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get userRoleNameInput() {
-    return this._userRoleName
+    return this._userRoleName;
   }
 
   // user_search_matching - computed: false, optional: true, required: false
-  private _userSearchMatching?: string | undefined; 
+  private _userSearchMatching?: string; 
   public get userSearchMatching() {
     return this.getStringAttribute('user_search_matching');
   }
-  public set userSearchMatching(value: string | undefined) {
+  public set userSearchMatching(value: string) {
     this._userSearchMatching = value;
   }
   public resetUserSearchMatching() {
@@ -467,15 +590,15 @@ export class MqBrokerLdapServerMetadataOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get userSearchMatchingInput() {
-    return this._userSearchMatching
+    return this._userSearchMatching;
   }
 
   // user_search_subtree - computed: false, optional: true, required: false
-  private _userSearchSubtree?: boolean | cdktf.IResolvable | undefined; 
+  private _userSearchSubtree?: boolean | cdktf.IResolvable; 
   public get userSearchSubtree() {
     return this.getBooleanAttribute('user_search_subtree') as any;
   }
-  public set userSearchSubtree(value: boolean | cdktf.IResolvable | undefined) {
+  public set userSearchSubtree(value: boolean | cdktf.IResolvable) {
     this._userSearchSubtree = value;
   }
   public resetUserSearchSubtree() {
@@ -483,7 +606,7 @@ export class MqBrokerLdapServerMetadataOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get userSearchSubtreeInput() {
-    return this._userSearchSubtree
+    return this._userSearchSubtree;
   }
 }
 export interface MqBrokerLogs {
@@ -518,12 +641,37 @@ export class MqBrokerLogsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MqBrokerLogs | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._audit) {
+      hasAnyValues = true;
+      internalValueResult.audit = this._audit;
+    }
+    if (this._general) {
+      hasAnyValues = true;
+      internalValueResult.general = this._general;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MqBrokerLogs | undefined) {
+    if (value === undefined) {
+      this._audit = undefined;
+      this._general = undefined;
+    }
+    else {
+      this._audit = value.audit;
+      this._general = value.general;
+    }
+  }
+
   // audit - computed: false, optional: true, required: false
-  private _audit?: string | undefined; 
+  private _audit?: string; 
   public get audit() {
     return this.getStringAttribute('audit');
   }
-  public set audit(value: string | undefined) {
+  public set audit(value: string) {
     this._audit = value;
   }
   public resetAudit() {
@@ -531,15 +679,15 @@ export class MqBrokerLogsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get auditInput() {
-    return this._audit
+    return this._audit;
   }
 
   // general - computed: false, optional: true, required: false
-  private _general?: boolean | cdktf.IResolvable | undefined; 
+  private _general?: boolean | cdktf.IResolvable; 
   public get general() {
     return this.getBooleanAttribute('general') as any;
   }
-  public set general(value: boolean | cdktf.IResolvable | undefined) {
+  public set general(value: boolean | cdktf.IResolvable) {
     this._general = value;
   }
   public resetGeneral() {
@@ -547,7 +695,7 @@ export class MqBrokerLogsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get generalInput() {
-    return this._general
+    return this._general;
   }
 }
 export interface MqBrokerMaintenanceWindowStartTime {
@@ -587,6 +735,37 @@ export class MqBrokerMaintenanceWindowStartTimeOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MqBrokerMaintenanceWindowStartTime | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._dayOfWeek) {
+      hasAnyValues = true;
+      internalValueResult.dayOfWeek = this._dayOfWeek;
+    }
+    if (this._timeOfDay) {
+      hasAnyValues = true;
+      internalValueResult.timeOfDay = this._timeOfDay;
+    }
+    if (this._timeZone) {
+      hasAnyValues = true;
+      internalValueResult.timeZone = this._timeZone;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MqBrokerMaintenanceWindowStartTime | undefined) {
+    if (value === undefined) {
+      this._dayOfWeek = undefined;
+      this._timeOfDay = undefined;
+      this._timeZone = undefined;
+    }
+    else {
+      this._dayOfWeek = value.dayOfWeek;
+      this._timeOfDay = value.timeOfDay;
+      this._timeZone = value.timeZone;
+    }
+  }
+
   // day_of_week - computed: false, optional: false, required: true
   private _dayOfWeek?: string; 
   public get dayOfWeek() {
@@ -597,7 +776,7 @@ export class MqBrokerMaintenanceWindowStartTimeOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get dayOfWeekInput() {
-    return this._dayOfWeek
+    return this._dayOfWeek;
   }
 
   // time_of_day - computed: false, optional: false, required: true
@@ -610,7 +789,7 @@ export class MqBrokerMaintenanceWindowStartTimeOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get timeOfDayInput() {
-    return this._timeOfDay
+    return this._timeOfDay;
   }
 
   // time_zone - computed: false, optional: false, required: true
@@ -623,7 +802,7 @@ export class MqBrokerMaintenanceWindowStartTimeOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get timeZoneInput() {
-    return this._timeZone
+    return this._timeZone;
   }
 }
 export interface MqBrokerUser {
@@ -705,11 +884,11 @@ export class MqBroker extends cdktf.TerraformResource {
     this._subnetIds = config.subnetIds;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._configuration = config.configuration;
-    this._encryptionOptions = config.encryptionOptions;
-    this._ldapServerMetadata = config.ldapServerMetadata;
-    this._logs = config.logs;
-    this._maintenanceWindowStartTime = config.maintenanceWindowStartTime;
+    this._configuration.internalValue = config.configuration;
+    this._encryptionOptions.internalValue = config.encryptionOptions;
+    this._ldapServerMetadata.internalValue = config.ldapServerMetadata;
+    this._logs.internalValue = config.logs;
+    this._maintenanceWindowStartTime.internalValue = config.maintenanceWindowStartTime;
     this._user = config.user;
   }
 
@@ -718,11 +897,11 @@ export class MqBroker extends cdktf.TerraformResource {
   // ==========
 
   // apply_immediately - computed: false, optional: true, required: false
-  private _applyImmediately?: boolean | cdktf.IResolvable | undefined; 
+  private _applyImmediately?: boolean | cdktf.IResolvable; 
   public get applyImmediately() {
     return this.getBooleanAttribute('apply_immediately') as any;
   }
-  public set applyImmediately(value: boolean | cdktf.IResolvable | undefined) {
+  public set applyImmediately(value: boolean | cdktf.IResolvable) {
     this._applyImmediately = value;
   }
   public resetApplyImmediately() {
@@ -730,7 +909,7 @@ export class MqBroker extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get applyImmediatelyInput() {
-    return this._applyImmediately
+    return this._applyImmediately;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -739,11 +918,11 @@ export class MqBroker extends cdktf.TerraformResource {
   }
 
   // authentication_strategy - computed: true, optional: true, required: false
-  private _authenticationStrategy?: string | undefined; 
+  private _authenticationStrategy?: string; 
   public get authenticationStrategy() {
     return this.getStringAttribute('authentication_strategy');
   }
-  public set authenticationStrategy(value: string | undefined) {
+  public set authenticationStrategy(value: string) {
     this._authenticationStrategy = value;
   }
   public resetAuthenticationStrategy() {
@@ -751,15 +930,15 @@ export class MqBroker extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authenticationStrategyInput() {
-    return this._authenticationStrategy
+    return this._authenticationStrategy;
   }
 
   // auto_minor_version_upgrade - computed: false, optional: true, required: false
-  private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable | undefined; 
+  private _autoMinorVersionUpgrade?: boolean | cdktf.IResolvable; 
   public get autoMinorVersionUpgrade() {
     return this.getBooleanAttribute('auto_minor_version_upgrade') as any;
   }
-  public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable | undefined) {
+  public set autoMinorVersionUpgrade(value: boolean | cdktf.IResolvable) {
     this._autoMinorVersionUpgrade = value;
   }
   public resetAutoMinorVersionUpgrade() {
@@ -767,7 +946,7 @@ export class MqBroker extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoMinorVersionUpgradeInput() {
-    return this._autoMinorVersionUpgrade
+    return this._autoMinorVersionUpgrade;
   }
 
   // broker_name - computed: false, optional: false, required: true
@@ -780,15 +959,15 @@ export class MqBroker extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get brokerNameInput() {
-    return this._brokerName
+    return this._brokerName;
   }
 
   // deployment_mode - computed: false, optional: true, required: false
-  private _deploymentMode?: string | undefined; 
+  private _deploymentMode?: string; 
   public get deploymentMode() {
     return this.getStringAttribute('deployment_mode');
   }
-  public set deploymentMode(value: string | undefined) {
+  public set deploymentMode(value: string) {
     this._deploymentMode = value;
   }
   public resetDeploymentMode() {
@@ -796,7 +975,7 @@ export class MqBroker extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentModeInput() {
-    return this._deploymentMode
+    return this._deploymentMode;
   }
 
   // engine_type - computed: false, optional: false, required: true
@@ -809,7 +988,7 @@ export class MqBroker extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get engineTypeInput() {
-    return this._engineType
+    return this._engineType;
   }
 
   // engine_version - computed: false, optional: false, required: true
@@ -822,7 +1001,7 @@ export class MqBroker extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get engineVersionInput() {
-    return this._engineVersion
+    return this._engineVersion;
   }
 
   // host_instance_type - computed: false, optional: false, required: true
@@ -835,7 +1014,7 @@ export class MqBroker extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get hostInstanceTypeInput() {
-    return this._hostInstanceType
+    return this._hostInstanceType;
   }
 
   // id - computed: true, optional: true, required: false
@@ -849,11 +1028,11 @@ export class MqBroker extends cdktf.TerraformResource {
   }
 
   // publicly_accessible - computed: false, optional: true, required: false
-  private _publiclyAccessible?: boolean | cdktf.IResolvable | undefined; 
+  private _publiclyAccessible?: boolean | cdktf.IResolvable; 
   public get publiclyAccessible() {
     return this.getBooleanAttribute('publicly_accessible') as any;
   }
-  public set publiclyAccessible(value: boolean | cdktf.IResolvable | undefined) {
+  public set publiclyAccessible(value: boolean | cdktf.IResolvable) {
     this._publiclyAccessible = value;
   }
   public resetPubliclyAccessible() {
@@ -861,15 +1040,15 @@ export class MqBroker extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get publiclyAccessibleInput() {
-    return this._publiclyAccessible
+    return this._publiclyAccessible;
   }
 
   // security_groups - computed: false, optional: true, required: false
-  private _securityGroups?: string[] | undefined; 
+  private _securityGroups?: string[]; 
   public get securityGroups() {
     return this.getListAttribute('security_groups');
   }
-  public set securityGroups(value: string[] | undefined) {
+  public set securityGroups(value: string[]) {
     this._securityGroups = value;
   }
   public resetSecurityGroups() {
@@ -877,15 +1056,15 @@ export class MqBroker extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupsInput() {
-    return this._securityGroups
+    return this._securityGroups;
   }
 
   // storage_type - computed: true, optional: true, required: false
-  private _storageType?: string | undefined; 
+  private _storageType?: string; 
   public get storageType() {
     return this.getStringAttribute('storage_type');
   }
-  public set storageType(value: string | undefined) {
+  public set storageType(value: string) {
     this._storageType = value;
   }
   public resetStorageType() {
@@ -893,15 +1072,15 @@ export class MqBroker extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get storageTypeInput() {
-    return this._storageType
+    return this._storageType;
   }
 
   // subnet_ids - computed: true, optional: true, required: false
-  private _subnetIds?: string[] | undefined; 
+  private _subnetIds?: string[]; 
   public get subnetIds() {
     return this.getListAttribute('subnet_ids');
   }
-  public set subnetIds(value: string[] | undefined) {
+  public set subnetIds(value: string[]) {
     this._subnetIds = value;
   }
   public resetSubnetIds() {
@@ -909,16 +1088,16 @@ export class MqBroker extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -926,16 +1105,16 @@ export class MqBroker extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -943,92 +1122,87 @@ export class MqBroker extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // configuration - computed: false, optional: true, required: false
-  private _configuration?: MqBrokerConfiguration | undefined; 
-  private __configurationOutput = new MqBrokerConfigurationOutputReference(this as any, "configuration", true);
+  private _configuration = new MqBrokerConfigurationOutputReference(this as any, "configuration", true);
   public get configuration() {
-    return this.__configurationOutput;
+    return this._configuration;
   }
-  public putConfiguration(value: MqBrokerConfiguration | undefined) {
-    this._configuration = value;
+  public putConfiguration(value: MqBrokerConfiguration) {
+    this._configuration.internalValue = value;
   }
   public resetConfiguration() {
-    this._configuration = undefined;
+    this._configuration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get configurationInput() {
-    return this._configuration
+    return this._configuration.internalValue;
   }
 
   // encryption_options - computed: false, optional: true, required: false
-  private _encryptionOptions?: MqBrokerEncryptionOptions | undefined; 
-  private __encryptionOptionsOutput = new MqBrokerEncryptionOptionsOutputReference(this as any, "encryption_options", true);
+  private _encryptionOptions = new MqBrokerEncryptionOptionsOutputReference(this as any, "encryption_options", true);
   public get encryptionOptions() {
-    return this.__encryptionOptionsOutput;
+    return this._encryptionOptions;
   }
-  public putEncryptionOptions(value: MqBrokerEncryptionOptions | undefined) {
-    this._encryptionOptions = value;
+  public putEncryptionOptions(value: MqBrokerEncryptionOptions) {
+    this._encryptionOptions.internalValue = value;
   }
   public resetEncryptionOptions() {
-    this._encryptionOptions = undefined;
+    this._encryptionOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionOptionsInput() {
-    return this._encryptionOptions
+    return this._encryptionOptions.internalValue;
   }
 
   // ldap_server_metadata - computed: false, optional: true, required: false
-  private _ldapServerMetadata?: MqBrokerLdapServerMetadata | undefined; 
-  private __ldapServerMetadataOutput = new MqBrokerLdapServerMetadataOutputReference(this as any, "ldap_server_metadata", true);
+  private _ldapServerMetadata = new MqBrokerLdapServerMetadataOutputReference(this as any, "ldap_server_metadata", true);
   public get ldapServerMetadata() {
-    return this.__ldapServerMetadataOutput;
+    return this._ldapServerMetadata;
   }
-  public putLdapServerMetadata(value: MqBrokerLdapServerMetadata | undefined) {
-    this._ldapServerMetadata = value;
+  public putLdapServerMetadata(value: MqBrokerLdapServerMetadata) {
+    this._ldapServerMetadata.internalValue = value;
   }
   public resetLdapServerMetadata() {
-    this._ldapServerMetadata = undefined;
+    this._ldapServerMetadata.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ldapServerMetadataInput() {
-    return this._ldapServerMetadata
+    return this._ldapServerMetadata.internalValue;
   }
 
   // logs - computed: false, optional: true, required: false
-  private _logs?: MqBrokerLogs | undefined; 
-  private __logsOutput = new MqBrokerLogsOutputReference(this as any, "logs", true);
+  private _logs = new MqBrokerLogsOutputReference(this as any, "logs", true);
   public get logs() {
-    return this.__logsOutput;
+    return this._logs;
   }
-  public putLogs(value: MqBrokerLogs | undefined) {
-    this._logs = value;
+  public putLogs(value: MqBrokerLogs) {
+    this._logs.internalValue = value;
   }
   public resetLogs() {
-    this._logs = undefined;
+    this._logs.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get logsInput() {
-    return this._logs
+    return this._logs.internalValue;
   }
 
   // maintenance_window_start_time - computed: false, optional: true, required: false
-  private _maintenanceWindowStartTime?: MqBrokerMaintenanceWindowStartTime | undefined; 
-  private __maintenanceWindowStartTimeOutput = new MqBrokerMaintenanceWindowStartTimeOutputReference(this as any, "maintenance_window_start_time", true);
+  private _maintenanceWindowStartTime = new MqBrokerMaintenanceWindowStartTimeOutputReference(this as any, "maintenance_window_start_time", true);
   public get maintenanceWindowStartTime() {
-    return this.__maintenanceWindowStartTimeOutput;
+    return this._maintenanceWindowStartTime;
   }
-  public putMaintenanceWindowStartTime(value: MqBrokerMaintenanceWindowStartTime | undefined) {
-    this._maintenanceWindowStartTime = value;
+  public putMaintenanceWindowStartTime(value: MqBrokerMaintenanceWindowStartTime) {
+    this._maintenanceWindowStartTime.internalValue = value;
   }
   public resetMaintenanceWindowStartTime() {
-    this._maintenanceWindowStartTime = undefined;
+    this._maintenanceWindowStartTime.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get maintenanceWindowStartTimeInput() {
-    return this._maintenanceWindowStartTime
+    return this._maintenanceWindowStartTime.internalValue;
   }
 
   // user - computed: false, optional: false, required: true
@@ -1042,7 +1216,7 @@ export class MqBroker extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userInput() {
-    return this._user
+    return this._user;
   }
 
   // =========
@@ -1065,11 +1239,11 @@ export class MqBroker extends cdktf.TerraformResource {
       subnet_ids: cdktf.listMapper(cdktf.stringToTerraform)(this._subnetIds),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      configuration: mqBrokerConfigurationToTerraform(this._configuration),
-      encryption_options: mqBrokerEncryptionOptionsToTerraform(this._encryptionOptions),
-      ldap_server_metadata: mqBrokerLdapServerMetadataToTerraform(this._ldapServerMetadata),
-      logs: mqBrokerLogsToTerraform(this._logs),
-      maintenance_window_start_time: mqBrokerMaintenanceWindowStartTimeToTerraform(this._maintenanceWindowStartTime),
+      configuration: mqBrokerConfigurationToTerraform(this._configuration.internalValue),
+      encryption_options: mqBrokerEncryptionOptionsToTerraform(this._encryptionOptions.internalValue),
+      ldap_server_metadata: mqBrokerLdapServerMetadataToTerraform(this._ldapServerMetadata.internalValue),
+      logs: mqBrokerLogsToTerraform(this._logs.internalValue),
+      maintenance_window_start_time: mqBrokerMaintenanceWindowStartTimeToTerraform(this._maintenanceWindowStartTime.internalValue),
       user: cdktf.listMapper(mqBrokerUserToTerraform)(this._user),
     };
   }

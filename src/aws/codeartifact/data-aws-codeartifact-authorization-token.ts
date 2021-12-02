@@ -77,15 +77,15 @@ export class DataAwsCodeartifactAuthorizationToken extends cdktf.TerraformDataSo
   }
   // Temporarily expose input value. Use with caution.
   public get domainInput() {
-    return this._domain
+    return this._domain;
   }
 
   // domain_owner - computed: true, optional: true, required: false
-  private _domainOwner?: string | undefined; 
+  private _domainOwner?: string; 
   public get domainOwner() {
     return this.getStringAttribute('domain_owner');
   }
-  public set domainOwner(value: string | undefined) {
+  public set domainOwner(value: string) {
     this._domainOwner = value;
   }
   public resetDomainOwner() {
@@ -93,15 +93,15 @@ export class DataAwsCodeartifactAuthorizationToken extends cdktf.TerraformDataSo
   }
   // Temporarily expose input value. Use with caution.
   public get domainOwnerInput() {
-    return this._domainOwner
+    return this._domainOwner;
   }
 
   // duration_seconds - computed: false, optional: true, required: false
-  private _durationSeconds?: number | undefined; 
+  private _durationSeconds?: number; 
   public get durationSeconds() {
     return this.getNumberAttribute('duration_seconds');
   }
-  public set durationSeconds(value: number | undefined) {
+  public set durationSeconds(value: number) {
     this._durationSeconds = value;
   }
   public resetDurationSeconds() {
@@ -109,7 +109,7 @@ export class DataAwsCodeartifactAuthorizationToken extends cdktf.TerraformDataSo
   }
   // Temporarily expose input value. Use with caution.
   public get durationSecondsInput() {
-    return this._durationSeconds
+    return this._durationSeconds;
   }
 
   // expiration - computed: true, optional: false, required: false

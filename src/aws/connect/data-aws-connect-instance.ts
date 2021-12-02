@@ -103,11 +103,11 @@ export class DataAwsConnectInstance extends cdktf.TerraformDataSource {
   }
 
   // instance_alias - computed: true, optional: true, required: false
-  private _instanceAlias?: string | undefined; 
+  private _instanceAlias?: string; 
   public get instanceAlias() {
     return this.getStringAttribute('instance_alias');
   }
-  public set instanceAlias(value: string | undefined) {
+  public set instanceAlias(value: string) {
     this._instanceAlias = value;
   }
   public resetInstanceAlias() {
@@ -115,15 +115,15 @@ export class DataAwsConnectInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceAliasInput() {
-    return this._instanceAlias
+    return this._instanceAlias;
   }
 
   // instance_id - computed: true, optional: true, required: false
-  private _instanceId?: string | undefined; 
+  private _instanceId?: string; 
   public get instanceId() {
     return this.getStringAttribute('instance_id');
   }
-  public set instanceId(value: string | undefined) {
+  public set instanceId(value: string) {
     this._instanceId = value;
   }
   public resetInstanceId() {
@@ -131,7 +131,7 @@ export class DataAwsConnectInstance extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceIdInput() {
-    return this._instanceId
+    return this._instanceId;
   }
 
   // outbound_calls_enabled - computed: true, optional: false, required: false

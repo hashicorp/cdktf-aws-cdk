@@ -88,12 +88,37 @@ export class FsxOntapVolumeTieringPolicyOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): FsxOntapVolumeTieringPolicy | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._coolingPeriod) {
+      hasAnyValues = true;
+      internalValueResult.coolingPeriod = this._coolingPeriod;
+    }
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: FsxOntapVolumeTieringPolicy | undefined) {
+    if (value === undefined) {
+      this._coolingPeriod = undefined;
+      this._name = undefined;
+    }
+    else {
+      this._coolingPeriod = value.coolingPeriod;
+      this._name = value.name;
+    }
+  }
+
   // cooling_period - computed: false, optional: true, required: false
-  private _coolingPeriod?: number | undefined; 
+  private _coolingPeriod?: number; 
   public get coolingPeriod() {
     return this.getNumberAttribute('cooling_period');
   }
-  public set coolingPeriod(value: number | undefined) {
+  public set coolingPeriod(value: number) {
     this._coolingPeriod = value;
   }
   public resetCoolingPeriod() {
@@ -101,15 +126,15 @@ export class FsxOntapVolumeTieringPolicyOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get coolingPeriodInput() {
-    return this._coolingPeriod
+    return this._coolingPeriod;
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -117,7 +142,7 @@ export class FsxOntapVolumeTieringPolicyOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface FsxOntapVolumeTimeouts {
@@ -157,12 +182,43 @@ export class FsxOntapVolumeTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): FsxOntapVolumeTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: FsxOntapVolumeTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -170,15 +226,15 @@ export class FsxOntapVolumeTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -186,15 +242,15 @@ export class FsxOntapVolumeTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -202,7 +258,7 @@ export class FsxOntapVolumeTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -247,8 +303,8 @@ export class FsxOntapVolume extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._volumeType = config.volumeType;
-    this._tieringPolicy = config.tieringPolicy;
-    this._timeouts = config.timeouts;
+    this._tieringPolicy.internalValue = config.tieringPolicy;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -285,7 +341,7 @@ export class FsxOntapVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get junctionPathInput() {
-    return this._junctionPath
+    return this._junctionPath;
   }
 
   // name - computed: false, optional: false, required: true
@@ -298,7 +354,7 @@ export class FsxOntapVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // ontap_volume_type - computed: true, optional: false, required: false
@@ -307,11 +363,11 @@ export class FsxOntapVolume extends cdktf.TerraformResource {
   }
 
   // security_style - computed: false, optional: true, required: false
-  private _securityStyle?: string | undefined; 
+  private _securityStyle?: string; 
   public get securityStyle() {
     return this.getStringAttribute('security_style');
   }
-  public set securityStyle(value: string | undefined) {
+  public set securityStyle(value: string) {
     this._securityStyle = value;
   }
   public resetSecurityStyle() {
@@ -319,7 +375,7 @@ export class FsxOntapVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityStyleInput() {
-    return this._securityStyle
+    return this._securityStyle;
   }
 
   // size_in_megabytes - computed: false, optional: false, required: true
@@ -332,7 +388,7 @@ export class FsxOntapVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sizeInMegabytesInput() {
-    return this._sizeInMegabytes
+    return this._sizeInMegabytes;
   }
 
   // storage_efficiency_enabled - computed: false, optional: false, required: true
@@ -345,7 +401,7 @@ export class FsxOntapVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get storageEfficiencyEnabledInput() {
-    return this._storageEfficiencyEnabled
+    return this._storageEfficiencyEnabled;
   }
 
   // storage_virtual_machine_id - computed: false, optional: false, required: true
@@ -358,16 +414,16 @@ export class FsxOntapVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get storageVirtualMachineIdInput() {
-    return this._storageVirtualMachineId
+    return this._storageVirtualMachineId;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -375,16 +431,16 @@ export class FsxOntapVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -392,7 +448,7 @@ export class FsxOntapVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // uuid - computed: true, optional: false, required: false
@@ -401,11 +457,11 @@ export class FsxOntapVolume extends cdktf.TerraformResource {
   }
 
   // volume_type - computed: false, optional: true, required: false
-  private _volumeType?: string | undefined; 
+  private _volumeType?: string; 
   public get volumeType() {
     return this.getStringAttribute('volume_type');
   }
-  public set volumeType(value: string | undefined) {
+  public set volumeType(value: string) {
     this._volumeType = value;
   }
   public resetVolumeType() {
@@ -413,41 +469,39 @@ export class FsxOntapVolume extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get volumeTypeInput() {
-    return this._volumeType
+    return this._volumeType;
   }
 
   // tiering_policy - computed: false, optional: true, required: false
-  private _tieringPolicy?: FsxOntapVolumeTieringPolicy | undefined; 
-  private __tieringPolicyOutput = new FsxOntapVolumeTieringPolicyOutputReference(this as any, "tiering_policy", true);
+  private _tieringPolicy = new FsxOntapVolumeTieringPolicyOutputReference(this as any, "tiering_policy", true);
   public get tieringPolicy() {
-    return this.__tieringPolicyOutput;
+    return this._tieringPolicy;
   }
-  public putTieringPolicy(value: FsxOntapVolumeTieringPolicy | undefined) {
-    this._tieringPolicy = value;
+  public putTieringPolicy(value: FsxOntapVolumeTieringPolicy) {
+    this._tieringPolicy.internalValue = value;
   }
   public resetTieringPolicy() {
-    this._tieringPolicy = undefined;
+    this._tieringPolicy.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get tieringPolicyInput() {
-    return this._tieringPolicy
+    return this._tieringPolicy.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: FsxOntapVolumeTimeouts | undefined; 
-  private __timeoutsOutput = new FsxOntapVolumeTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new FsxOntapVolumeTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: FsxOntapVolumeTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: FsxOntapVolumeTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -465,8 +519,8 @@ export class FsxOntapVolume extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       volume_type: cdktf.stringToTerraform(this._volumeType),
-      tiering_policy: fsxOntapVolumeTieringPolicyToTerraform(this._tieringPolicy),
-      timeouts: fsxOntapVolumeTimeoutsToTerraform(this._timeouts),
+      tiering_policy: fsxOntapVolumeTieringPolicyToTerraform(this._tieringPolicy.internalValue),
+      timeouts: fsxOntapVolumeTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

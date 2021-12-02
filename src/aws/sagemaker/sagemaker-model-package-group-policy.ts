@@ -72,7 +72,7 @@ export class SagemakerModelPackageGroupPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get modelPackageGroupNameInput() {
-    return this._modelPackageGroupName
+    return this._modelPackageGroupName;
   }
 
   // resource_policy - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class SagemakerModelPackageGroupPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourcePolicyInput() {
-    return this._resourcePolicy
+    return this._resourcePolicy;
   }
 
   // =========

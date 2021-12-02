@@ -50,12 +50,37 @@ export class GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryptio
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryption | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cloudwatchEncryptionMode) {
+      hasAnyValues = true;
+      internalValueResult.cloudwatchEncryptionMode = this._cloudwatchEncryptionMode;
+    }
+    if (this._kmsKeyArn) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyArn = this._kmsKeyArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryption | undefined) {
+    if (value === undefined) {
+      this._cloudwatchEncryptionMode = undefined;
+      this._kmsKeyArn = undefined;
+    }
+    else {
+      this._cloudwatchEncryptionMode = value.cloudwatchEncryptionMode;
+      this._kmsKeyArn = value.kmsKeyArn;
+    }
+  }
+
   // cloudwatch_encryption_mode - computed: false, optional: true, required: false
-  private _cloudwatchEncryptionMode?: string | undefined; 
+  private _cloudwatchEncryptionMode?: string; 
   public get cloudwatchEncryptionMode() {
     return this.getStringAttribute('cloudwatch_encryption_mode');
   }
-  public set cloudwatchEncryptionMode(value: string | undefined) {
+  public set cloudwatchEncryptionMode(value: string) {
     this._cloudwatchEncryptionMode = value;
   }
   public resetCloudwatchEncryptionMode() {
@@ -63,15 +88,15 @@ export class GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryptio
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchEncryptionModeInput() {
-    return this._cloudwatchEncryptionMode
+    return this._cloudwatchEncryptionMode;
   }
 
   // kms_key_arn - computed: false, optional: true, required: false
-  private _kmsKeyArn?: string | undefined; 
+  private _kmsKeyArn?: string; 
   public get kmsKeyArn() {
     return this.getStringAttribute('kms_key_arn');
   }
-  public set kmsKeyArn(value: string | undefined) {
+  public set kmsKeyArn(value: string) {
     this._kmsKeyArn = value;
   }
   public resetKmsKeyArn() {
@@ -79,7 +104,7 @@ export class GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryptio
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyArnInput() {
-    return this._kmsKeyArn
+    return this._kmsKeyArn;
   }
 }
 export interface GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryption {
@@ -114,12 +139,37 @@ export class GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncrypt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryption | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._jobBookmarksEncryptionMode) {
+      hasAnyValues = true;
+      internalValueResult.jobBookmarksEncryptionMode = this._jobBookmarksEncryptionMode;
+    }
+    if (this._kmsKeyArn) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyArn = this._kmsKeyArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryption | undefined) {
+    if (value === undefined) {
+      this._jobBookmarksEncryptionMode = undefined;
+      this._kmsKeyArn = undefined;
+    }
+    else {
+      this._jobBookmarksEncryptionMode = value.jobBookmarksEncryptionMode;
+      this._kmsKeyArn = value.kmsKeyArn;
+    }
+  }
+
   // job_bookmarks_encryption_mode - computed: false, optional: true, required: false
-  private _jobBookmarksEncryptionMode?: string | undefined; 
+  private _jobBookmarksEncryptionMode?: string; 
   public get jobBookmarksEncryptionMode() {
     return this.getStringAttribute('job_bookmarks_encryption_mode');
   }
-  public set jobBookmarksEncryptionMode(value: string | undefined) {
+  public set jobBookmarksEncryptionMode(value: string) {
     this._jobBookmarksEncryptionMode = value;
   }
   public resetJobBookmarksEncryptionMode() {
@@ -127,15 +177,15 @@ export class GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncrypt
   }
   // Temporarily expose input value. Use with caution.
   public get jobBookmarksEncryptionModeInput() {
-    return this._jobBookmarksEncryptionMode
+    return this._jobBookmarksEncryptionMode;
   }
 
   // kms_key_arn - computed: false, optional: true, required: false
-  private _kmsKeyArn?: string | undefined; 
+  private _kmsKeyArn?: string; 
   public get kmsKeyArn() {
     return this.getStringAttribute('kms_key_arn');
   }
-  public set kmsKeyArn(value: string | undefined) {
+  public set kmsKeyArn(value: string) {
     this._kmsKeyArn = value;
   }
   public resetKmsKeyArn() {
@@ -143,7 +193,7 @@ export class GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncrypt
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyArnInput() {
-    return this._kmsKeyArn
+    return this._kmsKeyArn;
   }
 }
 export interface GlueSecurityConfigurationEncryptionConfigurationS3Encryption {
@@ -178,12 +228,37 @@ export class GlueSecurityConfigurationEncryptionConfigurationS3EncryptionOutputR
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueSecurityConfigurationEncryptionConfigurationS3Encryption | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._kmsKeyArn) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyArn = this._kmsKeyArn;
+    }
+    if (this._s3EncryptionMode) {
+      hasAnyValues = true;
+      internalValueResult.s3EncryptionMode = this._s3EncryptionMode;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueSecurityConfigurationEncryptionConfigurationS3Encryption | undefined) {
+    if (value === undefined) {
+      this._kmsKeyArn = undefined;
+      this._s3EncryptionMode = undefined;
+    }
+    else {
+      this._kmsKeyArn = value.kmsKeyArn;
+      this._s3EncryptionMode = value.s3EncryptionMode;
+    }
+  }
+
   // kms_key_arn - computed: false, optional: true, required: false
-  private _kmsKeyArn?: string | undefined; 
+  private _kmsKeyArn?: string; 
   public get kmsKeyArn() {
     return this.getStringAttribute('kms_key_arn');
   }
-  public set kmsKeyArn(value: string | undefined) {
+  public set kmsKeyArn(value: string) {
     this._kmsKeyArn = value;
   }
   public resetKmsKeyArn() {
@@ -191,15 +266,15 @@ export class GlueSecurityConfigurationEncryptionConfigurationS3EncryptionOutputR
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyArnInput() {
-    return this._kmsKeyArn
+    return this._kmsKeyArn;
   }
 
   // s3_encryption_mode - computed: false, optional: true, required: false
-  private _s3EncryptionMode?: string | undefined; 
+  private _s3EncryptionMode?: string; 
   public get s3EncryptionMode() {
     return this.getStringAttribute('s3_encryption_mode');
   }
-  public set s3EncryptionMode(value: string | undefined) {
+  public set s3EncryptionMode(value: string) {
     this._s3EncryptionMode = value;
   }
   public resetS3EncryptionMode() {
@@ -207,7 +282,7 @@ export class GlueSecurityConfigurationEncryptionConfigurationS3EncryptionOutputR
   }
   // Temporarily expose input value. Use with caution.
   public get s3EncryptionModeInput() {
-    return this._s3EncryptionMode
+    return this._s3EncryptionMode;
   }
 }
 export interface GlueSecurityConfigurationEncryptionConfiguration {
@@ -253,46 +328,74 @@ export class GlueSecurityConfigurationEncryptionConfigurationOutputReference ext
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueSecurityConfigurationEncryptionConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cloudwatchEncryption) {
+      hasAnyValues = true;
+      internalValueResult.cloudwatchEncryption = this._cloudwatchEncryption?.internalValue;
+    }
+    if (this._jobBookmarksEncryption) {
+      hasAnyValues = true;
+      internalValueResult.jobBookmarksEncryption = this._jobBookmarksEncryption?.internalValue;
+    }
+    if (this._s3Encryption) {
+      hasAnyValues = true;
+      internalValueResult.s3Encryption = this._s3Encryption?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueSecurityConfigurationEncryptionConfiguration | undefined) {
+    if (value === undefined) {
+      this._cloudwatchEncryption.internalValue = undefined;
+      this._jobBookmarksEncryption.internalValue = undefined;
+      this._s3Encryption.internalValue = undefined;
+    }
+    else {
+      this._cloudwatchEncryption.internalValue = value.cloudwatchEncryption;
+      this._jobBookmarksEncryption.internalValue = value.jobBookmarksEncryption;
+      this._s3Encryption.internalValue = value.s3Encryption;
+    }
+  }
+
   // cloudwatch_encryption - computed: false, optional: false, required: true
-  private _cloudwatchEncryption?: GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryption; 
-  private __cloudwatchEncryptionOutput = new GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryptionOutputReference(this as any, "cloudwatch_encryption", true);
+  private _cloudwatchEncryption = new GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryptionOutputReference(this as any, "cloudwatch_encryption", true);
   public get cloudwatchEncryption() {
-    return this.__cloudwatchEncryptionOutput;
+    return this._cloudwatchEncryption;
   }
   public putCloudwatchEncryption(value: GlueSecurityConfigurationEncryptionConfigurationCloudwatchEncryption) {
-    this._cloudwatchEncryption = value;
+    this._cloudwatchEncryption.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchEncryptionInput() {
-    return this._cloudwatchEncryption
+    return this._cloudwatchEncryption.internalValue;
   }
 
   // job_bookmarks_encryption - computed: false, optional: false, required: true
-  private _jobBookmarksEncryption?: GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryption; 
-  private __jobBookmarksEncryptionOutput = new GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionOutputReference(this as any, "job_bookmarks_encryption", true);
+  private _jobBookmarksEncryption = new GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryptionOutputReference(this as any, "job_bookmarks_encryption", true);
   public get jobBookmarksEncryption() {
-    return this.__jobBookmarksEncryptionOutput;
+    return this._jobBookmarksEncryption;
   }
   public putJobBookmarksEncryption(value: GlueSecurityConfigurationEncryptionConfigurationJobBookmarksEncryption) {
-    this._jobBookmarksEncryption = value;
+    this._jobBookmarksEncryption.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get jobBookmarksEncryptionInput() {
-    return this._jobBookmarksEncryption
+    return this._jobBookmarksEncryption.internalValue;
   }
 
   // s3_encryption - computed: false, optional: false, required: true
-  private _s3Encryption?: GlueSecurityConfigurationEncryptionConfigurationS3Encryption; 
-  private __s3EncryptionOutput = new GlueSecurityConfigurationEncryptionConfigurationS3EncryptionOutputReference(this as any, "s3_encryption", true);
+  private _s3Encryption = new GlueSecurityConfigurationEncryptionConfigurationS3EncryptionOutputReference(this as any, "s3_encryption", true);
   public get s3Encryption() {
-    return this.__s3EncryptionOutput;
+    return this._s3Encryption;
   }
   public putS3Encryption(value: GlueSecurityConfigurationEncryptionConfigurationS3Encryption) {
-    this._s3Encryption = value;
+    this._s3Encryption.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get s3EncryptionInput() {
-    return this._s3Encryption
+    return this._s3Encryption.internalValue;
   }
 }
 
@@ -329,7 +432,7 @@ export class GlueSecurityConfiguration extends cdktf.TerraformResource {
       lifecycle: config.lifecycle
     });
     this._name = config.name;
-    this._encryptionConfiguration = config.encryptionConfiguration;
+    this._encryptionConfiguration.internalValue = config.encryptionConfiguration;
   }
 
   // ==========
@@ -351,21 +454,20 @@ export class GlueSecurityConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // encryption_configuration - computed: false, optional: false, required: true
-  private _encryptionConfiguration?: GlueSecurityConfigurationEncryptionConfiguration; 
-  private __encryptionConfigurationOutput = new GlueSecurityConfigurationEncryptionConfigurationOutputReference(this as any, "encryption_configuration", true);
+  private _encryptionConfiguration = new GlueSecurityConfigurationEncryptionConfigurationOutputReference(this as any, "encryption_configuration", true);
   public get encryptionConfiguration() {
-    return this.__encryptionConfigurationOutput;
+    return this._encryptionConfiguration;
   }
   public putEncryptionConfiguration(value: GlueSecurityConfigurationEncryptionConfiguration) {
-    this._encryptionConfiguration = value;
+    this._encryptionConfiguration.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionConfigurationInput() {
-    return this._encryptionConfiguration
+    return this._encryptionConfiguration.internalValue;
   }
 
   // =========
@@ -375,7 +477,7 @@ export class GlueSecurityConfiguration extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       name: cdktf.stringToTerraform(this._name),
-      encryption_configuration: glueSecurityConfigurationEncryptionConfigurationToTerraform(this._encryptionConfiguration),
+      encryption_configuration: glueSecurityConfigurationEncryptionConfigurationToTerraform(this._encryptionConfiguration.internalValue),
     };
   }
 }

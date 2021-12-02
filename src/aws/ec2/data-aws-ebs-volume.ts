@@ -117,11 +117,11 @@ export class DataAwsEbsVolume extends cdktf.TerraformDataSource {
   }
 
   // most_recent - computed: false, optional: true, required: false
-  private _mostRecent?: boolean | cdktf.IResolvable | undefined; 
+  private _mostRecent?: boolean | cdktf.IResolvable; 
   public get mostRecent() {
     return this.getBooleanAttribute('most_recent') as any;
   }
-  public set mostRecent(value: boolean | cdktf.IResolvable | undefined) {
+  public set mostRecent(value: boolean | cdktf.IResolvable) {
     this._mostRecent = value;
   }
   public resetMostRecent() {
@@ -129,7 +129,7 @@ export class DataAwsEbsVolume extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get mostRecentInput() {
-    return this._mostRecent
+    return this._mostRecent;
   }
 
   // multi_attach_enabled - computed: true, optional: false, required: false
@@ -153,12 +153,12 @@ export class DataAwsEbsVolume extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -166,7 +166,7 @@ export class DataAwsEbsVolume extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // throughput - computed: true, optional: false, required: false
@@ -185,12 +185,12 @@ export class DataAwsEbsVolume extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsEbsVolumeFilter[] | undefined; 
+  private _filter?: DataAwsEbsVolumeFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsEbsVolumeFilter[] | undefined) {
+  public set filter(value: DataAwsEbsVolumeFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -198,7 +198,7 @@ export class DataAwsEbsVolume extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

@@ -68,12 +68,12 @@ export class IotThing extends cdktf.TerraformResource {
   }
 
   // attributes - computed: false, optional: true, required: false
-  private _attributes?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _attributes?: { [key: string]: string } | cdktf.IResolvable; 
   public get attributes() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('attributes') as any;
   }
-  public set attributes(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set attributes(value: { [key: string]: string } | cdktf.IResolvable) {
     this._attributes = value;
   }
   public resetAttributes() {
@@ -81,7 +81,7 @@ export class IotThing extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get attributesInput() {
-    return this._attributes
+    return this._attributes;
   }
 
   // default_client_id - computed: true, optional: false, required: false
@@ -104,15 +104,15 @@ export class IotThing extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // thing_type_name - computed: false, optional: true, required: false
-  private _thingTypeName?: string | undefined; 
+  private _thingTypeName?: string; 
   public get thingTypeName() {
     return this.getStringAttribute('thing_type_name');
   }
-  public set thingTypeName(value: string | undefined) {
+  public set thingTypeName(value: string) {
     this._thingTypeName = value;
   }
   public resetThingTypeName() {
@@ -120,7 +120,7 @@ export class IotThing extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get thingTypeNameInput() {
-    return this._thingTypeName
+    return this._thingTypeName;
   }
 
   // version - computed: true, optional: false, required: false

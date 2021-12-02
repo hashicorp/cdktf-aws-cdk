@@ -88,12 +88,61 @@ export class GlueClassifierCsvClassifierOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueClassifierCsvClassifier | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allowSingleColumn) {
+      hasAnyValues = true;
+      internalValueResult.allowSingleColumn = this._allowSingleColumn;
+    }
+    if (this._containsHeader) {
+      hasAnyValues = true;
+      internalValueResult.containsHeader = this._containsHeader;
+    }
+    if (this._delimiter) {
+      hasAnyValues = true;
+      internalValueResult.delimiter = this._delimiter;
+    }
+    if (this._disableValueTrimming) {
+      hasAnyValues = true;
+      internalValueResult.disableValueTrimming = this._disableValueTrimming;
+    }
+    if (this._header) {
+      hasAnyValues = true;
+      internalValueResult.header = this._header;
+    }
+    if (this._quoteSymbol) {
+      hasAnyValues = true;
+      internalValueResult.quoteSymbol = this._quoteSymbol;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueClassifierCsvClassifier | undefined) {
+    if (value === undefined) {
+      this._allowSingleColumn = undefined;
+      this._containsHeader = undefined;
+      this._delimiter = undefined;
+      this._disableValueTrimming = undefined;
+      this._header = undefined;
+      this._quoteSymbol = undefined;
+    }
+    else {
+      this._allowSingleColumn = value.allowSingleColumn;
+      this._containsHeader = value.containsHeader;
+      this._delimiter = value.delimiter;
+      this._disableValueTrimming = value.disableValueTrimming;
+      this._header = value.header;
+      this._quoteSymbol = value.quoteSymbol;
+    }
+  }
+
   // allow_single_column - computed: false, optional: true, required: false
-  private _allowSingleColumn?: boolean | cdktf.IResolvable | undefined; 
+  private _allowSingleColumn?: boolean | cdktf.IResolvable; 
   public get allowSingleColumn() {
     return this.getBooleanAttribute('allow_single_column') as any;
   }
-  public set allowSingleColumn(value: boolean | cdktf.IResolvable | undefined) {
+  public set allowSingleColumn(value: boolean | cdktf.IResolvable) {
     this._allowSingleColumn = value;
   }
   public resetAllowSingleColumn() {
@@ -101,15 +150,15 @@ export class GlueClassifierCsvClassifierOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get allowSingleColumnInput() {
-    return this._allowSingleColumn
+    return this._allowSingleColumn;
   }
 
   // contains_header - computed: false, optional: true, required: false
-  private _containsHeader?: string | undefined; 
+  private _containsHeader?: string; 
   public get containsHeader() {
     return this.getStringAttribute('contains_header');
   }
-  public set containsHeader(value: string | undefined) {
+  public set containsHeader(value: string) {
     this._containsHeader = value;
   }
   public resetContainsHeader() {
@@ -117,15 +166,15 @@ export class GlueClassifierCsvClassifierOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get containsHeaderInput() {
-    return this._containsHeader
+    return this._containsHeader;
   }
 
   // delimiter - computed: false, optional: true, required: false
-  private _delimiter?: string | undefined; 
+  private _delimiter?: string; 
   public get delimiter() {
     return this.getStringAttribute('delimiter');
   }
-  public set delimiter(value: string | undefined) {
+  public set delimiter(value: string) {
     this._delimiter = value;
   }
   public resetDelimiter() {
@@ -133,15 +182,15 @@ export class GlueClassifierCsvClassifierOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get delimiterInput() {
-    return this._delimiter
+    return this._delimiter;
   }
 
   // disable_value_trimming - computed: false, optional: true, required: false
-  private _disableValueTrimming?: boolean | cdktf.IResolvable | undefined; 
+  private _disableValueTrimming?: boolean | cdktf.IResolvable; 
   public get disableValueTrimming() {
     return this.getBooleanAttribute('disable_value_trimming') as any;
   }
-  public set disableValueTrimming(value: boolean | cdktf.IResolvable | undefined) {
+  public set disableValueTrimming(value: boolean | cdktf.IResolvable) {
     this._disableValueTrimming = value;
   }
   public resetDisableValueTrimming() {
@@ -149,15 +198,15 @@ export class GlueClassifierCsvClassifierOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get disableValueTrimmingInput() {
-    return this._disableValueTrimming
+    return this._disableValueTrimming;
   }
 
   // header - computed: false, optional: true, required: false
-  private _header?: string[] | undefined; 
+  private _header?: string[]; 
   public get header() {
     return this.getListAttribute('header');
   }
-  public set header(value: string[] | undefined) {
+  public set header(value: string[]) {
     this._header = value;
   }
   public resetHeader() {
@@ -165,15 +214,15 @@ export class GlueClassifierCsvClassifierOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get headerInput() {
-    return this._header
+    return this._header;
   }
 
   // quote_symbol - computed: false, optional: true, required: false
-  private _quoteSymbol?: string | undefined; 
+  private _quoteSymbol?: string; 
   public get quoteSymbol() {
     return this.getStringAttribute('quote_symbol');
   }
-  public set quoteSymbol(value: string | undefined) {
+  public set quoteSymbol(value: string) {
     this._quoteSymbol = value;
   }
   public resetQuoteSymbol() {
@@ -181,7 +230,7 @@ export class GlueClassifierCsvClassifierOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get quoteSymbolInput() {
-    return this._quoteSymbol
+    return this._quoteSymbol;
   }
 }
 export interface GlueClassifierGrokClassifier {
@@ -221,6 +270,37 @@ export class GlueClassifierGrokClassifierOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueClassifierGrokClassifier | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._classification) {
+      hasAnyValues = true;
+      internalValueResult.classification = this._classification;
+    }
+    if (this._customPatterns) {
+      hasAnyValues = true;
+      internalValueResult.customPatterns = this._customPatterns;
+    }
+    if (this._grokPattern) {
+      hasAnyValues = true;
+      internalValueResult.grokPattern = this._grokPattern;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueClassifierGrokClassifier | undefined) {
+    if (value === undefined) {
+      this._classification = undefined;
+      this._customPatterns = undefined;
+      this._grokPattern = undefined;
+    }
+    else {
+      this._classification = value.classification;
+      this._customPatterns = value.customPatterns;
+      this._grokPattern = value.grokPattern;
+    }
+  }
+
   // classification - computed: false, optional: false, required: true
   private _classification?: string; 
   public get classification() {
@@ -231,15 +311,15 @@ export class GlueClassifierGrokClassifierOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get classificationInput() {
-    return this._classification
+    return this._classification;
   }
 
   // custom_patterns - computed: false, optional: true, required: false
-  private _customPatterns?: string | undefined; 
+  private _customPatterns?: string; 
   public get customPatterns() {
     return this.getStringAttribute('custom_patterns');
   }
-  public set customPatterns(value: string | undefined) {
+  public set customPatterns(value: string) {
     this._customPatterns = value;
   }
   public resetCustomPatterns() {
@@ -247,7 +327,7 @@ export class GlueClassifierGrokClassifierOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get customPatternsInput() {
-    return this._customPatterns
+    return this._customPatterns;
   }
 
   // grok_pattern - computed: false, optional: false, required: true
@@ -260,7 +340,7 @@ export class GlueClassifierGrokClassifierOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get grokPatternInput() {
-    return this._grokPattern
+    return this._grokPattern;
   }
 }
 export interface GlueClassifierJsonClassifier {
@@ -290,6 +370,25 @@ export class GlueClassifierJsonClassifierOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueClassifierJsonClassifier | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._jsonPath) {
+      hasAnyValues = true;
+      internalValueResult.jsonPath = this._jsonPath;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueClassifierJsonClassifier | undefined) {
+    if (value === undefined) {
+      this._jsonPath = undefined;
+    }
+    else {
+      this._jsonPath = value.jsonPath;
+    }
+  }
+
   // json_path - computed: false, optional: false, required: true
   private _jsonPath?: string; 
   public get jsonPath() {
@@ -300,7 +399,7 @@ export class GlueClassifierJsonClassifierOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get jsonPathInput() {
-    return this._jsonPath
+    return this._jsonPath;
   }
 }
 export interface GlueClassifierXmlClassifier {
@@ -335,6 +434,31 @@ export class GlueClassifierXmlClassifierOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueClassifierXmlClassifier | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._classification) {
+      hasAnyValues = true;
+      internalValueResult.classification = this._classification;
+    }
+    if (this._rowTag) {
+      hasAnyValues = true;
+      internalValueResult.rowTag = this._rowTag;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueClassifierXmlClassifier | undefined) {
+    if (value === undefined) {
+      this._classification = undefined;
+      this._rowTag = undefined;
+    }
+    else {
+      this._classification = value.classification;
+      this._rowTag = value.rowTag;
+    }
+  }
+
   // classification - computed: false, optional: false, required: true
   private _classification?: string; 
   public get classification() {
@@ -345,7 +469,7 @@ export class GlueClassifierXmlClassifierOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get classificationInput() {
-    return this._classification
+    return this._classification;
   }
 
   // row_tag - computed: false, optional: false, required: true
@@ -358,7 +482,7 @@ export class GlueClassifierXmlClassifierOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get rowTagInput() {
-    return this._rowTag
+    return this._rowTag;
   }
 }
 
@@ -395,10 +519,10 @@ export class GlueClassifier extends cdktf.TerraformResource {
       lifecycle: config.lifecycle
     });
     this._name = config.name;
-    this._csvClassifier = config.csvClassifier;
-    this._grokClassifier = config.grokClassifier;
-    this._jsonClassifier = config.jsonClassifier;
-    this._xmlClassifier = config.xmlClassifier;
+    this._csvClassifier.internalValue = config.csvClassifier;
+    this._grokClassifier.internalValue = config.grokClassifier;
+    this._jsonClassifier.internalValue = config.jsonClassifier;
+    this._xmlClassifier.internalValue = config.xmlClassifier;
   }
 
   // ==========
@@ -420,75 +544,71 @@ export class GlueClassifier extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // csv_classifier - computed: false, optional: true, required: false
-  private _csvClassifier?: GlueClassifierCsvClassifier | undefined; 
-  private __csvClassifierOutput = new GlueClassifierCsvClassifierOutputReference(this as any, "csv_classifier", true);
+  private _csvClassifier = new GlueClassifierCsvClassifierOutputReference(this as any, "csv_classifier", true);
   public get csvClassifier() {
-    return this.__csvClassifierOutput;
+    return this._csvClassifier;
   }
-  public putCsvClassifier(value: GlueClassifierCsvClassifier | undefined) {
-    this._csvClassifier = value;
+  public putCsvClassifier(value: GlueClassifierCsvClassifier) {
+    this._csvClassifier.internalValue = value;
   }
   public resetCsvClassifier() {
-    this._csvClassifier = undefined;
+    this._csvClassifier.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get csvClassifierInput() {
-    return this._csvClassifier
+    return this._csvClassifier.internalValue;
   }
 
   // grok_classifier - computed: false, optional: true, required: false
-  private _grokClassifier?: GlueClassifierGrokClassifier | undefined; 
-  private __grokClassifierOutput = new GlueClassifierGrokClassifierOutputReference(this as any, "grok_classifier", true);
+  private _grokClassifier = new GlueClassifierGrokClassifierOutputReference(this as any, "grok_classifier", true);
   public get grokClassifier() {
-    return this.__grokClassifierOutput;
+    return this._grokClassifier;
   }
-  public putGrokClassifier(value: GlueClassifierGrokClassifier | undefined) {
-    this._grokClassifier = value;
+  public putGrokClassifier(value: GlueClassifierGrokClassifier) {
+    this._grokClassifier.internalValue = value;
   }
   public resetGrokClassifier() {
-    this._grokClassifier = undefined;
+    this._grokClassifier.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get grokClassifierInput() {
-    return this._grokClassifier
+    return this._grokClassifier.internalValue;
   }
 
   // json_classifier - computed: false, optional: true, required: false
-  private _jsonClassifier?: GlueClassifierJsonClassifier | undefined; 
-  private __jsonClassifierOutput = new GlueClassifierJsonClassifierOutputReference(this as any, "json_classifier", true);
+  private _jsonClassifier = new GlueClassifierJsonClassifierOutputReference(this as any, "json_classifier", true);
   public get jsonClassifier() {
-    return this.__jsonClassifierOutput;
+    return this._jsonClassifier;
   }
-  public putJsonClassifier(value: GlueClassifierJsonClassifier | undefined) {
-    this._jsonClassifier = value;
+  public putJsonClassifier(value: GlueClassifierJsonClassifier) {
+    this._jsonClassifier.internalValue = value;
   }
   public resetJsonClassifier() {
-    this._jsonClassifier = undefined;
+    this._jsonClassifier.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get jsonClassifierInput() {
-    return this._jsonClassifier
+    return this._jsonClassifier.internalValue;
   }
 
   // xml_classifier - computed: false, optional: true, required: false
-  private _xmlClassifier?: GlueClassifierXmlClassifier | undefined; 
-  private __xmlClassifierOutput = new GlueClassifierXmlClassifierOutputReference(this as any, "xml_classifier", true);
+  private _xmlClassifier = new GlueClassifierXmlClassifierOutputReference(this as any, "xml_classifier", true);
   public get xmlClassifier() {
-    return this.__xmlClassifierOutput;
+    return this._xmlClassifier;
   }
-  public putXmlClassifier(value: GlueClassifierXmlClassifier | undefined) {
-    this._xmlClassifier = value;
+  public putXmlClassifier(value: GlueClassifierXmlClassifier) {
+    this._xmlClassifier.internalValue = value;
   }
   public resetXmlClassifier() {
-    this._xmlClassifier = undefined;
+    this._xmlClassifier.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get xmlClassifierInput() {
-    return this._xmlClassifier
+    return this._xmlClassifier.internalValue;
   }
 
   // =========
@@ -498,10 +618,10 @@ export class GlueClassifier extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       name: cdktf.stringToTerraform(this._name),
-      csv_classifier: glueClassifierCsvClassifierToTerraform(this._csvClassifier),
-      grok_classifier: glueClassifierGrokClassifierToTerraform(this._grokClassifier),
-      json_classifier: glueClassifierJsonClassifierToTerraform(this._jsonClassifier),
-      xml_classifier: glueClassifierXmlClassifierToTerraform(this._xmlClassifier),
+      csv_classifier: glueClassifierCsvClassifierToTerraform(this._csvClassifier.internalValue),
+      grok_classifier: glueClassifierGrokClassifierToTerraform(this._grokClassifier.internalValue),
+      json_classifier: glueClassifierJsonClassifierToTerraform(this._jsonClassifier.internalValue),
+      xml_classifier: glueClassifierXmlClassifierToTerraform(this._xmlClassifier.internalValue),
     };
   }
 }

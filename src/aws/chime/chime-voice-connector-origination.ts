@@ -102,11 +102,11 @@ export class ChimeVoiceConnectorOrigination extends cdktf.TerraformResource {
   // ==========
 
   // disabled - computed: false, optional: true, required: false
-  private _disabled?: boolean | cdktf.IResolvable | undefined; 
+  private _disabled?: boolean | cdktf.IResolvable; 
   public get disabled() {
     return this.getBooleanAttribute('disabled') as any;
   }
-  public set disabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set disabled(value: boolean | cdktf.IResolvable) {
     this._disabled = value;
   }
   public resetDisabled() {
@@ -114,7 +114,7 @@ export class ChimeVoiceConnectorOrigination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get disabledInput() {
-    return this._disabled
+    return this._disabled;
   }
 
   // id - computed: true, optional: true, required: false
@@ -132,7 +132,7 @@ export class ChimeVoiceConnectorOrigination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get voiceConnectorIdInput() {
-    return this._voiceConnectorId
+    return this._voiceConnectorId;
   }
 
   // route - computed: false, optional: false, required: true
@@ -146,7 +146,7 @@ export class ChimeVoiceConnectorOrigination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get routeInput() {
-    return this._route
+    return this._route;
   }
 
   // =========

@@ -123,12 +123,43 @@ export class AmiCopyTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AmiCopyTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AmiCopyTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -136,15 +167,15 @@ export class AmiCopyTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -152,15 +183,15 @@ export class AmiCopyTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -168,7 +199,7 @@ export class AmiCopyTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -215,7 +246,7 @@ export class AmiCopy extends cdktf.TerraformResource {
     this._tagsAll = config.tagsAll;
     this._ebsBlockDevice = config.ebsBlockDevice;
     this._ephemeralBlockDevice = config.ephemeralBlockDevice;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -233,11 +264,11 @@ export class AmiCopy extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -245,15 +276,15 @@ export class AmiCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // destination_outpost_arn - computed: false, optional: true, required: false
-  private _destinationOutpostArn?: string | undefined; 
+  private _destinationOutpostArn?: string; 
   public get destinationOutpostArn() {
     return this.getStringAttribute('destination_outpost_arn');
   }
-  public set destinationOutpostArn(value: string | undefined) {
+  public set destinationOutpostArn(value: string) {
     this._destinationOutpostArn = value;
   }
   public resetDestinationOutpostArn() {
@@ -261,7 +292,7 @@ export class AmiCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get destinationOutpostArnInput() {
-    return this._destinationOutpostArn
+    return this._destinationOutpostArn;
   }
 
   // ena_support - computed: true, optional: false, required: false
@@ -270,11 +301,11 @@ export class AmiCopy extends cdktf.TerraformResource {
   }
 
   // encrypted - computed: false, optional: true, required: false
-  private _encrypted?: boolean | cdktf.IResolvable | undefined; 
+  private _encrypted?: boolean | cdktf.IResolvable; 
   public get encrypted() {
     return this.getBooleanAttribute('encrypted') as any;
   }
-  public set encrypted(value: boolean | cdktf.IResolvable | undefined) {
+  public set encrypted(value: boolean | cdktf.IResolvable) {
     this._encrypted = value;
   }
   public resetEncrypted() {
@@ -282,7 +313,7 @@ export class AmiCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get encryptedInput() {
-    return this._encrypted
+    return this._encrypted;
   }
 
   // hypervisor - computed: true, optional: false, required: false
@@ -316,11 +347,11 @@ export class AmiCopy extends cdktf.TerraformResource {
   }
 
   // kms_key_id - computed: true, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -328,7 +359,7 @@ export class AmiCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // manage_ebs_snapshots - computed: true, optional: false, required: false
@@ -346,7 +377,7 @@ export class AmiCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // owner_id - computed: true, optional: false, required: false
@@ -394,7 +425,7 @@ export class AmiCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceAmiIdInput() {
-    return this._sourceAmiId
+    return this._sourceAmiId;
   }
 
   // source_ami_region - computed: false, optional: false, required: true
@@ -407,7 +438,7 @@ export class AmiCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceAmiRegionInput() {
-    return this._sourceAmiRegion
+    return this._sourceAmiRegion;
   }
 
   // sriov_net_support - computed: true, optional: false, required: false
@@ -416,12 +447,12 @@ export class AmiCopy extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -429,16 +460,16 @@ export class AmiCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -446,7 +477,7 @@ export class AmiCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // usage_operation - computed: true, optional: false, required: false
@@ -460,12 +491,12 @@ export class AmiCopy extends cdktf.TerraformResource {
   }
 
   // ebs_block_device - computed: false, optional: true, required: false
-  private _ebsBlockDevice?: AmiCopyEbsBlockDevice[] | undefined; 
+  private _ebsBlockDevice?: AmiCopyEbsBlockDevice[]; 
   public get ebsBlockDevice() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ebs_block_device') as any;
   }
-  public set ebsBlockDevice(value: AmiCopyEbsBlockDevice[] | undefined) {
+  public set ebsBlockDevice(value: AmiCopyEbsBlockDevice[]) {
     this._ebsBlockDevice = value;
   }
   public resetEbsBlockDevice() {
@@ -473,16 +504,16 @@ export class AmiCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ebsBlockDeviceInput() {
-    return this._ebsBlockDevice
+    return this._ebsBlockDevice;
   }
 
   // ephemeral_block_device - computed: false, optional: true, required: false
-  private _ephemeralBlockDevice?: AmiCopyEphemeralBlockDevice[] | undefined; 
+  private _ephemeralBlockDevice?: AmiCopyEphemeralBlockDevice[]; 
   public get ephemeralBlockDevice() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ephemeral_block_device') as any;
   }
-  public set ephemeralBlockDevice(value: AmiCopyEphemeralBlockDevice[] | undefined) {
+  public set ephemeralBlockDevice(value: AmiCopyEphemeralBlockDevice[]) {
     this._ephemeralBlockDevice = value;
   }
   public resetEphemeralBlockDevice() {
@@ -490,24 +521,23 @@ export class AmiCopy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ephemeralBlockDeviceInput() {
-    return this._ephemeralBlockDevice
+    return this._ephemeralBlockDevice;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: AmiCopyTimeouts | undefined; 
-  private __timeoutsOutput = new AmiCopyTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new AmiCopyTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: AmiCopyTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: AmiCopyTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -527,7 +557,7 @@ export class AmiCopy extends cdktf.TerraformResource {
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       ebs_block_device: cdktf.listMapper(amiCopyEbsBlockDeviceToTerraform)(this._ebsBlockDevice),
       ephemeral_block_device: cdktf.listMapper(amiCopyEphemeralBlockDeviceToTerraform)(this._ephemeralBlockDevice),
-      timeouts: amiCopyTimeoutsToTerraform(this._timeouts),
+      timeouts: amiCopyTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

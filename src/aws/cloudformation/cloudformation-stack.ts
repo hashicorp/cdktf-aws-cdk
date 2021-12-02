@@ -107,12 +107,43 @@ export class CloudformationStackTimeoutsOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudformationStackTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudformationStackTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -120,15 +151,15 @@ export class CloudformationStackTimeoutsOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -136,15 +167,15 @@ export class CloudformationStackTimeoutsOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -152,7 +183,7 @@ export class CloudformationStackTimeoutsOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -202,7 +233,7 @@ export class CloudformationStack extends cdktf.TerraformResource {
     this._templateBody = config.templateBody;
     this._templateUrl = config.templateUrl;
     this._timeoutInMinutes = config.timeoutInMinutes;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -210,11 +241,11 @@ export class CloudformationStack extends cdktf.TerraformResource {
   // ==========
 
   // capabilities - computed: false, optional: true, required: false
-  private _capabilities?: string[] | undefined; 
+  private _capabilities?: string[]; 
   public get capabilities() {
     return this.getListAttribute('capabilities');
   }
-  public set capabilities(value: string[] | undefined) {
+  public set capabilities(value: string[]) {
     this._capabilities = value;
   }
   public resetCapabilities() {
@@ -222,15 +253,15 @@ export class CloudformationStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get capabilitiesInput() {
-    return this._capabilities
+    return this._capabilities;
   }
 
   // disable_rollback - computed: false, optional: true, required: false
-  private _disableRollback?: boolean | cdktf.IResolvable | undefined; 
+  private _disableRollback?: boolean | cdktf.IResolvable; 
   public get disableRollback() {
     return this.getBooleanAttribute('disable_rollback') as any;
   }
-  public set disableRollback(value: boolean | cdktf.IResolvable | undefined) {
+  public set disableRollback(value: boolean | cdktf.IResolvable) {
     this._disableRollback = value;
   }
   public resetDisableRollback() {
@@ -238,15 +269,15 @@ export class CloudformationStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get disableRollbackInput() {
-    return this._disableRollback
+    return this._disableRollback;
   }
 
   // iam_role_arn - computed: false, optional: true, required: false
-  private _iamRoleArn?: string | undefined; 
+  private _iamRoleArn?: string; 
   public get iamRoleArn() {
     return this.getStringAttribute('iam_role_arn');
   }
-  public set iamRoleArn(value: string | undefined) {
+  public set iamRoleArn(value: string) {
     this._iamRoleArn = value;
   }
   public resetIamRoleArn() {
@@ -254,7 +285,7 @@ export class CloudformationStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iamRoleArnInput() {
-    return this._iamRoleArn
+    return this._iamRoleArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -272,15 +303,15 @@ export class CloudformationStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // notification_arns - computed: false, optional: true, required: false
-  private _notificationArns?: string[] | undefined; 
+  private _notificationArns?: string[]; 
   public get notificationArns() {
     return this.getListAttribute('notification_arns');
   }
-  public set notificationArns(value: string[] | undefined) {
+  public set notificationArns(value: string[]) {
     this._notificationArns = value;
   }
   public resetNotificationArns() {
@@ -288,15 +319,15 @@ export class CloudformationStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get notificationArnsInput() {
-    return this._notificationArns
+    return this._notificationArns;
   }
 
   // on_failure - computed: false, optional: true, required: false
-  private _onFailure?: string | undefined; 
+  private _onFailure?: string; 
   public get onFailure() {
     return this.getStringAttribute('on_failure');
   }
-  public set onFailure(value: string | undefined) {
+  public set onFailure(value: string) {
     this._onFailure = value;
   }
   public resetOnFailure() {
@@ -304,7 +335,7 @@ export class CloudformationStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get onFailureInput() {
-    return this._onFailure
+    return this._onFailure;
   }
 
   // outputs - computed: true, optional: false, required: false
@@ -313,12 +344,12 @@ export class CloudformationStack extends cdktf.TerraformResource {
   }
 
   // parameters - computed: true, optional: true, required: false
-  private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _parameters?: { [key: string]: string } | cdktf.IResolvable; 
   public get parameters() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('parameters') as any;
   }
-  public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set parameters(value: { [key: string]: string } | cdktf.IResolvable) {
     this._parameters = value;
   }
   public resetParameters() {
@@ -326,15 +357,15 @@ export class CloudformationStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parametersInput() {
-    return this._parameters
+    return this._parameters;
   }
 
   // policy_body - computed: true, optional: true, required: false
-  private _policyBody?: string | undefined; 
+  private _policyBody?: string; 
   public get policyBody() {
     return this.getStringAttribute('policy_body');
   }
-  public set policyBody(value: string | undefined) {
+  public set policyBody(value: string) {
     this._policyBody = value;
   }
   public resetPolicyBody() {
@@ -342,15 +373,15 @@ export class CloudformationStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyBodyInput() {
-    return this._policyBody
+    return this._policyBody;
   }
 
   // policy_url - computed: false, optional: true, required: false
-  private _policyUrl?: string | undefined; 
+  private _policyUrl?: string; 
   public get policyUrl() {
     return this.getStringAttribute('policy_url');
   }
-  public set policyUrl(value: string | undefined) {
+  public set policyUrl(value: string) {
     this._policyUrl = value;
   }
   public resetPolicyUrl() {
@@ -358,16 +389,16 @@ export class CloudformationStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyUrlInput() {
-    return this._policyUrl
+    return this._policyUrl;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -375,16 +406,16 @@ export class CloudformationStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -392,15 +423,15 @@ export class CloudformationStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // template_body - computed: true, optional: true, required: false
-  private _templateBody?: string | undefined; 
+  private _templateBody?: string; 
   public get templateBody() {
     return this.getStringAttribute('template_body');
   }
-  public set templateBody(value: string | undefined) {
+  public set templateBody(value: string) {
     this._templateBody = value;
   }
   public resetTemplateBody() {
@@ -408,15 +439,15 @@ export class CloudformationStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get templateBodyInput() {
-    return this._templateBody
+    return this._templateBody;
   }
 
   // template_url - computed: false, optional: true, required: false
-  private _templateUrl?: string | undefined; 
+  private _templateUrl?: string; 
   public get templateUrl() {
     return this.getStringAttribute('template_url');
   }
-  public set templateUrl(value: string | undefined) {
+  public set templateUrl(value: string) {
     this._templateUrl = value;
   }
   public resetTemplateUrl() {
@@ -424,15 +455,15 @@ export class CloudformationStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get templateUrlInput() {
-    return this._templateUrl
+    return this._templateUrl;
   }
 
   // timeout_in_minutes - computed: false, optional: true, required: false
-  private _timeoutInMinutes?: number | undefined; 
+  private _timeoutInMinutes?: number; 
   public get timeoutInMinutes() {
     return this.getNumberAttribute('timeout_in_minutes');
   }
-  public set timeoutInMinutes(value: number | undefined) {
+  public set timeoutInMinutes(value: number) {
     this._timeoutInMinutes = value;
   }
   public resetTimeoutInMinutes() {
@@ -440,24 +471,23 @@ export class CloudformationStack extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutInMinutesInput() {
-    return this._timeoutInMinutes
+    return this._timeoutInMinutes;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: CloudformationStackTimeouts | undefined; 
-  private __timeoutsOutput = new CloudformationStackTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new CloudformationStackTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: CloudformationStackTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: CloudformationStackTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -480,7 +510,7 @@ export class CloudformationStack extends cdktf.TerraformResource {
       template_body: cdktf.stringToTerraform(this._templateBody),
       template_url: cdktf.stringToTerraform(this._templateUrl),
       timeout_in_minutes: cdktf.numberToTerraform(this._timeoutInMinutes),
-      timeouts: cloudformationStackTimeoutsToTerraform(this._timeouts),
+      timeouts: cloudformationStackTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

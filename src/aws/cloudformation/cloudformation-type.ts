@@ -62,6 +62,31 @@ export class CloudformationTypeLoggingConfigOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudformationTypeLoggingConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._logGroupName) {
+      hasAnyValues = true;
+      internalValueResult.logGroupName = this._logGroupName;
+    }
+    if (this._logRoleArn) {
+      hasAnyValues = true;
+      internalValueResult.logRoleArn = this._logRoleArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudformationTypeLoggingConfig | undefined) {
+    if (value === undefined) {
+      this._logGroupName = undefined;
+      this._logRoleArn = undefined;
+    }
+    else {
+      this._logGroupName = value.logGroupName;
+      this._logRoleArn = value.logRoleArn;
+    }
+  }
+
   // log_group_name - computed: false, optional: false, required: true
   private _logGroupName?: string; 
   public get logGroupName() {
@@ -72,7 +97,7 @@ export class CloudformationTypeLoggingConfigOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get logGroupNameInput() {
-    return this._logGroupName
+    return this._logGroupName;
   }
 
   // log_role_arn - computed: false, optional: false, required: true
@@ -85,7 +110,7 @@ export class CloudformationTypeLoggingConfigOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get logRoleArnInput() {
-    return this._logRoleArn
+    return this._logRoleArn;
   }
 }
 
@@ -125,7 +150,7 @@ export class CloudformationType extends cdktf.TerraformResource {
     this._schemaHandlerPackage = config.schemaHandlerPackage;
     this._type = config.type;
     this._typeName = config.typeName;
-    this._loggingConfig = config.loggingConfig;
+    this._loggingConfig.internalValue = config.loggingConfig;
   }
 
   // ==========
@@ -158,11 +183,11 @@ export class CloudformationType extends cdktf.TerraformResource {
   }
 
   // execution_role_arn - computed: false, optional: true, required: false
-  private _executionRoleArn?: string | undefined; 
+  private _executionRoleArn?: string; 
   public get executionRoleArn() {
     return this.getStringAttribute('execution_role_arn');
   }
-  public set executionRoleArn(value: string | undefined) {
+  public set executionRoleArn(value: string) {
     this._executionRoleArn = value;
   }
   public resetExecutionRoleArn() {
@@ -170,7 +195,7 @@ export class CloudformationType extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get executionRoleArnInput() {
-    return this._executionRoleArn
+    return this._executionRoleArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -203,7 +228,7 @@ export class CloudformationType extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get schemaHandlerPackageInput() {
-    return this._schemaHandlerPackage
+    return this._schemaHandlerPackage;
   }
 
   // source_url - computed: true, optional: false, required: false
@@ -212,11 +237,11 @@ export class CloudformationType extends cdktf.TerraformResource {
   }
 
   // type - computed: true, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -224,7 +249,7 @@ export class CloudformationType extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // type_arn - computed: true, optional: false, required: false
@@ -242,7 +267,7 @@ export class CloudformationType extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeNameInput() {
-    return this._typeName
+    return this._typeName;
   }
 
   // version_id - computed: true, optional: false, required: false
@@ -256,20 +281,19 @@ export class CloudformationType extends cdktf.TerraformResource {
   }
 
   // logging_config - computed: false, optional: true, required: false
-  private _loggingConfig?: CloudformationTypeLoggingConfig | undefined; 
-  private __loggingConfigOutput = new CloudformationTypeLoggingConfigOutputReference(this as any, "logging_config", true);
+  private _loggingConfig = new CloudformationTypeLoggingConfigOutputReference(this as any, "logging_config", true);
   public get loggingConfig() {
-    return this.__loggingConfigOutput;
+    return this._loggingConfig;
   }
-  public putLoggingConfig(value: CloudformationTypeLoggingConfig | undefined) {
-    this._loggingConfig = value;
+  public putLoggingConfig(value: CloudformationTypeLoggingConfig) {
+    this._loggingConfig.internalValue = value;
   }
   public resetLoggingConfig() {
-    this._loggingConfig = undefined;
+    this._loggingConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get loggingConfigInput() {
-    return this._loggingConfig
+    return this._loggingConfig.internalValue;
   }
 
   // =========
@@ -282,7 +306,7 @@ export class CloudformationType extends cdktf.TerraformResource {
       schema_handler_package: cdktf.stringToTerraform(this._schemaHandlerPackage),
       type: cdktf.stringToTerraform(this._type),
       type_name: cdktf.stringToTerraform(this._typeName),
-      logging_config: cloudformationTypeLoggingConfigToTerraform(this._loggingConfig),
+      logging_config: cloudformationTypeLoggingConfigToTerraform(this._loggingConfig.internalValue),
     };
   }
 }

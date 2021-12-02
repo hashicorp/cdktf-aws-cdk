@@ -57,6 +57,25 @@ export class GuarddutyDetectorDatasourcesS3LogsOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GuarddutyDetectorDatasourcesS3Logs | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enable) {
+      hasAnyValues = true;
+      internalValueResult.enable = this._enable;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GuarddutyDetectorDatasourcesS3Logs | undefined) {
+    if (value === undefined) {
+      this._enable = undefined;
+    }
+    else {
+      this._enable = value.enable;
+    }
+  }
+
   // enable - computed: false, optional: false, required: true
   private _enable?: boolean | cdktf.IResolvable; 
   public get enable() {
@@ -67,7 +86,7 @@ export class GuarddutyDetectorDatasourcesS3LogsOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get enableInput() {
-    return this._enable
+    return this._enable;
   }
 }
 export interface GuarddutyDetectorDatasources {
@@ -99,21 +118,39 @@ export class GuarddutyDetectorDatasourcesOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // s3_logs - computed: false, optional: true, required: false
-  private _s3Logs?: GuarddutyDetectorDatasourcesS3Logs | undefined; 
-  private __s3LogsOutput = new GuarddutyDetectorDatasourcesS3LogsOutputReference(this as any, "s3_logs", true);
-  public get s3Logs() {
-    return this.__s3LogsOutput;
+  public get internalValue(): GuarddutyDetectorDatasources | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._s3Logs) {
+      hasAnyValues = true;
+      internalValueResult.s3Logs = this._s3Logs?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putS3Logs(value: GuarddutyDetectorDatasourcesS3Logs | undefined) {
-    this._s3Logs = value;
+
+  public set internalValue(value: GuarddutyDetectorDatasources | undefined) {
+    if (value === undefined) {
+      this._s3Logs.internalValue = undefined;
+    }
+    else {
+      this._s3Logs.internalValue = value.s3Logs;
+    }
+  }
+
+  // s3_logs - computed: false, optional: true, required: false
+  private _s3Logs = new GuarddutyDetectorDatasourcesS3LogsOutputReference(this as any, "s3_logs", true);
+  public get s3Logs() {
+    return this._s3Logs;
+  }
+  public putS3Logs(value: GuarddutyDetectorDatasourcesS3Logs) {
+    this._s3Logs.internalValue = value;
   }
   public resetS3Logs() {
-    this._s3Logs = undefined;
+    this._s3Logs.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get s3LogsInput() {
-    return this._s3Logs
+    return this._s3Logs.internalValue;
   }
 }
 
@@ -153,7 +190,7 @@ export class GuarddutyDetector extends cdktf.TerraformResource {
     this._findingPublishingFrequency = config.findingPublishingFrequency;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._datasources = config.datasources;
+    this._datasources.internalValue = config.datasources;
   }
 
   // ==========
@@ -171,11 +208,11 @@ export class GuarddutyDetector extends cdktf.TerraformResource {
   }
 
   // enable - computed: false, optional: true, required: false
-  private _enable?: boolean | cdktf.IResolvable | undefined; 
+  private _enable?: boolean | cdktf.IResolvable; 
   public get enable() {
     return this.getBooleanAttribute('enable') as any;
   }
-  public set enable(value: boolean | cdktf.IResolvable | undefined) {
+  public set enable(value: boolean | cdktf.IResolvable) {
     this._enable = value;
   }
   public resetEnable() {
@@ -183,15 +220,15 @@ export class GuarddutyDetector extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableInput() {
-    return this._enable
+    return this._enable;
   }
 
   // finding_publishing_frequency - computed: true, optional: true, required: false
-  private _findingPublishingFrequency?: string | undefined; 
+  private _findingPublishingFrequency?: string; 
   public get findingPublishingFrequency() {
     return this.getStringAttribute('finding_publishing_frequency');
   }
-  public set findingPublishingFrequency(value: string | undefined) {
+  public set findingPublishingFrequency(value: string) {
     this._findingPublishingFrequency = value;
   }
   public resetFindingPublishingFrequency() {
@@ -199,7 +236,7 @@ export class GuarddutyDetector extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get findingPublishingFrequencyInput() {
-    return this._findingPublishingFrequency
+    return this._findingPublishingFrequency;
   }
 
   // id - computed: true, optional: true, required: false
@@ -208,12 +245,12 @@ export class GuarddutyDetector extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -221,16 +258,16 @@ export class GuarddutyDetector extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -238,24 +275,23 @@ export class GuarddutyDetector extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // datasources - computed: false, optional: true, required: false
-  private _datasources?: GuarddutyDetectorDatasources | undefined; 
-  private __datasourcesOutput = new GuarddutyDetectorDatasourcesOutputReference(this as any, "datasources", true);
+  private _datasources = new GuarddutyDetectorDatasourcesOutputReference(this as any, "datasources", true);
   public get datasources() {
-    return this.__datasourcesOutput;
+    return this._datasources;
   }
-  public putDatasources(value: GuarddutyDetectorDatasources | undefined) {
-    this._datasources = value;
+  public putDatasources(value: GuarddutyDetectorDatasources) {
+    this._datasources.internalValue = value;
   }
   public resetDatasources() {
-    this._datasources = undefined;
+    this._datasources.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get datasourcesInput() {
-    return this._datasources
+    return this._datasources.internalValue;
   }
 
   // =========
@@ -268,7 +304,7 @@ export class GuarddutyDetector extends cdktf.TerraformResource {
       finding_publishing_frequency: cdktf.stringToTerraform(this._findingPublishingFrequency),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      datasources: guarddutyDetectorDatasourcesToTerraform(this._datasources),
+      datasources: guarddutyDetectorDatasourcesToTerraform(this._datasources.internalValue),
     };
   }
 }

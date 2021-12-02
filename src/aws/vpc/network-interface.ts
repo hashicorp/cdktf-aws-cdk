@@ -162,11 +162,11 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -174,7 +174,7 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -183,11 +183,11 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
 
   // interface_type - computed: true, optional: true, required: false
-  private _interfaceType?: string | undefined; 
+  private _interfaceType?: string; 
   public get interfaceType() {
     return this.getStringAttribute('interface_type');
   }
-  public set interfaceType(value: string | undefined) {
+  public set interfaceType(value: string) {
     this._interfaceType = value;
   }
   public resetInterfaceType() {
@@ -195,15 +195,15 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get interfaceTypeInput() {
-    return this._interfaceType
+    return this._interfaceType;
   }
 
   // ipv4_prefix_count - computed: true, optional: true, required: false
-  private _ipv4PrefixCount?: number | undefined; 
+  private _ipv4PrefixCount?: number; 
   public get ipv4PrefixCount() {
     return this.getNumberAttribute('ipv4_prefix_count');
   }
-  public set ipv4PrefixCount(value: number | undefined) {
+  public set ipv4PrefixCount(value: number) {
     this._ipv4PrefixCount = value;
   }
   public resetIpv4PrefixCount() {
@@ -211,15 +211,15 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ipv4PrefixCountInput() {
-    return this._ipv4PrefixCount
+    return this._ipv4PrefixCount;
   }
 
   // ipv4_prefixes - computed: true, optional: true, required: false
-  private _ipv4Prefixes?: string[] | undefined; 
+  private _ipv4Prefixes?: string[]; 
   public get ipv4Prefixes() {
     return this.getListAttribute('ipv4_prefixes');
   }
-  public set ipv4Prefixes(value: string[] | undefined) {
+  public set ipv4Prefixes(value: string[]) {
     this._ipv4Prefixes = value;
   }
   public resetIpv4Prefixes() {
@@ -227,15 +227,15 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ipv4PrefixesInput() {
-    return this._ipv4Prefixes
+    return this._ipv4Prefixes;
   }
 
   // ipv6_address_count - computed: true, optional: true, required: false
-  private _ipv6AddressCount?: number | undefined; 
+  private _ipv6AddressCount?: number; 
   public get ipv6AddressCount() {
     return this.getNumberAttribute('ipv6_address_count');
   }
-  public set ipv6AddressCount(value: number | undefined) {
+  public set ipv6AddressCount(value: number) {
     this._ipv6AddressCount = value;
   }
   public resetIpv6AddressCount() {
@@ -243,15 +243,15 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ipv6AddressCountInput() {
-    return this._ipv6AddressCount
+    return this._ipv6AddressCount;
   }
 
   // ipv6_addresses - computed: true, optional: true, required: false
-  private _ipv6Addresses?: string[] | undefined; 
+  private _ipv6Addresses?: string[]; 
   public get ipv6Addresses() {
     return this.getListAttribute('ipv6_addresses');
   }
-  public set ipv6Addresses(value: string[] | undefined) {
+  public set ipv6Addresses(value: string[]) {
     this._ipv6Addresses = value;
   }
   public resetIpv6Addresses() {
@@ -259,15 +259,15 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ipv6AddressesInput() {
-    return this._ipv6Addresses
+    return this._ipv6Addresses;
   }
 
   // ipv6_prefix_count - computed: true, optional: true, required: false
-  private _ipv6PrefixCount?: number | undefined; 
+  private _ipv6PrefixCount?: number; 
   public get ipv6PrefixCount() {
     return this.getNumberAttribute('ipv6_prefix_count');
   }
-  public set ipv6PrefixCount(value: number | undefined) {
+  public set ipv6PrefixCount(value: number) {
     this._ipv6PrefixCount = value;
   }
   public resetIpv6PrefixCount() {
@@ -275,15 +275,15 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ipv6PrefixCountInput() {
-    return this._ipv6PrefixCount
+    return this._ipv6PrefixCount;
   }
 
   // ipv6_prefixes - computed: true, optional: true, required: false
-  private _ipv6Prefixes?: string[] | undefined; 
+  private _ipv6Prefixes?: string[]; 
   public get ipv6Prefixes() {
     return this.getListAttribute('ipv6_prefixes');
   }
-  public set ipv6Prefixes(value: string[] | undefined) {
+  public set ipv6Prefixes(value: string[]) {
     this._ipv6Prefixes = value;
   }
   public resetIpv6Prefixes() {
@@ -291,7 +291,7 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ipv6PrefixesInput() {
-    return this._ipv6Prefixes
+    return this._ipv6Prefixes;
   }
 
   // mac_address - computed: true, optional: false, required: false
@@ -315,11 +315,11 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
 
   // private_ip - computed: true, optional: true, required: false
-  private _privateIp?: string | undefined; 
+  private _privateIp?: string; 
   public get privateIp() {
     return this.getStringAttribute('private_ip');
   }
-  public set privateIp(value: string | undefined) {
+  public set privateIp(value: string) {
     this._privateIp = value;
   }
   public resetPrivateIp() {
@@ -327,15 +327,15 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get privateIpInput() {
-    return this._privateIp
+    return this._privateIp;
   }
 
   // private_ips - computed: true, optional: true, required: false
-  private _privateIps?: string[] | undefined; 
+  private _privateIps?: string[]; 
   public get privateIps() {
     return this.getListAttribute('private_ips');
   }
-  public set privateIps(value: string[] | undefined) {
+  public set privateIps(value: string[]) {
     this._privateIps = value;
   }
   public resetPrivateIps() {
@@ -343,15 +343,15 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get privateIpsInput() {
-    return this._privateIps
+    return this._privateIps;
   }
 
   // private_ips_count - computed: true, optional: true, required: false
-  private _privateIpsCount?: number | undefined; 
+  private _privateIpsCount?: number; 
   public get privateIpsCount() {
     return this.getNumberAttribute('private_ips_count');
   }
-  public set privateIpsCount(value: number | undefined) {
+  public set privateIpsCount(value: number) {
     this._privateIpsCount = value;
   }
   public resetPrivateIpsCount() {
@@ -359,15 +359,15 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get privateIpsCountInput() {
-    return this._privateIpsCount
+    return this._privateIpsCount;
   }
 
   // security_groups - computed: true, optional: true, required: false
-  private _securityGroups?: string[] | undefined; 
+  private _securityGroups?: string[]; 
   public get securityGroups() {
     return this.getListAttribute('security_groups');
   }
-  public set securityGroups(value: string[] | undefined) {
+  public set securityGroups(value: string[]) {
     this._securityGroups = value;
   }
   public resetSecurityGroups() {
@@ -375,15 +375,15 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupsInput() {
-    return this._securityGroups
+    return this._securityGroups;
   }
 
   // source_dest_check - computed: false, optional: true, required: false
-  private _sourceDestCheck?: boolean | cdktf.IResolvable | undefined; 
+  private _sourceDestCheck?: boolean | cdktf.IResolvable; 
   public get sourceDestCheck() {
     return this.getBooleanAttribute('source_dest_check') as any;
   }
-  public set sourceDestCheck(value: boolean | cdktf.IResolvable | undefined) {
+  public set sourceDestCheck(value: boolean | cdktf.IResolvable) {
     this._sourceDestCheck = value;
   }
   public resetSourceDestCheck() {
@@ -391,7 +391,7 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceDestCheckInput() {
-    return this._sourceDestCheck
+    return this._sourceDestCheck;
   }
 
   // subnet_id - computed: false, optional: false, required: true
@@ -404,16 +404,16 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdInput() {
-    return this._subnetId
+    return this._subnetId;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -421,16 +421,16 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -438,16 +438,16 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // attachment - computed: false, optional: true, required: false
-  private _attachment?: NetworkInterfaceAttachment[] | undefined; 
+  private _attachment?: NetworkInterfaceAttachment[]; 
   public get attachment() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('attachment') as any;
   }
-  public set attachment(value: NetworkInterfaceAttachment[] | undefined) {
+  public set attachment(value: NetworkInterfaceAttachment[]) {
     this._attachment = value;
   }
   public resetAttachment() {
@@ -455,7 +455,7 @@ export class NetworkInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get attachmentInput() {
-    return this._attachment
+    return this._attachment;
   }
 
   // =========

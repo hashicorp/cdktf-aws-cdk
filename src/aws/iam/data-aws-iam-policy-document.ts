@@ -229,11 +229,11 @@ export class DataAwsIamPolicyDocument extends cdktf.TerraformDataSource {
   }
 
   // override_json - computed: false, optional: true, required: false
-  private _overrideJson?: string | undefined; 
+  private _overrideJson?: string; 
   public get overrideJson() {
     return this.getStringAttribute('override_json');
   }
-  public set overrideJson(value: string | undefined) {
+  public set overrideJson(value: string) {
     this._overrideJson = value;
   }
   public resetOverrideJson() {
@@ -241,15 +241,15 @@ export class DataAwsIamPolicyDocument extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get overrideJsonInput() {
-    return this._overrideJson
+    return this._overrideJson;
   }
 
   // override_policy_documents - computed: false, optional: true, required: false
-  private _overridePolicyDocuments?: string[] | undefined; 
+  private _overridePolicyDocuments?: string[]; 
   public get overridePolicyDocuments() {
     return this.getListAttribute('override_policy_documents');
   }
-  public set overridePolicyDocuments(value: string[] | undefined) {
+  public set overridePolicyDocuments(value: string[]) {
     this._overridePolicyDocuments = value;
   }
   public resetOverridePolicyDocuments() {
@@ -257,15 +257,15 @@ export class DataAwsIamPolicyDocument extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get overridePolicyDocumentsInput() {
-    return this._overridePolicyDocuments
+    return this._overridePolicyDocuments;
   }
 
   // policy_id - computed: false, optional: true, required: false
-  private _policyId?: string | undefined; 
+  private _policyId?: string; 
   public get policyId() {
     return this.getStringAttribute('policy_id');
   }
-  public set policyId(value: string | undefined) {
+  public set policyId(value: string) {
     this._policyId = value;
   }
   public resetPolicyId() {
@@ -273,15 +273,15 @@ export class DataAwsIamPolicyDocument extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyIdInput() {
-    return this._policyId
+    return this._policyId;
   }
 
   // source_json - computed: false, optional: true, required: false
-  private _sourceJson?: string | undefined; 
+  private _sourceJson?: string; 
   public get sourceJson() {
     return this.getStringAttribute('source_json');
   }
-  public set sourceJson(value: string | undefined) {
+  public set sourceJson(value: string) {
     this._sourceJson = value;
   }
   public resetSourceJson() {
@@ -289,15 +289,15 @@ export class DataAwsIamPolicyDocument extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceJsonInput() {
-    return this._sourceJson
+    return this._sourceJson;
   }
 
   // source_policy_documents - computed: false, optional: true, required: false
-  private _sourcePolicyDocuments?: string[] | undefined; 
+  private _sourcePolicyDocuments?: string[]; 
   public get sourcePolicyDocuments() {
     return this.getListAttribute('source_policy_documents');
   }
-  public set sourcePolicyDocuments(value: string[] | undefined) {
+  public set sourcePolicyDocuments(value: string[]) {
     this._sourcePolicyDocuments = value;
   }
   public resetSourcePolicyDocuments() {
@@ -305,15 +305,15 @@ export class DataAwsIamPolicyDocument extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourcePolicyDocumentsInput() {
-    return this._sourcePolicyDocuments
+    return this._sourcePolicyDocuments;
   }
 
   // version - computed: false, optional: true, required: false
-  private _version?: string | undefined; 
+  private _version?: string; 
   public get version() {
     return this.getStringAttribute('version');
   }
-  public set version(value: string | undefined) {
+  public set version(value: string) {
     this._version = value;
   }
   public resetVersion() {
@@ -321,16 +321,16 @@ export class DataAwsIamPolicyDocument extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get versionInput() {
-    return this._version
+    return this._version;
   }
 
   // statement - computed: false, optional: true, required: false
-  private _statement?: DataAwsIamPolicyDocumentStatement[] | undefined; 
+  private _statement?: DataAwsIamPolicyDocumentStatement[]; 
   public get statement() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('statement') as any;
   }
-  public set statement(value: DataAwsIamPolicyDocumentStatement[] | undefined) {
+  public set statement(value: DataAwsIamPolicyDocumentStatement[]) {
     this._statement = value;
   }
   public resetStatement() {
@@ -338,7 +338,7 @@ export class DataAwsIamPolicyDocument extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get statementInput() {
-    return this._statement
+    return this._statement;
   }
 
   // =========

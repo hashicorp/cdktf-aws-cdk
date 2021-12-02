@@ -133,11 +133,11 @@ export class DataAwsResourcegroupstaggingapiResources extends cdktf.TerraformDat
   // ==========
 
   // exclude_compliant_resources - computed: false, optional: true, required: false
-  private _excludeCompliantResources?: boolean | cdktf.IResolvable | undefined; 
+  private _excludeCompliantResources?: boolean | cdktf.IResolvable; 
   public get excludeCompliantResources() {
     return this.getBooleanAttribute('exclude_compliant_resources') as any;
   }
-  public set excludeCompliantResources(value: boolean | cdktf.IResolvable | undefined) {
+  public set excludeCompliantResources(value: boolean | cdktf.IResolvable) {
     this._excludeCompliantResources = value;
   }
   public resetExcludeCompliantResources() {
@@ -145,7 +145,7 @@ export class DataAwsResourcegroupstaggingapiResources extends cdktf.TerraformDat
   }
   // Temporarily expose input value. Use with caution.
   public get excludeCompliantResourcesInput() {
-    return this._excludeCompliantResources
+    return this._excludeCompliantResources;
   }
 
   // id - computed: true, optional: true, required: false
@@ -154,11 +154,11 @@ export class DataAwsResourcegroupstaggingapiResources extends cdktf.TerraformDat
   }
 
   // include_compliance_details - computed: false, optional: true, required: false
-  private _includeComplianceDetails?: boolean | cdktf.IResolvable | undefined; 
+  private _includeComplianceDetails?: boolean | cdktf.IResolvable; 
   public get includeComplianceDetails() {
     return this.getBooleanAttribute('include_compliance_details') as any;
   }
-  public set includeComplianceDetails(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeComplianceDetails(value: boolean | cdktf.IResolvable) {
     this._includeComplianceDetails = value;
   }
   public resetIncludeComplianceDetails() {
@@ -166,15 +166,15 @@ export class DataAwsResourcegroupstaggingapiResources extends cdktf.TerraformDat
   }
   // Temporarily expose input value. Use with caution.
   public get includeComplianceDetailsInput() {
-    return this._includeComplianceDetails
+    return this._includeComplianceDetails;
   }
 
   // resource_arn_list - computed: false, optional: true, required: false
-  private _resourceArnList?: string[] | undefined; 
+  private _resourceArnList?: string[]; 
   public get resourceArnList() {
     return this.getListAttribute('resource_arn_list');
   }
-  public set resourceArnList(value: string[] | undefined) {
+  public set resourceArnList(value: string[]) {
     this._resourceArnList = value;
   }
   public resetResourceArnList() {
@@ -182,7 +182,7 @@ export class DataAwsResourcegroupstaggingapiResources extends cdktf.TerraformDat
   }
   // Temporarily expose input value. Use with caution.
   public get resourceArnListInput() {
-    return this._resourceArnList
+    return this._resourceArnList;
   }
 
   // resource_tag_mapping_list - computed: true, optional: false, required: false
@@ -191,11 +191,11 @@ export class DataAwsResourcegroupstaggingapiResources extends cdktf.TerraformDat
   }
 
   // resource_type_filters - computed: false, optional: true, required: false
-  private _resourceTypeFilters?: string[] | undefined; 
+  private _resourceTypeFilters?: string[]; 
   public get resourceTypeFilters() {
     return this.getListAttribute('resource_type_filters');
   }
-  public set resourceTypeFilters(value: string[] | undefined) {
+  public set resourceTypeFilters(value: string[]) {
     this._resourceTypeFilters = value;
   }
   public resetResourceTypeFilters() {
@@ -203,16 +203,16 @@ export class DataAwsResourcegroupstaggingapiResources extends cdktf.TerraformDat
   }
   // Temporarily expose input value. Use with caution.
   public get resourceTypeFiltersInput() {
-    return this._resourceTypeFilters
+    return this._resourceTypeFilters;
   }
 
   // tag_filter - computed: false, optional: true, required: false
-  private _tagFilter?: DataAwsResourcegroupstaggingapiResourcesTagFilter[] | undefined; 
+  private _tagFilter?: DataAwsResourcegroupstaggingapiResourcesTagFilter[]; 
   public get tagFilter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tag_filter') as any;
   }
-  public set tagFilter(value: DataAwsResourcegroupstaggingapiResourcesTagFilter[] | undefined) {
+  public set tagFilter(value: DataAwsResourcegroupstaggingapiResourcesTagFilter[]) {
     this._tagFilter = value;
   }
   public resetTagFilter() {
@@ -220,7 +220,7 @@ export class DataAwsResourcegroupstaggingapiResources extends cdktf.TerraformDat
   }
   // Temporarily expose input value. Use with caution.
   public get tagFilterInput() {
-    return this._tagFilter
+    return this._tagFilter;
   }
 
   // =========

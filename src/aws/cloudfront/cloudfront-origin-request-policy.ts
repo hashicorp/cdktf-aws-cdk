@@ -61,12 +61,31 @@ export class CloudfrontOriginRequestPolicyCookiesConfigCookiesOutputReference ex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontOriginRequestPolicyCookiesConfigCookies | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._items) {
+      hasAnyValues = true;
+      internalValueResult.items = this._items;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontOriginRequestPolicyCookiesConfigCookies | undefined) {
+    if (value === undefined) {
+      this._items = undefined;
+    }
+    else {
+      this._items = value.items;
+    }
+  }
+
   // items - computed: false, optional: true, required: false
-  private _items?: string[] | undefined; 
+  private _items?: string[]; 
   public get items() {
     return this.getListAttribute('items');
   }
-  public set items(value: string[] | undefined) {
+  public set items(value: string[]) {
     this._items = value;
   }
   public resetItems() {
@@ -74,7 +93,7 @@ export class CloudfrontOriginRequestPolicyCookiesConfigCookiesOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get itemsInput() {
-    return this._items
+    return this._items;
   }
 }
 export interface CloudfrontOriginRequestPolicyCookiesConfig {
@@ -111,6 +130,31 @@ export class CloudfrontOriginRequestPolicyCookiesConfigOutputReference extends c
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontOriginRequestPolicyCookiesConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cookieBehavior) {
+      hasAnyValues = true;
+      internalValueResult.cookieBehavior = this._cookieBehavior;
+    }
+    if (this._cookies) {
+      hasAnyValues = true;
+      internalValueResult.cookies = this._cookies?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontOriginRequestPolicyCookiesConfig | undefined) {
+    if (value === undefined) {
+      this._cookieBehavior = undefined;
+      this._cookies.internalValue = undefined;
+    }
+    else {
+      this._cookieBehavior = value.cookieBehavior;
+      this._cookies.internalValue = value.cookies;
+    }
+  }
+
   // cookie_behavior - computed: false, optional: false, required: true
   private _cookieBehavior?: string; 
   public get cookieBehavior() {
@@ -121,24 +165,23 @@ export class CloudfrontOriginRequestPolicyCookiesConfigOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get cookieBehaviorInput() {
-    return this._cookieBehavior
+    return this._cookieBehavior;
   }
 
   // cookies - computed: false, optional: true, required: false
-  private _cookies?: CloudfrontOriginRequestPolicyCookiesConfigCookies | undefined; 
-  private __cookiesOutput = new CloudfrontOriginRequestPolicyCookiesConfigCookiesOutputReference(this as any, "cookies", true);
+  private _cookies = new CloudfrontOriginRequestPolicyCookiesConfigCookiesOutputReference(this as any, "cookies", true);
   public get cookies() {
-    return this.__cookiesOutput;
+    return this._cookies;
   }
-  public putCookies(value: CloudfrontOriginRequestPolicyCookiesConfigCookies | undefined) {
-    this._cookies = value;
+  public putCookies(value: CloudfrontOriginRequestPolicyCookiesConfigCookies) {
+    this._cookies.internalValue = value;
   }
   public resetCookies() {
-    this._cookies = undefined;
+    this._cookies.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cookiesInput() {
-    return this._cookies
+    return this._cookies.internalValue;
   }
 }
 export interface CloudfrontOriginRequestPolicyHeadersConfigHeaders {
@@ -168,12 +211,31 @@ export class CloudfrontOriginRequestPolicyHeadersConfigHeadersOutputReference ex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontOriginRequestPolicyHeadersConfigHeaders | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._items) {
+      hasAnyValues = true;
+      internalValueResult.items = this._items;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontOriginRequestPolicyHeadersConfigHeaders | undefined) {
+    if (value === undefined) {
+      this._items = undefined;
+    }
+    else {
+      this._items = value.items;
+    }
+  }
+
   // items - computed: false, optional: true, required: false
-  private _items?: string[] | undefined; 
+  private _items?: string[]; 
   public get items() {
     return this.getListAttribute('items');
   }
-  public set items(value: string[] | undefined) {
+  public set items(value: string[]) {
     this._items = value;
   }
   public resetItems() {
@@ -181,7 +243,7 @@ export class CloudfrontOriginRequestPolicyHeadersConfigHeadersOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get itemsInput() {
-    return this._items
+    return this._items;
   }
 }
 export interface CloudfrontOriginRequestPolicyHeadersConfig {
@@ -218,12 +280,37 @@ export class CloudfrontOriginRequestPolicyHeadersConfigOutputReference extends c
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontOriginRequestPolicyHeadersConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._headerBehavior) {
+      hasAnyValues = true;
+      internalValueResult.headerBehavior = this._headerBehavior;
+    }
+    if (this._headers) {
+      hasAnyValues = true;
+      internalValueResult.headers = this._headers?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontOriginRequestPolicyHeadersConfig | undefined) {
+    if (value === undefined) {
+      this._headerBehavior = undefined;
+      this._headers.internalValue = undefined;
+    }
+    else {
+      this._headerBehavior = value.headerBehavior;
+      this._headers.internalValue = value.headers;
+    }
+  }
+
   // header_behavior - computed: false, optional: true, required: false
-  private _headerBehavior?: string | undefined; 
+  private _headerBehavior?: string; 
   public get headerBehavior() {
     return this.getStringAttribute('header_behavior');
   }
-  public set headerBehavior(value: string | undefined) {
+  public set headerBehavior(value: string) {
     this._headerBehavior = value;
   }
   public resetHeaderBehavior() {
@@ -231,24 +318,23 @@ export class CloudfrontOriginRequestPolicyHeadersConfigOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get headerBehaviorInput() {
-    return this._headerBehavior
+    return this._headerBehavior;
   }
 
   // headers - computed: false, optional: true, required: false
-  private _headers?: CloudfrontOriginRequestPolicyHeadersConfigHeaders | undefined; 
-  private __headersOutput = new CloudfrontOriginRequestPolicyHeadersConfigHeadersOutputReference(this as any, "headers", true);
+  private _headers = new CloudfrontOriginRequestPolicyHeadersConfigHeadersOutputReference(this as any, "headers", true);
   public get headers() {
-    return this.__headersOutput;
+    return this._headers;
   }
-  public putHeaders(value: CloudfrontOriginRequestPolicyHeadersConfigHeaders | undefined) {
-    this._headers = value;
+  public putHeaders(value: CloudfrontOriginRequestPolicyHeadersConfigHeaders) {
+    this._headers.internalValue = value;
   }
   public resetHeaders() {
-    this._headers = undefined;
+    this._headers.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get headersInput() {
-    return this._headers
+    return this._headers.internalValue;
   }
 }
 export interface CloudfrontOriginRequestPolicyQueryStringsConfigQueryStrings {
@@ -278,12 +364,31 @@ export class CloudfrontOriginRequestPolicyQueryStringsConfigQueryStringsOutputRe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontOriginRequestPolicyQueryStringsConfigQueryStrings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._items) {
+      hasAnyValues = true;
+      internalValueResult.items = this._items;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontOriginRequestPolicyQueryStringsConfigQueryStrings | undefined) {
+    if (value === undefined) {
+      this._items = undefined;
+    }
+    else {
+      this._items = value.items;
+    }
+  }
+
   // items - computed: false, optional: true, required: false
-  private _items?: string[] | undefined; 
+  private _items?: string[]; 
   public get items() {
     return this.getListAttribute('items');
   }
-  public set items(value: string[] | undefined) {
+  public set items(value: string[]) {
     this._items = value;
   }
   public resetItems() {
@@ -291,7 +396,7 @@ export class CloudfrontOriginRequestPolicyQueryStringsConfigQueryStringsOutputRe
   }
   // Temporarily expose input value. Use with caution.
   public get itemsInput() {
-    return this._items
+    return this._items;
   }
 }
 export interface CloudfrontOriginRequestPolicyQueryStringsConfig {
@@ -328,6 +433,31 @@ export class CloudfrontOriginRequestPolicyQueryStringsConfigOutputReference exte
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontOriginRequestPolicyQueryStringsConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._queryStringBehavior) {
+      hasAnyValues = true;
+      internalValueResult.queryStringBehavior = this._queryStringBehavior;
+    }
+    if (this._queryStrings) {
+      hasAnyValues = true;
+      internalValueResult.queryStrings = this._queryStrings?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontOriginRequestPolicyQueryStringsConfig | undefined) {
+    if (value === undefined) {
+      this._queryStringBehavior = undefined;
+      this._queryStrings.internalValue = undefined;
+    }
+    else {
+      this._queryStringBehavior = value.queryStringBehavior;
+      this._queryStrings.internalValue = value.queryStrings;
+    }
+  }
+
   // query_string_behavior - computed: false, optional: false, required: true
   private _queryStringBehavior?: string; 
   public get queryStringBehavior() {
@@ -338,24 +468,23 @@ export class CloudfrontOriginRequestPolicyQueryStringsConfigOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringBehaviorInput() {
-    return this._queryStringBehavior
+    return this._queryStringBehavior;
   }
 
   // query_strings - computed: false, optional: true, required: false
-  private _queryStrings?: CloudfrontOriginRequestPolicyQueryStringsConfigQueryStrings | undefined; 
-  private __queryStringsOutput = new CloudfrontOriginRequestPolicyQueryStringsConfigQueryStringsOutputReference(this as any, "query_strings", true);
+  private _queryStrings = new CloudfrontOriginRequestPolicyQueryStringsConfigQueryStringsOutputReference(this as any, "query_strings", true);
   public get queryStrings() {
-    return this.__queryStringsOutput;
+    return this._queryStrings;
   }
-  public putQueryStrings(value: CloudfrontOriginRequestPolicyQueryStringsConfigQueryStrings | undefined) {
-    this._queryStrings = value;
+  public putQueryStrings(value: CloudfrontOriginRequestPolicyQueryStringsConfigQueryStrings) {
+    this._queryStrings.internalValue = value;
   }
   public resetQueryStrings() {
-    this._queryStrings = undefined;
+    this._queryStrings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringsInput() {
-    return this._queryStrings
+    return this._queryStrings.internalValue;
   }
 }
 
@@ -393,9 +522,9 @@ export class CloudfrontOriginRequestPolicy extends cdktf.TerraformResource {
     });
     this._comment = config.comment;
     this._name = config.name;
-    this._cookiesConfig = config.cookiesConfig;
-    this._headersConfig = config.headersConfig;
-    this._queryStringsConfig = config.queryStringsConfig;
+    this._cookiesConfig.internalValue = config.cookiesConfig;
+    this._headersConfig.internalValue = config.headersConfig;
+    this._queryStringsConfig.internalValue = config.queryStringsConfig;
   }
 
   // ==========
@@ -403,11 +532,11 @@ export class CloudfrontOriginRequestPolicy extends cdktf.TerraformResource {
   // ==========
 
   // comment - computed: false, optional: true, required: false
-  private _comment?: string | undefined; 
+  private _comment?: string; 
   public get comment() {
     return this.getStringAttribute('comment');
   }
-  public set comment(value: string | undefined) {
+  public set comment(value: string) {
     this._comment = value;
   }
   public resetComment() {
@@ -415,7 +544,7 @@ export class CloudfrontOriginRequestPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get commentInput() {
-    return this._comment
+    return this._comment;
   }
 
   // etag - computed: true, optional: false, required: false
@@ -438,49 +567,46 @@ export class CloudfrontOriginRequestPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // cookies_config - computed: false, optional: false, required: true
-  private _cookiesConfig?: CloudfrontOriginRequestPolicyCookiesConfig; 
-  private __cookiesConfigOutput = new CloudfrontOriginRequestPolicyCookiesConfigOutputReference(this as any, "cookies_config", true);
+  private _cookiesConfig = new CloudfrontOriginRequestPolicyCookiesConfigOutputReference(this as any, "cookies_config", true);
   public get cookiesConfig() {
-    return this.__cookiesConfigOutput;
+    return this._cookiesConfig;
   }
   public putCookiesConfig(value: CloudfrontOriginRequestPolicyCookiesConfig) {
-    this._cookiesConfig = value;
+    this._cookiesConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get cookiesConfigInput() {
-    return this._cookiesConfig
+    return this._cookiesConfig.internalValue;
   }
 
   // headers_config - computed: false, optional: false, required: true
-  private _headersConfig?: CloudfrontOriginRequestPolicyHeadersConfig; 
-  private __headersConfigOutput = new CloudfrontOriginRequestPolicyHeadersConfigOutputReference(this as any, "headers_config", true);
+  private _headersConfig = new CloudfrontOriginRequestPolicyHeadersConfigOutputReference(this as any, "headers_config", true);
   public get headersConfig() {
-    return this.__headersConfigOutput;
+    return this._headersConfig;
   }
   public putHeadersConfig(value: CloudfrontOriginRequestPolicyHeadersConfig) {
-    this._headersConfig = value;
+    this._headersConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get headersConfigInput() {
-    return this._headersConfig
+    return this._headersConfig.internalValue;
   }
 
   // query_strings_config - computed: false, optional: false, required: true
-  private _queryStringsConfig?: CloudfrontOriginRequestPolicyQueryStringsConfig; 
-  private __queryStringsConfigOutput = new CloudfrontOriginRequestPolicyQueryStringsConfigOutputReference(this as any, "query_strings_config", true);
+  private _queryStringsConfig = new CloudfrontOriginRequestPolicyQueryStringsConfigOutputReference(this as any, "query_strings_config", true);
   public get queryStringsConfig() {
-    return this.__queryStringsConfigOutput;
+    return this._queryStringsConfig;
   }
   public putQueryStringsConfig(value: CloudfrontOriginRequestPolicyQueryStringsConfig) {
-    this._queryStringsConfig = value;
+    this._queryStringsConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringsConfigInput() {
-    return this._queryStringsConfig
+    return this._queryStringsConfig.internalValue;
   }
 
   // =========
@@ -491,9 +617,9 @@ export class CloudfrontOriginRequestPolicy extends cdktf.TerraformResource {
     return {
       comment: cdktf.stringToTerraform(this._comment),
       name: cdktf.stringToTerraform(this._name),
-      cookies_config: cloudfrontOriginRequestPolicyCookiesConfigToTerraform(this._cookiesConfig),
-      headers_config: cloudfrontOriginRequestPolicyHeadersConfigToTerraform(this._headersConfig),
-      query_strings_config: cloudfrontOriginRequestPolicyQueryStringsConfigToTerraform(this._queryStringsConfig),
+      cookies_config: cloudfrontOriginRequestPolicyCookiesConfigToTerraform(this._cookiesConfig.internalValue),
+      headers_config: cloudfrontOriginRequestPolicyHeadersConfigToTerraform(this._headersConfig.internalValue),
+      query_strings_config: cloudfrontOriginRequestPolicyQueryStringsConfigToTerraform(this._queryStringsConfig.internalValue),
     };
   }
 }

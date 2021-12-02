@@ -93,11 +93,11 @@ export class Ec2TransitGateway extends cdktf.TerraformResource {
   // ==========
 
   // amazon_side_asn - computed: false, optional: true, required: false
-  private _amazonSideAsn?: number | undefined; 
+  private _amazonSideAsn?: number; 
   public get amazonSideAsn() {
     return this.getNumberAttribute('amazon_side_asn');
   }
-  public set amazonSideAsn(value: number | undefined) {
+  public set amazonSideAsn(value: number) {
     this._amazonSideAsn = value;
   }
   public resetAmazonSideAsn() {
@@ -105,7 +105,7 @@ export class Ec2TransitGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get amazonSideAsnInput() {
-    return this._amazonSideAsn
+    return this._amazonSideAsn;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -119,11 +119,11 @@ export class Ec2TransitGateway extends cdktf.TerraformResource {
   }
 
   // auto_accept_shared_attachments - computed: false, optional: true, required: false
-  private _autoAcceptSharedAttachments?: string | undefined; 
+  private _autoAcceptSharedAttachments?: string; 
   public get autoAcceptSharedAttachments() {
     return this.getStringAttribute('auto_accept_shared_attachments');
   }
-  public set autoAcceptSharedAttachments(value: string | undefined) {
+  public set autoAcceptSharedAttachments(value: string) {
     this._autoAcceptSharedAttachments = value;
   }
   public resetAutoAcceptSharedAttachments() {
@@ -131,15 +131,15 @@ export class Ec2TransitGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoAcceptSharedAttachmentsInput() {
-    return this._autoAcceptSharedAttachments
+    return this._autoAcceptSharedAttachments;
   }
 
   // default_route_table_association - computed: false, optional: true, required: false
-  private _defaultRouteTableAssociation?: string | undefined; 
+  private _defaultRouteTableAssociation?: string; 
   public get defaultRouteTableAssociation() {
     return this.getStringAttribute('default_route_table_association');
   }
-  public set defaultRouteTableAssociation(value: string | undefined) {
+  public set defaultRouteTableAssociation(value: string) {
     this._defaultRouteTableAssociation = value;
   }
   public resetDefaultRouteTableAssociation() {
@@ -147,15 +147,15 @@ export class Ec2TransitGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultRouteTableAssociationInput() {
-    return this._defaultRouteTableAssociation
+    return this._defaultRouteTableAssociation;
   }
 
   // default_route_table_propagation - computed: false, optional: true, required: false
-  private _defaultRouteTablePropagation?: string | undefined; 
+  private _defaultRouteTablePropagation?: string; 
   public get defaultRouteTablePropagation() {
     return this.getStringAttribute('default_route_table_propagation');
   }
-  public set defaultRouteTablePropagation(value: string | undefined) {
+  public set defaultRouteTablePropagation(value: string) {
     this._defaultRouteTablePropagation = value;
   }
   public resetDefaultRouteTablePropagation() {
@@ -163,15 +163,15 @@ export class Ec2TransitGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultRouteTablePropagationInput() {
-    return this._defaultRouteTablePropagation
+    return this._defaultRouteTablePropagation;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -179,15 +179,15 @@ export class Ec2TransitGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // dns_support - computed: false, optional: true, required: false
-  private _dnsSupport?: string | undefined; 
+  private _dnsSupport?: string; 
   public get dnsSupport() {
     return this.getStringAttribute('dns_support');
   }
-  public set dnsSupport(value: string | undefined) {
+  public set dnsSupport(value: string) {
     this._dnsSupport = value;
   }
   public resetDnsSupport() {
@@ -195,7 +195,7 @@ export class Ec2TransitGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dnsSupportInput() {
-    return this._dnsSupport
+    return this._dnsSupport;
   }
 
   // id - computed: true, optional: true, required: false
@@ -214,12 +214,12 @@ export class Ec2TransitGateway extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -227,16 +227,16 @@ export class Ec2TransitGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -244,15 +244,15 @@ export class Ec2TransitGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // vpn_ecmp_support - computed: false, optional: true, required: false
-  private _vpnEcmpSupport?: string | undefined; 
+  private _vpnEcmpSupport?: string; 
   public get vpnEcmpSupport() {
     return this.getStringAttribute('vpn_ecmp_support');
   }
-  public set vpnEcmpSupport(value: string | undefined) {
+  public set vpnEcmpSupport(value: string) {
     this._vpnEcmpSupport = value;
   }
   public resetVpnEcmpSupport() {
@@ -260,7 +260,7 @@ export class Ec2TransitGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpnEcmpSupportInput() {
-    return this._vpnEcmpSupport
+    return this._vpnEcmpSupport;
   }
 
   // =========

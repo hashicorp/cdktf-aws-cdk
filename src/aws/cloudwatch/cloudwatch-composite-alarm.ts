@@ -93,11 +93,11 @@ export class CloudwatchCompositeAlarm extends cdktf.TerraformResource {
   // ==========
 
   // actions_enabled - computed: false, optional: true, required: false
-  private _actionsEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _actionsEnabled?: boolean | cdktf.IResolvable; 
   public get actionsEnabled() {
     return this.getBooleanAttribute('actions_enabled') as any;
   }
-  public set actionsEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set actionsEnabled(value: boolean | cdktf.IResolvable) {
     this._actionsEnabled = value;
   }
   public resetActionsEnabled() {
@@ -105,15 +105,15 @@ export class CloudwatchCompositeAlarm extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get actionsEnabledInput() {
-    return this._actionsEnabled
+    return this._actionsEnabled;
   }
 
   // alarm_actions - computed: false, optional: true, required: false
-  private _alarmActions?: string[] | undefined; 
+  private _alarmActions?: string[]; 
   public get alarmActions() {
     return this.getListAttribute('alarm_actions');
   }
-  public set alarmActions(value: string[] | undefined) {
+  public set alarmActions(value: string[]) {
     this._alarmActions = value;
   }
   public resetAlarmActions() {
@@ -121,15 +121,15 @@ export class CloudwatchCompositeAlarm extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get alarmActionsInput() {
-    return this._alarmActions
+    return this._alarmActions;
   }
 
   // alarm_description - computed: false, optional: true, required: false
-  private _alarmDescription?: string | undefined; 
+  private _alarmDescription?: string; 
   public get alarmDescription() {
     return this.getStringAttribute('alarm_description');
   }
-  public set alarmDescription(value: string | undefined) {
+  public set alarmDescription(value: string) {
     this._alarmDescription = value;
   }
   public resetAlarmDescription() {
@@ -137,7 +137,7 @@ export class CloudwatchCompositeAlarm extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get alarmDescriptionInput() {
-    return this._alarmDescription
+    return this._alarmDescription;
   }
 
   // alarm_name - computed: false, optional: false, required: true
@@ -150,7 +150,7 @@ export class CloudwatchCompositeAlarm extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get alarmNameInput() {
-    return this._alarmName
+    return this._alarmName;
   }
 
   // alarm_rule - computed: false, optional: false, required: true
@@ -163,7 +163,7 @@ export class CloudwatchCompositeAlarm extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get alarmRuleInput() {
-    return this._alarmRule
+    return this._alarmRule;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -177,11 +177,11 @@ export class CloudwatchCompositeAlarm extends cdktf.TerraformResource {
   }
 
   // insufficient_data_actions - computed: false, optional: true, required: false
-  private _insufficientDataActions?: string[] | undefined; 
+  private _insufficientDataActions?: string[]; 
   public get insufficientDataActions() {
     return this.getListAttribute('insufficient_data_actions');
   }
-  public set insufficientDataActions(value: string[] | undefined) {
+  public set insufficientDataActions(value: string[]) {
     this._insufficientDataActions = value;
   }
   public resetInsufficientDataActions() {
@@ -189,15 +189,15 @@ export class CloudwatchCompositeAlarm extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get insufficientDataActionsInput() {
-    return this._insufficientDataActions
+    return this._insufficientDataActions;
   }
 
   // ok_actions - computed: false, optional: true, required: false
-  private _okActions?: string[] | undefined; 
+  private _okActions?: string[]; 
   public get okActions() {
     return this.getListAttribute('ok_actions');
   }
-  public set okActions(value: string[] | undefined) {
+  public set okActions(value: string[]) {
     this._okActions = value;
   }
   public resetOkActions() {
@@ -205,16 +205,16 @@ export class CloudwatchCompositeAlarm extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get okActionsInput() {
-    return this._okActions
+    return this._okActions;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -222,16 +222,16 @@ export class CloudwatchCompositeAlarm extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -239,7 +239,7 @@ export class CloudwatchCompositeAlarm extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

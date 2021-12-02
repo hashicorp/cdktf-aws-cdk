@@ -221,13 +221,38 @@ export class EmrInstanceFleetLaunchSpecificationsOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EmrInstanceFleetLaunchSpecifications | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._onDemandSpecification) {
+      hasAnyValues = true;
+      internalValueResult.onDemandSpecification = this._onDemandSpecification;
+    }
+    if (this._spotSpecification) {
+      hasAnyValues = true;
+      internalValueResult.spotSpecification = this._spotSpecification;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EmrInstanceFleetLaunchSpecifications | undefined) {
+    if (value === undefined) {
+      this._onDemandSpecification = undefined;
+      this._spotSpecification = undefined;
+    }
+    else {
+      this._onDemandSpecification = value.onDemandSpecification;
+      this._spotSpecification = value.spotSpecification;
+    }
+  }
+
   // on_demand_specification - computed: false, optional: true, required: false
-  private _onDemandSpecification?: EmrInstanceFleetLaunchSpecificationsOnDemandSpecification[] | undefined; 
+  private _onDemandSpecification?: EmrInstanceFleetLaunchSpecificationsOnDemandSpecification[]; 
   public get onDemandSpecification() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('on_demand_specification') as any;
   }
-  public set onDemandSpecification(value: EmrInstanceFleetLaunchSpecificationsOnDemandSpecification[] | undefined) {
+  public set onDemandSpecification(value: EmrInstanceFleetLaunchSpecificationsOnDemandSpecification[]) {
     this._onDemandSpecification = value;
   }
   public resetOnDemandSpecification() {
@@ -235,16 +260,16 @@ export class EmrInstanceFleetLaunchSpecificationsOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get onDemandSpecificationInput() {
-    return this._onDemandSpecification
+    return this._onDemandSpecification;
   }
 
   // spot_specification - computed: false, optional: true, required: false
-  private _spotSpecification?: EmrInstanceFleetLaunchSpecificationsSpotSpecification[] | undefined; 
+  private _spotSpecification?: EmrInstanceFleetLaunchSpecificationsSpotSpecification[]; 
   public get spotSpecification() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('spot_specification') as any;
   }
-  public set spotSpecification(value: EmrInstanceFleetLaunchSpecificationsSpotSpecification[] | undefined) {
+  public set spotSpecification(value: EmrInstanceFleetLaunchSpecificationsSpotSpecification[]) {
     this._spotSpecification = value;
   }
   public resetSpotSpecification() {
@@ -252,7 +277,7 @@ export class EmrInstanceFleetLaunchSpecificationsOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get spotSpecificationInput() {
-    return this._spotSpecification
+    return this._spotSpecification;
   }
 }
 
@@ -293,7 +318,7 @@ export class EmrInstanceFleet extends cdktf.TerraformResource {
     this._targetOnDemandCapacity = config.targetOnDemandCapacity;
     this._targetSpotCapacity = config.targetSpotCapacity;
     this._instanceTypeConfigs = config.instanceTypeConfigs;
-    this._launchSpecifications = config.launchSpecifications;
+    this._launchSpecifications.internalValue = config.launchSpecifications;
   }
 
   // ==========
@@ -310,7 +335,7 @@ export class EmrInstanceFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterIdInput() {
-    return this._clusterId
+    return this._clusterId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -319,11 +344,11 @@ export class EmrInstanceFleet extends cdktf.TerraformResource {
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -331,7 +356,7 @@ export class EmrInstanceFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // provisioned_on_demand_capacity - computed: true, optional: false, required: false
@@ -345,11 +370,11 @@ export class EmrInstanceFleet extends cdktf.TerraformResource {
   }
 
   // target_on_demand_capacity - computed: false, optional: true, required: false
-  private _targetOnDemandCapacity?: number | undefined; 
+  private _targetOnDemandCapacity?: number; 
   public get targetOnDemandCapacity() {
     return this.getNumberAttribute('target_on_demand_capacity');
   }
-  public set targetOnDemandCapacity(value: number | undefined) {
+  public set targetOnDemandCapacity(value: number) {
     this._targetOnDemandCapacity = value;
   }
   public resetTargetOnDemandCapacity() {
@@ -357,15 +382,15 @@ export class EmrInstanceFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetOnDemandCapacityInput() {
-    return this._targetOnDemandCapacity
+    return this._targetOnDemandCapacity;
   }
 
   // target_spot_capacity - computed: false, optional: true, required: false
-  private _targetSpotCapacity?: number | undefined; 
+  private _targetSpotCapacity?: number; 
   public get targetSpotCapacity() {
     return this.getNumberAttribute('target_spot_capacity');
   }
-  public set targetSpotCapacity(value: number | undefined) {
+  public set targetSpotCapacity(value: number) {
     this._targetSpotCapacity = value;
   }
   public resetTargetSpotCapacity() {
@@ -373,16 +398,16 @@ export class EmrInstanceFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetSpotCapacityInput() {
-    return this._targetSpotCapacity
+    return this._targetSpotCapacity;
   }
 
   // instance_type_configs - computed: false, optional: true, required: false
-  private _instanceTypeConfigs?: EmrInstanceFleetInstanceTypeConfigs[] | undefined; 
+  private _instanceTypeConfigs?: EmrInstanceFleetInstanceTypeConfigs[]; 
   public get instanceTypeConfigs() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('instance_type_configs') as any;
   }
-  public set instanceTypeConfigs(value: EmrInstanceFleetInstanceTypeConfigs[] | undefined) {
+  public set instanceTypeConfigs(value: EmrInstanceFleetInstanceTypeConfigs[]) {
     this._instanceTypeConfigs = value;
   }
   public resetInstanceTypeConfigs() {
@@ -390,24 +415,23 @@ export class EmrInstanceFleet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeConfigsInput() {
-    return this._instanceTypeConfigs
+    return this._instanceTypeConfigs;
   }
 
   // launch_specifications - computed: false, optional: true, required: false
-  private _launchSpecifications?: EmrInstanceFleetLaunchSpecifications | undefined; 
-  private __launchSpecificationsOutput = new EmrInstanceFleetLaunchSpecificationsOutputReference(this as any, "launch_specifications", true);
+  private _launchSpecifications = new EmrInstanceFleetLaunchSpecificationsOutputReference(this as any, "launch_specifications", true);
   public get launchSpecifications() {
-    return this.__launchSpecificationsOutput;
+    return this._launchSpecifications;
   }
-  public putLaunchSpecifications(value: EmrInstanceFleetLaunchSpecifications | undefined) {
-    this._launchSpecifications = value;
+  public putLaunchSpecifications(value: EmrInstanceFleetLaunchSpecifications) {
+    this._launchSpecifications.internalValue = value;
   }
   public resetLaunchSpecifications() {
-    this._launchSpecifications = undefined;
+    this._launchSpecifications.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get launchSpecificationsInput() {
-    return this._launchSpecifications
+    return this._launchSpecifications.internalValue;
   }
 
   // =========
@@ -421,7 +445,7 @@ export class EmrInstanceFleet extends cdktf.TerraformResource {
       target_on_demand_capacity: cdktf.numberToTerraform(this._targetOnDemandCapacity),
       target_spot_capacity: cdktf.numberToTerraform(this._targetSpotCapacity),
       instance_type_configs: cdktf.listMapper(emrInstanceFleetInstanceTypeConfigsToTerraform)(this._instanceTypeConfigs),
-      launch_specifications: emrInstanceFleetLaunchSpecificationsToTerraform(this._launchSpecifications),
+      launch_specifications: emrInstanceFleetLaunchSpecificationsToTerraform(this._launchSpecifications.internalValue),
     };
   }
 }

@@ -69,6 +69,25 @@ export class WafregionalWebAclDefaultActionOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): WafregionalWebAclDefaultAction | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: WafregionalWebAclDefaultAction | undefined) {
+    if (value === undefined) {
+      this._type = undefined;
+    }
+    else {
+      this._type = value.type;
+    }
+  }
+
   // type - computed: false, optional: false, required: true
   private _type?: string; 
   public get type() {
@@ -79,7 +98,7 @@ export class WafregionalWebAclDefaultActionOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 export interface WafregionalWebAclLoggingConfigurationRedactedFieldsFieldToMatch {
@@ -133,6 +152,25 @@ export class WafregionalWebAclLoggingConfigurationRedactedFieldsOutputReference 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): WafregionalWebAclLoggingConfigurationRedactedFields | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: WafregionalWebAclLoggingConfigurationRedactedFields | undefined) {
+    if (value === undefined) {
+      this._fieldToMatch = undefined;
+    }
+    else {
+      this._fieldToMatch = value.fieldToMatch;
+    }
+  }
+
   // field_to_match - computed: false, optional: false, required: true
   private _fieldToMatch?: WafregionalWebAclLoggingConfigurationRedactedFieldsFieldToMatch[]; 
   public get fieldToMatch() {
@@ -144,7 +182,7 @@ export class WafregionalWebAclLoggingConfigurationRedactedFieldsOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch;
   }
 }
 export interface WafregionalWebAclLoggingConfiguration {
@@ -181,6 +219,31 @@ export class WafregionalWebAclLoggingConfigurationOutputReference extends cdktf.
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): WafregionalWebAclLoggingConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._logDestination) {
+      hasAnyValues = true;
+      internalValueResult.logDestination = this._logDestination;
+    }
+    if (this._redactedFields) {
+      hasAnyValues = true;
+      internalValueResult.redactedFields = this._redactedFields?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: WafregionalWebAclLoggingConfiguration | undefined) {
+    if (value === undefined) {
+      this._logDestination = undefined;
+      this._redactedFields.internalValue = undefined;
+    }
+    else {
+      this._logDestination = value.logDestination;
+      this._redactedFields.internalValue = value.redactedFields;
+    }
+  }
+
   // log_destination - computed: false, optional: false, required: true
   private _logDestination?: string; 
   public get logDestination() {
@@ -191,24 +254,23 @@ export class WafregionalWebAclLoggingConfigurationOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get logDestinationInput() {
-    return this._logDestination
+    return this._logDestination;
   }
 
   // redacted_fields - computed: false, optional: true, required: false
-  private _redactedFields?: WafregionalWebAclLoggingConfigurationRedactedFields | undefined; 
-  private __redactedFieldsOutput = new WafregionalWebAclLoggingConfigurationRedactedFieldsOutputReference(this as any, "redacted_fields", true);
+  private _redactedFields = new WafregionalWebAclLoggingConfigurationRedactedFieldsOutputReference(this as any, "redacted_fields", true);
   public get redactedFields() {
-    return this.__redactedFieldsOutput;
+    return this._redactedFields;
   }
-  public putRedactedFields(value: WafregionalWebAclLoggingConfigurationRedactedFields | undefined) {
-    this._redactedFields = value;
+  public putRedactedFields(value: WafregionalWebAclLoggingConfigurationRedactedFields) {
+    this._redactedFields.internalValue = value;
   }
   public resetRedactedFields() {
-    this._redactedFields = undefined;
+    this._redactedFields.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get redactedFieldsInput() {
-    return this._redactedFields
+    return this._redactedFields.internalValue;
   }
 }
 export interface WafregionalWebAclRuleAction {
@@ -238,6 +300,25 @@ export class WafregionalWebAclRuleActionOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): WafregionalWebAclRuleAction | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: WafregionalWebAclRuleAction | undefined) {
+    if (value === undefined) {
+      this._type = undefined;
+    }
+    else {
+      this._type = value.type;
+    }
+  }
+
   // type - computed: false, optional: false, required: true
   private _type?: string; 
   public get type() {
@@ -248,7 +329,7 @@ export class WafregionalWebAclRuleActionOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 export interface WafregionalWebAclRuleOverrideAction {
@@ -278,6 +359,25 @@ export class WafregionalWebAclRuleOverrideActionOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): WafregionalWebAclRuleOverrideAction | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: WafregionalWebAclRuleOverrideAction | undefined) {
+    if (value === undefined) {
+      this._type = undefined;
+    }
+    else {
+      this._type = value.type;
+    }
+  }
+
   // type - computed: false, optional: false, required: true
   private _type?: string; 
   public get type() {
@@ -288,7 +388,7 @@ export class WafregionalWebAclRuleOverrideActionOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 export interface WafregionalWebAclRule {
@@ -369,8 +469,8 @@ export class WafregionalWebAcl extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._defaultAction = config.defaultAction;
-    this._loggingConfiguration = config.loggingConfiguration;
+    this._defaultAction.internalValue = config.defaultAction;
+    this._loggingConfiguration.internalValue = config.loggingConfiguration;
     this._rule = config.rule;
   }
 
@@ -398,7 +498,7 @@ export class WafregionalWebAcl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get metricNameInput() {
-    return this._metricName
+    return this._metricName;
   }
 
   // name - computed: false, optional: false, required: true
@@ -411,16 +511,16 @@ export class WafregionalWebAcl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -428,16 +528,16 @@ export class WafregionalWebAcl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -445,47 +545,45 @@ export class WafregionalWebAcl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // default_action - computed: false, optional: false, required: true
-  private _defaultAction?: WafregionalWebAclDefaultAction; 
-  private __defaultActionOutput = new WafregionalWebAclDefaultActionOutputReference(this as any, "default_action", true);
+  private _defaultAction = new WafregionalWebAclDefaultActionOutputReference(this as any, "default_action", true);
   public get defaultAction() {
-    return this.__defaultActionOutput;
+    return this._defaultAction;
   }
   public putDefaultAction(value: WafregionalWebAclDefaultAction) {
-    this._defaultAction = value;
+    this._defaultAction.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get defaultActionInput() {
-    return this._defaultAction
+    return this._defaultAction.internalValue;
   }
 
   // logging_configuration - computed: false, optional: true, required: false
-  private _loggingConfiguration?: WafregionalWebAclLoggingConfiguration | undefined; 
-  private __loggingConfigurationOutput = new WafregionalWebAclLoggingConfigurationOutputReference(this as any, "logging_configuration", true);
+  private _loggingConfiguration = new WafregionalWebAclLoggingConfigurationOutputReference(this as any, "logging_configuration", true);
   public get loggingConfiguration() {
-    return this.__loggingConfigurationOutput;
+    return this._loggingConfiguration;
   }
-  public putLoggingConfiguration(value: WafregionalWebAclLoggingConfiguration | undefined) {
-    this._loggingConfiguration = value;
+  public putLoggingConfiguration(value: WafregionalWebAclLoggingConfiguration) {
+    this._loggingConfiguration.internalValue = value;
   }
   public resetLoggingConfiguration() {
-    this._loggingConfiguration = undefined;
+    this._loggingConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get loggingConfigurationInput() {
-    return this._loggingConfiguration
+    return this._loggingConfiguration.internalValue;
   }
 
   // rule - computed: false, optional: true, required: false
-  private _rule?: WafregionalWebAclRule[] | undefined; 
+  private _rule?: WafregionalWebAclRule[]; 
   public get rule() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('rule') as any;
   }
-  public set rule(value: WafregionalWebAclRule[] | undefined) {
+  public set rule(value: WafregionalWebAclRule[]) {
     this._rule = value;
   }
   public resetRule() {
@@ -493,7 +591,7 @@ export class WafregionalWebAcl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ruleInput() {
-    return this._rule
+    return this._rule;
   }
 
   // =========
@@ -506,8 +604,8 @@ export class WafregionalWebAcl extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      default_action: wafregionalWebAclDefaultActionToTerraform(this._defaultAction),
-      logging_configuration: wafregionalWebAclLoggingConfigurationToTerraform(this._loggingConfiguration),
+      default_action: wafregionalWebAclDefaultActionToTerraform(this._defaultAction.internalValue),
+      logging_configuration: wafregionalWebAclLoggingConfigurationToTerraform(this._loggingConfiguration.internalValue),
       rule: cdktf.listMapper(wafregionalWebAclRuleToTerraform)(this._rule),
     };
   }

@@ -72,7 +72,7 @@ export class RamPrincipalAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get principalInput() {
-    return this._principal
+    return this._principal;
   }
 
   // resource_share_arn - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class RamPrincipalAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceShareArnInput() {
-    return this._resourceShareArn
+    return this._resourceShareArn;
   }
 
   // =========

@@ -72,15 +72,15 @@ export class SecurityhubFindingAggregator extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get linkingModeInput() {
-    return this._linkingMode
+    return this._linkingMode;
   }
 
   // specified_regions - computed: false, optional: true, required: false
-  private _specifiedRegions?: string[] | undefined; 
+  private _specifiedRegions?: string[]; 
   public get specifiedRegions() {
     return this.getListAttribute('specified_regions');
   }
-  public set specifiedRegions(value: string[] | undefined) {
+  public set specifiedRegions(value: string[]) {
     this._specifiedRegions = value;
   }
   public resetSpecifiedRegions() {
@@ -88,7 +88,7 @@ export class SecurityhubFindingAggregator extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get specifiedRegionsInput() {
-    return this._specifiedRegions
+    return this._specifiedRegions;
   }
 
   // =========

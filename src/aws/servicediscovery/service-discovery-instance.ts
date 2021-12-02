@@ -73,7 +73,7 @@ export class ServiceDiscoveryInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get attributesInput() {
-    return this._attributes
+    return this._attributes;
   }
 
   // id - computed: true, optional: true, required: false
@@ -91,7 +91,7 @@ export class ServiceDiscoveryInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceIdInput() {
-    return this._instanceId
+    return this._instanceId;
   }
 
   // service_id - computed: false, optional: false, required: true
@@ -104,7 +104,7 @@ export class ServiceDiscoveryInstance extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceIdInput() {
-    return this._serviceId
+    return this._serviceId;
   }
 
   // =========

@@ -73,11 +73,11 @@ export class DataAwsKmsPublicKey extends cdktf.TerraformDataSource {
   }
 
   // grant_tokens - computed: false, optional: true, required: false
-  private _grantTokens?: string[] | undefined; 
+  private _grantTokens?: string[]; 
   public get grantTokens() {
     return this.getListAttribute('grant_tokens');
   }
-  public set grantTokens(value: string[] | undefined) {
+  public set grantTokens(value: string[]) {
     this._grantTokens = value;
   }
   public resetGrantTokens() {
@@ -85,7 +85,7 @@ export class DataAwsKmsPublicKey extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get grantTokensInput() {
-    return this._grantTokens
+    return this._grantTokens;
   }
 
   // id - computed: true, optional: true, required: false
@@ -103,7 +103,7 @@ export class DataAwsKmsPublicKey extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyIdInput() {
-    return this._keyId
+    return this._keyId;
   }
 
   // key_usage - computed: true, optional: false, required: false

@@ -90,11 +90,11 @@ export class DataAwsEfsFileSystem extends cdktf.TerraformDataSource {
   }
 
   // creation_token - computed: true, optional: true, required: false
-  private _creationToken?: string | undefined; 
+  private _creationToken?: string; 
   public get creationToken() {
     return this.getStringAttribute('creation_token');
   }
-  public set creationToken(value: string | undefined) {
+  public set creationToken(value: string) {
     this._creationToken = value;
   }
   public resetCreationToken() {
@@ -102,7 +102,7 @@ export class DataAwsEfsFileSystem extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get creationTokenInput() {
-    return this._creationToken
+    return this._creationToken;
   }
 
   // dns_name - computed: true, optional: false, required: false
@@ -116,11 +116,11 @@ export class DataAwsEfsFileSystem extends cdktf.TerraformDataSource {
   }
 
   // file_system_id - computed: true, optional: true, required: false
-  private _fileSystemId?: string | undefined; 
+  private _fileSystemId?: string; 
   public get fileSystemId() {
     return this.getStringAttribute('file_system_id');
   }
-  public set fileSystemId(value: string | undefined) {
+  public set fileSystemId(value: string) {
     this._fileSystemId = value;
   }
   public resetFileSystemId() {
@@ -128,7 +128,7 @@ export class DataAwsEfsFileSystem extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get fileSystemIdInput() {
-    return this._fileSystemId
+    return this._fileSystemId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -162,12 +162,12 @@ export class DataAwsEfsFileSystem extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -175,7 +175,7 @@ export class DataAwsEfsFileSystem extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // throughput_mode - computed: true, optional: false, required: false

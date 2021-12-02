@@ -65,11 +65,11 @@ export class ApiGatewayAccount extends cdktf.TerraformResource {
   // ==========
 
   // cloudwatch_role_arn - computed: false, optional: true, required: false
-  private _cloudwatchRoleArn?: string | undefined; 
+  private _cloudwatchRoleArn?: string; 
   public get cloudwatchRoleArn() {
     return this.getStringAttribute('cloudwatch_role_arn');
   }
-  public set cloudwatchRoleArn(value: string | undefined) {
+  public set cloudwatchRoleArn(value: string) {
     this._cloudwatchRoleArn = value;
   }
   public resetCloudwatchRoleArn() {
@@ -77,7 +77,7 @@ export class ApiGatewayAccount extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchRoleArnInput() {
-    return this._cloudwatchRoleArn
+    return this._cloudwatchRoleArn;
   }
 
   // id - computed: true, optional: true, required: false

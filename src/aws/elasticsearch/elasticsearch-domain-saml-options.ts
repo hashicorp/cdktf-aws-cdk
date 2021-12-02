@@ -50,6 +50,31 @@ export class ElasticsearchDomainSamlOptionsSamlOptionsIdpOutputReference extends
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElasticsearchDomainSamlOptionsSamlOptionsIdp | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._entityId) {
+      hasAnyValues = true;
+      internalValueResult.entityId = this._entityId;
+    }
+    if (this._metadataContent) {
+      hasAnyValues = true;
+      internalValueResult.metadataContent = this._metadataContent;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElasticsearchDomainSamlOptionsSamlOptionsIdp | undefined) {
+    if (value === undefined) {
+      this._entityId = undefined;
+      this._metadataContent = undefined;
+    }
+    else {
+      this._entityId = value.entityId;
+      this._metadataContent = value.metadataContent;
+    }
+  }
+
   // entity_id - computed: false, optional: false, required: true
   private _entityId?: string; 
   public get entityId() {
@@ -60,7 +85,7 @@ export class ElasticsearchDomainSamlOptionsSamlOptionsIdpOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get entityIdInput() {
-    return this._entityId
+    return this._entityId;
   }
 
   // metadata_content - computed: false, optional: false, required: true
@@ -73,7 +98,7 @@ export class ElasticsearchDomainSamlOptionsSamlOptionsIdpOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get metadataContentInput() {
-    return this._metadataContent
+    return this._metadataContent;
   }
 }
 export interface ElasticsearchDomainSamlOptionsSamlOptions {
@@ -135,12 +160,67 @@ export class ElasticsearchDomainSamlOptionsSamlOptionsOutputReference extends cd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElasticsearchDomainSamlOptionsSamlOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._masterBackendRole) {
+      hasAnyValues = true;
+      internalValueResult.masterBackendRole = this._masterBackendRole;
+    }
+    if (this._masterUserName) {
+      hasAnyValues = true;
+      internalValueResult.masterUserName = this._masterUserName;
+    }
+    if (this._rolesKey) {
+      hasAnyValues = true;
+      internalValueResult.rolesKey = this._rolesKey;
+    }
+    if (this._sessionTimeoutMinutes) {
+      hasAnyValues = true;
+      internalValueResult.sessionTimeoutMinutes = this._sessionTimeoutMinutes;
+    }
+    if (this._subjectKey) {
+      hasAnyValues = true;
+      internalValueResult.subjectKey = this._subjectKey;
+    }
+    if (this._idp) {
+      hasAnyValues = true;
+      internalValueResult.idp = this._idp?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElasticsearchDomainSamlOptionsSamlOptions | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._masterBackendRole = undefined;
+      this._masterUserName = undefined;
+      this._rolesKey = undefined;
+      this._sessionTimeoutMinutes = undefined;
+      this._subjectKey = undefined;
+      this._idp.internalValue = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._masterBackendRole = value.masterBackendRole;
+      this._masterUserName = value.masterUserName;
+      this._rolesKey = value.rolesKey;
+      this._sessionTimeoutMinutes = value.sessionTimeoutMinutes;
+      this._subjectKey = value.subjectKey;
+      this._idp.internalValue = value.idp;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -148,15 +228,15 @@ export class ElasticsearchDomainSamlOptionsSamlOptionsOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // master_backend_role - computed: false, optional: true, required: false
-  private _masterBackendRole?: string | undefined; 
+  private _masterBackendRole?: string; 
   public get masterBackendRole() {
     return this.getStringAttribute('master_backend_role');
   }
-  public set masterBackendRole(value: string | undefined) {
+  public set masterBackendRole(value: string) {
     this._masterBackendRole = value;
   }
   public resetMasterBackendRole() {
@@ -164,15 +244,15 @@ export class ElasticsearchDomainSamlOptionsSamlOptionsOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get masterBackendRoleInput() {
-    return this._masterBackendRole
+    return this._masterBackendRole;
   }
 
   // master_user_name - computed: false, optional: true, required: false
-  private _masterUserName?: string | undefined; 
+  private _masterUserName?: string; 
   public get masterUserName() {
     return this.getStringAttribute('master_user_name');
   }
-  public set masterUserName(value: string | undefined) {
+  public set masterUserName(value: string) {
     this._masterUserName = value;
   }
   public resetMasterUserName() {
@@ -180,15 +260,15 @@ export class ElasticsearchDomainSamlOptionsSamlOptionsOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get masterUserNameInput() {
-    return this._masterUserName
+    return this._masterUserName;
   }
 
   // roles_key - computed: false, optional: true, required: false
-  private _rolesKey?: string | undefined; 
+  private _rolesKey?: string; 
   public get rolesKey() {
     return this.getStringAttribute('roles_key');
   }
-  public set rolesKey(value: string | undefined) {
+  public set rolesKey(value: string) {
     this._rolesKey = value;
   }
   public resetRolesKey() {
@@ -196,15 +276,15 @@ export class ElasticsearchDomainSamlOptionsSamlOptionsOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get rolesKeyInput() {
-    return this._rolesKey
+    return this._rolesKey;
   }
 
   // session_timeout_minutes - computed: false, optional: true, required: false
-  private _sessionTimeoutMinutes?: number | undefined; 
+  private _sessionTimeoutMinutes?: number; 
   public get sessionTimeoutMinutes() {
     return this.getNumberAttribute('session_timeout_minutes');
   }
-  public set sessionTimeoutMinutes(value: number | undefined) {
+  public set sessionTimeoutMinutes(value: number) {
     this._sessionTimeoutMinutes = value;
   }
   public resetSessionTimeoutMinutes() {
@@ -212,15 +292,15 @@ export class ElasticsearchDomainSamlOptionsSamlOptionsOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get sessionTimeoutMinutesInput() {
-    return this._sessionTimeoutMinutes
+    return this._sessionTimeoutMinutes;
   }
 
   // subject_key - computed: false, optional: true, required: false
-  private _subjectKey?: string | undefined; 
+  private _subjectKey?: string; 
   public get subjectKey() {
     return this.getStringAttribute('subject_key');
   }
-  public set subjectKey(value: string | undefined) {
+  public set subjectKey(value: string) {
     this._subjectKey = value;
   }
   public resetSubjectKey() {
@@ -228,24 +308,23 @@ export class ElasticsearchDomainSamlOptionsSamlOptionsOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get subjectKeyInput() {
-    return this._subjectKey
+    return this._subjectKey;
   }
 
   // idp - computed: false, optional: true, required: false
-  private _idp?: ElasticsearchDomainSamlOptionsSamlOptionsIdp | undefined; 
-  private __idpOutput = new ElasticsearchDomainSamlOptionsSamlOptionsIdpOutputReference(this as any, "idp", true);
+  private _idp = new ElasticsearchDomainSamlOptionsSamlOptionsIdpOutputReference(this as any, "idp", true);
   public get idp() {
-    return this.__idpOutput;
+    return this._idp;
   }
-  public putIdp(value: ElasticsearchDomainSamlOptionsSamlOptionsIdp | undefined) {
-    this._idp = value;
+  public putIdp(value: ElasticsearchDomainSamlOptionsSamlOptionsIdp) {
+    this._idp.internalValue = value;
   }
   public resetIdp() {
-    this._idp = undefined;
+    this._idp.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get idpInput() {
-    return this._idp
+    return this._idp.internalValue;
   }
 }
 
@@ -282,7 +361,7 @@ export class ElasticsearchDomainSamlOptions extends cdktf.TerraformResource {
       lifecycle: config.lifecycle
     });
     this._domainName = config.domainName;
-    this._samlOptions = config.samlOptions;
+    this._samlOptions.internalValue = config.samlOptions;
   }
 
   // ==========
@@ -299,7 +378,7 @@ export class ElasticsearchDomainSamlOptions extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainNameInput() {
-    return this._domainName
+    return this._domainName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -308,20 +387,19 @@ export class ElasticsearchDomainSamlOptions extends cdktf.TerraformResource {
   }
 
   // saml_options - computed: false, optional: true, required: false
-  private _samlOptions?: ElasticsearchDomainSamlOptionsSamlOptions | undefined; 
-  private __samlOptionsOutput = new ElasticsearchDomainSamlOptionsSamlOptionsOutputReference(this as any, "saml_options", true);
+  private _samlOptions = new ElasticsearchDomainSamlOptionsSamlOptionsOutputReference(this as any, "saml_options", true);
   public get samlOptions() {
-    return this.__samlOptionsOutput;
+    return this._samlOptions;
   }
-  public putSamlOptions(value: ElasticsearchDomainSamlOptionsSamlOptions | undefined) {
-    this._samlOptions = value;
+  public putSamlOptions(value: ElasticsearchDomainSamlOptionsSamlOptions) {
+    this._samlOptions.internalValue = value;
   }
   public resetSamlOptions() {
-    this._samlOptions = undefined;
+    this._samlOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get samlOptionsInput() {
-    return this._samlOptions
+    return this._samlOptions.internalValue;
   }
 
   // =========
@@ -331,7 +409,7 @@ export class ElasticsearchDomainSamlOptions extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       domain_name: cdktf.stringToTerraform(this._domainName),
-      saml_options: elasticsearchDomainSamlOptionsSamlOptionsToTerraform(this._samlOptions),
+      saml_options: elasticsearchDomainSamlOptionsSamlOptionsToTerraform(this._samlOptions.internalValue),
     };
   }
 }

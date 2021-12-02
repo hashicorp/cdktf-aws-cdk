@@ -135,12 +135,43 @@ export class ElasticsearchDomainAdvancedSecurityOptionsMasterUserOptionsOutputRe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElasticsearchDomainAdvancedSecurityOptionsMasterUserOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._masterUserArn) {
+      hasAnyValues = true;
+      internalValueResult.masterUserArn = this._masterUserArn;
+    }
+    if (this._masterUserName) {
+      hasAnyValues = true;
+      internalValueResult.masterUserName = this._masterUserName;
+    }
+    if (this._masterUserPassword) {
+      hasAnyValues = true;
+      internalValueResult.masterUserPassword = this._masterUserPassword;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElasticsearchDomainAdvancedSecurityOptionsMasterUserOptions | undefined) {
+    if (value === undefined) {
+      this._masterUserArn = undefined;
+      this._masterUserName = undefined;
+      this._masterUserPassword = undefined;
+    }
+    else {
+      this._masterUserArn = value.masterUserArn;
+      this._masterUserName = value.masterUserName;
+      this._masterUserPassword = value.masterUserPassword;
+    }
+  }
+
   // master_user_arn - computed: false, optional: true, required: false
-  private _masterUserArn?: string | undefined; 
+  private _masterUserArn?: string; 
   public get masterUserArn() {
     return this.getStringAttribute('master_user_arn');
   }
-  public set masterUserArn(value: string | undefined) {
+  public set masterUserArn(value: string) {
     this._masterUserArn = value;
   }
   public resetMasterUserArn() {
@@ -148,15 +179,15 @@ export class ElasticsearchDomainAdvancedSecurityOptionsMasterUserOptionsOutputRe
   }
   // Temporarily expose input value. Use with caution.
   public get masterUserArnInput() {
-    return this._masterUserArn
+    return this._masterUserArn;
   }
 
   // master_user_name - computed: false, optional: true, required: false
-  private _masterUserName?: string | undefined; 
+  private _masterUserName?: string; 
   public get masterUserName() {
     return this.getStringAttribute('master_user_name');
   }
-  public set masterUserName(value: string | undefined) {
+  public set masterUserName(value: string) {
     this._masterUserName = value;
   }
   public resetMasterUserName() {
@@ -164,15 +195,15 @@ export class ElasticsearchDomainAdvancedSecurityOptionsMasterUserOptionsOutputRe
   }
   // Temporarily expose input value. Use with caution.
   public get masterUserNameInput() {
-    return this._masterUserName
+    return this._masterUserName;
   }
 
   // master_user_password - computed: false, optional: true, required: false
-  private _masterUserPassword?: string | undefined; 
+  private _masterUserPassword?: string; 
   public get masterUserPassword() {
     return this.getStringAttribute('master_user_password');
   }
-  public set masterUserPassword(value: string | undefined) {
+  public set masterUserPassword(value: string) {
     this._masterUserPassword = value;
   }
   public resetMasterUserPassword() {
@@ -180,7 +211,7 @@ export class ElasticsearchDomainAdvancedSecurityOptionsMasterUserOptionsOutputRe
   }
   // Temporarily expose input value. Use with caution.
   public get masterUserPasswordInput() {
-    return this._masterUserPassword
+    return this._masterUserPassword;
   }
 }
 export interface ElasticsearchDomainAdvancedSecurityOptions {
@@ -222,6 +253,37 @@ export class ElasticsearchDomainAdvancedSecurityOptionsOutputReference extends c
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElasticsearchDomainAdvancedSecurityOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._internalUserDatabaseEnabled) {
+      hasAnyValues = true;
+      internalValueResult.internalUserDatabaseEnabled = this._internalUserDatabaseEnabled;
+    }
+    if (this._masterUserOptions) {
+      hasAnyValues = true;
+      internalValueResult.masterUserOptions = this._masterUserOptions?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElasticsearchDomainAdvancedSecurityOptions | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._internalUserDatabaseEnabled = undefined;
+      this._masterUserOptions.internalValue = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._internalUserDatabaseEnabled = value.internalUserDatabaseEnabled;
+      this._masterUserOptions.internalValue = value.masterUserOptions;
+    }
+  }
+
   // enabled - computed: false, optional: false, required: true
   private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
@@ -232,15 +294,15 @@ export class ElasticsearchDomainAdvancedSecurityOptionsOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // internal_user_database_enabled - computed: false, optional: true, required: false
-  private _internalUserDatabaseEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _internalUserDatabaseEnabled?: boolean | cdktf.IResolvable; 
   public get internalUserDatabaseEnabled() {
     return this.getBooleanAttribute('internal_user_database_enabled') as any;
   }
-  public set internalUserDatabaseEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set internalUserDatabaseEnabled(value: boolean | cdktf.IResolvable) {
     this._internalUserDatabaseEnabled = value;
   }
   public resetInternalUserDatabaseEnabled() {
@@ -248,24 +310,23 @@ export class ElasticsearchDomainAdvancedSecurityOptionsOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get internalUserDatabaseEnabledInput() {
-    return this._internalUserDatabaseEnabled
+    return this._internalUserDatabaseEnabled;
   }
 
   // master_user_options - computed: false, optional: true, required: false
-  private _masterUserOptions?: ElasticsearchDomainAdvancedSecurityOptionsMasterUserOptions | undefined; 
-  private __masterUserOptionsOutput = new ElasticsearchDomainAdvancedSecurityOptionsMasterUserOptionsOutputReference(this as any, "master_user_options", true);
+  private _masterUserOptions = new ElasticsearchDomainAdvancedSecurityOptionsMasterUserOptionsOutputReference(this as any, "master_user_options", true);
   public get masterUserOptions() {
-    return this.__masterUserOptionsOutput;
+    return this._masterUserOptions;
   }
-  public putMasterUserOptions(value: ElasticsearchDomainAdvancedSecurityOptionsMasterUserOptions | undefined) {
-    this._masterUserOptions = value;
+  public putMasterUserOptions(value: ElasticsearchDomainAdvancedSecurityOptionsMasterUserOptions) {
+    this._masterUserOptions.internalValue = value;
   }
   public resetMasterUserOptions() {
-    this._masterUserOptions = undefined;
+    this._masterUserOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get masterUserOptionsInput() {
-    return this._masterUserOptions
+    return this._masterUserOptions.internalValue;
   }
 }
 export interface ElasticsearchDomainClusterConfigZoneAwarenessConfig {
@@ -295,12 +356,31 @@ export class ElasticsearchDomainClusterConfigZoneAwarenessConfigOutputReference 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElasticsearchDomainClusterConfigZoneAwarenessConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._availabilityZoneCount) {
+      hasAnyValues = true;
+      internalValueResult.availabilityZoneCount = this._availabilityZoneCount;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElasticsearchDomainClusterConfigZoneAwarenessConfig | undefined) {
+    if (value === undefined) {
+      this._availabilityZoneCount = undefined;
+    }
+    else {
+      this._availabilityZoneCount = value.availabilityZoneCount;
+    }
+  }
+
   // availability_zone_count - computed: false, optional: true, required: false
-  private _availabilityZoneCount?: number | undefined; 
+  private _availabilityZoneCount?: number; 
   public get availabilityZoneCount() {
     return this.getNumberAttribute('availability_zone_count');
   }
-  public set availabilityZoneCount(value: number | undefined) {
+  public set availabilityZoneCount(value: number) {
     this._availabilityZoneCount = value;
   }
   public resetAvailabilityZoneCount() {
@@ -308,7 +388,7 @@ export class ElasticsearchDomainClusterConfigZoneAwarenessConfigOutputReference 
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneCountInput() {
-    return this._availabilityZoneCount
+    return this._availabilityZoneCount;
   }
 }
 export interface ElasticsearchDomainClusterConfig {
@@ -385,12 +465,85 @@ export class ElasticsearchDomainClusterConfigOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElasticsearchDomainClusterConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._dedicatedMasterCount) {
+      hasAnyValues = true;
+      internalValueResult.dedicatedMasterCount = this._dedicatedMasterCount;
+    }
+    if (this._dedicatedMasterEnabled) {
+      hasAnyValues = true;
+      internalValueResult.dedicatedMasterEnabled = this._dedicatedMasterEnabled;
+    }
+    if (this._dedicatedMasterType) {
+      hasAnyValues = true;
+      internalValueResult.dedicatedMasterType = this._dedicatedMasterType;
+    }
+    if (this._instanceCount) {
+      hasAnyValues = true;
+      internalValueResult.instanceCount = this._instanceCount;
+    }
+    if (this._instanceType) {
+      hasAnyValues = true;
+      internalValueResult.instanceType = this._instanceType;
+    }
+    if (this._warmCount) {
+      hasAnyValues = true;
+      internalValueResult.warmCount = this._warmCount;
+    }
+    if (this._warmEnabled) {
+      hasAnyValues = true;
+      internalValueResult.warmEnabled = this._warmEnabled;
+    }
+    if (this._warmType) {
+      hasAnyValues = true;
+      internalValueResult.warmType = this._warmType;
+    }
+    if (this._zoneAwarenessEnabled) {
+      hasAnyValues = true;
+      internalValueResult.zoneAwarenessEnabled = this._zoneAwarenessEnabled;
+    }
+    if (this._zoneAwarenessConfig) {
+      hasAnyValues = true;
+      internalValueResult.zoneAwarenessConfig = this._zoneAwarenessConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElasticsearchDomainClusterConfig | undefined) {
+    if (value === undefined) {
+      this._dedicatedMasterCount = undefined;
+      this._dedicatedMasterEnabled = undefined;
+      this._dedicatedMasterType = undefined;
+      this._instanceCount = undefined;
+      this._instanceType = undefined;
+      this._warmCount = undefined;
+      this._warmEnabled = undefined;
+      this._warmType = undefined;
+      this._zoneAwarenessEnabled = undefined;
+      this._zoneAwarenessConfig.internalValue = undefined;
+    }
+    else {
+      this._dedicatedMasterCount = value.dedicatedMasterCount;
+      this._dedicatedMasterEnabled = value.dedicatedMasterEnabled;
+      this._dedicatedMasterType = value.dedicatedMasterType;
+      this._instanceCount = value.instanceCount;
+      this._instanceType = value.instanceType;
+      this._warmCount = value.warmCount;
+      this._warmEnabled = value.warmEnabled;
+      this._warmType = value.warmType;
+      this._zoneAwarenessEnabled = value.zoneAwarenessEnabled;
+      this._zoneAwarenessConfig.internalValue = value.zoneAwarenessConfig;
+    }
+  }
+
   // dedicated_master_count - computed: false, optional: true, required: false
-  private _dedicatedMasterCount?: number | undefined; 
+  private _dedicatedMasterCount?: number; 
   public get dedicatedMasterCount() {
     return this.getNumberAttribute('dedicated_master_count');
   }
-  public set dedicatedMasterCount(value: number | undefined) {
+  public set dedicatedMasterCount(value: number) {
     this._dedicatedMasterCount = value;
   }
   public resetDedicatedMasterCount() {
@@ -398,15 +551,15 @@ export class ElasticsearchDomainClusterConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get dedicatedMasterCountInput() {
-    return this._dedicatedMasterCount
+    return this._dedicatedMasterCount;
   }
 
   // dedicated_master_enabled - computed: false, optional: true, required: false
-  private _dedicatedMasterEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _dedicatedMasterEnabled?: boolean | cdktf.IResolvable; 
   public get dedicatedMasterEnabled() {
     return this.getBooleanAttribute('dedicated_master_enabled') as any;
   }
-  public set dedicatedMasterEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set dedicatedMasterEnabled(value: boolean | cdktf.IResolvable) {
     this._dedicatedMasterEnabled = value;
   }
   public resetDedicatedMasterEnabled() {
@@ -414,15 +567,15 @@ export class ElasticsearchDomainClusterConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get dedicatedMasterEnabledInput() {
-    return this._dedicatedMasterEnabled
+    return this._dedicatedMasterEnabled;
   }
 
   // dedicated_master_type - computed: false, optional: true, required: false
-  private _dedicatedMasterType?: string | undefined; 
+  private _dedicatedMasterType?: string; 
   public get dedicatedMasterType() {
     return this.getStringAttribute('dedicated_master_type');
   }
-  public set dedicatedMasterType(value: string | undefined) {
+  public set dedicatedMasterType(value: string) {
     this._dedicatedMasterType = value;
   }
   public resetDedicatedMasterType() {
@@ -430,15 +583,15 @@ export class ElasticsearchDomainClusterConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get dedicatedMasterTypeInput() {
-    return this._dedicatedMasterType
+    return this._dedicatedMasterType;
   }
 
   // instance_count - computed: false, optional: true, required: false
-  private _instanceCount?: number | undefined; 
+  private _instanceCount?: number; 
   public get instanceCount() {
     return this.getNumberAttribute('instance_count');
   }
-  public set instanceCount(value: number | undefined) {
+  public set instanceCount(value: number) {
     this._instanceCount = value;
   }
   public resetInstanceCount() {
@@ -446,15 +599,15 @@ export class ElasticsearchDomainClusterConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get instanceCountInput() {
-    return this._instanceCount
+    return this._instanceCount;
   }
 
   // instance_type - computed: false, optional: true, required: false
-  private _instanceType?: string | undefined; 
+  private _instanceType?: string; 
   public get instanceType() {
     return this.getStringAttribute('instance_type');
   }
-  public set instanceType(value: string | undefined) {
+  public set instanceType(value: string) {
     this._instanceType = value;
   }
   public resetInstanceType() {
@@ -462,15 +615,15 @@ export class ElasticsearchDomainClusterConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // warm_count - computed: false, optional: true, required: false
-  private _warmCount?: number | undefined; 
+  private _warmCount?: number; 
   public get warmCount() {
     return this.getNumberAttribute('warm_count');
   }
-  public set warmCount(value: number | undefined) {
+  public set warmCount(value: number) {
     this._warmCount = value;
   }
   public resetWarmCount() {
@@ -478,15 +631,15 @@ export class ElasticsearchDomainClusterConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get warmCountInput() {
-    return this._warmCount
+    return this._warmCount;
   }
 
   // warm_enabled - computed: false, optional: true, required: false
-  private _warmEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _warmEnabled?: boolean | cdktf.IResolvable; 
   public get warmEnabled() {
     return this.getBooleanAttribute('warm_enabled') as any;
   }
-  public set warmEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set warmEnabled(value: boolean | cdktf.IResolvable) {
     this._warmEnabled = value;
   }
   public resetWarmEnabled() {
@@ -494,15 +647,15 @@ export class ElasticsearchDomainClusterConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get warmEnabledInput() {
-    return this._warmEnabled
+    return this._warmEnabled;
   }
 
   // warm_type - computed: false, optional: true, required: false
-  private _warmType?: string | undefined; 
+  private _warmType?: string; 
   public get warmType() {
     return this.getStringAttribute('warm_type');
   }
-  public set warmType(value: string | undefined) {
+  public set warmType(value: string) {
     this._warmType = value;
   }
   public resetWarmType() {
@@ -510,15 +663,15 @@ export class ElasticsearchDomainClusterConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get warmTypeInput() {
-    return this._warmType
+    return this._warmType;
   }
 
   // zone_awareness_enabled - computed: false, optional: true, required: false
-  private _zoneAwarenessEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _zoneAwarenessEnabled?: boolean | cdktf.IResolvable; 
   public get zoneAwarenessEnabled() {
     return this.getBooleanAttribute('zone_awareness_enabled') as any;
   }
-  public set zoneAwarenessEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set zoneAwarenessEnabled(value: boolean | cdktf.IResolvable) {
     this._zoneAwarenessEnabled = value;
   }
   public resetZoneAwarenessEnabled() {
@@ -526,24 +679,23 @@ export class ElasticsearchDomainClusterConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get zoneAwarenessEnabledInput() {
-    return this._zoneAwarenessEnabled
+    return this._zoneAwarenessEnabled;
   }
 
   // zone_awareness_config - computed: false, optional: true, required: false
-  private _zoneAwarenessConfig?: ElasticsearchDomainClusterConfigZoneAwarenessConfig | undefined; 
-  private __zoneAwarenessConfigOutput = new ElasticsearchDomainClusterConfigZoneAwarenessConfigOutputReference(this as any, "zone_awareness_config", true);
+  private _zoneAwarenessConfig = new ElasticsearchDomainClusterConfigZoneAwarenessConfigOutputReference(this as any, "zone_awareness_config", true);
   public get zoneAwarenessConfig() {
-    return this.__zoneAwarenessConfigOutput;
+    return this._zoneAwarenessConfig;
   }
-  public putZoneAwarenessConfig(value: ElasticsearchDomainClusterConfigZoneAwarenessConfig | undefined) {
-    this._zoneAwarenessConfig = value;
+  public putZoneAwarenessConfig(value: ElasticsearchDomainClusterConfigZoneAwarenessConfig) {
+    this._zoneAwarenessConfig.internalValue = value;
   }
   public resetZoneAwarenessConfig() {
-    this._zoneAwarenessConfig = undefined;
+    this._zoneAwarenessConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get zoneAwarenessConfigInput() {
-    return this._zoneAwarenessConfig
+    return this._zoneAwarenessConfig.internalValue;
   }
 }
 export interface ElasticsearchDomainCognitoOptions {
@@ -588,12 +740,49 @@ export class ElasticsearchDomainCognitoOptionsOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElasticsearchDomainCognitoOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._identityPoolId) {
+      hasAnyValues = true;
+      internalValueResult.identityPoolId = this._identityPoolId;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._userPoolId) {
+      hasAnyValues = true;
+      internalValueResult.userPoolId = this._userPoolId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElasticsearchDomainCognitoOptions | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._identityPoolId = undefined;
+      this._roleArn = undefined;
+      this._userPoolId = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._identityPoolId = value.identityPoolId;
+      this._roleArn = value.roleArn;
+      this._userPoolId = value.userPoolId;
+    }
+  }
+
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -601,7 +790,7 @@ export class ElasticsearchDomainCognitoOptionsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // identity_pool_id - computed: false, optional: false, required: true
@@ -614,7 +803,7 @@ export class ElasticsearchDomainCognitoOptionsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get identityPoolIdInput() {
-    return this._identityPoolId
+    return this._identityPoolId;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -627,7 +816,7 @@ export class ElasticsearchDomainCognitoOptionsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // user_pool_id - computed: false, optional: false, required: true
@@ -640,7 +829,7 @@ export class ElasticsearchDomainCognitoOptionsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get userPoolIdInput() {
-    return this._userPoolId
+    return this._userPoolId;
   }
 }
 export interface ElasticsearchDomainDomainEndpointOptions {
@@ -690,12 +879,55 @@ export class ElasticsearchDomainDomainEndpointOptionsOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElasticsearchDomainDomainEndpointOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._customEndpoint) {
+      hasAnyValues = true;
+      internalValueResult.customEndpoint = this._customEndpoint;
+    }
+    if (this._customEndpointCertificateArn) {
+      hasAnyValues = true;
+      internalValueResult.customEndpointCertificateArn = this._customEndpointCertificateArn;
+    }
+    if (this._customEndpointEnabled) {
+      hasAnyValues = true;
+      internalValueResult.customEndpointEnabled = this._customEndpointEnabled;
+    }
+    if (this._enforceHttps) {
+      hasAnyValues = true;
+      internalValueResult.enforceHttps = this._enforceHttps;
+    }
+    if (this._tlsSecurityPolicy) {
+      hasAnyValues = true;
+      internalValueResult.tlsSecurityPolicy = this._tlsSecurityPolicy;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElasticsearchDomainDomainEndpointOptions | undefined) {
+    if (value === undefined) {
+      this._customEndpoint = undefined;
+      this._customEndpointCertificateArn = undefined;
+      this._customEndpointEnabled = undefined;
+      this._enforceHttps = undefined;
+      this._tlsSecurityPolicy = undefined;
+    }
+    else {
+      this._customEndpoint = value.customEndpoint;
+      this._customEndpointCertificateArn = value.customEndpointCertificateArn;
+      this._customEndpointEnabled = value.customEndpointEnabled;
+      this._enforceHttps = value.enforceHttps;
+      this._tlsSecurityPolicy = value.tlsSecurityPolicy;
+    }
+  }
+
   // custom_endpoint - computed: false, optional: true, required: false
-  private _customEndpoint?: string | undefined; 
+  private _customEndpoint?: string; 
   public get customEndpoint() {
     return this.getStringAttribute('custom_endpoint');
   }
-  public set customEndpoint(value: string | undefined) {
+  public set customEndpoint(value: string) {
     this._customEndpoint = value;
   }
   public resetCustomEndpoint() {
@@ -703,15 +935,15 @@ export class ElasticsearchDomainDomainEndpointOptionsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get customEndpointInput() {
-    return this._customEndpoint
+    return this._customEndpoint;
   }
 
   // custom_endpoint_certificate_arn - computed: false, optional: true, required: false
-  private _customEndpointCertificateArn?: string | undefined; 
+  private _customEndpointCertificateArn?: string; 
   public get customEndpointCertificateArn() {
     return this.getStringAttribute('custom_endpoint_certificate_arn');
   }
-  public set customEndpointCertificateArn(value: string | undefined) {
+  public set customEndpointCertificateArn(value: string) {
     this._customEndpointCertificateArn = value;
   }
   public resetCustomEndpointCertificateArn() {
@@ -719,15 +951,15 @@ export class ElasticsearchDomainDomainEndpointOptionsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get customEndpointCertificateArnInput() {
-    return this._customEndpointCertificateArn
+    return this._customEndpointCertificateArn;
   }
 
   // custom_endpoint_enabled - computed: false, optional: true, required: false
-  private _customEndpointEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _customEndpointEnabled?: boolean | cdktf.IResolvable; 
   public get customEndpointEnabled() {
     return this.getBooleanAttribute('custom_endpoint_enabled') as any;
   }
-  public set customEndpointEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set customEndpointEnabled(value: boolean | cdktf.IResolvable) {
     this._customEndpointEnabled = value;
   }
   public resetCustomEndpointEnabled() {
@@ -735,15 +967,15 @@ export class ElasticsearchDomainDomainEndpointOptionsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get customEndpointEnabledInput() {
-    return this._customEndpointEnabled
+    return this._customEndpointEnabled;
   }
 
   // enforce_https - computed: false, optional: true, required: false
-  private _enforceHttps?: boolean | cdktf.IResolvable | undefined; 
+  private _enforceHttps?: boolean | cdktf.IResolvable; 
   public get enforceHttps() {
     return this.getBooleanAttribute('enforce_https') as any;
   }
-  public set enforceHttps(value: boolean | cdktf.IResolvable | undefined) {
+  public set enforceHttps(value: boolean | cdktf.IResolvable) {
     this._enforceHttps = value;
   }
   public resetEnforceHttps() {
@@ -751,15 +983,15 @@ export class ElasticsearchDomainDomainEndpointOptionsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get enforceHttpsInput() {
-    return this._enforceHttps
+    return this._enforceHttps;
   }
 
   // tls_security_policy - computed: true, optional: true, required: false
-  private _tlsSecurityPolicy?: string | undefined; 
+  private _tlsSecurityPolicy?: string; 
   public get tlsSecurityPolicy() {
     return this.getStringAttribute('tls_security_policy');
   }
-  public set tlsSecurityPolicy(value: string | undefined) {
+  public set tlsSecurityPolicy(value: string) {
     this._tlsSecurityPolicy = value;
   }
   public resetTlsSecurityPolicy() {
@@ -767,7 +999,7 @@ export class ElasticsearchDomainDomainEndpointOptionsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get tlsSecurityPolicyInput() {
-    return this._tlsSecurityPolicy
+    return this._tlsSecurityPolicy;
   }
 }
 export interface ElasticsearchDomainEbsOptions {
@@ -812,6 +1044,43 @@ export class ElasticsearchDomainEbsOptionsOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElasticsearchDomainEbsOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._ebsEnabled) {
+      hasAnyValues = true;
+      internalValueResult.ebsEnabled = this._ebsEnabled;
+    }
+    if (this._iops) {
+      hasAnyValues = true;
+      internalValueResult.iops = this._iops;
+    }
+    if (this._volumeSize) {
+      hasAnyValues = true;
+      internalValueResult.volumeSize = this._volumeSize;
+    }
+    if (this._volumeType) {
+      hasAnyValues = true;
+      internalValueResult.volumeType = this._volumeType;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElasticsearchDomainEbsOptions | undefined) {
+    if (value === undefined) {
+      this._ebsEnabled = undefined;
+      this._iops = undefined;
+      this._volumeSize = undefined;
+      this._volumeType = undefined;
+    }
+    else {
+      this._ebsEnabled = value.ebsEnabled;
+      this._iops = value.iops;
+      this._volumeSize = value.volumeSize;
+      this._volumeType = value.volumeType;
+    }
+  }
+
   // ebs_enabled - computed: false, optional: false, required: true
   private _ebsEnabled?: boolean | cdktf.IResolvable; 
   public get ebsEnabled() {
@@ -822,15 +1091,15 @@ export class ElasticsearchDomainEbsOptionsOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get ebsEnabledInput() {
-    return this._ebsEnabled
+    return this._ebsEnabled;
   }
 
   // iops - computed: false, optional: true, required: false
-  private _iops?: number | undefined; 
+  private _iops?: number; 
   public get iops() {
     return this.getNumberAttribute('iops');
   }
-  public set iops(value: number | undefined) {
+  public set iops(value: number) {
     this._iops = value;
   }
   public resetIops() {
@@ -838,15 +1107,15 @@ export class ElasticsearchDomainEbsOptionsOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get iopsInput() {
-    return this._iops
+    return this._iops;
   }
 
   // volume_size - computed: false, optional: true, required: false
-  private _volumeSize?: number | undefined; 
+  private _volumeSize?: number; 
   public get volumeSize() {
     return this.getNumberAttribute('volume_size');
   }
-  public set volumeSize(value: number | undefined) {
+  public set volumeSize(value: number) {
     this._volumeSize = value;
   }
   public resetVolumeSize() {
@@ -854,15 +1123,15 @@ export class ElasticsearchDomainEbsOptionsOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get volumeSizeInput() {
-    return this._volumeSize
+    return this._volumeSize;
   }
 
   // volume_type - computed: true, optional: true, required: false
-  private _volumeType?: string | undefined; 
+  private _volumeType?: string; 
   public get volumeType() {
     return this.getStringAttribute('volume_type');
   }
-  public set volumeType(value: string | undefined) {
+  public set volumeType(value: string) {
     this._volumeType = value;
   }
   public resetVolumeType() {
@@ -870,7 +1139,7 @@ export class ElasticsearchDomainEbsOptionsOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get volumeTypeInput() {
-    return this._volumeType
+    return this._volumeType;
   }
 }
 export interface ElasticsearchDomainEncryptAtRest {
@@ -905,6 +1174,31 @@ export class ElasticsearchDomainEncryptAtRestOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElasticsearchDomainEncryptAtRest | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._kmsKeyId) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyId = this._kmsKeyId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElasticsearchDomainEncryptAtRest | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._kmsKeyId = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._kmsKeyId = value.kmsKeyId;
+    }
+  }
+
   // enabled - computed: false, optional: false, required: true
   private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
@@ -915,15 +1209,15 @@ export class ElasticsearchDomainEncryptAtRestOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // kms_key_id - computed: true, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -931,7 +1225,7 @@ export class ElasticsearchDomainEncryptAtRestOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 }
 export interface ElasticsearchDomainLogPublishingOptions {
@@ -988,6 +1282,25 @@ export class ElasticsearchDomainNodeToNodeEncryptionOutputReference extends cdkt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElasticsearchDomainNodeToNodeEncryption | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElasticsearchDomainNodeToNodeEncryption | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+    }
+  }
+
   // enabled - computed: false, optional: false, required: true
   private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
@@ -998,7 +1311,7 @@ export class ElasticsearchDomainNodeToNodeEncryptionOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 }
 export interface ElasticsearchDomainSnapshotOptions {
@@ -1028,6 +1341,25 @@ export class ElasticsearchDomainSnapshotOptionsOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElasticsearchDomainSnapshotOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._automatedSnapshotStartHour) {
+      hasAnyValues = true;
+      internalValueResult.automatedSnapshotStartHour = this._automatedSnapshotStartHour;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElasticsearchDomainSnapshotOptions | undefined) {
+    if (value === undefined) {
+      this._automatedSnapshotStartHour = undefined;
+    }
+    else {
+      this._automatedSnapshotStartHour = value.automatedSnapshotStartHour;
+    }
+  }
+
   // automated_snapshot_start_hour - computed: false, optional: false, required: true
   private _automatedSnapshotStartHour?: number; 
   public get automatedSnapshotStartHour() {
@@ -1038,7 +1370,7 @@ export class ElasticsearchDomainSnapshotOptionsOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get automatedSnapshotStartHourInput() {
-    return this._automatedSnapshotStartHour
+    return this._automatedSnapshotStartHour;
   }
 }
 export interface ElasticsearchDomainTimeouts {
@@ -1068,12 +1400,31 @@ export class ElasticsearchDomainTimeoutsOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElasticsearchDomainTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElasticsearchDomainTimeouts | undefined) {
+    if (value === undefined) {
+      this._update = undefined;
+    }
+    else {
+      this._update = value.update;
+    }
+  }
+
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -1081,7 +1432,7 @@ export class ElasticsearchDomainTimeoutsOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 export interface ElasticsearchDomainVpcOptions {
@@ -1116,12 +1467,37 @@ export class ElasticsearchDomainVpcOptionsOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElasticsearchDomainVpcOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._securityGroupIds) {
+      hasAnyValues = true;
+      internalValueResult.securityGroupIds = this._securityGroupIds;
+    }
+    if (this._subnetIds) {
+      hasAnyValues = true;
+      internalValueResult.subnetIds = this._subnetIds;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElasticsearchDomainVpcOptions | undefined) {
+    if (value === undefined) {
+      this._securityGroupIds = undefined;
+      this._subnetIds = undefined;
+    }
+    else {
+      this._securityGroupIds = value.securityGroupIds;
+      this._subnetIds = value.subnetIds;
+    }
+  }
+
   // security_group_ids - computed: false, optional: true, required: false
-  private _securityGroupIds?: string[] | undefined; 
+  private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
     return this.getListAttribute('security_group_ids');
   }
-  public set securityGroupIds(value: string[] | undefined) {
+  public set securityGroupIds(value: string[]) {
     this._securityGroupIds = value;
   }
   public resetSecurityGroupIds() {
@@ -1129,15 +1505,15 @@ export class ElasticsearchDomainVpcOptionsOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // subnet_ids - computed: false, optional: true, required: false
-  private _subnetIds?: string[] | undefined; 
+  private _subnetIds?: string[]; 
   public get subnetIds() {
     return this.getListAttribute('subnet_ids');
   }
-  public set subnetIds(value: string[] | undefined) {
+  public set subnetIds(value: string[]) {
     this._subnetIds = value;
   }
   public resetSubnetIds() {
@@ -1145,7 +1521,7 @@ export class ElasticsearchDomainVpcOptionsOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 }
 
@@ -1187,17 +1563,17 @@ export class ElasticsearchDomain extends cdktf.TerraformResource {
     this._elasticsearchVersion = config.elasticsearchVersion;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._advancedSecurityOptions = config.advancedSecurityOptions;
-    this._clusterConfig = config.clusterConfig;
-    this._cognitoOptions = config.cognitoOptions;
-    this._domainEndpointOptions = config.domainEndpointOptions;
-    this._ebsOptions = config.ebsOptions;
-    this._encryptAtRest = config.encryptAtRest;
+    this._advancedSecurityOptions.internalValue = config.advancedSecurityOptions;
+    this._clusterConfig.internalValue = config.clusterConfig;
+    this._cognitoOptions.internalValue = config.cognitoOptions;
+    this._domainEndpointOptions.internalValue = config.domainEndpointOptions;
+    this._ebsOptions.internalValue = config.ebsOptions;
+    this._encryptAtRest.internalValue = config.encryptAtRest;
     this._logPublishingOptions = config.logPublishingOptions;
-    this._nodeToNodeEncryption = config.nodeToNodeEncryption;
-    this._snapshotOptions = config.snapshotOptions;
-    this._timeouts = config.timeouts;
-    this._vpcOptions = config.vpcOptions;
+    this._nodeToNodeEncryption.internalValue = config.nodeToNodeEncryption;
+    this._snapshotOptions.internalValue = config.snapshotOptions;
+    this._timeouts.internalValue = config.timeouts;
+    this._vpcOptions.internalValue = config.vpcOptions;
   }
 
   // ==========
@@ -1205,11 +1581,11 @@ export class ElasticsearchDomain extends cdktf.TerraformResource {
   // ==========
 
   // access_policies - computed: true, optional: true, required: false
-  private _accessPolicies?: string | undefined; 
+  private _accessPolicies?: string; 
   public get accessPolicies() {
     return this.getStringAttribute('access_policies');
   }
-  public set accessPolicies(value: string | undefined) {
+  public set accessPolicies(value: string) {
     this._accessPolicies = value;
   }
   public resetAccessPolicies() {
@@ -1217,16 +1593,16 @@ export class ElasticsearchDomain extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accessPoliciesInput() {
-    return this._accessPolicies
+    return this._accessPolicies;
   }
 
   // advanced_options - computed: true, optional: true, required: false
-  private _advancedOptions?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _advancedOptions?: { [key: string]: string } | cdktf.IResolvable; 
   public get advancedOptions() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('advanced_options') as any;
   }
-  public set advancedOptions(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set advancedOptions(value: { [key: string]: string } | cdktf.IResolvable) {
     this._advancedOptions = value;
   }
   public resetAdvancedOptions() {
@@ -1234,7 +1610,7 @@ export class ElasticsearchDomain extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get advancedOptionsInput() {
-    return this._advancedOptions
+    return this._advancedOptions;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -1257,15 +1633,15 @@ export class ElasticsearchDomain extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainNameInput() {
-    return this._domainName
+    return this._domainName;
   }
 
   // elasticsearch_version - computed: false, optional: true, required: false
-  private _elasticsearchVersion?: string | undefined; 
+  private _elasticsearchVersion?: string; 
   public get elasticsearchVersion() {
     return this.getStringAttribute('elasticsearch_version');
   }
-  public set elasticsearchVersion(value: string | undefined) {
+  public set elasticsearchVersion(value: string) {
     this._elasticsearchVersion = value;
   }
   public resetElasticsearchVersion() {
@@ -1273,7 +1649,7 @@ export class ElasticsearchDomain extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get elasticsearchVersionInput() {
-    return this._elasticsearchVersion
+    return this._elasticsearchVersion;
   }
 
   // endpoint - computed: true, optional: false, required: false
@@ -1292,12 +1668,12 @@ export class ElasticsearchDomain extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -1305,16 +1681,16 @@ export class ElasticsearchDomain extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -1322,118 +1698,112 @@ export class ElasticsearchDomain extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // advanced_security_options - computed: false, optional: true, required: false
-  private _advancedSecurityOptions?: ElasticsearchDomainAdvancedSecurityOptions | undefined; 
-  private __advancedSecurityOptionsOutput = new ElasticsearchDomainAdvancedSecurityOptionsOutputReference(this as any, "advanced_security_options", true);
+  private _advancedSecurityOptions = new ElasticsearchDomainAdvancedSecurityOptionsOutputReference(this as any, "advanced_security_options", true);
   public get advancedSecurityOptions() {
-    return this.__advancedSecurityOptionsOutput;
+    return this._advancedSecurityOptions;
   }
-  public putAdvancedSecurityOptions(value: ElasticsearchDomainAdvancedSecurityOptions | undefined) {
-    this._advancedSecurityOptions = value;
+  public putAdvancedSecurityOptions(value: ElasticsearchDomainAdvancedSecurityOptions) {
+    this._advancedSecurityOptions.internalValue = value;
   }
   public resetAdvancedSecurityOptions() {
-    this._advancedSecurityOptions = undefined;
+    this._advancedSecurityOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get advancedSecurityOptionsInput() {
-    return this._advancedSecurityOptions
+    return this._advancedSecurityOptions.internalValue;
   }
 
   // cluster_config - computed: false, optional: true, required: false
-  private _clusterConfig?: ElasticsearchDomainClusterConfig | undefined; 
-  private __clusterConfigOutput = new ElasticsearchDomainClusterConfigOutputReference(this as any, "cluster_config", true);
+  private _clusterConfig = new ElasticsearchDomainClusterConfigOutputReference(this as any, "cluster_config", true);
   public get clusterConfig() {
-    return this.__clusterConfigOutput;
+    return this._clusterConfig;
   }
-  public putClusterConfig(value: ElasticsearchDomainClusterConfig | undefined) {
-    this._clusterConfig = value;
+  public putClusterConfig(value: ElasticsearchDomainClusterConfig) {
+    this._clusterConfig.internalValue = value;
   }
   public resetClusterConfig() {
-    this._clusterConfig = undefined;
+    this._clusterConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get clusterConfigInput() {
-    return this._clusterConfig
+    return this._clusterConfig.internalValue;
   }
 
   // cognito_options - computed: false, optional: true, required: false
-  private _cognitoOptions?: ElasticsearchDomainCognitoOptions | undefined; 
-  private __cognitoOptionsOutput = new ElasticsearchDomainCognitoOptionsOutputReference(this as any, "cognito_options", true);
+  private _cognitoOptions = new ElasticsearchDomainCognitoOptionsOutputReference(this as any, "cognito_options", true);
   public get cognitoOptions() {
-    return this.__cognitoOptionsOutput;
+    return this._cognitoOptions;
   }
-  public putCognitoOptions(value: ElasticsearchDomainCognitoOptions | undefined) {
-    this._cognitoOptions = value;
+  public putCognitoOptions(value: ElasticsearchDomainCognitoOptions) {
+    this._cognitoOptions.internalValue = value;
   }
   public resetCognitoOptions() {
-    this._cognitoOptions = undefined;
+    this._cognitoOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cognitoOptionsInput() {
-    return this._cognitoOptions
+    return this._cognitoOptions.internalValue;
   }
 
   // domain_endpoint_options - computed: false, optional: true, required: false
-  private _domainEndpointOptions?: ElasticsearchDomainDomainEndpointOptions | undefined; 
-  private __domainEndpointOptionsOutput = new ElasticsearchDomainDomainEndpointOptionsOutputReference(this as any, "domain_endpoint_options", true);
+  private _domainEndpointOptions = new ElasticsearchDomainDomainEndpointOptionsOutputReference(this as any, "domain_endpoint_options", true);
   public get domainEndpointOptions() {
-    return this.__domainEndpointOptionsOutput;
+    return this._domainEndpointOptions;
   }
-  public putDomainEndpointOptions(value: ElasticsearchDomainDomainEndpointOptions | undefined) {
-    this._domainEndpointOptions = value;
+  public putDomainEndpointOptions(value: ElasticsearchDomainDomainEndpointOptions) {
+    this._domainEndpointOptions.internalValue = value;
   }
   public resetDomainEndpointOptions() {
-    this._domainEndpointOptions = undefined;
+    this._domainEndpointOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get domainEndpointOptionsInput() {
-    return this._domainEndpointOptions
+    return this._domainEndpointOptions.internalValue;
   }
 
   // ebs_options - computed: false, optional: true, required: false
-  private _ebsOptions?: ElasticsearchDomainEbsOptions | undefined; 
-  private __ebsOptionsOutput = new ElasticsearchDomainEbsOptionsOutputReference(this as any, "ebs_options", true);
+  private _ebsOptions = new ElasticsearchDomainEbsOptionsOutputReference(this as any, "ebs_options", true);
   public get ebsOptions() {
-    return this.__ebsOptionsOutput;
+    return this._ebsOptions;
   }
-  public putEbsOptions(value: ElasticsearchDomainEbsOptions | undefined) {
-    this._ebsOptions = value;
+  public putEbsOptions(value: ElasticsearchDomainEbsOptions) {
+    this._ebsOptions.internalValue = value;
   }
   public resetEbsOptions() {
-    this._ebsOptions = undefined;
+    this._ebsOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ebsOptionsInput() {
-    return this._ebsOptions
+    return this._ebsOptions.internalValue;
   }
 
   // encrypt_at_rest - computed: false, optional: true, required: false
-  private _encryptAtRest?: ElasticsearchDomainEncryptAtRest | undefined; 
-  private __encryptAtRestOutput = new ElasticsearchDomainEncryptAtRestOutputReference(this as any, "encrypt_at_rest", true);
+  private _encryptAtRest = new ElasticsearchDomainEncryptAtRestOutputReference(this as any, "encrypt_at_rest", true);
   public get encryptAtRest() {
-    return this.__encryptAtRestOutput;
+    return this._encryptAtRest;
   }
-  public putEncryptAtRest(value: ElasticsearchDomainEncryptAtRest | undefined) {
-    this._encryptAtRest = value;
+  public putEncryptAtRest(value: ElasticsearchDomainEncryptAtRest) {
+    this._encryptAtRest.internalValue = value;
   }
   public resetEncryptAtRest() {
-    this._encryptAtRest = undefined;
+    this._encryptAtRest.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get encryptAtRestInput() {
-    return this._encryptAtRest
+    return this._encryptAtRest.internalValue;
   }
 
   // log_publishing_options - computed: false, optional: true, required: false
-  private _logPublishingOptions?: ElasticsearchDomainLogPublishingOptions[] | undefined; 
+  private _logPublishingOptions?: ElasticsearchDomainLogPublishingOptions[]; 
   public get logPublishingOptions() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('log_publishing_options') as any;
   }
-  public set logPublishingOptions(value: ElasticsearchDomainLogPublishingOptions[] | undefined) {
+  public set logPublishingOptions(value: ElasticsearchDomainLogPublishingOptions[]) {
     this._logPublishingOptions = value;
   }
   public resetLogPublishingOptions() {
@@ -1441,75 +1811,71 @@ export class ElasticsearchDomain extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get logPublishingOptionsInput() {
-    return this._logPublishingOptions
+    return this._logPublishingOptions;
   }
 
   // node_to_node_encryption - computed: false, optional: true, required: false
-  private _nodeToNodeEncryption?: ElasticsearchDomainNodeToNodeEncryption | undefined; 
-  private __nodeToNodeEncryptionOutput = new ElasticsearchDomainNodeToNodeEncryptionOutputReference(this as any, "node_to_node_encryption", true);
+  private _nodeToNodeEncryption = new ElasticsearchDomainNodeToNodeEncryptionOutputReference(this as any, "node_to_node_encryption", true);
   public get nodeToNodeEncryption() {
-    return this.__nodeToNodeEncryptionOutput;
+    return this._nodeToNodeEncryption;
   }
-  public putNodeToNodeEncryption(value: ElasticsearchDomainNodeToNodeEncryption | undefined) {
-    this._nodeToNodeEncryption = value;
+  public putNodeToNodeEncryption(value: ElasticsearchDomainNodeToNodeEncryption) {
+    this._nodeToNodeEncryption.internalValue = value;
   }
   public resetNodeToNodeEncryption() {
-    this._nodeToNodeEncryption = undefined;
+    this._nodeToNodeEncryption.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get nodeToNodeEncryptionInput() {
-    return this._nodeToNodeEncryption
+    return this._nodeToNodeEncryption.internalValue;
   }
 
   // snapshot_options - computed: false, optional: true, required: false
-  private _snapshotOptions?: ElasticsearchDomainSnapshotOptions | undefined; 
-  private __snapshotOptionsOutput = new ElasticsearchDomainSnapshotOptionsOutputReference(this as any, "snapshot_options", true);
+  private _snapshotOptions = new ElasticsearchDomainSnapshotOptionsOutputReference(this as any, "snapshot_options", true);
   public get snapshotOptions() {
-    return this.__snapshotOptionsOutput;
+    return this._snapshotOptions;
   }
-  public putSnapshotOptions(value: ElasticsearchDomainSnapshotOptions | undefined) {
-    this._snapshotOptions = value;
+  public putSnapshotOptions(value: ElasticsearchDomainSnapshotOptions) {
+    this._snapshotOptions.internalValue = value;
   }
   public resetSnapshotOptions() {
-    this._snapshotOptions = undefined;
+    this._snapshotOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotOptionsInput() {
-    return this._snapshotOptions
+    return this._snapshotOptions.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: ElasticsearchDomainTimeouts | undefined; 
-  private __timeoutsOutput = new ElasticsearchDomainTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new ElasticsearchDomainTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: ElasticsearchDomainTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: ElasticsearchDomainTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // vpc_options - computed: false, optional: true, required: false
-  private _vpcOptions?: ElasticsearchDomainVpcOptions | undefined; 
-  private __vpcOptionsOutput = new ElasticsearchDomainVpcOptionsOutputReference(this as any, "vpc_options", true);
+  private _vpcOptions = new ElasticsearchDomainVpcOptionsOutputReference(this as any, "vpc_options", true);
   public get vpcOptions() {
-    return this.__vpcOptionsOutput;
+    return this._vpcOptions;
   }
-  public putVpcOptions(value: ElasticsearchDomainVpcOptions | undefined) {
-    this._vpcOptions = value;
+  public putVpcOptions(value: ElasticsearchDomainVpcOptions) {
+    this._vpcOptions.internalValue = value;
   }
   public resetVpcOptions() {
-    this._vpcOptions = undefined;
+    this._vpcOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get vpcOptionsInput() {
-    return this._vpcOptions
+    return this._vpcOptions.internalValue;
   }
 
   // =========
@@ -1524,17 +1890,17 @@ export class ElasticsearchDomain extends cdktf.TerraformResource {
       elasticsearch_version: cdktf.stringToTerraform(this._elasticsearchVersion),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      advanced_security_options: elasticsearchDomainAdvancedSecurityOptionsToTerraform(this._advancedSecurityOptions),
-      cluster_config: elasticsearchDomainClusterConfigToTerraform(this._clusterConfig),
-      cognito_options: elasticsearchDomainCognitoOptionsToTerraform(this._cognitoOptions),
-      domain_endpoint_options: elasticsearchDomainDomainEndpointOptionsToTerraform(this._domainEndpointOptions),
-      ebs_options: elasticsearchDomainEbsOptionsToTerraform(this._ebsOptions),
-      encrypt_at_rest: elasticsearchDomainEncryptAtRestToTerraform(this._encryptAtRest),
+      advanced_security_options: elasticsearchDomainAdvancedSecurityOptionsToTerraform(this._advancedSecurityOptions.internalValue),
+      cluster_config: elasticsearchDomainClusterConfigToTerraform(this._clusterConfig.internalValue),
+      cognito_options: elasticsearchDomainCognitoOptionsToTerraform(this._cognitoOptions.internalValue),
+      domain_endpoint_options: elasticsearchDomainDomainEndpointOptionsToTerraform(this._domainEndpointOptions.internalValue),
+      ebs_options: elasticsearchDomainEbsOptionsToTerraform(this._ebsOptions.internalValue),
+      encrypt_at_rest: elasticsearchDomainEncryptAtRestToTerraform(this._encryptAtRest.internalValue),
       log_publishing_options: cdktf.listMapper(elasticsearchDomainLogPublishingOptionsToTerraform)(this._logPublishingOptions),
-      node_to_node_encryption: elasticsearchDomainNodeToNodeEncryptionToTerraform(this._nodeToNodeEncryption),
-      snapshot_options: elasticsearchDomainSnapshotOptionsToTerraform(this._snapshotOptions),
-      timeouts: elasticsearchDomainTimeoutsToTerraform(this._timeouts),
-      vpc_options: elasticsearchDomainVpcOptionsToTerraform(this._vpcOptions),
+      node_to_node_encryption: elasticsearchDomainNodeToNodeEncryptionToTerraform(this._nodeToNodeEncryption.internalValue),
+      snapshot_options: elasticsearchDomainSnapshotOptionsToTerraform(this._snapshotOptions.internalValue),
+      timeouts: elasticsearchDomainTimeoutsToTerraform(this._timeouts.internalValue),
+      vpc_options: elasticsearchDomainVpcOptionsToTerraform(this._vpcOptions.internalValue),
     };
   }
 }

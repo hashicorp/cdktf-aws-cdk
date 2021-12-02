@@ -67,7 +67,7 @@ export class MacieMemberAccountAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get memberAccountIdInput() {
-    return this._memberAccountId
+    return this._memberAccountId;
   }
 
   // =========

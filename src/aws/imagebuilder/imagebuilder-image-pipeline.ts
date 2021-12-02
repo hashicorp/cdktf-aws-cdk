@@ -88,12 +88,37 @@ export class ImagebuilderImagePipelineImageTestsConfigurationOutputReference ext
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ImagebuilderImagePipelineImageTestsConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._imageTestsEnabled) {
+      hasAnyValues = true;
+      internalValueResult.imageTestsEnabled = this._imageTestsEnabled;
+    }
+    if (this._timeoutMinutes) {
+      hasAnyValues = true;
+      internalValueResult.timeoutMinutes = this._timeoutMinutes;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ImagebuilderImagePipelineImageTestsConfiguration | undefined) {
+    if (value === undefined) {
+      this._imageTestsEnabled = undefined;
+      this._timeoutMinutes = undefined;
+    }
+    else {
+      this._imageTestsEnabled = value.imageTestsEnabled;
+      this._timeoutMinutes = value.timeoutMinutes;
+    }
+  }
+
   // image_tests_enabled - computed: false, optional: true, required: false
-  private _imageTestsEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _imageTestsEnabled?: boolean | cdktf.IResolvable; 
   public get imageTestsEnabled() {
     return this.getBooleanAttribute('image_tests_enabled') as any;
   }
-  public set imageTestsEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set imageTestsEnabled(value: boolean | cdktf.IResolvable) {
     this._imageTestsEnabled = value;
   }
   public resetImageTestsEnabled() {
@@ -101,15 +126,15 @@ export class ImagebuilderImagePipelineImageTestsConfigurationOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get imageTestsEnabledInput() {
-    return this._imageTestsEnabled
+    return this._imageTestsEnabled;
   }
 
   // timeout_minutes - computed: false, optional: true, required: false
-  private _timeoutMinutes?: number | undefined; 
+  private _timeoutMinutes?: number; 
   public get timeoutMinutes() {
     return this.getNumberAttribute('timeout_minutes');
   }
-  public set timeoutMinutes(value: number | undefined) {
+  public set timeoutMinutes(value: number) {
     this._timeoutMinutes = value;
   }
   public resetTimeoutMinutes() {
@@ -117,7 +142,7 @@ export class ImagebuilderImagePipelineImageTestsConfigurationOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutMinutesInput() {
-    return this._timeoutMinutes
+    return this._timeoutMinutes;
   }
 }
 export interface ImagebuilderImagePipelineSchedule {
@@ -152,12 +177,37 @@ export class ImagebuilderImagePipelineScheduleOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ImagebuilderImagePipelineSchedule | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._pipelineExecutionStartCondition) {
+      hasAnyValues = true;
+      internalValueResult.pipelineExecutionStartCondition = this._pipelineExecutionStartCondition;
+    }
+    if (this._scheduleExpression) {
+      hasAnyValues = true;
+      internalValueResult.scheduleExpression = this._scheduleExpression;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ImagebuilderImagePipelineSchedule | undefined) {
+    if (value === undefined) {
+      this._pipelineExecutionStartCondition = undefined;
+      this._scheduleExpression = undefined;
+    }
+    else {
+      this._pipelineExecutionStartCondition = value.pipelineExecutionStartCondition;
+      this._scheduleExpression = value.scheduleExpression;
+    }
+  }
+
   // pipeline_execution_start_condition - computed: false, optional: true, required: false
-  private _pipelineExecutionStartCondition?: string | undefined; 
+  private _pipelineExecutionStartCondition?: string; 
   public get pipelineExecutionStartCondition() {
     return this.getStringAttribute('pipeline_execution_start_condition');
   }
-  public set pipelineExecutionStartCondition(value: string | undefined) {
+  public set pipelineExecutionStartCondition(value: string) {
     this._pipelineExecutionStartCondition = value;
   }
   public resetPipelineExecutionStartCondition() {
@@ -165,7 +215,7 @@ export class ImagebuilderImagePipelineScheduleOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get pipelineExecutionStartConditionInput() {
-    return this._pipelineExecutionStartCondition
+    return this._pipelineExecutionStartCondition;
   }
 
   // schedule_expression - computed: false, optional: false, required: true
@@ -178,7 +228,7 @@ export class ImagebuilderImagePipelineScheduleOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get scheduleExpressionInput() {
-    return this._scheduleExpression
+    return this._scheduleExpression;
   }
 }
 
@@ -223,8 +273,8 @@ export class ImagebuilderImagePipeline extends cdktf.TerraformResource {
     this._status = config.status;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._imageTestsConfiguration = config.imageTestsConfiguration;
-    this._schedule = config.schedule;
+    this._imageTestsConfiguration.internalValue = config.imageTestsConfiguration;
+    this._schedule.internalValue = config.schedule;
   }
 
   // ==========
@@ -257,11 +307,11 @@ export class ImagebuilderImagePipeline extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -269,15 +319,15 @@ export class ImagebuilderImagePipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // distribution_configuration_arn - computed: false, optional: true, required: false
-  private _distributionConfigurationArn?: string | undefined; 
+  private _distributionConfigurationArn?: string; 
   public get distributionConfigurationArn() {
     return this.getStringAttribute('distribution_configuration_arn');
   }
-  public set distributionConfigurationArn(value: string | undefined) {
+  public set distributionConfigurationArn(value: string) {
     this._distributionConfigurationArn = value;
   }
   public resetDistributionConfigurationArn() {
@@ -285,15 +335,15 @@ export class ImagebuilderImagePipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get distributionConfigurationArnInput() {
-    return this._distributionConfigurationArn
+    return this._distributionConfigurationArn;
   }
 
   // enhanced_image_metadata_enabled - computed: false, optional: true, required: false
-  private _enhancedImageMetadataEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enhancedImageMetadataEnabled?: boolean | cdktf.IResolvable; 
   public get enhancedImageMetadataEnabled() {
     return this.getBooleanAttribute('enhanced_image_metadata_enabled') as any;
   }
-  public set enhancedImageMetadataEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enhancedImageMetadataEnabled(value: boolean | cdktf.IResolvable) {
     this._enhancedImageMetadataEnabled = value;
   }
   public resetEnhancedImageMetadataEnabled() {
@@ -301,7 +351,7 @@ export class ImagebuilderImagePipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enhancedImageMetadataEnabledInput() {
-    return this._enhancedImageMetadataEnabled
+    return this._enhancedImageMetadataEnabled;
   }
 
   // id - computed: true, optional: true, required: false
@@ -319,7 +369,7 @@ export class ImagebuilderImagePipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get imageRecipeArnInput() {
-    return this._imageRecipeArn
+    return this._imageRecipeArn;
   }
 
   // infrastructure_configuration_arn - computed: false, optional: false, required: true
@@ -332,7 +382,7 @@ export class ImagebuilderImagePipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get infrastructureConfigurationArnInput() {
-    return this._infrastructureConfigurationArn
+    return this._infrastructureConfigurationArn;
   }
 
   // name - computed: false, optional: false, required: true
@@ -345,7 +395,7 @@ export class ImagebuilderImagePipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // platform - computed: true, optional: false, required: false
@@ -354,11 +404,11 @@ export class ImagebuilderImagePipeline extends cdktf.TerraformResource {
   }
 
   // status - computed: false, optional: true, required: false
-  private _status?: string | undefined; 
+  private _status?: string; 
   public get status() {
     return this.getStringAttribute('status');
   }
-  public set status(value: string | undefined) {
+  public set status(value: string) {
     this._status = value;
   }
   public resetStatus() {
@@ -366,16 +416,16 @@ export class ImagebuilderImagePipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -383,16 +433,16 @@ export class ImagebuilderImagePipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -400,41 +450,39 @@ export class ImagebuilderImagePipeline extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // image_tests_configuration - computed: false, optional: true, required: false
-  private _imageTestsConfiguration?: ImagebuilderImagePipelineImageTestsConfiguration | undefined; 
-  private __imageTestsConfigurationOutput = new ImagebuilderImagePipelineImageTestsConfigurationOutputReference(this as any, "image_tests_configuration", true);
+  private _imageTestsConfiguration = new ImagebuilderImagePipelineImageTestsConfigurationOutputReference(this as any, "image_tests_configuration", true);
   public get imageTestsConfiguration() {
-    return this.__imageTestsConfigurationOutput;
+    return this._imageTestsConfiguration;
   }
-  public putImageTestsConfiguration(value: ImagebuilderImagePipelineImageTestsConfiguration | undefined) {
-    this._imageTestsConfiguration = value;
+  public putImageTestsConfiguration(value: ImagebuilderImagePipelineImageTestsConfiguration) {
+    this._imageTestsConfiguration.internalValue = value;
   }
   public resetImageTestsConfiguration() {
-    this._imageTestsConfiguration = undefined;
+    this._imageTestsConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get imageTestsConfigurationInput() {
-    return this._imageTestsConfiguration
+    return this._imageTestsConfiguration.internalValue;
   }
 
   // schedule - computed: false, optional: true, required: false
-  private _schedule?: ImagebuilderImagePipelineSchedule | undefined; 
-  private __scheduleOutput = new ImagebuilderImagePipelineScheduleOutputReference(this as any, "schedule", true);
+  private _schedule = new ImagebuilderImagePipelineScheduleOutputReference(this as any, "schedule", true);
   public get schedule() {
-    return this.__scheduleOutput;
+    return this._schedule;
   }
-  public putSchedule(value: ImagebuilderImagePipelineSchedule | undefined) {
-    this._schedule = value;
+  public putSchedule(value: ImagebuilderImagePipelineSchedule) {
+    this._schedule.internalValue = value;
   }
   public resetSchedule() {
-    this._schedule = undefined;
+    this._schedule.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get scheduleInput() {
-    return this._schedule
+    return this._schedule.internalValue;
   }
 
   // =========
@@ -452,8 +500,8 @@ export class ImagebuilderImagePipeline extends cdktf.TerraformResource {
       status: cdktf.stringToTerraform(this._status),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      image_tests_configuration: imagebuilderImagePipelineImageTestsConfigurationToTerraform(this._imageTestsConfiguration),
-      schedule: imagebuilderImagePipelineScheduleToTerraform(this._schedule),
+      image_tests_configuration: imagebuilderImagePipelineImageTestsConfigurationToTerraform(this._imageTestsConfiguration.internalValue),
+      schedule: imagebuilderImagePipelineScheduleToTerraform(this._schedule.internalValue),
     };
   }
 }

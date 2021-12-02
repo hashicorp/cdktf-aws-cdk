@@ -127,11 +127,11 @@ export class DataAwsSubnet extends cdktf.TerraformDataSource {
   }
 
   // availability_zone - computed: true, optional: true, required: false
-  private _availabilityZone?: string | undefined; 
+  private _availabilityZone?: string; 
   public get availabilityZone() {
     return this.getStringAttribute('availability_zone');
   }
-  public set availabilityZone(value: string | undefined) {
+  public set availabilityZone(value: string) {
     this._availabilityZone = value;
   }
   public resetAvailabilityZone() {
@@ -139,15 +139,15 @@ export class DataAwsSubnet extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneInput() {
-    return this._availabilityZone
+    return this._availabilityZone;
   }
 
   // availability_zone_id - computed: true, optional: true, required: false
-  private _availabilityZoneId?: string | undefined; 
+  private _availabilityZoneId?: string; 
   public get availabilityZoneId() {
     return this.getStringAttribute('availability_zone_id');
   }
-  public set availabilityZoneId(value: string | undefined) {
+  public set availabilityZoneId(value: string) {
     this._availabilityZoneId = value;
   }
   public resetAvailabilityZoneId() {
@@ -155,7 +155,7 @@ export class DataAwsSubnet extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneIdInput() {
-    return this._availabilityZoneId
+    return this._availabilityZoneId;
   }
 
   // available_ip_address_count - computed: true, optional: false, required: false
@@ -164,11 +164,11 @@ export class DataAwsSubnet extends cdktf.TerraformDataSource {
   }
 
   // cidr_block - computed: true, optional: true, required: false
-  private _cidrBlock?: string | undefined; 
+  private _cidrBlock?: string; 
   public get cidrBlock() {
     return this.getStringAttribute('cidr_block');
   }
-  public set cidrBlock(value: string | undefined) {
+  public set cidrBlock(value: string) {
     this._cidrBlock = value;
   }
   public resetCidrBlock() {
@@ -176,7 +176,7 @@ export class DataAwsSubnet extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get cidrBlockInput() {
-    return this._cidrBlock
+    return this._cidrBlock;
   }
 
   // customer_owned_ipv4_pool - computed: true, optional: false, required: false
@@ -185,11 +185,11 @@ export class DataAwsSubnet extends cdktf.TerraformDataSource {
   }
 
   // default_for_az - computed: true, optional: true, required: false
-  private _defaultForAz?: boolean | cdktf.IResolvable | undefined; 
+  private _defaultForAz?: boolean | cdktf.IResolvable; 
   public get defaultForAz() {
     return this.getBooleanAttribute('default_for_az') as any;
   }
-  public set defaultForAz(value: boolean | cdktf.IResolvable | undefined) {
+  public set defaultForAz(value: boolean | cdktf.IResolvable) {
     this._defaultForAz = value;
   }
   public resetDefaultForAz() {
@@ -197,7 +197,7 @@ export class DataAwsSubnet extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultForAzInput() {
-    return this._defaultForAz
+    return this._defaultForAz;
   }
 
   // id - computed: true, optional: true, required: false
@@ -206,11 +206,11 @@ export class DataAwsSubnet extends cdktf.TerraformDataSource {
   }
 
   // ipv6_cidr_block - computed: true, optional: true, required: false
-  private _ipv6CidrBlock?: string | undefined; 
+  private _ipv6CidrBlock?: string; 
   public get ipv6CidrBlock() {
     return this.getStringAttribute('ipv6_cidr_block');
   }
-  public set ipv6CidrBlock(value: string | undefined) {
+  public set ipv6CidrBlock(value: string) {
     this._ipv6CidrBlock = value;
   }
   public resetIpv6CidrBlock() {
@@ -218,7 +218,7 @@ export class DataAwsSubnet extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get ipv6CidrBlockInput() {
-    return this._ipv6CidrBlock
+    return this._ipv6CidrBlock;
   }
 
   // ipv6_cidr_block_association_id - computed: true, optional: false, required: false
@@ -247,11 +247,11 @@ export class DataAwsSubnet extends cdktf.TerraformDataSource {
   }
 
   // state - computed: true, optional: true, required: false
-  private _state?: string | undefined; 
+  private _state?: string; 
   public get state() {
     return this.getStringAttribute('state');
   }
-  public set state(value: string | undefined) {
+  public set state(value: string) {
     this._state = value;
   }
   public resetState() {
@@ -259,16 +259,16 @@ export class DataAwsSubnet extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get stateInput() {
-    return this._state
+    return this._state;
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -276,15 +276,15 @@ export class DataAwsSubnet extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // vpc_id - computed: true, optional: true, required: false
-  private _vpcId?: string | undefined; 
+  private _vpcId?: string; 
   public get vpcId() {
     return this.getStringAttribute('vpc_id');
   }
-  public set vpcId(value: string | undefined) {
+  public set vpcId(value: string) {
     this._vpcId = value;
   }
   public resetVpcId() {
@@ -292,16 +292,16 @@ export class DataAwsSubnet extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsSubnetFilter[] | undefined; 
+  private _filter?: DataAwsSubnetFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsSubnetFilter[] | undefined) {
+  public set filter(value: DataAwsSubnetFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -309,7 +309,7 @@ export class DataAwsSubnet extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

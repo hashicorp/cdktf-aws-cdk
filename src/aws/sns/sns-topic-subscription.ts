@@ -103,11 +103,11 @@ export class SnsTopicSubscription extends cdktf.TerraformResource {
   }
 
   // confirmation_timeout_in_minutes - computed: false, optional: true, required: false
-  private _confirmationTimeoutInMinutes?: number | undefined; 
+  private _confirmationTimeoutInMinutes?: number; 
   public get confirmationTimeoutInMinutes() {
     return this.getNumberAttribute('confirmation_timeout_in_minutes');
   }
-  public set confirmationTimeoutInMinutes(value: number | undefined) {
+  public set confirmationTimeoutInMinutes(value: number) {
     this._confirmationTimeoutInMinutes = value;
   }
   public resetConfirmationTimeoutInMinutes() {
@@ -115,7 +115,7 @@ export class SnsTopicSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get confirmationTimeoutInMinutesInput() {
-    return this._confirmationTimeoutInMinutes
+    return this._confirmationTimeoutInMinutes;
   }
 
   // confirmation_was_authenticated - computed: true, optional: false, required: false
@@ -124,11 +124,11 @@ export class SnsTopicSubscription extends cdktf.TerraformResource {
   }
 
   // delivery_policy - computed: false, optional: true, required: false
-  private _deliveryPolicy?: string | undefined; 
+  private _deliveryPolicy?: string; 
   public get deliveryPolicy() {
     return this.getStringAttribute('delivery_policy');
   }
-  public set deliveryPolicy(value: string | undefined) {
+  public set deliveryPolicy(value: string) {
     this._deliveryPolicy = value;
   }
   public resetDeliveryPolicy() {
@@ -136,7 +136,7 @@ export class SnsTopicSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deliveryPolicyInput() {
-    return this._deliveryPolicy
+    return this._deliveryPolicy;
   }
 
   // endpoint - computed: false, optional: false, required: true
@@ -149,15 +149,15 @@ export class SnsTopicSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get endpointInput() {
-    return this._endpoint
+    return this._endpoint;
   }
 
   // endpoint_auto_confirms - computed: false, optional: true, required: false
-  private _endpointAutoConfirms?: boolean | cdktf.IResolvable | undefined; 
+  private _endpointAutoConfirms?: boolean | cdktf.IResolvable; 
   public get endpointAutoConfirms() {
     return this.getBooleanAttribute('endpoint_auto_confirms') as any;
   }
-  public set endpointAutoConfirms(value: boolean | cdktf.IResolvable | undefined) {
+  public set endpointAutoConfirms(value: boolean | cdktf.IResolvable) {
     this._endpointAutoConfirms = value;
   }
   public resetEndpointAutoConfirms() {
@@ -165,15 +165,15 @@ export class SnsTopicSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get endpointAutoConfirmsInput() {
-    return this._endpointAutoConfirms
+    return this._endpointAutoConfirms;
   }
 
   // filter_policy - computed: false, optional: true, required: false
-  private _filterPolicy?: string | undefined; 
+  private _filterPolicy?: string; 
   public get filterPolicy() {
     return this.getStringAttribute('filter_policy');
   }
-  public set filterPolicy(value: string | undefined) {
+  public set filterPolicy(value: string) {
     this._filterPolicy = value;
   }
   public resetFilterPolicy() {
@@ -181,7 +181,7 @@ export class SnsTopicSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterPolicyInput() {
-    return this._filterPolicy
+    return this._filterPolicy;
   }
 
   // id - computed: true, optional: true, required: false
@@ -209,15 +209,15 @@ export class SnsTopicSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get protocolInput() {
-    return this._protocol
+    return this._protocol;
   }
 
   // raw_message_delivery - computed: false, optional: true, required: false
-  private _rawMessageDelivery?: boolean | cdktf.IResolvable | undefined; 
+  private _rawMessageDelivery?: boolean | cdktf.IResolvable; 
   public get rawMessageDelivery() {
     return this.getBooleanAttribute('raw_message_delivery') as any;
   }
-  public set rawMessageDelivery(value: boolean | cdktf.IResolvable | undefined) {
+  public set rawMessageDelivery(value: boolean | cdktf.IResolvable) {
     this._rawMessageDelivery = value;
   }
   public resetRawMessageDelivery() {
@@ -225,15 +225,15 @@ export class SnsTopicSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rawMessageDeliveryInput() {
-    return this._rawMessageDelivery
+    return this._rawMessageDelivery;
   }
 
   // redrive_policy - computed: false, optional: true, required: false
-  private _redrivePolicy?: string | undefined; 
+  private _redrivePolicy?: string; 
   public get redrivePolicy() {
     return this.getStringAttribute('redrive_policy');
   }
-  public set redrivePolicy(value: string | undefined) {
+  public set redrivePolicy(value: string) {
     this._redrivePolicy = value;
   }
   public resetRedrivePolicy() {
@@ -241,15 +241,15 @@ export class SnsTopicSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get redrivePolicyInput() {
-    return this._redrivePolicy
+    return this._redrivePolicy;
   }
 
   // subscription_role_arn - computed: false, optional: true, required: false
-  private _subscriptionRoleArn?: string | undefined; 
+  private _subscriptionRoleArn?: string; 
   public get subscriptionRoleArn() {
     return this.getStringAttribute('subscription_role_arn');
   }
-  public set subscriptionRoleArn(value: string | undefined) {
+  public set subscriptionRoleArn(value: string) {
     this._subscriptionRoleArn = value;
   }
   public resetSubscriptionRoleArn() {
@@ -257,7 +257,7 @@ export class SnsTopicSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subscriptionRoleArnInput() {
-    return this._subscriptionRoleArn
+    return this._subscriptionRoleArn;
   }
 
   // topic_arn - computed: false, optional: false, required: true
@@ -270,7 +270,7 @@ export class SnsTopicSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get topicArnInput() {
-    return this._topicArn
+    return this._topicArn;
   }
 
   // =========

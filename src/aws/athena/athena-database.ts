@@ -58,6 +58,31 @@ export class AthenaDatabaseEncryptionConfigurationOutputReference extends cdktf.
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AthenaDatabaseEncryptionConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._encryptionOption) {
+      hasAnyValues = true;
+      internalValueResult.encryptionOption = this._encryptionOption;
+    }
+    if (this._kmsKey) {
+      hasAnyValues = true;
+      internalValueResult.kmsKey = this._kmsKey;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AthenaDatabaseEncryptionConfiguration | undefined) {
+    if (value === undefined) {
+      this._encryptionOption = undefined;
+      this._kmsKey = undefined;
+    }
+    else {
+      this._encryptionOption = value.encryptionOption;
+      this._kmsKey = value.kmsKey;
+    }
+  }
+
   // encryption_option - computed: false, optional: false, required: true
   private _encryptionOption?: string; 
   public get encryptionOption() {
@@ -68,15 +93,15 @@ export class AthenaDatabaseEncryptionConfigurationOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionOptionInput() {
-    return this._encryptionOption
+    return this._encryptionOption;
   }
 
   // kms_key - computed: false, optional: true, required: false
-  private _kmsKey?: string | undefined; 
+  private _kmsKey?: string; 
   public get kmsKey() {
     return this.getStringAttribute('kms_key');
   }
-  public set kmsKey(value: string | undefined) {
+  public set kmsKey(value: string) {
     this._kmsKey = value;
   }
   public resetKmsKey() {
@@ -84,7 +109,7 @@ export class AthenaDatabaseEncryptionConfigurationOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyInput() {
-    return this._kmsKey
+    return this._kmsKey;
   }
 }
 
@@ -123,7 +148,7 @@ export class AthenaDatabase extends cdktf.TerraformResource {
     this._bucket = config.bucket;
     this._forceDestroy = config.forceDestroy;
     this._name = config.name;
-    this._encryptionConfiguration = config.encryptionConfiguration;
+    this._encryptionConfiguration.internalValue = config.encryptionConfiguration;
   }
 
   // ==========
@@ -140,15 +165,15 @@ export class AthenaDatabase extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // force_destroy - computed: false, optional: true, required: false
-  private _forceDestroy?: boolean | cdktf.IResolvable | undefined; 
+  private _forceDestroy?: boolean | cdktf.IResolvable; 
   public get forceDestroy() {
     return this.getBooleanAttribute('force_destroy') as any;
   }
-  public set forceDestroy(value: boolean | cdktf.IResolvable | undefined) {
+  public set forceDestroy(value: boolean | cdktf.IResolvable) {
     this._forceDestroy = value;
   }
   public resetForceDestroy() {
@@ -156,7 +181,7 @@ export class AthenaDatabase extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get forceDestroyInput() {
-    return this._forceDestroy
+    return this._forceDestroy;
   }
 
   // id - computed: true, optional: true, required: false
@@ -174,24 +199,23 @@ export class AthenaDatabase extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // encryption_configuration - computed: false, optional: true, required: false
-  private _encryptionConfiguration?: AthenaDatabaseEncryptionConfiguration | undefined; 
-  private __encryptionConfigurationOutput = new AthenaDatabaseEncryptionConfigurationOutputReference(this as any, "encryption_configuration", true);
+  private _encryptionConfiguration = new AthenaDatabaseEncryptionConfigurationOutputReference(this as any, "encryption_configuration", true);
   public get encryptionConfiguration() {
-    return this.__encryptionConfigurationOutput;
+    return this._encryptionConfiguration;
   }
-  public putEncryptionConfiguration(value: AthenaDatabaseEncryptionConfiguration | undefined) {
-    this._encryptionConfiguration = value;
+  public putEncryptionConfiguration(value: AthenaDatabaseEncryptionConfiguration) {
+    this._encryptionConfiguration.internalValue = value;
   }
   public resetEncryptionConfiguration() {
-    this._encryptionConfiguration = undefined;
+    this._encryptionConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionConfigurationInput() {
-    return this._encryptionConfiguration
+    return this._encryptionConfiguration.internalValue;
   }
 
   // =========
@@ -203,7 +227,7 @@ export class AthenaDatabase extends cdktf.TerraformResource {
       bucket: cdktf.stringToTerraform(this._bucket),
       force_destroy: cdktf.booleanToTerraform(this._forceDestroy),
       name: cdktf.stringToTerraform(this._name),
-      encryption_configuration: athenaDatabaseEncryptionConfigurationToTerraform(this._encryptionConfiguration),
+      encryption_configuration: athenaDatabaseEncryptionConfigurationToTerraform(this._encryptionConfiguration.internalValue),
     };
   }
 }

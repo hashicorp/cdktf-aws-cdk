@@ -56,6 +56,31 @@ export class S3ControlMultiRegionAccessPointPolicyDetailsOutputReference extends
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3ControlMultiRegionAccessPointPolicyDetails | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._policy) {
+      hasAnyValues = true;
+      internalValueResult.policy = this._policy;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3ControlMultiRegionAccessPointPolicyDetails | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+      this._policy = undefined;
+    }
+    else {
+      this._name = value.name;
+      this._policy = value.policy;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -66,7 +91,7 @@ export class S3ControlMultiRegionAccessPointPolicyDetailsOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // policy - computed: false, optional: false, required: true
@@ -79,7 +104,7 @@ export class S3ControlMultiRegionAccessPointPolicyDetailsOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 }
 export interface S3ControlMultiRegionAccessPointPolicyTimeouts {
@@ -114,12 +139,37 @@ export class S3ControlMultiRegionAccessPointPolicyTimeoutsOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3ControlMultiRegionAccessPointPolicyTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3ControlMultiRegionAccessPointPolicyTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -127,15 +177,15 @@ export class S3ControlMultiRegionAccessPointPolicyTimeoutsOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -143,7 +193,7 @@ export class S3ControlMultiRegionAccessPointPolicyTimeoutsOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -180,8 +230,8 @@ export class S3ControlMultiRegionAccessPointPolicy extends cdktf.TerraformResour
       lifecycle: config.lifecycle
     });
     this._accountId = config.accountId;
-    this._details = config.details;
-    this._timeouts = config.timeouts;
+    this._details.internalValue = config.details;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -189,11 +239,11 @@ export class S3ControlMultiRegionAccessPointPolicy extends cdktf.TerraformResour
   // ==========
 
   // account_id - computed: true, optional: true, required: false
-  private _accountId?: string | undefined; 
+  private _accountId?: string; 
   public get accountId() {
     return this.getStringAttribute('account_id');
   }
-  public set accountId(value: string | undefined) {
+  public set accountId(value: string) {
     this._accountId = value;
   }
   public resetAccountId() {
@@ -201,7 +251,7 @@ export class S3ControlMultiRegionAccessPointPolicy extends cdktf.TerraformResour
   }
   // Temporarily expose input value. Use with caution.
   public get accountIdInput() {
-    return this._accountId
+    return this._accountId;
   }
 
   // established - computed: true, optional: false, required: false
@@ -220,34 +270,32 @@ export class S3ControlMultiRegionAccessPointPolicy extends cdktf.TerraformResour
   }
 
   // details - computed: false, optional: false, required: true
-  private _details?: S3ControlMultiRegionAccessPointPolicyDetails; 
-  private __detailsOutput = new S3ControlMultiRegionAccessPointPolicyDetailsOutputReference(this as any, "details", true);
+  private _details = new S3ControlMultiRegionAccessPointPolicyDetailsOutputReference(this as any, "details", true);
   public get details() {
-    return this.__detailsOutput;
+    return this._details;
   }
   public putDetails(value: S3ControlMultiRegionAccessPointPolicyDetails) {
-    this._details = value;
+    this._details.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get detailsInput() {
-    return this._details
+    return this._details.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: S3ControlMultiRegionAccessPointPolicyTimeouts | undefined; 
-  private __timeoutsOutput = new S3ControlMultiRegionAccessPointPolicyTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new S3ControlMultiRegionAccessPointPolicyTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: S3ControlMultiRegionAccessPointPolicyTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: S3ControlMultiRegionAccessPointPolicyTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -257,8 +305,8 @@ export class S3ControlMultiRegionAccessPointPolicy extends cdktf.TerraformResour
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       account_id: cdktf.stringToTerraform(this._accountId),
-      details: s3ControlMultiRegionAccessPointPolicyDetailsToTerraform(this._details),
-      timeouts: s3ControlMultiRegionAccessPointPolicyTimeoutsToTerraform(this._timeouts),
+      details: s3ControlMultiRegionAccessPointPolicyDetailsToTerraform(this._details.internalValue),
+      timeouts: s3ControlMultiRegionAccessPointPolicyTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

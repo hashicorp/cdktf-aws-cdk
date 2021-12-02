@@ -106,7 +106,7 @@ export class LightsailInstancePublicPorts extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceNameInput() {
-    return this._instanceName
+    return this._instanceName;
   }
 
   // port_info - computed: false, optional: false, required: true
@@ -120,7 +120,7 @@ export class LightsailInstancePublicPorts extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get portInfoInput() {
-    return this._portInfo
+    return this._portInfo;
   }
 
   // =========

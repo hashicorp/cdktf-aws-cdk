@@ -81,7 +81,7 @@ export class DataAwsLambdaCodeSigningConfig extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // config_id - computed: true, optional: false, required: false

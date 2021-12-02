@@ -63,11 +63,11 @@ export class DataAwsMskKafkaVersion extends cdktf.TerraformDataSource {
   }
 
   // preferred_versions - computed: false, optional: true, required: false
-  private _preferredVersions?: string[] | undefined; 
+  private _preferredVersions?: string[]; 
   public get preferredVersions() {
     return this.getListAttribute('preferred_versions');
   }
-  public set preferredVersions(value: string[] | undefined) {
+  public set preferredVersions(value: string[]) {
     this._preferredVersions = value;
   }
   public resetPreferredVersions() {
@@ -75,7 +75,7 @@ export class DataAwsMskKafkaVersion extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get preferredVersionsInput() {
-    return this._preferredVersions
+    return this._preferredVersions;
   }
 
   // status - computed: true, optional: false, required: false
@@ -84,11 +84,11 @@ export class DataAwsMskKafkaVersion extends cdktf.TerraformDataSource {
   }
 
   // version - computed: true, optional: true, required: false
-  private _version?: string | undefined; 
+  private _version?: string; 
   public get version() {
     return this.getStringAttribute('version');
   }
-  public set version(value: string | undefined) {
+  public set version(value: string) {
     this._version = value;
   }
   public resetVersion() {
@@ -96,7 +96,7 @@ export class DataAwsMskKafkaVersion extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get versionInput() {
-    return this._version
+    return this._version;
   }
 
   // =========

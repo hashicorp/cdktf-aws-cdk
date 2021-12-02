@@ -67,7 +67,7 @@ export class ServicecatalogBudgetResourceAssociation extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get budgetNameInput() {
-    return this._budgetName
+    return this._budgetName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -85,7 +85,7 @@ export class ServicecatalogBudgetResourceAssociation extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get resourceIdInput() {
-    return this._resourceId
+    return this._resourceId;
   }
 
   // =========

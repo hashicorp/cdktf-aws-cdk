@@ -73,11 +73,11 @@ export class DataAwsRoute53ResolverRules extends cdktf.TerraformDataSource {
   }
 
   // owner_id - computed: false, optional: true, required: false
-  private _ownerId?: string | undefined; 
+  private _ownerId?: string; 
   public get ownerId() {
     return this.getStringAttribute('owner_id');
   }
-  public set ownerId(value: string | undefined) {
+  public set ownerId(value: string) {
     this._ownerId = value;
   }
   public resetOwnerId() {
@@ -85,15 +85,15 @@ export class DataAwsRoute53ResolverRules extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownerIdInput() {
-    return this._ownerId
+    return this._ownerId;
   }
 
   // resolver_endpoint_id - computed: false, optional: true, required: false
-  private _resolverEndpointId?: string | undefined; 
+  private _resolverEndpointId?: string; 
   public get resolverEndpointId() {
     return this.getStringAttribute('resolver_endpoint_id');
   }
-  public set resolverEndpointId(value: string | undefined) {
+  public set resolverEndpointId(value: string) {
     this._resolverEndpointId = value;
   }
   public resetResolverEndpointId() {
@@ -101,7 +101,7 @@ export class DataAwsRoute53ResolverRules extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get resolverEndpointIdInput() {
-    return this._resolverEndpointId
+    return this._resolverEndpointId;
   }
 
   // resolver_rule_ids - computed: true, optional: false, required: false
@@ -110,11 +110,11 @@ export class DataAwsRoute53ResolverRules extends cdktf.TerraformDataSource {
   }
 
   // rule_type - computed: false, optional: true, required: false
-  private _ruleType?: string | undefined; 
+  private _ruleType?: string; 
   public get ruleType() {
     return this.getStringAttribute('rule_type');
   }
-  public set ruleType(value: string | undefined) {
+  public set ruleType(value: string) {
     this._ruleType = value;
   }
   public resetRuleType() {
@@ -122,15 +122,15 @@ export class DataAwsRoute53ResolverRules extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get ruleTypeInput() {
-    return this._ruleType
+    return this._ruleType;
   }
 
   // share_status - computed: false, optional: true, required: false
-  private _shareStatus?: string | undefined; 
+  private _shareStatus?: string; 
   public get shareStatus() {
     return this.getStringAttribute('share_status');
   }
-  public set shareStatus(value: string | undefined) {
+  public set shareStatus(value: string) {
     this._shareStatus = value;
   }
   public resetShareStatus() {
@@ -138,7 +138,7 @@ export class DataAwsRoute53ResolverRules extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get shareStatusInput() {
-    return this._shareStatus
+    return this._shareStatus;
   }
 
   // =========

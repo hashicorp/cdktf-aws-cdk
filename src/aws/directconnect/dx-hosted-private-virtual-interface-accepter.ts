@@ -66,12 +66,37 @@ export class DxHostedPrivateVirtualInterfaceAccepterTimeoutsOutputReference exte
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DxHostedPrivateVirtualInterfaceAccepterTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DxHostedPrivateVirtualInterfaceAccepterTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -79,15 +104,15 @@ export class DxHostedPrivateVirtualInterfaceAccepterTimeoutsOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -95,7 +120,7 @@ export class DxHostedPrivateVirtualInterfaceAccepterTimeoutsOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -136,7 +161,7 @@ export class DxHostedPrivateVirtualInterfaceAccepter extends cdktf.TerraformReso
     this._tagsAll = config.tagsAll;
     this._virtualInterfaceId = config.virtualInterfaceId;
     this._vpnGatewayId = config.vpnGatewayId;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -149,11 +174,11 @@ export class DxHostedPrivateVirtualInterfaceAccepter extends cdktf.TerraformReso
   }
 
   // dx_gateway_id - computed: false, optional: true, required: false
-  private _dxGatewayId?: string | undefined; 
+  private _dxGatewayId?: string; 
   public get dxGatewayId() {
     return this.getStringAttribute('dx_gateway_id');
   }
-  public set dxGatewayId(value: string | undefined) {
+  public set dxGatewayId(value: string) {
     this._dxGatewayId = value;
   }
   public resetDxGatewayId() {
@@ -161,7 +186,7 @@ export class DxHostedPrivateVirtualInterfaceAccepter extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get dxGatewayIdInput() {
-    return this._dxGatewayId
+    return this._dxGatewayId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -170,12 +195,12 @@ export class DxHostedPrivateVirtualInterfaceAccepter extends cdktf.TerraformReso
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -183,16 +208,16 @@ export class DxHostedPrivateVirtualInterfaceAccepter extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -200,7 +225,7 @@ export class DxHostedPrivateVirtualInterfaceAccepter extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // virtual_interface_id - computed: false, optional: false, required: true
@@ -213,15 +238,15 @@ export class DxHostedPrivateVirtualInterfaceAccepter extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get virtualInterfaceIdInput() {
-    return this._virtualInterfaceId
+    return this._virtualInterfaceId;
   }
 
   // vpn_gateway_id - computed: false, optional: true, required: false
-  private _vpnGatewayId?: string | undefined; 
+  private _vpnGatewayId?: string; 
   public get vpnGatewayId() {
     return this.getStringAttribute('vpn_gateway_id');
   }
-  public set vpnGatewayId(value: string | undefined) {
+  public set vpnGatewayId(value: string) {
     this._vpnGatewayId = value;
   }
   public resetVpnGatewayId() {
@@ -229,24 +254,23 @@ export class DxHostedPrivateVirtualInterfaceAccepter extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get vpnGatewayIdInput() {
-    return this._vpnGatewayId
+    return this._vpnGatewayId;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DxHostedPrivateVirtualInterfaceAccepterTimeouts | undefined; 
-  private __timeoutsOutput = new DxHostedPrivateVirtualInterfaceAccepterTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DxHostedPrivateVirtualInterfaceAccepterTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DxHostedPrivateVirtualInterfaceAccepterTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DxHostedPrivateVirtualInterfaceAccepterTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -260,7 +284,7 @@ export class DxHostedPrivateVirtualInterfaceAccepter extends cdktf.TerraformReso
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       virtual_interface_id: cdktf.stringToTerraform(this._virtualInterfaceId),
       vpn_gateway_id: cdktf.stringToTerraform(this._vpnGatewayId),
-      timeouts: dxHostedPrivateVirtualInterfaceAccepterTimeoutsToTerraform(this._timeouts),
+      timeouts: dxHostedPrivateVirtualInterfaceAccepterTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

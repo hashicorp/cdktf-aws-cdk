@@ -49,6 +49,25 @@ export class S3BucketReplicationConfigurationRuleDeleteMarkerReplicationOutputRe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketReplicationConfigurationRuleDeleteMarkerReplication | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._status) {
+      hasAnyValues = true;
+      internalValueResult.status = this._status;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketReplicationConfigurationRuleDeleteMarkerReplication | undefined) {
+    if (value === undefined) {
+      this._status = undefined;
+    }
+    else {
+      this._status = value.status;
+    }
+  }
+
   // status - computed: false, optional: false, required: true
   private _status?: string; 
   public get status() {
@@ -59,7 +78,7 @@ export class S3BucketReplicationConfigurationRuleDeleteMarkerReplicationOutputRe
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 }
 export interface S3BucketReplicationConfigurationRuleDestinationAccessControlTranslation {
@@ -89,6 +108,25 @@ export class S3BucketReplicationConfigurationRuleDestinationAccessControlTransla
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketReplicationConfigurationRuleDestinationAccessControlTranslation | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._owner) {
+      hasAnyValues = true;
+      internalValueResult.owner = this._owner;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketReplicationConfigurationRuleDestinationAccessControlTranslation | undefined) {
+    if (value === undefined) {
+      this._owner = undefined;
+    }
+    else {
+      this._owner = value.owner;
+    }
+  }
+
   // owner - computed: false, optional: false, required: true
   private _owner?: string; 
   public get owner() {
@@ -99,7 +137,7 @@ export class S3BucketReplicationConfigurationRuleDestinationAccessControlTransla
   }
   // Temporarily expose input value. Use with caution.
   public get ownerInput() {
-    return this._owner
+    return this._owner;
   }
 }
 export interface S3BucketReplicationConfigurationRuleDestinationEncryptionConfiguration {
@@ -129,6 +167,25 @@ export class S3BucketReplicationConfigurationRuleDestinationEncryptionConfigurat
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketReplicationConfigurationRuleDestinationEncryptionConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._replicaKmsKeyId) {
+      hasAnyValues = true;
+      internalValueResult.replicaKmsKeyId = this._replicaKmsKeyId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketReplicationConfigurationRuleDestinationEncryptionConfiguration | undefined) {
+    if (value === undefined) {
+      this._replicaKmsKeyId = undefined;
+    }
+    else {
+      this._replicaKmsKeyId = value.replicaKmsKeyId;
+    }
+  }
+
   // replica_kms_key_id - computed: false, optional: false, required: true
   private _replicaKmsKeyId?: string; 
   public get replicaKmsKeyId() {
@@ -139,7 +196,7 @@ export class S3BucketReplicationConfigurationRuleDestinationEncryptionConfigurat
   }
   // Temporarily expose input value. Use with caution.
   public get replicaKmsKeyIdInput() {
-    return this._replicaKmsKeyId
+    return this._replicaKmsKeyId;
   }
 }
 export interface S3BucketReplicationConfigurationRuleDestinationMetricsEventThreshold {
@@ -169,6 +226,25 @@ export class S3BucketReplicationConfigurationRuleDestinationMetricsEventThreshol
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketReplicationConfigurationRuleDestinationMetricsEventThreshold | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._minutes) {
+      hasAnyValues = true;
+      internalValueResult.minutes = this._minutes;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketReplicationConfigurationRuleDestinationMetricsEventThreshold | undefined) {
+    if (value === undefined) {
+      this._minutes = undefined;
+    }
+    else {
+      this._minutes = value.minutes;
+    }
+  }
+
   // minutes - computed: false, optional: false, required: true
   private _minutes?: number; 
   public get minutes() {
@@ -179,7 +255,7 @@ export class S3BucketReplicationConfigurationRuleDestinationMetricsEventThreshol
   }
   // Temporarily expose input value. Use with caution.
   public get minutesInput() {
-    return this._minutes
+    return this._minutes;
   }
 }
 export interface S3BucketReplicationConfigurationRuleDestinationMetrics {
@@ -192,7 +268,7 @@ export interface S3BucketReplicationConfigurationRuleDestinationMetrics {
   * 
   * Docs at Terraform Registry: {@link https://www.terraform.io/docs/providers/aws/r/s3_bucket_replication_configuration.html#event_threshold S3BucketReplicationConfigurationA#event_threshold}
   */
-  readonly eventThreshold: S3BucketReplicationConfigurationRuleDestinationMetricsEventThreshold;
+  readonly eventThreshold?: S3BucketReplicationConfigurationRuleDestinationMetricsEventThreshold;
 }
 
 export function s3BucketReplicationConfigurationRuleDestinationMetricsToTerraform(struct?: S3BucketReplicationConfigurationRuleDestinationMetricsOutputReference | S3BucketReplicationConfigurationRuleDestinationMetrics): any {
@@ -216,6 +292,31 @@ export class S3BucketReplicationConfigurationRuleDestinationMetricsOutputReferen
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketReplicationConfigurationRuleDestinationMetrics | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._status) {
+      hasAnyValues = true;
+      internalValueResult.status = this._status;
+    }
+    if (this._eventThreshold) {
+      hasAnyValues = true;
+      internalValueResult.eventThreshold = this._eventThreshold?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketReplicationConfigurationRuleDestinationMetrics | undefined) {
+    if (value === undefined) {
+      this._status = undefined;
+      this._eventThreshold.internalValue = undefined;
+    }
+    else {
+      this._status = value.status;
+      this._eventThreshold.internalValue = value.eventThreshold;
+    }
+  }
+
   // status - computed: false, optional: false, required: true
   private _status?: string; 
   public get status() {
@@ -226,21 +327,23 @@ export class S3BucketReplicationConfigurationRuleDestinationMetricsOutputReferen
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 
-  // event_threshold - computed: false, optional: false, required: true
-  private _eventThreshold?: S3BucketReplicationConfigurationRuleDestinationMetricsEventThreshold; 
-  private __eventThresholdOutput = new S3BucketReplicationConfigurationRuleDestinationMetricsEventThresholdOutputReference(this as any, "event_threshold", true);
+  // event_threshold - computed: false, optional: true, required: false
+  private _eventThreshold = new S3BucketReplicationConfigurationRuleDestinationMetricsEventThresholdOutputReference(this as any, "event_threshold", true);
   public get eventThreshold() {
-    return this.__eventThresholdOutput;
+    return this._eventThreshold;
   }
   public putEventThreshold(value: S3BucketReplicationConfigurationRuleDestinationMetricsEventThreshold) {
-    this._eventThreshold = value;
+    this._eventThreshold.internalValue = value;
+  }
+  public resetEventThreshold() {
+    this._eventThreshold.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get eventThresholdInput() {
-    return this._eventThreshold
+    return this._eventThreshold.internalValue;
   }
 }
 export interface S3BucketReplicationConfigurationRuleDestinationReplicationTimeTime {
@@ -270,6 +373,25 @@ export class S3BucketReplicationConfigurationRuleDestinationReplicationTimeTimeO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketReplicationConfigurationRuleDestinationReplicationTimeTime | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._minutes) {
+      hasAnyValues = true;
+      internalValueResult.minutes = this._minutes;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketReplicationConfigurationRuleDestinationReplicationTimeTime | undefined) {
+    if (value === undefined) {
+      this._minutes = undefined;
+    }
+    else {
+      this._minutes = value.minutes;
+    }
+  }
+
   // minutes - computed: false, optional: false, required: true
   private _minutes?: number; 
   public get minutes() {
@@ -280,7 +402,7 @@ export class S3BucketReplicationConfigurationRuleDestinationReplicationTimeTimeO
   }
   // Temporarily expose input value. Use with caution.
   public get minutesInput() {
-    return this._minutes
+    return this._minutes;
   }
 }
 export interface S3BucketReplicationConfigurationRuleDestinationReplicationTime {
@@ -317,6 +439,31 @@ export class S3BucketReplicationConfigurationRuleDestinationReplicationTimeOutpu
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketReplicationConfigurationRuleDestinationReplicationTime | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._status) {
+      hasAnyValues = true;
+      internalValueResult.status = this._status;
+    }
+    if (this._time) {
+      hasAnyValues = true;
+      internalValueResult.time = this._time?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketReplicationConfigurationRuleDestinationReplicationTime | undefined) {
+    if (value === undefined) {
+      this._status = undefined;
+      this._time.internalValue = undefined;
+    }
+    else {
+      this._status = value.status;
+      this._time.internalValue = value.time;
+    }
+  }
+
   // status - computed: false, optional: false, required: true
   private _status?: string; 
   public get status() {
@@ -327,21 +474,20 @@ export class S3BucketReplicationConfigurationRuleDestinationReplicationTimeOutpu
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 
   // time - computed: false, optional: false, required: true
-  private _time?: S3BucketReplicationConfigurationRuleDestinationReplicationTimeTime; 
-  private __timeOutput = new S3BucketReplicationConfigurationRuleDestinationReplicationTimeTimeOutputReference(this as any, "time", true);
+  private _time = new S3BucketReplicationConfigurationRuleDestinationReplicationTimeTimeOutputReference(this as any, "time", true);
   public get time() {
-    return this.__timeOutput;
+    return this._time;
   }
   public putTime(value: S3BucketReplicationConfigurationRuleDestinationReplicationTimeTime) {
-    this._time = value;
+    this._time.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get timeInput() {
-    return this._time
+    return this._time.internalValue;
   }
 }
 export interface S3BucketReplicationConfigurationRuleDestination {
@@ -409,12 +555,67 @@ export class S3BucketReplicationConfigurationRuleDestinationOutputReference exte
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketReplicationConfigurationRuleDestination | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._account) {
+      hasAnyValues = true;
+      internalValueResult.account = this._account;
+    }
+    if (this._bucket) {
+      hasAnyValues = true;
+      internalValueResult.bucket = this._bucket;
+    }
+    if (this._storageClass) {
+      hasAnyValues = true;
+      internalValueResult.storageClass = this._storageClass;
+    }
+    if (this._accessControlTranslation) {
+      hasAnyValues = true;
+      internalValueResult.accessControlTranslation = this._accessControlTranslation?.internalValue;
+    }
+    if (this._encryptionConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.encryptionConfiguration = this._encryptionConfiguration?.internalValue;
+    }
+    if (this._metrics) {
+      hasAnyValues = true;
+      internalValueResult.metrics = this._metrics?.internalValue;
+    }
+    if (this._replicationTime) {
+      hasAnyValues = true;
+      internalValueResult.replicationTime = this._replicationTime?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketReplicationConfigurationRuleDestination | undefined) {
+    if (value === undefined) {
+      this._account = undefined;
+      this._bucket = undefined;
+      this._storageClass = undefined;
+      this._accessControlTranslation.internalValue = undefined;
+      this._encryptionConfiguration.internalValue = undefined;
+      this._metrics.internalValue = undefined;
+      this._replicationTime.internalValue = undefined;
+    }
+    else {
+      this._account = value.account;
+      this._bucket = value.bucket;
+      this._storageClass = value.storageClass;
+      this._accessControlTranslation.internalValue = value.accessControlTranslation;
+      this._encryptionConfiguration.internalValue = value.encryptionConfiguration;
+      this._metrics.internalValue = value.metrics;
+      this._replicationTime.internalValue = value.replicationTime;
+    }
+  }
+
   // account - computed: false, optional: true, required: false
-  private _account?: string | undefined; 
+  private _account?: string; 
   public get account() {
     return this.getStringAttribute('account');
   }
-  public set account(value: string | undefined) {
+  public set account(value: string) {
     this._account = value;
   }
   public resetAccount() {
@@ -422,7 +623,7 @@ export class S3BucketReplicationConfigurationRuleDestinationOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get accountInput() {
-    return this._account
+    return this._account;
   }
 
   // bucket - computed: false, optional: false, required: true
@@ -435,15 +636,15 @@ export class S3BucketReplicationConfigurationRuleDestinationOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // storage_class - computed: false, optional: true, required: false
-  private _storageClass?: string | undefined; 
+  private _storageClass?: string; 
   public get storageClass() {
     return this.getStringAttribute('storage_class');
   }
-  public set storageClass(value: string | undefined) {
+  public set storageClass(value: string) {
     this._storageClass = value;
   }
   public resetStorageClass() {
@@ -451,75 +652,71 @@ export class S3BucketReplicationConfigurationRuleDestinationOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get storageClassInput() {
-    return this._storageClass
+    return this._storageClass;
   }
 
   // access_control_translation - computed: false, optional: true, required: false
-  private _accessControlTranslation?: S3BucketReplicationConfigurationRuleDestinationAccessControlTranslation | undefined; 
-  private __accessControlTranslationOutput = new S3BucketReplicationConfigurationRuleDestinationAccessControlTranslationOutputReference(this as any, "access_control_translation", true);
+  private _accessControlTranslation = new S3BucketReplicationConfigurationRuleDestinationAccessControlTranslationOutputReference(this as any, "access_control_translation", true);
   public get accessControlTranslation() {
-    return this.__accessControlTranslationOutput;
+    return this._accessControlTranslation;
   }
-  public putAccessControlTranslation(value: S3BucketReplicationConfigurationRuleDestinationAccessControlTranslation | undefined) {
-    this._accessControlTranslation = value;
+  public putAccessControlTranslation(value: S3BucketReplicationConfigurationRuleDestinationAccessControlTranslation) {
+    this._accessControlTranslation.internalValue = value;
   }
   public resetAccessControlTranslation() {
-    this._accessControlTranslation = undefined;
+    this._accessControlTranslation.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get accessControlTranslationInput() {
-    return this._accessControlTranslation
+    return this._accessControlTranslation.internalValue;
   }
 
   // encryption_configuration - computed: false, optional: true, required: false
-  private _encryptionConfiguration?: S3BucketReplicationConfigurationRuleDestinationEncryptionConfiguration | undefined; 
-  private __encryptionConfigurationOutput = new S3BucketReplicationConfigurationRuleDestinationEncryptionConfigurationOutputReference(this as any, "encryption_configuration", true);
+  private _encryptionConfiguration = new S3BucketReplicationConfigurationRuleDestinationEncryptionConfigurationOutputReference(this as any, "encryption_configuration", true);
   public get encryptionConfiguration() {
-    return this.__encryptionConfigurationOutput;
+    return this._encryptionConfiguration;
   }
-  public putEncryptionConfiguration(value: S3BucketReplicationConfigurationRuleDestinationEncryptionConfiguration | undefined) {
-    this._encryptionConfiguration = value;
+  public putEncryptionConfiguration(value: S3BucketReplicationConfigurationRuleDestinationEncryptionConfiguration) {
+    this._encryptionConfiguration.internalValue = value;
   }
   public resetEncryptionConfiguration() {
-    this._encryptionConfiguration = undefined;
+    this._encryptionConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionConfigurationInput() {
-    return this._encryptionConfiguration
+    return this._encryptionConfiguration.internalValue;
   }
 
   // metrics - computed: false, optional: true, required: false
-  private _metrics?: S3BucketReplicationConfigurationRuleDestinationMetrics | undefined; 
-  private __metricsOutput = new S3BucketReplicationConfigurationRuleDestinationMetricsOutputReference(this as any, "metrics", true);
+  private _metrics = new S3BucketReplicationConfigurationRuleDestinationMetricsOutputReference(this as any, "metrics", true);
   public get metrics() {
-    return this.__metricsOutput;
+    return this._metrics;
   }
-  public putMetrics(value: S3BucketReplicationConfigurationRuleDestinationMetrics | undefined) {
-    this._metrics = value;
+  public putMetrics(value: S3BucketReplicationConfigurationRuleDestinationMetrics) {
+    this._metrics.internalValue = value;
   }
   public resetMetrics() {
-    this._metrics = undefined;
+    this._metrics.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get metricsInput() {
-    return this._metrics
+    return this._metrics.internalValue;
   }
 
   // replication_time - computed: false, optional: true, required: false
-  private _replicationTime?: S3BucketReplicationConfigurationRuleDestinationReplicationTime | undefined; 
-  private __replicationTimeOutput = new S3BucketReplicationConfigurationRuleDestinationReplicationTimeOutputReference(this as any, "replication_time", true);
+  private _replicationTime = new S3BucketReplicationConfigurationRuleDestinationReplicationTimeOutputReference(this as any, "replication_time", true);
   public get replicationTime() {
-    return this.__replicationTimeOutput;
+    return this._replicationTime;
   }
-  public putReplicationTime(value: S3BucketReplicationConfigurationRuleDestinationReplicationTime | undefined) {
-    this._replicationTime = value;
+  public putReplicationTime(value: S3BucketReplicationConfigurationRuleDestinationReplicationTime) {
+    this._replicationTime.internalValue = value;
   }
   public resetReplicationTime() {
-    this._replicationTime = undefined;
+    this._replicationTime.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get replicationTimeInput() {
-    return this._replicationTime
+    return this._replicationTime.internalValue;
   }
 }
 export interface S3BucketReplicationConfigurationRuleExistingObjectReplication {
@@ -549,6 +746,25 @@ export class S3BucketReplicationConfigurationRuleExistingObjectReplicationOutput
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketReplicationConfigurationRuleExistingObjectReplication | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._status) {
+      hasAnyValues = true;
+      internalValueResult.status = this._status;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketReplicationConfigurationRuleExistingObjectReplication | undefined) {
+    if (value === undefined) {
+      this._status = undefined;
+    }
+    else {
+      this._status = value.status;
+    }
+  }
+
   // status - computed: false, optional: false, required: true
   private _status?: string; 
   public get status() {
@@ -559,7 +775,7 @@ export class S3BucketReplicationConfigurationRuleExistingObjectReplicationOutput
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 }
 export interface S3BucketReplicationConfigurationRuleFilterAnd {
@@ -594,12 +810,37 @@ export class S3BucketReplicationConfigurationRuleFilterAndOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketReplicationConfigurationRuleFilterAnd | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    if (this._tags) {
+      hasAnyValues = true;
+      internalValueResult.tags = this._tags;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketReplicationConfigurationRuleFilterAnd | undefined) {
+    if (value === undefined) {
+      this._prefix = undefined;
+      this._tags = undefined;
+    }
+    else {
+      this._prefix = value.prefix;
+      this._tags = value.tags;
+    }
+  }
+
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -607,16 +848,16 @@ export class S3BucketReplicationConfigurationRuleFilterAndOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -624,7 +865,7 @@ export class S3BucketReplicationConfigurationRuleFilterAndOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 }
 export interface S3BucketReplicationConfigurationRuleFilterTag {
@@ -659,6 +900,31 @@ export class S3BucketReplicationConfigurationRuleFilterTagOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketReplicationConfigurationRuleFilterTag | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketReplicationConfigurationRuleFilterTag | undefined) {
+    if (value === undefined) {
+      this._key = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._key = value.key;
+      this._value = value.value;
+    }
+  }
+
   // key - computed: false, optional: false, required: true
   private _key?: string; 
   public get key() {
@@ -669,7 +935,7 @@ export class S3BucketReplicationConfigurationRuleFilterTagOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // value - computed: false, optional: false, required: true
@@ -682,7 +948,7 @@ export class S3BucketReplicationConfigurationRuleFilterTagOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 export interface S3BucketReplicationConfigurationRuleFilter {
@@ -726,12 +992,43 @@ export class S3BucketReplicationConfigurationRuleFilterOutputReference extends c
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketReplicationConfigurationRuleFilter | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    if (this._and) {
+      hasAnyValues = true;
+      internalValueResult.and = this._and?.internalValue;
+    }
+    if (this._tag) {
+      hasAnyValues = true;
+      internalValueResult.tag = this._tag?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketReplicationConfigurationRuleFilter | undefined) {
+    if (value === undefined) {
+      this._prefix = undefined;
+      this._and.internalValue = undefined;
+      this._tag.internalValue = undefined;
+    }
+    else {
+      this._prefix = value.prefix;
+      this._and.internalValue = value.and;
+      this._tag.internalValue = value.tag;
+    }
+  }
+
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -739,41 +1036,39 @@ export class S3BucketReplicationConfigurationRuleFilterOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // and - computed: false, optional: true, required: false
-  private _and?: S3BucketReplicationConfigurationRuleFilterAnd | undefined; 
-  private __andOutput = new S3BucketReplicationConfigurationRuleFilterAndOutputReference(this as any, "and", true);
+  private _and = new S3BucketReplicationConfigurationRuleFilterAndOutputReference(this as any, "and", true);
   public get and() {
-    return this.__andOutput;
+    return this._and;
   }
-  public putAnd(value: S3BucketReplicationConfigurationRuleFilterAnd | undefined) {
-    this._and = value;
+  public putAnd(value: S3BucketReplicationConfigurationRuleFilterAnd) {
+    this._and.internalValue = value;
   }
   public resetAnd() {
-    this._and = undefined;
+    this._and.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get andInput() {
-    return this._and
+    return this._and.internalValue;
   }
 
   // tag - computed: false, optional: true, required: false
-  private _tag?: S3BucketReplicationConfigurationRuleFilterTag | undefined; 
-  private __tagOutput = new S3BucketReplicationConfigurationRuleFilterTagOutputReference(this as any, "tag", true);
+  private _tag = new S3BucketReplicationConfigurationRuleFilterTagOutputReference(this as any, "tag", true);
   public get tag() {
-    return this.__tagOutput;
+    return this._tag;
   }
-  public putTag(value: S3BucketReplicationConfigurationRuleFilterTag | undefined) {
-    this._tag = value;
+  public putTag(value: S3BucketReplicationConfigurationRuleFilterTag) {
+    this._tag.internalValue = value;
   }
   public resetTag() {
-    this._tag = undefined;
+    this._tag.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get tagInput() {
-    return this._tag
+    return this._tag.internalValue;
   }
 }
 export interface S3BucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModifications {
@@ -803,6 +1098,25 @@ export class S3BucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaM
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModifications | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._status) {
+      hasAnyValues = true;
+      internalValueResult.status = this._status;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModifications | undefined) {
+    if (value === undefined) {
+      this._status = undefined;
+    }
+    else {
+      this._status = value.status;
+    }
+  }
+
   // status - computed: false, optional: false, required: true
   private _status?: string; 
   public get status() {
@@ -813,7 +1127,7 @@ export class S3BucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaM
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 }
 export interface S3BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjects {
@@ -843,6 +1157,25 @@ export class S3BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjects | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._status) {
+      hasAnyValues = true;
+      internalValueResult.status = this._status;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjects | undefined) {
+    if (value === undefined) {
+      this._status = undefined;
+    }
+    else {
+      this._status = value.status;
+    }
+  }
+
   // status - computed: false, optional: false, required: true
   private _status?: string; 
   public get status() {
@@ -853,7 +1186,7 @@ export class S3BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEn
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 }
 export interface S3BucketReplicationConfigurationRuleSourceSelectionCriteria {
@@ -892,38 +1225,61 @@ export class S3BucketReplicationConfigurationRuleSourceSelectionCriteriaOutputRe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // replica_modifications - computed: false, optional: true, required: false
-  private _replicaModifications?: S3BucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModifications | undefined; 
-  private __replicaModificationsOutput = new S3BucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModificationsOutputReference(this as any, "replica_modifications", true);
-  public get replicaModifications() {
-    return this.__replicaModificationsOutput;
+  public get internalValue(): S3BucketReplicationConfigurationRuleSourceSelectionCriteria | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._replicaModifications) {
+      hasAnyValues = true;
+      internalValueResult.replicaModifications = this._replicaModifications?.internalValue;
+    }
+    if (this._sseKmsEncryptedObjects) {
+      hasAnyValues = true;
+      internalValueResult.sseKmsEncryptedObjects = this._sseKmsEncryptedObjects?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putReplicaModifications(value: S3BucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModifications | undefined) {
-    this._replicaModifications = value;
+
+  public set internalValue(value: S3BucketReplicationConfigurationRuleSourceSelectionCriteria | undefined) {
+    if (value === undefined) {
+      this._replicaModifications.internalValue = undefined;
+      this._sseKmsEncryptedObjects.internalValue = undefined;
+    }
+    else {
+      this._replicaModifications.internalValue = value.replicaModifications;
+      this._sseKmsEncryptedObjects.internalValue = value.sseKmsEncryptedObjects;
+    }
+  }
+
+  // replica_modifications - computed: false, optional: true, required: false
+  private _replicaModifications = new S3BucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModificationsOutputReference(this as any, "replica_modifications", true);
+  public get replicaModifications() {
+    return this._replicaModifications;
+  }
+  public putReplicaModifications(value: S3BucketReplicationConfigurationRuleSourceSelectionCriteriaReplicaModifications) {
+    this._replicaModifications.internalValue = value;
   }
   public resetReplicaModifications() {
-    this._replicaModifications = undefined;
+    this._replicaModifications.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get replicaModificationsInput() {
-    return this._replicaModifications
+    return this._replicaModifications.internalValue;
   }
 
   // sse_kms_encrypted_objects - computed: false, optional: true, required: false
-  private _sseKmsEncryptedObjects?: S3BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjects | undefined; 
-  private __sseKmsEncryptedObjectsOutput = new S3BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsOutputReference(this as any, "sse_kms_encrypted_objects", true);
+  private _sseKmsEncryptedObjects = new S3BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjectsOutputReference(this as any, "sse_kms_encrypted_objects", true);
   public get sseKmsEncryptedObjects() {
-    return this.__sseKmsEncryptedObjectsOutput;
+    return this._sseKmsEncryptedObjects;
   }
-  public putSseKmsEncryptedObjects(value: S3BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjects | undefined) {
-    this._sseKmsEncryptedObjects = value;
+  public putSseKmsEncryptedObjects(value: S3BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjects) {
+    this._sseKmsEncryptedObjects.internalValue = value;
   }
   public resetSseKmsEncryptedObjects() {
-    this._sseKmsEncryptedObjects = undefined;
+    this._sseKmsEncryptedObjects.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get sseKmsEncryptedObjectsInput() {
-    return this._sseKmsEncryptedObjects
+    return this._sseKmsEncryptedObjects.internalValue;
   }
 }
 export interface S3BucketReplicationConfigurationRule {
@@ -1045,7 +1401,7 @@ export class S3BucketReplicationConfigurationA extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // id - computed: true, optional: true, required: false
@@ -1063,7 +1419,7 @@ export class S3BucketReplicationConfigurationA extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleInput() {
-    return this._role
+    return this._role;
   }
 
   // rule - computed: false, optional: false, required: true
@@ -1077,7 +1433,7 @@ export class S3BucketReplicationConfigurationA extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ruleInput() {
-    return this._rule
+    return this._rule;
   }
 
   // =========

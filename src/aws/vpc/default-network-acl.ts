@@ -210,7 +210,7 @@ export class DefaultNetworkAcl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultNetworkAclIdInput() {
-    return this._defaultNetworkAclId
+    return this._defaultNetworkAclId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -224,11 +224,11 @@ export class DefaultNetworkAcl extends cdktf.TerraformResource {
   }
 
   // subnet_ids - computed: false, optional: true, required: false
-  private _subnetIds?: string[] | undefined; 
+  private _subnetIds?: string[]; 
   public get subnetIds() {
     return this.getListAttribute('subnet_ids');
   }
-  public set subnetIds(value: string[] | undefined) {
+  public set subnetIds(value: string[]) {
     this._subnetIds = value;
   }
   public resetSubnetIds() {
@@ -236,16 +236,16 @@ export class DefaultNetworkAcl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -253,16 +253,16 @@ export class DefaultNetworkAcl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -270,7 +270,7 @@ export class DefaultNetworkAcl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // vpc_id - computed: true, optional: false, required: false
@@ -279,12 +279,12 @@ export class DefaultNetworkAcl extends cdktf.TerraformResource {
   }
 
   // egress - computed: false, optional: true, required: false
-  private _egress?: DefaultNetworkAclEgress[] | undefined; 
+  private _egress?: DefaultNetworkAclEgress[]; 
   public get egress() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('egress') as any;
   }
-  public set egress(value: DefaultNetworkAclEgress[] | undefined) {
+  public set egress(value: DefaultNetworkAclEgress[]) {
     this._egress = value;
   }
   public resetEgress() {
@@ -292,16 +292,16 @@ export class DefaultNetworkAcl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get egressInput() {
-    return this._egress
+    return this._egress;
   }
 
   // ingress - computed: false, optional: true, required: false
-  private _ingress?: DefaultNetworkAclIngress[] | undefined; 
+  private _ingress?: DefaultNetworkAclIngress[]; 
   public get ingress() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ingress') as any;
   }
-  public set ingress(value: DefaultNetworkAclIngress[] | undefined) {
+  public set ingress(value: DefaultNetworkAclIngress[]) {
     this._ingress = value;
   }
   public resetIngress() {
@@ -309,7 +309,7 @@ export class DefaultNetworkAcl extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ingressInput() {
-    return this._ingress
+    return this._ingress;
   }
 
   // =========

@@ -117,7 +117,7 @@ export class DataAwsTransferServer extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get serverIdInput() {
-    return this._serverId
+    return this._serverId;
   }
 
   // url - computed: true, optional: false, required: false

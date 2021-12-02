@@ -63,11 +63,11 @@ export class AutoscalingAttachment extends cdktf.TerraformResource {
   // ==========
 
   // alb_target_group_arn - computed: false, optional: true, required: false
-  private _albTargetGroupArn?: string | undefined; 
+  private _albTargetGroupArn?: string; 
   public get albTargetGroupArn() {
     return this.getStringAttribute('alb_target_group_arn');
   }
-  public set albTargetGroupArn(value: string | undefined) {
+  public set albTargetGroupArn(value: string) {
     this._albTargetGroupArn = value;
   }
   public resetAlbTargetGroupArn() {
@@ -75,7 +75,7 @@ export class AutoscalingAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get albTargetGroupArnInput() {
-    return this._albTargetGroupArn
+    return this._albTargetGroupArn;
   }
 
   // autoscaling_group_name - computed: false, optional: false, required: true
@@ -88,15 +88,15 @@ export class AutoscalingAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoscalingGroupNameInput() {
-    return this._autoscalingGroupName
+    return this._autoscalingGroupName;
   }
 
   // elb - computed: false, optional: true, required: false
-  private _elb?: string | undefined; 
+  private _elb?: string; 
   public get elb() {
     return this.getStringAttribute('elb');
   }
-  public set elb(value: string | undefined) {
+  public set elb(value: string) {
     this._elb = value;
   }
   public resetElb() {
@@ -104,7 +104,7 @@ export class AutoscalingAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get elbInput() {
-    return this._elb
+    return this._elb;
   }
 
   // id - computed: true, optional: true, required: false

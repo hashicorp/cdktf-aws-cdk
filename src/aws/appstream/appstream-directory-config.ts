@@ -54,6 +54,31 @@ export class AppstreamDirectoryConfigServiceAccountCredentialsOutputReference ex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppstreamDirectoryConfigServiceAccountCredentials | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._accountName) {
+      hasAnyValues = true;
+      internalValueResult.accountName = this._accountName;
+    }
+    if (this._accountPassword) {
+      hasAnyValues = true;
+      internalValueResult.accountPassword = this._accountPassword;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppstreamDirectoryConfigServiceAccountCredentials | undefined) {
+    if (value === undefined) {
+      this._accountName = undefined;
+      this._accountPassword = undefined;
+    }
+    else {
+      this._accountName = value.accountName;
+      this._accountPassword = value.accountPassword;
+    }
+  }
+
   // account_name - computed: false, optional: false, required: true
   private _accountName?: string; 
   public get accountName() {
@@ -64,7 +89,7 @@ export class AppstreamDirectoryConfigServiceAccountCredentialsOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get accountNameInput() {
-    return this._accountName
+    return this._accountName;
   }
 
   // account_password - computed: false, optional: false, required: true
@@ -77,7 +102,7 @@ export class AppstreamDirectoryConfigServiceAccountCredentialsOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get accountPasswordInput() {
-    return this._accountPassword
+    return this._accountPassword;
   }
 }
 
@@ -115,7 +140,7 @@ export class AppstreamDirectoryConfig extends cdktf.TerraformResource {
     });
     this._directoryName = config.directoryName;
     this._organizationalUnitDistinguishedNames = config.organizationalUnitDistinguishedNames;
-    this._serviceAccountCredentials = config.serviceAccountCredentials;
+    this._serviceAccountCredentials.internalValue = config.serviceAccountCredentials;
   }
 
   // ==========
@@ -137,7 +162,7 @@ export class AppstreamDirectoryConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get directoryNameInput() {
-    return this._directoryName
+    return this._directoryName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -155,21 +180,20 @@ export class AppstreamDirectoryConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get organizationalUnitDistinguishedNamesInput() {
-    return this._organizationalUnitDistinguishedNames
+    return this._organizationalUnitDistinguishedNames;
   }
 
   // service_account_credentials - computed: false, optional: false, required: true
-  private _serviceAccountCredentials?: AppstreamDirectoryConfigServiceAccountCredentials; 
-  private __serviceAccountCredentialsOutput = new AppstreamDirectoryConfigServiceAccountCredentialsOutputReference(this as any, "service_account_credentials", true);
+  private _serviceAccountCredentials = new AppstreamDirectoryConfigServiceAccountCredentialsOutputReference(this as any, "service_account_credentials", true);
   public get serviceAccountCredentials() {
-    return this.__serviceAccountCredentialsOutput;
+    return this._serviceAccountCredentials;
   }
   public putServiceAccountCredentials(value: AppstreamDirectoryConfigServiceAccountCredentials) {
-    this._serviceAccountCredentials = value;
+    this._serviceAccountCredentials.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get serviceAccountCredentialsInput() {
-    return this._serviceAccountCredentials
+    return this._serviceAccountCredentials.internalValue;
   }
 
   // =========
@@ -180,7 +204,7 @@ export class AppstreamDirectoryConfig extends cdktf.TerraformResource {
     return {
       directory_name: cdktf.stringToTerraform(this._directoryName),
       organizational_unit_distinguished_names: cdktf.listMapper(cdktf.stringToTerraform)(this._organizationalUnitDistinguishedNames),
-      service_account_credentials: appstreamDirectoryConfigServiceAccountCredentialsToTerraform(this._serviceAccountCredentials),
+      service_account_credentials: appstreamDirectoryConfigServiceAccountCredentialsToTerraform(this._serviceAccountCredentials.internalValue),
     };
   }
 }

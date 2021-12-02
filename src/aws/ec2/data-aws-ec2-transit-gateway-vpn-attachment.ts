@@ -97,12 +97,12 @@ export class DataAwsEc2TransitGatewayVpnAttachment extends cdktf.TerraformDataSo
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -110,15 +110,15 @@ export class DataAwsEc2TransitGatewayVpnAttachment extends cdktf.TerraformDataSo
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // transit_gateway_id - computed: false, optional: true, required: false
-  private _transitGatewayId?: string | undefined; 
+  private _transitGatewayId?: string; 
   public get transitGatewayId() {
     return this.getStringAttribute('transit_gateway_id');
   }
-  public set transitGatewayId(value: string | undefined) {
+  public set transitGatewayId(value: string) {
     this._transitGatewayId = value;
   }
   public resetTransitGatewayId() {
@@ -126,15 +126,15 @@ export class DataAwsEc2TransitGatewayVpnAttachment extends cdktf.TerraformDataSo
   }
   // Temporarily expose input value. Use with caution.
   public get transitGatewayIdInput() {
-    return this._transitGatewayId
+    return this._transitGatewayId;
   }
 
   // vpn_connection_id - computed: false, optional: true, required: false
-  private _vpnConnectionId?: string | undefined; 
+  private _vpnConnectionId?: string; 
   public get vpnConnectionId() {
     return this.getStringAttribute('vpn_connection_id');
   }
-  public set vpnConnectionId(value: string | undefined) {
+  public set vpnConnectionId(value: string) {
     this._vpnConnectionId = value;
   }
   public resetVpnConnectionId() {
@@ -142,16 +142,16 @@ export class DataAwsEc2TransitGatewayVpnAttachment extends cdktf.TerraformDataSo
   }
   // Temporarily expose input value. Use with caution.
   public get vpnConnectionIdInput() {
-    return this._vpnConnectionId
+    return this._vpnConnectionId;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsEc2TransitGatewayVpnAttachmentFilter[] | undefined; 
+  private _filter?: DataAwsEc2TransitGatewayVpnAttachmentFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsEc2TransitGatewayVpnAttachmentFilter[] | undefined) {
+  public set filter(value: DataAwsEc2TransitGatewayVpnAttachmentFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -159,7 +159,7 @@ export class DataAwsEc2TransitGatewayVpnAttachment extends cdktf.TerraformDataSo
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

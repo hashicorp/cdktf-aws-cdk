@@ -105,12 +105,67 @@ export class ImagebuilderImageRecipeBlockDeviceMappingEbsOutputReference extends
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ImagebuilderImageRecipeBlockDeviceMappingEbs | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._deleteOnTermination) {
+      hasAnyValues = true;
+      internalValueResult.deleteOnTermination = this._deleteOnTermination;
+    }
+    if (this._encrypted) {
+      hasAnyValues = true;
+      internalValueResult.encrypted = this._encrypted;
+    }
+    if (this._iops) {
+      hasAnyValues = true;
+      internalValueResult.iops = this._iops;
+    }
+    if (this._kmsKeyId) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyId = this._kmsKeyId;
+    }
+    if (this._snapshotId) {
+      hasAnyValues = true;
+      internalValueResult.snapshotId = this._snapshotId;
+    }
+    if (this._volumeSize) {
+      hasAnyValues = true;
+      internalValueResult.volumeSize = this._volumeSize;
+    }
+    if (this._volumeType) {
+      hasAnyValues = true;
+      internalValueResult.volumeType = this._volumeType;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ImagebuilderImageRecipeBlockDeviceMappingEbs | undefined) {
+    if (value === undefined) {
+      this._deleteOnTermination = undefined;
+      this._encrypted = undefined;
+      this._iops = undefined;
+      this._kmsKeyId = undefined;
+      this._snapshotId = undefined;
+      this._volumeSize = undefined;
+      this._volumeType = undefined;
+    }
+    else {
+      this._deleteOnTermination = value.deleteOnTermination;
+      this._encrypted = value.encrypted;
+      this._iops = value.iops;
+      this._kmsKeyId = value.kmsKeyId;
+      this._snapshotId = value.snapshotId;
+      this._volumeSize = value.volumeSize;
+      this._volumeType = value.volumeType;
+    }
+  }
+
   // delete_on_termination - computed: false, optional: true, required: false
-  private _deleteOnTermination?: string | undefined; 
+  private _deleteOnTermination?: string; 
   public get deleteOnTermination() {
     return this.getStringAttribute('delete_on_termination');
   }
-  public set deleteOnTermination(value: string | undefined) {
+  public set deleteOnTermination(value: string) {
     this._deleteOnTermination = value;
   }
   public resetDeleteOnTermination() {
@@ -118,15 +173,15 @@ export class ImagebuilderImageRecipeBlockDeviceMappingEbsOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get deleteOnTerminationInput() {
-    return this._deleteOnTermination
+    return this._deleteOnTermination;
   }
 
   // encrypted - computed: false, optional: true, required: false
-  private _encrypted?: string | undefined; 
+  private _encrypted?: string; 
   public get encrypted() {
     return this.getStringAttribute('encrypted');
   }
-  public set encrypted(value: string | undefined) {
+  public set encrypted(value: string) {
     this._encrypted = value;
   }
   public resetEncrypted() {
@@ -134,15 +189,15 @@ export class ImagebuilderImageRecipeBlockDeviceMappingEbsOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get encryptedInput() {
-    return this._encrypted
+    return this._encrypted;
   }
 
   // iops - computed: false, optional: true, required: false
-  private _iops?: number | undefined; 
+  private _iops?: number; 
   public get iops() {
     return this.getNumberAttribute('iops');
   }
-  public set iops(value: number | undefined) {
+  public set iops(value: number) {
     this._iops = value;
   }
   public resetIops() {
@@ -150,15 +205,15 @@ export class ImagebuilderImageRecipeBlockDeviceMappingEbsOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get iopsInput() {
-    return this._iops
+    return this._iops;
   }
 
   // kms_key_id - computed: false, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -166,15 +221,15 @@ export class ImagebuilderImageRecipeBlockDeviceMappingEbsOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // snapshot_id - computed: false, optional: true, required: false
-  private _snapshotId?: string | undefined; 
+  private _snapshotId?: string; 
   public get snapshotId() {
     return this.getStringAttribute('snapshot_id');
   }
-  public set snapshotId(value: string | undefined) {
+  public set snapshotId(value: string) {
     this._snapshotId = value;
   }
   public resetSnapshotId() {
@@ -182,15 +237,15 @@ export class ImagebuilderImageRecipeBlockDeviceMappingEbsOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotIdInput() {
-    return this._snapshotId
+    return this._snapshotId;
   }
 
   // volume_size - computed: false, optional: true, required: false
-  private _volumeSize?: number | undefined; 
+  private _volumeSize?: number; 
   public get volumeSize() {
     return this.getNumberAttribute('volume_size');
   }
-  public set volumeSize(value: number | undefined) {
+  public set volumeSize(value: number) {
     this._volumeSize = value;
   }
   public resetVolumeSize() {
@@ -198,15 +253,15 @@ export class ImagebuilderImageRecipeBlockDeviceMappingEbsOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get volumeSizeInput() {
-    return this._volumeSize
+    return this._volumeSize;
   }
 
   // volume_type - computed: false, optional: true, required: false
-  private _volumeType?: string | undefined; 
+  private _volumeType?: string; 
   public get volumeType() {
     return this.getStringAttribute('volume_type');
   }
-  public set volumeType(value: string | undefined) {
+  public set volumeType(value: string) {
     this._volumeType = value;
   }
   public resetVolumeType() {
@@ -214,7 +269,7 @@ export class ImagebuilderImageRecipeBlockDeviceMappingEbsOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get volumeTypeInput() {
-    return this._volumeType
+    return this._volumeType;
   }
 }
 export interface ImagebuilderImageRecipeBlockDeviceMapping {
@@ -327,11 +382,11 @@ export class ImagebuilderImageRecipe extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -339,7 +394,7 @@ export class ImagebuilderImageRecipe extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -357,7 +412,7 @@ export class ImagebuilderImageRecipe extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // owner - computed: true, optional: false, required: false
@@ -375,7 +430,7 @@ export class ImagebuilderImageRecipe extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parentImageInput() {
-    return this._parentImage
+    return this._parentImage;
   }
 
   // platform - computed: true, optional: false, required: false
@@ -384,12 +439,12 @@ export class ImagebuilderImageRecipe extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -397,16 +452,16 @@ export class ImagebuilderImageRecipe extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -414,7 +469,7 @@ export class ImagebuilderImageRecipe extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // version - computed: false, optional: false, required: true
@@ -427,15 +482,15 @@ export class ImagebuilderImageRecipe extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get versionInput() {
-    return this._version
+    return this._version;
   }
 
   // working_directory - computed: false, optional: true, required: false
-  private _workingDirectory?: string | undefined; 
+  private _workingDirectory?: string; 
   public get workingDirectory() {
     return this.getStringAttribute('working_directory');
   }
-  public set workingDirectory(value: string | undefined) {
+  public set workingDirectory(value: string) {
     this._workingDirectory = value;
   }
   public resetWorkingDirectory() {
@@ -443,16 +498,16 @@ export class ImagebuilderImageRecipe extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get workingDirectoryInput() {
-    return this._workingDirectory
+    return this._workingDirectory;
   }
 
   // block_device_mapping - computed: false, optional: true, required: false
-  private _blockDeviceMapping?: ImagebuilderImageRecipeBlockDeviceMapping[] | undefined; 
+  private _blockDeviceMapping?: ImagebuilderImageRecipeBlockDeviceMapping[]; 
   public get blockDeviceMapping() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('block_device_mapping') as any;
   }
-  public set blockDeviceMapping(value: ImagebuilderImageRecipeBlockDeviceMapping[] | undefined) {
+  public set blockDeviceMapping(value: ImagebuilderImageRecipeBlockDeviceMapping[]) {
     this._blockDeviceMapping = value;
   }
   public resetBlockDeviceMapping() {
@@ -460,7 +515,7 @@ export class ImagebuilderImageRecipe extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get blockDeviceMappingInput() {
-    return this._blockDeviceMapping
+    return this._blockDeviceMapping;
   }
 
   // component - computed: false, optional: false, required: true
@@ -474,7 +529,7 @@ export class ImagebuilderImageRecipe extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get componentInput() {
-    return this._component
+    return this._component;
   }
 
   // =========

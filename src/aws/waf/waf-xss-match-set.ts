@@ -50,12 +50,37 @@ export class WafXssMatchSetXssMatchTuplesFieldToMatchOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): WafXssMatchSetXssMatchTuplesFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._data) {
+      hasAnyValues = true;
+      internalValueResult.data = this._data;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: WafXssMatchSetXssMatchTuplesFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._data = undefined;
+      this._type = undefined;
+    }
+    else {
+      this._data = value.data;
+      this._type = value.type;
+    }
+  }
+
   // data - computed: false, optional: true, required: false
-  private _data?: string | undefined; 
+  private _data?: string; 
   public get data() {
     return this.getStringAttribute('data');
   }
-  public set data(value: string | undefined) {
+  public set data(value: string) {
     this._data = value;
   }
   public resetData() {
@@ -63,7 +88,7 @@ export class WafXssMatchSetXssMatchTuplesFieldToMatchOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get dataInput() {
-    return this._data
+    return this._data;
   }
 
   // type - computed: false, optional: false, required: true
@@ -76,7 +101,7 @@ export class WafXssMatchSetXssMatchTuplesFieldToMatchOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 export interface WafXssMatchSetXssMatchTuples {
@@ -164,16 +189,16 @@ export class WafXssMatchSet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // xss_match_tuples - computed: false, optional: true, required: false
-  private _xssMatchTuples?: WafXssMatchSetXssMatchTuples[] | undefined; 
+  private _xssMatchTuples?: WafXssMatchSetXssMatchTuples[]; 
   public get xssMatchTuples() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('xss_match_tuples') as any;
   }
-  public set xssMatchTuples(value: WafXssMatchSetXssMatchTuples[] | undefined) {
+  public set xssMatchTuples(value: WafXssMatchSetXssMatchTuples[]) {
     this._xssMatchTuples = value;
   }
   public resetXssMatchTuples() {
@@ -181,7 +206,7 @@ export class WafXssMatchSet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get xssMatchTuplesInput() {
-    return this._xssMatchTuples
+    return this._xssMatchTuples;
   }
 
   // =========

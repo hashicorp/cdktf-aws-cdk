@@ -66,6 +66,31 @@ export class GlueCatalogDatabaseTargetDatabaseOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueCatalogDatabaseTargetDatabase | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._catalogId) {
+      hasAnyValues = true;
+      internalValueResult.catalogId = this._catalogId;
+    }
+    if (this._databaseName) {
+      hasAnyValues = true;
+      internalValueResult.databaseName = this._databaseName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueCatalogDatabaseTargetDatabase | undefined) {
+    if (value === undefined) {
+      this._catalogId = undefined;
+      this._databaseName = undefined;
+    }
+    else {
+      this._catalogId = value.catalogId;
+      this._databaseName = value.databaseName;
+    }
+  }
+
   // catalog_id - computed: false, optional: false, required: true
   private _catalogId?: string; 
   public get catalogId() {
@@ -76,7 +101,7 @@ export class GlueCatalogDatabaseTargetDatabaseOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get catalogIdInput() {
-    return this._catalogId
+    return this._catalogId;
   }
 
   // database_name - computed: false, optional: false, required: true
@@ -89,7 +114,7 @@ export class GlueCatalogDatabaseTargetDatabaseOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get databaseNameInput() {
-    return this._databaseName
+    return this._databaseName;
   }
 }
 
@@ -130,7 +155,7 @@ export class GlueCatalogDatabase extends cdktf.TerraformResource {
     this._locationUri = config.locationUri;
     this._name = config.name;
     this._parameters = config.parameters;
-    this._targetDatabase = config.targetDatabase;
+    this._targetDatabase.internalValue = config.targetDatabase;
   }
 
   // ==========
@@ -143,11 +168,11 @@ export class GlueCatalogDatabase extends cdktf.TerraformResource {
   }
 
   // catalog_id - computed: true, optional: true, required: false
-  private _catalogId?: string | undefined; 
+  private _catalogId?: string; 
   public get catalogId() {
     return this.getStringAttribute('catalog_id');
   }
-  public set catalogId(value: string | undefined) {
+  public set catalogId(value: string) {
     this._catalogId = value;
   }
   public resetCatalogId() {
@@ -155,15 +180,15 @@ export class GlueCatalogDatabase extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get catalogIdInput() {
-    return this._catalogId
+    return this._catalogId;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -171,7 +196,7 @@ export class GlueCatalogDatabase extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -180,11 +205,11 @@ export class GlueCatalogDatabase extends cdktf.TerraformResource {
   }
 
   // location_uri - computed: true, optional: true, required: false
-  private _locationUri?: string | undefined; 
+  private _locationUri?: string; 
   public get locationUri() {
     return this.getStringAttribute('location_uri');
   }
-  public set locationUri(value: string | undefined) {
+  public set locationUri(value: string) {
     this._locationUri = value;
   }
   public resetLocationUri() {
@@ -192,7 +217,7 @@ export class GlueCatalogDatabase extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get locationUriInput() {
-    return this._locationUri
+    return this._locationUri;
   }
 
   // name - computed: false, optional: false, required: true
@@ -205,16 +230,16 @@ export class GlueCatalogDatabase extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // parameters - computed: false, optional: true, required: false
-  private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _parameters?: { [key: string]: string } | cdktf.IResolvable; 
   public get parameters() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('parameters') as any;
   }
-  public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set parameters(value: { [key: string]: string } | cdktf.IResolvable) {
     this._parameters = value;
   }
   public resetParameters() {
@@ -222,24 +247,23 @@ export class GlueCatalogDatabase extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parametersInput() {
-    return this._parameters
+    return this._parameters;
   }
 
   // target_database - computed: false, optional: true, required: false
-  private _targetDatabase?: GlueCatalogDatabaseTargetDatabase | undefined; 
-  private __targetDatabaseOutput = new GlueCatalogDatabaseTargetDatabaseOutputReference(this as any, "target_database", true);
+  private _targetDatabase = new GlueCatalogDatabaseTargetDatabaseOutputReference(this as any, "target_database", true);
   public get targetDatabase() {
-    return this.__targetDatabaseOutput;
+    return this._targetDatabase;
   }
-  public putTargetDatabase(value: GlueCatalogDatabaseTargetDatabase | undefined) {
-    this._targetDatabase = value;
+  public putTargetDatabase(value: GlueCatalogDatabaseTargetDatabase) {
+    this._targetDatabase.internalValue = value;
   }
   public resetTargetDatabase() {
-    this._targetDatabase = undefined;
+    this._targetDatabase.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get targetDatabaseInput() {
-    return this._targetDatabase
+    return this._targetDatabase.internalValue;
   }
 
   // =========
@@ -253,7 +277,7 @@ export class GlueCatalogDatabase extends cdktf.TerraformResource {
       location_uri: cdktf.stringToTerraform(this._locationUri),
       name: cdktf.stringToTerraform(this._name),
       parameters: cdktf.hashMapper(cdktf.anyToTerraform)(this._parameters),
-      target_database: glueCatalogDatabaseTargetDatabaseToTerraform(this._targetDatabase),
+      target_database: glueCatalogDatabaseTargetDatabaseToTerraform(this._targetDatabase.internalValue),
     };
   }
 }

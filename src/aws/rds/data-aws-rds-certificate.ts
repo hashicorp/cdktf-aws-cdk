@@ -78,11 +78,11 @@ export class DataAwsRdsCertificate extends cdktf.TerraformDataSource {
   }
 
   // latest_valid_till - computed: false, optional: true, required: false
-  private _latestValidTill?: boolean | cdktf.IResolvable | undefined; 
+  private _latestValidTill?: boolean | cdktf.IResolvable; 
   public get latestValidTill() {
     return this.getBooleanAttribute('latest_valid_till') as any;
   }
-  public set latestValidTill(value: boolean | cdktf.IResolvable | undefined) {
+  public set latestValidTill(value: boolean | cdktf.IResolvable) {
     this._latestValidTill = value;
   }
   public resetLatestValidTill() {
@@ -90,7 +90,7 @@ export class DataAwsRdsCertificate extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get latestValidTillInput() {
-    return this._latestValidTill
+    return this._latestValidTill;
   }
 
   // thumbprint - computed: true, optional: false, required: false

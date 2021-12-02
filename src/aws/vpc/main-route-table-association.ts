@@ -77,7 +77,7 @@ export class MainRouteTableAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get routeTableIdInput() {
-    return this._routeTableId
+    return this._routeTableId;
   }
 
   // vpc_id - computed: false, optional: false, required: true
@@ -90,7 +90,7 @@ export class MainRouteTableAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 
   // =========

@@ -108,11 +108,11 @@ export class DataAwsRoute53Zone extends cdktf.TerraformDataSource {
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -120,7 +120,7 @@ export class DataAwsRoute53Zone extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_servers - computed: true, optional: false, required: false
@@ -129,11 +129,11 @@ export class DataAwsRoute53Zone extends cdktf.TerraformDataSource {
   }
 
   // private_zone - computed: false, optional: true, required: false
-  private _privateZone?: boolean | cdktf.IResolvable | undefined; 
+  private _privateZone?: boolean | cdktf.IResolvable; 
   public get privateZone() {
     return this.getBooleanAttribute('private_zone') as any;
   }
-  public set privateZone(value: boolean | cdktf.IResolvable | undefined) {
+  public set privateZone(value: boolean | cdktf.IResolvable) {
     this._privateZone = value;
   }
   public resetPrivateZone() {
@@ -141,15 +141,15 @@ export class DataAwsRoute53Zone extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get privateZoneInput() {
-    return this._privateZone
+    return this._privateZone;
   }
 
   // resource_record_set_count - computed: true, optional: true, required: false
-  private _resourceRecordSetCount?: number | undefined; 
+  private _resourceRecordSetCount?: number; 
   public get resourceRecordSetCount() {
     return this.getNumberAttribute('resource_record_set_count');
   }
-  public set resourceRecordSetCount(value: number | undefined) {
+  public set resourceRecordSetCount(value: number) {
     this._resourceRecordSetCount = value;
   }
   public resetResourceRecordSetCount() {
@@ -157,16 +157,16 @@ export class DataAwsRoute53Zone extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceRecordSetCountInput() {
-    return this._resourceRecordSetCount
+    return this._resourceRecordSetCount;
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -174,15 +174,15 @@ export class DataAwsRoute53Zone extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // vpc_id - computed: true, optional: true, required: false
-  private _vpcId?: string | undefined; 
+  private _vpcId?: string; 
   public get vpcId() {
     return this.getStringAttribute('vpc_id');
   }
-  public set vpcId(value: string | undefined) {
+  public set vpcId(value: string) {
     this._vpcId = value;
   }
   public resetVpcId() {
@@ -190,15 +190,15 @@ export class DataAwsRoute53Zone extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 
   // zone_id - computed: true, optional: true, required: false
-  private _zoneId?: string | undefined; 
+  private _zoneId?: string; 
   public get zoneId() {
     return this.getStringAttribute('zone_id');
   }
-  public set zoneId(value: string | undefined) {
+  public set zoneId(value: string) {
     this._zoneId = value;
   }
   public resetZoneId() {
@@ -206,7 +206,7 @@ export class DataAwsRoute53Zone extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get zoneIdInput() {
-    return this._zoneId
+    return this._zoneId;
   }
 
   // =========

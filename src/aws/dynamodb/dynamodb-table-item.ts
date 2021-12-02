@@ -77,7 +77,7 @@ export class DynamodbTableItem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get hashKeyInput() {
-    return this._hashKey
+    return this._hashKey;
   }
 
   // id - computed: true, optional: true, required: false
@@ -95,15 +95,15 @@ export class DynamodbTableItem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get itemInput() {
-    return this._item
+    return this._item;
   }
 
   // range_key - computed: false, optional: true, required: false
-  private _rangeKey?: string | undefined; 
+  private _rangeKey?: string; 
   public get rangeKey() {
     return this.getStringAttribute('range_key');
   }
-  public set rangeKey(value: string | undefined) {
+  public set rangeKey(value: string) {
     this._rangeKey = value;
   }
   public resetRangeKey() {
@@ -111,7 +111,7 @@ export class DynamodbTableItem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rangeKeyInput() {
-    return this._rangeKey
+    return this._rangeKey;
   }
 
   // table_name - computed: false, optional: false, required: true
@@ -124,7 +124,7 @@ export class DynamodbTableItem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tableNameInput() {
-    return this._tableName
+    return this._tableName;
   }
 
   // =========

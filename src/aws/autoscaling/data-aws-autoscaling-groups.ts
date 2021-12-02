@@ -92,12 +92,12 @@ export class DataAwsAutoscalingGroups extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsAutoscalingGroupsFilter[] | undefined; 
+  private _filter?: DataAwsAutoscalingGroupsFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsAutoscalingGroupsFilter[] | undefined) {
+  public set filter(value: DataAwsAutoscalingGroupsFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -105,7 +105,7 @@ export class DataAwsAutoscalingGroups extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

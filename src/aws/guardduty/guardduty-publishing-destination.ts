@@ -77,15 +77,15 @@ export class GuarddutyPublishingDestination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get destinationArnInput() {
-    return this._destinationArn
+    return this._destinationArn;
   }
 
   // destination_type - computed: false, optional: true, required: false
-  private _destinationType?: string | undefined; 
+  private _destinationType?: string; 
   public get destinationType() {
     return this.getStringAttribute('destination_type');
   }
-  public set destinationType(value: string | undefined) {
+  public set destinationType(value: string) {
     this._destinationType = value;
   }
   public resetDestinationType() {
@@ -93,7 +93,7 @@ export class GuarddutyPublishingDestination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get destinationTypeInput() {
-    return this._destinationType
+    return this._destinationType;
   }
 
   // detector_id - computed: false, optional: false, required: true
@@ -106,7 +106,7 @@ export class GuarddutyPublishingDestination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get detectorIdInput() {
-    return this._detectorId
+    return this._detectorId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -124,7 +124,7 @@ export class GuarddutyPublishingDestination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyArnInput() {
-    return this._kmsKeyArn
+    return this._kmsKeyArn;
   }
 
   // =========

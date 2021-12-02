@@ -138,11 +138,11 @@ export class DataAwsCloudfrontOriginRequestPolicy extends cdktf.TerraformDataSou
   }
 
   // id - computed: false, optional: true, required: false
-  private _id?: string | undefined; 
+  private _id?: string; 
   public get id() {
     return this.getStringAttribute('id');
   }
-  public set id(value: string | undefined) {
+  public set id(value: string) {
     this._id = value;
   }
   public resetId() {
@@ -150,15 +150,15 @@ export class DataAwsCloudfrontOriginRequestPolicy extends cdktf.TerraformDataSou
   }
   // Temporarily expose input value. Use with caution.
   public get idInput() {
-    return this._id
+    return this._id;
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -166,7 +166,7 @@ export class DataAwsCloudfrontOriginRequestPolicy extends cdktf.TerraformDataSou
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // query_strings_config - computed: true, optional: false, required: false

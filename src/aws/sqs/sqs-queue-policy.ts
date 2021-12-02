@@ -72,7 +72,7 @@ export class SqsQueuePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // queue_url - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class SqsQueuePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get queueUrlInput() {
-    return this._queueUrl
+    return this._queueUrl;
   }
 
   // =========

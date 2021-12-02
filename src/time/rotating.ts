@@ -113,11 +113,11 @@ export class Rotating extends cdktf.TerraformResource {
   }
 
   // rfc3339 - computed: true, optional: true, required: false
-  private _rfc3339?: string | undefined; 
+  private _rfc3339?: string; 
   public get rfc3339() {
     return this.getStringAttribute('rfc3339');
   }
-  public set rfc3339(value: string | undefined) {
+  public set rfc3339(value: string) {
     this._rfc3339 = value;
   }
   public resetRfc3339() {
@@ -125,15 +125,15 @@ export class Rotating extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rfc3339Input() {
-    return this._rfc3339
+    return this._rfc3339;
   }
 
   // rotation_days - computed: false, optional: true, required: false
-  private _rotationDays?: number | undefined; 
+  private _rotationDays?: number; 
   public get rotationDays() {
     return this.getNumberAttribute('rotation_days');
   }
-  public set rotationDays(value: number | undefined) {
+  public set rotationDays(value: number) {
     this._rotationDays = value;
   }
   public resetRotationDays() {
@@ -141,15 +141,15 @@ export class Rotating extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rotationDaysInput() {
-    return this._rotationDays
+    return this._rotationDays;
   }
 
   // rotation_hours - computed: false, optional: true, required: false
-  private _rotationHours?: number | undefined; 
+  private _rotationHours?: number; 
   public get rotationHours() {
     return this.getNumberAttribute('rotation_hours');
   }
-  public set rotationHours(value: number | undefined) {
+  public set rotationHours(value: number) {
     this._rotationHours = value;
   }
   public resetRotationHours() {
@@ -157,15 +157,15 @@ export class Rotating extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rotationHoursInput() {
-    return this._rotationHours
+    return this._rotationHours;
   }
 
   // rotation_minutes - computed: false, optional: true, required: false
-  private _rotationMinutes?: number | undefined; 
+  private _rotationMinutes?: number; 
   public get rotationMinutes() {
     return this.getNumberAttribute('rotation_minutes');
   }
-  public set rotationMinutes(value: number | undefined) {
+  public set rotationMinutes(value: number) {
     this._rotationMinutes = value;
   }
   public resetRotationMinutes() {
@@ -173,15 +173,15 @@ export class Rotating extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rotationMinutesInput() {
-    return this._rotationMinutes
+    return this._rotationMinutes;
   }
 
   // rotation_months - computed: false, optional: true, required: false
-  private _rotationMonths?: number | undefined; 
+  private _rotationMonths?: number; 
   public get rotationMonths() {
     return this.getNumberAttribute('rotation_months');
   }
-  public set rotationMonths(value: number | undefined) {
+  public set rotationMonths(value: number) {
     this._rotationMonths = value;
   }
   public resetRotationMonths() {
@@ -189,15 +189,15 @@ export class Rotating extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rotationMonthsInput() {
-    return this._rotationMonths
+    return this._rotationMonths;
   }
 
   // rotation_rfc3339 - computed: true, optional: true, required: false
-  private _rotationRfc3339?: string | undefined; 
+  private _rotationRfc3339?: string; 
   public get rotationRfc3339() {
     return this.getStringAttribute('rotation_rfc3339');
   }
-  public set rotationRfc3339(value: string | undefined) {
+  public set rotationRfc3339(value: string) {
     this._rotationRfc3339 = value;
   }
   public resetRotationRfc3339() {
@@ -205,15 +205,15 @@ export class Rotating extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rotationRfc3339Input() {
-    return this._rotationRfc3339
+    return this._rotationRfc3339;
   }
 
   // rotation_years - computed: false, optional: true, required: false
-  private _rotationYears?: number | undefined; 
+  private _rotationYears?: number; 
   public get rotationYears() {
     return this.getNumberAttribute('rotation_years');
   }
-  public set rotationYears(value: number | undefined) {
+  public set rotationYears(value: number) {
     this._rotationYears = value;
   }
   public resetRotationYears() {
@@ -221,7 +221,7 @@ export class Rotating extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get rotationYearsInput() {
-    return this._rotationYears
+    return this._rotationYears;
   }
 
   // second - computed: true, optional: false, required: false
@@ -230,12 +230,12 @@ export class Rotating extends cdktf.TerraformResource {
   }
 
   // triggers - computed: false, optional: true, required: false
-  private _triggers?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _triggers?: { [key: string]: string } | cdktf.IResolvable; 
   public get triggers() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('triggers') as any;
   }
-  public set triggers(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set triggers(value: { [key: string]: string } | cdktf.IResolvable) {
     this._triggers = value;
   }
   public resetTriggers() {
@@ -243,7 +243,7 @@ export class Rotating extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get triggersInput() {
-    return this._triggers
+    return this._triggers;
   }
 
   // unix - computed: true, optional: false, required: false

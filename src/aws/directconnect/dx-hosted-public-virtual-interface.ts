@@ -86,12 +86,37 @@ export class DxHostedPublicVirtualInterfaceTimeoutsOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DxHostedPublicVirtualInterfaceTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DxHostedPublicVirtualInterfaceTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -99,15 +124,15 @@ export class DxHostedPublicVirtualInterfaceTimeoutsOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -115,7 +140,7 @@ export class DxHostedPublicVirtualInterfaceTimeoutsOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -161,7 +186,7 @@ export class DxHostedPublicVirtualInterface extends cdktf.TerraformResource {
     this._ownerAccountId = config.ownerAccountId;
     this._routeFilterPrefixes = config.routeFilterPrefixes;
     this._vlan = config.vlan;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -178,15 +203,15 @@ export class DxHostedPublicVirtualInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get addressFamilyInput() {
-    return this._addressFamily
+    return this._addressFamily;
   }
 
   // amazon_address - computed: true, optional: true, required: false
-  private _amazonAddress?: string | undefined; 
+  private _amazonAddress?: string; 
   public get amazonAddress() {
     return this.getStringAttribute('amazon_address');
   }
-  public set amazonAddress(value: string | undefined) {
+  public set amazonAddress(value: string) {
     this._amazonAddress = value;
   }
   public resetAmazonAddress() {
@@ -194,7 +219,7 @@ export class DxHostedPublicVirtualInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get amazonAddressInput() {
-    return this._amazonAddress
+    return this._amazonAddress;
   }
 
   // amazon_side_asn - computed: true, optional: false, required: false
@@ -222,15 +247,15 @@ export class DxHostedPublicVirtualInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bgpAsnInput() {
-    return this._bgpAsn
+    return this._bgpAsn;
   }
 
   // bgp_auth_key - computed: true, optional: true, required: false
-  private _bgpAuthKey?: string | undefined; 
+  private _bgpAuthKey?: string; 
   public get bgpAuthKey() {
     return this.getStringAttribute('bgp_auth_key');
   }
-  public set bgpAuthKey(value: string | undefined) {
+  public set bgpAuthKey(value: string) {
     this._bgpAuthKey = value;
   }
   public resetBgpAuthKey() {
@@ -238,7 +263,7 @@ export class DxHostedPublicVirtualInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bgpAuthKeyInput() {
-    return this._bgpAuthKey
+    return this._bgpAuthKey;
   }
 
   // connection_id - computed: false, optional: false, required: true
@@ -251,15 +276,15 @@ export class DxHostedPublicVirtualInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get connectionIdInput() {
-    return this._connectionId
+    return this._connectionId;
   }
 
   // customer_address - computed: true, optional: true, required: false
-  private _customerAddress?: string | undefined; 
+  private _customerAddress?: string; 
   public get customerAddress() {
     return this.getStringAttribute('customer_address');
   }
-  public set customerAddress(value: string | undefined) {
+  public set customerAddress(value: string) {
     this._customerAddress = value;
   }
   public resetCustomerAddress() {
@@ -267,7 +292,7 @@ export class DxHostedPublicVirtualInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customerAddressInput() {
-    return this._customerAddress
+    return this._customerAddress;
   }
 
   // id - computed: true, optional: true, required: false
@@ -285,7 +310,7 @@ export class DxHostedPublicVirtualInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // owner_account_id - computed: false, optional: false, required: true
@@ -298,7 +323,7 @@ export class DxHostedPublicVirtualInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ownerAccountIdInput() {
-    return this._ownerAccountId
+    return this._ownerAccountId;
   }
 
   // route_filter_prefixes - computed: false, optional: false, required: true
@@ -311,7 +336,7 @@ export class DxHostedPublicVirtualInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get routeFilterPrefixesInput() {
-    return this._routeFilterPrefixes
+    return this._routeFilterPrefixes;
   }
 
   // vlan - computed: false, optional: false, required: true
@@ -324,24 +349,23 @@ export class DxHostedPublicVirtualInterface extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vlanInput() {
-    return this._vlan
+    return this._vlan;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DxHostedPublicVirtualInterfaceTimeouts | undefined; 
-  private __timeoutsOutput = new DxHostedPublicVirtualInterfaceTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DxHostedPublicVirtualInterfaceTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DxHostedPublicVirtualInterfaceTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DxHostedPublicVirtualInterfaceTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -360,7 +384,7 @@ export class DxHostedPublicVirtualInterface extends cdktf.TerraformResource {
       owner_account_id: cdktf.stringToTerraform(this._ownerAccountId),
       route_filter_prefixes: cdktf.listMapper(cdktf.stringToTerraform)(this._routeFilterPrefixes),
       vlan: cdktf.numberToTerraform(this._vlan),
-      timeouts: dxHostedPublicVirtualInterfaceTimeoutsToTerraform(this._timeouts),
+      timeouts: dxHostedPublicVirtualInterfaceTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

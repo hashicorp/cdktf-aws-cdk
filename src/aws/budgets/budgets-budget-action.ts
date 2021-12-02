@@ -82,6 +82,31 @@ export class BudgetsBudgetActionActionThresholdOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): BudgetsBudgetActionActionThreshold | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._actionThresholdType) {
+      hasAnyValues = true;
+      internalValueResult.actionThresholdType = this._actionThresholdType;
+    }
+    if (this._actionThresholdValue) {
+      hasAnyValues = true;
+      internalValueResult.actionThresholdValue = this._actionThresholdValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: BudgetsBudgetActionActionThreshold | undefined) {
+    if (value === undefined) {
+      this._actionThresholdType = undefined;
+      this._actionThresholdValue = undefined;
+    }
+    else {
+      this._actionThresholdType = value.actionThresholdType;
+      this._actionThresholdValue = value.actionThresholdValue;
+    }
+  }
+
   // action_threshold_type - computed: false, optional: false, required: true
   private _actionThresholdType?: string; 
   public get actionThresholdType() {
@@ -92,7 +117,7 @@ export class BudgetsBudgetActionActionThresholdOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get actionThresholdTypeInput() {
-    return this._actionThresholdType
+    return this._actionThresholdType;
   }
 
   // action_threshold_value - computed: false, optional: false, required: true
@@ -105,7 +130,7 @@ export class BudgetsBudgetActionActionThresholdOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get actionThresholdValueInput() {
-    return this._actionThresholdValue
+    return this._actionThresholdValue;
   }
 }
 export interface BudgetsBudgetActionDefinitionIamActionDefinition {
@@ -150,12 +175,49 @@ export class BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference ext
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): BudgetsBudgetActionDefinitionIamActionDefinition | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._groups) {
+      hasAnyValues = true;
+      internalValueResult.groups = this._groups;
+    }
+    if (this._policyArn) {
+      hasAnyValues = true;
+      internalValueResult.policyArn = this._policyArn;
+    }
+    if (this._roles) {
+      hasAnyValues = true;
+      internalValueResult.roles = this._roles;
+    }
+    if (this._users) {
+      hasAnyValues = true;
+      internalValueResult.users = this._users;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: BudgetsBudgetActionDefinitionIamActionDefinition | undefined) {
+    if (value === undefined) {
+      this._groups = undefined;
+      this._policyArn = undefined;
+      this._roles = undefined;
+      this._users = undefined;
+    }
+    else {
+      this._groups = value.groups;
+      this._policyArn = value.policyArn;
+      this._roles = value.roles;
+      this._users = value.users;
+    }
+  }
+
   // groups - computed: false, optional: true, required: false
-  private _groups?: string[] | undefined; 
+  private _groups?: string[]; 
   public get groups() {
     return this.getListAttribute('groups');
   }
-  public set groups(value: string[] | undefined) {
+  public set groups(value: string[]) {
     this._groups = value;
   }
   public resetGroups() {
@@ -163,7 +225,7 @@ export class BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get groupsInput() {
-    return this._groups
+    return this._groups;
   }
 
   // policy_arn - computed: false, optional: false, required: true
@@ -176,15 +238,15 @@ export class BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get policyArnInput() {
-    return this._policyArn
+    return this._policyArn;
   }
 
   // roles - computed: false, optional: true, required: false
-  private _roles?: string[] | undefined; 
+  private _roles?: string[]; 
   public get roles() {
     return this.getListAttribute('roles');
   }
-  public set roles(value: string[] | undefined) {
+  public set roles(value: string[]) {
     this._roles = value;
   }
   public resetRoles() {
@@ -192,15 +254,15 @@ export class BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get rolesInput() {
-    return this._roles
+    return this._roles;
   }
 
   // users - computed: false, optional: true, required: false
-  private _users?: string[] | undefined; 
+  private _users?: string[]; 
   public get users() {
     return this.getListAttribute('users');
   }
-  public set users(value: string[] | undefined) {
+  public set users(value: string[]) {
     this._users = value;
   }
   public resetUsers() {
@@ -208,7 +270,7 @@ export class BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get usersInput() {
-    return this._users
+    return this._users;
   }
 }
 export interface BudgetsBudgetActionDefinitionScpActionDefinition {
@@ -243,6 +305,31 @@ export class BudgetsBudgetActionDefinitionScpActionDefinitionOutputReference ext
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): BudgetsBudgetActionDefinitionScpActionDefinition | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._policyId) {
+      hasAnyValues = true;
+      internalValueResult.policyId = this._policyId;
+    }
+    if (this._targetIds) {
+      hasAnyValues = true;
+      internalValueResult.targetIds = this._targetIds;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: BudgetsBudgetActionDefinitionScpActionDefinition | undefined) {
+    if (value === undefined) {
+      this._policyId = undefined;
+      this._targetIds = undefined;
+    }
+    else {
+      this._policyId = value.policyId;
+      this._targetIds = value.targetIds;
+    }
+  }
+
   // policy_id - computed: false, optional: false, required: true
   private _policyId?: string; 
   public get policyId() {
@@ -253,7 +340,7 @@ export class BudgetsBudgetActionDefinitionScpActionDefinitionOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get policyIdInput() {
-    return this._policyId
+    return this._policyId;
   }
 
   // target_ids - computed: false, optional: false, required: true
@@ -266,7 +353,7 @@ export class BudgetsBudgetActionDefinitionScpActionDefinitionOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get targetIdsInput() {
-    return this._targetIds
+    return this._targetIds;
   }
 }
 export interface BudgetsBudgetActionDefinitionSsmActionDefinition {
@@ -306,6 +393,37 @@ export class BudgetsBudgetActionDefinitionSsmActionDefinitionOutputReference ext
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): BudgetsBudgetActionDefinitionSsmActionDefinition | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._actionSubType) {
+      hasAnyValues = true;
+      internalValueResult.actionSubType = this._actionSubType;
+    }
+    if (this._instanceIds) {
+      hasAnyValues = true;
+      internalValueResult.instanceIds = this._instanceIds;
+    }
+    if (this._region) {
+      hasAnyValues = true;
+      internalValueResult.region = this._region;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: BudgetsBudgetActionDefinitionSsmActionDefinition | undefined) {
+    if (value === undefined) {
+      this._actionSubType = undefined;
+      this._instanceIds = undefined;
+      this._region = undefined;
+    }
+    else {
+      this._actionSubType = value.actionSubType;
+      this._instanceIds = value.instanceIds;
+      this._region = value.region;
+    }
+  }
+
   // action_sub_type - computed: false, optional: false, required: true
   private _actionSubType?: string; 
   public get actionSubType() {
@@ -316,7 +434,7 @@ export class BudgetsBudgetActionDefinitionSsmActionDefinitionOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get actionSubTypeInput() {
-    return this._actionSubType
+    return this._actionSubType;
   }
 
   // instance_ids - computed: false, optional: false, required: true
@@ -329,7 +447,7 @@ export class BudgetsBudgetActionDefinitionSsmActionDefinitionOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get instanceIdsInput() {
-    return this._instanceIds
+    return this._instanceIds;
   }
 
   // region - computed: false, optional: false, required: true
@@ -342,7 +460,7 @@ export class BudgetsBudgetActionDefinitionSsmActionDefinitionOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get regionInput() {
-    return this._region
+    return this._region;
   }
 }
 export interface BudgetsBudgetActionDefinition {
@@ -388,55 +506,83 @@ export class BudgetsBudgetActionDefinitionOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // iam_action_definition - computed: false, optional: true, required: false
-  private _iamActionDefinition?: BudgetsBudgetActionDefinitionIamActionDefinition | undefined; 
-  private __iamActionDefinitionOutput = new BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference(this as any, "iam_action_definition", true);
-  public get iamActionDefinition() {
-    return this.__iamActionDefinitionOutput;
+  public get internalValue(): BudgetsBudgetActionDefinition | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._iamActionDefinition) {
+      hasAnyValues = true;
+      internalValueResult.iamActionDefinition = this._iamActionDefinition?.internalValue;
+    }
+    if (this._scpActionDefinition) {
+      hasAnyValues = true;
+      internalValueResult.scpActionDefinition = this._scpActionDefinition?.internalValue;
+    }
+    if (this._ssmActionDefinition) {
+      hasAnyValues = true;
+      internalValueResult.ssmActionDefinition = this._ssmActionDefinition?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putIamActionDefinition(value: BudgetsBudgetActionDefinitionIamActionDefinition | undefined) {
-    this._iamActionDefinition = value;
+
+  public set internalValue(value: BudgetsBudgetActionDefinition | undefined) {
+    if (value === undefined) {
+      this._iamActionDefinition.internalValue = undefined;
+      this._scpActionDefinition.internalValue = undefined;
+      this._ssmActionDefinition.internalValue = undefined;
+    }
+    else {
+      this._iamActionDefinition.internalValue = value.iamActionDefinition;
+      this._scpActionDefinition.internalValue = value.scpActionDefinition;
+      this._ssmActionDefinition.internalValue = value.ssmActionDefinition;
+    }
+  }
+
+  // iam_action_definition - computed: false, optional: true, required: false
+  private _iamActionDefinition = new BudgetsBudgetActionDefinitionIamActionDefinitionOutputReference(this as any, "iam_action_definition", true);
+  public get iamActionDefinition() {
+    return this._iamActionDefinition;
+  }
+  public putIamActionDefinition(value: BudgetsBudgetActionDefinitionIamActionDefinition) {
+    this._iamActionDefinition.internalValue = value;
   }
   public resetIamActionDefinition() {
-    this._iamActionDefinition = undefined;
+    this._iamActionDefinition.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get iamActionDefinitionInput() {
-    return this._iamActionDefinition
+    return this._iamActionDefinition.internalValue;
   }
 
   // scp_action_definition - computed: false, optional: true, required: false
-  private _scpActionDefinition?: BudgetsBudgetActionDefinitionScpActionDefinition | undefined; 
-  private __scpActionDefinitionOutput = new BudgetsBudgetActionDefinitionScpActionDefinitionOutputReference(this as any, "scp_action_definition", true);
+  private _scpActionDefinition = new BudgetsBudgetActionDefinitionScpActionDefinitionOutputReference(this as any, "scp_action_definition", true);
   public get scpActionDefinition() {
-    return this.__scpActionDefinitionOutput;
+    return this._scpActionDefinition;
   }
-  public putScpActionDefinition(value: BudgetsBudgetActionDefinitionScpActionDefinition | undefined) {
-    this._scpActionDefinition = value;
+  public putScpActionDefinition(value: BudgetsBudgetActionDefinitionScpActionDefinition) {
+    this._scpActionDefinition.internalValue = value;
   }
   public resetScpActionDefinition() {
-    this._scpActionDefinition = undefined;
+    this._scpActionDefinition.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get scpActionDefinitionInput() {
-    return this._scpActionDefinition
+    return this._scpActionDefinition.internalValue;
   }
 
   // ssm_action_definition - computed: false, optional: true, required: false
-  private _ssmActionDefinition?: BudgetsBudgetActionDefinitionSsmActionDefinition | undefined; 
-  private __ssmActionDefinitionOutput = new BudgetsBudgetActionDefinitionSsmActionDefinitionOutputReference(this as any, "ssm_action_definition", true);
+  private _ssmActionDefinition = new BudgetsBudgetActionDefinitionSsmActionDefinitionOutputReference(this as any, "ssm_action_definition", true);
   public get ssmActionDefinition() {
-    return this.__ssmActionDefinitionOutput;
+    return this._ssmActionDefinition;
   }
-  public putSsmActionDefinition(value: BudgetsBudgetActionDefinitionSsmActionDefinition | undefined) {
-    this._ssmActionDefinition = value;
+  public putSsmActionDefinition(value: BudgetsBudgetActionDefinitionSsmActionDefinition) {
+    this._ssmActionDefinition.internalValue = value;
   }
   public resetSsmActionDefinition() {
-    this._ssmActionDefinition = undefined;
+    this._ssmActionDefinition.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ssmActionDefinitionInput() {
-    return this._ssmActionDefinition
+    return this._ssmActionDefinition.internalValue;
   }
 }
 export interface BudgetsBudgetActionSubscriber {
@@ -500,8 +646,8 @@ export class BudgetsBudgetAction extends cdktf.TerraformResource {
     this._budgetName = config.budgetName;
     this._executionRoleArn = config.executionRoleArn;
     this._notificationType = config.notificationType;
-    this._actionThreshold = config.actionThreshold;
-    this._definition = config.definition;
+    this._actionThreshold.internalValue = config.actionThreshold;
+    this._definition.internalValue = config.definition;
     this._subscriber = config.subscriber;
   }
 
@@ -510,11 +656,11 @@ export class BudgetsBudgetAction extends cdktf.TerraformResource {
   // ==========
 
   // account_id - computed: true, optional: true, required: false
-  private _accountId?: string | undefined; 
+  private _accountId?: string; 
   public get accountId() {
     return this.getStringAttribute('account_id');
   }
-  public set accountId(value: string | undefined) {
+  public set accountId(value: string) {
     this._accountId = value;
   }
   public resetAccountId() {
@@ -522,7 +668,7 @@ export class BudgetsBudgetAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accountIdInput() {
-    return this._accountId
+    return this._accountId;
   }
 
   // action_id - computed: true, optional: false, required: false
@@ -540,7 +686,7 @@ export class BudgetsBudgetAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get actionTypeInput() {
-    return this._actionType
+    return this._actionType;
   }
 
   // approval_model - computed: false, optional: false, required: true
@@ -553,7 +699,7 @@ export class BudgetsBudgetAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get approvalModelInput() {
-    return this._approvalModel
+    return this._approvalModel;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -571,7 +717,7 @@ export class BudgetsBudgetAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get budgetNameInput() {
-    return this._budgetName
+    return this._budgetName;
   }
 
   // execution_role_arn - computed: false, optional: false, required: true
@@ -584,7 +730,7 @@ export class BudgetsBudgetAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get executionRoleArnInput() {
-    return this._executionRoleArn
+    return this._executionRoleArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -602,7 +748,7 @@ export class BudgetsBudgetAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get notificationTypeInput() {
-    return this._notificationType
+    return this._notificationType;
   }
 
   // status - computed: true, optional: false, required: false
@@ -611,31 +757,29 @@ export class BudgetsBudgetAction extends cdktf.TerraformResource {
   }
 
   // action_threshold - computed: false, optional: false, required: true
-  private _actionThreshold?: BudgetsBudgetActionActionThreshold; 
-  private __actionThresholdOutput = new BudgetsBudgetActionActionThresholdOutputReference(this as any, "action_threshold", true);
+  private _actionThreshold = new BudgetsBudgetActionActionThresholdOutputReference(this as any, "action_threshold", true);
   public get actionThreshold() {
-    return this.__actionThresholdOutput;
+    return this._actionThreshold;
   }
   public putActionThreshold(value: BudgetsBudgetActionActionThreshold) {
-    this._actionThreshold = value;
+    this._actionThreshold.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get actionThresholdInput() {
-    return this._actionThreshold
+    return this._actionThreshold.internalValue;
   }
 
   // definition - computed: false, optional: false, required: true
-  private _definition?: BudgetsBudgetActionDefinition; 
-  private __definitionOutput = new BudgetsBudgetActionDefinitionOutputReference(this as any, "definition", true);
+  private _definition = new BudgetsBudgetActionDefinitionOutputReference(this as any, "definition", true);
   public get definition() {
-    return this.__definitionOutput;
+    return this._definition;
   }
   public putDefinition(value: BudgetsBudgetActionDefinition) {
-    this._definition = value;
+    this._definition.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get definitionInput() {
-    return this._definition
+    return this._definition.internalValue;
   }
 
   // subscriber - computed: false, optional: false, required: true
@@ -649,7 +793,7 @@ export class BudgetsBudgetAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subscriberInput() {
-    return this._subscriber
+    return this._subscriber;
   }
 
   // =========
@@ -664,8 +808,8 @@ export class BudgetsBudgetAction extends cdktf.TerraformResource {
       budget_name: cdktf.stringToTerraform(this._budgetName),
       execution_role_arn: cdktf.stringToTerraform(this._executionRoleArn),
       notification_type: cdktf.stringToTerraform(this._notificationType),
-      action_threshold: budgetsBudgetActionActionThresholdToTerraform(this._actionThreshold),
-      definition: budgetsBudgetActionDefinitionToTerraform(this._definition),
+      action_threshold: budgetsBudgetActionActionThresholdToTerraform(this._actionThreshold.internalValue),
+      definition: budgetsBudgetActionDefinitionToTerraform(this._definition.internalValue),
       subscriber: cdktf.listMapper(budgetsBudgetActionSubscriberToTerraform)(this._subscriber),
     };
   }

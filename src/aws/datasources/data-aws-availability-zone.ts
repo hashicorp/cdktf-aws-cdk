@@ -97,11 +97,11 @@ export class DataAwsAvailabilityZone extends cdktf.TerraformDataSource {
   // ==========
 
   // all_availability_zones - computed: false, optional: true, required: false
-  private _allAvailabilityZones?: boolean | cdktf.IResolvable | undefined; 
+  private _allAvailabilityZones?: boolean | cdktf.IResolvable; 
   public get allAvailabilityZones() {
     return this.getBooleanAttribute('all_availability_zones') as any;
   }
-  public set allAvailabilityZones(value: boolean | cdktf.IResolvable | undefined) {
+  public set allAvailabilityZones(value: boolean | cdktf.IResolvable) {
     this._allAvailabilityZones = value;
   }
   public resetAllAvailabilityZones() {
@@ -109,7 +109,7 @@ export class DataAwsAvailabilityZone extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get allAvailabilityZonesInput() {
-    return this._allAvailabilityZones
+    return this._allAvailabilityZones;
   }
 
   // group_name - computed: true, optional: false, required: false
@@ -123,11 +123,11 @@ export class DataAwsAvailabilityZone extends cdktf.TerraformDataSource {
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -135,7 +135,7 @@ export class DataAwsAvailabilityZone extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_suffix - computed: true, optional: false, required: false
@@ -169,11 +169,11 @@ export class DataAwsAvailabilityZone extends cdktf.TerraformDataSource {
   }
 
   // state - computed: true, optional: true, required: false
-  private _state?: string | undefined; 
+  private _state?: string; 
   public get state() {
     return this.getStringAttribute('state');
   }
-  public set state(value: string | undefined) {
+  public set state(value: string) {
     this._state = value;
   }
   public resetState() {
@@ -181,15 +181,15 @@ export class DataAwsAvailabilityZone extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get stateInput() {
-    return this._state
+    return this._state;
   }
 
   // zone_id - computed: true, optional: true, required: false
-  private _zoneId?: string | undefined; 
+  private _zoneId?: string; 
   public get zoneId() {
     return this.getStringAttribute('zone_id');
   }
-  public set zoneId(value: string | undefined) {
+  public set zoneId(value: string) {
     this._zoneId = value;
   }
   public resetZoneId() {
@@ -197,7 +197,7 @@ export class DataAwsAvailabilityZone extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get zoneIdInput() {
-    return this._zoneId
+    return this._zoneId;
   }
 
   // zone_type - computed: true, optional: false, required: false
@@ -206,12 +206,12 @@ export class DataAwsAvailabilityZone extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsAvailabilityZoneFilter[] | undefined; 
+  private _filter?: DataAwsAvailabilityZoneFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsAvailabilityZoneFilter[] | undefined) {
+  public set filter(value: DataAwsAvailabilityZoneFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -219,7 +219,7 @@ export class DataAwsAvailabilityZone extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

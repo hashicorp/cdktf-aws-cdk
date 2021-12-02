@@ -73,11 +73,11 @@ export class S3AccountPublicAccessBlock extends cdktf.TerraformResource {
   // ==========
 
   // account_id - computed: true, optional: true, required: false
-  private _accountId?: string | undefined; 
+  private _accountId?: string; 
   public get accountId() {
     return this.getStringAttribute('account_id');
   }
-  public set accountId(value: string | undefined) {
+  public set accountId(value: string) {
     this._accountId = value;
   }
   public resetAccountId() {
@@ -85,15 +85,15 @@ export class S3AccountPublicAccessBlock extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accountIdInput() {
-    return this._accountId
+    return this._accountId;
   }
 
   // block_public_acls - computed: false, optional: true, required: false
-  private _blockPublicAcls?: boolean | cdktf.IResolvable | undefined; 
+  private _blockPublicAcls?: boolean | cdktf.IResolvable; 
   public get blockPublicAcls() {
     return this.getBooleanAttribute('block_public_acls') as any;
   }
-  public set blockPublicAcls(value: boolean | cdktf.IResolvable | undefined) {
+  public set blockPublicAcls(value: boolean | cdktf.IResolvable) {
     this._blockPublicAcls = value;
   }
   public resetBlockPublicAcls() {
@@ -101,15 +101,15 @@ export class S3AccountPublicAccessBlock extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get blockPublicAclsInput() {
-    return this._blockPublicAcls
+    return this._blockPublicAcls;
   }
 
   // block_public_policy - computed: false, optional: true, required: false
-  private _blockPublicPolicy?: boolean | cdktf.IResolvable | undefined; 
+  private _blockPublicPolicy?: boolean | cdktf.IResolvable; 
   public get blockPublicPolicy() {
     return this.getBooleanAttribute('block_public_policy') as any;
   }
-  public set blockPublicPolicy(value: boolean | cdktf.IResolvable | undefined) {
+  public set blockPublicPolicy(value: boolean | cdktf.IResolvable) {
     this._blockPublicPolicy = value;
   }
   public resetBlockPublicPolicy() {
@@ -117,7 +117,7 @@ export class S3AccountPublicAccessBlock extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get blockPublicPolicyInput() {
-    return this._blockPublicPolicy
+    return this._blockPublicPolicy;
   }
 
   // id - computed: true, optional: true, required: false
@@ -126,11 +126,11 @@ export class S3AccountPublicAccessBlock extends cdktf.TerraformResource {
   }
 
   // ignore_public_acls - computed: false, optional: true, required: false
-  private _ignorePublicAcls?: boolean | cdktf.IResolvable | undefined; 
+  private _ignorePublicAcls?: boolean | cdktf.IResolvable; 
   public get ignorePublicAcls() {
     return this.getBooleanAttribute('ignore_public_acls') as any;
   }
-  public set ignorePublicAcls(value: boolean | cdktf.IResolvable | undefined) {
+  public set ignorePublicAcls(value: boolean | cdktf.IResolvable) {
     this._ignorePublicAcls = value;
   }
   public resetIgnorePublicAcls() {
@@ -138,15 +138,15 @@ export class S3AccountPublicAccessBlock extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ignorePublicAclsInput() {
-    return this._ignorePublicAcls
+    return this._ignorePublicAcls;
   }
 
   // restrict_public_buckets - computed: false, optional: true, required: false
-  private _restrictPublicBuckets?: boolean | cdktf.IResolvable | undefined; 
+  private _restrictPublicBuckets?: boolean | cdktf.IResolvable; 
   public get restrictPublicBuckets() {
     return this.getBooleanAttribute('restrict_public_buckets') as any;
   }
-  public set restrictPublicBuckets(value: boolean | cdktf.IResolvable | undefined) {
+  public set restrictPublicBuckets(value: boolean | cdktf.IResolvable) {
     this._restrictPublicBuckets = value;
   }
   public resetRestrictPublicBuckets() {
@@ -154,7 +154,7 @@ export class S3AccountPublicAccessBlock extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get restrictPublicBucketsInput() {
-    return this._restrictPublicBuckets
+    return this._restrictPublicBuckets;
   }
 
   // =========

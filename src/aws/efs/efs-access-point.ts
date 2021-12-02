@@ -69,6 +69,37 @@ export class EfsAccessPointPosixUserOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EfsAccessPointPosixUser | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._gid) {
+      hasAnyValues = true;
+      internalValueResult.gid = this._gid;
+    }
+    if (this._secondaryGids) {
+      hasAnyValues = true;
+      internalValueResult.secondaryGids = this._secondaryGids;
+    }
+    if (this._uid) {
+      hasAnyValues = true;
+      internalValueResult.uid = this._uid;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EfsAccessPointPosixUser | undefined) {
+    if (value === undefined) {
+      this._gid = undefined;
+      this._secondaryGids = undefined;
+      this._uid = undefined;
+    }
+    else {
+      this._gid = value.gid;
+      this._secondaryGids = value.secondaryGids;
+      this._uid = value.uid;
+    }
+  }
+
   // gid - computed: false, optional: false, required: true
   private _gid?: number; 
   public get gid() {
@@ -79,16 +110,16 @@ export class EfsAccessPointPosixUserOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get gidInput() {
-    return this._gid
+    return this._gid;
   }
 
   // secondary_gids - computed: false, optional: true, required: false
-  private _secondaryGids?: number[] | undefined; 
+  private _secondaryGids?: number[]; 
   public get secondaryGids() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('secondary_gids') as any;
   }
-  public set secondaryGids(value: number[] | undefined) {
+  public set secondaryGids(value: number[]) {
     this._secondaryGids = value;
   }
   public resetSecondaryGids() {
@@ -96,7 +127,7 @@ export class EfsAccessPointPosixUserOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get secondaryGidsInput() {
-    return this._secondaryGids
+    return this._secondaryGids;
   }
 
   // uid - computed: false, optional: false, required: true
@@ -109,7 +140,7 @@ export class EfsAccessPointPosixUserOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get uidInput() {
-    return this._uid
+    return this._uid;
   }
 }
 export interface EfsAccessPointRootDirectoryCreationInfo {
@@ -149,6 +180,37 @@ export class EfsAccessPointRootDirectoryCreationInfoOutputReference extends cdkt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EfsAccessPointRootDirectoryCreationInfo | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._ownerGid) {
+      hasAnyValues = true;
+      internalValueResult.ownerGid = this._ownerGid;
+    }
+    if (this._ownerUid) {
+      hasAnyValues = true;
+      internalValueResult.ownerUid = this._ownerUid;
+    }
+    if (this._permissions) {
+      hasAnyValues = true;
+      internalValueResult.permissions = this._permissions;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EfsAccessPointRootDirectoryCreationInfo | undefined) {
+    if (value === undefined) {
+      this._ownerGid = undefined;
+      this._ownerUid = undefined;
+      this._permissions = undefined;
+    }
+    else {
+      this._ownerGid = value.ownerGid;
+      this._ownerUid = value.ownerUid;
+      this._permissions = value.permissions;
+    }
+  }
+
   // owner_gid - computed: false, optional: false, required: true
   private _ownerGid?: number; 
   public get ownerGid() {
@@ -159,7 +221,7 @@ export class EfsAccessPointRootDirectoryCreationInfoOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get ownerGidInput() {
-    return this._ownerGid
+    return this._ownerGid;
   }
 
   // owner_uid - computed: false, optional: false, required: true
@@ -172,7 +234,7 @@ export class EfsAccessPointRootDirectoryCreationInfoOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get ownerUidInput() {
-    return this._ownerUid
+    return this._ownerUid;
   }
 
   // permissions - computed: false, optional: false, required: true
@@ -185,7 +247,7 @@ export class EfsAccessPointRootDirectoryCreationInfoOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get permissionsInput() {
-    return this._permissions
+    return this._permissions;
   }
 }
 export interface EfsAccessPointRootDirectory {
@@ -222,12 +284,37 @@ export class EfsAccessPointRootDirectoryOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EfsAccessPointRootDirectory | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._path) {
+      hasAnyValues = true;
+      internalValueResult.path = this._path;
+    }
+    if (this._creationInfo) {
+      hasAnyValues = true;
+      internalValueResult.creationInfo = this._creationInfo?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EfsAccessPointRootDirectory | undefined) {
+    if (value === undefined) {
+      this._path = undefined;
+      this._creationInfo.internalValue = undefined;
+    }
+    else {
+      this._path = value.path;
+      this._creationInfo.internalValue = value.creationInfo;
+    }
+  }
+
   // path - computed: true, optional: true, required: false
-  private _path?: string | undefined; 
+  private _path?: string; 
   public get path() {
     return this.getStringAttribute('path');
   }
-  public set path(value: string | undefined) {
+  public set path(value: string) {
     this._path = value;
   }
   public resetPath() {
@@ -235,24 +322,23 @@ export class EfsAccessPointRootDirectoryOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get pathInput() {
-    return this._path
+    return this._path;
   }
 
   // creation_info - computed: false, optional: true, required: false
-  private _creationInfo?: EfsAccessPointRootDirectoryCreationInfo | undefined; 
-  private __creationInfoOutput = new EfsAccessPointRootDirectoryCreationInfoOutputReference(this as any, "creation_info", true);
+  private _creationInfo = new EfsAccessPointRootDirectoryCreationInfoOutputReference(this as any, "creation_info", true);
   public get creationInfo() {
-    return this.__creationInfoOutput;
+    return this._creationInfo;
   }
-  public putCreationInfo(value: EfsAccessPointRootDirectoryCreationInfo | undefined) {
-    this._creationInfo = value;
+  public putCreationInfo(value: EfsAccessPointRootDirectoryCreationInfo) {
+    this._creationInfo.internalValue = value;
   }
   public resetCreationInfo() {
-    this._creationInfo = undefined;
+    this._creationInfo.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get creationInfoInput() {
-    return this._creationInfo
+    return this._creationInfo.internalValue;
   }
 }
 
@@ -291,8 +377,8 @@ export class EfsAccessPoint extends cdktf.TerraformResource {
     this._fileSystemId = config.fileSystemId;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._posixUser = config.posixUser;
-    this._rootDirectory = config.rootDirectory;
+    this._posixUser.internalValue = config.posixUser;
+    this._rootDirectory.internalValue = config.rootDirectory;
   }
 
   // ==========
@@ -319,7 +405,7 @@ export class EfsAccessPoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fileSystemIdInput() {
-    return this._fileSystemId
+    return this._fileSystemId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -333,12 +419,12 @@ export class EfsAccessPoint extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -346,16 +432,16 @@ export class EfsAccessPoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -363,41 +449,39 @@ export class EfsAccessPoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // posix_user - computed: false, optional: true, required: false
-  private _posixUser?: EfsAccessPointPosixUser | undefined; 
-  private __posixUserOutput = new EfsAccessPointPosixUserOutputReference(this as any, "posix_user", true);
+  private _posixUser = new EfsAccessPointPosixUserOutputReference(this as any, "posix_user", true);
   public get posixUser() {
-    return this.__posixUserOutput;
+    return this._posixUser;
   }
-  public putPosixUser(value: EfsAccessPointPosixUser | undefined) {
-    this._posixUser = value;
+  public putPosixUser(value: EfsAccessPointPosixUser) {
+    this._posixUser.internalValue = value;
   }
   public resetPosixUser() {
-    this._posixUser = undefined;
+    this._posixUser.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get posixUserInput() {
-    return this._posixUser
+    return this._posixUser.internalValue;
   }
 
   // root_directory - computed: false, optional: true, required: false
-  private _rootDirectory?: EfsAccessPointRootDirectory | undefined; 
-  private __rootDirectoryOutput = new EfsAccessPointRootDirectoryOutputReference(this as any, "root_directory", true);
+  private _rootDirectory = new EfsAccessPointRootDirectoryOutputReference(this as any, "root_directory", true);
   public get rootDirectory() {
-    return this.__rootDirectoryOutput;
+    return this._rootDirectory;
   }
-  public putRootDirectory(value: EfsAccessPointRootDirectory | undefined) {
-    this._rootDirectory = value;
+  public putRootDirectory(value: EfsAccessPointRootDirectory) {
+    this._rootDirectory.internalValue = value;
   }
   public resetRootDirectory() {
-    this._rootDirectory = undefined;
+    this._rootDirectory.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get rootDirectoryInput() {
-    return this._rootDirectory
+    return this._rootDirectory.internalValue;
   }
 
   // =========
@@ -409,8 +493,8 @@ export class EfsAccessPoint extends cdktf.TerraformResource {
       file_system_id: cdktf.stringToTerraform(this._fileSystemId),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      posix_user: efsAccessPointPosixUserToTerraform(this._posixUser),
-      root_directory: efsAccessPointRootDirectoryToTerraform(this._rootDirectory),
+      posix_user: efsAccessPointPosixUserToTerraform(this._posixUser.internalValue),
+      root_directory: efsAccessPointRootDirectoryToTerraform(this._rootDirectory.internalValue),
     };
   }
 }

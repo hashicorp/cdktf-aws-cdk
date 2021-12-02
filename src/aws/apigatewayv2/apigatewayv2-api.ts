@@ -122,12 +122,61 @@ export class Apigatewayv2ApiCorsConfigurationOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Apigatewayv2ApiCorsConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allowCredentials) {
+      hasAnyValues = true;
+      internalValueResult.allowCredentials = this._allowCredentials;
+    }
+    if (this._allowHeaders) {
+      hasAnyValues = true;
+      internalValueResult.allowHeaders = this._allowHeaders;
+    }
+    if (this._allowMethods) {
+      hasAnyValues = true;
+      internalValueResult.allowMethods = this._allowMethods;
+    }
+    if (this._allowOrigins) {
+      hasAnyValues = true;
+      internalValueResult.allowOrigins = this._allowOrigins;
+    }
+    if (this._exposeHeaders) {
+      hasAnyValues = true;
+      internalValueResult.exposeHeaders = this._exposeHeaders;
+    }
+    if (this._maxAge) {
+      hasAnyValues = true;
+      internalValueResult.maxAge = this._maxAge;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Apigatewayv2ApiCorsConfiguration | undefined) {
+    if (value === undefined) {
+      this._allowCredentials = undefined;
+      this._allowHeaders = undefined;
+      this._allowMethods = undefined;
+      this._allowOrigins = undefined;
+      this._exposeHeaders = undefined;
+      this._maxAge = undefined;
+    }
+    else {
+      this._allowCredentials = value.allowCredentials;
+      this._allowHeaders = value.allowHeaders;
+      this._allowMethods = value.allowMethods;
+      this._allowOrigins = value.allowOrigins;
+      this._exposeHeaders = value.exposeHeaders;
+      this._maxAge = value.maxAge;
+    }
+  }
+
   // allow_credentials - computed: false, optional: true, required: false
-  private _allowCredentials?: boolean | cdktf.IResolvable | undefined; 
+  private _allowCredentials?: boolean | cdktf.IResolvable; 
   public get allowCredentials() {
     return this.getBooleanAttribute('allow_credentials') as any;
   }
-  public set allowCredentials(value: boolean | cdktf.IResolvable | undefined) {
+  public set allowCredentials(value: boolean | cdktf.IResolvable) {
     this._allowCredentials = value;
   }
   public resetAllowCredentials() {
@@ -135,15 +184,15 @@ export class Apigatewayv2ApiCorsConfigurationOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get allowCredentialsInput() {
-    return this._allowCredentials
+    return this._allowCredentials;
   }
 
   // allow_headers - computed: false, optional: true, required: false
-  private _allowHeaders?: string[] | undefined; 
+  private _allowHeaders?: string[]; 
   public get allowHeaders() {
     return this.getListAttribute('allow_headers');
   }
-  public set allowHeaders(value: string[] | undefined) {
+  public set allowHeaders(value: string[]) {
     this._allowHeaders = value;
   }
   public resetAllowHeaders() {
@@ -151,15 +200,15 @@ export class Apigatewayv2ApiCorsConfigurationOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get allowHeadersInput() {
-    return this._allowHeaders
+    return this._allowHeaders;
   }
 
   // allow_methods - computed: false, optional: true, required: false
-  private _allowMethods?: string[] | undefined; 
+  private _allowMethods?: string[]; 
   public get allowMethods() {
     return this.getListAttribute('allow_methods');
   }
-  public set allowMethods(value: string[] | undefined) {
+  public set allowMethods(value: string[]) {
     this._allowMethods = value;
   }
   public resetAllowMethods() {
@@ -167,15 +216,15 @@ export class Apigatewayv2ApiCorsConfigurationOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get allowMethodsInput() {
-    return this._allowMethods
+    return this._allowMethods;
   }
 
   // allow_origins - computed: false, optional: true, required: false
-  private _allowOrigins?: string[] | undefined; 
+  private _allowOrigins?: string[]; 
   public get allowOrigins() {
     return this.getListAttribute('allow_origins');
   }
-  public set allowOrigins(value: string[] | undefined) {
+  public set allowOrigins(value: string[]) {
     this._allowOrigins = value;
   }
   public resetAllowOrigins() {
@@ -183,15 +232,15 @@ export class Apigatewayv2ApiCorsConfigurationOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get allowOriginsInput() {
-    return this._allowOrigins
+    return this._allowOrigins;
   }
 
   // expose_headers - computed: false, optional: true, required: false
-  private _exposeHeaders?: string[] | undefined; 
+  private _exposeHeaders?: string[]; 
   public get exposeHeaders() {
     return this.getListAttribute('expose_headers');
   }
-  public set exposeHeaders(value: string[] | undefined) {
+  public set exposeHeaders(value: string[]) {
     this._exposeHeaders = value;
   }
   public resetExposeHeaders() {
@@ -199,15 +248,15 @@ export class Apigatewayv2ApiCorsConfigurationOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get exposeHeadersInput() {
-    return this._exposeHeaders
+    return this._exposeHeaders;
   }
 
   // max_age - computed: false, optional: true, required: false
-  private _maxAge?: number | undefined; 
+  private _maxAge?: number; 
   public get maxAge() {
     return this.getNumberAttribute('max_age');
   }
-  public set maxAge(value: number | undefined) {
+  public set maxAge(value: number) {
     this._maxAge = value;
   }
   public resetMaxAge() {
@@ -215,7 +264,7 @@ export class Apigatewayv2ApiCorsConfigurationOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get maxAgeInput() {
-    return this._maxAge
+    return this._maxAge;
   }
 }
 
@@ -265,7 +314,7 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
     this._tagsAll = config.tagsAll;
     this._target = config.target;
     this._version = config.version;
-    this._corsConfiguration = config.corsConfiguration;
+    this._corsConfiguration.internalValue = config.corsConfiguration;
   }
 
   // ==========
@@ -278,11 +327,11 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
 
   // api_key_selection_expression - computed: false, optional: true, required: false
-  private _apiKeySelectionExpression?: string | undefined; 
+  private _apiKeySelectionExpression?: string; 
   public get apiKeySelectionExpression() {
     return this.getStringAttribute('api_key_selection_expression');
   }
-  public set apiKeySelectionExpression(value: string | undefined) {
+  public set apiKeySelectionExpression(value: string) {
     this._apiKeySelectionExpression = value;
   }
   public resetApiKeySelectionExpression() {
@@ -290,7 +339,7 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get apiKeySelectionExpressionInput() {
-    return this._apiKeySelectionExpression
+    return this._apiKeySelectionExpression;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -299,11 +348,11 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: string | undefined; 
+  private _body?: string; 
   public get body() {
     return this.getStringAttribute('body');
   }
-  public set body(value: string | undefined) {
+  public set body(value: string) {
     this._body = value;
   }
   public resetBody() {
@@ -311,15 +360,15 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body;
   }
 
   // credentials_arn - computed: false, optional: true, required: false
-  private _credentialsArn?: string | undefined; 
+  private _credentialsArn?: string; 
   public get credentialsArn() {
     return this.getStringAttribute('credentials_arn');
   }
-  public set credentialsArn(value: string | undefined) {
+  public set credentialsArn(value: string) {
     this._credentialsArn = value;
   }
   public resetCredentialsArn() {
@@ -327,15 +376,15 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get credentialsArnInput() {
-    return this._credentialsArn
+    return this._credentialsArn;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -343,15 +392,15 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // disable_execute_api_endpoint - computed: false, optional: true, required: false
-  private _disableExecuteApiEndpoint?: boolean | cdktf.IResolvable | undefined; 
+  private _disableExecuteApiEndpoint?: boolean | cdktf.IResolvable; 
   public get disableExecuteApiEndpoint() {
     return this.getBooleanAttribute('disable_execute_api_endpoint') as any;
   }
-  public set disableExecuteApiEndpoint(value: boolean | cdktf.IResolvable | undefined) {
+  public set disableExecuteApiEndpoint(value: boolean | cdktf.IResolvable) {
     this._disableExecuteApiEndpoint = value;
   }
   public resetDisableExecuteApiEndpoint() {
@@ -359,7 +408,7 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get disableExecuteApiEndpointInput() {
-    return this._disableExecuteApiEndpoint
+    return this._disableExecuteApiEndpoint;
   }
 
   // execution_arn - computed: true, optional: false, required: false
@@ -368,11 +417,11 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
 
   // fail_on_warnings - computed: false, optional: true, required: false
-  private _failOnWarnings?: boolean | cdktf.IResolvable | undefined; 
+  private _failOnWarnings?: boolean | cdktf.IResolvable; 
   public get failOnWarnings() {
     return this.getBooleanAttribute('fail_on_warnings') as any;
   }
-  public set failOnWarnings(value: boolean | cdktf.IResolvable | undefined) {
+  public set failOnWarnings(value: boolean | cdktf.IResolvable) {
     this._failOnWarnings = value;
   }
   public resetFailOnWarnings() {
@@ -380,7 +429,7 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get failOnWarningsInput() {
-    return this._failOnWarnings
+    return this._failOnWarnings;
   }
 
   // id - computed: true, optional: true, required: false
@@ -398,7 +447,7 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // protocol_type - computed: false, optional: false, required: true
@@ -411,15 +460,15 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get protocolTypeInput() {
-    return this._protocolType
+    return this._protocolType;
   }
 
   // route_key - computed: false, optional: true, required: false
-  private _routeKey?: string | undefined; 
+  private _routeKey?: string; 
   public get routeKey() {
     return this.getStringAttribute('route_key');
   }
-  public set routeKey(value: string | undefined) {
+  public set routeKey(value: string) {
     this._routeKey = value;
   }
   public resetRouteKey() {
@@ -427,15 +476,15 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get routeKeyInput() {
-    return this._routeKey
+    return this._routeKey;
   }
 
   // route_selection_expression - computed: false, optional: true, required: false
-  private _routeSelectionExpression?: string | undefined; 
+  private _routeSelectionExpression?: string; 
   public get routeSelectionExpression() {
     return this.getStringAttribute('route_selection_expression');
   }
-  public set routeSelectionExpression(value: string | undefined) {
+  public set routeSelectionExpression(value: string) {
     this._routeSelectionExpression = value;
   }
   public resetRouteSelectionExpression() {
@@ -443,16 +492,16 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get routeSelectionExpressionInput() {
-    return this._routeSelectionExpression
+    return this._routeSelectionExpression;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -460,16 +509,16 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -477,15 +526,15 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // target - computed: false, optional: true, required: false
-  private _target?: string | undefined; 
+  private _target?: string; 
   public get target() {
     return this.getStringAttribute('target');
   }
-  public set target(value: string | undefined) {
+  public set target(value: string) {
     this._target = value;
   }
   public resetTarget() {
@@ -493,15 +542,15 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetInput() {
-    return this._target
+    return this._target;
   }
 
   // version - computed: false, optional: true, required: false
-  private _version?: string | undefined; 
+  private _version?: string; 
   public get version() {
     return this.getStringAttribute('version');
   }
-  public set version(value: string | undefined) {
+  public set version(value: string) {
     this._version = value;
   }
   public resetVersion() {
@@ -509,24 +558,23 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get versionInput() {
-    return this._version
+    return this._version;
   }
 
   // cors_configuration - computed: false, optional: true, required: false
-  private _corsConfiguration?: Apigatewayv2ApiCorsConfiguration | undefined; 
-  private __corsConfigurationOutput = new Apigatewayv2ApiCorsConfigurationOutputReference(this as any, "cors_configuration", true);
+  private _corsConfiguration = new Apigatewayv2ApiCorsConfigurationOutputReference(this as any, "cors_configuration", true);
   public get corsConfiguration() {
-    return this.__corsConfigurationOutput;
+    return this._corsConfiguration;
   }
-  public putCorsConfiguration(value: Apigatewayv2ApiCorsConfiguration | undefined) {
-    this._corsConfiguration = value;
+  public putCorsConfiguration(value: Apigatewayv2ApiCorsConfiguration) {
+    this._corsConfiguration.internalValue = value;
   }
   public resetCorsConfiguration() {
-    this._corsConfiguration = undefined;
+    this._corsConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get corsConfigurationInput() {
-    return this._corsConfiguration
+    return this._corsConfiguration.internalValue;
   }
 
   // =========
@@ -549,7 +597,7 @@ export class Apigatewayv2Api extends cdktf.TerraformResource {
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       target: cdktf.stringToTerraform(this._target),
       version: cdktf.stringToTerraform(this._version),
-      cors_configuration: apigatewayv2ApiCorsConfigurationToTerraform(this._corsConfiguration),
+      cors_configuration: apigatewayv2ApiCorsConfigurationToTerraform(this._corsConfiguration.internalValue),
     };
   }
 }

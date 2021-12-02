@@ -72,7 +72,7 @@ export class VpcEndpointServiceAllowedPrincipal extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get principalArnInput() {
-    return this._principalArn
+    return this._principalArn;
   }
 
   // vpc_endpoint_service_id - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class VpcEndpointServiceAllowedPrincipal extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get vpcEndpointServiceIdInput() {
-    return this._vpcEndpointServiceId
+    return this._vpcEndpointServiceId;
   }
 
   // =========

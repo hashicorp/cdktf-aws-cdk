@@ -92,7 +92,7 @@ export class AppstreamUser extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authenticationTypeInput() {
-    return this._authenticationType
+    return this._authenticationType;
   }
 
   // created_time - computed: true, optional: false, required: false
@@ -101,11 +101,11 @@ export class AppstreamUser extends cdktf.TerraformResource {
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -113,15 +113,15 @@ export class AppstreamUser extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // first_name - computed: false, optional: true, required: false
-  private _firstName?: string | undefined; 
+  private _firstName?: string; 
   public get firstName() {
     return this.getStringAttribute('first_name');
   }
-  public set firstName(value: string | undefined) {
+  public set firstName(value: string) {
     this._firstName = value;
   }
   public resetFirstName() {
@@ -129,7 +129,7 @@ export class AppstreamUser extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get firstNameInput() {
-    return this._firstName
+    return this._firstName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -138,11 +138,11 @@ export class AppstreamUser extends cdktf.TerraformResource {
   }
 
   // last_name - computed: false, optional: true, required: false
-  private _lastName?: string | undefined; 
+  private _lastName?: string; 
   public get lastName() {
     return this.getStringAttribute('last_name');
   }
-  public set lastName(value: string | undefined) {
+  public set lastName(value: string) {
     this._lastName = value;
   }
   public resetLastName() {
@@ -150,15 +150,15 @@ export class AppstreamUser extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get lastNameInput() {
-    return this._lastName
+    return this._lastName;
   }
 
   // send_email_notification - computed: false, optional: true, required: false
-  private _sendEmailNotification?: boolean | cdktf.IResolvable | undefined; 
+  private _sendEmailNotification?: boolean | cdktf.IResolvable; 
   public get sendEmailNotification() {
     return this.getBooleanAttribute('send_email_notification') as any;
   }
-  public set sendEmailNotification(value: boolean | cdktf.IResolvable | undefined) {
+  public set sendEmailNotification(value: boolean | cdktf.IResolvable) {
     this._sendEmailNotification = value;
   }
   public resetSendEmailNotification() {
@@ -166,7 +166,7 @@ export class AppstreamUser extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sendEmailNotificationInput() {
-    return this._sendEmailNotification
+    return this._sendEmailNotification;
   }
 
   // user_name - computed: false, optional: false, required: true
@@ -179,7 +179,7 @@ export class AppstreamUser extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userNameInput() {
-    return this._userName
+    return this._userName;
   }
 
   // =========

@@ -78,12 +78,12 @@ export class CognitoIdentityProvider extends cdktf.TerraformResource {
   // ==========
 
   // attribute_mapping - computed: true, optional: true, required: false
-  private _attributeMapping?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _attributeMapping?: { [key: string]: string } | cdktf.IResolvable; 
   public get attributeMapping() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('attribute_mapping') as any;
   }
-  public set attributeMapping(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set attributeMapping(value: { [key: string]: string } | cdktf.IResolvable) {
     this._attributeMapping = value;
   }
   public resetAttributeMapping() {
@@ -91,7 +91,7 @@ export class CognitoIdentityProvider extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get attributeMappingInput() {
-    return this._attributeMapping
+    return this._attributeMapping;
   }
 
   // id - computed: true, optional: true, required: false
@@ -100,11 +100,11 @@ export class CognitoIdentityProvider extends cdktf.TerraformResource {
   }
 
   // idp_identifiers - computed: false, optional: true, required: false
-  private _idpIdentifiers?: string[] | undefined; 
+  private _idpIdentifiers?: string[]; 
   public get idpIdentifiers() {
     return this.getListAttribute('idp_identifiers');
   }
-  public set idpIdentifiers(value: string[] | undefined) {
+  public set idpIdentifiers(value: string[]) {
     this._idpIdentifiers = value;
   }
   public resetIdpIdentifiers() {
@@ -112,7 +112,7 @@ export class CognitoIdentityProvider extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get idpIdentifiersInput() {
-    return this._idpIdentifiers
+    return this._idpIdentifiers;
   }
 
   // provider_details - computed: false, optional: false, required: true
@@ -126,7 +126,7 @@ export class CognitoIdentityProvider extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get providerDetailsInput() {
-    return this._providerDetails
+    return this._providerDetails;
   }
 
   // provider_name - computed: false, optional: false, required: true
@@ -139,7 +139,7 @@ export class CognitoIdentityProvider extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get providerNameInput() {
-    return this._providerName
+    return this._providerName;
   }
 
   // provider_type - computed: false, optional: false, required: true
@@ -152,7 +152,7 @@ export class CognitoIdentityProvider extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get providerTypeInput() {
-    return this._providerType
+    return this._providerType;
   }
 
   // user_pool_id - computed: false, optional: false, required: true
@@ -165,7 +165,7 @@ export class CognitoIdentityProvider extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userPoolIdInput() {
-    return this._userPoolId
+    return this._userPoolId;
   }
 
   // =========

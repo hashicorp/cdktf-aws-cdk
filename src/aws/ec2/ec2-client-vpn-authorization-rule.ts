@@ -73,11 +73,11 @@ export class Ec2ClientVpnAuthorizationRule extends cdktf.TerraformResource {
   // ==========
 
   // access_group_id - computed: false, optional: true, required: false
-  private _accessGroupId?: string | undefined; 
+  private _accessGroupId?: string; 
   public get accessGroupId() {
     return this.getStringAttribute('access_group_id');
   }
-  public set accessGroupId(value: string | undefined) {
+  public set accessGroupId(value: string) {
     this._accessGroupId = value;
   }
   public resetAccessGroupId() {
@@ -85,15 +85,15 @@ export class Ec2ClientVpnAuthorizationRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accessGroupIdInput() {
-    return this._accessGroupId
+    return this._accessGroupId;
   }
 
   // authorize_all_groups - computed: false, optional: true, required: false
-  private _authorizeAllGroups?: boolean | cdktf.IResolvable | undefined; 
+  private _authorizeAllGroups?: boolean | cdktf.IResolvable; 
   public get authorizeAllGroups() {
     return this.getBooleanAttribute('authorize_all_groups') as any;
   }
-  public set authorizeAllGroups(value: boolean | cdktf.IResolvable | undefined) {
+  public set authorizeAllGroups(value: boolean | cdktf.IResolvable) {
     this._authorizeAllGroups = value;
   }
   public resetAuthorizeAllGroups() {
@@ -101,7 +101,7 @@ export class Ec2ClientVpnAuthorizationRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authorizeAllGroupsInput() {
-    return this._authorizeAllGroups
+    return this._authorizeAllGroups;
   }
 
   // client_vpn_endpoint_id - computed: false, optional: false, required: true
@@ -114,15 +114,15 @@ export class Ec2ClientVpnAuthorizationRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clientVpnEndpointIdInput() {
-    return this._clientVpnEndpointId
+    return this._clientVpnEndpointId;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -130,7 +130,7 @@ export class Ec2ClientVpnAuthorizationRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -148,7 +148,7 @@ export class Ec2ClientVpnAuthorizationRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetNetworkCidrInput() {
-    return this._targetNetworkCidr
+    return this._targetNetworkCidr;
   }
 
   // =========

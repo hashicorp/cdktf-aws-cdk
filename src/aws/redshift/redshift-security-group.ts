@@ -92,11 +92,11 @@ export class RedshiftSecurityGroup extends cdktf.TerraformResource {
   // ==========
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -104,7 +104,7 @@ export class RedshiftSecurityGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -122,7 +122,7 @@ export class RedshiftSecurityGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // ingress - computed: false, optional: false, required: true
@@ -136,7 +136,7 @@ export class RedshiftSecurityGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ingressInput() {
-    return this._ingress
+    return this._ingress;
   }
 
   // =========

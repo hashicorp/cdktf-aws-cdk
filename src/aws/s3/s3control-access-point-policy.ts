@@ -67,7 +67,7 @@ export class S3ControlAccessPointPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accessPointArnInput() {
-    return this._accessPointArn
+    return this._accessPointArn;
   }
 
   // has_public_access_policy - computed: true, optional: false, required: false
@@ -90,7 +90,7 @@ export class S3ControlAccessPointPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // =========

@@ -72,7 +72,7 @@ export class PrometheusRuleGroupNamespace extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dataInput() {
-    return this._data
+    return this._data;
   }
 
   // id - computed: true, optional: true, required: false
@@ -90,7 +90,7 @@ export class PrometheusRuleGroupNamespace extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // workspace_id - computed: false, optional: false, required: true
@@ -103,7 +103,7 @@ export class PrometheusRuleGroupNamespace extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get workspaceIdInput() {
-    return this._workspaceId
+    return this._workspaceId;
   }
 
   // =========

@@ -72,7 +72,7 @@ export class AmplifyWebhook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get appIdInput() {
-    return this._appId
+    return this._appId;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -90,15 +90,15 @@ export class AmplifyWebhook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get branchNameInput() {
-    return this._branchName
+    return this._branchName;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -106,7 +106,7 @@ export class AmplifyWebhook extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false

@@ -53,11 +53,11 @@ export class TimeProvider extends cdktf.TerraformProvider {
   // ==========
 
   // alias - computed: false, optional: true, required: false
-  private _alias?: string | undefined; 
+  private _alias?: string; 
   public get alias() {
     return this._alias;
   }
-  public set alias(value: string | undefined| undefined) {
+  public set alias(value: string | undefined) {
     this._alias = value;
   }
   public resetAlias() {
@@ -65,7 +65,7 @@ export class TimeProvider extends cdktf.TerraformProvider {
   }
   // Temporarily expose input value. Use with caution.
   public get aliasInput() {
-    return this._alias
+    return this._alias;
   }
 
   // =========

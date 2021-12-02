@@ -68,11 +68,11 @@ export class DxGatewayAssociationProposal extends cdktf.TerraformResource {
   // ==========
 
   // allowed_prefixes - computed: true, optional: true, required: false
-  private _allowedPrefixes?: string[] | undefined; 
+  private _allowedPrefixes?: string[]; 
   public get allowedPrefixes() {
     return this.getListAttribute('allowed_prefixes');
   }
-  public set allowedPrefixes(value: string[] | undefined) {
+  public set allowedPrefixes(value: string[]) {
     this._allowedPrefixes = value;
   }
   public resetAllowedPrefixes() {
@@ -80,7 +80,7 @@ export class DxGatewayAssociationProposal extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allowedPrefixesInput() {
-    return this._allowedPrefixes
+    return this._allowedPrefixes;
   }
 
   // associated_gateway_id - computed: false, optional: false, required: true
@@ -93,7 +93,7 @@ export class DxGatewayAssociationProposal extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get associatedGatewayIdInput() {
-    return this._associatedGatewayId
+    return this._associatedGatewayId;
   }
 
   // associated_gateway_owner_account_id - computed: true, optional: false, required: false
@@ -116,7 +116,7 @@ export class DxGatewayAssociationProposal extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dxGatewayIdInput() {
-    return this._dxGatewayId
+    return this._dxGatewayId;
   }
 
   // dx_gateway_owner_account_id - computed: false, optional: false, required: true
@@ -129,7 +129,7 @@ export class DxGatewayAssociationProposal extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dxGatewayOwnerAccountIdInput() {
-    return this._dxGatewayOwnerAccountId
+    return this._dxGatewayOwnerAccountId;
   }
 
   // id - computed: true, optional: true, required: false

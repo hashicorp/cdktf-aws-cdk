@@ -72,7 +72,7 @@ export class Route53ResolverQueryLogConfigAssociation extends cdktf.TerraformRes
   }
   // Temporarily expose input value. Use with caution.
   public get resolverQueryLogConfigIdInput() {
-    return this._resolverQueryLogConfigId
+    return this._resolverQueryLogConfigId;
   }
 
   // resource_id - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class Route53ResolverQueryLogConfigAssociation extends cdktf.TerraformRes
   }
   // Temporarily expose input value. Use with caution.
   public get resourceIdInput() {
-    return this._resourceId
+    return this._resourceId;
   }
 
   // =========

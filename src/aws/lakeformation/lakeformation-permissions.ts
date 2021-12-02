@@ -84,6 +84,31 @@ export class LakeformationPermissionsDataLocationOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LakeformationPermissionsDataLocation | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    if (this._catalogId) {
+      hasAnyValues = true;
+      internalValueResult.catalogId = this._catalogId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LakeformationPermissionsDataLocation | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+      this._catalogId = undefined;
+    }
+    else {
+      this._arn = value.arn;
+      this._catalogId = value.catalogId;
+    }
+  }
+
   // arn - computed: false, optional: false, required: true
   private _arn?: string; 
   public get arn() {
@@ -94,15 +119,15 @@ export class LakeformationPermissionsDataLocationOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // catalog_id - computed: true, optional: true, required: false
-  private _catalogId?: string | undefined; 
+  private _catalogId?: string; 
   public get catalogId() {
     return this.getStringAttribute('catalog_id');
   }
-  public set catalogId(value: string | undefined) {
+  public set catalogId(value: string) {
     this._catalogId = value;
   }
   public resetCatalogId() {
@@ -110,7 +135,7 @@ export class LakeformationPermissionsDataLocationOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get catalogIdInput() {
-    return this._catalogId
+    return this._catalogId;
   }
 }
 export interface LakeformationPermissionsDatabase {
@@ -145,12 +170,37 @@ export class LakeformationPermissionsDatabaseOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LakeformationPermissionsDatabase | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._catalogId) {
+      hasAnyValues = true;
+      internalValueResult.catalogId = this._catalogId;
+    }
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LakeformationPermissionsDatabase | undefined) {
+    if (value === undefined) {
+      this._catalogId = undefined;
+      this._name = undefined;
+    }
+    else {
+      this._catalogId = value.catalogId;
+      this._name = value.name;
+    }
+  }
+
   // catalog_id - computed: true, optional: true, required: false
-  private _catalogId?: string | undefined; 
+  private _catalogId?: string; 
   public get catalogId() {
     return this.getStringAttribute('catalog_id');
   }
-  public set catalogId(value: string | undefined) {
+  public set catalogId(value: string) {
     this._catalogId = value;
   }
   public resetCatalogId() {
@@ -158,7 +208,7 @@ export class LakeformationPermissionsDatabaseOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get catalogIdInput() {
-    return this._catalogId
+    return this._catalogId;
   }
 
   // name - computed: false, optional: false, required: true
@@ -171,7 +221,7 @@ export class LakeformationPermissionsDatabaseOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface LakeformationPermissionsTable {
@@ -216,12 +266,49 @@ export class LakeformationPermissionsTableOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LakeformationPermissionsTable | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._catalogId) {
+      hasAnyValues = true;
+      internalValueResult.catalogId = this._catalogId;
+    }
+    if (this._databaseName) {
+      hasAnyValues = true;
+      internalValueResult.databaseName = this._databaseName;
+    }
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._wildcard) {
+      hasAnyValues = true;
+      internalValueResult.wildcard = this._wildcard;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LakeformationPermissionsTable | undefined) {
+    if (value === undefined) {
+      this._catalogId = undefined;
+      this._databaseName = undefined;
+      this._name = undefined;
+      this._wildcard = undefined;
+    }
+    else {
+      this._catalogId = value.catalogId;
+      this._databaseName = value.databaseName;
+      this._name = value.name;
+      this._wildcard = value.wildcard;
+    }
+  }
+
   // catalog_id - computed: true, optional: true, required: false
-  private _catalogId?: string | undefined; 
+  private _catalogId?: string; 
   public get catalogId() {
     return this.getStringAttribute('catalog_id');
   }
-  public set catalogId(value: string | undefined) {
+  public set catalogId(value: string) {
     this._catalogId = value;
   }
   public resetCatalogId() {
@@ -229,7 +316,7 @@ export class LakeformationPermissionsTableOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get catalogIdInput() {
-    return this._catalogId
+    return this._catalogId;
   }
 
   // database_name - computed: false, optional: false, required: true
@@ -242,15 +329,15 @@ export class LakeformationPermissionsTableOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get databaseNameInput() {
-    return this._databaseName
+    return this._databaseName;
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -258,15 +345,15 @@ export class LakeformationPermissionsTableOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // wildcard - computed: false, optional: true, required: false
-  private _wildcard?: boolean | cdktf.IResolvable | undefined; 
+  private _wildcard?: boolean | cdktf.IResolvable; 
   public get wildcard() {
     return this.getBooleanAttribute('wildcard') as any;
   }
-  public set wildcard(value: boolean | cdktf.IResolvable | undefined) {
+  public set wildcard(value: boolean | cdktf.IResolvable) {
     this._wildcard = value;
   }
   public resetWildcard() {
@@ -274,7 +361,7 @@ export class LakeformationPermissionsTableOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get wildcardInput() {
-    return this._wildcard
+    return this._wildcard;
   }
 }
 export interface LakeformationPermissionsTableWithColumns {
@@ -329,12 +416,61 @@ export class LakeformationPermissionsTableWithColumnsOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LakeformationPermissionsTableWithColumns | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._catalogId) {
+      hasAnyValues = true;
+      internalValueResult.catalogId = this._catalogId;
+    }
+    if (this._columnNames) {
+      hasAnyValues = true;
+      internalValueResult.columnNames = this._columnNames;
+    }
+    if (this._databaseName) {
+      hasAnyValues = true;
+      internalValueResult.databaseName = this._databaseName;
+    }
+    if (this._excludedColumnNames) {
+      hasAnyValues = true;
+      internalValueResult.excludedColumnNames = this._excludedColumnNames;
+    }
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._wildcard) {
+      hasAnyValues = true;
+      internalValueResult.wildcard = this._wildcard;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LakeformationPermissionsTableWithColumns | undefined) {
+    if (value === undefined) {
+      this._catalogId = undefined;
+      this._columnNames = undefined;
+      this._databaseName = undefined;
+      this._excludedColumnNames = undefined;
+      this._name = undefined;
+      this._wildcard = undefined;
+    }
+    else {
+      this._catalogId = value.catalogId;
+      this._columnNames = value.columnNames;
+      this._databaseName = value.databaseName;
+      this._excludedColumnNames = value.excludedColumnNames;
+      this._name = value.name;
+      this._wildcard = value.wildcard;
+    }
+  }
+
   // catalog_id - computed: true, optional: true, required: false
-  private _catalogId?: string | undefined; 
+  private _catalogId?: string; 
   public get catalogId() {
     return this.getStringAttribute('catalog_id');
   }
-  public set catalogId(value: string | undefined) {
+  public set catalogId(value: string) {
     this._catalogId = value;
   }
   public resetCatalogId() {
@@ -342,15 +478,15 @@ export class LakeformationPermissionsTableWithColumnsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get catalogIdInput() {
-    return this._catalogId
+    return this._catalogId;
   }
 
   // column_names - computed: false, optional: true, required: false
-  private _columnNames?: string[] | undefined; 
+  private _columnNames?: string[]; 
   public get columnNames() {
     return this.getListAttribute('column_names');
   }
-  public set columnNames(value: string[] | undefined) {
+  public set columnNames(value: string[]) {
     this._columnNames = value;
   }
   public resetColumnNames() {
@@ -358,7 +494,7 @@ export class LakeformationPermissionsTableWithColumnsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get columnNamesInput() {
-    return this._columnNames
+    return this._columnNames;
   }
 
   // database_name - computed: false, optional: false, required: true
@@ -371,15 +507,15 @@ export class LakeformationPermissionsTableWithColumnsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get databaseNameInput() {
-    return this._databaseName
+    return this._databaseName;
   }
 
   // excluded_column_names - computed: false, optional: true, required: false
-  private _excludedColumnNames?: string[] | undefined; 
+  private _excludedColumnNames?: string[]; 
   public get excludedColumnNames() {
     return this.getListAttribute('excluded_column_names');
   }
-  public set excludedColumnNames(value: string[] | undefined) {
+  public set excludedColumnNames(value: string[]) {
     this._excludedColumnNames = value;
   }
   public resetExcludedColumnNames() {
@@ -387,7 +523,7 @@ export class LakeformationPermissionsTableWithColumnsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get excludedColumnNamesInput() {
-    return this._excludedColumnNames
+    return this._excludedColumnNames;
   }
 
   // name - computed: false, optional: false, required: true
@@ -400,15 +536,15 @@ export class LakeformationPermissionsTableWithColumnsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // wildcard - computed: false, optional: true, required: false
-  private _wildcard?: boolean | cdktf.IResolvable | undefined; 
+  private _wildcard?: boolean | cdktf.IResolvable; 
   public get wildcard() {
     return this.getBooleanAttribute('wildcard') as any;
   }
-  public set wildcard(value: boolean | cdktf.IResolvable | undefined) {
+  public set wildcard(value: boolean | cdktf.IResolvable) {
     this._wildcard = value;
   }
   public resetWildcard() {
@@ -416,7 +552,7 @@ export class LakeformationPermissionsTableWithColumnsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get wildcardInput() {
-    return this._wildcard
+    return this._wildcard;
   }
 }
 
@@ -457,10 +593,10 @@ export class LakeformationPermissions extends cdktf.TerraformResource {
     this._permissions = config.permissions;
     this._permissionsWithGrantOption = config.permissionsWithGrantOption;
     this._principal = config.principal;
-    this._dataLocation = config.dataLocation;
-    this._database = config.database;
-    this._table = config.table;
-    this._tableWithColumns = config.tableWithColumns;
+    this._dataLocation.internalValue = config.dataLocation;
+    this._database.internalValue = config.database;
+    this._table.internalValue = config.table;
+    this._tableWithColumns.internalValue = config.tableWithColumns;
   }
 
   // ==========
@@ -468,11 +604,11 @@ export class LakeformationPermissions extends cdktf.TerraformResource {
   // ==========
 
   // catalog_id - computed: false, optional: true, required: false
-  private _catalogId?: string | undefined; 
+  private _catalogId?: string; 
   public get catalogId() {
     return this.getStringAttribute('catalog_id');
   }
-  public set catalogId(value: string | undefined) {
+  public set catalogId(value: string) {
     this._catalogId = value;
   }
   public resetCatalogId() {
@@ -480,15 +616,15 @@ export class LakeformationPermissions extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get catalogIdInput() {
-    return this._catalogId
+    return this._catalogId;
   }
 
   // catalog_resource - computed: false, optional: true, required: false
-  private _catalogResource?: boolean | cdktf.IResolvable | undefined; 
+  private _catalogResource?: boolean | cdktf.IResolvable; 
   public get catalogResource() {
     return this.getBooleanAttribute('catalog_resource') as any;
   }
-  public set catalogResource(value: boolean | cdktf.IResolvable | undefined) {
+  public set catalogResource(value: boolean | cdktf.IResolvable) {
     this._catalogResource = value;
   }
   public resetCatalogResource() {
@@ -496,7 +632,7 @@ export class LakeformationPermissions extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get catalogResourceInput() {
-    return this._catalogResource
+    return this._catalogResource;
   }
 
   // id - computed: true, optional: true, required: false
@@ -514,15 +650,15 @@ export class LakeformationPermissions extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get permissionsInput() {
-    return this._permissions
+    return this._permissions;
   }
 
   // permissions_with_grant_option - computed: true, optional: true, required: false
-  private _permissionsWithGrantOption?: string[] | undefined; 
+  private _permissionsWithGrantOption?: string[]; 
   public get permissionsWithGrantOption() {
     return this.getListAttribute('permissions_with_grant_option');
   }
-  public set permissionsWithGrantOption(value: string[] | undefined) {
+  public set permissionsWithGrantOption(value: string[]) {
     this._permissionsWithGrantOption = value;
   }
   public resetPermissionsWithGrantOption() {
@@ -530,7 +666,7 @@ export class LakeformationPermissions extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get permissionsWithGrantOptionInput() {
-    return this._permissionsWithGrantOption
+    return this._permissionsWithGrantOption;
   }
 
   // principal - computed: false, optional: false, required: true
@@ -543,75 +679,71 @@ export class LakeformationPermissions extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get principalInput() {
-    return this._principal
+    return this._principal;
   }
 
   // data_location - computed: false, optional: true, required: false
-  private _dataLocation?: LakeformationPermissionsDataLocation | undefined; 
-  private __dataLocationOutput = new LakeformationPermissionsDataLocationOutputReference(this as any, "data_location", true);
+  private _dataLocation = new LakeformationPermissionsDataLocationOutputReference(this as any, "data_location", true);
   public get dataLocation() {
-    return this.__dataLocationOutput;
+    return this._dataLocation;
   }
-  public putDataLocation(value: LakeformationPermissionsDataLocation | undefined) {
-    this._dataLocation = value;
+  public putDataLocation(value: LakeformationPermissionsDataLocation) {
+    this._dataLocation.internalValue = value;
   }
   public resetDataLocation() {
-    this._dataLocation = undefined;
+    this._dataLocation.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get dataLocationInput() {
-    return this._dataLocation
+    return this._dataLocation.internalValue;
   }
 
   // database - computed: false, optional: true, required: false
-  private _database?: LakeformationPermissionsDatabase | undefined; 
-  private __databaseOutput = new LakeformationPermissionsDatabaseOutputReference(this as any, "database", true);
+  private _database = new LakeformationPermissionsDatabaseOutputReference(this as any, "database", true);
   public get database() {
-    return this.__databaseOutput;
+    return this._database;
   }
-  public putDatabase(value: LakeformationPermissionsDatabase | undefined) {
-    this._database = value;
+  public putDatabase(value: LakeformationPermissionsDatabase) {
+    this._database.internalValue = value;
   }
   public resetDatabase() {
-    this._database = undefined;
+    this._database.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get databaseInput() {
-    return this._database
+    return this._database.internalValue;
   }
 
   // table - computed: false, optional: true, required: false
-  private _table?: LakeformationPermissionsTable | undefined; 
-  private __tableOutput = new LakeformationPermissionsTableOutputReference(this as any, "table", true);
+  private _table = new LakeformationPermissionsTableOutputReference(this as any, "table", true);
   public get table() {
-    return this.__tableOutput;
+    return this._table;
   }
-  public putTable(value: LakeformationPermissionsTable | undefined) {
-    this._table = value;
+  public putTable(value: LakeformationPermissionsTable) {
+    this._table.internalValue = value;
   }
   public resetTable() {
-    this._table = undefined;
+    this._table.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get tableInput() {
-    return this._table
+    return this._table.internalValue;
   }
 
   // table_with_columns - computed: false, optional: true, required: false
-  private _tableWithColumns?: LakeformationPermissionsTableWithColumns | undefined; 
-  private __tableWithColumnsOutput = new LakeformationPermissionsTableWithColumnsOutputReference(this as any, "table_with_columns", true);
+  private _tableWithColumns = new LakeformationPermissionsTableWithColumnsOutputReference(this as any, "table_with_columns", true);
   public get tableWithColumns() {
-    return this.__tableWithColumnsOutput;
+    return this._tableWithColumns;
   }
-  public putTableWithColumns(value: LakeformationPermissionsTableWithColumns | undefined) {
-    this._tableWithColumns = value;
+  public putTableWithColumns(value: LakeformationPermissionsTableWithColumns) {
+    this._tableWithColumns.internalValue = value;
   }
   public resetTableWithColumns() {
-    this._tableWithColumns = undefined;
+    this._tableWithColumns.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get tableWithColumnsInput() {
-    return this._tableWithColumns
+    return this._tableWithColumns.internalValue;
   }
 
   // =========
@@ -625,10 +757,10 @@ export class LakeformationPermissions extends cdktf.TerraformResource {
       permissions: cdktf.listMapper(cdktf.stringToTerraform)(this._permissions),
       permissions_with_grant_option: cdktf.listMapper(cdktf.stringToTerraform)(this._permissionsWithGrantOption),
       principal: cdktf.stringToTerraform(this._principal),
-      data_location: lakeformationPermissionsDataLocationToTerraform(this._dataLocation),
-      database: lakeformationPermissionsDatabaseToTerraform(this._database),
-      table: lakeformationPermissionsTableToTerraform(this._table),
-      table_with_columns: lakeformationPermissionsTableWithColumnsToTerraform(this._tableWithColumns),
+      data_location: lakeformationPermissionsDataLocationToTerraform(this._dataLocation.internalValue),
+      database: lakeformationPermissionsDatabaseToTerraform(this._database.internalValue),
+      table: lakeformationPermissionsTableToTerraform(this._table.internalValue),
+      table_with_columns: lakeformationPermissionsTableWithColumnsToTerraform(this._tableWithColumns.internalValue),
     };
   }
 }

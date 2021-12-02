@@ -101,6 +101,37 @@ export class SsmAssociationOutputLocationOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SsmAssociationOutputLocation | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._s3BucketName) {
+      hasAnyValues = true;
+      internalValueResult.s3BucketName = this._s3BucketName;
+    }
+    if (this._s3KeyPrefix) {
+      hasAnyValues = true;
+      internalValueResult.s3KeyPrefix = this._s3KeyPrefix;
+    }
+    if (this._s3Region) {
+      hasAnyValues = true;
+      internalValueResult.s3Region = this._s3Region;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SsmAssociationOutputLocation | undefined) {
+    if (value === undefined) {
+      this._s3BucketName = undefined;
+      this._s3KeyPrefix = undefined;
+      this._s3Region = undefined;
+    }
+    else {
+      this._s3BucketName = value.s3BucketName;
+      this._s3KeyPrefix = value.s3KeyPrefix;
+      this._s3Region = value.s3Region;
+    }
+  }
+
   // s3_bucket_name - computed: false, optional: false, required: true
   private _s3BucketName?: string; 
   public get s3BucketName() {
@@ -111,15 +142,15 @@ export class SsmAssociationOutputLocationOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get s3BucketNameInput() {
-    return this._s3BucketName
+    return this._s3BucketName;
   }
 
   // s3_key_prefix - computed: false, optional: true, required: false
-  private _s3KeyPrefix?: string | undefined; 
+  private _s3KeyPrefix?: string; 
   public get s3KeyPrefix() {
     return this.getStringAttribute('s3_key_prefix');
   }
-  public set s3KeyPrefix(value: string | undefined) {
+  public set s3KeyPrefix(value: string) {
     this._s3KeyPrefix = value;
   }
   public resetS3KeyPrefix() {
@@ -127,15 +158,15 @@ export class SsmAssociationOutputLocationOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get s3KeyPrefixInput() {
-    return this._s3KeyPrefix
+    return this._s3KeyPrefix;
   }
 
   // s3_region - computed: false, optional: true, required: false
-  private _s3Region?: string | undefined; 
+  private _s3Region?: string; 
   public get s3Region() {
     return this.getStringAttribute('s3_region');
   }
-  public set s3Region(value: string | undefined) {
+  public set s3Region(value: string) {
     this._s3Region = value;
   }
   public resetS3Region() {
@@ -143,7 +174,7 @@ export class SsmAssociationOutputLocationOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get s3RegionInput() {
-    return this._s3Region
+    return this._s3Region;
   }
 }
 export interface SsmAssociationTargets {
@@ -212,7 +243,7 @@ export class SsmAssociation extends cdktf.TerraformResource {
     this._name = config.name;
     this._parameters = config.parameters;
     this._scheduleExpression = config.scheduleExpression;
-    this._outputLocation = config.outputLocation;
+    this._outputLocation.internalValue = config.outputLocation;
     this._targets = config.targets;
   }
 
@@ -221,11 +252,11 @@ export class SsmAssociation extends cdktf.TerraformResource {
   // ==========
 
   // apply_only_at_cron_interval - computed: false, optional: true, required: false
-  private _applyOnlyAtCronInterval?: boolean | cdktf.IResolvable | undefined; 
+  private _applyOnlyAtCronInterval?: boolean | cdktf.IResolvable; 
   public get applyOnlyAtCronInterval() {
     return this.getBooleanAttribute('apply_only_at_cron_interval') as any;
   }
-  public set applyOnlyAtCronInterval(value: boolean | cdktf.IResolvable | undefined) {
+  public set applyOnlyAtCronInterval(value: boolean | cdktf.IResolvable) {
     this._applyOnlyAtCronInterval = value;
   }
   public resetApplyOnlyAtCronInterval() {
@@ -233,7 +264,7 @@ export class SsmAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get applyOnlyAtCronIntervalInput() {
-    return this._applyOnlyAtCronInterval
+    return this._applyOnlyAtCronInterval;
   }
 
   // association_id - computed: true, optional: false, required: false
@@ -242,11 +273,11 @@ export class SsmAssociation extends cdktf.TerraformResource {
   }
 
   // association_name - computed: false, optional: true, required: false
-  private _associationName?: string | undefined; 
+  private _associationName?: string; 
   public get associationName() {
     return this.getStringAttribute('association_name');
   }
-  public set associationName(value: string | undefined) {
+  public set associationName(value: string) {
     this._associationName = value;
   }
   public resetAssociationName() {
@@ -254,15 +285,15 @@ export class SsmAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get associationNameInput() {
-    return this._associationName
+    return this._associationName;
   }
 
   // automation_target_parameter_name - computed: false, optional: true, required: false
-  private _automationTargetParameterName?: string | undefined; 
+  private _automationTargetParameterName?: string; 
   public get automationTargetParameterName() {
     return this.getStringAttribute('automation_target_parameter_name');
   }
-  public set automationTargetParameterName(value: string | undefined) {
+  public set automationTargetParameterName(value: string) {
     this._automationTargetParameterName = value;
   }
   public resetAutomationTargetParameterName() {
@@ -270,15 +301,15 @@ export class SsmAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get automationTargetParameterNameInput() {
-    return this._automationTargetParameterName
+    return this._automationTargetParameterName;
   }
 
   // compliance_severity - computed: false, optional: true, required: false
-  private _complianceSeverity?: string | undefined; 
+  private _complianceSeverity?: string; 
   public get complianceSeverity() {
     return this.getStringAttribute('compliance_severity');
   }
-  public set complianceSeverity(value: string | undefined) {
+  public set complianceSeverity(value: string) {
     this._complianceSeverity = value;
   }
   public resetComplianceSeverity() {
@@ -286,15 +317,15 @@ export class SsmAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get complianceSeverityInput() {
-    return this._complianceSeverity
+    return this._complianceSeverity;
   }
 
   // document_version - computed: true, optional: true, required: false
-  private _documentVersion?: string | undefined; 
+  private _documentVersion?: string; 
   public get documentVersion() {
     return this.getStringAttribute('document_version');
   }
-  public set documentVersion(value: string | undefined) {
+  public set documentVersion(value: string) {
     this._documentVersion = value;
   }
   public resetDocumentVersion() {
@@ -302,7 +333,7 @@ export class SsmAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get documentVersionInput() {
-    return this._documentVersion
+    return this._documentVersion;
   }
 
   // id - computed: true, optional: true, required: false
@@ -311,11 +342,11 @@ export class SsmAssociation extends cdktf.TerraformResource {
   }
 
   // instance_id - computed: false, optional: true, required: false
-  private _instanceId?: string | undefined; 
+  private _instanceId?: string; 
   public get instanceId() {
     return this.getStringAttribute('instance_id');
   }
-  public set instanceId(value: string | undefined) {
+  public set instanceId(value: string) {
     this._instanceId = value;
   }
   public resetInstanceId() {
@@ -323,15 +354,15 @@ export class SsmAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceIdInput() {
-    return this._instanceId
+    return this._instanceId;
   }
 
   // max_concurrency - computed: false, optional: true, required: false
-  private _maxConcurrency?: string | undefined; 
+  private _maxConcurrency?: string; 
   public get maxConcurrency() {
     return this.getStringAttribute('max_concurrency');
   }
-  public set maxConcurrency(value: string | undefined) {
+  public set maxConcurrency(value: string) {
     this._maxConcurrency = value;
   }
   public resetMaxConcurrency() {
@@ -339,15 +370,15 @@ export class SsmAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maxConcurrencyInput() {
-    return this._maxConcurrency
+    return this._maxConcurrency;
   }
 
   // max_errors - computed: false, optional: true, required: false
-  private _maxErrors?: string | undefined; 
+  private _maxErrors?: string; 
   public get maxErrors() {
     return this.getStringAttribute('max_errors');
   }
-  public set maxErrors(value: string | undefined) {
+  public set maxErrors(value: string) {
     this._maxErrors = value;
   }
   public resetMaxErrors() {
@@ -355,7 +386,7 @@ export class SsmAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get maxErrorsInput() {
-    return this._maxErrors
+    return this._maxErrors;
   }
 
   // name - computed: false, optional: false, required: true
@@ -368,16 +399,16 @@ export class SsmAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // parameters - computed: true, optional: true, required: false
-  private _parameters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _parameters?: { [key: string]: string } | cdktf.IResolvable; 
   public get parameters() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('parameters') as any;
   }
-  public set parameters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set parameters(value: { [key: string]: string } | cdktf.IResolvable) {
     this._parameters = value;
   }
   public resetParameters() {
@@ -385,15 +416,15 @@ export class SsmAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get parametersInput() {
-    return this._parameters
+    return this._parameters;
   }
 
   // schedule_expression - computed: false, optional: true, required: false
-  private _scheduleExpression?: string | undefined; 
+  private _scheduleExpression?: string; 
   public get scheduleExpression() {
     return this.getStringAttribute('schedule_expression');
   }
-  public set scheduleExpression(value: string | undefined) {
+  public set scheduleExpression(value: string) {
     this._scheduleExpression = value;
   }
   public resetScheduleExpression() {
@@ -401,33 +432,32 @@ export class SsmAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scheduleExpressionInput() {
-    return this._scheduleExpression
+    return this._scheduleExpression;
   }
 
   // output_location - computed: false, optional: true, required: false
-  private _outputLocation?: SsmAssociationOutputLocation | undefined; 
-  private __outputLocationOutput = new SsmAssociationOutputLocationOutputReference(this as any, "output_location", true);
+  private _outputLocation = new SsmAssociationOutputLocationOutputReference(this as any, "output_location", true);
   public get outputLocation() {
-    return this.__outputLocationOutput;
+    return this._outputLocation;
   }
-  public putOutputLocation(value: SsmAssociationOutputLocation | undefined) {
-    this._outputLocation = value;
+  public putOutputLocation(value: SsmAssociationOutputLocation) {
+    this._outputLocation.internalValue = value;
   }
   public resetOutputLocation() {
-    this._outputLocation = undefined;
+    this._outputLocation.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get outputLocationInput() {
-    return this._outputLocation
+    return this._outputLocation.internalValue;
   }
 
   // targets - computed: false, optional: true, required: false
-  private _targets?: SsmAssociationTargets[] | undefined; 
+  private _targets?: SsmAssociationTargets[]; 
   public get targets() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('targets') as any;
   }
-  public set targets(value: SsmAssociationTargets[] | undefined) {
+  public set targets(value: SsmAssociationTargets[]) {
     this._targets = value;
   }
   public resetTargets() {
@@ -435,7 +465,7 @@ export class SsmAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetsInput() {
-    return this._targets
+    return this._targets;
   }
 
   // =========
@@ -455,7 +485,7 @@ export class SsmAssociation extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       parameters: cdktf.hashMapper(cdktf.anyToTerraform)(this._parameters),
       schedule_expression: cdktf.stringToTerraform(this._scheduleExpression),
-      output_location: ssmAssociationOutputLocationToTerraform(this._outputLocation),
+      output_location: ssmAssociationOutputLocationToTerraform(this._outputLocation.internalValue),
       targets: cdktf.listMapper(ssmAssociationTargetsToTerraform)(this._targets),
     };
   }

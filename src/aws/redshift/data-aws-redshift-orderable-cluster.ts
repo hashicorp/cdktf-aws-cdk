@@ -73,11 +73,11 @@ export class DataAwsRedshiftOrderableCluster extends cdktf.TerraformDataSource {
   }
 
   // cluster_type - computed: true, optional: true, required: false
-  private _clusterType?: string | undefined; 
+  private _clusterType?: string; 
   public get clusterType() {
     return this.getStringAttribute('cluster_type');
   }
-  public set clusterType(value: string | undefined) {
+  public set clusterType(value: string) {
     this._clusterType = value;
   }
   public resetClusterType() {
@@ -85,15 +85,15 @@ export class DataAwsRedshiftOrderableCluster extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterTypeInput() {
-    return this._clusterType
+    return this._clusterType;
   }
 
   // cluster_version - computed: true, optional: true, required: false
-  private _clusterVersion?: string | undefined; 
+  private _clusterVersion?: string; 
   public get clusterVersion() {
     return this.getStringAttribute('cluster_version');
   }
-  public set clusterVersion(value: string | undefined) {
+  public set clusterVersion(value: string) {
     this._clusterVersion = value;
   }
   public resetClusterVersion() {
@@ -101,7 +101,7 @@ export class DataAwsRedshiftOrderableCluster extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterVersionInput() {
-    return this._clusterVersion
+    return this._clusterVersion;
   }
 
   // id - computed: true, optional: true, required: false
@@ -110,11 +110,11 @@ export class DataAwsRedshiftOrderableCluster extends cdktf.TerraformDataSource {
   }
 
   // node_type - computed: true, optional: true, required: false
-  private _nodeType?: string | undefined; 
+  private _nodeType?: string; 
   public get nodeType() {
     return this.getStringAttribute('node_type');
   }
-  public set nodeType(value: string | undefined) {
+  public set nodeType(value: string) {
     this._nodeType = value;
   }
   public resetNodeType() {
@@ -122,15 +122,15 @@ export class DataAwsRedshiftOrderableCluster extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nodeTypeInput() {
-    return this._nodeType
+    return this._nodeType;
   }
 
   // preferred_node_types - computed: false, optional: true, required: false
-  private _preferredNodeTypes?: string[] | undefined; 
+  private _preferredNodeTypes?: string[]; 
   public get preferredNodeTypes() {
     return this.getListAttribute('preferred_node_types');
   }
-  public set preferredNodeTypes(value: string[] | undefined) {
+  public set preferredNodeTypes(value: string[]) {
     this._preferredNodeTypes = value;
   }
   public resetPreferredNodeTypes() {
@@ -138,7 +138,7 @@ export class DataAwsRedshiftOrderableCluster extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get preferredNodeTypesInput() {
-    return this._preferredNodeTypes
+    return this._preferredNodeTypes;
   }
 
   // =========

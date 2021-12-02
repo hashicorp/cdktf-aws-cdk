@@ -77,7 +77,7 @@ export class LoadBalancerListenerPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get loadBalancerNameInput() {
-    return this._loadBalancerName
+    return this._loadBalancerName;
   }
 
   // load_balancer_port - computed: false, optional: false, required: true
@@ -90,15 +90,15 @@ export class LoadBalancerListenerPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get loadBalancerPortInput() {
-    return this._loadBalancerPort
+    return this._loadBalancerPort;
   }
 
   // policy_names - computed: false, optional: true, required: false
-  private _policyNames?: string[] | undefined; 
+  private _policyNames?: string[]; 
   public get policyNames() {
     return this.getListAttribute('policy_names');
   }
-  public set policyNames(value: string[] | undefined) {
+  public set policyNames(value: string[]) {
     this._policyNames = value;
   }
   public resetPolicyNames() {
@@ -106,7 +106,7 @@ export class LoadBalancerListenerPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyNamesInput() {
-    return this._policyNames
+    return this._policyNames;
   }
 
   // =========

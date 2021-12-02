@@ -222,11 +222,11 @@ export class DataAwsMqBroker extends cdktf.TerraformDataSource {
   }
 
   // broker_id - computed: true, optional: true, required: false
-  private _brokerId?: string | undefined; 
+  private _brokerId?: string; 
   public get brokerId() {
     return this.getStringAttribute('broker_id');
   }
-  public set brokerId(value: string | undefined) {
+  public set brokerId(value: string) {
     this._brokerId = value;
   }
   public resetBrokerId() {
@@ -234,15 +234,15 @@ export class DataAwsMqBroker extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get brokerIdInput() {
-    return this._brokerId
+    return this._brokerId;
   }
 
   // broker_name - computed: true, optional: true, required: false
-  private _brokerName?: string | undefined; 
+  private _brokerName?: string; 
   public get brokerName() {
     return this.getStringAttribute('broker_name');
   }
-  public set brokerName(value: string | undefined) {
+  public set brokerName(value: string) {
     this._brokerName = value;
   }
   public resetBrokerName() {
@@ -250,7 +250,7 @@ export class DataAwsMqBroker extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get brokerNameInput() {
-    return this._brokerName
+    return this._brokerName;
   }
 
   // configuration - computed: true, optional: false, required: false
@@ -329,12 +329,12 @@ export class DataAwsMqBroker extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -342,7 +342,7 @@ export class DataAwsMqBroker extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // user - computed: true, optional: false, required: false

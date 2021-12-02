@@ -105,12 +105,55 @@ export class ElastictranscoderPresetAudioOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElastictranscoderPresetAudio | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._audioPackingMode) {
+      hasAnyValues = true;
+      internalValueResult.audioPackingMode = this._audioPackingMode;
+    }
+    if (this._bitRate) {
+      hasAnyValues = true;
+      internalValueResult.bitRate = this._bitRate;
+    }
+    if (this._channels) {
+      hasAnyValues = true;
+      internalValueResult.channels = this._channels;
+    }
+    if (this._codec) {
+      hasAnyValues = true;
+      internalValueResult.codec = this._codec;
+    }
+    if (this._sampleRate) {
+      hasAnyValues = true;
+      internalValueResult.sampleRate = this._sampleRate;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElastictranscoderPresetAudio | undefined) {
+    if (value === undefined) {
+      this._audioPackingMode = undefined;
+      this._bitRate = undefined;
+      this._channels = undefined;
+      this._codec = undefined;
+      this._sampleRate = undefined;
+    }
+    else {
+      this._audioPackingMode = value.audioPackingMode;
+      this._bitRate = value.bitRate;
+      this._channels = value.channels;
+      this._codec = value.codec;
+      this._sampleRate = value.sampleRate;
+    }
+  }
+
   // audio_packing_mode - computed: false, optional: true, required: false
-  private _audioPackingMode?: string | undefined; 
+  private _audioPackingMode?: string; 
   public get audioPackingMode() {
     return this.getStringAttribute('audio_packing_mode');
   }
-  public set audioPackingMode(value: string | undefined) {
+  public set audioPackingMode(value: string) {
     this._audioPackingMode = value;
   }
   public resetAudioPackingMode() {
@@ -118,15 +161,15 @@ export class ElastictranscoderPresetAudioOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get audioPackingModeInput() {
-    return this._audioPackingMode
+    return this._audioPackingMode;
   }
 
   // bit_rate - computed: false, optional: true, required: false
-  private _bitRate?: string | undefined; 
+  private _bitRate?: string; 
   public get bitRate() {
     return this.getStringAttribute('bit_rate');
   }
-  public set bitRate(value: string | undefined) {
+  public set bitRate(value: string) {
     this._bitRate = value;
   }
   public resetBitRate() {
@@ -134,15 +177,15 @@ export class ElastictranscoderPresetAudioOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get bitRateInput() {
-    return this._bitRate
+    return this._bitRate;
   }
 
   // channels - computed: false, optional: true, required: false
-  private _channels?: string | undefined; 
+  private _channels?: string; 
   public get channels() {
     return this.getStringAttribute('channels');
   }
-  public set channels(value: string | undefined) {
+  public set channels(value: string) {
     this._channels = value;
   }
   public resetChannels() {
@@ -150,15 +193,15 @@ export class ElastictranscoderPresetAudioOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get channelsInput() {
-    return this._channels
+    return this._channels;
   }
 
   // codec - computed: false, optional: true, required: false
-  private _codec?: string | undefined; 
+  private _codec?: string; 
   public get codec() {
     return this.getStringAttribute('codec');
   }
-  public set codec(value: string | undefined) {
+  public set codec(value: string) {
     this._codec = value;
   }
   public resetCodec() {
@@ -166,15 +209,15 @@ export class ElastictranscoderPresetAudioOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get codecInput() {
-    return this._codec
+    return this._codec;
   }
 
   // sample_rate - computed: false, optional: true, required: false
-  private _sampleRate?: string | undefined; 
+  private _sampleRate?: string; 
   public get sampleRate() {
     return this.getStringAttribute('sample_rate');
   }
-  public set sampleRate(value: string | undefined) {
+  public set sampleRate(value: string) {
     this._sampleRate = value;
   }
   public resetSampleRate() {
@@ -182,7 +225,7 @@ export class ElastictranscoderPresetAudioOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get sampleRateInput() {
-    return this._sampleRate
+    return this._sampleRate;
   }
 }
 export interface ElastictranscoderPresetAudioCodecOptions {
@@ -227,12 +270,49 @@ export class ElastictranscoderPresetAudioCodecOptionsOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElastictranscoderPresetAudioCodecOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bitDepth) {
+      hasAnyValues = true;
+      internalValueResult.bitDepth = this._bitDepth;
+    }
+    if (this._bitOrder) {
+      hasAnyValues = true;
+      internalValueResult.bitOrder = this._bitOrder;
+    }
+    if (this._profile) {
+      hasAnyValues = true;
+      internalValueResult.profile = this._profile;
+    }
+    if (this._signed) {
+      hasAnyValues = true;
+      internalValueResult.signed = this._signed;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElastictranscoderPresetAudioCodecOptions | undefined) {
+    if (value === undefined) {
+      this._bitDepth = undefined;
+      this._bitOrder = undefined;
+      this._profile = undefined;
+      this._signed = undefined;
+    }
+    else {
+      this._bitDepth = value.bitDepth;
+      this._bitOrder = value.bitOrder;
+      this._profile = value.profile;
+      this._signed = value.signed;
+    }
+  }
+
   // bit_depth - computed: false, optional: true, required: false
-  private _bitDepth?: string | undefined; 
+  private _bitDepth?: string; 
   public get bitDepth() {
     return this.getStringAttribute('bit_depth');
   }
-  public set bitDepth(value: string | undefined) {
+  public set bitDepth(value: string) {
     this._bitDepth = value;
   }
   public resetBitDepth() {
@@ -240,15 +320,15 @@ export class ElastictranscoderPresetAudioCodecOptionsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get bitDepthInput() {
-    return this._bitDepth
+    return this._bitDepth;
   }
 
   // bit_order - computed: false, optional: true, required: false
-  private _bitOrder?: string | undefined; 
+  private _bitOrder?: string; 
   public get bitOrder() {
     return this.getStringAttribute('bit_order');
   }
-  public set bitOrder(value: string | undefined) {
+  public set bitOrder(value: string) {
     this._bitOrder = value;
   }
   public resetBitOrder() {
@@ -256,15 +336,15 @@ export class ElastictranscoderPresetAudioCodecOptionsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get bitOrderInput() {
-    return this._bitOrder
+    return this._bitOrder;
   }
 
   // profile - computed: false, optional: true, required: false
-  private _profile?: string | undefined; 
+  private _profile?: string; 
   public get profile() {
     return this.getStringAttribute('profile');
   }
-  public set profile(value: string | undefined) {
+  public set profile(value: string) {
     this._profile = value;
   }
   public resetProfile() {
@@ -272,15 +352,15 @@ export class ElastictranscoderPresetAudioCodecOptionsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get profileInput() {
-    return this._profile
+    return this._profile;
   }
 
   // signed - computed: false, optional: true, required: false
-  private _signed?: string | undefined; 
+  private _signed?: string; 
   public get signed() {
     return this.getStringAttribute('signed');
   }
-  public set signed(value: string | undefined) {
+  public set signed(value: string) {
     this._signed = value;
   }
   public resetSigned() {
@@ -288,7 +368,7 @@ export class ElastictranscoderPresetAudioCodecOptionsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get signedInput() {
-    return this._signed
+    return this._signed;
   }
 }
 export interface ElastictranscoderPresetThumbnails {
@@ -353,12 +433,73 @@ export class ElastictranscoderPresetThumbnailsOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElastictranscoderPresetThumbnails | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._aspectRatio) {
+      hasAnyValues = true;
+      internalValueResult.aspectRatio = this._aspectRatio;
+    }
+    if (this._format) {
+      hasAnyValues = true;
+      internalValueResult.format = this._format;
+    }
+    if (this._interval) {
+      hasAnyValues = true;
+      internalValueResult.interval = this._interval;
+    }
+    if (this._maxHeight) {
+      hasAnyValues = true;
+      internalValueResult.maxHeight = this._maxHeight;
+    }
+    if (this._maxWidth) {
+      hasAnyValues = true;
+      internalValueResult.maxWidth = this._maxWidth;
+    }
+    if (this._paddingPolicy) {
+      hasAnyValues = true;
+      internalValueResult.paddingPolicy = this._paddingPolicy;
+    }
+    if (this._resolution) {
+      hasAnyValues = true;
+      internalValueResult.resolution = this._resolution;
+    }
+    if (this._sizingPolicy) {
+      hasAnyValues = true;
+      internalValueResult.sizingPolicy = this._sizingPolicy;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElastictranscoderPresetThumbnails | undefined) {
+    if (value === undefined) {
+      this._aspectRatio = undefined;
+      this._format = undefined;
+      this._interval = undefined;
+      this._maxHeight = undefined;
+      this._maxWidth = undefined;
+      this._paddingPolicy = undefined;
+      this._resolution = undefined;
+      this._sizingPolicy = undefined;
+    }
+    else {
+      this._aspectRatio = value.aspectRatio;
+      this._format = value.format;
+      this._interval = value.interval;
+      this._maxHeight = value.maxHeight;
+      this._maxWidth = value.maxWidth;
+      this._paddingPolicy = value.paddingPolicy;
+      this._resolution = value.resolution;
+      this._sizingPolicy = value.sizingPolicy;
+    }
+  }
+
   // aspect_ratio - computed: false, optional: true, required: false
-  private _aspectRatio?: string | undefined; 
+  private _aspectRatio?: string; 
   public get aspectRatio() {
     return this.getStringAttribute('aspect_ratio');
   }
-  public set aspectRatio(value: string | undefined) {
+  public set aspectRatio(value: string) {
     this._aspectRatio = value;
   }
   public resetAspectRatio() {
@@ -366,15 +507,15 @@ export class ElastictranscoderPresetThumbnailsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get aspectRatioInput() {
-    return this._aspectRatio
+    return this._aspectRatio;
   }
 
   // format - computed: false, optional: true, required: false
-  private _format?: string | undefined; 
+  private _format?: string; 
   public get format() {
     return this.getStringAttribute('format');
   }
-  public set format(value: string | undefined) {
+  public set format(value: string) {
     this._format = value;
   }
   public resetFormat() {
@@ -382,15 +523,15 @@ export class ElastictranscoderPresetThumbnailsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get formatInput() {
-    return this._format
+    return this._format;
   }
 
   // interval - computed: false, optional: true, required: false
-  private _interval?: string | undefined; 
+  private _interval?: string; 
   public get interval() {
     return this.getStringAttribute('interval');
   }
-  public set interval(value: string | undefined) {
+  public set interval(value: string) {
     this._interval = value;
   }
   public resetInterval() {
@@ -398,15 +539,15 @@ export class ElastictranscoderPresetThumbnailsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get intervalInput() {
-    return this._interval
+    return this._interval;
   }
 
   // max_height - computed: false, optional: true, required: false
-  private _maxHeight?: string | undefined; 
+  private _maxHeight?: string; 
   public get maxHeight() {
     return this.getStringAttribute('max_height');
   }
-  public set maxHeight(value: string | undefined) {
+  public set maxHeight(value: string) {
     this._maxHeight = value;
   }
   public resetMaxHeight() {
@@ -414,15 +555,15 @@ export class ElastictranscoderPresetThumbnailsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get maxHeightInput() {
-    return this._maxHeight
+    return this._maxHeight;
   }
 
   // max_width - computed: false, optional: true, required: false
-  private _maxWidth?: string | undefined; 
+  private _maxWidth?: string; 
   public get maxWidth() {
     return this.getStringAttribute('max_width');
   }
-  public set maxWidth(value: string | undefined) {
+  public set maxWidth(value: string) {
     this._maxWidth = value;
   }
   public resetMaxWidth() {
@@ -430,15 +571,15 @@ export class ElastictranscoderPresetThumbnailsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get maxWidthInput() {
-    return this._maxWidth
+    return this._maxWidth;
   }
 
   // padding_policy - computed: false, optional: true, required: false
-  private _paddingPolicy?: string | undefined; 
+  private _paddingPolicy?: string; 
   public get paddingPolicy() {
     return this.getStringAttribute('padding_policy');
   }
-  public set paddingPolicy(value: string | undefined) {
+  public set paddingPolicy(value: string) {
     this._paddingPolicy = value;
   }
   public resetPaddingPolicy() {
@@ -446,15 +587,15 @@ export class ElastictranscoderPresetThumbnailsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get paddingPolicyInput() {
-    return this._paddingPolicy
+    return this._paddingPolicy;
   }
 
   // resolution - computed: false, optional: true, required: false
-  private _resolution?: string | undefined; 
+  private _resolution?: string; 
   public get resolution() {
     return this.getStringAttribute('resolution');
   }
-  public set resolution(value: string | undefined) {
+  public set resolution(value: string) {
     this._resolution = value;
   }
   public resetResolution() {
@@ -462,15 +603,15 @@ export class ElastictranscoderPresetThumbnailsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get resolutionInput() {
-    return this._resolution
+    return this._resolution;
   }
 
   // sizing_policy - computed: false, optional: true, required: false
-  private _sizingPolicy?: string | undefined; 
+  private _sizingPolicy?: string; 
   public get sizingPolicy() {
     return this.getStringAttribute('sizing_policy');
   }
-  public set sizingPolicy(value: string | undefined) {
+  public set sizingPolicy(value: string) {
     this._sizingPolicy = value;
   }
   public resetSizingPolicy() {
@@ -478,7 +619,7 @@ export class ElastictranscoderPresetThumbnailsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get sizingPolicyInput() {
-    return this._sizingPolicy
+    return this._sizingPolicy;
   }
 }
 export interface ElastictranscoderPresetVideo {
@@ -568,12 +709,103 @@ export class ElastictranscoderPresetVideoOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElastictranscoderPresetVideo | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._aspectRatio) {
+      hasAnyValues = true;
+      internalValueResult.aspectRatio = this._aspectRatio;
+    }
+    if (this._bitRate) {
+      hasAnyValues = true;
+      internalValueResult.bitRate = this._bitRate;
+    }
+    if (this._codec) {
+      hasAnyValues = true;
+      internalValueResult.codec = this._codec;
+    }
+    if (this._displayAspectRatio) {
+      hasAnyValues = true;
+      internalValueResult.displayAspectRatio = this._displayAspectRatio;
+    }
+    if (this._fixedGop) {
+      hasAnyValues = true;
+      internalValueResult.fixedGop = this._fixedGop;
+    }
+    if (this._frameRate) {
+      hasAnyValues = true;
+      internalValueResult.frameRate = this._frameRate;
+    }
+    if (this._keyframesMaxDist) {
+      hasAnyValues = true;
+      internalValueResult.keyframesMaxDist = this._keyframesMaxDist;
+    }
+    if (this._maxFrameRate) {
+      hasAnyValues = true;
+      internalValueResult.maxFrameRate = this._maxFrameRate;
+    }
+    if (this._maxHeight) {
+      hasAnyValues = true;
+      internalValueResult.maxHeight = this._maxHeight;
+    }
+    if (this._maxWidth) {
+      hasAnyValues = true;
+      internalValueResult.maxWidth = this._maxWidth;
+    }
+    if (this._paddingPolicy) {
+      hasAnyValues = true;
+      internalValueResult.paddingPolicy = this._paddingPolicy;
+    }
+    if (this._resolution) {
+      hasAnyValues = true;
+      internalValueResult.resolution = this._resolution;
+    }
+    if (this._sizingPolicy) {
+      hasAnyValues = true;
+      internalValueResult.sizingPolicy = this._sizingPolicy;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElastictranscoderPresetVideo | undefined) {
+    if (value === undefined) {
+      this._aspectRatio = undefined;
+      this._bitRate = undefined;
+      this._codec = undefined;
+      this._displayAspectRatio = undefined;
+      this._fixedGop = undefined;
+      this._frameRate = undefined;
+      this._keyframesMaxDist = undefined;
+      this._maxFrameRate = undefined;
+      this._maxHeight = undefined;
+      this._maxWidth = undefined;
+      this._paddingPolicy = undefined;
+      this._resolution = undefined;
+      this._sizingPolicy = undefined;
+    }
+    else {
+      this._aspectRatio = value.aspectRatio;
+      this._bitRate = value.bitRate;
+      this._codec = value.codec;
+      this._displayAspectRatio = value.displayAspectRatio;
+      this._fixedGop = value.fixedGop;
+      this._frameRate = value.frameRate;
+      this._keyframesMaxDist = value.keyframesMaxDist;
+      this._maxFrameRate = value.maxFrameRate;
+      this._maxHeight = value.maxHeight;
+      this._maxWidth = value.maxWidth;
+      this._paddingPolicy = value.paddingPolicy;
+      this._resolution = value.resolution;
+      this._sizingPolicy = value.sizingPolicy;
+    }
+  }
+
   // aspect_ratio - computed: false, optional: true, required: false
-  private _aspectRatio?: string | undefined; 
+  private _aspectRatio?: string; 
   public get aspectRatio() {
     return this.getStringAttribute('aspect_ratio');
   }
-  public set aspectRatio(value: string | undefined) {
+  public set aspectRatio(value: string) {
     this._aspectRatio = value;
   }
   public resetAspectRatio() {
@@ -581,15 +813,15 @@ export class ElastictranscoderPresetVideoOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get aspectRatioInput() {
-    return this._aspectRatio
+    return this._aspectRatio;
   }
 
   // bit_rate - computed: false, optional: true, required: false
-  private _bitRate?: string | undefined; 
+  private _bitRate?: string; 
   public get bitRate() {
     return this.getStringAttribute('bit_rate');
   }
-  public set bitRate(value: string | undefined) {
+  public set bitRate(value: string) {
     this._bitRate = value;
   }
   public resetBitRate() {
@@ -597,15 +829,15 @@ export class ElastictranscoderPresetVideoOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get bitRateInput() {
-    return this._bitRate
+    return this._bitRate;
   }
 
   // codec - computed: false, optional: true, required: false
-  private _codec?: string | undefined; 
+  private _codec?: string; 
   public get codec() {
     return this.getStringAttribute('codec');
   }
-  public set codec(value: string | undefined) {
+  public set codec(value: string) {
     this._codec = value;
   }
   public resetCodec() {
@@ -613,15 +845,15 @@ export class ElastictranscoderPresetVideoOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get codecInput() {
-    return this._codec
+    return this._codec;
   }
 
   // display_aspect_ratio - computed: false, optional: true, required: false
-  private _displayAspectRatio?: string | undefined; 
+  private _displayAspectRatio?: string; 
   public get displayAspectRatio() {
     return this.getStringAttribute('display_aspect_ratio');
   }
-  public set displayAspectRatio(value: string | undefined) {
+  public set displayAspectRatio(value: string) {
     this._displayAspectRatio = value;
   }
   public resetDisplayAspectRatio() {
@@ -629,15 +861,15 @@ export class ElastictranscoderPresetVideoOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get displayAspectRatioInput() {
-    return this._displayAspectRatio
+    return this._displayAspectRatio;
   }
 
   // fixed_gop - computed: false, optional: true, required: false
-  private _fixedGop?: string | undefined; 
+  private _fixedGop?: string; 
   public get fixedGop() {
     return this.getStringAttribute('fixed_gop');
   }
-  public set fixedGop(value: string | undefined) {
+  public set fixedGop(value: string) {
     this._fixedGop = value;
   }
   public resetFixedGop() {
@@ -645,15 +877,15 @@ export class ElastictranscoderPresetVideoOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get fixedGopInput() {
-    return this._fixedGop
+    return this._fixedGop;
   }
 
   // frame_rate - computed: false, optional: true, required: false
-  private _frameRate?: string | undefined; 
+  private _frameRate?: string; 
   public get frameRate() {
     return this.getStringAttribute('frame_rate');
   }
-  public set frameRate(value: string | undefined) {
+  public set frameRate(value: string) {
     this._frameRate = value;
   }
   public resetFrameRate() {
@@ -661,15 +893,15 @@ export class ElastictranscoderPresetVideoOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get frameRateInput() {
-    return this._frameRate
+    return this._frameRate;
   }
 
   // keyframes_max_dist - computed: false, optional: true, required: false
-  private _keyframesMaxDist?: string | undefined; 
+  private _keyframesMaxDist?: string; 
   public get keyframesMaxDist() {
     return this.getStringAttribute('keyframes_max_dist');
   }
-  public set keyframesMaxDist(value: string | undefined) {
+  public set keyframesMaxDist(value: string) {
     this._keyframesMaxDist = value;
   }
   public resetKeyframesMaxDist() {
@@ -677,15 +909,15 @@ export class ElastictranscoderPresetVideoOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get keyframesMaxDistInput() {
-    return this._keyframesMaxDist
+    return this._keyframesMaxDist;
   }
 
   // max_frame_rate - computed: true, optional: true, required: false
-  private _maxFrameRate?: string | undefined; 
+  private _maxFrameRate?: string; 
   public get maxFrameRate() {
     return this.getStringAttribute('max_frame_rate');
   }
-  public set maxFrameRate(value: string | undefined) {
+  public set maxFrameRate(value: string) {
     this._maxFrameRate = value;
   }
   public resetMaxFrameRate() {
@@ -693,15 +925,15 @@ export class ElastictranscoderPresetVideoOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get maxFrameRateInput() {
-    return this._maxFrameRate
+    return this._maxFrameRate;
   }
 
   // max_height - computed: false, optional: true, required: false
-  private _maxHeight?: string | undefined; 
+  private _maxHeight?: string; 
   public get maxHeight() {
     return this.getStringAttribute('max_height');
   }
-  public set maxHeight(value: string | undefined) {
+  public set maxHeight(value: string) {
     this._maxHeight = value;
   }
   public resetMaxHeight() {
@@ -709,15 +941,15 @@ export class ElastictranscoderPresetVideoOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get maxHeightInput() {
-    return this._maxHeight
+    return this._maxHeight;
   }
 
   // max_width - computed: false, optional: true, required: false
-  private _maxWidth?: string | undefined; 
+  private _maxWidth?: string; 
   public get maxWidth() {
     return this.getStringAttribute('max_width');
   }
-  public set maxWidth(value: string | undefined) {
+  public set maxWidth(value: string) {
     this._maxWidth = value;
   }
   public resetMaxWidth() {
@@ -725,15 +957,15 @@ export class ElastictranscoderPresetVideoOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get maxWidthInput() {
-    return this._maxWidth
+    return this._maxWidth;
   }
 
   // padding_policy - computed: false, optional: true, required: false
-  private _paddingPolicy?: string | undefined; 
+  private _paddingPolicy?: string; 
   public get paddingPolicy() {
     return this.getStringAttribute('padding_policy');
   }
-  public set paddingPolicy(value: string | undefined) {
+  public set paddingPolicy(value: string) {
     this._paddingPolicy = value;
   }
   public resetPaddingPolicy() {
@@ -741,15 +973,15 @@ export class ElastictranscoderPresetVideoOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get paddingPolicyInput() {
-    return this._paddingPolicy
+    return this._paddingPolicy;
   }
 
   // resolution - computed: false, optional: true, required: false
-  private _resolution?: string | undefined; 
+  private _resolution?: string; 
   public get resolution() {
     return this.getStringAttribute('resolution');
   }
-  public set resolution(value: string | undefined) {
+  public set resolution(value: string) {
     this._resolution = value;
   }
   public resetResolution() {
@@ -757,15 +989,15 @@ export class ElastictranscoderPresetVideoOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get resolutionInput() {
-    return this._resolution
+    return this._resolution;
   }
 
   // sizing_policy - computed: false, optional: true, required: false
-  private _sizingPolicy?: string | undefined; 
+  private _sizingPolicy?: string; 
   public get sizingPolicy() {
     return this.getStringAttribute('sizing_policy');
   }
-  public set sizingPolicy(value: string | undefined) {
+  public set sizingPolicy(value: string) {
     this._sizingPolicy = value;
   }
   public resetSizingPolicy() {
@@ -773,7 +1005,7 @@ export class ElastictranscoderPresetVideoOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get sizingPolicyInput() {
-    return this._sizingPolicy
+    return this._sizingPolicy;
   }
 }
 export interface ElastictranscoderPresetVideoWatermarks {
@@ -876,10 +1108,10 @@ export class ElastictranscoderPreset extends cdktf.TerraformResource {
     this._name = config.name;
     this._type = config.type;
     this._videoCodecOptions = config.videoCodecOptions;
-    this._audio = config.audio;
-    this._audioCodecOptions = config.audioCodecOptions;
-    this._thumbnails = config.thumbnails;
-    this._video = config.video;
+    this._audio.internalValue = config.audio;
+    this._audioCodecOptions.internalValue = config.audioCodecOptions;
+    this._thumbnails.internalValue = config.thumbnails;
+    this._video.internalValue = config.video;
     this._videoWatermarks = config.videoWatermarks;
   }
 
@@ -902,15 +1134,15 @@ export class ElastictranscoderPreset extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get containerInput() {
-    return this._container
+    return this._container;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -918,7 +1150,7 @@ export class ElastictranscoderPreset extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -927,11 +1159,11 @@ export class ElastictranscoderPreset extends cdktf.TerraformResource {
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -939,15 +1171,15 @@ export class ElastictranscoderPreset extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // type - computed: true, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -955,16 +1187,16 @@ export class ElastictranscoderPreset extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // video_codec_options - computed: false, optional: true, required: false
-  private _videoCodecOptions?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _videoCodecOptions?: { [key: string]: string } | cdktf.IResolvable; 
   public get videoCodecOptions() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('video_codec_options') as any;
   }
-  public set videoCodecOptions(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set videoCodecOptions(value: { [key: string]: string } | cdktf.IResolvable) {
     this._videoCodecOptions = value;
   }
   public resetVideoCodecOptions() {
@@ -972,84 +1204,80 @@ export class ElastictranscoderPreset extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get videoCodecOptionsInput() {
-    return this._videoCodecOptions
+    return this._videoCodecOptions;
   }
 
   // audio - computed: false, optional: true, required: false
-  private _audio?: ElastictranscoderPresetAudio | undefined; 
-  private __audioOutput = new ElastictranscoderPresetAudioOutputReference(this as any, "audio", true);
+  private _audio = new ElastictranscoderPresetAudioOutputReference(this as any, "audio", true);
   public get audio() {
-    return this.__audioOutput;
+    return this._audio;
   }
-  public putAudio(value: ElastictranscoderPresetAudio | undefined) {
-    this._audio = value;
+  public putAudio(value: ElastictranscoderPresetAudio) {
+    this._audio.internalValue = value;
   }
   public resetAudio() {
-    this._audio = undefined;
+    this._audio.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get audioInput() {
-    return this._audio
+    return this._audio.internalValue;
   }
 
   // audio_codec_options - computed: false, optional: true, required: false
-  private _audioCodecOptions?: ElastictranscoderPresetAudioCodecOptions | undefined; 
-  private __audioCodecOptionsOutput = new ElastictranscoderPresetAudioCodecOptionsOutputReference(this as any, "audio_codec_options", true);
+  private _audioCodecOptions = new ElastictranscoderPresetAudioCodecOptionsOutputReference(this as any, "audio_codec_options", true);
   public get audioCodecOptions() {
-    return this.__audioCodecOptionsOutput;
+    return this._audioCodecOptions;
   }
-  public putAudioCodecOptions(value: ElastictranscoderPresetAudioCodecOptions | undefined) {
-    this._audioCodecOptions = value;
+  public putAudioCodecOptions(value: ElastictranscoderPresetAudioCodecOptions) {
+    this._audioCodecOptions.internalValue = value;
   }
   public resetAudioCodecOptions() {
-    this._audioCodecOptions = undefined;
+    this._audioCodecOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get audioCodecOptionsInput() {
-    return this._audioCodecOptions
+    return this._audioCodecOptions.internalValue;
   }
 
   // thumbnails - computed: false, optional: true, required: false
-  private _thumbnails?: ElastictranscoderPresetThumbnails | undefined; 
-  private __thumbnailsOutput = new ElastictranscoderPresetThumbnailsOutputReference(this as any, "thumbnails", true);
+  private _thumbnails = new ElastictranscoderPresetThumbnailsOutputReference(this as any, "thumbnails", true);
   public get thumbnails() {
-    return this.__thumbnailsOutput;
+    return this._thumbnails;
   }
-  public putThumbnails(value: ElastictranscoderPresetThumbnails | undefined) {
-    this._thumbnails = value;
+  public putThumbnails(value: ElastictranscoderPresetThumbnails) {
+    this._thumbnails.internalValue = value;
   }
   public resetThumbnails() {
-    this._thumbnails = undefined;
+    this._thumbnails.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get thumbnailsInput() {
-    return this._thumbnails
+    return this._thumbnails.internalValue;
   }
 
   // video - computed: false, optional: true, required: false
-  private _video?: ElastictranscoderPresetVideo | undefined; 
-  private __videoOutput = new ElastictranscoderPresetVideoOutputReference(this as any, "video", true);
+  private _video = new ElastictranscoderPresetVideoOutputReference(this as any, "video", true);
   public get video() {
-    return this.__videoOutput;
+    return this._video;
   }
-  public putVideo(value: ElastictranscoderPresetVideo | undefined) {
-    this._video = value;
+  public putVideo(value: ElastictranscoderPresetVideo) {
+    this._video.internalValue = value;
   }
   public resetVideo() {
-    this._video = undefined;
+    this._video.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get videoInput() {
-    return this._video
+    return this._video.internalValue;
   }
 
   // video_watermarks - computed: false, optional: true, required: false
-  private _videoWatermarks?: ElastictranscoderPresetVideoWatermarks[] | undefined; 
+  private _videoWatermarks?: ElastictranscoderPresetVideoWatermarks[]; 
   public get videoWatermarks() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('video_watermarks') as any;
   }
-  public set videoWatermarks(value: ElastictranscoderPresetVideoWatermarks[] | undefined) {
+  public set videoWatermarks(value: ElastictranscoderPresetVideoWatermarks[]) {
     this._videoWatermarks = value;
   }
   public resetVideoWatermarks() {
@@ -1057,7 +1285,7 @@ export class ElastictranscoderPreset extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get videoWatermarksInput() {
-    return this._videoWatermarks
+    return this._videoWatermarks;
   }
 
   // =========
@@ -1071,10 +1299,10 @@ export class ElastictranscoderPreset extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       type: cdktf.stringToTerraform(this._type),
       video_codec_options: cdktf.hashMapper(cdktf.anyToTerraform)(this._videoCodecOptions),
-      audio: elastictranscoderPresetAudioToTerraform(this._audio),
-      audio_codec_options: elastictranscoderPresetAudioCodecOptionsToTerraform(this._audioCodecOptions),
-      thumbnails: elastictranscoderPresetThumbnailsToTerraform(this._thumbnails),
-      video: elastictranscoderPresetVideoToTerraform(this._video),
+      audio: elastictranscoderPresetAudioToTerraform(this._audio.internalValue),
+      audio_codec_options: elastictranscoderPresetAudioCodecOptionsToTerraform(this._audioCodecOptions.internalValue),
+      thumbnails: elastictranscoderPresetThumbnailsToTerraform(this._thumbnails.internalValue),
+      video: elastictranscoderPresetVideoToTerraform(this._video.internalValue),
       video_watermarks: cdktf.listMapper(elastictranscoderPresetVideoWatermarksToTerraform)(this._videoWatermarks),
     };
   }

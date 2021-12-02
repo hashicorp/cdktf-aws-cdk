@@ -62,12 +62,37 @@ export class DxHostedTransitVirtualInterfaceAccepterTimeoutsOutputReference exte
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DxHostedTransitVirtualInterfaceAccepterTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DxHostedTransitVirtualInterfaceAccepterTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -75,15 +100,15 @@ export class DxHostedTransitVirtualInterfaceAccepterTimeoutsOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -91,7 +116,7 @@ export class DxHostedTransitVirtualInterfaceAccepterTimeoutsOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -131,7 +156,7 @@ export class DxHostedTransitVirtualInterfaceAccepter extends cdktf.TerraformReso
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._virtualInterfaceId = config.virtualInterfaceId;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -153,7 +178,7 @@ export class DxHostedTransitVirtualInterfaceAccepter extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get dxGatewayIdInput() {
-    return this._dxGatewayId
+    return this._dxGatewayId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -162,12 +187,12 @@ export class DxHostedTransitVirtualInterfaceAccepter extends cdktf.TerraformReso
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -175,16 +200,16 @@ export class DxHostedTransitVirtualInterfaceAccepter extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -192,7 +217,7 @@ export class DxHostedTransitVirtualInterfaceAccepter extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // virtual_interface_id - computed: false, optional: false, required: true
@@ -205,24 +230,23 @@ export class DxHostedTransitVirtualInterfaceAccepter extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get virtualInterfaceIdInput() {
-    return this._virtualInterfaceId
+    return this._virtualInterfaceId;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DxHostedTransitVirtualInterfaceAccepterTimeouts | undefined; 
-  private __timeoutsOutput = new DxHostedTransitVirtualInterfaceAccepterTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DxHostedTransitVirtualInterfaceAccepterTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DxHostedTransitVirtualInterfaceAccepterTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DxHostedTransitVirtualInterfaceAccepterTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -235,7 +259,7 @@ export class DxHostedTransitVirtualInterfaceAccepter extends cdktf.TerraformReso
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       virtual_interface_id: cdktf.stringToTerraform(this._virtualInterfaceId),
-      timeouts: dxHostedTransitVirtualInterfaceAccepterTimeoutsToTerraform(this._timeouts),
+      timeouts: dxHostedTransitVirtualInterfaceAccepterTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

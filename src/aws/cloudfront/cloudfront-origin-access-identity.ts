@@ -63,11 +63,11 @@ export class CloudfrontOriginAccessIdentity extends cdktf.TerraformResource {
   }
 
   // comment - computed: false, optional: true, required: false
-  private _comment?: string | undefined; 
+  private _comment?: string; 
   public get comment() {
     return this.getStringAttribute('comment');
   }
-  public set comment(value: string | undefined) {
+  public set comment(value: string) {
     this._comment = value;
   }
   public resetComment() {
@@ -75,7 +75,7 @@ export class CloudfrontOriginAccessIdentity extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get commentInput() {
-    return this._comment
+    return this._comment;
   }
 
   // etag - computed: true, optional: false, required: false

@@ -82,7 +82,7 @@ export class CloudwatchLogDestination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -95,7 +95,7 @@ export class CloudwatchLogDestination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // target_arn - computed: false, optional: false, required: true
@@ -108,7 +108,7 @@ export class CloudwatchLogDestination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetArnInput() {
-    return this._targetArn
+    return this._targetArn;
   }
 
   // =========

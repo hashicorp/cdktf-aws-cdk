@@ -72,7 +72,7 @@ export class Ec2LocalGatewayRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get destinationCidrBlockInput() {
-    return this._destinationCidrBlock
+    return this._destinationCidrBlock;
   }
 
   // id - computed: true, optional: true, required: false
@@ -90,7 +90,7 @@ export class Ec2LocalGatewayRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get localGatewayRouteTableIdInput() {
-    return this._localGatewayRouteTableId
+    return this._localGatewayRouteTableId;
   }
 
   // local_gateway_virtual_interface_group_id - computed: false, optional: false, required: true
@@ -103,7 +103,7 @@ export class Ec2LocalGatewayRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get localGatewayVirtualInterfaceGroupIdInput() {
-    return this._localGatewayVirtualInterfaceGroupId
+    return this._localGatewayVirtualInterfaceGroupId;
   }
 
   // =========

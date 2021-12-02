@@ -68,11 +68,11 @@ export class CloudwatchQueryDefinition extends cdktf.TerraformResource {
   }
 
   // log_group_names - computed: false, optional: true, required: false
-  private _logGroupNames?: string[] | undefined; 
+  private _logGroupNames?: string[]; 
   public get logGroupNames() {
     return this.getListAttribute('log_group_names');
   }
-  public set logGroupNames(value: string[] | undefined) {
+  public set logGroupNames(value: string[]) {
     this._logGroupNames = value;
   }
   public resetLogGroupNames() {
@@ -80,7 +80,7 @@ export class CloudwatchQueryDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get logGroupNamesInput() {
-    return this._logGroupNames
+    return this._logGroupNames;
   }
 
   // name - computed: false, optional: false, required: true
@@ -93,7 +93,7 @@ export class CloudwatchQueryDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // query_definition_id - computed: true, optional: false, required: false
@@ -111,7 +111,7 @@ export class CloudwatchQueryDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString;
   }
 
   // =========

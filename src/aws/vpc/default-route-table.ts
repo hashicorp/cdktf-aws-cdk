@@ -133,12 +133,37 @@ export class DefaultRouteTableTimeoutsOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DefaultRouteTableTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DefaultRouteTableTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -146,15 +171,15 @@ export class DefaultRouteTableTimeoutsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -162,7 +187,7 @@ export class DefaultRouteTableTimeoutsOutputReference extends cdktf.ComplexObjec
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -203,7 +228,7 @@ export class DefaultRouteTable extends cdktf.TerraformResource {
     this._route = config.route;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -225,7 +250,7 @@ export class DefaultRouteTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultRouteTableIdInput() {
-    return this._defaultRouteTableId
+    return this._defaultRouteTableId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -239,11 +264,11 @@ export class DefaultRouteTable extends cdktf.TerraformResource {
   }
 
   // propagating_vgws - computed: false, optional: true, required: false
-  private _propagatingVgws?: string[] | undefined; 
+  private _propagatingVgws?: string[]; 
   public get propagatingVgws() {
     return this.getListAttribute('propagating_vgws');
   }
-  public set propagatingVgws(value: string[] | undefined) {
+  public set propagatingVgws(value: string[]) {
     this._propagatingVgws = value;
   }
   public resetPropagatingVgws() {
@@ -251,16 +276,16 @@ export class DefaultRouteTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get propagatingVgwsInput() {
-    return this._propagatingVgws
+    return this._propagatingVgws;
   }
 
   // route - computed: true, optional: true, required: false
-  private _route?: DefaultRouteTableRoute[] | undefined; 
+  private _route?: DefaultRouteTableRoute[]; 
   public get route() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('route') as any;
   }
-  public set route(value: DefaultRouteTableRoute[] | undefined) {
+  public set route(value: DefaultRouteTableRoute[]) {
     this._route = value;
   }
   public resetRoute() {
@@ -268,16 +293,16 @@ export class DefaultRouteTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get routeInput() {
-    return this._route
+    return this._route;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -285,16 +310,16 @@ export class DefaultRouteTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -302,7 +327,7 @@ export class DefaultRouteTable extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // vpc_id - computed: true, optional: false, required: false
@@ -311,20 +336,19 @@ export class DefaultRouteTable extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DefaultRouteTableTimeouts | undefined; 
-  private __timeoutsOutput = new DefaultRouteTableTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DefaultRouteTableTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DefaultRouteTableTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DefaultRouteTableTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -338,7 +362,7 @@ export class DefaultRouteTable extends cdktf.TerraformResource {
       route: cdktf.listMapper(defaultRouteTableRouteToTerraform)(this._route),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      timeouts: defaultRouteTableTimeoutsToTerraform(this._timeouts),
+      timeouts: defaultRouteTableTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

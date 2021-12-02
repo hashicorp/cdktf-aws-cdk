@@ -87,7 +87,7 @@ export class ChimeVoiceConnectorTermination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get callingRegionsInput() {
-    return this._callingRegions
+    return this._callingRegions;
   }
 
   // cidr_allow_list - computed: false, optional: false, required: true
@@ -100,15 +100,15 @@ export class ChimeVoiceConnectorTermination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cidrAllowListInput() {
-    return this._cidrAllowList
+    return this._cidrAllowList;
   }
 
   // cps_limit - computed: false, optional: true, required: false
-  private _cpsLimit?: number | undefined; 
+  private _cpsLimit?: number; 
   public get cpsLimit() {
     return this.getNumberAttribute('cps_limit');
   }
-  public set cpsLimit(value: number | undefined) {
+  public set cpsLimit(value: number) {
     this._cpsLimit = value;
   }
   public resetCpsLimit() {
@@ -116,15 +116,15 @@ export class ChimeVoiceConnectorTermination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cpsLimitInput() {
-    return this._cpsLimit
+    return this._cpsLimit;
   }
 
   // default_phone_number - computed: false, optional: true, required: false
-  private _defaultPhoneNumber?: string | undefined; 
+  private _defaultPhoneNumber?: string; 
   public get defaultPhoneNumber() {
     return this.getStringAttribute('default_phone_number');
   }
-  public set defaultPhoneNumber(value: string | undefined) {
+  public set defaultPhoneNumber(value: string) {
     this._defaultPhoneNumber = value;
   }
   public resetDefaultPhoneNumber() {
@@ -132,15 +132,15 @@ export class ChimeVoiceConnectorTermination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultPhoneNumberInput() {
-    return this._defaultPhoneNumber
+    return this._defaultPhoneNumber;
   }
 
   // disabled - computed: false, optional: true, required: false
-  private _disabled?: boolean | cdktf.IResolvable | undefined; 
+  private _disabled?: boolean | cdktf.IResolvable; 
   public get disabled() {
     return this.getBooleanAttribute('disabled') as any;
   }
-  public set disabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set disabled(value: boolean | cdktf.IResolvable) {
     this._disabled = value;
   }
   public resetDisabled() {
@@ -148,7 +148,7 @@ export class ChimeVoiceConnectorTermination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get disabledInput() {
-    return this._disabled
+    return this._disabled;
   }
 
   // id - computed: true, optional: true, required: false
@@ -166,7 +166,7 @@ export class ChimeVoiceConnectorTermination extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get voiceConnectorIdInput() {
-    return this._voiceConnectorId
+    return this._voiceConnectorId;
   }
 
   // =========

@@ -78,11 +78,11 @@ export class ServicecatalogPortfolioShare extends cdktf.TerraformResource {
   // ==========
 
   // accept_language - computed: false, optional: true, required: false
-  private _acceptLanguage?: string | undefined; 
+  private _acceptLanguage?: string; 
   public get acceptLanguage() {
     return this.getStringAttribute('accept_language');
   }
-  public set acceptLanguage(value: string | undefined) {
+  public set acceptLanguage(value: string) {
     this._acceptLanguage = value;
   }
   public resetAcceptLanguage() {
@@ -90,7 +90,7 @@ export class ServicecatalogPortfolioShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get acceptLanguageInput() {
-    return this._acceptLanguage
+    return this._acceptLanguage;
   }
 
   // accepted - computed: true, optional: false, required: false
@@ -113,7 +113,7 @@ export class ServicecatalogPortfolioShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get portfolioIdInput() {
-    return this._portfolioId
+    return this._portfolioId;
   }
 
   // principal_id - computed: false, optional: false, required: true
@@ -126,15 +126,15 @@ export class ServicecatalogPortfolioShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get principalIdInput() {
-    return this._principalId
+    return this._principalId;
   }
 
   // share_tag_options - computed: false, optional: true, required: false
-  private _shareTagOptions?: boolean | cdktf.IResolvable | undefined; 
+  private _shareTagOptions?: boolean | cdktf.IResolvable; 
   public get shareTagOptions() {
     return this.getBooleanAttribute('share_tag_options') as any;
   }
-  public set shareTagOptions(value: boolean | cdktf.IResolvable | undefined) {
+  public set shareTagOptions(value: boolean | cdktf.IResolvable) {
     this._shareTagOptions = value;
   }
   public resetShareTagOptions() {
@@ -142,7 +142,7 @@ export class ServicecatalogPortfolioShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get shareTagOptionsInput() {
-    return this._shareTagOptions
+    return this._shareTagOptions;
   }
 
   // type - computed: false, optional: false, required: true
@@ -155,15 +155,15 @@ export class ServicecatalogPortfolioShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // wait_for_acceptance - computed: false, optional: true, required: false
-  private _waitForAcceptance?: boolean | cdktf.IResolvable | undefined; 
+  private _waitForAcceptance?: boolean | cdktf.IResolvable; 
   public get waitForAcceptance() {
     return this.getBooleanAttribute('wait_for_acceptance') as any;
   }
-  public set waitForAcceptance(value: boolean | cdktf.IResolvable | undefined) {
+  public set waitForAcceptance(value: boolean | cdktf.IResolvable) {
     this._waitForAcceptance = value;
   }
   public resetWaitForAcceptance() {
@@ -171,7 +171,7 @@ export class ServicecatalogPortfolioShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get waitForAcceptanceInput() {
-    return this._waitForAcceptance
+    return this._waitForAcceptance;
   }
 
   // =========

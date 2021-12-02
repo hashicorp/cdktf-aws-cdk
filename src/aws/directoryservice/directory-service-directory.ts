@@ -106,6 +106,43 @@ export class DirectoryServiceDirectoryConnectSettingsOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DirectoryServiceDirectoryConnectSettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._customerDnsIps) {
+      hasAnyValues = true;
+      internalValueResult.customerDnsIps = this._customerDnsIps;
+    }
+    if (this._customerUsername) {
+      hasAnyValues = true;
+      internalValueResult.customerUsername = this._customerUsername;
+    }
+    if (this._subnetIds) {
+      hasAnyValues = true;
+      internalValueResult.subnetIds = this._subnetIds;
+    }
+    if (this._vpcId) {
+      hasAnyValues = true;
+      internalValueResult.vpcId = this._vpcId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DirectoryServiceDirectoryConnectSettings | undefined) {
+    if (value === undefined) {
+      this._customerDnsIps = undefined;
+      this._customerUsername = undefined;
+      this._subnetIds = undefined;
+      this._vpcId = undefined;
+    }
+    else {
+      this._customerDnsIps = value.customerDnsIps;
+      this._customerUsername = value.customerUsername;
+      this._subnetIds = value.subnetIds;
+      this._vpcId = value.vpcId;
+    }
+  }
+
   // customer_dns_ips - computed: false, optional: false, required: true
   private _customerDnsIps?: string[]; 
   public get customerDnsIps() {
@@ -116,7 +153,7 @@ export class DirectoryServiceDirectoryConnectSettingsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get customerDnsIpsInput() {
-    return this._customerDnsIps
+    return this._customerDnsIps;
   }
 
   // customer_username - computed: false, optional: false, required: true
@@ -129,7 +166,7 @@ export class DirectoryServiceDirectoryConnectSettingsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get customerUsernameInput() {
-    return this._customerUsername
+    return this._customerUsername;
   }
 
   // subnet_ids - computed: false, optional: false, required: true
@@ -142,7 +179,7 @@ export class DirectoryServiceDirectoryConnectSettingsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 
   // vpc_id - computed: false, optional: false, required: true
@@ -155,7 +192,7 @@ export class DirectoryServiceDirectoryConnectSettingsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 }
 export interface DirectoryServiceDirectoryVpcSettings {
@@ -190,6 +227,31 @@ export class DirectoryServiceDirectoryVpcSettingsOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DirectoryServiceDirectoryVpcSettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._subnetIds) {
+      hasAnyValues = true;
+      internalValueResult.subnetIds = this._subnetIds;
+    }
+    if (this._vpcId) {
+      hasAnyValues = true;
+      internalValueResult.vpcId = this._vpcId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DirectoryServiceDirectoryVpcSettings | undefined) {
+    if (value === undefined) {
+      this._subnetIds = undefined;
+      this._vpcId = undefined;
+    }
+    else {
+      this._subnetIds = value.subnetIds;
+      this._vpcId = value.vpcId;
+    }
+  }
+
   // subnet_ids - computed: false, optional: false, required: true
   private _subnetIds?: string[]; 
   public get subnetIds() {
@@ -200,7 +262,7 @@ export class DirectoryServiceDirectoryVpcSettingsOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 
   // vpc_id - computed: false, optional: false, required: true
@@ -213,7 +275,7 @@ export class DirectoryServiceDirectoryVpcSettingsOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 }
 
@@ -260,8 +322,8 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._type = config.type;
-    this._connectSettings = config.connectSettings;
-    this._vpcSettings = config.vpcSettings;
+    this._connectSettings.internalValue = config.connectSettings;
+    this._vpcSettings.internalValue = config.vpcSettings;
   }
 
   // ==========
@@ -274,11 +336,11 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
   }
 
   // alias - computed: true, optional: true, required: false
-  private _alias?: string | undefined; 
+  private _alias?: string; 
   public get alias() {
     return this.getStringAttribute('alias');
   }
-  public set alias(value: string | undefined) {
+  public set alias(value: string) {
     this._alias = value;
   }
   public resetAlias() {
@@ -286,15 +348,15 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get aliasInput() {
-    return this._alias
+    return this._alias;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -302,7 +364,7 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // dns_ip_addresses - computed: true, optional: false, required: false
@@ -311,11 +373,11 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
   }
 
   // edition - computed: true, optional: true, required: false
-  private _edition?: string | undefined; 
+  private _edition?: string; 
   public get edition() {
     return this.getStringAttribute('edition');
   }
-  public set edition(value: string | undefined) {
+  public set edition(value: string) {
     this._edition = value;
   }
   public resetEdition() {
@@ -323,15 +385,15 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get editionInput() {
-    return this._edition
+    return this._edition;
   }
 
   // enable_sso - computed: false, optional: true, required: false
-  private _enableSso?: boolean | cdktf.IResolvable | undefined; 
+  private _enableSso?: boolean | cdktf.IResolvable; 
   public get enableSso() {
     return this.getBooleanAttribute('enable_sso') as any;
   }
-  public set enableSso(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableSso(value: boolean | cdktf.IResolvable) {
     this._enableSso = value;
   }
   public resetEnableSso() {
@@ -339,7 +401,7 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableSsoInput() {
-    return this._enableSso
+    return this._enableSso;
   }
 
   // id - computed: true, optional: true, required: false
@@ -357,7 +419,7 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // password - computed: false, optional: false, required: true
@@ -370,7 +432,7 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get passwordInput() {
-    return this._password
+    return this._password;
   }
 
   // security_group_id - computed: true, optional: false, required: false
@@ -379,11 +441,11 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
   }
 
   // short_name - computed: true, optional: true, required: false
-  private _shortName?: string | undefined; 
+  private _shortName?: string; 
   public get shortName() {
     return this.getStringAttribute('short_name');
   }
-  public set shortName(value: string | undefined) {
+  public set shortName(value: string) {
     this._shortName = value;
   }
   public resetShortName() {
@@ -391,15 +453,15 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get shortNameInput() {
-    return this._shortName
+    return this._shortName;
   }
 
   // size - computed: true, optional: true, required: false
-  private _size?: string | undefined; 
+  private _size?: string; 
   public get size() {
     return this.getStringAttribute('size');
   }
-  public set size(value: string | undefined) {
+  public set size(value: string) {
     this._size = value;
   }
   public resetSize() {
@@ -407,16 +469,16 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sizeInput() {
-    return this._size
+    return this._size;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -424,16 +486,16 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -441,15 +503,15 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // type - computed: false, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -457,41 +519,39 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // connect_settings - computed: false, optional: true, required: false
-  private _connectSettings?: DirectoryServiceDirectoryConnectSettings | undefined; 
-  private __connectSettingsOutput = new DirectoryServiceDirectoryConnectSettingsOutputReference(this as any, "connect_settings", true);
+  private _connectSettings = new DirectoryServiceDirectoryConnectSettingsOutputReference(this as any, "connect_settings", true);
   public get connectSettings() {
-    return this.__connectSettingsOutput;
+    return this._connectSettings;
   }
-  public putConnectSettings(value: DirectoryServiceDirectoryConnectSettings | undefined) {
-    this._connectSettings = value;
+  public putConnectSettings(value: DirectoryServiceDirectoryConnectSettings) {
+    this._connectSettings.internalValue = value;
   }
   public resetConnectSettings() {
-    this._connectSettings = undefined;
+    this._connectSettings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get connectSettingsInput() {
-    return this._connectSettings
+    return this._connectSettings.internalValue;
   }
 
   // vpc_settings - computed: false, optional: true, required: false
-  private _vpcSettings?: DirectoryServiceDirectoryVpcSettings | undefined; 
-  private __vpcSettingsOutput = new DirectoryServiceDirectoryVpcSettingsOutputReference(this as any, "vpc_settings", true);
+  private _vpcSettings = new DirectoryServiceDirectoryVpcSettingsOutputReference(this as any, "vpc_settings", true);
   public get vpcSettings() {
-    return this.__vpcSettingsOutput;
+    return this._vpcSettings;
   }
-  public putVpcSettings(value: DirectoryServiceDirectoryVpcSettings | undefined) {
-    this._vpcSettings = value;
+  public putVpcSettings(value: DirectoryServiceDirectoryVpcSettings) {
+    this._vpcSettings.internalValue = value;
   }
   public resetVpcSettings() {
-    this._vpcSettings = undefined;
+    this._vpcSettings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get vpcSettingsInput() {
-    return this._vpcSettings
+    return this._vpcSettings.internalValue;
   }
 
   // =========
@@ -511,8 +571,8 @@ export class DirectoryServiceDirectory extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       type: cdktf.stringToTerraform(this._type),
-      connect_settings: directoryServiceDirectoryConnectSettingsToTerraform(this._connectSettings),
-      vpc_settings: directoryServiceDirectoryVpcSettingsToTerraform(this._vpcSettings),
+      connect_settings: directoryServiceDirectoryConnectSettingsToTerraform(this._connectSettings.internalValue),
+      vpc_settings: directoryServiceDirectoryVpcSettingsToTerraform(this._vpcSettings.internalValue),
     };
   }
 }

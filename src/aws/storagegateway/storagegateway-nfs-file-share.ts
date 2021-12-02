@@ -121,12 +121,31 @@ export class StoragegatewayNfsFileShareCacheAttributesOutputReference extends cd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): StoragegatewayNfsFileShareCacheAttributes | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cacheStaleTimeoutInSeconds) {
+      hasAnyValues = true;
+      internalValueResult.cacheStaleTimeoutInSeconds = this._cacheStaleTimeoutInSeconds;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: StoragegatewayNfsFileShareCacheAttributes | undefined) {
+    if (value === undefined) {
+      this._cacheStaleTimeoutInSeconds = undefined;
+    }
+    else {
+      this._cacheStaleTimeoutInSeconds = value.cacheStaleTimeoutInSeconds;
+    }
+  }
+
   // cache_stale_timeout_in_seconds - computed: false, optional: true, required: false
-  private _cacheStaleTimeoutInSeconds?: number | undefined; 
+  private _cacheStaleTimeoutInSeconds?: number; 
   public get cacheStaleTimeoutInSeconds() {
     return this.getNumberAttribute('cache_stale_timeout_in_seconds');
   }
-  public set cacheStaleTimeoutInSeconds(value: number | undefined) {
+  public set cacheStaleTimeoutInSeconds(value: number) {
     this._cacheStaleTimeoutInSeconds = value;
   }
   public resetCacheStaleTimeoutInSeconds() {
@@ -134,7 +153,7 @@ export class StoragegatewayNfsFileShareCacheAttributesOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get cacheStaleTimeoutInSecondsInput() {
-    return this._cacheStaleTimeoutInSeconds
+    return this._cacheStaleTimeoutInSeconds;
   }
 }
 export interface StoragegatewayNfsFileShareNfsFileShareDefaults {
@@ -179,12 +198,49 @@ export class StoragegatewayNfsFileShareNfsFileShareDefaultsOutputReference exten
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): StoragegatewayNfsFileShareNfsFileShareDefaults | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._directoryMode) {
+      hasAnyValues = true;
+      internalValueResult.directoryMode = this._directoryMode;
+    }
+    if (this._fileMode) {
+      hasAnyValues = true;
+      internalValueResult.fileMode = this._fileMode;
+    }
+    if (this._groupId) {
+      hasAnyValues = true;
+      internalValueResult.groupId = this._groupId;
+    }
+    if (this._ownerId) {
+      hasAnyValues = true;
+      internalValueResult.ownerId = this._ownerId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: StoragegatewayNfsFileShareNfsFileShareDefaults | undefined) {
+    if (value === undefined) {
+      this._directoryMode = undefined;
+      this._fileMode = undefined;
+      this._groupId = undefined;
+      this._ownerId = undefined;
+    }
+    else {
+      this._directoryMode = value.directoryMode;
+      this._fileMode = value.fileMode;
+      this._groupId = value.groupId;
+      this._ownerId = value.ownerId;
+    }
+  }
+
   // directory_mode - computed: false, optional: true, required: false
-  private _directoryMode?: string | undefined; 
+  private _directoryMode?: string; 
   public get directoryMode() {
     return this.getStringAttribute('directory_mode');
   }
-  public set directoryMode(value: string | undefined) {
+  public set directoryMode(value: string) {
     this._directoryMode = value;
   }
   public resetDirectoryMode() {
@@ -192,15 +248,15 @@ export class StoragegatewayNfsFileShareNfsFileShareDefaultsOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get directoryModeInput() {
-    return this._directoryMode
+    return this._directoryMode;
   }
 
   // file_mode - computed: false, optional: true, required: false
-  private _fileMode?: string | undefined; 
+  private _fileMode?: string; 
   public get fileMode() {
     return this.getStringAttribute('file_mode');
   }
-  public set fileMode(value: string | undefined) {
+  public set fileMode(value: string) {
     this._fileMode = value;
   }
   public resetFileMode() {
@@ -208,15 +264,15 @@ export class StoragegatewayNfsFileShareNfsFileShareDefaultsOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get fileModeInput() {
-    return this._fileMode
+    return this._fileMode;
   }
 
   // group_id - computed: false, optional: true, required: false
-  private _groupId?: string | undefined; 
+  private _groupId?: string; 
   public get groupId() {
     return this.getStringAttribute('group_id');
   }
-  public set groupId(value: string | undefined) {
+  public set groupId(value: string) {
     this._groupId = value;
   }
   public resetGroupId() {
@@ -224,15 +280,15 @@ export class StoragegatewayNfsFileShareNfsFileShareDefaultsOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get groupIdInput() {
-    return this._groupId
+    return this._groupId;
   }
 
   // owner_id - computed: false, optional: true, required: false
-  private _ownerId?: string | undefined; 
+  private _ownerId?: string; 
   public get ownerId() {
     return this.getStringAttribute('owner_id');
   }
-  public set ownerId(value: string | undefined) {
+  public set ownerId(value: string) {
     this._ownerId = value;
   }
   public resetOwnerId() {
@@ -240,7 +296,7 @@ export class StoragegatewayNfsFileShareNfsFileShareDefaultsOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get ownerIdInput() {
-    return this._ownerId
+    return this._ownerId;
   }
 }
 export interface StoragegatewayNfsFileShareTimeouts {
@@ -280,12 +336,43 @@ export class StoragegatewayNfsFileShareTimeoutsOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): StoragegatewayNfsFileShareTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: StoragegatewayNfsFileShareTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -293,15 +380,15 @@ export class StoragegatewayNfsFileShareTimeoutsOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -309,15 +396,15 @@ export class StoragegatewayNfsFileShareTimeoutsOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -325,7 +412,7 @@ export class StoragegatewayNfsFileShareTimeoutsOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -378,9 +465,9 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
     this._squash = config.squash;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._cacheAttributes = config.cacheAttributes;
-    this._nfsFileShareDefaults = config.nfsFileShareDefaults;
-    this._timeouts = config.timeouts;
+    this._cacheAttributes.internalValue = config.cacheAttributes;
+    this._nfsFileShareDefaults.internalValue = config.nfsFileShareDefaults;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -393,11 +480,11 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
 
   // audit_destination_arn - computed: false, optional: true, required: false
-  private _auditDestinationArn?: string | undefined; 
+  private _auditDestinationArn?: string; 
   public get auditDestinationArn() {
     return this.getStringAttribute('audit_destination_arn');
   }
-  public set auditDestinationArn(value: string | undefined) {
+  public set auditDestinationArn(value: string) {
     this._auditDestinationArn = value;
   }
   public resetAuditDestinationArn() {
@@ -405,7 +492,7 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get auditDestinationArnInput() {
-    return this._auditDestinationArn
+    return this._auditDestinationArn;
   }
 
   // client_list - computed: false, optional: false, required: true
@@ -418,15 +505,15 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clientListInput() {
-    return this._clientList
+    return this._clientList;
   }
 
   // default_storage_class - computed: false, optional: true, required: false
-  private _defaultStorageClass?: string | undefined; 
+  private _defaultStorageClass?: string; 
   public get defaultStorageClass() {
     return this.getStringAttribute('default_storage_class');
   }
-  public set defaultStorageClass(value: string | undefined) {
+  public set defaultStorageClass(value: string) {
     this._defaultStorageClass = value;
   }
   public resetDefaultStorageClass() {
@@ -434,15 +521,15 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultStorageClassInput() {
-    return this._defaultStorageClass
+    return this._defaultStorageClass;
   }
 
   // file_share_name - computed: true, optional: true, required: false
-  private _fileShareName?: string | undefined; 
+  private _fileShareName?: string; 
   public get fileShareName() {
     return this.getStringAttribute('file_share_name');
   }
-  public set fileShareName(value: string | undefined) {
+  public set fileShareName(value: string) {
     this._fileShareName = value;
   }
   public resetFileShareName() {
@@ -450,7 +537,7 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fileShareNameInput() {
-    return this._fileShareName
+    return this._fileShareName;
   }
 
   // fileshare_id - computed: true, optional: false, required: false
@@ -468,15 +555,15 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get gatewayArnInput() {
-    return this._gatewayArn
+    return this._gatewayArn;
   }
 
   // guess_mime_type_enabled - computed: false, optional: true, required: false
-  private _guessMimeTypeEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _guessMimeTypeEnabled?: boolean | cdktf.IResolvable; 
   public get guessMimeTypeEnabled() {
     return this.getBooleanAttribute('guess_mime_type_enabled') as any;
   }
-  public set guessMimeTypeEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set guessMimeTypeEnabled(value: boolean | cdktf.IResolvable) {
     this._guessMimeTypeEnabled = value;
   }
   public resetGuessMimeTypeEnabled() {
@@ -484,7 +571,7 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get guessMimeTypeEnabledInput() {
-    return this._guessMimeTypeEnabled
+    return this._guessMimeTypeEnabled;
   }
 
   // id - computed: true, optional: true, required: false
@@ -493,11 +580,11 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
 
   // kms_encrypted - computed: false, optional: true, required: false
-  private _kmsEncrypted?: boolean | cdktf.IResolvable | undefined; 
+  private _kmsEncrypted?: boolean | cdktf.IResolvable; 
   public get kmsEncrypted() {
     return this.getBooleanAttribute('kms_encrypted') as any;
   }
-  public set kmsEncrypted(value: boolean | cdktf.IResolvable | undefined) {
+  public set kmsEncrypted(value: boolean | cdktf.IResolvable) {
     this._kmsEncrypted = value;
   }
   public resetKmsEncrypted() {
@@ -505,15 +592,15 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsEncryptedInput() {
-    return this._kmsEncrypted
+    return this._kmsEncrypted;
   }
 
   // kms_key_arn - computed: false, optional: true, required: false
-  private _kmsKeyArn?: string | undefined; 
+  private _kmsKeyArn?: string; 
   public get kmsKeyArn() {
     return this.getStringAttribute('kms_key_arn');
   }
-  public set kmsKeyArn(value: string | undefined) {
+  public set kmsKeyArn(value: string) {
     this._kmsKeyArn = value;
   }
   public resetKmsKeyArn() {
@@ -521,7 +608,7 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyArnInput() {
-    return this._kmsKeyArn
+    return this._kmsKeyArn;
   }
 
   // location_arn - computed: false, optional: false, required: true
@@ -534,15 +621,15 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get locationArnInput() {
-    return this._locationArn
+    return this._locationArn;
   }
 
   // notification_policy - computed: false, optional: true, required: false
-  private _notificationPolicy?: string | undefined; 
+  private _notificationPolicy?: string; 
   public get notificationPolicy() {
     return this.getStringAttribute('notification_policy');
   }
-  public set notificationPolicy(value: string | undefined) {
+  public set notificationPolicy(value: string) {
     this._notificationPolicy = value;
   }
   public resetNotificationPolicy() {
@@ -550,15 +637,15 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get notificationPolicyInput() {
-    return this._notificationPolicy
+    return this._notificationPolicy;
   }
 
   // object_acl - computed: false, optional: true, required: false
-  private _objectAcl?: string | undefined; 
+  private _objectAcl?: string; 
   public get objectAcl() {
     return this.getStringAttribute('object_acl');
   }
-  public set objectAcl(value: string | undefined) {
+  public set objectAcl(value: string) {
     this._objectAcl = value;
   }
   public resetObjectAcl() {
@@ -566,7 +653,7 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get objectAclInput() {
-    return this._objectAcl
+    return this._objectAcl;
   }
 
   // path - computed: true, optional: false, required: false
@@ -575,11 +662,11 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
 
   // read_only - computed: false, optional: true, required: false
-  private _readOnly?: boolean | cdktf.IResolvable | undefined; 
+  private _readOnly?: boolean | cdktf.IResolvable; 
   public get readOnly() {
     return this.getBooleanAttribute('read_only') as any;
   }
-  public set readOnly(value: boolean | cdktf.IResolvable | undefined) {
+  public set readOnly(value: boolean | cdktf.IResolvable) {
     this._readOnly = value;
   }
   public resetReadOnly() {
@@ -587,15 +674,15 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get readOnlyInput() {
-    return this._readOnly
+    return this._readOnly;
   }
 
   // requester_pays - computed: false, optional: true, required: false
-  private _requesterPays?: boolean | cdktf.IResolvable | undefined; 
+  private _requesterPays?: boolean | cdktf.IResolvable; 
   public get requesterPays() {
     return this.getBooleanAttribute('requester_pays') as any;
   }
-  public set requesterPays(value: boolean | cdktf.IResolvable | undefined) {
+  public set requesterPays(value: boolean | cdktf.IResolvable) {
     this._requesterPays = value;
   }
   public resetRequesterPays() {
@@ -603,7 +690,7 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requesterPaysInput() {
-    return this._requesterPays
+    return this._requesterPays;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -616,15 +703,15 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // squash - computed: false, optional: true, required: false
-  private _squash?: string | undefined; 
+  private _squash?: string; 
   public get squash() {
     return this.getStringAttribute('squash');
   }
-  public set squash(value: string | undefined) {
+  public set squash(value: string) {
     this._squash = value;
   }
   public resetSquash() {
@@ -632,16 +719,16 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get squashInput() {
-    return this._squash
+    return this._squash;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -649,16 +736,16 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -666,58 +753,55 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // cache_attributes - computed: false, optional: true, required: false
-  private _cacheAttributes?: StoragegatewayNfsFileShareCacheAttributes | undefined; 
-  private __cacheAttributesOutput = new StoragegatewayNfsFileShareCacheAttributesOutputReference(this as any, "cache_attributes", true);
+  private _cacheAttributes = new StoragegatewayNfsFileShareCacheAttributesOutputReference(this as any, "cache_attributes", true);
   public get cacheAttributes() {
-    return this.__cacheAttributesOutput;
+    return this._cacheAttributes;
   }
-  public putCacheAttributes(value: StoragegatewayNfsFileShareCacheAttributes | undefined) {
-    this._cacheAttributes = value;
+  public putCacheAttributes(value: StoragegatewayNfsFileShareCacheAttributes) {
+    this._cacheAttributes.internalValue = value;
   }
   public resetCacheAttributes() {
-    this._cacheAttributes = undefined;
+    this._cacheAttributes.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cacheAttributesInput() {
-    return this._cacheAttributes
+    return this._cacheAttributes.internalValue;
   }
 
   // nfs_file_share_defaults - computed: false, optional: true, required: false
-  private _nfsFileShareDefaults?: StoragegatewayNfsFileShareNfsFileShareDefaults | undefined; 
-  private __nfsFileShareDefaultsOutput = new StoragegatewayNfsFileShareNfsFileShareDefaultsOutputReference(this as any, "nfs_file_share_defaults", true);
+  private _nfsFileShareDefaults = new StoragegatewayNfsFileShareNfsFileShareDefaultsOutputReference(this as any, "nfs_file_share_defaults", true);
   public get nfsFileShareDefaults() {
-    return this.__nfsFileShareDefaultsOutput;
+    return this._nfsFileShareDefaults;
   }
-  public putNfsFileShareDefaults(value: StoragegatewayNfsFileShareNfsFileShareDefaults | undefined) {
-    this._nfsFileShareDefaults = value;
+  public putNfsFileShareDefaults(value: StoragegatewayNfsFileShareNfsFileShareDefaults) {
+    this._nfsFileShareDefaults.internalValue = value;
   }
   public resetNfsFileShareDefaults() {
-    this._nfsFileShareDefaults = undefined;
+    this._nfsFileShareDefaults.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get nfsFileShareDefaultsInput() {
-    return this._nfsFileShareDefaults
+    return this._nfsFileShareDefaults.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: StoragegatewayNfsFileShareTimeouts | undefined; 
-  private __timeoutsOutput = new StoragegatewayNfsFileShareTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new StoragegatewayNfsFileShareTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: StoragegatewayNfsFileShareTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: StoragegatewayNfsFileShareTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -743,9 +827,9 @@ export class StoragegatewayNfsFileShare extends cdktf.TerraformResource {
       squash: cdktf.stringToTerraform(this._squash),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      cache_attributes: storagegatewayNfsFileShareCacheAttributesToTerraform(this._cacheAttributes),
-      nfs_file_share_defaults: storagegatewayNfsFileShareNfsFileShareDefaultsToTerraform(this._nfsFileShareDefaults),
-      timeouts: storagegatewayNfsFileShareTimeoutsToTerraform(this._timeouts),
+      cache_attributes: storagegatewayNfsFileShareCacheAttributesToTerraform(this._cacheAttributes.internalValue),
+      nfs_file_share_defaults: storagegatewayNfsFileShareNfsFileShareDefaultsToTerraform(this._nfsFileShareDefaults.internalValue),
+      timeouts: storagegatewayNfsFileShareTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

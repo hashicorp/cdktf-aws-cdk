@@ -212,12 +212,43 @@ export class LaunchConfigurationMetadataOptionsOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LaunchConfigurationMetadataOptions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._httpEndpoint) {
+      hasAnyValues = true;
+      internalValueResult.httpEndpoint = this._httpEndpoint;
+    }
+    if (this._httpPutResponseHopLimit) {
+      hasAnyValues = true;
+      internalValueResult.httpPutResponseHopLimit = this._httpPutResponseHopLimit;
+    }
+    if (this._httpTokens) {
+      hasAnyValues = true;
+      internalValueResult.httpTokens = this._httpTokens;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LaunchConfigurationMetadataOptions | undefined) {
+    if (value === undefined) {
+      this._httpEndpoint = undefined;
+      this._httpPutResponseHopLimit = undefined;
+      this._httpTokens = undefined;
+    }
+    else {
+      this._httpEndpoint = value.httpEndpoint;
+      this._httpPutResponseHopLimit = value.httpPutResponseHopLimit;
+      this._httpTokens = value.httpTokens;
+    }
+  }
+
   // http_endpoint - computed: true, optional: true, required: false
-  private _httpEndpoint?: string | undefined; 
+  private _httpEndpoint?: string; 
   public get httpEndpoint() {
     return this.getStringAttribute('http_endpoint');
   }
-  public set httpEndpoint(value: string | undefined) {
+  public set httpEndpoint(value: string) {
     this._httpEndpoint = value;
   }
   public resetHttpEndpoint() {
@@ -225,15 +256,15 @@ export class LaunchConfigurationMetadataOptionsOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get httpEndpointInput() {
-    return this._httpEndpoint
+    return this._httpEndpoint;
   }
 
   // http_put_response_hop_limit - computed: true, optional: true, required: false
-  private _httpPutResponseHopLimit?: number | undefined; 
+  private _httpPutResponseHopLimit?: number; 
   public get httpPutResponseHopLimit() {
     return this.getNumberAttribute('http_put_response_hop_limit');
   }
-  public set httpPutResponseHopLimit(value: number | undefined) {
+  public set httpPutResponseHopLimit(value: number) {
     this._httpPutResponseHopLimit = value;
   }
   public resetHttpPutResponseHopLimit() {
@@ -241,15 +272,15 @@ export class LaunchConfigurationMetadataOptionsOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get httpPutResponseHopLimitInput() {
-    return this._httpPutResponseHopLimit
+    return this._httpPutResponseHopLimit;
   }
 
   // http_tokens - computed: true, optional: true, required: false
-  private _httpTokens?: string | undefined; 
+  private _httpTokens?: string; 
   public get httpTokens() {
     return this.getStringAttribute('http_tokens');
   }
-  public set httpTokens(value: string | undefined) {
+  public set httpTokens(value: string) {
     this._httpTokens = value;
   }
   public resetHttpTokens() {
@@ -257,7 +288,7 @@ export class LaunchConfigurationMetadataOptionsOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get httpTokensInput() {
-    return this._httpTokens
+    return this._httpTokens;
   }
 }
 export interface LaunchConfigurationRootBlockDevice {
@@ -312,12 +343,61 @@ export class LaunchConfigurationRootBlockDeviceOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LaunchConfigurationRootBlockDevice | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._deleteOnTermination) {
+      hasAnyValues = true;
+      internalValueResult.deleteOnTermination = this._deleteOnTermination;
+    }
+    if (this._encrypted) {
+      hasAnyValues = true;
+      internalValueResult.encrypted = this._encrypted;
+    }
+    if (this._iops) {
+      hasAnyValues = true;
+      internalValueResult.iops = this._iops;
+    }
+    if (this._throughput) {
+      hasAnyValues = true;
+      internalValueResult.throughput = this._throughput;
+    }
+    if (this._volumeSize) {
+      hasAnyValues = true;
+      internalValueResult.volumeSize = this._volumeSize;
+    }
+    if (this._volumeType) {
+      hasAnyValues = true;
+      internalValueResult.volumeType = this._volumeType;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LaunchConfigurationRootBlockDevice | undefined) {
+    if (value === undefined) {
+      this._deleteOnTermination = undefined;
+      this._encrypted = undefined;
+      this._iops = undefined;
+      this._throughput = undefined;
+      this._volumeSize = undefined;
+      this._volumeType = undefined;
+    }
+    else {
+      this._deleteOnTermination = value.deleteOnTermination;
+      this._encrypted = value.encrypted;
+      this._iops = value.iops;
+      this._throughput = value.throughput;
+      this._volumeSize = value.volumeSize;
+      this._volumeType = value.volumeType;
+    }
+  }
+
   // delete_on_termination - computed: false, optional: true, required: false
-  private _deleteOnTermination?: boolean | cdktf.IResolvable | undefined; 
+  private _deleteOnTermination?: boolean | cdktf.IResolvable; 
   public get deleteOnTermination() {
     return this.getBooleanAttribute('delete_on_termination') as any;
   }
-  public set deleteOnTermination(value: boolean | cdktf.IResolvable | undefined) {
+  public set deleteOnTermination(value: boolean | cdktf.IResolvable) {
     this._deleteOnTermination = value;
   }
   public resetDeleteOnTermination() {
@@ -325,15 +405,15 @@ export class LaunchConfigurationRootBlockDeviceOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get deleteOnTerminationInput() {
-    return this._deleteOnTermination
+    return this._deleteOnTermination;
   }
 
   // encrypted - computed: true, optional: true, required: false
-  private _encrypted?: boolean | cdktf.IResolvable | undefined; 
+  private _encrypted?: boolean | cdktf.IResolvable; 
   public get encrypted() {
     return this.getBooleanAttribute('encrypted') as any;
   }
-  public set encrypted(value: boolean | cdktf.IResolvable | undefined) {
+  public set encrypted(value: boolean | cdktf.IResolvable) {
     this._encrypted = value;
   }
   public resetEncrypted() {
@@ -341,15 +421,15 @@ export class LaunchConfigurationRootBlockDeviceOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get encryptedInput() {
-    return this._encrypted
+    return this._encrypted;
   }
 
   // iops - computed: true, optional: true, required: false
-  private _iops?: number | undefined; 
+  private _iops?: number; 
   public get iops() {
     return this.getNumberAttribute('iops');
   }
-  public set iops(value: number | undefined) {
+  public set iops(value: number) {
     this._iops = value;
   }
   public resetIops() {
@@ -357,15 +437,15 @@ export class LaunchConfigurationRootBlockDeviceOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get iopsInput() {
-    return this._iops
+    return this._iops;
   }
 
   // throughput - computed: true, optional: true, required: false
-  private _throughput?: number | undefined; 
+  private _throughput?: number; 
   public get throughput() {
     return this.getNumberAttribute('throughput');
   }
-  public set throughput(value: number | undefined) {
+  public set throughput(value: number) {
     this._throughput = value;
   }
   public resetThroughput() {
@@ -373,15 +453,15 @@ export class LaunchConfigurationRootBlockDeviceOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get throughputInput() {
-    return this._throughput
+    return this._throughput;
   }
 
   // volume_size - computed: true, optional: true, required: false
-  private _volumeSize?: number | undefined; 
+  private _volumeSize?: number; 
   public get volumeSize() {
     return this.getNumberAttribute('volume_size');
   }
-  public set volumeSize(value: number | undefined) {
+  public set volumeSize(value: number) {
     this._volumeSize = value;
   }
   public resetVolumeSize() {
@@ -389,15 +469,15 @@ export class LaunchConfigurationRootBlockDeviceOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get volumeSizeInput() {
-    return this._volumeSize
+    return this._volumeSize;
   }
 
   // volume_type - computed: true, optional: true, required: false
-  private _volumeType?: string | undefined; 
+  private _volumeType?: string; 
   public get volumeType() {
     return this.getStringAttribute('volume_type');
   }
-  public set volumeType(value: string | undefined) {
+  public set volumeType(value: string) {
     this._volumeType = value;
   }
   public resetVolumeType() {
@@ -405,7 +485,7 @@ export class LaunchConfigurationRootBlockDeviceOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get volumeTypeInput() {
-    return this._volumeType
+    return this._volumeType;
   }
 }
 
@@ -459,8 +539,8 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
     this._vpcClassicLinkSecurityGroups = config.vpcClassicLinkSecurityGroups;
     this._ebsBlockDevice = config.ebsBlockDevice;
     this._ephemeralBlockDevice = config.ephemeralBlockDevice;
-    this._metadataOptions = config.metadataOptions;
-    this._rootBlockDevice = config.rootBlockDevice;
+    this._metadataOptions.internalValue = config.metadataOptions;
+    this._rootBlockDevice.internalValue = config.rootBlockDevice;
   }
 
   // ==========
@@ -473,11 +553,11 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
 
   // associate_public_ip_address - computed: false, optional: true, required: false
-  private _associatePublicIpAddress?: boolean | cdktf.IResolvable | undefined; 
+  private _associatePublicIpAddress?: boolean | cdktf.IResolvable; 
   public get associatePublicIpAddress() {
     return this.getBooleanAttribute('associate_public_ip_address') as any;
   }
-  public set associatePublicIpAddress(value: boolean | cdktf.IResolvable | undefined) {
+  public set associatePublicIpAddress(value: boolean | cdktf.IResolvable) {
     this._associatePublicIpAddress = value;
   }
   public resetAssociatePublicIpAddress() {
@@ -485,15 +565,15 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get associatePublicIpAddressInput() {
-    return this._associatePublicIpAddress
+    return this._associatePublicIpAddress;
   }
 
   // ebs_optimized - computed: true, optional: true, required: false
-  private _ebsOptimized?: boolean | cdktf.IResolvable | undefined; 
+  private _ebsOptimized?: boolean | cdktf.IResolvable; 
   public get ebsOptimized() {
     return this.getBooleanAttribute('ebs_optimized') as any;
   }
-  public set ebsOptimized(value: boolean | cdktf.IResolvable | undefined) {
+  public set ebsOptimized(value: boolean | cdktf.IResolvable) {
     this._ebsOptimized = value;
   }
   public resetEbsOptimized() {
@@ -501,15 +581,15 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ebsOptimizedInput() {
-    return this._ebsOptimized
+    return this._ebsOptimized;
   }
 
   // enable_monitoring - computed: false, optional: true, required: false
-  private _enableMonitoring?: boolean | cdktf.IResolvable | undefined; 
+  private _enableMonitoring?: boolean | cdktf.IResolvable; 
   public get enableMonitoring() {
     return this.getBooleanAttribute('enable_monitoring') as any;
   }
-  public set enableMonitoring(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableMonitoring(value: boolean | cdktf.IResolvable) {
     this._enableMonitoring = value;
   }
   public resetEnableMonitoring() {
@@ -517,15 +597,15 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableMonitoringInput() {
-    return this._enableMonitoring
+    return this._enableMonitoring;
   }
 
   // iam_instance_profile - computed: false, optional: true, required: false
-  private _iamInstanceProfile?: string | undefined; 
+  private _iamInstanceProfile?: string; 
   public get iamInstanceProfile() {
     return this.getStringAttribute('iam_instance_profile');
   }
-  public set iamInstanceProfile(value: string | undefined) {
+  public set iamInstanceProfile(value: string) {
     this._iamInstanceProfile = value;
   }
   public resetIamInstanceProfile() {
@@ -533,7 +613,7 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iamInstanceProfileInput() {
-    return this._iamInstanceProfile
+    return this._iamInstanceProfile;
   }
 
   // id - computed: true, optional: true, required: false
@@ -551,7 +631,7 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get imageIdInput() {
-    return this._imageId
+    return this._imageId;
   }
 
   // instance_type - computed: false, optional: false, required: true
@@ -564,15 +644,15 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // key_name - computed: true, optional: true, required: false
-  private _keyName?: string | undefined; 
+  private _keyName?: string; 
   public get keyName() {
     return this.getStringAttribute('key_name');
   }
-  public set keyName(value: string | undefined) {
+  public set keyName(value: string) {
     this._keyName = value;
   }
   public resetKeyName() {
@@ -580,15 +660,15 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyNameInput() {
-    return this._keyName
+    return this._keyName;
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -596,15 +676,15 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_prefix - computed: true, optional: true, required: false
-  private _namePrefix?: string | undefined; 
+  private _namePrefix?: string; 
   public get namePrefix() {
     return this.getStringAttribute('name_prefix');
   }
-  public set namePrefix(value: string | undefined) {
+  public set namePrefix(value: string) {
     this._namePrefix = value;
   }
   public resetNamePrefix() {
@@ -612,15 +692,15 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // placement_tenancy - computed: false, optional: true, required: false
-  private _placementTenancy?: string | undefined; 
+  private _placementTenancy?: string; 
   public get placementTenancy() {
     return this.getStringAttribute('placement_tenancy');
   }
-  public set placementTenancy(value: string | undefined) {
+  public set placementTenancy(value: string) {
     this._placementTenancy = value;
   }
   public resetPlacementTenancy() {
@@ -628,15 +708,15 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get placementTenancyInput() {
-    return this._placementTenancy
+    return this._placementTenancy;
   }
 
   // security_groups - computed: false, optional: true, required: false
-  private _securityGroups?: string[] | undefined; 
+  private _securityGroups?: string[]; 
   public get securityGroups() {
     return this.getListAttribute('security_groups');
   }
-  public set securityGroups(value: string[] | undefined) {
+  public set securityGroups(value: string[]) {
     this._securityGroups = value;
   }
   public resetSecurityGroups() {
@@ -644,15 +724,15 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupsInput() {
-    return this._securityGroups
+    return this._securityGroups;
   }
 
   // spot_price - computed: false, optional: true, required: false
-  private _spotPrice?: string | undefined; 
+  private _spotPrice?: string; 
   public get spotPrice() {
     return this.getStringAttribute('spot_price');
   }
-  public set spotPrice(value: string | undefined) {
+  public set spotPrice(value: string) {
     this._spotPrice = value;
   }
   public resetSpotPrice() {
@@ -660,15 +740,15 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get spotPriceInput() {
-    return this._spotPrice
+    return this._spotPrice;
   }
 
   // user_data - computed: false, optional: true, required: false
-  private _userData?: string | undefined; 
+  private _userData?: string; 
   public get userData() {
     return this.getStringAttribute('user_data');
   }
-  public set userData(value: string | undefined) {
+  public set userData(value: string) {
     this._userData = value;
   }
   public resetUserData() {
@@ -676,15 +756,15 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userDataInput() {
-    return this._userData
+    return this._userData;
   }
 
   // user_data_base64 - computed: false, optional: true, required: false
-  private _userDataBase64?: string | undefined; 
+  private _userDataBase64?: string; 
   public get userDataBase64() {
     return this.getStringAttribute('user_data_base64');
   }
-  public set userDataBase64(value: string | undefined) {
+  public set userDataBase64(value: string) {
     this._userDataBase64 = value;
   }
   public resetUserDataBase64() {
@@ -692,15 +772,15 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userDataBase64Input() {
-    return this._userDataBase64
+    return this._userDataBase64;
   }
 
   // vpc_classic_link_id - computed: false, optional: true, required: false
-  private _vpcClassicLinkId?: string | undefined; 
+  private _vpcClassicLinkId?: string; 
   public get vpcClassicLinkId() {
     return this.getStringAttribute('vpc_classic_link_id');
   }
-  public set vpcClassicLinkId(value: string | undefined) {
+  public set vpcClassicLinkId(value: string) {
     this._vpcClassicLinkId = value;
   }
   public resetVpcClassicLinkId() {
@@ -708,15 +788,15 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcClassicLinkIdInput() {
-    return this._vpcClassicLinkId
+    return this._vpcClassicLinkId;
   }
 
   // vpc_classic_link_security_groups - computed: false, optional: true, required: false
-  private _vpcClassicLinkSecurityGroups?: string[] | undefined; 
+  private _vpcClassicLinkSecurityGroups?: string[]; 
   public get vpcClassicLinkSecurityGroups() {
     return this.getListAttribute('vpc_classic_link_security_groups');
   }
-  public set vpcClassicLinkSecurityGroups(value: string[] | undefined) {
+  public set vpcClassicLinkSecurityGroups(value: string[]) {
     this._vpcClassicLinkSecurityGroups = value;
   }
   public resetVpcClassicLinkSecurityGroups() {
@@ -724,16 +804,16 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcClassicLinkSecurityGroupsInput() {
-    return this._vpcClassicLinkSecurityGroups
+    return this._vpcClassicLinkSecurityGroups;
   }
 
   // ebs_block_device - computed: false, optional: true, required: false
-  private _ebsBlockDevice?: LaunchConfigurationEbsBlockDevice[] | undefined; 
+  private _ebsBlockDevice?: LaunchConfigurationEbsBlockDevice[]; 
   public get ebsBlockDevice() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ebs_block_device') as any;
   }
-  public set ebsBlockDevice(value: LaunchConfigurationEbsBlockDevice[] | undefined) {
+  public set ebsBlockDevice(value: LaunchConfigurationEbsBlockDevice[]) {
     this._ebsBlockDevice = value;
   }
   public resetEbsBlockDevice() {
@@ -741,16 +821,16 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ebsBlockDeviceInput() {
-    return this._ebsBlockDevice
+    return this._ebsBlockDevice;
   }
 
   // ephemeral_block_device - computed: false, optional: true, required: false
-  private _ephemeralBlockDevice?: LaunchConfigurationEphemeralBlockDevice[] | undefined; 
+  private _ephemeralBlockDevice?: LaunchConfigurationEphemeralBlockDevice[]; 
   public get ephemeralBlockDevice() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ephemeral_block_device') as any;
   }
-  public set ephemeralBlockDevice(value: LaunchConfigurationEphemeralBlockDevice[] | undefined) {
+  public set ephemeralBlockDevice(value: LaunchConfigurationEphemeralBlockDevice[]) {
     this._ephemeralBlockDevice = value;
   }
   public resetEphemeralBlockDevice() {
@@ -758,41 +838,39 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ephemeralBlockDeviceInput() {
-    return this._ephemeralBlockDevice
+    return this._ephemeralBlockDevice;
   }
 
   // metadata_options - computed: false, optional: true, required: false
-  private _metadataOptions?: LaunchConfigurationMetadataOptions | undefined; 
-  private __metadataOptionsOutput = new LaunchConfigurationMetadataOptionsOutputReference(this as any, "metadata_options", true);
+  private _metadataOptions = new LaunchConfigurationMetadataOptionsOutputReference(this as any, "metadata_options", true);
   public get metadataOptions() {
-    return this.__metadataOptionsOutput;
+    return this._metadataOptions;
   }
-  public putMetadataOptions(value: LaunchConfigurationMetadataOptions | undefined) {
-    this._metadataOptions = value;
+  public putMetadataOptions(value: LaunchConfigurationMetadataOptions) {
+    this._metadataOptions.internalValue = value;
   }
   public resetMetadataOptions() {
-    this._metadataOptions = undefined;
+    this._metadataOptions.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get metadataOptionsInput() {
-    return this._metadataOptions
+    return this._metadataOptions.internalValue;
   }
 
   // root_block_device - computed: false, optional: true, required: false
-  private _rootBlockDevice?: LaunchConfigurationRootBlockDevice | undefined; 
-  private __rootBlockDeviceOutput = new LaunchConfigurationRootBlockDeviceOutputReference(this as any, "root_block_device", true);
+  private _rootBlockDevice = new LaunchConfigurationRootBlockDeviceOutputReference(this as any, "root_block_device", true);
   public get rootBlockDevice() {
-    return this.__rootBlockDeviceOutput;
+    return this._rootBlockDevice;
   }
-  public putRootBlockDevice(value: LaunchConfigurationRootBlockDevice | undefined) {
-    this._rootBlockDevice = value;
+  public putRootBlockDevice(value: LaunchConfigurationRootBlockDevice) {
+    this._rootBlockDevice.internalValue = value;
   }
   public resetRootBlockDevice() {
-    this._rootBlockDevice = undefined;
+    this._rootBlockDevice.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get rootBlockDeviceInput() {
-    return this._rootBlockDevice
+    return this._rootBlockDevice.internalValue;
   }
 
   // =========
@@ -819,8 +897,8 @@ export class LaunchConfiguration extends cdktf.TerraformResource {
       vpc_classic_link_security_groups: cdktf.listMapper(cdktf.stringToTerraform)(this._vpcClassicLinkSecurityGroups),
       ebs_block_device: cdktf.listMapper(launchConfigurationEbsBlockDeviceToTerraform)(this._ebsBlockDevice),
       ephemeral_block_device: cdktf.listMapper(launchConfigurationEphemeralBlockDeviceToTerraform)(this._ephemeralBlockDevice),
-      metadata_options: launchConfigurationMetadataOptionsToTerraform(this._metadataOptions),
-      root_block_device: launchConfigurationRootBlockDeviceToTerraform(this._rootBlockDevice),
+      metadata_options: launchConfigurationMetadataOptionsToTerraform(this._metadataOptions.internalValue),
+      root_block_device: launchConfigurationRootBlockDeviceToTerraform(this._rootBlockDevice.internalValue),
     };
   }
 }

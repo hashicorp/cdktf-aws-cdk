@@ -72,7 +72,7 @@ export class AutoscalingNotification extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get groupNamesInput() {
-    return this._groupNames
+    return this._groupNames;
   }
 
   // id - computed: true, optional: true, required: false
@@ -90,7 +90,7 @@ export class AutoscalingNotification extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get notificationsInput() {
-    return this._notifications
+    return this._notifications;
   }
 
   // topic_arn - computed: false, optional: false, required: true
@@ -103,7 +103,7 @@ export class AutoscalingNotification extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get topicArnInput() {
-    return this._topicArn
+    return this._topicArn;
   }
 
   // =========

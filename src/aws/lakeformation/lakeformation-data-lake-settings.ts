@@ -121,11 +121,11 @@ export class LakeformationDataLakeSettings extends cdktf.TerraformResource {
   // ==========
 
   // admins - computed: true, optional: true, required: false
-  private _admins?: string[] | undefined; 
+  private _admins?: string[]; 
   public get admins() {
     return this.getListAttribute('admins');
   }
-  public set admins(value: string[] | undefined) {
+  public set admins(value: string[]) {
     this._admins = value;
   }
   public resetAdmins() {
@@ -133,15 +133,15 @@ export class LakeformationDataLakeSettings extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get adminsInput() {
-    return this._admins
+    return this._admins;
   }
 
   // catalog_id - computed: false, optional: true, required: false
-  private _catalogId?: string | undefined; 
+  private _catalogId?: string; 
   public get catalogId() {
     return this.getStringAttribute('catalog_id');
   }
-  public set catalogId(value: string | undefined) {
+  public set catalogId(value: string) {
     this._catalogId = value;
   }
   public resetCatalogId() {
@@ -149,7 +149,7 @@ export class LakeformationDataLakeSettings extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get catalogIdInput() {
-    return this._catalogId
+    return this._catalogId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -158,11 +158,11 @@ export class LakeformationDataLakeSettings extends cdktf.TerraformResource {
   }
 
   // trusted_resource_owners - computed: true, optional: true, required: false
-  private _trustedResourceOwners?: string[] | undefined; 
+  private _trustedResourceOwners?: string[]; 
   public get trustedResourceOwners() {
     return this.getListAttribute('trusted_resource_owners');
   }
-  public set trustedResourceOwners(value: string[] | undefined) {
+  public set trustedResourceOwners(value: string[]) {
     this._trustedResourceOwners = value;
   }
   public resetTrustedResourceOwners() {
@@ -170,16 +170,16 @@ export class LakeformationDataLakeSettings extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get trustedResourceOwnersInput() {
-    return this._trustedResourceOwners
+    return this._trustedResourceOwners;
   }
 
   // create_database_default_permissions - computed: false, optional: true, required: false
-  private _createDatabaseDefaultPermissions?: LakeformationDataLakeSettingsCreateDatabaseDefaultPermissions[] | undefined; 
+  private _createDatabaseDefaultPermissions?: LakeformationDataLakeSettingsCreateDatabaseDefaultPermissions[]; 
   public get createDatabaseDefaultPermissions() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('create_database_default_permissions') as any;
   }
-  public set createDatabaseDefaultPermissions(value: LakeformationDataLakeSettingsCreateDatabaseDefaultPermissions[] | undefined) {
+  public set createDatabaseDefaultPermissions(value: LakeformationDataLakeSettingsCreateDatabaseDefaultPermissions[]) {
     this._createDatabaseDefaultPermissions = value;
   }
   public resetCreateDatabaseDefaultPermissions() {
@@ -187,16 +187,16 @@ export class LakeformationDataLakeSettings extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get createDatabaseDefaultPermissionsInput() {
-    return this._createDatabaseDefaultPermissions
+    return this._createDatabaseDefaultPermissions;
   }
 
   // create_table_default_permissions - computed: false, optional: true, required: false
-  private _createTableDefaultPermissions?: LakeformationDataLakeSettingsCreateTableDefaultPermissions[] | undefined; 
+  private _createTableDefaultPermissions?: LakeformationDataLakeSettingsCreateTableDefaultPermissions[]; 
   public get createTableDefaultPermissions() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('create_table_default_permissions') as any;
   }
-  public set createTableDefaultPermissions(value: LakeformationDataLakeSettingsCreateTableDefaultPermissions[] | undefined) {
+  public set createTableDefaultPermissions(value: LakeformationDataLakeSettingsCreateTableDefaultPermissions[]) {
     this._createTableDefaultPermissions = value;
   }
   public resetCreateTableDefaultPermissions() {
@@ -204,7 +204,7 @@ export class LakeformationDataLakeSettings extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get createTableDefaultPermissionsInput() {
-    return this._createTableDefaultPermissions
+    return this._createTableDefaultPermissions;
   }
 
   // =========

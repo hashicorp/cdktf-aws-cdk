@@ -116,7 +116,7 @@ export class CodecommitTrigger extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get repositoryNameInput() {
-    return this._repositoryName
+    return this._repositoryName;
   }
 
   // trigger - computed: false, optional: false, required: true
@@ -130,7 +130,7 @@ export class CodecommitTrigger extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get triggerInput() {
-    return this._trigger
+    return this._trigger;
   }
 
   // =========

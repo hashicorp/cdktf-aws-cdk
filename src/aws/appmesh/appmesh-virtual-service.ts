@@ -61,6 +61,25 @@ export class AppmeshVirtualServiceSpecProviderVirtualNodeOutputReference extends
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualServiceSpecProviderVirtualNode | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._virtualNodeName) {
+      hasAnyValues = true;
+      internalValueResult.virtualNodeName = this._virtualNodeName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualServiceSpecProviderVirtualNode | undefined) {
+    if (value === undefined) {
+      this._virtualNodeName = undefined;
+    }
+    else {
+      this._virtualNodeName = value.virtualNodeName;
+    }
+  }
+
   // virtual_node_name - computed: false, optional: false, required: true
   private _virtualNodeName?: string; 
   public get virtualNodeName() {
@@ -71,7 +90,7 @@ export class AppmeshVirtualServiceSpecProviderVirtualNodeOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get virtualNodeNameInput() {
-    return this._virtualNodeName
+    return this._virtualNodeName;
   }
 }
 export interface AppmeshVirtualServiceSpecProviderVirtualRouter {
@@ -101,6 +120,25 @@ export class AppmeshVirtualServiceSpecProviderVirtualRouterOutputReference exten
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshVirtualServiceSpecProviderVirtualRouter | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._virtualRouterName) {
+      hasAnyValues = true;
+      internalValueResult.virtualRouterName = this._virtualRouterName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshVirtualServiceSpecProviderVirtualRouter | undefined) {
+    if (value === undefined) {
+      this._virtualRouterName = undefined;
+    }
+    else {
+      this._virtualRouterName = value.virtualRouterName;
+    }
+  }
+
   // virtual_router_name - computed: false, optional: false, required: true
   private _virtualRouterName?: string; 
   public get virtualRouterName() {
@@ -111,7 +149,7 @@ export class AppmeshVirtualServiceSpecProviderVirtualRouterOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get virtualRouterNameInput() {
-    return this._virtualRouterName
+    return this._virtualRouterName;
   }
 }
 export interface AppmeshVirtualServiceSpecProvider {
@@ -150,38 +188,61 @@ export class AppmeshVirtualServiceSpecProviderOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // virtual_node - computed: false, optional: true, required: false
-  private _virtualNode?: AppmeshVirtualServiceSpecProviderVirtualNode | undefined; 
-  private __virtualNodeOutput = new AppmeshVirtualServiceSpecProviderVirtualNodeOutputReference(this as any, "virtual_node", true);
-  public get virtualNode() {
-    return this.__virtualNodeOutput;
+  public get internalValue(): AppmeshVirtualServiceSpecProvider | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._virtualNode) {
+      hasAnyValues = true;
+      internalValueResult.virtualNode = this._virtualNode?.internalValue;
+    }
+    if (this._virtualRouter) {
+      hasAnyValues = true;
+      internalValueResult.virtualRouter = this._virtualRouter?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putVirtualNode(value: AppmeshVirtualServiceSpecProviderVirtualNode | undefined) {
-    this._virtualNode = value;
+
+  public set internalValue(value: AppmeshVirtualServiceSpecProvider | undefined) {
+    if (value === undefined) {
+      this._virtualNode.internalValue = undefined;
+      this._virtualRouter.internalValue = undefined;
+    }
+    else {
+      this._virtualNode.internalValue = value.virtualNode;
+      this._virtualRouter.internalValue = value.virtualRouter;
+    }
+  }
+
+  // virtual_node - computed: false, optional: true, required: false
+  private _virtualNode = new AppmeshVirtualServiceSpecProviderVirtualNodeOutputReference(this as any, "virtual_node", true);
+  public get virtualNode() {
+    return this._virtualNode;
+  }
+  public putVirtualNode(value: AppmeshVirtualServiceSpecProviderVirtualNode) {
+    this._virtualNode.internalValue = value;
   }
   public resetVirtualNode() {
-    this._virtualNode = undefined;
+    this._virtualNode.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get virtualNodeInput() {
-    return this._virtualNode
+    return this._virtualNode.internalValue;
   }
 
   // virtual_router - computed: false, optional: true, required: false
-  private _virtualRouter?: AppmeshVirtualServiceSpecProviderVirtualRouter | undefined; 
-  private __virtualRouterOutput = new AppmeshVirtualServiceSpecProviderVirtualRouterOutputReference(this as any, "virtual_router", true);
+  private _virtualRouter = new AppmeshVirtualServiceSpecProviderVirtualRouterOutputReference(this as any, "virtual_router", true);
   public get virtualRouter() {
-    return this.__virtualRouterOutput;
+    return this._virtualRouter;
   }
-  public putVirtualRouter(value: AppmeshVirtualServiceSpecProviderVirtualRouter | undefined) {
-    this._virtualRouter = value;
+  public putVirtualRouter(value: AppmeshVirtualServiceSpecProviderVirtualRouter) {
+    this._virtualRouter.internalValue = value;
   }
   public resetVirtualRouter() {
-    this._virtualRouter = undefined;
+    this._virtualRouter.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get virtualRouterInput() {
-    return this._virtualRouter
+    return this._virtualRouter.internalValue;
   }
 }
 export interface AppmeshVirtualServiceSpec {
@@ -213,21 +274,39 @@ export class AppmeshVirtualServiceSpecOutputReference extends cdktf.ComplexObjec
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // provider - computed: false, optional: true, required: false
-  private _provider?: AppmeshVirtualServiceSpecProvider | undefined; 
-  private __providerOutput = new AppmeshVirtualServiceSpecProviderOutputReference(this as any, "provider", true);
-  public get provider() {
-    return this.__providerOutput;
+  public get internalValue(): AppmeshVirtualServiceSpec | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._provider) {
+      hasAnyValues = true;
+      internalValueResult.provider = this._provider?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putProvider(value: AppmeshVirtualServiceSpecProvider | undefined) {
-    this._provider = value;
+
+  public set internalValue(value: AppmeshVirtualServiceSpec | undefined) {
+    if (value === undefined) {
+      this._provider.internalValue = undefined;
+    }
+    else {
+      this._provider.internalValue = value.provider;
+    }
+  }
+
+  // provider - computed: false, optional: true, required: false
+  private _provider = new AppmeshVirtualServiceSpecProviderOutputReference(this as any, "provider", true);
+  public get provider() {
+    return this._provider;
+  }
+  public putProvider(value: AppmeshVirtualServiceSpecProvider) {
+    this._provider.internalValue = value;
   }
   public resetProvider() {
-    this._provider = undefined;
+    this._provider.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get providerInput() {
-    return this._provider
+    return this._provider.internalValue;
   }
 }
 
@@ -268,7 +347,7 @@ export class AppmeshVirtualService extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._spec = config.spec;
+    this._spec.internalValue = config.spec;
   }
 
   // ==========
@@ -305,15 +384,15 @@ export class AppmeshVirtualService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get meshNameInput() {
-    return this._meshName
+    return this._meshName;
   }
 
   // mesh_owner - computed: true, optional: true, required: false
-  private _meshOwner?: string | undefined; 
+  private _meshOwner?: string; 
   public get meshOwner() {
     return this.getStringAttribute('mesh_owner');
   }
-  public set meshOwner(value: string | undefined) {
+  public set meshOwner(value: string) {
     this._meshOwner = value;
   }
   public resetMeshOwner() {
@@ -321,7 +400,7 @@ export class AppmeshVirtualService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get meshOwnerInput() {
-    return this._meshOwner
+    return this._meshOwner;
   }
 
   // name - computed: false, optional: false, required: true
@@ -334,7 +413,7 @@ export class AppmeshVirtualService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // resource_owner - computed: true, optional: false, required: false
@@ -343,12 +422,12 @@ export class AppmeshVirtualService extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -356,16 +435,16 @@ export class AppmeshVirtualService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -373,21 +452,20 @@ export class AppmeshVirtualService extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // spec - computed: false, optional: false, required: true
-  private _spec?: AppmeshVirtualServiceSpec; 
-  private __specOutput = new AppmeshVirtualServiceSpecOutputReference(this as any, "spec", true);
+  private _spec = new AppmeshVirtualServiceSpecOutputReference(this as any, "spec", true);
   public get spec() {
-    return this.__specOutput;
+    return this._spec;
   }
   public putSpec(value: AppmeshVirtualServiceSpec) {
-    this._spec = value;
+    this._spec.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get specInput() {
-    return this._spec
+    return this._spec.internalValue;
   }
 
   // =========
@@ -401,7 +479,7 @@ export class AppmeshVirtualService extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      spec: appmeshVirtualServiceSpecToTerraform(this._spec),
+      spec: appmeshVirtualServiceSpecToTerraform(this._spec.internalValue),
     };
   }
 }

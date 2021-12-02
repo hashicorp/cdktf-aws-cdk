@@ -67,7 +67,7 @@ export class SpotDatafeedSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // id - computed: true, optional: true, required: false
@@ -76,11 +76,11 @@ export class SpotDatafeedSubscription extends cdktf.TerraformResource {
   }
 
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -88,7 +88,7 @@ export class SpotDatafeedSubscription extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // =========

@@ -83,6 +83,31 @@ export class SignerSigningProfileSignatureValidityPeriodOutputReference extends 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SignerSigningProfileSignatureValidityPeriod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    if (this._value) {
+      hasAnyValues = true;
+      internalValueResult.value = this._value;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SignerSigningProfileSignatureValidityPeriod | undefined) {
+    if (value === undefined) {
+      this._type = undefined;
+      this._value = undefined;
+    }
+    else {
+      this._type = value.type;
+      this._value = value.value;
+    }
+  }
+
   // type - computed: false, optional: false, required: true
   private _type?: string; 
   public get type() {
@@ -93,7 +118,7 @@ export class SignerSigningProfileSignatureValidityPeriodOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // value - computed: false, optional: false, required: true
@@ -106,7 +131,7 @@ export class SignerSigningProfileSignatureValidityPeriodOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 }
 
@@ -147,7 +172,7 @@ export class SignerSigningProfile extends cdktf.TerraformResource {
     this._platformId = config.platformId;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._signatureValidityPeriod = config.signatureValidityPeriod;
+    this._signatureValidityPeriod.internalValue = config.signatureValidityPeriod;
   }
 
   // ==========
@@ -165,11 +190,11 @@ export class SignerSigningProfile extends cdktf.TerraformResource {
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -177,15 +202,15 @@ export class SignerSigningProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_prefix - computed: false, optional: true, required: false
-  private _namePrefix?: string | undefined; 
+  private _namePrefix?: string; 
   public get namePrefix() {
     return this.getStringAttribute('name_prefix');
   }
-  public set namePrefix(value: string | undefined) {
+  public set namePrefix(value: string) {
     this._namePrefix = value;
   }
   public resetNamePrefix() {
@@ -193,7 +218,7 @@ export class SignerSigningProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // platform_display_name - computed: true, optional: false, required: false
@@ -211,7 +236,7 @@ export class SignerSigningProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get platformIdInput() {
-    return this._platformId
+    return this._platformId;
   }
 
   // revocation_record - computed: true, optional: false, required: false
@@ -225,12 +250,12 @@ export class SignerSigningProfile extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -238,16 +263,16 @@ export class SignerSigningProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -255,7 +280,7 @@ export class SignerSigningProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // version - computed: true, optional: false, required: false
@@ -269,20 +294,19 @@ export class SignerSigningProfile extends cdktf.TerraformResource {
   }
 
   // signature_validity_period - computed: false, optional: true, required: false
-  private _signatureValidityPeriod?: SignerSigningProfileSignatureValidityPeriod | undefined; 
-  private __signatureValidityPeriodOutput = new SignerSigningProfileSignatureValidityPeriodOutputReference(this as any, "signature_validity_period", true);
+  private _signatureValidityPeriod = new SignerSigningProfileSignatureValidityPeriodOutputReference(this as any, "signature_validity_period", true);
   public get signatureValidityPeriod() {
-    return this.__signatureValidityPeriodOutput;
+    return this._signatureValidityPeriod;
   }
-  public putSignatureValidityPeriod(value: SignerSigningProfileSignatureValidityPeriod | undefined) {
-    this._signatureValidityPeriod = value;
+  public putSignatureValidityPeriod(value: SignerSigningProfileSignatureValidityPeriod) {
+    this._signatureValidityPeriod.internalValue = value;
   }
   public resetSignatureValidityPeriod() {
-    this._signatureValidityPeriod = undefined;
+    this._signatureValidityPeriod.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get signatureValidityPeriodInput() {
-    return this._signatureValidityPeriod
+    return this._signatureValidityPeriod.internalValue;
   }
 
   // =========
@@ -296,7 +320,7 @@ export class SignerSigningProfile extends cdktf.TerraformResource {
       platform_id: cdktf.stringToTerraform(this._platformId),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      signature_validity_period: signerSigningProfileSignatureValidityPeriodToTerraform(this._signatureValidityPeriod),
+      signature_validity_period: signerSigningProfileSignatureValidityPeriodToTerraform(this._signatureValidityPeriod.internalValue),
     };
   }
 }

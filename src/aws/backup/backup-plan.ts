@@ -86,12 +86,37 @@ export class BackupPlanRuleCopyActionLifecycleOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): BackupPlanRuleCopyActionLifecycle | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._coldStorageAfter) {
+      hasAnyValues = true;
+      internalValueResult.coldStorageAfter = this._coldStorageAfter;
+    }
+    if (this._deleteAfter) {
+      hasAnyValues = true;
+      internalValueResult.deleteAfter = this._deleteAfter;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: BackupPlanRuleCopyActionLifecycle | undefined) {
+    if (value === undefined) {
+      this._coldStorageAfter = undefined;
+      this._deleteAfter = undefined;
+    }
+    else {
+      this._coldStorageAfter = value.coldStorageAfter;
+      this._deleteAfter = value.deleteAfter;
+    }
+  }
+
   // cold_storage_after - computed: false, optional: true, required: false
-  private _coldStorageAfter?: number | undefined; 
+  private _coldStorageAfter?: number; 
   public get coldStorageAfter() {
     return this.getNumberAttribute('cold_storage_after');
   }
-  public set coldStorageAfter(value: number | undefined) {
+  public set coldStorageAfter(value: number) {
     this._coldStorageAfter = value;
   }
   public resetColdStorageAfter() {
@@ -99,15 +124,15 @@ export class BackupPlanRuleCopyActionLifecycleOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get coldStorageAfterInput() {
-    return this._coldStorageAfter
+    return this._coldStorageAfter;
   }
 
   // delete_after - computed: false, optional: true, required: false
-  private _deleteAfter?: number | undefined; 
+  private _deleteAfter?: number; 
   public get deleteAfter() {
     return this.getNumberAttribute('delete_after');
   }
-  public set deleteAfter(value: number | undefined) {
+  public set deleteAfter(value: number) {
     this._deleteAfter = value;
   }
   public resetDeleteAfter() {
@@ -115,7 +140,7 @@ export class BackupPlanRuleCopyActionLifecycleOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get deleteAfterInput() {
-    return this._deleteAfter
+    return this._deleteAfter;
   }
 }
 export interface BackupPlanRuleCopyAction {
@@ -174,12 +199,37 @@ export class BackupPlanRuleLifecycleOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): BackupPlanRuleLifecycle | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._coldStorageAfter) {
+      hasAnyValues = true;
+      internalValueResult.coldStorageAfter = this._coldStorageAfter;
+    }
+    if (this._deleteAfter) {
+      hasAnyValues = true;
+      internalValueResult.deleteAfter = this._deleteAfter;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: BackupPlanRuleLifecycle | undefined) {
+    if (value === undefined) {
+      this._coldStorageAfter = undefined;
+      this._deleteAfter = undefined;
+    }
+    else {
+      this._coldStorageAfter = value.coldStorageAfter;
+      this._deleteAfter = value.deleteAfter;
+    }
+  }
+
   // cold_storage_after - computed: false, optional: true, required: false
-  private _coldStorageAfter?: number | undefined; 
+  private _coldStorageAfter?: number; 
   public get coldStorageAfter() {
     return this.getNumberAttribute('cold_storage_after');
   }
-  public set coldStorageAfter(value: number | undefined) {
+  public set coldStorageAfter(value: number) {
     this._coldStorageAfter = value;
   }
   public resetColdStorageAfter() {
@@ -187,15 +237,15 @@ export class BackupPlanRuleLifecycleOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get coldStorageAfterInput() {
-    return this._coldStorageAfter
+    return this._coldStorageAfter;
   }
 
   // delete_after - computed: false, optional: true, required: false
-  private _deleteAfter?: number | undefined; 
+  private _deleteAfter?: number; 
   public get deleteAfter() {
     return this.getNumberAttribute('delete_after');
   }
-  public set deleteAfter(value: number | undefined) {
+  public set deleteAfter(value: number) {
     this._deleteAfter = value;
   }
   public resetDeleteAfter() {
@@ -203,7 +253,7 @@ export class BackupPlanRuleLifecycleOutputReference extends cdktf.ComplexObject 
   }
   // Temporarily expose input value. Use with caution.
   public get deleteAfterInput() {
-    return this._deleteAfter
+    return this._deleteAfter;
   }
 }
 export interface BackupPlanRule {
@@ -331,16 +381,16 @@ export class BackupPlan extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -348,16 +398,16 @@ export class BackupPlan extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -365,7 +415,7 @@ export class BackupPlan extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // version - computed: true, optional: false, required: false
@@ -374,12 +424,12 @@ export class BackupPlan extends cdktf.TerraformResource {
   }
 
   // advanced_backup_setting - computed: false, optional: true, required: false
-  private _advancedBackupSetting?: BackupPlanAdvancedBackupSetting[] | undefined; 
+  private _advancedBackupSetting?: BackupPlanAdvancedBackupSetting[]; 
   public get advancedBackupSetting() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('advanced_backup_setting') as any;
   }
-  public set advancedBackupSetting(value: BackupPlanAdvancedBackupSetting[] | undefined) {
+  public set advancedBackupSetting(value: BackupPlanAdvancedBackupSetting[]) {
     this._advancedBackupSetting = value;
   }
   public resetAdvancedBackupSetting() {
@@ -387,7 +437,7 @@ export class BackupPlan extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get advancedBackupSettingInput() {
-    return this._advancedBackupSetting
+    return this._advancedBackupSetting;
   }
 
   // rule - computed: false, optional: false, required: true
@@ -401,7 +451,7 @@ export class BackupPlan extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ruleInput() {
-    return this._rule
+    return this._rule;
   }
 
   // =========

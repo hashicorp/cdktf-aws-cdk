@@ -97,11 +97,11 @@ export class DataAwsAvailabilityZones extends cdktf.TerraformDataSource {
   // ==========
 
   // all_availability_zones - computed: false, optional: true, required: false
-  private _allAvailabilityZones?: boolean | cdktf.IResolvable | undefined; 
+  private _allAvailabilityZones?: boolean | cdktf.IResolvable; 
   public get allAvailabilityZones() {
     return this.getBooleanAttribute('all_availability_zones') as any;
   }
-  public set allAvailabilityZones(value: boolean | cdktf.IResolvable | undefined) {
+  public set allAvailabilityZones(value: boolean | cdktf.IResolvable) {
     this._allAvailabilityZones = value;
   }
   public resetAllAvailabilityZones() {
@@ -109,15 +109,15 @@ export class DataAwsAvailabilityZones extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get allAvailabilityZonesInput() {
-    return this._allAvailabilityZones
+    return this._allAvailabilityZones;
   }
 
   // exclude_names - computed: false, optional: true, required: false
-  private _excludeNames?: string[] | undefined; 
+  private _excludeNames?: string[]; 
   public get excludeNames() {
     return this.getListAttribute('exclude_names');
   }
-  public set excludeNames(value: string[] | undefined) {
+  public set excludeNames(value: string[]) {
     this._excludeNames = value;
   }
   public resetExcludeNames() {
@@ -125,15 +125,15 @@ export class DataAwsAvailabilityZones extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get excludeNamesInput() {
-    return this._excludeNames
+    return this._excludeNames;
   }
 
   // exclude_zone_ids - computed: false, optional: true, required: false
-  private _excludeZoneIds?: string[] | undefined; 
+  private _excludeZoneIds?: string[]; 
   public get excludeZoneIds() {
     return this.getListAttribute('exclude_zone_ids');
   }
-  public set excludeZoneIds(value: string[] | undefined) {
+  public set excludeZoneIds(value: string[]) {
     this._excludeZoneIds = value;
   }
   public resetExcludeZoneIds() {
@@ -141,7 +141,7 @@ export class DataAwsAvailabilityZones extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get excludeZoneIdsInput() {
-    return this._excludeZoneIds
+    return this._excludeZoneIds;
   }
 
   // group_names - computed: true, optional: false, required: false
@@ -160,11 +160,11 @@ export class DataAwsAvailabilityZones extends cdktf.TerraformDataSource {
   }
 
   // state - computed: false, optional: true, required: false
-  private _state?: string | undefined; 
+  private _state?: string; 
   public get state() {
     return this.getStringAttribute('state');
   }
-  public set state(value: string | undefined) {
+  public set state(value: string) {
     this._state = value;
   }
   public resetState() {
@@ -172,7 +172,7 @@ export class DataAwsAvailabilityZones extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get stateInput() {
-    return this._state
+    return this._state;
   }
 
   // zone_ids - computed: true, optional: false, required: false
@@ -181,12 +181,12 @@ export class DataAwsAvailabilityZones extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsAvailabilityZonesFilter[] | undefined; 
+  private _filter?: DataAwsAvailabilityZonesFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsAvailabilityZonesFilter[] | undefined) {
+  public set filter(value: DataAwsAvailabilityZonesFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -194,7 +194,7 @@ export class DataAwsAvailabilityZones extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

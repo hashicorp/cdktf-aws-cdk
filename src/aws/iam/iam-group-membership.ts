@@ -72,7 +72,7 @@ export class IamGroupMembership extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get groupInput() {
-    return this._group
+    return this._group;
   }
 
   // id - computed: true, optional: true, required: false
@@ -90,7 +90,7 @@ export class IamGroupMembership extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // users - computed: false, optional: false, required: true
@@ -103,7 +103,7 @@ export class IamGroupMembership extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get usersInput() {
-    return this._users
+    return this._users;
   }
 
   // =========

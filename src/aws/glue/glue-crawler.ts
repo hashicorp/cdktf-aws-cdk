@@ -203,12 +203,31 @@ export class GlueCrawlerLineageConfigurationOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueCrawlerLineageConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._crawlerLineageSettings) {
+      hasAnyValues = true;
+      internalValueResult.crawlerLineageSettings = this._crawlerLineageSettings;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueCrawlerLineageConfiguration | undefined) {
+    if (value === undefined) {
+      this._crawlerLineageSettings = undefined;
+    }
+    else {
+      this._crawlerLineageSettings = value.crawlerLineageSettings;
+    }
+  }
+
   // crawler_lineage_settings - computed: false, optional: true, required: false
-  private _crawlerLineageSettings?: string | undefined; 
+  private _crawlerLineageSettings?: string; 
   public get crawlerLineageSettings() {
     return this.getStringAttribute('crawler_lineage_settings');
   }
-  public set crawlerLineageSettings(value: string | undefined) {
+  public set crawlerLineageSettings(value: string) {
     this._crawlerLineageSettings = value;
   }
   public resetCrawlerLineageSettings() {
@@ -216,7 +235,7 @@ export class GlueCrawlerLineageConfigurationOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get crawlerLineageSettingsInput() {
-    return this._crawlerLineageSettings
+    return this._crawlerLineageSettings;
   }
 }
 export interface GlueCrawlerMongodbTarget {
@@ -273,12 +292,31 @@ export class GlueCrawlerRecrawlPolicyOutputReference extends cdktf.ComplexObject
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueCrawlerRecrawlPolicy | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._recrawlBehavior) {
+      hasAnyValues = true;
+      internalValueResult.recrawlBehavior = this._recrawlBehavior;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueCrawlerRecrawlPolicy | undefined) {
+    if (value === undefined) {
+      this._recrawlBehavior = undefined;
+    }
+    else {
+      this._recrawlBehavior = value.recrawlBehavior;
+    }
+  }
+
   // recrawl_behavior - computed: false, optional: true, required: false
-  private _recrawlBehavior?: string | undefined; 
+  private _recrawlBehavior?: string; 
   public get recrawlBehavior() {
     return this.getStringAttribute('recrawl_behavior');
   }
-  public set recrawlBehavior(value: string | undefined) {
+  public set recrawlBehavior(value: string) {
     this._recrawlBehavior = value;
   }
   public resetRecrawlBehavior() {
@@ -286,7 +324,7 @@ export class GlueCrawlerRecrawlPolicyOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get recrawlBehaviorInput() {
-    return this._recrawlBehavior
+    return this._recrawlBehavior;
   }
 }
 export interface GlueCrawlerS3Target {
@@ -363,12 +401,37 @@ export class GlueCrawlerSchemaChangePolicyOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueCrawlerSchemaChangePolicy | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._deleteBehavior) {
+      hasAnyValues = true;
+      internalValueResult.deleteBehavior = this._deleteBehavior;
+    }
+    if (this._updateBehavior) {
+      hasAnyValues = true;
+      internalValueResult.updateBehavior = this._updateBehavior;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueCrawlerSchemaChangePolicy | undefined) {
+    if (value === undefined) {
+      this._deleteBehavior = undefined;
+      this._updateBehavior = undefined;
+    }
+    else {
+      this._deleteBehavior = value.deleteBehavior;
+      this._updateBehavior = value.updateBehavior;
+    }
+  }
+
   // delete_behavior - computed: false, optional: true, required: false
-  private _deleteBehavior?: string | undefined; 
+  private _deleteBehavior?: string; 
   public get deleteBehavior() {
     return this.getStringAttribute('delete_behavior');
   }
-  public set deleteBehavior(value: string | undefined) {
+  public set deleteBehavior(value: string) {
     this._deleteBehavior = value;
   }
   public resetDeleteBehavior() {
@@ -376,15 +439,15 @@ export class GlueCrawlerSchemaChangePolicyOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get deleteBehaviorInput() {
-    return this._deleteBehavior
+    return this._deleteBehavior;
   }
 
   // update_behavior - computed: false, optional: true, required: false
-  private _updateBehavior?: string | undefined; 
+  private _updateBehavior?: string; 
   public get updateBehavior() {
     return this.getStringAttribute('update_behavior');
   }
-  public set updateBehavior(value: string | undefined) {
+  public set updateBehavior(value: string) {
     this._updateBehavior = value;
   }
   public resetUpdateBehavior() {
@@ -392,7 +455,7 @@ export class GlueCrawlerSchemaChangePolicyOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get updateBehaviorInput() {
-    return this._updateBehavior
+    return this._updateBehavior;
   }
 }
 
@@ -442,11 +505,11 @@ export class GlueCrawler extends cdktf.TerraformResource {
     this._catalogTarget = config.catalogTarget;
     this._dynamodbTarget = config.dynamodbTarget;
     this._jdbcTarget = config.jdbcTarget;
-    this._lineageConfiguration = config.lineageConfiguration;
+    this._lineageConfiguration.internalValue = config.lineageConfiguration;
     this._mongodbTarget = config.mongodbTarget;
-    this._recrawlPolicy = config.recrawlPolicy;
+    this._recrawlPolicy.internalValue = config.recrawlPolicy;
     this._s3Target = config.s3Target;
-    this._schemaChangePolicy = config.schemaChangePolicy;
+    this._schemaChangePolicy.internalValue = config.schemaChangePolicy;
   }
 
   // ==========
@@ -459,11 +522,11 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
 
   // classifiers - computed: false, optional: true, required: false
-  private _classifiers?: string[] | undefined; 
+  private _classifiers?: string[]; 
   public get classifiers() {
     return this.getListAttribute('classifiers');
   }
-  public set classifiers(value: string[] | undefined) {
+  public set classifiers(value: string[]) {
     this._classifiers = value;
   }
   public resetClassifiers() {
@@ -471,15 +534,15 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get classifiersInput() {
-    return this._classifiers
+    return this._classifiers;
   }
 
   // configuration - computed: false, optional: true, required: false
-  private _configuration?: string | undefined; 
+  private _configuration?: string; 
   public get configuration() {
     return this.getStringAttribute('configuration');
   }
-  public set configuration(value: string | undefined) {
+  public set configuration(value: string) {
     this._configuration = value;
   }
   public resetConfiguration() {
@@ -487,7 +550,7 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get configurationInput() {
-    return this._configuration
+    return this._configuration;
   }
 
   // database_name - computed: false, optional: false, required: true
@@ -500,15 +563,15 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get databaseNameInput() {
-    return this._databaseName
+    return this._databaseName;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -516,7 +579,7 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -534,7 +597,7 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // role - computed: false, optional: false, required: true
@@ -547,15 +610,15 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleInput() {
-    return this._role
+    return this._role;
   }
 
   // schedule - computed: false, optional: true, required: false
-  private _schedule?: string | undefined; 
+  private _schedule?: string; 
   public get schedule() {
     return this.getStringAttribute('schedule');
   }
-  public set schedule(value: string | undefined) {
+  public set schedule(value: string) {
     this._schedule = value;
   }
   public resetSchedule() {
@@ -563,15 +626,15 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scheduleInput() {
-    return this._schedule
+    return this._schedule;
   }
 
   // security_configuration - computed: false, optional: true, required: false
-  private _securityConfiguration?: string | undefined; 
+  private _securityConfiguration?: string; 
   public get securityConfiguration() {
     return this.getStringAttribute('security_configuration');
   }
-  public set securityConfiguration(value: string | undefined) {
+  public set securityConfiguration(value: string) {
     this._securityConfiguration = value;
   }
   public resetSecurityConfiguration() {
@@ -579,15 +642,15 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityConfigurationInput() {
-    return this._securityConfiguration
+    return this._securityConfiguration;
   }
 
   // table_prefix - computed: false, optional: true, required: false
-  private _tablePrefix?: string | undefined; 
+  private _tablePrefix?: string; 
   public get tablePrefix() {
     return this.getStringAttribute('table_prefix');
   }
-  public set tablePrefix(value: string | undefined) {
+  public set tablePrefix(value: string) {
     this._tablePrefix = value;
   }
   public resetTablePrefix() {
@@ -595,16 +658,16 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tablePrefixInput() {
-    return this._tablePrefix
+    return this._tablePrefix;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -612,16 +675,16 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -629,16 +692,16 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // catalog_target - computed: false, optional: true, required: false
-  private _catalogTarget?: GlueCrawlerCatalogTarget[] | undefined; 
+  private _catalogTarget?: GlueCrawlerCatalogTarget[]; 
   public get catalogTarget() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('catalog_target') as any;
   }
-  public set catalogTarget(value: GlueCrawlerCatalogTarget[] | undefined) {
+  public set catalogTarget(value: GlueCrawlerCatalogTarget[]) {
     this._catalogTarget = value;
   }
   public resetCatalogTarget() {
@@ -646,16 +709,16 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get catalogTargetInput() {
-    return this._catalogTarget
+    return this._catalogTarget;
   }
 
   // dynamodb_target - computed: false, optional: true, required: false
-  private _dynamodbTarget?: GlueCrawlerDynamodbTarget[] | undefined; 
+  private _dynamodbTarget?: GlueCrawlerDynamodbTarget[]; 
   public get dynamodbTarget() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('dynamodb_target') as any;
   }
-  public set dynamodbTarget(value: GlueCrawlerDynamodbTarget[] | undefined) {
+  public set dynamodbTarget(value: GlueCrawlerDynamodbTarget[]) {
     this._dynamodbTarget = value;
   }
   public resetDynamodbTarget() {
@@ -663,16 +726,16 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dynamodbTargetInput() {
-    return this._dynamodbTarget
+    return this._dynamodbTarget;
   }
 
   // jdbc_target - computed: false, optional: true, required: false
-  private _jdbcTarget?: GlueCrawlerJdbcTarget[] | undefined; 
+  private _jdbcTarget?: GlueCrawlerJdbcTarget[]; 
   public get jdbcTarget() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('jdbc_target') as any;
   }
-  public set jdbcTarget(value: GlueCrawlerJdbcTarget[] | undefined) {
+  public set jdbcTarget(value: GlueCrawlerJdbcTarget[]) {
     this._jdbcTarget = value;
   }
   public resetJdbcTarget() {
@@ -680,33 +743,32 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get jdbcTargetInput() {
-    return this._jdbcTarget
+    return this._jdbcTarget;
   }
 
   // lineage_configuration - computed: false, optional: true, required: false
-  private _lineageConfiguration?: GlueCrawlerLineageConfiguration | undefined; 
-  private __lineageConfigurationOutput = new GlueCrawlerLineageConfigurationOutputReference(this as any, "lineage_configuration", true);
+  private _lineageConfiguration = new GlueCrawlerLineageConfigurationOutputReference(this as any, "lineage_configuration", true);
   public get lineageConfiguration() {
-    return this.__lineageConfigurationOutput;
+    return this._lineageConfiguration;
   }
-  public putLineageConfiguration(value: GlueCrawlerLineageConfiguration | undefined) {
-    this._lineageConfiguration = value;
+  public putLineageConfiguration(value: GlueCrawlerLineageConfiguration) {
+    this._lineageConfiguration.internalValue = value;
   }
   public resetLineageConfiguration() {
-    this._lineageConfiguration = undefined;
+    this._lineageConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get lineageConfigurationInput() {
-    return this._lineageConfiguration
+    return this._lineageConfiguration.internalValue;
   }
 
   // mongodb_target - computed: false, optional: true, required: false
-  private _mongodbTarget?: GlueCrawlerMongodbTarget[] | undefined; 
+  private _mongodbTarget?: GlueCrawlerMongodbTarget[]; 
   public get mongodbTarget() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('mongodb_target') as any;
   }
-  public set mongodbTarget(value: GlueCrawlerMongodbTarget[] | undefined) {
+  public set mongodbTarget(value: GlueCrawlerMongodbTarget[]) {
     this._mongodbTarget = value;
   }
   public resetMongodbTarget() {
@@ -714,33 +776,32 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get mongodbTargetInput() {
-    return this._mongodbTarget
+    return this._mongodbTarget;
   }
 
   // recrawl_policy - computed: false, optional: true, required: false
-  private _recrawlPolicy?: GlueCrawlerRecrawlPolicy | undefined; 
-  private __recrawlPolicyOutput = new GlueCrawlerRecrawlPolicyOutputReference(this as any, "recrawl_policy", true);
+  private _recrawlPolicy = new GlueCrawlerRecrawlPolicyOutputReference(this as any, "recrawl_policy", true);
   public get recrawlPolicy() {
-    return this.__recrawlPolicyOutput;
+    return this._recrawlPolicy;
   }
-  public putRecrawlPolicy(value: GlueCrawlerRecrawlPolicy | undefined) {
-    this._recrawlPolicy = value;
+  public putRecrawlPolicy(value: GlueCrawlerRecrawlPolicy) {
+    this._recrawlPolicy.internalValue = value;
   }
   public resetRecrawlPolicy() {
-    this._recrawlPolicy = undefined;
+    this._recrawlPolicy.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get recrawlPolicyInput() {
-    return this._recrawlPolicy
+    return this._recrawlPolicy.internalValue;
   }
 
   // s3_target - computed: false, optional: true, required: false
-  private _s3Target?: GlueCrawlerS3Target[] | undefined; 
+  private _s3Target?: GlueCrawlerS3Target[]; 
   public get s3Target() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('s3_target') as any;
   }
-  public set s3Target(value: GlueCrawlerS3Target[] | undefined) {
+  public set s3Target(value: GlueCrawlerS3Target[]) {
     this._s3Target = value;
   }
   public resetS3Target() {
@@ -748,24 +809,23 @@ export class GlueCrawler extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get s3TargetInput() {
-    return this._s3Target
+    return this._s3Target;
   }
 
   // schema_change_policy - computed: false, optional: true, required: false
-  private _schemaChangePolicy?: GlueCrawlerSchemaChangePolicy | undefined; 
-  private __schemaChangePolicyOutput = new GlueCrawlerSchemaChangePolicyOutputReference(this as any, "schema_change_policy", true);
+  private _schemaChangePolicy = new GlueCrawlerSchemaChangePolicyOutputReference(this as any, "schema_change_policy", true);
   public get schemaChangePolicy() {
-    return this.__schemaChangePolicyOutput;
+    return this._schemaChangePolicy;
   }
-  public putSchemaChangePolicy(value: GlueCrawlerSchemaChangePolicy | undefined) {
-    this._schemaChangePolicy = value;
+  public putSchemaChangePolicy(value: GlueCrawlerSchemaChangePolicy) {
+    this._schemaChangePolicy.internalValue = value;
   }
   public resetSchemaChangePolicy() {
-    this._schemaChangePolicy = undefined;
+    this._schemaChangePolicy.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get schemaChangePolicyInput() {
-    return this._schemaChangePolicy
+    return this._schemaChangePolicy.internalValue;
   }
 
   // =========
@@ -788,11 +848,11 @@ export class GlueCrawler extends cdktf.TerraformResource {
       catalog_target: cdktf.listMapper(glueCrawlerCatalogTargetToTerraform)(this._catalogTarget),
       dynamodb_target: cdktf.listMapper(glueCrawlerDynamodbTargetToTerraform)(this._dynamodbTarget),
       jdbc_target: cdktf.listMapper(glueCrawlerJdbcTargetToTerraform)(this._jdbcTarget),
-      lineage_configuration: glueCrawlerLineageConfigurationToTerraform(this._lineageConfiguration),
+      lineage_configuration: glueCrawlerLineageConfigurationToTerraform(this._lineageConfiguration.internalValue),
       mongodb_target: cdktf.listMapper(glueCrawlerMongodbTargetToTerraform)(this._mongodbTarget),
-      recrawl_policy: glueCrawlerRecrawlPolicyToTerraform(this._recrawlPolicy),
+      recrawl_policy: glueCrawlerRecrawlPolicyToTerraform(this._recrawlPolicy.internalValue),
       s3_target: cdktf.listMapper(glueCrawlerS3TargetToTerraform)(this._s3Target),
-      schema_change_policy: glueCrawlerSchemaChangePolicyToTerraform(this._schemaChangePolicy),
+      schema_change_policy: glueCrawlerSchemaChangePolicyToTerraform(this._schemaChangePolicy.internalValue),
     };
   }
 }

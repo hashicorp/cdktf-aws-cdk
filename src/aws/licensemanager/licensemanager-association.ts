@@ -72,7 +72,7 @@ export class LicensemanagerAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get licenseConfigurationArnInput() {
-    return this._licenseConfigurationArn
+    return this._licenseConfigurationArn;
   }
 
   // resource_arn - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class LicensemanagerAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resourceArnInput() {
-    return this._resourceArn
+    return this._resourceArn;
   }
 
   // =========

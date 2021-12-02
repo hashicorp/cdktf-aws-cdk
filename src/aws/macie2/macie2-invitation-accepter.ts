@@ -45,12 +45,31 @@ export class Macie2InvitationAccepterTimeoutsOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Macie2InvitationAccepterTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Macie2InvitationAccepterTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+    }
+    else {
+      this._create = value.create;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -58,7 +77,7 @@ export class Macie2InvitationAccepterTimeoutsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 }
 
@@ -95,7 +114,7 @@ export class Macie2InvitationAccepter extends cdktf.TerraformResource {
       lifecycle: config.lifecycle
     });
     this._administratorAccountId = config.administratorAccountId;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -112,7 +131,7 @@ export class Macie2InvitationAccepter extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get administratorAccountIdInput() {
-    return this._administratorAccountId
+    return this._administratorAccountId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -126,20 +145,19 @@ export class Macie2InvitationAccepter extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: Macie2InvitationAccepterTimeouts | undefined; 
-  private __timeoutsOutput = new Macie2InvitationAccepterTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new Macie2InvitationAccepterTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: Macie2InvitationAccepterTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: Macie2InvitationAccepterTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -149,7 +167,7 @@ export class Macie2InvitationAccepter extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       administrator_account_id: cdktf.stringToTerraform(this._administratorAccountId),
-      timeouts: macie2InvitationAccepterTimeoutsToTerraform(this._timeouts),
+      timeouts: macie2InvitationAccepterTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

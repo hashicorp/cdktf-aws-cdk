@@ -127,7 +127,7 @@ export class DataAwsElasticacheReplicationGroup extends cdktf.TerraformDataSourc
   }
   // Temporarily expose input value. Use with caution.
   public get replicationGroupIdInput() {
-    return this._replicationGroupId
+    return this._replicationGroupId;
   }
 
   // snapshot_retention_limit - computed: true, optional: false, required: false

@@ -106,7 +106,7 @@ export class EmrManagedScalingPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterIdInput() {
-    return this._clusterId
+    return this._clusterId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -125,7 +125,7 @@ export class EmrManagedScalingPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get computeLimitsInput() {
-    return this._computeLimits
+    return this._computeLimits;
   }
 
   // =========

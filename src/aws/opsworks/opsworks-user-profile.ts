@@ -68,11 +68,11 @@ export class OpsworksUserProfile extends cdktf.TerraformResource {
   // ==========
 
   // allow_self_management - computed: false, optional: true, required: false
-  private _allowSelfManagement?: boolean | cdktf.IResolvable | undefined; 
+  private _allowSelfManagement?: boolean | cdktf.IResolvable; 
   public get allowSelfManagement() {
     return this.getBooleanAttribute('allow_self_management') as any;
   }
-  public set allowSelfManagement(value: boolean | cdktf.IResolvable | undefined) {
+  public set allowSelfManagement(value: boolean | cdktf.IResolvable) {
     this._allowSelfManagement = value;
   }
   public resetAllowSelfManagement() {
@@ -80,7 +80,7 @@ export class OpsworksUserProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allowSelfManagementInput() {
-    return this._allowSelfManagement
+    return this._allowSelfManagement;
   }
 
   // id - computed: true, optional: true, required: false
@@ -89,11 +89,11 @@ export class OpsworksUserProfile extends cdktf.TerraformResource {
   }
 
   // ssh_public_key - computed: false, optional: true, required: false
-  private _sshPublicKey?: string | undefined; 
+  private _sshPublicKey?: string; 
   public get sshPublicKey() {
     return this.getStringAttribute('ssh_public_key');
   }
-  public set sshPublicKey(value: string | undefined) {
+  public set sshPublicKey(value: string) {
     this._sshPublicKey = value;
   }
   public resetSshPublicKey() {
@@ -101,7 +101,7 @@ export class OpsworksUserProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sshPublicKeyInput() {
-    return this._sshPublicKey
+    return this._sshPublicKey;
   }
 
   // ssh_username - computed: false, optional: false, required: true
@@ -114,7 +114,7 @@ export class OpsworksUserProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sshUsernameInput() {
-    return this._sshUsername
+    return this._sshUsername;
   }
 
   // user_arn - computed: false, optional: false, required: true
@@ -127,7 +127,7 @@ export class OpsworksUserProfile extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userArnInput() {
-    return this._userArn
+    return this._userArn;
   }
 
   // =========

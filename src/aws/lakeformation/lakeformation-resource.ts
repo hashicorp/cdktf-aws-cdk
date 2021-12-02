@@ -67,7 +67,7 @@ export class LakeformationResource extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -81,11 +81,11 @@ export class LakeformationResource extends cdktf.TerraformResource {
   }
 
   // role_arn - computed: true, optional: true, required: false
-  private _roleArn?: string | undefined; 
+  private _roleArn?: string; 
   public get roleArn() {
     return this.getStringAttribute('role_arn');
   }
-  public set roleArn(value: string | undefined) {
+  public set roleArn(value: string) {
     this._roleArn = value;
   }
   public resetRoleArn() {
@@ -93,7 +93,7 @@ export class LakeformationResource extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // =========

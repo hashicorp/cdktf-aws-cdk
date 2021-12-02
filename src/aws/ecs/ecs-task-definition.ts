@@ -113,6 +113,25 @@ export class EcsTaskDefinitionEphemeralStorageOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcsTaskDefinitionEphemeralStorage | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._sizeInGib) {
+      hasAnyValues = true;
+      internalValueResult.sizeInGib = this._sizeInGib;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcsTaskDefinitionEphemeralStorage | undefined) {
+    if (value === undefined) {
+      this._sizeInGib = undefined;
+    }
+    else {
+      this._sizeInGib = value.sizeInGib;
+    }
+  }
+
   // size_in_gib - computed: false, optional: false, required: true
   private _sizeInGib?: number; 
   public get sizeInGib() {
@@ -123,7 +142,7 @@ export class EcsTaskDefinitionEphemeralStorageOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get sizeInGibInput() {
-    return this._sizeInGib
+    return this._sizeInGib;
   }
 }
 export interface EcsTaskDefinitionInferenceAccelerator {
@@ -207,6 +226,37 @@ export class EcsTaskDefinitionProxyConfigurationOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcsTaskDefinitionProxyConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._containerName) {
+      hasAnyValues = true;
+      internalValueResult.containerName = this._containerName;
+    }
+    if (this._properties) {
+      hasAnyValues = true;
+      internalValueResult.properties = this._properties;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcsTaskDefinitionProxyConfiguration | undefined) {
+    if (value === undefined) {
+      this._containerName = undefined;
+      this._properties = undefined;
+      this._type = undefined;
+    }
+    else {
+      this._containerName = value.containerName;
+      this._properties = value.properties;
+      this._type = value.type;
+    }
+  }
+
   // container_name - computed: false, optional: false, required: true
   private _containerName?: string; 
   public get containerName() {
@@ -217,16 +267,16 @@ export class EcsTaskDefinitionProxyConfigurationOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get containerNameInput() {
-    return this._containerName
+    return this._containerName;
   }
 
   // properties - computed: false, optional: true, required: false
-  private _properties?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _properties?: { [key: string]: string } | cdktf.IResolvable; 
   public get properties() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('properties') as any;
   }
-  public set properties(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set properties(value: { [key: string]: string } | cdktf.IResolvable) {
     this._properties = value;
   }
   public resetProperties() {
@@ -234,15 +284,15 @@ export class EcsTaskDefinitionProxyConfigurationOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get propertiesInput() {
-    return this._properties
+    return this._properties;
   }
 
   // type - computed: false, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -250,7 +300,7 @@ export class EcsTaskDefinitionProxyConfigurationOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 export interface EcsTaskDefinitionVolumeDockerVolumeConfiguration {
@@ -300,12 +350,55 @@ export class EcsTaskDefinitionVolumeDockerVolumeConfigurationOutputReference ext
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcsTaskDefinitionVolumeDockerVolumeConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._autoprovision) {
+      hasAnyValues = true;
+      internalValueResult.autoprovision = this._autoprovision;
+    }
+    if (this._driver) {
+      hasAnyValues = true;
+      internalValueResult.driver = this._driver;
+    }
+    if (this._driverOpts) {
+      hasAnyValues = true;
+      internalValueResult.driverOpts = this._driverOpts;
+    }
+    if (this._labels) {
+      hasAnyValues = true;
+      internalValueResult.labels = this._labels;
+    }
+    if (this._scope) {
+      hasAnyValues = true;
+      internalValueResult.scope = this._scope;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcsTaskDefinitionVolumeDockerVolumeConfiguration | undefined) {
+    if (value === undefined) {
+      this._autoprovision = undefined;
+      this._driver = undefined;
+      this._driverOpts = undefined;
+      this._labels = undefined;
+      this._scope = undefined;
+    }
+    else {
+      this._autoprovision = value.autoprovision;
+      this._driver = value.driver;
+      this._driverOpts = value.driverOpts;
+      this._labels = value.labels;
+      this._scope = value.scope;
+    }
+  }
+
   // autoprovision - computed: false, optional: true, required: false
-  private _autoprovision?: boolean | cdktf.IResolvable | undefined; 
+  private _autoprovision?: boolean | cdktf.IResolvable; 
   public get autoprovision() {
     return this.getBooleanAttribute('autoprovision') as any;
   }
-  public set autoprovision(value: boolean | cdktf.IResolvable | undefined) {
+  public set autoprovision(value: boolean | cdktf.IResolvable) {
     this._autoprovision = value;
   }
   public resetAutoprovision() {
@@ -313,15 +406,15 @@ export class EcsTaskDefinitionVolumeDockerVolumeConfigurationOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get autoprovisionInput() {
-    return this._autoprovision
+    return this._autoprovision;
   }
 
   // driver - computed: false, optional: true, required: false
-  private _driver?: string | undefined; 
+  private _driver?: string; 
   public get driver() {
     return this.getStringAttribute('driver');
   }
-  public set driver(value: string | undefined) {
+  public set driver(value: string) {
     this._driver = value;
   }
   public resetDriver() {
@@ -329,16 +422,16 @@ export class EcsTaskDefinitionVolumeDockerVolumeConfigurationOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get driverInput() {
-    return this._driver
+    return this._driver;
   }
 
   // driver_opts - computed: false, optional: true, required: false
-  private _driverOpts?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _driverOpts?: { [key: string]: string } | cdktf.IResolvable; 
   public get driverOpts() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('driver_opts') as any;
   }
-  public set driverOpts(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set driverOpts(value: { [key: string]: string } | cdktf.IResolvable) {
     this._driverOpts = value;
   }
   public resetDriverOpts() {
@@ -346,16 +439,16 @@ export class EcsTaskDefinitionVolumeDockerVolumeConfigurationOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get driverOptsInput() {
-    return this._driverOpts
+    return this._driverOpts;
   }
 
   // labels - computed: false, optional: true, required: false
-  private _labels?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _labels?: { [key: string]: string } | cdktf.IResolvable; 
   public get labels() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('labels') as any;
   }
-  public set labels(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set labels(value: { [key: string]: string } | cdktf.IResolvable) {
     this._labels = value;
   }
   public resetLabels() {
@@ -363,15 +456,15 @@ export class EcsTaskDefinitionVolumeDockerVolumeConfigurationOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get labelsInput() {
-    return this._labels
+    return this._labels;
   }
 
   // scope - computed: true, optional: true, required: false
-  private _scope?: string | undefined; 
+  private _scope?: string; 
   public get scope() {
     return this.getStringAttribute('scope');
   }
-  public set scope(value: string | undefined) {
+  public set scope(value: string) {
     this._scope = value;
   }
   public resetScope() {
@@ -379,7 +472,7 @@ export class EcsTaskDefinitionVolumeDockerVolumeConfigurationOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get scopeInput() {
-    return this._scope
+    return this._scope;
   }
 }
 export interface EcsTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig {
@@ -414,12 +507,37 @@ export class EcsTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigOut
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcsTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._accessPointId) {
+      hasAnyValues = true;
+      internalValueResult.accessPointId = this._accessPointId;
+    }
+    if (this._iam) {
+      hasAnyValues = true;
+      internalValueResult.iam = this._iam;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcsTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig | undefined) {
+    if (value === undefined) {
+      this._accessPointId = undefined;
+      this._iam = undefined;
+    }
+    else {
+      this._accessPointId = value.accessPointId;
+      this._iam = value.iam;
+    }
+  }
+
   // access_point_id - computed: false, optional: true, required: false
-  private _accessPointId?: string | undefined; 
+  private _accessPointId?: string; 
   public get accessPointId() {
     return this.getStringAttribute('access_point_id');
   }
-  public set accessPointId(value: string | undefined) {
+  public set accessPointId(value: string) {
     this._accessPointId = value;
   }
   public resetAccessPointId() {
@@ -427,15 +545,15 @@ export class EcsTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigOut
   }
   // Temporarily expose input value. Use with caution.
   public get accessPointIdInput() {
-    return this._accessPointId
+    return this._accessPointId;
   }
 
   // iam - computed: false, optional: true, required: false
-  private _iam?: string | undefined; 
+  private _iam?: string; 
   public get iam() {
     return this.getStringAttribute('iam');
   }
-  public set iam(value: string | undefined) {
+  public set iam(value: string) {
     this._iam = value;
   }
   public resetIam() {
@@ -443,7 +561,7 @@ export class EcsTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigOut
   }
   // Temporarily expose input value. Use with caution.
   public get iamInput() {
-    return this._iam
+    return this._iam;
   }
 }
 export interface EcsTaskDefinitionVolumeEfsVolumeConfiguration {
@@ -495,6 +613,49 @@ export class EcsTaskDefinitionVolumeEfsVolumeConfigurationOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcsTaskDefinitionVolumeEfsVolumeConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fileSystemId) {
+      hasAnyValues = true;
+      internalValueResult.fileSystemId = this._fileSystemId;
+    }
+    if (this._rootDirectory) {
+      hasAnyValues = true;
+      internalValueResult.rootDirectory = this._rootDirectory;
+    }
+    if (this._transitEncryption) {
+      hasAnyValues = true;
+      internalValueResult.transitEncryption = this._transitEncryption;
+    }
+    if (this._transitEncryptionPort) {
+      hasAnyValues = true;
+      internalValueResult.transitEncryptionPort = this._transitEncryptionPort;
+    }
+    if (this._authorizationConfig) {
+      hasAnyValues = true;
+      internalValueResult.authorizationConfig = this._authorizationConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcsTaskDefinitionVolumeEfsVolumeConfiguration | undefined) {
+    if (value === undefined) {
+      this._fileSystemId = undefined;
+      this._rootDirectory = undefined;
+      this._transitEncryption = undefined;
+      this._transitEncryptionPort = undefined;
+      this._authorizationConfig.internalValue = undefined;
+    }
+    else {
+      this._fileSystemId = value.fileSystemId;
+      this._rootDirectory = value.rootDirectory;
+      this._transitEncryption = value.transitEncryption;
+      this._transitEncryptionPort = value.transitEncryptionPort;
+      this._authorizationConfig.internalValue = value.authorizationConfig;
+    }
+  }
+
   // file_system_id - computed: false, optional: false, required: true
   private _fileSystemId?: string; 
   public get fileSystemId() {
@@ -505,15 +666,15 @@ export class EcsTaskDefinitionVolumeEfsVolumeConfigurationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get fileSystemIdInput() {
-    return this._fileSystemId
+    return this._fileSystemId;
   }
 
   // root_directory - computed: false, optional: true, required: false
-  private _rootDirectory?: string | undefined; 
+  private _rootDirectory?: string; 
   public get rootDirectory() {
     return this.getStringAttribute('root_directory');
   }
-  public set rootDirectory(value: string | undefined) {
+  public set rootDirectory(value: string) {
     this._rootDirectory = value;
   }
   public resetRootDirectory() {
@@ -521,15 +682,15 @@ export class EcsTaskDefinitionVolumeEfsVolumeConfigurationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get rootDirectoryInput() {
-    return this._rootDirectory
+    return this._rootDirectory;
   }
 
   // transit_encryption - computed: false, optional: true, required: false
-  private _transitEncryption?: string | undefined; 
+  private _transitEncryption?: string; 
   public get transitEncryption() {
     return this.getStringAttribute('transit_encryption');
   }
-  public set transitEncryption(value: string | undefined) {
+  public set transitEncryption(value: string) {
     this._transitEncryption = value;
   }
   public resetTransitEncryption() {
@@ -537,15 +698,15 @@ export class EcsTaskDefinitionVolumeEfsVolumeConfigurationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get transitEncryptionInput() {
-    return this._transitEncryption
+    return this._transitEncryption;
   }
 
   // transit_encryption_port - computed: false, optional: true, required: false
-  private _transitEncryptionPort?: number | undefined; 
+  private _transitEncryptionPort?: number; 
   public get transitEncryptionPort() {
     return this.getNumberAttribute('transit_encryption_port');
   }
-  public set transitEncryptionPort(value: number | undefined) {
+  public set transitEncryptionPort(value: number) {
     this._transitEncryptionPort = value;
   }
   public resetTransitEncryptionPort() {
@@ -553,24 +714,23 @@ export class EcsTaskDefinitionVolumeEfsVolumeConfigurationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get transitEncryptionPortInput() {
-    return this._transitEncryptionPort
+    return this._transitEncryptionPort;
   }
 
   // authorization_config - computed: false, optional: true, required: false
-  private _authorizationConfig?: EcsTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig | undefined; 
-  private __authorizationConfigOutput = new EcsTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigOutputReference(this as any, "authorization_config", true);
+  private _authorizationConfig = new EcsTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfigOutputReference(this as any, "authorization_config", true);
   public get authorizationConfig() {
-    return this.__authorizationConfigOutput;
+    return this._authorizationConfig;
   }
-  public putAuthorizationConfig(value: EcsTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig | undefined) {
-    this._authorizationConfig = value;
+  public putAuthorizationConfig(value: EcsTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig) {
+    this._authorizationConfig.internalValue = value;
   }
   public resetAuthorizationConfig() {
-    this._authorizationConfig = undefined;
+    this._authorizationConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get authorizationConfigInput() {
-    return this._authorizationConfig
+    return this._authorizationConfig.internalValue;
   }
 }
 export interface EcsTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig {
@@ -605,6 +765,31 @@ export class EcsTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAutho
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcsTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._credentialsParameter) {
+      hasAnyValues = true;
+      internalValueResult.credentialsParameter = this._credentialsParameter;
+    }
+    if (this._domain) {
+      hasAnyValues = true;
+      internalValueResult.domain = this._domain;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcsTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig | undefined) {
+    if (value === undefined) {
+      this._credentialsParameter = undefined;
+      this._domain = undefined;
+    }
+    else {
+      this._credentialsParameter = value.credentialsParameter;
+      this._domain = value.domain;
+    }
+  }
+
   // credentials_parameter - computed: false, optional: false, required: true
   private _credentialsParameter?: string; 
   public get credentialsParameter() {
@@ -615,7 +800,7 @@ export class EcsTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAutho
   }
   // Temporarily expose input value. Use with caution.
   public get credentialsParameterInput() {
-    return this._credentialsParameter
+    return this._credentialsParameter;
   }
 
   // domain - computed: false, optional: false, required: true
@@ -628,7 +813,7 @@ export class EcsTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAutho
   }
   // Temporarily expose input value. Use with caution.
   public get domainInput() {
-    return this._domain
+    return this._domain;
   }
 }
 export interface EcsTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration {
@@ -670,6 +855,37 @@ export class EcsTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationOutpu
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcsTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fileSystemId) {
+      hasAnyValues = true;
+      internalValueResult.fileSystemId = this._fileSystemId;
+    }
+    if (this._rootDirectory) {
+      hasAnyValues = true;
+      internalValueResult.rootDirectory = this._rootDirectory;
+    }
+    if (this._authorizationConfig) {
+      hasAnyValues = true;
+      internalValueResult.authorizationConfig = this._authorizationConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcsTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration | undefined) {
+    if (value === undefined) {
+      this._fileSystemId = undefined;
+      this._rootDirectory = undefined;
+      this._authorizationConfig.internalValue = undefined;
+    }
+    else {
+      this._fileSystemId = value.fileSystemId;
+      this._rootDirectory = value.rootDirectory;
+      this._authorizationConfig.internalValue = value.authorizationConfig;
+    }
+  }
+
   // file_system_id - computed: false, optional: false, required: true
   private _fileSystemId?: string; 
   public get fileSystemId() {
@@ -680,7 +896,7 @@ export class EcsTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationOutpu
   }
   // Temporarily expose input value. Use with caution.
   public get fileSystemIdInput() {
-    return this._fileSystemId
+    return this._fileSystemId;
   }
 
   // root_directory - computed: false, optional: false, required: true
@@ -693,21 +909,20 @@ export class EcsTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationOutpu
   }
   // Temporarily expose input value. Use with caution.
   public get rootDirectoryInput() {
-    return this._rootDirectory
+    return this._rootDirectory;
   }
 
   // authorization_config - computed: false, optional: false, required: true
-  private _authorizationConfig?: EcsTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig; 
-  private __authorizationConfigOutput = new EcsTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfigOutputReference(this as any, "authorization_config", true);
+  private _authorizationConfig = new EcsTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfigOutputReference(this as any, "authorization_config", true);
   public get authorizationConfig() {
-    return this.__authorizationConfigOutput;
+    return this._authorizationConfig;
   }
   public putAuthorizationConfig(value: EcsTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig) {
-    this._authorizationConfig = value;
+    this._authorizationConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get authorizationConfigInput() {
-    return this._authorizationConfig
+    return this._authorizationConfig.internalValue;
   }
 }
 export interface EcsTaskDefinitionVolume {
@@ -798,10 +1013,10 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._taskRoleArn = config.taskRoleArn;
-    this._ephemeralStorage = config.ephemeralStorage;
+    this._ephemeralStorage.internalValue = config.ephemeralStorage;
     this._inferenceAccelerator = config.inferenceAccelerator;
     this._placementConstraints = config.placementConstraints;
-    this._proxyConfiguration = config.proxyConfiguration;
+    this._proxyConfiguration.internalValue = config.proxyConfiguration;
     this._volume = config.volume;
   }
 
@@ -824,15 +1039,15 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get containerDefinitionsInput() {
-    return this._containerDefinitions
+    return this._containerDefinitions;
   }
 
   // cpu - computed: false, optional: true, required: false
-  private _cpu?: string | undefined; 
+  private _cpu?: string; 
   public get cpu() {
     return this.getStringAttribute('cpu');
   }
-  public set cpu(value: string | undefined) {
+  public set cpu(value: string) {
     this._cpu = value;
   }
   public resetCpu() {
@@ -840,15 +1055,15 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cpuInput() {
-    return this._cpu
+    return this._cpu;
   }
 
   // execution_role_arn - computed: false, optional: true, required: false
-  private _executionRoleArn?: string | undefined; 
+  private _executionRoleArn?: string; 
   public get executionRoleArn() {
     return this.getStringAttribute('execution_role_arn');
   }
-  public set executionRoleArn(value: string | undefined) {
+  public set executionRoleArn(value: string) {
     this._executionRoleArn = value;
   }
   public resetExecutionRoleArn() {
@@ -856,7 +1071,7 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get executionRoleArnInput() {
-    return this._executionRoleArn
+    return this._executionRoleArn;
   }
 
   // family - computed: false, optional: false, required: true
@@ -869,7 +1084,7 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get familyInput() {
-    return this._family
+    return this._family;
   }
 
   // id - computed: true, optional: true, required: false
@@ -878,11 +1093,11 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
   }
 
   // ipc_mode - computed: false, optional: true, required: false
-  private _ipcMode?: string | undefined; 
+  private _ipcMode?: string; 
   public get ipcMode() {
     return this.getStringAttribute('ipc_mode');
   }
-  public set ipcMode(value: string | undefined) {
+  public set ipcMode(value: string) {
     this._ipcMode = value;
   }
   public resetIpcMode() {
@@ -890,15 +1105,15 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ipcModeInput() {
-    return this._ipcMode
+    return this._ipcMode;
   }
 
   // memory - computed: false, optional: true, required: false
-  private _memory?: string | undefined; 
+  private _memory?: string; 
   public get memory() {
     return this.getStringAttribute('memory');
   }
-  public set memory(value: string | undefined) {
+  public set memory(value: string) {
     this._memory = value;
   }
   public resetMemory() {
@@ -906,15 +1121,15 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get memoryInput() {
-    return this._memory
+    return this._memory;
   }
 
   // network_mode - computed: true, optional: true, required: false
-  private _networkMode?: string | undefined; 
+  private _networkMode?: string; 
   public get networkMode() {
     return this.getStringAttribute('network_mode');
   }
-  public set networkMode(value: string | undefined) {
+  public set networkMode(value: string) {
     this._networkMode = value;
   }
   public resetNetworkMode() {
@@ -922,15 +1137,15 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get networkModeInput() {
-    return this._networkMode
+    return this._networkMode;
   }
 
   // pid_mode - computed: false, optional: true, required: false
-  private _pidMode?: string | undefined; 
+  private _pidMode?: string; 
   public get pidMode() {
     return this.getStringAttribute('pid_mode');
   }
-  public set pidMode(value: string | undefined) {
+  public set pidMode(value: string) {
     this._pidMode = value;
   }
   public resetPidMode() {
@@ -938,15 +1153,15 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get pidModeInput() {
-    return this._pidMode
+    return this._pidMode;
   }
 
   // requires_compatibilities - computed: false, optional: true, required: false
-  private _requiresCompatibilities?: string[] | undefined; 
+  private _requiresCompatibilities?: string[]; 
   public get requiresCompatibilities() {
     return this.getListAttribute('requires_compatibilities');
   }
-  public set requiresCompatibilities(value: string[] | undefined) {
+  public set requiresCompatibilities(value: string[]) {
     this._requiresCompatibilities = value;
   }
   public resetRequiresCompatibilities() {
@@ -954,7 +1169,7 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get requiresCompatibilitiesInput() {
-    return this._requiresCompatibilities
+    return this._requiresCompatibilities;
   }
 
   // revision - computed: true, optional: false, required: false
@@ -963,12 +1178,12 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -976,16 +1191,16 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -993,15 +1208,15 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // task_role_arn - computed: false, optional: true, required: false
-  private _taskRoleArn?: string | undefined; 
+  private _taskRoleArn?: string; 
   public get taskRoleArn() {
     return this.getStringAttribute('task_role_arn');
   }
-  public set taskRoleArn(value: string | undefined) {
+  public set taskRoleArn(value: string) {
     this._taskRoleArn = value;
   }
   public resetTaskRoleArn() {
@@ -1009,33 +1224,32 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get taskRoleArnInput() {
-    return this._taskRoleArn
+    return this._taskRoleArn;
   }
 
   // ephemeral_storage - computed: false, optional: true, required: false
-  private _ephemeralStorage?: EcsTaskDefinitionEphemeralStorage | undefined; 
-  private __ephemeralStorageOutput = new EcsTaskDefinitionEphemeralStorageOutputReference(this as any, "ephemeral_storage", true);
+  private _ephemeralStorage = new EcsTaskDefinitionEphemeralStorageOutputReference(this as any, "ephemeral_storage", true);
   public get ephemeralStorage() {
-    return this.__ephemeralStorageOutput;
+    return this._ephemeralStorage;
   }
-  public putEphemeralStorage(value: EcsTaskDefinitionEphemeralStorage | undefined) {
-    this._ephemeralStorage = value;
+  public putEphemeralStorage(value: EcsTaskDefinitionEphemeralStorage) {
+    this._ephemeralStorage.internalValue = value;
   }
   public resetEphemeralStorage() {
-    this._ephemeralStorage = undefined;
+    this._ephemeralStorage.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ephemeralStorageInput() {
-    return this._ephemeralStorage
+    return this._ephemeralStorage.internalValue;
   }
 
   // inference_accelerator - computed: false, optional: true, required: false
-  private _inferenceAccelerator?: EcsTaskDefinitionInferenceAccelerator[] | undefined; 
+  private _inferenceAccelerator?: EcsTaskDefinitionInferenceAccelerator[]; 
   public get inferenceAccelerator() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('inference_accelerator') as any;
   }
-  public set inferenceAccelerator(value: EcsTaskDefinitionInferenceAccelerator[] | undefined) {
+  public set inferenceAccelerator(value: EcsTaskDefinitionInferenceAccelerator[]) {
     this._inferenceAccelerator = value;
   }
   public resetInferenceAccelerator() {
@@ -1043,16 +1257,16 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get inferenceAcceleratorInput() {
-    return this._inferenceAccelerator
+    return this._inferenceAccelerator;
   }
 
   // placement_constraints - computed: false, optional: true, required: false
-  private _placementConstraints?: EcsTaskDefinitionPlacementConstraints[] | undefined; 
+  private _placementConstraints?: EcsTaskDefinitionPlacementConstraints[]; 
   public get placementConstraints() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('placement_constraints') as any;
   }
-  public set placementConstraints(value: EcsTaskDefinitionPlacementConstraints[] | undefined) {
+  public set placementConstraints(value: EcsTaskDefinitionPlacementConstraints[]) {
     this._placementConstraints = value;
   }
   public resetPlacementConstraints() {
@@ -1060,33 +1274,32 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get placementConstraintsInput() {
-    return this._placementConstraints
+    return this._placementConstraints;
   }
 
   // proxy_configuration - computed: false, optional: true, required: false
-  private _proxyConfiguration?: EcsTaskDefinitionProxyConfiguration | undefined; 
-  private __proxyConfigurationOutput = new EcsTaskDefinitionProxyConfigurationOutputReference(this as any, "proxy_configuration", true);
+  private _proxyConfiguration = new EcsTaskDefinitionProxyConfigurationOutputReference(this as any, "proxy_configuration", true);
   public get proxyConfiguration() {
-    return this.__proxyConfigurationOutput;
+    return this._proxyConfiguration;
   }
-  public putProxyConfiguration(value: EcsTaskDefinitionProxyConfiguration | undefined) {
-    this._proxyConfiguration = value;
+  public putProxyConfiguration(value: EcsTaskDefinitionProxyConfiguration) {
+    this._proxyConfiguration.internalValue = value;
   }
   public resetProxyConfiguration() {
-    this._proxyConfiguration = undefined;
+    this._proxyConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get proxyConfigurationInput() {
-    return this._proxyConfiguration
+    return this._proxyConfiguration.internalValue;
   }
 
   // volume - computed: false, optional: true, required: false
-  private _volume?: EcsTaskDefinitionVolume[] | undefined; 
+  private _volume?: EcsTaskDefinitionVolume[]; 
   public get volume() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('volume') as any;
   }
-  public set volume(value: EcsTaskDefinitionVolume[] | undefined) {
+  public set volume(value: EcsTaskDefinitionVolume[]) {
     this._volume = value;
   }
   public resetVolume() {
@@ -1094,7 +1307,7 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get volumeInput() {
-    return this._volume
+    return this._volume;
   }
 
   // =========
@@ -1115,10 +1328,10 @@ export class EcsTaskDefinition extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       task_role_arn: cdktf.stringToTerraform(this._taskRoleArn),
-      ephemeral_storage: ecsTaskDefinitionEphemeralStorageToTerraform(this._ephemeralStorage),
+      ephemeral_storage: ecsTaskDefinitionEphemeralStorageToTerraform(this._ephemeralStorage.internalValue),
       inference_accelerator: cdktf.listMapper(ecsTaskDefinitionInferenceAcceleratorToTerraform)(this._inferenceAccelerator),
       placement_constraints: cdktf.listMapper(ecsTaskDefinitionPlacementConstraintsToTerraform)(this._placementConstraints),
-      proxy_configuration: ecsTaskDefinitionProxyConfigurationToTerraform(this._proxyConfiguration),
+      proxy_configuration: ecsTaskDefinitionProxyConfigurationToTerraform(this._proxyConfiguration.internalValue),
       volume: cdktf.listMapper(ecsTaskDefinitionVolumeToTerraform)(this._volume),
     };
   }

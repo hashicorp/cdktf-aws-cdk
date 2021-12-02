@@ -157,12 +157,61 @@ export class ServicecatalogProvisionedProductStackSetProvisioningPreferencesOutp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ServicecatalogProvisionedProductStackSetProvisioningPreferences | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._accounts) {
+      hasAnyValues = true;
+      internalValueResult.accounts = this._accounts;
+    }
+    if (this._failureToleranceCount) {
+      hasAnyValues = true;
+      internalValueResult.failureToleranceCount = this._failureToleranceCount;
+    }
+    if (this._failureTolerancePercentage) {
+      hasAnyValues = true;
+      internalValueResult.failureTolerancePercentage = this._failureTolerancePercentage;
+    }
+    if (this._maxConcurrencyCount) {
+      hasAnyValues = true;
+      internalValueResult.maxConcurrencyCount = this._maxConcurrencyCount;
+    }
+    if (this._maxConcurrencyPercentage) {
+      hasAnyValues = true;
+      internalValueResult.maxConcurrencyPercentage = this._maxConcurrencyPercentage;
+    }
+    if (this._regions) {
+      hasAnyValues = true;
+      internalValueResult.regions = this._regions;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ServicecatalogProvisionedProductStackSetProvisioningPreferences | undefined) {
+    if (value === undefined) {
+      this._accounts = undefined;
+      this._failureToleranceCount = undefined;
+      this._failureTolerancePercentage = undefined;
+      this._maxConcurrencyCount = undefined;
+      this._maxConcurrencyPercentage = undefined;
+      this._regions = undefined;
+    }
+    else {
+      this._accounts = value.accounts;
+      this._failureToleranceCount = value.failureToleranceCount;
+      this._failureTolerancePercentage = value.failureTolerancePercentage;
+      this._maxConcurrencyCount = value.maxConcurrencyCount;
+      this._maxConcurrencyPercentage = value.maxConcurrencyPercentage;
+      this._regions = value.regions;
+    }
+  }
+
   // accounts - computed: false, optional: true, required: false
-  private _accounts?: string[] | undefined; 
+  private _accounts?: string[]; 
   public get accounts() {
     return this.getListAttribute('accounts');
   }
-  public set accounts(value: string[] | undefined) {
+  public set accounts(value: string[]) {
     this._accounts = value;
   }
   public resetAccounts() {
@@ -170,15 +219,15 @@ export class ServicecatalogProvisionedProductStackSetProvisioningPreferencesOutp
   }
   // Temporarily expose input value. Use with caution.
   public get accountsInput() {
-    return this._accounts
+    return this._accounts;
   }
 
   // failure_tolerance_count - computed: false, optional: true, required: false
-  private _failureToleranceCount?: number | undefined; 
+  private _failureToleranceCount?: number; 
   public get failureToleranceCount() {
     return this.getNumberAttribute('failure_tolerance_count');
   }
-  public set failureToleranceCount(value: number | undefined) {
+  public set failureToleranceCount(value: number) {
     this._failureToleranceCount = value;
   }
   public resetFailureToleranceCount() {
@@ -186,15 +235,15 @@ export class ServicecatalogProvisionedProductStackSetProvisioningPreferencesOutp
   }
   // Temporarily expose input value. Use with caution.
   public get failureToleranceCountInput() {
-    return this._failureToleranceCount
+    return this._failureToleranceCount;
   }
 
   // failure_tolerance_percentage - computed: false, optional: true, required: false
-  private _failureTolerancePercentage?: number | undefined; 
+  private _failureTolerancePercentage?: number; 
   public get failureTolerancePercentage() {
     return this.getNumberAttribute('failure_tolerance_percentage');
   }
-  public set failureTolerancePercentage(value: number | undefined) {
+  public set failureTolerancePercentage(value: number) {
     this._failureTolerancePercentage = value;
   }
   public resetFailureTolerancePercentage() {
@@ -202,15 +251,15 @@ export class ServicecatalogProvisionedProductStackSetProvisioningPreferencesOutp
   }
   // Temporarily expose input value. Use with caution.
   public get failureTolerancePercentageInput() {
-    return this._failureTolerancePercentage
+    return this._failureTolerancePercentage;
   }
 
   // max_concurrency_count - computed: false, optional: true, required: false
-  private _maxConcurrencyCount?: number | undefined; 
+  private _maxConcurrencyCount?: number; 
   public get maxConcurrencyCount() {
     return this.getNumberAttribute('max_concurrency_count');
   }
-  public set maxConcurrencyCount(value: number | undefined) {
+  public set maxConcurrencyCount(value: number) {
     this._maxConcurrencyCount = value;
   }
   public resetMaxConcurrencyCount() {
@@ -218,15 +267,15 @@ export class ServicecatalogProvisionedProductStackSetProvisioningPreferencesOutp
   }
   // Temporarily expose input value. Use with caution.
   public get maxConcurrencyCountInput() {
-    return this._maxConcurrencyCount
+    return this._maxConcurrencyCount;
   }
 
   // max_concurrency_percentage - computed: false, optional: true, required: false
-  private _maxConcurrencyPercentage?: number | undefined; 
+  private _maxConcurrencyPercentage?: number; 
   public get maxConcurrencyPercentage() {
     return this.getNumberAttribute('max_concurrency_percentage');
   }
-  public set maxConcurrencyPercentage(value: number | undefined) {
+  public set maxConcurrencyPercentage(value: number) {
     this._maxConcurrencyPercentage = value;
   }
   public resetMaxConcurrencyPercentage() {
@@ -234,15 +283,15 @@ export class ServicecatalogProvisionedProductStackSetProvisioningPreferencesOutp
   }
   // Temporarily expose input value. Use with caution.
   public get maxConcurrencyPercentageInput() {
-    return this._maxConcurrencyPercentage
+    return this._maxConcurrencyPercentage;
   }
 
   // regions - computed: false, optional: true, required: false
-  private _regions?: string[] | undefined; 
+  private _regions?: string[]; 
   public get regions() {
     return this.getListAttribute('regions');
   }
-  public set regions(value: string[] | undefined) {
+  public set regions(value: string[]) {
     this._regions = value;
   }
   public resetRegions() {
@@ -250,7 +299,7 @@ export class ServicecatalogProvisionedProductStackSetProvisioningPreferencesOutp
   }
   // Temporarily expose input value. Use with caution.
   public get regionsInput() {
-    return this._regions
+    return this._regions;
   }
 }
 export interface ServicecatalogProvisionedProductTimeouts {
@@ -290,12 +339,43 @@ export class ServicecatalogProvisionedProductTimeoutsOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ServicecatalogProvisionedProductTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ServicecatalogProvisionedProductTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -303,15 +383,15 @@ export class ServicecatalogProvisionedProductTimeoutsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -319,15 +399,15 @@ export class ServicecatalogProvisionedProductTimeoutsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -335,7 +415,7 @@ export class ServicecatalogProvisionedProductTimeoutsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -385,8 +465,8 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._provisioningParameters = config.provisioningParameters;
-    this._stackSetProvisioningPreferences = config.stackSetProvisioningPreferences;
-    this._timeouts = config.timeouts;
+    this._stackSetProvisioningPreferences.internalValue = config.stackSetProvisioningPreferences;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -394,11 +474,11 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
   // ==========
 
   // accept_language - computed: false, optional: true, required: false
-  private _acceptLanguage?: string | undefined; 
+  private _acceptLanguage?: string; 
   public get acceptLanguage() {
     return this.getStringAttribute('accept_language');
   }
-  public set acceptLanguage(value: string | undefined) {
+  public set acceptLanguage(value: string) {
     this._acceptLanguage = value;
   }
   public resetAcceptLanguage() {
@@ -406,7 +486,7 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get acceptLanguageInput() {
-    return this._acceptLanguage
+    return this._acceptLanguage;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -430,11 +510,11 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
   }
 
   // ignore_errors - computed: false, optional: true, required: false
-  private _ignoreErrors?: boolean | cdktf.IResolvable | undefined; 
+  private _ignoreErrors?: boolean | cdktf.IResolvable; 
   public get ignoreErrors() {
     return this.getBooleanAttribute('ignore_errors') as any;
   }
-  public set ignoreErrors(value: boolean | cdktf.IResolvable | undefined) {
+  public set ignoreErrors(value: boolean | cdktf.IResolvable) {
     this._ignoreErrors = value;
   }
   public resetIgnoreErrors() {
@@ -442,7 +522,7 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ignoreErrorsInput() {
-    return this._ignoreErrors
+    return this._ignoreErrors;
   }
 
   // last_provisioning_record_id - computed: true, optional: false, required: false
@@ -475,15 +555,15 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // notification_arns - computed: false, optional: true, required: false
-  private _notificationArns?: string[] | undefined; 
+  private _notificationArns?: string[]; 
   public get notificationArns() {
     return this.getListAttribute('notification_arns');
   }
-  public set notificationArns(value: string[] | undefined) {
+  public set notificationArns(value: string[]) {
     this._notificationArns = value;
   }
   public resetNotificationArns() {
@@ -491,15 +571,15 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get notificationArnsInput() {
-    return this._notificationArns
+    return this._notificationArns;
   }
 
   // path_id - computed: true, optional: true, required: false
-  private _pathId?: string | undefined; 
+  private _pathId?: string; 
   public get pathId() {
     return this.getStringAttribute('path_id');
   }
-  public set pathId(value: string | undefined) {
+  public set pathId(value: string) {
     this._pathId = value;
   }
   public resetPathId() {
@@ -507,15 +587,15 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get pathIdInput() {
-    return this._pathId
+    return this._pathId;
   }
 
   // path_name - computed: false, optional: true, required: false
-  private _pathName?: string | undefined; 
+  private _pathName?: string; 
   public get pathName() {
     return this.getStringAttribute('path_name');
   }
-  public set pathName(value: string | undefined) {
+  public set pathName(value: string) {
     this._pathName = value;
   }
   public resetPathName() {
@@ -523,15 +603,15 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get pathNameInput() {
-    return this._pathName
+    return this._pathName;
   }
 
   // product_id - computed: true, optional: true, required: false
-  private _productId?: string | undefined; 
+  private _productId?: string; 
   public get productId() {
     return this.getStringAttribute('product_id');
   }
-  public set productId(value: string | undefined) {
+  public set productId(value: string) {
     this._productId = value;
   }
   public resetProductId() {
@@ -539,15 +619,15 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get productIdInput() {
-    return this._productId
+    return this._productId;
   }
 
   // product_name - computed: false, optional: true, required: false
-  private _productName?: string | undefined; 
+  private _productName?: string; 
   public get productName() {
     return this.getStringAttribute('product_name');
   }
-  public set productName(value: string | undefined) {
+  public set productName(value: string) {
     this._productName = value;
   }
   public resetProductName() {
@@ -555,15 +635,15 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get productNameInput() {
-    return this._productName
+    return this._productName;
   }
 
   // provisioning_artifact_id - computed: true, optional: true, required: false
-  private _provisioningArtifactId?: string | undefined; 
+  private _provisioningArtifactId?: string; 
   public get provisioningArtifactId() {
     return this.getStringAttribute('provisioning_artifact_id');
   }
-  public set provisioningArtifactId(value: string | undefined) {
+  public set provisioningArtifactId(value: string) {
     this._provisioningArtifactId = value;
   }
   public resetProvisioningArtifactId() {
@@ -571,15 +651,15 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get provisioningArtifactIdInput() {
-    return this._provisioningArtifactId
+    return this._provisioningArtifactId;
   }
 
   // provisioning_artifact_name - computed: false, optional: true, required: false
-  private _provisioningArtifactName?: string | undefined; 
+  private _provisioningArtifactName?: string; 
   public get provisioningArtifactName() {
     return this.getStringAttribute('provisioning_artifact_name');
   }
-  public set provisioningArtifactName(value: string | undefined) {
+  public set provisioningArtifactName(value: string) {
     this._provisioningArtifactName = value;
   }
   public resetProvisioningArtifactName() {
@@ -587,15 +667,15 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get provisioningArtifactNameInput() {
-    return this._provisioningArtifactName
+    return this._provisioningArtifactName;
   }
 
   // retain_physical_resources - computed: false, optional: true, required: false
-  private _retainPhysicalResources?: boolean | cdktf.IResolvable | undefined; 
+  private _retainPhysicalResources?: boolean | cdktf.IResolvable; 
   public get retainPhysicalResources() {
     return this.getBooleanAttribute('retain_physical_resources') as any;
   }
-  public set retainPhysicalResources(value: boolean | cdktf.IResolvable | undefined) {
+  public set retainPhysicalResources(value: boolean | cdktf.IResolvable) {
     this._retainPhysicalResources = value;
   }
   public resetRetainPhysicalResources() {
@@ -603,7 +683,7 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get retainPhysicalResourcesInput() {
-    return this._retainPhysicalResources
+    return this._retainPhysicalResources;
   }
 
   // status - computed: true, optional: false, required: false
@@ -617,12 +697,12 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -630,16 +710,16 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -647,7 +727,7 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // type - computed: true, optional: false, required: false
@@ -656,12 +736,12 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
   }
 
   // provisioning_parameters - computed: false, optional: true, required: false
-  private _provisioningParameters?: ServicecatalogProvisionedProductProvisioningParameters[] | undefined; 
+  private _provisioningParameters?: ServicecatalogProvisionedProductProvisioningParameters[]; 
   public get provisioningParameters() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('provisioning_parameters') as any;
   }
-  public set provisioningParameters(value: ServicecatalogProvisionedProductProvisioningParameters[] | undefined) {
+  public set provisioningParameters(value: ServicecatalogProvisionedProductProvisioningParameters[]) {
     this._provisioningParameters = value;
   }
   public resetProvisioningParameters() {
@@ -669,41 +749,39 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get provisioningParametersInput() {
-    return this._provisioningParameters
+    return this._provisioningParameters;
   }
 
   // stack_set_provisioning_preferences - computed: false, optional: true, required: false
-  private _stackSetProvisioningPreferences?: ServicecatalogProvisionedProductStackSetProvisioningPreferences | undefined; 
-  private __stackSetProvisioningPreferencesOutput = new ServicecatalogProvisionedProductStackSetProvisioningPreferencesOutputReference(this as any, "stack_set_provisioning_preferences", true);
+  private _stackSetProvisioningPreferences = new ServicecatalogProvisionedProductStackSetProvisioningPreferencesOutputReference(this as any, "stack_set_provisioning_preferences", true);
   public get stackSetProvisioningPreferences() {
-    return this.__stackSetProvisioningPreferencesOutput;
+    return this._stackSetProvisioningPreferences;
   }
-  public putStackSetProvisioningPreferences(value: ServicecatalogProvisionedProductStackSetProvisioningPreferences | undefined) {
-    this._stackSetProvisioningPreferences = value;
+  public putStackSetProvisioningPreferences(value: ServicecatalogProvisionedProductStackSetProvisioningPreferences) {
+    this._stackSetProvisioningPreferences.internalValue = value;
   }
   public resetStackSetProvisioningPreferences() {
-    this._stackSetProvisioningPreferences = undefined;
+    this._stackSetProvisioningPreferences.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get stackSetProvisioningPreferencesInput() {
-    return this._stackSetProvisioningPreferences
+    return this._stackSetProvisioningPreferences.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: ServicecatalogProvisionedProductTimeouts | undefined; 
-  private __timeoutsOutput = new ServicecatalogProvisionedProductTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new ServicecatalogProvisionedProductTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: ServicecatalogProvisionedProductTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: ServicecatalogProvisionedProductTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -726,8 +804,8 @@ export class ServicecatalogProvisionedProduct extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       provisioning_parameters: cdktf.listMapper(servicecatalogProvisionedProductProvisioningParametersToTerraform)(this._provisioningParameters),
-      stack_set_provisioning_preferences: servicecatalogProvisionedProductStackSetProvisioningPreferencesToTerraform(this._stackSetProvisioningPreferences),
-      timeouts: servicecatalogProvisionedProductTimeoutsToTerraform(this._timeouts),
+      stack_set_provisioning_preferences: servicecatalogProvisionedProductStackSetProvisioningPreferencesToTerraform(this._stackSetProvisioningPreferences.internalValue),
+      timeouts: servicecatalogProvisionedProductTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

@@ -113,12 +113,43 @@ export class SagemakerFeatureGroupOfflineStoreConfigDataCatalogConfigOutputRefer
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerFeatureGroupOfflineStoreConfigDataCatalogConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._catalog) {
+      hasAnyValues = true;
+      internalValueResult.catalog = this._catalog;
+    }
+    if (this._database) {
+      hasAnyValues = true;
+      internalValueResult.database = this._database;
+    }
+    if (this._tableName) {
+      hasAnyValues = true;
+      internalValueResult.tableName = this._tableName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerFeatureGroupOfflineStoreConfigDataCatalogConfig | undefined) {
+    if (value === undefined) {
+      this._catalog = undefined;
+      this._database = undefined;
+      this._tableName = undefined;
+    }
+    else {
+      this._catalog = value.catalog;
+      this._database = value.database;
+      this._tableName = value.tableName;
+    }
+  }
+
   // catalog - computed: true, optional: true, required: false
-  private _catalog?: string | undefined; 
+  private _catalog?: string; 
   public get catalog() {
     return this.getStringAttribute('catalog');
   }
-  public set catalog(value: string | undefined) {
+  public set catalog(value: string) {
     this._catalog = value;
   }
   public resetCatalog() {
@@ -126,15 +157,15 @@ export class SagemakerFeatureGroupOfflineStoreConfigDataCatalogConfigOutputRefer
   }
   // Temporarily expose input value. Use with caution.
   public get catalogInput() {
-    return this._catalog
+    return this._catalog;
   }
 
   // database - computed: true, optional: true, required: false
-  private _database?: string | undefined; 
+  private _database?: string; 
   public get database() {
     return this.getStringAttribute('database');
   }
-  public set database(value: string | undefined) {
+  public set database(value: string) {
     this._database = value;
   }
   public resetDatabase() {
@@ -142,15 +173,15 @@ export class SagemakerFeatureGroupOfflineStoreConfigDataCatalogConfigOutputRefer
   }
   // Temporarily expose input value. Use with caution.
   public get databaseInput() {
-    return this._database
+    return this._database;
   }
 
   // table_name - computed: true, optional: true, required: false
-  private _tableName?: string | undefined; 
+  private _tableName?: string; 
   public get tableName() {
     return this.getStringAttribute('table_name');
   }
-  public set tableName(value: string | undefined) {
+  public set tableName(value: string) {
     this._tableName = value;
   }
   public resetTableName() {
@@ -158,7 +189,7 @@ export class SagemakerFeatureGroupOfflineStoreConfigDataCatalogConfigOutputRefer
   }
   // Temporarily expose input value. Use with caution.
   public get tableNameInput() {
-    return this._tableName
+    return this._tableName;
   }
 }
 export interface SagemakerFeatureGroupOfflineStoreConfigS3StorageConfig {
@@ -193,12 +224,37 @@ export class SagemakerFeatureGroupOfflineStoreConfigS3StorageConfigOutputReferen
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerFeatureGroupOfflineStoreConfigS3StorageConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._kmsKeyId) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyId = this._kmsKeyId;
+    }
+    if (this._s3Uri) {
+      hasAnyValues = true;
+      internalValueResult.s3Uri = this._s3Uri;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerFeatureGroupOfflineStoreConfigS3StorageConfig | undefined) {
+    if (value === undefined) {
+      this._kmsKeyId = undefined;
+      this._s3Uri = undefined;
+    }
+    else {
+      this._kmsKeyId = value.kmsKeyId;
+      this._s3Uri = value.s3Uri;
+    }
+  }
+
   // kms_key_id - computed: false, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -206,7 +262,7 @@ export class SagemakerFeatureGroupOfflineStoreConfigS3StorageConfigOutputReferen
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // s3_uri - computed: false, optional: false, required: true
@@ -219,7 +275,7 @@ export class SagemakerFeatureGroupOfflineStoreConfigS3StorageConfigOutputReferen
   }
   // Temporarily expose input value. Use with caution.
   public get s3UriInput() {
-    return this._s3Uri
+    return this._s3Uri;
   }
 }
 export interface SagemakerFeatureGroupOfflineStoreConfig {
@@ -263,12 +319,43 @@ export class SagemakerFeatureGroupOfflineStoreConfigOutputReference extends cdkt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerFeatureGroupOfflineStoreConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._disableGlueTableCreation) {
+      hasAnyValues = true;
+      internalValueResult.disableGlueTableCreation = this._disableGlueTableCreation;
+    }
+    if (this._dataCatalogConfig) {
+      hasAnyValues = true;
+      internalValueResult.dataCatalogConfig = this._dataCatalogConfig?.internalValue;
+    }
+    if (this._s3StorageConfig) {
+      hasAnyValues = true;
+      internalValueResult.s3StorageConfig = this._s3StorageConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerFeatureGroupOfflineStoreConfig | undefined) {
+    if (value === undefined) {
+      this._disableGlueTableCreation = undefined;
+      this._dataCatalogConfig.internalValue = undefined;
+      this._s3StorageConfig.internalValue = undefined;
+    }
+    else {
+      this._disableGlueTableCreation = value.disableGlueTableCreation;
+      this._dataCatalogConfig.internalValue = value.dataCatalogConfig;
+      this._s3StorageConfig.internalValue = value.s3StorageConfig;
+    }
+  }
+
   // disable_glue_table_creation - computed: false, optional: true, required: false
-  private _disableGlueTableCreation?: boolean | cdktf.IResolvable | undefined; 
+  private _disableGlueTableCreation?: boolean | cdktf.IResolvable; 
   public get disableGlueTableCreation() {
     return this.getBooleanAttribute('disable_glue_table_creation') as any;
   }
-  public set disableGlueTableCreation(value: boolean | cdktf.IResolvable | undefined) {
+  public set disableGlueTableCreation(value: boolean | cdktf.IResolvable) {
     this._disableGlueTableCreation = value;
   }
   public resetDisableGlueTableCreation() {
@@ -276,38 +363,36 @@ export class SagemakerFeatureGroupOfflineStoreConfigOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get disableGlueTableCreationInput() {
-    return this._disableGlueTableCreation
+    return this._disableGlueTableCreation;
   }
 
   // data_catalog_config - computed: false, optional: true, required: false
-  private _dataCatalogConfig?: SagemakerFeatureGroupOfflineStoreConfigDataCatalogConfig | undefined; 
-  private __dataCatalogConfigOutput = new SagemakerFeatureGroupOfflineStoreConfigDataCatalogConfigOutputReference(this as any, "data_catalog_config", true);
+  private _dataCatalogConfig = new SagemakerFeatureGroupOfflineStoreConfigDataCatalogConfigOutputReference(this as any, "data_catalog_config", true);
   public get dataCatalogConfig() {
-    return this.__dataCatalogConfigOutput;
+    return this._dataCatalogConfig;
   }
-  public putDataCatalogConfig(value: SagemakerFeatureGroupOfflineStoreConfigDataCatalogConfig | undefined) {
-    this._dataCatalogConfig = value;
+  public putDataCatalogConfig(value: SagemakerFeatureGroupOfflineStoreConfigDataCatalogConfig) {
+    this._dataCatalogConfig.internalValue = value;
   }
   public resetDataCatalogConfig() {
-    this._dataCatalogConfig = undefined;
+    this._dataCatalogConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get dataCatalogConfigInput() {
-    return this._dataCatalogConfig
+    return this._dataCatalogConfig.internalValue;
   }
 
   // s3_storage_config - computed: false, optional: false, required: true
-  private _s3StorageConfig?: SagemakerFeatureGroupOfflineStoreConfigS3StorageConfig; 
-  private __s3StorageConfigOutput = new SagemakerFeatureGroupOfflineStoreConfigS3StorageConfigOutputReference(this as any, "s3_storage_config", true);
+  private _s3StorageConfig = new SagemakerFeatureGroupOfflineStoreConfigS3StorageConfigOutputReference(this as any, "s3_storage_config", true);
   public get s3StorageConfig() {
-    return this.__s3StorageConfigOutput;
+    return this._s3StorageConfig;
   }
   public putS3StorageConfig(value: SagemakerFeatureGroupOfflineStoreConfigS3StorageConfig) {
-    this._s3StorageConfig = value;
+    this._s3StorageConfig.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get s3StorageConfigInput() {
-    return this._s3StorageConfig
+    return this._s3StorageConfig.internalValue;
   }
 }
 export interface SagemakerFeatureGroupOnlineStoreConfigSecurityConfig {
@@ -337,12 +422,31 @@ export class SagemakerFeatureGroupOnlineStoreConfigSecurityConfigOutputReference
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerFeatureGroupOnlineStoreConfigSecurityConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._kmsKeyId) {
+      hasAnyValues = true;
+      internalValueResult.kmsKeyId = this._kmsKeyId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerFeatureGroupOnlineStoreConfigSecurityConfig | undefined) {
+    if (value === undefined) {
+      this._kmsKeyId = undefined;
+    }
+    else {
+      this._kmsKeyId = value.kmsKeyId;
+    }
+  }
+
   // kms_key_id - computed: false, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -350,7 +454,7 @@ export class SagemakerFeatureGroupOnlineStoreConfigSecurityConfigOutputReference
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 }
 export interface SagemakerFeatureGroupOnlineStoreConfig {
@@ -387,12 +491,37 @@ export class SagemakerFeatureGroupOnlineStoreConfigOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerFeatureGroupOnlineStoreConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enableOnlineStore) {
+      hasAnyValues = true;
+      internalValueResult.enableOnlineStore = this._enableOnlineStore;
+    }
+    if (this._securityConfig) {
+      hasAnyValues = true;
+      internalValueResult.securityConfig = this._securityConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerFeatureGroupOnlineStoreConfig | undefined) {
+    if (value === undefined) {
+      this._enableOnlineStore = undefined;
+      this._securityConfig.internalValue = undefined;
+    }
+    else {
+      this._enableOnlineStore = value.enableOnlineStore;
+      this._securityConfig.internalValue = value.securityConfig;
+    }
+  }
+
   // enable_online_store - computed: false, optional: true, required: false
-  private _enableOnlineStore?: boolean | cdktf.IResolvable | undefined; 
+  private _enableOnlineStore?: boolean | cdktf.IResolvable; 
   public get enableOnlineStore() {
     return this.getBooleanAttribute('enable_online_store') as any;
   }
-  public set enableOnlineStore(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableOnlineStore(value: boolean | cdktf.IResolvable) {
     this._enableOnlineStore = value;
   }
   public resetEnableOnlineStore() {
@@ -400,24 +529,23 @@ export class SagemakerFeatureGroupOnlineStoreConfigOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get enableOnlineStoreInput() {
-    return this._enableOnlineStore
+    return this._enableOnlineStore;
   }
 
   // security_config - computed: false, optional: true, required: false
-  private _securityConfig?: SagemakerFeatureGroupOnlineStoreConfigSecurityConfig | undefined; 
-  private __securityConfigOutput = new SagemakerFeatureGroupOnlineStoreConfigSecurityConfigOutputReference(this as any, "security_config", true);
+  private _securityConfig = new SagemakerFeatureGroupOnlineStoreConfigSecurityConfigOutputReference(this as any, "security_config", true);
   public get securityConfig() {
-    return this.__securityConfigOutput;
+    return this._securityConfig;
   }
-  public putSecurityConfig(value: SagemakerFeatureGroupOnlineStoreConfigSecurityConfig | undefined) {
-    this._securityConfig = value;
+  public putSecurityConfig(value: SagemakerFeatureGroupOnlineStoreConfigSecurityConfig) {
+    this._securityConfig.internalValue = value;
   }
   public resetSecurityConfig() {
-    this._securityConfig = undefined;
+    this._securityConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get securityConfigInput() {
-    return this._securityConfig
+    return this._securityConfig.internalValue;
   }
 }
 
@@ -461,8 +589,8 @@ export class SagemakerFeatureGroup extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._featureDefinition = config.featureDefinition;
-    this._offlineStoreConfig = config.offlineStoreConfig;
-    this._onlineStoreConfig = config.onlineStoreConfig;
+    this._offlineStoreConfig.internalValue = config.offlineStoreConfig;
+    this._onlineStoreConfig.internalValue = config.onlineStoreConfig;
   }
 
   // ==========
@@ -475,11 +603,11 @@ export class SagemakerFeatureGroup extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -487,7 +615,7 @@ export class SagemakerFeatureGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // event_time_feature_name - computed: false, optional: false, required: true
@@ -500,7 +628,7 @@ export class SagemakerFeatureGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get eventTimeFeatureNameInput() {
-    return this._eventTimeFeatureName
+    return this._eventTimeFeatureName;
   }
 
   // feature_group_name - computed: false, optional: false, required: true
@@ -513,7 +641,7 @@ export class SagemakerFeatureGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get featureGroupNameInput() {
-    return this._featureGroupName
+    return this._featureGroupName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -531,7 +659,7 @@ export class SagemakerFeatureGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get recordIdentifierFeatureNameInput() {
-    return this._recordIdentifierFeatureName
+    return this._recordIdentifierFeatureName;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -544,16 +672,16 @@ export class SagemakerFeatureGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -561,16 +689,16 @@ export class SagemakerFeatureGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -578,7 +706,7 @@ export class SagemakerFeatureGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // feature_definition - computed: false, optional: false, required: true
@@ -592,41 +720,39 @@ export class SagemakerFeatureGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get featureDefinitionInput() {
-    return this._featureDefinition
+    return this._featureDefinition;
   }
 
   // offline_store_config - computed: false, optional: true, required: false
-  private _offlineStoreConfig?: SagemakerFeatureGroupOfflineStoreConfig | undefined; 
-  private __offlineStoreConfigOutput = new SagemakerFeatureGroupOfflineStoreConfigOutputReference(this as any, "offline_store_config", true);
+  private _offlineStoreConfig = new SagemakerFeatureGroupOfflineStoreConfigOutputReference(this as any, "offline_store_config", true);
   public get offlineStoreConfig() {
-    return this.__offlineStoreConfigOutput;
+    return this._offlineStoreConfig;
   }
-  public putOfflineStoreConfig(value: SagemakerFeatureGroupOfflineStoreConfig | undefined) {
-    this._offlineStoreConfig = value;
+  public putOfflineStoreConfig(value: SagemakerFeatureGroupOfflineStoreConfig) {
+    this._offlineStoreConfig.internalValue = value;
   }
   public resetOfflineStoreConfig() {
-    this._offlineStoreConfig = undefined;
+    this._offlineStoreConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get offlineStoreConfigInput() {
-    return this._offlineStoreConfig
+    return this._offlineStoreConfig.internalValue;
   }
 
   // online_store_config - computed: false, optional: true, required: false
-  private _onlineStoreConfig?: SagemakerFeatureGroupOnlineStoreConfig | undefined; 
-  private __onlineStoreConfigOutput = new SagemakerFeatureGroupOnlineStoreConfigOutputReference(this as any, "online_store_config", true);
+  private _onlineStoreConfig = new SagemakerFeatureGroupOnlineStoreConfigOutputReference(this as any, "online_store_config", true);
   public get onlineStoreConfig() {
-    return this.__onlineStoreConfigOutput;
+    return this._onlineStoreConfig;
   }
-  public putOnlineStoreConfig(value: SagemakerFeatureGroupOnlineStoreConfig | undefined) {
-    this._onlineStoreConfig = value;
+  public putOnlineStoreConfig(value: SagemakerFeatureGroupOnlineStoreConfig) {
+    this._onlineStoreConfig.internalValue = value;
   }
   public resetOnlineStoreConfig() {
-    this._onlineStoreConfig = undefined;
+    this._onlineStoreConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get onlineStoreConfigInput() {
-    return this._onlineStoreConfig
+    return this._onlineStoreConfig.internalValue;
   }
 
   // =========
@@ -643,8 +769,8 @@ export class SagemakerFeatureGroup extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       feature_definition: cdktf.listMapper(sagemakerFeatureGroupFeatureDefinitionToTerraform)(this._featureDefinition),
-      offline_store_config: sagemakerFeatureGroupOfflineStoreConfigToTerraform(this._offlineStoreConfig),
-      online_store_config: sagemakerFeatureGroupOnlineStoreConfigToTerraform(this._onlineStoreConfig),
+      offline_store_config: sagemakerFeatureGroupOfflineStoreConfigToTerraform(this._offlineStoreConfig.internalValue),
+      online_store_config: sagemakerFeatureGroupOnlineStoreConfigToTerraform(this._onlineStoreConfig.internalValue),
     };
   }
 }

@@ -83,11 +83,11 @@ export class DataAwsNeptuneOrderableDbInstance extends cdktf.TerraformDataSource
   }
 
   // engine - computed: false, optional: true, required: false
-  private _engine?: string | undefined; 
+  private _engine?: string; 
   public get engine() {
     return this.getStringAttribute('engine');
   }
-  public set engine(value: string | undefined) {
+  public set engine(value: string) {
     this._engine = value;
   }
   public resetEngine() {
@@ -95,15 +95,15 @@ export class DataAwsNeptuneOrderableDbInstance extends cdktf.TerraformDataSource
   }
   // Temporarily expose input value. Use with caution.
   public get engineInput() {
-    return this._engine
+    return this._engine;
   }
 
   // engine_version - computed: true, optional: true, required: false
-  private _engineVersion?: string | undefined; 
+  private _engineVersion?: string; 
   public get engineVersion() {
     return this.getStringAttribute('engine_version');
   }
-  public set engineVersion(value: string | undefined) {
+  public set engineVersion(value: string) {
     this._engineVersion = value;
   }
   public resetEngineVersion() {
@@ -111,7 +111,7 @@ export class DataAwsNeptuneOrderableDbInstance extends cdktf.TerraformDataSource
   }
   // Temporarily expose input value. Use with caution.
   public get engineVersionInput() {
-    return this._engineVersion
+    return this._engineVersion;
   }
 
   // id - computed: true, optional: true, required: false
@@ -120,11 +120,11 @@ export class DataAwsNeptuneOrderableDbInstance extends cdktf.TerraformDataSource
   }
 
   // instance_class - computed: true, optional: true, required: false
-  private _instanceClass?: string | undefined; 
+  private _instanceClass?: string; 
   public get instanceClass() {
     return this.getStringAttribute('instance_class');
   }
-  public set instanceClass(value: string | undefined) {
+  public set instanceClass(value: string) {
     this._instanceClass = value;
   }
   public resetInstanceClass() {
@@ -132,15 +132,15 @@ export class DataAwsNeptuneOrderableDbInstance extends cdktf.TerraformDataSource
   }
   // Temporarily expose input value. Use with caution.
   public get instanceClassInput() {
-    return this._instanceClass
+    return this._instanceClass;
   }
 
   // license_model - computed: false, optional: true, required: false
-  private _licenseModel?: string | undefined; 
+  private _licenseModel?: string; 
   public get licenseModel() {
     return this.getStringAttribute('license_model');
   }
-  public set licenseModel(value: string | undefined) {
+  public set licenseModel(value: string) {
     this._licenseModel = value;
   }
   public resetLicenseModel() {
@@ -148,7 +148,7 @@ export class DataAwsNeptuneOrderableDbInstance extends cdktf.TerraformDataSource
   }
   // Temporarily expose input value. Use with caution.
   public get licenseModelInput() {
-    return this._licenseModel
+    return this._licenseModel;
   }
 
   // max_iops_per_db_instance - computed: true, optional: false, required: false
@@ -187,11 +187,11 @@ export class DataAwsNeptuneOrderableDbInstance extends cdktf.TerraformDataSource
   }
 
   // preferred_instance_classes - computed: false, optional: true, required: false
-  private _preferredInstanceClasses?: string[] | undefined; 
+  private _preferredInstanceClasses?: string[]; 
   public get preferredInstanceClasses() {
     return this.getListAttribute('preferred_instance_classes');
   }
-  public set preferredInstanceClasses(value: string[] | undefined) {
+  public set preferredInstanceClasses(value: string[]) {
     this._preferredInstanceClasses = value;
   }
   public resetPreferredInstanceClasses() {
@@ -199,7 +199,7 @@ export class DataAwsNeptuneOrderableDbInstance extends cdktf.TerraformDataSource
   }
   // Temporarily expose input value. Use with caution.
   public get preferredInstanceClassesInput() {
-    return this._preferredInstanceClasses
+    return this._preferredInstanceClasses;
   }
 
   // read_replica_capable - computed: true, optional: false, required: false
@@ -238,11 +238,11 @@ export class DataAwsNeptuneOrderableDbInstance extends cdktf.TerraformDataSource
   }
 
   // vpc - computed: true, optional: true, required: false
-  private _vpc?: boolean | cdktf.IResolvable | undefined; 
+  private _vpc?: boolean | cdktf.IResolvable; 
   public get vpc() {
     return this.getBooleanAttribute('vpc') as any;
   }
-  public set vpc(value: boolean | cdktf.IResolvable | undefined) {
+  public set vpc(value: boolean | cdktf.IResolvable) {
     this._vpc = value;
   }
   public resetVpc() {
@@ -250,7 +250,7 @@ export class DataAwsNeptuneOrderableDbInstance extends cdktf.TerraformDataSource
   }
   // Temporarily expose input value. Use with caution.
   public get vpcInput() {
-    return this._vpc
+    return this._vpc;
   }
 
   // =========

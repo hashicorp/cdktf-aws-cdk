@@ -77,7 +77,7 @@ export class ApiGatewayUsagePlanKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyIdInput() {
-    return this._keyId
+    return this._keyId;
   }
 
   // key_type - computed: false, optional: false, required: true
@@ -90,7 +90,7 @@ export class ApiGatewayUsagePlanKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyTypeInput() {
-    return this._keyType
+    return this._keyType;
   }
 
   // name - computed: true, optional: false, required: false
@@ -108,7 +108,7 @@ export class ApiGatewayUsagePlanKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get usagePlanIdInput() {
-    return this._usagePlanId
+    return this._usagePlanId;
   }
 
   // value - computed: true, optional: false, required: false

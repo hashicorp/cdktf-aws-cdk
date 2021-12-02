@@ -98,12 +98,49 @@ export class AppsyncGraphqlApiAdditionalAuthenticationProviderOpenidConnectConfi
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppsyncGraphqlApiAdditionalAuthenticationProviderOpenidConnectConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._authTtl) {
+      hasAnyValues = true;
+      internalValueResult.authTtl = this._authTtl;
+    }
+    if (this._clientId) {
+      hasAnyValues = true;
+      internalValueResult.clientId = this._clientId;
+    }
+    if (this._iatTtl) {
+      hasAnyValues = true;
+      internalValueResult.iatTtl = this._iatTtl;
+    }
+    if (this._issuer) {
+      hasAnyValues = true;
+      internalValueResult.issuer = this._issuer;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppsyncGraphqlApiAdditionalAuthenticationProviderOpenidConnectConfig | undefined) {
+    if (value === undefined) {
+      this._authTtl = undefined;
+      this._clientId = undefined;
+      this._iatTtl = undefined;
+      this._issuer = undefined;
+    }
+    else {
+      this._authTtl = value.authTtl;
+      this._clientId = value.clientId;
+      this._iatTtl = value.iatTtl;
+      this._issuer = value.issuer;
+    }
+  }
+
   // auth_ttl - computed: false, optional: true, required: false
-  private _authTtl?: number | undefined; 
+  private _authTtl?: number; 
   public get authTtl() {
     return this.getNumberAttribute('auth_ttl');
   }
-  public set authTtl(value: number | undefined) {
+  public set authTtl(value: number) {
     this._authTtl = value;
   }
   public resetAuthTtl() {
@@ -111,15 +148,15 @@ export class AppsyncGraphqlApiAdditionalAuthenticationProviderOpenidConnectConfi
   }
   // Temporarily expose input value. Use with caution.
   public get authTtlInput() {
-    return this._authTtl
+    return this._authTtl;
   }
 
   // client_id - computed: false, optional: true, required: false
-  private _clientId?: string | undefined; 
+  private _clientId?: string; 
   public get clientId() {
     return this.getStringAttribute('client_id');
   }
-  public set clientId(value: string | undefined) {
+  public set clientId(value: string) {
     this._clientId = value;
   }
   public resetClientId() {
@@ -127,15 +164,15 @@ export class AppsyncGraphqlApiAdditionalAuthenticationProviderOpenidConnectConfi
   }
   // Temporarily expose input value. Use with caution.
   public get clientIdInput() {
-    return this._clientId
+    return this._clientId;
   }
 
   // iat_ttl - computed: false, optional: true, required: false
-  private _iatTtl?: number | undefined; 
+  private _iatTtl?: number; 
   public get iatTtl() {
     return this.getNumberAttribute('iat_ttl');
   }
-  public set iatTtl(value: number | undefined) {
+  public set iatTtl(value: number) {
     this._iatTtl = value;
   }
   public resetIatTtl() {
@@ -143,7 +180,7 @@ export class AppsyncGraphqlApiAdditionalAuthenticationProviderOpenidConnectConfi
   }
   // Temporarily expose input value. Use with caution.
   public get iatTtlInput() {
-    return this._iatTtl
+    return this._iatTtl;
   }
 
   // issuer - computed: false, optional: false, required: true
@@ -156,7 +193,7 @@ export class AppsyncGraphqlApiAdditionalAuthenticationProviderOpenidConnectConfi
   }
   // Temporarily expose input value. Use with caution.
   public get issuerInput() {
-    return this._issuer
+    return this._issuer;
   }
 }
 export interface AppsyncGraphqlApiAdditionalAuthenticationProviderUserPoolConfig {
@@ -196,12 +233,43 @@ export class AppsyncGraphqlApiAdditionalAuthenticationProviderUserPoolConfigOutp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppsyncGraphqlApiAdditionalAuthenticationProviderUserPoolConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._appIdClientRegex) {
+      hasAnyValues = true;
+      internalValueResult.appIdClientRegex = this._appIdClientRegex;
+    }
+    if (this._awsRegion) {
+      hasAnyValues = true;
+      internalValueResult.awsRegion = this._awsRegion;
+    }
+    if (this._userPoolId) {
+      hasAnyValues = true;
+      internalValueResult.userPoolId = this._userPoolId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppsyncGraphqlApiAdditionalAuthenticationProviderUserPoolConfig | undefined) {
+    if (value === undefined) {
+      this._appIdClientRegex = undefined;
+      this._awsRegion = undefined;
+      this._userPoolId = undefined;
+    }
+    else {
+      this._appIdClientRegex = value.appIdClientRegex;
+      this._awsRegion = value.awsRegion;
+      this._userPoolId = value.userPoolId;
+    }
+  }
+
   // app_id_client_regex - computed: false, optional: true, required: false
-  private _appIdClientRegex?: string | undefined; 
+  private _appIdClientRegex?: string; 
   public get appIdClientRegex() {
     return this.getStringAttribute('app_id_client_regex');
   }
-  public set appIdClientRegex(value: string | undefined) {
+  public set appIdClientRegex(value: string) {
     this._appIdClientRegex = value;
   }
   public resetAppIdClientRegex() {
@@ -209,15 +277,15 @@ export class AppsyncGraphqlApiAdditionalAuthenticationProviderUserPoolConfigOutp
   }
   // Temporarily expose input value. Use with caution.
   public get appIdClientRegexInput() {
-    return this._appIdClientRegex
+    return this._appIdClientRegex;
   }
 
   // aws_region - computed: true, optional: true, required: false
-  private _awsRegion?: string | undefined; 
+  private _awsRegion?: string; 
   public get awsRegion() {
     return this.getStringAttribute('aws_region');
   }
-  public set awsRegion(value: string | undefined) {
+  public set awsRegion(value: string) {
     this._awsRegion = value;
   }
   public resetAwsRegion() {
@@ -225,7 +293,7 @@ export class AppsyncGraphqlApiAdditionalAuthenticationProviderUserPoolConfigOutp
   }
   // Temporarily expose input value. Use with caution.
   public get awsRegionInput() {
-    return this._awsRegion
+    return this._awsRegion;
   }
 
   // user_pool_id - computed: false, optional: false, required: true
@@ -238,7 +306,7 @@ export class AppsyncGraphqlApiAdditionalAuthenticationProviderUserPoolConfigOutp
   }
   // Temporarily expose input value. Use with caution.
   public get userPoolIdInput() {
-    return this._userPoolId
+    return this._userPoolId;
   }
 }
 export interface AppsyncGraphqlApiAdditionalAuthenticationProvider {
@@ -309,6 +377,37 @@ export class AppsyncGraphqlApiLogConfigOutputReference extends cdktf.ComplexObje
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppsyncGraphqlApiLogConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cloudwatchLogsRoleArn) {
+      hasAnyValues = true;
+      internalValueResult.cloudwatchLogsRoleArn = this._cloudwatchLogsRoleArn;
+    }
+    if (this._excludeVerboseContent) {
+      hasAnyValues = true;
+      internalValueResult.excludeVerboseContent = this._excludeVerboseContent;
+    }
+    if (this._fieldLogLevel) {
+      hasAnyValues = true;
+      internalValueResult.fieldLogLevel = this._fieldLogLevel;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppsyncGraphqlApiLogConfig | undefined) {
+    if (value === undefined) {
+      this._cloudwatchLogsRoleArn = undefined;
+      this._excludeVerboseContent = undefined;
+      this._fieldLogLevel = undefined;
+    }
+    else {
+      this._cloudwatchLogsRoleArn = value.cloudwatchLogsRoleArn;
+      this._excludeVerboseContent = value.excludeVerboseContent;
+      this._fieldLogLevel = value.fieldLogLevel;
+    }
+  }
+
   // cloudwatch_logs_role_arn - computed: false, optional: false, required: true
   private _cloudwatchLogsRoleArn?: string; 
   public get cloudwatchLogsRoleArn() {
@@ -319,15 +418,15 @@ export class AppsyncGraphqlApiLogConfigOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchLogsRoleArnInput() {
-    return this._cloudwatchLogsRoleArn
+    return this._cloudwatchLogsRoleArn;
   }
 
   // exclude_verbose_content - computed: false, optional: true, required: false
-  private _excludeVerboseContent?: boolean | cdktf.IResolvable | undefined; 
+  private _excludeVerboseContent?: boolean | cdktf.IResolvable; 
   public get excludeVerboseContent() {
     return this.getBooleanAttribute('exclude_verbose_content') as any;
   }
-  public set excludeVerboseContent(value: boolean | cdktf.IResolvable | undefined) {
+  public set excludeVerboseContent(value: boolean | cdktf.IResolvable) {
     this._excludeVerboseContent = value;
   }
   public resetExcludeVerboseContent() {
@@ -335,7 +434,7 @@ export class AppsyncGraphqlApiLogConfigOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get excludeVerboseContentInput() {
-    return this._excludeVerboseContent
+    return this._excludeVerboseContent;
   }
 
   // field_log_level - computed: false, optional: false, required: true
@@ -348,7 +447,7 @@ export class AppsyncGraphqlApiLogConfigOutputReference extends cdktf.ComplexObje
   }
   // Temporarily expose input value. Use with caution.
   public get fieldLogLevelInput() {
-    return this._fieldLogLevel
+    return this._fieldLogLevel;
   }
 }
 export interface AppsyncGraphqlApiOpenidConnectConfig {
@@ -393,12 +492,49 @@ export class AppsyncGraphqlApiOpenidConnectConfigOutputReference extends cdktf.C
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppsyncGraphqlApiOpenidConnectConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._authTtl) {
+      hasAnyValues = true;
+      internalValueResult.authTtl = this._authTtl;
+    }
+    if (this._clientId) {
+      hasAnyValues = true;
+      internalValueResult.clientId = this._clientId;
+    }
+    if (this._iatTtl) {
+      hasAnyValues = true;
+      internalValueResult.iatTtl = this._iatTtl;
+    }
+    if (this._issuer) {
+      hasAnyValues = true;
+      internalValueResult.issuer = this._issuer;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppsyncGraphqlApiOpenidConnectConfig | undefined) {
+    if (value === undefined) {
+      this._authTtl = undefined;
+      this._clientId = undefined;
+      this._iatTtl = undefined;
+      this._issuer = undefined;
+    }
+    else {
+      this._authTtl = value.authTtl;
+      this._clientId = value.clientId;
+      this._iatTtl = value.iatTtl;
+      this._issuer = value.issuer;
+    }
+  }
+
   // auth_ttl - computed: false, optional: true, required: false
-  private _authTtl?: number | undefined; 
+  private _authTtl?: number; 
   public get authTtl() {
     return this.getNumberAttribute('auth_ttl');
   }
-  public set authTtl(value: number | undefined) {
+  public set authTtl(value: number) {
     this._authTtl = value;
   }
   public resetAuthTtl() {
@@ -406,15 +542,15 @@ export class AppsyncGraphqlApiOpenidConnectConfigOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get authTtlInput() {
-    return this._authTtl
+    return this._authTtl;
   }
 
   // client_id - computed: false, optional: true, required: false
-  private _clientId?: string | undefined; 
+  private _clientId?: string; 
   public get clientId() {
     return this.getStringAttribute('client_id');
   }
-  public set clientId(value: string | undefined) {
+  public set clientId(value: string) {
     this._clientId = value;
   }
   public resetClientId() {
@@ -422,15 +558,15 @@ export class AppsyncGraphqlApiOpenidConnectConfigOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get clientIdInput() {
-    return this._clientId
+    return this._clientId;
   }
 
   // iat_ttl - computed: false, optional: true, required: false
-  private _iatTtl?: number | undefined; 
+  private _iatTtl?: number; 
   public get iatTtl() {
     return this.getNumberAttribute('iat_ttl');
   }
-  public set iatTtl(value: number | undefined) {
+  public set iatTtl(value: number) {
     this._iatTtl = value;
   }
   public resetIatTtl() {
@@ -438,7 +574,7 @@ export class AppsyncGraphqlApiOpenidConnectConfigOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get iatTtlInput() {
-    return this._iatTtl
+    return this._iatTtl;
   }
 
   // issuer - computed: false, optional: false, required: true
@@ -451,7 +587,7 @@ export class AppsyncGraphqlApiOpenidConnectConfigOutputReference extends cdktf.C
   }
   // Temporarily expose input value. Use with caution.
   public get issuerInput() {
-    return this._issuer
+    return this._issuer;
   }
 }
 export interface AppsyncGraphqlApiUserPoolConfig {
@@ -496,12 +632,49 @@ export class AppsyncGraphqlApiUserPoolConfigOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppsyncGraphqlApiUserPoolConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._appIdClientRegex) {
+      hasAnyValues = true;
+      internalValueResult.appIdClientRegex = this._appIdClientRegex;
+    }
+    if (this._awsRegion) {
+      hasAnyValues = true;
+      internalValueResult.awsRegion = this._awsRegion;
+    }
+    if (this._defaultAction) {
+      hasAnyValues = true;
+      internalValueResult.defaultAction = this._defaultAction;
+    }
+    if (this._userPoolId) {
+      hasAnyValues = true;
+      internalValueResult.userPoolId = this._userPoolId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppsyncGraphqlApiUserPoolConfig | undefined) {
+    if (value === undefined) {
+      this._appIdClientRegex = undefined;
+      this._awsRegion = undefined;
+      this._defaultAction = undefined;
+      this._userPoolId = undefined;
+    }
+    else {
+      this._appIdClientRegex = value.appIdClientRegex;
+      this._awsRegion = value.awsRegion;
+      this._defaultAction = value.defaultAction;
+      this._userPoolId = value.userPoolId;
+    }
+  }
+
   // app_id_client_regex - computed: false, optional: true, required: false
-  private _appIdClientRegex?: string | undefined; 
+  private _appIdClientRegex?: string; 
   public get appIdClientRegex() {
     return this.getStringAttribute('app_id_client_regex');
   }
-  public set appIdClientRegex(value: string | undefined) {
+  public set appIdClientRegex(value: string) {
     this._appIdClientRegex = value;
   }
   public resetAppIdClientRegex() {
@@ -509,15 +682,15 @@ export class AppsyncGraphqlApiUserPoolConfigOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get appIdClientRegexInput() {
-    return this._appIdClientRegex
+    return this._appIdClientRegex;
   }
 
   // aws_region - computed: true, optional: true, required: false
-  private _awsRegion?: string | undefined; 
+  private _awsRegion?: string; 
   public get awsRegion() {
     return this.getStringAttribute('aws_region');
   }
-  public set awsRegion(value: string | undefined) {
+  public set awsRegion(value: string) {
     this._awsRegion = value;
   }
   public resetAwsRegion() {
@@ -525,7 +698,7 @@ export class AppsyncGraphqlApiUserPoolConfigOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get awsRegionInput() {
-    return this._awsRegion
+    return this._awsRegion;
   }
 
   // default_action - computed: false, optional: false, required: true
@@ -538,7 +711,7 @@ export class AppsyncGraphqlApiUserPoolConfigOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get defaultActionInput() {
-    return this._defaultAction
+    return this._defaultAction;
   }
 
   // user_pool_id - computed: false, optional: false, required: true
@@ -551,7 +724,7 @@ export class AppsyncGraphqlApiUserPoolConfigOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get userPoolIdInput() {
-    return this._userPoolId
+    return this._userPoolId;
   }
 }
 
@@ -594,9 +767,9 @@ export class AppsyncGraphqlApi extends cdktf.TerraformResource {
     this._tagsAll = config.tagsAll;
     this._xrayEnabled = config.xrayEnabled;
     this._additionalAuthenticationProvider = config.additionalAuthenticationProvider;
-    this._logConfig = config.logConfig;
-    this._openidConnectConfig = config.openidConnectConfig;
-    this._userPoolConfig = config.userPoolConfig;
+    this._logConfig.internalValue = config.logConfig;
+    this._openidConnectConfig.internalValue = config.openidConnectConfig;
+    this._userPoolConfig.internalValue = config.userPoolConfig;
   }
 
   // ==========
@@ -618,7 +791,7 @@ export class AppsyncGraphqlApi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get authenticationTypeInput() {
-    return this._authenticationType
+    return this._authenticationType;
   }
 
   // id - computed: true, optional: true, required: false
@@ -636,15 +809,15 @@ export class AppsyncGraphqlApi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // schema - computed: false, optional: true, required: false
-  private _schema?: string | undefined; 
+  private _schema?: string; 
   public get schema() {
     return this.getStringAttribute('schema');
   }
-  public set schema(value: string | undefined) {
+  public set schema(value: string) {
     this._schema = value;
   }
   public resetSchema() {
@@ -652,16 +825,16 @@ export class AppsyncGraphqlApi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get schemaInput() {
-    return this._schema
+    return this._schema;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -669,16 +842,16 @@ export class AppsyncGraphqlApi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -686,7 +859,7 @@ export class AppsyncGraphqlApi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // uris - computed: true, optional: false, required: false
@@ -695,11 +868,11 @@ export class AppsyncGraphqlApi extends cdktf.TerraformResource {
   }
 
   // xray_enabled - computed: false, optional: true, required: false
-  private _xrayEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _xrayEnabled?: boolean | cdktf.IResolvable; 
   public get xrayEnabled() {
     return this.getBooleanAttribute('xray_enabled') as any;
   }
-  public set xrayEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set xrayEnabled(value: boolean | cdktf.IResolvable) {
     this._xrayEnabled = value;
   }
   public resetXrayEnabled() {
@@ -707,16 +880,16 @@ export class AppsyncGraphqlApi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get xrayEnabledInput() {
-    return this._xrayEnabled
+    return this._xrayEnabled;
   }
 
   // additional_authentication_provider - computed: false, optional: true, required: false
-  private _additionalAuthenticationProvider?: AppsyncGraphqlApiAdditionalAuthenticationProvider[] | undefined; 
+  private _additionalAuthenticationProvider?: AppsyncGraphqlApiAdditionalAuthenticationProvider[]; 
   public get additionalAuthenticationProvider() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('additional_authentication_provider') as any;
   }
-  public set additionalAuthenticationProvider(value: AppsyncGraphqlApiAdditionalAuthenticationProvider[] | undefined) {
+  public set additionalAuthenticationProvider(value: AppsyncGraphqlApiAdditionalAuthenticationProvider[]) {
     this._additionalAuthenticationProvider = value;
   }
   public resetAdditionalAuthenticationProvider() {
@@ -724,58 +897,55 @@ export class AppsyncGraphqlApi extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get additionalAuthenticationProviderInput() {
-    return this._additionalAuthenticationProvider
+    return this._additionalAuthenticationProvider;
   }
 
   // log_config - computed: false, optional: true, required: false
-  private _logConfig?: AppsyncGraphqlApiLogConfig | undefined; 
-  private __logConfigOutput = new AppsyncGraphqlApiLogConfigOutputReference(this as any, "log_config", true);
+  private _logConfig = new AppsyncGraphqlApiLogConfigOutputReference(this as any, "log_config", true);
   public get logConfig() {
-    return this.__logConfigOutput;
+    return this._logConfig;
   }
-  public putLogConfig(value: AppsyncGraphqlApiLogConfig | undefined) {
-    this._logConfig = value;
+  public putLogConfig(value: AppsyncGraphqlApiLogConfig) {
+    this._logConfig.internalValue = value;
   }
   public resetLogConfig() {
-    this._logConfig = undefined;
+    this._logConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get logConfigInput() {
-    return this._logConfig
+    return this._logConfig.internalValue;
   }
 
   // openid_connect_config - computed: false, optional: true, required: false
-  private _openidConnectConfig?: AppsyncGraphqlApiOpenidConnectConfig | undefined; 
-  private __openidConnectConfigOutput = new AppsyncGraphqlApiOpenidConnectConfigOutputReference(this as any, "openid_connect_config", true);
+  private _openidConnectConfig = new AppsyncGraphqlApiOpenidConnectConfigOutputReference(this as any, "openid_connect_config", true);
   public get openidConnectConfig() {
-    return this.__openidConnectConfigOutput;
+    return this._openidConnectConfig;
   }
-  public putOpenidConnectConfig(value: AppsyncGraphqlApiOpenidConnectConfig | undefined) {
-    this._openidConnectConfig = value;
+  public putOpenidConnectConfig(value: AppsyncGraphqlApiOpenidConnectConfig) {
+    this._openidConnectConfig.internalValue = value;
   }
   public resetOpenidConnectConfig() {
-    this._openidConnectConfig = undefined;
+    this._openidConnectConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get openidConnectConfigInput() {
-    return this._openidConnectConfig
+    return this._openidConnectConfig.internalValue;
   }
 
   // user_pool_config - computed: false, optional: true, required: false
-  private _userPoolConfig?: AppsyncGraphqlApiUserPoolConfig | undefined; 
-  private __userPoolConfigOutput = new AppsyncGraphqlApiUserPoolConfigOutputReference(this as any, "user_pool_config", true);
+  private _userPoolConfig = new AppsyncGraphqlApiUserPoolConfigOutputReference(this as any, "user_pool_config", true);
   public get userPoolConfig() {
-    return this.__userPoolConfigOutput;
+    return this._userPoolConfig;
   }
-  public putUserPoolConfig(value: AppsyncGraphqlApiUserPoolConfig | undefined) {
-    this._userPoolConfig = value;
+  public putUserPoolConfig(value: AppsyncGraphqlApiUserPoolConfig) {
+    this._userPoolConfig.internalValue = value;
   }
   public resetUserPoolConfig() {
-    this._userPoolConfig = undefined;
+    this._userPoolConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get userPoolConfigInput() {
-    return this._userPoolConfig
+    return this._userPoolConfig.internalValue;
   }
 
   // =========
@@ -791,9 +961,9 @@ export class AppsyncGraphqlApi extends cdktf.TerraformResource {
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       xray_enabled: cdktf.booleanToTerraform(this._xrayEnabled),
       additional_authentication_provider: cdktf.listMapper(appsyncGraphqlApiAdditionalAuthenticationProviderToTerraform)(this._additionalAuthenticationProvider),
-      log_config: appsyncGraphqlApiLogConfigToTerraform(this._logConfig),
-      openid_connect_config: appsyncGraphqlApiOpenidConnectConfigToTerraform(this._openidConnectConfig),
-      user_pool_config: appsyncGraphqlApiUserPoolConfigToTerraform(this._userPoolConfig),
+      log_config: appsyncGraphqlApiLogConfigToTerraform(this._logConfig.internalValue),
+      openid_connect_config: appsyncGraphqlApiOpenidConnectConfigToTerraform(this._openidConnectConfig.internalValue),
+      user_pool_config: appsyncGraphqlApiUserPoolConfigToTerraform(this._userPoolConfig.internalValue),
     };
   }
 }

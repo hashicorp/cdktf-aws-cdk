@@ -69,6 +69,25 @@ export class RedshiftScheduledActionTargetActionPauseClusterOutputReference exte
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): RedshiftScheduledActionTargetActionPauseCluster | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._clusterIdentifier) {
+      hasAnyValues = true;
+      internalValueResult.clusterIdentifier = this._clusterIdentifier;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: RedshiftScheduledActionTargetActionPauseCluster | undefined) {
+    if (value === undefined) {
+      this._clusterIdentifier = undefined;
+    }
+    else {
+      this._clusterIdentifier = value.clusterIdentifier;
+    }
+  }
+
   // cluster_identifier - computed: false, optional: false, required: true
   private _clusterIdentifier?: string; 
   public get clusterIdentifier() {
@@ -79,7 +98,7 @@ export class RedshiftScheduledActionTargetActionPauseClusterOutputReference exte
   }
   // Temporarily expose input value. Use with caution.
   public get clusterIdentifierInput() {
-    return this._clusterIdentifier
+    return this._clusterIdentifier;
   }
 }
 export interface RedshiftScheduledActionTargetActionResizeCluster {
@@ -129,12 +148,55 @@ export class RedshiftScheduledActionTargetActionResizeClusterOutputReference ext
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): RedshiftScheduledActionTargetActionResizeCluster | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._classic) {
+      hasAnyValues = true;
+      internalValueResult.classic = this._classic;
+    }
+    if (this._clusterIdentifier) {
+      hasAnyValues = true;
+      internalValueResult.clusterIdentifier = this._clusterIdentifier;
+    }
+    if (this._clusterType) {
+      hasAnyValues = true;
+      internalValueResult.clusterType = this._clusterType;
+    }
+    if (this._nodeType) {
+      hasAnyValues = true;
+      internalValueResult.nodeType = this._nodeType;
+    }
+    if (this._numberOfNodes) {
+      hasAnyValues = true;
+      internalValueResult.numberOfNodes = this._numberOfNodes;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: RedshiftScheduledActionTargetActionResizeCluster | undefined) {
+    if (value === undefined) {
+      this._classic = undefined;
+      this._clusterIdentifier = undefined;
+      this._clusterType = undefined;
+      this._nodeType = undefined;
+      this._numberOfNodes = undefined;
+    }
+    else {
+      this._classic = value.classic;
+      this._clusterIdentifier = value.clusterIdentifier;
+      this._clusterType = value.clusterType;
+      this._nodeType = value.nodeType;
+      this._numberOfNodes = value.numberOfNodes;
+    }
+  }
+
   // classic - computed: false, optional: true, required: false
-  private _classic?: boolean | cdktf.IResolvable | undefined; 
+  private _classic?: boolean | cdktf.IResolvable; 
   public get classic() {
     return this.getBooleanAttribute('classic') as any;
   }
-  public set classic(value: boolean | cdktf.IResolvable | undefined) {
+  public set classic(value: boolean | cdktf.IResolvable) {
     this._classic = value;
   }
   public resetClassic() {
@@ -142,7 +204,7 @@ export class RedshiftScheduledActionTargetActionResizeClusterOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get classicInput() {
-    return this._classic
+    return this._classic;
   }
 
   // cluster_identifier - computed: false, optional: false, required: true
@@ -155,15 +217,15 @@ export class RedshiftScheduledActionTargetActionResizeClusterOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get clusterIdentifierInput() {
-    return this._clusterIdentifier
+    return this._clusterIdentifier;
   }
 
   // cluster_type - computed: false, optional: true, required: false
-  private _clusterType?: string | undefined; 
+  private _clusterType?: string; 
   public get clusterType() {
     return this.getStringAttribute('cluster_type');
   }
-  public set clusterType(value: string | undefined) {
+  public set clusterType(value: string) {
     this._clusterType = value;
   }
   public resetClusterType() {
@@ -171,15 +233,15 @@ export class RedshiftScheduledActionTargetActionResizeClusterOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get clusterTypeInput() {
-    return this._clusterType
+    return this._clusterType;
   }
 
   // node_type - computed: false, optional: true, required: false
-  private _nodeType?: string | undefined; 
+  private _nodeType?: string; 
   public get nodeType() {
     return this.getStringAttribute('node_type');
   }
-  public set nodeType(value: string | undefined) {
+  public set nodeType(value: string) {
     this._nodeType = value;
   }
   public resetNodeType() {
@@ -187,15 +249,15 @@ export class RedshiftScheduledActionTargetActionResizeClusterOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get nodeTypeInput() {
-    return this._nodeType
+    return this._nodeType;
   }
 
   // number_of_nodes - computed: false, optional: true, required: false
-  private _numberOfNodes?: number | undefined; 
+  private _numberOfNodes?: number; 
   public get numberOfNodes() {
     return this.getNumberAttribute('number_of_nodes');
   }
-  public set numberOfNodes(value: number | undefined) {
+  public set numberOfNodes(value: number) {
     this._numberOfNodes = value;
   }
   public resetNumberOfNodes() {
@@ -203,7 +265,7 @@ export class RedshiftScheduledActionTargetActionResizeClusterOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get numberOfNodesInput() {
-    return this._numberOfNodes
+    return this._numberOfNodes;
   }
 }
 export interface RedshiftScheduledActionTargetActionResumeCluster {
@@ -233,6 +295,25 @@ export class RedshiftScheduledActionTargetActionResumeClusterOutputReference ext
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): RedshiftScheduledActionTargetActionResumeCluster | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._clusterIdentifier) {
+      hasAnyValues = true;
+      internalValueResult.clusterIdentifier = this._clusterIdentifier;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: RedshiftScheduledActionTargetActionResumeCluster | undefined) {
+    if (value === undefined) {
+      this._clusterIdentifier = undefined;
+    }
+    else {
+      this._clusterIdentifier = value.clusterIdentifier;
+    }
+  }
+
   // cluster_identifier - computed: false, optional: false, required: true
   private _clusterIdentifier?: string; 
   public get clusterIdentifier() {
@@ -243,7 +324,7 @@ export class RedshiftScheduledActionTargetActionResumeClusterOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get clusterIdentifierInput() {
-    return this._clusterIdentifier
+    return this._clusterIdentifier;
   }
 }
 export interface RedshiftScheduledActionTargetAction {
@@ -289,55 +370,83 @@ export class RedshiftScheduledActionTargetActionOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // pause_cluster - computed: false, optional: true, required: false
-  private _pauseCluster?: RedshiftScheduledActionTargetActionPauseCluster | undefined; 
-  private __pauseClusterOutput = new RedshiftScheduledActionTargetActionPauseClusterOutputReference(this as any, "pause_cluster", true);
-  public get pauseCluster() {
-    return this.__pauseClusterOutput;
+  public get internalValue(): RedshiftScheduledActionTargetAction | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._pauseCluster) {
+      hasAnyValues = true;
+      internalValueResult.pauseCluster = this._pauseCluster?.internalValue;
+    }
+    if (this._resizeCluster) {
+      hasAnyValues = true;
+      internalValueResult.resizeCluster = this._resizeCluster?.internalValue;
+    }
+    if (this._resumeCluster) {
+      hasAnyValues = true;
+      internalValueResult.resumeCluster = this._resumeCluster?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putPauseCluster(value: RedshiftScheduledActionTargetActionPauseCluster | undefined) {
-    this._pauseCluster = value;
+
+  public set internalValue(value: RedshiftScheduledActionTargetAction | undefined) {
+    if (value === undefined) {
+      this._pauseCluster.internalValue = undefined;
+      this._resizeCluster.internalValue = undefined;
+      this._resumeCluster.internalValue = undefined;
+    }
+    else {
+      this._pauseCluster.internalValue = value.pauseCluster;
+      this._resizeCluster.internalValue = value.resizeCluster;
+      this._resumeCluster.internalValue = value.resumeCluster;
+    }
+  }
+
+  // pause_cluster - computed: false, optional: true, required: false
+  private _pauseCluster = new RedshiftScheduledActionTargetActionPauseClusterOutputReference(this as any, "pause_cluster", true);
+  public get pauseCluster() {
+    return this._pauseCluster;
+  }
+  public putPauseCluster(value: RedshiftScheduledActionTargetActionPauseCluster) {
+    this._pauseCluster.internalValue = value;
   }
   public resetPauseCluster() {
-    this._pauseCluster = undefined;
+    this._pauseCluster.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get pauseClusterInput() {
-    return this._pauseCluster
+    return this._pauseCluster.internalValue;
   }
 
   // resize_cluster - computed: false, optional: true, required: false
-  private _resizeCluster?: RedshiftScheduledActionTargetActionResizeCluster | undefined; 
-  private __resizeClusterOutput = new RedshiftScheduledActionTargetActionResizeClusterOutputReference(this as any, "resize_cluster", true);
+  private _resizeCluster = new RedshiftScheduledActionTargetActionResizeClusterOutputReference(this as any, "resize_cluster", true);
   public get resizeCluster() {
-    return this.__resizeClusterOutput;
+    return this._resizeCluster;
   }
-  public putResizeCluster(value: RedshiftScheduledActionTargetActionResizeCluster | undefined) {
-    this._resizeCluster = value;
+  public putResizeCluster(value: RedshiftScheduledActionTargetActionResizeCluster) {
+    this._resizeCluster.internalValue = value;
   }
   public resetResizeCluster() {
-    this._resizeCluster = undefined;
+    this._resizeCluster.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get resizeClusterInput() {
-    return this._resizeCluster
+    return this._resizeCluster.internalValue;
   }
 
   // resume_cluster - computed: false, optional: true, required: false
-  private _resumeCluster?: RedshiftScheduledActionTargetActionResumeCluster | undefined; 
-  private __resumeClusterOutput = new RedshiftScheduledActionTargetActionResumeClusterOutputReference(this as any, "resume_cluster", true);
+  private _resumeCluster = new RedshiftScheduledActionTargetActionResumeClusterOutputReference(this as any, "resume_cluster", true);
   public get resumeCluster() {
-    return this.__resumeClusterOutput;
+    return this._resumeCluster;
   }
-  public putResumeCluster(value: RedshiftScheduledActionTargetActionResumeCluster | undefined) {
-    this._resumeCluster = value;
+  public putResumeCluster(value: RedshiftScheduledActionTargetActionResumeCluster) {
+    this._resumeCluster.internalValue = value;
   }
   public resetResumeCluster() {
-    this._resumeCluster = undefined;
+    this._resumeCluster.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get resumeClusterInput() {
-    return this._resumeCluster
+    return this._resumeCluster.internalValue;
   }
 }
 
@@ -380,7 +489,7 @@ export class RedshiftScheduledAction extends cdktf.TerraformResource {
     this._name = config.name;
     this._schedule = config.schedule;
     this._startTime = config.startTime;
-    this._targetAction = config.targetAction;
+    this._targetAction.internalValue = config.targetAction;
   }
 
   // ==========
@@ -388,11 +497,11 @@ export class RedshiftScheduledAction extends cdktf.TerraformResource {
   // ==========
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -400,15 +509,15 @@ export class RedshiftScheduledAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // enable - computed: false, optional: true, required: false
-  private _enable?: boolean | cdktf.IResolvable | undefined; 
+  private _enable?: boolean | cdktf.IResolvable; 
   public get enable() {
     return this.getBooleanAttribute('enable') as any;
   }
-  public set enable(value: boolean | cdktf.IResolvable | undefined) {
+  public set enable(value: boolean | cdktf.IResolvable) {
     this._enable = value;
   }
   public resetEnable() {
@@ -416,15 +525,15 @@ export class RedshiftScheduledAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableInput() {
-    return this._enable
+    return this._enable;
   }
 
   // end_time - computed: false, optional: true, required: false
-  private _endTime?: string | undefined; 
+  private _endTime?: string; 
   public get endTime() {
     return this.getStringAttribute('end_time');
   }
-  public set endTime(value: string | undefined) {
+  public set endTime(value: string) {
     this._endTime = value;
   }
   public resetEndTime() {
@@ -432,7 +541,7 @@ export class RedshiftScheduledAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get endTimeInput() {
-    return this._endTime
+    return this._endTime;
   }
 
   // iam_role - computed: false, optional: false, required: true
@@ -445,7 +554,7 @@ export class RedshiftScheduledAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iamRoleInput() {
-    return this._iamRole
+    return this._iamRole;
   }
 
   // id - computed: true, optional: true, required: false
@@ -463,7 +572,7 @@ export class RedshiftScheduledAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // schedule - computed: false, optional: false, required: true
@@ -476,15 +585,15 @@ export class RedshiftScheduledAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scheduleInput() {
-    return this._schedule
+    return this._schedule;
   }
 
   // start_time - computed: false, optional: true, required: false
-  private _startTime?: string | undefined; 
+  private _startTime?: string; 
   public get startTime() {
     return this.getStringAttribute('start_time');
   }
-  public set startTime(value: string | undefined) {
+  public set startTime(value: string) {
     this._startTime = value;
   }
   public resetStartTime() {
@@ -492,21 +601,20 @@ export class RedshiftScheduledAction extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get startTimeInput() {
-    return this._startTime
+    return this._startTime;
   }
 
   // target_action - computed: false, optional: false, required: true
-  private _targetAction?: RedshiftScheduledActionTargetAction; 
-  private __targetActionOutput = new RedshiftScheduledActionTargetActionOutputReference(this as any, "target_action", true);
+  private _targetAction = new RedshiftScheduledActionTargetActionOutputReference(this as any, "target_action", true);
   public get targetAction() {
-    return this.__targetActionOutput;
+    return this._targetAction;
   }
   public putTargetAction(value: RedshiftScheduledActionTargetAction) {
-    this._targetAction = value;
+    this._targetAction.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get targetActionInput() {
-    return this._targetAction
+    return this._targetAction.internalValue;
   }
 
   // =========
@@ -522,7 +630,7 @@ export class RedshiftScheduledAction extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       schedule: cdktf.stringToTerraform(this._schedule),
       start_time: cdktf.stringToTerraform(this._startTime),
-      target_action: redshiftScheduledActionTargetActionToTerraform(this._targetAction),
+      target_action: redshiftScheduledActionTargetActionToTerraform(this._targetAction.internalValue),
     };
   }
 }

@@ -72,7 +72,7 @@ export class BackupVaultPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get backupVaultNameInput() {
-    return this._backupVaultName
+    return this._backupVaultName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -90,7 +90,7 @@ export class BackupVaultPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // =========

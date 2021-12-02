@@ -92,15 +92,15 @@ export class CodeartifactDomain extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainInput() {
-    return this._domain
+    return this._domain;
   }
 
   // encryption_key - computed: true, optional: true, required: false
-  private _encryptionKey?: string | undefined; 
+  private _encryptionKey?: string; 
   public get encryptionKey() {
     return this.getStringAttribute('encryption_key');
   }
-  public set encryptionKey(value: string | undefined) {
+  public set encryptionKey(value: string) {
     this._encryptionKey = value;
   }
   public resetEncryptionKey() {
@@ -108,7 +108,7 @@ export class CodeartifactDomain extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionKeyInput() {
-    return this._encryptionKey
+    return this._encryptionKey;
   }
 
   // id - computed: true, optional: true, required: false
@@ -127,12 +127,12 @@ export class CodeartifactDomain extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -140,16 +140,16 @@ export class CodeartifactDomain extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -157,7 +157,7 @@ export class CodeartifactDomain extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

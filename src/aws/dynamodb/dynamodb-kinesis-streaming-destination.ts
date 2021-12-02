@@ -72,7 +72,7 @@ export class DynamodbKinesisStreamingDestination extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get streamArnInput() {
-    return this._streamArn
+    return this._streamArn;
   }
 
   // table_name - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class DynamodbKinesisStreamingDestination extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get tableNameInput() {
-    return this._tableName
+    return this._tableName;
   }
 
   // =========

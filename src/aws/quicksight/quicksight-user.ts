@@ -93,11 +93,11 @@ export class QuicksightUser extends cdktf.TerraformResource {
   }
 
   // aws_account_id - computed: true, optional: true, required: false
-  private _awsAccountId?: string | undefined; 
+  private _awsAccountId?: string; 
   public get awsAccountId() {
     return this.getStringAttribute('aws_account_id');
   }
-  public set awsAccountId(value: string | undefined) {
+  public set awsAccountId(value: string) {
     this._awsAccountId = value;
   }
   public resetAwsAccountId() {
@@ -105,7 +105,7 @@ export class QuicksightUser extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get awsAccountIdInput() {
-    return this._awsAccountId
+    return this._awsAccountId;
   }
 
   // email - computed: false, optional: false, required: true
@@ -118,15 +118,15 @@ export class QuicksightUser extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get emailInput() {
-    return this._email
+    return this._email;
   }
 
   // iam_arn - computed: false, optional: true, required: false
-  private _iamArn?: string | undefined; 
+  private _iamArn?: string; 
   public get iamArn() {
     return this.getStringAttribute('iam_arn');
   }
-  public set iamArn(value: string | undefined) {
+  public set iamArn(value: string) {
     this._iamArn = value;
   }
   public resetIamArn() {
@@ -134,7 +134,7 @@ export class QuicksightUser extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get iamArnInput() {
-    return this._iamArn
+    return this._iamArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -152,15 +152,15 @@ export class QuicksightUser extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get identityTypeInput() {
-    return this._identityType
+    return this._identityType;
   }
 
   // namespace - computed: false, optional: true, required: false
-  private _namespace?: string | undefined; 
+  private _namespace?: string; 
   public get namespace() {
     return this.getStringAttribute('namespace');
   }
-  public set namespace(value: string | undefined) {
+  public set namespace(value: string) {
     this._namespace = value;
   }
   public resetNamespace() {
@@ -168,15 +168,15 @@ export class QuicksightUser extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get namespaceInput() {
-    return this._namespace
+    return this._namespace;
   }
 
   // session_name - computed: false, optional: true, required: false
-  private _sessionName?: string | undefined; 
+  private _sessionName?: string; 
   public get sessionName() {
     return this.getStringAttribute('session_name');
   }
-  public set sessionName(value: string | undefined) {
+  public set sessionName(value: string) {
     this._sessionName = value;
   }
   public resetSessionName() {
@@ -184,15 +184,15 @@ export class QuicksightUser extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sessionNameInput() {
-    return this._sessionName
+    return this._sessionName;
   }
 
   // user_name - computed: false, optional: true, required: false
-  private _userName?: string | undefined; 
+  private _userName?: string; 
   public get userName() {
     return this.getStringAttribute('user_name');
   }
-  public set userName(value: string | undefined) {
+  public set userName(value: string) {
     this._userName = value;
   }
   public resetUserName() {
@@ -200,7 +200,7 @@ export class QuicksightUser extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userNameInput() {
-    return this._userName
+    return this._userName;
   }
 
   // user_role - computed: false, optional: false, required: true
@@ -213,7 +213,7 @@ export class QuicksightUser extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userRoleInput() {
-    return this._userRole
+    return this._userRole;
   }
 
   // =========

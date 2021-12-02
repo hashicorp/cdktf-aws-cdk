@@ -80,12 +80,61 @@ export class EcrpublicRepositoryCatalogDataOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcrpublicRepositoryCatalogData | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._aboutText) {
+      hasAnyValues = true;
+      internalValueResult.aboutText = this._aboutText;
+    }
+    if (this._architectures) {
+      hasAnyValues = true;
+      internalValueResult.architectures = this._architectures;
+    }
+    if (this._description) {
+      hasAnyValues = true;
+      internalValueResult.description = this._description;
+    }
+    if (this._logoImageBlob) {
+      hasAnyValues = true;
+      internalValueResult.logoImageBlob = this._logoImageBlob;
+    }
+    if (this._operatingSystems) {
+      hasAnyValues = true;
+      internalValueResult.operatingSystems = this._operatingSystems;
+    }
+    if (this._usageText) {
+      hasAnyValues = true;
+      internalValueResult.usageText = this._usageText;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcrpublicRepositoryCatalogData | undefined) {
+    if (value === undefined) {
+      this._aboutText = undefined;
+      this._architectures = undefined;
+      this._description = undefined;
+      this._logoImageBlob = undefined;
+      this._operatingSystems = undefined;
+      this._usageText = undefined;
+    }
+    else {
+      this._aboutText = value.aboutText;
+      this._architectures = value.architectures;
+      this._description = value.description;
+      this._logoImageBlob = value.logoImageBlob;
+      this._operatingSystems = value.operatingSystems;
+      this._usageText = value.usageText;
+    }
+  }
+
   // about_text - computed: false, optional: true, required: false
-  private _aboutText?: string | undefined; 
+  private _aboutText?: string; 
   public get aboutText() {
     return this.getStringAttribute('about_text');
   }
-  public set aboutText(value: string | undefined) {
+  public set aboutText(value: string) {
     this._aboutText = value;
   }
   public resetAboutText() {
@@ -93,15 +142,15 @@ export class EcrpublicRepositoryCatalogDataOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get aboutTextInput() {
-    return this._aboutText
+    return this._aboutText;
   }
 
   // architectures - computed: false, optional: true, required: false
-  private _architectures?: string[] | undefined; 
+  private _architectures?: string[]; 
   public get architectures() {
     return this.getListAttribute('architectures');
   }
-  public set architectures(value: string[] | undefined) {
+  public set architectures(value: string[]) {
     this._architectures = value;
   }
   public resetArchitectures() {
@@ -109,15 +158,15 @@ export class EcrpublicRepositoryCatalogDataOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get architecturesInput() {
-    return this._architectures
+    return this._architectures;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -125,15 +174,15 @@ export class EcrpublicRepositoryCatalogDataOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // logo_image_blob - computed: true, optional: true, required: false
-  private _logoImageBlob?: string | undefined; 
+  private _logoImageBlob?: string; 
   public get logoImageBlob() {
     return this.getStringAttribute('logo_image_blob');
   }
-  public set logoImageBlob(value: string | undefined) {
+  public set logoImageBlob(value: string) {
     this._logoImageBlob = value;
   }
   public resetLogoImageBlob() {
@@ -141,15 +190,15 @@ export class EcrpublicRepositoryCatalogDataOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get logoImageBlobInput() {
-    return this._logoImageBlob
+    return this._logoImageBlob;
   }
 
   // operating_systems - computed: false, optional: true, required: false
-  private _operatingSystems?: string[] | undefined; 
+  private _operatingSystems?: string[]; 
   public get operatingSystems() {
     return this.getListAttribute('operating_systems');
   }
-  public set operatingSystems(value: string[] | undefined) {
+  public set operatingSystems(value: string[]) {
     this._operatingSystems = value;
   }
   public resetOperatingSystems() {
@@ -157,15 +206,15 @@ export class EcrpublicRepositoryCatalogDataOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get operatingSystemsInput() {
-    return this._operatingSystems
+    return this._operatingSystems;
   }
 
   // usage_text - computed: false, optional: true, required: false
-  private _usageText?: string | undefined; 
+  private _usageText?: string; 
   public get usageText() {
     return this.getStringAttribute('usage_text');
   }
-  public set usageText(value: string | undefined) {
+  public set usageText(value: string) {
     this._usageText = value;
   }
   public resetUsageText() {
@@ -173,7 +222,7 @@ export class EcrpublicRepositoryCatalogDataOutputReference extends cdktf.Complex
   }
   // Temporarily expose input value. Use with caution.
   public get usageTextInput() {
-    return this._usageText
+    return this._usageText;
   }
 }
 export interface EcrpublicRepositoryTimeouts {
@@ -203,12 +252,31 @@ export class EcrpublicRepositoryTimeoutsOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EcrpublicRepositoryTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EcrpublicRepositoryTimeouts | undefined) {
+    if (value === undefined) {
+      this._delete = undefined;
+    }
+    else {
+      this._delete = value.delete;
+    }
+  }
+
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -216,7 +284,7 @@ export class EcrpublicRepositoryTimeoutsOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -254,8 +322,8 @@ export class EcrpublicRepository extends cdktf.TerraformResource {
     });
     this._forceDestroy = config.forceDestroy;
     this._repositoryName = config.repositoryName;
-    this._catalogData = config.catalogData;
-    this._timeouts = config.timeouts;
+    this._catalogData.internalValue = config.catalogData;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -268,11 +336,11 @@ export class EcrpublicRepository extends cdktf.TerraformResource {
   }
 
   // force_destroy - computed: false, optional: true, required: false
-  private _forceDestroy?: boolean | cdktf.IResolvable | undefined; 
+  private _forceDestroy?: boolean | cdktf.IResolvable; 
   public get forceDestroy() {
     return this.getBooleanAttribute('force_destroy') as any;
   }
-  public set forceDestroy(value: boolean | cdktf.IResolvable | undefined) {
+  public set forceDestroy(value: boolean | cdktf.IResolvable) {
     this._forceDestroy = value;
   }
   public resetForceDestroy() {
@@ -280,7 +348,7 @@ export class EcrpublicRepository extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get forceDestroyInput() {
-    return this._forceDestroy
+    return this._forceDestroy;
   }
 
   // id - computed: true, optional: true, required: false
@@ -303,7 +371,7 @@ export class EcrpublicRepository extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get repositoryNameInput() {
-    return this._repositoryName
+    return this._repositoryName;
   }
 
   // repository_uri - computed: true, optional: false, required: false
@@ -312,37 +380,35 @@ export class EcrpublicRepository extends cdktf.TerraformResource {
   }
 
   // catalog_data - computed: false, optional: true, required: false
-  private _catalogData?: EcrpublicRepositoryCatalogData | undefined; 
-  private __catalogDataOutput = new EcrpublicRepositoryCatalogDataOutputReference(this as any, "catalog_data", true);
+  private _catalogData = new EcrpublicRepositoryCatalogDataOutputReference(this as any, "catalog_data", true);
   public get catalogData() {
-    return this.__catalogDataOutput;
+    return this._catalogData;
   }
-  public putCatalogData(value: EcrpublicRepositoryCatalogData | undefined) {
-    this._catalogData = value;
+  public putCatalogData(value: EcrpublicRepositoryCatalogData) {
+    this._catalogData.internalValue = value;
   }
   public resetCatalogData() {
-    this._catalogData = undefined;
+    this._catalogData.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get catalogDataInput() {
-    return this._catalogData
+    return this._catalogData.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: EcrpublicRepositoryTimeouts | undefined; 
-  private __timeoutsOutput = new EcrpublicRepositoryTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new EcrpublicRepositoryTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: EcrpublicRepositoryTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: EcrpublicRepositoryTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -353,8 +419,8 @@ export class EcrpublicRepository extends cdktf.TerraformResource {
     return {
       force_destroy: cdktf.booleanToTerraform(this._forceDestroy),
       repository_name: cdktf.stringToTerraform(this._repositoryName),
-      catalog_data: ecrpublicRepositoryCatalogDataToTerraform(this._catalogData),
-      timeouts: ecrpublicRepositoryTimeoutsToTerraform(this._timeouts),
+      catalog_data: ecrpublicRepositoryCatalogDataToTerraform(this._catalogData.internalValue),
+      timeouts: ecrpublicRepositoryTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

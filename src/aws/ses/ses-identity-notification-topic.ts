@@ -82,15 +82,15 @@ export class SesIdentityNotificationTopic extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get identityInput() {
-    return this._identity
+    return this._identity;
   }
 
   // include_original_headers - computed: false, optional: true, required: false
-  private _includeOriginalHeaders?: boolean | cdktf.IResolvable | undefined; 
+  private _includeOriginalHeaders?: boolean | cdktf.IResolvable; 
   public get includeOriginalHeaders() {
     return this.getBooleanAttribute('include_original_headers') as any;
   }
-  public set includeOriginalHeaders(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeOriginalHeaders(value: boolean | cdktf.IResolvable) {
     this._includeOriginalHeaders = value;
   }
   public resetIncludeOriginalHeaders() {
@@ -98,7 +98,7 @@ export class SesIdentityNotificationTopic extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get includeOriginalHeadersInput() {
-    return this._includeOriginalHeaders
+    return this._includeOriginalHeaders;
   }
 
   // notification_type - computed: false, optional: false, required: true
@@ -111,15 +111,15 @@ export class SesIdentityNotificationTopic extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get notificationTypeInput() {
-    return this._notificationType
+    return this._notificationType;
   }
 
   // topic_arn - computed: false, optional: true, required: false
-  private _topicArn?: string | undefined; 
+  private _topicArn?: string; 
   public get topicArn() {
     return this.getStringAttribute('topic_arn');
   }
-  public set topicArn(value: string | undefined) {
+  public set topicArn(value: string) {
     this._topicArn = value;
   }
   public resetTopicArn() {
@@ -127,7 +127,7 @@ export class SesIdentityNotificationTopic extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get topicArnInput() {
-    return this._topicArn
+    return this._topicArn;
   }
 
   // =========

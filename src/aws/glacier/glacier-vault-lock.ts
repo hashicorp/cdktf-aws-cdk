@@ -77,7 +77,7 @@ export class GlacierVaultLock extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get completeLockInput() {
-    return this._completeLock
+    return this._completeLock;
   }
 
   // id - computed: true, optional: true, required: false
@@ -86,11 +86,11 @@ export class GlacierVaultLock extends cdktf.TerraformResource {
   }
 
   // ignore_deletion_error - computed: false, optional: true, required: false
-  private _ignoreDeletionError?: boolean | cdktf.IResolvable | undefined; 
+  private _ignoreDeletionError?: boolean | cdktf.IResolvable; 
   public get ignoreDeletionError() {
     return this.getBooleanAttribute('ignore_deletion_error') as any;
   }
-  public set ignoreDeletionError(value: boolean | cdktf.IResolvable | undefined) {
+  public set ignoreDeletionError(value: boolean | cdktf.IResolvable) {
     this._ignoreDeletionError = value;
   }
   public resetIgnoreDeletionError() {
@@ -98,7 +98,7 @@ export class GlacierVaultLock extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ignoreDeletionErrorInput() {
-    return this._ignoreDeletionError
+    return this._ignoreDeletionError;
   }
 
   // policy - computed: false, optional: false, required: true
@@ -111,7 +111,7 @@ export class GlacierVaultLock extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // vault_name - computed: false, optional: false, required: true
@@ -124,7 +124,7 @@ export class GlacierVaultLock extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vaultNameInput() {
-    return this._vaultName
+    return this._vaultName;
   }
 
   // =========

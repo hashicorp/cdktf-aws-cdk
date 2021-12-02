@@ -65,6 +65,25 @@ export class AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualServiceOutputRef
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualService | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._virtualServiceName) {
+      hasAnyValues = true;
+      internalValueResult.virtualServiceName = this._virtualServiceName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualService | undefined) {
+    if (value === undefined) {
+      this._virtualServiceName = undefined;
+    }
+    else {
+      this._virtualServiceName = value.virtualServiceName;
+    }
+  }
+
   // virtual_service_name - computed: false, optional: false, required: true
   private _virtualServiceName?: string; 
   public get virtualServiceName() {
@@ -75,7 +94,7 @@ export class AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualServiceOutputRef
   }
   // Temporarily expose input value. Use with caution.
   public get virtualServiceNameInput() {
-    return this._virtualServiceName
+    return this._virtualServiceName;
   }
 }
 export interface AppmeshGatewayRouteSpecGrpcRouteActionTarget {
@@ -107,18 +126,36 @@ export class AppmeshGatewayRouteSpecGrpcRouteActionTargetOutputReference extends
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshGatewayRouteSpecGrpcRouteActionTarget | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._virtualService) {
+      hasAnyValues = true;
+      internalValueResult.virtualService = this._virtualService?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshGatewayRouteSpecGrpcRouteActionTarget | undefined) {
+    if (value === undefined) {
+      this._virtualService.internalValue = undefined;
+    }
+    else {
+      this._virtualService.internalValue = value.virtualService;
+    }
+  }
+
   // virtual_service - computed: false, optional: false, required: true
-  private _virtualService?: AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualService; 
-  private __virtualServiceOutput = new AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualServiceOutputReference(this as any, "virtual_service", true);
+  private _virtualService = new AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualServiceOutputReference(this as any, "virtual_service", true);
   public get virtualService() {
-    return this.__virtualServiceOutput;
+    return this._virtualService;
   }
   public putVirtualService(value: AppmeshGatewayRouteSpecGrpcRouteActionTargetVirtualService) {
-    this._virtualService = value;
+    this._virtualService.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get virtualServiceInput() {
-    return this._virtualService
+    return this._virtualService.internalValue;
   }
 }
 export interface AppmeshGatewayRouteSpecGrpcRouteAction {
@@ -150,18 +187,36 @@ export class AppmeshGatewayRouteSpecGrpcRouteActionOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshGatewayRouteSpecGrpcRouteAction | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._target) {
+      hasAnyValues = true;
+      internalValueResult.target = this._target?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshGatewayRouteSpecGrpcRouteAction | undefined) {
+    if (value === undefined) {
+      this._target.internalValue = undefined;
+    }
+    else {
+      this._target.internalValue = value.target;
+    }
+  }
+
   // target - computed: false, optional: false, required: true
-  private _target?: AppmeshGatewayRouteSpecGrpcRouteActionTarget; 
-  private __targetOutput = new AppmeshGatewayRouteSpecGrpcRouteActionTargetOutputReference(this as any, "target", true);
+  private _target = new AppmeshGatewayRouteSpecGrpcRouteActionTargetOutputReference(this as any, "target", true);
   public get target() {
-    return this.__targetOutput;
+    return this._target;
   }
   public putTarget(value: AppmeshGatewayRouteSpecGrpcRouteActionTarget) {
-    this._target = value;
+    this._target.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get targetInput() {
-    return this._target
+    return this._target.internalValue;
   }
 }
 export interface AppmeshGatewayRouteSpecGrpcRouteMatch {
@@ -191,6 +246,25 @@ export class AppmeshGatewayRouteSpecGrpcRouteMatchOutputReference extends cdktf.
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshGatewayRouteSpecGrpcRouteMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._serviceName) {
+      hasAnyValues = true;
+      internalValueResult.serviceName = this._serviceName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshGatewayRouteSpecGrpcRouteMatch | undefined) {
+    if (value === undefined) {
+      this._serviceName = undefined;
+    }
+    else {
+      this._serviceName = value.serviceName;
+    }
+  }
+
   // service_name - computed: false, optional: false, required: true
   private _serviceName?: string; 
   public get serviceName() {
@@ -201,7 +275,7 @@ export class AppmeshGatewayRouteSpecGrpcRouteMatchOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get serviceNameInput() {
-    return this._serviceName
+    return this._serviceName;
   }
 }
 export interface AppmeshGatewayRouteSpecGrpcRoute {
@@ -240,32 +314,55 @@ export class AppmeshGatewayRouteSpecGrpcRouteOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshGatewayRouteSpecGrpcRoute | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._action) {
+      hasAnyValues = true;
+      internalValueResult.action = this._action?.internalValue;
+    }
+    if (this._match) {
+      hasAnyValues = true;
+      internalValueResult.match = this._match?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshGatewayRouteSpecGrpcRoute | undefined) {
+    if (value === undefined) {
+      this._action.internalValue = undefined;
+      this._match.internalValue = undefined;
+    }
+    else {
+      this._action.internalValue = value.action;
+      this._match.internalValue = value.match;
+    }
+  }
+
   // action - computed: false, optional: false, required: true
-  private _action?: AppmeshGatewayRouteSpecGrpcRouteAction; 
-  private __actionOutput = new AppmeshGatewayRouteSpecGrpcRouteActionOutputReference(this as any, "action", true);
+  private _action = new AppmeshGatewayRouteSpecGrpcRouteActionOutputReference(this as any, "action", true);
   public get action() {
-    return this.__actionOutput;
+    return this._action;
   }
   public putAction(value: AppmeshGatewayRouteSpecGrpcRouteAction) {
-    this._action = value;
+    this._action.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get actionInput() {
-    return this._action
+    return this._action.internalValue;
   }
 
   // match - computed: false, optional: false, required: true
-  private _match?: AppmeshGatewayRouteSpecGrpcRouteMatch; 
-  private __matchOutput = new AppmeshGatewayRouteSpecGrpcRouteMatchOutputReference(this as any, "match", true);
+  private _match = new AppmeshGatewayRouteSpecGrpcRouteMatchOutputReference(this as any, "match", true);
   public get match() {
-    return this.__matchOutput;
+    return this._match;
   }
   public putMatch(value: AppmeshGatewayRouteSpecGrpcRouteMatch) {
-    this._match = value;
+    this._match.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get matchInput() {
-    return this._match
+    return this._match.internalValue;
   }
 }
 export interface AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualService {
@@ -295,6 +392,25 @@ export class AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualServiceOutputRe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualService | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._virtualServiceName) {
+      hasAnyValues = true;
+      internalValueResult.virtualServiceName = this._virtualServiceName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualService | undefined) {
+    if (value === undefined) {
+      this._virtualServiceName = undefined;
+    }
+    else {
+      this._virtualServiceName = value.virtualServiceName;
+    }
+  }
+
   // virtual_service_name - computed: false, optional: false, required: true
   private _virtualServiceName?: string; 
   public get virtualServiceName() {
@@ -305,7 +421,7 @@ export class AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualServiceOutputRe
   }
   // Temporarily expose input value. Use with caution.
   public get virtualServiceNameInput() {
-    return this._virtualServiceName
+    return this._virtualServiceName;
   }
 }
 export interface AppmeshGatewayRouteSpecHttp2RouteActionTarget {
@@ -337,18 +453,36 @@ export class AppmeshGatewayRouteSpecHttp2RouteActionTargetOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshGatewayRouteSpecHttp2RouteActionTarget | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._virtualService) {
+      hasAnyValues = true;
+      internalValueResult.virtualService = this._virtualService?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshGatewayRouteSpecHttp2RouteActionTarget | undefined) {
+    if (value === undefined) {
+      this._virtualService.internalValue = undefined;
+    }
+    else {
+      this._virtualService.internalValue = value.virtualService;
+    }
+  }
+
   // virtual_service - computed: false, optional: false, required: true
-  private _virtualService?: AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualService; 
-  private __virtualServiceOutput = new AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualServiceOutputReference(this as any, "virtual_service", true);
+  private _virtualService = new AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualServiceOutputReference(this as any, "virtual_service", true);
   public get virtualService() {
-    return this.__virtualServiceOutput;
+    return this._virtualService;
   }
   public putVirtualService(value: AppmeshGatewayRouteSpecHttp2RouteActionTargetVirtualService) {
-    this._virtualService = value;
+    this._virtualService.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get virtualServiceInput() {
-    return this._virtualService
+    return this._virtualService.internalValue;
   }
 }
 export interface AppmeshGatewayRouteSpecHttp2RouteAction {
@@ -380,18 +514,36 @@ export class AppmeshGatewayRouteSpecHttp2RouteActionOutputReference extends cdkt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshGatewayRouteSpecHttp2RouteAction | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._target) {
+      hasAnyValues = true;
+      internalValueResult.target = this._target?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshGatewayRouteSpecHttp2RouteAction | undefined) {
+    if (value === undefined) {
+      this._target.internalValue = undefined;
+    }
+    else {
+      this._target.internalValue = value.target;
+    }
+  }
+
   // target - computed: false, optional: false, required: true
-  private _target?: AppmeshGatewayRouteSpecHttp2RouteActionTarget; 
-  private __targetOutput = new AppmeshGatewayRouteSpecHttp2RouteActionTargetOutputReference(this as any, "target", true);
+  private _target = new AppmeshGatewayRouteSpecHttp2RouteActionTargetOutputReference(this as any, "target", true);
   public get target() {
-    return this.__targetOutput;
+    return this._target;
   }
   public putTarget(value: AppmeshGatewayRouteSpecHttp2RouteActionTarget) {
-    this._target = value;
+    this._target.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get targetInput() {
-    return this._target
+    return this._target.internalValue;
   }
 }
 export interface AppmeshGatewayRouteSpecHttp2RouteMatch {
@@ -421,6 +573,25 @@ export class AppmeshGatewayRouteSpecHttp2RouteMatchOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshGatewayRouteSpecHttp2RouteMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshGatewayRouteSpecHttp2RouteMatch | undefined) {
+    if (value === undefined) {
+      this._prefix = undefined;
+    }
+    else {
+      this._prefix = value.prefix;
+    }
+  }
+
   // prefix - computed: false, optional: false, required: true
   private _prefix?: string; 
   public get prefix() {
@@ -431,7 +602,7 @@ export class AppmeshGatewayRouteSpecHttp2RouteMatchOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 }
 export interface AppmeshGatewayRouteSpecHttp2Route {
@@ -470,32 +641,55 @@ export class AppmeshGatewayRouteSpecHttp2RouteOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshGatewayRouteSpecHttp2Route | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._action) {
+      hasAnyValues = true;
+      internalValueResult.action = this._action?.internalValue;
+    }
+    if (this._match) {
+      hasAnyValues = true;
+      internalValueResult.match = this._match?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshGatewayRouteSpecHttp2Route | undefined) {
+    if (value === undefined) {
+      this._action.internalValue = undefined;
+      this._match.internalValue = undefined;
+    }
+    else {
+      this._action.internalValue = value.action;
+      this._match.internalValue = value.match;
+    }
+  }
+
   // action - computed: false, optional: false, required: true
-  private _action?: AppmeshGatewayRouteSpecHttp2RouteAction; 
-  private __actionOutput = new AppmeshGatewayRouteSpecHttp2RouteActionOutputReference(this as any, "action", true);
+  private _action = new AppmeshGatewayRouteSpecHttp2RouteActionOutputReference(this as any, "action", true);
   public get action() {
-    return this.__actionOutput;
+    return this._action;
   }
   public putAction(value: AppmeshGatewayRouteSpecHttp2RouteAction) {
-    this._action = value;
+    this._action.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get actionInput() {
-    return this._action
+    return this._action.internalValue;
   }
 
   // match - computed: false, optional: false, required: true
-  private _match?: AppmeshGatewayRouteSpecHttp2RouteMatch; 
-  private __matchOutput = new AppmeshGatewayRouteSpecHttp2RouteMatchOutputReference(this as any, "match", true);
+  private _match = new AppmeshGatewayRouteSpecHttp2RouteMatchOutputReference(this as any, "match", true);
   public get match() {
-    return this.__matchOutput;
+    return this._match;
   }
   public putMatch(value: AppmeshGatewayRouteSpecHttp2RouteMatch) {
-    this._match = value;
+    this._match.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get matchInput() {
-    return this._match
+    return this._match.internalValue;
   }
 }
 export interface AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualService {
@@ -525,6 +719,25 @@ export class AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualServiceOutputRef
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualService | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._virtualServiceName) {
+      hasAnyValues = true;
+      internalValueResult.virtualServiceName = this._virtualServiceName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualService | undefined) {
+    if (value === undefined) {
+      this._virtualServiceName = undefined;
+    }
+    else {
+      this._virtualServiceName = value.virtualServiceName;
+    }
+  }
+
   // virtual_service_name - computed: false, optional: false, required: true
   private _virtualServiceName?: string; 
   public get virtualServiceName() {
@@ -535,7 +748,7 @@ export class AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualServiceOutputRef
   }
   // Temporarily expose input value. Use with caution.
   public get virtualServiceNameInput() {
-    return this._virtualServiceName
+    return this._virtualServiceName;
   }
 }
 export interface AppmeshGatewayRouteSpecHttpRouteActionTarget {
@@ -567,18 +780,36 @@ export class AppmeshGatewayRouteSpecHttpRouteActionTargetOutputReference extends
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshGatewayRouteSpecHttpRouteActionTarget | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._virtualService) {
+      hasAnyValues = true;
+      internalValueResult.virtualService = this._virtualService?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshGatewayRouteSpecHttpRouteActionTarget | undefined) {
+    if (value === undefined) {
+      this._virtualService.internalValue = undefined;
+    }
+    else {
+      this._virtualService.internalValue = value.virtualService;
+    }
+  }
+
   // virtual_service - computed: false, optional: false, required: true
-  private _virtualService?: AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualService; 
-  private __virtualServiceOutput = new AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualServiceOutputReference(this as any, "virtual_service", true);
+  private _virtualService = new AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualServiceOutputReference(this as any, "virtual_service", true);
   public get virtualService() {
-    return this.__virtualServiceOutput;
+    return this._virtualService;
   }
   public putVirtualService(value: AppmeshGatewayRouteSpecHttpRouteActionTargetVirtualService) {
-    this._virtualService = value;
+    this._virtualService.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get virtualServiceInput() {
-    return this._virtualService
+    return this._virtualService.internalValue;
   }
 }
 export interface AppmeshGatewayRouteSpecHttpRouteAction {
@@ -610,18 +841,36 @@ export class AppmeshGatewayRouteSpecHttpRouteActionOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshGatewayRouteSpecHttpRouteAction | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._target) {
+      hasAnyValues = true;
+      internalValueResult.target = this._target?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshGatewayRouteSpecHttpRouteAction | undefined) {
+    if (value === undefined) {
+      this._target.internalValue = undefined;
+    }
+    else {
+      this._target.internalValue = value.target;
+    }
+  }
+
   // target - computed: false, optional: false, required: true
-  private _target?: AppmeshGatewayRouteSpecHttpRouteActionTarget; 
-  private __targetOutput = new AppmeshGatewayRouteSpecHttpRouteActionTargetOutputReference(this as any, "target", true);
+  private _target = new AppmeshGatewayRouteSpecHttpRouteActionTargetOutputReference(this as any, "target", true);
   public get target() {
-    return this.__targetOutput;
+    return this._target;
   }
   public putTarget(value: AppmeshGatewayRouteSpecHttpRouteActionTarget) {
-    this._target = value;
+    this._target.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get targetInput() {
-    return this._target
+    return this._target.internalValue;
   }
 }
 export interface AppmeshGatewayRouteSpecHttpRouteMatch {
@@ -651,6 +900,25 @@ export class AppmeshGatewayRouteSpecHttpRouteMatchOutputReference extends cdktf.
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshGatewayRouteSpecHttpRouteMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshGatewayRouteSpecHttpRouteMatch | undefined) {
+    if (value === undefined) {
+      this._prefix = undefined;
+    }
+    else {
+      this._prefix = value.prefix;
+    }
+  }
+
   // prefix - computed: false, optional: false, required: true
   private _prefix?: string; 
   public get prefix() {
@@ -661,7 +929,7 @@ export class AppmeshGatewayRouteSpecHttpRouteMatchOutputReference extends cdktf.
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 }
 export interface AppmeshGatewayRouteSpecHttpRoute {
@@ -700,32 +968,55 @@ export class AppmeshGatewayRouteSpecHttpRouteOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AppmeshGatewayRouteSpecHttpRoute | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._action) {
+      hasAnyValues = true;
+      internalValueResult.action = this._action?.internalValue;
+    }
+    if (this._match) {
+      hasAnyValues = true;
+      internalValueResult.match = this._match?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AppmeshGatewayRouteSpecHttpRoute | undefined) {
+    if (value === undefined) {
+      this._action.internalValue = undefined;
+      this._match.internalValue = undefined;
+    }
+    else {
+      this._action.internalValue = value.action;
+      this._match.internalValue = value.match;
+    }
+  }
+
   // action - computed: false, optional: false, required: true
-  private _action?: AppmeshGatewayRouteSpecHttpRouteAction; 
-  private __actionOutput = new AppmeshGatewayRouteSpecHttpRouteActionOutputReference(this as any, "action", true);
+  private _action = new AppmeshGatewayRouteSpecHttpRouteActionOutputReference(this as any, "action", true);
   public get action() {
-    return this.__actionOutput;
+    return this._action;
   }
   public putAction(value: AppmeshGatewayRouteSpecHttpRouteAction) {
-    this._action = value;
+    this._action.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get actionInput() {
-    return this._action
+    return this._action.internalValue;
   }
 
   // match - computed: false, optional: false, required: true
-  private _match?: AppmeshGatewayRouteSpecHttpRouteMatch; 
-  private __matchOutput = new AppmeshGatewayRouteSpecHttpRouteMatchOutputReference(this as any, "match", true);
+  private _match = new AppmeshGatewayRouteSpecHttpRouteMatchOutputReference(this as any, "match", true);
   public get match() {
-    return this.__matchOutput;
+    return this._match;
   }
   public putMatch(value: AppmeshGatewayRouteSpecHttpRouteMatch) {
-    this._match = value;
+    this._match.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get matchInput() {
-    return this._match
+    return this._match.internalValue;
   }
 }
 export interface AppmeshGatewayRouteSpec {
@@ -771,55 +1062,83 @@ export class AppmeshGatewayRouteSpecOutputReference extends cdktf.ComplexObject 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // grpc_route - computed: false, optional: true, required: false
-  private _grpcRoute?: AppmeshGatewayRouteSpecGrpcRoute | undefined; 
-  private __grpcRouteOutput = new AppmeshGatewayRouteSpecGrpcRouteOutputReference(this as any, "grpc_route", true);
-  public get grpcRoute() {
-    return this.__grpcRouteOutput;
+  public get internalValue(): AppmeshGatewayRouteSpec | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._grpcRoute) {
+      hasAnyValues = true;
+      internalValueResult.grpcRoute = this._grpcRoute?.internalValue;
+    }
+    if (this._http2Route) {
+      hasAnyValues = true;
+      internalValueResult.http2Route = this._http2Route?.internalValue;
+    }
+    if (this._httpRoute) {
+      hasAnyValues = true;
+      internalValueResult.httpRoute = this._httpRoute?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putGrpcRoute(value: AppmeshGatewayRouteSpecGrpcRoute | undefined) {
-    this._grpcRoute = value;
+
+  public set internalValue(value: AppmeshGatewayRouteSpec | undefined) {
+    if (value === undefined) {
+      this._grpcRoute.internalValue = undefined;
+      this._http2Route.internalValue = undefined;
+      this._httpRoute.internalValue = undefined;
+    }
+    else {
+      this._grpcRoute.internalValue = value.grpcRoute;
+      this._http2Route.internalValue = value.http2Route;
+      this._httpRoute.internalValue = value.httpRoute;
+    }
+  }
+
+  // grpc_route - computed: false, optional: true, required: false
+  private _grpcRoute = new AppmeshGatewayRouteSpecGrpcRouteOutputReference(this as any, "grpc_route", true);
+  public get grpcRoute() {
+    return this._grpcRoute;
+  }
+  public putGrpcRoute(value: AppmeshGatewayRouteSpecGrpcRoute) {
+    this._grpcRoute.internalValue = value;
   }
   public resetGrpcRoute() {
-    this._grpcRoute = undefined;
+    this._grpcRoute.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get grpcRouteInput() {
-    return this._grpcRoute
+    return this._grpcRoute.internalValue;
   }
 
   // http2_route - computed: false, optional: true, required: false
-  private _http2Route?: AppmeshGatewayRouteSpecHttp2Route | undefined; 
-  private __http2RouteOutput = new AppmeshGatewayRouteSpecHttp2RouteOutputReference(this as any, "http2_route", true);
+  private _http2Route = new AppmeshGatewayRouteSpecHttp2RouteOutputReference(this as any, "http2_route", true);
   public get http2Route() {
-    return this.__http2RouteOutput;
+    return this._http2Route;
   }
-  public putHttp2Route(value: AppmeshGatewayRouteSpecHttp2Route | undefined) {
-    this._http2Route = value;
+  public putHttp2Route(value: AppmeshGatewayRouteSpecHttp2Route) {
+    this._http2Route.internalValue = value;
   }
   public resetHttp2Route() {
-    this._http2Route = undefined;
+    this._http2Route.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get http2RouteInput() {
-    return this._http2Route
+    return this._http2Route.internalValue;
   }
 
   // http_route - computed: false, optional: true, required: false
-  private _httpRoute?: AppmeshGatewayRouteSpecHttpRoute | undefined; 
-  private __httpRouteOutput = new AppmeshGatewayRouteSpecHttpRouteOutputReference(this as any, "http_route", true);
+  private _httpRoute = new AppmeshGatewayRouteSpecHttpRouteOutputReference(this as any, "http_route", true);
   public get httpRoute() {
-    return this.__httpRouteOutput;
+    return this._httpRoute;
   }
-  public putHttpRoute(value: AppmeshGatewayRouteSpecHttpRoute | undefined) {
-    this._httpRoute = value;
+  public putHttpRoute(value: AppmeshGatewayRouteSpecHttpRoute) {
+    this._httpRoute.internalValue = value;
   }
   public resetHttpRoute() {
-    this._httpRoute = undefined;
+    this._httpRoute.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get httpRouteInput() {
-    return this._httpRoute
+    return this._httpRoute.internalValue;
   }
 }
 
@@ -861,7 +1180,7 @@ export class AppmeshGatewayRoute extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._virtualGatewayName = config.virtualGatewayName;
-    this._spec = config.spec;
+    this._spec.internalValue = config.spec;
   }
 
   // ==========
@@ -898,15 +1217,15 @@ export class AppmeshGatewayRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get meshNameInput() {
-    return this._meshName
+    return this._meshName;
   }
 
   // mesh_owner - computed: true, optional: true, required: false
-  private _meshOwner?: string | undefined; 
+  private _meshOwner?: string; 
   public get meshOwner() {
     return this.getStringAttribute('mesh_owner');
   }
-  public set meshOwner(value: string | undefined) {
+  public set meshOwner(value: string) {
     this._meshOwner = value;
   }
   public resetMeshOwner() {
@@ -914,7 +1233,7 @@ export class AppmeshGatewayRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get meshOwnerInput() {
-    return this._meshOwner
+    return this._meshOwner;
   }
 
   // name - computed: false, optional: false, required: true
@@ -927,7 +1246,7 @@ export class AppmeshGatewayRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // resource_owner - computed: true, optional: false, required: false
@@ -936,12 +1255,12 @@ export class AppmeshGatewayRoute extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -949,16 +1268,16 @@ export class AppmeshGatewayRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -966,7 +1285,7 @@ export class AppmeshGatewayRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // virtual_gateway_name - computed: false, optional: false, required: true
@@ -979,21 +1298,20 @@ export class AppmeshGatewayRoute extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get virtualGatewayNameInput() {
-    return this._virtualGatewayName
+    return this._virtualGatewayName;
   }
 
   // spec - computed: false, optional: false, required: true
-  private _spec?: AppmeshGatewayRouteSpec; 
-  private __specOutput = new AppmeshGatewayRouteSpecOutputReference(this as any, "spec", true);
+  private _spec = new AppmeshGatewayRouteSpecOutputReference(this as any, "spec", true);
   public get spec() {
-    return this.__specOutput;
+    return this._spec;
   }
   public putSpec(value: AppmeshGatewayRouteSpec) {
-    this._spec = value;
+    this._spec.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get specInput() {
-    return this._spec
+    return this._spec.internalValue;
   }
 
   // =========
@@ -1008,7 +1326,7 @@ export class AppmeshGatewayRoute extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       virtual_gateway_name: cdktf.stringToTerraform(this._virtualGatewayName),
-      spec: appmeshGatewayRouteSpecToTerraform(this._spec),
+      spec: appmeshGatewayRouteSpecToTerraform(this._spec.internalValue),
     };
   }
 }

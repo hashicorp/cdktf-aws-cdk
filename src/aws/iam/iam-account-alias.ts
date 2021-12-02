@@ -62,7 +62,7 @@ export class IamAccountAlias extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accountAliasInput() {
-    return this._accountAlias
+    return this._accountAlias;
   }
 
   // id - computed: true, optional: true, required: false

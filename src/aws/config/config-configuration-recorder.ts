@@ -59,12 +59,43 @@ export class ConfigConfigurationRecorderRecordingGroupOutputReference extends cd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ConfigConfigurationRecorderRecordingGroup | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allSupported) {
+      hasAnyValues = true;
+      internalValueResult.allSupported = this._allSupported;
+    }
+    if (this._includeGlobalResourceTypes) {
+      hasAnyValues = true;
+      internalValueResult.includeGlobalResourceTypes = this._includeGlobalResourceTypes;
+    }
+    if (this._resourceTypes) {
+      hasAnyValues = true;
+      internalValueResult.resourceTypes = this._resourceTypes;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ConfigConfigurationRecorderRecordingGroup | undefined) {
+    if (value === undefined) {
+      this._allSupported = undefined;
+      this._includeGlobalResourceTypes = undefined;
+      this._resourceTypes = undefined;
+    }
+    else {
+      this._allSupported = value.allSupported;
+      this._includeGlobalResourceTypes = value.includeGlobalResourceTypes;
+      this._resourceTypes = value.resourceTypes;
+    }
+  }
+
   // all_supported - computed: false, optional: true, required: false
-  private _allSupported?: boolean | cdktf.IResolvable | undefined; 
+  private _allSupported?: boolean | cdktf.IResolvable; 
   public get allSupported() {
     return this.getBooleanAttribute('all_supported') as any;
   }
-  public set allSupported(value: boolean | cdktf.IResolvable | undefined) {
+  public set allSupported(value: boolean | cdktf.IResolvable) {
     this._allSupported = value;
   }
   public resetAllSupported() {
@@ -72,15 +103,15 @@ export class ConfigConfigurationRecorderRecordingGroupOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get allSupportedInput() {
-    return this._allSupported
+    return this._allSupported;
   }
 
   // include_global_resource_types - computed: false, optional: true, required: false
-  private _includeGlobalResourceTypes?: boolean | cdktf.IResolvable | undefined; 
+  private _includeGlobalResourceTypes?: boolean | cdktf.IResolvable; 
   public get includeGlobalResourceTypes() {
     return this.getBooleanAttribute('include_global_resource_types') as any;
   }
-  public set includeGlobalResourceTypes(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeGlobalResourceTypes(value: boolean | cdktf.IResolvable) {
     this._includeGlobalResourceTypes = value;
   }
   public resetIncludeGlobalResourceTypes() {
@@ -88,15 +119,15 @@ export class ConfigConfigurationRecorderRecordingGroupOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get includeGlobalResourceTypesInput() {
-    return this._includeGlobalResourceTypes
+    return this._includeGlobalResourceTypes;
   }
 
   // resource_types - computed: false, optional: true, required: false
-  private _resourceTypes?: string[] | undefined; 
+  private _resourceTypes?: string[]; 
   public get resourceTypes() {
     return this.getListAttribute('resource_types');
   }
-  public set resourceTypes(value: string[] | undefined) {
+  public set resourceTypes(value: string[]) {
     this._resourceTypes = value;
   }
   public resetResourceTypes() {
@@ -104,7 +135,7 @@ export class ConfigConfigurationRecorderRecordingGroupOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get resourceTypesInput() {
-    return this._resourceTypes
+    return this._resourceTypes;
   }
 }
 
@@ -142,7 +173,7 @@ export class ConfigConfigurationRecorder extends cdktf.TerraformResource {
     });
     this._name = config.name;
     this._roleArn = config.roleArn;
-    this._recordingGroup = config.recordingGroup;
+    this._recordingGroup.internalValue = config.recordingGroup;
   }
 
   // ==========
@@ -155,11 +186,11 @@ export class ConfigConfigurationRecorder extends cdktf.TerraformResource {
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -167,7 +198,7 @@ export class ConfigConfigurationRecorder extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -180,24 +211,23 @@ export class ConfigConfigurationRecorder extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // recording_group - computed: false, optional: true, required: false
-  private _recordingGroup?: ConfigConfigurationRecorderRecordingGroup | undefined; 
-  private __recordingGroupOutput = new ConfigConfigurationRecorderRecordingGroupOutputReference(this as any, "recording_group", true);
+  private _recordingGroup = new ConfigConfigurationRecorderRecordingGroupOutputReference(this as any, "recording_group", true);
   public get recordingGroup() {
-    return this.__recordingGroupOutput;
+    return this._recordingGroup;
   }
-  public putRecordingGroup(value: ConfigConfigurationRecorderRecordingGroup | undefined) {
-    this._recordingGroup = value;
+  public putRecordingGroup(value: ConfigConfigurationRecorderRecordingGroup) {
+    this._recordingGroup.internalValue = value;
   }
   public resetRecordingGroup() {
-    this._recordingGroup = undefined;
+    this._recordingGroup.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get recordingGroupInput() {
-    return this._recordingGroup
+    return this._recordingGroup.internalValue;
   }
 
   // =========
@@ -208,7 +238,7 @@ export class ConfigConfigurationRecorder extends cdktf.TerraformResource {
     return {
       name: cdktf.stringToTerraform(this._name),
       role_arn: cdktf.stringToTerraform(this._roleArn),
-      recording_group: configConfigurationRecorderRecordingGroupToTerraform(this._recordingGroup),
+      recording_group: configConfigurationRecorderRecordingGroupToTerraform(this._recordingGroup.internalValue),
     };
   }
 }

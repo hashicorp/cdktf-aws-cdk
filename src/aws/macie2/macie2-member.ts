@@ -78,12 +78,37 @@ export class Macie2MemberTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Macie2MemberTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Macie2MemberTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -91,15 +116,15 @@ export class Macie2MemberTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -107,7 +132,7 @@ export class Macie2MemberTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -151,7 +176,7 @@ export class Macie2Member extends cdktf.TerraformResource {
     this._status = config.status;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -168,7 +193,7 @@ export class Macie2Member extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accountIdInput() {
-    return this._accountId
+    return this._accountId;
   }
 
   // administrator_account_id - computed: true, optional: false, required: false
@@ -191,7 +216,7 @@ export class Macie2Member extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get emailInput() {
-    return this._email
+    return this._email;
   }
 
   // id - computed: true, optional: true, required: false
@@ -200,11 +225,11 @@ export class Macie2Member extends cdktf.TerraformResource {
   }
 
   // invitation_disable_email_notification - computed: false, optional: true, required: false
-  private _invitationDisableEmailNotification?: string | undefined; 
+  private _invitationDisableEmailNotification?: string; 
   public get invitationDisableEmailNotification() {
     return this.getStringAttribute('invitation_disable_email_notification');
   }
-  public set invitationDisableEmailNotification(value: string | undefined) {
+  public set invitationDisableEmailNotification(value: string) {
     this._invitationDisableEmailNotification = value;
   }
   public resetInvitationDisableEmailNotification() {
@@ -212,15 +237,15 @@ export class Macie2Member extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get invitationDisableEmailNotificationInput() {
-    return this._invitationDisableEmailNotification
+    return this._invitationDisableEmailNotification;
   }
 
   // invitation_message - computed: false, optional: true, required: false
-  private _invitationMessage?: string | undefined; 
+  private _invitationMessage?: string; 
   public get invitationMessage() {
     return this.getStringAttribute('invitation_message');
   }
-  public set invitationMessage(value: string | undefined) {
+  public set invitationMessage(value: string) {
     this._invitationMessage = value;
   }
   public resetInvitationMessage() {
@@ -228,15 +253,15 @@ export class Macie2Member extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get invitationMessageInput() {
-    return this._invitationMessage
+    return this._invitationMessage;
   }
 
   // invite - computed: true, optional: true, required: false
-  private _invite?: boolean | cdktf.IResolvable | undefined; 
+  private _invite?: boolean | cdktf.IResolvable; 
   public get invite() {
     return this.getBooleanAttribute('invite') as any;
   }
-  public set invite(value: boolean | cdktf.IResolvable | undefined) {
+  public set invite(value: boolean | cdktf.IResolvable) {
     this._invite = value;
   }
   public resetInvite() {
@@ -244,7 +269,7 @@ export class Macie2Member extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get inviteInput() {
-    return this._invite
+    return this._invite;
   }
 
   // invited_at - computed: true, optional: false, required: false
@@ -263,11 +288,11 @@ export class Macie2Member extends cdktf.TerraformResource {
   }
 
   // status - computed: true, optional: true, required: false
-  private _status?: string | undefined; 
+  private _status?: string; 
   public get status() {
     return this.getStringAttribute('status');
   }
-  public set status(value: string | undefined) {
+  public set status(value: string) {
     this._status = value;
   }
   public resetStatus() {
@@ -275,16 +300,16 @@ export class Macie2Member extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -292,16 +317,16 @@ export class Macie2Member extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -309,7 +334,7 @@ export class Macie2Member extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // updated_at - computed: true, optional: false, required: false
@@ -318,20 +343,19 @@ export class Macie2Member extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: Macie2MemberTimeouts | undefined; 
-  private __timeoutsOutput = new Macie2MemberTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new Macie2MemberTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: Macie2MemberTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: Macie2MemberTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -348,7 +372,7 @@ export class Macie2Member extends cdktf.TerraformResource {
       status: cdktf.stringToTerraform(this._status),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      timeouts: macie2MemberTimeoutsToTerraform(this._timeouts),
+      timeouts: macie2MemberTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

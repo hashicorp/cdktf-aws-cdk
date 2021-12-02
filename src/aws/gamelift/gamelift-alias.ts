@@ -67,12 +67,43 @@ export class GameliftAliasRoutingStrategyOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GameliftAliasRoutingStrategy | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fleetId) {
+      hasAnyValues = true;
+      internalValueResult.fleetId = this._fleetId;
+    }
+    if (this._message) {
+      hasAnyValues = true;
+      internalValueResult.message = this._message;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GameliftAliasRoutingStrategy | undefined) {
+    if (value === undefined) {
+      this._fleetId = undefined;
+      this._message = undefined;
+      this._type = undefined;
+    }
+    else {
+      this._fleetId = value.fleetId;
+      this._message = value.message;
+      this._type = value.type;
+    }
+  }
+
   // fleet_id - computed: false, optional: true, required: false
-  private _fleetId?: string | undefined; 
+  private _fleetId?: string; 
   public get fleetId() {
     return this.getStringAttribute('fleet_id');
   }
-  public set fleetId(value: string | undefined) {
+  public set fleetId(value: string) {
     this._fleetId = value;
   }
   public resetFleetId() {
@@ -80,15 +111,15 @@ export class GameliftAliasRoutingStrategyOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get fleetIdInput() {
-    return this._fleetId
+    return this._fleetId;
   }
 
   // message - computed: false, optional: true, required: false
-  private _message?: string | undefined; 
+  private _message?: string; 
   public get message() {
     return this.getStringAttribute('message');
   }
-  public set message(value: string | undefined) {
+  public set message(value: string) {
     this._message = value;
   }
   public resetMessage() {
@@ -96,7 +127,7 @@ export class GameliftAliasRoutingStrategyOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get messageInput() {
-    return this._message
+    return this._message;
   }
 
   // type - computed: false, optional: false, required: true
@@ -109,7 +140,7 @@ export class GameliftAliasRoutingStrategyOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 
@@ -149,7 +180,7 @@ export class GameliftAlias extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._routingStrategy = config.routingStrategy;
+    this._routingStrategy.internalValue = config.routingStrategy;
   }
 
   // ==========
@@ -162,11 +193,11 @@ export class GameliftAlias extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -174,7 +205,7 @@ export class GameliftAlias extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -192,16 +223,16 @@ export class GameliftAlias extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -209,16 +240,16 @@ export class GameliftAlias extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -226,21 +257,20 @@ export class GameliftAlias extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // routing_strategy - computed: false, optional: false, required: true
-  private _routingStrategy?: GameliftAliasRoutingStrategy; 
-  private __routingStrategyOutput = new GameliftAliasRoutingStrategyOutputReference(this as any, "routing_strategy", true);
+  private _routingStrategy = new GameliftAliasRoutingStrategyOutputReference(this as any, "routing_strategy", true);
   public get routingStrategy() {
-    return this.__routingStrategyOutput;
+    return this._routingStrategy;
   }
   public putRoutingStrategy(value: GameliftAliasRoutingStrategy) {
-    this._routingStrategy = value;
+    this._routingStrategy.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get routingStrategyInput() {
-    return this._routingStrategy
+    return this._routingStrategy.internalValue;
   }
 
   // =========
@@ -253,7 +283,7 @@ export class GameliftAlias extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      routing_strategy: gameliftAliasRoutingStrategyToTerraform(this._routingStrategy),
+      routing_strategy: gameliftAliasRoutingStrategyToTerraform(this._routingStrategy.internalValue),
     };
   }
 }

@@ -74,12 +74,37 @@ export class BatchComputeEnvironmentComputeResourcesEc2ConfigurationOutputRefere
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): BatchComputeEnvironmentComputeResourcesEc2Configuration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._imageIdOverride) {
+      hasAnyValues = true;
+      internalValueResult.imageIdOverride = this._imageIdOverride;
+    }
+    if (this._imageType) {
+      hasAnyValues = true;
+      internalValueResult.imageType = this._imageType;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: BatchComputeEnvironmentComputeResourcesEc2Configuration | undefined) {
+    if (value === undefined) {
+      this._imageIdOverride = undefined;
+      this._imageType = undefined;
+    }
+    else {
+      this._imageIdOverride = value.imageIdOverride;
+      this._imageType = value.imageType;
+    }
+  }
+
   // image_id_override - computed: true, optional: true, required: false
-  private _imageIdOverride?: string | undefined; 
+  private _imageIdOverride?: string; 
   public get imageIdOverride() {
     return this.getStringAttribute('image_id_override');
   }
-  public set imageIdOverride(value: string | undefined) {
+  public set imageIdOverride(value: string) {
     this._imageIdOverride = value;
   }
   public resetImageIdOverride() {
@@ -87,15 +112,15 @@ export class BatchComputeEnvironmentComputeResourcesEc2ConfigurationOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get imageIdOverrideInput() {
-    return this._imageIdOverride
+    return this._imageIdOverride;
   }
 
   // image_type - computed: false, optional: true, required: false
-  private _imageType?: string | undefined; 
+  private _imageType?: string; 
   public get imageType() {
     return this.getStringAttribute('image_type');
   }
-  public set imageType(value: string | undefined) {
+  public set imageType(value: string) {
     this._imageType = value;
   }
   public resetImageType() {
@@ -103,7 +128,7 @@ export class BatchComputeEnvironmentComputeResourcesEc2ConfigurationOutputRefere
   }
   // Temporarily expose input value. Use with caution.
   public get imageTypeInput() {
-    return this._imageType
+    return this._imageType;
   }
 }
 export interface BatchComputeEnvironmentComputeResourcesLaunchTemplate {
@@ -143,12 +168,43 @@ export class BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReferenc
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): BatchComputeEnvironmentComputeResourcesLaunchTemplate | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._launchTemplateId) {
+      hasAnyValues = true;
+      internalValueResult.launchTemplateId = this._launchTemplateId;
+    }
+    if (this._launchTemplateName) {
+      hasAnyValues = true;
+      internalValueResult.launchTemplateName = this._launchTemplateName;
+    }
+    if (this._version) {
+      hasAnyValues = true;
+      internalValueResult.version = this._version;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: BatchComputeEnvironmentComputeResourcesLaunchTemplate | undefined) {
+    if (value === undefined) {
+      this._launchTemplateId = undefined;
+      this._launchTemplateName = undefined;
+      this._version = undefined;
+    }
+    else {
+      this._launchTemplateId = value.launchTemplateId;
+      this._launchTemplateName = value.launchTemplateName;
+      this._version = value.version;
+    }
+  }
+
   // launch_template_id - computed: false, optional: true, required: false
-  private _launchTemplateId?: string | undefined; 
+  private _launchTemplateId?: string; 
   public get launchTemplateId() {
     return this.getStringAttribute('launch_template_id');
   }
-  public set launchTemplateId(value: string | undefined) {
+  public set launchTemplateId(value: string) {
     this._launchTemplateId = value;
   }
   public resetLaunchTemplateId() {
@@ -156,15 +212,15 @@ export class BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReferenc
   }
   // Temporarily expose input value. Use with caution.
   public get launchTemplateIdInput() {
-    return this._launchTemplateId
+    return this._launchTemplateId;
   }
 
   // launch_template_name - computed: false, optional: true, required: false
-  private _launchTemplateName?: string | undefined; 
+  private _launchTemplateName?: string; 
   public get launchTemplateName() {
     return this.getStringAttribute('launch_template_name');
   }
-  public set launchTemplateName(value: string | undefined) {
+  public set launchTemplateName(value: string) {
     this._launchTemplateName = value;
   }
   public resetLaunchTemplateName() {
@@ -172,15 +228,15 @@ export class BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReferenc
   }
   // Temporarily expose input value. Use with caution.
   public get launchTemplateNameInput() {
-    return this._launchTemplateName
+    return this._launchTemplateName;
   }
 
   // version - computed: false, optional: true, required: false
-  private _version?: string | undefined; 
+  private _version?: string; 
   public get version() {
     return this.getStringAttribute('version');
   }
-  public set version(value: string | undefined) {
+  public set version(value: string) {
     this._version = value;
   }
   public resetVersion() {
@@ -188,7 +244,7 @@ export class BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReferenc
   }
   // Temporarily expose input value. Use with caution.
   public get versionInput() {
-    return this._version
+    return this._version;
   }
 }
 export interface BatchComputeEnvironmentComputeResources {
@@ -297,12 +353,121 @@ export class BatchComputeEnvironmentComputeResourcesOutputReference extends cdkt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): BatchComputeEnvironmentComputeResources | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allocationStrategy) {
+      hasAnyValues = true;
+      internalValueResult.allocationStrategy = this._allocationStrategy;
+    }
+    if (this._bidPercentage) {
+      hasAnyValues = true;
+      internalValueResult.bidPercentage = this._bidPercentage;
+    }
+    if (this._desiredVcpus) {
+      hasAnyValues = true;
+      internalValueResult.desiredVcpus = this._desiredVcpus;
+    }
+    if (this._ec2KeyPair) {
+      hasAnyValues = true;
+      internalValueResult.ec2KeyPair = this._ec2KeyPair;
+    }
+    if (this._imageId) {
+      hasAnyValues = true;
+      internalValueResult.imageId = this._imageId;
+    }
+    if (this._instanceRole) {
+      hasAnyValues = true;
+      internalValueResult.instanceRole = this._instanceRole;
+    }
+    if (this._instanceType) {
+      hasAnyValues = true;
+      internalValueResult.instanceType = this._instanceType;
+    }
+    if (this._maxVcpus) {
+      hasAnyValues = true;
+      internalValueResult.maxVcpus = this._maxVcpus;
+    }
+    if (this._minVcpus) {
+      hasAnyValues = true;
+      internalValueResult.minVcpus = this._minVcpus;
+    }
+    if (this._securityGroupIds) {
+      hasAnyValues = true;
+      internalValueResult.securityGroupIds = this._securityGroupIds;
+    }
+    if (this._spotIamFleetRole) {
+      hasAnyValues = true;
+      internalValueResult.spotIamFleetRole = this._spotIamFleetRole;
+    }
+    if (this._subnets) {
+      hasAnyValues = true;
+      internalValueResult.subnets = this._subnets;
+    }
+    if (this._tags) {
+      hasAnyValues = true;
+      internalValueResult.tags = this._tags;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    if (this._ec2Configuration) {
+      hasAnyValues = true;
+      internalValueResult.ec2Configuration = this._ec2Configuration?.internalValue;
+    }
+    if (this._launchTemplate) {
+      hasAnyValues = true;
+      internalValueResult.launchTemplate = this._launchTemplate?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: BatchComputeEnvironmentComputeResources | undefined) {
+    if (value === undefined) {
+      this._allocationStrategy = undefined;
+      this._bidPercentage = undefined;
+      this._desiredVcpus = undefined;
+      this._ec2KeyPair = undefined;
+      this._imageId = undefined;
+      this._instanceRole = undefined;
+      this._instanceType = undefined;
+      this._maxVcpus = undefined;
+      this._minVcpus = undefined;
+      this._securityGroupIds = undefined;
+      this._spotIamFleetRole = undefined;
+      this._subnets = undefined;
+      this._tags = undefined;
+      this._type = undefined;
+      this._ec2Configuration.internalValue = undefined;
+      this._launchTemplate.internalValue = undefined;
+    }
+    else {
+      this._allocationStrategy = value.allocationStrategy;
+      this._bidPercentage = value.bidPercentage;
+      this._desiredVcpus = value.desiredVcpus;
+      this._ec2KeyPair = value.ec2KeyPair;
+      this._imageId = value.imageId;
+      this._instanceRole = value.instanceRole;
+      this._instanceType = value.instanceType;
+      this._maxVcpus = value.maxVcpus;
+      this._minVcpus = value.minVcpus;
+      this._securityGroupIds = value.securityGroupIds;
+      this._spotIamFleetRole = value.spotIamFleetRole;
+      this._subnets = value.subnets;
+      this._tags = value.tags;
+      this._type = value.type;
+      this._ec2Configuration.internalValue = value.ec2Configuration;
+      this._launchTemplate.internalValue = value.launchTemplate;
+    }
+  }
+
   // allocation_strategy - computed: false, optional: true, required: false
-  private _allocationStrategy?: string | undefined; 
+  private _allocationStrategy?: string; 
   public get allocationStrategy() {
     return this.getStringAttribute('allocation_strategy');
   }
-  public set allocationStrategy(value: string | undefined) {
+  public set allocationStrategy(value: string) {
     this._allocationStrategy = value;
   }
   public resetAllocationStrategy() {
@@ -310,15 +475,15 @@ export class BatchComputeEnvironmentComputeResourcesOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get allocationStrategyInput() {
-    return this._allocationStrategy
+    return this._allocationStrategy;
   }
 
   // bid_percentage - computed: false, optional: true, required: false
-  private _bidPercentage?: number | undefined; 
+  private _bidPercentage?: number; 
   public get bidPercentage() {
     return this.getNumberAttribute('bid_percentage');
   }
-  public set bidPercentage(value: number | undefined) {
+  public set bidPercentage(value: number) {
     this._bidPercentage = value;
   }
   public resetBidPercentage() {
@@ -326,15 +491,15 @@ export class BatchComputeEnvironmentComputeResourcesOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get bidPercentageInput() {
-    return this._bidPercentage
+    return this._bidPercentage;
   }
 
   // desired_vcpus - computed: true, optional: true, required: false
-  private _desiredVcpus?: number | undefined; 
+  private _desiredVcpus?: number; 
   public get desiredVcpus() {
     return this.getNumberAttribute('desired_vcpus');
   }
-  public set desiredVcpus(value: number | undefined) {
+  public set desiredVcpus(value: number) {
     this._desiredVcpus = value;
   }
   public resetDesiredVcpus() {
@@ -342,15 +507,15 @@ export class BatchComputeEnvironmentComputeResourcesOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get desiredVcpusInput() {
-    return this._desiredVcpus
+    return this._desiredVcpus;
   }
 
   // ec2_key_pair - computed: false, optional: true, required: false
-  private _ec2KeyPair?: string | undefined; 
+  private _ec2KeyPair?: string; 
   public get ec2KeyPair() {
     return this.getStringAttribute('ec2_key_pair');
   }
-  public set ec2KeyPair(value: string | undefined) {
+  public set ec2KeyPair(value: string) {
     this._ec2KeyPair = value;
   }
   public resetEc2KeyPair() {
@@ -358,15 +523,15 @@ export class BatchComputeEnvironmentComputeResourcesOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get ec2KeyPairInput() {
-    return this._ec2KeyPair
+    return this._ec2KeyPair;
   }
 
   // image_id - computed: false, optional: true, required: false
-  private _imageId?: string | undefined; 
+  private _imageId?: string; 
   public get imageId() {
     return this.getStringAttribute('image_id');
   }
-  public set imageId(value: string | undefined) {
+  public set imageId(value: string) {
     this._imageId = value;
   }
   public resetImageId() {
@@ -374,15 +539,15 @@ export class BatchComputeEnvironmentComputeResourcesOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get imageIdInput() {
-    return this._imageId
+    return this._imageId;
   }
 
   // instance_role - computed: false, optional: true, required: false
-  private _instanceRole?: string | undefined; 
+  private _instanceRole?: string; 
   public get instanceRole() {
     return this.getStringAttribute('instance_role');
   }
-  public set instanceRole(value: string | undefined) {
+  public set instanceRole(value: string) {
     this._instanceRole = value;
   }
   public resetInstanceRole() {
@@ -390,15 +555,15 @@ export class BatchComputeEnvironmentComputeResourcesOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get instanceRoleInput() {
-    return this._instanceRole
+    return this._instanceRole;
   }
 
   // instance_type - computed: false, optional: true, required: false
-  private _instanceType?: string[] | undefined; 
+  private _instanceType?: string[]; 
   public get instanceType() {
     return this.getListAttribute('instance_type');
   }
-  public set instanceType(value: string[] | undefined) {
+  public set instanceType(value: string[]) {
     this._instanceType = value;
   }
   public resetInstanceType() {
@@ -406,7 +571,7 @@ export class BatchComputeEnvironmentComputeResourcesOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // max_vcpus - computed: false, optional: false, required: true
@@ -419,15 +584,15 @@ export class BatchComputeEnvironmentComputeResourcesOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get maxVcpusInput() {
-    return this._maxVcpus
+    return this._maxVcpus;
   }
 
   // min_vcpus - computed: false, optional: true, required: false
-  private _minVcpus?: number | undefined; 
+  private _minVcpus?: number; 
   public get minVcpus() {
     return this.getNumberAttribute('min_vcpus');
   }
-  public set minVcpus(value: number | undefined) {
+  public set minVcpus(value: number) {
     this._minVcpus = value;
   }
   public resetMinVcpus() {
@@ -435,7 +600,7 @@ export class BatchComputeEnvironmentComputeResourcesOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get minVcpusInput() {
-    return this._minVcpus
+    return this._minVcpus;
   }
 
   // security_group_ids - computed: false, optional: false, required: true
@@ -448,15 +613,15 @@ export class BatchComputeEnvironmentComputeResourcesOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // spot_iam_fleet_role - computed: false, optional: true, required: false
-  private _spotIamFleetRole?: string | undefined; 
+  private _spotIamFleetRole?: string; 
   public get spotIamFleetRole() {
     return this.getStringAttribute('spot_iam_fleet_role');
   }
-  public set spotIamFleetRole(value: string | undefined) {
+  public set spotIamFleetRole(value: string) {
     this._spotIamFleetRole = value;
   }
   public resetSpotIamFleetRole() {
@@ -464,7 +629,7 @@ export class BatchComputeEnvironmentComputeResourcesOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get spotIamFleetRoleInput() {
-    return this._spotIamFleetRole
+    return this._spotIamFleetRole;
   }
 
   // subnets - computed: false, optional: false, required: true
@@ -477,16 +642,16 @@ export class BatchComputeEnvironmentComputeResourcesOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get subnetsInput() {
-    return this._subnets
+    return this._subnets;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -494,7 +659,7 @@ export class BatchComputeEnvironmentComputeResourcesOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // type - computed: false, optional: false, required: true
@@ -507,41 +672,39 @@ export class BatchComputeEnvironmentComputeResourcesOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // ec2_configuration - computed: false, optional: true, required: false
-  private _ec2Configuration?: BatchComputeEnvironmentComputeResourcesEc2Configuration | undefined; 
-  private __ec2ConfigurationOutput = new BatchComputeEnvironmentComputeResourcesEc2ConfigurationOutputReference(this as any, "ec2_configuration", true);
+  private _ec2Configuration = new BatchComputeEnvironmentComputeResourcesEc2ConfigurationOutputReference(this as any, "ec2_configuration", true);
   public get ec2Configuration() {
-    return this.__ec2ConfigurationOutput;
+    return this._ec2Configuration;
   }
-  public putEc2Configuration(value: BatchComputeEnvironmentComputeResourcesEc2Configuration | undefined) {
-    this._ec2Configuration = value;
+  public putEc2Configuration(value: BatchComputeEnvironmentComputeResourcesEc2Configuration) {
+    this._ec2Configuration.internalValue = value;
   }
   public resetEc2Configuration() {
-    this._ec2Configuration = undefined;
+    this._ec2Configuration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ec2ConfigurationInput() {
-    return this._ec2Configuration
+    return this._ec2Configuration.internalValue;
   }
 
   // launch_template - computed: false, optional: true, required: false
-  private _launchTemplate?: BatchComputeEnvironmentComputeResourcesLaunchTemplate | undefined; 
-  private __launchTemplateOutput = new BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReference(this as any, "launch_template", true);
+  private _launchTemplate = new BatchComputeEnvironmentComputeResourcesLaunchTemplateOutputReference(this as any, "launch_template", true);
   public get launchTemplate() {
-    return this.__launchTemplateOutput;
+    return this._launchTemplate;
   }
-  public putLaunchTemplate(value: BatchComputeEnvironmentComputeResourcesLaunchTemplate | undefined) {
-    this._launchTemplate = value;
+  public putLaunchTemplate(value: BatchComputeEnvironmentComputeResourcesLaunchTemplate) {
+    this._launchTemplate.internalValue = value;
   }
   public resetLaunchTemplate() {
-    this._launchTemplate = undefined;
+    this._launchTemplate.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get launchTemplateInput() {
-    return this._launchTemplate
+    return this._launchTemplate.internalValue;
   }
 }
 
@@ -584,7 +747,7 @@ export class BatchComputeEnvironment extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._type = config.type;
-    this._computeResources = config.computeResources;
+    this._computeResources.internalValue = config.computeResources;
   }
 
   // ==========
@@ -597,11 +760,11 @@ export class BatchComputeEnvironment extends cdktf.TerraformResource {
   }
 
   // compute_environment_name - computed: true, optional: true, required: false
-  private _computeEnvironmentName?: string | undefined; 
+  private _computeEnvironmentName?: string; 
   public get computeEnvironmentName() {
     return this.getStringAttribute('compute_environment_name');
   }
-  public set computeEnvironmentName(value: string | undefined) {
+  public set computeEnvironmentName(value: string) {
     this._computeEnvironmentName = value;
   }
   public resetComputeEnvironmentName() {
@@ -609,15 +772,15 @@ export class BatchComputeEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get computeEnvironmentNameInput() {
-    return this._computeEnvironmentName
+    return this._computeEnvironmentName;
   }
 
   // compute_environment_name_prefix - computed: true, optional: true, required: false
-  private _computeEnvironmentNamePrefix?: string | undefined; 
+  private _computeEnvironmentNamePrefix?: string; 
   public get computeEnvironmentNamePrefix() {
     return this.getStringAttribute('compute_environment_name_prefix');
   }
-  public set computeEnvironmentNamePrefix(value: string | undefined) {
+  public set computeEnvironmentNamePrefix(value: string) {
     this._computeEnvironmentNamePrefix = value;
   }
   public resetComputeEnvironmentNamePrefix() {
@@ -625,7 +788,7 @@ export class BatchComputeEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get computeEnvironmentNamePrefixInput() {
-    return this._computeEnvironmentNamePrefix
+    return this._computeEnvironmentNamePrefix;
   }
 
   // ecs_cluster_arn - computed: true, optional: false, required: false
@@ -639,11 +802,11 @@ export class BatchComputeEnvironment extends cdktf.TerraformResource {
   }
 
   // service_role - computed: true, optional: true, required: false
-  private _serviceRole?: string | undefined; 
+  private _serviceRole?: string; 
   public get serviceRole() {
     return this.getStringAttribute('service_role');
   }
-  public set serviceRole(value: string | undefined) {
+  public set serviceRole(value: string) {
     this._serviceRole = value;
   }
   public resetServiceRole() {
@@ -651,15 +814,15 @@ export class BatchComputeEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceRoleInput() {
-    return this._serviceRole
+    return this._serviceRole;
   }
 
   // state - computed: false, optional: true, required: false
-  private _state?: string | undefined; 
+  private _state?: string; 
   public get state() {
     return this.getStringAttribute('state');
   }
-  public set state(value: string | undefined) {
+  public set state(value: string) {
     this._state = value;
   }
   public resetState() {
@@ -667,7 +830,7 @@ export class BatchComputeEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stateInput() {
-    return this._state
+    return this._state;
   }
 
   // status - computed: true, optional: false, required: false
@@ -681,12 +844,12 @@ export class BatchComputeEnvironment extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -694,16 +857,16 @@ export class BatchComputeEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -711,7 +874,7 @@ export class BatchComputeEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // type - computed: false, optional: false, required: true
@@ -724,24 +887,23 @@ export class BatchComputeEnvironment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // compute_resources - computed: false, optional: true, required: false
-  private _computeResources?: BatchComputeEnvironmentComputeResources | undefined; 
-  private __computeResourcesOutput = new BatchComputeEnvironmentComputeResourcesOutputReference(this as any, "compute_resources", true);
+  private _computeResources = new BatchComputeEnvironmentComputeResourcesOutputReference(this as any, "compute_resources", true);
   public get computeResources() {
-    return this.__computeResourcesOutput;
+    return this._computeResources;
   }
-  public putComputeResources(value: BatchComputeEnvironmentComputeResources | undefined) {
-    this._computeResources = value;
+  public putComputeResources(value: BatchComputeEnvironmentComputeResources) {
+    this._computeResources.internalValue = value;
   }
   public resetComputeResources() {
-    this._computeResources = undefined;
+    this._computeResources.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get computeResourcesInput() {
-    return this._computeResources
+    return this._computeResources.internalValue;
   }
 
   // =========
@@ -757,7 +919,7 @@ export class BatchComputeEnvironment extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       type: cdktf.stringToTerraform(this._type),
-      compute_resources: batchComputeEnvironmentComputeResourcesToTerraform(this._computeResources),
+      compute_resources: batchComputeEnvironmentComputeResourcesToTerraform(this._computeResources.internalValue),
     };
   }
 }

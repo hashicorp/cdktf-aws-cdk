@@ -72,7 +72,7 @@ export class OrganizationsPolicyAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyIdInput() {
-    return this._policyId
+    return this._policyId;
   }
 
   // target_id - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class OrganizationsPolicyAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetIdInput() {
-    return this._targetId
+    return this._targetId;
   }
 
   // =========

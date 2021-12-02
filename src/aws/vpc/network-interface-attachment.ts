@@ -77,7 +77,7 @@ export class NetworkInterfaceAttachmentA extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deviceIndexInput() {
-    return this._deviceIndex
+    return this._deviceIndex;
   }
 
   // id - computed: true, optional: true, required: false
@@ -95,7 +95,7 @@ export class NetworkInterfaceAttachmentA extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceIdInput() {
-    return this._instanceId
+    return this._instanceId;
   }
 
   // network_interface_id - computed: false, optional: false, required: true
@@ -108,7 +108,7 @@ export class NetworkInterfaceAttachmentA extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get networkInterfaceIdInput() {
-    return this._networkInterfaceId
+    return this._networkInterfaceId;
   }
 
   // status - computed: true, optional: false, required: false

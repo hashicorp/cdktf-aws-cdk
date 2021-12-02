@@ -69,12 +69,55 @@ export class ApiGatewayDocumentationPartLocationOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApiGatewayDocumentationPartLocation | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method;
+    }
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    if (this._path) {
+      hasAnyValues = true;
+      internalValueResult.path = this._path;
+    }
+    if (this._statusCode) {
+      hasAnyValues = true;
+      internalValueResult.statusCode = this._statusCode;
+    }
+    if (this._type) {
+      hasAnyValues = true;
+      internalValueResult.type = this._type;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApiGatewayDocumentationPartLocation | undefined) {
+    if (value === undefined) {
+      this._method = undefined;
+      this._name = undefined;
+      this._path = undefined;
+      this._statusCode = undefined;
+      this._type = undefined;
+    }
+    else {
+      this._method = value.method;
+      this._name = value.name;
+      this._path = value.path;
+      this._statusCode = value.statusCode;
+      this._type = value.type;
+    }
+  }
+
   // method - computed: false, optional: true, required: false
-  private _method?: string | undefined; 
+  private _method?: string; 
   public get method() {
     return this.getStringAttribute('method');
   }
-  public set method(value: string | undefined) {
+  public set method(value: string) {
     this._method = value;
   }
   public resetMethod() {
@@ -82,15 +125,15 @@ export class ApiGatewayDocumentationPartLocationOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method;
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -98,15 +141,15 @@ export class ApiGatewayDocumentationPartLocationOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // path - computed: false, optional: true, required: false
-  private _path?: string | undefined; 
+  private _path?: string; 
   public get path() {
     return this.getStringAttribute('path');
   }
-  public set path(value: string | undefined) {
+  public set path(value: string) {
     this._path = value;
   }
   public resetPath() {
@@ -114,15 +157,15 @@ export class ApiGatewayDocumentationPartLocationOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get pathInput() {
-    return this._path
+    return this._path;
   }
 
   // status_code - computed: false, optional: true, required: false
-  private _statusCode?: string | undefined; 
+  private _statusCode?: string; 
   public get statusCode() {
     return this.getStringAttribute('status_code');
   }
-  public set statusCode(value: string | undefined) {
+  public set statusCode(value: string) {
     this._statusCode = value;
   }
   public resetStatusCode() {
@@ -130,7 +173,7 @@ export class ApiGatewayDocumentationPartLocationOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get statusCodeInput() {
-    return this._statusCode
+    return this._statusCode;
   }
 
   // type - computed: false, optional: false, required: true
@@ -143,7 +186,7 @@ export class ApiGatewayDocumentationPartLocationOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 }
 
@@ -181,7 +224,7 @@ export class ApiGatewayDocumentationPart extends cdktf.TerraformResource {
     });
     this._properties = config.properties;
     this._restApiId = config.restApiId;
-    this._location = config.location;
+    this._location.internalValue = config.location;
   }
 
   // ==========
@@ -203,7 +246,7 @@ export class ApiGatewayDocumentationPart extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get propertiesInput() {
-    return this._properties
+    return this._properties;
   }
 
   // rest_api_id - computed: false, optional: false, required: true
@@ -216,21 +259,20 @@ export class ApiGatewayDocumentationPart extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get restApiIdInput() {
-    return this._restApiId
+    return this._restApiId;
   }
 
   // location - computed: false, optional: false, required: true
-  private _location?: ApiGatewayDocumentationPartLocation; 
-  private __locationOutput = new ApiGatewayDocumentationPartLocationOutputReference(this as any, "location", true);
+  private _location = new ApiGatewayDocumentationPartLocationOutputReference(this as any, "location", true);
   public get location() {
-    return this.__locationOutput;
+    return this._location;
   }
   public putLocation(value: ApiGatewayDocumentationPartLocation) {
-    this._location = value;
+    this._location.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get locationInput() {
-    return this._location
+    return this._location.internalValue;
   }
 
   // =========
@@ -241,7 +283,7 @@ export class ApiGatewayDocumentationPart extends cdktf.TerraformResource {
     return {
       properties: cdktf.stringToTerraform(this._properties),
       rest_api_id: cdktf.stringToTerraform(this._restApiId),
-      location: apiGatewayDocumentationPartLocationToTerraform(this._location),
+      location: apiGatewayDocumentationPartLocationToTerraform(this._location.internalValue),
     };
   }
 }

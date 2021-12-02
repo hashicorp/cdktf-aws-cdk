@@ -93,6 +93,25 @@ export class NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionAct
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._dimension) {
+      hasAnyValues = true;
+      internalValueResult.dimension = this._dimension;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction | undefined) {
+    if (value === undefined) {
+      this._dimension = undefined;
+    }
+    else {
+      this._dimension = value.dimension;
+    }
+  }
+
   // dimension - computed: false, optional: false, required: true
   private _dimension?: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension[]; 
   public get dimension() {
@@ -104,7 +123,7 @@ export class NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionAct
   }
   // Temporarily expose input value. Use with caution.
   public get dimensionInput() {
-    return this._dimension
+    return this._dimension;
   }
 }
 export interface NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition {
@@ -136,18 +155,36 @@ export class NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionAct
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._publishMetricAction) {
+      hasAnyValues = true;
+      internalValueResult.publishMetricAction = this._publishMetricAction?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition | undefined) {
+    if (value === undefined) {
+      this._publishMetricAction.internalValue = undefined;
+    }
+    else {
+      this._publishMetricAction.internalValue = value.publishMetricAction;
+    }
+  }
+
   // publish_metric_action - computed: false, optional: false, required: true
-  private _publishMetricAction?: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction; 
-  private __publishMetricActionOutput = new NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionOutputReference(this as any, "publish_metric_action", true);
+  private _publishMetricAction = new NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionOutputReference(this as any, "publish_metric_action", true);
   public get publishMetricAction() {
-    return this.__publishMetricActionOutput;
+    return this._publishMetricAction;
   }
   public putPublishMetricAction(value: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction) {
-    this._publishMetricAction = value;
+    this._publishMetricAction.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get publishMetricActionInput() {
-    return this._publishMetricAction
+    return this._publishMetricAction.internalValue;
   }
 }
 export interface NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomAction {
@@ -249,6 +286,49 @@ export class NetworkfirewallFirewallPolicyFirewallPolicyOutputReference extends 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): NetworkfirewallFirewallPolicyFirewallPolicy | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._statelessDefaultActions) {
+      hasAnyValues = true;
+      internalValueResult.statelessDefaultActions = this._statelessDefaultActions;
+    }
+    if (this._statelessFragmentDefaultActions) {
+      hasAnyValues = true;
+      internalValueResult.statelessFragmentDefaultActions = this._statelessFragmentDefaultActions;
+    }
+    if (this._statefulRuleGroupReference) {
+      hasAnyValues = true;
+      internalValueResult.statefulRuleGroupReference = this._statefulRuleGroupReference;
+    }
+    if (this._statelessCustomAction) {
+      hasAnyValues = true;
+      internalValueResult.statelessCustomAction = this._statelessCustomAction;
+    }
+    if (this._statelessRuleGroupReference) {
+      hasAnyValues = true;
+      internalValueResult.statelessRuleGroupReference = this._statelessRuleGroupReference;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: NetworkfirewallFirewallPolicyFirewallPolicy | undefined) {
+    if (value === undefined) {
+      this._statelessDefaultActions = undefined;
+      this._statelessFragmentDefaultActions = undefined;
+      this._statefulRuleGroupReference = undefined;
+      this._statelessCustomAction = undefined;
+      this._statelessRuleGroupReference = undefined;
+    }
+    else {
+      this._statelessDefaultActions = value.statelessDefaultActions;
+      this._statelessFragmentDefaultActions = value.statelessFragmentDefaultActions;
+      this._statefulRuleGroupReference = value.statefulRuleGroupReference;
+      this._statelessCustomAction = value.statelessCustomAction;
+      this._statelessRuleGroupReference = value.statelessRuleGroupReference;
+    }
+  }
+
   // stateless_default_actions - computed: false, optional: false, required: true
   private _statelessDefaultActions?: string[]; 
   public get statelessDefaultActions() {
@@ -259,7 +339,7 @@ export class NetworkfirewallFirewallPolicyFirewallPolicyOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get statelessDefaultActionsInput() {
-    return this._statelessDefaultActions
+    return this._statelessDefaultActions;
   }
 
   // stateless_fragment_default_actions - computed: false, optional: false, required: true
@@ -272,16 +352,16 @@ export class NetworkfirewallFirewallPolicyFirewallPolicyOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get statelessFragmentDefaultActionsInput() {
-    return this._statelessFragmentDefaultActions
+    return this._statelessFragmentDefaultActions;
   }
 
   // stateful_rule_group_reference - computed: false, optional: true, required: false
-  private _statefulRuleGroupReference?: NetworkfirewallFirewallPolicyFirewallPolicyStatefulRuleGroupReference[] | undefined; 
+  private _statefulRuleGroupReference?: NetworkfirewallFirewallPolicyFirewallPolicyStatefulRuleGroupReference[]; 
   public get statefulRuleGroupReference() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('stateful_rule_group_reference') as any;
   }
-  public set statefulRuleGroupReference(value: NetworkfirewallFirewallPolicyFirewallPolicyStatefulRuleGroupReference[] | undefined) {
+  public set statefulRuleGroupReference(value: NetworkfirewallFirewallPolicyFirewallPolicyStatefulRuleGroupReference[]) {
     this._statefulRuleGroupReference = value;
   }
   public resetStatefulRuleGroupReference() {
@@ -289,16 +369,16 @@ export class NetworkfirewallFirewallPolicyFirewallPolicyOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get statefulRuleGroupReferenceInput() {
-    return this._statefulRuleGroupReference
+    return this._statefulRuleGroupReference;
   }
 
   // stateless_custom_action - computed: false, optional: true, required: false
-  private _statelessCustomAction?: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomAction[] | undefined; 
+  private _statelessCustomAction?: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomAction[]; 
   public get statelessCustomAction() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('stateless_custom_action') as any;
   }
-  public set statelessCustomAction(value: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomAction[] | undefined) {
+  public set statelessCustomAction(value: NetworkfirewallFirewallPolicyFirewallPolicyStatelessCustomAction[]) {
     this._statelessCustomAction = value;
   }
   public resetStatelessCustomAction() {
@@ -306,16 +386,16 @@ export class NetworkfirewallFirewallPolicyFirewallPolicyOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get statelessCustomActionInput() {
-    return this._statelessCustomAction
+    return this._statelessCustomAction;
   }
 
   // stateless_rule_group_reference - computed: false, optional: true, required: false
-  private _statelessRuleGroupReference?: NetworkfirewallFirewallPolicyFirewallPolicyStatelessRuleGroupReference[] | undefined; 
+  private _statelessRuleGroupReference?: NetworkfirewallFirewallPolicyFirewallPolicyStatelessRuleGroupReference[]; 
   public get statelessRuleGroupReference() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('stateless_rule_group_reference') as any;
   }
-  public set statelessRuleGroupReference(value: NetworkfirewallFirewallPolicyFirewallPolicyStatelessRuleGroupReference[] | undefined) {
+  public set statelessRuleGroupReference(value: NetworkfirewallFirewallPolicyFirewallPolicyStatelessRuleGroupReference[]) {
     this._statelessRuleGroupReference = value;
   }
   public resetStatelessRuleGroupReference() {
@@ -323,7 +403,7 @@ export class NetworkfirewallFirewallPolicyFirewallPolicyOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get statelessRuleGroupReferenceInput() {
-    return this._statelessRuleGroupReference
+    return this._statelessRuleGroupReference;
   }
 }
 
@@ -363,7 +443,7 @@ export class NetworkfirewallFirewallPolicy extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._firewallPolicy = config.firewallPolicy;
+    this._firewallPolicy.internalValue = config.firewallPolicy;
   }
 
   // ==========
@@ -376,11 +456,11 @@ export class NetworkfirewallFirewallPolicy extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -388,7 +468,7 @@ export class NetworkfirewallFirewallPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -406,16 +486,16 @@ export class NetworkfirewallFirewallPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -423,16 +503,16 @@ export class NetworkfirewallFirewallPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -440,7 +520,7 @@ export class NetworkfirewallFirewallPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // update_token - computed: true, optional: false, required: false
@@ -449,17 +529,16 @@ export class NetworkfirewallFirewallPolicy extends cdktf.TerraformResource {
   }
 
   // firewall_policy - computed: false, optional: false, required: true
-  private _firewallPolicy?: NetworkfirewallFirewallPolicyFirewallPolicy; 
-  private __firewallPolicyOutput = new NetworkfirewallFirewallPolicyFirewallPolicyOutputReference(this as any, "firewall_policy", true);
+  private _firewallPolicy = new NetworkfirewallFirewallPolicyFirewallPolicyOutputReference(this as any, "firewall_policy", true);
   public get firewallPolicy() {
-    return this.__firewallPolicyOutput;
+    return this._firewallPolicy;
   }
   public putFirewallPolicy(value: NetworkfirewallFirewallPolicyFirewallPolicy) {
-    this._firewallPolicy = value;
+    this._firewallPolicy.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get firewallPolicyInput() {
-    return this._firewallPolicy
+    return this._firewallPolicy.internalValue;
   }
 
   // =========
@@ -472,7 +551,7 @@ export class NetworkfirewallFirewallPolicy extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      firewall_policy: networkfirewallFirewallPolicyFirewallPolicyToTerraform(this._firewallPolicy),
+      firewall_policy: networkfirewallFirewallPolicyFirewallPolicyToTerraform(this._firewallPolicy.internalValue),
     };
   }
 }

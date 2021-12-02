@@ -218,6 +218,31 @@ export class CloudfrontDistributionDefaultCacheBehaviorForwardedValuesCookiesOut
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontDistributionDefaultCacheBehaviorForwardedValuesCookies | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._forward) {
+      hasAnyValues = true;
+      internalValueResult.forward = this._forward;
+    }
+    if (this._whitelistedNames) {
+      hasAnyValues = true;
+      internalValueResult.whitelistedNames = this._whitelistedNames;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontDistributionDefaultCacheBehaviorForwardedValuesCookies | undefined) {
+    if (value === undefined) {
+      this._forward = undefined;
+      this._whitelistedNames = undefined;
+    }
+    else {
+      this._forward = value.forward;
+      this._whitelistedNames = value.whitelistedNames;
+    }
+  }
+
   // forward - computed: false, optional: false, required: true
   private _forward?: string; 
   public get forward() {
@@ -228,15 +253,15 @@ export class CloudfrontDistributionDefaultCacheBehaviorForwardedValuesCookiesOut
   }
   // Temporarily expose input value. Use with caution.
   public get forwardInput() {
-    return this._forward
+    return this._forward;
   }
 
   // whitelisted_names - computed: true, optional: true, required: false
-  private _whitelistedNames?: string[] | undefined; 
+  private _whitelistedNames?: string[]; 
   public get whitelistedNames() {
     return this.getListAttribute('whitelisted_names');
   }
-  public set whitelistedNames(value: string[] | undefined) {
+  public set whitelistedNames(value: string[]) {
     this._whitelistedNames = value;
   }
   public resetWhitelistedNames() {
@@ -244,7 +269,7 @@ export class CloudfrontDistributionDefaultCacheBehaviorForwardedValuesCookiesOut
   }
   // Temporarily expose input value. Use with caution.
   public get whitelistedNamesInput() {
-    return this._whitelistedNames
+    return this._whitelistedNames;
   }
 }
 export interface CloudfrontDistributionDefaultCacheBehaviorForwardedValues {
@@ -291,12 +316,49 @@ export class CloudfrontDistributionDefaultCacheBehaviorForwardedValuesOutputRefe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontDistributionDefaultCacheBehaviorForwardedValues | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._headers) {
+      hasAnyValues = true;
+      internalValueResult.headers = this._headers;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString;
+    }
+    if (this._queryStringCacheKeys) {
+      hasAnyValues = true;
+      internalValueResult.queryStringCacheKeys = this._queryStringCacheKeys;
+    }
+    if (this._cookies) {
+      hasAnyValues = true;
+      internalValueResult.cookies = this._cookies?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontDistributionDefaultCacheBehaviorForwardedValues | undefined) {
+    if (value === undefined) {
+      this._headers = undefined;
+      this._queryString = undefined;
+      this._queryStringCacheKeys = undefined;
+      this._cookies.internalValue = undefined;
+    }
+    else {
+      this._headers = value.headers;
+      this._queryString = value.queryString;
+      this._queryStringCacheKeys = value.queryStringCacheKeys;
+      this._cookies.internalValue = value.cookies;
+    }
+  }
+
   // headers - computed: true, optional: true, required: false
-  private _headers?: string[] | undefined; 
+  private _headers?: string[]; 
   public get headers() {
     return this.getListAttribute('headers');
   }
-  public set headers(value: string[] | undefined) {
+  public set headers(value: string[]) {
     this._headers = value;
   }
   public resetHeaders() {
@@ -304,7 +366,7 @@ export class CloudfrontDistributionDefaultCacheBehaviorForwardedValuesOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get headersInput() {
-    return this._headers
+    return this._headers;
   }
 
   // query_string - computed: false, optional: false, required: true
@@ -317,15 +379,15 @@ export class CloudfrontDistributionDefaultCacheBehaviorForwardedValuesOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString;
   }
 
   // query_string_cache_keys - computed: true, optional: true, required: false
-  private _queryStringCacheKeys?: string[] | undefined; 
+  private _queryStringCacheKeys?: string[]; 
   public get queryStringCacheKeys() {
     return this.getListAttribute('query_string_cache_keys');
   }
-  public set queryStringCacheKeys(value: string[] | undefined) {
+  public set queryStringCacheKeys(value: string[]) {
     this._queryStringCacheKeys = value;
   }
   public resetQueryStringCacheKeys() {
@@ -333,21 +395,20 @@ export class CloudfrontDistributionDefaultCacheBehaviorForwardedValuesOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringCacheKeysInput() {
-    return this._queryStringCacheKeys
+    return this._queryStringCacheKeys;
   }
 
   // cookies - computed: false, optional: false, required: true
-  private _cookies?: CloudfrontDistributionDefaultCacheBehaviorForwardedValuesCookies; 
-  private __cookiesOutput = new CloudfrontDistributionDefaultCacheBehaviorForwardedValuesCookiesOutputReference(this as any, "cookies", true);
+  private _cookies = new CloudfrontDistributionDefaultCacheBehaviorForwardedValuesCookiesOutputReference(this as any, "cookies", true);
   public get cookies() {
-    return this.__cookiesOutput;
+    return this._cookies;
   }
   public putCookies(value: CloudfrontDistributionDefaultCacheBehaviorForwardedValuesCookies) {
-    this._cookies = value;
+    this._cookies.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get cookiesInput() {
-    return this._cookies
+    return this._cookies.internalValue;
   }
 }
 export interface CloudfrontDistributionDefaultCacheBehaviorFunctionAssociation {
@@ -522,6 +583,133 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontDistributionDefaultCacheBehavior | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allowedMethods) {
+      hasAnyValues = true;
+      internalValueResult.allowedMethods = this._allowedMethods;
+    }
+    if (this._cachePolicyId) {
+      hasAnyValues = true;
+      internalValueResult.cachePolicyId = this._cachePolicyId;
+    }
+    if (this._cachedMethods) {
+      hasAnyValues = true;
+      internalValueResult.cachedMethods = this._cachedMethods;
+    }
+    if (this._compress) {
+      hasAnyValues = true;
+      internalValueResult.compress = this._compress;
+    }
+    if (this._defaultTtl) {
+      hasAnyValues = true;
+      internalValueResult.defaultTtl = this._defaultTtl;
+    }
+    if (this._fieldLevelEncryptionId) {
+      hasAnyValues = true;
+      internalValueResult.fieldLevelEncryptionId = this._fieldLevelEncryptionId;
+    }
+    if (this._maxTtl) {
+      hasAnyValues = true;
+      internalValueResult.maxTtl = this._maxTtl;
+    }
+    if (this._minTtl) {
+      hasAnyValues = true;
+      internalValueResult.minTtl = this._minTtl;
+    }
+    if (this._originRequestPolicyId) {
+      hasAnyValues = true;
+      internalValueResult.originRequestPolicyId = this._originRequestPolicyId;
+    }
+    if (this._realtimeLogConfigArn) {
+      hasAnyValues = true;
+      internalValueResult.realtimeLogConfigArn = this._realtimeLogConfigArn;
+    }
+    if (this._responseHeadersPolicyId) {
+      hasAnyValues = true;
+      internalValueResult.responseHeadersPolicyId = this._responseHeadersPolicyId;
+    }
+    if (this._smoothStreaming) {
+      hasAnyValues = true;
+      internalValueResult.smoothStreaming = this._smoothStreaming;
+    }
+    if (this._targetOriginId) {
+      hasAnyValues = true;
+      internalValueResult.targetOriginId = this._targetOriginId;
+    }
+    if (this._trustedKeyGroups) {
+      hasAnyValues = true;
+      internalValueResult.trustedKeyGroups = this._trustedKeyGroups;
+    }
+    if (this._trustedSigners) {
+      hasAnyValues = true;
+      internalValueResult.trustedSigners = this._trustedSigners;
+    }
+    if (this._viewerProtocolPolicy) {
+      hasAnyValues = true;
+      internalValueResult.viewerProtocolPolicy = this._viewerProtocolPolicy;
+    }
+    if (this._forwardedValues) {
+      hasAnyValues = true;
+      internalValueResult.forwardedValues = this._forwardedValues?.internalValue;
+    }
+    if (this._functionAssociation) {
+      hasAnyValues = true;
+      internalValueResult.functionAssociation = this._functionAssociation;
+    }
+    if (this._lambdaFunctionAssociation) {
+      hasAnyValues = true;
+      internalValueResult.lambdaFunctionAssociation = this._lambdaFunctionAssociation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontDistributionDefaultCacheBehavior | undefined) {
+    if (value === undefined) {
+      this._allowedMethods = undefined;
+      this._cachePolicyId = undefined;
+      this._cachedMethods = undefined;
+      this._compress = undefined;
+      this._defaultTtl = undefined;
+      this._fieldLevelEncryptionId = undefined;
+      this._maxTtl = undefined;
+      this._minTtl = undefined;
+      this._originRequestPolicyId = undefined;
+      this._realtimeLogConfigArn = undefined;
+      this._responseHeadersPolicyId = undefined;
+      this._smoothStreaming = undefined;
+      this._targetOriginId = undefined;
+      this._trustedKeyGroups = undefined;
+      this._trustedSigners = undefined;
+      this._viewerProtocolPolicy = undefined;
+      this._forwardedValues.internalValue = undefined;
+      this._functionAssociation = undefined;
+      this._lambdaFunctionAssociation = undefined;
+    }
+    else {
+      this._allowedMethods = value.allowedMethods;
+      this._cachePolicyId = value.cachePolicyId;
+      this._cachedMethods = value.cachedMethods;
+      this._compress = value.compress;
+      this._defaultTtl = value.defaultTtl;
+      this._fieldLevelEncryptionId = value.fieldLevelEncryptionId;
+      this._maxTtl = value.maxTtl;
+      this._minTtl = value.minTtl;
+      this._originRequestPolicyId = value.originRequestPolicyId;
+      this._realtimeLogConfigArn = value.realtimeLogConfigArn;
+      this._responseHeadersPolicyId = value.responseHeadersPolicyId;
+      this._smoothStreaming = value.smoothStreaming;
+      this._targetOriginId = value.targetOriginId;
+      this._trustedKeyGroups = value.trustedKeyGroups;
+      this._trustedSigners = value.trustedSigners;
+      this._viewerProtocolPolicy = value.viewerProtocolPolicy;
+      this._forwardedValues.internalValue = value.forwardedValues;
+      this._functionAssociation = value.functionAssociation;
+      this._lambdaFunctionAssociation = value.lambdaFunctionAssociation;
+    }
+  }
+
   // allowed_methods - computed: false, optional: false, required: true
   private _allowedMethods?: string[]; 
   public get allowedMethods() {
@@ -532,15 +720,15 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get allowedMethodsInput() {
-    return this._allowedMethods
+    return this._allowedMethods;
   }
 
   // cache_policy_id - computed: false, optional: true, required: false
-  private _cachePolicyId?: string | undefined; 
+  private _cachePolicyId?: string; 
   public get cachePolicyId() {
     return this.getStringAttribute('cache_policy_id');
   }
-  public set cachePolicyId(value: string | undefined) {
+  public set cachePolicyId(value: string) {
     this._cachePolicyId = value;
   }
   public resetCachePolicyId() {
@@ -548,7 +736,7 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get cachePolicyIdInput() {
-    return this._cachePolicyId
+    return this._cachePolicyId;
   }
 
   // cached_methods - computed: false, optional: false, required: true
@@ -561,15 +749,15 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get cachedMethodsInput() {
-    return this._cachedMethods
+    return this._cachedMethods;
   }
 
   // compress - computed: false, optional: true, required: false
-  private _compress?: boolean | cdktf.IResolvable | undefined; 
+  private _compress?: boolean | cdktf.IResolvable; 
   public get compress() {
     return this.getBooleanAttribute('compress') as any;
   }
-  public set compress(value: boolean | cdktf.IResolvable | undefined) {
+  public set compress(value: boolean | cdktf.IResolvable) {
     this._compress = value;
   }
   public resetCompress() {
@@ -577,15 +765,15 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get compressInput() {
-    return this._compress
+    return this._compress;
   }
 
   // default_ttl - computed: true, optional: true, required: false
-  private _defaultTtl?: number | undefined; 
+  private _defaultTtl?: number; 
   public get defaultTtl() {
     return this.getNumberAttribute('default_ttl');
   }
-  public set defaultTtl(value: number | undefined) {
+  public set defaultTtl(value: number) {
     this._defaultTtl = value;
   }
   public resetDefaultTtl() {
@@ -593,15 +781,15 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get defaultTtlInput() {
-    return this._defaultTtl
+    return this._defaultTtl;
   }
 
   // field_level_encryption_id - computed: false, optional: true, required: false
-  private _fieldLevelEncryptionId?: string | undefined; 
+  private _fieldLevelEncryptionId?: string; 
   public get fieldLevelEncryptionId() {
     return this.getStringAttribute('field_level_encryption_id');
   }
-  public set fieldLevelEncryptionId(value: string | undefined) {
+  public set fieldLevelEncryptionId(value: string) {
     this._fieldLevelEncryptionId = value;
   }
   public resetFieldLevelEncryptionId() {
@@ -609,15 +797,15 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get fieldLevelEncryptionIdInput() {
-    return this._fieldLevelEncryptionId
+    return this._fieldLevelEncryptionId;
   }
 
   // max_ttl - computed: true, optional: true, required: false
-  private _maxTtl?: number | undefined; 
+  private _maxTtl?: number; 
   public get maxTtl() {
     return this.getNumberAttribute('max_ttl');
   }
-  public set maxTtl(value: number | undefined) {
+  public set maxTtl(value: number) {
     this._maxTtl = value;
   }
   public resetMaxTtl() {
@@ -625,15 +813,15 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get maxTtlInput() {
-    return this._maxTtl
+    return this._maxTtl;
   }
 
   // min_ttl - computed: false, optional: true, required: false
-  private _minTtl?: number | undefined; 
+  private _minTtl?: number; 
   public get minTtl() {
     return this.getNumberAttribute('min_ttl');
   }
-  public set minTtl(value: number | undefined) {
+  public set minTtl(value: number) {
     this._minTtl = value;
   }
   public resetMinTtl() {
@@ -641,15 +829,15 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get minTtlInput() {
-    return this._minTtl
+    return this._minTtl;
   }
 
   // origin_request_policy_id - computed: false, optional: true, required: false
-  private _originRequestPolicyId?: string | undefined; 
+  private _originRequestPolicyId?: string; 
   public get originRequestPolicyId() {
     return this.getStringAttribute('origin_request_policy_id');
   }
-  public set originRequestPolicyId(value: string | undefined) {
+  public set originRequestPolicyId(value: string) {
     this._originRequestPolicyId = value;
   }
   public resetOriginRequestPolicyId() {
@@ -657,15 +845,15 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get originRequestPolicyIdInput() {
-    return this._originRequestPolicyId
+    return this._originRequestPolicyId;
   }
 
   // realtime_log_config_arn - computed: false, optional: true, required: false
-  private _realtimeLogConfigArn?: string | undefined; 
+  private _realtimeLogConfigArn?: string; 
   public get realtimeLogConfigArn() {
     return this.getStringAttribute('realtime_log_config_arn');
   }
-  public set realtimeLogConfigArn(value: string | undefined) {
+  public set realtimeLogConfigArn(value: string) {
     this._realtimeLogConfigArn = value;
   }
   public resetRealtimeLogConfigArn() {
@@ -673,15 +861,15 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get realtimeLogConfigArnInput() {
-    return this._realtimeLogConfigArn
+    return this._realtimeLogConfigArn;
   }
 
   // response_headers_policy_id - computed: false, optional: true, required: false
-  private _responseHeadersPolicyId?: string | undefined; 
+  private _responseHeadersPolicyId?: string; 
   public get responseHeadersPolicyId() {
     return this.getStringAttribute('response_headers_policy_id');
   }
-  public set responseHeadersPolicyId(value: string | undefined) {
+  public set responseHeadersPolicyId(value: string) {
     this._responseHeadersPolicyId = value;
   }
   public resetResponseHeadersPolicyId() {
@@ -689,15 +877,15 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get responseHeadersPolicyIdInput() {
-    return this._responseHeadersPolicyId
+    return this._responseHeadersPolicyId;
   }
 
   // smooth_streaming - computed: false, optional: true, required: false
-  private _smoothStreaming?: boolean | cdktf.IResolvable | undefined; 
+  private _smoothStreaming?: boolean | cdktf.IResolvable; 
   public get smoothStreaming() {
     return this.getBooleanAttribute('smooth_streaming') as any;
   }
-  public set smoothStreaming(value: boolean | cdktf.IResolvable | undefined) {
+  public set smoothStreaming(value: boolean | cdktf.IResolvable) {
     this._smoothStreaming = value;
   }
   public resetSmoothStreaming() {
@@ -705,7 +893,7 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get smoothStreamingInput() {
-    return this._smoothStreaming
+    return this._smoothStreaming;
   }
 
   // target_origin_id - computed: false, optional: false, required: true
@@ -718,15 +906,15 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get targetOriginIdInput() {
-    return this._targetOriginId
+    return this._targetOriginId;
   }
 
   // trusted_key_groups - computed: true, optional: true, required: false
-  private _trustedKeyGroups?: string[] | undefined; 
+  private _trustedKeyGroups?: string[]; 
   public get trustedKeyGroups() {
     return this.getListAttribute('trusted_key_groups');
   }
-  public set trustedKeyGroups(value: string[] | undefined) {
+  public set trustedKeyGroups(value: string[]) {
     this._trustedKeyGroups = value;
   }
   public resetTrustedKeyGroups() {
@@ -734,15 +922,15 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get trustedKeyGroupsInput() {
-    return this._trustedKeyGroups
+    return this._trustedKeyGroups;
   }
 
   // trusted_signers - computed: true, optional: true, required: false
-  private _trustedSigners?: string[] | undefined; 
+  private _trustedSigners?: string[]; 
   public get trustedSigners() {
     return this.getListAttribute('trusted_signers');
   }
-  public set trustedSigners(value: string[] | undefined) {
+  public set trustedSigners(value: string[]) {
     this._trustedSigners = value;
   }
   public resetTrustedSigners() {
@@ -750,7 +938,7 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get trustedSignersInput() {
-    return this._trustedSigners
+    return this._trustedSigners;
   }
 
   // viewer_protocol_policy - computed: false, optional: false, required: true
@@ -763,33 +951,32 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get viewerProtocolPolicyInput() {
-    return this._viewerProtocolPolicy
+    return this._viewerProtocolPolicy;
   }
 
   // forwarded_values - computed: false, optional: true, required: false
-  private _forwardedValues?: CloudfrontDistributionDefaultCacheBehaviorForwardedValues | undefined; 
-  private __forwardedValuesOutput = new CloudfrontDistributionDefaultCacheBehaviorForwardedValuesOutputReference(this as any, "forwarded_values", true);
+  private _forwardedValues = new CloudfrontDistributionDefaultCacheBehaviorForwardedValuesOutputReference(this as any, "forwarded_values", true);
   public get forwardedValues() {
-    return this.__forwardedValuesOutput;
+    return this._forwardedValues;
   }
-  public putForwardedValues(value: CloudfrontDistributionDefaultCacheBehaviorForwardedValues | undefined) {
-    this._forwardedValues = value;
+  public putForwardedValues(value: CloudfrontDistributionDefaultCacheBehaviorForwardedValues) {
+    this._forwardedValues.internalValue = value;
   }
   public resetForwardedValues() {
-    this._forwardedValues = undefined;
+    this._forwardedValues.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get forwardedValuesInput() {
-    return this._forwardedValues
+    return this._forwardedValues.internalValue;
   }
 
   // function_association - computed: false, optional: true, required: false
-  private _functionAssociation?: CloudfrontDistributionDefaultCacheBehaviorFunctionAssociation[] | undefined; 
+  private _functionAssociation?: CloudfrontDistributionDefaultCacheBehaviorFunctionAssociation[]; 
   public get functionAssociation() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('function_association') as any;
   }
-  public set functionAssociation(value: CloudfrontDistributionDefaultCacheBehaviorFunctionAssociation[] | undefined) {
+  public set functionAssociation(value: CloudfrontDistributionDefaultCacheBehaviorFunctionAssociation[]) {
     this._functionAssociation = value;
   }
   public resetFunctionAssociation() {
@@ -797,16 +984,16 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get functionAssociationInput() {
-    return this._functionAssociation
+    return this._functionAssociation;
   }
 
   // lambda_function_association - computed: false, optional: true, required: false
-  private _lambdaFunctionAssociation?: CloudfrontDistributionDefaultCacheBehaviorLambdaFunctionAssociation[] | undefined; 
+  private _lambdaFunctionAssociation?: CloudfrontDistributionDefaultCacheBehaviorLambdaFunctionAssociation[]; 
   public get lambdaFunctionAssociation() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('lambda_function_association') as any;
   }
-  public set lambdaFunctionAssociation(value: CloudfrontDistributionDefaultCacheBehaviorLambdaFunctionAssociation[] | undefined) {
+  public set lambdaFunctionAssociation(value: CloudfrontDistributionDefaultCacheBehaviorLambdaFunctionAssociation[]) {
     this._lambdaFunctionAssociation = value;
   }
   public resetLambdaFunctionAssociation() {
@@ -814,7 +1001,7 @@ export class CloudfrontDistributionDefaultCacheBehaviorOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get lambdaFunctionAssociationInput() {
-    return this._lambdaFunctionAssociation
+    return this._lambdaFunctionAssociation;
   }
 }
 export interface CloudfrontDistributionLoggingConfig {
@@ -854,6 +1041,37 @@ export class CloudfrontDistributionLoggingConfigOutputReference extends cdktf.Co
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontDistributionLoggingConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucket) {
+      hasAnyValues = true;
+      internalValueResult.bucket = this._bucket;
+    }
+    if (this._includeCookies) {
+      hasAnyValues = true;
+      internalValueResult.includeCookies = this._includeCookies;
+    }
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontDistributionLoggingConfig | undefined) {
+    if (value === undefined) {
+      this._bucket = undefined;
+      this._includeCookies = undefined;
+      this._prefix = undefined;
+    }
+    else {
+      this._bucket = value.bucket;
+      this._includeCookies = value.includeCookies;
+      this._prefix = value.prefix;
+    }
+  }
+
   // bucket - computed: false, optional: false, required: true
   private _bucket?: string; 
   public get bucket() {
@@ -864,15 +1082,15 @@ export class CloudfrontDistributionLoggingConfigOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // include_cookies - computed: false, optional: true, required: false
-  private _includeCookies?: boolean | cdktf.IResolvable | undefined; 
+  private _includeCookies?: boolean | cdktf.IResolvable; 
   public get includeCookies() {
     return this.getBooleanAttribute('include_cookies') as any;
   }
-  public set includeCookies(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeCookies(value: boolean | cdktf.IResolvable) {
     this._includeCookies = value;
   }
   public resetIncludeCookies() {
@@ -880,15 +1098,15 @@ export class CloudfrontDistributionLoggingConfigOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get includeCookiesInput() {
-    return this._includeCookies
+    return this._includeCookies;
   }
 
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -896,7 +1114,7 @@ export class CloudfrontDistributionLoggingConfigOutputReference extends cdktf.Co
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 }
 export interface CloudfrontDistributionOrderedCacheBehaviorForwardedValuesCookies {
@@ -931,6 +1149,31 @@ export class CloudfrontDistributionOrderedCacheBehaviorForwardedValuesCookiesOut
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontDistributionOrderedCacheBehaviorForwardedValuesCookies | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._forward) {
+      hasAnyValues = true;
+      internalValueResult.forward = this._forward;
+    }
+    if (this._whitelistedNames) {
+      hasAnyValues = true;
+      internalValueResult.whitelistedNames = this._whitelistedNames;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontDistributionOrderedCacheBehaviorForwardedValuesCookies | undefined) {
+    if (value === undefined) {
+      this._forward = undefined;
+      this._whitelistedNames = undefined;
+    }
+    else {
+      this._forward = value.forward;
+      this._whitelistedNames = value.whitelistedNames;
+    }
+  }
+
   // forward - computed: false, optional: false, required: true
   private _forward?: string; 
   public get forward() {
@@ -941,15 +1184,15 @@ export class CloudfrontDistributionOrderedCacheBehaviorForwardedValuesCookiesOut
   }
   // Temporarily expose input value. Use with caution.
   public get forwardInput() {
-    return this._forward
+    return this._forward;
   }
 
   // whitelisted_names - computed: false, optional: true, required: false
-  private _whitelistedNames?: string[] | undefined; 
+  private _whitelistedNames?: string[]; 
   public get whitelistedNames() {
     return this.getListAttribute('whitelisted_names');
   }
-  public set whitelistedNames(value: string[] | undefined) {
+  public set whitelistedNames(value: string[]) {
     this._whitelistedNames = value;
   }
   public resetWhitelistedNames() {
@@ -957,7 +1200,7 @@ export class CloudfrontDistributionOrderedCacheBehaviorForwardedValuesCookiesOut
   }
   // Temporarily expose input value. Use with caution.
   public get whitelistedNamesInput() {
-    return this._whitelistedNames
+    return this._whitelistedNames;
   }
 }
 export interface CloudfrontDistributionOrderedCacheBehaviorForwardedValues {
@@ -1004,12 +1247,49 @@ export class CloudfrontDistributionOrderedCacheBehaviorForwardedValuesOutputRefe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontDistributionOrderedCacheBehaviorForwardedValues | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._headers) {
+      hasAnyValues = true;
+      internalValueResult.headers = this._headers;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString;
+    }
+    if (this._queryStringCacheKeys) {
+      hasAnyValues = true;
+      internalValueResult.queryStringCacheKeys = this._queryStringCacheKeys;
+    }
+    if (this._cookies) {
+      hasAnyValues = true;
+      internalValueResult.cookies = this._cookies?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontDistributionOrderedCacheBehaviorForwardedValues | undefined) {
+    if (value === undefined) {
+      this._headers = undefined;
+      this._queryString = undefined;
+      this._queryStringCacheKeys = undefined;
+      this._cookies.internalValue = undefined;
+    }
+    else {
+      this._headers = value.headers;
+      this._queryString = value.queryString;
+      this._queryStringCacheKeys = value.queryStringCacheKeys;
+      this._cookies.internalValue = value.cookies;
+    }
+  }
+
   // headers - computed: true, optional: true, required: false
-  private _headers?: string[] | undefined; 
+  private _headers?: string[]; 
   public get headers() {
     return this.getListAttribute('headers');
   }
-  public set headers(value: string[] | undefined) {
+  public set headers(value: string[]) {
     this._headers = value;
   }
   public resetHeaders() {
@@ -1017,7 +1297,7 @@ export class CloudfrontDistributionOrderedCacheBehaviorForwardedValuesOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get headersInput() {
-    return this._headers
+    return this._headers;
   }
 
   // query_string - computed: false, optional: false, required: true
@@ -1030,15 +1310,15 @@ export class CloudfrontDistributionOrderedCacheBehaviorForwardedValuesOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString;
   }
 
   // query_string_cache_keys - computed: true, optional: true, required: false
-  private _queryStringCacheKeys?: string[] | undefined; 
+  private _queryStringCacheKeys?: string[]; 
   public get queryStringCacheKeys() {
     return this.getListAttribute('query_string_cache_keys');
   }
-  public set queryStringCacheKeys(value: string[] | undefined) {
+  public set queryStringCacheKeys(value: string[]) {
     this._queryStringCacheKeys = value;
   }
   public resetQueryStringCacheKeys() {
@@ -1046,21 +1326,20 @@ export class CloudfrontDistributionOrderedCacheBehaviorForwardedValuesOutputRefe
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringCacheKeysInput() {
-    return this._queryStringCacheKeys
+    return this._queryStringCacheKeys;
   }
 
   // cookies - computed: false, optional: false, required: true
-  private _cookies?: CloudfrontDistributionOrderedCacheBehaviorForwardedValuesCookies; 
-  private __cookiesOutput = new CloudfrontDistributionOrderedCacheBehaviorForwardedValuesCookiesOutputReference(this as any, "cookies", true);
+  private _cookies = new CloudfrontDistributionOrderedCacheBehaviorForwardedValuesCookiesOutputReference(this as any, "cookies", true);
   public get cookies() {
-    return this.__cookiesOutput;
+    return this._cookies;
   }
   public putCookies(value: CloudfrontDistributionOrderedCacheBehaviorForwardedValuesCookies) {
-    this._cookies = value;
+    this._cookies.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get cookiesInput() {
-    return this._cookies
+    return this._cookies.internalValue;
   }
 }
 export interface CloudfrontDistributionOrderedCacheBehaviorFunctionAssociation {
@@ -1304,6 +1583,55 @@ export class CloudfrontDistributionOriginCustomOriginConfigOutputReference exten
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontDistributionOriginCustomOriginConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._httpPort) {
+      hasAnyValues = true;
+      internalValueResult.httpPort = this._httpPort;
+    }
+    if (this._httpsPort) {
+      hasAnyValues = true;
+      internalValueResult.httpsPort = this._httpsPort;
+    }
+    if (this._originKeepaliveTimeout) {
+      hasAnyValues = true;
+      internalValueResult.originKeepaliveTimeout = this._originKeepaliveTimeout;
+    }
+    if (this._originProtocolPolicy) {
+      hasAnyValues = true;
+      internalValueResult.originProtocolPolicy = this._originProtocolPolicy;
+    }
+    if (this._originReadTimeout) {
+      hasAnyValues = true;
+      internalValueResult.originReadTimeout = this._originReadTimeout;
+    }
+    if (this._originSslProtocols) {
+      hasAnyValues = true;
+      internalValueResult.originSslProtocols = this._originSslProtocols;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontDistributionOriginCustomOriginConfig | undefined) {
+    if (value === undefined) {
+      this._httpPort = undefined;
+      this._httpsPort = undefined;
+      this._originKeepaliveTimeout = undefined;
+      this._originProtocolPolicy = undefined;
+      this._originReadTimeout = undefined;
+      this._originSslProtocols = undefined;
+    }
+    else {
+      this._httpPort = value.httpPort;
+      this._httpsPort = value.httpsPort;
+      this._originKeepaliveTimeout = value.originKeepaliveTimeout;
+      this._originProtocolPolicy = value.originProtocolPolicy;
+      this._originReadTimeout = value.originReadTimeout;
+      this._originSslProtocols = value.originSslProtocols;
+    }
+  }
+
   // http_port - computed: false, optional: false, required: true
   private _httpPort?: number; 
   public get httpPort() {
@@ -1314,7 +1642,7 @@ export class CloudfrontDistributionOriginCustomOriginConfigOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get httpPortInput() {
-    return this._httpPort
+    return this._httpPort;
   }
 
   // https_port - computed: false, optional: false, required: true
@@ -1327,15 +1655,15 @@ export class CloudfrontDistributionOriginCustomOriginConfigOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get httpsPortInput() {
-    return this._httpsPort
+    return this._httpsPort;
   }
 
   // origin_keepalive_timeout - computed: false, optional: true, required: false
-  private _originKeepaliveTimeout?: number | undefined; 
+  private _originKeepaliveTimeout?: number; 
   public get originKeepaliveTimeout() {
     return this.getNumberAttribute('origin_keepalive_timeout');
   }
-  public set originKeepaliveTimeout(value: number | undefined) {
+  public set originKeepaliveTimeout(value: number) {
     this._originKeepaliveTimeout = value;
   }
   public resetOriginKeepaliveTimeout() {
@@ -1343,7 +1671,7 @@ export class CloudfrontDistributionOriginCustomOriginConfigOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get originKeepaliveTimeoutInput() {
-    return this._originKeepaliveTimeout
+    return this._originKeepaliveTimeout;
   }
 
   // origin_protocol_policy - computed: false, optional: false, required: true
@@ -1356,15 +1684,15 @@ export class CloudfrontDistributionOriginCustomOriginConfigOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get originProtocolPolicyInput() {
-    return this._originProtocolPolicy
+    return this._originProtocolPolicy;
   }
 
   // origin_read_timeout - computed: false, optional: true, required: false
-  private _originReadTimeout?: number | undefined; 
+  private _originReadTimeout?: number; 
   public get originReadTimeout() {
     return this.getNumberAttribute('origin_read_timeout');
   }
-  public set originReadTimeout(value: number | undefined) {
+  public set originReadTimeout(value: number) {
     this._originReadTimeout = value;
   }
   public resetOriginReadTimeout() {
@@ -1372,7 +1700,7 @@ export class CloudfrontDistributionOriginCustomOriginConfigOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get originReadTimeoutInput() {
-    return this._originReadTimeout
+    return this._originReadTimeout;
   }
 
   // origin_ssl_protocols - computed: false, optional: false, required: true
@@ -1385,7 +1713,7 @@ export class CloudfrontDistributionOriginCustomOriginConfigOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get originSslProtocolsInput() {
-    return this._originSslProtocols
+    return this._originSslProtocols;
   }
 }
 export interface CloudfrontDistributionOriginOriginShield {
@@ -1420,6 +1748,31 @@ export class CloudfrontDistributionOriginOriginShieldOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontDistributionOriginOriginShield | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._originShieldRegion) {
+      hasAnyValues = true;
+      internalValueResult.originShieldRegion = this._originShieldRegion;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontDistributionOriginOriginShield | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._originShieldRegion = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._originShieldRegion = value.originShieldRegion;
+    }
+  }
+
   // enabled - computed: false, optional: false, required: true
   private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
@@ -1430,7 +1783,7 @@ export class CloudfrontDistributionOriginOriginShieldOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // origin_shield_region - computed: false, optional: false, required: true
@@ -1443,7 +1796,7 @@ export class CloudfrontDistributionOriginOriginShieldOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get originShieldRegionInput() {
-    return this._originShieldRegion
+    return this._originShieldRegion;
   }
 }
 export interface CloudfrontDistributionOriginS3OriginConfig {
@@ -1473,6 +1826,25 @@ export class CloudfrontDistributionOriginS3OriginConfigOutputReference extends c
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontDistributionOriginS3OriginConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._originAccessIdentity) {
+      hasAnyValues = true;
+      internalValueResult.originAccessIdentity = this._originAccessIdentity;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontDistributionOriginS3OriginConfig | undefined) {
+    if (value === undefined) {
+      this._originAccessIdentity = undefined;
+    }
+    else {
+      this._originAccessIdentity = value.originAccessIdentity;
+    }
+  }
+
   // origin_access_identity - computed: false, optional: false, required: true
   private _originAccessIdentity?: string; 
   public get originAccessIdentity() {
@@ -1483,7 +1855,7 @@ export class CloudfrontDistributionOriginS3OriginConfigOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get originAccessIdentityInput() {
-    return this._originAccessIdentity
+    return this._originAccessIdentity;
   }
 }
 export interface CloudfrontDistributionOrigin {
@@ -1578,6 +1950,25 @@ export class CloudfrontDistributionOriginGroupFailoverCriteriaOutputReference ex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontDistributionOriginGroupFailoverCriteria | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._statusCodes) {
+      hasAnyValues = true;
+      internalValueResult.statusCodes = this._statusCodes;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontDistributionOriginGroupFailoverCriteria | undefined) {
+    if (value === undefined) {
+      this._statusCodes = undefined;
+    }
+    else {
+      this._statusCodes = value.statusCodes;
+    }
+  }
+
   // status_codes - computed: false, optional: false, required: true
   private _statusCodes?: number[]; 
   public get statusCodes() {
@@ -1589,7 +1980,7 @@ export class CloudfrontDistributionOriginGroupFailoverCriteriaOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get statusCodesInput() {
-    return this._statusCodes
+    return this._statusCodes;
   }
 }
 export interface CloudfrontDistributionOriginGroupMember {
@@ -1672,12 +2063,37 @@ export class CloudfrontDistributionRestrictionsGeoRestrictionOutputReference ext
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontDistributionRestrictionsGeoRestriction | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._locations) {
+      hasAnyValues = true;
+      internalValueResult.locations = this._locations;
+    }
+    if (this._restrictionType) {
+      hasAnyValues = true;
+      internalValueResult.restrictionType = this._restrictionType;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontDistributionRestrictionsGeoRestriction | undefined) {
+    if (value === undefined) {
+      this._locations = undefined;
+      this._restrictionType = undefined;
+    }
+    else {
+      this._locations = value.locations;
+      this._restrictionType = value.restrictionType;
+    }
+  }
+
   // locations - computed: true, optional: true, required: false
-  private _locations?: string[] | undefined; 
+  private _locations?: string[]; 
   public get locations() {
     return this.getListAttribute('locations');
   }
-  public set locations(value: string[] | undefined) {
+  public set locations(value: string[]) {
     this._locations = value;
   }
   public resetLocations() {
@@ -1685,7 +2101,7 @@ export class CloudfrontDistributionRestrictionsGeoRestrictionOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get locationsInput() {
-    return this._locations
+    return this._locations;
   }
 
   // restriction_type - computed: false, optional: false, required: true
@@ -1698,7 +2114,7 @@ export class CloudfrontDistributionRestrictionsGeoRestrictionOutputReference ext
   }
   // Temporarily expose input value. Use with caution.
   public get restrictionTypeInput() {
-    return this._restrictionType
+    return this._restrictionType;
   }
 }
 export interface CloudfrontDistributionRestrictions {
@@ -1730,18 +2146,36 @@ export class CloudfrontDistributionRestrictionsOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontDistributionRestrictions | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._geoRestriction) {
+      hasAnyValues = true;
+      internalValueResult.geoRestriction = this._geoRestriction?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontDistributionRestrictions | undefined) {
+    if (value === undefined) {
+      this._geoRestriction.internalValue = undefined;
+    }
+    else {
+      this._geoRestriction.internalValue = value.geoRestriction;
+    }
+  }
+
   // geo_restriction - computed: false, optional: false, required: true
-  private _geoRestriction?: CloudfrontDistributionRestrictionsGeoRestriction; 
-  private __geoRestrictionOutput = new CloudfrontDistributionRestrictionsGeoRestrictionOutputReference(this as any, "geo_restriction", true);
+  private _geoRestriction = new CloudfrontDistributionRestrictionsGeoRestrictionOutputReference(this as any, "geo_restriction", true);
   public get geoRestriction() {
-    return this.__geoRestrictionOutput;
+    return this._geoRestriction;
   }
   public putGeoRestriction(value: CloudfrontDistributionRestrictionsGeoRestriction) {
-    this._geoRestriction = value;
+    this._geoRestriction.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get geoRestrictionInput() {
-    return this._geoRestriction
+    return this._geoRestriction.internalValue;
   }
 }
 export interface CloudfrontDistributionViewerCertificate {
@@ -1791,12 +2225,55 @@ export class CloudfrontDistributionViewerCertificateOutputReference extends cdkt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CloudfrontDistributionViewerCertificate | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._acmCertificateArn) {
+      hasAnyValues = true;
+      internalValueResult.acmCertificateArn = this._acmCertificateArn;
+    }
+    if (this._cloudfrontDefaultCertificate) {
+      hasAnyValues = true;
+      internalValueResult.cloudfrontDefaultCertificate = this._cloudfrontDefaultCertificate;
+    }
+    if (this._iamCertificateId) {
+      hasAnyValues = true;
+      internalValueResult.iamCertificateId = this._iamCertificateId;
+    }
+    if (this._minimumProtocolVersion) {
+      hasAnyValues = true;
+      internalValueResult.minimumProtocolVersion = this._minimumProtocolVersion;
+    }
+    if (this._sslSupportMethod) {
+      hasAnyValues = true;
+      internalValueResult.sslSupportMethod = this._sslSupportMethod;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CloudfrontDistributionViewerCertificate | undefined) {
+    if (value === undefined) {
+      this._acmCertificateArn = undefined;
+      this._cloudfrontDefaultCertificate = undefined;
+      this._iamCertificateId = undefined;
+      this._minimumProtocolVersion = undefined;
+      this._sslSupportMethod = undefined;
+    }
+    else {
+      this._acmCertificateArn = value.acmCertificateArn;
+      this._cloudfrontDefaultCertificate = value.cloudfrontDefaultCertificate;
+      this._iamCertificateId = value.iamCertificateId;
+      this._minimumProtocolVersion = value.minimumProtocolVersion;
+      this._sslSupportMethod = value.sslSupportMethod;
+    }
+  }
+
   // acm_certificate_arn - computed: false, optional: true, required: false
-  private _acmCertificateArn?: string | undefined; 
+  private _acmCertificateArn?: string; 
   public get acmCertificateArn() {
     return this.getStringAttribute('acm_certificate_arn');
   }
-  public set acmCertificateArn(value: string | undefined) {
+  public set acmCertificateArn(value: string) {
     this._acmCertificateArn = value;
   }
   public resetAcmCertificateArn() {
@@ -1804,15 +2281,15 @@ export class CloudfrontDistributionViewerCertificateOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get acmCertificateArnInput() {
-    return this._acmCertificateArn
+    return this._acmCertificateArn;
   }
 
   // cloudfront_default_certificate - computed: false, optional: true, required: false
-  private _cloudfrontDefaultCertificate?: boolean | cdktf.IResolvable | undefined; 
+  private _cloudfrontDefaultCertificate?: boolean | cdktf.IResolvable; 
   public get cloudfrontDefaultCertificate() {
     return this.getBooleanAttribute('cloudfront_default_certificate') as any;
   }
-  public set cloudfrontDefaultCertificate(value: boolean | cdktf.IResolvable | undefined) {
+  public set cloudfrontDefaultCertificate(value: boolean | cdktf.IResolvable) {
     this._cloudfrontDefaultCertificate = value;
   }
   public resetCloudfrontDefaultCertificate() {
@@ -1820,15 +2297,15 @@ export class CloudfrontDistributionViewerCertificateOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get cloudfrontDefaultCertificateInput() {
-    return this._cloudfrontDefaultCertificate
+    return this._cloudfrontDefaultCertificate;
   }
 
   // iam_certificate_id - computed: false, optional: true, required: false
-  private _iamCertificateId?: string | undefined; 
+  private _iamCertificateId?: string; 
   public get iamCertificateId() {
     return this.getStringAttribute('iam_certificate_id');
   }
-  public set iamCertificateId(value: string | undefined) {
+  public set iamCertificateId(value: string) {
     this._iamCertificateId = value;
   }
   public resetIamCertificateId() {
@@ -1836,15 +2313,15 @@ export class CloudfrontDistributionViewerCertificateOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get iamCertificateIdInput() {
-    return this._iamCertificateId
+    return this._iamCertificateId;
   }
 
   // minimum_protocol_version - computed: false, optional: true, required: false
-  private _minimumProtocolVersion?: string | undefined; 
+  private _minimumProtocolVersion?: string; 
   public get minimumProtocolVersion() {
     return this.getStringAttribute('minimum_protocol_version');
   }
-  public set minimumProtocolVersion(value: string | undefined) {
+  public set minimumProtocolVersion(value: string) {
     this._minimumProtocolVersion = value;
   }
   public resetMinimumProtocolVersion() {
@@ -1852,15 +2329,15 @@ export class CloudfrontDistributionViewerCertificateOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get minimumProtocolVersionInput() {
-    return this._minimumProtocolVersion
+    return this._minimumProtocolVersion;
   }
 
   // ssl_support_method - computed: false, optional: true, required: false
-  private _sslSupportMethod?: string | undefined; 
+  private _sslSupportMethod?: string; 
   public get sslSupportMethod() {
     return this.getStringAttribute('ssl_support_method');
   }
-  public set sslSupportMethod(value: string | undefined) {
+  public set sslSupportMethod(value: string) {
     this._sslSupportMethod = value;
   }
   public resetSslSupportMethod() {
@@ -1868,7 +2345,7 @@ export class CloudfrontDistributionViewerCertificateOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get sslSupportMethodInput() {
-    return this._sslSupportMethod
+    return this._sslSupportMethod;
   }
 }
 
@@ -1917,13 +2394,13 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
     this._waitForDeployment = config.waitForDeployment;
     this._webAclId = config.webAclId;
     this._customErrorResponse = config.customErrorResponse;
-    this._defaultCacheBehavior = config.defaultCacheBehavior;
-    this._loggingConfig = config.loggingConfig;
+    this._defaultCacheBehavior.internalValue = config.defaultCacheBehavior;
+    this._loggingConfig.internalValue = config.loggingConfig;
     this._orderedCacheBehavior = config.orderedCacheBehavior;
     this._origin = config.origin;
     this._originGroup = config.originGroup;
-    this._restrictions = config.restrictions;
-    this._viewerCertificate = config.viewerCertificate;
+    this._restrictions.internalValue = config.restrictions;
+    this._viewerCertificate.internalValue = config.viewerCertificate;
   }
 
   // ==========
@@ -1931,11 +2408,11 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   // ==========
 
   // aliases - computed: false, optional: true, required: false
-  private _aliases?: string[] | undefined; 
+  private _aliases?: string[]; 
   public get aliases() {
     return this.getListAttribute('aliases');
   }
-  public set aliases(value: string[] | undefined) {
+  public set aliases(value: string[]) {
     this._aliases = value;
   }
   public resetAliases() {
@@ -1943,7 +2420,7 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get aliasesInput() {
-    return this._aliases
+    return this._aliases;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -1957,11 +2434,11 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
 
   // comment - computed: false, optional: true, required: false
-  private _comment?: string | undefined; 
+  private _comment?: string; 
   public get comment() {
     return this.getStringAttribute('comment');
   }
-  public set comment(value: string | undefined) {
+  public set comment(value: string) {
     this._comment = value;
   }
   public resetComment() {
@@ -1969,15 +2446,15 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get commentInput() {
-    return this._comment
+    return this._comment;
   }
 
   // default_root_object - computed: false, optional: true, required: false
-  private _defaultRootObject?: string | undefined; 
+  private _defaultRootObject?: string; 
   public get defaultRootObject() {
     return this.getStringAttribute('default_root_object');
   }
-  public set defaultRootObject(value: string | undefined) {
+  public set defaultRootObject(value: string) {
     this._defaultRootObject = value;
   }
   public resetDefaultRootObject() {
@@ -1985,7 +2462,7 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultRootObjectInput() {
-    return this._defaultRootObject
+    return this._defaultRootObject;
   }
 
   // domain_name - computed: true, optional: false, required: false
@@ -2003,7 +2480,7 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // etag - computed: true, optional: false, required: false
@@ -2017,11 +2494,11 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
 
   // http_version - computed: false, optional: true, required: false
-  private _httpVersion?: string | undefined; 
+  private _httpVersion?: string; 
   public get httpVersion() {
     return this.getStringAttribute('http_version');
   }
-  public set httpVersion(value: string | undefined) {
+  public set httpVersion(value: string) {
     this._httpVersion = value;
   }
   public resetHttpVersion() {
@@ -2029,7 +2506,7 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get httpVersionInput() {
-    return this._httpVersion
+    return this._httpVersion;
   }
 
   // id - computed: true, optional: true, required: false
@@ -2043,11 +2520,11 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
 
   // is_ipv6_enabled - computed: false, optional: true, required: false
-  private _isIpv6Enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _isIpv6Enabled?: boolean | cdktf.IResolvable; 
   public get isIpv6Enabled() {
     return this.getBooleanAttribute('is_ipv6_enabled') as any;
   }
-  public set isIpv6Enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set isIpv6Enabled(value: boolean | cdktf.IResolvable) {
     this._isIpv6Enabled = value;
   }
   public resetIsIpv6Enabled() {
@@ -2055,7 +2532,7 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get isIpv6EnabledInput() {
-    return this._isIpv6Enabled
+    return this._isIpv6Enabled;
   }
 
   // last_modified_time - computed: true, optional: false, required: false
@@ -2064,11 +2541,11 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
 
   // price_class - computed: false, optional: true, required: false
-  private _priceClass?: string | undefined; 
+  private _priceClass?: string; 
   public get priceClass() {
     return this.getStringAttribute('price_class');
   }
-  public set priceClass(value: string | undefined) {
+  public set priceClass(value: string) {
     this._priceClass = value;
   }
   public resetPriceClass() {
@@ -2076,15 +2553,15 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get priceClassInput() {
-    return this._priceClass
+    return this._priceClass;
   }
 
   // retain_on_delete - computed: false, optional: true, required: false
-  private _retainOnDelete?: boolean | cdktf.IResolvable | undefined; 
+  private _retainOnDelete?: boolean | cdktf.IResolvable; 
   public get retainOnDelete() {
     return this.getBooleanAttribute('retain_on_delete') as any;
   }
-  public set retainOnDelete(value: boolean | cdktf.IResolvable | undefined) {
+  public set retainOnDelete(value: boolean | cdktf.IResolvable) {
     this._retainOnDelete = value;
   }
   public resetRetainOnDelete() {
@@ -2092,7 +2569,7 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get retainOnDeleteInput() {
-    return this._retainOnDelete
+    return this._retainOnDelete;
   }
 
   // status - computed: true, optional: false, required: false
@@ -2101,12 +2578,12 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -2114,16 +2591,16 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -2131,7 +2608,7 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // trusted_key_groups - computed: true, optional: false, required: false
@@ -2145,11 +2622,11 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
 
   // wait_for_deployment - computed: false, optional: true, required: false
-  private _waitForDeployment?: boolean | cdktf.IResolvable | undefined; 
+  private _waitForDeployment?: boolean | cdktf.IResolvable; 
   public get waitForDeployment() {
     return this.getBooleanAttribute('wait_for_deployment') as any;
   }
-  public set waitForDeployment(value: boolean | cdktf.IResolvable | undefined) {
+  public set waitForDeployment(value: boolean | cdktf.IResolvable) {
     this._waitForDeployment = value;
   }
   public resetWaitForDeployment() {
@@ -2157,15 +2634,15 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get waitForDeploymentInput() {
-    return this._waitForDeployment
+    return this._waitForDeployment;
   }
 
   // web_acl_id - computed: false, optional: true, required: false
-  private _webAclId?: string | undefined; 
+  private _webAclId?: string; 
   public get webAclId() {
     return this.getStringAttribute('web_acl_id');
   }
-  public set webAclId(value: string | undefined) {
+  public set webAclId(value: string) {
     this._webAclId = value;
   }
   public resetWebAclId() {
@@ -2173,16 +2650,16 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get webAclIdInput() {
-    return this._webAclId
+    return this._webAclId;
   }
 
   // custom_error_response - computed: false, optional: true, required: false
-  private _customErrorResponse?: CloudfrontDistributionCustomErrorResponse[] | undefined; 
+  private _customErrorResponse?: CloudfrontDistributionCustomErrorResponse[]; 
   public get customErrorResponse() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('custom_error_response') as any;
   }
-  public set customErrorResponse(value: CloudfrontDistributionCustomErrorResponse[] | undefined) {
+  public set customErrorResponse(value: CloudfrontDistributionCustomErrorResponse[]) {
     this._customErrorResponse = value;
   }
   public resetCustomErrorResponse() {
@@ -2190,47 +2667,45 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customErrorResponseInput() {
-    return this._customErrorResponse
+    return this._customErrorResponse;
   }
 
   // default_cache_behavior - computed: false, optional: false, required: true
-  private _defaultCacheBehavior?: CloudfrontDistributionDefaultCacheBehavior; 
-  private __defaultCacheBehaviorOutput = new CloudfrontDistributionDefaultCacheBehaviorOutputReference(this as any, "default_cache_behavior", true);
+  private _defaultCacheBehavior = new CloudfrontDistributionDefaultCacheBehaviorOutputReference(this as any, "default_cache_behavior", true);
   public get defaultCacheBehavior() {
-    return this.__defaultCacheBehaviorOutput;
+    return this._defaultCacheBehavior;
   }
   public putDefaultCacheBehavior(value: CloudfrontDistributionDefaultCacheBehavior) {
-    this._defaultCacheBehavior = value;
+    this._defaultCacheBehavior.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get defaultCacheBehaviorInput() {
-    return this._defaultCacheBehavior
+    return this._defaultCacheBehavior.internalValue;
   }
 
   // logging_config - computed: false, optional: true, required: false
-  private _loggingConfig?: CloudfrontDistributionLoggingConfig | undefined; 
-  private __loggingConfigOutput = new CloudfrontDistributionLoggingConfigOutputReference(this as any, "logging_config", true);
+  private _loggingConfig = new CloudfrontDistributionLoggingConfigOutputReference(this as any, "logging_config", true);
   public get loggingConfig() {
-    return this.__loggingConfigOutput;
+    return this._loggingConfig;
   }
-  public putLoggingConfig(value: CloudfrontDistributionLoggingConfig | undefined) {
-    this._loggingConfig = value;
+  public putLoggingConfig(value: CloudfrontDistributionLoggingConfig) {
+    this._loggingConfig.internalValue = value;
   }
   public resetLoggingConfig() {
-    this._loggingConfig = undefined;
+    this._loggingConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get loggingConfigInput() {
-    return this._loggingConfig
+    return this._loggingConfig.internalValue;
   }
 
   // ordered_cache_behavior - computed: false, optional: true, required: false
-  private _orderedCacheBehavior?: CloudfrontDistributionOrderedCacheBehavior[] | undefined; 
+  private _orderedCacheBehavior?: CloudfrontDistributionOrderedCacheBehavior[]; 
   public get orderedCacheBehavior() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ordered_cache_behavior') as any;
   }
-  public set orderedCacheBehavior(value: CloudfrontDistributionOrderedCacheBehavior[] | undefined) {
+  public set orderedCacheBehavior(value: CloudfrontDistributionOrderedCacheBehavior[]) {
     this._orderedCacheBehavior = value;
   }
   public resetOrderedCacheBehavior() {
@@ -2238,7 +2713,7 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get orderedCacheBehaviorInput() {
-    return this._orderedCacheBehavior
+    return this._orderedCacheBehavior;
   }
 
   // origin - computed: false, optional: false, required: true
@@ -2252,16 +2727,16 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get originInput() {
-    return this._origin
+    return this._origin;
   }
 
   // origin_group - computed: false, optional: true, required: false
-  private _originGroup?: CloudfrontDistributionOriginGroup[] | undefined; 
+  private _originGroup?: CloudfrontDistributionOriginGroup[]; 
   public get originGroup() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('origin_group') as any;
   }
-  public set originGroup(value: CloudfrontDistributionOriginGroup[] | undefined) {
+  public set originGroup(value: CloudfrontDistributionOriginGroup[]) {
     this._originGroup = value;
   }
   public resetOriginGroup() {
@@ -2269,35 +2744,33 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get originGroupInput() {
-    return this._originGroup
+    return this._originGroup;
   }
 
   // restrictions - computed: false, optional: false, required: true
-  private _restrictions?: CloudfrontDistributionRestrictions; 
-  private __restrictionsOutput = new CloudfrontDistributionRestrictionsOutputReference(this as any, "restrictions", true);
+  private _restrictions = new CloudfrontDistributionRestrictionsOutputReference(this as any, "restrictions", true);
   public get restrictions() {
-    return this.__restrictionsOutput;
+    return this._restrictions;
   }
   public putRestrictions(value: CloudfrontDistributionRestrictions) {
-    this._restrictions = value;
+    this._restrictions.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get restrictionsInput() {
-    return this._restrictions
+    return this._restrictions.internalValue;
   }
 
   // viewer_certificate - computed: false, optional: false, required: true
-  private _viewerCertificate?: CloudfrontDistributionViewerCertificate; 
-  private __viewerCertificateOutput = new CloudfrontDistributionViewerCertificateOutputReference(this as any, "viewer_certificate", true);
+  private _viewerCertificate = new CloudfrontDistributionViewerCertificateOutputReference(this as any, "viewer_certificate", true);
   public get viewerCertificate() {
-    return this.__viewerCertificateOutput;
+    return this._viewerCertificate;
   }
   public putViewerCertificate(value: CloudfrontDistributionViewerCertificate) {
-    this._viewerCertificate = value;
+    this._viewerCertificate.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get viewerCertificateInput() {
-    return this._viewerCertificate
+    return this._viewerCertificate.internalValue;
   }
 
   // =========
@@ -2319,13 +2792,13 @@ export class CloudfrontDistribution extends cdktf.TerraformResource {
       wait_for_deployment: cdktf.booleanToTerraform(this._waitForDeployment),
       web_acl_id: cdktf.stringToTerraform(this._webAclId),
       custom_error_response: cdktf.listMapper(cloudfrontDistributionCustomErrorResponseToTerraform)(this._customErrorResponse),
-      default_cache_behavior: cloudfrontDistributionDefaultCacheBehaviorToTerraform(this._defaultCacheBehavior),
-      logging_config: cloudfrontDistributionLoggingConfigToTerraform(this._loggingConfig),
+      default_cache_behavior: cloudfrontDistributionDefaultCacheBehaviorToTerraform(this._defaultCacheBehavior.internalValue),
+      logging_config: cloudfrontDistributionLoggingConfigToTerraform(this._loggingConfig.internalValue),
       ordered_cache_behavior: cdktf.listMapper(cloudfrontDistributionOrderedCacheBehaviorToTerraform)(this._orderedCacheBehavior),
       origin: cdktf.listMapper(cloudfrontDistributionOriginToTerraform)(this._origin),
       origin_group: cdktf.listMapper(cloudfrontDistributionOriginGroupToTerraform)(this._originGroup),
-      restrictions: cloudfrontDistributionRestrictionsToTerraform(this._restrictions),
-      viewer_certificate: cloudfrontDistributionViewerCertificateToTerraform(this._viewerCertificate),
+      restrictions: cloudfrontDistributionRestrictionsToTerraform(this._restrictions.internalValue),
+      viewer_certificate: cloudfrontDistributionViewerCertificateToTerraform(this._viewerCertificate.internalValue),
     };
   }
 }

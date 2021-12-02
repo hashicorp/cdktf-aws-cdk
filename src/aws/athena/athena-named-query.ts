@@ -82,15 +82,15 @@ export class AthenaNamedQuery extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get databaseInput() {
-    return this._database
+    return this._database;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -98,7 +98,7 @@ export class AthenaNamedQuery extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -116,7 +116,7 @@ export class AthenaNamedQuery extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // query - computed: false, optional: false, required: true
@@ -129,15 +129,15 @@ export class AthenaNamedQuery extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get queryInput() {
-    return this._query
+    return this._query;
   }
 
   // workgroup - computed: false, optional: true, required: false
-  private _workgroup?: string | undefined; 
+  private _workgroup?: string; 
   public get workgroup() {
     return this.getStringAttribute('workgroup');
   }
-  public set workgroup(value: string | undefined) {
+  public set workgroup(value: string) {
     this._workgroup = value;
   }
   public resetWorkgroup() {
@@ -145,7 +145,7 @@ export class AthenaNamedQuery extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get workgroupInput() {
-    return this._workgroup
+    return this._workgroup;
   }
 
   // =========

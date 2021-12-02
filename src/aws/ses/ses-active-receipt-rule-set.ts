@@ -72,7 +72,7 @@ export class SesActiveReceiptRuleSet extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ruleSetNameInput() {
-    return this._ruleSetName
+    return this._ruleSetName;
   }
 
   // =========

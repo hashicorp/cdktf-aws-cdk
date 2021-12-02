@@ -68,11 +68,11 @@ export class ServicecatalogPrincipalPortfolioAssociation extends cdktf.Terraform
   // ==========
 
   // accept_language - computed: false, optional: true, required: false
-  private _acceptLanguage?: string | undefined; 
+  private _acceptLanguage?: string; 
   public get acceptLanguage() {
     return this.getStringAttribute('accept_language');
   }
-  public set acceptLanguage(value: string | undefined) {
+  public set acceptLanguage(value: string) {
     this._acceptLanguage = value;
   }
   public resetAcceptLanguage() {
@@ -80,7 +80,7 @@ export class ServicecatalogPrincipalPortfolioAssociation extends cdktf.Terraform
   }
   // Temporarily expose input value. Use with caution.
   public get acceptLanguageInput() {
-    return this._acceptLanguage
+    return this._acceptLanguage;
   }
 
   // id - computed: true, optional: true, required: false
@@ -98,7 +98,7 @@ export class ServicecatalogPrincipalPortfolioAssociation extends cdktf.Terraform
   }
   // Temporarily expose input value. Use with caution.
   public get portfolioIdInput() {
-    return this._portfolioId
+    return this._portfolioId;
   }
 
   // principal_arn - computed: false, optional: false, required: true
@@ -111,15 +111,15 @@ export class ServicecatalogPrincipalPortfolioAssociation extends cdktf.Terraform
   }
   // Temporarily expose input value. Use with caution.
   public get principalArnInput() {
-    return this._principalArn
+    return this._principalArn;
   }
 
   // principal_type - computed: false, optional: true, required: false
-  private _principalType?: string | undefined; 
+  private _principalType?: string; 
   public get principalType() {
     return this.getStringAttribute('principal_type');
   }
-  public set principalType(value: string | undefined) {
+  public set principalType(value: string) {
     this._principalType = value;
   }
   public resetPrincipalType() {
@@ -127,7 +127,7 @@ export class ServicecatalogPrincipalPortfolioAssociation extends cdktf.Terraform
   }
   // Temporarily expose input value. Use with caution.
   public get principalTypeInput() {
-    return this._principalType
+    return this._principalType;
   }
 
   // =========

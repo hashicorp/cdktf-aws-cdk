@@ -77,7 +77,7 @@ export class IamServiceLinkedRole extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get awsServiceNameInput() {
-    return this._awsServiceName
+    return this._awsServiceName;
   }
 
   // create_date - computed: true, optional: false, required: false
@@ -86,11 +86,11 @@ export class IamServiceLinkedRole extends cdktf.TerraformResource {
   }
 
   // custom_suffix - computed: false, optional: true, required: false
-  private _customSuffix?: string | undefined; 
+  private _customSuffix?: string; 
   public get customSuffix() {
     return this.getStringAttribute('custom_suffix');
   }
-  public set customSuffix(value: string | undefined) {
+  public set customSuffix(value: string) {
     this._customSuffix = value;
   }
   public resetCustomSuffix() {
@@ -98,15 +98,15 @@ export class IamServiceLinkedRole extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customSuffixInput() {
-    return this._customSuffix
+    return this._customSuffix;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -114,7 +114,7 @@ export class IamServiceLinkedRole extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false

@@ -73,11 +73,11 @@ export class DataAwsCloudwatchEventSource extends cdktf.TerraformDataSource {
   }
 
   // name_prefix - computed: false, optional: true, required: false
-  private _namePrefix?: string | undefined; 
+  private _namePrefix?: string; 
   public get namePrefix() {
     return this.getStringAttribute('name_prefix');
   }
-  public set namePrefix(value: string | undefined) {
+  public set namePrefix(value: string) {
     this._namePrefix = value;
   }
   public resetNamePrefix() {
@@ -85,7 +85,7 @@ export class DataAwsCloudwatchEventSource extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // state - computed: true, optional: false, required: false

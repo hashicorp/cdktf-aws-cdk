@@ -135,12 +135,43 @@ export class FsxWindowsFileSystemAuditLogConfigurationOutputReference extends cd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): FsxWindowsFileSystemAuditLogConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._auditLogDestination) {
+      hasAnyValues = true;
+      internalValueResult.auditLogDestination = this._auditLogDestination;
+    }
+    if (this._fileAccessAuditLogLevel) {
+      hasAnyValues = true;
+      internalValueResult.fileAccessAuditLogLevel = this._fileAccessAuditLogLevel;
+    }
+    if (this._fileShareAccessAuditLogLevel) {
+      hasAnyValues = true;
+      internalValueResult.fileShareAccessAuditLogLevel = this._fileShareAccessAuditLogLevel;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: FsxWindowsFileSystemAuditLogConfiguration | undefined) {
+    if (value === undefined) {
+      this._auditLogDestination = undefined;
+      this._fileAccessAuditLogLevel = undefined;
+      this._fileShareAccessAuditLogLevel = undefined;
+    }
+    else {
+      this._auditLogDestination = value.auditLogDestination;
+      this._fileAccessAuditLogLevel = value.fileAccessAuditLogLevel;
+      this._fileShareAccessAuditLogLevel = value.fileShareAccessAuditLogLevel;
+    }
+  }
+
   // audit_log_destination - computed: true, optional: true, required: false
-  private _auditLogDestination?: string | undefined; 
+  private _auditLogDestination?: string; 
   public get auditLogDestination() {
     return this.getStringAttribute('audit_log_destination');
   }
-  public set auditLogDestination(value: string | undefined) {
+  public set auditLogDestination(value: string) {
     this._auditLogDestination = value;
   }
   public resetAuditLogDestination() {
@@ -148,15 +179,15 @@ export class FsxWindowsFileSystemAuditLogConfigurationOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get auditLogDestinationInput() {
-    return this._auditLogDestination
+    return this._auditLogDestination;
   }
 
   // file_access_audit_log_level - computed: false, optional: true, required: false
-  private _fileAccessAuditLogLevel?: string | undefined; 
+  private _fileAccessAuditLogLevel?: string; 
   public get fileAccessAuditLogLevel() {
     return this.getStringAttribute('file_access_audit_log_level');
   }
-  public set fileAccessAuditLogLevel(value: string | undefined) {
+  public set fileAccessAuditLogLevel(value: string) {
     this._fileAccessAuditLogLevel = value;
   }
   public resetFileAccessAuditLogLevel() {
@@ -164,15 +195,15 @@ export class FsxWindowsFileSystemAuditLogConfigurationOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get fileAccessAuditLogLevelInput() {
-    return this._fileAccessAuditLogLevel
+    return this._fileAccessAuditLogLevel;
   }
 
   // file_share_access_audit_log_level - computed: false, optional: true, required: false
-  private _fileShareAccessAuditLogLevel?: string | undefined; 
+  private _fileShareAccessAuditLogLevel?: string; 
   public get fileShareAccessAuditLogLevel() {
     return this.getStringAttribute('file_share_access_audit_log_level');
   }
-  public set fileShareAccessAuditLogLevel(value: string | undefined) {
+  public set fileShareAccessAuditLogLevel(value: string) {
     this._fileShareAccessAuditLogLevel = value;
   }
   public resetFileShareAccessAuditLogLevel() {
@@ -180,7 +211,7 @@ export class FsxWindowsFileSystemAuditLogConfigurationOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get fileShareAccessAuditLogLevelInput() {
-    return this._fileShareAccessAuditLogLevel
+    return this._fileShareAccessAuditLogLevel;
   }
 }
 export interface FsxWindowsFileSystemSelfManagedActiveDirectory {
@@ -235,6 +266,55 @@ export class FsxWindowsFileSystemSelfManagedActiveDirectoryOutputReference exten
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): FsxWindowsFileSystemSelfManagedActiveDirectory | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._dnsIps) {
+      hasAnyValues = true;
+      internalValueResult.dnsIps = this._dnsIps;
+    }
+    if (this._domainName) {
+      hasAnyValues = true;
+      internalValueResult.domainName = this._domainName;
+    }
+    if (this._fileSystemAdministratorsGroup) {
+      hasAnyValues = true;
+      internalValueResult.fileSystemAdministratorsGroup = this._fileSystemAdministratorsGroup;
+    }
+    if (this._organizationalUnitDistinguishedName) {
+      hasAnyValues = true;
+      internalValueResult.organizationalUnitDistinguishedName = this._organizationalUnitDistinguishedName;
+    }
+    if (this._password) {
+      hasAnyValues = true;
+      internalValueResult.password = this._password;
+    }
+    if (this._username) {
+      hasAnyValues = true;
+      internalValueResult.username = this._username;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: FsxWindowsFileSystemSelfManagedActiveDirectory | undefined) {
+    if (value === undefined) {
+      this._dnsIps = undefined;
+      this._domainName = undefined;
+      this._fileSystemAdministratorsGroup = undefined;
+      this._organizationalUnitDistinguishedName = undefined;
+      this._password = undefined;
+      this._username = undefined;
+    }
+    else {
+      this._dnsIps = value.dnsIps;
+      this._domainName = value.domainName;
+      this._fileSystemAdministratorsGroup = value.fileSystemAdministratorsGroup;
+      this._organizationalUnitDistinguishedName = value.organizationalUnitDistinguishedName;
+      this._password = value.password;
+      this._username = value.username;
+    }
+  }
+
   // dns_ips - computed: false, optional: false, required: true
   private _dnsIps?: string[]; 
   public get dnsIps() {
@@ -245,7 +325,7 @@ export class FsxWindowsFileSystemSelfManagedActiveDirectoryOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get dnsIpsInput() {
-    return this._dnsIps
+    return this._dnsIps;
   }
 
   // domain_name - computed: false, optional: false, required: true
@@ -258,15 +338,15 @@ export class FsxWindowsFileSystemSelfManagedActiveDirectoryOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get domainNameInput() {
-    return this._domainName
+    return this._domainName;
   }
 
   // file_system_administrators_group - computed: false, optional: true, required: false
-  private _fileSystemAdministratorsGroup?: string | undefined; 
+  private _fileSystemAdministratorsGroup?: string; 
   public get fileSystemAdministratorsGroup() {
     return this.getStringAttribute('file_system_administrators_group');
   }
-  public set fileSystemAdministratorsGroup(value: string | undefined) {
+  public set fileSystemAdministratorsGroup(value: string) {
     this._fileSystemAdministratorsGroup = value;
   }
   public resetFileSystemAdministratorsGroup() {
@@ -274,15 +354,15 @@ export class FsxWindowsFileSystemSelfManagedActiveDirectoryOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get fileSystemAdministratorsGroupInput() {
-    return this._fileSystemAdministratorsGroup
+    return this._fileSystemAdministratorsGroup;
   }
 
   // organizational_unit_distinguished_name - computed: false, optional: true, required: false
-  private _organizationalUnitDistinguishedName?: string | undefined; 
+  private _organizationalUnitDistinguishedName?: string; 
   public get organizationalUnitDistinguishedName() {
     return this.getStringAttribute('organizational_unit_distinguished_name');
   }
-  public set organizationalUnitDistinguishedName(value: string | undefined) {
+  public set organizationalUnitDistinguishedName(value: string) {
     this._organizationalUnitDistinguishedName = value;
   }
   public resetOrganizationalUnitDistinguishedName() {
@@ -290,7 +370,7 @@ export class FsxWindowsFileSystemSelfManagedActiveDirectoryOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get organizationalUnitDistinguishedNameInput() {
-    return this._organizationalUnitDistinguishedName
+    return this._organizationalUnitDistinguishedName;
   }
 
   // password - computed: false, optional: false, required: true
@@ -303,7 +383,7 @@ export class FsxWindowsFileSystemSelfManagedActiveDirectoryOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get passwordInput() {
-    return this._password
+    return this._password;
   }
 
   // username - computed: false, optional: false, required: true
@@ -316,7 +396,7 @@ export class FsxWindowsFileSystemSelfManagedActiveDirectoryOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get usernameInput() {
-    return this._username
+    return this._username;
   }
 }
 export interface FsxWindowsFileSystemTimeouts {
@@ -356,12 +436,43 @@ export class FsxWindowsFileSystemTimeoutsOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): FsxWindowsFileSystemTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: FsxWindowsFileSystemTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -369,15 +480,15 @@ export class FsxWindowsFileSystemTimeoutsOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -385,15 +496,15 @@ export class FsxWindowsFileSystemTimeoutsOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -401,7 +512,7 @@ export class FsxWindowsFileSystemTimeoutsOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -455,9 +566,9 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
     this._tagsAll = config.tagsAll;
     this._throughputCapacity = config.throughputCapacity;
     this._weeklyMaintenanceStartTime = config.weeklyMaintenanceStartTime;
-    this._auditLogConfiguration = config.auditLogConfiguration;
-    this._selfManagedActiveDirectory = config.selfManagedActiveDirectory;
-    this._timeouts = config.timeouts;
+    this._auditLogConfiguration.internalValue = config.auditLogConfiguration;
+    this._selfManagedActiveDirectory.internalValue = config.selfManagedActiveDirectory;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -465,11 +576,11 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   // ==========
 
   // active_directory_id - computed: false, optional: true, required: false
-  private _activeDirectoryId?: string | undefined; 
+  private _activeDirectoryId?: string; 
   public get activeDirectoryId() {
     return this.getStringAttribute('active_directory_id');
   }
-  public set activeDirectoryId(value: string | undefined) {
+  public set activeDirectoryId(value: string) {
     this._activeDirectoryId = value;
   }
   public resetActiveDirectoryId() {
@@ -477,15 +588,15 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get activeDirectoryIdInput() {
-    return this._activeDirectoryId
+    return this._activeDirectoryId;
   }
 
   // aliases - computed: false, optional: true, required: false
-  private _aliases?: string[] | undefined; 
+  private _aliases?: string[]; 
   public get aliases() {
     return this.getListAttribute('aliases');
   }
-  public set aliases(value: string[] | undefined) {
+  public set aliases(value: string[]) {
     this._aliases = value;
   }
   public resetAliases() {
@@ -493,7 +604,7 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get aliasesInput() {
-    return this._aliases
+    return this._aliases;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -502,11 +613,11 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
 
   // automatic_backup_retention_days - computed: false, optional: true, required: false
-  private _automaticBackupRetentionDays?: number | undefined; 
+  private _automaticBackupRetentionDays?: number; 
   public get automaticBackupRetentionDays() {
     return this.getNumberAttribute('automatic_backup_retention_days');
   }
-  public set automaticBackupRetentionDays(value: number | undefined) {
+  public set automaticBackupRetentionDays(value: number) {
     this._automaticBackupRetentionDays = value;
   }
   public resetAutomaticBackupRetentionDays() {
@@ -514,15 +625,15 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get automaticBackupRetentionDaysInput() {
-    return this._automaticBackupRetentionDays
+    return this._automaticBackupRetentionDays;
   }
 
   // backup_id - computed: false, optional: true, required: false
-  private _backupId?: string | undefined; 
+  private _backupId?: string; 
   public get backupId() {
     return this.getStringAttribute('backup_id');
   }
-  public set backupId(value: string | undefined) {
+  public set backupId(value: string) {
     this._backupId = value;
   }
   public resetBackupId() {
@@ -530,15 +641,15 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get backupIdInput() {
-    return this._backupId
+    return this._backupId;
   }
 
   // copy_tags_to_backups - computed: false, optional: true, required: false
-  private _copyTagsToBackups?: boolean | cdktf.IResolvable | undefined; 
+  private _copyTagsToBackups?: boolean | cdktf.IResolvable; 
   public get copyTagsToBackups() {
     return this.getBooleanAttribute('copy_tags_to_backups') as any;
   }
-  public set copyTagsToBackups(value: boolean | cdktf.IResolvable | undefined) {
+  public set copyTagsToBackups(value: boolean | cdktf.IResolvable) {
     this._copyTagsToBackups = value;
   }
   public resetCopyTagsToBackups() {
@@ -546,15 +657,15 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get copyTagsToBackupsInput() {
-    return this._copyTagsToBackups
+    return this._copyTagsToBackups;
   }
 
   // daily_automatic_backup_start_time - computed: true, optional: true, required: false
-  private _dailyAutomaticBackupStartTime?: string | undefined; 
+  private _dailyAutomaticBackupStartTime?: string; 
   public get dailyAutomaticBackupStartTime() {
     return this.getStringAttribute('daily_automatic_backup_start_time');
   }
-  public set dailyAutomaticBackupStartTime(value: string | undefined) {
+  public set dailyAutomaticBackupStartTime(value: string) {
     this._dailyAutomaticBackupStartTime = value;
   }
   public resetDailyAutomaticBackupStartTime() {
@@ -562,15 +673,15 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dailyAutomaticBackupStartTimeInput() {
-    return this._dailyAutomaticBackupStartTime
+    return this._dailyAutomaticBackupStartTime;
   }
 
   // deployment_type - computed: false, optional: true, required: false
-  private _deploymentType?: string | undefined; 
+  private _deploymentType?: string; 
   public get deploymentType() {
     return this.getStringAttribute('deployment_type');
   }
-  public set deploymentType(value: string | undefined) {
+  public set deploymentType(value: string) {
     this._deploymentType = value;
   }
   public resetDeploymentType() {
@@ -578,7 +689,7 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentTypeInput() {
-    return this._deploymentType
+    return this._deploymentType;
   }
 
   // dns_name - computed: true, optional: false, required: false
@@ -592,11 +703,11 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
 
   // kms_key_id - computed: true, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -604,7 +715,7 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // network_interface_ids - computed: true, optional: false, required: false
@@ -623,11 +734,11 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
 
   // preferred_subnet_id - computed: true, optional: true, required: false
-  private _preferredSubnetId?: string | undefined; 
+  private _preferredSubnetId?: string; 
   public get preferredSubnetId() {
     return this.getStringAttribute('preferred_subnet_id');
   }
-  public set preferredSubnetId(value: string | undefined) {
+  public set preferredSubnetId(value: string) {
     this._preferredSubnetId = value;
   }
   public resetPreferredSubnetId() {
@@ -635,7 +746,7 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get preferredSubnetIdInput() {
-    return this._preferredSubnetId
+    return this._preferredSubnetId;
   }
 
   // remote_administration_endpoint - computed: true, optional: false, required: false
@@ -644,11 +755,11 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
 
   // security_group_ids - computed: false, optional: true, required: false
-  private _securityGroupIds?: string[] | undefined; 
+  private _securityGroupIds?: string[]; 
   public get securityGroupIds() {
     return this.getListAttribute('security_group_ids');
   }
-  public set securityGroupIds(value: string[] | undefined) {
+  public set securityGroupIds(value: string[]) {
     this._securityGroupIds = value;
   }
   public resetSecurityGroupIds() {
@@ -656,15 +767,15 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdsInput() {
-    return this._securityGroupIds
+    return this._securityGroupIds;
   }
 
   // skip_final_backup - computed: false, optional: true, required: false
-  private _skipFinalBackup?: boolean | cdktf.IResolvable | undefined; 
+  private _skipFinalBackup?: boolean | cdktf.IResolvable; 
   public get skipFinalBackup() {
     return this.getBooleanAttribute('skip_final_backup') as any;
   }
-  public set skipFinalBackup(value: boolean | cdktf.IResolvable | undefined) {
+  public set skipFinalBackup(value: boolean | cdktf.IResolvable) {
     this._skipFinalBackup = value;
   }
   public resetSkipFinalBackup() {
@@ -672,15 +783,15 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get skipFinalBackupInput() {
-    return this._skipFinalBackup
+    return this._skipFinalBackup;
   }
 
   // storage_capacity - computed: true, optional: true, required: false
-  private _storageCapacity?: number | undefined; 
+  private _storageCapacity?: number; 
   public get storageCapacity() {
     return this.getNumberAttribute('storage_capacity');
   }
-  public set storageCapacity(value: number | undefined) {
+  public set storageCapacity(value: number) {
     this._storageCapacity = value;
   }
   public resetStorageCapacity() {
@@ -688,15 +799,15 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get storageCapacityInput() {
-    return this._storageCapacity
+    return this._storageCapacity;
   }
 
   // storage_type - computed: false, optional: true, required: false
-  private _storageType?: string | undefined; 
+  private _storageType?: string; 
   public get storageType() {
     return this.getStringAttribute('storage_type');
   }
-  public set storageType(value: string | undefined) {
+  public set storageType(value: string) {
     this._storageType = value;
   }
   public resetStorageType() {
@@ -704,7 +815,7 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get storageTypeInput() {
-    return this._storageType
+    return this._storageType;
   }
 
   // subnet_ids - computed: false, optional: false, required: true
@@ -717,16 +828,16 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdsInput() {
-    return this._subnetIds
+    return this._subnetIds;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -734,16 +845,16 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -751,7 +862,7 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // throughput_capacity - computed: false, optional: false, required: true
@@ -764,7 +875,7 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get throughputCapacityInput() {
-    return this._throughputCapacity
+    return this._throughputCapacity;
   }
 
   // vpc_id - computed: true, optional: false, required: false
@@ -773,11 +884,11 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
 
   // weekly_maintenance_start_time - computed: true, optional: true, required: false
-  private _weeklyMaintenanceStartTime?: string | undefined; 
+  private _weeklyMaintenanceStartTime?: string; 
   public get weeklyMaintenanceStartTime() {
     return this.getStringAttribute('weekly_maintenance_start_time');
   }
-  public set weeklyMaintenanceStartTime(value: string | undefined) {
+  public set weeklyMaintenanceStartTime(value: string) {
     this._weeklyMaintenanceStartTime = value;
   }
   public resetWeeklyMaintenanceStartTime() {
@@ -785,58 +896,55 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get weeklyMaintenanceStartTimeInput() {
-    return this._weeklyMaintenanceStartTime
+    return this._weeklyMaintenanceStartTime;
   }
 
   // audit_log_configuration - computed: false, optional: true, required: false
-  private _auditLogConfiguration?: FsxWindowsFileSystemAuditLogConfiguration | undefined; 
-  private __auditLogConfigurationOutput = new FsxWindowsFileSystemAuditLogConfigurationOutputReference(this as any, "audit_log_configuration", true);
+  private _auditLogConfiguration = new FsxWindowsFileSystemAuditLogConfigurationOutputReference(this as any, "audit_log_configuration", true);
   public get auditLogConfiguration() {
-    return this.__auditLogConfigurationOutput;
+    return this._auditLogConfiguration;
   }
-  public putAuditLogConfiguration(value: FsxWindowsFileSystemAuditLogConfiguration | undefined) {
-    this._auditLogConfiguration = value;
+  public putAuditLogConfiguration(value: FsxWindowsFileSystemAuditLogConfiguration) {
+    this._auditLogConfiguration.internalValue = value;
   }
   public resetAuditLogConfiguration() {
-    this._auditLogConfiguration = undefined;
+    this._auditLogConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get auditLogConfigurationInput() {
-    return this._auditLogConfiguration
+    return this._auditLogConfiguration.internalValue;
   }
 
   // self_managed_active_directory - computed: false, optional: true, required: false
-  private _selfManagedActiveDirectory?: FsxWindowsFileSystemSelfManagedActiveDirectory | undefined; 
-  private __selfManagedActiveDirectoryOutput = new FsxWindowsFileSystemSelfManagedActiveDirectoryOutputReference(this as any, "self_managed_active_directory", true);
+  private _selfManagedActiveDirectory = new FsxWindowsFileSystemSelfManagedActiveDirectoryOutputReference(this as any, "self_managed_active_directory", true);
   public get selfManagedActiveDirectory() {
-    return this.__selfManagedActiveDirectoryOutput;
+    return this._selfManagedActiveDirectory;
   }
-  public putSelfManagedActiveDirectory(value: FsxWindowsFileSystemSelfManagedActiveDirectory | undefined) {
-    this._selfManagedActiveDirectory = value;
+  public putSelfManagedActiveDirectory(value: FsxWindowsFileSystemSelfManagedActiveDirectory) {
+    this._selfManagedActiveDirectory.internalValue = value;
   }
   public resetSelfManagedActiveDirectory() {
-    this._selfManagedActiveDirectory = undefined;
+    this._selfManagedActiveDirectory.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get selfManagedActiveDirectoryInput() {
-    return this._selfManagedActiveDirectory
+    return this._selfManagedActiveDirectory.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: FsxWindowsFileSystemTimeouts | undefined; 
-  private __timeoutsOutput = new FsxWindowsFileSystemTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new FsxWindowsFileSystemTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: FsxWindowsFileSystemTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: FsxWindowsFileSystemTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -863,9 +971,9 @@ export class FsxWindowsFileSystem extends cdktf.TerraformResource {
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       throughput_capacity: cdktf.numberToTerraform(this._throughputCapacity),
       weekly_maintenance_start_time: cdktf.stringToTerraform(this._weeklyMaintenanceStartTime),
-      audit_log_configuration: fsxWindowsFileSystemAuditLogConfigurationToTerraform(this._auditLogConfiguration),
-      self_managed_active_directory: fsxWindowsFileSystemSelfManagedActiveDirectoryToTerraform(this._selfManagedActiveDirectory),
-      timeouts: fsxWindowsFileSystemTimeoutsToTerraform(this._timeouts),
+      audit_log_configuration: fsxWindowsFileSystemAuditLogConfigurationToTerraform(this._auditLogConfiguration.internalValue),
+      self_managed_active_directory: fsxWindowsFileSystemSelfManagedActiveDirectoryToTerraform(this._selfManagedActiveDirectory.internalValue),
+      timeouts: fsxWindowsFileSystemTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

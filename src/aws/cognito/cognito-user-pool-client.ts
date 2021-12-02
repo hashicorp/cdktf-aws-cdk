@@ -139,12 +139,55 @@ export class CognitoUserPoolClientAnalyticsConfigurationOutputReference extends 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CognitoUserPoolClientAnalyticsConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._applicationArn) {
+      hasAnyValues = true;
+      internalValueResult.applicationArn = this._applicationArn;
+    }
+    if (this._applicationId) {
+      hasAnyValues = true;
+      internalValueResult.applicationId = this._applicationId;
+    }
+    if (this._externalId) {
+      hasAnyValues = true;
+      internalValueResult.externalId = this._externalId;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    if (this._userDataShared) {
+      hasAnyValues = true;
+      internalValueResult.userDataShared = this._userDataShared;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CognitoUserPoolClientAnalyticsConfiguration | undefined) {
+    if (value === undefined) {
+      this._applicationArn = undefined;
+      this._applicationId = undefined;
+      this._externalId = undefined;
+      this._roleArn = undefined;
+      this._userDataShared = undefined;
+    }
+    else {
+      this._applicationArn = value.applicationArn;
+      this._applicationId = value.applicationId;
+      this._externalId = value.externalId;
+      this._roleArn = value.roleArn;
+      this._userDataShared = value.userDataShared;
+    }
+  }
+
   // application_arn - computed: false, optional: true, required: false
-  private _applicationArn?: string | undefined; 
+  private _applicationArn?: string; 
   public get applicationArn() {
     return this.getStringAttribute('application_arn');
   }
-  public set applicationArn(value: string | undefined) {
+  public set applicationArn(value: string) {
     this._applicationArn = value;
   }
   public resetApplicationArn() {
@@ -152,15 +195,15 @@ export class CognitoUserPoolClientAnalyticsConfigurationOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get applicationArnInput() {
-    return this._applicationArn
+    return this._applicationArn;
   }
 
   // application_id - computed: false, optional: true, required: false
-  private _applicationId?: string | undefined; 
+  private _applicationId?: string; 
   public get applicationId() {
     return this.getStringAttribute('application_id');
   }
-  public set applicationId(value: string | undefined) {
+  public set applicationId(value: string) {
     this._applicationId = value;
   }
   public resetApplicationId() {
@@ -168,15 +211,15 @@ export class CognitoUserPoolClientAnalyticsConfigurationOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get applicationIdInput() {
-    return this._applicationId
+    return this._applicationId;
   }
 
   // external_id - computed: false, optional: true, required: false
-  private _externalId?: string | undefined; 
+  private _externalId?: string; 
   public get externalId() {
     return this.getStringAttribute('external_id');
   }
-  public set externalId(value: string | undefined) {
+  public set externalId(value: string) {
     this._externalId = value;
   }
   public resetExternalId() {
@@ -184,15 +227,15 @@ export class CognitoUserPoolClientAnalyticsConfigurationOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get externalIdInput() {
-    return this._externalId
+    return this._externalId;
   }
 
   // role_arn - computed: true, optional: true, required: false
-  private _roleArn?: string | undefined; 
+  private _roleArn?: string; 
   public get roleArn() {
     return this.getStringAttribute('role_arn');
   }
-  public set roleArn(value: string | undefined) {
+  public set roleArn(value: string) {
     this._roleArn = value;
   }
   public resetRoleArn() {
@@ -200,15 +243,15 @@ export class CognitoUserPoolClientAnalyticsConfigurationOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 
   // user_data_shared - computed: false, optional: true, required: false
-  private _userDataShared?: boolean | cdktf.IResolvable | undefined; 
+  private _userDataShared?: boolean | cdktf.IResolvable; 
   public get userDataShared() {
     return this.getBooleanAttribute('user_data_shared') as any;
   }
-  public set userDataShared(value: boolean | cdktf.IResolvable | undefined) {
+  public set userDataShared(value: boolean | cdktf.IResolvable) {
     this._userDataShared = value;
   }
   public resetUserDataShared() {
@@ -216,7 +259,7 @@ export class CognitoUserPoolClientAnalyticsConfigurationOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get userDataSharedInput() {
-    return this._userDataShared
+    return this._userDataShared;
   }
 }
 export interface CognitoUserPoolClientTokenValidityUnits {
@@ -256,12 +299,43 @@ export class CognitoUserPoolClientTokenValidityUnitsOutputReference extends cdkt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): CognitoUserPoolClientTokenValidityUnits | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._accessToken) {
+      hasAnyValues = true;
+      internalValueResult.accessToken = this._accessToken;
+    }
+    if (this._idToken) {
+      hasAnyValues = true;
+      internalValueResult.idToken = this._idToken;
+    }
+    if (this._refreshToken) {
+      hasAnyValues = true;
+      internalValueResult.refreshToken = this._refreshToken;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: CognitoUserPoolClientTokenValidityUnits | undefined) {
+    if (value === undefined) {
+      this._accessToken = undefined;
+      this._idToken = undefined;
+      this._refreshToken = undefined;
+    }
+    else {
+      this._accessToken = value.accessToken;
+      this._idToken = value.idToken;
+      this._refreshToken = value.refreshToken;
+    }
+  }
+
   // access_token - computed: false, optional: true, required: false
-  private _accessToken?: string | undefined; 
+  private _accessToken?: string; 
   public get accessToken() {
     return this.getStringAttribute('access_token');
   }
-  public set accessToken(value: string | undefined) {
+  public set accessToken(value: string) {
     this._accessToken = value;
   }
   public resetAccessToken() {
@@ -269,15 +343,15 @@ export class CognitoUserPoolClientTokenValidityUnitsOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get accessTokenInput() {
-    return this._accessToken
+    return this._accessToken;
   }
 
   // id_token - computed: false, optional: true, required: false
-  private _idToken?: string | undefined; 
+  private _idToken?: string; 
   public get idToken() {
     return this.getStringAttribute('id_token');
   }
-  public set idToken(value: string | undefined) {
+  public set idToken(value: string) {
     this._idToken = value;
   }
   public resetIdToken() {
@@ -285,15 +359,15 @@ export class CognitoUserPoolClientTokenValidityUnitsOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get idTokenInput() {
-    return this._idToken
+    return this._idToken;
   }
 
   // refresh_token - computed: false, optional: true, required: false
-  private _refreshToken?: string | undefined; 
+  private _refreshToken?: string; 
   public get refreshToken() {
     return this.getStringAttribute('refresh_token');
   }
-  public set refreshToken(value: string | undefined) {
+  public set refreshToken(value: string) {
     this._refreshToken = value;
   }
   public resetRefreshToken() {
@@ -301,7 +375,7 @@ export class CognitoUserPoolClientTokenValidityUnitsOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get refreshTokenInput() {
-    return this._refreshToken
+    return this._refreshToken;
   }
 }
 
@@ -355,8 +429,8 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
     this._supportedIdentityProviders = config.supportedIdentityProviders;
     this._userPoolId = config.userPoolId;
     this._writeAttributes = config.writeAttributes;
-    this._analyticsConfiguration = config.analyticsConfiguration;
-    this._tokenValidityUnits = config.tokenValidityUnits;
+    this._analyticsConfiguration.internalValue = config.analyticsConfiguration;
+    this._tokenValidityUnits.internalValue = config.tokenValidityUnits;
   }
 
   // ==========
@@ -364,11 +438,11 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   // ==========
 
   // access_token_validity - computed: false, optional: true, required: false
-  private _accessTokenValidity?: number | undefined; 
+  private _accessTokenValidity?: number; 
   public get accessTokenValidity() {
     return this.getNumberAttribute('access_token_validity');
   }
-  public set accessTokenValidity(value: number | undefined) {
+  public set accessTokenValidity(value: number) {
     this._accessTokenValidity = value;
   }
   public resetAccessTokenValidity() {
@@ -376,15 +450,15 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accessTokenValidityInput() {
-    return this._accessTokenValidity
+    return this._accessTokenValidity;
   }
 
   // allowed_oauth_flows - computed: false, optional: true, required: false
-  private _allowedOauthFlows?: string[] | undefined; 
+  private _allowedOauthFlows?: string[]; 
   public get allowedOauthFlows() {
     return this.getListAttribute('allowed_oauth_flows');
   }
-  public set allowedOauthFlows(value: string[] | undefined) {
+  public set allowedOauthFlows(value: string[]) {
     this._allowedOauthFlows = value;
   }
   public resetAllowedOauthFlows() {
@@ -392,15 +466,15 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allowedOauthFlowsInput() {
-    return this._allowedOauthFlows
+    return this._allowedOauthFlows;
   }
 
   // allowed_oauth_flows_user_pool_client - computed: false, optional: true, required: false
-  private _allowedOauthFlowsUserPoolClient?: boolean | cdktf.IResolvable | undefined; 
+  private _allowedOauthFlowsUserPoolClient?: boolean | cdktf.IResolvable; 
   public get allowedOauthFlowsUserPoolClient() {
     return this.getBooleanAttribute('allowed_oauth_flows_user_pool_client') as any;
   }
-  public set allowedOauthFlowsUserPoolClient(value: boolean | cdktf.IResolvable | undefined) {
+  public set allowedOauthFlowsUserPoolClient(value: boolean | cdktf.IResolvable) {
     this._allowedOauthFlowsUserPoolClient = value;
   }
   public resetAllowedOauthFlowsUserPoolClient() {
@@ -408,15 +482,15 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allowedOauthFlowsUserPoolClientInput() {
-    return this._allowedOauthFlowsUserPoolClient
+    return this._allowedOauthFlowsUserPoolClient;
   }
 
   // allowed_oauth_scopes - computed: false, optional: true, required: false
-  private _allowedOauthScopes?: string[] | undefined; 
+  private _allowedOauthScopes?: string[]; 
   public get allowedOauthScopes() {
     return this.getListAttribute('allowed_oauth_scopes');
   }
-  public set allowedOauthScopes(value: string[] | undefined) {
+  public set allowedOauthScopes(value: string[]) {
     this._allowedOauthScopes = value;
   }
   public resetAllowedOauthScopes() {
@@ -424,15 +498,15 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allowedOauthScopesInput() {
-    return this._allowedOauthScopes
+    return this._allowedOauthScopes;
   }
 
   // callback_urls - computed: true, optional: true, required: false
-  private _callbackUrls?: string[] | undefined; 
+  private _callbackUrls?: string[]; 
   public get callbackUrls() {
     return this.getListAttribute('callback_urls');
   }
-  public set callbackUrls(value: string[] | undefined) {
+  public set callbackUrls(value: string[]) {
     this._callbackUrls = value;
   }
   public resetCallbackUrls() {
@@ -440,7 +514,7 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get callbackUrlsInput() {
-    return this._callbackUrls
+    return this._callbackUrls;
   }
 
   // client_secret - computed: true, optional: false, required: false
@@ -449,11 +523,11 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
 
   // default_redirect_uri - computed: false, optional: true, required: false
-  private _defaultRedirectUri?: string | undefined; 
+  private _defaultRedirectUri?: string; 
   public get defaultRedirectUri() {
     return this.getStringAttribute('default_redirect_uri');
   }
-  public set defaultRedirectUri(value: string | undefined) {
+  public set defaultRedirectUri(value: string) {
     this._defaultRedirectUri = value;
   }
   public resetDefaultRedirectUri() {
@@ -461,15 +535,15 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get defaultRedirectUriInput() {
-    return this._defaultRedirectUri
+    return this._defaultRedirectUri;
   }
 
   // enable_token_revocation - computed: true, optional: true, required: false
-  private _enableTokenRevocation?: boolean | cdktf.IResolvable | undefined; 
+  private _enableTokenRevocation?: boolean | cdktf.IResolvable; 
   public get enableTokenRevocation() {
     return this.getBooleanAttribute('enable_token_revocation') as any;
   }
-  public set enableTokenRevocation(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableTokenRevocation(value: boolean | cdktf.IResolvable) {
     this._enableTokenRevocation = value;
   }
   public resetEnableTokenRevocation() {
@@ -477,15 +551,15 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableTokenRevocationInput() {
-    return this._enableTokenRevocation
+    return this._enableTokenRevocation;
   }
 
   // explicit_auth_flows - computed: false, optional: true, required: false
-  private _explicitAuthFlows?: string[] | undefined; 
+  private _explicitAuthFlows?: string[]; 
   public get explicitAuthFlows() {
     return this.getListAttribute('explicit_auth_flows');
   }
-  public set explicitAuthFlows(value: string[] | undefined) {
+  public set explicitAuthFlows(value: string[]) {
     this._explicitAuthFlows = value;
   }
   public resetExplicitAuthFlows() {
@@ -493,15 +567,15 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get explicitAuthFlowsInput() {
-    return this._explicitAuthFlows
+    return this._explicitAuthFlows;
   }
 
   // generate_secret - computed: false, optional: true, required: false
-  private _generateSecret?: boolean | cdktf.IResolvable | undefined; 
+  private _generateSecret?: boolean | cdktf.IResolvable; 
   public get generateSecret() {
     return this.getBooleanAttribute('generate_secret') as any;
   }
-  public set generateSecret(value: boolean | cdktf.IResolvable | undefined) {
+  public set generateSecret(value: boolean | cdktf.IResolvable) {
     this._generateSecret = value;
   }
   public resetGenerateSecret() {
@@ -509,7 +583,7 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get generateSecretInput() {
-    return this._generateSecret
+    return this._generateSecret;
   }
 
   // id - computed: true, optional: true, required: false
@@ -518,11 +592,11 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
 
   // id_token_validity - computed: false, optional: true, required: false
-  private _idTokenValidity?: number | undefined; 
+  private _idTokenValidity?: number; 
   public get idTokenValidity() {
     return this.getNumberAttribute('id_token_validity');
   }
-  public set idTokenValidity(value: number | undefined) {
+  public set idTokenValidity(value: number) {
     this._idTokenValidity = value;
   }
   public resetIdTokenValidity() {
@@ -530,15 +604,15 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get idTokenValidityInput() {
-    return this._idTokenValidity
+    return this._idTokenValidity;
   }
 
   // logout_urls - computed: true, optional: true, required: false
-  private _logoutUrls?: string[] | undefined; 
+  private _logoutUrls?: string[]; 
   public get logoutUrls() {
     return this.getListAttribute('logout_urls');
   }
-  public set logoutUrls(value: string[] | undefined) {
+  public set logoutUrls(value: string[]) {
     this._logoutUrls = value;
   }
   public resetLogoutUrls() {
@@ -546,7 +620,7 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get logoutUrlsInput() {
-    return this._logoutUrls
+    return this._logoutUrls;
   }
 
   // name - computed: false, optional: false, required: true
@@ -559,15 +633,15 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // prevent_user_existence_errors - computed: true, optional: true, required: false
-  private _preventUserExistenceErrors?: string | undefined; 
+  private _preventUserExistenceErrors?: string; 
   public get preventUserExistenceErrors() {
     return this.getStringAttribute('prevent_user_existence_errors');
   }
-  public set preventUserExistenceErrors(value: string | undefined) {
+  public set preventUserExistenceErrors(value: string) {
     this._preventUserExistenceErrors = value;
   }
   public resetPreventUserExistenceErrors() {
@@ -575,15 +649,15 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get preventUserExistenceErrorsInput() {
-    return this._preventUserExistenceErrors
+    return this._preventUserExistenceErrors;
   }
 
   // read_attributes - computed: false, optional: true, required: false
-  private _readAttributes?: string[] | undefined; 
+  private _readAttributes?: string[]; 
   public get readAttributes() {
     return this.getListAttribute('read_attributes');
   }
-  public set readAttributes(value: string[] | undefined) {
+  public set readAttributes(value: string[]) {
     this._readAttributes = value;
   }
   public resetReadAttributes() {
@@ -591,15 +665,15 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get readAttributesInput() {
-    return this._readAttributes
+    return this._readAttributes;
   }
 
   // refresh_token_validity - computed: false, optional: true, required: false
-  private _refreshTokenValidity?: number | undefined; 
+  private _refreshTokenValidity?: number; 
   public get refreshTokenValidity() {
     return this.getNumberAttribute('refresh_token_validity');
   }
-  public set refreshTokenValidity(value: number | undefined) {
+  public set refreshTokenValidity(value: number) {
     this._refreshTokenValidity = value;
   }
   public resetRefreshTokenValidity() {
@@ -607,15 +681,15 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get refreshTokenValidityInput() {
-    return this._refreshTokenValidity
+    return this._refreshTokenValidity;
   }
 
   // supported_identity_providers - computed: false, optional: true, required: false
-  private _supportedIdentityProviders?: string[] | undefined; 
+  private _supportedIdentityProviders?: string[]; 
   public get supportedIdentityProviders() {
     return this.getListAttribute('supported_identity_providers');
   }
-  public set supportedIdentityProviders(value: string[] | undefined) {
+  public set supportedIdentityProviders(value: string[]) {
     this._supportedIdentityProviders = value;
   }
   public resetSupportedIdentityProviders() {
@@ -623,7 +697,7 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get supportedIdentityProvidersInput() {
-    return this._supportedIdentityProviders
+    return this._supportedIdentityProviders;
   }
 
   // user_pool_id - computed: false, optional: false, required: true
@@ -636,15 +710,15 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userPoolIdInput() {
-    return this._userPoolId
+    return this._userPoolId;
   }
 
   // write_attributes - computed: false, optional: true, required: false
-  private _writeAttributes?: string[] | undefined; 
+  private _writeAttributes?: string[]; 
   public get writeAttributes() {
     return this.getListAttribute('write_attributes');
   }
-  public set writeAttributes(value: string[] | undefined) {
+  public set writeAttributes(value: string[]) {
     this._writeAttributes = value;
   }
   public resetWriteAttributes() {
@@ -652,41 +726,39 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get writeAttributesInput() {
-    return this._writeAttributes
+    return this._writeAttributes;
   }
 
   // analytics_configuration - computed: false, optional: true, required: false
-  private _analyticsConfiguration?: CognitoUserPoolClientAnalyticsConfiguration | undefined; 
-  private __analyticsConfigurationOutput = new CognitoUserPoolClientAnalyticsConfigurationOutputReference(this as any, "analytics_configuration", true);
+  private _analyticsConfiguration = new CognitoUserPoolClientAnalyticsConfigurationOutputReference(this as any, "analytics_configuration", true);
   public get analyticsConfiguration() {
-    return this.__analyticsConfigurationOutput;
+    return this._analyticsConfiguration;
   }
-  public putAnalyticsConfiguration(value: CognitoUserPoolClientAnalyticsConfiguration | undefined) {
-    this._analyticsConfiguration = value;
+  public putAnalyticsConfiguration(value: CognitoUserPoolClientAnalyticsConfiguration) {
+    this._analyticsConfiguration.internalValue = value;
   }
   public resetAnalyticsConfiguration() {
-    this._analyticsConfiguration = undefined;
+    this._analyticsConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get analyticsConfigurationInput() {
-    return this._analyticsConfiguration
+    return this._analyticsConfiguration.internalValue;
   }
 
   // token_validity_units - computed: false, optional: true, required: false
-  private _tokenValidityUnits?: CognitoUserPoolClientTokenValidityUnits | undefined; 
-  private __tokenValidityUnitsOutput = new CognitoUserPoolClientTokenValidityUnitsOutputReference(this as any, "token_validity_units", true);
+  private _tokenValidityUnits = new CognitoUserPoolClientTokenValidityUnitsOutputReference(this as any, "token_validity_units", true);
   public get tokenValidityUnits() {
-    return this.__tokenValidityUnitsOutput;
+    return this._tokenValidityUnits;
   }
-  public putTokenValidityUnits(value: CognitoUserPoolClientTokenValidityUnits | undefined) {
-    this._tokenValidityUnits = value;
+  public putTokenValidityUnits(value: CognitoUserPoolClientTokenValidityUnits) {
+    this._tokenValidityUnits.internalValue = value;
   }
   public resetTokenValidityUnits() {
-    this._tokenValidityUnits = undefined;
+    this._tokenValidityUnits.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get tokenValidityUnitsInput() {
-    return this._tokenValidityUnits
+    return this._tokenValidityUnits.internalValue;
   }
 
   // =========
@@ -713,8 +785,8 @@ export class CognitoUserPoolClient extends cdktf.TerraformResource {
       supported_identity_providers: cdktf.listMapper(cdktf.stringToTerraform)(this._supportedIdentityProviders),
       user_pool_id: cdktf.stringToTerraform(this._userPoolId),
       write_attributes: cdktf.listMapper(cdktf.stringToTerraform)(this._writeAttributes),
-      analytics_configuration: cognitoUserPoolClientAnalyticsConfigurationToTerraform(this._analyticsConfiguration),
-      token_validity_units: cognitoUserPoolClientTokenValidityUnitsToTerraform(this._tokenValidityUnits),
+      analytics_configuration: cognitoUserPoolClientAnalyticsConfigurationToTerraform(this._analyticsConfiguration.internalValue),
+      token_validity_units: cognitoUserPoolClientTokenValidityUnitsToTerraform(this._tokenValidityUnits.internalValue),
     };
   }
 }

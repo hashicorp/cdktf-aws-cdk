@@ -133,12 +133,103 @@ export class AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubjectO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubject | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._commonName) {
+      hasAnyValues = true;
+      internalValueResult.commonName = this._commonName;
+    }
+    if (this._country) {
+      hasAnyValues = true;
+      internalValueResult.country = this._country;
+    }
+    if (this._distinguishedNameQualifier) {
+      hasAnyValues = true;
+      internalValueResult.distinguishedNameQualifier = this._distinguishedNameQualifier;
+    }
+    if (this._generationQualifier) {
+      hasAnyValues = true;
+      internalValueResult.generationQualifier = this._generationQualifier;
+    }
+    if (this._givenName) {
+      hasAnyValues = true;
+      internalValueResult.givenName = this._givenName;
+    }
+    if (this._initials) {
+      hasAnyValues = true;
+      internalValueResult.initials = this._initials;
+    }
+    if (this._locality) {
+      hasAnyValues = true;
+      internalValueResult.locality = this._locality;
+    }
+    if (this._organization) {
+      hasAnyValues = true;
+      internalValueResult.organization = this._organization;
+    }
+    if (this._organizationalUnit) {
+      hasAnyValues = true;
+      internalValueResult.organizationalUnit = this._organizationalUnit;
+    }
+    if (this._pseudonym) {
+      hasAnyValues = true;
+      internalValueResult.pseudonym = this._pseudonym;
+    }
+    if (this._state) {
+      hasAnyValues = true;
+      internalValueResult.state = this._state;
+    }
+    if (this._surname) {
+      hasAnyValues = true;
+      internalValueResult.surname = this._surname;
+    }
+    if (this._title) {
+      hasAnyValues = true;
+      internalValueResult.title = this._title;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubject | undefined) {
+    if (value === undefined) {
+      this._commonName = undefined;
+      this._country = undefined;
+      this._distinguishedNameQualifier = undefined;
+      this._generationQualifier = undefined;
+      this._givenName = undefined;
+      this._initials = undefined;
+      this._locality = undefined;
+      this._organization = undefined;
+      this._organizationalUnit = undefined;
+      this._pseudonym = undefined;
+      this._state = undefined;
+      this._surname = undefined;
+      this._title = undefined;
+    }
+    else {
+      this._commonName = value.commonName;
+      this._country = value.country;
+      this._distinguishedNameQualifier = value.distinguishedNameQualifier;
+      this._generationQualifier = value.generationQualifier;
+      this._givenName = value.givenName;
+      this._initials = value.initials;
+      this._locality = value.locality;
+      this._organization = value.organization;
+      this._organizationalUnit = value.organizationalUnit;
+      this._pseudonym = value.pseudonym;
+      this._state = value.state;
+      this._surname = value.surname;
+      this._title = value.title;
+    }
+  }
+
   // common_name - computed: false, optional: true, required: false
-  private _commonName?: string | undefined; 
+  private _commonName?: string; 
   public get commonName() {
     return this.getStringAttribute('common_name');
   }
-  public set commonName(value: string | undefined) {
+  public set commonName(value: string) {
     this._commonName = value;
   }
   public resetCommonName() {
@@ -146,15 +237,15 @@ export class AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubjectO
   }
   // Temporarily expose input value. Use with caution.
   public get commonNameInput() {
-    return this._commonName
+    return this._commonName;
   }
 
   // country - computed: false, optional: true, required: false
-  private _country?: string | undefined; 
+  private _country?: string; 
   public get country() {
     return this.getStringAttribute('country');
   }
-  public set country(value: string | undefined) {
+  public set country(value: string) {
     this._country = value;
   }
   public resetCountry() {
@@ -162,15 +253,15 @@ export class AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubjectO
   }
   // Temporarily expose input value. Use with caution.
   public get countryInput() {
-    return this._country
+    return this._country;
   }
 
   // distinguished_name_qualifier - computed: false, optional: true, required: false
-  private _distinguishedNameQualifier?: string | undefined; 
+  private _distinguishedNameQualifier?: string; 
   public get distinguishedNameQualifier() {
     return this.getStringAttribute('distinguished_name_qualifier');
   }
-  public set distinguishedNameQualifier(value: string | undefined) {
+  public set distinguishedNameQualifier(value: string) {
     this._distinguishedNameQualifier = value;
   }
   public resetDistinguishedNameQualifier() {
@@ -178,15 +269,15 @@ export class AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubjectO
   }
   // Temporarily expose input value. Use with caution.
   public get distinguishedNameQualifierInput() {
-    return this._distinguishedNameQualifier
+    return this._distinguishedNameQualifier;
   }
 
   // generation_qualifier - computed: false, optional: true, required: false
-  private _generationQualifier?: string | undefined; 
+  private _generationQualifier?: string; 
   public get generationQualifier() {
     return this.getStringAttribute('generation_qualifier');
   }
-  public set generationQualifier(value: string | undefined) {
+  public set generationQualifier(value: string) {
     this._generationQualifier = value;
   }
   public resetGenerationQualifier() {
@@ -194,15 +285,15 @@ export class AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubjectO
   }
   // Temporarily expose input value. Use with caution.
   public get generationQualifierInput() {
-    return this._generationQualifier
+    return this._generationQualifier;
   }
 
   // given_name - computed: false, optional: true, required: false
-  private _givenName?: string | undefined; 
+  private _givenName?: string; 
   public get givenName() {
     return this.getStringAttribute('given_name');
   }
-  public set givenName(value: string | undefined) {
+  public set givenName(value: string) {
     this._givenName = value;
   }
   public resetGivenName() {
@@ -210,15 +301,15 @@ export class AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubjectO
   }
   // Temporarily expose input value. Use with caution.
   public get givenNameInput() {
-    return this._givenName
+    return this._givenName;
   }
 
   // initials - computed: false, optional: true, required: false
-  private _initials?: string | undefined; 
+  private _initials?: string; 
   public get initials() {
     return this.getStringAttribute('initials');
   }
-  public set initials(value: string | undefined) {
+  public set initials(value: string) {
     this._initials = value;
   }
   public resetInitials() {
@@ -226,15 +317,15 @@ export class AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubjectO
   }
   // Temporarily expose input value. Use with caution.
   public get initialsInput() {
-    return this._initials
+    return this._initials;
   }
 
   // locality - computed: false, optional: true, required: false
-  private _locality?: string | undefined; 
+  private _locality?: string; 
   public get locality() {
     return this.getStringAttribute('locality');
   }
-  public set locality(value: string | undefined) {
+  public set locality(value: string) {
     this._locality = value;
   }
   public resetLocality() {
@@ -242,15 +333,15 @@ export class AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubjectO
   }
   // Temporarily expose input value. Use with caution.
   public get localityInput() {
-    return this._locality
+    return this._locality;
   }
 
   // organization - computed: false, optional: true, required: false
-  private _organization?: string | undefined; 
+  private _organization?: string; 
   public get organization() {
     return this.getStringAttribute('organization');
   }
-  public set organization(value: string | undefined) {
+  public set organization(value: string) {
     this._organization = value;
   }
   public resetOrganization() {
@@ -258,15 +349,15 @@ export class AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubjectO
   }
   // Temporarily expose input value. Use with caution.
   public get organizationInput() {
-    return this._organization
+    return this._organization;
   }
 
   // organizational_unit - computed: false, optional: true, required: false
-  private _organizationalUnit?: string | undefined; 
+  private _organizationalUnit?: string; 
   public get organizationalUnit() {
     return this.getStringAttribute('organizational_unit');
   }
-  public set organizationalUnit(value: string | undefined) {
+  public set organizationalUnit(value: string) {
     this._organizationalUnit = value;
   }
   public resetOrganizationalUnit() {
@@ -274,15 +365,15 @@ export class AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubjectO
   }
   // Temporarily expose input value. Use with caution.
   public get organizationalUnitInput() {
-    return this._organizationalUnit
+    return this._organizationalUnit;
   }
 
   // pseudonym - computed: false, optional: true, required: false
-  private _pseudonym?: string | undefined; 
+  private _pseudonym?: string; 
   public get pseudonym() {
     return this.getStringAttribute('pseudonym');
   }
-  public set pseudonym(value: string | undefined) {
+  public set pseudonym(value: string) {
     this._pseudonym = value;
   }
   public resetPseudonym() {
@@ -290,15 +381,15 @@ export class AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubjectO
   }
   // Temporarily expose input value. Use with caution.
   public get pseudonymInput() {
-    return this._pseudonym
+    return this._pseudonym;
   }
 
   // state - computed: false, optional: true, required: false
-  private _state?: string | undefined; 
+  private _state?: string; 
   public get state() {
     return this.getStringAttribute('state');
   }
-  public set state(value: string | undefined) {
+  public set state(value: string) {
     this._state = value;
   }
   public resetState() {
@@ -306,15 +397,15 @@ export class AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubjectO
   }
   // Temporarily expose input value. Use with caution.
   public get stateInput() {
-    return this._state
+    return this._state;
   }
 
   // surname - computed: false, optional: true, required: false
-  private _surname?: string | undefined; 
+  private _surname?: string; 
   public get surname() {
     return this.getStringAttribute('surname');
   }
-  public set surname(value: string | undefined) {
+  public set surname(value: string) {
     this._surname = value;
   }
   public resetSurname() {
@@ -322,15 +413,15 @@ export class AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubjectO
   }
   // Temporarily expose input value. Use with caution.
   public get surnameInput() {
-    return this._surname
+    return this._surname;
   }
 
   // title - computed: false, optional: true, required: false
-  private _title?: string | undefined; 
+  private _title?: string; 
   public get title() {
     return this.getStringAttribute('title');
   }
-  public set title(value: string | undefined) {
+  public set title(value: string) {
     this._title = value;
   }
   public resetTitle() {
@@ -338,7 +429,7 @@ export class AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubjectO
   }
   // Temporarily expose input value. Use with caution.
   public get titleInput() {
-    return this._title
+    return this._title;
   }
 }
 export interface AcmpcaCertificateAuthorityCertificateAuthorityConfiguration {
@@ -380,6 +471,37 @@ export class AcmpcaCertificateAuthorityCertificateAuthorityConfigurationOutputRe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AcmpcaCertificateAuthorityCertificateAuthorityConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._keyAlgorithm) {
+      hasAnyValues = true;
+      internalValueResult.keyAlgorithm = this._keyAlgorithm;
+    }
+    if (this._signingAlgorithm) {
+      hasAnyValues = true;
+      internalValueResult.signingAlgorithm = this._signingAlgorithm;
+    }
+    if (this._subject) {
+      hasAnyValues = true;
+      internalValueResult.subject = this._subject?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AcmpcaCertificateAuthorityCertificateAuthorityConfiguration | undefined) {
+    if (value === undefined) {
+      this._keyAlgorithm = undefined;
+      this._signingAlgorithm = undefined;
+      this._subject.internalValue = undefined;
+    }
+    else {
+      this._keyAlgorithm = value.keyAlgorithm;
+      this._signingAlgorithm = value.signingAlgorithm;
+      this._subject.internalValue = value.subject;
+    }
+  }
+
   // key_algorithm - computed: false, optional: false, required: true
   private _keyAlgorithm?: string; 
   public get keyAlgorithm() {
@@ -390,7 +512,7 @@ export class AcmpcaCertificateAuthorityCertificateAuthorityConfigurationOutputRe
   }
   // Temporarily expose input value. Use with caution.
   public get keyAlgorithmInput() {
-    return this._keyAlgorithm
+    return this._keyAlgorithm;
   }
 
   // signing_algorithm - computed: false, optional: false, required: true
@@ -403,21 +525,20 @@ export class AcmpcaCertificateAuthorityCertificateAuthorityConfigurationOutputRe
   }
   // Temporarily expose input value. Use with caution.
   public get signingAlgorithmInput() {
-    return this._signingAlgorithm
+    return this._signingAlgorithm;
   }
 
   // subject - computed: false, optional: false, required: true
-  private _subject?: AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubject; 
-  private __subjectOutput = new AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubjectOutputReference(this as any, "subject", true);
+  private _subject = new AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubjectOutputReference(this as any, "subject", true);
   public get subject() {
-    return this.__subjectOutput;
+    return this._subject;
   }
   public putSubject(value: AcmpcaCertificateAuthorityCertificateAuthorityConfigurationSubject) {
-    this._subject = value;
+    this._subject.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get subjectInput() {
-    return this._subject
+    return this._subject.internalValue;
   }
 }
 export interface AcmpcaCertificateAuthorityRevocationConfigurationCrlConfiguration {
@@ -467,12 +588,55 @@ export class AcmpcaCertificateAuthorityRevocationConfigurationCrlConfigurationOu
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AcmpcaCertificateAuthorityRevocationConfigurationCrlConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._customCname) {
+      hasAnyValues = true;
+      internalValueResult.customCname = this._customCname;
+    }
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._expirationInDays) {
+      hasAnyValues = true;
+      internalValueResult.expirationInDays = this._expirationInDays;
+    }
+    if (this._s3BucketName) {
+      hasAnyValues = true;
+      internalValueResult.s3BucketName = this._s3BucketName;
+    }
+    if (this._s3ObjectAcl) {
+      hasAnyValues = true;
+      internalValueResult.s3ObjectAcl = this._s3ObjectAcl;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AcmpcaCertificateAuthorityRevocationConfigurationCrlConfiguration | undefined) {
+    if (value === undefined) {
+      this._customCname = undefined;
+      this._enabled = undefined;
+      this._expirationInDays = undefined;
+      this._s3BucketName = undefined;
+      this._s3ObjectAcl = undefined;
+    }
+    else {
+      this._customCname = value.customCname;
+      this._enabled = value.enabled;
+      this._expirationInDays = value.expirationInDays;
+      this._s3BucketName = value.s3BucketName;
+      this._s3ObjectAcl = value.s3ObjectAcl;
+    }
+  }
+
   // custom_cname - computed: false, optional: true, required: false
-  private _customCname?: string | undefined; 
+  private _customCname?: string; 
   public get customCname() {
     return this.getStringAttribute('custom_cname');
   }
-  public set customCname(value: string | undefined) {
+  public set customCname(value: string) {
     this._customCname = value;
   }
   public resetCustomCname() {
@@ -480,15 +644,15 @@ export class AcmpcaCertificateAuthorityRevocationConfigurationCrlConfigurationOu
   }
   // Temporarily expose input value. Use with caution.
   public get customCnameInput() {
-    return this._customCname
+    return this._customCname;
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -496,7 +660,7 @@ export class AcmpcaCertificateAuthorityRevocationConfigurationCrlConfigurationOu
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // expiration_in_days - computed: false, optional: false, required: true
@@ -509,15 +673,15 @@ export class AcmpcaCertificateAuthorityRevocationConfigurationCrlConfigurationOu
   }
   // Temporarily expose input value. Use with caution.
   public get expirationInDaysInput() {
-    return this._expirationInDays
+    return this._expirationInDays;
   }
 
   // s3_bucket_name - computed: false, optional: true, required: false
-  private _s3BucketName?: string | undefined; 
+  private _s3BucketName?: string; 
   public get s3BucketName() {
     return this.getStringAttribute('s3_bucket_name');
   }
-  public set s3BucketName(value: string | undefined) {
+  public set s3BucketName(value: string) {
     this._s3BucketName = value;
   }
   public resetS3BucketName() {
@@ -525,15 +689,15 @@ export class AcmpcaCertificateAuthorityRevocationConfigurationCrlConfigurationOu
   }
   // Temporarily expose input value. Use with caution.
   public get s3BucketNameInput() {
-    return this._s3BucketName
+    return this._s3BucketName;
   }
 
   // s3_object_acl - computed: true, optional: true, required: false
-  private _s3ObjectAcl?: string | undefined; 
+  private _s3ObjectAcl?: string; 
   public get s3ObjectAcl() {
     return this.getStringAttribute('s3_object_acl');
   }
-  public set s3ObjectAcl(value: string | undefined) {
+  public set s3ObjectAcl(value: string) {
     this._s3ObjectAcl = value;
   }
   public resetS3ObjectAcl() {
@@ -541,7 +705,7 @@ export class AcmpcaCertificateAuthorityRevocationConfigurationCrlConfigurationOu
   }
   // Temporarily expose input value. Use with caution.
   public get s3ObjectAclInput() {
-    return this._s3ObjectAcl
+    return this._s3ObjectAcl;
   }
 }
 export interface AcmpcaCertificateAuthorityRevocationConfiguration {
@@ -573,21 +737,39 @@ export class AcmpcaCertificateAuthorityRevocationConfigurationOutputReference ex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // crl_configuration - computed: false, optional: true, required: false
-  private _crlConfiguration?: AcmpcaCertificateAuthorityRevocationConfigurationCrlConfiguration | undefined; 
-  private __crlConfigurationOutput = new AcmpcaCertificateAuthorityRevocationConfigurationCrlConfigurationOutputReference(this as any, "crl_configuration", true);
-  public get crlConfiguration() {
-    return this.__crlConfigurationOutput;
+  public get internalValue(): AcmpcaCertificateAuthorityRevocationConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._crlConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.crlConfiguration = this._crlConfiguration?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putCrlConfiguration(value: AcmpcaCertificateAuthorityRevocationConfigurationCrlConfiguration | undefined) {
-    this._crlConfiguration = value;
+
+  public set internalValue(value: AcmpcaCertificateAuthorityRevocationConfiguration | undefined) {
+    if (value === undefined) {
+      this._crlConfiguration.internalValue = undefined;
+    }
+    else {
+      this._crlConfiguration.internalValue = value.crlConfiguration;
+    }
+  }
+
+  // crl_configuration - computed: false, optional: true, required: false
+  private _crlConfiguration = new AcmpcaCertificateAuthorityRevocationConfigurationCrlConfigurationOutputReference(this as any, "crl_configuration", true);
+  public get crlConfiguration() {
+    return this._crlConfiguration;
+  }
+  public putCrlConfiguration(value: AcmpcaCertificateAuthorityRevocationConfigurationCrlConfiguration) {
+    this._crlConfiguration.internalValue = value;
   }
   public resetCrlConfiguration() {
-    this._crlConfiguration = undefined;
+    this._crlConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get crlConfigurationInput() {
-    return this._crlConfiguration
+    return this._crlConfiguration.internalValue;
   }
 }
 export interface AcmpcaCertificateAuthorityTimeouts {
@@ -617,12 +799,31 @@ export class AcmpcaCertificateAuthorityTimeoutsOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AcmpcaCertificateAuthorityTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AcmpcaCertificateAuthorityTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+    }
+    else {
+      this._create = value.create;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -630,7 +831,7 @@ export class AcmpcaCertificateAuthorityTimeoutsOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 }
 
@@ -671,9 +872,9 @@ export class AcmpcaCertificateAuthority extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._type = config.type;
-    this._certificateAuthorityConfiguration = config.certificateAuthorityConfiguration;
-    this._revocationConfiguration = config.revocationConfiguration;
-    this._timeouts = config.timeouts;
+    this._certificateAuthorityConfiguration.internalValue = config.certificateAuthorityConfiguration;
+    this._revocationConfiguration.internalValue = config.revocationConfiguration;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -701,11 +902,11 @@ export class AcmpcaCertificateAuthority extends cdktf.TerraformResource {
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -713,7 +914,7 @@ export class AcmpcaCertificateAuthority extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // id - computed: true, optional: true, required: false
@@ -732,11 +933,11 @@ export class AcmpcaCertificateAuthority extends cdktf.TerraformResource {
   }
 
   // permanent_deletion_time_in_days - computed: false, optional: true, required: false
-  private _permanentDeletionTimeInDays?: number | undefined; 
+  private _permanentDeletionTimeInDays?: number; 
   public get permanentDeletionTimeInDays() {
     return this.getNumberAttribute('permanent_deletion_time_in_days');
   }
-  public set permanentDeletionTimeInDays(value: number | undefined) {
+  public set permanentDeletionTimeInDays(value: number) {
     this._permanentDeletionTimeInDays = value;
   }
   public resetPermanentDeletionTimeInDays() {
@@ -744,7 +945,7 @@ export class AcmpcaCertificateAuthority extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get permanentDeletionTimeInDaysInput() {
-    return this._permanentDeletionTimeInDays
+    return this._permanentDeletionTimeInDays;
   }
 
   // serial - computed: true, optional: false, required: false
@@ -758,12 +959,12 @@ export class AcmpcaCertificateAuthority extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -771,16 +972,16 @@ export class AcmpcaCertificateAuthority extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -788,15 +989,15 @@ export class AcmpcaCertificateAuthority extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // type - computed: false, optional: true, required: false
-  private _type?: string | undefined; 
+  private _type?: string; 
   public get type() {
     return this.getStringAttribute('type');
   }
-  public set type(value: string | undefined) {
+  public set type(value: string) {
     this._type = value;
   }
   public resetType() {
@@ -804,55 +1005,52 @@ export class AcmpcaCertificateAuthority extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get typeInput() {
-    return this._type
+    return this._type;
   }
 
   // certificate_authority_configuration - computed: false, optional: false, required: true
-  private _certificateAuthorityConfiguration?: AcmpcaCertificateAuthorityCertificateAuthorityConfiguration; 
-  private __certificateAuthorityConfigurationOutput = new AcmpcaCertificateAuthorityCertificateAuthorityConfigurationOutputReference(this as any, "certificate_authority_configuration", true);
+  private _certificateAuthorityConfiguration = new AcmpcaCertificateAuthorityCertificateAuthorityConfigurationOutputReference(this as any, "certificate_authority_configuration", true);
   public get certificateAuthorityConfiguration() {
-    return this.__certificateAuthorityConfigurationOutput;
+    return this._certificateAuthorityConfiguration;
   }
   public putCertificateAuthorityConfiguration(value: AcmpcaCertificateAuthorityCertificateAuthorityConfiguration) {
-    this._certificateAuthorityConfiguration = value;
+    this._certificateAuthorityConfiguration.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get certificateAuthorityConfigurationInput() {
-    return this._certificateAuthorityConfiguration
+    return this._certificateAuthorityConfiguration.internalValue;
   }
 
   // revocation_configuration - computed: false, optional: true, required: false
-  private _revocationConfiguration?: AcmpcaCertificateAuthorityRevocationConfiguration | undefined; 
-  private __revocationConfigurationOutput = new AcmpcaCertificateAuthorityRevocationConfigurationOutputReference(this as any, "revocation_configuration", true);
+  private _revocationConfiguration = new AcmpcaCertificateAuthorityRevocationConfigurationOutputReference(this as any, "revocation_configuration", true);
   public get revocationConfiguration() {
-    return this.__revocationConfigurationOutput;
+    return this._revocationConfiguration;
   }
-  public putRevocationConfiguration(value: AcmpcaCertificateAuthorityRevocationConfiguration | undefined) {
-    this._revocationConfiguration = value;
+  public putRevocationConfiguration(value: AcmpcaCertificateAuthorityRevocationConfiguration) {
+    this._revocationConfiguration.internalValue = value;
   }
   public resetRevocationConfiguration() {
-    this._revocationConfiguration = undefined;
+    this._revocationConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get revocationConfigurationInput() {
-    return this._revocationConfiguration
+    return this._revocationConfiguration.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: AcmpcaCertificateAuthorityTimeouts | undefined; 
-  private __timeoutsOutput = new AcmpcaCertificateAuthorityTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new AcmpcaCertificateAuthorityTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: AcmpcaCertificateAuthorityTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: AcmpcaCertificateAuthorityTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -866,9 +1064,9 @@ export class AcmpcaCertificateAuthority extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       type: cdktf.stringToTerraform(this._type),
-      certificate_authority_configuration: acmpcaCertificateAuthorityCertificateAuthorityConfigurationToTerraform(this._certificateAuthorityConfiguration),
-      revocation_configuration: acmpcaCertificateAuthorityRevocationConfigurationToTerraform(this._revocationConfiguration),
-      timeouts: acmpcaCertificateAuthorityTimeoutsToTerraform(this._timeouts),
+      certificate_authority_configuration: acmpcaCertificateAuthorityCertificateAuthorityConfigurationToTerraform(this._certificateAuthorityConfiguration.internalValue),
+      revocation_configuration: acmpcaCertificateAuthorityRevocationConfigurationToTerraform(this._revocationConfiguration.internalValue),
+      timeouts: acmpcaCertificateAuthorityTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

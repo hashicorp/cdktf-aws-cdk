@@ -77,15 +77,15 @@ export class ApiGatewayBasePathMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get apiIdInput() {
-    return this._apiId
+    return this._apiId;
   }
 
   // base_path - computed: false, optional: true, required: false
-  private _basePath?: string | undefined; 
+  private _basePath?: string; 
   public get basePath() {
     return this.getStringAttribute('base_path');
   }
-  public set basePath(value: string | undefined) {
+  public set basePath(value: string) {
     this._basePath = value;
   }
   public resetBasePath() {
@@ -93,7 +93,7 @@ export class ApiGatewayBasePathMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get basePathInput() {
-    return this._basePath
+    return this._basePath;
   }
 
   // domain_name - computed: false, optional: false, required: true
@@ -106,7 +106,7 @@ export class ApiGatewayBasePathMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainNameInput() {
-    return this._domainName
+    return this._domainName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -115,11 +115,11 @@ export class ApiGatewayBasePathMapping extends cdktf.TerraformResource {
   }
 
   // stage_name - computed: false, optional: true, required: false
-  private _stageName?: string | undefined; 
+  private _stageName?: string; 
   public get stageName() {
     return this.getStringAttribute('stage_name');
   }
-  public set stageName(value: string | undefined) {
+  public set stageName(value: string) {
     this._stageName = value;
   }
   public resetStageName() {
@@ -127,7 +127,7 @@ export class ApiGatewayBasePathMapping extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stageNameInput() {
-    return this._stageName
+    return this._stageName;
   }
 
   // =========

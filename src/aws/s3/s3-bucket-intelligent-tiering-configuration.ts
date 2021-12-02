@@ -64,12 +64,37 @@ export class S3BucketIntelligentTieringConfigurationFilterOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3BucketIntelligentTieringConfigurationFilter | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    if (this._tags) {
+      hasAnyValues = true;
+      internalValueResult.tags = this._tags;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3BucketIntelligentTieringConfigurationFilter | undefined) {
+    if (value === undefined) {
+      this._prefix = undefined;
+      this._tags = undefined;
+    }
+    else {
+      this._prefix = value.prefix;
+      this._tags = value.tags;
+    }
+  }
+
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -77,16 +102,16 @@ export class S3BucketIntelligentTieringConfigurationFilterOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -94,7 +119,7 @@ export class S3BucketIntelligentTieringConfigurationFilterOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 }
 export interface S3BucketIntelligentTieringConfigurationTiering {
@@ -155,7 +180,7 @@ export class S3BucketIntelligentTieringConfiguration extends cdktf.TerraformReso
     this._bucket = config.bucket;
     this._name = config.name;
     this._status = config.status;
-    this._filter = config.filter;
+    this._filter.internalValue = config.filter;
     this._tiering = config.tiering;
   }
 
@@ -173,7 +198,7 @@ export class S3BucketIntelligentTieringConfiguration extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // id - computed: true, optional: true, required: false
@@ -191,15 +216,15 @@ export class S3BucketIntelligentTieringConfiguration extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // status - computed: false, optional: true, required: false
-  private _status?: string | undefined; 
+  private _status?: string; 
   public get status() {
     return this.getStringAttribute('status');
   }
-  public set status(value: string | undefined) {
+  public set status(value: string) {
     this._status = value;
   }
   public resetStatus() {
@@ -207,24 +232,23 @@ export class S3BucketIntelligentTieringConfiguration extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: S3BucketIntelligentTieringConfigurationFilter | undefined; 
-  private __filterOutput = new S3BucketIntelligentTieringConfigurationFilterOutputReference(this as any, "filter", true);
+  private _filter = new S3BucketIntelligentTieringConfigurationFilterOutputReference(this as any, "filter", true);
   public get filter() {
-    return this.__filterOutput;
+    return this._filter;
   }
-  public putFilter(value: S3BucketIntelligentTieringConfigurationFilter | undefined) {
-    this._filter = value;
+  public putFilter(value: S3BucketIntelligentTieringConfigurationFilter) {
+    this._filter.internalValue = value;
   }
   public resetFilter() {
-    this._filter = undefined;
+    this._filter.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter.internalValue;
   }
 
   // tiering - computed: false, optional: false, required: true
@@ -238,7 +262,7 @@ export class S3BucketIntelligentTieringConfiguration extends cdktf.TerraformReso
   }
   // Temporarily expose input value. Use with caution.
   public get tieringInput() {
-    return this._tiering
+    return this._tiering;
   }
 
   // =========
@@ -250,7 +274,7 @@ export class S3BucketIntelligentTieringConfiguration extends cdktf.TerraformReso
       bucket: cdktf.stringToTerraform(this._bucket),
       name: cdktf.stringToTerraform(this._name),
       status: cdktf.stringToTerraform(this._status),
-      filter: s3BucketIntelligentTieringConfigurationFilterToTerraform(this._filter),
+      filter: s3BucketIntelligentTieringConfigurationFilterToTerraform(this._filter.internalValue),
       tiering: cdktf.listMapper(s3BucketIntelligentTieringConfigurationTieringToTerraform)(this._tiering),
     };
   }

@@ -131,6 +131,37 @@ export class AlbAccessLogsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AlbAccessLogs | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucket) {
+      hasAnyValues = true;
+      internalValueResult.bucket = this._bucket;
+    }
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AlbAccessLogs | undefined) {
+    if (value === undefined) {
+      this._bucket = undefined;
+      this._enabled = undefined;
+      this._prefix = undefined;
+    }
+    else {
+      this._bucket = value.bucket;
+      this._enabled = value.enabled;
+      this._prefix = value.prefix;
+    }
+  }
+
   // bucket - computed: false, optional: false, required: true
   private _bucket?: string; 
   public get bucket() {
@@ -141,15 +172,15 @@ export class AlbAccessLogsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // enabled - computed: false, optional: true, required: false
-  private _enabled?: boolean | cdktf.IResolvable | undefined; 
+  private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
     return this.getBooleanAttribute('enabled') as any;
   }
-  public set enabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set enabled(value: boolean | cdktf.IResolvable) {
     this._enabled = value;
   }
   public resetEnabled() {
@@ -157,15 +188,15 @@ export class AlbAccessLogsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -173,7 +204,7 @@ export class AlbAccessLogsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 }
 export interface AlbSubnetMapping {
@@ -245,12 +276,43 @@ export class AlbTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AlbTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AlbTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -258,15 +320,15 @@ export class AlbTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -274,15 +336,15 @@ export class AlbTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -290,7 +352,7 @@ export class AlbTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -343,9 +405,9 @@ export class Alb extends cdktf.TerraformResource {
     this._subnets = config.subnets;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._accessLogs = config.accessLogs;
+    this._accessLogs.internalValue = config.accessLogs;
     this._subnetMapping = config.subnetMapping;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -363,11 +425,11 @@ export class Alb extends cdktf.TerraformResource {
   }
 
   // customer_owned_ipv4_pool - computed: false, optional: true, required: false
-  private _customerOwnedIpv4Pool?: string | undefined; 
+  private _customerOwnedIpv4Pool?: string; 
   public get customerOwnedIpv4Pool() {
     return this.getStringAttribute('customer_owned_ipv4_pool');
   }
-  public set customerOwnedIpv4Pool(value: string | undefined) {
+  public set customerOwnedIpv4Pool(value: string) {
     this._customerOwnedIpv4Pool = value;
   }
   public resetCustomerOwnedIpv4Pool() {
@@ -375,15 +437,15 @@ export class Alb extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customerOwnedIpv4PoolInput() {
-    return this._customerOwnedIpv4Pool
+    return this._customerOwnedIpv4Pool;
   }
 
   // desync_mitigation_mode - computed: false, optional: true, required: false
-  private _desyncMitigationMode?: string | undefined; 
+  private _desyncMitigationMode?: string; 
   public get desyncMitigationMode() {
     return this.getStringAttribute('desync_mitigation_mode');
   }
-  public set desyncMitigationMode(value: string | undefined) {
+  public set desyncMitigationMode(value: string) {
     this._desyncMitigationMode = value;
   }
   public resetDesyncMitigationMode() {
@@ -391,7 +453,7 @@ export class Alb extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get desyncMitigationModeInput() {
-    return this._desyncMitigationMode
+    return this._desyncMitigationMode;
   }
 
   // dns_name - computed: true, optional: false, required: false
@@ -400,11 +462,11 @@ export class Alb extends cdktf.TerraformResource {
   }
 
   // drop_invalid_header_fields - computed: false, optional: true, required: false
-  private _dropInvalidHeaderFields?: boolean | cdktf.IResolvable | undefined; 
+  private _dropInvalidHeaderFields?: boolean | cdktf.IResolvable; 
   public get dropInvalidHeaderFields() {
     return this.getBooleanAttribute('drop_invalid_header_fields') as any;
   }
-  public set dropInvalidHeaderFields(value: boolean | cdktf.IResolvable | undefined) {
+  public set dropInvalidHeaderFields(value: boolean | cdktf.IResolvable) {
     this._dropInvalidHeaderFields = value;
   }
   public resetDropInvalidHeaderFields() {
@@ -412,15 +474,15 @@ export class Alb extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dropInvalidHeaderFieldsInput() {
-    return this._dropInvalidHeaderFields
+    return this._dropInvalidHeaderFields;
   }
 
   // enable_cross_zone_load_balancing - computed: false, optional: true, required: false
-  private _enableCrossZoneLoadBalancing?: boolean | cdktf.IResolvable | undefined; 
+  private _enableCrossZoneLoadBalancing?: boolean | cdktf.IResolvable; 
   public get enableCrossZoneLoadBalancing() {
     return this.getBooleanAttribute('enable_cross_zone_load_balancing') as any;
   }
-  public set enableCrossZoneLoadBalancing(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableCrossZoneLoadBalancing(value: boolean | cdktf.IResolvable) {
     this._enableCrossZoneLoadBalancing = value;
   }
   public resetEnableCrossZoneLoadBalancing() {
@@ -428,15 +490,15 @@ export class Alb extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableCrossZoneLoadBalancingInput() {
-    return this._enableCrossZoneLoadBalancing
+    return this._enableCrossZoneLoadBalancing;
   }
 
   // enable_deletion_protection - computed: false, optional: true, required: false
-  private _enableDeletionProtection?: boolean | cdktf.IResolvable | undefined; 
+  private _enableDeletionProtection?: boolean | cdktf.IResolvable; 
   public get enableDeletionProtection() {
     return this.getBooleanAttribute('enable_deletion_protection') as any;
   }
-  public set enableDeletionProtection(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableDeletionProtection(value: boolean | cdktf.IResolvable) {
     this._enableDeletionProtection = value;
   }
   public resetEnableDeletionProtection() {
@@ -444,15 +506,15 @@ export class Alb extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableDeletionProtectionInput() {
-    return this._enableDeletionProtection
+    return this._enableDeletionProtection;
   }
 
   // enable_http2 - computed: false, optional: true, required: false
-  private _enableHttp2?: boolean | cdktf.IResolvable | undefined; 
+  private _enableHttp2?: boolean | cdktf.IResolvable; 
   public get enableHttp2() {
     return this.getBooleanAttribute('enable_http2') as any;
   }
-  public set enableHttp2(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableHttp2(value: boolean | cdktf.IResolvable) {
     this._enableHttp2 = value;
   }
   public resetEnableHttp2() {
@@ -460,15 +522,15 @@ export class Alb extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableHttp2Input() {
-    return this._enableHttp2
+    return this._enableHttp2;
   }
 
   // enable_waf_fail_open - computed: false, optional: true, required: false
-  private _enableWafFailOpen?: boolean | cdktf.IResolvable | undefined; 
+  private _enableWafFailOpen?: boolean | cdktf.IResolvable; 
   public get enableWafFailOpen() {
     return this.getBooleanAttribute('enable_waf_fail_open') as any;
   }
-  public set enableWafFailOpen(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableWafFailOpen(value: boolean | cdktf.IResolvable) {
     this._enableWafFailOpen = value;
   }
   public resetEnableWafFailOpen() {
@@ -476,7 +538,7 @@ export class Alb extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableWafFailOpenInput() {
-    return this._enableWafFailOpen
+    return this._enableWafFailOpen;
   }
 
   // id - computed: true, optional: true, required: false
@@ -485,11 +547,11 @@ export class Alb extends cdktf.TerraformResource {
   }
 
   // idle_timeout - computed: false, optional: true, required: false
-  private _idleTimeout?: number | undefined; 
+  private _idleTimeout?: number; 
   public get idleTimeout() {
     return this.getNumberAttribute('idle_timeout');
   }
-  public set idleTimeout(value: number | undefined) {
+  public set idleTimeout(value: number) {
     this._idleTimeout = value;
   }
   public resetIdleTimeout() {
@@ -497,15 +559,15 @@ export class Alb extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get idleTimeoutInput() {
-    return this._idleTimeout
+    return this._idleTimeout;
   }
 
   // internal - computed: true, optional: true, required: false
-  private _internal?: boolean | cdktf.IResolvable | undefined; 
+  private _internal?: boolean | cdktf.IResolvable; 
   public get internal() {
     return this.getBooleanAttribute('internal') as any;
   }
-  public set internal(value: boolean | cdktf.IResolvable | undefined) {
+  public set internal(value: boolean | cdktf.IResolvable) {
     this._internal = value;
   }
   public resetInternal() {
@@ -513,15 +575,15 @@ export class Alb extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get internalInput() {
-    return this._internal
+    return this._internal;
   }
 
   // ip_address_type - computed: true, optional: true, required: false
-  private _ipAddressType?: string | undefined; 
+  private _ipAddressType?: string; 
   public get ipAddressType() {
     return this.getStringAttribute('ip_address_type');
   }
-  public set ipAddressType(value: string | undefined) {
+  public set ipAddressType(value: string) {
     this._ipAddressType = value;
   }
   public resetIpAddressType() {
@@ -529,15 +591,15 @@ export class Alb extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ipAddressTypeInput() {
-    return this._ipAddressType
+    return this._ipAddressType;
   }
 
   // load_balancer_type - computed: false, optional: true, required: false
-  private _loadBalancerType?: string | undefined; 
+  private _loadBalancerType?: string; 
   public get loadBalancerType() {
     return this.getStringAttribute('load_balancer_type');
   }
-  public set loadBalancerType(value: string | undefined) {
+  public set loadBalancerType(value: string) {
     this._loadBalancerType = value;
   }
   public resetLoadBalancerType() {
@@ -545,15 +607,15 @@ export class Alb extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get loadBalancerTypeInput() {
-    return this._loadBalancerType
+    return this._loadBalancerType;
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -561,15 +623,15 @@ export class Alb extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_prefix - computed: false, optional: true, required: false
-  private _namePrefix?: string | undefined; 
+  private _namePrefix?: string; 
   public get namePrefix() {
     return this.getStringAttribute('name_prefix');
   }
-  public set namePrefix(value: string | undefined) {
+  public set namePrefix(value: string) {
     this._namePrefix = value;
   }
   public resetNamePrefix() {
@@ -577,15 +639,15 @@ export class Alb extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // security_groups - computed: true, optional: true, required: false
-  private _securityGroups?: string[] | undefined; 
+  private _securityGroups?: string[]; 
   public get securityGroups() {
     return this.getListAttribute('security_groups');
   }
-  public set securityGroups(value: string[] | undefined) {
+  public set securityGroups(value: string[]) {
     this._securityGroups = value;
   }
   public resetSecurityGroups() {
@@ -593,15 +655,15 @@ export class Alb extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupsInput() {
-    return this._securityGroups
+    return this._securityGroups;
   }
 
   // subnets - computed: true, optional: true, required: false
-  private _subnets?: string[] | undefined; 
+  private _subnets?: string[]; 
   public get subnets() {
     return this.getListAttribute('subnets');
   }
-  public set subnets(value: string[] | undefined) {
+  public set subnets(value: string[]) {
     this._subnets = value;
   }
   public resetSubnets() {
@@ -609,16 +671,16 @@ export class Alb extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetsInput() {
-    return this._subnets
+    return this._subnets;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -626,16 +688,16 @@ export class Alb extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -643,7 +705,7 @@ export class Alb extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // vpc_id - computed: true, optional: false, required: false
@@ -657,29 +719,28 @@ export class Alb extends cdktf.TerraformResource {
   }
 
   // access_logs - computed: false, optional: true, required: false
-  private _accessLogs?: AlbAccessLogs | undefined; 
-  private __accessLogsOutput = new AlbAccessLogsOutputReference(this as any, "access_logs", true);
+  private _accessLogs = new AlbAccessLogsOutputReference(this as any, "access_logs", true);
   public get accessLogs() {
-    return this.__accessLogsOutput;
+    return this._accessLogs;
   }
-  public putAccessLogs(value: AlbAccessLogs | undefined) {
-    this._accessLogs = value;
+  public putAccessLogs(value: AlbAccessLogs) {
+    this._accessLogs.internalValue = value;
   }
   public resetAccessLogs() {
-    this._accessLogs = undefined;
+    this._accessLogs.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get accessLogsInput() {
-    return this._accessLogs
+    return this._accessLogs.internalValue;
   }
 
   // subnet_mapping - computed: false, optional: true, required: false
-  private _subnetMapping?: AlbSubnetMapping[] | undefined; 
+  private _subnetMapping?: AlbSubnetMapping[]; 
   public get subnetMapping() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('subnet_mapping') as any;
   }
-  public set subnetMapping(value: AlbSubnetMapping[] | undefined) {
+  public set subnetMapping(value: AlbSubnetMapping[]) {
     this._subnetMapping = value;
   }
   public resetSubnetMapping() {
@@ -687,24 +748,23 @@ export class Alb extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetMappingInput() {
-    return this._subnetMapping
+    return this._subnetMapping;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: AlbTimeouts | undefined; 
-  private __timeoutsOutput = new AlbTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new AlbTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: AlbTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: AlbTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -730,9 +790,9 @@ export class Alb extends cdktf.TerraformResource {
       subnets: cdktf.listMapper(cdktf.stringToTerraform)(this._subnets),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      access_logs: albAccessLogsToTerraform(this._accessLogs),
+      access_logs: albAccessLogsToTerraform(this._accessLogs.internalValue),
       subnet_mapping: cdktf.listMapper(albSubnetMappingToTerraform)(this._subnetMapping),
-      timeouts: albTimeoutsToTerraform(this._timeouts),
+      timeouts: albTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

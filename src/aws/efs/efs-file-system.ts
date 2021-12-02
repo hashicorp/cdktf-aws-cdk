@@ -149,11 +149,11 @@ export class EfsFileSystem extends cdktf.TerraformResource {
   }
 
   // availability_zone_name - computed: true, optional: true, required: false
-  private _availabilityZoneName?: string | undefined; 
+  private _availabilityZoneName?: string; 
   public get availabilityZoneName() {
     return this.getStringAttribute('availability_zone_name');
   }
-  public set availabilityZoneName(value: string | undefined) {
+  public set availabilityZoneName(value: string) {
     this._availabilityZoneName = value;
   }
   public resetAvailabilityZoneName() {
@@ -161,15 +161,15 @@ export class EfsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get availabilityZoneNameInput() {
-    return this._availabilityZoneName
+    return this._availabilityZoneName;
   }
 
   // creation_token - computed: true, optional: true, required: false
-  private _creationToken?: string | undefined; 
+  private _creationToken?: string; 
   public get creationToken() {
     return this.getStringAttribute('creation_token');
   }
-  public set creationToken(value: string | undefined) {
+  public set creationToken(value: string) {
     this._creationToken = value;
   }
   public resetCreationToken() {
@@ -177,7 +177,7 @@ export class EfsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get creationTokenInput() {
-    return this._creationToken
+    return this._creationToken;
   }
 
   // dns_name - computed: true, optional: false, required: false
@@ -186,11 +186,11 @@ export class EfsFileSystem extends cdktf.TerraformResource {
   }
 
   // encrypted - computed: true, optional: true, required: false
-  private _encrypted?: boolean | cdktf.IResolvable | undefined; 
+  private _encrypted?: boolean | cdktf.IResolvable; 
   public get encrypted() {
     return this.getBooleanAttribute('encrypted') as any;
   }
-  public set encrypted(value: boolean | cdktf.IResolvable | undefined) {
+  public set encrypted(value: boolean | cdktf.IResolvable) {
     this._encrypted = value;
   }
   public resetEncrypted() {
@@ -198,7 +198,7 @@ export class EfsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get encryptedInput() {
-    return this._encrypted
+    return this._encrypted;
   }
 
   // id - computed: true, optional: true, required: false
@@ -207,11 +207,11 @@ export class EfsFileSystem extends cdktf.TerraformResource {
   }
 
   // kms_key_id - computed: true, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -219,7 +219,7 @@ export class EfsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // number_of_mount_targets - computed: true, optional: false, required: false
@@ -233,11 +233,11 @@ export class EfsFileSystem extends cdktf.TerraformResource {
   }
 
   // performance_mode - computed: true, optional: true, required: false
-  private _performanceMode?: string | undefined; 
+  private _performanceMode?: string; 
   public get performanceMode() {
     return this.getStringAttribute('performance_mode');
   }
-  public set performanceMode(value: string | undefined) {
+  public set performanceMode(value: string) {
     this._performanceMode = value;
   }
   public resetPerformanceMode() {
@@ -245,15 +245,15 @@ export class EfsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get performanceModeInput() {
-    return this._performanceMode
+    return this._performanceMode;
   }
 
   // provisioned_throughput_in_mibps - computed: false, optional: true, required: false
-  private _provisionedThroughputInMibps?: number | undefined; 
+  private _provisionedThroughputInMibps?: number; 
   public get provisionedThroughputInMibps() {
     return this.getNumberAttribute('provisioned_throughput_in_mibps');
   }
-  public set provisionedThroughputInMibps(value: number | undefined) {
+  public set provisionedThroughputInMibps(value: number) {
     this._provisionedThroughputInMibps = value;
   }
   public resetProvisionedThroughputInMibps() {
@@ -261,7 +261,7 @@ export class EfsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get provisionedThroughputInMibpsInput() {
-    return this._provisionedThroughputInMibps
+    return this._provisionedThroughputInMibps;
   }
 
   // size_in_bytes - computed: true, optional: false, required: false
@@ -270,12 +270,12 @@ export class EfsFileSystem extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -283,16 +283,16 @@ export class EfsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -300,15 +300,15 @@ export class EfsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // throughput_mode - computed: false, optional: true, required: false
-  private _throughputMode?: string | undefined; 
+  private _throughputMode?: string; 
   public get throughputMode() {
     return this.getStringAttribute('throughput_mode');
   }
-  public set throughputMode(value: string | undefined) {
+  public set throughputMode(value: string) {
     this._throughputMode = value;
   }
   public resetThroughputMode() {
@@ -316,16 +316,16 @@ export class EfsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get throughputModeInput() {
-    return this._throughputMode
+    return this._throughputMode;
   }
 
   // lifecycle_policy - computed: false, optional: true, required: false
-  private _lifecyclePolicy?: EfsFileSystemLifecyclePolicy[] | undefined; 
+  private _lifecyclePolicy?: EfsFileSystemLifecyclePolicy[]; 
   public get lifecyclePolicy() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('lifecycle_policy') as any;
   }
-  public set lifecyclePolicy(value: EfsFileSystemLifecyclePolicy[] | undefined) {
+  public set lifecyclePolicy(value: EfsFileSystemLifecyclePolicy[]) {
     this._lifecyclePolicy = value;
   }
   public resetLifecyclePolicy() {
@@ -333,7 +333,7 @@ export class EfsFileSystem extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get lifecyclePolicyInput() {
-    return this._lifecyclePolicy
+    return this._lifecyclePolicy;
   }
 
   // =========

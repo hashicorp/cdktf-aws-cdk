@@ -67,7 +67,7 @@ export class Route53HostedZoneDnssec extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get hostedZoneIdInput() {
-    return this._hostedZoneId
+    return this._hostedZoneId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -76,11 +76,11 @@ export class Route53HostedZoneDnssec extends cdktf.TerraformResource {
   }
 
   // signing_status - computed: false, optional: true, required: false
-  private _signingStatus?: string | undefined; 
+  private _signingStatus?: string; 
   public get signingStatus() {
     return this.getStringAttribute('signing_status');
   }
-  public set signingStatus(value: string | undefined) {
+  public set signingStatus(value: string) {
     this._signingStatus = value;
   }
   public resetSigningStatus() {
@@ -88,7 +88,7 @@ export class Route53HostedZoneDnssec extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get signingStatusInput() {
-    return this._signingStatus
+    return this._signingStatus;
   }
 
   // =========

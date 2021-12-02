@@ -68,11 +68,11 @@ export class DataAwsIamRoles extends cdktf.TerraformDataSource {
   }
 
   // name_regex - computed: false, optional: true, required: false
-  private _nameRegex?: string | undefined; 
+  private _nameRegex?: string; 
   public get nameRegex() {
     return this.getStringAttribute('name_regex');
   }
-  public set nameRegex(value: string | undefined) {
+  public set nameRegex(value: string) {
     this._nameRegex = value;
   }
   public resetNameRegex() {
@@ -80,7 +80,7 @@ export class DataAwsIamRoles extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameRegexInput() {
-    return this._nameRegex
+    return this._nameRegex;
   }
 
   // names - computed: true, optional: false, required: false
@@ -89,11 +89,11 @@ export class DataAwsIamRoles extends cdktf.TerraformDataSource {
   }
 
   // path_prefix - computed: false, optional: true, required: false
-  private _pathPrefix?: string | undefined; 
+  private _pathPrefix?: string; 
   public get pathPrefix() {
     return this.getStringAttribute('path_prefix');
   }
-  public set pathPrefix(value: string | undefined) {
+  public set pathPrefix(value: string) {
     this._pathPrefix = value;
   }
   public resetPathPrefix() {
@@ -101,7 +101,7 @@ export class DataAwsIamRoles extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get pathPrefixInput() {
-    return this._pathPrefix
+    return this._pathPrefix;
   }
 
   // =========

@@ -80,12 +80,37 @@ export class AutoscalingplansScalingPlanApplicationSourceOutputReference extends
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AutoscalingplansScalingPlanApplicationSource | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cloudformationStackArn) {
+      hasAnyValues = true;
+      internalValueResult.cloudformationStackArn = this._cloudformationStackArn;
+    }
+    if (this._tagFilter) {
+      hasAnyValues = true;
+      internalValueResult.tagFilter = this._tagFilter;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AutoscalingplansScalingPlanApplicationSource | undefined) {
+    if (value === undefined) {
+      this._cloudformationStackArn = undefined;
+      this._tagFilter = undefined;
+    }
+    else {
+      this._cloudformationStackArn = value.cloudformationStackArn;
+      this._tagFilter = value.tagFilter;
+    }
+  }
+
   // cloudformation_stack_arn - computed: false, optional: true, required: false
-  private _cloudformationStackArn?: string | undefined; 
+  private _cloudformationStackArn?: string; 
   public get cloudformationStackArn() {
     return this.getStringAttribute('cloudformation_stack_arn');
   }
-  public set cloudformationStackArn(value: string | undefined) {
+  public set cloudformationStackArn(value: string) {
     this._cloudformationStackArn = value;
   }
   public resetCloudformationStackArn() {
@@ -93,16 +118,16 @@ export class AutoscalingplansScalingPlanApplicationSourceOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get cloudformationStackArnInput() {
-    return this._cloudformationStackArn
+    return this._cloudformationStackArn;
   }
 
   // tag_filter - computed: false, optional: true, required: false
-  private _tagFilter?: AutoscalingplansScalingPlanApplicationSourceTagFilter[] | undefined; 
+  private _tagFilter?: AutoscalingplansScalingPlanApplicationSourceTagFilter[]; 
   public get tagFilter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tag_filter') as any;
   }
-  public set tagFilter(value: AutoscalingplansScalingPlanApplicationSourceTagFilter[] | undefined) {
+  public set tagFilter(value: AutoscalingplansScalingPlanApplicationSourceTagFilter[]) {
     this._tagFilter = value;
   }
   public resetTagFilter() {
@@ -110,7 +135,7 @@ export class AutoscalingplansScalingPlanApplicationSourceOutputReference extends
   }
   // Temporarily expose input value. Use with caution.
   public get tagFilterInput() {
-    return this._tagFilter
+    return this._tagFilter;
   }
 }
 export interface AutoscalingplansScalingPlanScalingInstructionCustomizedLoadMetricSpecification {
@@ -160,13 +185,56 @@ export class AutoscalingplansScalingPlanScalingInstructionCustomizedLoadMetricSp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AutoscalingplansScalingPlanScalingInstructionCustomizedLoadMetricSpecification | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._dimensions) {
+      hasAnyValues = true;
+      internalValueResult.dimensions = this._dimensions;
+    }
+    if (this._metricName) {
+      hasAnyValues = true;
+      internalValueResult.metricName = this._metricName;
+    }
+    if (this._namespace) {
+      hasAnyValues = true;
+      internalValueResult.namespace = this._namespace;
+    }
+    if (this._statistic) {
+      hasAnyValues = true;
+      internalValueResult.statistic = this._statistic;
+    }
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AutoscalingplansScalingPlanScalingInstructionCustomizedLoadMetricSpecification | undefined) {
+    if (value === undefined) {
+      this._dimensions = undefined;
+      this._metricName = undefined;
+      this._namespace = undefined;
+      this._statistic = undefined;
+      this._unit = undefined;
+    }
+    else {
+      this._dimensions = value.dimensions;
+      this._metricName = value.metricName;
+      this._namespace = value.namespace;
+      this._statistic = value.statistic;
+      this._unit = value.unit;
+    }
+  }
+
   // dimensions - computed: false, optional: true, required: false
-  private _dimensions?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _dimensions?: { [key: string]: string } | cdktf.IResolvable; 
   public get dimensions() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('dimensions') as any;
   }
-  public set dimensions(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set dimensions(value: { [key: string]: string } | cdktf.IResolvable) {
     this._dimensions = value;
   }
   public resetDimensions() {
@@ -174,7 +242,7 @@ export class AutoscalingplansScalingPlanScalingInstructionCustomizedLoadMetricSp
   }
   // Temporarily expose input value. Use with caution.
   public get dimensionsInput() {
-    return this._dimensions
+    return this._dimensions;
   }
 
   // metric_name - computed: false, optional: false, required: true
@@ -187,7 +255,7 @@ export class AutoscalingplansScalingPlanScalingInstructionCustomizedLoadMetricSp
   }
   // Temporarily expose input value. Use with caution.
   public get metricNameInput() {
-    return this._metricName
+    return this._metricName;
   }
 
   // namespace - computed: false, optional: false, required: true
@@ -200,7 +268,7 @@ export class AutoscalingplansScalingPlanScalingInstructionCustomizedLoadMetricSp
   }
   // Temporarily expose input value. Use with caution.
   public get namespaceInput() {
-    return this._namespace
+    return this._namespace;
   }
 
   // statistic - computed: false, optional: false, required: true
@@ -213,15 +281,15 @@ export class AutoscalingplansScalingPlanScalingInstructionCustomizedLoadMetricSp
   }
   // Temporarily expose input value. Use with caution.
   public get statisticInput() {
-    return this._statistic
+    return this._statistic;
   }
 
   // unit - computed: false, optional: true, required: false
-  private _unit?: string | undefined; 
+  private _unit?: string; 
   public get unit() {
     return this.getStringAttribute('unit');
   }
-  public set unit(value: string | undefined) {
+  public set unit(value: string) {
     this._unit = value;
   }
   public resetUnit() {
@@ -229,7 +297,7 @@ export class AutoscalingplansScalingPlanScalingInstructionCustomizedLoadMetricSp
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 }
 export interface AutoscalingplansScalingPlanScalingInstructionPredefinedLoadMetricSpecification {
@@ -264,6 +332,31 @@ export class AutoscalingplansScalingPlanScalingInstructionPredefinedLoadMetricSp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AutoscalingplansScalingPlanScalingInstructionPredefinedLoadMetricSpecification | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._predefinedLoadMetricType) {
+      hasAnyValues = true;
+      internalValueResult.predefinedLoadMetricType = this._predefinedLoadMetricType;
+    }
+    if (this._resourceLabel) {
+      hasAnyValues = true;
+      internalValueResult.resourceLabel = this._resourceLabel;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AutoscalingplansScalingPlanScalingInstructionPredefinedLoadMetricSpecification | undefined) {
+    if (value === undefined) {
+      this._predefinedLoadMetricType = undefined;
+      this._resourceLabel = undefined;
+    }
+    else {
+      this._predefinedLoadMetricType = value.predefinedLoadMetricType;
+      this._resourceLabel = value.resourceLabel;
+    }
+  }
+
   // predefined_load_metric_type - computed: false, optional: false, required: true
   private _predefinedLoadMetricType?: string; 
   public get predefinedLoadMetricType() {
@@ -274,15 +367,15 @@ export class AutoscalingplansScalingPlanScalingInstructionPredefinedLoadMetricSp
   }
   // Temporarily expose input value. Use with caution.
   public get predefinedLoadMetricTypeInput() {
-    return this._predefinedLoadMetricType
+    return this._predefinedLoadMetricType;
   }
 
   // resource_label - computed: false, optional: true, required: false
-  private _resourceLabel?: string | undefined; 
+  private _resourceLabel?: string; 
   public get resourceLabel() {
     return this.getStringAttribute('resource_label');
   }
-  public set resourceLabel(value: string | undefined) {
+  public set resourceLabel(value: string) {
     this._resourceLabel = value;
   }
   public resetResourceLabel() {
@@ -290,7 +383,7 @@ export class AutoscalingplansScalingPlanScalingInstructionPredefinedLoadMetricSp
   }
   // Temporarily expose input value. Use with caution.
   public get resourceLabelInput() {
-    return this._resourceLabel
+    return this._resourceLabel;
   }
 }
 export interface AutoscalingplansScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification {
@@ -340,13 +433,56 @@ export class AutoscalingplansScalingPlanScalingInstructionTargetTrackingConfigur
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AutoscalingplansScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._dimensions) {
+      hasAnyValues = true;
+      internalValueResult.dimensions = this._dimensions;
+    }
+    if (this._metricName) {
+      hasAnyValues = true;
+      internalValueResult.metricName = this._metricName;
+    }
+    if (this._namespace) {
+      hasAnyValues = true;
+      internalValueResult.namespace = this._namespace;
+    }
+    if (this._statistic) {
+      hasAnyValues = true;
+      internalValueResult.statistic = this._statistic;
+    }
+    if (this._unit) {
+      hasAnyValues = true;
+      internalValueResult.unit = this._unit;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AutoscalingplansScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification | undefined) {
+    if (value === undefined) {
+      this._dimensions = undefined;
+      this._metricName = undefined;
+      this._namespace = undefined;
+      this._statistic = undefined;
+      this._unit = undefined;
+    }
+    else {
+      this._dimensions = value.dimensions;
+      this._metricName = value.metricName;
+      this._namespace = value.namespace;
+      this._statistic = value.statistic;
+      this._unit = value.unit;
+    }
+  }
+
   // dimensions - computed: false, optional: true, required: false
-  private _dimensions?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _dimensions?: { [key: string]: string } | cdktf.IResolvable; 
   public get dimensions() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('dimensions') as any;
   }
-  public set dimensions(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set dimensions(value: { [key: string]: string } | cdktf.IResolvable) {
     this._dimensions = value;
   }
   public resetDimensions() {
@@ -354,7 +490,7 @@ export class AutoscalingplansScalingPlanScalingInstructionTargetTrackingConfigur
   }
   // Temporarily expose input value. Use with caution.
   public get dimensionsInput() {
-    return this._dimensions
+    return this._dimensions;
   }
 
   // metric_name - computed: false, optional: false, required: true
@@ -367,7 +503,7 @@ export class AutoscalingplansScalingPlanScalingInstructionTargetTrackingConfigur
   }
   // Temporarily expose input value. Use with caution.
   public get metricNameInput() {
-    return this._metricName
+    return this._metricName;
   }
 
   // namespace - computed: false, optional: false, required: true
@@ -380,7 +516,7 @@ export class AutoscalingplansScalingPlanScalingInstructionTargetTrackingConfigur
   }
   // Temporarily expose input value. Use with caution.
   public get namespaceInput() {
-    return this._namespace
+    return this._namespace;
   }
 
   // statistic - computed: false, optional: false, required: true
@@ -393,15 +529,15 @@ export class AutoscalingplansScalingPlanScalingInstructionTargetTrackingConfigur
   }
   // Temporarily expose input value. Use with caution.
   public get statisticInput() {
-    return this._statistic
+    return this._statistic;
   }
 
   // unit - computed: false, optional: true, required: false
-  private _unit?: string | undefined; 
+  private _unit?: string; 
   public get unit() {
     return this.getStringAttribute('unit');
   }
-  public set unit(value: string | undefined) {
+  public set unit(value: string) {
     this._unit = value;
   }
   public resetUnit() {
@@ -409,7 +545,7 @@ export class AutoscalingplansScalingPlanScalingInstructionTargetTrackingConfigur
   }
   // Temporarily expose input value. Use with caution.
   public get unitInput() {
-    return this._unit
+    return this._unit;
   }
 }
 export interface AutoscalingplansScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification {
@@ -444,6 +580,31 @@ export class AutoscalingplansScalingPlanScalingInstructionTargetTrackingConfigur
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AutoscalingplansScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._predefinedScalingMetricType) {
+      hasAnyValues = true;
+      internalValueResult.predefinedScalingMetricType = this._predefinedScalingMetricType;
+    }
+    if (this._resourceLabel) {
+      hasAnyValues = true;
+      internalValueResult.resourceLabel = this._resourceLabel;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AutoscalingplansScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification | undefined) {
+    if (value === undefined) {
+      this._predefinedScalingMetricType = undefined;
+      this._resourceLabel = undefined;
+    }
+    else {
+      this._predefinedScalingMetricType = value.predefinedScalingMetricType;
+      this._resourceLabel = value.resourceLabel;
+    }
+  }
+
   // predefined_scaling_metric_type - computed: false, optional: false, required: true
   private _predefinedScalingMetricType?: string; 
   public get predefinedScalingMetricType() {
@@ -454,15 +615,15 @@ export class AutoscalingplansScalingPlanScalingInstructionTargetTrackingConfigur
   }
   // Temporarily expose input value. Use with caution.
   public get predefinedScalingMetricTypeInput() {
-    return this._predefinedScalingMetricType
+    return this._predefinedScalingMetricType;
   }
 
   // resource_label - computed: false, optional: true, required: false
-  private _resourceLabel?: string | undefined; 
+  private _resourceLabel?: string; 
   public get resourceLabel() {
     return this.getStringAttribute('resource_label');
   }
-  public set resourceLabel(value: string | undefined) {
+  public set resourceLabel(value: string) {
     this._resourceLabel = value;
   }
   public resetResourceLabel() {
@@ -470,7 +631,7 @@ export class AutoscalingplansScalingPlanScalingInstructionTargetTrackingConfigur
   }
   // Temporarily expose input value. Use with caution.
   public get resourceLabelInput() {
-    return this._resourceLabel
+    return this._resourceLabel;
   }
 }
 export interface AutoscalingplansScalingPlanScalingInstructionTargetTrackingConfiguration {
@@ -646,7 +807,7 @@ export class AutoscalingplansScalingPlan extends cdktf.TerraformResource {
       lifecycle: config.lifecycle
     });
     this._name = config.name;
-    this._applicationSource = config.applicationSource;
+    this._applicationSource.internalValue = config.applicationSource;
     this._scalingInstruction = config.scalingInstruction;
   }
 
@@ -669,7 +830,7 @@ export class AutoscalingplansScalingPlan extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // scaling_plan_version - computed: true, optional: false, required: false
@@ -678,17 +839,16 @@ export class AutoscalingplansScalingPlan extends cdktf.TerraformResource {
   }
 
   // application_source - computed: false, optional: false, required: true
-  private _applicationSource?: AutoscalingplansScalingPlanApplicationSource; 
-  private __applicationSourceOutput = new AutoscalingplansScalingPlanApplicationSourceOutputReference(this as any, "application_source", true);
+  private _applicationSource = new AutoscalingplansScalingPlanApplicationSourceOutputReference(this as any, "application_source", true);
   public get applicationSource() {
-    return this.__applicationSourceOutput;
+    return this._applicationSource;
   }
   public putApplicationSource(value: AutoscalingplansScalingPlanApplicationSource) {
-    this._applicationSource = value;
+    this._applicationSource.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get applicationSourceInput() {
-    return this._applicationSource
+    return this._applicationSource.internalValue;
   }
 
   // scaling_instruction - computed: false, optional: false, required: true
@@ -702,7 +862,7 @@ export class AutoscalingplansScalingPlan extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get scalingInstructionInput() {
-    return this._scalingInstruction
+    return this._scalingInstruction;
   }
 
   // =========
@@ -712,7 +872,7 @@ export class AutoscalingplansScalingPlan extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       name: cdktf.stringToTerraform(this._name),
-      application_source: autoscalingplansScalingPlanApplicationSourceToTerraform(this._applicationSource),
+      application_source: autoscalingplansScalingPlanApplicationSourceToTerraform(this._applicationSource.internalValue),
       scaling_instruction: cdktf.listMapper(autoscalingplansScalingPlanScalingInstructionToTerraform)(this._scalingInstruction),
     };
   }

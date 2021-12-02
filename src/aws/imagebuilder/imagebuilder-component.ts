@@ -108,11 +108,11 @@ export class ImagebuilderComponent extends cdktf.TerraformResource {
   }
 
   // change_description - computed: false, optional: true, required: false
-  private _changeDescription?: string | undefined; 
+  private _changeDescription?: string; 
   public get changeDescription() {
     return this.getStringAttribute('change_description');
   }
-  public set changeDescription(value: string | undefined) {
+  public set changeDescription(value: string) {
     this._changeDescription = value;
   }
   public resetChangeDescription() {
@@ -120,15 +120,15 @@ export class ImagebuilderComponent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get changeDescriptionInput() {
-    return this._changeDescription
+    return this._changeDescription;
   }
 
   // data - computed: true, optional: true, required: false
-  private _data?: string | undefined; 
+  private _data?: string; 
   public get data() {
     return this.getStringAttribute('data');
   }
-  public set data(value: string | undefined) {
+  public set data(value: string) {
     this._data = value;
   }
   public resetData() {
@@ -136,7 +136,7 @@ export class ImagebuilderComponent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dataInput() {
-    return this._data
+    return this._data;
   }
 
   // date_created - computed: true, optional: false, required: false
@@ -145,11 +145,11 @@ export class ImagebuilderComponent extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -157,7 +157,7 @@ export class ImagebuilderComponent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // encrypted - computed: true, optional: false, required: false
@@ -171,11 +171,11 @@ export class ImagebuilderComponent extends cdktf.TerraformResource {
   }
 
   // kms_key_id - computed: false, optional: true, required: false
-  private _kmsKeyId?: string | undefined; 
+  private _kmsKeyId?: string; 
   public get kmsKeyId() {
     return this.getStringAttribute('kms_key_id');
   }
-  public set kmsKeyId(value: string | undefined) {
+  public set kmsKeyId(value: string) {
     this._kmsKeyId = value;
   }
   public resetKmsKeyId() {
@@ -183,7 +183,7 @@ export class ImagebuilderComponent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kmsKeyIdInput() {
-    return this._kmsKeyId
+    return this._kmsKeyId;
   }
 
   // name - computed: false, optional: false, required: true
@@ -196,7 +196,7 @@ export class ImagebuilderComponent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // owner - computed: true, optional: false, required: false
@@ -214,15 +214,15 @@ export class ImagebuilderComponent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get platformInput() {
-    return this._platform
+    return this._platform;
   }
 
   // supported_os_versions - computed: false, optional: true, required: false
-  private _supportedOsVersions?: string[] | undefined; 
+  private _supportedOsVersions?: string[]; 
   public get supportedOsVersions() {
     return this.getListAttribute('supported_os_versions');
   }
-  public set supportedOsVersions(value: string[] | undefined) {
+  public set supportedOsVersions(value: string[]) {
     this._supportedOsVersions = value;
   }
   public resetSupportedOsVersions() {
@@ -230,16 +230,16 @@ export class ImagebuilderComponent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get supportedOsVersionsInput() {
-    return this._supportedOsVersions
+    return this._supportedOsVersions;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -247,16 +247,16 @@ export class ImagebuilderComponent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -264,7 +264,7 @@ export class ImagebuilderComponent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // type - computed: true, optional: false, required: false
@@ -273,11 +273,11 @@ export class ImagebuilderComponent extends cdktf.TerraformResource {
   }
 
   // uri - computed: false, optional: true, required: false
-  private _uri?: string | undefined; 
+  private _uri?: string; 
   public get uri() {
     return this.getStringAttribute('uri');
   }
-  public set uri(value: string | undefined) {
+  public set uri(value: string) {
     this._uri = value;
   }
   public resetUri() {
@@ -285,7 +285,7 @@ export class ImagebuilderComponent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get uriInput() {
-    return this._uri
+    return this._uri;
   }
 
   // version - computed: false, optional: false, required: true
@@ -298,7 +298,7 @@ export class ImagebuilderComponent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get versionInput() {
-    return this._version
+    return this._version;
   }
 
   // =========

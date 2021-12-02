@@ -77,12 +77,31 @@ export class DatasyncAgentTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DatasyncAgentTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DatasyncAgentTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+    }
+    else {
+      this._create = value.create;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -90,7 +109,7 @@ export class DatasyncAgentTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 }
 
@@ -135,7 +154,7 @@ export class DatasyncAgent extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._vpcEndpointId = config.vpcEndpointId;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -143,11 +162,11 @@ export class DatasyncAgent extends cdktf.TerraformResource {
   // ==========
 
   // activation_key - computed: true, optional: true, required: false
-  private _activationKey?: string | undefined; 
+  private _activationKey?: string; 
   public get activationKey() {
     return this.getStringAttribute('activation_key');
   }
-  public set activationKey(value: string | undefined) {
+  public set activationKey(value: string) {
     this._activationKey = value;
   }
   public resetActivationKey() {
@@ -155,7 +174,7 @@ export class DatasyncAgent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get activationKeyInput() {
-    return this._activationKey
+    return this._activationKey;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -169,11 +188,11 @@ export class DatasyncAgent extends cdktf.TerraformResource {
   }
 
   // ip_address - computed: true, optional: true, required: false
-  private _ipAddress?: string | undefined; 
+  private _ipAddress?: string; 
   public get ipAddress() {
     return this.getStringAttribute('ip_address');
   }
-  public set ipAddress(value: string | undefined) {
+  public set ipAddress(value: string) {
     this._ipAddress = value;
   }
   public resetIpAddress() {
@@ -181,15 +200,15 @@ export class DatasyncAgent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ipAddressInput() {
-    return this._ipAddress
+    return this._ipAddress;
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -197,15 +216,15 @@ export class DatasyncAgent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // private_link_endpoint - computed: false, optional: true, required: false
-  private _privateLinkEndpoint?: string | undefined; 
+  private _privateLinkEndpoint?: string; 
   public get privateLinkEndpoint() {
     return this.getStringAttribute('private_link_endpoint');
   }
-  public set privateLinkEndpoint(value: string | undefined) {
+  public set privateLinkEndpoint(value: string) {
     this._privateLinkEndpoint = value;
   }
   public resetPrivateLinkEndpoint() {
@@ -213,15 +232,15 @@ export class DatasyncAgent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get privateLinkEndpointInput() {
-    return this._privateLinkEndpoint
+    return this._privateLinkEndpoint;
   }
 
   // security_group_arns - computed: false, optional: true, required: false
-  private _securityGroupArns?: string[] | undefined; 
+  private _securityGroupArns?: string[]; 
   public get securityGroupArns() {
     return this.getListAttribute('security_group_arns');
   }
-  public set securityGroupArns(value: string[] | undefined) {
+  public set securityGroupArns(value: string[]) {
     this._securityGroupArns = value;
   }
   public resetSecurityGroupArns() {
@@ -229,15 +248,15 @@ export class DatasyncAgent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupArnsInput() {
-    return this._securityGroupArns
+    return this._securityGroupArns;
   }
 
   // subnet_arns - computed: false, optional: true, required: false
-  private _subnetArns?: string[] | undefined; 
+  private _subnetArns?: string[]; 
   public get subnetArns() {
     return this.getListAttribute('subnet_arns');
   }
-  public set subnetArns(value: string[] | undefined) {
+  public set subnetArns(value: string[]) {
     this._subnetArns = value;
   }
   public resetSubnetArns() {
@@ -245,16 +264,16 @@ export class DatasyncAgent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetArnsInput() {
-    return this._subnetArns
+    return this._subnetArns;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -262,16 +281,16 @@ export class DatasyncAgent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -279,15 +298,15 @@ export class DatasyncAgent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // vpc_endpoint_id - computed: false, optional: true, required: false
-  private _vpcEndpointId?: string | undefined; 
+  private _vpcEndpointId?: string; 
   public get vpcEndpointId() {
     return this.getStringAttribute('vpc_endpoint_id');
   }
-  public set vpcEndpointId(value: string | undefined) {
+  public set vpcEndpointId(value: string) {
     this._vpcEndpointId = value;
   }
   public resetVpcEndpointId() {
@@ -295,24 +314,23 @@ export class DatasyncAgent extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcEndpointIdInput() {
-    return this._vpcEndpointId
+    return this._vpcEndpointId;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DatasyncAgentTimeouts | undefined; 
-  private __timeoutsOutput = new DatasyncAgentTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DatasyncAgentTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DatasyncAgentTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DatasyncAgentTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -330,7 +348,7 @@ export class DatasyncAgent extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       vpc_endpoint_id: cdktf.stringToTerraform(this._vpcEndpointId),
-      timeouts: datasyncAgentTimeoutsToTerraform(this._timeouts),
+      timeouts: datasyncAgentTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

@@ -58,11 +58,11 @@ export class ChimeVoiceConnectorLogging extends cdktf.TerraformResource {
   // ==========
 
   // enable_sip_logs - computed: false, optional: true, required: false
-  private _enableSipLogs?: boolean | cdktf.IResolvable | undefined; 
+  private _enableSipLogs?: boolean | cdktf.IResolvable; 
   public get enableSipLogs() {
     return this.getBooleanAttribute('enable_sip_logs') as any;
   }
-  public set enableSipLogs(value: boolean | cdktf.IResolvable | undefined) {
+  public set enableSipLogs(value: boolean | cdktf.IResolvable) {
     this._enableSipLogs = value;
   }
   public resetEnableSipLogs() {
@@ -70,7 +70,7 @@ export class ChimeVoiceConnectorLogging extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enableSipLogsInput() {
-    return this._enableSipLogs
+    return this._enableSipLogs;
   }
 
   // id - computed: true, optional: true, required: false
@@ -88,7 +88,7 @@ export class ChimeVoiceConnectorLogging extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get voiceConnectorIdInput() {
-    return this._voiceConnectorId
+    return this._voiceConnectorId;
   }
 
   // =========

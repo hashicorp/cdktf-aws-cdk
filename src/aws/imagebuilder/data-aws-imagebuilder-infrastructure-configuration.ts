@@ -92,7 +92,7 @@ export class DataAwsImagebuilderInfrastructureConfiguration extends cdktf.Terraf
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // date_created - computed: true, optional: false, required: false
@@ -141,12 +141,12 @@ export class DataAwsImagebuilderInfrastructureConfiguration extends cdktf.Terraf
   }
 
   // resource_tags - computed: true, optional: true, required: false
-  private _resourceTags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _resourceTags?: { [key: string]: string } | cdktf.IResolvable; 
   public get resourceTags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('resource_tags') as any;
   }
-  public set resourceTags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set resourceTags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._resourceTags = value;
   }
   public resetResourceTags() {
@@ -154,7 +154,7 @@ export class DataAwsImagebuilderInfrastructureConfiguration extends cdktf.Terraf
   }
   // Temporarily expose input value. Use with caution.
   public get resourceTagsInput() {
-    return this._resourceTags
+    return this._resourceTags;
   }
 
   // security_group_ids - computed: true, optional: false, required: false
@@ -173,12 +173,12 @@ export class DataAwsImagebuilderInfrastructureConfiguration extends cdktf.Terraf
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -186,7 +186,7 @@ export class DataAwsImagebuilderInfrastructureConfiguration extends cdktf.Terraf
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // terminate_instance_on_failure - computed: true, optional: false, required: false

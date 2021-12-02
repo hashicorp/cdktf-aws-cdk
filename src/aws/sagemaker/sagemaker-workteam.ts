@@ -77,6 +77,37 @@ export class SagemakerWorkteamMemberDefinitionCognitoMemberDefinitionOutputRefer
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerWorkteamMemberDefinitionCognitoMemberDefinition | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._clientId) {
+      hasAnyValues = true;
+      internalValueResult.clientId = this._clientId;
+    }
+    if (this._userGroup) {
+      hasAnyValues = true;
+      internalValueResult.userGroup = this._userGroup;
+    }
+    if (this._userPool) {
+      hasAnyValues = true;
+      internalValueResult.userPool = this._userPool;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerWorkteamMemberDefinitionCognitoMemberDefinition | undefined) {
+    if (value === undefined) {
+      this._clientId = undefined;
+      this._userGroup = undefined;
+      this._userPool = undefined;
+    }
+    else {
+      this._clientId = value.clientId;
+      this._userGroup = value.userGroup;
+      this._userPool = value.userPool;
+    }
+  }
+
   // client_id - computed: false, optional: false, required: true
   private _clientId?: string; 
   public get clientId() {
@@ -87,7 +118,7 @@ export class SagemakerWorkteamMemberDefinitionCognitoMemberDefinitionOutputRefer
   }
   // Temporarily expose input value. Use with caution.
   public get clientIdInput() {
-    return this._clientId
+    return this._clientId;
   }
 
   // user_group - computed: false, optional: false, required: true
@@ -100,7 +131,7 @@ export class SagemakerWorkteamMemberDefinitionCognitoMemberDefinitionOutputRefer
   }
   // Temporarily expose input value. Use with caution.
   public get userGroupInput() {
-    return this._userGroup
+    return this._userGroup;
   }
 
   // user_pool - computed: false, optional: false, required: true
@@ -113,7 +144,7 @@ export class SagemakerWorkteamMemberDefinitionCognitoMemberDefinitionOutputRefer
   }
   // Temporarily expose input value. Use with caution.
   public get userPoolInput() {
-    return this._userPool
+    return this._userPool;
   }
 }
 export interface SagemakerWorkteamMemberDefinitionOidcMemberDefinition {
@@ -143,6 +174,25 @@ export class SagemakerWorkteamMemberDefinitionOidcMemberDefinitionOutputReferenc
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerWorkteamMemberDefinitionOidcMemberDefinition | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._groups) {
+      hasAnyValues = true;
+      internalValueResult.groups = this._groups;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerWorkteamMemberDefinitionOidcMemberDefinition | undefined) {
+    if (value === undefined) {
+      this._groups = undefined;
+    }
+    else {
+      this._groups = value.groups;
+    }
+  }
+
   // groups - computed: false, optional: false, required: true
   private _groups?: string[]; 
   public get groups() {
@@ -153,7 +203,7 @@ export class SagemakerWorkteamMemberDefinitionOidcMemberDefinitionOutputReferenc
   }
   // Temporarily expose input value. Use with caution.
   public get groupsInput() {
-    return this._groups
+    return this._groups;
   }
 }
 export interface SagemakerWorkteamMemberDefinition {
@@ -209,12 +259,31 @@ export class SagemakerWorkteamNotificationConfigurationOutputReference extends c
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerWorkteamNotificationConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._notificationTopicArn) {
+      hasAnyValues = true;
+      internalValueResult.notificationTopicArn = this._notificationTopicArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerWorkteamNotificationConfiguration | undefined) {
+    if (value === undefined) {
+      this._notificationTopicArn = undefined;
+    }
+    else {
+      this._notificationTopicArn = value.notificationTopicArn;
+    }
+  }
+
   // notification_topic_arn - computed: false, optional: true, required: false
-  private _notificationTopicArn?: string | undefined; 
+  private _notificationTopicArn?: string; 
   public get notificationTopicArn() {
     return this.getStringAttribute('notification_topic_arn');
   }
-  public set notificationTopicArn(value: string | undefined) {
+  public set notificationTopicArn(value: string) {
     this._notificationTopicArn = value;
   }
   public resetNotificationTopicArn() {
@@ -222,7 +291,7 @@ export class SagemakerWorkteamNotificationConfigurationOutputReference extends c
   }
   // Temporarily expose input value. Use with caution.
   public get notificationTopicArnInput() {
-    return this._notificationTopicArn
+    return this._notificationTopicArn;
   }
 }
 
@@ -264,7 +333,7 @@ export class SagemakerWorkteam extends cdktf.TerraformResource {
     this._workforceName = config.workforceName;
     this._workteamName = config.workteamName;
     this._memberDefinition = config.memberDefinition;
-    this._notificationConfiguration = config.notificationConfiguration;
+    this._notificationConfiguration.internalValue = config.notificationConfiguration;
   }
 
   // ==========
@@ -286,7 +355,7 @@ export class SagemakerWorkteam extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -300,12 +369,12 @@ export class SagemakerWorkteam extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -313,16 +382,16 @@ export class SagemakerWorkteam extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -330,7 +399,7 @@ export class SagemakerWorkteam extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // workforce_name - computed: false, optional: false, required: true
@@ -343,7 +412,7 @@ export class SagemakerWorkteam extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get workforceNameInput() {
-    return this._workforceName
+    return this._workforceName;
   }
 
   // workteam_name - computed: false, optional: false, required: true
@@ -356,7 +425,7 @@ export class SagemakerWorkteam extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get workteamNameInput() {
-    return this._workteamName
+    return this._workteamName;
   }
 
   // member_definition - computed: false, optional: false, required: true
@@ -370,24 +439,23 @@ export class SagemakerWorkteam extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get memberDefinitionInput() {
-    return this._memberDefinition
+    return this._memberDefinition;
   }
 
   // notification_configuration - computed: false, optional: true, required: false
-  private _notificationConfiguration?: SagemakerWorkteamNotificationConfiguration | undefined; 
-  private __notificationConfigurationOutput = new SagemakerWorkteamNotificationConfigurationOutputReference(this as any, "notification_configuration", true);
+  private _notificationConfiguration = new SagemakerWorkteamNotificationConfigurationOutputReference(this as any, "notification_configuration", true);
   public get notificationConfiguration() {
-    return this.__notificationConfigurationOutput;
+    return this._notificationConfiguration;
   }
-  public putNotificationConfiguration(value: SagemakerWorkteamNotificationConfiguration | undefined) {
-    this._notificationConfiguration = value;
+  public putNotificationConfiguration(value: SagemakerWorkteamNotificationConfiguration) {
+    this._notificationConfiguration.internalValue = value;
   }
   public resetNotificationConfiguration() {
-    this._notificationConfiguration = undefined;
+    this._notificationConfiguration.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get notificationConfigurationInput() {
-    return this._notificationConfiguration
+    return this._notificationConfiguration.internalValue;
   }
 
   // =========
@@ -402,7 +470,7 @@ export class SagemakerWorkteam extends cdktf.TerraformResource {
       workforce_name: cdktf.stringToTerraform(this._workforceName),
       workteam_name: cdktf.stringToTerraform(this._workteamName),
       member_definition: cdktf.listMapper(sagemakerWorkteamMemberDefinitionToTerraform)(this._memberDefinition),
-      notification_configuration: sagemakerWorkteamNotificationConfigurationToTerraform(this._notificationConfiguration),
+      notification_configuration: sagemakerWorkteamNotificationConfigurationToTerraform(this._notificationConfiguration.internalValue),
     };
   }
 }

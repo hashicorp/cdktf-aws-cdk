@@ -73,11 +73,11 @@ export class NatGateway extends cdktf.TerraformResource {
   // ==========
 
   // allocation_id - computed: false, optional: true, required: false
-  private _allocationId?: string | undefined; 
+  private _allocationId?: string; 
   public get allocationId() {
     return this.getStringAttribute('allocation_id');
   }
-  public set allocationId(value: string | undefined) {
+  public set allocationId(value: string) {
     this._allocationId = value;
   }
   public resetAllocationId() {
@@ -85,15 +85,15 @@ export class NatGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allocationIdInput() {
-    return this._allocationId
+    return this._allocationId;
   }
 
   // connectivity_type - computed: false, optional: true, required: false
-  private _connectivityType?: string | undefined; 
+  private _connectivityType?: string; 
   public get connectivityType() {
     return this.getStringAttribute('connectivity_type');
   }
-  public set connectivityType(value: string | undefined) {
+  public set connectivityType(value: string) {
     this._connectivityType = value;
   }
   public resetConnectivityType() {
@@ -101,7 +101,7 @@ export class NatGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get connectivityTypeInput() {
-    return this._connectivityType
+    return this._connectivityType;
   }
 
   // id - computed: true, optional: true, required: false
@@ -134,16 +134,16 @@ export class NatGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subnetIdInput() {
-    return this._subnetId
+    return this._subnetId;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -151,16 +151,16 @@ export class NatGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -168,7 +168,7 @@ export class NatGateway extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

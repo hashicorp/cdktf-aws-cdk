@@ -107,11 +107,11 @@ export class DataAwsRoute53ResolverEndpoint extends cdktf.TerraformDataSource {
   }
 
   // resolver_endpoint_id - computed: false, optional: true, required: false
-  private _resolverEndpointId?: string | undefined; 
+  private _resolverEndpointId?: string; 
   public get resolverEndpointId() {
     return this.getStringAttribute('resolver_endpoint_id');
   }
-  public set resolverEndpointId(value: string | undefined) {
+  public set resolverEndpointId(value: string) {
     this._resolverEndpointId = value;
   }
   public resetResolverEndpointId() {
@@ -119,7 +119,7 @@ export class DataAwsRoute53ResolverEndpoint extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get resolverEndpointIdInput() {
-    return this._resolverEndpointId
+    return this._resolverEndpointId;
   }
 
   // status - computed: true, optional: false, required: false
@@ -133,12 +133,12 @@ export class DataAwsRoute53ResolverEndpoint extends cdktf.TerraformDataSource {
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsRoute53ResolverEndpointFilter[] | undefined; 
+  private _filter?: DataAwsRoute53ResolverEndpointFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsRoute53ResolverEndpointFilter[] | undefined) {
+  public set filter(value: DataAwsRoute53ResolverEndpointFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -146,7 +146,7 @@ export class DataAwsRoute53ResolverEndpoint extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

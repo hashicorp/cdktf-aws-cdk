@@ -63,11 +63,11 @@ export class DataAwsRegion extends cdktf.TerraformDataSource {
   }
 
   // endpoint - computed: true, optional: true, required: false
-  private _endpoint?: string | undefined; 
+  private _endpoint?: string; 
   public get endpoint() {
     return this.getStringAttribute('endpoint');
   }
-  public set endpoint(value: string | undefined) {
+  public set endpoint(value: string) {
     this._endpoint = value;
   }
   public resetEndpoint() {
@@ -75,7 +75,7 @@ export class DataAwsRegion extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get endpointInput() {
-    return this._endpoint
+    return this._endpoint;
   }
 
   // id - computed: true, optional: true, required: false
@@ -84,11 +84,11 @@ export class DataAwsRegion extends cdktf.TerraformDataSource {
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -96,7 +96,7 @@ export class DataAwsRegion extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // =========

@@ -63,11 +63,11 @@ export class DataAwsEfsMountTarget extends cdktf.TerraformDataSource {
   // ==========
 
   // access_point_id - computed: false, optional: true, required: false
-  private _accessPointId?: string | undefined; 
+  private _accessPointId?: string; 
   public get accessPointId() {
     return this.getStringAttribute('access_point_id');
   }
-  public set accessPointId(value: string | undefined) {
+  public set accessPointId(value: string) {
     this._accessPointId = value;
   }
   public resetAccessPointId() {
@@ -75,7 +75,7 @@ export class DataAwsEfsMountTarget extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get accessPointIdInput() {
-    return this._accessPointId
+    return this._accessPointId;
   }
 
   // availability_zone_id - computed: true, optional: false, required: false
@@ -99,11 +99,11 @@ export class DataAwsEfsMountTarget extends cdktf.TerraformDataSource {
   }
 
   // file_system_id - computed: true, optional: true, required: false
-  private _fileSystemId?: string | undefined; 
+  private _fileSystemId?: string; 
   public get fileSystemId() {
     return this.getStringAttribute('file_system_id');
   }
-  public set fileSystemId(value: string | undefined) {
+  public set fileSystemId(value: string) {
     this._fileSystemId = value;
   }
   public resetFileSystemId() {
@@ -111,7 +111,7 @@ export class DataAwsEfsMountTarget extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get fileSystemIdInput() {
-    return this._fileSystemId
+    return this._fileSystemId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -130,11 +130,11 @@ export class DataAwsEfsMountTarget extends cdktf.TerraformDataSource {
   }
 
   // mount_target_id - computed: true, optional: true, required: false
-  private _mountTargetId?: string | undefined; 
+  private _mountTargetId?: string; 
   public get mountTargetId() {
     return this.getStringAttribute('mount_target_id');
   }
-  public set mountTargetId(value: string | undefined) {
+  public set mountTargetId(value: string) {
     this._mountTargetId = value;
   }
   public resetMountTargetId() {
@@ -142,7 +142,7 @@ export class DataAwsEfsMountTarget extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get mountTargetIdInput() {
-    return this._mountTargetId
+    return this._mountTargetId;
   }
 
   // network_interface_id - computed: true, optional: false, required: false

@@ -165,12 +165,91 @@ export class BudgetsBudgetCostTypesOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): BudgetsBudgetCostTypes | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._includeCredit) {
+      hasAnyValues = true;
+      internalValueResult.includeCredit = this._includeCredit;
+    }
+    if (this._includeDiscount) {
+      hasAnyValues = true;
+      internalValueResult.includeDiscount = this._includeDiscount;
+    }
+    if (this._includeOtherSubscription) {
+      hasAnyValues = true;
+      internalValueResult.includeOtherSubscription = this._includeOtherSubscription;
+    }
+    if (this._includeRecurring) {
+      hasAnyValues = true;
+      internalValueResult.includeRecurring = this._includeRecurring;
+    }
+    if (this._includeRefund) {
+      hasAnyValues = true;
+      internalValueResult.includeRefund = this._includeRefund;
+    }
+    if (this._includeSubscription) {
+      hasAnyValues = true;
+      internalValueResult.includeSubscription = this._includeSubscription;
+    }
+    if (this._includeSupport) {
+      hasAnyValues = true;
+      internalValueResult.includeSupport = this._includeSupport;
+    }
+    if (this._includeTax) {
+      hasAnyValues = true;
+      internalValueResult.includeTax = this._includeTax;
+    }
+    if (this._includeUpfront) {
+      hasAnyValues = true;
+      internalValueResult.includeUpfront = this._includeUpfront;
+    }
+    if (this._useAmortized) {
+      hasAnyValues = true;
+      internalValueResult.useAmortized = this._useAmortized;
+    }
+    if (this._useBlended) {
+      hasAnyValues = true;
+      internalValueResult.useBlended = this._useBlended;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: BudgetsBudgetCostTypes | undefined) {
+    if (value === undefined) {
+      this._includeCredit = undefined;
+      this._includeDiscount = undefined;
+      this._includeOtherSubscription = undefined;
+      this._includeRecurring = undefined;
+      this._includeRefund = undefined;
+      this._includeSubscription = undefined;
+      this._includeSupport = undefined;
+      this._includeTax = undefined;
+      this._includeUpfront = undefined;
+      this._useAmortized = undefined;
+      this._useBlended = undefined;
+    }
+    else {
+      this._includeCredit = value.includeCredit;
+      this._includeDiscount = value.includeDiscount;
+      this._includeOtherSubscription = value.includeOtherSubscription;
+      this._includeRecurring = value.includeRecurring;
+      this._includeRefund = value.includeRefund;
+      this._includeSubscription = value.includeSubscription;
+      this._includeSupport = value.includeSupport;
+      this._includeTax = value.includeTax;
+      this._includeUpfront = value.includeUpfront;
+      this._useAmortized = value.useAmortized;
+      this._useBlended = value.useBlended;
+    }
+  }
+
   // include_credit - computed: false, optional: true, required: false
-  private _includeCredit?: boolean | cdktf.IResolvable | undefined; 
+  private _includeCredit?: boolean | cdktf.IResolvable; 
   public get includeCredit() {
     return this.getBooleanAttribute('include_credit') as any;
   }
-  public set includeCredit(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeCredit(value: boolean | cdktf.IResolvable) {
     this._includeCredit = value;
   }
   public resetIncludeCredit() {
@@ -178,15 +257,15 @@ export class BudgetsBudgetCostTypesOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get includeCreditInput() {
-    return this._includeCredit
+    return this._includeCredit;
   }
 
   // include_discount - computed: false, optional: true, required: false
-  private _includeDiscount?: boolean | cdktf.IResolvable | undefined; 
+  private _includeDiscount?: boolean | cdktf.IResolvable; 
   public get includeDiscount() {
     return this.getBooleanAttribute('include_discount') as any;
   }
-  public set includeDiscount(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeDiscount(value: boolean | cdktf.IResolvable) {
     this._includeDiscount = value;
   }
   public resetIncludeDiscount() {
@@ -194,15 +273,15 @@ export class BudgetsBudgetCostTypesOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get includeDiscountInput() {
-    return this._includeDiscount
+    return this._includeDiscount;
   }
 
   // include_other_subscription - computed: false, optional: true, required: false
-  private _includeOtherSubscription?: boolean | cdktf.IResolvable | undefined; 
+  private _includeOtherSubscription?: boolean | cdktf.IResolvable; 
   public get includeOtherSubscription() {
     return this.getBooleanAttribute('include_other_subscription') as any;
   }
-  public set includeOtherSubscription(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeOtherSubscription(value: boolean | cdktf.IResolvable) {
     this._includeOtherSubscription = value;
   }
   public resetIncludeOtherSubscription() {
@@ -210,15 +289,15 @@ export class BudgetsBudgetCostTypesOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get includeOtherSubscriptionInput() {
-    return this._includeOtherSubscription
+    return this._includeOtherSubscription;
   }
 
   // include_recurring - computed: false, optional: true, required: false
-  private _includeRecurring?: boolean | cdktf.IResolvable | undefined; 
+  private _includeRecurring?: boolean | cdktf.IResolvable; 
   public get includeRecurring() {
     return this.getBooleanAttribute('include_recurring') as any;
   }
-  public set includeRecurring(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeRecurring(value: boolean | cdktf.IResolvable) {
     this._includeRecurring = value;
   }
   public resetIncludeRecurring() {
@@ -226,15 +305,15 @@ export class BudgetsBudgetCostTypesOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get includeRecurringInput() {
-    return this._includeRecurring
+    return this._includeRecurring;
   }
 
   // include_refund - computed: false, optional: true, required: false
-  private _includeRefund?: boolean | cdktf.IResolvable | undefined; 
+  private _includeRefund?: boolean | cdktf.IResolvable; 
   public get includeRefund() {
     return this.getBooleanAttribute('include_refund') as any;
   }
-  public set includeRefund(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeRefund(value: boolean | cdktf.IResolvable) {
     this._includeRefund = value;
   }
   public resetIncludeRefund() {
@@ -242,15 +321,15 @@ export class BudgetsBudgetCostTypesOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get includeRefundInput() {
-    return this._includeRefund
+    return this._includeRefund;
   }
 
   // include_subscription - computed: false, optional: true, required: false
-  private _includeSubscription?: boolean | cdktf.IResolvable | undefined; 
+  private _includeSubscription?: boolean | cdktf.IResolvable; 
   public get includeSubscription() {
     return this.getBooleanAttribute('include_subscription') as any;
   }
-  public set includeSubscription(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeSubscription(value: boolean | cdktf.IResolvable) {
     this._includeSubscription = value;
   }
   public resetIncludeSubscription() {
@@ -258,15 +337,15 @@ export class BudgetsBudgetCostTypesOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get includeSubscriptionInput() {
-    return this._includeSubscription
+    return this._includeSubscription;
   }
 
   // include_support - computed: false, optional: true, required: false
-  private _includeSupport?: boolean | cdktf.IResolvable | undefined; 
+  private _includeSupport?: boolean | cdktf.IResolvable; 
   public get includeSupport() {
     return this.getBooleanAttribute('include_support') as any;
   }
-  public set includeSupport(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeSupport(value: boolean | cdktf.IResolvable) {
     this._includeSupport = value;
   }
   public resetIncludeSupport() {
@@ -274,15 +353,15 @@ export class BudgetsBudgetCostTypesOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get includeSupportInput() {
-    return this._includeSupport
+    return this._includeSupport;
   }
 
   // include_tax - computed: false, optional: true, required: false
-  private _includeTax?: boolean | cdktf.IResolvable | undefined; 
+  private _includeTax?: boolean | cdktf.IResolvable; 
   public get includeTax() {
     return this.getBooleanAttribute('include_tax') as any;
   }
-  public set includeTax(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeTax(value: boolean | cdktf.IResolvable) {
     this._includeTax = value;
   }
   public resetIncludeTax() {
@@ -290,15 +369,15 @@ export class BudgetsBudgetCostTypesOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get includeTaxInput() {
-    return this._includeTax
+    return this._includeTax;
   }
 
   // include_upfront - computed: false, optional: true, required: false
-  private _includeUpfront?: boolean | cdktf.IResolvable | undefined; 
+  private _includeUpfront?: boolean | cdktf.IResolvable; 
   public get includeUpfront() {
     return this.getBooleanAttribute('include_upfront') as any;
   }
-  public set includeUpfront(value: boolean | cdktf.IResolvable | undefined) {
+  public set includeUpfront(value: boolean | cdktf.IResolvable) {
     this._includeUpfront = value;
   }
   public resetIncludeUpfront() {
@@ -306,15 +385,15 @@ export class BudgetsBudgetCostTypesOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get includeUpfrontInput() {
-    return this._includeUpfront
+    return this._includeUpfront;
   }
 
   // use_amortized - computed: false, optional: true, required: false
-  private _useAmortized?: boolean | cdktf.IResolvable | undefined; 
+  private _useAmortized?: boolean | cdktf.IResolvable; 
   public get useAmortized() {
     return this.getBooleanAttribute('use_amortized') as any;
   }
-  public set useAmortized(value: boolean | cdktf.IResolvable | undefined) {
+  public set useAmortized(value: boolean | cdktf.IResolvable) {
     this._useAmortized = value;
   }
   public resetUseAmortized() {
@@ -322,15 +401,15 @@ export class BudgetsBudgetCostTypesOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get useAmortizedInput() {
-    return this._useAmortized
+    return this._useAmortized;
   }
 
   // use_blended - computed: false, optional: true, required: false
-  private _useBlended?: boolean | cdktf.IResolvable | undefined; 
+  private _useBlended?: boolean | cdktf.IResolvable; 
   public get useBlended() {
     return this.getBooleanAttribute('use_blended') as any;
   }
-  public set useBlended(value: boolean | cdktf.IResolvable | undefined) {
+  public set useBlended(value: boolean | cdktf.IResolvable) {
     this._useBlended = value;
   }
   public resetUseBlended() {
@@ -338,7 +417,7 @@ export class BudgetsBudgetCostTypesOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get useBlendedInput() {
-    return this._useBlended
+    return this._useBlended;
   }
 }
 export interface BudgetsBudgetNotification {
@@ -427,7 +506,7 @@ export class BudgetsBudget extends cdktf.TerraformResource {
     this._timePeriodStart = config.timePeriodStart;
     this._timeUnit = config.timeUnit;
     this._costFilter = config.costFilter;
-    this._costTypes = config.costTypes;
+    this._costTypes.internalValue = config.costTypes;
     this._notification = config.notification;
   }
 
@@ -436,11 +515,11 @@ export class BudgetsBudget extends cdktf.TerraformResource {
   // ==========
 
   // account_id - computed: true, optional: true, required: false
-  private _accountId?: string | undefined; 
+  private _accountId?: string; 
   public get accountId() {
     return this.getStringAttribute('account_id');
   }
-  public set accountId(value: string | undefined) {
+  public set accountId(value: string) {
     this._accountId = value;
   }
   public resetAccountId() {
@@ -448,7 +527,7 @@ export class BudgetsBudget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accountIdInput() {
-    return this._accountId
+    return this._accountId;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -466,16 +545,16 @@ export class BudgetsBudget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get budgetTypeInput() {
-    return this._budgetType
+    return this._budgetType;
   }
 
   // cost_filters - computed: true, optional: true, required: false
-  private _costFilters?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _costFilters?: { [key: string]: string } | cdktf.IResolvable; 
   public get costFilters() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('cost_filters') as any;
   }
-  public set costFilters(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set costFilters(value: { [key: string]: string } | cdktf.IResolvable) {
     this._costFilters = value;
   }
   public resetCostFilters() {
@@ -483,7 +562,7 @@ export class BudgetsBudget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get costFiltersInput() {
-    return this._costFilters
+    return this._costFilters;
   }
 
   // id - computed: true, optional: true, required: false
@@ -501,7 +580,7 @@ export class BudgetsBudget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get limitAmountInput() {
-    return this._limitAmount
+    return this._limitAmount;
   }
 
   // limit_unit - computed: false, optional: false, required: true
@@ -514,15 +593,15 @@ export class BudgetsBudget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get limitUnitInput() {
-    return this._limitUnit
+    return this._limitUnit;
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -530,15 +609,15 @@ export class BudgetsBudget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_prefix - computed: true, optional: true, required: false
-  private _namePrefix?: string | undefined; 
+  private _namePrefix?: string; 
   public get namePrefix() {
     return this.getStringAttribute('name_prefix');
   }
-  public set namePrefix(value: string | undefined) {
+  public set namePrefix(value: string) {
     this._namePrefix = value;
   }
   public resetNamePrefix() {
@@ -546,15 +625,15 @@ export class BudgetsBudget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // time_period_end - computed: false, optional: true, required: false
-  private _timePeriodEnd?: string | undefined; 
+  private _timePeriodEnd?: string; 
   public get timePeriodEnd() {
     return this.getStringAttribute('time_period_end');
   }
-  public set timePeriodEnd(value: string | undefined) {
+  public set timePeriodEnd(value: string) {
     this._timePeriodEnd = value;
   }
   public resetTimePeriodEnd() {
@@ -562,15 +641,15 @@ export class BudgetsBudget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get timePeriodEndInput() {
-    return this._timePeriodEnd
+    return this._timePeriodEnd;
   }
 
   // time_period_start - computed: true, optional: true, required: false
-  private _timePeriodStart?: string | undefined; 
+  private _timePeriodStart?: string; 
   public get timePeriodStart() {
     return this.getStringAttribute('time_period_start');
   }
-  public set timePeriodStart(value: string | undefined) {
+  public set timePeriodStart(value: string) {
     this._timePeriodStart = value;
   }
   public resetTimePeriodStart() {
@@ -578,7 +657,7 @@ export class BudgetsBudget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get timePeriodStartInput() {
-    return this._timePeriodStart
+    return this._timePeriodStart;
   }
 
   // time_unit - computed: false, optional: false, required: true
@@ -591,16 +670,16 @@ export class BudgetsBudget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get timeUnitInput() {
-    return this._timeUnit
+    return this._timeUnit;
   }
 
   // cost_filter - computed: false, optional: true, required: false
-  private _costFilter?: BudgetsBudgetCostFilter[] | undefined; 
+  private _costFilter?: BudgetsBudgetCostFilter[]; 
   public get costFilter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('cost_filter') as any;
   }
-  public set costFilter(value: BudgetsBudgetCostFilter[] | undefined) {
+  public set costFilter(value: BudgetsBudgetCostFilter[]) {
     this._costFilter = value;
   }
   public resetCostFilter() {
@@ -608,33 +687,32 @@ export class BudgetsBudget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get costFilterInput() {
-    return this._costFilter
+    return this._costFilter;
   }
 
   // cost_types - computed: false, optional: true, required: false
-  private _costTypes?: BudgetsBudgetCostTypes | undefined; 
-  private __costTypesOutput = new BudgetsBudgetCostTypesOutputReference(this as any, "cost_types", true);
+  private _costTypes = new BudgetsBudgetCostTypesOutputReference(this as any, "cost_types", true);
   public get costTypes() {
-    return this.__costTypesOutput;
+    return this._costTypes;
   }
-  public putCostTypes(value: BudgetsBudgetCostTypes | undefined) {
-    this._costTypes = value;
+  public putCostTypes(value: BudgetsBudgetCostTypes) {
+    this._costTypes.internalValue = value;
   }
   public resetCostTypes() {
-    this._costTypes = undefined;
+    this._costTypes.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get costTypesInput() {
-    return this._costTypes
+    return this._costTypes.internalValue;
   }
 
   // notification - computed: false, optional: true, required: false
-  private _notification?: BudgetsBudgetNotification[] | undefined; 
+  private _notification?: BudgetsBudgetNotification[]; 
   public get notification() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('notification') as any;
   }
-  public set notification(value: BudgetsBudgetNotification[] | undefined) {
+  public set notification(value: BudgetsBudgetNotification[]) {
     this._notification = value;
   }
   public resetNotification() {
@@ -642,7 +720,7 @@ export class BudgetsBudget extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get notificationInput() {
-    return this._notification
+    return this._notification;
   }
 
   // =========
@@ -662,7 +740,7 @@ export class BudgetsBudget extends cdktf.TerraformResource {
       time_period_start: cdktf.stringToTerraform(this._timePeriodStart),
       time_unit: cdktf.stringToTerraform(this._timeUnit),
       cost_filter: cdktf.listMapper(budgetsBudgetCostFilterToTerraform)(this._costFilter),
-      cost_types: budgetsBudgetCostTypesToTerraform(this._costTypes),
+      cost_types: budgetsBudgetCostTypesToTerraform(this._costTypes.internalValue),
       notification: cdktf.listMapper(budgetsBudgetNotificationToTerraform)(this._notification),
     };
   }

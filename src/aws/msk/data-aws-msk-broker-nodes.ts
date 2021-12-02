@@ -94,7 +94,7 @@ export class DataAwsMskBrokerNodes extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterArnInput() {
-    return this._clusterArn
+    return this._clusterArn;
   }
 
   // id - computed: true, optional: true, required: false

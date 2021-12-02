@@ -63,11 +63,11 @@ export class Macie2Account extends cdktf.TerraformResource {
   }
 
   // finding_publishing_frequency - computed: true, optional: true, required: false
-  private _findingPublishingFrequency?: string | undefined; 
+  private _findingPublishingFrequency?: string; 
   public get findingPublishingFrequency() {
     return this.getStringAttribute('finding_publishing_frequency');
   }
-  public set findingPublishingFrequency(value: string | undefined) {
+  public set findingPublishingFrequency(value: string) {
     this._findingPublishingFrequency = value;
   }
   public resetFindingPublishingFrequency() {
@@ -75,7 +75,7 @@ export class Macie2Account extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get findingPublishingFrequencyInput() {
-    return this._findingPublishingFrequency
+    return this._findingPublishingFrequency;
   }
 
   // id - computed: true, optional: true, required: false
@@ -89,11 +89,11 @@ export class Macie2Account extends cdktf.TerraformResource {
   }
 
   // status - computed: true, optional: true, required: false
-  private _status?: string | undefined; 
+  private _status?: string; 
   public get status() {
     return this.getStringAttribute('status');
   }
-  public set status(value: string | undefined) {
+  public set status(value: string) {
     this._status = value;
   }
   public resetStatus() {
@@ -101,7 +101,7 @@ export class Macie2Account extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 
   // updated_at - computed: true, optional: false, required: false

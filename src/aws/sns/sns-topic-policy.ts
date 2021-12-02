@@ -67,7 +67,7 @@ export class SnsTopicPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -90,7 +90,7 @@ export class SnsTopicPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get policyInput() {
-    return this._policy
+    return this._policy;
   }
 
   // =========

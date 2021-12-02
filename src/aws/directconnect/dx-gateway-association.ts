@@ -75,12 +75,43 @@ export class DxGatewayAssociationTimeoutsOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DxGatewayAssociationTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DxGatewayAssociationTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -88,15 +119,15 @@ export class DxGatewayAssociationTimeoutsOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -104,15 +135,15 @@ export class DxGatewayAssociationTimeoutsOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -120,7 +151,7 @@ export class DxGatewayAssociationTimeoutsOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -162,7 +193,7 @@ export class DxGatewayAssociation extends cdktf.TerraformResource {
     this._dxGatewayId = config.dxGatewayId;
     this._proposalId = config.proposalId;
     this._vpnGatewayId = config.vpnGatewayId;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -170,11 +201,11 @@ export class DxGatewayAssociation extends cdktf.TerraformResource {
   // ==========
 
   // allowed_prefixes - computed: true, optional: true, required: false
-  private _allowedPrefixes?: string[] | undefined; 
+  private _allowedPrefixes?: string[]; 
   public get allowedPrefixes() {
     return this.getListAttribute('allowed_prefixes');
   }
-  public set allowedPrefixes(value: string[] | undefined) {
+  public set allowedPrefixes(value: string[]) {
     this._allowedPrefixes = value;
   }
   public resetAllowedPrefixes() {
@@ -182,15 +213,15 @@ export class DxGatewayAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get allowedPrefixesInput() {
-    return this._allowedPrefixes
+    return this._allowedPrefixes;
   }
 
   // associated_gateway_id - computed: true, optional: true, required: false
-  private _associatedGatewayId?: string | undefined; 
+  private _associatedGatewayId?: string; 
   public get associatedGatewayId() {
     return this.getStringAttribute('associated_gateway_id');
   }
-  public set associatedGatewayId(value: string | undefined) {
+  public set associatedGatewayId(value: string) {
     this._associatedGatewayId = value;
   }
   public resetAssociatedGatewayId() {
@@ -198,15 +229,15 @@ export class DxGatewayAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get associatedGatewayIdInput() {
-    return this._associatedGatewayId
+    return this._associatedGatewayId;
   }
 
   // associated_gateway_owner_account_id - computed: true, optional: true, required: false
-  private _associatedGatewayOwnerAccountId?: string | undefined; 
+  private _associatedGatewayOwnerAccountId?: string; 
   public get associatedGatewayOwnerAccountId() {
     return this.getStringAttribute('associated_gateway_owner_account_id');
   }
-  public set associatedGatewayOwnerAccountId(value: string | undefined) {
+  public set associatedGatewayOwnerAccountId(value: string) {
     this._associatedGatewayOwnerAccountId = value;
   }
   public resetAssociatedGatewayOwnerAccountId() {
@@ -214,7 +245,7 @@ export class DxGatewayAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get associatedGatewayOwnerAccountIdInput() {
-    return this._associatedGatewayOwnerAccountId
+    return this._associatedGatewayOwnerAccountId;
   }
 
   // associated_gateway_type - computed: true, optional: false, required: false
@@ -237,7 +268,7 @@ export class DxGatewayAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dxGatewayIdInput() {
-    return this._dxGatewayId
+    return this._dxGatewayId;
   }
 
   // dx_gateway_owner_account_id - computed: true, optional: false, required: false
@@ -251,11 +282,11 @@ export class DxGatewayAssociation extends cdktf.TerraformResource {
   }
 
   // proposal_id - computed: false, optional: true, required: false
-  private _proposalId?: string | undefined; 
+  private _proposalId?: string; 
   public get proposalId() {
     return this.getStringAttribute('proposal_id');
   }
-  public set proposalId(value: string | undefined) {
+  public set proposalId(value: string) {
     this._proposalId = value;
   }
   public resetProposalId() {
@@ -263,15 +294,15 @@ export class DxGatewayAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get proposalIdInput() {
-    return this._proposalId
+    return this._proposalId;
   }
 
   // vpn_gateway_id - computed: false, optional: true, required: false
-  private _vpnGatewayId?: string | undefined; 
+  private _vpnGatewayId?: string; 
   public get vpnGatewayId() {
     return this.getStringAttribute('vpn_gateway_id');
   }
-  public set vpnGatewayId(value: string | undefined) {
+  public set vpnGatewayId(value: string) {
     this._vpnGatewayId = value;
   }
   public resetVpnGatewayId() {
@@ -279,24 +310,23 @@ export class DxGatewayAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpnGatewayIdInput() {
-    return this._vpnGatewayId
+    return this._vpnGatewayId;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DxGatewayAssociationTimeouts | undefined; 
-  private __timeoutsOutput = new DxGatewayAssociationTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DxGatewayAssociationTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DxGatewayAssociationTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DxGatewayAssociationTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -311,7 +341,7 @@ export class DxGatewayAssociation extends cdktf.TerraformResource {
       dx_gateway_id: cdktf.stringToTerraform(this._dxGatewayId),
       proposal_id: cdktf.stringToTerraform(this._proposalId),
       vpn_gateway_id: cdktf.stringToTerraform(this._vpnGatewayId),
-      timeouts: dxGatewayAssociationTimeoutsToTerraform(this._timeouts),
+      timeouts: dxGatewayAssociationTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

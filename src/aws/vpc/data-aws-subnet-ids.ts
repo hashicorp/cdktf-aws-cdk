@@ -97,12 +97,12 @@ export class DataAwsSubnetIds extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -110,7 +110,7 @@ export class DataAwsSubnetIds extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // vpc_id - computed: false, optional: false, required: true
@@ -123,16 +123,16 @@ export class DataAwsSubnetIds extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsSubnetIdsFilter[] | undefined; 
+  private _filter?: DataAwsSubnetIdsFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsSubnetIdsFilter[] | undefined) {
+  public set filter(value: DataAwsSubnetIdsFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -140,7 +140,7 @@ export class DataAwsSubnetIds extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

@@ -63,11 +63,11 @@ export class ServicecatalogTagOption extends cdktf.TerraformResource {
   // ==========
 
   // active - computed: false, optional: true, required: false
-  private _active?: boolean | cdktf.IResolvable | undefined; 
+  private _active?: boolean | cdktf.IResolvable; 
   public get active() {
     return this.getBooleanAttribute('active') as any;
   }
-  public set active(value: boolean | cdktf.IResolvable | undefined) {
+  public set active(value: boolean | cdktf.IResolvable) {
     this._active = value;
   }
   public resetActive() {
@@ -75,7 +75,7 @@ export class ServicecatalogTagOption extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get activeInput() {
-    return this._active
+    return this._active;
   }
 
   // id - computed: true, optional: true, required: false
@@ -93,7 +93,7 @@ export class ServicecatalogTagOption extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // owner - computed: true, optional: false, required: false
@@ -111,7 +111,7 @@ export class ServicecatalogTagOption extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get valueInput() {
-    return this._value
+    return this._value;
   }
 
   // =========

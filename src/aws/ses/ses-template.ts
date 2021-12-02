@@ -73,11 +73,11 @@ export class SesTemplate extends cdktf.TerraformResource {
   }
 
   // html - computed: false, optional: true, required: false
-  private _html?: string | undefined; 
+  private _html?: string; 
   public get html() {
     return this.getStringAttribute('html');
   }
-  public set html(value: string | undefined) {
+  public set html(value: string) {
     this._html = value;
   }
   public resetHtml() {
@@ -85,7 +85,7 @@ export class SesTemplate extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get htmlInput() {
-    return this._html
+    return this._html;
   }
 
   // id - computed: true, optional: true, required: false
@@ -103,15 +103,15 @@ export class SesTemplate extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // subject - computed: false, optional: true, required: false
-  private _subject?: string | undefined; 
+  private _subject?: string; 
   public get subject() {
     return this.getStringAttribute('subject');
   }
-  public set subject(value: string | undefined) {
+  public set subject(value: string) {
     this._subject = value;
   }
   public resetSubject() {
@@ -119,15 +119,15 @@ export class SesTemplate extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get subjectInput() {
-    return this._subject
+    return this._subject;
   }
 
   // text - computed: false, optional: true, required: false
-  private _text?: string | undefined; 
+  private _text?: string; 
   public get text() {
     return this.getStringAttribute('text');
   }
-  public set text(value: string | undefined) {
+  public set text(value: string) {
     this._text = value;
   }
   public resetText() {
@@ -135,7 +135,7 @@ export class SesTemplate extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get textInput() {
-    return this._text
+    return this._text;
   }
 
   // =========

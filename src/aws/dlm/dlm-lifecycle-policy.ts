@@ -71,6 +71,37 @@ export class DlmLifecyclePolicyPolicyDetailsScheduleCreateRuleOutputReference ex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DlmLifecyclePolicyPolicyDetailsScheduleCreateRule | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._interval) {
+      hasAnyValues = true;
+      internalValueResult.interval = this._interval;
+    }
+    if (this._intervalUnit) {
+      hasAnyValues = true;
+      internalValueResult.intervalUnit = this._intervalUnit;
+    }
+    if (this._times) {
+      hasAnyValues = true;
+      internalValueResult.times = this._times;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DlmLifecyclePolicyPolicyDetailsScheduleCreateRule | undefined) {
+    if (value === undefined) {
+      this._interval = undefined;
+      this._intervalUnit = undefined;
+      this._times = undefined;
+    }
+    else {
+      this._interval = value.interval;
+      this._intervalUnit = value.intervalUnit;
+      this._times = value.times;
+    }
+  }
+
   // interval - computed: false, optional: false, required: true
   private _interval?: number; 
   public get interval() {
@@ -81,15 +112,15 @@ export class DlmLifecyclePolicyPolicyDetailsScheduleCreateRuleOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get intervalInput() {
-    return this._interval
+    return this._interval;
   }
 
   // interval_unit - computed: false, optional: true, required: false
-  private _intervalUnit?: string | undefined; 
+  private _intervalUnit?: string; 
   public get intervalUnit() {
     return this.getStringAttribute('interval_unit');
   }
-  public set intervalUnit(value: string | undefined) {
+  public set intervalUnit(value: string) {
     this._intervalUnit = value;
   }
   public resetIntervalUnit() {
@@ -97,15 +128,15 @@ export class DlmLifecyclePolicyPolicyDetailsScheduleCreateRuleOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get intervalUnitInput() {
-    return this._intervalUnit
+    return this._intervalUnit;
   }
 
   // times - computed: true, optional: true, required: false
-  private _times?: string[] | undefined; 
+  private _times?: string[]; 
   public get times() {
     return this.getListAttribute('times');
   }
-  public set times(value: string[] | undefined) {
+  public set times(value: string[]) {
     this._times = value;
   }
   public resetTimes() {
@@ -113,7 +144,7 @@ export class DlmLifecyclePolicyPolicyDetailsScheduleCreateRuleOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get timesInput() {
-    return this._times
+    return this._times;
   }
 }
 export interface DlmLifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule {
@@ -148,6 +179,31 @@ export class DlmLifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecate
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DlmLifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._interval) {
+      hasAnyValues = true;
+      internalValueResult.interval = this._interval;
+    }
+    if (this._intervalUnit) {
+      hasAnyValues = true;
+      internalValueResult.intervalUnit = this._intervalUnit;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DlmLifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule | undefined) {
+    if (value === undefined) {
+      this._interval = undefined;
+      this._intervalUnit = undefined;
+    }
+    else {
+      this._interval = value.interval;
+      this._intervalUnit = value.intervalUnit;
+    }
+  }
+
   // interval - computed: false, optional: false, required: true
   private _interval?: number; 
   public get interval() {
@@ -158,7 +214,7 @@ export class DlmLifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecate
   }
   // Temporarily expose input value. Use with caution.
   public get intervalInput() {
-    return this._interval
+    return this._interval;
   }
 
   // interval_unit - computed: false, optional: false, required: true
@@ -171,7 +227,7 @@ export class DlmLifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecate
   }
   // Temporarily expose input value. Use with caution.
   public get intervalUnitInput() {
-    return this._intervalUnit
+    return this._intervalUnit;
   }
 }
 export interface DlmLifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule {
@@ -206,6 +262,31 @@ export class DlmLifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRul
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DlmLifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._interval) {
+      hasAnyValues = true;
+      internalValueResult.interval = this._interval;
+    }
+    if (this._intervalUnit) {
+      hasAnyValues = true;
+      internalValueResult.intervalUnit = this._intervalUnit;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DlmLifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule | undefined) {
+    if (value === undefined) {
+      this._interval = undefined;
+      this._intervalUnit = undefined;
+    }
+    else {
+      this._interval = value.interval;
+      this._intervalUnit = value.intervalUnit;
+    }
+  }
+
   // interval - computed: false, optional: false, required: true
   private _interval?: number; 
   public get interval() {
@@ -216,7 +297,7 @@ export class DlmLifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRul
   }
   // Temporarily expose input value. Use with caution.
   public get intervalInput() {
-    return this._interval
+    return this._interval;
   }
 
   // interval_unit - computed: false, optional: false, required: true
@@ -229,7 +310,7 @@ export class DlmLifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRul
   }
   // Temporarily expose input value. Use with caution.
   public get intervalUnitInput() {
-    return this._intervalUnit
+    return this._intervalUnit;
   }
 }
 export interface DlmLifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule {
@@ -305,6 +386,25 @@ export class DlmLifecyclePolicyPolicyDetailsScheduleRetainRuleOutputReference ex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DlmLifecyclePolicyPolicyDetailsScheduleRetainRule | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._count) {
+      hasAnyValues = true;
+      internalValueResult.count = this._count;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DlmLifecyclePolicyPolicyDetailsScheduleRetainRule | undefined) {
+    if (value === undefined) {
+      this._count = undefined;
+    }
+    else {
+      this._count = value.count;
+    }
+  }
+
   // count - computed: false, optional: false, required: true
   private _count?: number; 
   public get count() {
@@ -315,7 +415,7 @@ export class DlmLifecyclePolicyPolicyDetailsScheduleRetainRuleOutputReference ex
   }
   // Temporarily expose input value. Use with caution.
   public get countInput() {
-    return this._count
+    return this._count;
   }
 }
 export interface DlmLifecyclePolicyPolicyDetailsSchedule {
@@ -405,6 +505,37 @@ export class DlmLifecyclePolicyPolicyDetailsOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DlmLifecyclePolicyPolicyDetails | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._resourceTypes) {
+      hasAnyValues = true;
+      internalValueResult.resourceTypes = this._resourceTypes;
+    }
+    if (this._targetTags) {
+      hasAnyValues = true;
+      internalValueResult.targetTags = this._targetTags;
+    }
+    if (this._schedule) {
+      hasAnyValues = true;
+      internalValueResult.schedule = this._schedule;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DlmLifecyclePolicyPolicyDetails | undefined) {
+    if (value === undefined) {
+      this._resourceTypes = undefined;
+      this._targetTags = undefined;
+      this._schedule = undefined;
+    }
+    else {
+      this._resourceTypes = value.resourceTypes;
+      this._targetTags = value.targetTags;
+      this._schedule = value.schedule;
+    }
+  }
+
   // resource_types - computed: false, optional: false, required: true
   private _resourceTypes?: string[]; 
   public get resourceTypes() {
@@ -415,7 +546,7 @@ export class DlmLifecyclePolicyPolicyDetailsOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get resourceTypesInput() {
-    return this._resourceTypes
+    return this._resourceTypes;
   }
 
   // target_tags - computed: false, optional: false, required: true
@@ -429,7 +560,7 @@ export class DlmLifecyclePolicyPolicyDetailsOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get targetTagsInput() {
-    return this._targetTags
+    return this._targetTags;
   }
 
   // schedule - computed: false, optional: false, required: true
@@ -443,7 +574,7 @@ export class DlmLifecyclePolicyPolicyDetailsOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get scheduleInput() {
-    return this._schedule
+    return this._schedule;
   }
 }
 
@@ -484,7 +615,7 @@ export class DlmLifecyclePolicy extends cdktf.TerraformResource {
     this._state = config.state;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._policyDetails = config.policyDetails;
+    this._policyDetails.internalValue = config.policyDetails;
   }
 
   // ==========
@@ -506,7 +637,7 @@ export class DlmLifecyclePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // execution_role_arn - computed: false, optional: false, required: true
@@ -519,7 +650,7 @@ export class DlmLifecyclePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get executionRoleArnInput() {
-    return this._executionRoleArn
+    return this._executionRoleArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -528,11 +659,11 @@ export class DlmLifecyclePolicy extends cdktf.TerraformResource {
   }
 
   // state - computed: false, optional: true, required: false
-  private _state?: string | undefined; 
+  private _state?: string; 
   public get state() {
     return this.getStringAttribute('state');
   }
-  public set state(value: string | undefined) {
+  public set state(value: string) {
     this._state = value;
   }
   public resetState() {
@@ -540,16 +671,16 @@ export class DlmLifecyclePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stateInput() {
-    return this._state
+    return this._state;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -557,16 +688,16 @@ export class DlmLifecyclePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -574,21 +705,20 @@ export class DlmLifecyclePolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // policy_details - computed: false, optional: false, required: true
-  private _policyDetails?: DlmLifecyclePolicyPolicyDetails; 
-  private __policyDetailsOutput = new DlmLifecyclePolicyPolicyDetailsOutputReference(this as any, "policy_details", true);
+  private _policyDetails = new DlmLifecyclePolicyPolicyDetailsOutputReference(this as any, "policy_details", true);
   public get policyDetails() {
-    return this.__policyDetailsOutput;
+    return this._policyDetails;
   }
   public putPolicyDetails(value: DlmLifecyclePolicyPolicyDetails) {
-    this._policyDetails = value;
+    this._policyDetails.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get policyDetailsInput() {
-    return this._policyDetails
+    return this._policyDetails.internalValue;
   }
 
   // =========
@@ -602,7 +732,7 @@ export class DlmLifecyclePolicy extends cdktf.TerraformResource {
       state: cdktf.stringToTerraform(this._state),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      policy_details: dlmLifecyclePolicyPolicyDetailsToTerraform(this._policyDetails),
+      policy_details: dlmLifecyclePolicyPolicyDetailsToTerraform(this._policyDetails.internalValue),
     };
   }
 }

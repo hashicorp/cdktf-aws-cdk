@@ -75,6 +75,37 @@ export class MediaConvertQueueReservationPlanSettingsOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MediaConvertQueueReservationPlanSettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._commitment) {
+      hasAnyValues = true;
+      internalValueResult.commitment = this._commitment;
+    }
+    if (this._renewalType) {
+      hasAnyValues = true;
+      internalValueResult.renewalType = this._renewalType;
+    }
+    if (this._reservedSlots) {
+      hasAnyValues = true;
+      internalValueResult.reservedSlots = this._reservedSlots;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MediaConvertQueueReservationPlanSettings | undefined) {
+    if (value === undefined) {
+      this._commitment = undefined;
+      this._renewalType = undefined;
+      this._reservedSlots = undefined;
+    }
+    else {
+      this._commitment = value.commitment;
+      this._renewalType = value.renewalType;
+      this._reservedSlots = value.reservedSlots;
+    }
+  }
+
   // commitment - computed: false, optional: false, required: true
   private _commitment?: string; 
   public get commitment() {
@@ -85,7 +116,7 @@ export class MediaConvertQueueReservationPlanSettingsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get commitmentInput() {
-    return this._commitment
+    return this._commitment;
   }
 
   // renewal_type - computed: false, optional: false, required: true
@@ -98,7 +129,7 @@ export class MediaConvertQueueReservationPlanSettingsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get renewalTypeInput() {
-    return this._renewalType
+    return this._renewalType;
   }
 
   // reserved_slots - computed: false, optional: false, required: true
@@ -111,7 +142,7 @@ export class MediaConvertQueueReservationPlanSettingsOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get reservedSlotsInput() {
-    return this._reservedSlots
+    return this._reservedSlots;
   }
 }
 
@@ -153,7 +184,7 @@ export class MediaConvertQueue extends cdktf.TerraformResource {
     this._status = config.status;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._reservationPlanSettings = config.reservationPlanSettings;
+    this._reservationPlanSettings.internalValue = config.reservationPlanSettings;
   }
 
   // ==========
@@ -166,11 +197,11 @@ export class MediaConvertQueue extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -178,7 +209,7 @@ export class MediaConvertQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -196,15 +227,15 @@ export class MediaConvertQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // pricing_plan - computed: false, optional: true, required: false
-  private _pricingPlan?: string | undefined; 
+  private _pricingPlan?: string; 
   public get pricingPlan() {
     return this.getStringAttribute('pricing_plan');
   }
-  public set pricingPlan(value: string | undefined) {
+  public set pricingPlan(value: string) {
     this._pricingPlan = value;
   }
   public resetPricingPlan() {
@@ -212,15 +243,15 @@ export class MediaConvertQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get pricingPlanInput() {
-    return this._pricingPlan
+    return this._pricingPlan;
   }
 
   // status - computed: false, optional: true, required: false
-  private _status?: string | undefined; 
+  private _status?: string; 
   public get status() {
     return this.getStringAttribute('status');
   }
-  public set status(value: string | undefined) {
+  public set status(value: string) {
     this._status = value;
   }
   public resetStatus() {
@@ -228,16 +259,16 @@ export class MediaConvertQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -245,16 +276,16 @@ export class MediaConvertQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -262,24 +293,23 @@ export class MediaConvertQueue extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // reservation_plan_settings - computed: false, optional: true, required: false
-  private _reservationPlanSettings?: MediaConvertQueueReservationPlanSettings | undefined; 
-  private __reservationPlanSettingsOutput = new MediaConvertQueueReservationPlanSettingsOutputReference(this as any, "reservation_plan_settings", true);
+  private _reservationPlanSettings = new MediaConvertQueueReservationPlanSettingsOutputReference(this as any, "reservation_plan_settings", true);
   public get reservationPlanSettings() {
-    return this.__reservationPlanSettingsOutput;
+    return this._reservationPlanSettings;
   }
-  public putReservationPlanSettings(value: MediaConvertQueueReservationPlanSettings | undefined) {
-    this._reservationPlanSettings = value;
+  public putReservationPlanSettings(value: MediaConvertQueueReservationPlanSettings) {
+    this._reservationPlanSettings.internalValue = value;
   }
   public resetReservationPlanSettings() {
-    this._reservationPlanSettings = undefined;
+    this._reservationPlanSettings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get reservationPlanSettingsInput() {
-    return this._reservationPlanSettings
+    return this._reservationPlanSettings.internalValue;
   }
 
   // =========
@@ -294,7 +324,7 @@ export class MediaConvertQueue extends cdktf.TerraformResource {
       status: cdktf.stringToTerraform(this._status),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      reservation_plan_settings: mediaConvertQueueReservationPlanSettingsToTerraform(this._reservationPlanSettings),
+      reservation_plan_settings: mediaConvertQueueReservationPlanSettingsToTerraform(this._reservationPlanSettings.internalValue),
     };
   }
 }

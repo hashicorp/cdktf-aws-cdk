@@ -88,11 +88,11 @@ export class IamAccessKey extends cdktf.TerraformResource {
   }
 
   // pgp_key - computed: false, optional: true, required: false
-  private _pgpKey?: string | undefined; 
+  private _pgpKey?: string; 
   public get pgpKey() {
     return this.getStringAttribute('pgp_key');
   }
-  public set pgpKey(value: string | undefined) {
+  public set pgpKey(value: string) {
     this._pgpKey = value;
   }
   public resetPgpKey() {
@@ -100,7 +100,7 @@ export class IamAccessKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get pgpKeyInput() {
-    return this._pgpKey
+    return this._pgpKey;
   }
 
   // secret - computed: true, optional: false, required: false
@@ -114,11 +114,11 @@ export class IamAccessKey extends cdktf.TerraformResource {
   }
 
   // status - computed: false, optional: true, required: false
-  private _status?: string | undefined; 
+  private _status?: string; 
   public get status() {
     return this.getStringAttribute('status');
   }
-  public set status(value: string | undefined) {
+  public set status(value: string) {
     this._status = value;
   }
   public resetStatus() {
@@ -126,7 +126,7 @@ export class IamAccessKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 
   // user - computed: false, optional: false, required: true
@@ -139,7 +139,7 @@ export class IamAccessKey extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userInput() {
-    return this._user
+    return this._user;
   }
 
   // =========

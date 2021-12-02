@@ -58,12 +58,37 @@ export class GluePartitionIndexPartitionIndexOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GluePartitionIndexPartitionIndex | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._indexName) {
+      hasAnyValues = true;
+      internalValueResult.indexName = this._indexName;
+    }
+    if (this._keys) {
+      hasAnyValues = true;
+      internalValueResult.keys = this._keys;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GluePartitionIndexPartitionIndex | undefined) {
+    if (value === undefined) {
+      this._indexName = undefined;
+      this._keys = undefined;
+    }
+    else {
+      this._indexName = value.indexName;
+      this._keys = value.keys;
+    }
+  }
+
   // index_name - computed: false, optional: true, required: false
-  private _indexName?: string | undefined; 
+  private _indexName?: string; 
   public get indexName() {
     return this.getStringAttribute('index_name');
   }
-  public set indexName(value: string | undefined) {
+  public set indexName(value: string) {
     this._indexName = value;
   }
   public resetIndexName() {
@@ -71,15 +96,15 @@ export class GluePartitionIndexPartitionIndexOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get indexNameInput() {
-    return this._indexName
+    return this._indexName;
   }
 
   // keys - computed: false, optional: true, required: false
-  private _keys?: string[] | undefined; 
+  private _keys?: string[]; 
   public get keys() {
     return this.getListAttribute('keys');
   }
-  public set keys(value: string[] | undefined) {
+  public set keys(value: string[]) {
     this._keys = value;
   }
   public resetKeys() {
@@ -87,7 +112,7 @@ export class GluePartitionIndexPartitionIndexOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get keysInput() {
-    return this._keys
+    return this._keys;
   }
 }
 
@@ -126,7 +151,7 @@ export class GluePartitionIndex extends cdktf.TerraformResource {
     this._catalogId = config.catalogId;
     this._databaseName = config.databaseName;
     this._tableName = config.tableName;
-    this._partitionIndex = config.partitionIndex;
+    this._partitionIndex.internalValue = config.partitionIndex;
   }
 
   // ==========
@@ -134,11 +159,11 @@ export class GluePartitionIndex extends cdktf.TerraformResource {
   // ==========
 
   // catalog_id - computed: true, optional: true, required: false
-  private _catalogId?: string | undefined; 
+  private _catalogId?: string; 
   public get catalogId() {
     return this.getStringAttribute('catalog_id');
   }
-  public set catalogId(value: string | undefined) {
+  public set catalogId(value: string) {
     this._catalogId = value;
   }
   public resetCatalogId() {
@@ -146,7 +171,7 @@ export class GluePartitionIndex extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get catalogIdInput() {
-    return this._catalogId
+    return this._catalogId;
   }
 
   // database_name - computed: false, optional: false, required: true
@@ -159,7 +184,7 @@ export class GluePartitionIndex extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get databaseNameInput() {
-    return this._databaseName
+    return this._databaseName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -177,21 +202,20 @@ export class GluePartitionIndex extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tableNameInput() {
-    return this._tableName
+    return this._tableName;
   }
 
   // partition_index - computed: false, optional: false, required: true
-  private _partitionIndex?: GluePartitionIndexPartitionIndex; 
-  private __partitionIndexOutput = new GluePartitionIndexPartitionIndexOutputReference(this as any, "partition_index", true);
+  private _partitionIndex = new GluePartitionIndexPartitionIndexOutputReference(this as any, "partition_index", true);
   public get partitionIndex() {
-    return this.__partitionIndexOutput;
+    return this._partitionIndex;
   }
   public putPartitionIndex(value: GluePartitionIndexPartitionIndex) {
-    this._partitionIndex = value;
+    this._partitionIndex.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get partitionIndexInput() {
-    return this._partitionIndex
+    return this._partitionIndex.internalValue;
   }
 
   // =========
@@ -203,7 +227,7 @@ export class GluePartitionIndex extends cdktf.TerraformResource {
       catalog_id: cdktf.stringToTerraform(this._catalogId),
       database_name: cdktf.stringToTerraform(this._databaseName),
       table_name: cdktf.stringToTerraform(this._tableName),
-      partition_index: gluePartitionIndexPartitionIndexToTerraform(this._partitionIndex),
+      partition_index: gluePartitionIndexPartitionIndexToTerraform(this._partitionIndex.internalValue),
     };
   }
 }

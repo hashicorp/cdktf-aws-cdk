@@ -62,12 +62,37 @@ export class IotThingTypePropertiesOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): IotThingTypeProperties | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._description) {
+      hasAnyValues = true;
+      internalValueResult.description = this._description;
+    }
+    if (this._searchableAttributes) {
+      hasAnyValues = true;
+      internalValueResult.searchableAttributes = this._searchableAttributes;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: IotThingTypeProperties | undefined) {
+    if (value === undefined) {
+      this._description = undefined;
+      this._searchableAttributes = undefined;
+    }
+    else {
+      this._description = value.description;
+      this._searchableAttributes = value.searchableAttributes;
+    }
+  }
+
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -75,15 +100,15 @@ export class IotThingTypePropertiesOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // searchable_attributes - computed: true, optional: true, required: false
-  private _searchableAttributes?: string[] | undefined; 
+  private _searchableAttributes?: string[]; 
   public get searchableAttributes() {
     return this.getListAttribute('searchable_attributes');
   }
-  public set searchableAttributes(value: string[] | undefined) {
+  public set searchableAttributes(value: string[]) {
     this._searchableAttributes = value;
   }
   public resetSearchableAttributes() {
@@ -91,7 +116,7 @@ export class IotThingTypePropertiesOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get searchableAttributesInput() {
-    return this._searchableAttributes
+    return this._searchableAttributes;
   }
 }
 
@@ -131,7 +156,7 @@ export class IotThingType extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._properties = config.properties;
+    this._properties.internalValue = config.properties;
   }
 
   // ==========
@@ -144,11 +169,11 @@ export class IotThingType extends cdktf.TerraformResource {
   }
 
   // deprecated - computed: false, optional: true, required: false
-  private _deprecated?: boolean | cdktf.IResolvable | undefined; 
+  private _deprecated?: boolean | cdktf.IResolvable; 
   public get deprecated() {
     return this.getBooleanAttribute('deprecated') as any;
   }
-  public set deprecated(value: boolean | cdktf.IResolvable | undefined) {
+  public set deprecated(value: boolean | cdktf.IResolvable) {
     this._deprecated = value;
   }
   public resetDeprecated() {
@@ -156,7 +181,7 @@ export class IotThingType extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deprecatedInput() {
-    return this._deprecated
+    return this._deprecated;
   }
 
   // id - computed: true, optional: true, required: false
@@ -174,16 +199,16 @@ export class IotThingType extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -191,16 +216,16 @@ export class IotThingType extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -208,24 +233,23 @@ export class IotThingType extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // properties - computed: false, optional: true, required: false
-  private _properties?: IotThingTypeProperties | undefined; 
-  private __propertiesOutput = new IotThingTypePropertiesOutputReference(this as any, "properties", true);
+  private _properties = new IotThingTypePropertiesOutputReference(this as any, "properties", true);
   public get properties() {
-    return this.__propertiesOutput;
+    return this._properties;
   }
-  public putProperties(value: IotThingTypeProperties | undefined) {
-    this._properties = value;
+  public putProperties(value: IotThingTypeProperties) {
+    this._properties.internalValue = value;
   }
   public resetProperties() {
-    this._properties = undefined;
+    this._properties.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get propertiesInput() {
-    return this._properties
+    return this._properties.internalValue;
   }
 
   // =========
@@ -238,7 +262,7 @@ export class IotThingType extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      properties: iotThingTypePropertiesToTerraform(this._properties),
+      properties: iotThingTypePropertiesToTerraform(this._properties.internalValue),
     };
   }
 }

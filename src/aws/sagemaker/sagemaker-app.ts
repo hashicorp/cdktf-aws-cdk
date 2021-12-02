@@ -70,12 +70,37 @@ export class SagemakerAppResourceSpecOutputReference extends cdktf.ComplexObject
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerAppResourceSpec | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._instanceType) {
+      hasAnyValues = true;
+      internalValueResult.instanceType = this._instanceType;
+    }
+    if (this._sagemakerImageArn) {
+      hasAnyValues = true;
+      internalValueResult.sagemakerImageArn = this._sagemakerImageArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerAppResourceSpec | undefined) {
+    if (value === undefined) {
+      this._instanceType = undefined;
+      this._sagemakerImageArn = undefined;
+    }
+    else {
+      this._instanceType = value.instanceType;
+      this._sagemakerImageArn = value.sagemakerImageArn;
+    }
+  }
+
   // instance_type - computed: false, optional: true, required: false
-  private _instanceType?: string | undefined; 
+  private _instanceType?: string; 
   public get instanceType() {
     return this.getStringAttribute('instance_type');
   }
-  public set instanceType(value: string | undefined) {
+  public set instanceType(value: string) {
     this._instanceType = value;
   }
   public resetInstanceType() {
@@ -83,15 +108,15 @@ export class SagemakerAppResourceSpecOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // sagemaker_image_arn - computed: true, optional: true, required: false
-  private _sagemakerImageArn?: string | undefined; 
+  private _sagemakerImageArn?: string; 
   public get sagemakerImageArn() {
     return this.getStringAttribute('sagemaker_image_arn');
   }
-  public set sagemakerImageArn(value: string | undefined) {
+  public set sagemakerImageArn(value: string) {
     this._sagemakerImageArn = value;
   }
   public resetSagemakerImageArn() {
@@ -99,7 +124,7 @@ export class SagemakerAppResourceSpecOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get sagemakerImageArnInput() {
-    return this._sagemakerImageArn
+    return this._sagemakerImageArn;
   }
 }
 
@@ -141,7 +166,7 @@ export class SagemakerApp extends cdktf.TerraformResource {
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._userProfileName = config.userProfileName;
-    this._resourceSpec = config.resourceSpec;
+    this._resourceSpec.internalValue = config.resourceSpec;
   }
 
   // ==========
@@ -158,7 +183,7 @@ export class SagemakerApp extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get appNameInput() {
-    return this._appName
+    return this._appName;
   }
 
   // app_type - computed: false, optional: false, required: true
@@ -171,7 +196,7 @@ export class SagemakerApp extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get appTypeInput() {
-    return this._appType
+    return this._appType;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -189,7 +214,7 @@ export class SagemakerApp extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainIdInput() {
-    return this._domainId
+    return this._domainId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -198,12 +223,12 @@ export class SagemakerApp extends cdktf.TerraformResource {
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -211,16 +236,16 @@ export class SagemakerApp extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -228,7 +253,7 @@ export class SagemakerApp extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // user_profile_name - computed: false, optional: false, required: true
@@ -241,24 +266,23 @@ export class SagemakerApp extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get userProfileNameInput() {
-    return this._userProfileName
+    return this._userProfileName;
   }
 
   // resource_spec - computed: false, optional: true, required: false
-  private _resourceSpec?: SagemakerAppResourceSpec | undefined; 
-  private __resourceSpecOutput = new SagemakerAppResourceSpecOutputReference(this as any, "resource_spec", true);
+  private _resourceSpec = new SagemakerAppResourceSpecOutputReference(this as any, "resource_spec", true);
   public get resourceSpec() {
-    return this.__resourceSpecOutput;
+    return this._resourceSpec;
   }
-  public putResourceSpec(value: SagemakerAppResourceSpec | undefined) {
-    this._resourceSpec = value;
+  public putResourceSpec(value: SagemakerAppResourceSpec) {
+    this._resourceSpec.internalValue = value;
   }
   public resetResourceSpec() {
-    this._resourceSpec = undefined;
+    this._resourceSpec.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get resourceSpecInput() {
-    return this._resourceSpec
+    return this._resourceSpec.internalValue;
   }
 
   // =========
@@ -273,7 +297,7 @@ export class SagemakerApp extends cdktf.TerraformResource {
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       user_profile_name: cdktf.stringToTerraform(this._userProfileName),
-      resource_spec: sagemakerAppResourceSpecToTerraform(this._resourceSpec),
+      resource_spec: sagemakerAppResourceSpecToTerraform(this._resourceSpec.internalValue),
     };
   }
 }

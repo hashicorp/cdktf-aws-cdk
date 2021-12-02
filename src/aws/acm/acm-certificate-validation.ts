@@ -49,12 +49,31 @@ export class AcmCertificateValidationTimeoutsOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): AcmCertificateValidationTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: AcmCertificateValidationTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+    }
+    else {
+      this._create = value.create;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -62,7 +81,7 @@ export class AcmCertificateValidationTimeoutsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 }
 
@@ -100,7 +119,7 @@ export class AcmCertificateValidation extends cdktf.TerraformResource {
     });
     this._certificateArn = config.certificateArn;
     this._validationRecordFqdns = config.validationRecordFqdns;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -117,7 +136,7 @@ export class AcmCertificateValidation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get certificateArnInput() {
-    return this._certificateArn
+    return this._certificateArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -126,11 +145,11 @@ export class AcmCertificateValidation extends cdktf.TerraformResource {
   }
 
   // validation_record_fqdns - computed: false, optional: true, required: false
-  private _validationRecordFqdns?: string[] | undefined; 
+  private _validationRecordFqdns?: string[]; 
   public get validationRecordFqdns() {
     return this.getListAttribute('validation_record_fqdns');
   }
-  public set validationRecordFqdns(value: string[] | undefined) {
+  public set validationRecordFqdns(value: string[]) {
     this._validationRecordFqdns = value;
   }
   public resetValidationRecordFqdns() {
@@ -138,24 +157,23 @@ export class AcmCertificateValidation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get validationRecordFqdnsInput() {
-    return this._validationRecordFqdns
+    return this._validationRecordFqdns;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: AcmCertificateValidationTimeouts | undefined; 
-  private __timeoutsOutput = new AcmCertificateValidationTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new AcmCertificateValidationTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: AcmCertificateValidationTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: AcmCertificateValidationTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -166,7 +184,7 @@ export class AcmCertificateValidation extends cdktf.TerraformResource {
     return {
       certificate_arn: cdktf.stringToTerraform(this._certificateArn),
       validation_record_fqdns: cdktf.listMapper(cdktf.stringToTerraform)(this._validationRecordFqdns),
-      timeouts: acmCertificateValidationTimeoutsToTerraform(this._timeouts),
+      timeouts: acmCertificateValidationTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

@@ -72,7 +72,7 @@ export class Route53QueryLog extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchLogGroupArnInput() {
-    return this._cloudwatchLogGroupArn
+    return this._cloudwatchLogGroupArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -90,7 +90,7 @@ export class Route53QueryLog extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get zoneIdInput() {
-    return this._zoneId
+    return this._zoneId;
   }
 
   // =========

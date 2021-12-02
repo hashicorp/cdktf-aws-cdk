@@ -98,12 +98,85 @@ export class ApiGatewayMethodSettingsSettingsOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApiGatewayMethodSettingsSettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cacheDataEncrypted) {
+      hasAnyValues = true;
+      internalValueResult.cacheDataEncrypted = this._cacheDataEncrypted;
+    }
+    if (this._cacheTtlInSeconds) {
+      hasAnyValues = true;
+      internalValueResult.cacheTtlInSeconds = this._cacheTtlInSeconds;
+    }
+    if (this._cachingEnabled) {
+      hasAnyValues = true;
+      internalValueResult.cachingEnabled = this._cachingEnabled;
+    }
+    if (this._dataTraceEnabled) {
+      hasAnyValues = true;
+      internalValueResult.dataTraceEnabled = this._dataTraceEnabled;
+    }
+    if (this._loggingLevel) {
+      hasAnyValues = true;
+      internalValueResult.loggingLevel = this._loggingLevel;
+    }
+    if (this._metricsEnabled) {
+      hasAnyValues = true;
+      internalValueResult.metricsEnabled = this._metricsEnabled;
+    }
+    if (this._requireAuthorizationForCacheControl) {
+      hasAnyValues = true;
+      internalValueResult.requireAuthorizationForCacheControl = this._requireAuthorizationForCacheControl;
+    }
+    if (this._throttlingBurstLimit) {
+      hasAnyValues = true;
+      internalValueResult.throttlingBurstLimit = this._throttlingBurstLimit;
+    }
+    if (this._throttlingRateLimit) {
+      hasAnyValues = true;
+      internalValueResult.throttlingRateLimit = this._throttlingRateLimit;
+    }
+    if (this._unauthorizedCacheControlHeaderStrategy) {
+      hasAnyValues = true;
+      internalValueResult.unauthorizedCacheControlHeaderStrategy = this._unauthorizedCacheControlHeaderStrategy;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApiGatewayMethodSettingsSettings | undefined) {
+    if (value === undefined) {
+      this._cacheDataEncrypted = undefined;
+      this._cacheTtlInSeconds = undefined;
+      this._cachingEnabled = undefined;
+      this._dataTraceEnabled = undefined;
+      this._loggingLevel = undefined;
+      this._metricsEnabled = undefined;
+      this._requireAuthorizationForCacheControl = undefined;
+      this._throttlingBurstLimit = undefined;
+      this._throttlingRateLimit = undefined;
+      this._unauthorizedCacheControlHeaderStrategy = undefined;
+    }
+    else {
+      this._cacheDataEncrypted = value.cacheDataEncrypted;
+      this._cacheTtlInSeconds = value.cacheTtlInSeconds;
+      this._cachingEnabled = value.cachingEnabled;
+      this._dataTraceEnabled = value.dataTraceEnabled;
+      this._loggingLevel = value.loggingLevel;
+      this._metricsEnabled = value.metricsEnabled;
+      this._requireAuthorizationForCacheControl = value.requireAuthorizationForCacheControl;
+      this._throttlingBurstLimit = value.throttlingBurstLimit;
+      this._throttlingRateLimit = value.throttlingRateLimit;
+      this._unauthorizedCacheControlHeaderStrategy = value.unauthorizedCacheControlHeaderStrategy;
+    }
+  }
+
   // cache_data_encrypted - computed: true, optional: true, required: false
-  private _cacheDataEncrypted?: boolean | cdktf.IResolvable | undefined; 
+  private _cacheDataEncrypted?: boolean | cdktf.IResolvable; 
   public get cacheDataEncrypted() {
     return this.getBooleanAttribute('cache_data_encrypted') as any;
   }
-  public set cacheDataEncrypted(value: boolean | cdktf.IResolvable | undefined) {
+  public set cacheDataEncrypted(value: boolean | cdktf.IResolvable) {
     this._cacheDataEncrypted = value;
   }
   public resetCacheDataEncrypted() {
@@ -111,15 +184,15 @@ export class ApiGatewayMethodSettingsSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get cacheDataEncryptedInput() {
-    return this._cacheDataEncrypted
+    return this._cacheDataEncrypted;
   }
 
   // cache_ttl_in_seconds - computed: true, optional: true, required: false
-  private _cacheTtlInSeconds?: number | undefined; 
+  private _cacheTtlInSeconds?: number; 
   public get cacheTtlInSeconds() {
     return this.getNumberAttribute('cache_ttl_in_seconds');
   }
-  public set cacheTtlInSeconds(value: number | undefined) {
+  public set cacheTtlInSeconds(value: number) {
     this._cacheTtlInSeconds = value;
   }
   public resetCacheTtlInSeconds() {
@@ -127,15 +200,15 @@ export class ApiGatewayMethodSettingsSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get cacheTtlInSecondsInput() {
-    return this._cacheTtlInSeconds
+    return this._cacheTtlInSeconds;
   }
 
   // caching_enabled - computed: true, optional: true, required: false
-  private _cachingEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _cachingEnabled?: boolean | cdktf.IResolvable; 
   public get cachingEnabled() {
     return this.getBooleanAttribute('caching_enabled') as any;
   }
-  public set cachingEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set cachingEnabled(value: boolean | cdktf.IResolvable) {
     this._cachingEnabled = value;
   }
   public resetCachingEnabled() {
@@ -143,15 +216,15 @@ export class ApiGatewayMethodSettingsSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get cachingEnabledInput() {
-    return this._cachingEnabled
+    return this._cachingEnabled;
   }
 
   // data_trace_enabled - computed: true, optional: true, required: false
-  private _dataTraceEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _dataTraceEnabled?: boolean | cdktf.IResolvable; 
   public get dataTraceEnabled() {
     return this.getBooleanAttribute('data_trace_enabled') as any;
   }
-  public set dataTraceEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set dataTraceEnabled(value: boolean | cdktf.IResolvable) {
     this._dataTraceEnabled = value;
   }
   public resetDataTraceEnabled() {
@@ -159,15 +232,15 @@ export class ApiGatewayMethodSettingsSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get dataTraceEnabledInput() {
-    return this._dataTraceEnabled
+    return this._dataTraceEnabled;
   }
 
   // logging_level - computed: true, optional: true, required: false
-  private _loggingLevel?: string | undefined; 
+  private _loggingLevel?: string; 
   public get loggingLevel() {
     return this.getStringAttribute('logging_level');
   }
-  public set loggingLevel(value: string | undefined) {
+  public set loggingLevel(value: string) {
     this._loggingLevel = value;
   }
   public resetLoggingLevel() {
@@ -175,15 +248,15 @@ export class ApiGatewayMethodSettingsSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get loggingLevelInput() {
-    return this._loggingLevel
+    return this._loggingLevel;
   }
 
   // metrics_enabled - computed: true, optional: true, required: false
-  private _metricsEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _metricsEnabled?: boolean | cdktf.IResolvable; 
   public get metricsEnabled() {
     return this.getBooleanAttribute('metrics_enabled') as any;
   }
-  public set metricsEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set metricsEnabled(value: boolean | cdktf.IResolvable) {
     this._metricsEnabled = value;
   }
   public resetMetricsEnabled() {
@@ -191,15 +264,15 @@ export class ApiGatewayMethodSettingsSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get metricsEnabledInput() {
-    return this._metricsEnabled
+    return this._metricsEnabled;
   }
 
   // require_authorization_for_cache_control - computed: true, optional: true, required: false
-  private _requireAuthorizationForCacheControl?: boolean | cdktf.IResolvable | undefined; 
+  private _requireAuthorizationForCacheControl?: boolean | cdktf.IResolvable; 
   public get requireAuthorizationForCacheControl() {
     return this.getBooleanAttribute('require_authorization_for_cache_control') as any;
   }
-  public set requireAuthorizationForCacheControl(value: boolean | cdktf.IResolvable | undefined) {
+  public set requireAuthorizationForCacheControl(value: boolean | cdktf.IResolvable) {
     this._requireAuthorizationForCacheControl = value;
   }
   public resetRequireAuthorizationForCacheControl() {
@@ -207,15 +280,15 @@ export class ApiGatewayMethodSettingsSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get requireAuthorizationForCacheControlInput() {
-    return this._requireAuthorizationForCacheControl
+    return this._requireAuthorizationForCacheControl;
   }
 
   // throttling_burst_limit - computed: false, optional: true, required: false
-  private _throttlingBurstLimit?: number | undefined; 
+  private _throttlingBurstLimit?: number; 
   public get throttlingBurstLimit() {
     return this.getNumberAttribute('throttling_burst_limit');
   }
-  public set throttlingBurstLimit(value: number | undefined) {
+  public set throttlingBurstLimit(value: number) {
     this._throttlingBurstLimit = value;
   }
   public resetThrottlingBurstLimit() {
@@ -223,15 +296,15 @@ export class ApiGatewayMethodSettingsSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get throttlingBurstLimitInput() {
-    return this._throttlingBurstLimit
+    return this._throttlingBurstLimit;
   }
 
   // throttling_rate_limit - computed: false, optional: true, required: false
-  private _throttlingRateLimit?: number | undefined; 
+  private _throttlingRateLimit?: number; 
   public get throttlingRateLimit() {
     return this.getNumberAttribute('throttling_rate_limit');
   }
-  public set throttlingRateLimit(value: number | undefined) {
+  public set throttlingRateLimit(value: number) {
     this._throttlingRateLimit = value;
   }
   public resetThrottlingRateLimit() {
@@ -239,15 +312,15 @@ export class ApiGatewayMethodSettingsSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get throttlingRateLimitInput() {
-    return this._throttlingRateLimit
+    return this._throttlingRateLimit;
   }
 
   // unauthorized_cache_control_header_strategy - computed: true, optional: true, required: false
-  private _unauthorizedCacheControlHeaderStrategy?: string | undefined; 
+  private _unauthorizedCacheControlHeaderStrategy?: string; 
   public get unauthorizedCacheControlHeaderStrategy() {
     return this.getStringAttribute('unauthorized_cache_control_header_strategy');
   }
-  public set unauthorizedCacheControlHeaderStrategy(value: string | undefined) {
+  public set unauthorizedCacheControlHeaderStrategy(value: string) {
     this._unauthorizedCacheControlHeaderStrategy = value;
   }
   public resetUnauthorizedCacheControlHeaderStrategy() {
@@ -255,7 +328,7 @@ export class ApiGatewayMethodSettingsSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get unauthorizedCacheControlHeaderStrategyInput() {
-    return this._unauthorizedCacheControlHeaderStrategy
+    return this._unauthorizedCacheControlHeaderStrategy;
   }
 }
 
@@ -294,7 +367,7 @@ export class ApiGatewayMethodSettings extends cdktf.TerraformResource {
     this._methodPath = config.methodPath;
     this._restApiId = config.restApiId;
     this._stageName = config.stageName;
-    this._settings = config.settings;
+    this._settings.internalValue = config.settings;
   }
 
   // ==========
@@ -316,7 +389,7 @@ export class ApiGatewayMethodSettings extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get methodPathInput() {
-    return this._methodPath
+    return this._methodPath;
   }
 
   // rest_api_id - computed: false, optional: false, required: true
@@ -329,7 +402,7 @@ export class ApiGatewayMethodSettings extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get restApiIdInput() {
-    return this._restApiId
+    return this._restApiId;
   }
 
   // stage_name - computed: false, optional: false, required: true
@@ -342,21 +415,20 @@ export class ApiGatewayMethodSettings extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stageNameInput() {
-    return this._stageName
+    return this._stageName;
   }
 
   // settings - computed: false, optional: false, required: true
-  private _settings?: ApiGatewayMethodSettingsSettings; 
-  private __settingsOutput = new ApiGatewayMethodSettingsSettingsOutputReference(this as any, "settings", true);
+  private _settings = new ApiGatewayMethodSettingsSettingsOutputReference(this as any, "settings", true);
   public get settings() {
-    return this.__settingsOutput;
+    return this._settings;
   }
   public putSettings(value: ApiGatewayMethodSettingsSettings) {
-    this._settings = value;
+    this._settings.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get settingsInput() {
-    return this._settings
+    return this._settings.internalValue;
   }
 
   // =========
@@ -368,7 +440,7 @@ export class ApiGatewayMethodSettings extends cdktf.TerraformResource {
       method_path: cdktf.stringToTerraform(this._methodPath),
       rest_api_id: cdktf.stringToTerraform(this._restApiId),
       stage_name: cdktf.stringToTerraform(this._stageName),
-      settings: apiGatewayMethodSettingsSettingsToTerraform(this._settings),
+      settings: apiGatewayMethodSettingsSettingsToTerraform(this._settings.internalValue),
     };
   }
 }

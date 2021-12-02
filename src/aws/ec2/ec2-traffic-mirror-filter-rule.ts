@@ -84,12 +84,37 @@ export class Ec2TrafficMirrorFilterRuleDestinationPortRangeOutputReference exten
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Ec2TrafficMirrorFilterRuleDestinationPortRange | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fromPort) {
+      hasAnyValues = true;
+      internalValueResult.fromPort = this._fromPort;
+    }
+    if (this._toPort) {
+      hasAnyValues = true;
+      internalValueResult.toPort = this._toPort;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Ec2TrafficMirrorFilterRuleDestinationPortRange | undefined) {
+    if (value === undefined) {
+      this._fromPort = undefined;
+      this._toPort = undefined;
+    }
+    else {
+      this._fromPort = value.fromPort;
+      this._toPort = value.toPort;
+    }
+  }
+
   // from_port - computed: false, optional: true, required: false
-  private _fromPort?: number | undefined; 
+  private _fromPort?: number; 
   public get fromPort() {
     return this.getNumberAttribute('from_port');
   }
-  public set fromPort(value: number | undefined) {
+  public set fromPort(value: number) {
     this._fromPort = value;
   }
   public resetFromPort() {
@@ -97,15 +122,15 @@ export class Ec2TrafficMirrorFilterRuleDestinationPortRangeOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get fromPortInput() {
-    return this._fromPort
+    return this._fromPort;
   }
 
   // to_port - computed: false, optional: true, required: false
-  private _toPort?: number | undefined; 
+  private _toPort?: number; 
   public get toPort() {
     return this.getNumberAttribute('to_port');
   }
-  public set toPort(value: number | undefined) {
+  public set toPort(value: number) {
     this._toPort = value;
   }
   public resetToPort() {
@@ -113,7 +138,7 @@ export class Ec2TrafficMirrorFilterRuleDestinationPortRangeOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get toPortInput() {
-    return this._toPort
+    return this._toPort;
   }
 }
 export interface Ec2TrafficMirrorFilterRuleSourcePortRange {
@@ -148,12 +173,37 @@ export class Ec2TrafficMirrorFilterRuleSourcePortRangeOutputReference extends cd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Ec2TrafficMirrorFilterRuleSourcePortRange | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fromPort) {
+      hasAnyValues = true;
+      internalValueResult.fromPort = this._fromPort;
+    }
+    if (this._toPort) {
+      hasAnyValues = true;
+      internalValueResult.toPort = this._toPort;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Ec2TrafficMirrorFilterRuleSourcePortRange | undefined) {
+    if (value === undefined) {
+      this._fromPort = undefined;
+      this._toPort = undefined;
+    }
+    else {
+      this._fromPort = value.fromPort;
+      this._toPort = value.toPort;
+    }
+  }
+
   // from_port - computed: false, optional: true, required: false
-  private _fromPort?: number | undefined; 
+  private _fromPort?: number; 
   public get fromPort() {
     return this.getNumberAttribute('from_port');
   }
-  public set fromPort(value: number | undefined) {
+  public set fromPort(value: number) {
     this._fromPort = value;
   }
   public resetFromPort() {
@@ -161,15 +211,15 @@ export class Ec2TrafficMirrorFilterRuleSourcePortRangeOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get fromPortInput() {
-    return this._fromPort
+    return this._fromPort;
   }
 
   // to_port - computed: false, optional: true, required: false
-  private _toPort?: number | undefined; 
+  private _toPort?: number; 
   public get toPort() {
     return this.getNumberAttribute('to_port');
   }
-  public set toPort(value: number | undefined) {
+  public set toPort(value: number) {
     this._toPort = value;
   }
   public resetToPort() {
@@ -177,7 +227,7 @@ export class Ec2TrafficMirrorFilterRuleSourcePortRangeOutputReference extends cd
   }
   // Temporarily expose input value. Use with caution.
   public get toPortInput() {
-    return this._toPort
+    return this._toPort;
   }
 }
 
@@ -221,8 +271,8 @@ export class Ec2TrafficMirrorFilterRule extends cdktf.TerraformResource {
     this._sourceCidrBlock = config.sourceCidrBlock;
     this._trafficDirection = config.trafficDirection;
     this._trafficMirrorFilterId = config.trafficMirrorFilterId;
-    this._destinationPortRange = config.destinationPortRange;
-    this._sourcePortRange = config.sourcePortRange;
+    this._destinationPortRange.internalValue = config.destinationPortRange;
+    this._sourcePortRange.internalValue = config.sourcePortRange;
   }
 
   // ==========
@@ -235,11 +285,11 @@ export class Ec2TrafficMirrorFilterRule extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -247,7 +297,7 @@ export class Ec2TrafficMirrorFilterRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // destination_cidr_block - computed: false, optional: false, required: true
@@ -260,7 +310,7 @@ export class Ec2TrafficMirrorFilterRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get destinationCidrBlockInput() {
-    return this._destinationCidrBlock
+    return this._destinationCidrBlock;
   }
 
   // id - computed: true, optional: true, required: false
@@ -269,11 +319,11 @@ export class Ec2TrafficMirrorFilterRule extends cdktf.TerraformResource {
   }
 
   // protocol - computed: false, optional: true, required: false
-  private _protocol?: number | undefined; 
+  private _protocol?: number; 
   public get protocol() {
     return this.getNumberAttribute('protocol');
   }
-  public set protocol(value: number | undefined) {
+  public set protocol(value: number) {
     this._protocol = value;
   }
   public resetProtocol() {
@@ -281,7 +331,7 @@ export class Ec2TrafficMirrorFilterRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get protocolInput() {
-    return this._protocol
+    return this._protocol;
   }
 
   // rule_action - computed: false, optional: false, required: true
@@ -294,7 +344,7 @@ export class Ec2TrafficMirrorFilterRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ruleActionInput() {
-    return this._ruleAction
+    return this._ruleAction;
   }
 
   // rule_number - computed: false, optional: false, required: true
@@ -307,7 +357,7 @@ export class Ec2TrafficMirrorFilterRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ruleNumberInput() {
-    return this._ruleNumber
+    return this._ruleNumber;
   }
 
   // source_cidr_block - computed: false, optional: false, required: true
@@ -320,7 +370,7 @@ export class Ec2TrafficMirrorFilterRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceCidrBlockInput() {
-    return this._sourceCidrBlock
+    return this._sourceCidrBlock;
   }
 
   // traffic_direction - computed: false, optional: false, required: true
@@ -333,7 +383,7 @@ export class Ec2TrafficMirrorFilterRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get trafficDirectionInput() {
-    return this._trafficDirection
+    return this._trafficDirection;
   }
 
   // traffic_mirror_filter_id - computed: false, optional: false, required: true
@@ -346,41 +396,39 @@ export class Ec2TrafficMirrorFilterRule extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get trafficMirrorFilterIdInput() {
-    return this._trafficMirrorFilterId
+    return this._trafficMirrorFilterId;
   }
 
   // destination_port_range - computed: false, optional: true, required: false
-  private _destinationPortRange?: Ec2TrafficMirrorFilterRuleDestinationPortRange | undefined; 
-  private __destinationPortRangeOutput = new Ec2TrafficMirrorFilterRuleDestinationPortRangeOutputReference(this as any, "destination_port_range", true);
+  private _destinationPortRange = new Ec2TrafficMirrorFilterRuleDestinationPortRangeOutputReference(this as any, "destination_port_range", true);
   public get destinationPortRange() {
-    return this.__destinationPortRangeOutput;
+    return this._destinationPortRange;
   }
-  public putDestinationPortRange(value: Ec2TrafficMirrorFilterRuleDestinationPortRange | undefined) {
-    this._destinationPortRange = value;
+  public putDestinationPortRange(value: Ec2TrafficMirrorFilterRuleDestinationPortRange) {
+    this._destinationPortRange.internalValue = value;
   }
   public resetDestinationPortRange() {
-    this._destinationPortRange = undefined;
+    this._destinationPortRange.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get destinationPortRangeInput() {
-    return this._destinationPortRange
+    return this._destinationPortRange.internalValue;
   }
 
   // source_port_range - computed: false, optional: true, required: false
-  private _sourcePortRange?: Ec2TrafficMirrorFilterRuleSourcePortRange | undefined; 
-  private __sourcePortRangeOutput = new Ec2TrafficMirrorFilterRuleSourcePortRangeOutputReference(this as any, "source_port_range", true);
+  private _sourcePortRange = new Ec2TrafficMirrorFilterRuleSourcePortRangeOutputReference(this as any, "source_port_range", true);
   public get sourcePortRange() {
-    return this.__sourcePortRangeOutput;
+    return this._sourcePortRange;
   }
-  public putSourcePortRange(value: Ec2TrafficMirrorFilterRuleSourcePortRange | undefined) {
-    this._sourcePortRange = value;
+  public putSourcePortRange(value: Ec2TrafficMirrorFilterRuleSourcePortRange) {
+    this._sourcePortRange.internalValue = value;
   }
   public resetSourcePortRange() {
-    this._sourcePortRange = undefined;
+    this._sourcePortRange.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get sourcePortRangeInput() {
-    return this._sourcePortRange
+    return this._sourcePortRange.internalValue;
   }
 
   // =========
@@ -397,8 +445,8 @@ export class Ec2TrafficMirrorFilterRule extends cdktf.TerraformResource {
       source_cidr_block: cdktf.stringToTerraform(this._sourceCidrBlock),
       traffic_direction: cdktf.stringToTerraform(this._trafficDirection),
       traffic_mirror_filter_id: cdktf.stringToTerraform(this._trafficMirrorFilterId),
-      destination_port_range: ec2TrafficMirrorFilterRuleDestinationPortRangeToTerraform(this._destinationPortRange),
-      source_port_range: ec2TrafficMirrorFilterRuleSourcePortRangeToTerraform(this._sourcePortRange),
+      destination_port_range: ec2TrafficMirrorFilterRuleDestinationPortRangeToTerraform(this._destinationPortRange.internalValue),
+      source_port_range: ec2TrafficMirrorFilterRuleSourcePortRangeToTerraform(this._sourcePortRange.internalValue),
     };
   }
 }

@@ -108,11 +108,11 @@ export class SnsPlatformApplication extends cdktf.TerraformResource {
   }
 
   // event_delivery_failure_topic_arn - computed: false, optional: true, required: false
-  private _eventDeliveryFailureTopicArn?: string | undefined; 
+  private _eventDeliveryFailureTopicArn?: string; 
   public get eventDeliveryFailureTopicArn() {
     return this.getStringAttribute('event_delivery_failure_topic_arn');
   }
-  public set eventDeliveryFailureTopicArn(value: string | undefined) {
+  public set eventDeliveryFailureTopicArn(value: string) {
     this._eventDeliveryFailureTopicArn = value;
   }
   public resetEventDeliveryFailureTopicArn() {
@@ -120,15 +120,15 @@ export class SnsPlatformApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get eventDeliveryFailureTopicArnInput() {
-    return this._eventDeliveryFailureTopicArn
+    return this._eventDeliveryFailureTopicArn;
   }
 
   // event_endpoint_created_topic_arn - computed: false, optional: true, required: false
-  private _eventEndpointCreatedTopicArn?: string | undefined; 
+  private _eventEndpointCreatedTopicArn?: string; 
   public get eventEndpointCreatedTopicArn() {
     return this.getStringAttribute('event_endpoint_created_topic_arn');
   }
-  public set eventEndpointCreatedTopicArn(value: string | undefined) {
+  public set eventEndpointCreatedTopicArn(value: string) {
     this._eventEndpointCreatedTopicArn = value;
   }
   public resetEventEndpointCreatedTopicArn() {
@@ -136,15 +136,15 @@ export class SnsPlatformApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get eventEndpointCreatedTopicArnInput() {
-    return this._eventEndpointCreatedTopicArn
+    return this._eventEndpointCreatedTopicArn;
   }
 
   // event_endpoint_deleted_topic_arn - computed: false, optional: true, required: false
-  private _eventEndpointDeletedTopicArn?: string | undefined; 
+  private _eventEndpointDeletedTopicArn?: string; 
   public get eventEndpointDeletedTopicArn() {
     return this.getStringAttribute('event_endpoint_deleted_topic_arn');
   }
-  public set eventEndpointDeletedTopicArn(value: string | undefined) {
+  public set eventEndpointDeletedTopicArn(value: string) {
     this._eventEndpointDeletedTopicArn = value;
   }
   public resetEventEndpointDeletedTopicArn() {
@@ -152,15 +152,15 @@ export class SnsPlatformApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get eventEndpointDeletedTopicArnInput() {
-    return this._eventEndpointDeletedTopicArn
+    return this._eventEndpointDeletedTopicArn;
   }
 
   // event_endpoint_updated_topic_arn - computed: false, optional: true, required: false
-  private _eventEndpointUpdatedTopicArn?: string | undefined; 
+  private _eventEndpointUpdatedTopicArn?: string; 
   public get eventEndpointUpdatedTopicArn() {
     return this.getStringAttribute('event_endpoint_updated_topic_arn');
   }
-  public set eventEndpointUpdatedTopicArn(value: string | undefined) {
+  public set eventEndpointUpdatedTopicArn(value: string) {
     this._eventEndpointUpdatedTopicArn = value;
   }
   public resetEventEndpointUpdatedTopicArn() {
@@ -168,15 +168,15 @@ export class SnsPlatformApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get eventEndpointUpdatedTopicArnInput() {
-    return this._eventEndpointUpdatedTopicArn
+    return this._eventEndpointUpdatedTopicArn;
   }
 
   // failure_feedback_role_arn - computed: false, optional: true, required: false
-  private _failureFeedbackRoleArn?: string | undefined; 
+  private _failureFeedbackRoleArn?: string; 
   public get failureFeedbackRoleArn() {
     return this.getStringAttribute('failure_feedback_role_arn');
   }
-  public set failureFeedbackRoleArn(value: string | undefined) {
+  public set failureFeedbackRoleArn(value: string) {
     this._failureFeedbackRoleArn = value;
   }
   public resetFailureFeedbackRoleArn() {
@@ -184,7 +184,7 @@ export class SnsPlatformApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get failureFeedbackRoleArnInput() {
-    return this._failureFeedbackRoleArn
+    return this._failureFeedbackRoleArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -202,7 +202,7 @@ export class SnsPlatformApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // platform - computed: false, optional: false, required: true
@@ -215,7 +215,7 @@ export class SnsPlatformApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get platformInput() {
-    return this._platform
+    return this._platform;
   }
 
   // platform_credential - computed: false, optional: false, required: true
@@ -228,15 +228,15 @@ export class SnsPlatformApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get platformCredentialInput() {
-    return this._platformCredential
+    return this._platformCredential;
   }
 
   // platform_principal - computed: false, optional: true, required: false
-  private _platformPrincipal?: string | undefined; 
+  private _platformPrincipal?: string; 
   public get platformPrincipal() {
     return this.getStringAttribute('platform_principal');
   }
-  public set platformPrincipal(value: string | undefined) {
+  public set platformPrincipal(value: string) {
     this._platformPrincipal = value;
   }
   public resetPlatformPrincipal() {
@@ -244,15 +244,15 @@ export class SnsPlatformApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get platformPrincipalInput() {
-    return this._platformPrincipal
+    return this._platformPrincipal;
   }
 
   // success_feedback_role_arn - computed: false, optional: true, required: false
-  private _successFeedbackRoleArn?: string | undefined; 
+  private _successFeedbackRoleArn?: string; 
   public get successFeedbackRoleArn() {
     return this.getStringAttribute('success_feedback_role_arn');
   }
-  public set successFeedbackRoleArn(value: string | undefined) {
+  public set successFeedbackRoleArn(value: string) {
     this._successFeedbackRoleArn = value;
   }
   public resetSuccessFeedbackRoleArn() {
@@ -260,15 +260,15 @@ export class SnsPlatformApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get successFeedbackRoleArnInput() {
-    return this._successFeedbackRoleArn
+    return this._successFeedbackRoleArn;
   }
 
   // success_feedback_sample_rate - computed: false, optional: true, required: false
-  private _successFeedbackSampleRate?: string | undefined; 
+  private _successFeedbackSampleRate?: string; 
   public get successFeedbackSampleRate() {
     return this.getStringAttribute('success_feedback_sample_rate');
   }
-  public set successFeedbackSampleRate(value: string | undefined) {
+  public set successFeedbackSampleRate(value: string) {
     this._successFeedbackSampleRate = value;
   }
   public resetSuccessFeedbackSampleRate() {
@@ -276,7 +276,7 @@ export class SnsPlatformApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get successFeedbackSampleRateInput() {
-    return this._successFeedbackSampleRate
+    return this._successFeedbackSampleRate;
   }
 
   // =========

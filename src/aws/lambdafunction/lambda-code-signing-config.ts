@@ -51,6 +51,25 @@ export class LambdaCodeSigningConfigAllowedPublishersOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LambdaCodeSigningConfigAllowedPublishers | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._signingProfileVersionArns) {
+      hasAnyValues = true;
+      internalValueResult.signingProfileVersionArns = this._signingProfileVersionArns;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LambdaCodeSigningConfigAllowedPublishers | undefined) {
+    if (value === undefined) {
+      this._signingProfileVersionArns = undefined;
+    }
+    else {
+      this._signingProfileVersionArns = value.signingProfileVersionArns;
+    }
+  }
+
   // signing_profile_version_arns - computed: false, optional: false, required: true
   private _signingProfileVersionArns?: string[]; 
   public get signingProfileVersionArns() {
@@ -61,7 +80,7 @@ export class LambdaCodeSigningConfigAllowedPublishersOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get signingProfileVersionArnsInput() {
-    return this._signingProfileVersionArns
+    return this._signingProfileVersionArns;
   }
 }
 export interface LambdaCodeSigningConfigPolicies {
@@ -91,6 +110,25 @@ export class LambdaCodeSigningConfigPoliciesOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): LambdaCodeSigningConfigPolicies | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._untrustedArtifactOnDeployment) {
+      hasAnyValues = true;
+      internalValueResult.untrustedArtifactOnDeployment = this._untrustedArtifactOnDeployment;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: LambdaCodeSigningConfigPolicies | undefined) {
+    if (value === undefined) {
+      this._untrustedArtifactOnDeployment = undefined;
+    }
+    else {
+      this._untrustedArtifactOnDeployment = value.untrustedArtifactOnDeployment;
+    }
+  }
+
   // untrusted_artifact_on_deployment - computed: false, optional: false, required: true
   private _untrustedArtifactOnDeployment?: string; 
   public get untrustedArtifactOnDeployment() {
@@ -101,7 +139,7 @@ export class LambdaCodeSigningConfigPoliciesOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get untrustedArtifactOnDeploymentInput() {
-    return this._untrustedArtifactOnDeployment
+    return this._untrustedArtifactOnDeployment;
   }
 }
 
@@ -138,8 +176,8 @@ export class LambdaCodeSigningConfig extends cdktf.TerraformResource {
       lifecycle: config.lifecycle
     });
     this._description = config.description;
-    this._allowedPublishers = config.allowedPublishers;
-    this._policies = config.policies;
+    this._allowedPublishers.internalValue = config.allowedPublishers;
+    this._policies.internalValue = config.policies;
   }
 
   // ==========
@@ -157,11 +195,11 @@ export class LambdaCodeSigningConfig extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -169,7 +207,7 @@ export class LambdaCodeSigningConfig extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -183,34 +221,32 @@ export class LambdaCodeSigningConfig extends cdktf.TerraformResource {
   }
 
   // allowed_publishers - computed: false, optional: false, required: true
-  private _allowedPublishers?: LambdaCodeSigningConfigAllowedPublishers; 
-  private __allowedPublishersOutput = new LambdaCodeSigningConfigAllowedPublishersOutputReference(this as any, "allowed_publishers", true);
+  private _allowedPublishers = new LambdaCodeSigningConfigAllowedPublishersOutputReference(this as any, "allowed_publishers", true);
   public get allowedPublishers() {
-    return this.__allowedPublishersOutput;
+    return this._allowedPublishers;
   }
   public putAllowedPublishers(value: LambdaCodeSigningConfigAllowedPublishers) {
-    this._allowedPublishers = value;
+    this._allowedPublishers.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get allowedPublishersInput() {
-    return this._allowedPublishers
+    return this._allowedPublishers.internalValue;
   }
 
   // policies - computed: false, optional: true, required: false
-  private _policies?: LambdaCodeSigningConfigPolicies | undefined; 
-  private __policiesOutput = new LambdaCodeSigningConfigPoliciesOutputReference(this as any, "policies", true);
+  private _policies = new LambdaCodeSigningConfigPoliciesOutputReference(this as any, "policies", true);
   public get policies() {
-    return this.__policiesOutput;
+    return this._policies;
   }
-  public putPolicies(value: LambdaCodeSigningConfigPolicies | undefined) {
-    this._policies = value;
+  public putPolicies(value: LambdaCodeSigningConfigPolicies) {
+    this._policies.internalValue = value;
   }
   public resetPolicies() {
-    this._policies = undefined;
+    this._policies.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get policiesInput() {
-    return this._policies
+    return this._policies.internalValue;
   }
 
   // =========
@@ -220,8 +256,8 @@ export class LambdaCodeSigningConfig extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       description: cdktf.stringToTerraform(this._description),
-      allowed_publishers: lambdaCodeSigningConfigAllowedPublishersToTerraform(this._allowedPublishers),
-      policies: lambdaCodeSigningConfigPoliciesToTerraform(this._policies),
+      allowed_publishers: lambdaCodeSigningConfigAllowedPublishersToTerraform(this._allowedPublishers.internalValue),
+      policies: lambdaCodeSigningConfigPoliciesToTerraform(this._policies.internalValue),
     };
   }
 }

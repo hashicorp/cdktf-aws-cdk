@@ -94,6 +94,31 @@ export class ApiGatewayStageAccessLogSettingsOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ApiGatewayStageAccessLogSettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._destinationArn) {
+      hasAnyValues = true;
+      internalValueResult.destinationArn = this._destinationArn;
+    }
+    if (this._format) {
+      hasAnyValues = true;
+      internalValueResult.format = this._format;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ApiGatewayStageAccessLogSettings | undefined) {
+    if (value === undefined) {
+      this._destinationArn = undefined;
+      this._format = undefined;
+    }
+    else {
+      this._destinationArn = value.destinationArn;
+      this._format = value.format;
+    }
+  }
+
   // destination_arn - computed: false, optional: false, required: true
   private _destinationArn?: string; 
   public get destinationArn() {
@@ -104,7 +129,7 @@ export class ApiGatewayStageAccessLogSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get destinationArnInput() {
-    return this._destinationArn
+    return this._destinationArn;
   }
 
   // format - computed: false, optional: false, required: true
@@ -117,7 +142,7 @@ export class ApiGatewayStageAccessLogSettingsOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get formatInput() {
-    return this._format
+    return this._format;
   }
 }
 
@@ -165,7 +190,7 @@ export class ApiGatewayStage extends cdktf.TerraformResource {
     this._tagsAll = config.tagsAll;
     this._variables = config.variables;
     this._xrayTracingEnabled = config.xrayTracingEnabled;
-    this._accessLogSettings = config.accessLogSettings;
+    this._accessLogSettings.internalValue = config.accessLogSettings;
   }
 
   // ==========
@@ -178,11 +203,11 @@ export class ApiGatewayStage extends cdktf.TerraformResource {
   }
 
   // cache_cluster_enabled - computed: false, optional: true, required: false
-  private _cacheClusterEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _cacheClusterEnabled?: boolean | cdktf.IResolvable; 
   public get cacheClusterEnabled() {
     return this.getBooleanAttribute('cache_cluster_enabled') as any;
   }
-  public set cacheClusterEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set cacheClusterEnabled(value: boolean | cdktf.IResolvable) {
     this._cacheClusterEnabled = value;
   }
   public resetCacheClusterEnabled() {
@@ -190,15 +215,15 @@ export class ApiGatewayStage extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cacheClusterEnabledInput() {
-    return this._cacheClusterEnabled
+    return this._cacheClusterEnabled;
   }
 
   // cache_cluster_size - computed: false, optional: true, required: false
-  private _cacheClusterSize?: string | undefined; 
+  private _cacheClusterSize?: string; 
   public get cacheClusterSize() {
     return this.getStringAttribute('cache_cluster_size');
   }
-  public set cacheClusterSize(value: string | undefined) {
+  public set cacheClusterSize(value: string) {
     this._cacheClusterSize = value;
   }
   public resetCacheClusterSize() {
@@ -206,15 +231,15 @@ export class ApiGatewayStage extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cacheClusterSizeInput() {
-    return this._cacheClusterSize
+    return this._cacheClusterSize;
   }
 
   // client_certificate_id - computed: false, optional: true, required: false
-  private _clientCertificateId?: string | undefined; 
+  private _clientCertificateId?: string; 
   public get clientCertificateId() {
     return this.getStringAttribute('client_certificate_id');
   }
-  public set clientCertificateId(value: string | undefined) {
+  public set clientCertificateId(value: string) {
     this._clientCertificateId = value;
   }
   public resetClientCertificateId() {
@@ -222,7 +247,7 @@ export class ApiGatewayStage extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clientCertificateIdInput() {
-    return this._clientCertificateId
+    return this._clientCertificateId;
   }
 
   // deployment_id - computed: false, optional: false, required: true
@@ -235,15 +260,15 @@ export class ApiGatewayStage extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deploymentIdInput() {
-    return this._deploymentId
+    return this._deploymentId;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -251,15 +276,15 @@ export class ApiGatewayStage extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // documentation_version - computed: false, optional: true, required: false
-  private _documentationVersion?: string | undefined; 
+  private _documentationVersion?: string; 
   public get documentationVersion() {
     return this.getStringAttribute('documentation_version');
   }
-  public set documentationVersion(value: string | undefined) {
+  public set documentationVersion(value: string) {
     this._documentationVersion = value;
   }
   public resetDocumentationVersion() {
@@ -267,7 +292,7 @@ export class ApiGatewayStage extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get documentationVersionInput() {
-    return this._documentationVersion
+    return this._documentationVersion;
   }
 
   // execution_arn - computed: true, optional: false, required: false
@@ -295,7 +320,7 @@ export class ApiGatewayStage extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get restApiIdInput() {
-    return this._restApiId
+    return this._restApiId;
   }
 
   // stage_name - computed: false, optional: false, required: true
@@ -308,16 +333,16 @@ export class ApiGatewayStage extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stageNameInput() {
-    return this._stageName
+    return this._stageName;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -325,16 +350,16 @@ export class ApiGatewayStage extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -342,16 +367,16 @@ export class ApiGatewayStage extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // variables - computed: false, optional: true, required: false
-  private _variables?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _variables?: { [key: string]: string } | cdktf.IResolvable; 
   public get variables() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('variables') as any;
   }
-  public set variables(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set variables(value: { [key: string]: string } | cdktf.IResolvable) {
     this._variables = value;
   }
   public resetVariables() {
@@ -359,15 +384,15 @@ export class ApiGatewayStage extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get variablesInput() {
-    return this._variables
+    return this._variables;
   }
 
   // xray_tracing_enabled - computed: false, optional: true, required: false
-  private _xrayTracingEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _xrayTracingEnabled?: boolean | cdktf.IResolvable; 
   public get xrayTracingEnabled() {
     return this.getBooleanAttribute('xray_tracing_enabled') as any;
   }
-  public set xrayTracingEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set xrayTracingEnabled(value: boolean | cdktf.IResolvable) {
     this._xrayTracingEnabled = value;
   }
   public resetXrayTracingEnabled() {
@@ -375,24 +400,23 @@ export class ApiGatewayStage extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get xrayTracingEnabledInput() {
-    return this._xrayTracingEnabled
+    return this._xrayTracingEnabled;
   }
 
   // access_log_settings - computed: false, optional: true, required: false
-  private _accessLogSettings?: ApiGatewayStageAccessLogSettings | undefined; 
-  private __accessLogSettingsOutput = new ApiGatewayStageAccessLogSettingsOutputReference(this as any, "access_log_settings", true);
+  private _accessLogSettings = new ApiGatewayStageAccessLogSettingsOutputReference(this as any, "access_log_settings", true);
   public get accessLogSettings() {
-    return this.__accessLogSettingsOutput;
+    return this._accessLogSettings;
   }
-  public putAccessLogSettings(value: ApiGatewayStageAccessLogSettings | undefined) {
-    this._accessLogSettings = value;
+  public putAccessLogSettings(value: ApiGatewayStageAccessLogSettings) {
+    this._accessLogSettings.internalValue = value;
   }
   public resetAccessLogSettings() {
-    this._accessLogSettings = undefined;
+    this._accessLogSettings.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get accessLogSettingsInput() {
-    return this._accessLogSettings
+    return this._accessLogSettings.internalValue;
   }
 
   // =========
@@ -413,7 +437,7 @@ export class ApiGatewayStage extends cdktf.TerraformResource {
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       variables: cdktf.hashMapper(cdktf.anyToTerraform)(this._variables),
       xray_tracing_enabled: cdktf.booleanToTerraform(this._xrayTracingEnabled),
-      access_log_settings: apiGatewayStageAccessLogSettingsToTerraform(this._accessLogSettings),
+      access_log_settings: apiGatewayStageAccessLogSettingsToTerraform(this._accessLogSettings.internalValue),
     };
   }
 }

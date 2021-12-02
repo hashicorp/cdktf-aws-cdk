@@ -45,6 +45,25 @@ export class EfsBackupPolicyBackupPolicyOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): EfsBackupPolicyBackupPolicy | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._status) {
+      hasAnyValues = true;
+      internalValueResult.status = this._status;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: EfsBackupPolicyBackupPolicy | undefined) {
+    if (value === undefined) {
+      this._status = undefined;
+    }
+    else {
+      this._status = value.status;
+    }
+  }
+
   // status - computed: false, optional: false, required: true
   private _status?: string; 
   public get status() {
@@ -55,7 +74,7 @@ export class EfsBackupPolicyBackupPolicyOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get statusInput() {
-    return this._status
+    return this._status;
   }
 }
 
@@ -92,7 +111,7 @@ export class EfsBackupPolicy extends cdktf.TerraformResource {
       lifecycle: config.lifecycle
     });
     this._fileSystemId = config.fileSystemId;
-    this._backupPolicy = config.backupPolicy;
+    this._backupPolicy.internalValue = config.backupPolicy;
   }
 
   // ==========
@@ -109,7 +128,7 @@ export class EfsBackupPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get fileSystemIdInput() {
-    return this._fileSystemId
+    return this._fileSystemId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -118,17 +137,16 @@ export class EfsBackupPolicy extends cdktf.TerraformResource {
   }
 
   // backup_policy - computed: false, optional: false, required: true
-  private _backupPolicy?: EfsBackupPolicyBackupPolicy; 
-  private __backupPolicyOutput = new EfsBackupPolicyBackupPolicyOutputReference(this as any, "backup_policy", true);
+  private _backupPolicy = new EfsBackupPolicyBackupPolicyOutputReference(this as any, "backup_policy", true);
   public get backupPolicy() {
-    return this.__backupPolicyOutput;
+    return this._backupPolicy;
   }
   public putBackupPolicy(value: EfsBackupPolicyBackupPolicy) {
-    this._backupPolicy = value;
+    this._backupPolicy.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get backupPolicyInput() {
-    return this._backupPolicy
+    return this._backupPolicy.internalValue;
   }
 
   // =========
@@ -138,7 +156,7 @@ export class EfsBackupPolicy extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       file_system_id: cdktf.stringToTerraform(this._fileSystemId),
-      backup_policy: efsBackupPolicyBackupPolicyToTerraform(this._backupPolicy),
+      backup_policy: efsBackupPolicyBackupPolicyToTerraform(this._backupPolicy.internalValue),
     };
   }
 }

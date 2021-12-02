@@ -69,6 +69,37 @@ export class ConfigConfigurationAggregatorAccountAggregationSourceOutputReferenc
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ConfigConfigurationAggregatorAccountAggregationSource | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._accountIds) {
+      hasAnyValues = true;
+      internalValueResult.accountIds = this._accountIds;
+    }
+    if (this._allRegions) {
+      hasAnyValues = true;
+      internalValueResult.allRegions = this._allRegions;
+    }
+    if (this._regions) {
+      hasAnyValues = true;
+      internalValueResult.regions = this._regions;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ConfigConfigurationAggregatorAccountAggregationSource | undefined) {
+    if (value === undefined) {
+      this._accountIds = undefined;
+      this._allRegions = undefined;
+      this._regions = undefined;
+    }
+    else {
+      this._accountIds = value.accountIds;
+      this._allRegions = value.allRegions;
+      this._regions = value.regions;
+    }
+  }
+
   // account_ids - computed: false, optional: false, required: true
   private _accountIds?: string[]; 
   public get accountIds() {
@@ -79,15 +110,15 @@ export class ConfigConfigurationAggregatorAccountAggregationSourceOutputReferenc
   }
   // Temporarily expose input value. Use with caution.
   public get accountIdsInput() {
-    return this._accountIds
+    return this._accountIds;
   }
 
   // all_regions - computed: false, optional: true, required: false
-  private _allRegions?: boolean | cdktf.IResolvable | undefined; 
+  private _allRegions?: boolean | cdktf.IResolvable; 
   public get allRegions() {
     return this.getBooleanAttribute('all_regions') as any;
   }
-  public set allRegions(value: boolean | cdktf.IResolvable | undefined) {
+  public set allRegions(value: boolean | cdktf.IResolvable) {
     this._allRegions = value;
   }
   public resetAllRegions() {
@@ -95,15 +126,15 @@ export class ConfigConfigurationAggregatorAccountAggregationSourceOutputReferenc
   }
   // Temporarily expose input value. Use with caution.
   public get allRegionsInput() {
-    return this._allRegions
+    return this._allRegions;
   }
 
   // regions - computed: false, optional: true, required: false
-  private _regions?: string[] | undefined; 
+  private _regions?: string[]; 
   public get regions() {
     return this.getListAttribute('regions');
   }
-  public set regions(value: string[] | undefined) {
+  public set regions(value: string[]) {
     this._regions = value;
   }
   public resetRegions() {
@@ -111,7 +142,7 @@ export class ConfigConfigurationAggregatorAccountAggregationSourceOutputReferenc
   }
   // Temporarily expose input value. Use with caution.
   public get regionsInput() {
-    return this._regions
+    return this._regions;
   }
 }
 export interface ConfigConfigurationAggregatorOrganizationAggregationSource {
@@ -151,12 +182,43 @@ export class ConfigConfigurationAggregatorOrganizationAggregationSourceOutputRef
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ConfigConfigurationAggregatorOrganizationAggregationSource | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allRegions) {
+      hasAnyValues = true;
+      internalValueResult.allRegions = this._allRegions;
+    }
+    if (this._regions) {
+      hasAnyValues = true;
+      internalValueResult.regions = this._regions;
+    }
+    if (this._roleArn) {
+      hasAnyValues = true;
+      internalValueResult.roleArn = this._roleArn;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ConfigConfigurationAggregatorOrganizationAggregationSource | undefined) {
+    if (value === undefined) {
+      this._allRegions = undefined;
+      this._regions = undefined;
+      this._roleArn = undefined;
+    }
+    else {
+      this._allRegions = value.allRegions;
+      this._regions = value.regions;
+      this._roleArn = value.roleArn;
+    }
+  }
+
   // all_regions - computed: false, optional: true, required: false
-  private _allRegions?: boolean | cdktf.IResolvable | undefined; 
+  private _allRegions?: boolean | cdktf.IResolvable; 
   public get allRegions() {
     return this.getBooleanAttribute('all_regions') as any;
   }
-  public set allRegions(value: boolean | cdktf.IResolvable | undefined) {
+  public set allRegions(value: boolean | cdktf.IResolvable) {
     this._allRegions = value;
   }
   public resetAllRegions() {
@@ -164,15 +226,15 @@ export class ConfigConfigurationAggregatorOrganizationAggregationSourceOutputRef
   }
   // Temporarily expose input value. Use with caution.
   public get allRegionsInput() {
-    return this._allRegions
+    return this._allRegions;
   }
 
   // regions - computed: false, optional: true, required: false
-  private _regions?: string[] | undefined; 
+  private _regions?: string[]; 
   public get regions() {
     return this.getListAttribute('regions');
   }
-  public set regions(value: string[] | undefined) {
+  public set regions(value: string[]) {
     this._regions = value;
   }
   public resetRegions() {
@@ -180,7 +242,7 @@ export class ConfigConfigurationAggregatorOrganizationAggregationSourceOutputRef
   }
   // Temporarily expose input value. Use with caution.
   public get regionsInput() {
-    return this._regions
+    return this._regions;
   }
 
   // role_arn - computed: false, optional: false, required: true
@@ -193,7 +255,7 @@ export class ConfigConfigurationAggregatorOrganizationAggregationSourceOutputRef
   }
   // Temporarily expose input value. Use with caution.
   public get roleArnInput() {
-    return this._roleArn
+    return this._roleArn;
   }
 }
 
@@ -232,8 +294,8 @@ export class ConfigConfigurationAggregator extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._accountAggregationSource = config.accountAggregationSource;
-    this._organizationAggregationSource = config.organizationAggregationSource;
+    this._accountAggregationSource.internalValue = config.accountAggregationSource;
+    this._organizationAggregationSource.internalValue = config.organizationAggregationSource;
   }
 
   // ==========
@@ -260,16 +322,16 @@ export class ConfigConfigurationAggregator extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -277,16 +339,16 @@ export class ConfigConfigurationAggregator extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -294,41 +356,39 @@ export class ConfigConfigurationAggregator extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // account_aggregation_source - computed: false, optional: true, required: false
-  private _accountAggregationSource?: ConfigConfigurationAggregatorAccountAggregationSource | undefined; 
-  private __accountAggregationSourceOutput = new ConfigConfigurationAggregatorAccountAggregationSourceOutputReference(this as any, "account_aggregation_source", true);
+  private _accountAggregationSource = new ConfigConfigurationAggregatorAccountAggregationSourceOutputReference(this as any, "account_aggregation_source", true);
   public get accountAggregationSource() {
-    return this.__accountAggregationSourceOutput;
+    return this._accountAggregationSource;
   }
-  public putAccountAggregationSource(value: ConfigConfigurationAggregatorAccountAggregationSource | undefined) {
-    this._accountAggregationSource = value;
+  public putAccountAggregationSource(value: ConfigConfigurationAggregatorAccountAggregationSource) {
+    this._accountAggregationSource.internalValue = value;
   }
   public resetAccountAggregationSource() {
-    this._accountAggregationSource = undefined;
+    this._accountAggregationSource.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get accountAggregationSourceInput() {
-    return this._accountAggregationSource
+    return this._accountAggregationSource.internalValue;
   }
 
   // organization_aggregation_source - computed: false, optional: true, required: false
-  private _organizationAggregationSource?: ConfigConfigurationAggregatorOrganizationAggregationSource | undefined; 
-  private __organizationAggregationSourceOutput = new ConfigConfigurationAggregatorOrganizationAggregationSourceOutputReference(this as any, "organization_aggregation_source", true);
+  private _organizationAggregationSource = new ConfigConfigurationAggregatorOrganizationAggregationSourceOutputReference(this as any, "organization_aggregation_source", true);
   public get organizationAggregationSource() {
-    return this.__organizationAggregationSourceOutput;
+    return this._organizationAggregationSource;
   }
-  public putOrganizationAggregationSource(value: ConfigConfigurationAggregatorOrganizationAggregationSource | undefined) {
-    this._organizationAggregationSource = value;
+  public putOrganizationAggregationSource(value: ConfigConfigurationAggregatorOrganizationAggregationSource) {
+    this._organizationAggregationSource.internalValue = value;
   }
   public resetOrganizationAggregationSource() {
-    this._organizationAggregationSource = undefined;
+    this._organizationAggregationSource.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get organizationAggregationSourceInput() {
-    return this._organizationAggregationSource
+    return this._organizationAggregationSource.internalValue;
   }
 
   // =========
@@ -340,8 +400,8 @@ export class ConfigConfigurationAggregator extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      account_aggregation_source: configConfigurationAggregatorAccountAggregationSourceToTerraform(this._accountAggregationSource),
-      organization_aggregation_source: configConfigurationAggregatorOrganizationAggregationSourceToTerraform(this._organizationAggregationSource),
+      account_aggregation_source: configConfigurationAggregatorAccountAggregationSourceToTerraform(this._accountAggregationSource.internalValue),
+      organization_aggregation_source: configConfigurationAggregatorOrganizationAggregationSourceToTerraform(this._organizationAggregationSource.internalValue),
     };
   }
 }

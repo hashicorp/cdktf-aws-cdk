@@ -67,7 +67,7 @@ export class ElasticsearchDomainPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accessPoliciesInput() {
-    return this._accessPolicies
+    return this._accessPolicies;
   }
 
   // domain_name - computed: false, optional: false, required: true
@@ -80,7 +80,7 @@ export class ElasticsearchDomainPolicy extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get domainNameInput() {
-    return this._domainName
+    return this._domainName;
   }
 
   // id - computed: true, optional: true, required: false

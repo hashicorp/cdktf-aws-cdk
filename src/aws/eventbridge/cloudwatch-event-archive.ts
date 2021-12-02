@@ -78,11 +78,11 @@ export class CloudwatchEventArchive extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -90,15 +90,15 @@ export class CloudwatchEventArchive extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // event_pattern - computed: false, optional: true, required: false
-  private _eventPattern?: string | undefined; 
+  private _eventPattern?: string; 
   public get eventPattern() {
     return this.getStringAttribute('event_pattern');
   }
-  public set eventPattern(value: string | undefined) {
+  public set eventPattern(value: string) {
     this._eventPattern = value;
   }
   public resetEventPattern() {
@@ -106,7 +106,7 @@ export class CloudwatchEventArchive extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get eventPatternInput() {
-    return this._eventPattern
+    return this._eventPattern;
   }
 
   // event_source_arn - computed: false, optional: false, required: true
@@ -119,7 +119,7 @@ export class CloudwatchEventArchive extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get eventSourceArnInput() {
-    return this._eventSourceArn
+    return this._eventSourceArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -137,15 +137,15 @@ export class CloudwatchEventArchive extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // retention_days - computed: false, optional: true, required: false
-  private _retentionDays?: number | undefined; 
+  private _retentionDays?: number; 
   public get retentionDays() {
     return this.getNumberAttribute('retention_days');
   }
-  public set retentionDays(value: number | undefined) {
+  public set retentionDays(value: number) {
     this._retentionDays = value;
   }
   public resetRetentionDays() {
@@ -153,7 +153,7 @@ export class CloudwatchEventArchive extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get retentionDaysInput() {
-    return this._retentionDays
+    return this._retentionDays;
   }
 
   // =========

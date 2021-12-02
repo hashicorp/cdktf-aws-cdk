@@ -92,15 +92,15 @@ export class EksAddon extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get addonNameInput() {
-    return this._addonName
+    return this._addonName;
   }
 
   // addon_version - computed: true, optional: true, required: false
-  private _addonVersion?: string | undefined; 
+  private _addonVersion?: string; 
   public get addonVersion() {
     return this.getStringAttribute('addon_version');
   }
-  public set addonVersion(value: string | undefined) {
+  public set addonVersion(value: string) {
     this._addonVersion = value;
   }
   public resetAddonVersion() {
@@ -108,7 +108,7 @@ export class EksAddon extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get addonVersionInput() {
-    return this._addonVersion
+    return this._addonVersion;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -126,7 +126,7 @@ export class EksAddon extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterNameInput() {
-    return this._clusterName
+    return this._clusterName;
   }
 
   // created_at - computed: true, optional: false, required: false
@@ -145,11 +145,11 @@ export class EksAddon extends cdktf.TerraformResource {
   }
 
   // resolve_conflicts - computed: false, optional: true, required: false
-  private _resolveConflicts?: string | undefined; 
+  private _resolveConflicts?: string; 
   public get resolveConflicts() {
     return this.getStringAttribute('resolve_conflicts');
   }
-  public set resolveConflicts(value: string | undefined) {
+  public set resolveConflicts(value: string) {
     this._resolveConflicts = value;
   }
   public resetResolveConflicts() {
@@ -157,15 +157,15 @@ export class EksAddon extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resolveConflictsInput() {
-    return this._resolveConflicts
+    return this._resolveConflicts;
   }
 
   // service_account_role_arn - computed: false, optional: true, required: false
-  private _serviceAccountRoleArn?: string | undefined; 
+  private _serviceAccountRoleArn?: string; 
   public get serviceAccountRoleArn() {
     return this.getStringAttribute('service_account_role_arn');
   }
-  public set serviceAccountRoleArn(value: string | undefined) {
+  public set serviceAccountRoleArn(value: string) {
     this._serviceAccountRoleArn = value;
   }
   public resetServiceAccountRoleArn() {
@@ -173,16 +173,16 @@ export class EksAddon extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get serviceAccountRoleArnInput() {
-    return this._serviceAccountRoleArn
+    return this._serviceAccountRoleArn;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -190,16 +190,16 @@ export class EksAddon extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -207,7 +207,7 @@ export class EksAddon extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

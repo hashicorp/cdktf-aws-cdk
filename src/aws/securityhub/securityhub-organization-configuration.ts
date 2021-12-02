@@ -62,7 +62,7 @@ export class SecurityhubOrganizationConfiguration extends cdktf.TerraformResourc
   }
   // Temporarily expose input value. Use with caution.
   public get autoEnableInput() {
-    return this._autoEnable
+    return this._autoEnable;
   }
 
   // id - computed: true, optional: true, required: false

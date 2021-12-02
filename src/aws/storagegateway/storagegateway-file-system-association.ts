@@ -69,12 +69,31 @@ export class StoragegatewayFileSystemAssociationCacheAttributesOutputReference e
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): StoragegatewayFileSystemAssociationCacheAttributes | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cacheStaleTimeoutInSeconds) {
+      hasAnyValues = true;
+      internalValueResult.cacheStaleTimeoutInSeconds = this._cacheStaleTimeoutInSeconds;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: StoragegatewayFileSystemAssociationCacheAttributes | undefined) {
+    if (value === undefined) {
+      this._cacheStaleTimeoutInSeconds = undefined;
+    }
+    else {
+      this._cacheStaleTimeoutInSeconds = value.cacheStaleTimeoutInSeconds;
+    }
+  }
+
   // cache_stale_timeout_in_seconds - computed: false, optional: true, required: false
-  private _cacheStaleTimeoutInSeconds?: number | undefined; 
+  private _cacheStaleTimeoutInSeconds?: number; 
   public get cacheStaleTimeoutInSeconds() {
     return this.getNumberAttribute('cache_stale_timeout_in_seconds');
   }
-  public set cacheStaleTimeoutInSeconds(value: number | undefined) {
+  public set cacheStaleTimeoutInSeconds(value: number) {
     this._cacheStaleTimeoutInSeconds = value;
   }
   public resetCacheStaleTimeoutInSeconds() {
@@ -82,7 +101,7 @@ export class StoragegatewayFileSystemAssociationCacheAttributesOutputReference e
   }
   // Temporarily expose input value. Use with caution.
   public get cacheStaleTimeoutInSecondsInput() {
-    return this._cacheStaleTimeoutInSeconds
+    return this._cacheStaleTimeoutInSeconds;
   }
 }
 
@@ -125,7 +144,7 @@ export class StoragegatewayFileSystemAssociation extends cdktf.TerraformResource
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
     this._username = config.username;
-    this._cacheAttributes = config.cacheAttributes;
+    this._cacheAttributes.internalValue = config.cacheAttributes;
   }
 
   // ==========
@@ -138,11 +157,11 @@ export class StoragegatewayFileSystemAssociation extends cdktf.TerraformResource
   }
 
   // audit_destination_arn - computed: false, optional: true, required: false
-  private _auditDestinationArn?: string | undefined; 
+  private _auditDestinationArn?: string; 
   public get auditDestinationArn() {
     return this.getStringAttribute('audit_destination_arn');
   }
-  public set auditDestinationArn(value: string | undefined) {
+  public set auditDestinationArn(value: string) {
     this._auditDestinationArn = value;
   }
   public resetAuditDestinationArn() {
@@ -150,7 +169,7 @@ export class StoragegatewayFileSystemAssociation extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get auditDestinationArnInput() {
-    return this._auditDestinationArn
+    return this._auditDestinationArn;
   }
 
   // gateway_arn - computed: false, optional: false, required: true
@@ -163,7 +182,7 @@ export class StoragegatewayFileSystemAssociation extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get gatewayArnInput() {
-    return this._gatewayArn
+    return this._gatewayArn;
   }
 
   // id - computed: true, optional: true, required: false
@@ -181,7 +200,7 @@ export class StoragegatewayFileSystemAssociation extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get locationArnInput() {
-    return this._locationArn
+    return this._locationArn;
   }
 
   // password - computed: false, optional: false, required: true
@@ -194,16 +213,16 @@ export class StoragegatewayFileSystemAssociation extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get passwordInput() {
-    return this._password
+    return this._password;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -211,16 +230,16 @@ export class StoragegatewayFileSystemAssociation extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -228,7 +247,7 @@ export class StoragegatewayFileSystemAssociation extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // username - computed: false, optional: false, required: true
@@ -241,24 +260,23 @@ export class StoragegatewayFileSystemAssociation extends cdktf.TerraformResource
   }
   // Temporarily expose input value. Use with caution.
   public get usernameInput() {
-    return this._username
+    return this._username;
   }
 
   // cache_attributes - computed: false, optional: true, required: false
-  private _cacheAttributes?: StoragegatewayFileSystemAssociationCacheAttributes | undefined; 
-  private __cacheAttributesOutput = new StoragegatewayFileSystemAssociationCacheAttributesOutputReference(this as any, "cache_attributes", true);
+  private _cacheAttributes = new StoragegatewayFileSystemAssociationCacheAttributesOutputReference(this as any, "cache_attributes", true);
   public get cacheAttributes() {
-    return this.__cacheAttributesOutput;
+    return this._cacheAttributes;
   }
-  public putCacheAttributes(value: StoragegatewayFileSystemAssociationCacheAttributes | undefined) {
-    this._cacheAttributes = value;
+  public putCacheAttributes(value: StoragegatewayFileSystemAssociationCacheAttributes) {
+    this._cacheAttributes.internalValue = value;
   }
   public resetCacheAttributes() {
-    this._cacheAttributes = undefined;
+    this._cacheAttributes.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cacheAttributesInput() {
-    return this._cacheAttributes
+    return this._cacheAttributes.internalValue;
   }
 
   // =========
@@ -274,7 +292,7 @@ export class StoragegatewayFileSystemAssociation extends cdktf.TerraformResource
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
       username: cdktf.stringToTerraform(this._username),
-      cache_attributes: storagegatewayFileSystemAssociationCacheAttributesToTerraform(this._cacheAttributes),
+      cache_attributes: storagegatewayFileSystemAssociationCacheAttributesToTerraform(this._cacheAttributes.internalValue),
     };
   }
 }

@@ -72,7 +72,7 @@ export class ConfigConfigurationRecorderStatus extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get isEnabledInput() {
-    return this._isEnabled
+    return this._isEnabled;
   }
 
   // name - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class ConfigConfigurationRecorderStatus extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // =========

@@ -54,6 +54,31 @@ export class S3ControlObjectLambdaAccessPointConfigurationTransformationConfigur
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._functionArn) {
+      hasAnyValues = true;
+      internalValueResult.functionArn = this._functionArn;
+    }
+    if (this._functionPayload) {
+      hasAnyValues = true;
+      internalValueResult.functionPayload = this._functionPayload;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda | undefined) {
+    if (value === undefined) {
+      this._functionArn = undefined;
+      this._functionPayload = undefined;
+    }
+    else {
+      this._functionArn = value.functionArn;
+      this._functionPayload = value.functionPayload;
+    }
+  }
+
   // function_arn - computed: false, optional: false, required: true
   private _functionArn?: string; 
   public get functionArn() {
@@ -64,15 +89,15 @@ export class S3ControlObjectLambdaAccessPointConfigurationTransformationConfigur
   }
   // Temporarily expose input value. Use with caution.
   public get functionArnInput() {
-    return this._functionArn
+    return this._functionArn;
   }
 
   // function_payload - computed: false, optional: true, required: false
-  private _functionPayload?: string | undefined; 
+  private _functionPayload?: string; 
   public get functionPayload() {
     return this.getStringAttribute('function_payload');
   }
-  public set functionPayload(value: string | undefined) {
+  public set functionPayload(value: string) {
     this._functionPayload = value;
   }
   public resetFunctionPayload() {
@@ -80,7 +105,7 @@ export class S3ControlObjectLambdaAccessPointConfigurationTransformationConfigur
   }
   // Temporarily expose input value. Use with caution.
   public get functionPayloadInput() {
-    return this._functionPayload
+    return this._functionPayload;
   }
 }
 export interface S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation {
@@ -112,18 +137,36 @@ export class S3ControlObjectLambdaAccessPointConfigurationTransformationConfigur
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._awsLambda) {
+      hasAnyValues = true;
+      internalValueResult.awsLambda = this._awsLambda?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation | undefined) {
+    if (value === undefined) {
+      this._awsLambda.internalValue = undefined;
+    }
+    else {
+      this._awsLambda.internalValue = value.awsLambda;
+    }
+  }
+
   // aws_lambda - computed: false, optional: false, required: true
-  private _awsLambda?: S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda; 
-  private __awsLambdaOutput = new S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambdaOutputReference(this as any, "aws_lambda", true);
+  private _awsLambda = new S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambdaOutputReference(this as any, "aws_lambda", true);
   public get awsLambda() {
-    return this.__awsLambdaOutput;
+    return this._awsLambda;
   }
   public putAwsLambda(value: S3ControlObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda) {
-    this._awsLambda = value;
+    this._awsLambda.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get awsLambdaInput() {
-    return this._awsLambda
+    return this._awsLambda.internalValue;
   }
 }
 export interface S3ControlObjectLambdaAccessPointConfigurationTransformationConfiguration {
@@ -194,12 +237,49 @@ export class S3ControlObjectLambdaAccessPointConfigurationOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): S3ControlObjectLambdaAccessPointConfiguration | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allowedFeatures) {
+      hasAnyValues = true;
+      internalValueResult.allowedFeatures = this._allowedFeatures;
+    }
+    if (this._cloudWatchMetricsEnabled) {
+      hasAnyValues = true;
+      internalValueResult.cloudWatchMetricsEnabled = this._cloudWatchMetricsEnabled;
+    }
+    if (this._supportingAccessPoint) {
+      hasAnyValues = true;
+      internalValueResult.supportingAccessPoint = this._supportingAccessPoint;
+    }
+    if (this._transformationConfiguration) {
+      hasAnyValues = true;
+      internalValueResult.transformationConfiguration = this._transformationConfiguration;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: S3ControlObjectLambdaAccessPointConfiguration | undefined) {
+    if (value === undefined) {
+      this._allowedFeatures = undefined;
+      this._cloudWatchMetricsEnabled = undefined;
+      this._supportingAccessPoint = undefined;
+      this._transformationConfiguration = undefined;
+    }
+    else {
+      this._allowedFeatures = value.allowedFeatures;
+      this._cloudWatchMetricsEnabled = value.cloudWatchMetricsEnabled;
+      this._supportingAccessPoint = value.supportingAccessPoint;
+      this._transformationConfiguration = value.transformationConfiguration;
+    }
+  }
+
   // allowed_features - computed: false, optional: true, required: false
-  private _allowedFeatures?: string[] | undefined; 
+  private _allowedFeatures?: string[]; 
   public get allowedFeatures() {
     return this.getListAttribute('allowed_features');
   }
-  public set allowedFeatures(value: string[] | undefined) {
+  public set allowedFeatures(value: string[]) {
     this._allowedFeatures = value;
   }
   public resetAllowedFeatures() {
@@ -207,15 +287,15 @@ export class S3ControlObjectLambdaAccessPointConfigurationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get allowedFeaturesInput() {
-    return this._allowedFeatures
+    return this._allowedFeatures;
   }
 
   // cloud_watch_metrics_enabled - computed: false, optional: true, required: false
-  private _cloudWatchMetricsEnabled?: boolean | cdktf.IResolvable | undefined; 
+  private _cloudWatchMetricsEnabled?: boolean | cdktf.IResolvable; 
   public get cloudWatchMetricsEnabled() {
     return this.getBooleanAttribute('cloud_watch_metrics_enabled') as any;
   }
-  public set cloudWatchMetricsEnabled(value: boolean | cdktf.IResolvable | undefined) {
+  public set cloudWatchMetricsEnabled(value: boolean | cdktf.IResolvable) {
     this._cloudWatchMetricsEnabled = value;
   }
   public resetCloudWatchMetricsEnabled() {
@@ -223,7 +303,7 @@ export class S3ControlObjectLambdaAccessPointConfigurationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get cloudWatchMetricsEnabledInput() {
-    return this._cloudWatchMetricsEnabled
+    return this._cloudWatchMetricsEnabled;
   }
 
   // supporting_access_point - computed: false, optional: false, required: true
@@ -236,7 +316,7 @@ export class S3ControlObjectLambdaAccessPointConfigurationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get supportingAccessPointInput() {
-    return this._supportingAccessPoint
+    return this._supportingAccessPoint;
   }
 
   // transformation_configuration - computed: false, optional: false, required: true
@@ -250,7 +330,7 @@ export class S3ControlObjectLambdaAccessPointConfigurationOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get transformationConfigurationInput() {
-    return this._transformationConfiguration
+    return this._transformationConfiguration;
   }
 }
 
@@ -288,7 +368,7 @@ export class S3ControlObjectLambdaAccessPoint extends cdktf.TerraformResource {
     });
     this._accountId = config.accountId;
     this._name = config.name;
-    this._configuration = config.configuration;
+    this._configuration.internalValue = config.configuration;
   }
 
   // ==========
@@ -296,11 +376,11 @@ export class S3ControlObjectLambdaAccessPoint extends cdktf.TerraformResource {
   // ==========
 
   // account_id - computed: true, optional: true, required: false
-  private _accountId?: string | undefined; 
+  private _accountId?: string; 
   public get accountId() {
     return this.getStringAttribute('account_id');
   }
-  public set accountId(value: string | undefined) {
+  public set accountId(value: string) {
     this._accountId = value;
   }
   public resetAccountId() {
@@ -308,7 +388,7 @@ export class S3ControlObjectLambdaAccessPoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accountIdInput() {
-    return this._accountId
+    return this._accountId;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -331,21 +411,20 @@ export class S3ControlObjectLambdaAccessPoint extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // configuration - computed: false, optional: false, required: true
-  private _configuration?: S3ControlObjectLambdaAccessPointConfiguration; 
-  private __configurationOutput = new S3ControlObjectLambdaAccessPointConfigurationOutputReference(this as any, "configuration", true);
+  private _configuration = new S3ControlObjectLambdaAccessPointConfigurationOutputReference(this as any, "configuration", true);
   public get configuration() {
-    return this.__configurationOutput;
+    return this._configuration;
   }
   public putConfiguration(value: S3ControlObjectLambdaAccessPointConfiguration) {
-    this._configuration = value;
+    this._configuration.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get configurationInput() {
-    return this._configuration
+    return this._configuration.internalValue;
   }
 
   // =========
@@ -356,7 +435,7 @@ export class S3ControlObjectLambdaAccessPoint extends cdktf.TerraformResource {
     return {
       account_id: cdktf.stringToTerraform(this._accountId),
       name: cdktf.stringToTerraform(this._name),
-      configuration: s3ControlObjectLambdaAccessPointConfigurationToTerraform(this._configuration),
+      configuration: s3ControlObjectLambdaAccessPointConfigurationToTerraform(this._configuration.internalValue),
     };
   }
 }

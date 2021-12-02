@@ -58,12 +58,37 @@ export class Route53ResolverRuleAssociationTimeoutsOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Route53ResolverRuleAssociationTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Route53ResolverRuleAssociationTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -71,15 +96,15 @@ export class Route53ResolverRuleAssociationTimeoutsOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -87,7 +112,7 @@ export class Route53ResolverRuleAssociationTimeoutsOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 }
 
@@ -126,7 +151,7 @@ export class Route53ResolverRuleAssociation extends cdktf.TerraformResource {
     this._name = config.name;
     this._resolverRuleId = config.resolverRuleId;
     this._vpcId = config.vpcId;
-    this._timeouts = config.timeouts;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -139,11 +164,11 @@ export class Route53ResolverRuleAssociation extends cdktf.TerraformResource {
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -151,7 +176,7 @@ export class Route53ResolverRuleAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // resolver_rule_id - computed: false, optional: false, required: true
@@ -164,7 +189,7 @@ export class Route53ResolverRuleAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get resolverRuleIdInput() {
-    return this._resolverRuleId
+    return this._resolverRuleId;
   }
 
   // vpc_id - computed: false, optional: false, required: true
@@ -177,24 +202,23 @@ export class Route53ResolverRuleAssociation extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get vpcIdInput() {
-    return this._vpcId
+    return this._vpcId;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: Route53ResolverRuleAssociationTimeouts | undefined; 
-  private __timeoutsOutput = new Route53ResolverRuleAssociationTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new Route53ResolverRuleAssociationTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: Route53ResolverRuleAssociationTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: Route53ResolverRuleAssociationTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -206,7 +230,7 @@ export class Route53ResolverRuleAssociation extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       resolver_rule_id: cdktf.stringToTerraform(this._resolverRuleId),
       vpc_id: cdktf.stringToTerraform(this._vpcId),
-      timeouts: route53ResolverRuleAssociationTimeoutsToTerraform(this._timeouts),
+      timeouts: route53ResolverRuleAssociationTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

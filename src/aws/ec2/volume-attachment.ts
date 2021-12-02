@@ -87,15 +87,15 @@ export class VolumeAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get deviceNameInput() {
-    return this._deviceName
+    return this._deviceName;
   }
 
   // force_detach - computed: false, optional: true, required: false
-  private _forceDetach?: boolean | cdktf.IResolvable | undefined; 
+  private _forceDetach?: boolean | cdktf.IResolvable; 
   public get forceDetach() {
     return this.getBooleanAttribute('force_detach') as any;
   }
-  public set forceDetach(value: boolean | cdktf.IResolvable | undefined) {
+  public set forceDetach(value: boolean | cdktf.IResolvable) {
     this._forceDetach = value;
   }
   public resetForceDetach() {
@@ -103,7 +103,7 @@ export class VolumeAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get forceDetachInput() {
-    return this._forceDetach
+    return this._forceDetach;
   }
 
   // id - computed: true, optional: true, required: false
@@ -121,15 +121,15 @@ export class VolumeAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceIdInput() {
-    return this._instanceId
+    return this._instanceId;
   }
 
   // skip_destroy - computed: false, optional: true, required: false
-  private _skipDestroy?: boolean | cdktf.IResolvable | undefined; 
+  private _skipDestroy?: boolean | cdktf.IResolvable; 
   public get skipDestroy() {
     return this.getBooleanAttribute('skip_destroy') as any;
   }
-  public set skipDestroy(value: boolean | cdktf.IResolvable | undefined) {
+  public set skipDestroy(value: boolean | cdktf.IResolvable) {
     this._skipDestroy = value;
   }
   public resetSkipDestroy() {
@@ -137,15 +137,15 @@ export class VolumeAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get skipDestroyInput() {
-    return this._skipDestroy
+    return this._skipDestroy;
   }
 
   // stop_instance_before_detaching - computed: false, optional: true, required: false
-  private _stopInstanceBeforeDetaching?: boolean | cdktf.IResolvable | undefined; 
+  private _stopInstanceBeforeDetaching?: boolean | cdktf.IResolvable; 
   public get stopInstanceBeforeDetaching() {
     return this.getBooleanAttribute('stop_instance_before_detaching') as any;
   }
-  public set stopInstanceBeforeDetaching(value: boolean | cdktf.IResolvable | undefined) {
+  public set stopInstanceBeforeDetaching(value: boolean | cdktf.IResolvable) {
     this._stopInstanceBeforeDetaching = value;
   }
   public resetStopInstanceBeforeDetaching() {
@@ -153,7 +153,7 @@ export class VolumeAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get stopInstanceBeforeDetachingInput() {
-    return this._stopInstanceBeforeDetaching
+    return this._stopInstanceBeforeDetaching;
   }
 
   // volume_id - computed: false, optional: false, required: true
@@ -166,7 +166,7 @@ export class VolumeAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get volumeIdInput() {
-    return this._volumeId
+    return this._volumeId;
   }
 
   // =========

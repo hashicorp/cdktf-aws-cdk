@@ -50,12 +50,37 @@ export class GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConne
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._awsKmsKeyId) {
+      hasAnyValues = true;
+      internalValueResult.awsKmsKeyId = this._awsKmsKeyId;
+    }
+    if (this._returnConnectionPasswordEncrypted) {
+      hasAnyValues = true;
+      internalValueResult.returnConnectionPasswordEncrypted = this._returnConnectionPasswordEncrypted;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption | undefined) {
+    if (value === undefined) {
+      this._awsKmsKeyId = undefined;
+      this._returnConnectionPasswordEncrypted = undefined;
+    }
+    else {
+      this._awsKmsKeyId = value.awsKmsKeyId;
+      this._returnConnectionPasswordEncrypted = value.returnConnectionPasswordEncrypted;
+    }
+  }
+
   // aws_kms_key_id - computed: false, optional: true, required: false
-  private _awsKmsKeyId?: string | undefined; 
+  private _awsKmsKeyId?: string; 
   public get awsKmsKeyId() {
     return this.getStringAttribute('aws_kms_key_id');
   }
-  public set awsKmsKeyId(value: string | undefined) {
+  public set awsKmsKeyId(value: string) {
     this._awsKmsKeyId = value;
   }
   public resetAwsKmsKeyId() {
@@ -63,7 +88,7 @@ export class GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConne
   }
   // Temporarily expose input value. Use with caution.
   public get awsKmsKeyIdInput() {
-    return this._awsKmsKeyId
+    return this._awsKmsKeyId;
   }
 
   // return_connection_password_encrypted - computed: false, optional: false, required: true
@@ -76,7 +101,7 @@ export class GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConne
   }
   // Temporarily expose input value. Use with caution.
   public get returnConnectionPasswordEncryptedInput() {
-    return this._returnConnectionPasswordEncrypted
+    return this._returnConnectionPasswordEncrypted;
   }
 }
 export interface GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest {
@@ -111,6 +136,31 @@ export class GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncry
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._catalogEncryptionMode) {
+      hasAnyValues = true;
+      internalValueResult.catalogEncryptionMode = this._catalogEncryptionMode;
+    }
+    if (this._sseAwsKmsKeyId) {
+      hasAnyValues = true;
+      internalValueResult.sseAwsKmsKeyId = this._sseAwsKmsKeyId;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest | undefined) {
+    if (value === undefined) {
+      this._catalogEncryptionMode = undefined;
+      this._sseAwsKmsKeyId = undefined;
+    }
+    else {
+      this._catalogEncryptionMode = value.catalogEncryptionMode;
+      this._sseAwsKmsKeyId = value.sseAwsKmsKeyId;
+    }
+  }
+
   // catalog_encryption_mode - computed: false, optional: false, required: true
   private _catalogEncryptionMode?: string; 
   public get catalogEncryptionMode() {
@@ -121,15 +171,15 @@ export class GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncry
   }
   // Temporarily expose input value. Use with caution.
   public get catalogEncryptionModeInput() {
-    return this._catalogEncryptionMode
+    return this._catalogEncryptionMode;
   }
 
   // sse_aws_kms_key_id - computed: false, optional: true, required: false
-  private _sseAwsKmsKeyId?: string | undefined; 
+  private _sseAwsKmsKeyId?: string; 
   public get sseAwsKmsKeyId() {
     return this.getStringAttribute('sse_aws_kms_key_id');
   }
-  public set sseAwsKmsKeyId(value: string | undefined) {
+  public set sseAwsKmsKeyId(value: string) {
     this._sseAwsKmsKeyId = value;
   }
   public resetSseAwsKmsKeyId() {
@@ -137,7 +187,7 @@ export class GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncry
   }
   // Temporarily expose input value. Use with caution.
   public get sseAwsKmsKeyIdInput() {
-    return this._sseAwsKmsKeyId
+    return this._sseAwsKmsKeyId;
   }
 }
 export interface GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettings {
@@ -176,32 +226,55 @@ export class GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsOutpu
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettings | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._connectionPasswordEncryption) {
+      hasAnyValues = true;
+      internalValueResult.connectionPasswordEncryption = this._connectionPasswordEncryption?.internalValue;
+    }
+    if (this._encryptionAtRest) {
+      hasAnyValues = true;
+      internalValueResult.encryptionAtRest = this._encryptionAtRest?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettings | undefined) {
+    if (value === undefined) {
+      this._connectionPasswordEncryption.internalValue = undefined;
+      this._encryptionAtRest.internalValue = undefined;
+    }
+    else {
+      this._connectionPasswordEncryption.internalValue = value.connectionPasswordEncryption;
+      this._encryptionAtRest.internalValue = value.encryptionAtRest;
+    }
+  }
+
   // connection_password_encryption - computed: false, optional: false, required: true
-  private _connectionPasswordEncryption?: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption; 
-  private __connectionPasswordEncryptionOutput = new GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryptionOutputReference(this as any, "connection_password_encryption", true);
+  private _connectionPasswordEncryption = new GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryptionOutputReference(this as any, "connection_password_encryption", true);
   public get connectionPasswordEncryption() {
-    return this.__connectionPasswordEncryptionOutput;
+    return this._connectionPasswordEncryption;
   }
   public putConnectionPasswordEncryption(value: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption) {
-    this._connectionPasswordEncryption = value;
+    this._connectionPasswordEncryption.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get connectionPasswordEncryptionInput() {
-    return this._connectionPasswordEncryption
+    return this._connectionPasswordEncryption.internalValue;
   }
 
   // encryption_at_rest - computed: false, optional: false, required: true
-  private _encryptionAtRest?: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest; 
-  private __encryptionAtRestOutput = new GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRestOutputReference(this as any, "encryption_at_rest", true);
+  private _encryptionAtRest = new GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRestOutputReference(this as any, "encryption_at_rest", true);
   public get encryptionAtRest() {
-    return this.__encryptionAtRestOutput;
+    return this._encryptionAtRest;
   }
   public putEncryptionAtRest(value: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest) {
-    this._encryptionAtRest = value;
+    this._encryptionAtRest.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionAtRestInput() {
-    return this._encryptionAtRest
+    return this._encryptionAtRest.internalValue;
   }
 }
 
@@ -238,7 +311,7 @@ export class GlueDataCatalogEncryptionSettings extends cdktf.TerraformResource {
       lifecycle: config.lifecycle
     });
     this._catalogId = config.catalogId;
-    this._dataCatalogEncryptionSettings = config.dataCatalogEncryptionSettings;
+    this._dataCatalogEncryptionSettings.internalValue = config.dataCatalogEncryptionSettings;
   }
 
   // ==========
@@ -246,11 +319,11 @@ export class GlueDataCatalogEncryptionSettings extends cdktf.TerraformResource {
   // ==========
 
   // catalog_id - computed: true, optional: true, required: false
-  private _catalogId?: string | undefined; 
+  private _catalogId?: string; 
   public get catalogId() {
     return this.getStringAttribute('catalog_id');
   }
-  public set catalogId(value: string | undefined) {
+  public set catalogId(value: string) {
     this._catalogId = value;
   }
   public resetCatalogId() {
@@ -258,7 +331,7 @@ export class GlueDataCatalogEncryptionSettings extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get catalogIdInput() {
-    return this._catalogId
+    return this._catalogId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -267,17 +340,16 @@ export class GlueDataCatalogEncryptionSettings extends cdktf.TerraformResource {
   }
 
   // data_catalog_encryption_settings - computed: false, optional: false, required: true
-  private _dataCatalogEncryptionSettings?: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettings; 
-  private __dataCatalogEncryptionSettingsOutput = new GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsOutputReference(this as any, "data_catalog_encryption_settings", true);
+  private _dataCatalogEncryptionSettings = new GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsOutputReference(this as any, "data_catalog_encryption_settings", true);
   public get dataCatalogEncryptionSettings() {
-    return this.__dataCatalogEncryptionSettingsOutput;
+    return this._dataCatalogEncryptionSettings;
   }
   public putDataCatalogEncryptionSettings(value: GlueDataCatalogEncryptionSettingsDataCatalogEncryptionSettings) {
-    this._dataCatalogEncryptionSettings = value;
+    this._dataCatalogEncryptionSettings.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get dataCatalogEncryptionSettingsInput() {
-    return this._dataCatalogEncryptionSettings
+    return this._dataCatalogEncryptionSettings.internalValue;
   }
 
   // =========
@@ -287,7 +359,7 @@ export class GlueDataCatalogEncryptionSettings extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       catalog_id: cdktf.stringToTerraform(this._catalogId),
-      data_catalog_encryption_settings: glueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsToTerraform(this._dataCatalogEncryptionSettings),
+      data_catalog_encryption_settings: glueDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsToTerraform(this._dataCatalogEncryptionSettings.internalValue),
     };
   }
 }

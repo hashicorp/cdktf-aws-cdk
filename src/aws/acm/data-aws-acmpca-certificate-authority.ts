@@ -105,7 +105,7 @@ export class DataAwsAcmpcaCertificateAuthority extends cdktf.TerraformDataSource
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // certificate - computed: true, optional: false, required: false
@@ -149,12 +149,12 @@ export class DataAwsAcmpcaCertificateAuthority extends cdktf.TerraformDataSource
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -162,7 +162,7 @@ export class DataAwsAcmpcaCertificateAuthority extends cdktf.TerraformDataSource
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // type - computed: true, optional: false, required: false
@@ -171,12 +171,12 @@ export class DataAwsAcmpcaCertificateAuthority extends cdktf.TerraformDataSource
   }
 
   // revocation_configuration - computed: false, optional: true, required: false
-  private _revocationConfiguration?: DataAwsAcmpcaCertificateAuthorityRevocationConfiguration[] | undefined; 
+  private _revocationConfiguration?: DataAwsAcmpcaCertificateAuthorityRevocationConfiguration[]; 
   public get revocationConfiguration() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('revocation_configuration') as any;
   }
-  public set revocationConfiguration(value: DataAwsAcmpcaCertificateAuthorityRevocationConfiguration[] | undefined) {
+  public set revocationConfiguration(value: DataAwsAcmpcaCertificateAuthorityRevocationConfiguration[]) {
     this._revocationConfiguration = value;
   }
   public resetRevocationConfiguration() {
@@ -184,7 +184,7 @@ export class DataAwsAcmpcaCertificateAuthority extends cdktf.TerraformDataSource
   }
   // Temporarily expose input value. Use with caution.
   public get revocationConfigurationInput() {
-    return this._revocationConfiguration
+    return this._revocationConfiguration;
   }
 
   // =========

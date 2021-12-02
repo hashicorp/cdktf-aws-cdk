@@ -67,7 +67,7 @@ export class SnapshotCreateVolumePermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get accountIdInput() {
-    return this._accountId
+    return this._accountId;
   }
 
   // id - computed: true, optional: true, required: false
@@ -85,7 +85,7 @@ export class SnapshotCreateVolumePermission extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get snapshotIdInput() {
-    return this._snapshotId
+    return this._snapshotId;
   }
 
   // =========

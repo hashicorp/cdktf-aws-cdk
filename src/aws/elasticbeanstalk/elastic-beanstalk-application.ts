@@ -72,12 +72,49 @@ export class ElasticBeanstalkApplicationAppversionLifecycleOutputReference exten
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): ElasticBeanstalkApplicationAppversionLifecycle | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._deleteSourceFromS3) {
+      hasAnyValues = true;
+      internalValueResult.deleteSourceFromS3 = this._deleteSourceFromS3;
+    }
+    if (this._maxAgeInDays) {
+      hasAnyValues = true;
+      internalValueResult.maxAgeInDays = this._maxAgeInDays;
+    }
+    if (this._maxCount) {
+      hasAnyValues = true;
+      internalValueResult.maxCount = this._maxCount;
+    }
+    if (this._serviceRole) {
+      hasAnyValues = true;
+      internalValueResult.serviceRole = this._serviceRole;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: ElasticBeanstalkApplicationAppversionLifecycle | undefined) {
+    if (value === undefined) {
+      this._deleteSourceFromS3 = undefined;
+      this._maxAgeInDays = undefined;
+      this._maxCount = undefined;
+      this._serviceRole = undefined;
+    }
+    else {
+      this._deleteSourceFromS3 = value.deleteSourceFromS3;
+      this._maxAgeInDays = value.maxAgeInDays;
+      this._maxCount = value.maxCount;
+      this._serviceRole = value.serviceRole;
+    }
+  }
+
   // delete_source_from_s3 - computed: false, optional: true, required: false
-  private _deleteSourceFromS3?: boolean | cdktf.IResolvable | undefined; 
+  private _deleteSourceFromS3?: boolean | cdktf.IResolvable; 
   public get deleteSourceFromS3() {
     return this.getBooleanAttribute('delete_source_from_s3') as any;
   }
-  public set deleteSourceFromS3(value: boolean | cdktf.IResolvable | undefined) {
+  public set deleteSourceFromS3(value: boolean | cdktf.IResolvable) {
     this._deleteSourceFromS3 = value;
   }
   public resetDeleteSourceFromS3() {
@@ -85,15 +122,15 @@ export class ElasticBeanstalkApplicationAppversionLifecycleOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get deleteSourceFromS3Input() {
-    return this._deleteSourceFromS3
+    return this._deleteSourceFromS3;
   }
 
   // max_age_in_days - computed: false, optional: true, required: false
-  private _maxAgeInDays?: number | undefined; 
+  private _maxAgeInDays?: number; 
   public get maxAgeInDays() {
     return this.getNumberAttribute('max_age_in_days');
   }
-  public set maxAgeInDays(value: number | undefined) {
+  public set maxAgeInDays(value: number) {
     this._maxAgeInDays = value;
   }
   public resetMaxAgeInDays() {
@@ -101,15 +138,15 @@ export class ElasticBeanstalkApplicationAppversionLifecycleOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get maxAgeInDaysInput() {
-    return this._maxAgeInDays
+    return this._maxAgeInDays;
   }
 
   // max_count - computed: false, optional: true, required: false
-  private _maxCount?: number | undefined; 
+  private _maxCount?: number; 
   public get maxCount() {
     return this.getNumberAttribute('max_count');
   }
-  public set maxCount(value: number | undefined) {
+  public set maxCount(value: number) {
     this._maxCount = value;
   }
   public resetMaxCount() {
@@ -117,7 +154,7 @@ export class ElasticBeanstalkApplicationAppversionLifecycleOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get maxCountInput() {
-    return this._maxCount
+    return this._maxCount;
   }
 
   // service_role - computed: false, optional: false, required: true
@@ -130,7 +167,7 @@ export class ElasticBeanstalkApplicationAppversionLifecycleOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get serviceRoleInput() {
-    return this._serviceRole
+    return this._serviceRole;
   }
 }
 
@@ -170,7 +207,7 @@ export class ElasticBeanstalkApplication extends cdktf.TerraformResource {
     this._name = config.name;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._appversionLifecycle = config.appversionLifecycle;
+    this._appversionLifecycle.internalValue = config.appversionLifecycle;
   }
 
   // ==========
@@ -183,11 +220,11 @@ export class ElasticBeanstalkApplication extends cdktf.TerraformResource {
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -195,7 +232,7 @@ export class ElasticBeanstalkApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -213,16 +250,16 @@ export class ElasticBeanstalkApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -230,16 +267,16 @@ export class ElasticBeanstalkApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -247,24 +284,23 @@ export class ElasticBeanstalkApplication extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // appversion_lifecycle - computed: false, optional: true, required: false
-  private _appversionLifecycle?: ElasticBeanstalkApplicationAppversionLifecycle | undefined; 
-  private __appversionLifecycleOutput = new ElasticBeanstalkApplicationAppversionLifecycleOutputReference(this as any, "appversion_lifecycle", true);
+  private _appversionLifecycle = new ElasticBeanstalkApplicationAppversionLifecycleOutputReference(this as any, "appversion_lifecycle", true);
   public get appversionLifecycle() {
-    return this.__appversionLifecycleOutput;
+    return this._appversionLifecycle;
   }
-  public putAppversionLifecycle(value: ElasticBeanstalkApplicationAppversionLifecycle | undefined) {
-    this._appversionLifecycle = value;
+  public putAppversionLifecycle(value: ElasticBeanstalkApplicationAppversionLifecycle) {
+    this._appversionLifecycle.internalValue = value;
   }
   public resetAppversionLifecycle() {
-    this._appversionLifecycle = undefined;
+    this._appversionLifecycle.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get appversionLifecycleInput() {
-    return this._appversionLifecycle
+    return this._appversionLifecycle.internalValue;
   }
 
   // =========
@@ -277,7 +313,7 @@ export class ElasticBeanstalkApplication extends cdktf.TerraformResource {
       name: cdktf.stringToTerraform(this._name),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      appversion_lifecycle: elasticBeanstalkApplicationAppversionLifecycleToTerraform(this._appversionLifecycle),
+      appversion_lifecycle: elasticBeanstalkApplicationAppversionLifecycleToTerraform(this._appversionLifecycle.internalValue),
     };
   }
 }

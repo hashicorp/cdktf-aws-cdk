@@ -63,11 +63,11 @@ export class StoragegatewayUploadBuffer extends cdktf.TerraformResource {
   // ==========
 
   // disk_id - computed: true, optional: true, required: false
-  private _diskId?: string | undefined; 
+  private _diskId?: string; 
   public get diskId() {
     return this.getStringAttribute('disk_id');
   }
-  public set diskId(value: string | undefined) {
+  public set diskId(value: string) {
     this._diskId = value;
   }
   public resetDiskId() {
@@ -75,15 +75,15 @@ export class StoragegatewayUploadBuffer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get diskIdInput() {
-    return this._diskId
+    return this._diskId;
   }
 
   // disk_path - computed: true, optional: true, required: false
-  private _diskPath?: string | undefined; 
+  private _diskPath?: string; 
   public get diskPath() {
     return this.getStringAttribute('disk_path');
   }
-  public set diskPath(value: string | undefined) {
+  public set diskPath(value: string) {
     this._diskPath = value;
   }
   public resetDiskPath() {
@@ -91,7 +91,7 @@ export class StoragegatewayUploadBuffer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get diskPathInput() {
-    return this._diskPath
+    return this._diskPath;
   }
 
   // gateway_arn - computed: false, optional: false, required: true
@@ -104,7 +104,7 @@ export class StoragegatewayUploadBuffer extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get gatewayArnInput() {
-    return this._gatewayArn
+    return this._gatewayArn;
   }
 
   // id - computed: true, optional: true, required: false

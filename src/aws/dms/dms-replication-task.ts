@@ -103,11 +103,11 @@ export class DmsReplicationTask extends cdktf.TerraformResource {
   // ==========
 
   // cdc_start_position - computed: false, optional: true, required: false
-  private _cdcStartPosition?: string | undefined; 
+  private _cdcStartPosition?: string; 
   public get cdcStartPosition() {
     return this.getStringAttribute('cdc_start_position');
   }
-  public set cdcStartPosition(value: string | undefined) {
+  public set cdcStartPosition(value: string) {
     this._cdcStartPosition = value;
   }
   public resetCdcStartPosition() {
@@ -115,15 +115,15 @@ export class DmsReplicationTask extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cdcStartPositionInput() {
-    return this._cdcStartPosition
+    return this._cdcStartPosition;
   }
 
   // cdc_start_time - computed: false, optional: true, required: false
-  private _cdcStartTime?: string | undefined; 
+  private _cdcStartTime?: string; 
   public get cdcStartTime() {
     return this.getStringAttribute('cdc_start_time');
   }
-  public set cdcStartTime(value: string | undefined) {
+  public set cdcStartTime(value: string) {
     this._cdcStartTime = value;
   }
   public resetCdcStartTime() {
@@ -131,7 +131,7 @@ export class DmsReplicationTask extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get cdcStartTimeInput() {
-    return this._cdcStartTime
+    return this._cdcStartTime;
   }
 
   // id - computed: true, optional: true, required: false
@@ -149,7 +149,7 @@ export class DmsReplicationTask extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get migrationTypeInput() {
-    return this._migrationType
+    return this._migrationType;
   }
 
   // replication_instance_arn - computed: false, optional: false, required: true
@@ -162,7 +162,7 @@ export class DmsReplicationTask extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get replicationInstanceArnInput() {
-    return this._replicationInstanceArn
+    return this._replicationInstanceArn;
   }
 
   // replication_task_arn - computed: true, optional: false, required: false
@@ -180,15 +180,15 @@ export class DmsReplicationTask extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get replicationTaskIdInput() {
-    return this._replicationTaskId
+    return this._replicationTaskId;
   }
 
   // replication_task_settings - computed: false, optional: true, required: false
-  private _replicationTaskSettings?: string | undefined; 
+  private _replicationTaskSettings?: string; 
   public get replicationTaskSettings() {
     return this.getStringAttribute('replication_task_settings');
   }
-  public set replicationTaskSettings(value: string | undefined) {
+  public set replicationTaskSettings(value: string) {
     this._replicationTaskSettings = value;
   }
   public resetReplicationTaskSettings() {
@@ -196,7 +196,7 @@ export class DmsReplicationTask extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get replicationTaskSettingsInput() {
-    return this._replicationTaskSettings
+    return this._replicationTaskSettings;
   }
 
   // source_endpoint_arn - computed: false, optional: false, required: true
@@ -209,7 +209,7 @@ export class DmsReplicationTask extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get sourceEndpointArnInput() {
-    return this._sourceEndpointArn
+    return this._sourceEndpointArn;
   }
 
   // table_mappings - computed: false, optional: false, required: true
@@ -222,16 +222,16 @@ export class DmsReplicationTask extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tableMappingsInput() {
-    return this._tableMappings
+    return this._tableMappings;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -239,16 +239,16 @@ export class DmsReplicationTask extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -256,7 +256,7 @@ export class DmsReplicationTask extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // target_endpoint_arn - computed: false, optional: false, required: true
@@ -269,7 +269,7 @@ export class DmsReplicationTask extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get targetEndpointArnInput() {
-    return this._targetEndpointArn
+    return this._targetEndpointArn;
   }
 
   // =========

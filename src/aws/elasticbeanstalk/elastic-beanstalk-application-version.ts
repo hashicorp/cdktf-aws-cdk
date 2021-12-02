@@ -97,7 +97,7 @@ export class ElasticBeanstalkApplicationVersion extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get applicationInput() {
-    return this._application
+    return this._application;
   }
 
   // arn - computed: true, optional: false, required: false
@@ -115,15 +115,15 @@ export class ElasticBeanstalkApplicationVersion extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // description - computed: false, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -131,15 +131,15 @@ export class ElasticBeanstalkApplicationVersion extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // force_delete - computed: false, optional: true, required: false
-  private _forceDelete?: boolean | cdktf.IResolvable | undefined; 
+  private _forceDelete?: boolean | cdktf.IResolvable; 
   public get forceDelete() {
     return this.getBooleanAttribute('force_delete') as any;
   }
-  public set forceDelete(value: boolean | cdktf.IResolvable | undefined) {
+  public set forceDelete(value: boolean | cdktf.IResolvable) {
     this._forceDelete = value;
   }
   public resetForceDelete() {
@@ -147,7 +147,7 @@ export class ElasticBeanstalkApplicationVersion extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get forceDeleteInput() {
-    return this._forceDelete
+    return this._forceDelete;
   }
 
   // id - computed: true, optional: true, required: false
@@ -165,7 +165,7 @@ export class ElasticBeanstalkApplicationVersion extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // name - computed: false, optional: false, required: true
@@ -178,16 +178,16 @@ export class ElasticBeanstalkApplicationVersion extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -195,16 +195,16 @@ export class ElasticBeanstalkApplicationVersion extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -212,7 +212,7 @@ export class ElasticBeanstalkApplicationVersion extends cdktf.TerraformResource 
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // =========

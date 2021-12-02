@@ -62,6 +62,31 @@ export class SagemakerWorkforceCognitoConfigOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerWorkforceCognitoConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._clientId) {
+      hasAnyValues = true;
+      internalValueResult.clientId = this._clientId;
+    }
+    if (this._userPool) {
+      hasAnyValues = true;
+      internalValueResult.userPool = this._userPool;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerWorkforceCognitoConfig | undefined) {
+    if (value === undefined) {
+      this._clientId = undefined;
+      this._userPool = undefined;
+    }
+    else {
+      this._clientId = value.clientId;
+      this._userPool = value.userPool;
+    }
+  }
+
   // client_id - computed: false, optional: false, required: true
   private _clientId?: string; 
   public get clientId() {
@@ -72,7 +97,7 @@ export class SagemakerWorkforceCognitoConfigOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get clientIdInput() {
-    return this._clientId
+    return this._clientId;
   }
 
   // user_pool - computed: false, optional: false, required: true
@@ -85,7 +110,7 @@ export class SagemakerWorkforceCognitoConfigOutputReference extends cdktf.Comple
   }
   // Temporarily expose input value. Use with caution.
   public get userPoolInput() {
-    return this._userPool
+    return this._userPool;
   }
 }
 export interface SagemakerWorkforceOidcConfig {
@@ -150,6 +175,67 @@ export class SagemakerWorkforceOidcConfigOutputReference extends cdktf.ComplexOb
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerWorkforceOidcConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._authorizationEndpoint) {
+      hasAnyValues = true;
+      internalValueResult.authorizationEndpoint = this._authorizationEndpoint;
+    }
+    if (this._clientId) {
+      hasAnyValues = true;
+      internalValueResult.clientId = this._clientId;
+    }
+    if (this._clientSecret) {
+      hasAnyValues = true;
+      internalValueResult.clientSecret = this._clientSecret;
+    }
+    if (this._issuer) {
+      hasAnyValues = true;
+      internalValueResult.issuer = this._issuer;
+    }
+    if (this._jwksUri) {
+      hasAnyValues = true;
+      internalValueResult.jwksUri = this._jwksUri;
+    }
+    if (this._logoutEndpoint) {
+      hasAnyValues = true;
+      internalValueResult.logoutEndpoint = this._logoutEndpoint;
+    }
+    if (this._tokenEndpoint) {
+      hasAnyValues = true;
+      internalValueResult.tokenEndpoint = this._tokenEndpoint;
+    }
+    if (this._userInfoEndpoint) {
+      hasAnyValues = true;
+      internalValueResult.userInfoEndpoint = this._userInfoEndpoint;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerWorkforceOidcConfig | undefined) {
+    if (value === undefined) {
+      this._authorizationEndpoint = undefined;
+      this._clientId = undefined;
+      this._clientSecret = undefined;
+      this._issuer = undefined;
+      this._jwksUri = undefined;
+      this._logoutEndpoint = undefined;
+      this._tokenEndpoint = undefined;
+      this._userInfoEndpoint = undefined;
+    }
+    else {
+      this._authorizationEndpoint = value.authorizationEndpoint;
+      this._clientId = value.clientId;
+      this._clientSecret = value.clientSecret;
+      this._issuer = value.issuer;
+      this._jwksUri = value.jwksUri;
+      this._logoutEndpoint = value.logoutEndpoint;
+      this._tokenEndpoint = value.tokenEndpoint;
+      this._userInfoEndpoint = value.userInfoEndpoint;
+    }
+  }
+
   // authorization_endpoint - computed: false, optional: false, required: true
   private _authorizationEndpoint?: string; 
   public get authorizationEndpoint() {
@@ -160,7 +246,7 @@ export class SagemakerWorkforceOidcConfigOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get authorizationEndpointInput() {
-    return this._authorizationEndpoint
+    return this._authorizationEndpoint;
   }
 
   // client_id - computed: false, optional: false, required: true
@@ -173,7 +259,7 @@ export class SagemakerWorkforceOidcConfigOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get clientIdInput() {
-    return this._clientId
+    return this._clientId;
   }
 
   // client_secret - computed: false, optional: false, required: true
@@ -186,7 +272,7 @@ export class SagemakerWorkforceOidcConfigOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get clientSecretInput() {
-    return this._clientSecret
+    return this._clientSecret;
   }
 
   // issuer - computed: false, optional: false, required: true
@@ -199,7 +285,7 @@ export class SagemakerWorkforceOidcConfigOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get issuerInput() {
-    return this._issuer
+    return this._issuer;
   }
 
   // jwks_uri - computed: false, optional: false, required: true
@@ -212,7 +298,7 @@ export class SagemakerWorkforceOidcConfigOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get jwksUriInput() {
-    return this._jwksUri
+    return this._jwksUri;
   }
 
   // logout_endpoint - computed: false, optional: false, required: true
@@ -225,7 +311,7 @@ export class SagemakerWorkforceOidcConfigOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get logoutEndpointInput() {
-    return this._logoutEndpoint
+    return this._logoutEndpoint;
   }
 
   // token_endpoint - computed: false, optional: false, required: true
@@ -238,7 +324,7 @@ export class SagemakerWorkforceOidcConfigOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get tokenEndpointInput() {
-    return this._tokenEndpoint
+    return this._tokenEndpoint;
   }
 
   // user_info_endpoint - computed: false, optional: false, required: true
@@ -251,7 +337,7 @@ export class SagemakerWorkforceOidcConfigOutputReference extends cdktf.ComplexOb
   }
   // Temporarily expose input value. Use with caution.
   public get userInfoEndpointInput() {
-    return this._userInfoEndpoint
+    return this._userInfoEndpoint;
   }
 }
 export interface SagemakerWorkforceSourceIpConfig {
@@ -281,6 +367,25 @@ export class SagemakerWorkforceSourceIpConfigOutputReference extends cdktf.Compl
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): SagemakerWorkforceSourceIpConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cidrs) {
+      hasAnyValues = true;
+      internalValueResult.cidrs = this._cidrs;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: SagemakerWorkforceSourceIpConfig | undefined) {
+    if (value === undefined) {
+      this._cidrs = undefined;
+    }
+    else {
+      this._cidrs = value.cidrs;
+    }
+  }
+
   // cidrs - computed: false, optional: false, required: true
   private _cidrs?: string[]; 
   public get cidrs() {
@@ -291,7 +396,7 @@ export class SagemakerWorkforceSourceIpConfigOutputReference extends cdktf.Compl
   }
   // Temporarily expose input value. Use with caution.
   public get cidrsInput() {
-    return this._cidrs
+    return this._cidrs;
   }
 }
 
@@ -328,9 +433,9 @@ export class SagemakerWorkforce extends cdktf.TerraformResource {
       lifecycle: config.lifecycle
     });
     this._workforceName = config.workforceName;
-    this._cognitoConfig = config.cognitoConfig;
-    this._oidcConfig = config.oidcConfig;
-    this._sourceIpConfig = config.sourceIpConfig;
+    this._cognitoConfig.internalValue = config.cognitoConfig;
+    this._oidcConfig.internalValue = config.oidcConfig;
+    this._sourceIpConfig.internalValue = config.sourceIpConfig;
   }
 
   // ==========
@@ -362,58 +467,55 @@ export class SagemakerWorkforce extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get workforceNameInput() {
-    return this._workforceName
+    return this._workforceName;
   }
 
   // cognito_config - computed: false, optional: true, required: false
-  private _cognitoConfig?: SagemakerWorkforceCognitoConfig | undefined; 
-  private __cognitoConfigOutput = new SagemakerWorkforceCognitoConfigOutputReference(this as any, "cognito_config", true);
+  private _cognitoConfig = new SagemakerWorkforceCognitoConfigOutputReference(this as any, "cognito_config", true);
   public get cognitoConfig() {
-    return this.__cognitoConfigOutput;
+    return this._cognitoConfig;
   }
-  public putCognitoConfig(value: SagemakerWorkforceCognitoConfig | undefined) {
-    this._cognitoConfig = value;
+  public putCognitoConfig(value: SagemakerWorkforceCognitoConfig) {
+    this._cognitoConfig.internalValue = value;
   }
   public resetCognitoConfig() {
-    this._cognitoConfig = undefined;
+    this._cognitoConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cognitoConfigInput() {
-    return this._cognitoConfig
+    return this._cognitoConfig.internalValue;
   }
 
   // oidc_config - computed: false, optional: true, required: false
-  private _oidcConfig?: SagemakerWorkforceOidcConfig | undefined; 
-  private __oidcConfigOutput = new SagemakerWorkforceOidcConfigOutputReference(this as any, "oidc_config", true);
+  private _oidcConfig = new SagemakerWorkforceOidcConfigOutputReference(this as any, "oidc_config", true);
   public get oidcConfig() {
-    return this.__oidcConfigOutput;
+    return this._oidcConfig;
   }
-  public putOidcConfig(value: SagemakerWorkforceOidcConfig | undefined) {
-    this._oidcConfig = value;
+  public putOidcConfig(value: SagemakerWorkforceOidcConfig) {
+    this._oidcConfig.internalValue = value;
   }
   public resetOidcConfig() {
-    this._oidcConfig = undefined;
+    this._oidcConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get oidcConfigInput() {
-    return this._oidcConfig
+    return this._oidcConfig.internalValue;
   }
 
   // source_ip_config - computed: false, optional: true, required: false
-  private _sourceIpConfig?: SagemakerWorkforceSourceIpConfig | undefined; 
-  private __sourceIpConfigOutput = new SagemakerWorkforceSourceIpConfigOutputReference(this as any, "source_ip_config", true);
+  private _sourceIpConfig = new SagemakerWorkforceSourceIpConfigOutputReference(this as any, "source_ip_config", true);
   public get sourceIpConfig() {
-    return this.__sourceIpConfigOutput;
+    return this._sourceIpConfig;
   }
-  public putSourceIpConfig(value: SagemakerWorkforceSourceIpConfig | undefined) {
-    this._sourceIpConfig = value;
+  public putSourceIpConfig(value: SagemakerWorkforceSourceIpConfig) {
+    this._sourceIpConfig.internalValue = value;
   }
   public resetSourceIpConfig() {
-    this._sourceIpConfig = undefined;
+    this._sourceIpConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get sourceIpConfigInput() {
-    return this._sourceIpConfig
+    return this._sourceIpConfig.internalValue;
   }
 
   // =========
@@ -423,9 +525,9 @@ export class SagemakerWorkforce extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       workforce_name: cdktf.stringToTerraform(this._workforceName),
-      cognito_config: sagemakerWorkforceCognitoConfigToTerraform(this._cognitoConfig),
-      oidc_config: sagemakerWorkforceOidcConfigToTerraform(this._oidcConfig),
-      source_ip_config: sagemakerWorkforceSourceIpConfigToTerraform(this._sourceIpConfig),
+      cognito_config: sagemakerWorkforceCognitoConfigToTerraform(this._cognitoConfig.internalValue),
+      oidc_config: sagemakerWorkforceOidcConfigToTerraform(this._oidcConfig.internalValue),
+      source_ip_config: sagemakerWorkforceSourceIpConfigToTerraform(this._sourceIpConfig.internalValue),
     };
   }
 }

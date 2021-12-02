@@ -136,12 +136,43 @@ export class Macie2ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScope
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Macie2ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTerm | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._comparator) {
+      hasAnyValues = true;
+      internalValueResult.comparator = this._comparator;
+    }
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    if (this._values) {
+      hasAnyValues = true;
+      internalValueResult.values = this._values;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Macie2ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTerm | undefined) {
+    if (value === undefined) {
+      this._comparator = undefined;
+      this._key = undefined;
+      this._values = undefined;
+    }
+    else {
+      this._comparator = value.comparator;
+      this._key = value.key;
+      this._values = value.values;
+    }
+  }
+
   // comparator - computed: true, optional: true, required: false
-  private _comparator?: string | undefined; 
+  private _comparator?: string; 
   public get comparator() {
     return this.getStringAttribute('comparator');
   }
-  public set comparator(value: string | undefined) {
+  public set comparator(value: string) {
     this._comparator = value;
   }
   public resetComparator() {
@@ -149,15 +180,15 @@ export class Macie2ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScope
   }
   // Temporarily expose input value. Use with caution.
   public get comparatorInput() {
-    return this._comparator
+    return this._comparator;
   }
 
   // key - computed: true, optional: true, required: false
-  private _key?: string | undefined; 
+  private _key?: string; 
   public get key() {
     return this.getStringAttribute('key');
   }
-  public set key(value: string | undefined) {
+  public set key(value: string) {
     this._key = value;
   }
   public resetKey() {
@@ -165,15 +196,15 @@ export class Macie2ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScope
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // values - computed: true, optional: true, required: false
-  private _values?: string[] | undefined; 
+  private _values?: string[]; 
   public get values() {
     return this.getListAttribute('values');
   }
-  public set values(value: string[] | undefined) {
+  public set values(value: string[]) {
     this._values = value;
   }
   public resetValues() {
@@ -181,7 +212,7 @@ export class Macie2ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScope
   }
   // Temporarily expose input value. Use with caution.
   public get valuesInput() {
-    return this._values
+    return this._values;
   }
 }
 export interface Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValues {
@@ -250,12 +281,49 @@ export class Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTer
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTerm | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._comparator) {
+      hasAnyValues = true;
+      internalValueResult.comparator = this._comparator;
+    }
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    if (this._target) {
+      hasAnyValues = true;
+      internalValueResult.target = this._target;
+    }
+    if (this._tagValues) {
+      hasAnyValues = true;
+      internalValueResult.tagValues = this._tagValues;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTerm | undefined) {
+    if (value === undefined) {
+      this._comparator = undefined;
+      this._key = undefined;
+      this._target = undefined;
+      this._tagValues = undefined;
+    }
+    else {
+      this._comparator = value.comparator;
+      this._key = value.key;
+      this._target = value.target;
+      this._tagValues = value.tagValues;
+    }
+  }
+
   // comparator - computed: true, optional: true, required: false
-  private _comparator?: string | undefined; 
+  private _comparator?: string; 
   public get comparator() {
     return this.getStringAttribute('comparator');
   }
-  public set comparator(value: string | undefined) {
+  public set comparator(value: string) {
     this._comparator = value;
   }
   public resetComparator() {
@@ -263,15 +331,15 @@ export class Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTer
   }
   // Temporarily expose input value. Use with caution.
   public get comparatorInput() {
-    return this._comparator
+    return this._comparator;
   }
 
   // key - computed: true, optional: true, required: false
-  private _key?: string | undefined; 
+  private _key?: string; 
   public get key() {
     return this.getStringAttribute('key');
   }
-  public set key(value: string | undefined) {
+  public set key(value: string) {
     this._key = value;
   }
   public resetKey() {
@@ -279,15 +347,15 @@ export class Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTer
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // target - computed: true, optional: true, required: false
-  private _target?: string | undefined; 
+  private _target?: string; 
   public get target() {
     return this.getStringAttribute('target');
   }
-  public set target(value: string | undefined) {
+  public set target(value: string) {
     this._target = value;
   }
   public resetTarget() {
@@ -295,16 +363,16 @@ export class Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTer
   }
   // Temporarily expose input value. Use with caution.
   public get targetInput() {
-    return this._target
+    return this._target;
   }
 
   // tag_values - computed: false, optional: true, required: false
-  private _tagValues?: Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValues[] | undefined; 
+  private _tagValues?: Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValues[]; 
   public get tagValues() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tag_values') as any;
   }
-  public set tagValues(value: Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValues[] | undefined) {
+  public set tagValues(value: Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValues[]) {
     this._tagValues = value;
   }
   public resetTagValues() {
@@ -312,7 +380,7 @@ export class Macie2ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTer
   }
   // Temporarily expose input value. Use with caution.
   public get tagValuesInput() {
-    return this._tagValues
+    return this._tagValues;
   }
 }
 export interface Macie2ClassificationJobS3JobDefinitionScopingExcludesAnd {
@@ -370,13 +438,32 @@ export class Macie2ClassificationJobS3JobDefinitionScopingExcludesOutputReferenc
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Macie2ClassificationJobS3JobDefinitionScopingExcludes | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._and) {
+      hasAnyValues = true;
+      internalValueResult.and = this._and;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Macie2ClassificationJobS3JobDefinitionScopingExcludes | undefined) {
+    if (value === undefined) {
+      this._and = undefined;
+    }
+    else {
+      this._and = value.and;
+    }
+  }
+
   // and - computed: false, optional: true, required: false
-  private _and?: Macie2ClassificationJobS3JobDefinitionScopingExcludesAnd[] | undefined; 
+  private _and?: Macie2ClassificationJobS3JobDefinitionScopingExcludesAnd[]; 
   public get and() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('and') as any;
   }
-  public set and(value: Macie2ClassificationJobS3JobDefinitionScopingExcludesAnd[] | undefined) {
+  public set and(value: Macie2ClassificationJobS3JobDefinitionScopingExcludesAnd[]) {
     this._and = value;
   }
   public resetAnd() {
@@ -384,7 +471,7 @@ export class Macie2ClassificationJobS3JobDefinitionScopingExcludesOutputReferenc
   }
   // Temporarily expose input value. Use with caution.
   public get andInput() {
-    return this._and
+    return this._and;
   }
 }
 export interface Macie2ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTerm {
@@ -424,12 +511,43 @@ export class Macie2ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScope
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Macie2ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTerm | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._comparator) {
+      hasAnyValues = true;
+      internalValueResult.comparator = this._comparator;
+    }
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    if (this._values) {
+      hasAnyValues = true;
+      internalValueResult.values = this._values;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Macie2ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTerm | undefined) {
+    if (value === undefined) {
+      this._comparator = undefined;
+      this._key = undefined;
+      this._values = undefined;
+    }
+    else {
+      this._comparator = value.comparator;
+      this._key = value.key;
+      this._values = value.values;
+    }
+  }
+
   // comparator - computed: true, optional: true, required: false
-  private _comparator?: string | undefined; 
+  private _comparator?: string; 
   public get comparator() {
     return this.getStringAttribute('comparator');
   }
-  public set comparator(value: string | undefined) {
+  public set comparator(value: string) {
     this._comparator = value;
   }
   public resetComparator() {
@@ -437,15 +555,15 @@ export class Macie2ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScope
   }
   // Temporarily expose input value. Use with caution.
   public get comparatorInput() {
-    return this._comparator
+    return this._comparator;
   }
 
   // key - computed: true, optional: true, required: false
-  private _key?: string | undefined; 
+  private _key?: string; 
   public get key() {
     return this.getStringAttribute('key');
   }
-  public set key(value: string | undefined) {
+  public set key(value: string) {
     this._key = value;
   }
   public resetKey() {
@@ -453,15 +571,15 @@ export class Macie2ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScope
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // values - computed: true, optional: true, required: false
-  private _values?: string[] | undefined; 
+  private _values?: string[]; 
   public get values() {
     return this.getListAttribute('values');
   }
-  public set values(value: string[] | undefined) {
+  public set values(value: string[]) {
     this._values = value;
   }
   public resetValues() {
@@ -469,7 +587,7 @@ export class Macie2ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScope
   }
   // Temporarily expose input value. Use with caution.
   public get valuesInput() {
-    return this._values
+    return this._values;
   }
 }
 export interface Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermTagValues {
@@ -538,12 +656,49 @@ export class Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTer
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTerm | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._comparator) {
+      hasAnyValues = true;
+      internalValueResult.comparator = this._comparator;
+    }
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    if (this._target) {
+      hasAnyValues = true;
+      internalValueResult.target = this._target;
+    }
+    if (this._tagValues) {
+      hasAnyValues = true;
+      internalValueResult.tagValues = this._tagValues;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTerm | undefined) {
+    if (value === undefined) {
+      this._comparator = undefined;
+      this._key = undefined;
+      this._target = undefined;
+      this._tagValues = undefined;
+    }
+    else {
+      this._comparator = value.comparator;
+      this._key = value.key;
+      this._target = value.target;
+      this._tagValues = value.tagValues;
+    }
+  }
+
   // comparator - computed: true, optional: true, required: false
-  private _comparator?: string | undefined; 
+  private _comparator?: string; 
   public get comparator() {
     return this.getStringAttribute('comparator');
   }
-  public set comparator(value: string | undefined) {
+  public set comparator(value: string) {
     this._comparator = value;
   }
   public resetComparator() {
@@ -551,15 +706,15 @@ export class Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTer
   }
   // Temporarily expose input value. Use with caution.
   public get comparatorInput() {
-    return this._comparator
+    return this._comparator;
   }
 
   // key - computed: true, optional: true, required: false
-  private _key?: string | undefined; 
+  private _key?: string; 
   public get key() {
     return this.getStringAttribute('key');
   }
-  public set key(value: string | undefined) {
+  public set key(value: string) {
     this._key = value;
   }
   public resetKey() {
@@ -567,15 +722,15 @@ export class Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTer
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // target - computed: true, optional: true, required: false
-  private _target?: string | undefined; 
+  private _target?: string; 
   public get target() {
     return this.getStringAttribute('target');
   }
-  public set target(value: string | undefined) {
+  public set target(value: string) {
     this._target = value;
   }
   public resetTarget() {
@@ -583,16 +738,16 @@ export class Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTer
   }
   // Temporarily expose input value. Use with caution.
   public get targetInput() {
-    return this._target
+    return this._target;
   }
 
   // tag_values - computed: false, optional: true, required: false
-  private _tagValues?: Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermTagValues[] | undefined; 
+  private _tagValues?: Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermTagValues[]; 
   public get tagValues() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tag_values') as any;
   }
-  public set tagValues(value: Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermTagValues[] | undefined) {
+  public set tagValues(value: Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermTagValues[]) {
     this._tagValues = value;
   }
   public resetTagValues() {
@@ -600,7 +755,7 @@ export class Macie2ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTer
   }
   // Temporarily expose input value. Use with caution.
   public get tagValuesInput() {
-    return this._tagValues
+    return this._tagValues;
   }
 }
 export interface Macie2ClassificationJobS3JobDefinitionScopingIncludesAnd {
@@ -658,13 +813,32 @@ export class Macie2ClassificationJobS3JobDefinitionScopingIncludesOutputReferenc
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Macie2ClassificationJobS3JobDefinitionScopingIncludes | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._and) {
+      hasAnyValues = true;
+      internalValueResult.and = this._and;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Macie2ClassificationJobS3JobDefinitionScopingIncludes | undefined) {
+    if (value === undefined) {
+      this._and = undefined;
+    }
+    else {
+      this._and = value.and;
+    }
+  }
+
   // and - computed: false, optional: true, required: false
-  private _and?: Macie2ClassificationJobS3JobDefinitionScopingIncludesAnd[] | undefined; 
+  private _and?: Macie2ClassificationJobS3JobDefinitionScopingIncludesAnd[]; 
   public get and() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('and') as any;
   }
-  public set and(value: Macie2ClassificationJobS3JobDefinitionScopingIncludesAnd[] | undefined) {
+  public set and(value: Macie2ClassificationJobS3JobDefinitionScopingIncludesAnd[]) {
     this._and = value;
   }
   public resetAnd() {
@@ -672,7 +846,7 @@ export class Macie2ClassificationJobS3JobDefinitionScopingIncludesOutputReferenc
   }
   // Temporarily expose input value. Use with caution.
   public get andInput() {
-    return this._and
+    return this._and;
   }
 }
 export interface Macie2ClassificationJobS3JobDefinitionScoping {
@@ -711,38 +885,61 @@ export class Macie2ClassificationJobS3JobDefinitionScopingOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // excludes - computed: false, optional: true, required: false
-  private _excludes?: Macie2ClassificationJobS3JobDefinitionScopingExcludes | undefined; 
-  private __excludesOutput = new Macie2ClassificationJobS3JobDefinitionScopingExcludesOutputReference(this as any, "excludes", true);
-  public get excludes() {
-    return this.__excludesOutput;
+  public get internalValue(): Macie2ClassificationJobS3JobDefinitionScoping | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._excludes) {
+      hasAnyValues = true;
+      internalValueResult.excludes = this._excludes?.internalValue;
+    }
+    if (this._includes) {
+      hasAnyValues = true;
+      internalValueResult.includes = this._includes?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putExcludes(value: Macie2ClassificationJobS3JobDefinitionScopingExcludes | undefined) {
-    this._excludes = value;
+
+  public set internalValue(value: Macie2ClassificationJobS3JobDefinitionScoping | undefined) {
+    if (value === undefined) {
+      this._excludes.internalValue = undefined;
+      this._includes.internalValue = undefined;
+    }
+    else {
+      this._excludes.internalValue = value.excludes;
+      this._includes.internalValue = value.includes;
+    }
+  }
+
+  // excludes - computed: false, optional: true, required: false
+  private _excludes = new Macie2ClassificationJobS3JobDefinitionScopingExcludesOutputReference(this as any, "excludes", true);
+  public get excludes() {
+    return this._excludes;
+  }
+  public putExcludes(value: Macie2ClassificationJobS3JobDefinitionScopingExcludes) {
+    this._excludes.internalValue = value;
   }
   public resetExcludes() {
-    this._excludes = undefined;
+    this._excludes.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get excludesInput() {
-    return this._excludes
+    return this._excludes.internalValue;
   }
 
   // includes - computed: false, optional: true, required: false
-  private _includes?: Macie2ClassificationJobS3JobDefinitionScopingIncludes | undefined; 
-  private __includesOutput = new Macie2ClassificationJobS3JobDefinitionScopingIncludesOutputReference(this as any, "includes", true);
+  private _includes = new Macie2ClassificationJobS3JobDefinitionScopingIncludesOutputReference(this as any, "includes", true);
   public get includes() {
-    return this.__includesOutput;
+    return this._includes;
   }
-  public putIncludes(value: Macie2ClassificationJobS3JobDefinitionScopingIncludes | undefined) {
-    this._includes = value;
+  public putIncludes(value: Macie2ClassificationJobS3JobDefinitionScopingIncludes) {
+    this._includes.internalValue = value;
   }
   public resetIncludes() {
-    this._includes = undefined;
+    this._includes.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get includesInput() {
-    return this._includes
+    return this._includes.internalValue;
   }
 }
 export interface Macie2ClassificationJobS3JobDefinition {
@@ -781,13 +978,38 @@ export class Macie2ClassificationJobS3JobDefinitionOutputReference extends cdktf
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Macie2ClassificationJobS3JobDefinition | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucketDefinitions) {
+      hasAnyValues = true;
+      internalValueResult.bucketDefinitions = this._bucketDefinitions;
+    }
+    if (this._scoping) {
+      hasAnyValues = true;
+      internalValueResult.scoping = this._scoping?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Macie2ClassificationJobS3JobDefinition | undefined) {
+    if (value === undefined) {
+      this._bucketDefinitions = undefined;
+      this._scoping.internalValue = undefined;
+    }
+    else {
+      this._bucketDefinitions = value.bucketDefinitions;
+      this._scoping.internalValue = value.scoping;
+    }
+  }
+
   // bucket_definitions - computed: false, optional: true, required: false
-  private _bucketDefinitions?: Macie2ClassificationJobS3JobDefinitionBucketDefinitions[] | undefined; 
+  private _bucketDefinitions?: Macie2ClassificationJobS3JobDefinitionBucketDefinitions[]; 
   public get bucketDefinitions() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('bucket_definitions') as any;
   }
-  public set bucketDefinitions(value: Macie2ClassificationJobS3JobDefinitionBucketDefinitions[] | undefined) {
+  public set bucketDefinitions(value: Macie2ClassificationJobS3JobDefinitionBucketDefinitions[]) {
     this._bucketDefinitions = value;
   }
   public resetBucketDefinitions() {
@@ -795,24 +1017,23 @@ export class Macie2ClassificationJobS3JobDefinitionOutputReference extends cdktf
   }
   // Temporarily expose input value. Use with caution.
   public get bucketDefinitionsInput() {
-    return this._bucketDefinitions
+    return this._bucketDefinitions;
   }
 
   // scoping - computed: false, optional: true, required: false
-  private _scoping?: Macie2ClassificationJobS3JobDefinitionScoping | undefined; 
-  private __scopingOutput = new Macie2ClassificationJobS3JobDefinitionScopingOutputReference(this as any, "scoping", true);
+  private _scoping = new Macie2ClassificationJobS3JobDefinitionScopingOutputReference(this as any, "scoping", true);
   public get scoping() {
-    return this.__scopingOutput;
+    return this._scoping;
   }
-  public putScoping(value: Macie2ClassificationJobS3JobDefinitionScoping | undefined) {
-    this._scoping = value;
+  public putScoping(value: Macie2ClassificationJobS3JobDefinitionScoping) {
+    this._scoping.internalValue = value;
   }
   public resetScoping() {
-    this._scoping = undefined;
+    this._scoping.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get scopingInput() {
-    return this._scoping
+    return this._scoping.internalValue;
   }
 }
 export interface Macie2ClassificationJobScheduleFrequency {
@@ -852,12 +1073,43 @@ export class Macie2ClassificationJobScheduleFrequencyOutputReference extends cdk
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Macie2ClassificationJobScheduleFrequency | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._dailySchedule) {
+      hasAnyValues = true;
+      internalValueResult.dailySchedule = this._dailySchedule;
+    }
+    if (this._monthlySchedule) {
+      hasAnyValues = true;
+      internalValueResult.monthlySchedule = this._monthlySchedule;
+    }
+    if (this._weeklySchedule) {
+      hasAnyValues = true;
+      internalValueResult.weeklySchedule = this._weeklySchedule;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Macie2ClassificationJobScheduleFrequency | undefined) {
+    if (value === undefined) {
+      this._dailySchedule = undefined;
+      this._monthlySchedule = undefined;
+      this._weeklySchedule = undefined;
+    }
+    else {
+      this._dailySchedule = value.dailySchedule;
+      this._monthlySchedule = value.monthlySchedule;
+      this._weeklySchedule = value.weeklySchedule;
+    }
+  }
+
   // daily_schedule - computed: false, optional: true, required: false
-  private _dailySchedule?: boolean | cdktf.IResolvable | undefined; 
+  private _dailySchedule?: boolean | cdktf.IResolvable; 
   public get dailySchedule() {
     return this.getBooleanAttribute('daily_schedule') as any;
   }
-  public set dailySchedule(value: boolean | cdktf.IResolvable | undefined) {
+  public set dailySchedule(value: boolean | cdktf.IResolvable) {
     this._dailySchedule = value;
   }
   public resetDailySchedule() {
@@ -865,15 +1117,15 @@ export class Macie2ClassificationJobScheduleFrequencyOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get dailyScheduleInput() {
-    return this._dailySchedule
+    return this._dailySchedule;
   }
 
   // monthly_schedule - computed: true, optional: true, required: false
-  private _monthlySchedule?: number | undefined; 
+  private _monthlySchedule?: number; 
   public get monthlySchedule() {
     return this.getNumberAttribute('monthly_schedule');
   }
-  public set monthlySchedule(value: number | undefined) {
+  public set monthlySchedule(value: number) {
     this._monthlySchedule = value;
   }
   public resetMonthlySchedule() {
@@ -881,15 +1133,15 @@ export class Macie2ClassificationJobScheduleFrequencyOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get monthlyScheduleInput() {
-    return this._monthlySchedule
+    return this._monthlySchedule;
   }
 
   // weekly_schedule - computed: true, optional: true, required: false
-  private _weeklySchedule?: string | undefined; 
+  private _weeklySchedule?: string; 
   public get weeklySchedule() {
     return this.getStringAttribute('weekly_schedule');
   }
-  public set weeklySchedule(value: string | undefined) {
+  public set weeklySchedule(value: string) {
     this._weeklySchedule = value;
   }
   public resetWeeklySchedule() {
@@ -897,7 +1149,7 @@ export class Macie2ClassificationJobScheduleFrequencyOutputReference extends cdk
   }
   // Temporarily expose input value. Use with caution.
   public get weeklyScheduleInput() {
-    return this._weeklySchedule
+    return this._weeklySchedule;
   }
 }
 
@@ -943,8 +1195,8 @@ export class Macie2ClassificationJob extends cdktf.TerraformResource {
     this._samplingPercentage = config.samplingPercentage;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._s3JobDefinition = config.s3JobDefinition;
-    this._scheduleFrequency = config.scheduleFrequency;
+    this._s3JobDefinition.internalValue = config.s3JobDefinition;
+    this._scheduleFrequency.internalValue = config.scheduleFrequency;
   }
 
   // ==========
@@ -957,11 +1209,11 @@ export class Macie2ClassificationJob extends cdktf.TerraformResource {
   }
 
   // custom_data_identifier_ids - computed: true, optional: true, required: false
-  private _customDataIdentifierIds?: string[] | undefined; 
+  private _customDataIdentifierIds?: string[]; 
   public get customDataIdentifierIds() {
     return this.getListAttribute('custom_data_identifier_ids');
   }
-  public set customDataIdentifierIds(value: string[] | undefined) {
+  public set customDataIdentifierIds(value: string[]) {
     this._customDataIdentifierIds = value;
   }
   public resetCustomDataIdentifierIds() {
@@ -969,15 +1221,15 @@ export class Macie2ClassificationJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get customDataIdentifierIdsInput() {
-    return this._customDataIdentifierIds
+    return this._customDataIdentifierIds;
   }
 
   // description - computed: true, optional: true, required: false
-  private _description?: string | undefined; 
+  private _description?: string; 
   public get description() {
     return this.getStringAttribute('description');
   }
-  public set description(value: string | undefined) {
+  public set description(value: string) {
     this._description = value;
   }
   public resetDescription() {
@@ -985,7 +1237,7 @@ export class Macie2ClassificationJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get descriptionInput() {
-    return this._description
+    return this._description;
   }
 
   // id - computed: true, optional: true, required: false
@@ -994,11 +1246,11 @@ export class Macie2ClassificationJob extends cdktf.TerraformResource {
   }
 
   // initial_run - computed: false, optional: true, required: false
-  private _initialRun?: boolean | cdktf.IResolvable | undefined; 
+  private _initialRun?: boolean | cdktf.IResolvable; 
   public get initialRun() {
     return this.getBooleanAttribute('initial_run') as any;
   }
-  public set initialRun(value: boolean | cdktf.IResolvable | undefined) {
+  public set initialRun(value: boolean | cdktf.IResolvable) {
     this._initialRun = value;
   }
   public resetInitialRun() {
@@ -1006,7 +1258,7 @@ export class Macie2ClassificationJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get initialRunInput() {
-    return this._initialRun
+    return this._initialRun;
   }
 
   // job_arn - computed: true, optional: false, required: false
@@ -1020,11 +1272,11 @@ export class Macie2ClassificationJob extends cdktf.TerraformResource {
   }
 
   // job_status - computed: true, optional: true, required: false
-  private _jobStatus?: string | undefined; 
+  private _jobStatus?: string; 
   public get jobStatus() {
     return this.getStringAttribute('job_status');
   }
-  public set jobStatus(value: string | undefined) {
+  public set jobStatus(value: string) {
     this._jobStatus = value;
   }
   public resetJobStatus() {
@@ -1032,7 +1284,7 @@ export class Macie2ClassificationJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get jobStatusInput() {
-    return this._jobStatus
+    return this._jobStatus;
   }
 
   // job_type - computed: false, optional: false, required: true
@@ -1045,15 +1297,15 @@ export class Macie2ClassificationJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get jobTypeInput() {
-    return this._jobType
+    return this._jobType;
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -1061,15 +1313,15 @@ export class Macie2ClassificationJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // name_prefix - computed: true, optional: true, required: false
-  private _namePrefix?: string | undefined; 
+  private _namePrefix?: string; 
   public get namePrefix() {
     return this.getStringAttribute('name_prefix');
   }
-  public set namePrefix(value: string | undefined) {
+  public set namePrefix(value: string) {
     this._namePrefix = value;
   }
   public resetNamePrefix() {
@@ -1077,15 +1329,15 @@ export class Macie2ClassificationJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get namePrefixInput() {
-    return this._namePrefix
+    return this._namePrefix;
   }
 
   // sampling_percentage - computed: true, optional: true, required: false
-  private _samplingPercentage?: number | undefined; 
+  private _samplingPercentage?: number; 
   public get samplingPercentage() {
     return this.getNumberAttribute('sampling_percentage');
   }
-  public set samplingPercentage(value: number | undefined) {
+  public set samplingPercentage(value: number) {
     this._samplingPercentage = value;
   }
   public resetSamplingPercentage() {
@@ -1093,16 +1345,16 @@ export class Macie2ClassificationJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get samplingPercentageInput() {
-    return this._samplingPercentage
+    return this._samplingPercentage;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -1110,16 +1362,16 @@ export class Macie2ClassificationJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -1127,7 +1379,7 @@ export class Macie2ClassificationJob extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // user_paused_details - computed: true, optional: false, required: false
@@ -1136,34 +1388,32 @@ export class Macie2ClassificationJob extends cdktf.TerraformResource {
   }
 
   // s3_job_definition - computed: false, optional: false, required: true
-  private _s3JobDefinition?: Macie2ClassificationJobS3JobDefinition; 
-  private __s3JobDefinitionOutput = new Macie2ClassificationJobS3JobDefinitionOutputReference(this as any, "s3_job_definition", true);
+  private _s3JobDefinition = new Macie2ClassificationJobS3JobDefinitionOutputReference(this as any, "s3_job_definition", true);
   public get s3JobDefinition() {
-    return this.__s3JobDefinitionOutput;
+    return this._s3JobDefinition;
   }
   public putS3JobDefinition(value: Macie2ClassificationJobS3JobDefinition) {
-    this._s3JobDefinition = value;
+    this._s3JobDefinition.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get s3JobDefinitionInput() {
-    return this._s3JobDefinition
+    return this._s3JobDefinition.internalValue;
   }
 
   // schedule_frequency - computed: false, optional: true, required: false
-  private _scheduleFrequency?: Macie2ClassificationJobScheduleFrequency | undefined; 
-  private __scheduleFrequencyOutput = new Macie2ClassificationJobScheduleFrequencyOutputReference(this as any, "schedule_frequency", true);
+  private _scheduleFrequency = new Macie2ClassificationJobScheduleFrequencyOutputReference(this as any, "schedule_frequency", true);
   public get scheduleFrequency() {
-    return this.__scheduleFrequencyOutput;
+    return this._scheduleFrequency;
   }
-  public putScheduleFrequency(value: Macie2ClassificationJobScheduleFrequency | undefined) {
-    this._scheduleFrequency = value;
+  public putScheduleFrequency(value: Macie2ClassificationJobScheduleFrequency) {
+    this._scheduleFrequency.internalValue = value;
   }
   public resetScheduleFrequency() {
-    this._scheduleFrequency = undefined;
+    this._scheduleFrequency.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get scheduleFrequencyInput() {
-    return this._scheduleFrequency
+    return this._scheduleFrequency.internalValue;
   }
 
   // =========
@@ -1182,8 +1432,8 @@ export class Macie2ClassificationJob extends cdktf.TerraformResource {
       sampling_percentage: cdktf.numberToTerraform(this._samplingPercentage),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      s3_job_definition: macie2ClassificationJobS3JobDefinitionToTerraform(this._s3JobDefinition),
-      schedule_frequency: macie2ClassificationJobScheduleFrequencyToTerraform(this._scheduleFrequency),
+      s3_job_definition: macie2ClassificationJobS3JobDefinitionToTerraform(this._s3JobDefinition.internalValue),
+      schedule_frequency: macie2ClassificationJobScheduleFrequencyToTerraform(this._scheduleFrequency.internalValue),
     };
   }
 }

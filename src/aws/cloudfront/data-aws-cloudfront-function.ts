@@ -97,7 +97,7 @@ export class DataAwsCloudfrontFunction extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // runtime - computed: true, optional: false, required: false
@@ -115,7 +115,7 @@ export class DataAwsCloudfrontFunction extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get stageInput() {
-    return this._stage
+    return this._stage;
   }
 
   // status - computed: true, optional: false, required: false

@@ -78,11 +78,11 @@ export class DataAwsIamPolicy extends cdktf.TerraformDataSource {
   }
 
   // name - computed: true, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -90,7 +90,7 @@ export class DataAwsIamPolicy extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // path - computed: true, optional: false, required: false
@@ -99,11 +99,11 @@ export class DataAwsIamPolicy extends cdktf.TerraformDataSource {
   }
 
   // path_prefix - computed: false, optional: true, required: false
-  private _pathPrefix?: string | undefined; 
+  private _pathPrefix?: string; 
   public get pathPrefix() {
     return this.getStringAttribute('path_prefix');
   }
-  public set pathPrefix(value: string | undefined) {
+  public set pathPrefix(value: string) {
     this._pathPrefix = value;
   }
   public resetPathPrefix() {
@@ -111,7 +111,7 @@ export class DataAwsIamPolicy extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get pathPrefixInput() {
-    return this._pathPrefix
+    return this._pathPrefix;
   }
 
   // policy - computed: true, optional: false, required: false
@@ -125,12 +125,12 @@ export class DataAwsIamPolicy extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -138,7 +138,7 @@ export class DataAwsIamPolicy extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // =========

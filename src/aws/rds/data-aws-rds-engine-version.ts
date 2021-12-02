@@ -82,7 +82,7 @@ export class DataAwsRdsEngineVersion extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get engineInput() {
-    return this._engine
+    return this._engine;
   }
 
   // engine_description - computed: true, optional: false, required: false
@@ -101,11 +101,11 @@ export class DataAwsRdsEngineVersion extends cdktf.TerraformDataSource {
   }
 
   // parameter_group_family - computed: true, optional: true, required: false
-  private _parameterGroupFamily?: string | undefined; 
+  private _parameterGroupFamily?: string; 
   public get parameterGroupFamily() {
     return this.getStringAttribute('parameter_group_family');
   }
-  public set parameterGroupFamily(value: string | undefined) {
+  public set parameterGroupFamily(value: string) {
     this._parameterGroupFamily = value;
   }
   public resetParameterGroupFamily() {
@@ -113,15 +113,15 @@ export class DataAwsRdsEngineVersion extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get parameterGroupFamilyInput() {
-    return this._parameterGroupFamily
+    return this._parameterGroupFamily;
   }
 
   // preferred_versions - computed: false, optional: true, required: false
-  private _preferredVersions?: string[] | undefined; 
+  private _preferredVersions?: string[]; 
   public get preferredVersions() {
     return this.getListAttribute('preferred_versions');
   }
-  public set preferredVersions(value: string[] | undefined) {
+  public set preferredVersions(value: string[]) {
     this._preferredVersions = value;
   }
   public resetPreferredVersions() {
@@ -129,7 +129,7 @@ export class DataAwsRdsEngineVersion extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get preferredVersionsInput() {
-    return this._preferredVersions
+    return this._preferredVersions;
   }
 
   // status - computed: true, optional: false, required: false
@@ -183,11 +183,11 @@ export class DataAwsRdsEngineVersion extends cdktf.TerraformDataSource {
   }
 
   // version - computed: true, optional: true, required: false
-  private _version?: string | undefined; 
+  private _version?: string; 
   public get version() {
     return this.getStringAttribute('version');
   }
-  public set version(value: string | undefined) {
+  public set version(value: string) {
     this._version = value;
   }
   public resetVersion() {
@@ -195,7 +195,7 @@ export class DataAwsRdsEngineVersion extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get versionInput() {
-    return this._version
+    return this._version;
   }
 
   // version_description - computed: true, optional: false, required: false

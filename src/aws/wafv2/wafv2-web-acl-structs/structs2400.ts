@@ -45,6 +45,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementGeoMatchStatementForwardedIpConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fallbackBehavior) {
+      hasAnyValues = true;
+      internalValueResult.fallbackBehavior = this._fallbackBehavior;
+    }
+    if (this._headerName) {
+      hasAnyValues = true;
+      internalValueResult.headerName = this._headerName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementGeoMatchStatementForwardedIpConfig | undefined) {
+    if (value === undefined) {
+      this._fallbackBehavior = undefined;
+      this._headerName = undefined;
+    }
+    else {
+      this._fallbackBehavior = value.fallbackBehavior;
+      this._headerName = value.headerName;
+    }
+  }
+
   // fallback_behavior - computed: false, optional: false, required: true
   private _fallbackBehavior?: string; 
   public get fallbackBehavior() {
@@ -55,7 +80,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get fallbackBehaviorInput() {
-    return this._fallbackBehavior
+    return this._fallbackBehavior;
   }
 
   // header_name - computed: false, optional: false, required: true
@@ -68,7 +93,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get headerNameInput() {
-    return this._headerName
+    return this._headerName;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementGeoMatchStatement {
@@ -105,6 +130,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementGeoMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._countryCodes) {
+      hasAnyValues = true;
+      internalValueResult.countryCodes = this._countryCodes;
+    }
+    if (this._forwardedIpConfig) {
+      hasAnyValues = true;
+      internalValueResult.forwardedIpConfig = this._forwardedIpConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementGeoMatchStatement | undefined) {
+    if (value === undefined) {
+      this._countryCodes = undefined;
+      this._forwardedIpConfig.internalValue = undefined;
+    }
+    else {
+      this._countryCodes = value.countryCodes;
+      this._forwardedIpConfig.internalValue = value.forwardedIpConfig;
+    }
+  }
+
   // country_codes - computed: false, optional: false, required: true
   private _countryCodes?: string[]; 
   public get countryCodes() {
@@ -115,24 +165,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get countryCodesInput() {
-    return this._countryCodes
+    return this._countryCodes;
   }
 
   // forwarded_ip_config - computed: false, optional: true, required: false
-  private _forwardedIpConfig?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementGeoMatchStatementForwardedIpConfig | undefined; 
-  private __forwardedIpConfigOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementGeoMatchStatementForwardedIpConfigOutputReference(this as any, "forwarded_ip_config", true);
+  private _forwardedIpConfig = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementGeoMatchStatementForwardedIpConfigOutputReference(this as any, "forwarded_ip_config", true);
   public get forwardedIpConfig() {
-    return this.__forwardedIpConfigOutput;
+    return this._forwardedIpConfig;
   }
-  public putForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementGeoMatchStatementForwardedIpConfig | undefined) {
-    this._forwardedIpConfig = value;
+  public putForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementGeoMatchStatementForwardedIpConfig) {
+    this._forwardedIpConfig.internalValue = value;
   }
   public resetForwardedIpConfig() {
-    this._forwardedIpConfig = undefined;
+    this._forwardedIpConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get forwardedIpConfigInput() {
-    return this._forwardedIpConfig
+    return this._forwardedIpConfig.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig {
@@ -172,6 +221,37 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fallbackBehavior) {
+      hasAnyValues = true;
+      internalValueResult.fallbackBehavior = this._fallbackBehavior;
+    }
+    if (this._headerName) {
+      hasAnyValues = true;
+      internalValueResult.headerName = this._headerName;
+    }
+    if (this._position) {
+      hasAnyValues = true;
+      internalValueResult.position = this._position;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined) {
+    if (value === undefined) {
+      this._fallbackBehavior = undefined;
+      this._headerName = undefined;
+      this._position = undefined;
+    }
+    else {
+      this._fallbackBehavior = value.fallbackBehavior;
+      this._headerName = value.headerName;
+      this._position = value.position;
+    }
+  }
+
   // fallback_behavior - computed: false, optional: false, required: true
   private _fallbackBehavior?: string; 
   public get fallbackBehavior() {
@@ -182,7 +262,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get fallbackBehaviorInput() {
-    return this._fallbackBehavior
+    return this._fallbackBehavior;
   }
 
   // header_name - computed: false, optional: false, required: true
@@ -195,7 +275,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get headerNameInput() {
-    return this._headerName
+    return this._headerName;
   }
 
   // position - computed: false, optional: false, required: true
@@ -208,7 +288,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get positionInput() {
-    return this._position
+    return this._position;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementIpSetReferenceStatement {
@@ -245,6 +325,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementIpSetReferenceStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    if (this._ipSetForwardedIpConfig) {
+      hasAnyValues = true;
+      internalValueResult.ipSetForwardedIpConfig = this._ipSetForwardedIpConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementIpSetReferenceStatement | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+      this._ipSetForwardedIpConfig.internalValue = undefined;
+    }
+    else {
+      this._arn = value.arn;
+      this._ipSetForwardedIpConfig.internalValue = value.ipSetForwardedIpConfig;
+    }
+  }
+
   // arn - computed: false, optional: false, required: true
   private _arn?: string; 
   public get arn() {
@@ -255,24 +360,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // ip_set_forwarded_ip_config - computed: false, optional: true, required: false
-  private _ipSetForwardedIpConfig?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined; 
-  private __ipSetForwardedIpConfigOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfigOutputReference(this as any, "ip_set_forwarded_ip_config", true);
+  private _ipSetForwardedIpConfig = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfigOutputReference(this as any, "ip_set_forwarded_ip_config", true);
   public get ipSetForwardedIpConfig() {
-    return this.__ipSetForwardedIpConfigOutput;
+    return this._ipSetForwardedIpConfig;
   }
-  public putIpSetForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined) {
-    this._ipSetForwardedIpConfig = value;
+  public putIpSetForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig) {
+    this._ipSetForwardedIpConfig.internalValue = value;
   }
   public resetIpSetForwardedIpConfig() {
-    this._ipSetForwardedIpConfig = undefined;
+    this._ipSetForwardedIpConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ipSetForwardedIpConfigInput() {
-    return this._ipSetForwardedIpConfig
+    return this._ipSetForwardedIpConfig.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementLabelMatchStatement {
@@ -307,6 +411,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementLabelMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    if (this._scope) {
+      hasAnyValues = true;
+      internalValueResult.scope = this._scope;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementLabelMatchStatement | undefined) {
+    if (value === undefined) {
+      this._key = undefined;
+      this._scope = undefined;
+    }
+    else {
+      this._key = value.key;
+      this._scope = value.scope;
+    }
+  }
+
   // key - computed: false, optional: false, required: true
   private _key?: string; 
   public get key() {
@@ -317,7 +446,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // scope - computed: false, optional: false, required: true
@@ -330,7 +459,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get scopeInput() {
-    return this._scope
+    return this._scope;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments {
@@ -354,6 +483,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody {
 }
@@ -375,6 +517,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod {
@@ -398,6 +553,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString {
 }
@@ -419,6 +587,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader {
@@ -448,6 +629,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -458,7 +658,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument {
@@ -488,6 +688,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -498,7 +717,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath {
@@ -521,6 +740,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch {
@@ -594,123 +826,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementTextTransformation {
@@ -776,6 +1056,37 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatement | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._arn = value.arn;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // arn - computed: false, optional: false, required: true
   private _arn?: string; 
   public get arn() {
@@ -786,24 +1097,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -817,7 +1127,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments {
@@ -841,6 +1151,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody {
 }
@@ -862,6 +1185,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod {
@@ -885,6 +1221,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString {
 }
@@ -906,6 +1255,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader {
@@ -935,6 +1297,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -945,7 +1326,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument {
@@ -975,6 +1356,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -985,7 +1385,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath {
@@ -1008,6 +1408,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatch {
@@ -1081,123 +1494,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementTextTransformation {
@@ -1268,6 +1729,43 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._comparisonOperator) {
+      hasAnyValues = true;
+      internalValueResult.comparisonOperator = this._comparisonOperator;
+    }
+    if (this._size) {
+      hasAnyValues = true;
+      internalValueResult.size = this._size;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatement | undefined) {
+    if (value === undefined) {
+      this._comparisonOperator = undefined;
+      this._size = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._comparisonOperator = value.comparisonOperator;
+      this._size = value.size;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // comparison_operator - computed: false, optional: false, required: true
   private _comparisonOperator?: string; 
   public get comparisonOperator() {
@@ -1278,7 +1776,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get comparisonOperatorInput() {
-    return this._comparisonOperator
+    return this._comparisonOperator;
   }
 
   // size - computed: false, optional: false, required: true
@@ -1291,24 +1789,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get sizeInput() {
-    return this._size
+    return this._size;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -1322,7 +1819,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments {
@@ -1346,6 +1843,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBody {
 }
@@ -1367,6 +1877,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod {
@@ -1390,6 +1913,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString {
 }
@@ -1411,6 +1947,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader {
@@ -1440,6 +1989,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -1450,7 +2018,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument {
@@ -1480,6 +2048,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -1490,7 +2077,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath {
@@ -1513,6 +2100,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatch {
@@ -1586,123 +2186,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementTextTransformation {
@@ -1763,21 +2411,45 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
-  public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatement | undefined) {
+    if (value === undefined) {
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
+  // field_to_match - computed: false, optional: true, required: false
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  public get fieldToMatch() {
+    return this._fieldToMatch;
+  }
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementSqliMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -1791,7 +2463,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments {
@@ -1815,6 +2487,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBody {
 }
@@ -1836,6 +2521,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethod {
@@ -1859,6 +2557,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString {
 }
@@ -1880,6 +2591,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader {
@@ -1909,6 +2633,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -1919,7 +2662,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument {
@@ -1949,6 +2692,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -1959,7 +2721,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath {
@@ -1982,6 +2744,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatch {
@@ -2055,123 +2830,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementTextTransformation {
@@ -2232,21 +3055,45 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
-  public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatement | undefined) {
+    if (value === undefined) {
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
+  // field_to_match - computed: false, optional: true, required: false
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  public get fieldToMatch() {
+    return this._fieldToMatch;
+  }
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatementXssMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -2260,7 +3107,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatement {
@@ -2360,6 +3207,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._statement) {
+      hasAnyValues = true;
+      internalValueResult.statement = this._statement;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatement | undefined) {
+    if (value === undefined) {
+      this._statement = undefined;
+    }
+    else {
+      this._statement = value.statement;
+    }
+  }
+
   // statement - computed: false, optional: false, required: true
   private _statement?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOrStatementStatement[]; 
   public get statement() {
@@ -2371,7 +3237,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get statementInput() {
-    return this._statement
+    return this._statement;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments {
@@ -2395,6 +3261,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRe
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody {
 }
@@ -2416,6 +3295,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRe
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod {
@@ -2439,6 +3331,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRe
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString {
 }
@@ -2460,6 +3365,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRe
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader {
@@ -2489,6 +3407,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -2499,7 +3436,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRe
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument {
@@ -2529,6 +3466,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -2539,7 +3495,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRe
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath {
@@ -2562,6 +3518,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRe
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch {
@@ -2635,123 +3604,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementTextTransformation {
@@ -2817,6 +3834,37 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatement | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._arn = value.arn;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // arn - computed: false, optional: false, required: true
   private _arn?: string; 
   public get arn() {
@@ -2827,24 +3875,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRe
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -2858,7 +3905,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementRe
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments {
@@ -2882,6 +3929,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSi
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody {
 }
@@ -2903,6 +3963,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSi
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod {
@@ -2926,6 +3999,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSi
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString {
 }
@@ -2947,6 +4033,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSi
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader {
@@ -2976,6 +4075,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSi
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -2986,7 +4104,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSi
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument {
@@ -3016,6 +4134,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSi
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -3026,7 +4163,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSi
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath {
@@ -3049,6 +4186,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSi
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch {
@@ -3122,123 +4272,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSi
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementTextTransformation {
@@ -3309,6 +4507,43 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSi
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._comparisonOperator) {
+      hasAnyValues = true;
+      internalValueResult.comparisonOperator = this._comparisonOperator;
+    }
+    if (this._size) {
+      hasAnyValues = true;
+      internalValueResult.size = this._size;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatement | undefined) {
+    if (value === undefined) {
+      this._comparisonOperator = undefined;
+      this._size = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._comparisonOperator = value.comparisonOperator;
+      this._size = value.size;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // comparison_operator - computed: false, optional: false, required: true
   private _comparisonOperator?: string; 
   public get comparisonOperator() {
@@ -3319,7 +4554,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSi
   }
   // Temporarily expose input value. Use with caution.
   public get comparisonOperatorInput() {
-    return this._comparisonOperator
+    return this._comparisonOperator;
   }
 
   // size - computed: false, optional: false, required: true
@@ -3332,24 +4567,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSi
   }
   // Temporarily expose input value. Use with caution.
   public get sizeInput() {
-    return this._size
+    return this._size;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -3363,7 +4597,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSi
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments {
@@ -3387,6 +4621,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSq
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody {
 }
@@ -3408,6 +4655,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSq
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod {
@@ -3431,6 +4691,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSq
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString {
 }
@@ -3452,6 +4725,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSq
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader {
@@ -3481,6 +4767,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSq
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -3491,7 +4796,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSq
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument {
@@ -3521,6 +4826,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSq
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -3531,7 +4855,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSq
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath {
@@ -3554,6 +4878,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSq
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch {
@@ -3627,123 +4964,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSq
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementTextTransformation {
@@ -3804,21 +5189,45 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSq
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
-  public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatement | undefined) {
+    if (value === undefined) {
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
+  // field_to_match - computed: false, optional: true, required: false
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  public get fieldToMatch() {
+    return this._fieldToMatch;
+  }
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -3832,7 +5241,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementSq
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments {
@@ -3856,6 +5265,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXs
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody {
 }
@@ -3877,6 +5299,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXs
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod {
@@ -3900,6 +5335,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXs
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString {
 }
@@ -3921,6 +5369,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXs
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader {
@@ -3950,6 +5411,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXs
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -3960,7 +5440,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXs
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument {
@@ -3990,6 +5470,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXs
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -4000,7 +5499,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXs
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath {
@@ -4023,6 +5522,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXs
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatch {
@@ -4096,123 +5608,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXs
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementTextTransformation {
@@ -4273,21 +5833,45 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXs
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
-  public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatement | undefined) {
+    if (value === undefined) {
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
+  // field_to_match - computed: false, optional: true, required: false
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  public get fieldToMatch() {
+    return this._fieldToMatch;
+  }
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -4301,7 +5885,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatementXs
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatement {
@@ -4422,6 +6006,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementOutputRefer
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementAndStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._statement) {
+      hasAnyValues = true;
+      internalValueResult.statement = this._statement;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementAndStatement | undefined) {
+    if (value === undefined) {
+      this._statement = undefined;
+    }
+    else {
+      this._statement = value.statement;
+    }
+  }
+
   // statement - computed: false, optional: false, required: true
   private _statement?: Wafv2WebAclRuleStatementOrStatementStatementAndStatementStatement[]; 
   public get statement() {
@@ -4433,7 +6036,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementAndStatementOutputRefer
   }
   // Temporarily expose input value. Use with caution.
   public get statementInput() {
-    return this._statement
+    return this._statement;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments {
@@ -4457,6 +6060,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementField
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchBody {
 }
@@ -4478,6 +6094,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementField
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchMethod {
@@ -4501,6 +6130,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementField
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString {
 }
@@ -4522,6 +6164,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementField
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader {
@@ -4551,6 +6206,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementField
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -4561,7 +6235,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementField
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument {
@@ -4591,6 +6265,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementField
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -4601,7 +6294,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementField
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath {
@@ -4624,6 +6317,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementField
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatch {
@@ -4697,123 +6403,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementField
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementTextTransformation {
@@ -4884,6 +6638,43 @@ export class Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementOutpu
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._positionalConstraint) {
+      hasAnyValues = true;
+      internalValueResult.positionalConstraint = this._positionalConstraint;
+    }
+    if (this._searchString) {
+      hasAnyValues = true;
+      internalValueResult.searchString = this._searchString;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatement | undefined) {
+    if (value === undefined) {
+      this._positionalConstraint = undefined;
+      this._searchString = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._positionalConstraint = value.positionalConstraint;
+      this._searchString = value.searchString;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // positional_constraint - computed: false, optional: false, required: true
   private _positionalConstraint?: string; 
   public get positionalConstraint() {
@@ -4894,7 +6685,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementOutpu
   }
   // Temporarily expose input value. Use with caution.
   public get positionalConstraintInput() {
-    return this._positionalConstraint
+    return this._positionalConstraint;
   }
 
   // search_string - computed: false, optional: false, required: true
@@ -4907,24 +6698,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementOutpu
   }
   // Temporarily expose input value. Use with caution.
   public get searchStringInput() {
-    return this._searchString
+    return this._searchString;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -4938,7 +6728,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementByteMatchStatementOutpu
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementGeoMatchStatementForwardedIpConfig {
@@ -4973,6 +6763,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementGeoMatchStatementForwar
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementGeoMatchStatementForwardedIpConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fallbackBehavior) {
+      hasAnyValues = true;
+      internalValueResult.fallbackBehavior = this._fallbackBehavior;
+    }
+    if (this._headerName) {
+      hasAnyValues = true;
+      internalValueResult.headerName = this._headerName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementGeoMatchStatementForwardedIpConfig | undefined) {
+    if (value === undefined) {
+      this._fallbackBehavior = undefined;
+      this._headerName = undefined;
+    }
+    else {
+      this._fallbackBehavior = value.fallbackBehavior;
+      this._headerName = value.headerName;
+    }
+  }
+
   // fallback_behavior - computed: false, optional: false, required: true
   private _fallbackBehavior?: string; 
   public get fallbackBehavior() {
@@ -4983,7 +6798,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementGeoMatchStatementForwar
   }
   // Temporarily expose input value. Use with caution.
   public get fallbackBehaviorInput() {
-    return this._fallbackBehavior
+    return this._fallbackBehavior;
   }
 
   // header_name - computed: false, optional: false, required: true
@@ -4996,7 +6811,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementGeoMatchStatementForwar
   }
   // Temporarily expose input value. Use with caution.
   public get headerNameInput() {
-    return this._headerName
+    return this._headerName;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementGeoMatchStatement {
@@ -5033,6 +6848,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementGeoMatchStatementOutput
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementGeoMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._countryCodes) {
+      hasAnyValues = true;
+      internalValueResult.countryCodes = this._countryCodes;
+    }
+    if (this._forwardedIpConfig) {
+      hasAnyValues = true;
+      internalValueResult.forwardedIpConfig = this._forwardedIpConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementGeoMatchStatement | undefined) {
+    if (value === undefined) {
+      this._countryCodes = undefined;
+      this._forwardedIpConfig.internalValue = undefined;
+    }
+    else {
+      this._countryCodes = value.countryCodes;
+      this._forwardedIpConfig.internalValue = value.forwardedIpConfig;
+    }
+  }
+
   // country_codes - computed: false, optional: false, required: true
   private _countryCodes?: string[]; 
   public get countryCodes() {
@@ -5043,24 +6883,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementGeoMatchStatementOutput
   }
   // Temporarily expose input value. Use with caution.
   public get countryCodesInput() {
-    return this._countryCodes
+    return this._countryCodes;
   }
 
   // forwarded_ip_config - computed: false, optional: true, required: false
-  private _forwardedIpConfig?: Wafv2WebAclRuleStatementOrStatementStatementGeoMatchStatementForwardedIpConfig | undefined; 
-  private __forwardedIpConfigOutput = new Wafv2WebAclRuleStatementOrStatementStatementGeoMatchStatementForwardedIpConfigOutputReference(this as any, "forwarded_ip_config", true);
+  private _forwardedIpConfig = new Wafv2WebAclRuleStatementOrStatementStatementGeoMatchStatementForwardedIpConfigOutputReference(this as any, "forwarded_ip_config", true);
   public get forwardedIpConfig() {
-    return this.__forwardedIpConfigOutput;
+    return this._forwardedIpConfig;
   }
-  public putForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementGeoMatchStatementForwardedIpConfig | undefined) {
-    this._forwardedIpConfig = value;
+  public putForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementGeoMatchStatementForwardedIpConfig) {
+    this._forwardedIpConfig.internalValue = value;
   }
   public resetForwardedIpConfig() {
-    this._forwardedIpConfig = undefined;
+    this._forwardedIpConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get forwardedIpConfigInput() {
-    return this._forwardedIpConfig
+    return this._forwardedIpConfig.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig {
@@ -5100,6 +6939,37 @@ export class Wafv2WebAclRuleStatementOrStatementStatementIpSetReferenceStatement
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fallbackBehavior) {
+      hasAnyValues = true;
+      internalValueResult.fallbackBehavior = this._fallbackBehavior;
+    }
+    if (this._headerName) {
+      hasAnyValues = true;
+      internalValueResult.headerName = this._headerName;
+    }
+    if (this._position) {
+      hasAnyValues = true;
+      internalValueResult.position = this._position;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined) {
+    if (value === undefined) {
+      this._fallbackBehavior = undefined;
+      this._headerName = undefined;
+      this._position = undefined;
+    }
+    else {
+      this._fallbackBehavior = value.fallbackBehavior;
+      this._headerName = value.headerName;
+      this._position = value.position;
+    }
+  }
+
   // fallback_behavior - computed: false, optional: false, required: true
   private _fallbackBehavior?: string; 
   public get fallbackBehavior() {
@@ -5110,7 +6980,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementIpSetReferenceStatement
   }
   // Temporarily expose input value. Use with caution.
   public get fallbackBehaviorInput() {
-    return this._fallbackBehavior
+    return this._fallbackBehavior;
   }
 
   // header_name - computed: false, optional: false, required: true
@@ -5123,7 +6993,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementIpSetReferenceStatement
   }
   // Temporarily expose input value. Use with caution.
   public get headerNameInput() {
-    return this._headerName
+    return this._headerName;
   }
 
   // position - computed: false, optional: false, required: true
@@ -5136,7 +7006,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementIpSetReferenceStatement
   }
   // Temporarily expose input value. Use with caution.
   public get positionInput() {
-    return this._position
+    return this._position;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementIpSetReferenceStatement {
@@ -5173,6 +7043,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementIpSetReferenceStatement
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementIpSetReferenceStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    if (this._ipSetForwardedIpConfig) {
+      hasAnyValues = true;
+      internalValueResult.ipSetForwardedIpConfig = this._ipSetForwardedIpConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementIpSetReferenceStatement | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+      this._ipSetForwardedIpConfig.internalValue = undefined;
+    }
+    else {
+      this._arn = value.arn;
+      this._ipSetForwardedIpConfig.internalValue = value.ipSetForwardedIpConfig;
+    }
+  }
+
   // arn - computed: false, optional: false, required: true
   private _arn?: string; 
   public get arn() {
@@ -5183,24 +7078,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementIpSetReferenceStatement
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // ip_set_forwarded_ip_config - computed: false, optional: true, required: false
-  private _ipSetForwardedIpConfig?: Wafv2WebAclRuleStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined; 
-  private __ipSetForwardedIpConfigOutput = new Wafv2WebAclRuleStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfigOutputReference(this as any, "ip_set_forwarded_ip_config", true);
+  private _ipSetForwardedIpConfig = new Wafv2WebAclRuleStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfigOutputReference(this as any, "ip_set_forwarded_ip_config", true);
   public get ipSetForwardedIpConfig() {
-    return this.__ipSetForwardedIpConfigOutput;
+    return this._ipSetForwardedIpConfig;
   }
-  public putIpSetForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined) {
-    this._ipSetForwardedIpConfig = value;
+  public putIpSetForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig) {
+    this._ipSetForwardedIpConfig.internalValue = value;
   }
   public resetIpSetForwardedIpConfig() {
-    this._ipSetForwardedIpConfig = undefined;
+    this._ipSetForwardedIpConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ipSetForwardedIpConfigInput() {
-    return this._ipSetForwardedIpConfig
+    return this._ipSetForwardedIpConfig.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementLabelMatchStatement {
@@ -5235,6 +7129,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementLabelMatchStatementOutp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementLabelMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    if (this._scope) {
+      hasAnyValues = true;
+      internalValueResult.scope = this._scope;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementLabelMatchStatement | undefined) {
+    if (value === undefined) {
+      this._key = undefined;
+      this._scope = undefined;
+    }
+    else {
+      this._key = value.key;
+      this._scope = value.scope;
+    }
+  }
+
   // key - computed: false, optional: false, required: true
   private _key?: string; 
   public get key() {
@@ -5245,7 +7164,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementLabelMatchStatementOutp
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // scope - computed: false, optional: false, required: true
@@ -5258,7 +7177,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementLabelMatchStatementOutp
   }
   // Temporarily expose input value. Use with caution.
   public get scopeInput() {
-    return this._scope
+    return this._scope;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments {
@@ -5282,6 +7201,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody {
 }
@@ -5303,6 +7235,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethod {
@@ -5326,6 +7271,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString {
 }
@@ -5347,6 +7305,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader {
@@ -5376,6 +7347,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -5386,7 +7376,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument {
@@ -5416,6 +7406,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -5426,7 +7435,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath {
@@ -5449,6 +7458,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatch {
@@ -5522,123 +7544,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementTextTransformation {
@@ -5709,6 +7779,43 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._positionalConstraint) {
+      hasAnyValues = true;
+      internalValueResult.positionalConstraint = this._positionalConstraint;
+    }
+    if (this._searchString) {
+      hasAnyValues = true;
+      internalValueResult.searchString = this._searchString;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatement | undefined) {
+    if (value === undefined) {
+      this._positionalConstraint = undefined;
+      this._searchString = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._positionalConstraint = value.positionalConstraint;
+      this._searchString = value.searchString;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // positional_constraint - computed: false, optional: false, required: true
   private _positionalConstraint?: string; 
   public get positionalConstraint() {
@@ -5719,7 +7826,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get positionalConstraintInput() {
-    return this._positionalConstraint
+    return this._positionalConstraint;
   }
 
   // search_string - computed: false, optional: false, required: true
@@ -5732,24 +7839,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get searchStringInput() {
-    return this._searchString
+    return this._searchString;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementByteMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -5763,7 +7869,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementGeoMatchStatementForwardedIpConfig {
@@ -5798,6 +7904,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementGeoMatchStatementForwardedIpConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fallbackBehavior) {
+      hasAnyValues = true;
+      internalValueResult.fallbackBehavior = this._fallbackBehavior;
+    }
+    if (this._headerName) {
+      hasAnyValues = true;
+      internalValueResult.headerName = this._headerName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementGeoMatchStatementForwardedIpConfig | undefined) {
+    if (value === undefined) {
+      this._fallbackBehavior = undefined;
+      this._headerName = undefined;
+    }
+    else {
+      this._fallbackBehavior = value.fallbackBehavior;
+      this._headerName = value.headerName;
+    }
+  }
+
   // fallback_behavior - computed: false, optional: false, required: true
   private _fallbackBehavior?: string; 
   public get fallbackBehavior() {
@@ -5808,7 +7939,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get fallbackBehaviorInput() {
-    return this._fallbackBehavior
+    return this._fallbackBehavior;
   }
 
   // header_name - computed: false, optional: false, required: true
@@ -5821,7 +7952,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get headerNameInput() {
-    return this._headerName
+    return this._headerName;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementGeoMatchStatement {
@@ -5858,6 +7989,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementGeoMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._countryCodes) {
+      hasAnyValues = true;
+      internalValueResult.countryCodes = this._countryCodes;
+    }
+    if (this._forwardedIpConfig) {
+      hasAnyValues = true;
+      internalValueResult.forwardedIpConfig = this._forwardedIpConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementGeoMatchStatement | undefined) {
+    if (value === undefined) {
+      this._countryCodes = undefined;
+      this._forwardedIpConfig.internalValue = undefined;
+    }
+    else {
+      this._countryCodes = value.countryCodes;
+      this._forwardedIpConfig.internalValue = value.forwardedIpConfig;
+    }
+  }
+
   // country_codes - computed: false, optional: false, required: true
   private _countryCodes?: string[]; 
   public get countryCodes() {
@@ -5868,24 +8024,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get countryCodesInput() {
-    return this._countryCodes
+    return this._countryCodes;
   }
 
   // forwarded_ip_config - computed: false, optional: true, required: false
-  private _forwardedIpConfig?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementGeoMatchStatementForwardedIpConfig | undefined; 
-  private __forwardedIpConfigOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementGeoMatchStatementForwardedIpConfigOutputReference(this as any, "forwarded_ip_config", true);
+  private _forwardedIpConfig = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementGeoMatchStatementForwardedIpConfigOutputReference(this as any, "forwarded_ip_config", true);
   public get forwardedIpConfig() {
-    return this.__forwardedIpConfigOutput;
+    return this._forwardedIpConfig;
   }
-  public putForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementGeoMatchStatementForwardedIpConfig | undefined) {
-    this._forwardedIpConfig = value;
+  public putForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementGeoMatchStatementForwardedIpConfig) {
+    this._forwardedIpConfig.internalValue = value;
   }
   public resetForwardedIpConfig() {
-    this._forwardedIpConfig = undefined;
+    this._forwardedIpConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get forwardedIpConfigInput() {
-    return this._forwardedIpConfig
+    return this._forwardedIpConfig.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig {
@@ -5925,6 +8080,37 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fallbackBehavior) {
+      hasAnyValues = true;
+      internalValueResult.fallbackBehavior = this._fallbackBehavior;
+    }
+    if (this._headerName) {
+      hasAnyValues = true;
+      internalValueResult.headerName = this._headerName;
+    }
+    if (this._position) {
+      hasAnyValues = true;
+      internalValueResult.position = this._position;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined) {
+    if (value === undefined) {
+      this._fallbackBehavior = undefined;
+      this._headerName = undefined;
+      this._position = undefined;
+    }
+    else {
+      this._fallbackBehavior = value.fallbackBehavior;
+      this._headerName = value.headerName;
+      this._position = value.position;
+    }
+  }
+
   // fallback_behavior - computed: false, optional: false, required: true
   private _fallbackBehavior?: string; 
   public get fallbackBehavior() {
@@ -5935,7 +8121,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get fallbackBehaviorInput() {
-    return this._fallbackBehavior
+    return this._fallbackBehavior;
   }
 
   // header_name - computed: false, optional: false, required: true
@@ -5948,7 +8134,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get headerNameInput() {
-    return this._headerName
+    return this._headerName;
   }
 
   // position - computed: false, optional: false, required: true
@@ -5961,7 +8147,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get positionInput() {
-    return this._position
+    return this._position;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementIpSetReferenceStatement {
@@ -5998,6 +8184,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementIpSetReferenceStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    if (this._ipSetForwardedIpConfig) {
+      hasAnyValues = true;
+      internalValueResult.ipSetForwardedIpConfig = this._ipSetForwardedIpConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementIpSetReferenceStatement | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+      this._ipSetForwardedIpConfig.internalValue = undefined;
+    }
+    else {
+      this._arn = value.arn;
+      this._ipSetForwardedIpConfig.internalValue = value.ipSetForwardedIpConfig;
+    }
+  }
+
   // arn - computed: false, optional: false, required: true
   private _arn?: string; 
   public get arn() {
@@ -6008,24 +8219,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // ip_set_forwarded_ip_config - computed: false, optional: true, required: false
-  private _ipSetForwardedIpConfig?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined; 
-  private __ipSetForwardedIpConfigOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIpConfigOutputReference(this as any, "ip_set_forwarded_ip_config", true);
+  private _ipSetForwardedIpConfig = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIpConfigOutputReference(this as any, "ip_set_forwarded_ip_config", true);
   public get ipSetForwardedIpConfig() {
-    return this.__ipSetForwardedIpConfigOutput;
+    return this._ipSetForwardedIpConfig;
   }
-  public putIpSetForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined) {
-    this._ipSetForwardedIpConfig = value;
+  public putIpSetForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig) {
+    this._ipSetForwardedIpConfig.internalValue = value;
   }
   public resetIpSetForwardedIpConfig() {
-    this._ipSetForwardedIpConfig = undefined;
+    this._ipSetForwardedIpConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ipSetForwardedIpConfigInput() {
-    return this._ipSetForwardedIpConfig
+    return this._ipSetForwardedIpConfig.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementLabelMatchStatement {
@@ -6060,6 +8270,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementLabelMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    if (this._scope) {
+      hasAnyValues = true;
+      internalValueResult.scope = this._scope;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementLabelMatchStatement | undefined) {
+    if (value === undefined) {
+      this._key = undefined;
+      this._scope = undefined;
+    }
+    else {
+      this._key = value.key;
+      this._scope = value.scope;
+    }
+  }
+
   // key - computed: false, optional: false, required: true
   private _key?: string; 
   public get key() {
@@ -6070,7 +8305,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // scope - computed: false, optional: false, required: true
@@ -6083,7 +8318,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get scopeInput() {
-    return this._scope
+    return this._scope;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments {
@@ -6107,6 +8342,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody {
 }
@@ -6128,6 +8376,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod {
@@ -6151,6 +8412,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString {
 }
@@ -6172,6 +8446,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader {
@@ -6201,6 +8488,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -6211,7 +8517,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument {
@@ -6241,6 +8547,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -6251,7 +8576,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath {
@@ -6274,6 +8599,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch {
@@ -6347,123 +8685,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementTextTransformation {
@@ -6529,6 +8915,37 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatement | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._arn = value.arn;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // arn - computed: false, optional: false, required: true
   private _arn?: string; 
   public get arn() {
@@ -6539,24 +8956,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -6570,7 +8986,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments {
@@ -6594,6 +9010,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody {
 }
@@ -6615,6 +9044,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod {
@@ -6638,6 +9080,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString {
 }
@@ -6659,6 +9114,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader {
@@ -6688,6 +9156,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -6698,7 +9185,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument {
@@ -6728,6 +9215,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -6738,7 +9244,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath {
@@ -6761,6 +9267,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch {
@@ -6834,123 +9353,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementTextTransformation {
@@ -7021,6 +9588,43 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._comparisonOperator) {
+      hasAnyValues = true;
+      internalValueResult.comparisonOperator = this._comparisonOperator;
+    }
+    if (this._size) {
+      hasAnyValues = true;
+      internalValueResult.size = this._size;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatement | undefined) {
+    if (value === undefined) {
+      this._comparisonOperator = undefined;
+      this._size = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._comparisonOperator = value.comparisonOperator;
+      this._size = value.size;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // comparison_operator - computed: false, optional: false, required: true
   private _comparisonOperator?: string; 
   public get comparisonOperator() {
@@ -7031,7 +9635,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get comparisonOperatorInput() {
-    return this._comparisonOperator
+    return this._comparisonOperator;
   }
 
   // size - computed: false, optional: false, required: true
@@ -7044,24 +9648,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get sizeInput() {
-    return this._size
+    return this._size;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -7075,7 +9678,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments {
@@ -7099,6 +9702,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody {
 }
@@ -7120,6 +9736,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod {
@@ -7143,6 +9772,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString {
 }
@@ -7164,6 +9806,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader {
@@ -7193,6 +9848,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -7203,7 +9877,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument {
@@ -7233,6 +9907,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -7243,7 +9936,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath {
@@ -7266,6 +9959,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch {
@@ -7339,123 +10045,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementTextTransformation {
@@ -7516,21 +10270,45 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
-  public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatement | undefined) {
+    if (value === undefined) {
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
+  // field_to_match - computed: false, optional: true, required: false
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  public get fieldToMatch() {
+    return this._fieldToMatch;
+  }
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -7544,7 +10322,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments {
@@ -7568,6 +10346,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody {
 }
@@ -7589,6 +10380,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod {
@@ -7612,6 +10416,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString {
 }
@@ -7633,6 +10450,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader {
@@ -7662,6 +10492,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -7672,7 +10521,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument {
@@ -7702,6 +10551,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -7712,7 +10580,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath {
@@ -7735,6 +10603,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatch {
@@ -7808,123 +10689,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementTextTransformation {
@@ -7985,21 +10914,45 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
-  public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatement | undefined) {
+    if (value === undefined) {
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
+  // field_to_match - computed: false, optional: true, required: false
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  public get fieldToMatch() {
+    return this._fieldToMatch;
+  }
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatementXssMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -8013,7 +10966,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatement {
@@ -8113,6 +11066,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._statement) {
+      hasAnyValues = true;
+      internalValueResult.statement = this._statement;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatement | undefined) {
+    if (value === undefined) {
+      this._statement = undefined;
+    }
+    else {
+      this._statement = value.statement;
+    }
+  }
+
   // statement - computed: false, optional: false, required: true
   private _statement?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAndStatementStatement[]; 
   public get statement() {
@@ -8124,7 +11096,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementAn
   }
   // Temporarily expose input value. Use with caution.
   public get statementInput() {
-    return this._statement
+    return this._statement;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments {
@@ -8148,6 +11120,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementBy
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody {
 }
@@ -8169,6 +11154,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementBy
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethod {
@@ -8192,6 +11190,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementBy
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString {
 }
@@ -8213,6 +11224,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementBy
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader {
@@ -8242,6 +11266,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementBy
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -8252,7 +11295,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementBy
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument {
@@ -8282,6 +11325,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementBy
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -8292,7 +11354,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementBy
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath {
@@ -8315,6 +11377,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementBy
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatch {
@@ -8388,123 +11463,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementBy
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementTextTransformation {
@@ -8575,6 +11698,43 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementBy
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._positionalConstraint) {
+      hasAnyValues = true;
+      internalValueResult.positionalConstraint = this._positionalConstraint;
+    }
+    if (this._searchString) {
+      hasAnyValues = true;
+      internalValueResult.searchString = this._searchString;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatement | undefined) {
+    if (value === undefined) {
+      this._positionalConstraint = undefined;
+      this._searchString = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._positionalConstraint = value.positionalConstraint;
+      this._searchString = value.searchString;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // positional_constraint - computed: false, optional: false, required: true
   private _positionalConstraint?: string; 
   public get positionalConstraint() {
@@ -8585,7 +11745,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementBy
   }
   // Temporarily expose input value. Use with caution.
   public get positionalConstraintInput() {
-    return this._positionalConstraint
+    return this._positionalConstraint;
   }
 
   // search_string - computed: false, optional: false, required: true
@@ -8598,24 +11758,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementBy
   }
   // Temporarily expose input value. Use with caution.
   public get searchStringInput() {
-    return this._searchString
+    return this._searchString;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementByteMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -8629,7 +11788,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementBy
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementGeoMatchStatementForwardedIpConfig {
@@ -8664,6 +11823,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementGe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementGeoMatchStatementForwardedIpConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fallbackBehavior) {
+      hasAnyValues = true;
+      internalValueResult.fallbackBehavior = this._fallbackBehavior;
+    }
+    if (this._headerName) {
+      hasAnyValues = true;
+      internalValueResult.headerName = this._headerName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementGeoMatchStatementForwardedIpConfig | undefined) {
+    if (value === undefined) {
+      this._fallbackBehavior = undefined;
+      this._headerName = undefined;
+    }
+    else {
+      this._fallbackBehavior = value.fallbackBehavior;
+      this._headerName = value.headerName;
+    }
+  }
+
   // fallback_behavior - computed: false, optional: false, required: true
   private _fallbackBehavior?: string; 
   public get fallbackBehavior() {
@@ -8674,7 +11858,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementGe
   }
   // Temporarily expose input value. Use with caution.
   public get fallbackBehaviorInput() {
-    return this._fallbackBehavior
+    return this._fallbackBehavior;
   }
 
   // header_name - computed: false, optional: false, required: true
@@ -8687,7 +11871,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementGe
   }
   // Temporarily expose input value. Use with caution.
   public get headerNameInput() {
-    return this._headerName
+    return this._headerName;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementGeoMatchStatement {
@@ -8724,6 +11908,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementGe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementGeoMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._countryCodes) {
+      hasAnyValues = true;
+      internalValueResult.countryCodes = this._countryCodes;
+    }
+    if (this._forwardedIpConfig) {
+      hasAnyValues = true;
+      internalValueResult.forwardedIpConfig = this._forwardedIpConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementGeoMatchStatement | undefined) {
+    if (value === undefined) {
+      this._countryCodes = undefined;
+      this._forwardedIpConfig.internalValue = undefined;
+    }
+    else {
+      this._countryCodes = value.countryCodes;
+      this._forwardedIpConfig.internalValue = value.forwardedIpConfig;
+    }
+  }
+
   // country_codes - computed: false, optional: false, required: true
   private _countryCodes?: string[]; 
   public get countryCodes() {
@@ -8734,24 +11943,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementGe
   }
   // Temporarily expose input value. Use with caution.
   public get countryCodesInput() {
-    return this._countryCodes
+    return this._countryCodes;
   }
 
   // forwarded_ip_config - computed: false, optional: true, required: false
-  private _forwardedIpConfig?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementGeoMatchStatementForwardedIpConfig | undefined; 
-  private __forwardedIpConfigOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementGeoMatchStatementForwardedIpConfigOutputReference(this as any, "forwarded_ip_config", true);
+  private _forwardedIpConfig = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementGeoMatchStatementForwardedIpConfigOutputReference(this as any, "forwarded_ip_config", true);
   public get forwardedIpConfig() {
-    return this.__forwardedIpConfigOutput;
+    return this._forwardedIpConfig;
   }
-  public putForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementGeoMatchStatementForwardedIpConfig | undefined) {
-    this._forwardedIpConfig = value;
+  public putForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementGeoMatchStatementForwardedIpConfig) {
+    this._forwardedIpConfig.internalValue = value;
   }
   public resetForwardedIpConfig() {
-    this._forwardedIpConfig = undefined;
+    this._forwardedIpConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get forwardedIpConfigInput() {
-    return this._forwardedIpConfig
+    return this._forwardedIpConfig.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig {
@@ -8791,6 +11999,37 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementIp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fallbackBehavior) {
+      hasAnyValues = true;
+      internalValueResult.fallbackBehavior = this._fallbackBehavior;
+    }
+    if (this._headerName) {
+      hasAnyValues = true;
+      internalValueResult.headerName = this._headerName;
+    }
+    if (this._position) {
+      hasAnyValues = true;
+      internalValueResult.position = this._position;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined) {
+    if (value === undefined) {
+      this._fallbackBehavior = undefined;
+      this._headerName = undefined;
+      this._position = undefined;
+    }
+    else {
+      this._fallbackBehavior = value.fallbackBehavior;
+      this._headerName = value.headerName;
+      this._position = value.position;
+    }
+  }
+
   // fallback_behavior - computed: false, optional: false, required: true
   private _fallbackBehavior?: string; 
   public get fallbackBehavior() {
@@ -8801,7 +12040,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementIp
   }
   // Temporarily expose input value. Use with caution.
   public get fallbackBehaviorInput() {
-    return this._fallbackBehavior
+    return this._fallbackBehavior;
   }
 
   // header_name - computed: false, optional: false, required: true
@@ -8814,7 +12053,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementIp
   }
   // Temporarily expose input value. Use with caution.
   public get headerNameInput() {
-    return this._headerName
+    return this._headerName;
   }
 
   // position - computed: false, optional: false, required: true
@@ -8827,7 +12066,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementIp
   }
   // Temporarily expose input value. Use with caution.
   public get positionInput() {
-    return this._position
+    return this._position;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementIpSetReferenceStatement {
@@ -8864,6 +12103,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementIp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementIpSetReferenceStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    if (this._ipSetForwardedIpConfig) {
+      hasAnyValues = true;
+      internalValueResult.ipSetForwardedIpConfig = this._ipSetForwardedIpConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementIpSetReferenceStatement | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+      this._ipSetForwardedIpConfig.internalValue = undefined;
+    }
+    else {
+      this._arn = value.arn;
+      this._ipSetForwardedIpConfig.internalValue = value.ipSetForwardedIpConfig;
+    }
+  }
+
   // arn - computed: false, optional: false, required: true
   private _arn?: string; 
   public get arn() {
@@ -8874,24 +12138,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementIp
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // ip_set_forwarded_ip_config - computed: false, optional: true, required: false
-  private _ipSetForwardedIpConfig?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined; 
-  private __ipSetForwardedIpConfigOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIpConfigOutputReference(this as any, "ip_set_forwarded_ip_config", true);
+  private _ipSetForwardedIpConfig = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIpConfigOutputReference(this as any, "ip_set_forwarded_ip_config", true);
   public get ipSetForwardedIpConfig() {
-    return this.__ipSetForwardedIpConfigOutput;
+    return this._ipSetForwardedIpConfig;
   }
-  public putIpSetForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined) {
-    this._ipSetForwardedIpConfig = value;
+  public putIpSetForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig) {
+    this._ipSetForwardedIpConfig.internalValue = value;
   }
   public resetIpSetForwardedIpConfig() {
-    this._ipSetForwardedIpConfig = undefined;
+    this._ipSetForwardedIpConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ipSetForwardedIpConfigInput() {
-    return this._ipSetForwardedIpConfig
+    return this._ipSetForwardedIpConfig.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementLabelMatchStatement {
@@ -8926,6 +12189,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementLa
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementLabelMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    if (this._scope) {
+      hasAnyValues = true;
+      internalValueResult.scope = this._scope;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementLabelMatchStatement | undefined) {
+    if (value === undefined) {
+      this._key = undefined;
+      this._scope = undefined;
+    }
+    else {
+      this._key = value.key;
+      this._scope = value.scope;
+    }
+  }
+
   // key - computed: false, optional: false, required: true
   private _key?: string; 
   public get key() {
@@ -8936,7 +12224,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementLa
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // scope - computed: false, optional: false, required: true
@@ -8949,7 +12237,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementLa
   }
   // Temporarily expose input value. Use with caution.
   public get scopeInput() {
-    return this._scope
+    return this._scope;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments {
@@ -8973,6 +12261,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody {
 }
@@ -8994,6 +12295,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethod {
@@ -9017,6 +12331,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString {
 }
@@ -9038,6 +12365,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader {
@@ -9067,6 +12407,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -9077,7 +12436,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument {
@@ -9107,6 +12466,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -9117,7 +12495,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath {
@@ -9140,6 +12518,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatch {
@@ -9213,123 +12604,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementTextTransformation {
@@ -9400,6 +12839,43 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._positionalConstraint) {
+      hasAnyValues = true;
+      internalValueResult.positionalConstraint = this._positionalConstraint;
+    }
+    if (this._searchString) {
+      hasAnyValues = true;
+      internalValueResult.searchString = this._searchString;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatement | undefined) {
+    if (value === undefined) {
+      this._positionalConstraint = undefined;
+      this._searchString = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._positionalConstraint = value.positionalConstraint;
+      this._searchString = value.searchString;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // positional_constraint - computed: false, optional: false, required: true
   private _positionalConstraint?: string; 
   public get positionalConstraint() {
@@ -9410,7 +12886,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get positionalConstraintInput() {
-    return this._positionalConstraint
+    return this._positionalConstraint;
   }
 
   // search_string - computed: false, optional: false, required: true
@@ -9423,24 +12899,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get searchStringInput() {
-    return this._searchString
+    return this._searchString;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementByteMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -9454,7 +12929,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementGeoMatchStatementForwardedIpConfig {
@@ -9489,6 +12964,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementGeoMatchStatementForwardedIpConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fallbackBehavior) {
+      hasAnyValues = true;
+      internalValueResult.fallbackBehavior = this._fallbackBehavior;
+    }
+    if (this._headerName) {
+      hasAnyValues = true;
+      internalValueResult.headerName = this._headerName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementGeoMatchStatementForwardedIpConfig | undefined) {
+    if (value === undefined) {
+      this._fallbackBehavior = undefined;
+      this._headerName = undefined;
+    }
+    else {
+      this._fallbackBehavior = value.fallbackBehavior;
+      this._headerName = value.headerName;
+    }
+  }
+
   // fallback_behavior - computed: false, optional: false, required: true
   private _fallbackBehavior?: string; 
   public get fallbackBehavior() {
@@ -9499,7 +12999,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get fallbackBehaviorInput() {
-    return this._fallbackBehavior
+    return this._fallbackBehavior;
   }
 
   // header_name - computed: false, optional: false, required: true
@@ -9512,7 +13012,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get headerNameInput() {
-    return this._headerName
+    return this._headerName;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementGeoMatchStatement {
@@ -9549,6 +13049,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementGeoMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._countryCodes) {
+      hasAnyValues = true;
+      internalValueResult.countryCodes = this._countryCodes;
+    }
+    if (this._forwardedIpConfig) {
+      hasAnyValues = true;
+      internalValueResult.forwardedIpConfig = this._forwardedIpConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementGeoMatchStatement | undefined) {
+    if (value === undefined) {
+      this._countryCodes = undefined;
+      this._forwardedIpConfig.internalValue = undefined;
+    }
+    else {
+      this._countryCodes = value.countryCodes;
+      this._forwardedIpConfig.internalValue = value.forwardedIpConfig;
+    }
+  }
+
   // country_codes - computed: false, optional: false, required: true
   private _countryCodes?: string[]; 
   public get countryCodes() {
@@ -9559,24 +13084,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get countryCodesInput() {
-    return this._countryCodes
+    return this._countryCodes;
   }
 
   // forwarded_ip_config - computed: false, optional: true, required: false
-  private _forwardedIpConfig?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementGeoMatchStatementForwardedIpConfig | undefined; 
-  private __forwardedIpConfigOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementGeoMatchStatementForwardedIpConfigOutputReference(this as any, "forwarded_ip_config", true);
+  private _forwardedIpConfig = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementGeoMatchStatementForwardedIpConfigOutputReference(this as any, "forwarded_ip_config", true);
   public get forwardedIpConfig() {
-    return this.__forwardedIpConfigOutput;
+    return this._forwardedIpConfig;
   }
-  public putForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementGeoMatchStatementForwardedIpConfig | undefined) {
-    this._forwardedIpConfig = value;
+  public putForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementGeoMatchStatementForwardedIpConfig) {
+    this._forwardedIpConfig.internalValue = value;
   }
   public resetForwardedIpConfig() {
-    this._forwardedIpConfig = undefined;
+    this._forwardedIpConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get forwardedIpConfigInput() {
-    return this._forwardedIpConfig
+    return this._forwardedIpConfig.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig {
@@ -9616,6 +13140,37 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fallbackBehavior) {
+      hasAnyValues = true;
+      internalValueResult.fallbackBehavior = this._fallbackBehavior;
+    }
+    if (this._headerName) {
+      hasAnyValues = true;
+      internalValueResult.headerName = this._headerName;
+    }
+    if (this._position) {
+      hasAnyValues = true;
+      internalValueResult.position = this._position;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined) {
+    if (value === undefined) {
+      this._fallbackBehavior = undefined;
+      this._headerName = undefined;
+      this._position = undefined;
+    }
+    else {
+      this._fallbackBehavior = value.fallbackBehavior;
+      this._headerName = value.headerName;
+      this._position = value.position;
+    }
+  }
+
   // fallback_behavior - computed: false, optional: false, required: true
   private _fallbackBehavior?: string; 
   public get fallbackBehavior() {
@@ -9626,7 +13181,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get fallbackBehaviorInput() {
-    return this._fallbackBehavior
+    return this._fallbackBehavior;
   }
 
   // header_name - computed: false, optional: false, required: true
@@ -9639,7 +13194,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get headerNameInput() {
-    return this._headerName
+    return this._headerName;
   }
 
   // position - computed: false, optional: false, required: true
@@ -9652,7 +13207,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get positionInput() {
-    return this._position
+    return this._position;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementIpSetReferenceStatement {
@@ -9689,6 +13244,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementIpSetReferenceStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    if (this._ipSetForwardedIpConfig) {
+      hasAnyValues = true;
+      internalValueResult.ipSetForwardedIpConfig = this._ipSetForwardedIpConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementIpSetReferenceStatement | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+      this._ipSetForwardedIpConfig.internalValue = undefined;
+    }
+    else {
+      this._arn = value.arn;
+      this._ipSetForwardedIpConfig.internalValue = value.ipSetForwardedIpConfig;
+    }
+  }
+
   // arn - computed: false, optional: false, required: true
   private _arn?: string; 
   public get arn() {
@@ -9699,24 +13279,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // ip_set_forwarded_ip_config - computed: false, optional: true, required: false
-  private _ipSetForwardedIpConfig?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined; 
-  private __ipSetForwardedIpConfigOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIpConfigOutputReference(this as any, "ip_set_forwarded_ip_config", true);
+  private _ipSetForwardedIpConfig = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIpConfigOutputReference(this as any, "ip_set_forwarded_ip_config", true);
   public get ipSetForwardedIpConfig() {
-    return this.__ipSetForwardedIpConfigOutput;
+    return this._ipSetForwardedIpConfig;
   }
-  public putIpSetForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined) {
-    this._ipSetForwardedIpConfig = value;
+  public putIpSetForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig) {
+    this._ipSetForwardedIpConfig.internalValue = value;
   }
   public resetIpSetForwardedIpConfig() {
-    this._ipSetForwardedIpConfig = undefined;
+    this._ipSetForwardedIpConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ipSetForwardedIpConfigInput() {
-    return this._ipSetForwardedIpConfig
+    return this._ipSetForwardedIpConfig.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementLabelMatchStatement {
@@ -9751,6 +13330,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementLabelMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    if (this._scope) {
+      hasAnyValues = true;
+      internalValueResult.scope = this._scope;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementLabelMatchStatement | undefined) {
+    if (value === undefined) {
+      this._key = undefined;
+      this._scope = undefined;
+    }
+    else {
+      this._key = value.key;
+      this._scope = value.scope;
+    }
+  }
+
   // key - computed: false, optional: false, required: true
   private _key?: string; 
   public get key() {
@@ -9761,7 +13365,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // scope - computed: false, optional: false, required: true
@@ -9774,7 +13378,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get scopeInput() {
-    return this._scope
+    return this._scope;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments {
@@ -9798,6 +13402,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody {
 }
@@ -9819,6 +13436,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod {
@@ -9842,6 +13472,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString {
 }
@@ -9863,6 +13506,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader {
@@ -9892,6 +13548,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -9902,7 +13577,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument {
@@ -9932,6 +13607,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -9942,7 +13636,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath {
@@ -9965,6 +13659,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch {
@@ -10038,123 +13745,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementTextTransformation {
@@ -10220,6 +13975,37 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatement | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._arn = value.arn;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // arn - computed: false, optional: false, required: true
   private _arn?: string; 
   public get arn() {
@@ -10230,24 +14016,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -10261,7 +14046,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments {
@@ -10285,6 +14070,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody {
 }
@@ -10306,6 +14104,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod {
@@ -10329,6 +14140,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString {
 }
@@ -10350,6 +14174,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader {
@@ -10379,6 +14216,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -10389,7 +14245,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument {
@@ -10419,6 +14275,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -10429,7 +14304,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath {
@@ -10452,6 +14327,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatch {
@@ -10525,123 +14413,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementTextTransformation {
@@ -10712,6 +14648,43 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._comparisonOperator) {
+      hasAnyValues = true;
+      internalValueResult.comparisonOperator = this._comparisonOperator;
+    }
+    if (this._size) {
+      hasAnyValues = true;
+      internalValueResult.size = this._size;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatement | undefined) {
+    if (value === undefined) {
+      this._comparisonOperator = undefined;
+      this._size = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._comparisonOperator = value.comparisonOperator;
+      this._size = value.size;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // comparison_operator - computed: false, optional: false, required: true
   private _comparisonOperator?: string; 
   public get comparisonOperator() {
@@ -10722,7 +14695,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get comparisonOperatorInput() {
-    return this._comparisonOperator
+    return this._comparisonOperator;
   }
 
   // size - computed: false, optional: false, required: true
@@ -10735,24 +14708,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get sizeInput() {
-    return this._size
+    return this._size;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -10766,7 +14738,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments {
@@ -10790,6 +14762,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBody {
 }
@@ -10811,6 +14796,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod {
@@ -10834,6 +14832,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString {
 }
@@ -10855,6 +14866,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader {
@@ -10884,6 +14908,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -10894,7 +14937,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument {
@@ -10924,6 +14967,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -10934,7 +14996,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath {
@@ -10957,6 +15019,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatch {
@@ -11030,123 +15105,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementTextTransformation {
@@ -11207,21 +15330,45 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
-  public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatement | undefined) {
+    if (value === undefined) {
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
+  // field_to_match - computed: false, optional: true, required: false
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  public get fieldToMatch() {
+    return this._fieldToMatch;
+  }
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementSqliMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -11235,7 +15382,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments {
@@ -11259,6 +15406,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBody {
 }
@@ -11280,6 +15440,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethod {
@@ -11303,6 +15476,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString {
 }
@@ -11324,6 +15510,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader {
@@ -11353,6 +15552,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -11363,7 +15581,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument {
@@ -11393,6 +15611,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -11403,7 +15640,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath {
@@ -11426,6 +15663,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatch {
@@ -11499,123 +15749,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementTextTransformation {
@@ -11676,21 +15974,45 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
-  public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatement | undefined) {
+    if (value === undefined) {
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
+  // field_to_match - computed: false, optional: true, required: false
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  public get fieldToMatch() {
+    return this._fieldToMatch;
+  }
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatementXssMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -11704,7 +16026,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatement {
@@ -11804,6 +16126,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._statement) {
+      hasAnyValues = true;
+      internalValueResult.statement = this._statement;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatement | undefined) {
+    if (value === undefined) {
+      this._statement = undefined;
+    }
+    else {
+      this._statement = value.statement;
+    }
+  }
+
   // statement - computed: false, optional: false, required: true
   private _statement?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNotStatementStatement[]; 
   public get statement() {
@@ -11815,7 +16156,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementNo
   }
   // Temporarily expose input value. Use with caution.
   public get statementInput() {
-    return this._statement
+    return this._statement;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments {
@@ -11839,6 +16180,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBody {
 }
@@ -11860,6 +16214,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethod {
@@ -11883,6 +16250,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString {
 }
@@ -11904,6 +16284,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader {
@@ -11933,6 +16326,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -11943,7 +16355,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument {
@@ -11973,6 +16385,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -11983,7 +16414,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath {
@@ -12006,6 +16437,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatch {
@@ -12079,123 +16523,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementTextTransformation {
@@ -12266,6 +16758,43 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._positionalConstraint) {
+      hasAnyValues = true;
+      internalValueResult.positionalConstraint = this._positionalConstraint;
+    }
+    if (this._searchString) {
+      hasAnyValues = true;
+      internalValueResult.searchString = this._searchString;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatement | undefined) {
+    if (value === undefined) {
+      this._positionalConstraint = undefined;
+      this._searchString = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._positionalConstraint = value.positionalConstraint;
+      this._searchString = value.searchString;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // positional_constraint - computed: false, optional: false, required: true
   private _positionalConstraint?: string; 
   public get positionalConstraint() {
@@ -12276,7 +16805,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get positionalConstraintInput() {
-    return this._positionalConstraint
+    return this._positionalConstraint;
   }
 
   // search_string - computed: false, optional: false, required: true
@@ -12289,24 +16818,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get searchStringInput() {
-    return this._searchString
+    return this._searchString;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementByteMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -12320,7 +16848,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementGeoMatchStatementForwardedIpConfig {
@@ -12355,6 +16883,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementGeoMatchStatementForwardedIpConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fallbackBehavior) {
+      hasAnyValues = true;
+      internalValueResult.fallbackBehavior = this._fallbackBehavior;
+    }
+    if (this._headerName) {
+      hasAnyValues = true;
+      internalValueResult.headerName = this._headerName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementGeoMatchStatementForwardedIpConfig | undefined) {
+    if (value === undefined) {
+      this._fallbackBehavior = undefined;
+      this._headerName = undefined;
+    }
+    else {
+      this._fallbackBehavior = value.fallbackBehavior;
+      this._headerName = value.headerName;
+    }
+  }
+
   // fallback_behavior - computed: false, optional: false, required: true
   private _fallbackBehavior?: string; 
   public get fallbackBehavior() {
@@ -12365,7 +16918,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get fallbackBehaviorInput() {
-    return this._fallbackBehavior
+    return this._fallbackBehavior;
   }
 
   // header_name - computed: false, optional: false, required: true
@@ -12378,7 +16931,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get headerNameInput() {
-    return this._headerName
+    return this._headerName;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementGeoMatchStatement {
@@ -12415,6 +16968,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementGeoMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._countryCodes) {
+      hasAnyValues = true;
+      internalValueResult.countryCodes = this._countryCodes;
+    }
+    if (this._forwardedIpConfig) {
+      hasAnyValues = true;
+      internalValueResult.forwardedIpConfig = this._forwardedIpConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementGeoMatchStatement | undefined) {
+    if (value === undefined) {
+      this._countryCodes = undefined;
+      this._forwardedIpConfig.internalValue = undefined;
+    }
+    else {
+      this._countryCodes = value.countryCodes;
+      this._forwardedIpConfig.internalValue = value.forwardedIpConfig;
+    }
+  }
+
   // country_codes - computed: false, optional: false, required: true
   private _countryCodes?: string[]; 
   public get countryCodes() {
@@ -12425,24 +17003,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get countryCodesInput() {
-    return this._countryCodes
+    return this._countryCodes;
   }
 
   // forwarded_ip_config - computed: false, optional: true, required: false
-  private _forwardedIpConfig?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementGeoMatchStatementForwardedIpConfig | undefined; 
-  private __forwardedIpConfigOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementGeoMatchStatementForwardedIpConfigOutputReference(this as any, "forwarded_ip_config", true);
+  private _forwardedIpConfig = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementGeoMatchStatementForwardedIpConfigOutputReference(this as any, "forwarded_ip_config", true);
   public get forwardedIpConfig() {
-    return this.__forwardedIpConfigOutput;
+    return this._forwardedIpConfig;
   }
-  public putForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementGeoMatchStatementForwardedIpConfig | undefined) {
-    this._forwardedIpConfig = value;
+  public putForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementGeoMatchStatementForwardedIpConfig) {
+    this._forwardedIpConfig.internalValue = value;
   }
   public resetForwardedIpConfig() {
-    this._forwardedIpConfig = undefined;
+    this._forwardedIpConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get forwardedIpConfigInput() {
-    return this._forwardedIpConfig
+    return this._forwardedIpConfig.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig {
@@ -12482,6 +17059,37 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fallbackBehavior) {
+      hasAnyValues = true;
+      internalValueResult.fallbackBehavior = this._fallbackBehavior;
+    }
+    if (this._headerName) {
+      hasAnyValues = true;
+      internalValueResult.headerName = this._headerName;
+    }
+    if (this._position) {
+      hasAnyValues = true;
+      internalValueResult.position = this._position;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined) {
+    if (value === undefined) {
+      this._fallbackBehavior = undefined;
+      this._headerName = undefined;
+      this._position = undefined;
+    }
+    else {
+      this._fallbackBehavior = value.fallbackBehavior;
+      this._headerName = value.headerName;
+      this._position = value.position;
+    }
+  }
+
   // fallback_behavior - computed: false, optional: false, required: true
   private _fallbackBehavior?: string; 
   public get fallbackBehavior() {
@@ -12492,7 +17100,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get fallbackBehaviorInput() {
-    return this._fallbackBehavior
+    return this._fallbackBehavior;
   }
 
   // header_name - computed: false, optional: false, required: true
@@ -12505,7 +17113,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get headerNameInput() {
-    return this._headerName
+    return this._headerName;
   }
 
   // position - computed: false, optional: false, required: true
@@ -12518,7 +17126,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get positionInput() {
-    return this._position
+    return this._position;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementIpSetReferenceStatement {
@@ -12555,6 +17163,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementIpSetReferenceStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    if (this._ipSetForwardedIpConfig) {
+      hasAnyValues = true;
+      internalValueResult.ipSetForwardedIpConfig = this._ipSetForwardedIpConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementIpSetReferenceStatement | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+      this._ipSetForwardedIpConfig.internalValue = undefined;
+    }
+    else {
+      this._arn = value.arn;
+      this._ipSetForwardedIpConfig.internalValue = value.ipSetForwardedIpConfig;
+    }
+  }
+
   // arn - computed: false, optional: false, required: true
   private _arn?: string; 
   public get arn() {
@@ -12565,24 +17198,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // ip_set_forwarded_ip_config - computed: false, optional: true, required: false
-  private _ipSetForwardedIpConfig?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined; 
-  private __ipSetForwardedIpConfigOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfigOutputReference(this as any, "ip_set_forwarded_ip_config", true);
+  private _ipSetForwardedIpConfig = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfigOutputReference(this as any, "ip_set_forwarded_ip_config", true);
   public get ipSetForwardedIpConfig() {
-    return this.__ipSetForwardedIpConfigOutput;
+    return this._ipSetForwardedIpConfig;
   }
-  public putIpSetForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined) {
-    this._ipSetForwardedIpConfig = value;
+  public putIpSetForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig) {
+    this._ipSetForwardedIpConfig.internalValue = value;
   }
   public resetIpSetForwardedIpConfig() {
-    this._ipSetForwardedIpConfig = undefined;
+    this._ipSetForwardedIpConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ipSetForwardedIpConfigInput() {
-    return this._ipSetForwardedIpConfig
+    return this._ipSetForwardedIpConfig.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementLabelMatchStatement {
@@ -12617,6 +17249,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementLabelMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    if (this._scope) {
+      hasAnyValues = true;
+      internalValueResult.scope = this._scope;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementLabelMatchStatement | undefined) {
+    if (value === undefined) {
+      this._key = undefined;
+      this._scope = undefined;
+    }
+    else {
+      this._key = value.key;
+      this._scope = value.scope;
+    }
+  }
+
   // key - computed: false, optional: false, required: true
   private _key?: string; 
   public get key() {
@@ -12627,7 +17284,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // scope - computed: false, optional: false, required: true
@@ -12640,7 +17297,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get scopeInput() {
-    return this._scope
+    return this._scope;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments {
@@ -12664,6 +17321,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody {
 }
@@ -12685,6 +17355,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod {
@@ -12708,6 +17391,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString {
 }
@@ -12729,6 +17425,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader {
@@ -12758,6 +17467,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -12768,7 +17496,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument {
@@ -12798,6 +17526,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -12808,7 +17555,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath {
@@ -12831,6 +17578,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch {
@@ -12904,123 +17664,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementTextTransformation {
@@ -13086,6 +17894,37 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatement | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._arn = value.arn;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // arn - computed: false, optional: false, required: true
   private _arn?: string; 
   public get arn() {
@@ -13096,24 +17935,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementRegexPatternSetReferenceStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -13127,7 +17965,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments {
@@ -13151,6 +17989,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody {
 }
@@ -13172,6 +18023,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod {
@@ -13195,6 +18059,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString {
 }
@@ -13216,6 +18093,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader {
@@ -13245,6 +18135,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -13255,7 +18164,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument {
@@ -13285,6 +18194,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -13295,7 +18223,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath {
@@ -13318,6 +18246,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatch {
@@ -13391,123 +18332,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementTextTransformation {
@@ -13578,6 +18567,43 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._comparisonOperator) {
+      hasAnyValues = true;
+      internalValueResult.comparisonOperator = this._comparisonOperator;
+    }
+    if (this._size) {
+      hasAnyValues = true;
+      internalValueResult.size = this._size;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatement | undefined) {
+    if (value === undefined) {
+      this._comparisonOperator = undefined;
+      this._size = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._comparisonOperator = value.comparisonOperator;
+      this._size = value.size;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // comparison_operator - computed: false, optional: false, required: true
   private _comparisonOperator?: string; 
   public get comparisonOperator() {
@@ -13588,7 +18614,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get comparisonOperatorInput() {
-    return this._comparisonOperator
+    return this._comparisonOperator;
   }
 
   // size - computed: false, optional: false, required: true
@@ -13601,24 +18627,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get sizeInput() {
-    return this._size
+    return this._size;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSizeConstraintStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -13632,7 +18657,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments {
@@ -13656,6 +18681,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBody {
 }
@@ -13677,6 +18715,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod {
@@ -13700,6 +18751,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString {
 }
@@ -13721,6 +18785,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader {
@@ -13750,6 +18827,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -13760,7 +18856,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument {
@@ -13790,6 +18886,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -13800,7 +18915,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath {
@@ -13823,6 +18938,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatch {
@@ -13896,123 +19024,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementTextTransformation {
@@ -14073,21 +19249,45 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
-  public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatement | undefined) {
+    if (value === undefined) {
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
+  // field_to_match - computed: false, optional: true, required: false
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  public get fieldToMatch() {
+    return this._fieldToMatch;
+  }
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementSqliMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -14101,7 +19301,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments {
@@ -14125,6 +19325,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBody {
 }
@@ -14146,6 +19359,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethod {
@@ -14169,6 +19395,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString {
 }
@@ -14190,6 +19429,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader {
@@ -14219,6 +19471,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -14229,7 +19500,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument {
@@ -14259,6 +19530,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -14269,7 +19559,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath {
@@ -14292,6 +19582,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatch {
@@ -14365,123 +19668,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementTextTransformation {
@@ -14542,21 +19893,45 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
-  public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatement | undefined) {
+    if (value === undefined) {
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
+  // field_to_match - computed: false, optional: true, required: false
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  public get fieldToMatch() {
+    return this._fieldToMatch;
+  }
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatementXssMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -14570,7 +19945,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatement {
@@ -14670,6 +20045,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._statement) {
+      hasAnyValues = true;
+      internalValueResult.statement = this._statement;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatement | undefined) {
+    if (value === undefined) {
+      this._statement = undefined;
+    }
+    else {
+      this._statement = value.statement;
+    }
+  }
+
   // statement - computed: false, optional: false, required: true
   private _statement?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOrStatementStatement[]; 
   public get statement() {
@@ -14681,7 +20075,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementOr
   }
   // Temporarily expose input value. Use with caution.
   public get statementInput() {
-    return this._statement
+    return this._statement;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments {
@@ -14705,6 +20099,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRe
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody {
 }
@@ -14726,6 +20133,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRe
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod {
@@ -14749,6 +20169,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRe
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString {
 }
@@ -14770,6 +20203,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRe
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader {
@@ -14799,6 +20245,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -14809,7 +20274,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRe
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument {
@@ -14839,6 +20304,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -14849,7 +20333,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRe
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath {
@@ -14872,6 +20356,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRe
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch {
@@ -14945,123 +20442,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementTextTransformation {
@@ -15127,6 +20672,37 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRe
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatement | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._arn = value.arn;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // arn - computed: false, optional: false, required: true
   private _arn?: string; 
   public get arn() {
@@ -15137,24 +20713,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRe
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRegexPatternSetReferenceStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -15168,7 +20743,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementRe
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments {
@@ -15192,6 +20767,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSi
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody {
 }
@@ -15213,6 +20801,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSi
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod {
@@ -15236,6 +20837,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSi
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString {
 }
@@ -15257,6 +20871,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSi
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader {
@@ -15286,6 +20913,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSi
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -15296,7 +20942,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSi
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument {
@@ -15326,6 +20972,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSi
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -15336,7 +21001,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSi
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath {
@@ -15359,6 +21024,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSi
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatch {
@@ -15432,123 +21110,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSi
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementTextTransformation {
@@ -15619,6 +21345,43 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSi
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._comparisonOperator) {
+      hasAnyValues = true;
+      internalValueResult.comparisonOperator = this._comparisonOperator;
+    }
+    if (this._size) {
+      hasAnyValues = true;
+      internalValueResult.size = this._size;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatement | undefined) {
+    if (value === undefined) {
+      this._comparisonOperator = undefined;
+      this._size = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._comparisonOperator = value.comparisonOperator;
+      this._size = value.size;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // comparison_operator - computed: false, optional: false, required: true
   private _comparisonOperator?: string; 
   public get comparisonOperator() {
@@ -15629,7 +21392,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSi
   }
   // Temporarily expose input value. Use with caution.
   public get comparisonOperatorInput() {
-    return this._comparisonOperator
+    return this._comparisonOperator;
   }
 
   // size - computed: false, optional: false, required: true
@@ -15642,24 +21405,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSi
   }
   // Temporarily expose input value. Use with caution.
   public get sizeInput() {
-    return this._size
+    return this._size;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSizeConstraintStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -15673,7 +21435,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSi
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments {
@@ -15697,6 +21459,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSq
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBody {
 }
@@ -15718,6 +21493,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSq
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod {
@@ -15741,6 +21529,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSq
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString {
 }
@@ -15762,6 +21563,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSq
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader {
@@ -15791,6 +21605,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSq
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -15801,7 +21634,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSq
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument {
@@ -15831,6 +21664,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSq
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -15841,7 +21693,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSq
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath {
@@ -15864,6 +21716,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSq
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatch {
@@ -15937,123 +21802,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSq
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementTextTransformation {
@@ -16114,21 +22027,45 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSq
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
-  public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatement | undefined) {
+    if (value === undefined) {
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
+  // field_to_match - computed: false, optional: true, required: false
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  public get fieldToMatch() {
+    return this._fieldToMatch;
+  }
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSqliMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -16142,7 +22079,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementSq
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments {
@@ -16166,6 +22103,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXs
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBody {
 }
@@ -16187,6 +22137,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXs
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethod {
@@ -16210,6 +22173,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXs
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString {
 }
@@ -16231,6 +22207,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXs
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader {
@@ -16260,6 +22249,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXs
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -16270,7 +22278,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXs
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument {
@@ -16300,6 +22308,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXs
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -16310,7 +22337,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXs
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath {
@@ -16333,6 +22360,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXs
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatch {
@@ -16406,123 +22446,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXs
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementTextTransformation {
@@ -16583,21 +22671,45 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXs
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
-  public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatement | undefined) {
+    if (value === undefined) {
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
+  // field_to_match - computed: false, optional: true, required: false
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  public get fieldToMatch() {
+    return this._fieldToMatch;
+  }
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXssMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -16611,7 +22723,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatementXs
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatement {
@@ -16732,6 +22844,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementOutputRefer
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementNotStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._statement) {
+      hasAnyValues = true;
+      internalValueResult.statement = this._statement;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementNotStatement | undefined) {
+    if (value === undefined) {
+      this._statement = undefined;
+    }
+    else {
+      this._statement = value.statement;
+    }
+  }
+
   // statement - computed: false, optional: false, required: true
   private _statement?: Wafv2WebAclRuleStatementOrStatementStatementNotStatementStatement[]; 
   public get statement() {
@@ -16743,7 +22874,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementNotStatementOutputRefer
   }
   // Temporarily expose input value. Use with caution.
   public get statementInput() {
-    return this._statement
+    return this._statement;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments {
@@ -16767,6 +22898,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody {
 }
@@ -16788,6 +22932,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethod {
@@ -16811,6 +22968,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString {
 }
@@ -16832,6 +23002,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader {
@@ -16861,6 +23044,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -16871,7 +23073,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument {
@@ -16901,6 +23103,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -16911,7 +23132,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath {
@@ -16934,6 +23155,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatch {
@@ -17007,123 +23241,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementTextTransformation {
@@ -17194,6 +23476,43 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._positionalConstraint) {
+      hasAnyValues = true;
+      internalValueResult.positionalConstraint = this._positionalConstraint;
+    }
+    if (this._searchString) {
+      hasAnyValues = true;
+      internalValueResult.searchString = this._searchString;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatement | undefined) {
+    if (value === undefined) {
+      this._positionalConstraint = undefined;
+      this._searchString = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._positionalConstraint = value.positionalConstraint;
+      this._searchString = value.searchString;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // positional_constraint - computed: false, optional: false, required: true
   private _positionalConstraint?: string; 
   public get positionalConstraint() {
@@ -17204,7 +23523,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get positionalConstraintInput() {
-    return this._positionalConstraint
+    return this._positionalConstraint;
   }
 
   // search_string - computed: false, optional: false, required: true
@@ -17217,24 +23536,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get searchStringInput() {
-    return this._searchString
+    return this._searchString;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementByteMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -17248,7 +23566,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementGeoMatchStatementForwardedIpConfig {
@@ -17283,6 +23601,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementGeoMatchStatementForwardedIpConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fallbackBehavior) {
+      hasAnyValues = true;
+      internalValueResult.fallbackBehavior = this._fallbackBehavior;
+    }
+    if (this._headerName) {
+      hasAnyValues = true;
+      internalValueResult.headerName = this._headerName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementGeoMatchStatementForwardedIpConfig | undefined) {
+    if (value === undefined) {
+      this._fallbackBehavior = undefined;
+      this._headerName = undefined;
+    }
+    else {
+      this._fallbackBehavior = value.fallbackBehavior;
+      this._headerName = value.headerName;
+    }
+  }
+
   // fallback_behavior - computed: false, optional: false, required: true
   private _fallbackBehavior?: string; 
   public get fallbackBehavior() {
@@ -17293,7 +23636,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get fallbackBehaviorInput() {
-    return this._fallbackBehavior
+    return this._fallbackBehavior;
   }
 
   // header_name - computed: false, optional: false, required: true
@@ -17306,7 +23649,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get headerNameInput() {
-    return this._headerName
+    return this._headerName;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementGeoMatchStatement {
@@ -17343,6 +23686,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementGeoMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._countryCodes) {
+      hasAnyValues = true;
+      internalValueResult.countryCodes = this._countryCodes;
+    }
+    if (this._forwardedIpConfig) {
+      hasAnyValues = true;
+      internalValueResult.forwardedIpConfig = this._forwardedIpConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementGeoMatchStatement | undefined) {
+    if (value === undefined) {
+      this._countryCodes = undefined;
+      this._forwardedIpConfig.internalValue = undefined;
+    }
+    else {
+      this._countryCodes = value.countryCodes;
+      this._forwardedIpConfig.internalValue = value.forwardedIpConfig;
+    }
+  }
+
   // country_codes - computed: false, optional: false, required: true
   private _countryCodes?: string[]; 
   public get countryCodes() {
@@ -17353,24 +23721,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get countryCodesInput() {
-    return this._countryCodes
+    return this._countryCodes;
   }
 
   // forwarded_ip_config - computed: false, optional: true, required: false
-  private _forwardedIpConfig?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementGeoMatchStatementForwardedIpConfig | undefined; 
-  private __forwardedIpConfigOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementGeoMatchStatementForwardedIpConfigOutputReference(this as any, "forwarded_ip_config", true);
+  private _forwardedIpConfig = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementGeoMatchStatementForwardedIpConfigOutputReference(this as any, "forwarded_ip_config", true);
   public get forwardedIpConfig() {
-    return this.__forwardedIpConfigOutput;
+    return this._forwardedIpConfig;
   }
-  public putForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementGeoMatchStatementForwardedIpConfig | undefined) {
-    this._forwardedIpConfig = value;
+  public putForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementGeoMatchStatementForwardedIpConfig) {
+    this._forwardedIpConfig.internalValue = value;
   }
   public resetForwardedIpConfig() {
-    this._forwardedIpConfig = undefined;
+    this._forwardedIpConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get forwardedIpConfigInput() {
-    return this._forwardedIpConfig
+    return this._forwardedIpConfig.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig {
@@ -17410,6 +23777,37 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fallbackBehavior) {
+      hasAnyValues = true;
+      internalValueResult.fallbackBehavior = this._fallbackBehavior;
+    }
+    if (this._headerName) {
+      hasAnyValues = true;
+      internalValueResult.headerName = this._headerName;
+    }
+    if (this._position) {
+      hasAnyValues = true;
+      internalValueResult.position = this._position;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined) {
+    if (value === undefined) {
+      this._fallbackBehavior = undefined;
+      this._headerName = undefined;
+      this._position = undefined;
+    }
+    else {
+      this._fallbackBehavior = value.fallbackBehavior;
+      this._headerName = value.headerName;
+      this._position = value.position;
+    }
+  }
+
   // fallback_behavior - computed: false, optional: false, required: true
   private _fallbackBehavior?: string; 
   public get fallbackBehavior() {
@@ -17420,7 +23818,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get fallbackBehaviorInput() {
-    return this._fallbackBehavior
+    return this._fallbackBehavior;
   }
 
   // header_name - computed: false, optional: false, required: true
@@ -17433,7 +23831,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get headerNameInput() {
-    return this._headerName
+    return this._headerName;
   }
 
   // position - computed: false, optional: false, required: true
@@ -17446,7 +23844,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get positionInput() {
-    return this._position
+    return this._position;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementIpSetReferenceStatement {
@@ -17483,6 +23881,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementIpSetReferenceStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    if (this._ipSetForwardedIpConfig) {
+      hasAnyValues = true;
+      internalValueResult.ipSetForwardedIpConfig = this._ipSetForwardedIpConfig?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementIpSetReferenceStatement | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+      this._ipSetForwardedIpConfig.internalValue = undefined;
+    }
+    else {
+      this._arn = value.arn;
+      this._ipSetForwardedIpConfig.internalValue = value.ipSetForwardedIpConfig;
+    }
+  }
+
   // arn - computed: false, optional: false, required: true
   private _arn?: string; 
   public get arn() {
@@ -17493,24 +23916,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // ip_set_forwarded_ip_config - computed: false, optional: true, required: false
-  private _ipSetForwardedIpConfig?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined; 
-  private __ipSetForwardedIpConfigOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIpConfigOutputReference(this as any, "ip_set_forwarded_ip_config", true);
+  private _ipSetForwardedIpConfig = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIpConfigOutputReference(this as any, "ip_set_forwarded_ip_config", true);
   public get ipSetForwardedIpConfig() {
-    return this.__ipSetForwardedIpConfigOutput;
+    return this._ipSetForwardedIpConfig;
   }
-  public putIpSetForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig | undefined) {
-    this._ipSetForwardedIpConfig = value;
+  public putIpSetForwardedIpConfig(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementIpSetReferenceStatementIpSetForwardedIpConfig) {
+    this._ipSetForwardedIpConfig.internalValue = value;
   }
   public resetIpSetForwardedIpConfig() {
-    this._ipSetForwardedIpConfig = undefined;
+    this._ipSetForwardedIpConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get ipSetForwardedIpConfigInput() {
-    return this._ipSetForwardedIpConfig
+    return this._ipSetForwardedIpConfig.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementLabelMatchStatement {
@@ -17545,6 +23967,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementLabelMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._key) {
+      hasAnyValues = true;
+      internalValueResult.key = this._key;
+    }
+    if (this._scope) {
+      hasAnyValues = true;
+      internalValueResult.scope = this._scope;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementLabelMatchStatement | undefined) {
+    if (value === undefined) {
+      this._key = undefined;
+      this._scope = undefined;
+    }
+    else {
+      this._key = value.key;
+      this._scope = value.scope;
+    }
+  }
+
   // key - computed: false, optional: false, required: true
   private _key?: string; 
   public get key() {
@@ -17555,7 +24002,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get keyInput() {
-    return this._key
+    return this._key;
   }
 
   // scope - computed: false, optional: false, required: true
@@ -17568,7 +24015,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get scopeInput() {
-    return this._scope
+    return this._scope;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments {
@@ -17592,6 +24039,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody {
 }
@@ -17613,6 +24073,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod {
@@ -17636,6 +24109,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString {
 }
@@ -17657,6 +24143,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader {
@@ -17686,6 +24185,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -17696,7 +24214,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument {
@@ -17726,6 +24244,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -17736,7 +24273,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath {
@@ -17759,6 +24296,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch {
@@ -17832,123 +24382,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementTextTransformation {
@@ -18014,6 +24612,37 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatement | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._arn = value.arn;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // arn - computed: false, optional: false, required: true
   private _arn?: string; 
   public get arn() {
@@ -18024,24 +24653,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementRegexPatternSetReferenceStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -18055,7 +24683,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments {
@@ -18079,6 +24707,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody {
 }
@@ -18100,6 +24741,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod {
@@ -18123,6 +24777,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString {
 }
@@ -18144,6 +24811,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader {
@@ -18173,6 +24853,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -18183,7 +24882,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument {
@@ -18213,6 +24912,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -18223,7 +24941,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath {
@@ -18246,6 +24964,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch {
@@ -18319,123 +25050,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementTextTransformation {
@@ -18506,6 +25285,43 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._comparisonOperator) {
+      hasAnyValues = true;
+      internalValueResult.comparisonOperator = this._comparisonOperator;
+    }
+    if (this._size) {
+      hasAnyValues = true;
+      internalValueResult.size = this._size;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatement | undefined) {
+    if (value === undefined) {
+      this._comparisonOperator = undefined;
+      this._size = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._comparisonOperator = value.comparisonOperator;
+      this._size = value.size;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // comparison_operator - computed: false, optional: false, required: true
   private _comparisonOperator?: string; 
   public get comparisonOperator() {
@@ -18516,7 +25332,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get comparisonOperatorInput() {
-    return this._comparisonOperator
+    return this._comparisonOperator;
   }
 
   // size - computed: false, optional: false, required: true
@@ -18529,24 +25345,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get sizeInput() {
-    return this._size
+    return this._size;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSizeConstraintStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -18560,7 +25375,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments {
@@ -18584,6 +25399,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody {
 }
@@ -18605,6 +25433,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod {
@@ -18628,6 +25469,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString {
 }
@@ -18649,6 +25503,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader {
@@ -18678,6 +25545,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -18688,7 +25574,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument {
@@ -18718,6 +25604,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -18728,7 +25633,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath {
@@ -18751,6 +25656,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch {
@@ -18824,123 +25742,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementTextTransformation {
@@ -19001,21 +25967,45 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
-  public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatement | undefined) {
+    if (value === undefined) {
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
+  // field_to_match - computed: false, optional: true, required: false
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  public get fieldToMatch() {
+    return this._fieldToMatch;
+  }
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementSqliMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -19029,7 +26019,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments {
@@ -19053,6 +26043,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody {
 }
@@ -19074,6 +26077,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod {
@@ -19097,6 +26113,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString {
 }
@@ -19118,6 +26147,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader {
@@ -19147,6 +26189,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -19157,7 +26218,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument {
@@ -19187,6 +26248,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -19197,7 +26277,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath {
@@ -19220,6 +26300,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatch {
@@ -19293,123 +26386,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementTextTransformation {
@@ -19470,21 +26611,45 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
-  public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatement | undefined) {
+    if (value === undefined) {
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
+  // field_to_match - computed: false, optional: true, required: false
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  public get fieldToMatch() {
+    return this._fieldToMatch;
+  }
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatementXssMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -19498,7 +26663,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatement {
@@ -19598,6 +26763,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._statement) {
+      hasAnyValues = true;
+      internalValueResult.statement = this._statement;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatement | undefined) {
+    if (value === undefined) {
+      this._statement = undefined;
+    }
+    else {
+      this._statement = value.statement;
+    }
+  }
+
   // statement - computed: false, optional: false, required: true
   private _statement?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAndStatementStatement[]; 
   public get statement() {
@@ -19609,7 +26793,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementAnd
   }
   // Temporarily expose input value. Use with caution.
   public get statementInput() {
-    return this._statement
+    return this._statement;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments {
@@ -19633,6 +26817,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByt
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBody {
 }
@@ -19654,6 +26851,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByt
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBody | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBody | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethod {
@@ -19677,6 +26887,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByt
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethod | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethod | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
+  }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString {
 }
@@ -19698,6 +26921,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByt
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader {
@@ -19727,6 +26963,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -19737,7 +26992,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByt
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument {
@@ -19767,6 +27022,25 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._name) {
+      hasAnyValues = true;
+      internalValueResult.name = this._name;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined) {
+    if (value === undefined) {
+      this._name = undefined;
+    }
+    else {
+      this._name = value.name;
+    }
+  }
+
   // name - computed: false, optional: false, required: true
   private _name?: string; 
   public get name() {
@@ -19777,7 +27051,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByt
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath {
@@ -19800,6 +27074,19 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByt
   */
   public constructor(terraformResource: cdktf.ITerraformResource, terraformAttribute: string, isSingleItem: boolean) {
     super(terraformResource, terraformAttribute, isSingleItem);
+  }
+
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath | undefined) {
+    if (value === undefined) {
+    }
+    else {
+    }
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatch {
@@ -19873,123 +27160,171 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // all_query_arguments - computed: false, optional: true, required: false
-  private _allQueryArguments?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined; 
-  private __allQueryArgumentsOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
-  public get allQueryArguments() {
-    return this.__allQueryArgumentsOutput;
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatch | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._allQueryArguments) {
+      hasAnyValues = true;
+      internalValueResult.allQueryArguments = this._allQueryArguments?.internalValue;
+    }
+    if (this._body) {
+      hasAnyValues = true;
+      internalValueResult.body = this._body?.internalValue;
+    }
+    if (this._method) {
+      hasAnyValues = true;
+      internalValueResult.method = this._method?.internalValue;
+    }
+    if (this._queryString) {
+      hasAnyValues = true;
+      internalValueResult.queryString = this._queryString?.internalValue;
+    }
+    if (this._singleHeader) {
+      hasAnyValues = true;
+      internalValueResult.singleHeader = this._singleHeader?.internalValue;
+    }
+    if (this._singleQueryArgument) {
+      hasAnyValues = true;
+      internalValueResult.singleQueryArgument = this._singleQueryArgument?.internalValue;
+    }
+    if (this._uriPath) {
+      hasAnyValues = true;
+      internalValueResult.uriPath = this._uriPath?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments | undefined) {
-    this._allQueryArguments = value;
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatch | undefined) {
+    if (value === undefined) {
+      this._allQueryArguments.internalValue = undefined;
+      this._body.internalValue = undefined;
+      this._method.internalValue = undefined;
+      this._queryString.internalValue = undefined;
+      this._singleHeader.internalValue = undefined;
+      this._singleQueryArgument.internalValue = undefined;
+      this._uriPath.internalValue = undefined;
+    }
+    else {
+      this._allQueryArguments.internalValue = value.allQueryArguments;
+      this._body.internalValue = value.body;
+      this._method.internalValue = value.method;
+      this._queryString.internalValue = value.queryString;
+      this._singleHeader.internalValue = value.singleHeader;
+      this._singleQueryArgument.internalValue = value.singleQueryArgument;
+      this._uriPath.internalValue = value.uriPath;
+    }
+  }
+
+  // all_query_arguments - computed: false, optional: true, required: false
+  private _allQueryArguments = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArgumentsOutputReference(this as any, "all_query_arguments", true);
+  public get allQueryArguments() {
+    return this._allQueryArguments;
+  }
+  public putAllQueryArguments(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchAllQueryArguments) {
+    this._allQueryArguments.internalValue = value;
   }
   public resetAllQueryArguments() {
-    this._allQueryArguments = undefined;
+    this._allQueryArguments.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get allQueryArgumentsInput() {
-    return this._allQueryArguments
+    return this._allQueryArguments.internalValue;
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBody | undefined; 
-  private __bodyOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
+  private _body = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBodyOutputReference(this as any, "body", true);
   public get body() {
-    return this.__bodyOutput;
+    return this._body;
   }
-  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBody | undefined) {
-    this._body = value;
+  public putBody(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchBody) {
+    this._body.internalValue = value;
   }
   public resetBody() {
-    this._body = undefined;
+    this._body.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get bodyInput() {
-    return this._body
+    return this._body.internalValue;
   }
 
   // method - computed: false, optional: true, required: false
-  private _method?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethod | undefined; 
-  private __methodOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
+  private _method = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethodOutputReference(this as any, "method", true);
   public get method() {
-    return this.__methodOutput;
+    return this._method;
   }
-  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethod | undefined) {
-    this._method = value;
+  public putMethod(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchMethod) {
+    this._method.internalValue = value;
   }
   public resetMethod() {
-    this._method = undefined;
+    this._method.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get methodInput() {
-    return this._method
+    return this._method.internalValue;
   }
 
   // query_string - computed: false, optional: true, required: false
-  private _queryString?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString | undefined; 
-  private __queryStringOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
+  private _queryString = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryStringOutputReference(this as any, "query_string", true);
   public get queryString() {
-    return this.__queryStringOutput;
+    return this._queryString;
   }
-  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString | undefined) {
-    this._queryString = value;
+  public putQueryString(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchQueryString) {
+    this._queryString.internalValue = value;
   }
   public resetQueryString() {
-    this._queryString = undefined;
+    this._queryString.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get queryStringInput() {
-    return this._queryString
+    return this._queryString.internalValue;
   }
 
   // single_header - computed: false, optional: true, required: false
-  private _singleHeader?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined; 
-  private __singleHeaderOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
+  private _singleHeader = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeaderOutputReference(this as any, "single_header", true);
   public get singleHeader() {
-    return this.__singleHeaderOutput;
+    return this._singleHeader;
   }
-  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader | undefined) {
-    this._singleHeader = value;
+  public putSingleHeader(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleHeader) {
+    this._singleHeader.internalValue = value;
   }
   public resetSingleHeader() {
-    this._singleHeader = undefined;
+    this._singleHeader.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleHeaderInput() {
-    return this._singleHeader
+    return this._singleHeader.internalValue;
   }
 
   // single_query_argument - computed: false, optional: true, required: false
-  private _singleQueryArgument?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined; 
-  private __singleQueryArgumentOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
+  private _singleQueryArgument = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgumentOutputReference(this as any, "single_query_argument", true);
   public get singleQueryArgument() {
-    return this.__singleQueryArgumentOutput;
+    return this._singleQueryArgument;
   }
-  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument | undefined) {
-    this._singleQueryArgument = value;
+  public putSingleQueryArgument(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchSingleQueryArgument) {
+    this._singleQueryArgument.internalValue = value;
   }
   public resetSingleQueryArgument() {
-    this._singleQueryArgument = undefined;
+    this._singleQueryArgument.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get singleQueryArgumentInput() {
-    return this._singleQueryArgument
+    return this._singleQueryArgument.internalValue;
   }
 
   // uri_path - computed: false, optional: true, required: false
-  private _uriPath?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath | undefined; 
-  private __uriPathOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
+  private _uriPath = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPathOutputReference(this as any, "uri_path", true);
   public get uriPath() {
-    return this.__uriPathOutput;
+    return this._uriPath;
   }
-  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath | undefined) {
-    this._uriPath = value;
+  public putUriPath(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchUriPath) {
+    this._uriPath.internalValue = value;
   }
   public resetUriPath() {
-    this._uriPath = undefined;
+    this._uriPath.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get uriPathInput() {
-    return this._uriPath
+    return this._uriPath.internalValue;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementTextTransformation {
@@ -20060,6 +27395,43 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatement | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._positionalConstraint) {
+      hasAnyValues = true;
+      internalValueResult.positionalConstraint = this._positionalConstraint;
+    }
+    if (this._searchString) {
+      hasAnyValues = true;
+      internalValueResult.searchString = this._searchString;
+    }
+    if (this._fieldToMatch) {
+      hasAnyValues = true;
+      internalValueResult.fieldToMatch = this._fieldToMatch?.internalValue;
+    }
+    if (this._textTransformation) {
+      hasAnyValues = true;
+      internalValueResult.textTransformation = this._textTransformation;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatement | undefined) {
+    if (value === undefined) {
+      this._positionalConstraint = undefined;
+      this._searchString = undefined;
+      this._fieldToMatch.internalValue = undefined;
+      this._textTransformation = undefined;
+    }
+    else {
+      this._positionalConstraint = value.positionalConstraint;
+      this._searchString = value.searchString;
+      this._fieldToMatch.internalValue = value.fieldToMatch;
+      this._textTransformation = value.textTransformation;
+    }
+  }
+
   // positional_constraint - computed: false, optional: false, required: true
   private _positionalConstraint?: string; 
   public get positionalConstraint() {
@@ -20070,7 +27442,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByt
   }
   // Temporarily expose input value. Use with caution.
   public get positionalConstraintInput() {
-    return this._positionalConstraint
+    return this._positionalConstraint;
   }
 
   // search_string - computed: false, optional: false, required: true
@@ -20083,24 +27455,23 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByt
   }
   // Temporarily expose input value. Use with caution.
   public get searchStringInput() {
-    return this._searchString
+    return this._searchString;
   }
 
   // field_to_match - computed: false, optional: true, required: false
-  private _fieldToMatch?: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatch | undefined; 
-  private __fieldToMatchOutput = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
+  private _fieldToMatch = new Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatchOutputReference(this as any, "field_to_match", true);
   public get fieldToMatch() {
-    return this.__fieldToMatchOutput;
+    return this._fieldToMatch;
   }
-  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatch | undefined) {
-    this._fieldToMatch = value;
+  public putFieldToMatch(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByteMatchStatementFieldToMatch) {
+    this._fieldToMatch.internalValue = value;
   }
   public resetFieldToMatch() {
-    this._fieldToMatch = undefined;
+    this._fieldToMatch.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get fieldToMatchInput() {
-    return this._fieldToMatch
+    return this._fieldToMatch.internalValue;
   }
 
   // text_transformation - computed: false, optional: false, required: true
@@ -20114,7 +27485,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementByt
   }
   // Temporarily expose input value. Use with caution.
   public get textTransformationInput() {
-    return this._textTransformation
+    return this._textTransformation;
   }
 }
 export interface Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementGeoMatchStatementForwardedIpConfig {
@@ -20149,6 +27520,31 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementGeo
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementGeoMatchStatementForwardedIpConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._fallbackBehavior) {
+      hasAnyValues = true;
+      internalValueResult.fallbackBehavior = this._fallbackBehavior;
+    }
+    if (this._headerName) {
+      hasAnyValues = true;
+      internalValueResult.headerName = this._headerName;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementGeoMatchStatementForwardedIpConfig | undefined) {
+    if (value === undefined) {
+      this._fallbackBehavior = undefined;
+      this._headerName = undefined;
+    }
+    else {
+      this._fallbackBehavior = value.fallbackBehavior;
+      this._headerName = value.headerName;
+    }
+  }
+
   // fallback_behavior - computed: false, optional: false, required: true
   private _fallbackBehavior?: string; 
   public get fallbackBehavior() {
@@ -20159,7 +27555,7 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementGeo
   }
   // Temporarily expose input value. Use with caution.
   public get fallbackBehaviorInput() {
-    return this._fallbackBehavior
+    return this._fallbackBehavior;
   }
 
   // header_name - computed: false, optional: false, required: true
@@ -20172,6 +27568,6 @@ export class Wafv2WebAclRuleStatementOrStatementStatementOrStatementStatementGeo
   }
   // Temporarily expose input value. Use with caution.
   public get headerNameInput() {
-    return this._headerName
+    return this._headerName;
   }
 }

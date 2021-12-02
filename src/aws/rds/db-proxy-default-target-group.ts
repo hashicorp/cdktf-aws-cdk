@@ -71,12 +71,55 @@ export class DbProxyDefaultTargetGroupConnectionPoolConfigOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DbProxyDefaultTargetGroupConnectionPoolConfig | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._connectionBorrowTimeout) {
+      hasAnyValues = true;
+      internalValueResult.connectionBorrowTimeout = this._connectionBorrowTimeout;
+    }
+    if (this._initQuery) {
+      hasAnyValues = true;
+      internalValueResult.initQuery = this._initQuery;
+    }
+    if (this._maxConnectionsPercent) {
+      hasAnyValues = true;
+      internalValueResult.maxConnectionsPercent = this._maxConnectionsPercent;
+    }
+    if (this._maxIdleConnectionsPercent) {
+      hasAnyValues = true;
+      internalValueResult.maxIdleConnectionsPercent = this._maxIdleConnectionsPercent;
+    }
+    if (this._sessionPinningFilters) {
+      hasAnyValues = true;
+      internalValueResult.sessionPinningFilters = this._sessionPinningFilters;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DbProxyDefaultTargetGroupConnectionPoolConfig | undefined) {
+    if (value === undefined) {
+      this._connectionBorrowTimeout = undefined;
+      this._initQuery = undefined;
+      this._maxConnectionsPercent = undefined;
+      this._maxIdleConnectionsPercent = undefined;
+      this._sessionPinningFilters = undefined;
+    }
+    else {
+      this._connectionBorrowTimeout = value.connectionBorrowTimeout;
+      this._initQuery = value.initQuery;
+      this._maxConnectionsPercent = value.maxConnectionsPercent;
+      this._maxIdleConnectionsPercent = value.maxIdleConnectionsPercent;
+      this._sessionPinningFilters = value.sessionPinningFilters;
+    }
+  }
+
   // connection_borrow_timeout - computed: false, optional: true, required: false
-  private _connectionBorrowTimeout?: number | undefined; 
+  private _connectionBorrowTimeout?: number; 
   public get connectionBorrowTimeout() {
     return this.getNumberAttribute('connection_borrow_timeout');
   }
-  public set connectionBorrowTimeout(value: number | undefined) {
+  public set connectionBorrowTimeout(value: number) {
     this._connectionBorrowTimeout = value;
   }
   public resetConnectionBorrowTimeout() {
@@ -84,15 +127,15 @@ export class DbProxyDefaultTargetGroupConnectionPoolConfigOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get connectionBorrowTimeoutInput() {
-    return this._connectionBorrowTimeout
+    return this._connectionBorrowTimeout;
   }
 
   // init_query - computed: false, optional: true, required: false
-  private _initQuery?: string | undefined; 
+  private _initQuery?: string; 
   public get initQuery() {
     return this.getStringAttribute('init_query');
   }
-  public set initQuery(value: string | undefined) {
+  public set initQuery(value: string) {
     this._initQuery = value;
   }
   public resetInitQuery() {
@@ -100,15 +143,15 @@ export class DbProxyDefaultTargetGroupConnectionPoolConfigOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get initQueryInput() {
-    return this._initQuery
+    return this._initQuery;
   }
 
   // max_connections_percent - computed: false, optional: true, required: false
-  private _maxConnectionsPercent?: number | undefined; 
+  private _maxConnectionsPercent?: number; 
   public get maxConnectionsPercent() {
     return this.getNumberAttribute('max_connections_percent');
   }
-  public set maxConnectionsPercent(value: number | undefined) {
+  public set maxConnectionsPercent(value: number) {
     this._maxConnectionsPercent = value;
   }
   public resetMaxConnectionsPercent() {
@@ -116,15 +159,15 @@ export class DbProxyDefaultTargetGroupConnectionPoolConfigOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get maxConnectionsPercentInput() {
-    return this._maxConnectionsPercent
+    return this._maxConnectionsPercent;
   }
 
   // max_idle_connections_percent - computed: false, optional: true, required: false
-  private _maxIdleConnectionsPercent?: number | undefined; 
+  private _maxIdleConnectionsPercent?: number; 
   public get maxIdleConnectionsPercent() {
     return this.getNumberAttribute('max_idle_connections_percent');
   }
-  public set maxIdleConnectionsPercent(value: number | undefined) {
+  public set maxIdleConnectionsPercent(value: number) {
     this._maxIdleConnectionsPercent = value;
   }
   public resetMaxIdleConnectionsPercent() {
@@ -132,15 +175,15 @@ export class DbProxyDefaultTargetGroupConnectionPoolConfigOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get maxIdleConnectionsPercentInput() {
-    return this._maxIdleConnectionsPercent
+    return this._maxIdleConnectionsPercent;
   }
 
   // session_pinning_filters - computed: false, optional: true, required: false
-  private _sessionPinningFilters?: string[] | undefined; 
+  private _sessionPinningFilters?: string[]; 
   public get sessionPinningFilters() {
     return this.getListAttribute('session_pinning_filters');
   }
-  public set sessionPinningFilters(value: string[] | undefined) {
+  public set sessionPinningFilters(value: string[]) {
     this._sessionPinningFilters = value;
   }
   public resetSessionPinningFilters() {
@@ -148,7 +191,7 @@ export class DbProxyDefaultTargetGroupConnectionPoolConfigOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get sessionPinningFiltersInput() {
-    return this._sessionPinningFilters
+    return this._sessionPinningFilters;
   }
 }
 export interface DbProxyDefaultTargetGroupTimeouts {
@@ -183,12 +226,37 @@ export class DbProxyDefaultTargetGroupTimeoutsOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): DbProxyDefaultTargetGroupTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: DbProxyDefaultTargetGroupTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -196,15 +264,15 @@ export class DbProxyDefaultTargetGroupTimeoutsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -212,7 +280,7 @@ export class DbProxyDefaultTargetGroupTimeoutsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -249,8 +317,8 @@ export class DbProxyDefaultTargetGroup extends cdktf.TerraformResource {
       lifecycle: config.lifecycle
     });
     this._dbProxyName = config.dbProxyName;
-    this._connectionPoolConfig = config.connectionPoolConfig;
-    this._timeouts = config.timeouts;
+    this._connectionPoolConfig.internalValue = config.connectionPoolConfig;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -272,7 +340,7 @@ export class DbProxyDefaultTargetGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get dbProxyNameInput() {
-    return this._dbProxyName
+    return this._dbProxyName;
   }
 
   // id - computed: true, optional: true, required: false
@@ -286,37 +354,35 @@ export class DbProxyDefaultTargetGroup extends cdktf.TerraformResource {
   }
 
   // connection_pool_config - computed: false, optional: true, required: false
-  private _connectionPoolConfig?: DbProxyDefaultTargetGroupConnectionPoolConfig | undefined; 
-  private __connectionPoolConfigOutput = new DbProxyDefaultTargetGroupConnectionPoolConfigOutputReference(this as any, "connection_pool_config", true);
+  private _connectionPoolConfig = new DbProxyDefaultTargetGroupConnectionPoolConfigOutputReference(this as any, "connection_pool_config", true);
   public get connectionPoolConfig() {
-    return this.__connectionPoolConfigOutput;
+    return this._connectionPoolConfig;
   }
-  public putConnectionPoolConfig(value: DbProxyDefaultTargetGroupConnectionPoolConfig | undefined) {
-    this._connectionPoolConfig = value;
+  public putConnectionPoolConfig(value: DbProxyDefaultTargetGroupConnectionPoolConfig) {
+    this._connectionPoolConfig.internalValue = value;
   }
   public resetConnectionPoolConfig() {
-    this._connectionPoolConfig = undefined;
+    this._connectionPoolConfig.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get connectionPoolConfigInput() {
-    return this._connectionPoolConfig
+    return this._connectionPoolConfig.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: DbProxyDefaultTargetGroupTimeouts | undefined; 
-  private __timeoutsOutput = new DbProxyDefaultTargetGroupTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new DbProxyDefaultTargetGroupTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: DbProxyDefaultTargetGroupTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: DbProxyDefaultTargetGroupTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -326,8 +392,8 @@ export class DbProxyDefaultTargetGroup extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       db_proxy_name: cdktf.stringToTerraform(this._dbProxyName),
-      connection_pool_config: dbProxyDefaultTargetGroupConnectionPoolConfigToTerraform(this._connectionPoolConfig),
-      timeouts: dbProxyDefaultTargetGroupTimeoutsToTerraform(this._timeouts),
+      connection_pool_config: dbProxyDefaultTargetGroupConnectionPoolConfigToTerraform(this._connectionPoolConfig.internalValue),
+      timeouts: dbProxyDefaultTargetGroupTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

@@ -147,11 +147,11 @@ export class DataAwsEip extends cdktf.TerraformDataSource {
   }
 
   // public_ip - computed: true, optional: true, required: false
-  private _publicIp?: string | undefined; 
+  private _publicIp?: string; 
   public get publicIp() {
     return this.getStringAttribute('public_ip');
   }
-  public set publicIp(value: string | undefined) {
+  public set publicIp(value: string) {
     this._publicIp = value;
   }
   public resetPublicIp() {
@@ -159,7 +159,7 @@ export class DataAwsEip extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get publicIpInput() {
-    return this._publicIp
+    return this._publicIp;
   }
 
   // public_ipv4_pool - computed: true, optional: false, required: false
@@ -168,12 +168,12 @@ export class DataAwsEip extends cdktf.TerraformDataSource {
   }
 
   // tags - computed: true, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -181,16 +181,16 @@ export class DataAwsEip extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // filter - computed: false, optional: true, required: false
-  private _filter?: DataAwsEipFilter[] | undefined; 
+  private _filter?: DataAwsEipFilter[]; 
   public get filter() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('filter') as any;
   }
-  public set filter(value: DataAwsEipFilter[] | undefined) {
+  public set filter(value: DataAwsEipFilter[]) {
     this._filter = value;
   }
   public resetFilter() {
@@ -198,7 +198,7 @@ export class DataAwsEip extends cdktf.TerraformDataSource {
   }
   // Temporarily expose input value. Use with caution.
   public get filterInput() {
-    return this._filter
+    return this._filter;
   }
 
   // =========

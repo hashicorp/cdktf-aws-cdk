@@ -72,7 +72,7 @@ export class NetworkInterfaceSgAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get networkInterfaceIdInput() {
-    return this._networkInterfaceId
+    return this._networkInterfaceId;
   }
 
   // security_group_id - computed: false, optional: false, required: true
@@ -85,7 +85,7 @@ export class NetworkInterfaceSgAttachment extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupIdInput() {
-    return this._securityGroupId
+    return this._securityGroupId;
   }
 
   // =========

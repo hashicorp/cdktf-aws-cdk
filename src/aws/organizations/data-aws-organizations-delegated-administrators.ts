@@ -105,11 +105,11 @@ export class DataAwsOrganizationsDelegatedAdministrators extends cdktf.Terraform
   }
 
   // service_principal - computed: false, optional: true, required: false
-  private _servicePrincipal?: string | undefined; 
+  private _servicePrincipal?: string; 
   public get servicePrincipal() {
     return this.getStringAttribute('service_principal');
   }
-  public set servicePrincipal(value: string | undefined) {
+  public set servicePrincipal(value: string) {
     this._servicePrincipal = value;
   }
   public resetServicePrincipal() {
@@ -117,7 +117,7 @@ export class DataAwsOrganizationsDelegatedAdministrators extends cdktf.Terraform
   }
   // Temporarily expose input value. Use with caution.
   public get servicePrincipalInput() {
-    return this._servicePrincipal
+    return this._servicePrincipal;
   }
 
   // =========

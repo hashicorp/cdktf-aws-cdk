@@ -101,16 +101,16 @@ export class WafIpset extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // ip_set_descriptors - computed: false, optional: true, required: false
-  private _ipSetDescriptors?: WafIpsetIpSetDescriptors[] | undefined; 
+  private _ipSetDescriptors?: WafIpsetIpSetDescriptors[]; 
   public get ipSetDescriptors() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ip_set_descriptors') as any;
   }
-  public set ipSetDescriptors(value: WafIpsetIpSetDescriptors[] | undefined) {
+  public set ipSetDescriptors(value: WafIpsetIpSetDescriptors[]) {
     this._ipSetDescriptors = value;
   }
   public resetIpSetDescriptors() {
@@ -118,7 +118,7 @@ export class WafIpset extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ipSetDescriptorsInput() {
-    return this._ipSetDescriptors
+    return this._ipSetDescriptors;
   }
 
   // =========

@@ -121,12 +121,55 @@ export class MskClusterBrokerNodeGroupInfoOutputReference extends cdktf.ComplexO
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MskClusterBrokerNodeGroupInfo | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._azDistribution) {
+      hasAnyValues = true;
+      internalValueResult.azDistribution = this._azDistribution;
+    }
+    if (this._clientSubnets) {
+      hasAnyValues = true;
+      internalValueResult.clientSubnets = this._clientSubnets;
+    }
+    if (this._ebsVolumeSize) {
+      hasAnyValues = true;
+      internalValueResult.ebsVolumeSize = this._ebsVolumeSize;
+    }
+    if (this._instanceType) {
+      hasAnyValues = true;
+      internalValueResult.instanceType = this._instanceType;
+    }
+    if (this._securityGroups) {
+      hasAnyValues = true;
+      internalValueResult.securityGroups = this._securityGroups;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MskClusterBrokerNodeGroupInfo | undefined) {
+    if (value === undefined) {
+      this._azDistribution = undefined;
+      this._clientSubnets = undefined;
+      this._ebsVolumeSize = undefined;
+      this._instanceType = undefined;
+      this._securityGroups = undefined;
+    }
+    else {
+      this._azDistribution = value.azDistribution;
+      this._clientSubnets = value.clientSubnets;
+      this._ebsVolumeSize = value.ebsVolumeSize;
+      this._instanceType = value.instanceType;
+      this._securityGroups = value.securityGroups;
+    }
+  }
+
   // az_distribution - computed: false, optional: true, required: false
-  private _azDistribution?: string | undefined; 
+  private _azDistribution?: string; 
   public get azDistribution() {
     return this.getStringAttribute('az_distribution');
   }
-  public set azDistribution(value: string | undefined) {
+  public set azDistribution(value: string) {
     this._azDistribution = value;
   }
   public resetAzDistribution() {
@@ -134,7 +177,7 @@ export class MskClusterBrokerNodeGroupInfoOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get azDistributionInput() {
-    return this._azDistribution
+    return this._azDistribution;
   }
 
   // client_subnets - computed: false, optional: false, required: true
@@ -147,7 +190,7 @@ export class MskClusterBrokerNodeGroupInfoOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get clientSubnetsInput() {
-    return this._clientSubnets
+    return this._clientSubnets;
   }
 
   // ebs_volume_size - computed: false, optional: false, required: true
@@ -160,7 +203,7 @@ export class MskClusterBrokerNodeGroupInfoOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get ebsVolumeSizeInput() {
-    return this._ebsVolumeSize
+    return this._ebsVolumeSize;
   }
 
   // instance_type - computed: false, optional: false, required: true
@@ -173,7 +216,7 @@ export class MskClusterBrokerNodeGroupInfoOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // security_groups - computed: false, optional: false, required: true
@@ -186,7 +229,7 @@ export class MskClusterBrokerNodeGroupInfoOutputReference extends cdktf.ComplexO
   }
   // Temporarily expose input value. Use with caution.
   public get securityGroupsInput() {
-    return this._securityGroups
+    return this._securityGroups;
   }
 }
 export interface MskClusterClientAuthenticationSasl {
@@ -221,12 +264,37 @@ export class MskClusterClientAuthenticationSaslOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MskClusterClientAuthenticationSasl | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._iam) {
+      hasAnyValues = true;
+      internalValueResult.iam = this._iam;
+    }
+    if (this._scram) {
+      hasAnyValues = true;
+      internalValueResult.scram = this._scram;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MskClusterClientAuthenticationSasl | undefined) {
+    if (value === undefined) {
+      this._iam = undefined;
+      this._scram = undefined;
+    }
+    else {
+      this._iam = value.iam;
+      this._scram = value.scram;
+    }
+  }
+
   // iam - computed: false, optional: true, required: false
-  private _iam?: boolean | cdktf.IResolvable | undefined; 
+  private _iam?: boolean | cdktf.IResolvable; 
   public get iam() {
     return this.getBooleanAttribute('iam') as any;
   }
-  public set iam(value: boolean | cdktf.IResolvable | undefined) {
+  public set iam(value: boolean | cdktf.IResolvable) {
     this._iam = value;
   }
   public resetIam() {
@@ -234,15 +302,15 @@ export class MskClusterClientAuthenticationSaslOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get iamInput() {
-    return this._iam
+    return this._iam;
   }
 
   // scram - computed: false, optional: true, required: false
-  private _scram?: boolean | cdktf.IResolvable | undefined; 
+  private _scram?: boolean | cdktf.IResolvable; 
   public get scram() {
     return this.getBooleanAttribute('scram') as any;
   }
-  public set scram(value: boolean | cdktf.IResolvable | undefined) {
+  public set scram(value: boolean | cdktf.IResolvable) {
     this._scram = value;
   }
   public resetScram() {
@@ -250,7 +318,7 @@ export class MskClusterClientAuthenticationSaslOutputReference extends cdktf.Com
   }
   // Temporarily expose input value. Use with caution.
   public get scramInput() {
-    return this._scram
+    return this._scram;
   }
 }
 export interface MskClusterClientAuthenticationTls {
@@ -280,12 +348,31 @@ export class MskClusterClientAuthenticationTlsOutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MskClusterClientAuthenticationTls | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._certificateAuthorityArns) {
+      hasAnyValues = true;
+      internalValueResult.certificateAuthorityArns = this._certificateAuthorityArns;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MskClusterClientAuthenticationTls | undefined) {
+    if (value === undefined) {
+      this._certificateAuthorityArns = undefined;
+    }
+    else {
+      this._certificateAuthorityArns = value.certificateAuthorityArns;
+    }
+  }
+
   // certificate_authority_arns - computed: false, optional: true, required: false
-  private _certificateAuthorityArns?: string[] | undefined; 
+  private _certificateAuthorityArns?: string[]; 
   public get certificateAuthorityArns() {
     return this.getListAttribute('certificate_authority_arns');
   }
-  public set certificateAuthorityArns(value: string[] | undefined) {
+  public set certificateAuthorityArns(value: string[]) {
     this._certificateAuthorityArns = value;
   }
   public resetCertificateAuthorityArns() {
@@ -293,7 +380,7 @@ export class MskClusterClientAuthenticationTlsOutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get certificateAuthorityArnsInput() {
-    return this._certificateAuthorityArns
+    return this._certificateAuthorityArns;
   }
 }
 export interface MskClusterClientAuthentication {
@@ -332,38 +419,61 @@ export class MskClusterClientAuthenticationOutputReference extends cdktf.Complex
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // sasl - computed: false, optional: true, required: false
-  private _sasl?: MskClusterClientAuthenticationSasl | undefined; 
-  private __saslOutput = new MskClusterClientAuthenticationSaslOutputReference(this as any, "sasl", true);
-  public get sasl() {
-    return this.__saslOutput;
+  public get internalValue(): MskClusterClientAuthentication | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._sasl) {
+      hasAnyValues = true;
+      internalValueResult.sasl = this._sasl?.internalValue;
+    }
+    if (this._tls) {
+      hasAnyValues = true;
+      internalValueResult.tls = this._tls?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putSasl(value: MskClusterClientAuthenticationSasl | undefined) {
-    this._sasl = value;
+
+  public set internalValue(value: MskClusterClientAuthentication | undefined) {
+    if (value === undefined) {
+      this._sasl.internalValue = undefined;
+      this._tls.internalValue = undefined;
+    }
+    else {
+      this._sasl.internalValue = value.sasl;
+      this._tls.internalValue = value.tls;
+    }
+  }
+
+  // sasl - computed: false, optional: true, required: false
+  private _sasl = new MskClusterClientAuthenticationSaslOutputReference(this as any, "sasl", true);
+  public get sasl() {
+    return this._sasl;
+  }
+  public putSasl(value: MskClusterClientAuthenticationSasl) {
+    this._sasl.internalValue = value;
   }
   public resetSasl() {
-    this._sasl = undefined;
+    this._sasl.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get saslInput() {
-    return this._sasl
+    return this._sasl.internalValue;
   }
 
   // tls - computed: false, optional: true, required: false
-  private _tls?: MskClusterClientAuthenticationTls | undefined; 
-  private __tlsOutput = new MskClusterClientAuthenticationTlsOutputReference(this as any, "tls", true);
+  private _tls = new MskClusterClientAuthenticationTlsOutputReference(this as any, "tls", true);
   public get tls() {
-    return this.__tlsOutput;
+    return this._tls;
   }
-  public putTls(value: MskClusterClientAuthenticationTls | undefined) {
-    this._tls = value;
+  public putTls(value: MskClusterClientAuthenticationTls) {
+    this._tls.internalValue = value;
   }
   public resetTls() {
-    this._tls = undefined;
+    this._tls.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get tlsInput() {
-    return this._tls
+    return this._tls.internalValue;
   }
 }
 export interface MskClusterConfigurationInfo {
@@ -398,6 +508,31 @@ export class MskClusterConfigurationInfoOutputReference extends cdktf.ComplexObj
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MskClusterConfigurationInfo | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._arn) {
+      hasAnyValues = true;
+      internalValueResult.arn = this._arn;
+    }
+    if (this._revision) {
+      hasAnyValues = true;
+      internalValueResult.revision = this._revision;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MskClusterConfigurationInfo | undefined) {
+    if (value === undefined) {
+      this._arn = undefined;
+      this._revision = undefined;
+    }
+    else {
+      this._arn = value.arn;
+      this._revision = value.revision;
+    }
+  }
+
   // arn - computed: false, optional: false, required: true
   private _arn?: string; 
   public get arn() {
@@ -408,7 +543,7 @@ export class MskClusterConfigurationInfoOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get arnInput() {
-    return this._arn
+    return this._arn;
   }
 
   // revision - computed: false, optional: false, required: true
@@ -421,7 +556,7 @@ export class MskClusterConfigurationInfoOutputReference extends cdktf.ComplexObj
   }
   // Temporarily expose input value. Use with caution.
   public get revisionInput() {
-    return this._revision
+    return this._revision;
   }
 }
 export interface MskClusterEncryptionInfoEncryptionInTransit {
@@ -456,12 +591,37 @@ export class MskClusterEncryptionInfoEncryptionInTransitOutputReference extends 
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MskClusterEncryptionInfoEncryptionInTransit | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._clientBroker) {
+      hasAnyValues = true;
+      internalValueResult.clientBroker = this._clientBroker;
+    }
+    if (this._inCluster) {
+      hasAnyValues = true;
+      internalValueResult.inCluster = this._inCluster;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MskClusterEncryptionInfoEncryptionInTransit | undefined) {
+    if (value === undefined) {
+      this._clientBroker = undefined;
+      this._inCluster = undefined;
+    }
+    else {
+      this._clientBroker = value.clientBroker;
+      this._inCluster = value.inCluster;
+    }
+  }
+
   // client_broker - computed: false, optional: true, required: false
-  private _clientBroker?: string | undefined; 
+  private _clientBroker?: string; 
   public get clientBroker() {
     return this.getStringAttribute('client_broker');
   }
-  public set clientBroker(value: string | undefined) {
+  public set clientBroker(value: string) {
     this._clientBroker = value;
   }
   public resetClientBroker() {
@@ -469,15 +629,15 @@ export class MskClusterEncryptionInfoEncryptionInTransitOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get clientBrokerInput() {
-    return this._clientBroker
+    return this._clientBroker;
   }
 
   // in_cluster - computed: false, optional: true, required: false
-  private _inCluster?: boolean | cdktf.IResolvable | undefined; 
+  private _inCluster?: boolean | cdktf.IResolvable; 
   public get inCluster() {
     return this.getBooleanAttribute('in_cluster') as any;
   }
-  public set inCluster(value: boolean | cdktf.IResolvable | undefined) {
+  public set inCluster(value: boolean | cdktf.IResolvable) {
     this._inCluster = value;
   }
   public resetInCluster() {
@@ -485,7 +645,7 @@ export class MskClusterEncryptionInfoEncryptionInTransitOutputReference extends 
   }
   // Temporarily expose input value. Use with caution.
   public get inClusterInput() {
-    return this._inCluster
+    return this._inCluster;
   }
 }
 export interface MskClusterEncryptionInfo {
@@ -522,12 +682,37 @@ export class MskClusterEncryptionInfoOutputReference extends cdktf.ComplexObject
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MskClusterEncryptionInfo | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._encryptionAtRestKmsKeyArn) {
+      hasAnyValues = true;
+      internalValueResult.encryptionAtRestKmsKeyArn = this._encryptionAtRestKmsKeyArn;
+    }
+    if (this._encryptionInTransit) {
+      hasAnyValues = true;
+      internalValueResult.encryptionInTransit = this._encryptionInTransit?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MskClusterEncryptionInfo | undefined) {
+    if (value === undefined) {
+      this._encryptionAtRestKmsKeyArn = undefined;
+      this._encryptionInTransit.internalValue = undefined;
+    }
+    else {
+      this._encryptionAtRestKmsKeyArn = value.encryptionAtRestKmsKeyArn;
+      this._encryptionInTransit.internalValue = value.encryptionInTransit;
+    }
+  }
+
   // encryption_at_rest_kms_key_arn - computed: true, optional: true, required: false
-  private _encryptionAtRestKmsKeyArn?: string | undefined; 
+  private _encryptionAtRestKmsKeyArn?: string; 
   public get encryptionAtRestKmsKeyArn() {
     return this.getStringAttribute('encryption_at_rest_kms_key_arn');
   }
-  public set encryptionAtRestKmsKeyArn(value: string | undefined) {
+  public set encryptionAtRestKmsKeyArn(value: string) {
     this._encryptionAtRestKmsKeyArn = value;
   }
   public resetEncryptionAtRestKmsKeyArn() {
@@ -535,24 +720,23 @@ export class MskClusterEncryptionInfoOutputReference extends cdktf.ComplexObject
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionAtRestKmsKeyArnInput() {
-    return this._encryptionAtRestKmsKeyArn
+    return this._encryptionAtRestKmsKeyArn;
   }
 
   // encryption_in_transit - computed: false, optional: true, required: false
-  private _encryptionInTransit?: MskClusterEncryptionInfoEncryptionInTransit | undefined; 
-  private __encryptionInTransitOutput = new MskClusterEncryptionInfoEncryptionInTransitOutputReference(this as any, "encryption_in_transit", true);
+  private _encryptionInTransit = new MskClusterEncryptionInfoEncryptionInTransitOutputReference(this as any, "encryption_in_transit", true);
   public get encryptionInTransit() {
-    return this.__encryptionInTransitOutput;
+    return this._encryptionInTransit;
   }
-  public putEncryptionInTransit(value: MskClusterEncryptionInfoEncryptionInTransit | undefined) {
-    this._encryptionInTransit = value;
+  public putEncryptionInTransit(value: MskClusterEncryptionInfoEncryptionInTransit) {
+    this._encryptionInTransit.internalValue = value;
   }
   public resetEncryptionInTransit() {
-    this._encryptionInTransit = undefined;
+    this._encryptionInTransit.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionInTransitInput() {
-    return this._encryptionInTransit
+    return this._encryptionInTransit.internalValue;
   }
 }
 export interface MskClusterLoggingInfoBrokerLogsCloudwatchLogs {
@@ -587,6 +771,31 @@ export class MskClusterLoggingInfoBrokerLogsCloudwatchLogsOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MskClusterLoggingInfoBrokerLogsCloudwatchLogs | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._logGroup) {
+      hasAnyValues = true;
+      internalValueResult.logGroup = this._logGroup;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MskClusterLoggingInfoBrokerLogsCloudwatchLogs | undefined) {
+    if (value === undefined) {
+      this._enabled = undefined;
+      this._logGroup = undefined;
+    }
+    else {
+      this._enabled = value.enabled;
+      this._logGroup = value.logGroup;
+    }
+  }
+
   // enabled - computed: false, optional: false, required: true
   private _enabled?: boolean | cdktf.IResolvable; 
   public get enabled() {
@@ -597,15 +806,15 @@ export class MskClusterLoggingInfoBrokerLogsCloudwatchLogsOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // log_group - computed: false, optional: true, required: false
-  private _logGroup?: string | undefined; 
+  private _logGroup?: string; 
   public get logGroup() {
     return this.getStringAttribute('log_group');
   }
-  public set logGroup(value: string | undefined) {
+  public set logGroup(value: string) {
     this._logGroup = value;
   }
   public resetLogGroup() {
@@ -613,7 +822,7 @@ export class MskClusterLoggingInfoBrokerLogsCloudwatchLogsOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get logGroupInput() {
-    return this._logGroup
+    return this._logGroup;
   }
 }
 export interface MskClusterLoggingInfoBrokerLogsFirehose {
@@ -648,12 +857,37 @@ export class MskClusterLoggingInfoBrokerLogsFirehoseOutputReference extends cdkt
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MskClusterLoggingInfoBrokerLogsFirehose | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._deliveryStream) {
+      hasAnyValues = true;
+      internalValueResult.deliveryStream = this._deliveryStream;
+    }
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MskClusterLoggingInfoBrokerLogsFirehose | undefined) {
+    if (value === undefined) {
+      this._deliveryStream = undefined;
+      this._enabled = undefined;
+    }
+    else {
+      this._deliveryStream = value.deliveryStream;
+      this._enabled = value.enabled;
+    }
+  }
+
   // delivery_stream - computed: false, optional: true, required: false
-  private _deliveryStream?: string | undefined; 
+  private _deliveryStream?: string; 
   public get deliveryStream() {
     return this.getStringAttribute('delivery_stream');
   }
-  public set deliveryStream(value: string | undefined) {
+  public set deliveryStream(value: string) {
     this._deliveryStream = value;
   }
   public resetDeliveryStream() {
@@ -661,7 +895,7 @@ export class MskClusterLoggingInfoBrokerLogsFirehoseOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get deliveryStreamInput() {
-    return this._deliveryStream
+    return this._deliveryStream;
   }
 
   // enabled - computed: false, optional: false, required: true
@@ -674,7 +908,7 @@ export class MskClusterLoggingInfoBrokerLogsFirehoseOutputReference extends cdkt
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 }
 export interface MskClusterLoggingInfoBrokerLogsS3 {
@@ -714,12 +948,43 @@ export class MskClusterLoggingInfoBrokerLogsS3OutputReference extends cdktf.Comp
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MskClusterLoggingInfoBrokerLogsS3 | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._bucket) {
+      hasAnyValues = true;
+      internalValueResult.bucket = this._bucket;
+    }
+    if (this._enabled) {
+      hasAnyValues = true;
+      internalValueResult.enabled = this._enabled;
+    }
+    if (this._prefix) {
+      hasAnyValues = true;
+      internalValueResult.prefix = this._prefix;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MskClusterLoggingInfoBrokerLogsS3 | undefined) {
+    if (value === undefined) {
+      this._bucket = undefined;
+      this._enabled = undefined;
+      this._prefix = undefined;
+    }
+    else {
+      this._bucket = value.bucket;
+      this._enabled = value.enabled;
+      this._prefix = value.prefix;
+    }
+  }
+
   // bucket - computed: false, optional: true, required: false
-  private _bucket?: string | undefined; 
+  private _bucket?: string; 
   public get bucket() {
     return this.getStringAttribute('bucket');
   }
-  public set bucket(value: string | undefined) {
+  public set bucket(value: string) {
     this._bucket = value;
   }
   public resetBucket() {
@@ -727,7 +992,7 @@ export class MskClusterLoggingInfoBrokerLogsS3OutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get bucketInput() {
-    return this._bucket
+    return this._bucket;
   }
 
   // enabled - computed: false, optional: false, required: true
@@ -740,15 +1005,15 @@ export class MskClusterLoggingInfoBrokerLogsS3OutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInput() {
-    return this._enabled
+    return this._enabled;
   }
 
   // prefix - computed: false, optional: true, required: false
-  private _prefix?: string | undefined; 
+  private _prefix?: string; 
   public get prefix() {
     return this.getStringAttribute('prefix');
   }
-  public set prefix(value: string | undefined) {
+  public set prefix(value: string) {
     this._prefix = value;
   }
   public resetPrefix() {
@@ -756,7 +1021,7 @@ export class MskClusterLoggingInfoBrokerLogsS3OutputReference extends cdktf.Comp
   }
   // Temporarily expose input value. Use with caution.
   public get prefixInput() {
-    return this._prefix
+    return this._prefix;
   }
 }
 export interface MskClusterLoggingInfoBrokerLogs {
@@ -802,55 +1067,83 @@ export class MskClusterLoggingInfoBrokerLogsOutputReference extends cdktf.Comple
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // cloudwatch_logs - computed: false, optional: true, required: false
-  private _cloudwatchLogs?: MskClusterLoggingInfoBrokerLogsCloudwatchLogs | undefined; 
-  private __cloudwatchLogsOutput = new MskClusterLoggingInfoBrokerLogsCloudwatchLogsOutputReference(this as any, "cloudwatch_logs", true);
-  public get cloudwatchLogs() {
-    return this.__cloudwatchLogsOutput;
+  public get internalValue(): MskClusterLoggingInfoBrokerLogs | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._cloudwatchLogs) {
+      hasAnyValues = true;
+      internalValueResult.cloudwatchLogs = this._cloudwatchLogs?.internalValue;
+    }
+    if (this._firehose) {
+      hasAnyValues = true;
+      internalValueResult.firehose = this._firehose?.internalValue;
+    }
+    if (this._s3) {
+      hasAnyValues = true;
+      internalValueResult.s3 = this._s3?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putCloudwatchLogs(value: MskClusterLoggingInfoBrokerLogsCloudwatchLogs | undefined) {
-    this._cloudwatchLogs = value;
+
+  public set internalValue(value: MskClusterLoggingInfoBrokerLogs | undefined) {
+    if (value === undefined) {
+      this._cloudwatchLogs.internalValue = undefined;
+      this._firehose.internalValue = undefined;
+      this._s3.internalValue = undefined;
+    }
+    else {
+      this._cloudwatchLogs.internalValue = value.cloudwatchLogs;
+      this._firehose.internalValue = value.firehose;
+      this._s3.internalValue = value.s3;
+    }
+  }
+
+  // cloudwatch_logs - computed: false, optional: true, required: false
+  private _cloudwatchLogs = new MskClusterLoggingInfoBrokerLogsCloudwatchLogsOutputReference(this as any, "cloudwatch_logs", true);
+  public get cloudwatchLogs() {
+    return this._cloudwatchLogs;
+  }
+  public putCloudwatchLogs(value: MskClusterLoggingInfoBrokerLogsCloudwatchLogs) {
+    this._cloudwatchLogs.internalValue = value;
   }
   public resetCloudwatchLogs() {
-    this._cloudwatchLogs = undefined;
+    this._cloudwatchLogs.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get cloudwatchLogsInput() {
-    return this._cloudwatchLogs
+    return this._cloudwatchLogs.internalValue;
   }
 
   // firehose - computed: false, optional: true, required: false
-  private _firehose?: MskClusterLoggingInfoBrokerLogsFirehose | undefined; 
-  private __firehoseOutput = new MskClusterLoggingInfoBrokerLogsFirehoseOutputReference(this as any, "firehose", true);
+  private _firehose = new MskClusterLoggingInfoBrokerLogsFirehoseOutputReference(this as any, "firehose", true);
   public get firehose() {
-    return this.__firehoseOutput;
+    return this._firehose;
   }
-  public putFirehose(value: MskClusterLoggingInfoBrokerLogsFirehose | undefined) {
-    this._firehose = value;
+  public putFirehose(value: MskClusterLoggingInfoBrokerLogsFirehose) {
+    this._firehose.internalValue = value;
   }
   public resetFirehose() {
-    this._firehose = undefined;
+    this._firehose.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get firehoseInput() {
-    return this._firehose
+    return this._firehose.internalValue;
   }
 
   // s3 - computed: false, optional: true, required: false
-  private _s3?: MskClusterLoggingInfoBrokerLogsS3 | undefined; 
-  private __s3Output = new MskClusterLoggingInfoBrokerLogsS3OutputReference(this as any, "s3", true);
+  private _s3 = new MskClusterLoggingInfoBrokerLogsS3OutputReference(this as any, "s3", true);
   public get s3() {
-    return this.__s3Output;
+    return this._s3;
   }
-  public putS3(value: MskClusterLoggingInfoBrokerLogsS3 | undefined) {
-    this._s3 = value;
+  public putS3(value: MskClusterLoggingInfoBrokerLogsS3) {
+    this._s3.internalValue = value;
   }
   public resetS3() {
-    this._s3 = undefined;
+    this._s3.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get s3Input() {
-    return this._s3
+    return this._s3.internalValue;
   }
 }
 export interface MskClusterLoggingInfo {
@@ -882,18 +1175,36 @@ export class MskClusterLoggingInfoOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MskClusterLoggingInfo | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._brokerLogs) {
+      hasAnyValues = true;
+      internalValueResult.brokerLogs = this._brokerLogs?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MskClusterLoggingInfo | undefined) {
+    if (value === undefined) {
+      this._brokerLogs.internalValue = undefined;
+    }
+    else {
+      this._brokerLogs.internalValue = value.brokerLogs;
+    }
+  }
+
   // broker_logs - computed: false, optional: false, required: true
-  private _brokerLogs?: MskClusterLoggingInfoBrokerLogs; 
-  private __brokerLogsOutput = new MskClusterLoggingInfoBrokerLogsOutputReference(this as any, "broker_logs", true);
+  private _brokerLogs = new MskClusterLoggingInfoBrokerLogsOutputReference(this as any, "broker_logs", true);
   public get brokerLogs() {
-    return this.__brokerLogsOutput;
+    return this._brokerLogs;
   }
   public putBrokerLogs(value: MskClusterLoggingInfoBrokerLogs) {
-    this._brokerLogs = value;
+    this._brokerLogs.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get brokerLogsInput() {
-    return this._brokerLogs
+    return this._brokerLogs.internalValue;
   }
 }
 export interface MskClusterOpenMonitoringPrometheusJmxExporter {
@@ -923,6 +1234,25 @@ export class MskClusterOpenMonitoringPrometheusJmxExporterOutputReference extend
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MskClusterOpenMonitoringPrometheusJmxExporter | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabledInBroker) {
+      hasAnyValues = true;
+      internalValueResult.enabledInBroker = this._enabledInBroker;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MskClusterOpenMonitoringPrometheusJmxExporter | undefined) {
+    if (value === undefined) {
+      this._enabledInBroker = undefined;
+    }
+    else {
+      this._enabledInBroker = value.enabledInBroker;
+    }
+  }
+
   // enabled_in_broker - computed: false, optional: false, required: true
   private _enabledInBroker?: boolean | cdktf.IResolvable; 
   public get enabledInBroker() {
@@ -933,7 +1263,7 @@ export class MskClusterOpenMonitoringPrometheusJmxExporterOutputReference extend
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInBrokerInput() {
-    return this._enabledInBroker
+    return this._enabledInBroker;
   }
 }
 export interface MskClusterOpenMonitoringPrometheusNodeExporter {
@@ -963,6 +1293,25 @@ export class MskClusterOpenMonitoringPrometheusNodeExporterOutputReference exten
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MskClusterOpenMonitoringPrometheusNodeExporter | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._enabledInBroker) {
+      hasAnyValues = true;
+      internalValueResult.enabledInBroker = this._enabledInBroker;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MskClusterOpenMonitoringPrometheusNodeExporter | undefined) {
+    if (value === undefined) {
+      this._enabledInBroker = undefined;
+    }
+    else {
+      this._enabledInBroker = value.enabledInBroker;
+    }
+  }
+
   // enabled_in_broker - computed: false, optional: false, required: true
   private _enabledInBroker?: boolean | cdktf.IResolvable; 
   public get enabledInBroker() {
@@ -973,7 +1322,7 @@ export class MskClusterOpenMonitoringPrometheusNodeExporterOutputReference exten
   }
   // Temporarily expose input value. Use with caution.
   public get enabledInBrokerInput() {
-    return this._enabledInBroker
+    return this._enabledInBroker;
   }
 }
 export interface MskClusterOpenMonitoringPrometheus {
@@ -1012,38 +1361,61 @@ export class MskClusterOpenMonitoringPrometheusOutputReference extends cdktf.Com
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
-  // jmx_exporter - computed: false, optional: true, required: false
-  private _jmxExporter?: MskClusterOpenMonitoringPrometheusJmxExporter | undefined; 
-  private __jmxExporterOutput = new MskClusterOpenMonitoringPrometheusJmxExporterOutputReference(this as any, "jmx_exporter", true);
-  public get jmxExporter() {
-    return this.__jmxExporterOutput;
+  public get internalValue(): MskClusterOpenMonitoringPrometheus | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._jmxExporter) {
+      hasAnyValues = true;
+      internalValueResult.jmxExporter = this._jmxExporter?.internalValue;
+    }
+    if (this._nodeExporter) {
+      hasAnyValues = true;
+      internalValueResult.nodeExporter = this._nodeExporter?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
   }
-  public putJmxExporter(value: MskClusterOpenMonitoringPrometheusJmxExporter | undefined) {
-    this._jmxExporter = value;
+
+  public set internalValue(value: MskClusterOpenMonitoringPrometheus | undefined) {
+    if (value === undefined) {
+      this._jmxExporter.internalValue = undefined;
+      this._nodeExporter.internalValue = undefined;
+    }
+    else {
+      this._jmxExporter.internalValue = value.jmxExporter;
+      this._nodeExporter.internalValue = value.nodeExporter;
+    }
+  }
+
+  // jmx_exporter - computed: false, optional: true, required: false
+  private _jmxExporter = new MskClusterOpenMonitoringPrometheusJmxExporterOutputReference(this as any, "jmx_exporter", true);
+  public get jmxExporter() {
+    return this._jmxExporter;
+  }
+  public putJmxExporter(value: MskClusterOpenMonitoringPrometheusJmxExporter) {
+    this._jmxExporter.internalValue = value;
   }
   public resetJmxExporter() {
-    this._jmxExporter = undefined;
+    this._jmxExporter.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get jmxExporterInput() {
-    return this._jmxExporter
+    return this._jmxExporter.internalValue;
   }
 
   // node_exporter - computed: false, optional: true, required: false
-  private _nodeExporter?: MskClusterOpenMonitoringPrometheusNodeExporter | undefined; 
-  private __nodeExporterOutput = new MskClusterOpenMonitoringPrometheusNodeExporterOutputReference(this as any, "node_exporter", true);
+  private _nodeExporter = new MskClusterOpenMonitoringPrometheusNodeExporterOutputReference(this as any, "node_exporter", true);
   public get nodeExporter() {
-    return this.__nodeExporterOutput;
+    return this._nodeExporter;
   }
-  public putNodeExporter(value: MskClusterOpenMonitoringPrometheusNodeExporter | undefined) {
-    this._nodeExporter = value;
+  public putNodeExporter(value: MskClusterOpenMonitoringPrometheusNodeExporter) {
+    this._nodeExporter.internalValue = value;
   }
   public resetNodeExporter() {
-    this._nodeExporter = undefined;
+    this._nodeExporter.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get nodeExporterInput() {
-    return this._nodeExporter
+    return this._nodeExporter.internalValue;
   }
 }
 export interface MskClusterOpenMonitoring {
@@ -1075,18 +1447,36 @@ export class MskClusterOpenMonitoringOutputReference extends cdktf.ComplexObject
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MskClusterOpenMonitoring | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._prometheus) {
+      hasAnyValues = true;
+      internalValueResult.prometheus = this._prometheus?.internalValue;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MskClusterOpenMonitoring | undefined) {
+    if (value === undefined) {
+      this._prometheus.internalValue = undefined;
+    }
+    else {
+      this._prometheus.internalValue = value.prometheus;
+    }
+  }
+
   // prometheus - computed: false, optional: false, required: true
-  private _prometheus?: MskClusterOpenMonitoringPrometheus; 
-  private __prometheusOutput = new MskClusterOpenMonitoringPrometheusOutputReference(this as any, "prometheus", true);
+  private _prometheus = new MskClusterOpenMonitoringPrometheusOutputReference(this as any, "prometheus", true);
   public get prometheus() {
-    return this.__prometheusOutput;
+    return this._prometheus;
   }
   public putPrometheus(value: MskClusterOpenMonitoringPrometheus) {
-    this._prometheus = value;
+    this._prometheus.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get prometheusInput() {
-    return this._prometheus
+    return this._prometheus.internalValue;
   }
 }
 export interface MskClusterTimeouts {
@@ -1126,12 +1516,43 @@ export class MskClusterTimeoutsOutputReference extends cdktf.ComplexObject {
     super(terraformResource, terraformAttribute, isSingleItem);
   }
 
+  public get internalValue(): MskClusterTimeouts | undefined {
+    let hasAnyValues = false;
+    const internalValueResult: any = {};
+    if (this._create) {
+      hasAnyValues = true;
+      internalValueResult.create = this._create;
+    }
+    if (this._delete) {
+      hasAnyValues = true;
+      internalValueResult.delete = this._delete;
+    }
+    if (this._update) {
+      hasAnyValues = true;
+      internalValueResult.update = this._update;
+    }
+    return hasAnyValues ? internalValueResult : undefined;
+  }
+
+  public set internalValue(value: MskClusterTimeouts | undefined) {
+    if (value === undefined) {
+      this._create = undefined;
+      this._delete = undefined;
+      this._update = undefined;
+    }
+    else {
+      this._create = value.create;
+      this._delete = value.delete;
+      this._update = value.update;
+    }
+  }
+
   // create - computed: false, optional: true, required: false
-  private _create?: string | undefined; 
+  private _create?: string; 
   public get create() {
     return this.getStringAttribute('create');
   }
-  public set create(value: string | undefined) {
+  public set create(value: string) {
     this._create = value;
   }
   public resetCreate() {
@@ -1139,15 +1560,15 @@ export class MskClusterTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get createInput() {
-    return this._create
+    return this._create;
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string | undefined; 
+  private _delete?: string; 
   public get delete() {
     return this.getStringAttribute('delete');
   }
-  public set delete(value: string | undefined) {
+  public set delete(value: string) {
     this._delete = value;
   }
   public resetDelete() {
@@ -1155,15 +1576,15 @@ export class MskClusterTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get deleteInput() {
-    return this._delete
+    return this._delete;
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string | undefined; 
+  private _update?: string; 
   public get update() {
     return this.getStringAttribute('update');
   }
-  public set update(value: string | undefined) {
+  public set update(value: string) {
     this._update = value;
   }
   public resetUpdate() {
@@ -1171,7 +1592,7 @@ export class MskClusterTimeoutsOutputReference extends cdktf.ComplexObject {
   }
   // Temporarily expose input value. Use with caution.
   public get updateInput() {
-    return this._update
+    return this._update;
   }
 }
 
@@ -1213,13 +1634,13 @@ export class MskCluster extends cdktf.TerraformResource {
     this._numberOfBrokerNodes = config.numberOfBrokerNodes;
     this._tags = config.tags;
     this._tagsAll = config.tagsAll;
-    this._brokerNodeGroupInfo = config.brokerNodeGroupInfo;
-    this._clientAuthentication = config.clientAuthentication;
-    this._configurationInfo = config.configurationInfo;
-    this._encryptionInfo = config.encryptionInfo;
-    this._loggingInfo = config.loggingInfo;
-    this._openMonitoring = config.openMonitoring;
-    this._timeouts = config.timeouts;
+    this._brokerNodeGroupInfo.internalValue = config.brokerNodeGroupInfo;
+    this._clientAuthentication.internalValue = config.clientAuthentication;
+    this._configurationInfo.internalValue = config.configurationInfo;
+    this._encryptionInfo.internalValue = config.encryptionInfo;
+    this._loggingInfo.internalValue = config.loggingInfo;
+    this._openMonitoring.internalValue = config.openMonitoring;
+    this._timeouts.internalValue = config.timeouts;
   }
 
   // ==========
@@ -1261,7 +1682,7 @@ export class MskCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterNameInput() {
-    return this._clusterName
+    return this._clusterName;
   }
 
   // current_version - computed: true, optional: false, required: false
@@ -1270,11 +1691,11 @@ export class MskCluster extends cdktf.TerraformResource {
   }
 
   // enhanced_monitoring - computed: false, optional: true, required: false
-  private _enhancedMonitoring?: string | undefined; 
+  private _enhancedMonitoring?: string; 
   public get enhancedMonitoring() {
     return this.getStringAttribute('enhanced_monitoring');
   }
-  public set enhancedMonitoring(value: string | undefined) {
+  public set enhancedMonitoring(value: string) {
     this._enhancedMonitoring = value;
   }
   public resetEnhancedMonitoring() {
@@ -1282,7 +1703,7 @@ export class MskCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get enhancedMonitoringInput() {
-    return this._enhancedMonitoring
+    return this._enhancedMonitoring;
   }
 
   // id - computed: true, optional: true, required: false
@@ -1300,7 +1721,7 @@ export class MskCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get kafkaVersionInput() {
-    return this._kafkaVersion
+    return this._kafkaVersion;
   }
 
   // number_of_broker_nodes - computed: false, optional: false, required: true
@@ -1313,16 +1734,16 @@ export class MskCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get numberOfBrokerNodesInput() {
-    return this._numberOfBrokerNodes
+    return this._numberOfBrokerNodes;
   }
 
   // tags - computed: false, optional: true, required: false
-  private _tags?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tags?: { [key: string]: string } | cdktf.IResolvable; 
   public get tags() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags') as any;
   }
-  public set tags(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tags(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tags = value;
   }
   public resetTags() {
@@ -1330,16 +1751,16 @@ export class MskCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsInput() {
-    return this._tags
+    return this._tags;
   }
 
   // tags_all - computed: true, optional: true, required: false
-  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable | undefined; 
+  private _tagsAll?: { [key: string]: string } | cdktf.IResolvable; 
   public get tagsAll() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('tags_all') as any;
   }
-  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable | undefined) {
+  public set tagsAll(value: { [key: string]: string } | cdktf.IResolvable) {
     this._tagsAll = value;
   }
   public resetTagsAll() {
@@ -1347,7 +1768,7 @@ export class MskCluster extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get tagsAllInput() {
-    return this._tagsAll
+    return this._tagsAll;
   }
 
   // zookeeper_connect_string - computed: true, optional: false, required: false
@@ -1361,119 +1782,112 @@ export class MskCluster extends cdktf.TerraformResource {
   }
 
   // broker_node_group_info - computed: false, optional: false, required: true
-  private _brokerNodeGroupInfo?: MskClusterBrokerNodeGroupInfo; 
-  private __brokerNodeGroupInfoOutput = new MskClusterBrokerNodeGroupInfoOutputReference(this as any, "broker_node_group_info", true);
+  private _brokerNodeGroupInfo = new MskClusterBrokerNodeGroupInfoOutputReference(this as any, "broker_node_group_info", true);
   public get brokerNodeGroupInfo() {
-    return this.__brokerNodeGroupInfoOutput;
+    return this._brokerNodeGroupInfo;
   }
   public putBrokerNodeGroupInfo(value: MskClusterBrokerNodeGroupInfo) {
-    this._brokerNodeGroupInfo = value;
+    this._brokerNodeGroupInfo.internalValue = value;
   }
   // Temporarily expose input value. Use with caution.
   public get brokerNodeGroupInfoInput() {
-    return this._brokerNodeGroupInfo
+    return this._brokerNodeGroupInfo.internalValue;
   }
 
   // client_authentication - computed: false, optional: true, required: false
-  private _clientAuthentication?: MskClusterClientAuthentication | undefined; 
-  private __clientAuthenticationOutput = new MskClusterClientAuthenticationOutputReference(this as any, "client_authentication", true);
+  private _clientAuthentication = new MskClusterClientAuthenticationOutputReference(this as any, "client_authentication", true);
   public get clientAuthentication() {
-    return this.__clientAuthenticationOutput;
+    return this._clientAuthentication;
   }
-  public putClientAuthentication(value: MskClusterClientAuthentication | undefined) {
-    this._clientAuthentication = value;
+  public putClientAuthentication(value: MskClusterClientAuthentication) {
+    this._clientAuthentication.internalValue = value;
   }
   public resetClientAuthentication() {
-    this._clientAuthentication = undefined;
+    this._clientAuthentication.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get clientAuthenticationInput() {
-    return this._clientAuthentication
+    return this._clientAuthentication.internalValue;
   }
 
   // configuration_info - computed: false, optional: true, required: false
-  private _configurationInfo?: MskClusterConfigurationInfo | undefined; 
-  private __configurationInfoOutput = new MskClusterConfigurationInfoOutputReference(this as any, "configuration_info", true);
+  private _configurationInfo = new MskClusterConfigurationInfoOutputReference(this as any, "configuration_info", true);
   public get configurationInfo() {
-    return this.__configurationInfoOutput;
+    return this._configurationInfo;
   }
-  public putConfigurationInfo(value: MskClusterConfigurationInfo | undefined) {
-    this._configurationInfo = value;
+  public putConfigurationInfo(value: MskClusterConfigurationInfo) {
+    this._configurationInfo.internalValue = value;
   }
   public resetConfigurationInfo() {
-    this._configurationInfo = undefined;
+    this._configurationInfo.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get configurationInfoInput() {
-    return this._configurationInfo
+    return this._configurationInfo.internalValue;
   }
 
   // encryption_info - computed: false, optional: true, required: false
-  private _encryptionInfo?: MskClusterEncryptionInfo | undefined; 
-  private __encryptionInfoOutput = new MskClusterEncryptionInfoOutputReference(this as any, "encryption_info", true);
+  private _encryptionInfo = new MskClusterEncryptionInfoOutputReference(this as any, "encryption_info", true);
   public get encryptionInfo() {
-    return this.__encryptionInfoOutput;
+    return this._encryptionInfo;
   }
-  public putEncryptionInfo(value: MskClusterEncryptionInfo | undefined) {
-    this._encryptionInfo = value;
+  public putEncryptionInfo(value: MskClusterEncryptionInfo) {
+    this._encryptionInfo.internalValue = value;
   }
   public resetEncryptionInfo() {
-    this._encryptionInfo = undefined;
+    this._encryptionInfo.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get encryptionInfoInput() {
-    return this._encryptionInfo
+    return this._encryptionInfo.internalValue;
   }
 
   // logging_info - computed: false, optional: true, required: false
-  private _loggingInfo?: MskClusterLoggingInfo | undefined; 
-  private __loggingInfoOutput = new MskClusterLoggingInfoOutputReference(this as any, "logging_info", true);
+  private _loggingInfo = new MskClusterLoggingInfoOutputReference(this as any, "logging_info", true);
   public get loggingInfo() {
-    return this.__loggingInfoOutput;
+    return this._loggingInfo;
   }
-  public putLoggingInfo(value: MskClusterLoggingInfo | undefined) {
-    this._loggingInfo = value;
+  public putLoggingInfo(value: MskClusterLoggingInfo) {
+    this._loggingInfo.internalValue = value;
   }
   public resetLoggingInfo() {
-    this._loggingInfo = undefined;
+    this._loggingInfo.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get loggingInfoInput() {
-    return this._loggingInfo
+    return this._loggingInfo.internalValue;
   }
 
   // open_monitoring - computed: false, optional: true, required: false
-  private _openMonitoring?: MskClusterOpenMonitoring | undefined; 
-  private __openMonitoringOutput = new MskClusterOpenMonitoringOutputReference(this as any, "open_monitoring", true);
+  private _openMonitoring = new MskClusterOpenMonitoringOutputReference(this as any, "open_monitoring", true);
   public get openMonitoring() {
-    return this.__openMonitoringOutput;
+    return this._openMonitoring;
   }
-  public putOpenMonitoring(value: MskClusterOpenMonitoring | undefined) {
-    this._openMonitoring = value;
+  public putOpenMonitoring(value: MskClusterOpenMonitoring) {
+    this._openMonitoring.internalValue = value;
   }
   public resetOpenMonitoring() {
-    this._openMonitoring = undefined;
+    this._openMonitoring.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get openMonitoringInput() {
-    return this._openMonitoring
+    return this._openMonitoring.internalValue;
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts?: MskClusterTimeouts | undefined; 
-  private __timeoutsOutput = new MskClusterTimeoutsOutputReference(this as any, "timeouts", true);
+  private _timeouts = new MskClusterTimeoutsOutputReference(this as any, "timeouts", true);
   public get timeouts() {
-    return this.__timeoutsOutput;
+    return this._timeouts;
   }
-  public putTimeouts(value: MskClusterTimeouts | undefined) {
-    this._timeouts = value;
+  public putTimeouts(value: MskClusterTimeouts) {
+    this._timeouts.internalValue = value;
   }
   public resetTimeouts() {
-    this._timeouts = undefined;
+    this._timeouts.internalValue = undefined;
   }
   // Temporarily expose input value. Use with caution.
   public get timeoutsInput() {
-    return this._timeouts
+    return this._timeouts.internalValue;
   }
 
   // =========
@@ -1488,13 +1902,13 @@ export class MskCluster extends cdktf.TerraformResource {
       number_of_broker_nodes: cdktf.numberToTerraform(this._numberOfBrokerNodes),
       tags: cdktf.hashMapper(cdktf.anyToTerraform)(this._tags),
       tags_all: cdktf.hashMapper(cdktf.anyToTerraform)(this._tagsAll),
-      broker_node_group_info: mskClusterBrokerNodeGroupInfoToTerraform(this._brokerNodeGroupInfo),
-      client_authentication: mskClusterClientAuthenticationToTerraform(this._clientAuthentication),
-      configuration_info: mskClusterConfigurationInfoToTerraform(this._configurationInfo),
-      encryption_info: mskClusterEncryptionInfoToTerraform(this._encryptionInfo),
-      logging_info: mskClusterLoggingInfoToTerraform(this._loggingInfo),
-      open_monitoring: mskClusterOpenMonitoringToTerraform(this._openMonitoring),
-      timeouts: mskClusterTimeoutsToTerraform(this._timeouts),
+      broker_node_group_info: mskClusterBrokerNodeGroupInfoToTerraform(this._brokerNodeGroupInfo.internalValue),
+      client_authentication: mskClusterClientAuthenticationToTerraform(this._clientAuthentication.internalValue),
+      configuration_info: mskClusterConfigurationInfoToTerraform(this._configurationInfo.internalValue),
+      encryption_info: mskClusterEncryptionInfoToTerraform(this._encryptionInfo.internalValue),
+      logging_info: mskClusterLoggingInfoToTerraform(this._loggingInfo.internalValue),
+      open_monitoring: mskClusterOpenMonitoringToTerraform(this._openMonitoring.internalValue),
+      timeouts: mskClusterTimeoutsToTerraform(this._timeouts.internalValue),
     };
   }
 }

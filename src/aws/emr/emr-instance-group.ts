@@ -127,11 +127,11 @@ export class EmrInstanceGroup extends cdktf.TerraformResource {
   // ==========
 
   // autoscaling_policy - computed: false, optional: true, required: false
-  private _autoscalingPolicy?: string | undefined; 
+  private _autoscalingPolicy?: string; 
   public get autoscalingPolicy() {
     return this.getStringAttribute('autoscaling_policy');
   }
-  public set autoscalingPolicy(value: string | undefined) {
+  public set autoscalingPolicy(value: string) {
     this._autoscalingPolicy = value;
   }
   public resetAutoscalingPolicy() {
@@ -139,15 +139,15 @@ export class EmrInstanceGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get autoscalingPolicyInput() {
-    return this._autoscalingPolicy
+    return this._autoscalingPolicy;
   }
 
   // bid_price - computed: false, optional: true, required: false
-  private _bidPrice?: string | undefined; 
+  private _bidPrice?: string; 
   public get bidPrice() {
     return this.getStringAttribute('bid_price');
   }
-  public set bidPrice(value: string | undefined) {
+  public set bidPrice(value: string) {
     this._bidPrice = value;
   }
   public resetBidPrice() {
@@ -155,7 +155,7 @@ export class EmrInstanceGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get bidPriceInput() {
-    return this._bidPrice
+    return this._bidPrice;
   }
 
   // cluster_id - computed: false, optional: false, required: true
@@ -168,15 +168,15 @@ export class EmrInstanceGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get clusterIdInput() {
-    return this._clusterId
+    return this._clusterId;
   }
 
   // configurations_json - computed: false, optional: true, required: false
-  private _configurationsJson?: string | undefined; 
+  private _configurationsJson?: string; 
   public get configurationsJson() {
     return this.getStringAttribute('configurations_json');
   }
-  public set configurationsJson(value: string | undefined) {
+  public set configurationsJson(value: string) {
     this._configurationsJson = value;
   }
   public resetConfigurationsJson() {
@@ -184,15 +184,15 @@ export class EmrInstanceGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get configurationsJsonInput() {
-    return this._configurationsJson
+    return this._configurationsJson;
   }
 
   // ebs_optimized - computed: false, optional: true, required: false
-  private _ebsOptimized?: boolean | cdktf.IResolvable | undefined; 
+  private _ebsOptimized?: boolean | cdktf.IResolvable; 
   public get ebsOptimized() {
     return this.getBooleanAttribute('ebs_optimized') as any;
   }
-  public set ebsOptimized(value: boolean | cdktf.IResolvable | undefined) {
+  public set ebsOptimized(value: boolean | cdktf.IResolvable) {
     this._ebsOptimized = value;
   }
   public resetEbsOptimized() {
@@ -200,7 +200,7 @@ export class EmrInstanceGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ebsOptimizedInput() {
-    return this._ebsOptimized
+    return this._ebsOptimized;
   }
 
   // id - computed: true, optional: true, required: false
@@ -209,11 +209,11 @@ export class EmrInstanceGroup extends cdktf.TerraformResource {
   }
 
   // instance_count - computed: false, optional: true, required: false
-  private _instanceCount?: number | undefined; 
+  private _instanceCount?: number; 
   public get instanceCount() {
     return this.getNumberAttribute('instance_count');
   }
-  public set instanceCount(value: number | undefined) {
+  public set instanceCount(value: number) {
     this._instanceCount = value;
   }
   public resetInstanceCount() {
@@ -221,7 +221,7 @@ export class EmrInstanceGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceCountInput() {
-    return this._instanceCount
+    return this._instanceCount;
   }
 
   // instance_type - computed: false, optional: false, required: true
@@ -234,15 +234,15 @@ export class EmrInstanceGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get instanceTypeInput() {
-    return this._instanceType
+    return this._instanceType;
   }
 
   // name - computed: false, optional: true, required: false
-  private _name?: string | undefined; 
+  private _name?: string; 
   public get name() {
     return this.getStringAttribute('name');
   }
-  public set name(value: string | undefined) {
+  public set name(value: string) {
     this._name = value;
   }
   public resetName() {
@@ -250,7 +250,7 @@ export class EmrInstanceGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get nameInput() {
-    return this._name
+    return this._name;
   }
 
   // running_instance_count - computed: true, optional: false, required: false
@@ -264,12 +264,12 @@ export class EmrInstanceGroup extends cdktf.TerraformResource {
   }
 
   // ebs_config - computed: false, optional: true, required: false
-  private _ebsConfig?: EmrInstanceGroupEbsConfig[] | undefined; 
+  private _ebsConfig?: EmrInstanceGroupEbsConfig[]; 
   public get ebsConfig() {
     // Getting the computed value is not yet implemented
     return this.interpolationForAttribute('ebs_config') as any;
   }
-  public set ebsConfig(value: EmrInstanceGroupEbsConfig[] | undefined) {
+  public set ebsConfig(value: EmrInstanceGroupEbsConfig[]) {
     this._ebsConfig = value;
   }
   public resetEbsConfig() {
@@ -277,7 +277,7 @@ export class EmrInstanceGroup extends cdktf.TerraformResource {
   }
   // Temporarily expose input value. Use with caution.
   public get ebsConfigInput() {
-    return this._ebsConfig
+    return this._ebsConfig;
   }
 
   // =========
